@@ -26,5 +26,4 @@ PYTHONPATH=src python3 -m mccompiler validate \
 
 If `javap` is not on `PATH`, set `MCCOMPILER_JAVAP` to a local OpenJDK executable. To check deterministic archives, compile into two fresh directories and compare SHA-256 values of the generated `.mcaddon` files.
 
-Runtime validation requires separately generated, artifact-bound evidence. Do not create or copy a passing evidence document by hand. Creator Tools and physical-console commands are intentionally absent because no pinned installation or hardware automation is currently established.
-
+Runtime validation requires separately generated, artifact-bound evidence. Do not create or copy a passing evidence document by hand. Creator Tools is pinned by `src/mccompiler/creator-tools.lock.json`; use `invoke_creator_tools` against a uniquely named archive because the tool may reuse filename-keyed cache data. Physical-console commands remain absent because no hardware automation is established.

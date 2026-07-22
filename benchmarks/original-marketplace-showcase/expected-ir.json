@@ -1,0 +1,35 @@
+{
+  "schema_version": "1.0.0",
+  "target_profile": "MARKETPLACE_ADDON_STABLE",
+  "content": {
+    "item": ["clockwork_gardens:sunseed_launcher", "clockwork_gardens:charged_sunseed", "clockwork_gardens:lumen_ingot"],
+    "block": ["clockwork_gardens:lumen_press"],
+    "recipe": ["clockwork_gardens:sunseed_launcher_recipe", "clockwork_gardens:lumen_press_processing"],
+    "loot_table": ["clockwork_gardens:blocks/lumen_press"],
+    "entity": ["clockwork_gardens:sunseed_projectile", "clockwork_gardens:brass_sprout", "clockwork_gardens:verdant_colossus"],
+    "structure": ["clockwork_gardens:colossus_grove"],
+    "spawn_rule": ["clockwork_gardens:brass_sprout"],
+    "player_state": ["clockwork_gardens:garden_rank"]
+  },
+  "behaviors": {
+    "clockwork_gardens:sunseed_launcher/use": ["spawn_projectile", "apply_effect", "start_cooldown", "play_sound"],
+    "clockwork_gardens:sunseed_projectile/impact": ["create_explosion", "apply_effect", "spawn_particles", "play_sound"],
+    "clockwork_gardens:progression/restore": ["send_player_feedback"],
+    "clockwork_gardens:progression/award": ["update_persistent_state", "send_player_feedback"],
+    "clockwork_gardens:lumen_press/process": ["update_persistent_state", "remove_item", "add_item", "spawn_particles", "play_sound"],
+    "clockwork_gardens:lumen_press/openControls": ["open_interaction_ui"],
+    "clockwork_gardens:brass_sprout/on_spawn": ["set_entity_phase", "spawn_particles", "play_sound"],
+    "clockwork_gardens:verdant_colossus/phase_one": ["set_entity_phase", "spawn_projectile", "send_player_feedback"],
+    "clockwork_gardens:verdant_colossus/phase_two": ["set_entity_phase", "place_structure", "spawn_entity", "send_player_feedback"],
+    "clockwork_gardens:verdant_colossus/phase_three": ["set_entity_phase", "spawn_projectile", "apply_effect", "send_player_feedback"]
+  },
+  "state": {
+    "player": ["garden_rank", "sunseeds_harvested"],
+    "block": ["press_energy", "press_progress", "press_owner"],
+    "entity": ["boss_phase", "boss_instance_guard"]
+  },
+  "ui": ["clockwork_gardens:lumen_press_controls"],
+  "networking_redesign": ["clockwork_gardens:press_key_redesign"],
+  "unsupported": ["clockwork_gardens:desktop_shader_portal"],
+  "required_plan_classifications": ["DIRECT", "SCRIPTED_EQUIVALENT", "RECONSTRUCTED", "BEHAVIORAL_APPROXIMATION", "UNSUPPORTED"]
+}

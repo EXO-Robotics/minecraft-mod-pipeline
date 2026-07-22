@@ -1,9 +1,9 @@
 schema_version: 1.0.0
 benchmark_id: benchmark-a-original-marketplace-showcase
 title: Original Marketplace Showcase
-status: SPECIFICATION_ONLY
+status: EXECUTABLE_STATIC_BENCHMARK
 target_profile: MARKETPLACE_ADDON_STABLE
-authorship: ORIGINAL_PLANNED
+authorship: ORIGINAL_FIXTURE_DECLARED_NOT_MARKETPLACE_CLEARED
 marketplace_approval_claimed: false
 platform_status:
   local_windows: UNVERIFIED
@@ -35,6 +35,14 @@ features:
   - stable_script_mechanic
   - approved_redesign
   - deliberately_unsupported_mechanic
-artifact_paths: []
-evidence_paths: []
-
+artifact_paths:
+  - fixture/fabric.mod.json
+  - fixture/src/showcase/clockwork/ClockworkGardensShowcase.java
+  - expected-quality.json
+  - expected-ir.json
+  - test-contracts.json
+  - decisions/approved-redesign.json
+  - contracts/multiplayer-isolation.json
+  - contracts/save-migration.json
+evidence_paths:
+  - fixture/src/showcase/clockwork/ClockworkGardensShowcase.java

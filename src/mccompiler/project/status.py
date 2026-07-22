@@ -37,11 +37,18 @@ def project_status(store: ProjectStore) -> dict[str, Any]:
     scanned = (store.root / "analysis/modir.json").is_file()
     unresolved = unresolved_work(store) if scanned else []
     blocking = blocking_failures(store) if scanned else []
+    decisions = {
+        "strategies": len(store.read("decisions/strategies.yaml", {"strategies": []}).get("strategies", [])),
+        "approvals": len(store.read("decisions/approvals.yaml", {"approvals": []}).get("approvals", [])),
+        "redesigns": len(store.read("decisions/redesigns.yaml", {"redesigns": []}).get("redesigns", [])),
+        "overrides": len(store.read("decisions/overrides.yaml", {"overrides": []}).get("overrides", [])),
+    }
     return {
         "name": manifest.get("name"), "target_profile": manifest.get("target_profile"),
         "revision": store.revision, "analysis_revision": manifest.get("analysis_revision", 0),
         "scanned": scanned, "input": manifest.get("input"),
         "unresolved_count": len(unresolved), "blocking_count": len(blocking),
+        "decision_counts": decisions,
         "state": "blocked" if blocking else "needs_scan" if not scanned else "needs_decisions" if unresolved else "ready",
     }
 

@@ -4,11 +4,63 @@ from typing import Any, Callable
 
 from mccompiler.project.store import ProjectError, ProjectStore
 
-from . import analysis_ops, planning_ops, project_ops
+from . import analysis_ops, planning_ops, project_ops, reporting_ops
 from .envelope import OperationError, failure, success
 
 
 Handler = Callable[..., tuple[Any, ProjectStore, list[dict[str, Any]]]]
+
+
+REQUIRED_OPERATION_CATALOG: dict[str, tuple[str, ...]] = {
+    "project": (
+        "create_conversion_project", "open_conversion_project", "get_project_status",
+        "list_unresolved_work", "list_blocking_failures", "get_next_recommended_task",
+    ),
+    "analysis": (
+        "scan_mod", "scan_modpack", "list_mods", "inspect_mod", "list_content",
+        "inspect_item", "inspect_block", "inspect_entity", "inspect_recipe", "inspect_structure",
+        "inspect_worldgen", "inspect_behavior", "inspect_state", "inspect_asset", "inspect_mixin",
+        "inspect_coremod", "inspect_packet", "inspect_gui", "trace_dependency", "trace_callers",
+        "trace_callees", "show_evidence", "compare_source_and_jar",
+    ),
+    "intent": (
+        "extract_behavior_intent", "propose_behavior_intent", "accept_behavior_intent",
+        "edit_behavior_intent", "reject_behavior_intent", "list_ambiguous_behaviors",
+        "list_unsupported_operations",
+    ),
+    "planning": (
+        "compare_bedrock_strategies", "plan_feature", "set_strategy", "accept_approximation",
+        "reject_approximation", "record_manual_redesign", "select_pattern", "apply_override",
+        "estimate_fidelity", "estimate_performance",
+    ),
+    "generation": (
+        "generate_item", "generate_block", "generate_entity", "generate_projectile",
+        "generate_recipe", "generate_loot", "generate_structure", "generate_spawn_rules",
+        "generate_animation", "generate_form", "generate_script_scaffold", "generate_pack",
+        "generate_world", "package_mcaddon",
+    ),
+    "validation": (
+        "validate_ir", "validate_api_symbols", "validate_marketplace_profile", "validate_rights",
+        "validate_static", "validate_scripts", "validate_assets", "validate_performance",
+        "install_test_pack", "start_test_runtime", "run_behavior_test", "run_multiplayer_test",
+        "verify_persistence", "inspect_content_log", "compare_expected_behavior",
+        "generate_conversion_report",
+    ),
+}
+
+
+def _not_available(name: str, category: str, reason: str) -> Handler:
+    def handler(store: ProjectStore, parameters: dict[str, Any], expected_revision: int | None = None) -> tuple[Any, ProjectStore, list[dict[str, Any]]]:
+        raise OperationError(
+            "NOT_AVAILABLE",
+            f"{name} is declared but not available from current project artifacts",
+            details={
+                "status": "NOT_AVAILABLE", "operation": name, "category": category,
+                "blocker": reason, "project_revision": store.revision,
+                "mutated": False, "success_implied": False,
+            },
+        )
+    return handler
 
 
 class OperationRegistry:
@@ -18,14 +70,86 @@ class OperationRegistry:
             "open_conversion_project": project_ops.open_conversion_project,
             "get_project_status": project_ops.get_project_status,
             "list_unresolved_work": project_ops.list_unresolved_work,
-            "list_unresolved": project_ops.list_unresolved_work,
             "list_blocking_failures": project_ops.list_blocking_failures,
-            "list_blocking": project_ops.list_blocking_failures,
             "get_next_recommended_task": project_ops.get_next_recommended_task,
+            "scan_mod": analysis_ops.scan_mod,
+            "scan_modpack": analysis_ops.scan_mod,
+            "list_mods": analysis_ops.list_mods,
+            "inspect_mod": analysis_ops.inspect_mod,
+            "list_content": analysis_ops.list_content,
+            "inspect_item": analysis_ops.inspect_item,
+            "inspect_block": analysis_ops.inspect_block,
+            "inspect_entity": analysis_ops.inspect_entity,
+            "inspect_recipe": analysis_ops.inspect_recipe,
+            "inspect_structure": analysis_ops.inspect_structure,
+            "inspect_worldgen": analysis_ops.inspect_worldgen,
+            "inspect_behavior": analysis_ops.inspect_behavior,
+            "inspect_state": analysis_ops.inspect_state,
+            "inspect_asset": analysis_ops.inspect_asset,
+            "inspect_mixin": analysis_ops.inspect_mixin,
+            "inspect_coremod": analysis_ops.inspect_coremod,
+            "inspect_packet": analysis_ops.inspect_packet,
+            "inspect_gui": analysis_ops.inspect_gui,
+            "trace_dependency": analysis_ops.trace_dependency,
+            "show_evidence": analysis_ops.show_evidence,
+            "extract_behavior_intent": analysis_ops.inspect_behavior,
+            "list_ambiguous_behaviors": analysis_ops.list_ambiguous_behaviors,
+            "list_unsupported_operations": analysis_ops.list_unsupported_operations,
+            "compare_bedrock_strategies": planning_ops.compare_bedrock_strategies,
+            "plan_feature": planning_ops.plan_feature,
+            "set_strategy": planning_ops.set_strategy,
+            "accept_approximation": planning_ops.accept_approximation,
+            "reject_approximation": planning_ops.reject_approximation,
+            "record_manual_redesign": planning_ops.record_manual_redesign,
+            "apply_override": planning_ops.apply_override,
+            "validate_ir": reporting_ops.validate_ir,
+            "generate_conversion_report": reporting_ops.generate_conversion_report,
+        }
+        unavailable_reasons = {
+            "trace_callers": "No persisted call graph exists in analysis/source-index/calls.json",
+            "trace_callees": "No persisted call graph exists in analysis/source-index/calls.json",
+            "compare_source_and_jar": "Current project artifacts do not retain paired source/JAR semantic snapshots",
+            "propose_behavior_intent": "Proposal persistence and review handlers are not implemented",
+            "accept_behavior_intent": "Intent decision lifecycle is not implemented",
+            "edit_behavior_intent": "Intent decision lifecycle is not implemented",
+            "reject_behavior_intent": "Intent decision lifecycle is not implemented",
+            "select_pattern": "Pattern selection is owned by the planner and is not exposed as a safe project mutation",
+            "estimate_fidelity": "No evidence-calibrated feature fidelity estimator is persisted",
+            "estimate_performance": "No measured feature performance evidence is persisted",
+            "validate_api_symbols": "Symbol validation is available only inside the existing validator, which is outside this operation milestone",
+            "validate_marketplace_profile": "Marketplace profile validation is not exposed as a project-artifact operation",
+            "validate_rights": "Human rights review requires the dedicated rights subsystem and attributable review evidence",
+            "validate_static": "Aggregate generated-output validation requires a generated build artifact",
+            "validate_scripts": "Script validation requires a generated build artifact",
+            "validate_assets": "Asset validation requires a generated build artifact",
+            "validate_performance": "No measured runtime performance artifact exists",
+            "install_test_pack": "Installing packs mutates an external Minecraft installation and has no authorized runtime adapter",
+            "start_test_runtime": "No managed Bedrock runtime adapter is configured",
+            "run_behavior_test": "No managed runtime or authenticated execution evidence channel is configured",
+            "run_multiplayer_test": "No managed multiplayer runtime or clients are configured",
+            "verify_persistence": "No runtime restart/rejoin evidence is available",
+            "inspect_content_log": "No runtime content log has been ingested into the project",
+            "compare_expected_behavior": "No runtime evidence and expected-behavior result pair is persisted",
+        }
+        generation_reason = "Generation remains in the existing monolithic backend and cannot be safely invoked as a focused project operation within this milestone"
+        for category, names in REQUIRED_OPERATION_CATALOG.items():
+            for name in names:
+                if name not in self.handlers:
+                    reason = unavailable_reasons.get(name, generation_reason if category == "generation" else "Required supporting artifact or subsystem is not implemented")
+                    self.handlers[name] = _not_available(name, category, reason)
+
+        # Backward-compatible aliases are intentionally outside the required catalog.
+        self.handlers.update({
+            "list_unresolved": project_ops.list_unresolved_work,
+            "list_blocking": project_ops.list_blocking_failures,
             "get_next_task": project_ops.get_next_recommended_task,
-            "scan_mod": analysis_ops.scan_mod, "list_mods": analysis_ops.list_mods,
-            "list_content": analysis_ops.list_content, "inspect_behavior": analysis_ops.inspect_behavior,
-            "show_evidence": analysis_ops.show_evidence, "set_strategy": planning_ops.set_strategy,
+        })
+
+    def catalog(self) -> dict[str, dict[str, Any]]:
+        available = {name for name, handler in self.handlers.items() if getattr(handler, "__name__", "") != "handler"}
+        return {
+            name: {"category": category, "status": "AVAILABLE" if name in available else "NOT_AVAILABLE"}
+            for category, names in REQUIRED_OPERATION_CATALOG.items() for name in names
         }
 
     def execute(self, request: dict[str, Any]) -> dict[str, Any]:
@@ -42,33 +166,33 @@ class OperationRegistry:
             return failure(str(operation or "<missing>"), "UNKNOWN_OPERATION", f"Unknown operation: {operation}", request_id=request_id)
         project = request.get("project")
         if not isinstance(project, str) or not project:
-            return failure(operation, "INVALID_REQUEST", "project must be a non-empty path", request_id=request_id)
+            return failure(str(operation), "INVALID_REQUEST", "project must be a non-empty path", request_id=request_id)
         parameters = request.get("parameters", {})
         if not isinstance(parameters, dict):
-            return failure(operation, "INVALID_REQUEST", "parameters must be an object", request_id=request_id)
+            return failure(str(operation), "INVALID_REQUEST", "parameters must be an object", request_id=request_id)
         expected_revision = request.get("expected_revision")
         if expected_revision is not None and (isinstance(expected_revision, bool) or not isinstance(expected_revision, int) or expected_revision < 1):
-            return failure(operation, "INVALID_REQUEST", "expected_revision must be a positive integer", request_id=request_id)
+            return failure(str(operation), "INVALID_REQUEST", "expected_revision must be a positive integer", request_id=request_id)
+        store: ProjectStore | None = None
         try:
-            if operation == "create_conversion_project":
-                result, store, artifacts = self.handlers[operation](project, parameters, request.get("expected_revision"))
-            elif operation == "open_conversion_project":
-                result, store, artifacts = self.handlers[operation](project, parameters, request.get("expected_revision"))
+            if operation in {"create_conversion_project", "open_conversion_project"}:
+                result, store, artifacts = self.handlers[operation](project, parameters, expected_revision)
             else:
                 store = ProjectStore.open(project)
-                result, store, artifacts = self.handlers[operation](store, parameters, request.get("expected_revision"))
-            return success(operation, result, request_id=request_id, revision=store.revision, artifacts=artifacts)
+                result, store, artifacts = self.handlers[operation](store, parameters, expected_revision)
+            return success(str(operation), result, request_id=request_id, revision=store.revision, artifacts=artifacts)
         except ProjectError as exc:
-            revision = None
-            try:
-                revision = ProjectStore.open(project).revision
-            except ProjectError:
-                pass
-            return failure(operation, exc.code, str(exc), request_id=request_id, revision=revision)
+            revision = store.revision if store is not None else None
+            if revision is None:
+                try:
+                    revision = ProjectStore.open(project).revision
+                except ProjectError:
+                    pass
+            return failure(str(operation), exc.code, str(exc), request_id=request_id, revision=revision)
         except OperationError as exc:
-            return failure(operation, exc.code, str(exc), request_id=request_id, details=exc.details)
+            return failure(str(operation), exc.code, str(exc), request_id=request_id, revision=store.revision if store else None, details=exc.details)
         except Exception as exc:
-            return failure(operation, "INTERNAL_ERROR", str(exc), request_id=request_id)
+            return failure(str(operation), "INTERNAL_ERROR", str(exc), request_id=request_id, revision=store.revision if store else None)
 
 
 def execute_request(request: dict[str, Any]) -> dict[str, Any]:

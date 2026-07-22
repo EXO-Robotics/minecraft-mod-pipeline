@@ -9,6 +9,9 @@ from pathlib import Path
 from typing import Any
 
 from ..semantics import TRIGGERS, health_threshold
+from .bytecode_facts import parse_javap, resource_facts
+from .fabric import analyze_facts as analyze_fabric_facts
+from .forge_legacy import analyze_facts as analyze_forge_facts
 
 
 CALL_ACTIONS = {
@@ -100,7 +103,7 @@ def _ev(archive: Path, class_name: str, method: str | None, start: int, end: int
         "method": method, "field": None, "start_line": start or None, "end_line": end or None,
         "ast_node_type": None, "bytecode_location": f"{class_name}#{method or '<class>'}",
         "resource_path": None, "registration_path": None, "extraction_rule": rule,
-        "analyzer_version": "jar-bytecode-javap/1.0.0", "confidence": 1.0,
+        "analyzer_version": "jar-bytecode-javap/2.0.0", "confidence": .72,
         "source_mode": "bytecode-javap", "conflicting_evidence": [], "human_override_provenance": None,
     }
 
@@ -127,18 +130,29 @@ def _method_blocks(output: str) -> list[tuple[str, str]]:
 def analyze_archive(path: str | Path) -> dict[str, list[dict[str, Any]]]:
     archive = Path(path).resolve()
     tool = _javap()
-    result: dict[str, list[dict[str, Any]]] = {key: [] for key in ("content", "behaviors", "state", "presentation", "ui", "networking", "diagnostics")}
-    if not tool or not archive.is_file() or not zipfile.is_zipfile(archive):
+    result: dict[str, list[dict[str, Any]]] = {key: [] for key in ("content", "behaviors", "state", "presentation", "ui", "networking", "diagnostics", "bytecode_facts")}
+    if not archive.is_file() or not zipfile.is_zipfile(archive):
+        result["diagnostics"].append({"severity": "error", "code": "bytecode_archive_unavailable", "message": f"Not a readable JAR/ZIP archive: {archive}"})
+        return result
+    if not tool:
+        result["diagnostics"].append({"severity": "warning", "code": "bytecode_analyzer_unavailable", "message": "javap is unavailable; semantic bytecode analysis was not performed."})
         return result
     with zipfile.ZipFile(archive) as jar:
-        classes = sorted(name[:-6].replace("/", ".") for name in jar.namelist() if name.endswith(".class") and not name.startswith("META-INF/versions/"))
+        entries = jar.namelist()
+        classes = sorted(name[:-6].replace("/", ".") for name in entries if name.endswith(".class") and not name.startswith("META-INF/versions/"))
+        result["bytecode_facts"].extend(resource_facts(archive, entries))
+        if any(name.startswith("META-INF/versions/") and name.endswith(".class") for name in entries):
+            result["diagnostics"].append({"severity": "warning", "code": "multi_release_classes_unavailable", "message": "Versioned class entries were inventoried but not selected for semantic analysis."})
     namespace = re.sub(r"[^a-z0-9_]+", "_", archive.stem.lower()) or "bytecode_mod"
     for class_name in classes:
-        completed = subprocess.run([tool, "-classpath", str(archive), "-p", "-c", "-l", "-v", class_name], capture_output=True, text=True, timeout=30)
+        completed = subprocess.run([tool, "-classpath", str(archive), "-p", "-c", "-l", "-s", "-v", class_name], capture_output=True, text=True, timeout=30)
         if completed.returncode:
-            result["diagnostics"].append({"severity": "error", "code": "javap_failed", "class": class_name, "message": completed.stderr.strip()})
+            message = completed.stderr.strip()
+            code = "bytecode_dependency_unavailable" if "not found" in message.lower() or "class not found" in message.lower() else "javap_failed"
+            result["diagnostics"].append({"severity": "warning", "code": code, "class": class_name, "message": message})
             continue
         output = completed.stdout
+        result["bytecode_facts"].extend(parse_javap(archive, class_name, output))
         owner = class_name.rsplit("$", 1)[-1]
         owner_id = re.sub(r"(?<!^)(?=[A-Z])", "_", owner).lower()
         for ann in re.finditer(r"FixtureApi\$Register\(\s*kind=\"([^\"]+)\"\s*id=\"([^\"]+)\"\s*\)", output):
@@ -210,6 +224,18 @@ def analyze_archive(path: str | Path) -> dict[str, list[dict[str, Any]]]:
         unsupported = _annotation(output, "Unsupported")
         if unsupported is not None:
             result["diagnostics"].append({"severity": "error", "code": "unsupported_hook", "feature": _value(unsupported, "javaFeature"), "reason": _value(unsupported, "reason"), "evidence": [_ev(archive, class_name, None, 0, 0, "javap:Unsupported")]})
+    loader_results = [analyze_fabric_facts(archive, result["bytecode_facts"]), analyze_forge_facts(archive, result["bytecode_facts"])]
+    for extracted in loader_results:
+        for key, values in extracted.items():
+            result[key].extend(values)
+    meaningful = result["content"] or result["behaviors"] or result["state"] or result["networking"]
+    if classes and not meaningful:
+        short_names = [name.rsplit(".", 1)[-1] for name in classes]
+        obfuscated = sum(bool(re.fullmatch(r"[a-zA-Z]{1,2}", name)) for name in short_names) >= max(1, len(short_names) // 2)
+        result["diagnostics"].append({
+            "severity": "warning", "code": "bytecode_obfuscation_suspected" if obfuscated else "bytecode_semantics_unresolved",
+            "message": "Class facts were extracted, but no supported loader semantics could be proven.",
+        })
     # Stable de-duplication protects against annotations repeated in verbose output.
     for key in result:
         seen: set[str] = set(); unique = []

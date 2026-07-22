@@ -13,4 +13,4 @@
 
 Never assign human-only rights clearance, claim Marketplace approval, treat metadata as loader semantics, treat BDS as console proof, or mark hardware verified without artifact-bound evidence. New source sessions must resume from durable project state rather than reconstructing decisions from chat.
 
-The initial structured operation API is described in [ai-tool-interface.md](ai-tool-interface.md); its implemented subset is unit tested but incomplete. Baseline commands are documented in [reproduction.md](reproduction.md).
+The structured operation API is described in [ai-tool-interface.md](ai-tool-interface.md). All required operation names are registered: artifact-backed operations are tested, while operations that need runtime, hardware, or external authority return structured `NOT_AVAILABLE` blockers. Baseline commands are documented in [reproduction.md](reproduction.md).

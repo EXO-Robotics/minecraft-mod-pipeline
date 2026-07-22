@@ -26,4 +26,5 @@ public final class AuthenticFabricMod implements ModInitializer {
     }
 
     public static final class FixtureWorldState extends PersistentState {}
+    public static final class NetworkPayload { public static final Object ID = new Object(); }
 }

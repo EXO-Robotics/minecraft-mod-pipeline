@@ -75,6 +75,143 @@ def list_content(store: ProjectStore, parameters: dict[str, Any], expected_revis
     return {"content": rows}, store, []
 
 
+def _require_identifier(parameters: dict[str, Any], operation: str) -> str:
+    identifier = parameters.get("id") or parameters.get("identifier")
+    if not isinstance(identifier, str) or not identifier:
+        raise ProjectError("INVALID_PARAMETERS", f"{operation} requires id")
+    return identifier
+
+
+def _inspect_rows(store: ProjectStore, parameters: dict[str, Any], *, operation: str, path: str, field: str, kind: str | None = None, keys: tuple[str, ...] = ("id", "identifier")) -> tuple[Any, ProjectStore, list[dict[str, Any]]]:
+    identifier = _require_identifier(parameters, operation)
+    rows = store.read(path, {field: []}).get(field, [])
+    matches = [row for row in rows if (kind is None or row.get("kind") == kind) and any(row.get(key) == identifier for key in keys)]
+    if not matches:
+        label = kind or field.rstrip("_")
+        raise ProjectError(f"{label.upper()}_NOT_FOUND", f"{label.replace('_', ' ').title()} not found: {identifier}")
+    return {field: matches}, store, []
+
+
+def inspect_mod(store: ProjectStore, parameters: dict[str, Any], expected_revision: int | None = None) -> tuple[Any, ProjectStore, list[dict[str, Any]]]:
+    return _inspect_rows(store, parameters, operation="inspect_mod", path="analysis/inventory.json", field="mods")
+
+
+def inspect_content(store: ProjectStore, parameters: dict[str, Any], expected_revision: int | None = None, *, kind: str | None = None, operation: str = "inspect_content") -> tuple[Any, ProjectStore, list[dict[str, Any]]]:
+    return _inspect_rows(store, parameters, operation=operation, path="ir/content.json", field="content", kind=kind)
+
+
+def inspect_item(store: ProjectStore, parameters: dict[str, Any], expected_revision: int | None = None) -> tuple[Any, ProjectStore, list[dict[str, Any]]]:
+    return inspect_content(store, parameters, kind="item", operation="inspect_item")
+
+
+def inspect_block(store: ProjectStore, parameters: dict[str, Any], expected_revision: int | None = None) -> tuple[Any, ProjectStore, list[dict[str, Any]]]:
+    return inspect_content(store, parameters, kind="block", operation="inspect_block")
+
+
+def inspect_entity(store: ProjectStore, parameters: dict[str, Any], expected_revision: int | None = None) -> tuple[Any, ProjectStore, list[dict[str, Any]]]:
+    return inspect_content(store, parameters, kind="entity", operation="inspect_entity")
+
+
+def inspect_recipe(store: ProjectStore, parameters: dict[str, Any], expected_revision: int | None = None) -> tuple[Any, ProjectStore, list[dict[str, Any]]]:
+    return inspect_content(store, parameters, kind="recipe", operation="inspect_recipe")
+
+
+def inspect_structure(store: ProjectStore, parameters: dict[str, Any], expected_revision: int | None = None) -> tuple[Any, ProjectStore, list[dict[str, Any]]]:
+    return inspect_content(store, parameters, kind="structure", operation="inspect_structure")
+
+
+def inspect_state(store: ProjectStore, parameters: dict[str, Any], expected_revision: int | None = None) -> tuple[Any, ProjectStore, list[dict[str, Any]]]:
+    return _inspect_rows(store, parameters, operation="inspect_state", path="ir/state.json", field="state")
+
+
+def inspect_asset(store: ProjectStore, parameters: dict[str, Any], expected_revision: int | None = None) -> tuple[Any, ProjectStore, list[dict[str, Any]]]:
+    identifier = parameters.get("id") or parameters.get("identifier") or parameters.get("kind")
+    if not isinstance(identifier, str) or not identifier:
+        raise ProjectError("INVALID_PARAMETERS", "inspect_asset requires id or kind")
+    assets = store.read("analysis/inventory.json", {"assets": []}).get("assets", [])
+    matches = [row for row in assets if identifier in {row.get("id"), row.get("identifier"), row.get("kind")}]
+    if not matches:
+        raise ProjectError("ASSET_NOT_FOUND", f"Asset not found: {identifier}")
+    return {"assets": matches}, store, []
+
+
+def _inspect_intent(store: ProjectStore, parameters: dict[str, Any], *, operation: str, path: str, field: str) -> tuple[Any, ProjectStore, list[dict[str, Any]]]:
+    if parameters.get("id") or parameters.get("identifier"):
+        return _inspect_rows(store, parameters, operation=operation, path=path, field=field)
+    return {field: store.read(path, {field: []}).get(field, [])}, store, []
+
+
+def inspect_gui(store: ProjectStore, parameters: dict[str, Any], expected_revision: int | None = None) -> tuple[Any, ProjectStore, list[dict[str, Any]]]:
+    return _inspect_intent(store, parameters, operation="inspect_gui", path="ir/ui-intent.json", field="ui_intent")
+
+
+def inspect_packet(store: ProjectStore, parameters: dict[str, Any], expected_revision: int | None = None) -> tuple[Any, ProjectStore, list[dict[str, Any]]]:
+    return _inspect_intent(store, parameters, operation="inspect_packet", path="ir/networking-intent.json", field="networking_intent")
+
+
+def inspect_worldgen(store: ProjectStore, parameters: dict[str, Any], expected_revision: int | None = None) -> tuple[Any, ProjectStore, list[dict[str, Any]]]:
+    rows = (store.read("analysis/modir.json", {}) or {}).get("world_requirements", [])
+    if parameters.get("id"):
+        rows = [row for row in rows if row.get("id") == parameters["id"]]
+        if not rows:
+            raise ProjectError("WORLDGEN_NOT_FOUND", f"Worldgen requirement not found: {parameters['id']}")
+    return {"world_requirements": rows}, store, []
+
+
+def list_unsupported_operations(store: ProjectStore, parameters: dict[str, Any], expected_revision: int | None = None) -> tuple[Any, ProjectStore, list[dict[str, Any]]]:
+    hooks = (store.read("analysis/modir.json", {}) or {}).get("unsupported_hooks", [])
+    return {"unsupported_operations": hooks, "count": len(hooks)}, store, []
+
+
+def _ambiguous(ir: dict[str, Any]) -> list[dict[str, Any]]:
+    rows: list[dict[str, Any]] = []
+    for behavior in ir.get("behaviors", []):
+        diagnostics = behavior.get("diagnostics", [])
+        confidence = behavior.get("confidence", 1.0)
+        if confidence < 1.0 or diagnostics:
+            rows.append({"id": behavior.get("id"), "confidence": confidence, "diagnostics": diagnostics, "reason": "confidence_below_one" if confidence < 1.0 else "behavior_diagnostics"})
+    return sorted(rows, key=lambda row: str(row.get("id")))
+
+
+def list_ambiguous_behaviors(store: ProjectStore, parameters: dict[str, Any], expected_revision: int | None = None) -> tuple[Any, ProjectStore, list[dict[str, Any]]]:
+    rows = _ambiguous(store.read("analysis/modir.json", {}) or {})
+    return {"ambiguous_behaviors": rows, "count": len(rows)}, store, []
+
+
+def trace_dependency(store: ProjectStore, parameters: dict[str, Any], expected_revision: int | None = None) -> tuple[Any, ProjectStore, list[dict[str, Any]]]:
+    identifier = _require_identifier(parameters, "trace_dependency")
+    graph = store.read("analysis/dependency-graph.json", {"nodes": [], "edges": []})
+    direction = parameters.get("direction", "both")
+    if direction not in {"incoming", "outgoing", "both"}:
+        raise ProjectError("INVALID_PARAMETERS", "direction must be incoming, outgoing, or both")
+    nodes = [row for row in graph.get("nodes", []) if row.get("id") == identifier]
+    incoming = [edge for edge in graph.get("edges", []) if edge.get("to") == identifier] if direction in {"incoming", "both"} else []
+    outgoing = [edge for edge in graph.get("edges", []) if edge.get("from") == identifier] if direction in {"outgoing", "both"} else []
+    if not nodes and not incoming and not outgoing:
+        raise ProjectError("DEPENDENCY_NOT_FOUND", f"Dependency not found: {identifier}")
+    return {"id": identifier, "nodes": nodes, "incoming": incoming, "outgoing": outgoing}, store, []
+
+
+def inspect_unsupported(store: ProjectStore, parameters: dict[str, Any], expected_revision: int | None = None, *, prefix: str | None = None) -> tuple[Any, ProjectStore, list[dict[str, Any]]]:
+    hooks = (store.read("analysis/modir.json", {}) or {}).get("unsupported_hooks", [])
+    identifier = parameters.get("id") or parameters.get("feature")
+    if identifier:
+        hooks = [row for row in hooks if identifier in {row.get("id"), row.get("feature")}]
+    if prefix:
+        hooks = [row for row in hooks if prefix in str(row.get("feature", "")).lower() or prefix in str(row.get("code", "")).lower()]
+    if not hooks:
+        raise ProjectError("UNSUPPORTED_HOOK_NOT_FOUND", f"Unsupported hook not found: {identifier or prefix}")
+    return {"unsupported_hooks": hooks}, store, []
+
+
+def inspect_mixin(store: ProjectStore, parameters: dict[str, Any], expected_revision: int | None = None) -> tuple[Any, ProjectStore, list[dict[str, Any]]]:
+    return inspect_unsupported(store, parameters, prefix="mixin")
+
+
+def inspect_coremod(store: ProjectStore, parameters: dict[str, Any], expected_revision: int | None = None) -> tuple[Any, ProjectStore, list[dict[str, Any]]]:
+    return inspect_unsupported(store, parameters, prefix="coremod")
+
+
 def inspect_behavior(store: ProjectStore, parameters: dict[str, Any], expected_revision: int | None = None) -> tuple[Any, ProjectStore, list[dict[str, Any]]]:
     identifier = parameters.get("id")
     rows = store.read("ir/behaviors.json", {"behaviors": []}).get("behaviors", [])

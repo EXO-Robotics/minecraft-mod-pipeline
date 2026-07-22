@@ -16,6 +16,9 @@ import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 @Mod(modid = AuthenticLegacyMod.MODID, name = "Authentic Legacy Fixture", version = "1.0.0")
 public final class AuthenticLegacyMod {
     public static final String MODID = "authentic_legacy";
+    private static final Object WAND = new Object();
+    private static final Object MACHINE = new Object();
+    private static final Object RECIPE_OUTPUT = new Object();
     private final SimpleNetworkWrapper network = NetworkRegistry.INSTANCE.newSimpleChannel("legacy_channel");
 
     @EventHandler
@@ -36,4 +39,9 @@ public final class AuthenticLegacyMod {
 
     @SubscribeEvent
     public void onLivingHurt(LivingHurtEvent event) {}
+
+    public static final class LegacyMachineTile {}
+    public static final class LegacyGolem {}
+    public static final class LegacyHandler {}
+    public static final class LegacyMessage {}
 }

@@ -1,0 +1,14 @@
+{
+  "schema_version": "1.0.0",
+  "decision_id": "redesign-clockwork-gardens-press-key-v1",
+  "feature_id": "clockwork_gardens:press_key_redesign",
+  "status": "APPROVED_FOR_STATIC_BENCHMARK",
+  "original_intent": "Open a processing-machine interface using a desktop keyboard binding and client packet.",
+  "replacement_interaction": "Interact with the Lumen Press to open a labeled, cancelable stable server-ui action form.",
+  "preserved": ["open machine controls", "select processing action", "inspect progress", "server-authoritative action"],
+  "lost": ["dedicated keyboard shortcut", "pixel-identical Java container layout"],
+  "controller_improvement": "The replacement is discoverable in-world and every choice is reachable with ordinary controller focus navigation.",
+  "approved_by": "benchmark_author",
+  "approval_scope": "static benchmark design only",
+  "runtime_validation": "NOT_RUN"
+}

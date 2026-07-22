@@ -8,7 +8,7 @@ The default production target is intended for local Bedrock worlds on PlayStatio
 
 It prohibits beta/preview APIs, experiments by default, `@minecraft/server-net`, `@minecraft/server-admin`, external services, filesystem/native/JVM assumptions, server plugins, BDS-only behavior, undocumented APIs, silent fallbacks, uncleared material, and debug or fixture content.
 
-Required gates include offline operation, controller-first design, multiplayer isolation, versioned persistence, clean packaging, rights review, performance budgets, symbol-level API validation, and explicit degradation reporting. The profile is specified but not implemented in the current compiler.
+Required gates include offline operation, controller-first design, multiplayer isolation, versioned persistence, clean packaging, rights review, performance budgets, symbol-level API validation, and explicit degradation reporting. The compiler implements the profile and its static fail-closed gates; runtime, device, human-rights, and Marketplace-authority qualification remain external or unverified.
 
 ## Supporting profiles
 
@@ -25,4 +25,3 @@ Required gates include offline operation, controller-first design, multiplayer i
 Planning must evaluate target eligibility per strategy and per emitted API symbol. Module versions are resolved independently to the lowest stable versions satisfying all emitted symbols. An override can approve degradation but cannot make an unavailable API legal.
 
 Passing a lower target does not imply a higher one. BDS, local Windows, Realm Windows, PlayStation, Xbox, and Marketplace review are independent evidence surfaces.
-

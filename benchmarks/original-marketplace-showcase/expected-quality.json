@@ -1,0 +1,82 @@
+{
+  "schema_version": "1.0.0",
+  "benchmark_id": "benchmark-a-original-marketplace-showcase",
+  "status": "STATIC_CONTRACT_EXECUTABLE",
+  "runtime_status": "NOT_RUN",
+  "console_status": "UNVERIFIED",
+  "quality_claim": "No runtime parity, Marketplace approval, or console compatibility is claimed.",
+  "required_feature_families": [
+    "item",
+    "block",
+    "recipes",
+    "loot",
+    "projectile",
+    "effect",
+    "cooldown",
+    "player_progression",
+    "persistent_machine",
+    "processing_machine",
+    "mob",
+    "multiphase_boss",
+    "structure",
+    "spawn_rules",
+    "controller_form",
+    "multiplayer_isolation_contract",
+    "save_migration",
+    "data_mechanic",
+    "stable_script_mechanic",
+    "approved_redesign",
+    "unsupported_mechanic"
+  ],
+  "mechanics": [
+    {
+      "id": "clockwork_gardens:sunseed_launcher/use",
+      "family": "stable_script_mechanic",
+      "quality_classification": "MANUAL_REDESIGN_REQUIRED",
+      "expected_actions": ["spawn_projectile", "apply_effect", "start_cooldown", "play_sound"],
+      "runtime_evidence": "NOT_RUN"
+    },
+    {
+      "id": "clockwork_gardens:brass_sprout",
+      "family": "data_mechanic",
+      "quality_classification": "MANUAL_REDESIGN_REQUIRED",
+      "expected_output_kind": "spawn_rule",
+      "runtime_evidence": "NOT_RUN"
+    },
+    {
+      "id": "clockwork_gardens:lumen_press/process",
+      "family": "processing_machine",
+      "quality_classification": "MANUAL_REDESIGN_REQUIRED",
+      "expected_actions": ["update_persistent_state", "remove_item", "add_item", "spawn_particles", "play_sound"],
+      "bounded_scheduler_contract": {"max_objects_per_tick": 32, "unbounded_loops_permitted": false},
+      "runtime_evidence": "NOT_RUN"
+    },
+    {
+      "id": "clockwork_gardens:verdant_colossus",
+      "family": "multiphase_boss",
+      "quality_classification": "MANUAL_REDESIGN_REQUIRED",
+      "required_phases": 3,
+      "instance_state_scope": "entity",
+      "runtime_evidence": "NOT_RUN"
+    },
+    {
+      "id": "clockwork_gardens:press_key_redesign",
+      "family": "approved_redesign",
+      "quality_classification": "ACCEPTABLE_REDESIGN",
+      "approval_record": "decisions/approved-redesign.json",
+      "runtime_evidence": "NOT_RUN"
+    },
+    {
+      "id": "clockwork_gardens:desktop_shader_portal",
+      "family": "unsupported_mechanic",
+      "quality_classification": "UNSUPPORTED",
+      "must_be_in_consumer_output": false,
+      "runtime_evidence": "NOT_APPLICABLE"
+    }
+  ],
+  "thresholds": {
+    "critical_static_omissions": 0,
+    "silent_static_omissions": 0,
+    "runtime_thresholds_evaluated": false
+  }
+}

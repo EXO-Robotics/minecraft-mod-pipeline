@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import json
+import zipfile
 from datetime import datetime
 from pathlib import Path
 from typing import Any, Mapping, cast
@@ -66,5 +67,49 @@ def audit_static_performance(
     return {
         "schema_version": "1.0.0", "catalog_version": policy.get("catalog_version"),
         "target": policy.get("target"), "pack_root": str(root), "observed": observed,
+        "checks": checks, "errors": sorted(errors), "passed": not errors,
+    }
+
+
+def audit_archive_performance(
+    archive_path: str | Path,
+    *,
+    catalog: Mapping[str, Any] | None = None,
+    approved_exceptions: list[Mapping[str, Any]] | None = None,
+) -> dict[str, Any]:
+    archive = Path(archive_path).resolve()
+    policy = dict(catalog or load_console_performance_catalog())
+    limits = policy.get("static_budgets") or {}
+    errors: list[str] = []
+    members: list[zipfile.ZipInfo] = []
+    if not archive.is_file():
+        errors.append(f"Consumer archive does not exist: {archive}")
+    else:
+        try:
+            with zipfile.ZipFile(archive) as bundle:
+                members = [info for info in bundle.infolist() if not info.is_dir()]
+        except zipfile.BadZipFile:
+            errors.append(f"Consumer archive is invalid: {archive}")
+    observed = {
+        "pack_bytes": sum(info.file_size for info in members),
+        "file_count": len(members),
+        "texture_count": sum(Path(info.filename).suffix.lower() in TEXTURE_SUFFIXES for info in members),
+    }
+    exceptions = list(approved_exceptions or [])
+    checks: list[dict[str, Any]] = []
+    for metric in ("pack_bytes", "file_count", "texture_count"):
+        limit = limits.get(metric)
+        if not isinstance(limit, int) or limit < 0:
+            errors.append(f"Missing or invalid static performance budget: {metric}")
+            checks.append({"metric": metric, "observed": observed[metric], "limit": limit, "passed": False, "exception": None})
+            continue
+        exceeded = observed[metric] > limit
+        approved = next((item for item in exceptions if _approved_exception(item, metric)), None)
+        if exceeded and approved is None:
+            errors.append(f"Static performance budget exceeded: {metric} {observed[metric]} > {limit}")
+        checks.append({"metric": metric, "observed": observed[metric], "limit": limit, "passed": not exceeded or approved is not None, "exception": dict(approved) if approved is not None else None})
+    return {
+        "schema_version": "1.0.0", "catalog_version": policy.get("catalog_version"),
+        "target": policy.get("target"), "archive": str(archive), "observed": observed,
         "checks": checks, "errors": sorted(errors), "passed": not errors,
     }

@@ -4,6 +4,7 @@ import hashlib
 import json
 import re
 from typing import Any
+from pathlib import Path
 
 from ..semantics import evidence
 
@@ -103,4 +104,64 @@ def analyze_source(path: str, text: str) -> dict[str, list[dict[str, Any]]]:
     if coremod_match is not None:
         line = _line(text, coremod_match.start())
         result["diagnostics"].append({"severity": "error", "code": "unsupported_hook", "feature": f"forge_coremod_source:{class_name or path}", "reason": "Forge coremod/class-transformer behavior requires manual reconstruction for Bedrock.", "evidence": [evidence(path, (line, line), "forge-legacy-source:coremod", class_name=class_name, confidence=1.0)]})
+    return result
+
+
+def _bytecode_evidence(archive: Path, fact: dict[str, Any], rule: str, confidence: float = .68) -> dict[str, Any]:
+    return {"source_file": fact.get("source_file"), "class": fact.get("class"), "method": fact.get("method"), "field": None, "start_line": None, "end_line": None, "ast_node_type": None, "bytecode_location": f"{fact.get('class')}#{fact.get('method') or '<class>'}", "resource_path": None, "registration_path": None, "extraction_rule": rule, "analyzer_version": "forge-legacy-bytecode/1.0.0", "confidence": confidence, "source_mode": "bytecode-javap", "conflicting_evidence": [], "human_override_provenance": None}
+
+
+def analyze_facts(archive: Path, facts: list[dict[str, Any]]) -> dict[str, list[dict[str, Any]]]:
+    """Lower loader-neutral facts for supported Forge 1.7.10 surfaces."""
+    result: dict[str, list[dict[str, Any]]] = {key: [] for key in ("content", "behaviors", "state", "presentation", "ui", "networking", "diagnostics")}
+    by_class: dict[str, list[dict[str, Any]]] = {}
+    for fact in facts:
+        if fact.get("class"):
+            by_class.setdefault(str(fact["class"]), []).append(fact)
+    registration = {
+        ("cpw.mods.fml.common.registry.GameRegistry", "registerItem"): "item",
+        ("cpw.mods.fml.common.registry.GameRegistry", "registerBlock"): "block",
+        ("cpw.mods.fml.common.registry.GameRegistry", "registerTileEntity"): "block_entity",
+        ("cpw.mods.fml.common.registry.EntityRegistry", "registerModEntity"): "entity",
+    }
+    for class_name, rows in by_class.items():
+        ordered = sorted(rows, key=lambda row: int(row.get("instruction_line") or 0))
+        constants: list[str] = []
+        channel = "network"
+        mod_candidates = [str(row["value"]) for row in rows if row["fact_type"] == "constant" and re.fullmatch(r"[a-z][a-z0-9_.-]+", str(row["value"])) and "legacy" in str(row["value"])]
+        mod_id = next((value for value in mod_candidates if value.startswith("authentic_")), mod_candidates[0] if mod_candidates else "forge_mod")
+        for row in ordered:
+            if row["fact_type"] == "constant":
+                constants.append(str(row["value"]))
+                continue
+            if row["fact_type"] == "class" and "cpw.mods.fml.relauncher.IFMLLoadingPlugin" in row.get("interfaces", []):
+                result["diagnostics"].append({"severity": "error", "code": "unsupported_hook", "feature": f"forge_coremod_source:{class_name.rsplit('.', 1)[-1]}", "reason": "Forge coremod/class-transformer behavior requires manual reconstruction for Bedrock.", "evidence": [_bytecode_evidence(archive, row, "forge-legacy-bytecode:coremod", .72)]})
+                continue
+            if row["fact_type"] != "invoke":
+                continue
+            owner_value, name_value = row.get("owner"), row.get("name")
+            if not isinstance(owner_value, str) or not isinstance(name_value, str):
+                continue
+            owner, name = owner_value, name_value
+            kind = registration.get((owner, name))
+            if kind:
+                identifier = next((value for value in reversed(constants[-5:]) if re.fullmatch(r"[a-z0-9_.:/-]+", value)), None)
+                if identifier:
+                    if ":" not in identifier:
+                        identifier = f"{mod_id}:{identifier}"
+                    result["content"].append({"kind": kind, "identifier": identifier, "properties": {"loader": "forge-legacy", "registration_api": f"{owner.rsplit('.', 1)[-1]}.{name}"}, "evidence": [_bytecode_evidence(archive, row, f"forge-legacy-bytecode:{name}")]})
+            if owner == "cpw.mods.fml.common.network.NetworkRegistry" and name == "newSimpleChannel" and constants:
+                channel = constants[-1]
+            if owner == "cpw.mods.fml.common.network.simpleimpl.SimpleNetworkWrapper" and name == "registerMessage":
+                side = next((f.get("name") for f in reversed(ordered[:ordered.index(row)]) if f["fact_type"] == "field" and f.get("owner") == "cpw.mods.fml.relauncher.Side"), "SERVER")
+                result["networking"].append({"id": f"{mod_id}:{channel}_0", "direction": "server_to_client" if side == "CLIENT" else "client_to_server", "trigger": "custom_packet", "payload": "bytecode-proven-message", "authority": str(side).lower(), "action": "bytecode-proven-handler", "replacement_strategy": None, "evidence": [_bytecode_evidence(archive, row, "forge-legacy-bytecode:SimpleNetworkWrapper.registerMessage", .68)]})
+        # A method-level SubscribeEvent annotation plus its parameter descriptor
+        # is sufficient to prove subscription and event kind, not body behavior.
+        annotations = [row for row in rows if row["fact_type"] == "annotation" and str(row.get("annotation", "")).endswith("SubscribeEvent")]
+        methods = [row for row in rows if row["fact_type"] == "method"]
+        for index, annotation in enumerate(annotations):
+            method = next((m for m in methods if m.get("name") == annotation.get("method")), None)
+            method = method or next((m for m in methods if "LivingHurtEvent" in str(m.get("descriptor"))), methods[index] if index < len(methods) else None)
+            if method:
+                result["behaviors"].append({"id": f"{mod_id}:forge_event/{method['name']}", "owner": {"kind": "mod", "identifier": mod_id}, "trigger": {"type": "entity_hurt" if "LivingHurtEvent" in str(method.get("descriptor")) else "object_tick"}, "conditions": [], "actions": [], "stateReads": [], "stateWrites": [], "feedback": [], "presentationRequirements": [], "evidence": [_bytecode_evidence(archive, method, "forge-legacy-bytecode:SubscribeEvent", .62)], "confidence": .62, "diagnostics": [{"severity": "info", "code": "event_body_unresolved", "message": "Forge event subscription is proven from bytecode; handler body remains unresolved."}]})
     return result

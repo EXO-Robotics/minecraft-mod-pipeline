@@ -1,0 +1,16 @@
+{
+  "schema_version": "1.0.0",
+  "contract_id": "clockwork-gardens-save-migration-v1-to-v2",
+  "status": "DEFINED_NOT_RUN",
+  "from_schema": 1,
+  "to_schema": 2,
+  "steps": [
+    {"operation": "rename", "from": "player.rank", "to": "player.garden_rank", "default": 0},
+    {"operation": "add", "path": "player.sunseeds_harvested", "default": 0},
+    {"operation": "rename", "from": "machine.work", "to": "machine.press_progress", "default": 0},
+    {"operation": "add", "path": "machine.press_owner", "default": "unclaimed"},
+    {"operation": "add", "path": "entity.boss_instance_guard", "default": "generated-on-load"}
+  ],
+  "invariants": ["idempotent", "no progression loss", "machine work resumes only after active-index restoration", "failure remains diagnostic and does not claim success"],
+  "evidence": []
+}

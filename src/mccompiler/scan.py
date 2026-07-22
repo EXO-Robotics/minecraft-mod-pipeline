@@ -360,7 +360,10 @@ def scan_path(input_path: str | Path, bedrock_server: str | Path | None = None) 
             if source.is_file() and inventory["content_counts"].get("class_files") and not inventory["content_counts"].get("java_sources"):
                 extracted = analyze_archive(source)
                 for key, values in extracted.items():
-                    semantic[key].extend(values)
+                    if key == "bytecode_facts":
+                        bytecode_evidence.extend(values)
+                    else:
+                        semantic[key].extend(values)
         finally:
             view.close()
     ir["dependency_graph"] = {"nodes": sorted(nodes.values(), key=lambda n: n["id"]), "edges": edges}
