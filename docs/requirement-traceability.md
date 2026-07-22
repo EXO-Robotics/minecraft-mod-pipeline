@@ -36,7 +36,7 @@ This matrix describes the repository after the executable Benchmark A foundation
 | ARCH-03 | Clean consumer/build boundary | `IMPLEMENTED` foundation | Exact Benchmark A/B archives exclude project evidence, reports, tests, Java payloads, and debug collateral and pass official static inspection |
 | API-01 | Symbol-level stable API validation | `PARTIAL` | Initial catalog and unknown-symbol rejection tested; complete emitted-symbol coverage/source verification absent |
 | API-02 | Independent server/server-ui resolution | `IMPLEMENTED` for current catalog | Independent resolution and UI-only dependency tests pass |
-| API-03 | Fail-closed event adapters | `PARTIAL` | Unmapped required trigger fails compilation; real Minecraft actions remain untested |
+| API-03 | Fail-closed event adapters | `PARTIAL` | Unmapped required triggers fail compilation, malformed contract-required player data is denied without throwing, and one Preview SimulatedPlayer block-break path is proven; the other required action families and physical-client execution remain untested |
 | FRONT-01 | Modern Fabric semantics | `PARTIAL` | Authentic-pattern metadata/source fixture test passes; full API and compiled-JAR qualification missing |
 | FRONT-02 | Forge 1.7.10 semantics | `PARTIAL` | Authentic-pattern metadata/manifest/source fixture test passes; full API and compiled-JAR qualification missing |
 | FRONT-03 | Compiled-JAR evidence | `PARTIAL` | Loader-neutral class/annotation/method/invoke/field/constant/resource facts and defined Fabric/Forge parity exist; current host lacks a usable JDK and broad real-mod qualification remains |
