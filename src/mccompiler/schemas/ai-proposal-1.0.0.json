@@ -1,0 +1,33 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://mccompiler.local/schemas/ai-proposal-1.0.0.json",
+  "title": "Advisory AI Proposal 1.0.0",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "proposal_id", "target", "status", "proposal", "evidence", "prompt_provenance", "model_provenance", "confidence", "human_acceptance", "authority", "requires_explicit_override", "proposal_digest"],
+  "properties": {
+    "schema_version": {"const": "1.0.0"},
+    "proposal_id": {"type": "string", "minLength": 1},
+    "target": {"type": "string", "minLength": 1},
+    "status": {"enum": ["proposed", "withdrawn"]},
+    "proposal": {"type": "object", "minProperties": 1},
+    "evidence": {"type": "array", "minItems": 1, "items": {"type": "object"}},
+    "prompt_provenance": {"type": "object", "required": ["template_id", "template_version", "prompt_sha256"]},
+    "model_provenance": {"type": "object", "required": ["provider", "model", "adapter_version"]},
+    "confidence": {"type": "number", "minimum": 0, "maximum": 1},
+    "human_acceptance": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["state"],
+      "properties": {
+        "state": {"enum": ["pending", "accepted", "rejected"]},
+        "reviewer": {"type": "string", "minLength": 1},
+        "reviewed_at": {"type": "string", "minLength": 1},
+        "reason": {"type": "string"}
+      }
+    },
+    "authority": {"const": "advisory-only"},
+    "requires_explicit_override": {"const": true},
+    "proposal_digest": {"type": "string", "pattern": "^[a-f0-9]{64}$"}
+  }
+}
