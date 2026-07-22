@@ -6,9 +6,11 @@ import json
 import os
 import shutil
 import tempfile
+import uuid
 from pathlib import Path
 from typing import Any, Callable
 
+from mccompiler.api_catalog import ApiCatalog
 from mccompiler.bedrock import ARCHIVE_NAME, _zip_deterministic, compile_bedrock
 from mccompiler.operations.envelope import OperationError
 from mccompiler.overrides import apply_overrides
@@ -26,6 +28,7 @@ _FEATURE_KINDS = {
     "generate_structure": "structure",
 }
 _DERIVED_RECORD_ROOT = "reports/generation"
+_CUSTOM_ROOTS = ("scripts", "entities", "models", "assets")
 
 
 def _sha256(path: Path) -> str:
@@ -77,10 +80,154 @@ def _compile_staged(store: ProjectStore) -> tuple[tempfile.TemporaryDirectory[st
     stage = Path(temporary.name) / "build"
     try:
         compile_bedrock(ir, plan, stage)
+        _merge_custom_implementations(store, stage)
     except BaseException:
         temporary.cleanup()
         raise
     return temporary, stage, ir, plan
+
+
+def _write_json(path: Path, value: Any) -> None:
+    path.parent.mkdir(parents=True, exist_ok=True)
+    path.write_text(json.dumps(value, indent=2, sort_keys=True) + "\n", encoding="utf-8")
+
+
+def _decision_rows(store: ProjectStore, path: str, key: str) -> list[dict[str, Any]]:
+    document = store.read(path, {"schema_version": "1.0.0", key: []})
+    if not isinstance(document, dict) or not isinstance(document.get(key), list):
+        raise ProjectError("INVALID_CUSTOM_METADATA", f"{path} must contain a {key} array")
+    return [row for row in document[key] if isinstance(row, dict)]
+
+
+def _safe_pack_destination(value: Any, *, prefix: str | None = None) -> Path:
+    if not isinstance(value, str) or not value or Path(value).is_absolute() or ".." in Path(value).parts:
+        raise ProjectError("INVALID_CUSTOM_MAPPING", f"Invalid custom Bedrock destination: {value!r}")
+    destination = Path(value)
+    if prefix is not None and (not destination.parts or destination.parts[0] != prefix):
+        raise ProjectError("INVALID_CUSTOM_MAPPING", f"Custom destination must be under {prefix}/: {value}")
+    if destination.as_posix() == "manifest.json":
+        raise ProjectError("INVALID_CUSTOM_MAPPING", "Custom content cannot replace a pack manifest")
+    return destination
+
+
+def _custom_files(store: ProjectStore, kind: str) -> list[Path]:
+    root = store.resolve(f"custom/{kind}")
+    return sorted((path for path in root.rglob("*") if path.is_file()), key=lambda path: path.relative_to(store.root).as_posix())
+
+
+def _merge_custom_implementations(store: ProjectStore, stage: Path) -> None:
+    """Copy reviewed protected implementations into a disposable staged build.
+
+    Protected source files are never changed. Every file must have an explicit
+    handler or mapping, and every custom Script API symbol is folded into the
+    normal API usage report before the consumer archive is rebuilt.
+    """
+    handlers = _decision_rows(store, "decisions/custom-handlers.json", "handlers")
+    mappings = _decision_rows(store, "decisions/mappings.json", "mappings")
+    integrations: list[dict[str, Any]] = []
+    custom_requirements: list[tuple[str, str]] = []
+    imports: list[str] = []
+
+    handler_by_source: dict[str, dict[str, Any]] = {}
+    for row in handlers:
+        source = row.get("source_path") or row.get("path")
+        if isinstance(source, str):
+            if source in handler_by_source:
+                raise ProjectError("DUPLICATE_CUSTOM_METADATA", f"Multiple custom handlers register {source}")
+            handler_by_source[source] = row
+    mapping_by_source: dict[str, dict[str, Any]] = {}
+    for row in mappings:
+        source = row.get("source_id")
+        if isinstance(source, str) and source.startswith("custom/"):
+            if source in mapping_by_source:
+                raise ProjectError("DUPLICATE_CUSTOM_METADATA", f"Multiple custom mappings register {source}")
+            mapping_by_source[source] = row
+
+    for source in _custom_files(store, "scripts"):
+        relative = source.relative_to(store.root).as_posix()
+        handler = handler_by_source.get(relative)
+        if handler is None or not isinstance(handler.get("behavior_id"), str):
+            raise ProjectError("UNREGISTERED_CUSTOM_IMPLEMENTATION", f"Custom script requires a registered behavior handler: {relative}")
+        destination = _safe_pack_destination(handler.get("destination"), prefix="scripts")
+        if len(destination.parts) < 3 or destination.parts[1] != "custom":
+            raise ProjectError("INVALID_CUSTOM_MAPPING", f"Custom scripts must stage under scripts/custom/: {destination}")
+        symbols = handler.get("api_symbols")
+        if not isinstance(symbols, list):
+            raise ProjectError("MISSING_CUSTOM_API_METADATA", f"Custom handler must declare api_symbols (an empty array is allowed): {relative}")
+        normalized_symbols: list[dict[str, str]] = []
+        for symbol in symbols:
+            if not isinstance(symbol, dict) or not isinstance(symbol.get("module"), str) or not isinstance(symbol.get("symbol"), str):
+                raise ProjectError("INVALID_CUSTOM_API_METADATA", f"Invalid API symbol declaration for {relative}")
+            pair = (symbol["module"], symbol["symbol"])
+            custom_requirements.append(pair)
+            normalized_symbols.append({"module": pair[0], "symbol": pair[1]})
+        target = stage / "behavior_pack" / destination
+        target.parent.mkdir(parents=True, exist_ok=True)
+        shutil.copyfile(source, target)
+        imports.append(f"import './{destination.relative_to('scripts').as_posix()}';")
+        integrations.append({"kind": "script", "source": relative, "pack": "behavior", "destination": destination.as_posix(), "behavior_id": handler["behavior_id"], "api_symbols": normalized_symbols, "sha256": _sha256(source)})
+
+    category_rules = {"entities": ("behavior", "entities"), "models": ("resource", "models"), "assets": (None, None)}
+    for kind, (required_pack, prefix) in category_rules.items():
+        for source in _custom_files(store, kind):
+            relative = source.relative_to(store.root).as_posix()
+            mapping = mapping_by_source.get(relative)
+            if mapping is None:
+                raise ProjectError("UNREGISTERED_CUSTOM_IMPLEMENTATION", f"Custom {kind} file requires a registered mapping: {relative}")
+            pack = mapping.get("pack")
+            if pack not in {"behavior", "resource"} or (required_pack is not None and pack != required_pack):
+                raise ProjectError("INVALID_CUSTOM_MAPPING", f"Custom {kind} mapping has invalid pack {pack!r}: {relative}")
+            destination = _safe_pack_destination(mapping.get("destination"), prefix=prefix)
+            target = stage / ("behavior_pack" if pack == "behavior" else "resource_pack") / destination
+            target.parent.mkdir(parents=True, exist_ok=True)
+            shutil.copyfile(source, target)
+            integrations.append({"kind": kind[:-1] if kind.endswith("s") else kind, "source": relative, "pack": pack, "destination": destination.as_posix(), "mapping_source_id": mapping["source_id"], "sha256": _sha256(source)})
+
+    if not integrations:
+        return
+
+    api_path = stage / "reports/api-usage.json"
+    api_report = json.loads(api_path.read_text(encoding="utf-8"))
+    existing = [(str(row["module"]), str(row["symbol"])) for row in api_report.get("symbols", []) if isinstance(row, dict) and row.get("module") and row.get("symbol")]
+    requirements = sorted(set(existing + custom_requirements))
+    try:
+        versions, evidence = ApiCatalog.load_default().resolve_versions(requirements, marketplace=True)
+        uncatalogued: list[dict[str, str]] = []
+    except ValueError:
+        catalog = ApiCatalog.load_default()
+        known = [pair for pair in requirements if pair in catalog.symbols]
+        versions, evidence = catalog.resolve_versions(known, marketplace=True)
+        uncatalogued = [{"module": module, "symbol": symbol} for module, symbol in requirements if (module, symbol) not in catalog.symbols]
+    api_report.update({"complete": not uncatalogued, "resolved_modules": versions, "symbols": evidence, "uncatalogued_symbols": uncatalogued, "custom_integrations": [row for row in integrations if row["kind"] == "script"]})
+    _write_json(api_path, api_report)
+
+    if imports:
+        main = stage / "behavior_pack/scripts/main.js"
+        main.parent.mkdir(parents=True, exist_ok=True)
+        current = main.read_text(encoding="utf-8") if main.exists() else ""
+        main.write_text("\n".join(sorted(set(imports))) + "\n" + current, encoding="utf-8")
+        manifest_path = stage / "behavior_pack/manifest.json"
+        manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
+        if not any(module.get("type") == "script" for module in manifest.get("modules", []) if isinstance(module, dict)):
+            header_uuid = str(manifest["header"]["uuid"])
+            manifest.setdefault("modules", []).append({"type": "script", "language": "javascript", "entry": "scripts/main.js", "uuid": str(uuid.uuid5(uuid.UUID(header_uuid), "custom-script-module")), "version": [1, 0, 0]})
+        dependencies = [row for row in manifest.get("dependencies", []) if not (isinstance(row, dict) and row.get("module_name") in versions)]
+        dependencies.extend({"module_name": module, "version": version} for module, version in sorted(versions.items()))
+        manifest["dependencies"] = dependencies
+        _write_json(manifest_path, manifest)
+
+    integration_report = {"schema_version": "1.0.0", "complete": True, "integrations": sorted(integrations, key=lambda row: (row["source"], row["destination"]))}
+    _write_json(stage / "reports/custom-integrations.json", integration_report)
+    conversion_manifest_path = stage / "conversion-manifest.json"
+    conversion_manifest = json.loads(conversion_manifest_path.read_text(encoding="utf-8"))
+    conversion_manifest["custom_integrations"] = integration_report["integrations"]
+    _write_json(conversion_manifest_path, conversion_manifest)
+    report_path = stage / "reports/conversion-report.json"
+    report = json.loads(report_path.read_text(encoding="utf-8"))
+    report["custom_integrations"] = integration_report["integrations"]
+    report["generated_files"] = sorted(path.relative_to(stage).as_posix() for path in stage.rglob("*") if path.is_file() and path.name != ARCHIVE_NAME)
+    _write_json(report_path, report)
+    _zip_deterministic(stage, stage / ARCHIVE_NAME, consumer_only=True)
 
 
 def _replace_tree(source: Path, destination: Path) -> None:

@@ -1,0 +1,67 @@
+{
+  "artifact": {
+    "behavior_pack": {
+      "pack_id": "15be7814-3690-545a-b085-8aeda1c66c03",
+      "version": [
+        0,
+        2,
+        0
+      ]
+    },
+    "compiler_commit": "4324586",
+    "pack_hash": "2d5b966a5a6ab557400ac725f1eb990f2814ae2b2c6aac48ffd32ee71824ea91",
+    "world_hash": "c15fde98d75b015ede074a3b1538e122d58f867cec201c18f75f795449b0870b"
+  },
+  "claims": {
+    "bds_boot_verified": true,
+    "console_verified": false,
+    "gameplay_verified": false,
+    "local_windows_verified": false,
+    "marketplace_approval_implied": false,
+    "multiplayer_verified": false,
+    "persistence_verified": false,
+    "realm_verified": false
+  },
+  "executed_at": "2026-07-22T15:55:47-04:00",
+  "log": {
+    "combined_sha256": "124a0e6cabc2a1080fd06902230528a4be51546b9dd410420bb6e634ec750fc0",
+    "error_lines": 0,
+    "observed": [
+      "Opening level 'worlds/MCCompiler Benchmark A/db'",
+      "Pack Stack loaded behavior pack 15be7814-3690-545a-b085-8aeda1c66c03 version 0.2.0",
+      "Server started.",
+      "[Scripting] [mccompiler] runtime initialized behaviors=10",
+      "Quit correctly"
+    ],
+    "warning_lines": 1,
+    "warning_policy": "The sole warning is the generator's intentional console.warn initialization marker, not a Bedrock diagnostic failure."
+  },
+  "runtime": {
+    "bedrock_build_id": "47564860",
+    "bedrock_commit_id": "677921346ba4ea8fe5a0bed9807f2227f5352d7d",
+    "bedrock_version": "1.26.33.2",
+    "container_image": "itzg/minecraft-bedrock-server:latest",
+    "isolated": true,
+    "published_ports": false,
+    "session_id": "2939b0ff-ee00-49be-bed4-137d2b76da61"
+  },
+  "schema_version": "1.0.0",
+  "status": "BDS_DIAGNOSTIC_BOOT_VERIFIED",
+  "test_scope": [
+    "generated world opens",
+    "behavior pack identity and version load",
+    "stable script entrypoint initializes",
+    "clean graceful shutdown"
+  ],
+  "unverified_scope": [
+    "actual player event adapters",
+    "gameplay behavior",
+    "persistence and migration",
+    "multiplayer isolation",
+    "controller interaction",
+    "Minecraft for Windows",
+    "Realm",
+    "PlayStation",
+    "Xbox"
+  ]
+}

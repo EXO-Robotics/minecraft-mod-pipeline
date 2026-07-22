@@ -3,21 +3,29 @@
   "$id": "https://mccompiler.local/schemas/platform-evidence-1.0.0.json",
   "type": "object",
   "additionalProperties": false,
-  "required": ["schema_version", "platforms", "console_verified", "marketplace_approval_implied"],
+  "required": ["schema_version", "platforms", "console_verified", "verification_statuses", "marketplace_approval_implied"],
   "properties": {
     "schema_version": {"const": "1.0.0"},
     "platforms": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["windows_local", "realm_windows", "playstation", "xbox"],
+      "required": ["windows_local", "bds_diagnostic", "realm_windows", "ps4", "ps5", "xbox_one", "xbox_series"],
       "properties": {
         "windows_local": {"$ref": "#/$defs/status"},
+        "bds_diagnostic": {"$ref": "#/$defs/status"},
         "realm_windows": {"$ref": "#/$defs/status"},
-        "playstation": {"$ref": "#/$defs/status"},
-        "xbox": {"$ref": "#/$defs/status"}
+        "ps4": {"$ref": "#/$defs/status"},
+        "ps5": {"$ref": "#/$defs/status"},
+        "xbox_one": {"$ref": "#/$defs/status"},
+        "xbox_series": {"$ref": "#/$defs/status"}
       }
     },
     "console_verified": {"type": "boolean"},
+    "verification_statuses": {
+      "type": "array",
+      "items": {"enum": ["LOCAL_WINDOWS_VERIFIED", "BDS_DIAGNOSTIC_VERIFIED", "REALM_WINDOWS_VERIFIED", "PS4_VERIFIED", "PS5_VERIFIED", "XBOX_ONE_VERIFIED", "XBOX_SERIES_VERIFIED", "MARKETPLACE_TARGETED", "UNVERIFIED"]},
+      "uniqueItems": true
+    },
     "marketplace_approval_implied": {"const": false},
     "valid": {"type": "boolean"},
     "errors": {"type": "array", "items": {"type": "string"}}

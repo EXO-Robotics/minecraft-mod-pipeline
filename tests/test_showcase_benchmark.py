@@ -121,6 +121,14 @@ class OriginalMarketplaceShowcaseTests(unittest.TestCase):
         self.assertEqual("NOT_RUN", redesign["runtime_validation"])
         self.assertTrue(all(row["status"] == "NOT_RUN" for row in self.contracts["required_future_checks"]))
 
+        bds = load_json("bds-diagnostic-validation.json")
+        self.assertEqual("BDS_DIAGNOSTIC_BOOT_VERIFIED", bds["status"])
+        self.assertTrue(bds["claims"]["bds_boot_verified"])
+        self.assertFalse(bds["claims"]["gameplay_verified"])
+        self.assertFalse(bds["claims"]["console_verified"])
+        self.assertFalse(bds["claims"]["marketplace_approval_implied"])
+        self.assertIn("actual player event adapters", bds["unverified_scope"])
+
         rights = (SHOWCASE / "rights/original-authorship-declaration.yaml").read_text(encoding="utf-8")
         self.assertIn("ORIGINAL_FIXTURE_DECLARED_NOT_MARKETPLACE_CLEARED", rights)
         self.assertIn("marketplace_cleared: false", rights)

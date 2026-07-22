@@ -107,22 +107,25 @@ class ConsoleEvidenceTests(unittest.TestCase):
         ])
         self.assertTrue(result["valid"])
         self.assertFalse(result["console_verified"])
-        self.assertEqual("UNVERIFIED", result["platforms"]["playstation"]["status"])
-        self.assertEqual("UNVERIFIED", result["platforms"]["xbox"]["status"])
+        self.assertEqual("UNVERIFIED", result["platforms"]["ps4"]["status"])
+        self.assertEqual("UNVERIFIED", result["platforms"]["xbox_one"]["status"])
 
     def test_each_console_needs_its_own_evidence(self) -> None:
         playstation_only = evaluate_platform_statuses([
-            {"platform": "playstation", "status": "PASSED", "evidence_ids": ["ev-ps"]},
+            {"platform": "ps4", "status": "PASSED", "evidence_ids": ["ev-ps4"]},
         ])
         self.assertFalse(playstation_only["console_verified"])
-        both = evaluate_platform_statuses([
-            {"platform": "playstation", "status": "PASSED", "evidence_ids": ["ev-ps"]},
-            {"platform": "xbox", "status": "PASSED", "evidence_ids": ["ev-xbox"]},
+        all_consoles = evaluate_platform_statuses([
+            {"platform": "ps4", "status": "PASSED", "evidence_ids": ["ev-ps4"]},
+            {"platform": "ps5", "status": "PASSED", "evidence_ids": ["ev-ps5"]},
+            {"platform": "xbox_one", "status": "PASSED", "evidence_ids": ["ev-xbox-one"]},
+            {"platform": "xbox_series", "status": "PASSED", "evidence_ids": ["ev-xbox-series"]},
         ])
-        self.assertTrue(both["console_verified"])
-        dishonest = evaluate_platform_statuses([{"platform": "xbox", "status": "PASSED", "evidence_ids": []}])
+        self.assertTrue(all_consoles["console_verified"])
+        self.assertTrue({"PS4_VERIFIED", "PS5_VERIFIED", "XBOX_ONE_VERIFIED", "XBOX_SERIES_VERIFIED"} <= set(all_consoles["verification_statuses"]))
+        dishonest = evaluate_platform_statuses([{"platform": "xbox_series", "status": "PASSED", "evidence_ids": []}])
         self.assertFalse(dishonest["valid"])
-        self.assertEqual("UNVERIFIED", dishonest["platforms"]["xbox"]["status"])
+        self.assertEqual("UNVERIFIED", dishonest["platforms"]["xbox_series"]["status"])
 
 
 if __name__ == "__main__":

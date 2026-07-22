@@ -12,7 +12,16 @@ class PlatformStatus(StrEnum):
     BLOCKED = "BLOCKED"
 
 
-PLATFORMS = ("windows_local", "realm_windows", "playstation", "xbox")
+PLATFORMS = ("windows_local", "bds_diagnostic", "realm_windows", "ps4", "ps5", "xbox_one", "xbox_series")
+VERIFIED_STATUS_BY_PLATFORM = {
+    "windows_local": "LOCAL_WINDOWS_VERIFIED",
+    "bds_diagnostic": "BDS_DIAGNOSTIC_VERIFIED",
+    "realm_windows": "REALM_WINDOWS_VERIFIED",
+    "ps4": "PS4_VERIFIED",
+    "ps5": "PS5_VERIFIED",
+    "xbox_one": "XBOX_ONE_VERIFIED",
+    "xbox_series": "XBOX_SERIES_VERIFIED",
+}
 
 
 def new_platform_statuses() -> dict[str, Any]:
@@ -23,6 +32,7 @@ def new_platform_statuses() -> dict[str, Any]:
             for platform in PLATFORMS
         },
         "console_verified": False,
+        "verification_statuses": ["MARKETPLACE_TARGETED", "UNVERIFIED"],
         "marketplace_approval_implied": False,
     }
 
@@ -59,8 +69,8 @@ def evaluate_platform_statuses(records: Iterable[Mapping[str, Any]]) -> dict[str
         platforms[str(platform)] = {"status": status.value, "evidence_ids": sorted(set(evidence_ids))}
     result["errors"] = errors
     result["valid"] = not errors
-    result["console_verified"] = (
-        platforms["playstation"]["status"] == PlatformStatus.PASSED.value
-        and platforms["xbox"]["status"] == PlatformStatus.PASSED.value
-    )
+    physical = ("ps4", "ps5", "xbox_one", "xbox_series")
+    result["console_verified"] = all(platforms[name]["status"] == PlatformStatus.PASSED.value for name in physical)
+    verified = [VERIFIED_STATUS_BY_PLATFORM[name] for name in PLATFORMS if platforms[name]["status"] == PlatformStatus.PASSED.value]
+    result["verification_statuses"] = ["MARKETPLACE_TARGETED", *(verified or ["UNVERIFIED"])]
     return result
