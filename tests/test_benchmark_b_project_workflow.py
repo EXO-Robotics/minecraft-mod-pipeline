@@ -22,6 +22,7 @@ class BenchmarkBProjectWorkflowTests(unittest.TestCase):
         self.store = ProjectStore.create(Path(temporary.name) / "doorlock-project", name="DoorLock technical reconstruction")
         self.store.write("analysis/modir.json", json.loads((RECONSTRUCTION / "modir-seed.json").read_text()))
         self.store.write("rights/rights-manifest.yaml", json.loads((RECONSTRUCTION / "rights-manifest.json").read_text()))
+        self.store.write("reports/fidelity.json", json.loads((RECONSTRUCTION / "quality-records.json").read_text()))
         self.store.write("decisions/custom-handlers.json", json.loads((RECONSTRUCTION / "custom-handler.json").read_text()))
         custom = self.store.resolve("custom/scripts/doorlock.js")
         custom.parent.mkdir(parents=True, exist_ok=True)
@@ -63,6 +64,8 @@ class BenchmarkBProjectWorkflowTests(unittest.TestCase):
         self.assertFalse(candidate["candidate"]["passed"])
         self.assertTrue(candidate["candidate"]["blockers"]["rights"])
         self.assertTrue(candidate["candidate"]["blockers"]["quality"])
+        self.assertEqual([], candidate["candidate"]["quality"]["missing_feature_ids"])
+        self.assertTrue(all("unresolved quality classification" in error for error in candidate["candidate"]["blockers"]["quality"]))
         self.assertTrue(candidate["candidate"]["blockers"]["creator_tools"])
         self.assertFalse(candidate["candidate"]["marketplace_approval_implied"])
 

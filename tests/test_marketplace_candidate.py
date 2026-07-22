@@ -62,6 +62,18 @@ class MarketplaceCandidateTests(unittest.TestCase):
             self.assertTrue(report["blockers"]["quality"])
             self.assertTrue(report["blockers"]["creator_tools"])
 
+    def test_complete_manual_or_unsupported_records_still_block_candidate(self) -> None:
+        document = fixture(); plan = plan_conversion(document)
+        unresolved = quality("original:wand")
+        unresolved["classification"] = "MANUAL_REDESIGN_REQUIRED"
+        unresolved["evidence"] = []
+        with tempfile.TemporaryDirectory() as directory:
+            compile_bedrock(document, plan, directory)
+            report = evaluate_marketplace_candidate(directory, plan=plan, rights_manifest=cleared_rights(), quality_records=[unresolved], creator_tools_report=creator_tools())
+        self.assertFalse(report["passed"])
+        self.assertEqual([], report["quality"]["missing_feature_ids"])
+        self.assertTrue(any("unresolved quality classification" in error for error in report["blockers"]["quality"]))
+
 
 if __name__ == "__main__":
     unittest.main()

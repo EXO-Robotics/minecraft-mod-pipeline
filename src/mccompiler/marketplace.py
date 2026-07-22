@@ -38,6 +38,8 @@ def evaluate_marketplace_candidate(
     quality_ids: set[str] = set()
     for record in quality_records:
         quality_errors.extend(validate_quality_record(record))
+        if record.get("classification") in {"MANUAL_REDESIGN_REQUIRED", "UNSUPPORTED"}:
+            quality_errors.append(f"{record.get('feature_id', '<unknown>')}: unresolved quality classification {record.get('classification')}")
         if record.get("feature_id"):
             quality_ids.add(str(record["feature_id"]))
     planned_ids = {str(row.get("id")) for row in plan.get("features", []) if row.get("id")}

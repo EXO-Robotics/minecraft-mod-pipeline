@@ -19,6 +19,7 @@ def build(output: Path) -> dict[str, Any]:
     store = ProjectStore.create(output, name="DoorLock technical reconstruction")
     store.write("analysis/modir.json", json.loads((RECONSTRUCTION / "modir-seed.json").read_text(encoding="utf-8")))
     store.write("rights/rights-manifest.yaml", json.loads((RECONSTRUCTION / "rights-manifest.json").read_text(encoding="utf-8")))
+    store.write("reports/fidelity.json", json.loads((RECONSTRUCTION / "quality-records.json").read_text(encoding="utf-8")))
     store.write("decisions/custom-handlers.json", json.loads((RECONSTRUCTION / "custom-handler.json").read_text(encoding="utf-8")))
     custom = store.resolve("custom/scripts/doorlock.js")
     custom.parent.mkdir(parents=True, exist_ok=True)

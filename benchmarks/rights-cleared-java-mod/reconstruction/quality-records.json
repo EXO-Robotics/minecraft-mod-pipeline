@@ -1,0 +1,76 @@
+{
+  "schema_version": "1.0.0",
+  "status": "COMPLETE_CLASSIFICATION_SET_UNRESOLVED",
+  "mechanics": [
+    {
+      "feature_id": "door_lock:key",
+      "classification": "MANUAL_REDESIGN_REQUIRED",
+      "dimensions": {"gameplay_fidelity": 0.5, "visual_fidelity": 0.1, "audio_fidelity": 0.0, "interaction_fidelity": 0.5, "controller_usability": 0.6, "multiplayer_fidelity": 0.0, "persistence_fidelity": 0.0, "performance": 1.0, "stability": 0.5, "discoverability": 0.3, "feedback_clarity": 0.5, "world_update_compatibility": 0.2},
+      "evidence": ["technical-build-validation.json"],
+      "losses": ["No approved key-configuration design or real action test"]
+    },
+    {
+      "feature_id": "door_lock:golden_key",
+      "classification": "MANUAL_REDESIGN_REQUIRED",
+      "dimensions": {"gameplay_fidelity": 0.2, "visual_fidelity": 0.1, "audio_fidelity": 0.0, "interaction_fidelity": 0.2, "controller_usability": 0.4, "multiplayer_fidelity": 0.0, "persistence_fidelity": 0.0, "performance": 1.0, "stability": 0.5, "discoverability": 0.2, "feedback_clarity": 0.3, "world_update_compatibility": 0.2},
+      "evidence": ["technical-build-validation.json"],
+      "losses": ["Golden-key behavior is not distinguished from the normal key"]
+    },
+    {
+      "feature_id": "door_lock:universal_key",
+      "classification": "MANUAL_REDESIGN_REQUIRED",
+      "dimensions": {"gameplay_fidelity": 0.6, "visual_fidelity": 0.1, "audio_fidelity": 0.0, "interaction_fidelity": 0.6, "controller_usability": 0.7, "multiplayer_fidelity": 0.0, "persistence_fidelity": 0.0, "performance": 1.0, "stability": 0.5, "discoverability": 0.3, "feedback_clarity": 0.5, "world_update_compatibility": 0.2},
+      "evidence": ["technical-build-validation.json"],
+      "losses": ["Universal-key path has no real multiplayer authorization test"]
+    },
+    {
+      "feature_id": "doorlock:server_authority_redesign",
+      "classification": "MANUAL_REDESIGN_REQUIRED",
+      "dimensions": {"gameplay_fidelity": 0.5, "visual_fidelity": 0.0, "audio_fidelity": 0.0, "interaction_fidelity": 0.5, "controller_usability": 0.6, "multiplayer_fidelity": 0.0, "persistence_fidelity": 0.2, "performance": 0.8, "stability": 0.5, "discoverability": 0.3, "feedback_clarity": 0.5, "world_update_compatibility": 0.2},
+      "evidence": ["technical-build-validation.json"],
+      "losses": ["Player-identity ownership replaces configured shared credentials and is unapproved"]
+    },
+    {
+      "feature_id": "doorlock:mixin_anvil",
+      "classification": "UNSUPPORTED",
+      "dimensions": {"gameplay_fidelity": 0.0, "visual_fidelity": 0.0, "audio_fidelity": 0.0, "interaction_fidelity": 0.0, "controller_usability": 0.0, "multiplayer_fidelity": 0.0, "persistence_fidelity": 0.0, "performance": 1.0, "stability": 1.0, "discoverability": 0.0, "feedback_clarity": 0.0, "world_update_compatibility": 1.0},
+      "evidence": ["contracts/unsupported-mixin-mapping.json"],
+      "losses": ["Anvil password entry is absent"]
+    },
+    {
+      "feature_id": "doorlock:mixin_chest",
+      "classification": "MANUAL_REDESIGN_REQUIRED",
+      "dimensions": {"gameplay_fidelity": 0.6, "visual_fidelity": 0.0, "audio_fidelity": 0.0, "interaction_fidelity": 0.6, "controller_usability": 0.7, "multiplayer_fidelity": 0.0, "persistence_fidelity": 0.2, "performance": 0.9, "stability": 0.5, "discoverability": 0.3, "feedback_clarity": 0.5, "world_update_compatibility": 0.2},
+      "evidence": ["technical-build-validation.json"],
+      "losses": ["Double-chest normalization and actual cancellation remain untested"]
+    },
+    {
+      "feature_id": "doorlock:mixin_door",
+      "classification": "MANUAL_REDESIGN_REQUIRED",
+      "dimensions": {"gameplay_fidelity": 0.5, "visual_fidelity": 0.0, "audio_fidelity": 0.0, "interaction_fidelity": 0.5, "controller_usability": 0.7, "multiplayer_fidelity": 0.0, "persistence_fidelity": 0.2, "performance": 0.9, "stability": 0.4, "discoverability": 0.3, "feedback_clarity": 0.5, "world_update_compatibility": 0.2},
+      "evidence": ["technical-build-validation.json"],
+      "losses": ["Upper and lower door halves are not normalized"]
+    },
+    {
+      "feature_id": "doorlock:mixin_fence_gate",
+      "classification": "MANUAL_REDESIGN_REQUIRED",
+      "dimensions": {"gameplay_fidelity": 0.5, "visual_fidelity": 0.0, "audio_fidelity": 0.0, "interaction_fidelity": 0.5, "controller_usability": 0.7, "multiplayer_fidelity": 0.0, "persistence_fidelity": 0.2, "performance": 0.9, "stability": 0.5, "discoverability": 0.3, "feedback_clarity": 0.5, "world_update_compatibility": 0.2},
+      "evidence": ["technical-build-validation.json"],
+      "losses": ["Fence-gate behavior is not action-tested"]
+    },
+    {
+      "feature_id": "doorlock:mixin_shulker",
+      "classification": "UNSUPPORTED",
+      "dimensions": {"gameplay_fidelity": 0.0, "visual_fidelity": 0.0, "audio_fidelity": 0.0, "interaction_fidelity": 0.0, "controller_usability": 0.0, "multiplayer_fidelity": 0.0, "persistence_fidelity": 0.0, "performance": 1.0, "stability": 1.0, "discoverability": 0.0, "feedback_clarity": 0.0, "world_update_compatibility": 1.0},
+      "evidence": ["contracts/unsupported-mixin-mapping.json"],
+      "losses": ["Shulker-box authorization is absent"]
+    },
+    {
+      "feature_id": "doorlock:mixin_trapdoor",
+      "classification": "UNSUPPORTED",
+      "dimensions": {"gameplay_fidelity": 0.0, "visual_fidelity": 0.0, "audio_fidelity": 0.0, "interaction_fidelity": 0.0, "controller_usability": 0.0, "multiplayer_fidelity": 0.0, "persistence_fidelity": 0.0, "performance": 1.0, "stability": 1.0, "discoverability": 0.0, "feedback_clarity": 0.0, "world_update_compatibility": 1.0},
+      "evidence": ["contracts/unsupported-mixin-mapping.json"],
+      "losses": ["Trapdoor authorization is absent"]
+    }
+  ]
+}
