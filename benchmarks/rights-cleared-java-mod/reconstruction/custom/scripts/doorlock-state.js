@@ -2,16 +2,98 @@ export const LEGACY_UNCLAIMED_OWNER = 'legacy-unclaimed';
 export const CURRENT_STATE_SCHEMA = 1;
 export const NORMAL_KEY_IDS = new Set(['door_lock:key', 'door_lock:golden_key']);
 export const UNIVERSAL_KEY_ID = 'door_lock:universal_key';
+const SHA256_K = [
+  0x428a2f98, 0x71374491, 0xb5c0fbcf, 0xe9b5dba5, 0x3956c25b, 0x59f111f1, 0x923f82a4, 0xab1c5ed5,
+  0xd807aa98, 0x12835b01, 0x243185be, 0x550c7dc3, 0x72be5d74, 0x80deb1fe, 0x9bdc06a7, 0xc19bf174,
+  0xe49b69c1, 0xefbe4786, 0x0fc19dc6, 0x240ca1cc, 0x2de92c6f, 0x4a7484aa, 0x5cb0a9dc, 0x76f988da,
+  0x983e5152, 0xa831c66d, 0xb00327c8, 0xbf597fc7, 0xc6e00bf3, 0xd5a79147, 0x06ca6351, 0x14292967,
+  0x27b70a85, 0x2e1b2138, 0x4d2c6dfc, 0x53380d13, 0x650a7354, 0x766a0abb, 0x81c2c92e, 0x92722c85,
+  0xa2bfe8a1, 0xa81a664b, 0xc24b8b70, 0xc76c51a3, 0xd192e819, 0xd6990624, 0xf40e3585, 0x106aa070,
+  0x19a4c116, 0x1e376c08, 0x2748774c, 0x34b0bcb5, 0x391c0cb3, 0x4ed8aa4a, 0x5b9cca4f, 0x682e6ff3,
+  0x748f82ee, 0x78a5636f, 0x84c87814, 0x8cc70208, 0x90befffa, 0xa4506ceb, 0xbef9a3f7, 0xc67178f2,
+];
 
-export function decideInteraction({ lock, itemId, playerId, isSneaking }) {
+function utf8Bytes(text) {
+  const bytes = [];
+  for (const character of text) {
+    const point = character.codePointAt(0);
+    if (point <= 0x7f) bytes.push(point);
+    else if (point <= 0x7ff) bytes.push(0xc0 | (point >>> 6), 0x80 | (point & 0x3f));
+    else if (point <= 0xffff) bytes.push(0xe0 | (point >>> 12), 0x80 | ((point >>> 6) & 0x3f), 0x80 | (point & 0x3f));
+    else bytes.push(0xf0 | (point >>> 18), 0x80 | ((point >>> 12) & 0x3f), 0x80 | ((point >>> 6) & 0x3f), 0x80 | (point & 0x3f));
+  }
+  return bytes;
+}
+
+function rotateRight(value, amount) {
+  return (value >>> amount) | (value << (32 - amount));
+}
+
+export function sha256(text) {
+  const bytes = utf8Bytes(text);
+  const bitLength = bytes.length * 8;
+  bytes.push(0x80);
+  while (bytes.length % 64 !== 56) bytes.push(0);
+  const high = Math.floor(bitLength / 0x100000000);
+  const low = bitLength >>> 0;
+  for (let shift = 24; shift >= 0; shift -= 8) bytes.push((high >>> shift) & 0xff);
+  for (let shift = 24; shift >= 0; shift -= 8) bytes.push((low >>> shift) & 0xff);
+  const hash = [0x6a09e667, 0xbb67ae85, 0x3c6ef372, 0xa54ff53a, 0x510e527f, 0x9b05688c, 0x1f83d9ab, 0x5be0cd19];
+  const words = new Array(64);
+  for (let offset = 0; offset < bytes.length; offset += 64) {
+    for (let i = 0; i < 16; i += 1) {
+      const j = offset + i * 4;
+      words[i] = ((bytes[j] << 24) | (bytes[j + 1] << 16) | (bytes[j + 2] << 8) | bytes[j + 3]) >>> 0;
+    }
+    for (let i = 16; i < 64; i += 1) {
+      const a = words[i - 15];
+      const b = words[i - 2];
+      const s0 = rotateRight(a, 7) ^ rotateRight(a, 18) ^ (a >>> 3);
+      const s1 = rotateRight(b, 17) ^ rotateRight(b, 19) ^ (b >>> 10);
+      words[i] = (words[i - 16] + s0 + words[i - 7] + s1) >>> 0;
+    }
+    let [a, b, c, d, e, f, g, h] = hash;
+    for (let i = 0; i < 64; i += 1) {
+      const sum1 = rotateRight(e, 6) ^ rotateRight(e, 11) ^ rotateRight(e, 25);
+      const choice = (e & f) ^ (~e & g);
+      const temp1 = (h + sum1 + choice + SHA256_K[i] + words[i]) >>> 0;
+      const sum0 = rotateRight(a, 2) ^ rotateRight(a, 13) ^ rotateRight(a, 22);
+      const majority = (a & b) ^ (a & c) ^ (b & c);
+      const temp2 = (sum0 + majority) >>> 0;
+      h = g; g = f; f = e; e = (d + temp1) >>> 0; d = c; c = b; b = a; a = (temp1 + temp2) >>> 0;
+    }
+    const state = [a, b, c, d, e, f, g, h];
+    for (let i = 0; i < 8; i += 1) hash[i] = (hash[i] + state[i]) >>> 0;
+  }
+  return hash.map((value) => value.toString(16).padStart(8, '0')).join('');
+}
+
+export function digestCredential(value) {
+  if (typeof value !== 'string') return { ok: false, error: 'Credential must be text.' };
+  const secret = value.trim();
+  if (secret.length < 4 || secret.length > 64) return { ok: false, error: 'Credential must contain 4 to 64 characters.' };
+  if (/\p{Cc}/u.test(secret)) return { ok: false, error: 'Credential contains unsupported control characters.' };
+  return { ok: true, digest: sha256(`mccompiler:doorlock:v1:${secret}`) };
+}
+
+export function credentialFormResult(response) {
+  if (response?.canceled !== false) return { ok: false, canceled: true };
+  return digestCredential(response.formValues?.[0]);
+}
+
+export function decideInteraction({ lock, itemId, playerId, isSneaking, credentialDigest }) {
   const universal = itemId === UNIVERSAL_KEY_ID;
   if (lock) {
-    const authorized = universal || lock.owner === playerId;
+    const credentialMode = lock.authorization_mode === 'shared_credential' || lock.authorization_mode === 'legacy_credential';
+    const ownerMode = lock.authorization_mode === 'owner_identity';
+    const authorized = universal || (ownerMode && lock.owner === playerId) || (credentialMode && credentialDigest === lock.credential_digest);
     if (!authorized) return { action: 'DENY_LOCKED' };
     if (isSneaking) return { action: 'REMOVE_LOCK', expectedOwner: lock.owner, expectedRevision: lock.revision };
     return { action: 'ALLOW_OPEN' };
   }
-  if (universal || NORMAL_KEY_IDS.has(itemId)) return { action: 'CREATE_LOCK', owner: playerId };
+  if (universal) return { action: 'CREATE_OWNER_LOCK', owner: playerId };
+  if (NORMAL_KEY_IDS.has(itemId) && !credentialDigest) return { action: 'DENY_UNCONFIGURED' };
+  if (NORMAL_KEY_IDS.has(itemId)) return { action: 'CREATE_CREDENTIAL_LOCK', owner: playerId, credentialDigest };
   return { action: 'ALLOW_DEFAULT' };
 }
 
@@ -57,6 +139,9 @@ export function validateLockMap(locks) {
     if (typeof record.created_by_player_id !== 'string' || record.created_by_player_id.length === 0) errors.push(`${location}: creator identity is required`);
     if (record.authorization_mode === 'owner_identity') {
       if (typeof record.owner !== 'string' || record.owner.length === 0 || record.owner === LEGACY_UNCLAIMED_OWNER) errors.push(`${location}: owner identity is invalid`);
+    } else if (record.authorization_mode === 'shared_credential') {
+      if (typeof record.owner !== 'string' || record.owner.length === 0 || record.owner === LEGACY_UNCLAIMED_OWNER) errors.push(`${location}: credential lock creator is invalid`);
+      if (typeof record.credential_digest !== 'string' || !/^[0-9a-f]{64}$/.test(record.credential_digest)) errors.push(`${location}: SHA-256 credential digest is required`);
     } else if (record.authorization_mode === 'legacy_credential') {
       if (record.owner !== LEGACY_UNCLAIMED_OWNER) errors.push(`${location}: legacy record must remain unclaimed`);
       if (typeof record.credential_digest !== 'string' || record.credential_digest.length === 0) errors.push(`${location}: legacy credential digest is required`);
@@ -98,6 +183,19 @@ export function buildOwnerLock(location, owner, createdAtTick) {
     authorization_mode: 'owner_identity',
     owner,
     created_by_player_id: owner,
+    created_at_tick: createdAtTick,
+    revision: 1,
+  };
+}
+
+export function buildCredentialLock(location, credentialDigest, creator, createdAtTick) {
+  return {
+    schema: CURRENT_STATE_SCHEMA,
+    ...locationFields(location),
+    authorization_mode: 'shared_credential',
+    owner: creator,
+    credential_digest: credentialDigest,
+    created_by_player_id: creator,
     created_at_tick: createdAtTick,
     revision: 1,
   };

@@ -12,7 +12,7 @@
   ],
   "requirements": ["all actions reachable with standard controller", "no chat command required", "no hover-only information", "focus order deterministic", "destructive removal requires confirmation", "secrets never echoed after submission", "localizable feedback"],
   "approval": {"approved": false, "reviewer": null, "reviewed_at": null},
-  "implemented": ["item-use and sneak-use interaction path", "ActionFormData removal confirmation", "cancel, back, keep, form-error, and stale-revision paths make no state change"],
+  "implemented": ["item-use and sneak-use interaction path", "ModalFormData credential configuration for normal and golden keys", "trimmed credential validation and digest-only player persistence", "credential plaintext is not logged or persisted", "ActionFormData removal confirmation", "cancel, back, keep, form-error, invalid-input, and stale-revision paths make no lock-state change"],
   "runtime_evidence": "STATIC_AND_HANDLER_TEST_ONLY",
   "console_evidence": {"playstation": "UNVERIFIED", "xbox": "UNVERIFIED"}
 }

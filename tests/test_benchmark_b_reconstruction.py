@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import json
+import hashlib
 from pathlib import Path
 import shutil
 import subprocess
@@ -81,19 +82,24 @@ console.log(JSON.stringify(cases));
             module = Path(directory) / "doorlock-state.mjs"
             shutil.copyfile(module_source, module)
             runner = """
-import { decideBreak, decideInteraction, removalConfirmed } from './doorlock-state.mjs';
+import { credentialFormResult, decideBreak, decideInteraction, removalConfirmed, sha256 } from './doorlock-state.mjs';
 const owner = 'player-a';
 const stranger = 'player-b';
-const lock = { owner, schema: 1 };
-const decide = (playerId, itemId, isSneaking = false, current = lock) =>
-  decideInteraction({ lock: current, playerId, itemId, isSneaking }).action;
+const digest = 'a'.repeat(64);
+const wrongDigest = 'b'.repeat(64);
+const lock = { owner, schema: 1, authorization_mode: 'shared_credential', credential_digest: digest, revision: 1 };
+const decide = (playerId, itemId, isSneaking = false, current = lock, credentialDigest = undefined) =>
+  decideInteraction({ lock: current, playerId, itemId, isSneaking, credentialDigest }).action;
 console.log(JSON.stringify({
-  create: decide(owner, 'door_lock:key', false, null),
-  ownerOpen: decide(owner, undefined),
+  create: decide(owner, 'door_lock:key', false, null, digest),
+  createUnconfigured: decide(owner, 'door_lock:key', false, null),
+  universalCreate: decide(owner, 'door_lock:universal_key', false, null),
+  ownerWithoutCredentialDenied: decide(owner, 'door_lock:key'),
+  matchingOtherPlayerOpen: decide(stranger, 'door_lock:key', false, lock, digest),
+  wrongCredentialDenied: decide(stranger, 'door_lock:key', false, lock, wrongDigest),
   strangerDenied: decide(stranger, undefined),
-  strangerKeyDenied: decide(stranger, 'door_lock:key'),
-  ownerUnlock: decide(owner, 'door_lock:key', true),
-  strangerUnlockDenied: decide(stranger, 'door_lock:key', true),
+  matchingOtherPlayerUnlock: decide(stranger, 'door_lock:key', true, lock, digest),
+  strangerUnlockDenied: decide(stranger, 'door_lock:key', true, lock, wrongDigest),
   universalOpen: decide(stranger, 'door_lock:universal_key'),
   universalUnlock: decide(stranger, 'door_lock:universal_key', true),
   lockedBreak: decideBreak(lock).action,
@@ -101,6 +107,11 @@ console.log(JSON.stringify({
   confirmed: removalConfirmed({ canceled: false, selection: 0 }),
   kept: removalConfirmed({ canceled: false, selection: 1 }),
   canceled: removalConfirmed({ canceled: true, selection: 0 }),
+  shaEmpty: sha256(''),
+  shaUnicode: sha256('lock🔒'),
+  configured: credentialFormResult({ canceled: false, formValues: [' shared-code '] }),
+  tooShort: credentialFormResult({ canceled: false, formValues: ['abc'] }),
+  formCanceled: credentialFormResult({ canceled: true, formValues: ['never-read'] }),
 }));
 """
             completed = subprocess.run(
@@ -108,12 +119,16 @@ console.log(JSON.stringify({
                 capture_output=True, text=True, check=False,
             )
         self.assertEqual(0, completed.returncode, completed.stderr)
-        self.assertEqual({
-            "create": "CREATE_LOCK",
-            "ownerOpen": "ALLOW_OPEN",
+        result = json.loads(completed.stdout)
+        expected = {
+            "create": "CREATE_CREDENTIAL_LOCK",
+            "createUnconfigured": "DENY_UNCONFIGURED",
+            "universalCreate": "CREATE_OWNER_LOCK",
+            "ownerWithoutCredentialDenied": "DENY_LOCKED",
+            "matchingOtherPlayerOpen": "ALLOW_OPEN",
+            "wrongCredentialDenied": "DENY_LOCKED",
             "strangerDenied": "DENY_LOCKED",
-            "strangerKeyDenied": "DENY_LOCKED",
-            "ownerUnlock": "REMOVE_LOCK",
+            "matchingOtherPlayerUnlock": "REMOVE_LOCK",
             "strangerUnlockDenied": "DENY_LOCKED",
             "universalOpen": "ALLOW_OPEN",
             "universalUnlock": "REMOVE_LOCK",
@@ -122,7 +137,15 @@ console.log(JSON.stringify({
             "confirmed": True,
             "kept": False,
             "canceled": False,
-        }, json.loads(completed.stdout))
+        }
+        self.assertEqual(expected, {key: result[key] for key in expected})
+        self.assertEqual(hashlib.sha256(b"").hexdigest(), result["shaEmpty"])
+        self.assertEqual(hashlib.sha256("lock🔒".encode()).hexdigest(), result["shaUnicode"])
+        self.assertTrue(result["configured"]["ok"])
+        self.assertEqual(hashlib.sha256(b"mccompiler:doorlock:v1:shared-code").hexdigest(), result["configured"]["digest"])
+        self.assertFalse(result["tooShort"]["ok"])
+        self.assertTrue(result["formCanceled"]["canceled"])
+        self.assertNotIn("shared-code", json.dumps(result["configured"]))
 
     def test_state_records_and_revision_checks_match_the_v1_contract(self) -> None:
         node = shutil.which("node")
@@ -133,7 +156,7 @@ console.log(JSON.stringify({
             module = Path(directory) / "doorlock-state.mjs"
             shutil.copyfile(module_source, module)
             runner = """
-import { buildOwnerLock, createLockIfAbsent, normalizeLockMap, removeLockIfRevision, validateLockMap } from './doorlock-state.mjs';
+import { buildCredentialLock, buildOwnerLock, createLockIfAbsent, normalizeLockMap, removeLockIfRevision, validateLockMap } from './doorlock-state.mjs';
 const location = 'minecraft:nether:-4:65:12';
 const record = buildOwnerLock(location, 'player-a', 42);
 const created = createLockIfAbsent({}, location, record);
@@ -150,7 +173,8 @@ const badDimension = validateLockMap({ [location]: { ...record, dimension: 'mine
 const badRevision = validateLockMap({ [location]: { ...record, revision: 0 } });
 const badMode = validateLockMap({ [location]: { ...record, authorization_mode: 'unknown' } });
 const sparse = normalizeLockMap({ [location]: { owner: 'player-a', schema: 1 } });
-console.log(JSON.stringify({ record, created, competingCreate, twoLocks, dimensions, staleRemove, wrongOwnerRemove, removed, validErrors, badDimension, badRevision, badMode, sparse, sparseErrors: validateLockMap(sparse.locks) }));
+const shared = buildCredentialLock('minecraft:overworld:1:2:3', 'a'.repeat(64), 'player-a', 46);
+console.log(JSON.stringify({ record, created, competingCreate, twoLocks, dimensions, staleRemove, wrongOwnerRemove, removed, validErrors, badDimension, badRevision, badMode, sparse, sparseErrors: validateLockMap(sparse.locks), shared, sharedErrors: validateLockMap({ 'minecraft:overworld:1:2:3': shared }) }));
 """
             completed = subprocess.run(
                 [node, "--input-type=module", "--eval", runner], cwd=directory,
@@ -182,6 +206,9 @@ console.log(JSON.stringify({ record, created, competingCreate, twoLocks, dimensi
         self.assertTrue(result["sparse"]["upgraded"])
         self.assertEqual([], result["sparseErrors"])
         self.assertEqual("owner_identity", result["sparse"]["locks"]["minecraft:nether:-4:65:12"]["authorization_mode"])
+        self.assertEqual("shared_credential", result["shared"]["authorization_mode"])
+        self.assertEqual("a" * 64, result["shared"]["credential_digest"])
+        self.assertEqual([], result["sharedErrors"])
 
     def test_every_declared_api_symbol_is_stable_and_marketplace_candidate(self) -> None:
         metadata = json.loads((RECONSTRUCTION / "custom-handler.json").read_text())
@@ -200,7 +227,16 @@ console.log(JSON.stringify({ record, created, competingCreate, twoLocks, dimensi
         status = json.loads((RECONSTRUCTION / "implementation-status.json").read_text())
         self.assertEqual("PARTIAL_TECHNICAL_RECONSTRUCTION_BDS_UPGRADE_VERIFIED", status["status"])
         self.assertIsNone(status["approved_quality_claim"])
-        self.assertGreater(len(status["missing"]), 5)
+        self.assertEqual(
+            {
+                "door upper/lower-half normalization",
+                "double-container paired-location normalization",
+                "golden-key behavior distinction",
+                "interrupted-write migration recovery",
+                "actual gameplay, persistence, multiplayer, Realm, and console tests",
+            },
+            set(status["missing"]),
+        )
         self.assertFalse(status["claims"]["technical_reconstruction_complete"])
         self.assertFalse(status["claims"]["runtime_verified"])
         self.assertTrue(status["claims"]["bds_boot_verified"])

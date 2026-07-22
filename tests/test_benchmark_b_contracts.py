@@ -55,7 +55,10 @@ class BenchmarkBContractTests(unittest.TestCase):
         self.assertEqual(state["status"], "IMPLEMENTED_PROPOSED_REDESIGN_RUNTIME_NOT_VERIFIED")
         self.assertIn("dimension", state["logical_schema"]["locks"]["value"])
         authorizations = state["logical_schema"]["locks"]["value"]["authorization"]["one_of"]
-        self.assertEqual({row["authorization_mode"] for row in authorizations}, {"owner_identity", "legacy_credential"})
+        self.assertEqual(
+            {row["authorization_mode"] for row in authorizations},
+            {"owner_identity", "shared_credential", "legacy_credential"},
+        )
         self.assertTrue(state["evidence"])
         self.assertTrue(state["unverified"])
         self.assertIn("idempotent", migration["invariants"])

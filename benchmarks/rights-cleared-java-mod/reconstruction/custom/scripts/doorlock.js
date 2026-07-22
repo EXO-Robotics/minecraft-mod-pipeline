@@ -1,8 +1,9 @@
 import { system, world } from '@minecraft/server';
-import { ActionFormData } from '@minecraft/server-ui';
+import { ActionFormData, ModalFormData } from '@minecraft/server-ui';
 import {
-  buildOwnerLock, createLockIfAbsent, decideBreak, decideInteraction,
-  migrateLegacyState, normalizeLockMap, removalConfirmed, removeLockIfRevision, validateLockMap,
+  buildCredentialLock, buildOwnerLock, createLockIfAbsent, credentialFormResult,
+  decideBreak, decideInteraction, migrateLegacyState, NORMAL_KEY_IDS, normalizeLockMap,
+  removalConfirmed, removeLockIfRevision, validateLockMap,
 } from './doorlock-state.js';
 
 const STATE_KEY = 'mccompiler:doorlock:locks:v1';
@@ -17,6 +18,19 @@ const SUPPORTED_BLOCKS = new Set([
   'minecraft:spruce_door', 'minecraft:trapped_chest',
 ]);
 let migrationReady = false;
+
+function credentialProperty(itemId) {
+  if (itemId === 'door_lock:key') return 'mccompiler:doorlock:key-digest:normal';
+  if (itemId === 'door_lock:golden_key') return 'mccompiler:doorlock:key-digest:golden';
+  return null;
+}
+
+function playerCredential(player, itemId) {
+  const property = credentialProperty(itemId);
+  if (!property) return null;
+  const value = player.getDynamicProperty(property);
+  return typeof value === 'string' && /^[0-9a-f]{64}$/.test(value) ? value : null;
+}
 
 function readLocks() {
   const encoded = world.getDynamicProperty(STATE_KEY);
@@ -65,6 +79,29 @@ async function confirmLockRemoval(player) {
   }
 }
 
+async function configureCredential(player, itemId) {
+  const property = credentialProperty(itemId);
+  if (!property) return;
+  try {
+    const response = await new ModalFormData()
+      .title('Configure lock key')
+      .textField('Shared credential', '4 to 64 characters')
+      .submitButton('Save credential')
+      .show(player);
+    const result = credentialFormResult(response);
+    if (result.canceled) return;
+    if (!result.ok) {
+      player.sendMessage(result.error);
+      return;
+    }
+    player.setDynamicProperty(property, result.digest);
+    player.sendMessage('Key credential saved. The credential itself was not stored.');
+  } catch (error) {
+    player.sendMessage('Key configuration could not be opened. No changes were made.');
+    console.warn(`[mccompiler:doorlock] credential_form_failed=${String(error)}`);
+  }
+}
+
 function runLegacyMigration() {
   const current = readLocks();
   if (current === null) return;
@@ -96,6 +133,11 @@ function runLegacyMigration() {
   console.warn(`[mccompiler:doorlock] migration_v0_v1=${JSON.stringify(result.stats)}`);
 }
 
+world.afterEvents.itemUse.subscribe((event) => {
+  if (!NORMAL_KEY_IDS.has(event.itemStack.typeId) || event.source.typeId !== 'minecraft:player') return;
+  system.run(() => configureCredential(event.source, event.itemStack.typeId));
+});
+
 world.beforeEvents.playerInteractWithBlock.subscribe((event) => {
   const { block, itemStack, player } = event;
   if (!SUPPORTED_BLOCKS.has(block.typeId)) return;
@@ -117,11 +159,17 @@ world.beforeEvents.playerInteractWithBlock.subscribe((event) => {
     itemId: itemStack?.typeId,
     playerId: player.id,
     isSneaking: player.isSneaking,
+    credentialDigest: playerCredential(player, itemStack?.typeId),
   });
 
   if (decision.action === 'DENY_LOCKED') {
     event.cancel = true;
     deferMessage(player, 'This block is locked.');
+    return;
+  }
+  if (decision.action === 'DENY_UNCONFIGURED') {
+    event.cancel = true;
+    deferMessage(player, 'Configure this key by using it away from a block first.');
     return;
   }
   if (decision.action === 'REMOVE_LOCK') {
@@ -139,12 +187,14 @@ world.beforeEvents.playerInteractWithBlock.subscribe((event) => {
     });
     return;
   }
-  if (decision.action === 'CREATE_LOCK') {
+  if (decision.action === 'CREATE_OWNER_LOCK' || decision.action === 'CREATE_CREDENTIAL_LOCK') {
     event.cancel = true;
     system.run(() => {
       const current = readLocks();
       if (current === null) return;
-      const record = buildOwnerLock(location, decision.owner, system.currentTick);
+      const record = decision.action === 'CREATE_CREDENTIAL_LOCK'
+        ? buildCredentialLock(location, decision.credentialDigest, decision.owner, system.currentTick)
+        : buildOwnerLock(location, decision.owner, system.currentTick);
       const result = createLockIfAbsent(current, location, record);
       if (!result.changed) return;
       writeLocks(result.locks);

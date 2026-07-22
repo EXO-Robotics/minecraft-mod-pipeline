@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0.0",
-  "catalog_version": "2026.07.22.2",
+  "catalog_version": "2026.07.22.3",
   "last_verified": "2026-07-22",
   "symbol_groups": [
     {
@@ -15,6 +15,7 @@
       "replacement_strategies": [],
       "symbols": [
         "ItemStack",
+        "ItemStack.typeId",
         "MolangVariableMap",
         "world.getDimension",
         "system.run",
@@ -72,7 +73,12 @@
         "ActionFormData.title",
         "ActionFormData.body",
         "ActionFormData.button",
-        "ActionFormData.show"
+        "ActionFormData.show",
+        "ModalFormData",
+        "ModalFormData.title",
+        "ModalFormData.textField",
+        "ModalFormData.submitButton",
+        "ModalFormData.show"
       ]
     }
   ],

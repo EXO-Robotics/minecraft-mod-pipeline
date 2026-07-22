@@ -5,15 +5,16 @@
   "authority": "server",
   "owner_scope": "lock_record",
   "authorization": {
-    "active_proposed_redesign": "owner-bound key authorization; not approved as source parity",
-    "create": ["requesting_player_holds_key_item", "target_is_supported_and_unlocked"],
-    "remove": ["requesting_player_matches_owner", "universal_key"],
-    "open": ["requesting_player_matches_owner", "universal_key"],
+    "active_proposed_redesign": "configured shared-credential authorization for normal and golden keys, with owner-bound compatibility records; not approved as source parity",
+    "create": ["requesting_player_holds_configured_key_item", "target_is_supported_and_unlocked", "universal_key_creates_owner_identity_record"],
+    "remove": ["requesting_player_credential_matches_lock", "owner_matches_owner_identity_record", "universal_key"],
+    "open": ["requesting_player_credential_matches_lock", "owner_matches_owner_identity_record", "universal_key"],
     "administrative_override": "universal_key; operator audit is not implemented"
   },
   "invariants": [
     "Client input never directly mutates lock state.",
-    "Player A cannot mutate Player B's key credential or inventory.",
+    "Player A cannot mutate Player B's configured key digest or inventory.",
+    "Players who independently configure the same credential can authorize the same shared-credential lock.",
     "A lock in one dimension cannot authorize or block the same coordinates in another dimension.",
     "Concurrent create/remove uses record revision checks and produces one authoritative result.",
     "Disconnect and reconnect preserve authorization behavior without duplicating records.",
@@ -24,6 +25,10 @@
     "two_players_two_locks",
     "wrong_owner_denied",
     "owner_allowed",
+    "wrong_credential_denied",
+    "matching_credential_allowed_across_players",
+    "owner_cannot_bypass_shared_credential",
+    "universal_key_override",
     "simultaneous_lock_attempt",
     "stale_revision_remove_denied",
     "dimension_collision"

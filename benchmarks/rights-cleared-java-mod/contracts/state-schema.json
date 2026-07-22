@@ -15,6 +15,7 @@
         "authorization": {
           "one_of": [
             {"authorization_mode": "owner_identity", "owner": "stable_player_id"},
+            {"authorization_mode": "shared_credential", "owner": "stable_player_id", "credential_digest": "sha256_hex"},
             {"authorization_mode": "legacy_credential", "owner": "legacy-unclaimed", "credential_digest": "nonempty_string"}
           ]
         },
@@ -33,7 +34,8 @@
     "Dimension is added to prevent cross-dimension coordinate collisions.",
     "Creator identity and revision are added for multiplayer authorization and conflict control.",
     "Structured records replace delimiter-encoded strings.",
-    "The active unapproved redesign uses stable player identity instead of a configured credential.",
+    "New normal and golden key locks use a configured shared credential digest; universal-key-created locks use owner identity.",
+    "Credential plaintext is transient form input and is never persisted or logged; deterministic SHA-256 digests are gameplay identifiers, not password-security boundaries.",
     "Migrated legacy records preserve opaque credential digests but remain unclaimed; plaintext secrets are prohibited."
   ],
   "compatibility": {
@@ -48,7 +50,7 @@
   "unverified": [
     "dynamic-property records written by a real player action",
     "record recovery after player reconnect",
-    "credential-form redesign approval and implementation",
+    "credential form use and digest persistence through a real client action",
     "world upgrade and rollback on Bedrock clients"
   ]
 }

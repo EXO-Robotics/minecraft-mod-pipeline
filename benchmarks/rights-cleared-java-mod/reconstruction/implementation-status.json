@@ -6,7 +6,9 @@
   "implemented": [
     "cancellable supported-block interaction",
     "server-authoritative world lock map",
-    "player-identity lock ownership",
+    "shared-credential locks for configured normal and golden keys",
+    "owner-identity compatibility locks for universal-key creation",
+    "controller-native credential configuration with digest-only persistence",
     "universal-key authorization",
     "deterministic two-player owner/non-owner authorization decisions",
     "revision-checked create/remove and complete validated state records",
@@ -21,16 +23,16 @@
   "approved_quality_claim": null,
   "intentional_redesigns": [
     {
-      "id": "owner-bound-key",
+      "id": "controller-configured-shared-credential",
       "status": "PROPOSED_NOT_APPROVED",
-      "preserved": ["lock ownership", "wrong-owner denial", "universal-key override", "controller item-use interaction"],
-      "lost": ["user-entered secret", "matching configured keys shared between players", "anvil and command configuration parity"]
+      "preserved": ["user-entered gameplay credential", "matching configured keys shared between players", "wrong-credential denial", "universal-key override", "controller item-use interaction"],
+      "lost": ["anvil and command configuration parity", "item-instance credential storage"],
+      "security_note": "Deterministic SHA-256 digests prevent plaintext persistence but remain vulnerable to offline guessing and are not a password-security boundary."
     }
   ],
   "missing": [
     "door upper/lower-half normalization",
     "double-container paired-location normalization",
-    "controller form for explicit credential configuration",
     "golden-key behavior distinction",
     "interrupted-write migration recovery",
     "actual gameplay, persistence, multiplayer, Realm, and console tests"
