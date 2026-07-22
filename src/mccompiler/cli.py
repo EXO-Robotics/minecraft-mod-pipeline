@@ -53,8 +53,8 @@ def main(argv: list[str] | None = None) -> int:
 
     plan = plan_conversion(ir)
     archive = compile_bedrock(ir, plan, args.output)
-    print(f"Wrote scaffold: {archive}")
-    print(f"Technical fidelity estimate: {plan['scores']['technical_fidelity']:.0%}")
+    print(f"Wrote deterministic add-on: {archive}")
+    print(f"Technical similarity estimate: {plan['scores']['technical_similarity']:.0%}")
     print(f"Gameplay fidelity estimate: {plan['scores']['gameplay_fidelity']:.0%}")
     return 1 if ir.get("errors") else 0
 

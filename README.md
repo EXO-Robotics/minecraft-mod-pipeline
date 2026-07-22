@@ -1,74 +1,47 @@
-# Minecraft Compiler Baseline
+# Minecraft Reconstruction Compiler
 
-This is the first runnable baseline for the Java-to-Bedrock reconstruction compiler.
+An evidence-backed assisted compiler that reconstructs validated Java mod intent as deterministic Minecraft Bedrock add-ons. It does not translate Java byte-for-byte and it never hides unsupported behavior behind arbitrary generated code.
 
-It is intentionally dependency-free: the scanner and pack generator use Python's
-standard library so the baseline can run before we choose JavaParser, ASM, a
-resource converter, or a Bedrock schema package as production dependencies.
+## Proven baseline
 
-The baseline currently does four things:
+The currently tested semantic profile accepts the included dependency-free Fabric-style Java source fixture. It extracts registrations, triggers, actions, persistent state, boss phases, form intent, approximations, unsupported hooks, and full source provenance into versioned ModIR/BehaviorIR. Loader metadata inventory supports Fabric, Quilt, modern/legacy Forge, NeoForge, CurseForge, Modrinth, and the compiler's directory-modpack manifest; those metadata readers are not claims of full semantic loader support.
 
-1. Scans a Java mod JAR, source tree, or modpack directory.
-2. Produces a normalized, evidence-backed ModIR JSON document.
-3. Plans a Bedrock strategy for the discovered content and risk signals.
-4. Generates a behavior-pack/resource-pack scaffold and `.mcaddon` archive.
+The planner gives every feature one explicit strategy: `DIRECT`, `SCRIPTED_EQUIVALENT`, `RECONSTRUCTED`, `BEHAVIORAL_APPROXIMATION`, `VISUAL_APPROXIMATION`, `MANUAL_REDESIGN`, or `UNSUPPORTED`. Persistent JSON overrides survive regeneration.
 
-It is not yet a semantic Java compiler. It deliberately reports unknown behavior
-instead of inventing it.
-
-## Quick start
-
-From this directory:
+## Run
 
 ```sh
 PYTHONPATH=src python3 -m mccompiler scan \
-  --input /path/to/mod-or-modpack \
-  --output out/scan.json \
+  --input tests/fixtures/representative_mod \
+  --output out/representative-ir.json \
   --bedrock-server /Users/blakegrove/Desktop/bedrock-server
 
 PYTHONPATH=src python3 -m mccompiler compile \
-  --input /path/to/mod-or-modpack \
-  --output out/generated \
-  --bedrock-server /Users/blakegrove/Desktop/bedrock-server
+  --input tests/fixtures/representative_mod \
+  --output out/representative \
+  --overrides overrides.json
 
-PYTHONPATH=src python3 -m mccompiler validate --path out/generated
+PYTHONPATH=src python3 -m mccompiler validate --path out/representative
+PYTHONPATH=src python3 -m unittest discover -s tests -v
 ```
 
-The compiler command writes:
+Compilation writes:
 
 ```text
-out/generated/
+out/representative/
 ├── behavior_pack/
 ├── resource_pack/
-├── conversion_ir.json
-├── conversion_plan.json
-├── conversion_report.md
-└── generated.mcaddon
+├── scripts/
+├── tests/
+├── reports/
+├── conversion-manifest.json
+└── converted-mod.mcaddon
 ```
 
-## Current scope
+Pack UUIDs, JSON ordering, generated modules, ZIP member ordering, timestamps, and archive bytes are deterministic for the same semantic input, target, capability database, and overrides.
 
-The scanner recognizes Fabric, Quilt, Forge/NeoForge TOML, legacy Forge
-`mcmod.info`, CurseForge-style modpacks, and Modrinth indexes. It inventories
-registries and assets from paths, extracts dependency metadata, detects source
-signals, and preserves evidence paths for every result.
+## Architecture
 
-The generator creates valid pack manifests, links behavior and resource packs,
-adds a configurable Script API module, copies safe texture/sound assets into a
-namespaced source area, and emits a report describing what still needs semantic
-reconstruction.
+The boundaries are scanner → loader/source/bytecode analyzers → evidence → intent/ModIR/BehaviorIR → fingerprints → capability/pattern planner → Bedrock backend → layered validator → runtime harness → report. Published schemas live in `src/mccompiler/schemas`; architectural decisions and current primary-source research live in `docs/adr` and `docs/research`.
 
-## Design rule
-
-The JSON IR is the contract between frontends and backends. The first frontend is
-small and conservative. Later frontends can add JavaParser source facts, ASM
-bytecode facts, decompiler output, runtime traces, and human-reviewed behavior
-intents without changing the Bedrock backend contract.
-
-## Target profile
-
-The local Bedrock server is used only as a read-only target profile. Its current
-world pack UUIDs, server properties, content logging settings, and version marker
-are included in scans when `--bedrock-server` is supplied. The generator still
-uses its own UUIDs and never edits the live world.
-
+The JAR fallback currently preserves class constant evidence but does not claim semantic bytecode reconstruction without a working JDK-backed analyzer. Runtime activation is reported separately from static and integration validity.
