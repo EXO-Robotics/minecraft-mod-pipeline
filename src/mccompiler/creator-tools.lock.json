@@ -1,11 +1,11 @@
 {
   "schema_version": "1.0.0",
   "tool": "Minecraft Creator Tools",
-  "version": "1.0.0",
-  "executables": ["mctools", "minecraft-creator-tools"],
+  "package": "@minecraft/creator-tools",
+  "version": "0.17.6",
+  "executables": ["mct"],
   "version_args": ["--version"],
-  "validate_args": ["validate", "--format", "json"],
-  "suite_flag": "--suite",
-  "required_suites": ["addon", "manifest", "scripts", "sharing"],
-  "allowed_suites": ["addon", "manifest", "scripts", "sharing", "platform", "resources", "pack-size"]
+  "global_validate_args": ["--offline", "--json", "--yes"],
+  "required_suites": ["addon", "currentplatform"],
+  "allowed_suites": ["main", "addon", "currentplatform", "all"]
 }

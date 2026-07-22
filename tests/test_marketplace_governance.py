@@ -63,7 +63,7 @@ class PerformanceTests(unittest.TestCase):
 
 class CreatorToolsTests(unittest.TestCase):
     def setUp(self) -> None:
-        self.lock = {"version": "1.0.0", "version_args": ["--version"], "validate_args": ["validate", "--format", "json"], "suite_flag": "--suite", "required_suites": ["addon", "scripts"], "allowed_suites": ["addon", "scripts"]}
+        self.lock = {"version": "0.17.6", "version_args": ["--version"], "global_validate_args": ["--offline", "--json", "--yes"], "required_suites": ["addon", "currentplatform"], "allowed_suites": ["addon", "currentplatform"]}
         self.policy = {"severity_map": {"error": "error", "warn": "warning", "info": "info"}}
 
     def test_recorded_output_normalizes_deterministically(self) -> None:
@@ -76,12 +76,23 @@ class CreatorToolsTests(unittest.TestCase):
         self.assertEqual(["addon", "scripts"], report["suites"])
         self.assertEqual((1, 1, False), (report["errors"], report["warnings"], report["marketplace_approval_implied"]))
 
+    def test_real_cli_shape_is_normalized_without_counting_test_fail_twice(self) -> None:
+        payload = {"projects": [{"items": [
+            {"type": "testFail", "message": "Found one error", "generatorId": "CADDONREQ"},
+            {"type": "error", "message": "Bad identifier", "path": "/manifest.json", "generatorId": "CADDONREQ"},
+            {"type": "testPass", "message": "Texture passed", "generatorId": "TEXTURE"},
+        ]}], "errors": 2, "warnings": 0}
+        result = normalize_creator_tools_output(payload, version="0.17.6", suites=["addon"], policy=self.policy)
+        self.assertEqual(1, result["creator_tools"]["errors"])
+        self.assertEqual(0, result["creator_tools"]["warnings"])
+        self.assertFalse(result["passed"])
+
     def test_discovery_uses_only_pinned_executable_names(self) -> None:
         with tempfile.TemporaryDirectory() as directory:
-            executable = Path(directory) / "mctools"
+            executable = Path(directory) / "mct"
             executable.write_text("#!/bin/sh\n", encoding="utf-8")
             executable.chmod(0o755)
-            found = discover_creator_tools({"executables": ["mctools"]}, search_path=directory)
+            found = discover_creator_tools({"executables": ["mct"]}, search_path=directory)
             self.assertEqual(executable.resolve(), found)
             self.assertIsNone(discover_creator_tools({"executables": ["not-pinned"]}, search_path=directory))
 
@@ -91,11 +102,12 @@ class CreatorToolsTests(unittest.TestCase):
         def fake_runner(command, **kwargs):
             calls.append(command)
             if "--version" in command:
-                return subprocess.CompletedProcess(command, 0, stdout="1.0.0\n", stderr="")
+                return subprocess.CompletedProcess(command, 0, stdout="0.17.6\n", stderr="")
             return subprocess.CompletedProcess(command, 0, stdout=payload, stderr="")
-        result = invoke_creator_tools("/fake/mctools", ".", lock=self.lock, policy=self.policy, runner=fake_runner)
+        result = invoke_creator_tools("/fake/mct", ".", lock=self.lock, policy=self.policy, runner=fake_runner)
         self.assertTrue(result["passed"])
-        self.assertEqual(2, len(calls))
+        self.assertEqual(3, len(calls))
+        self.assertIn("currentplatform", calls[2])
         self.assertFalse(result["creator_tools"]["marketplace_approval_implied"])
 
     def test_version_mismatch_and_unknown_suite_fail(self) -> None:

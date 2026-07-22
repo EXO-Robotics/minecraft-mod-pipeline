@@ -261,16 +261,17 @@ def _resource_content(ir: dict[str, Any], rp: Path, namespace: str) -> list[dict
     entities += [str(a.get("entity")) for b in ir.get("behaviors", []) for a in b.get("actions", []) if a.get("type") == "spawn_projectile" and a.get("entity")]
     entities = sorted(set(entities))
     placeholders: list[dict[str, Any]] = []
+    pack_key = f"mccompiler_{namespace}"
     item_data, terrain_data, block_data = {}, {}, {}
     for identifier in items:
         short = identifier.split(":", 1)[1]
-        texture = f"textures/items/{short}"
+        texture = f"textures/mccompiler/{namespace}/item_{short}"
         item_data[identifier] = {"textures": texture}
         path = rp / f"{texture}.png"; path.parent.mkdir(parents=True, exist_ok=True); path.write_bytes(PLACEHOLDER_PNG)
         placeholders.append({"owner": identifier, "kind": "texture", "path": path.relative_to(rp.parent).as_posix(), "reason": "source binary absent"})
     for identifier in blocks:
         short = identifier.split(":", 1)[1]
-        texture = f"textures/blocks/{short}"
+        texture = f"textures/mccompiler/{namespace}/block_{short}"
         terrain_data[identifier] = {"textures": texture}
         block_data[identifier] = {"sound": "stone", "textures": identifier}
         path = rp / f"{texture}.png"; path.parent.mkdir(parents=True, exist_ok=True); path.write_bytes(PLACEHOLDER_PNG)
@@ -278,24 +279,24 @@ def _resource_content(ir: dict[str, Any], rp: Path, namespace: str) -> list[dict
     if item_data: _write(rp / "textures/item_texture.json", {"resource_pack_name": f"{namespace}_resources", "texture_name": "atlas.items", "texture_data": item_data})
     if terrain_data: _write(rp / "textures/terrain_texture.json", {"resource_pack_name": f"{namespace}_resources", "texture_name": "atlas.terrain", "texture_data": terrain_data})
     if block_data: _write(rp / "blocks.json", {"format_version": [1, 1, 0], **block_data})
-    geometry = {"format_version": "1.12.0", "minecraft:geometry": [{"description": {"identifier": f"geometry.{namespace}.generated", "texture_width": 16, "texture_height": 16, "visible_bounds_width": 2, "visible_bounds_height": 2, "visible_bounds_offset": [0, 1, 0]}, "bones": [{"name": "root", "pivot": [0, 0, 0], "cubes": [{"origin": [-4, 0, -4], "size": [8, 8, 8], "uv": [0, 0]}]}]}]}
+    geometry = {"format_version": "1.12.0", "minecraft:geometry": [{"description": {"identifier": f"geometry.{pack_key}.generated", "texture_width": 16, "texture_height": 16, "visible_bounds_width": 2, "visible_bounds_height": 2, "visible_bounds_offset": [0, 1, 0]}, "bones": [{"name": "root", "pivot": [0, 0, 0], "cubes": [{"origin": [-4, 0, -4], "size": [8, 8, 8], "uv": [0, 0]}]}]}]}
     if entities:
         _write(rp / "models/entity/generated.geo.json", geometry)
-        _write(rp / "render_controllers/generated.render_controllers.json", {"format_version": "1.8.0", "render_controllers": {f"controller.render.{namespace}.generated": {"geometry": "Geometry.default", "materials": [{"*": "Material.default"}], "textures": ["Texture.default"]}}})
-        _write(rp / "animations/generated.animation.json", {"format_version": "1.8.0", "animations": {f"animation.{namespace}.idle": {"loop": True, "animation_length": 1.0}}})
+        _write(rp / "render_controllers/generated.render_controllers.json", {"format_version": "1.8.0", "render_controllers": {f"controller.render.{pack_key}.generated": {"geometry": "Geometry.default", "materials": [{"*": "Material.default"}], "textures": ["Texture.default"]}}})
+        _write(rp / "animations/generated.animation.json", {"format_version": "1.8.0", "animations": {f"animation.{pack_key}.idle": {"loop": True, "animation_length": 1.0}}})
         _write(rp / "animation_controllers/generated.controller.json", {
             "format_version": "1.10.0",
             "animation_controllers": {
-                f"controller.animation.{namespace}.idle": {
+                f"controller.animation.{pack_key}.idle": {
                     "initial_state": "default",
-                    "states": {"default": {"animations": [f"animation.{namespace}.idle"]}},
+                    "states": {"default": {"animations": [f"animation.{pack_key}.idle"]}},
                 }
             },
         })
     for identifier in entities:
-        short = identifier.split(":", 1)[1]; texture = f"textures/entity/{short}"
+        short = identifier.split(":", 1)[1]; texture = f"textures/mccompiler/{namespace}/entity_{short}"
         path = rp / f"{texture}.png"; path.parent.mkdir(parents=True, exist_ok=True); path.write_bytes(PLACEHOLDER_PNG)
-        _write(rp / f"entity/{identifier.replace(':', '_')}.entity.json", {"format_version": "1.10.0", "minecraft:client_entity": {"description": {"identifier": identifier, "materials": {"default": "entity_alphatest"}, "textures": {"default": texture}, "geometry": {"default": f"geometry.{namespace}.generated"}, "animations": {"idle": f"animation.{namespace}.idle"}, "animation_controllers": [{"idle": f"controller.animation.{namespace}.idle"}], "render_controllers": [f"controller.render.{namespace}.generated"], "spawn_egg": {"base_color": "#777777", "overlay_color": "#55AAFF"}}}})
+        _write(rp / f"entity/{identifier.replace(':', '_')}.entity.json", {"format_version": "1.10.0", "minecraft:client_entity": {"description": {"identifier": identifier, "materials": {"default": "entity_alphatest"}, "textures": {"default": texture}, "geometry": {"default": f"geometry.{pack_key}.generated"}, "animations": {"idle": f"animation.{pack_key}.idle"}, "animation_controllers": [{"idle": f"controller.animation.{pack_key}.idle"}], "render_controllers": [f"controller.render.{pack_key}.generated"], "spawn_egg": {"base_color": "#777777", "overlay_color": "#55AAFF"}}}})
         placeholders.append({"owner": identifier, "kind": "texture", "path": path.relative_to(rp.parent).as_posix(), "reason": "source binary absent"})
     lang = []
     for identifier in items: lang.append(f"item.{identifier}.name={identifier.split(':', 1)[1].replace('_', ' ').title()}")
@@ -342,7 +343,7 @@ def compile_bedrock(ir: dict[str, Any], plan: dict[str, Any], output_dir: str | 
     target_profile = get_target(plan.get("target_profile"))
     bp, rp = output / "behavior_pack", output / "resource_pack"
     bp_manifest: dict[str, Any] = {"format_version": 2, "header": {"name": f"{namespace} reconstructed behavior", "description": "Deterministic output from minecraft-compiler-baseline", "uuid": ids["bp"], "version": version, "min_engine_version": min_engine}, "modules": [{"type": "data", "uuid": ids["bp-data"], "version": version}], "dependencies": [{"uuid": ids["rp"], "version": version}], "metadata": {"authors": ["minecraft-compiler-baseline"], "generated_with": {"minecraft-compiler-baseline": [TOOL_VERSION]}}}
-    _write(rp / "manifest.json", {"format_version": 2, "header": {"name": f"{namespace} reconstructed resources", "description": "Deterministic output from minecraft-compiler-baseline", "uuid": ids["rp"], "version": version, "min_engine_version": min_engine}, "modules": [{"type": "resources", "uuid": ids["rp-data"], "version": version}], "metadata": {"authors": ["minecraft-compiler-baseline"], "generated_with": {"minecraft-compiler-baseline": [TOOL_VERSION]}}})
+    _write(rp / "manifest.json", {"format_version": 2, "header": {"name": f"{namespace} reconstructed resources", "description": "Deterministic output from minecraft-compiler-baseline", "uuid": ids["rp"], "version": version, "min_engine_version": min_engine, "pack_scope": "world"}, "modules": [{"type": "resources", "uuid": ids["rp-data"], "version": version}], "dependencies": [{"uuid": ids["bp"], "version": version}], "metadata": {"authors": ["minecraft-compiler-baseline"], "generated_with": {"minecraft-compiler-baseline": [TOOL_VERSION]}}})
     index = _feature_index(plan)
     generated, omitted = [], []
     for content in sorted(ir.get("content", []), key=lambda x: (str(x.get("kind")), str(x.get("identifier")))):

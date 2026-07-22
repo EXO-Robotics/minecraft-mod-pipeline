@@ -33,16 +33,24 @@ def normalize_creator_tools_output(
 ) -> dict[str, Any]:
     findings: list[dict[str, str]] = []
     source = payload.get("diagnostics", payload.get("findings", []))
+    if not source and isinstance(payload.get("projects"), list):
+        source = [
+            {**item, "suite": item.get("generatorId", "unknown"), "severity": item.get("type", "info")}
+            for project in payload["projects"] if isinstance(project, Mapping)
+            for item in project.get("items", []) if isinstance(item, Mapping)
+        ]
     if not isinstance(source, list):
         source = []
     severity_map = {str(k).lower(): str(v).lower() for k, v in (policy.get("severity_map") or {}).items()}
     for raw in source:
         if not isinstance(raw, Mapping):
             continue
-        severity = severity_map.get(str(raw.get("severity", "warning")).lower(), str(raw.get("severity", "warning")).lower())
+        raw_severity = str(raw.get("severity", "warning")).lower()
+        type_severity = {"error": "error", "warning": "warning", "warn": "warning"}.get(raw_severity, "info")
+        severity = severity_map.get(raw_severity, type_severity)
         findings.append({
             "suite": str(raw.get("suite") or "unknown"), "severity": severity,
-            "code": str(raw.get("code") or "UNKNOWN"), "path": str(raw.get("path") or ""),
+            "code": str(raw.get("code") or raw.get("generatorId") or "UNKNOWN"), "path": str(raw.get("path") or ""),
             "message": str(raw.get("message") or ""),
         })
     findings.sort(key=lambda row: (row["suite"], row["severity"], row["code"], row["path"], row["message"]))
@@ -76,19 +84,42 @@ def invoke_creator_tools(
     expected_version = str(lock.get("version"))
     if version_result.returncode != 0 or actual_version != expected_version:
         raise RuntimeError(f"Creator Tools version mismatch: expected {expected_version}, got {actual_version or '<unavailable>'}")
-    command = [str(executable), *lock.get("validate_args", ["validate"]), str(Path(project).resolve())]
+    payloads: list[Mapping[str, Any]] = []
+    commands: list[list[str]] = []
+    exit_codes: list[int] = []
     for suite in selected:
-        command.extend([str(lock.get("suite_flag", "--suite")), str(suite)])
-    result = runner(command, capture_output=True, text=True, check=False)
-    try:
-        payload = json.loads(result.stdout)
-    except json.JSONDecodeError as exc:
-        raise RuntimeError("Creator Tools did not return JSON") from exc
-    normalized = normalize_creator_tools_output(payload, version=actual_version, suites=selected, policy=policy)
-    normalized["creator_tools"]["exit_code"] = result.returncode
-    normalized["creator_tools"]["command"] = command
-    if result.returncode != 0 and normalized["creator_tools"]["errors"] == 0:
-        normalized["creator_tools"]["errors"] = 1
-        normalized["creator_tools"]["findings"].append({"suite": "tool", "severity": "error", "code": "NONZERO_EXIT", "path": "", "message": "Creator Tools exited nonzero without an error diagnostic"})
-        normalized["passed"] = False
+        resolved_project = Path(project).resolve()
+        input_flag = "--input-file" if resolved_project.is_file() else "--input-folder"
+        command = [
+            str(executable), input_flag, str(resolved_project),
+            *map(str, lock.get("global_validate_args", ["--offline", "--json", "--yes"])),
+            "validate", str(suite),
+        ]
+        commands.append(command)
+        result = runner(command, capture_output=True, text=True, check=False)
+        exit_codes.append(result.returncode)
+        try:
+            parsed = json.loads(result.stdout)
+        except json.JSONDecodeError as exc:
+            raise RuntimeError(f"Creator Tools did not return JSON for suite {suite}") from exc
+        if not isinstance(parsed, Mapping):
+            raise RuntimeError(f"Creator Tools returned a non-object result for suite {suite}")
+        payloads.append(parsed)
+    combined_findings: list[Any] = []
+    for payload in payloads:
+        source = payload.get("diagnostics", payload.get("findings", []))
+        if isinstance(source, list) and source:
+            combined_findings.extend(source)
+        elif isinstance(payload.get("projects"), list):
+            for project_result in payload["projects"]:
+                if isinstance(project_result, Mapping) and isinstance(project_result.get("items"), list):
+                    combined_findings.extend(project_result["items"])
+    normalized = normalize_creator_tools_output({"projects": [{"items": combined_findings}]}, version=actual_version, suites=selected, policy=policy)
+    normalized["creator_tools"]["exit_codes"] = exit_codes
+    normalized["creator_tools"]["commands"] = commands
+    for suite, exit_code in zip(selected, exit_codes):
+        if exit_code != 0 and not any(row["severity"] == "error" and row["suite"] == suite for row in normalized["creator_tools"]["findings"]):
+            normalized["creator_tools"]["errors"] += 1
+            normalized["creator_tools"]["findings"].append({"suite": suite, "severity": "error", "code": "NONZERO_EXIT", "path": "", "message": "Creator Tools exited nonzero without an error diagnostic"})
+            normalized["passed"] = False
     return normalized
