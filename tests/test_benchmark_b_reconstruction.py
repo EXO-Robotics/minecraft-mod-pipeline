@@ -70,6 +70,52 @@ console.log(JSON.stringify(cases));
         self.assertEqual(cases["single"]["locks"], cases["second"]["locks"])
         self.assertEqual(0, cases["second"]["stats"]["imported"])
 
+    def test_authorization_handler_preserves_two_player_isolation(self) -> None:
+        node = shutil.which("node")
+        if not node:
+            self.skipTest("node is required for clean-room authorization logic tests")
+        module_source = RECONSTRUCTION / "custom/scripts/doorlock-state.js"
+        with tempfile.TemporaryDirectory() as directory:
+            module = Path(directory) / "doorlock-state.mjs"
+            shutil.copyfile(module_source, module)
+            runner = """
+import { decideBreak, decideInteraction } from './doorlock-state.mjs';
+const owner = 'player-a';
+const stranger = 'player-b';
+const lock = { owner, schema: 1 };
+const decide = (playerId, itemId, isSneaking = false, current = lock) =>
+  decideInteraction({ lock: current, playerId, itemId, isSneaking }).action;
+console.log(JSON.stringify({
+  create: decide(owner, 'door_lock:key', false, null),
+  ownerOpen: decide(owner, undefined),
+  strangerDenied: decide(stranger, undefined),
+  strangerKeyDenied: decide(stranger, 'door_lock:key'),
+  ownerUnlock: decide(owner, 'door_lock:key', true),
+  strangerUnlockDenied: decide(stranger, 'door_lock:key', true),
+  universalOpen: decide(stranger, 'door_lock:universal_key'),
+  universalUnlock: decide(stranger, 'door_lock:universal_key', true),
+  lockedBreak: decideBreak(lock).action,
+  unlockedBreak: decideBreak(undefined).action,
+}));
+"""
+            completed = subprocess.run(
+                [node, "--input-type=module", "--eval", runner], cwd=directory,
+                capture_output=True, text=True, check=False,
+            )
+        self.assertEqual(0, completed.returncode, completed.stderr)
+        self.assertEqual({
+            "create": "CREATE_LOCK",
+            "ownerOpen": "ALLOW_OPEN",
+            "strangerDenied": "DENY_LOCKED",
+            "strangerKeyDenied": "DENY_LOCKED",
+            "ownerUnlock": "REMOVE_LOCK",
+            "strangerUnlockDenied": "DENY_LOCKED",
+            "universalOpen": "ALLOW_OPEN",
+            "universalUnlock": "REMOVE_LOCK",
+            "lockedBreak": "DENY_LOCKED",
+            "unlockedBreak": "ALLOW_BREAK",
+        }, json.loads(completed.stdout))
+
     def test_every_declared_api_symbol_is_stable_and_marketplace_candidate(self) -> None:
         metadata = json.loads((RECONSTRUCTION / "custom-handler.json").read_text())
         requirements = [

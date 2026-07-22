@@ -1,5 +1,23 @@
 export const LEGACY_UNCLAIMED_OWNER = 'legacy-unclaimed';
 export const CURRENT_STATE_SCHEMA = 1;
+export const NORMAL_KEY_IDS = new Set(['door_lock:key', 'door_lock:golden_key']);
+export const UNIVERSAL_KEY_ID = 'door_lock:universal_key';
+
+export function decideInteraction({ lock, itemId, playerId, isSneaking }) {
+  const universal = itemId === UNIVERSAL_KEY_ID;
+  if (lock) {
+    const authorized = universal || lock.owner === playerId;
+    if (!authorized) return { action: 'DENY_LOCKED' };
+    if (isSneaking) return { action: 'REMOVE_LOCK', expectedOwner: lock.owner };
+    return { action: 'ALLOW_OPEN' };
+  }
+  if (universal || NORMAL_KEY_IDS.has(itemId)) return { action: 'CREATE_LOCK', owner: playerId };
+  return { action: 'ALLOW_DEFAULT' };
+}
+
+export function decideBreak(lock) {
+  return lock ? { action: 'DENY_LOCKED' } : { action: 'ALLOW_BREAK' };
+}
 
 function clone(value) {
   return JSON.parse(JSON.stringify(value));

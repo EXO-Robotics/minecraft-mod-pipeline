@@ -1,13 +1,11 @@
 import { system, world } from '@minecraft/server';
-import { migrateLegacyState } from './doorlock-state.js';
+import { decideBreak, decideInteraction, migrateLegacyState } from './doorlock-state.js';
 
 const STATE_KEY = 'mccompiler:doorlock:locks:v1';
 const LEGACY_STATE_KEY = 'mccompiler:doorlock:locks:v0';
 const MIGRATION_KEY = 'mccompiler:doorlock:migration:v0-to-v1';
 const QUARANTINE_KEY = 'mccompiler:doorlock:migration-quarantine:v0-to-v1';
 const BOOT_KEY = 'mccompiler:doorlock:diagnostic_boot';
-const NORMAL_KEYS = new Set(['door_lock:key', 'door_lock:golden_key']);
-const UNIVERSAL_KEY = 'door_lock:universal_key';
 const SUPPORTED_BLOCKS = new Set([
   'minecraft:acacia_door', 'minecraft:anvil', 'minecraft:barrel', 'minecraft:birch_door',
   'minecraft:chest', 'minecraft:copper_door', 'minecraft:dark_oak_door', 'minecraft:iron_door',
@@ -81,38 +79,39 @@ world.beforeEvents.playerInteractWithBlock.subscribe((event) => {
   }
   const location = blockKey(block);
   const lock = locks[location];
-  const item = itemStack?.typeId;
-  const universal = item === UNIVERSAL_KEY;
-  const ownsLock = lock?.owner === player.id;
+  const decision = decideInteraction({
+    lock,
+    itemId: itemStack?.typeId,
+    playerId: player.id,
+    isSneaking: player.isSneaking,
+  });
 
-  if (lock) {
-    if (!universal && !ownsLock) {
-      event.cancel = true;
-      deferMessage(player, 'This block is locked.');
-      return;
-    }
-    if (player.isSneaking) {
-      event.cancel = true;
-      system.run(() => {
-        const current = readLocks();
-        if (current === null || current[location]?.owner !== lock.owner) return;
-        delete current[location];
-        writeLocks(current);
-        player.sendMessage('Lock removed.');
-      });
-    }
+  if (decision.action === 'DENY_LOCKED') {
+    event.cancel = true;
+    deferMessage(player, 'This block is locked.');
     return;
   }
-
-  if (!NORMAL_KEYS.has(item) && !universal) return;
-  event.cancel = true;
-  system.run(() => {
-    const current = readLocks();
-    if (current === null || current[location]) return;
-    current[location] = { owner: player.id, schema: 1 };
-    writeLocks(current);
-    player.sendMessage('Block locked to your player identity. Sneak-use a key to remove it.');
-  });
+  if (decision.action === 'REMOVE_LOCK') {
+    event.cancel = true;
+    system.run(() => {
+      const current = readLocks();
+      if (current === null || current[location]?.owner !== decision.expectedOwner) return;
+      delete current[location];
+      writeLocks(current);
+      player.sendMessage('Lock removed.');
+    });
+    return;
+  }
+  if (decision.action === 'CREATE_LOCK') {
+    event.cancel = true;
+    system.run(() => {
+      const current = readLocks();
+      if (current === null || current[location]) return;
+      current[location] = { owner: decision.owner, schema: 1 };
+      writeLocks(current);
+      player.sendMessage('Block locked to your player identity. Sneak-use a key to remove it.');
+    });
+  }
 });
 
 world.beforeEvents.playerBreakBlock.subscribe((event) => {
@@ -123,7 +122,7 @@ world.beforeEvents.playerBreakBlock.subscribe((event) => {
     return;
   }
   const locks = readLocks();
-  if (locks === null || locks[blockKey(event.block)]) {
+  if (locks === null || decideBreak(locks[blockKey(event.block)]).action === 'DENY_LOCKED') {
     event.cancel = true;
     deferMessage(event.player, 'Unlock this block before breaking it.');
   }

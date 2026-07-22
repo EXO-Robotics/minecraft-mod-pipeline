@@ -43,9 +43,9 @@ This matrix describes the repository after the executable Benchmark A foundation
 | GEN-01 | Baseline BP/RP/script generation | `PARTIAL` | Deterministic scaffolds and profile-aware outputs exist; product fidelity/runtime not qualified |
 | GEN-02 | `.mcaddon` generation | `PARTIAL` for production | Deterministic clean archive and live official static validation pass for Benchmark A; gameplay/runtime qualification is missing |
 | GEN-03 | `.mcworld` generation | `IMPLEMENTED` foundation | Deterministic world archive, embedded BP/RP bindings, minimal little-endian `level.dat`, and artifact hashes are tested; Minecraft runtime import remains unverified |
-| VAL-01 | Current repository unit suite | `IMPLEMENTED` | 132 tests pass; one compiled-Java test is skipped because this host has no usable JDK; strict mypy passes 56 source files |
+| VAL-01 | Current repository unit suite | `IMPLEMENTED` | 133 tests pass; one compiled-Java test is skipped because this host has no usable JDK; strict mypy passes 56 source files |
 | VAL-02 | Real-action event integration | `NOT_IMPLEMENTED` | Internal dispatch tests cannot satisfy this gate |
-| VAL-03 | Persistence/multiplayer/migration | `PARTIAL` logic; end-to-end `NOT_IMPLEMENTED` | Pure migration scenarios and narrow BDS restart property pass; real migration execution, reconnect, ownership isolation, and multiplayer remain unverified |
+| VAL-03 | Persistence/multiplayer/migration | `PARTIAL` logic; end-to-end `NOT_IMPLEMENTED` | Pure migration and owner/non-owner authorization scenarios plus narrow BDS restart property pass; real migration execution, reconnect, and multiplayer actions remain unverified |
 | VAL-04 | Creator Tools suites | `IMPLEMENTED` for Benchmark A/B static artifacts | Live pinned official suites passed with artifact-bound checked-in summaries; runtime and Marketplace approval remain separate |
 | VAL-05 | Performance limits | `PARTIAL` | Static limits/approvals tested; runtime limits and device evidence absent |
 | BENCH-A | Original Marketplace showcase | `IMPLEMENTED` static benchmark; BDS diagnostic `PARTIAL` | Executable 21-family fixture, IR/quality/test contracts, clean archive, live Creator Tools, and isolated server diagnostics exist; real player-action qualification remains |
