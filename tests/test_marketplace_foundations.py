@@ -48,6 +48,18 @@ class ApiCatalogTests(unittest.TestCase):
                 marketplace=True,
             )
 
+    def test_stable_before_events_are_catalogued_at_their_introduction_versions(self) -> None:
+        catalog = ApiCatalog.load_default()
+        versions, evidence = catalog.resolve_versions([
+            ("@minecraft/server", "world.beforeEvents.playerInteractWithBlock"),
+            ("@minecraft/server", "world.beforeEvents.playerBreakBlock"),
+        ], marketplace=True)
+        self.assertEqual("1.15.0", versions["@minecraft/server"])
+        self.assertEqual({"world.beforeEvents.playerInteractWithBlock", "world.beforeEvents.playerBreakBlock"}, {row["symbol"] for row in evidence})
+        self.assertTrue(all(row["stability"] == "stable" and not row["experiments_required"] for row in evidence))
+        self.assertTrue(all(row["restricted_execution"] for row in evidence))
+        self.assertTrue(all(str(row["source_documentation"]).startswith("https://learn.microsoft.com/") for row in evidence))
+
 
 if __name__ == "__main__":
     unittest.main()

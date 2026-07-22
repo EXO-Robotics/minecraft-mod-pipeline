@@ -18,6 +18,8 @@ Pins are compatibility inputs and belong in the emitted report. A moving `latest
 
 The Script API values above are conservative candidate pins for the local 1.21.132 profile, not claims about the newest registry packages. Before implementation declares the profile production-ready, a probe pack must import and execute each dependency on the exact BDS build. The probe result then becomes a checked-in profile fixture.
 
+Cancellation-sensitive reconstructions may use stable `world.beforeEvents.playerInteractWithBlock` (introduced in `@minecraft/server` 1.15.0) and `world.beforeEvents.playerBreakBlock` (available by 1.6.0). Before-event callbacks run with restricted execution: cancellation may happen in the callback, but gameplay-state mutation must be deferred with `system.run`. These symbols are catalogued for protected custom implementations; the generic after-event dispatcher does not pretend to provide cancellation semantics.
+
 ## Content format policy
 
 Microsoft's [latest platform version guidance](https://learn.microsoft.com/en-us/minecraft/creator/documents/practices/latestplatformversion?view=minecraft-bedrock-stable) applies different minimum rules to blocks, items, recipes, spawn rules, entities, loot tables, resource entities, sounds and other families. The compiler therefore maintains a version table keyed by `(target_profile, content_kind)` and records the selected value in every generated-file provenance record.
@@ -25,4 +27,3 @@ Microsoft's [latest platform version guidance](https://learn.microsoft.com/en-us
 ## Reproducibility record
 
 Each build report should include compiler version/commit, schema versions, analyzer versions, Python/JDK versions, target profile, API dependencies, platform, input and override hashes, capability/pattern catalog hashes, generated tree hash, and validator/runtime versions. Network lookups are forbidden during normal deterministic compilation.
-

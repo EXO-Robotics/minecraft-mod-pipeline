@@ -26,6 +26,8 @@ class ApiSymbol:
     realm_candidate: bool
     bds_only: bool
     replacement_strategies: tuple[str, ...]
+    restricted_execution: bool
+    source_documentation: str | None
 
     @classmethod
     def from_json(cls, value: dict[str, Any]) -> "ApiSymbol":
@@ -40,6 +42,8 @@ class ApiSymbol:
             realm_candidate=bool(value.get("realm_candidate")),
             bds_only=bool(value.get("bds_only")),
             replacement_strategies=tuple(value.get("replacement_strategies", [])),
+            restricted_execution=bool(value.get("restricted_execution", False)),
+            source_documentation=str(value["source_documentation"]) if value.get("source_documentation") else None,
         )
 
 
@@ -99,6 +103,8 @@ class ApiCatalog:
                     "realm_candidate": symbol.realm_candidate,
                     "bds_only": symbol.bds_only,
                     "replacement_strategies": list(symbol.replacement_strategies),
+                    "restricted_execution": symbol.restricted_execution,
+                    "source_documentation": symbol.source_documentation,
                     "catalog_version": self.catalog_version,
                     "last_verified": self.last_verified,
                 }
