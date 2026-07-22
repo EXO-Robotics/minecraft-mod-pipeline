@@ -38,13 +38,31 @@ class BenchmarkBReconstructionTests(unittest.TestCase):
 
     def test_status_exposes_every_unfinished_claim(self) -> None:
         status = json.loads((RECONSTRUCTION / "implementation-status.json").read_text())
-        self.assertEqual("PARTIAL_TECHNICAL_RECONSTRUCTION_NOT_RUN", status["status"])
+        self.assertEqual("PARTIAL_TECHNICAL_RECONSTRUCTION_BDS_BOOT_VERIFIED", status["status"])
         self.assertIsNone(status["approved_quality_claim"])
         self.assertGreater(len(status["missing"]), 5)
-        self.assertTrue(all(value is False for value in status["claims"].values()))
+        self.assertFalse(status["claims"]["technical_reconstruction_complete"])
+        self.assertFalse(status["claims"]["runtime_verified"])
+        self.assertTrue(status["claims"]["bds_boot_verified"])
+        self.assertTrue(status["claims"]["creator_tools_passed"])
+        self.assertFalse(status["claims"]["rights_cleared"])
+        self.assertFalse(status["claims"]["marketplace_candidate"])
+        self.assertFalse(status["claims"]["console_verified"])
         redesign = status["intentional_redesigns"][0]
         self.assertEqual("PROPOSED_NOT_APPROVED", redesign["status"])
         self.assertTrue(redesign["lost"])
+
+    def test_external_validation_is_hash_bound_and_narrow(self) -> None:
+        validation = json.loads((RECONSTRUCTION / "technical-build-validation.json").read_text())
+        self.assertEqual("STATIC_AND_BDS_BOOT_VERIFIED", validation["status"])
+        self.assertEqual(0, validation["creator_tools"]["errors"])
+        self.assertEqual(0, validation["creator_tools"]["warnings"])
+        self.assertFalse(validation["creator_tools"]["marketplace_approval_implied"])
+        self.assertTrue(validation["bds_diagnostic"]["script_initialized"])
+        self.assertFalse(validation["bds_diagnostic"]["published_ports"])
+        self.assertEqual(validation["artifacts"]["mcworld"]["sha256"], validation["bds_diagnostic"]["world_sha256"])
+        self.assertFalse(validation["marketplace_candidate"]["passed"])
+        self.assertIn("actual player item and block event adapters", validation["unverified"])
 
 
 if __name__ == "__main__":

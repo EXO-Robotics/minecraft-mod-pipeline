@@ -26,4 +26,12 @@ These files are specifications for a future reconstruction. They do not claim im
 
 `reconstruction/` now contains an original, partial Bedrock script written from the evidence contracts rather than copied Java or asset payloads. It proves the feasibility of stable cancellable block-interaction and break events, server-authoritative world state, controller item-use, owner isolation, universal-key access, and deferred mutations outside restricted before-event callbacks. Its API surface is checked against the stable Marketplace catalog and its JavaScript syntax is tested.
 
-The implementation deliberately remains `PARTIAL_TECHNICAL_RECONSTRUCTION_NOT_RUN`. It proposes an owner-bound-key redesign and explicitly records the lost password/shared-key behavior. It has no item/resource pack yet, no runtime evidence, no approved redesign or quality classification, and no rights clearance. It therefore does not satisfy Benchmark B or Marketplace-candidate gates yet.
+The implementation is now `PARTIAL_TECHNICAL_RECONSTRUCTION_BDS_BOOT_VERIFIED`. It proposes an owner-bound-key redesign and explicitly records the lost password/shared-key behavior. The reproducible builder generates item/resource packs with original placeholder pixels. The exact `.mcaddon` passed pinned Creator Tools 0.17.6 with zero errors and warnings, and the exact `.mcworld` loaded with custom script initialization on isolated BDS 1.26.33.2. This is not action-driven gameplay evidence: there is still no approved redesign, quality classification, rights clearance, persistence/multiplayer proof, client test, Realm test, or console test. It therefore does not satisfy Benchmark B or Marketplace-candidate gates yet.
+
+Reproduce the current technical build in a new project directory:
+
+```sh
+PYTHONPATH=src python3 tools/build_benchmark_b.py --output /private/tmp/mccompiler-benchmark-b-project
+```
+
+The builder emits deterministic `.mcaddon` and `.mcworld` artifacts, runs static/script/asset/API/performance validation, and records the intentionally failing Marketplace-candidate evaluation. It does not assign rights clearance or quality parity.

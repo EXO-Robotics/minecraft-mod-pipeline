@@ -1,9 +1,11 @@
 from __future__ import annotations
 
+import hashlib
 import json
 import subprocess
 import tempfile
 import unittest
+import zipfile
 from pathlib import Path
 
 from mccompiler.creator_tools import discover_creator_tools, invoke_creator_tools, normalize_creator_tools_output
@@ -109,6 +111,27 @@ class CreatorToolsTests(unittest.TestCase):
         self.assertEqual(3, len(calls))
         self.assertIn("currentplatform", calls[2])
         self.assertFalse(result["creator_tools"]["marketplace_approval_implied"])
+
+    def test_archive_uses_hash_named_copy_and_rejects_stale_cache_paths(self) -> None:
+        payload = {"projects": [{"items": [{"type": "error", "message": "old cache", "path": "/resource_pack/old.png", "generatorId": "STALE"}]}]}
+        seen_inputs = []
+        with tempfile.TemporaryDirectory() as directory:
+            archive_path = Path(directory) / "converted-mod.mcaddon"
+            with zipfile.ZipFile(archive_path, "w") as archive:
+                archive.writestr("behavior_pack/manifest.json", "{}")
+            digest = hashlib.sha256(archive_path.read_bytes()).hexdigest()
+            def fake_runner(command, **kwargs):
+                if "--version" in command:
+                    return subprocess.CompletedProcess(command, 0, stdout="0.17.6\n", stderr="")
+                input_path = Path(command[command.index("--input-file") + 1])
+                self.assertTrue(input_path.is_file())
+                seen_inputs.append(input_path.name)
+                return subprocess.CompletedProcess(command, 4, stdout=json.dumps(payload), stderr="")
+            result = invoke_creator_tools("/fake/mct", archive_path, lock=self.lock, policy=self.policy, runner=fake_runner)
+        self.assertEqual([f"artifact-{digest}.mcaddon"] * 2, seen_inputs)
+        self.assertEqual(digest, result["creator_tools"]["validated_input"]["sha256"])
+        self.assertTrue(any(row["code"] == "STALE_CACHE_PATH" for row in result["creator_tools"]["findings"]))
+        self.assertFalse(result["passed"])
 
     def test_version_mismatch_and_unknown_suite_fail(self) -> None:
         def bad_version(command, **kwargs):

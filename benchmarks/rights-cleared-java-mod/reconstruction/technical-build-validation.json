@@ -1,0 +1,69 @@
+{
+  "schema_version": "1.0.0",
+  "benchmark_id": "benchmark-b-doorlock-technical-reconstruction",
+  "executed_at": "2026-07-22",
+  "status": "STATIC_AND_BDS_BOOT_VERIFIED",
+  "artifacts": {
+    "mcaddon": {
+      "sha256": "06d1a74decdf085c793c2ed0e423fe6b706ea6c2365f59b5e7b96fea92efe6ae",
+      "bytes": 10365
+    },
+    "mcworld": {
+      "sha256": "6d03a7a63522fa9b9dc65c84a0205c10239858c6f6af8c51673a7327e9cc99ea",
+      "behavior_pack_id": "04b46aef-f3f7-5049-a62d-ae9672c9a456",
+      "resource_pack_id": "0d1ede4c-c129-512e-91d6-68c9f227b97f"
+    }
+  },
+  "compiler_validation": {
+    "static": "PASSED",
+    "scripts": "PASSED",
+    "assets": "PASSED",
+    "api_symbols": "PASSED",
+    "performance_static": "PASSED",
+    "deterministic_regeneration": "PASSED"
+  },
+  "creator_tools": {
+    "version": "0.17.6",
+    "suites": ["addon", "currentplatform"],
+    "errors": 0,
+    "warnings": 0,
+    "exit_codes": [0, 0],
+    "cache_safe_input": "artifact-06d1a74decdf085c793c2ed0e423fe6b706ea6c2365f59b5e7b96fea92efe6ae.mcaddon",
+    "marketplace_approval_implied": false
+  },
+  "bds_diagnostic": {
+    "status": "BDS_DIAGNOSTIC_BOOT_VERIFIED",
+    "bedrock_version": "1.26.33.2",
+    "bedrock_build_id": "47564860",
+    "image": "itzg/minecraft-bedrock-server@sha256:12c7047cc149bd517d6dbc2339163cf62a4f1044c10e759c45c8b387e9784e39",
+    "world_sha256": "6d03a7a63522fa9b9dc65c84a0205c10239858c6f6af8c51673a7327e9cc99ea",
+    "log_sha256": "5b024553ca3344b24cc70da13e194bd35eb9f33b4a2a31923661212e4c8b906c",
+    "script_initialized": true,
+    "critical_lines": 0,
+    "container_exit_code": 0,
+    "stop_exit_code": 0,
+    "published_ports": false
+  },
+  "marketplace_candidate": {
+    "passed": false,
+    "status": "VALID_MCADDON_NOT_MARKETPLACE_CANDIDATE",
+    "blocking_gates": ["rights", "quality"]
+  },
+  "unverified": [
+    "actual player item and block event adapters",
+    "lock, authorize, unlock, and break gameplay",
+    "persistence across restart",
+    "state migration",
+    "two-player isolation",
+    "controller usability",
+    "Minecraft for Windows",
+    "Realm Windows",
+    "PS4",
+    "PS5",
+    "Xbox One",
+    "Xbox Series",
+    "rights clearance",
+    "quality parity",
+    "Marketplace suitability or approval"
+  ]
+}

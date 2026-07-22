@@ -1,7 +1,7 @@
 {
   "schema_version": "1.0.0",
   "benchmark_id": "benchmark-b-doorlock-technical-reconstruction",
-  "status": "PARTIAL_TECHNICAL_RECONSTRUCTION_NOT_RUN",
+  "status": "PARTIAL_TECHNICAL_RECONSTRUCTION_BDS_BOOT_VERIFIED",
   "source_policy": "clean-room implementation from evidence contracts; no DoorLock source or asset payload copied",
   "implemented": [
     "cancellable supported-block interaction",
@@ -27,13 +27,13 @@
     "controller form for explicit credential configuration",
     "golden-key behavior distinction",
     "legacy-state migration implementation",
-    "generated item and resource definitions",
-    "packaging and Creator Tools validation",
     "actual gameplay, persistence, multiplayer, Realm, and console tests"
   ],
   "claims": {
     "technical_reconstruction_complete": false,
     "runtime_verified": false,
+    "bds_boot_verified": true,
+    "creator_tools_passed": true,
     "rights_cleared": false,
     "marketplace_candidate": false,
     "console_verified": false

@@ -1,8 +1,11 @@
 from __future__ import annotations
 
+import hashlib
 import json
 import shutil
 import subprocess
+import tempfile
+import zipfile
 from pathlib import Path
 from typing import Any, Callable, Mapping, Sequence, cast
 
@@ -84,27 +87,46 @@ def invoke_creator_tools(
     expected_version = str(lock.get("version"))
     if version_result.returncode != 0 or actual_version != expected_version:
         raise RuntimeError(f"Creator Tools version mismatch: expected {expected_version}, got {actual_version or '<unavailable>'}")
+    original_project = Path(project).resolve()
+    temporary: tempfile.TemporaryDirectory[str] | None = None
+    archive_members: set[str] | None = None
+    input_identity: dict[str, Any]
+    if original_project.is_file():
+        digest = hashlib.sha256(original_project.read_bytes()).hexdigest()
+        temporary = tempfile.TemporaryDirectory(prefix="mccompiler-creator-tools-")
+        resolved_project = Path(temporary.name) / f"artifact-{digest}{original_project.suffix.lower()}"
+        shutil.copyfile(original_project, resolved_project)
+        input_identity = {"source": str(original_project), "sha256": digest, "cache_safe_name": resolved_project.name}
+        if zipfile.is_zipfile(resolved_project):
+            with zipfile.ZipFile(resolved_project) as archive:
+                archive_members = set(archive.namelist())
+    else:
+        resolved_project = original_project
+        input_identity = {"source": str(original_project), "sha256": None, "cache_safe_name": None}
     payloads: list[Mapping[str, Any]] = []
     commands: list[list[str]] = []
     exit_codes: list[int] = []
-    for suite in selected:
-        resolved_project = Path(project).resolve()
-        input_flag = "--input-file" if resolved_project.is_file() else "--input-folder"
-        command = [
-            str(executable), input_flag, str(resolved_project),
-            *map(str, lock.get("global_validate_args", ["--offline", "--json", "--yes"])),
-            "validate", str(suite),
-        ]
-        commands.append(command)
-        result = runner(command, capture_output=True, text=True, check=False)
-        exit_codes.append(result.returncode)
-        try:
-            parsed = json.loads(result.stdout)
-        except json.JSONDecodeError as exc:
-            raise RuntimeError(f"Creator Tools did not return JSON for suite {suite}") from exc
-        if not isinstance(parsed, Mapping):
-            raise RuntimeError(f"Creator Tools returned a non-object result for suite {suite}")
-        payloads.append(parsed)
+    try:
+        for suite in selected:
+            input_flag = "--input-file" if resolved_project.is_file() else "--input-folder"
+            command = [
+                str(executable), input_flag, str(resolved_project),
+                *map(str, lock.get("global_validate_args", ["--offline", "--json", "--yes"])),
+                "validate", str(suite),
+            ]
+            commands.append(command)
+            result = runner(command, capture_output=True, text=True, check=False)
+            exit_codes.append(result.returncode)
+            try:
+                parsed = json.loads(result.stdout)
+            except json.JSONDecodeError as exc:
+                raise RuntimeError(f"Creator Tools did not return JSON for suite {suite}") from exc
+            if not isinstance(parsed, Mapping):
+                raise RuntimeError(f"Creator Tools returned a non-object result for suite {suite}")
+            payloads.append(parsed)
+    finally:
+        if temporary is not None:
+            temporary.cleanup()
     combined_findings: list[Any] = []
     for payload in payloads:
         source = payload.get("diagnostics", payload.get("findings", []))
@@ -117,6 +139,20 @@ def invoke_creator_tools(
     normalized = normalize_creator_tools_output({"projects": [{"items": combined_findings}]}, version=actual_version, suites=selected, policy=policy)
     normalized["creator_tools"]["exit_codes"] = exit_codes
     normalized["creator_tools"]["commands"] = commands
+    normalized["creator_tools"]["validated_input"] = input_identity
+    if archive_members is not None:
+        stale_paths = sorted({
+            str(row["path"]).lstrip("/") for row in normalized["creator_tools"]["findings"]
+            if str(row.get("path", "")).startswith(("/behavior_pack/", "/resource_pack/"))
+            and str(row["path"]).lstrip("/") not in archive_members
+        })
+        if stale_paths:
+            normalized["creator_tools"]["errors"] += len(stale_paths)
+            normalized["creator_tools"]["findings"].extend({
+                "suite": "integration", "severity": "error", "code": "STALE_CACHE_PATH", "path": f"/{path}",
+                "message": "Creator Tools reported a path absent from the hash-bound input archive",
+            } for path in stale_paths)
+            normalized["passed"] = False
     for suite, exit_code in zip(selected, exit_codes):
         if exit_code != 0 and not any(row["severity"] == "error" and row["suite"] == suite for row in normalized["creator_tools"]["findings"]):
             normalized["creator_tools"]["errors"] += 1
