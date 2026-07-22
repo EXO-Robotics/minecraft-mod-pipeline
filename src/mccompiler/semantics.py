@@ -36,6 +36,26 @@ ACTIONS = {
 }
 
 
+def source_actions(body: str) -> list[dict[str, Any]]:
+    calls: list[tuple[int, dict[str, Any]]] = []
+    specs = [
+        (r'context\.addEffect\(\s*"([^"]+)"\s*,\s*(\d+)\s*,\s*(\d+)\s*\)', lambda m: {"type": "apply_effect", "effect": m[0], "duration": int(m[1]), "amplifier": int(m[2])}),
+        (r'context\.cooldown\(\s*"([^"]+)"\s*,\s*(\d+)\s*\)', lambda m: {"type": "start_cooldown", "category": m[0], "ticks": int(m[1])}),
+        (r'context\.spawnProjectile\(\s*"([^"]+)"\s*,\s*([\d.]+)\s*\)', lambda m: {"type": "spawn_projectile", "entity": m[0], "velocity": {"x": 0, "y": 0, "z": float(m[1])}}),
+        (r'context\.explode\(\s*([\d.]+)f?\s*,\s*(true|false)\s*\)', lambda m: {"type": "create_explosion", "power": float(m[0]), "breaks_blocks": m[1] == "true"}),
+        (r'context\.damage\(\s*(\d+)\s*\)', lambda m: {"type": "damage", "amount": int(m[0])}),
+        (r'context\.playSound\(\s*"([^"]+)"\s*\)', lambda m: {"type": "play_sound", "sound": m[0]}),
+        (r'context\.openForm\(\s*"([^"]+)"\s*\)', lambda m: {"type": "open_interaction_ui", "ui": m[0]}),
+        (r'context\.placeStructure\(\s*"([^"]+)"\s*\)', lambda m: {"type": "place_structure", "structure": m[0]}),
+        (r'context\.setBlock\(\s*"([^"]+)"\s*\)', lambda m: {"type": "set_block", "block": m[0]}),
+        (r'context\.dropLoot\(\s*"([^"]+)"\s*\)', lambda m: {"type": "add_item", "item": m[0]}),
+        (r'context\.set\(\s*"([^"]+)"\s*,', lambda m: {"type": "update_persistent_state", "key": m[0]}),
+    ]
+    for pattern, factory in specs:
+        for match in re.finditer(pattern, body): calls.append((match.start(), factory(match.groups())))
+    return [action for _, action in sorted(calls, key=lambda row: row[0])]
+
+
 def evidence(path: str, lines: tuple[int, int], rule: str, *, class_name: str | None = None,
              method: str | None = None, resource: str | None = None,
              source_mode: str = "source", confidence: float = 1.0) -> dict[str, Any]:
@@ -62,6 +82,15 @@ def _args(text: str) -> dict[str, Any]:
             value = float(raw) if "." in raw else int(raw)
         result[match.group(1)] = value
     return result
+
+
+def health_threshold(expression: str) -> dict[str, Any]:
+    condition: dict[str, Any] = {"type": "health_threshold", "expression": expression}
+    lower = re.search(r"health\s*>\s*([\d.]+)", expression)
+    upper = re.search(r"health\s*<=\s*([\d.]+)", expression)
+    if lower: condition["min_ratio_exclusive"] = float(lower.group(1))
+    if upper: condition["max_ratio_inclusive"] = float(upper.group(1))
+    return condition
 
 
 def analyze_java(path: str, text: str) -> dict[str, list[dict[str, Any]]]:
@@ -124,9 +153,7 @@ def analyze_java(path: str, text: str) -> dict[str, list[dict[str, Any]]]:
         owner_name = owner_classes[-1].group(1) if owner_classes else class_name
         owner_identifier = re.sub(r'(?<!^)(?=[A-Z])', '_', owner_name or "unknown").lower()
         namespace = next((m[1].split(":", 1)[0] for m in registered if ":" in m[1]), "fixture")
-        actions = []
-        for call, action in action_calls.items():
-            if re.search(rf'\b(?:context\.)?{call}\s*\(', body): actions.append({"type": action})
+        actions = source_actions(body)
         unknown_calls = sorted(set(re.findall(r'context\.(\w+)\s*\(', body)) - set(action_calls) - {"get"})
         ev = [evidence(path, (start, end), "java-common:Trigger-method", class_name=owner_name, method=method)]
         behavior = {"id": f"{namespace}:{owner_identifier}/{method}", "owner": {"kind": "object", "identifier": f"{namespace}:{owner_identifier}"}, "trigger": {"type": trigger}, "conditions": [], "actions": actions, "stateReads": sorted(set(re.findall(r'context\.get\(\s*"([^"]+)"', body))), "stateWrites": sorted(set(re.findall(r'context\.set\(\s*"([^"]+)"', body))), "feedback": [], "presentationRequirements": [], "evidence": ev, "confidence": 1.0 if trigger in TRIGGERS and not unknown_calls else .75, "diagnostics": [{"severity": "error", "code": "unrecognized_operation", "operation": call} for call in unknown_calls]}
@@ -145,11 +172,10 @@ def analyze_java(path: str, text: str) -> dict[str, list[dict[str, Any]]]:
             depth += (text[pos] == "{") - (text[pos] == "}"); pos += 1
         body = text[match.end():pos - 1]
         start, end = text.count("\n", 0, match.start()) + 1, text.count("\n", 0, pos) + 1
-        calls = {call for call in action_calls if re.search(rf'context\.{call}\s*\(', body)}
-        actions = [{"type": action_calls[call]} for call in sorted(calls)] + [{"type": "set_entity_phase", "value": int(phase)}]
+        actions = source_actions(body) + [{"type": "set_entity_phase", "value": int(phase)}]
         reads = sorted(set(["health"] + re.findall(r'context\.get\(\s*"([^"]+)"', body)))
         writes = sorted(set(["phase"] + re.findall(r'context\.set\(\s*"([^"]+)"', body)))
-        behaviors.append({"id": f"representative:rift_boss/{method}", "owner": {"kind": "entity", "identifier": "representative:rift_boss"}, "trigger": {"type": "state_transition"}, "conditions": [{"type": "health_threshold", "expression": condition}], "actions": actions, "stateReads": reads, "stateWrites": writes, "feedback": [], "presentationRequirements": [], "evidence": [evidence(path, (start, end), "java-common:Phase-method", class_name="RiftBoss", method=method)], "confidence": 1.0, "diagnostics": []})
+        behaviors.append({"id": f"representative:rift_boss/{method}", "owner": {"kind": "entity", "identifier": "representative:rift_boss"}, "trigger": {"type": "state_transition"}, "conditions": [health_threshold(condition)], "actions": actions, "stateReads": reads, "stateWrites": writes, "feedback": [], "presentationRequirements": [], "evidence": [evidence(path, (start, end), "java-common:Phase-method", class_name="RiftBoss", method=method)], "confidence": 1.0, "diagnostics": []})
     for match in re.finditer(r'@Approximation\s*\((.*?)\)\s*public', text, re.DOTALL):
         args = _args(match.group(1)); line = text.count("\n", 0, match.start()) + 1
         presentation.append({"kind": "visual_approximation", "owner": class_name, "resource": None, "reason": args.get("reason"), "strategy": args.get("bedrockStrategy"), "evidence": [evidence(path, (line, line), "java-common:Approximation", class_name=class_name)]})

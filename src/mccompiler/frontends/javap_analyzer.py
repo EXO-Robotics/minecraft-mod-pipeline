@@ -8,7 +8,7 @@ import zipfile
 from pathlib import Path
 from typing import Any
 
-from ..semantics import TRIGGERS
+from ..semantics import TRIGGERS, health_threshold
 
 
 CALL_ACTIONS = {
@@ -17,6 +17,43 @@ CALL_ACTIONS = {
     "placeStructure": "place_structure", "setBlock": "set_block", "dropLoot": "add_item", "set": "update_persistent_state",
 }
 TRIGGER_ALIASES = {"server_tick": "object_tick", "entity_killed": "entity_death"}
+
+
+def _bytecode_actions(block: str) -> tuple[list[dict[str, Any]], list[str]]:
+    pending: list[Any] = []
+    actions: list[dict[str, Any]] = []
+    calls: list[str] = []
+    for line in block.splitlines():
+        string = re.search(r"\bldc(?:2_w|_w)?\s+#[0-9]+\s+// String (.+)$", line)
+        number = re.search(r"\b(?:bipush|sipush)\s+(-?\d+)", line)
+        small = re.search(r"\biconst_([m\d]+)", line)
+        small_float = re.search(r"\b[fd]const_([012])", line)
+        floating = re.search(r"// (?:float|double) (-?[\d.]+)[fd]?", line)
+        if string: pending.append(string.group(1).strip())
+        elif number: pending.append(int(number.group(1)))
+        elif small: pending.append(-1 if small.group(1) == "m1" else int(small.group(1)))
+        elif small_float: pending.append(float(small_float.group(1)))
+        elif floating: pending.append(float(floating.group(1)))
+        invoke = re.search(r"FixtureApi\$Context\.([A-Za-z_$][\w$]*):", line)
+        if not invoke: continue
+        call = invoke.group(1); calls.append(call)
+        strings = [x for x in pending if isinstance(x, str)]
+        numbers = [x for x in pending if isinstance(x, (int, float)) and not isinstance(x, bool)]
+        action: dict[str, Any] | None = None
+        if call == "addEffect" and strings: action = {"type": "apply_effect", "effect": strings[-1], "duration": int(numbers[-2]), "amplifier": int(numbers[-1])}
+        elif call == "cooldown" and strings: action = {"type": "start_cooldown", "category": strings[-1], "ticks": int(numbers[-1])}
+        elif call == "spawnProjectile" and strings: action = {"type": "spawn_projectile", "entity": strings[-1], "velocity": {"x": 0, "y": 0, "z": float(numbers[-1])}}
+        elif call == "explode": action = {"type": "create_explosion", "power": float(numbers[-2]), "breaks_blocks": bool(numbers[-1])}
+        elif call == "damage": action = {"type": "damage", "amount": int(numbers[-1])}
+        elif call == "playSound" and strings: action = {"type": "play_sound", "sound": strings[-1]}
+        elif call == "openForm" and strings: action = {"type": "open_interaction_ui", "ui": strings[-1]}
+        elif call == "placeStructure" and strings: action = {"type": "place_structure", "structure": strings[-1]}
+        elif call == "setBlock" and strings: action = {"type": "set_block", "block": strings[-1]}
+        elif call == "dropLoot" and strings: action = {"type": "add_item", "item": strings[-1]}
+        elif call == "set" and strings: action = {"type": "update_persistent_state", "key": strings[0]}
+        if action: actions.append(action)
+        if call != "get": pending = []
+    return actions, calls
 
 
 def _javap() -> str | None:
@@ -114,8 +151,7 @@ def analyze_archive(path: str | Path) -> dict[str, list[dict[str, Any]]]:
                 trigger_raw = "state_transition"
             if trigger_raw:
                 trigger = TRIGGER_ALIASES.get(trigger_raw, trigger_raw)
-                calls = re.findall(r"FixtureApi\$Context\.([A-Za-z_$][\w$]*):", block)
-                actions = [{"type": CALL_ACTIONS[call]} for call in dict.fromkeys(calls) if call in CALL_ACTIONS]
+                actions, calls = _bytecode_actions(block)
                 if phase_body is not None:
                     phase_match = re.search(r"value=(\d+)", phase_body)
                     actions.append({"type": "set_entity_phase", "value": int(phase_match.group(1)) if phase_match else 1})
@@ -131,7 +167,7 @@ def analyze_archive(path: str | Path) -> dict[str, list[dict[str, Any]]]:
                 ev = [_ev(archive, class_name, method, start, end, "javap:annotated-method")]
                 conditions = []
                 if phase_body is not None:
-                    conditions.append({"type": "health_threshold", "expression": _value(phase_body, "condition")})
+                    conditions.append(health_threshold(_value(phase_body, "condition") or ""))
                 behavior = {
                     "id": f"{namespace}:{owner_id}/{method}", "owner": {"kind": "entity" if owner == "RiftBoss" else "object", "identifier": f"{namespace}:{owner_id}"},
                     "trigger": {"type": trigger}, "conditions": conditions, "actions": actions,
