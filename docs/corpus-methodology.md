@@ -8,7 +8,7 @@ The corpus must be legally clean, loader-diverse, behavior-representative, and s
 - Validation corpus: unseen variants used during development.
 - Final holdout: frozen before tuning and evaluated once per declared release candidate.
 - Benchmark A: original backend/product showcase.
-- Benchmark B: DoorLock is a pinned technical candidate with real-source scan evidence; it is not selected as rights-cleared and has not passed reconstruction fidelity or runtime gates.
+- Benchmark B: DoorLock is a pinned technical candidate with real-source scan evidence, a partial clean-room reconstruction, complete unresolved fidelity records, and hash-bound Creator Tools/BDS boot evidence. It is not selected as rights-cleared and has not passed real-action reconstruction fidelity, multiplayer, migration-runtime, or console gates.
 
 ## Metrics
 

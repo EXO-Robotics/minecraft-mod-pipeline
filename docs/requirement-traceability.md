@@ -20,11 +20,11 @@ This matrix describes the repository after the executable Benchmark A foundation
 | DOC-06 | Capability catalog | `DOCUMENTED`; implementation `PARTIAL` | Initial symbol/version and target catalogs are tested; full symbol/source/device coverage is not proven |
 | DOC-07 | Reconstruction patterns | `IMPLEMENTED` baseline catalog | Required Marketplace pattern families have IR shapes, strategies, limitations, performance notes, and test contracts; runtime qualification remains separate |
 | DOC-08 | Rights system | `DOCUMENTED`; implementation `PARTIAL` | Schemas and fail-closed human-review evaluator are tested; no actual human-cleared corpus/package evidence |
-| DOC-09 | Creator Tools | `IMPLEMENTED` for Benchmark A static validation | Pinned official Creator Tools 0.17.6 passed `addon` and `currentplatform` with zero errors/warnings; no approval is implied |
+| DOC-09 | Creator Tools | `IMPLEMENTED` for Benchmark A/B static validation | Pinned official Creator Tools 0.17.6 passed `addon` and `currentplatform` with zero errors/warnings on exact hash-bound archives; no approval is implied |
 | DOC-10 | Performance budgets | `DOCUMENTED`; implementation `PARTIAL` | Static budget and attributable exception gates tested; runtime/device measurements absent |
 | DOC-11 | Controller redesign | `DOCUMENTED`; runtime status `UNVERIFIED` | No physical controller benchmark evidence |
-| DOC-12 | Persistence/migrations | `DOCUMENTED`; implementation `PARTIAL` | Ordered/journaled migration primitives tested; in-game recovery, reconnect and machine restoration unproven |
-| DOC-13 | Validation | `DOCUMENTED`; implementation `PARTIAL` | Profile, symbol, rights, static performance, packaging, runtime-evidence, and live Creator Tools gates exist; real-action/runtime execution is missing |
+| DOC-12 | Persistence/migrations | `DOCUMENTED`; implementation `PARTIAL` | Ordered compiler migrations and Benchmark B's deterministic v0-to-v1 lock migration/quarantine logic are tested; real-world migration, interrupted writes, reconnect and machine restoration remain unproven |
+| DOC-13 | Validation | `DOCUMENTED`; implementation `PARTIAL` | Profile, symbol, rights, static performance, packaging, live Creator Tools, and isolated BDS boot/restart gates exist; real player-action execution is missing |
 | DOC-14 | Console testing | `DOCUMENTED`; execution `EXTERNAL_BLOCKED` | Protocol/checklists exist; physical hardware/Realm execution not recorded |
 | DOC-15 | Known limitations | `DOCUMENTED` | `docs/known-limitations-marketplace.md` |
 | DOC-16 | Corpus methodology | evaluator `IMPLEMENTED`; real corpus `NOT_IMPLEMENTED` | All required threshold metrics and holdout discipline are executable and fail closed; legally reviewed real corpus/holdout is absent |
@@ -32,8 +32,8 @@ This matrix describes the repository after the executable Benchmark A foundation
 | DOC-18 | Agent guide | `DOCUMENTED`; operation workflow `IMPLEMENTED` locally | All required names dispatch; Benchmark A passes the persistent create-to-report workflow; runtime execution still requires an external adapter |
 | DOC-19 | Reproduction commands | `DOCUMENTED` | `docs/reproduction.md`; baseline-only non-qualification warning included |
 | ARCH-01 | Persistent conversion project | `IMPLEMENTED` foundation | Full layout, revisioned store, intent lifecycle, safe protected edits, generation, validation, reports, and resume are tested; runtime-backed execution remains partial |
-| ARCH-02 | Protected custom content | `PARTIAL` | Protected project directories and layout tests exist; full generation-preservation workflow remains unproven |
-| ARCH-03 | Clean consumer/build boundary | `PARTIAL` | Marketplace output/no-debug unit tests pass; live candidate archive/tool inspection remains |
+| ARCH-02 | Protected custom content | `IMPLEMENTED` foundation | Registered custom scripts/assets are staged, API-audited, packaged, regenerated deterministically, and source-preservation tested |
+| ARCH-03 | Clean consumer/build boundary | `IMPLEMENTED` foundation | Exact Benchmark A/B archives exclude project evidence, reports, tests, Java payloads, and debug collateral and pass official static inspection |
 | API-01 | Symbol-level stable API validation | `PARTIAL` | Initial catalog and unknown-symbol rejection tested; complete emitted-symbol coverage/source verification absent |
 | API-02 | Independent server/server-ui resolution | `IMPLEMENTED` for current catalog | Independent resolution and UI-only dependency tests pass |
 | API-03 | Fail-closed event adapters | `PARTIAL` | Unmapped required trigger fails compilation; real Minecraft actions remain untested |
@@ -43,13 +43,13 @@ This matrix describes the repository after the executable Benchmark A foundation
 | GEN-01 | Baseline BP/RP/script generation | `PARTIAL` | Deterministic scaffolds and profile-aware outputs exist; product fidelity/runtime not qualified |
 | GEN-02 | `.mcaddon` generation | `PARTIAL` for production | Deterministic clean archive and live official static validation pass for Benchmark A; gameplay/runtime qualification is missing |
 | GEN-03 | `.mcworld` generation | `IMPLEMENTED` foundation | Deterministic world archive, embedded BP/RP bindings, minimal little-endian `level.dat`, and artifact hashes are tested; Minecraft runtime import remains unverified |
-| VAL-01 | Current repository unit suite | `IMPLEMENTED` | 108 tests pass; one compiled-Java test is skipped because this host has no usable JDK; strict mypy passes 55 source files |
+| VAL-01 | Current repository unit suite | `IMPLEMENTED` | 132 tests pass; one compiled-Java test is skipped because this host has no usable JDK; strict mypy passes 56 source files |
 | VAL-02 | Real-action event integration | `NOT_IMPLEMENTED` | Internal dispatch tests cannot satisfy this gate |
-| VAL-03 | Persistence/multiplayer/migration | `NOT_IMPLEMENTED` end-to-end | Required scenario set lacks evidence |
-| VAL-04 | Creator Tools suites | `IMPLEMENTED` for Benchmark A static artifact | Live pinned official suites passed with artifact-bound checked-in summary; runtime and Marketplace approval remain separate |
+| VAL-03 | Persistence/multiplayer/migration | `PARTIAL` logic; end-to-end `NOT_IMPLEMENTED` | Pure migration scenarios and narrow BDS restart property pass; real migration execution, reconnect, ownership isolation, and multiplayer remain unverified |
+| VAL-04 | Creator Tools suites | `IMPLEMENTED` for Benchmark A/B static artifacts | Live pinned official suites passed with artifact-bound checked-in summaries; runtime and Marketplace approval remain separate |
 | VAL-05 | Performance limits | `PARTIAL` | Static limits/approvals tested; runtime limits and device evidence absent |
-| BENCH-A | Original Marketplace showcase | `IMPLEMENTED` static benchmark; runtime `NOT_RUN` | Executable 21-family fixture, IR/quality/test contracts, explicit redesign/omission, clean archive, and live Creator Tools proof exist |
-| BENCH-B | Rights-cleared real mod | technical scan `PARTIAL`; rights `REVIEW_REQUIRED` | Pinned DoorLock scan proves items, item-use-on-block, world state, and explicit Mixin blockers; detailed intent, reconstruction, runtime fidelity, and human rights review remain |
+| BENCH-A | Original Marketplace showcase | `IMPLEMENTED` static benchmark; BDS diagnostic `PARTIAL` | Executable 21-family fixture, IR/quality/test contracts, clean archive, live Creator Tools, and isolated server diagnostics exist; real player-action qualification remains |
+| BENCH-B | Rights-cleared real mod | technical reconstruction `PARTIAL`; rights `REVIEW_REQUIRED` | Pinned DoorLock evidence drives a deterministic clean-room package with lock controller, pure migration logic, complete unresolved fidelity records, Creator Tools pass, and BDS boot/restart proof; gameplay fidelity and human rights review remain |
 | CON-01 | Local Windows | `UNVERIFIED` | Benchmark A artifact exists, but no Minecraft for Windows runtime run is recorded |
 | CON-02 | Realm Windows | `EXTERNAL_BLOCKED` | Requires artifact, Minecraft/Realm access, and execution |
 | CON-03 | PS4/PS5 | `EXTERNAL_BLOCKED`, `UNVERIFIED` | Requires physical hardware/account/Realm route; no results fabricated |

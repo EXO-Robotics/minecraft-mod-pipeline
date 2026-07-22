@@ -24,9 +24,10 @@ class BenchmarkBProjectWorkflowTests(unittest.TestCase):
         self.store.write("rights/rights-manifest.yaml", json.loads((RECONSTRUCTION / "rights-manifest.json").read_text()))
         self.store.write("reports/fidelity.json", json.loads((RECONSTRUCTION / "quality-records.json").read_text()))
         self.store.write("decisions/custom-handlers.json", json.loads((RECONSTRUCTION / "custom-handler.json").read_text()))
-        custom = self.store.resolve("custom/scripts/doorlock.js")
-        custom.parent.mkdir(parents=True, exist_ok=True)
-        shutil.copyfile(RECONSTRUCTION / "custom/scripts/doorlock.js", custom)
+        for name in ("doorlock-state.js", "doorlock.js"):
+            custom = self.store.resolve(f"custom/scripts/{name}")
+            custom.parent.mkdir(parents=True, exist_ok=True)
+            shutil.copyfile(RECONSTRUCTION / f"custom/scripts/{name}", custom)
 
     def test_deterministic_clean_package_and_world_with_honest_gates(self) -> None:
         generated, _, _ = generation_ops.generate_pack(self.store, {}, self.store.revision)
@@ -34,6 +35,8 @@ class BenchmarkBProjectWorkflowTests(unittest.TestCase):
         generated_again, _, _ = generation_ops.generate_pack(self.store, {}, self.store.revision)
         second_hash = next(row["sha256"] for row in generated_again["artifacts"] if row["kind"] == "generated_archive")
         self.assertEqual(first_hash, second_hash)
+        recorded = json.loads((RECONSTRUCTION / "technical-build-validation.json").read_text())
+        self.assertEqual(recorded["artifacts"]["mcaddon"]["sha256"], first_hash)
 
         static, _, _ = validation_ops.validate_static(self.store, {"marketplace": True})
         scripts, _, _ = validation_ops.validate_scripts(self.store, {})
@@ -49,11 +52,13 @@ class BenchmarkBProjectWorkflowTests(unittest.TestCase):
         world, _, _ = generation_ops.generate_world(self.store, {"world_name": "DoorLock Technical Validation"}, self.store.revision)
         package, _, artifacts = generation_ops.package_mcaddon(self.store, {}, self.store.revision)
         self.assertEqual("GENERATED", world["status"])
+        self.assertEqual(recorded["artifacts"]["mcworld"]["sha256"], world["world"]["world_hash"])
         self.assertEqual("PACKAGED", package["status"])
         archive = self.store.resolve(artifacts[0]["path"])
         with zipfile.ZipFile(archive) as bundle:
             names = set(bundle.namelist())
         self.assertIn("behavior_pack/scripts/custom/doorlock.js", names)
+        self.assertIn("behavior_pack/scripts/custom/doorlock-state.js", names)
         self.assertTrue(any(name.endswith("items/door_lock_key.json") for name in names))
         self.assertTrue(any(name.endswith("items/door_lock_golden_key.json") for name in names))
         self.assertTrue(any(name.endswith("items/door_lock_universal_key.json") for name in names))

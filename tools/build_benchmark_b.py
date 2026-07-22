@@ -21,9 +21,10 @@ def build(output: Path) -> dict[str, Any]:
     store.write("rights/rights-manifest.yaml", json.loads((RECONSTRUCTION / "rights-manifest.json").read_text(encoding="utf-8")))
     store.write("reports/fidelity.json", json.loads((RECONSTRUCTION / "quality-records.json").read_text(encoding="utf-8")))
     store.write("decisions/custom-handlers.json", json.loads((RECONSTRUCTION / "custom-handler.json").read_text(encoding="utf-8")))
-    custom = store.resolve("custom/scripts/doorlock.js")
-    custom.parent.mkdir(parents=True, exist_ok=True)
-    shutil.copyfile(RECONSTRUCTION / "custom/scripts/doorlock.js", custom)
+    for name in ("doorlock-state.js", "doorlock.js"):
+        custom = store.resolve(f"custom/scripts/{name}")
+        custom.parent.mkdir(parents=True, exist_ok=True)
+        shutil.copyfile(RECONSTRUCTION / f"custom/scripts/{name}", custom)
 
     generation_ops.generate_pack(store, {}, store.revision)
     static, _, _ = validation_ops.validate_static(store, {"marketplace": True})

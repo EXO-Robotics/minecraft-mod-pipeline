@@ -4,6 +4,7 @@ import json
 from pathlib import Path
 import shutil
 import subprocess
+import tempfile
 import unittest
 
 from mccompiler.api_catalog import ApiCatalog
@@ -29,9 +30,53 @@ class BenchmarkBReconstructionTests(unittest.TestCase):
             completed = subprocess.run([node, "--check", str(script_path)], capture_output=True, text=True, check=False)
             self.assertEqual(0, completed.returncode, completed.stderr)
 
+    def test_legacy_state_migration_is_idempotent_and_fail_closed(self) -> None:
+        node = shutil.which("node")
+        if not node:
+            self.skipTest("node is required for clean-room migration logic tests")
+        module_source = RECONSTRUCTION / "custom/scripts/doorlock-state.js"
+        with tempfile.TemporaryDirectory() as directory:
+            module = Path(directory) / "doorlock-state.mjs"
+            shutil.copyfile(module_source, module)
+            runner = """
+import { migrateLegacyState } from './doorlock-state.mjs';
+const cases = {};
+cases.empty = migrateLegacyState([]);
+cases.single = migrateLegacyState(['1,2,3_abcd']);
+cases.malformed = migrateLegacyState(['bad']);
+cases.same = migrateLegacyState(['1,2,3_abcd', '1,2,3_abcd']);
+cases.conflict = migrateLegacyState(['1,2,3_abcd', '1,2,3_efgh']);
+cases.nonOverworld = migrateLegacyState(['1,2,3_abcd'], {}, { dimension: 'minecraft:nether' });
+cases.second = migrateLegacyState(['1,2,3_abcd'], cases.single.locks);
+console.log(JSON.stringify(cases));
+"""
+            completed = subprocess.run(
+                [node, "--input-type=module", "--eval", runner], cwd=directory,
+                capture_output=True, text=True, check=False,
+            )
+        self.assertEqual(0, completed.returncode, completed.stderr)
+        cases = json.loads(completed.stdout)
+        self.assertEqual({}, cases["empty"]["locks"])
+        self.assertEqual(1, cases["single"]["stats"]["imported"])
+        record = cases["single"]["locks"]["minecraft:overworld:1:2:3"]
+        self.assertEqual("legacy-unclaimed", record["owner"])
+        self.assertEqual("abcd", record["credential_digest"])
+        self.assertNotIn("password", record)
+        self.assertEqual("malformed_legacy_entry", cases["malformed"]["quarantine"][0]["error"])
+        self.assertEqual(1, cases["same"]["stats"]["deduplicated"])
+        self.assertEqual({}, cases["conflict"]["locks"])
+        self.assertEqual(2, cases["conflict"]["stats"]["quarantined"])
+        self.assertEqual("non_overworld_mapping_requires_approval", cases["nonOverworld"]["quarantine"][0]["error"])
+        self.assertEqual(cases["single"]["locks"], cases["second"]["locks"])
+        self.assertEqual(0, cases["second"]["stats"]["imported"])
+
     def test_every_declared_api_symbol_is_stable_and_marketplace_candidate(self) -> None:
         metadata = json.loads((RECONSTRUCTION / "custom-handler.json").read_text())
-        requirements = [(row["module"], row["symbol"]) for row in metadata["handlers"][0]["api_symbols"]]
+        requirements = [
+            (row["module"], row["symbol"])
+            for handler in metadata["handlers"]
+            for row in handler["api_symbols"]
+        ]
         versions, evidence = ApiCatalog.load_default().resolve_versions(requirements, marketplace=True)
         self.assertEqual("2.0.0", versions["@minecraft/server"])
         self.assertEqual(len(requirements), len(evidence))

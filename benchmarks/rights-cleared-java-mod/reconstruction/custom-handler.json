@@ -2,6 +2,12 @@
   "schema_version": "1.0.0",
   "handlers": [
     {
+      "api_symbols": [],
+      "behavior_id": "doorlock:clean_room_lock_controller",
+      "destination": "scripts/custom/doorlock-state.js",
+      "source_path": "custom/scripts/doorlock-state.js"
+    },
+    {
       "api_symbols": [
         {"module": "@minecraft/server", "symbol": "world.beforeEvents.playerInteractWithBlock"},
         {"module": "@minecraft/server", "symbol": "world.beforeEvents.playerBreakBlock"},

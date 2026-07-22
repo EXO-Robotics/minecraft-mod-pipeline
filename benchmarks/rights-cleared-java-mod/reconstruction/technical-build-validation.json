@@ -5,11 +5,12 @@
   "status": "STATIC_AND_BDS_BOOT_VERIFIED",
   "artifacts": {
     "mcaddon": {
-      "sha256": "74abb57f3fc27a330f61489247ace10808c6e4142b54d4895e100306c6bad474",
-      "bytes": 10453
+      "sha256": "118a5c5666473cc9205f5a7c23f337a9771eaadcdbcad1403aabb783976cc5ea",
+      "bytes": 12175
     },
     "mcworld": {
-      "sha256": "0f7add81b46b6e2e70d2e0a61e6f576abf5173779c536f243bc3c3c4256be914",
+      "sha256": "d852b0b9bec6688e535835d30128f24ae14c9d6e84982f9b5a0ac03de26be619",
+      "bytes": 14892,
       "behavior_pack_id": "04b46aef-f3f7-5049-a62d-ae9672c9a456",
       "resource_pack_id": "0d1ede4c-c129-512e-91d6-68c9f227b97f"
     }
@@ -28,7 +29,7 @@
     "errors": 0,
     "warnings": 0,
     "exit_codes": [0, 0],
-    "cache_safe_input": "artifact-74abb57f3fc27a330f61489247ace10808c6e4142b54d4895e100306c6bad474.mcaddon",
+    "cache_safe_input": "artifact-118a5c5666473cc9205f5a7c23f337a9771eaadcdbcad1403aabb783976cc5ea.mcaddon",
     "marketplace_approval_implied": false
   },
   "bds_diagnostic": {
@@ -36,8 +37,8 @@
     "bedrock_version": "1.26.33.2",
     "bedrock_build_id": "47564860",
     "image": "itzg/minecraft-bedrock-server@sha256:12c7047cc149bd517d6dbc2339163cf62a4f1044c10e759c45c8b387e9784e39",
-    "world_sha256": "0f7add81b46b6e2e70d2e0a61e6f576abf5173779c536f243bc3c3c4256be914",
-    "log_sha256": "9322a40d942da58690ad15d739c5f7ae6940bd279a0b637394fbead9ecca9052",
+    "world_sha256": "d852b0b9bec6688e535835d30128f24ae14c9d6e84982f9b5a0ac03de26be619",
+    "log_sha256": "6cded54fc73fbb7ab18a98699614053d86e375e6b93f7979d0cbf9306eacc1c8",
     "script_initialized": true,
     "restart_cycles": 2,
     "persistent_boot_values": [1, 2],
@@ -57,7 +58,7 @@
     "actual player item and block event adapters",
     "lock, authorize, unlock, and break gameplay",
     "lock-map persistence and correctness across restart",
-    "state migration",
+    "Minecraft execution of legacy lock-map migration and interrupted-write recovery",
     "two-player isolation",
     "controller usability",
     "Minecraft for Windows",

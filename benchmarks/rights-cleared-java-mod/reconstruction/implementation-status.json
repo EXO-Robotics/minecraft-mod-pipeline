@@ -10,7 +10,8 @@
     "universal-key authorization",
     "sneak-use lock removal",
     "locked-block break prevention",
-    "deferred mutation outside restricted before-event execution"
+    "deferred mutation outside restricted before-event execution",
+    "deterministic legacy-state migration with quarantine and idempotence journal"
   ],
   "approved_quality_claim": null,
   "intentional_redesigns": [
@@ -26,7 +27,7 @@
     "double-container paired-location normalization",
     "controller form for explicit credential configuration",
     "golden-key behavior distinction",
-    "legacy-state migration implementation",
+    "real-world legacy-state migration execution and interrupted-write recovery",
     "actual gameplay, persistence, multiplayer, Realm, and console tests"
   ],
   "claims": {
