@@ -1,7 +1,7 @@
 {
   "schema_version": "1.0.0",
   "benchmark_id": "benchmark-b-doorlock-technical-reconstruction",
-  "status": "PARTIAL_TECHNICAL_RECONSTRUCTION_BDS_UPGRADE_VERIFIED",
+  "status": "PARTIAL_TECHNICAL_RECONSTRUCTION_BDS_ADAPTER_VERIFIED",
   "source_policy": "clean-room implementation from evidence contracts; no DoorLock source or asset payload copied",
   "implemented": [
     "cancellable supported-block interaction",
@@ -31,7 +31,8 @@
     "unloaded redstone-protected blocks are skipped without chunk force-loading",
     "deferred mutation outside restricted before-event execution",
     "deterministic legacy-state migration with quarantine and idempotence journal",
-    "prepared-journal interrupted-write recovery with digest-bound divergence checks"
+    "prepared-journal interrupted-write recovery with digest-bound divergence checks",
+    "BDS adapter integration for forced trapdoor open-state restoration and restart survival"
   ],
   "approved_quality_claim": null,
   "intentional_redesigns": [

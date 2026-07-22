@@ -2,21 +2,21 @@
   "schema_version": "1.0.0",
   "benchmark_id": "benchmark-b-doorlock-technical-reconstruction",
   "executed_at": "2026-07-22",
-  "status": "STATIC_AND_BDS_UPGRADE_VERIFIED",
+  "status": "STATIC_BDS_UPGRADE_AND_ADAPTER_INTEGRATION_VERIFIED",
   "artifacts": {
     "mcaddon": {
-      "sha256": "d45a787ddecdf3a8eece21d96cb59e009c0cc0594a21c75eb12080e5a7f9b48f",
-      "bytes": 20126
+      "sha256": "abbe1186dfff239e6f51a47482beb8103fb3b78f473c5ef7440be2f9154d726f",
+      "bytes": 20165
     },
     "mcworld": {
-      "sha256": "6159dfa341424b059c5476f803b2794b9a9028684534c2dd3e84cd0333c77f11",
-      "bytes": 23030,
-      "behavior_pack_id": "bc87a095-ddaa-562f-ab58-e0a7ee84f359",
-      "resource_pack_id": "a73218e8-336b-5f43-99dc-17ec30f1e282"
+      "sha256": "abb1e2dc8f257386c4f2562f8fac927e3db85fb5e6a0ff21b3e46371d5d66f8c",
+      "bytes": 23069,
+      "behavior_pack_id": "8e52df20-94ec-5143-b203-491fd4c88b83",
+      "resource_pack_id": "38f1bee1-2b1b-5221-b4e4-418216443168"
     },
     "legacy_seed_mcworld": {
-      "sha256": "03a6d747769a0740ab12d0f62f5b5ce4b42d5a83f961b8047b058a792394d7e1",
-      "bytes": 18753,
+      "sha256": "6e51316c70ee6599c5992190d3ea9744524970227849409b118db3eb242ce940",
+      "bytes": 18792,
       "fixture_only": true
     }
   },
@@ -36,7 +36,7 @@
     "errors": 0,
     "warnings": 0,
     "exit_codes": [0, 0],
-    "cache_safe_input": "artifact-d45a787ddecdf3a8eece21d96cb59e009c0cc0594a21c75eb12080e5a7f9b48f.mcaddon",
+    "cache_safe_input": "artifact-abbe1186dfff239e6f51a47482beb8103fb3b78f473c5ef7440be2f9154d726f.mcaddon",
     "marketplace_approval_implied": false
   },
   "bds_diagnostic": {
@@ -44,9 +44,9 @@
     "bedrock_version": "1.26.33.2",
     "bedrock_build_id": "47564860",
     "image": "itzg/minecraft-bedrock-server@sha256:12c7047cc149bd517d6dbc2339163cf62a4f1044c10e759c45c8b387e9784e39",
-    "world_sha256": "6159dfa341424b059c5476f803b2794b9a9028684534c2dd3e84cd0333c77f11",
-    "legacy_seed_world_sha256": "03a6d747769a0740ab12d0f62f5b5ce4b42d5a83f961b8047b058a792394d7e1",
-    "log_sha256": "66bda460406a84f48f3ec766081e54080435d239d08f342961d7240b8d77fb84",
+    "world_sha256": "abb1e2dc8f257386c4f2562f8fac927e3db85fb5e6a0ff21b3e46371d5d66f8c",
+    "legacy_seed_world_sha256": "6e51316c70ee6599c5992190d3ea9744524970227849409b118db3eb242ce940",
+    "log_sha256": "e6242bbaa759d98c6d32009c5ddcc9c3a4b7e79377d76e81e0d70fb9586d9fbd",
     "script_initialized": true,
     "restart_cycles": 3,
     "persistent_boot_values": [1, 2, 3],
@@ -56,6 +56,18 @@
     "interruption_fixture_point": "prepared_journal_before_current_state_write",
     "migrated_state_restart_verified": true,
     "migrated_lock_records": 1,
+    "adapter_integration_verified": true,
+    "adapter_integration_check_ids": [
+      "doorlock-fixture-ticking-area",
+      "doorlock-fixture-trapdoor",
+      "doorlock-redstone-force-open",
+      "doorlock-redstone-restored",
+      "doorlock-redstone-restart-state"
+    ],
+    "redstone_reconciliation_adapter_verified": true,
+    "gameplay_verified": false,
+    "multiplayer_verified": false,
+    "console_verified": false,
     "diagnostic_state_persistence_verified": true,
     "feature_persistence_verified": false,
     "critical_lines": 0,
@@ -71,7 +83,7 @@
   "unverified": [
     "actual player item and block event adapters",
     "actual door, chest, fence-gate, trapdoor, and shulker-box interactions",
-    "actual redstone suppression and authorized-open reconciliation",
+    "actual player-driven redstone suppression and authorized-open reconciliation",
     "actual iron door and trapdoor permutation toggling",
     "actual crafting of normal and golden key recipes",
     "lock, authorize, unlock, and break gameplay",

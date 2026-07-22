@@ -27,6 +27,15 @@ class BDSDiagnosticError(RuntimeError):
 
 
 @dataclass(frozen=True)
+class BDSConsoleProbe:
+    check_id: str
+    cycle: int
+    after_boot_seconds: float
+    command: str
+    expect_output: str
+
+
+@dataclass(frozen=True)
 class BDSRunRequest:
     image: str
     mcworld: Path
@@ -38,6 +47,35 @@ class BDSRunRequest:
     bds_version: str | None = None
     restart_count: int = 1
     upgrade_mcworld: Path | None = None
+    console_probes: tuple[BDSConsoleProbe, ...] = ()
+
+
+def validate_console_probes(probes: tuple[BDSConsoleProbe, ...], *, restart_count: int, boot_grace_seconds: int) -> None:
+    if len(probes) > 16:
+        raise BDSDiagnosticError("console_probes cannot contain more than 16 checks")
+    seen: set[str] = set()
+    for probe in probes:
+        if not re.fullmatch(r"[a-z0-9][a-z0-9._-]{0,63}", probe.check_id):
+            raise BDSDiagnosticError(f"invalid console probe check_id: {probe.check_id}")
+        if probe.check_id in seen:
+            raise BDSDiagnosticError(f"duplicate console probe check_id: {probe.check_id}")
+        seen.add(probe.check_id)
+        if probe.cycle < 1 or probe.cycle > restart_count:
+            raise BDSDiagnosticError(f"console probe {probe.check_id} has an invalid cycle")
+        if probe.after_boot_seconds < 0 or probe.after_boot_seconds > max(0, boot_grace_seconds - 1):
+            raise BDSDiagnosticError(f"console probe {probe.check_id} runs outside the boot grace window")
+        if not probe.command or len(probe.command) > 512 or any(ord(char) < 32 for char in probe.command):
+            raise BDSDiagnosticError(f"console probe {probe.check_id} has an invalid command")
+        verb = probe.command.split(maxsplit=1)[0].lower()
+        if verb not in {"setblock", "testforblock", "tickingarea"}:
+            raise BDSDiagnosticError(f"console probe {probe.check_id} uses disallowed command: {verb}")
+        if verb == "tickingarea" and not re.fullmatch(
+            r"tickingarea add circle -?\d+ -?\d+ -?\d+ [12] [a-z0-9_-]{1,32} true",
+            probe.command,
+        ):
+            raise BDSDiagnosticError(f"console probe {probe.check_id} uses an unbounded tickingarea command")
+        if not probe.expect_output or len(probe.expect_output) > 512 or any(ord(char) < 32 for char in probe.expect_output):
+            raise BDSDiagnosticError(f"console probe {probe.check_id} has invalid expected output")
 
 
 def sha256_file(path: Path) -> str:
@@ -141,6 +179,8 @@ def docker_run_command(request: BDSRunRequest, *, container_name: str, data_root
         "-e", "CONTENT_LOG_CONSOLE_OUTPUT_ENABLED=true",
         "-e", "SERVER_PORT=19132", "-e", "SERVER_PORT_V6=19133",
     ]
+    if request.console_probes:
+        command.insert(2, "-i")
     if request.bds_version:
         command.extend(("-e", f"VERSION={request.bds_version}"))
     command.append(request.image)
@@ -193,8 +233,17 @@ def _run_cycle(request: BDSRunRequest, *, docker: str, data_root: Path, level_na
     timed_out = False
     boot_seen_at: float | None = None
     reader: threading.Thread | None = None
+    cycle_probes = sorted(
+        (probe for probe in request.console_probes if probe.cycle == cycle),
+        key=lambda probe: (probe.after_boot_seconds, probe.check_id),
+    )
+    probe_results: list[dict[str, Any]] = []
+    next_probe = 0
     try:
-        process = subprocess.Popen(command, stdout=subprocess.PIPE, stderr=subprocess.STDOUT, text=True, encoding="utf-8", errors="replace", bufsize=1)
+        process = subprocess.Popen(
+            command, stdin=subprocess.PIPE, stdout=subprocess.PIPE, stderr=subprocess.STDOUT,
+            text=True, encoding="utf-8", errors="replace", bufsize=1,
+        )
         reader = threading.Thread(target=_stream_lines, args=(process, output), daemon=True)
         reader.start()
         deadline = time.monotonic() + request.timeout_seconds
@@ -210,6 +259,29 @@ def _run_cycle(request: BDSRunRequest, *, docker: str, data_root: Path, level_na
                 lines.append(item)
                 if boot_seen_at is None and any(marker.lower() in item.lower() for marker in _BOOT_MARKERS):
                     boot_seen_at = time.monotonic()
+            if boot_seen_at is not None:
+                since_boot = time.monotonic() - boot_seen_at
+                while next_probe < len(cycle_probes) and cycle_probes[next_probe].after_boot_seconds <= since_boot:
+                    probe = cycle_probes[next_probe]
+                    result: dict[str, Any] = {
+                        "check_id": probe.check_id,
+                        "classification": "adapter_integration",
+                        "command": probe.command,
+                        "expect_output": probe.expect_output,
+                        "sent": False,
+                        "matched": False,
+                        "line_start": len(lines),
+                    }
+                    try:
+                        if process.stdin is None:
+                            raise BrokenPipeError("BDS stdin is unavailable")
+                        process.stdin.write(probe.command + "\n")
+                        process.stdin.flush()
+                        result["sent"] = True
+                    except (BrokenPipeError, OSError) as error:
+                        result["error"] = str(error)
+                    probe_results.append(result)
+                    next_probe += 1
             if boot_seen_at is not None and time.monotonic() - boot_seen_at >= request.boot_grace_seconds:
                 break
             if stream_done and process.poll() is not None:
@@ -231,6 +303,12 @@ def _run_cycle(request: BDSRunRequest, *, docker: str, data_root: Path, level_na
                 break
             if item:
                 lines.append(item)
+        for index, result in enumerate(probe_results):
+            line_end = int(probe_results[index + 1]["line_start"]) if index + 1 < len(probe_results) else len(lines)
+            observed = lines[int(result["line_start"]):line_end]
+            result["matched"] = bool(result["sent"] and any(str(result["expect_output"]) in line for line in observed))
+            result["status"] = "PASSED" if result["matched"] else "FAILED"
+            del result["line_start"]
     finally:
         subprocess.run([docker, "rm", "-f", container_name], capture_output=True, text=True, timeout=30, check=False)
     analysis = analyze_bds_log(lines)
@@ -242,7 +320,11 @@ def _run_cycle(request: BDSRunRequest, *, docker: str, data_root: Path, level_na
         "container_exit_code": process.returncode if process else None,
         "stop_exit_code": stop_result.returncode if stop_result else None,
         "analysis": analysis,
-        "passed": bool(analysis["booted"] and analysis["script_initialized"] and analysis["clean"] and not timed_out),
+        "console_probes": probe_results,
+        "passed": bool(
+            analysis["booted"] and analysis["script_initialized"] and analysis["clean"] and not timed_out
+            and len(probe_results) == len(cycle_probes) and all(bool(result["matched"]) for result in probe_results)
+        ),
     }
 
 
@@ -255,6 +337,9 @@ def run_bds_diagnostic(request: BDSRunRequest) -> dict[str, Any]:
         raise BDSDiagnosticError("restart_count must be between 1 and 3")
     if request.upgrade_mcworld is not None and request.restart_count < 2:
         raise BDSDiagnosticError("upgrade_mcworld requires restart_count of at least 2")
+    validate_console_probes(
+        request.console_probes, restart_count=request.restart_count, boot_grace_seconds=request.boot_grace_seconds,
+    )
     docker = shutil.which(request.docker_executable)
     if docker is None:
         raise BDSDiagnosticError(f"Docker executable is unavailable: {request.docker_executable}")
@@ -287,6 +372,11 @@ def run_bds_diagnostic(request: BDSRunRequest) -> dict[str, Any]:
     )
     nonempty_state_migration_verified = bool(request.upgrade_mcworld is not None and any(value > 0 for value in analysis["migrated_lock_values"]))
     migrated_state_restart_verified = bool(request.restart_count >= 3 and any(value > 0 for value in analysis["migrated_state_records"]))
+    console_probe_results = [probe for cycle in cycles for probe in cycle["console_probes"]]
+    adapter_integration_verified = bool(
+        request.console_probes and len(console_probe_results) == len(request.console_probes)
+        and all(probe["status"] == "PASSED" for probe in console_probe_results)
+    )
     result = {
         "schema_version": "1.0.0",
         "status": "BDS_DIAGNOSTIC_BOOT_VERIFIED" if passed else "BDS_DIAGNOSTIC_FAILED",
@@ -296,7 +386,8 @@ def run_bds_diagnostic(request: BDSRunRequest) -> dict[str, Any]:
         "execution": {"restart_count": request.restart_count, "elapsed_seconds": round(time.time() - started_at, 3), "cycles": cycles},
         "upgrade": upgrade,
         "log": {**analysis, "path": str(log_path), "sha256": hashlib.sha256(log_text.encode()).hexdigest()},
-        "claims": {"bds_boot_verified": passed, "diagnostic_state_persistence_verified": diagnostic_state_persistence_verified, "nonempty_state_migration_verified": nonempty_state_migration_verified, "migrated_state_restart_verified": migrated_state_restart_verified, "gameplay_verified": False, "persistence_verified": False, "multiplayer_verified": False, "console_verified": False, "marketplace_approval_implied": False},
+        "checks": console_probe_results,
+        "claims": {"bds_boot_verified": passed, "adapter_integration_verified": adapter_integration_verified, "diagnostic_state_persistence_verified": diagnostic_state_persistence_verified, "nonempty_state_migration_verified": nonempty_state_migration_verified, "migrated_state_restart_verified": migrated_state_restart_verified, "gameplay_verified": False, "persistence_verified": False, "multiplayer_verified": False, "console_verified": False, "marketplace_approval_implied": False},
     }
     (request.run_root / "result.json").write_text(json.dumps(result, indent=2, sort_keys=True) + "\n", encoding="utf-8")
     return result

@@ -63,7 +63,7 @@
       "classification": "MANUAL_REDESIGN_REQUIRED",
       "dimensions": {"gameplay_fidelity": 0.5, "visual_fidelity": 0.0, "audio_fidelity": 0.0, "interaction_fidelity": 0.5, "controller_usability": 0.7, "multiplayer_fidelity": 0.0, "persistence_fidelity": 0.2, "performance": 0.9, "stability": 0.4, "discoverability": 0.3, "feedback_clarity": 0.5, "world_update_compatibility": 0.2},
       "evidence": ["technical-build-validation.json"],
-      "losses": ["Door-half canonicalization and bounded open-state reconciliation have pure/static evidence only; reconciliation is delayed above 32 locks, skips unloaded chunks, restores non-player state changes, and lacks real door/redstone tests"]
+      "losses": ["Bounded trapdoor open-state restoration has BDS adapter integration evidence, but door-half canonicalization remains pure/static; reconciliation is delayed above 32 locks, skips unloaded chunks, restores non-player state changes, and lacks real player-driven door/redstone tests"]
     },
     {
       "feature_id": "doorlock:mixin_fence_gate",

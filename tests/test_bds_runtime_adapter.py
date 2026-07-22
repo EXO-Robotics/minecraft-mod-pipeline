@@ -10,7 +10,7 @@ from unittest.mock import patch
 from mccompiler.operations import validation_ops
 from mccompiler.operations.envelope import OperationError
 from mccompiler.project.store import ProjectStore
-from mccompiler.runtime.bds import BDSDiagnosticError, BDSRunRequest, analyze_bds_log, docker_run_command, extract_mcworld, overlay_mcworld_packs
+from mccompiler.runtime.bds import BDSConsoleProbe, BDSDiagnosticError, BDSRunRequest, analyze_bds_log, docker_run_command, extract_mcworld, overlay_mcworld_packs, validate_console_probes
 
 
 class BDSRuntimeAdapterTests(unittest.TestCase):
@@ -42,6 +42,14 @@ class BDSRuntimeAdapterTests(unittest.TestCase):
         self.assertIn("ALLOW_LIST=false", command)
         self.assertIn("WHITE_LIST=false", command)
         self.assertIn("CONTENT_LOG_CONSOLE_OUTPUT_ENABLED=true", command)
+        self.assertNotIn("-i", command)
+
+        probed = BDSRunRequest(
+            request.image, request.mcworld, request.run_root,
+            console_probes=(BDSConsoleProbe("probe", 1, 1.0, "testforblock 1 2 3 stone", "Successfully found"),),
+        )
+        probed_command = docker_run_command(probed, container_name="mccompiler-bds-probed", data_root=data, level_name=level_name)
+        self.assertIn("-i", probed_command)
 
         networked = BDSRunRequest(request.image, request.mcworld, request.run_root, network_mode="bridge", bds_version="1.26.33.2")
         networked_command = docker_run_command(networked, container_name="mccompiler-bds-net", data_root=data, level_name=level_name)
@@ -147,6 +155,39 @@ class BDSRuntimeAdapterTests(unittest.TestCase):
                 from mccompiler.runtime.bds import run_bds_diagnostic
                 run_bds_diagnostic(upgrade)
 
+    def test_console_probes_are_bounded_cycle_scoped_and_command_allowlisted(self) -> None:
+        valid = (
+            BDSConsoleProbe("open-fixture", 2, 1.0, "setblock 1 2 3 stone", "Block placed"),
+            BDSConsoleProbe("verify-fixture", 2, 3.0, "testforblock 1 2 3 stone", "Successfully found"),
+        )
+        validate_console_probes(valid, restart_count=2, boot_grace_seconds=10)
+        with self.assertRaisesRegex(BDSDiagnosticError, "disallowed command"):
+            validate_console_probes(
+                (BDSConsoleProbe("unsafe", 1, 1.0, "op Player", "ok"),),
+                restart_count=1, boot_grace_seconds=10,
+            )
+        with self.assertRaisesRegex(BDSDiagnosticError, "invalid command"):
+            validate_console_probes(
+                (BDSConsoleProbe("newline", 1, 1.0, "setblock 1 2 3 stone\nstop", "ok"),),
+                restart_count=1, boot_grace_seconds=10,
+            )
+        with self.assertRaisesRegex(BDSDiagnosticError, "outside the boot grace"):
+            validate_console_probes(
+                (BDSConsoleProbe("late", 1, 10.0, "testforblock 1 2 3 stone", "ok"),),
+                restart_count=1, boot_grace_seconds=10,
+            )
+        with self.assertRaisesRegex(BDSDiagnosticError, "duplicate"):
+            validate_console_probes(valid + (valid[0],), restart_count=2, boot_grace_seconds=10)
+        with self.assertRaisesRegex(BDSDiagnosticError, "unbounded tickingarea"):
+            validate_console_probes(
+                (BDSConsoleProbe("large-area", 1, 1.0, "tickingarea add circle 1 2 3 10 unsafe true", "Added"),),
+                restart_count=1, boot_grace_seconds=10,
+            )
+        validate_console_probes(
+            (BDSConsoleProbe("small-area", 1, 1.0, "tickingarea add circle 1 2 3 1 safe true", "Added"),),
+            restart_count=1, boot_grace_seconds=10,
+        )
+
     def test_public_operation_persists_narrow_boot_claims(self) -> None:
         store = ProjectStore.create(self.root / "project")
         world = store.resolve("dist/test-world/converted-test-world.mcworld")
@@ -154,6 +195,8 @@ class BDSRuntimeAdapterTests(unittest.TestCase):
         world.write_bytes(self.world().read_bytes())
 
         def fake_run(request: BDSRunRequest) -> dict[str, object]:
+            self.assertEqual("probe-one", request.console_probes[0].check_id)
+            self.assertEqual("testforblock 1 2 3 stone", request.console_probes[0].command)
             request.run_root.mkdir(parents=True)
             (request.run_root / "content.log").write_text("Server started.\nruntime initialized\n")
             result: dict[str, object] = {
@@ -168,6 +211,10 @@ class BDSRuntimeAdapterTests(unittest.TestCase):
         with patch.object(validation_ops, "run_bds_diagnostic", side_effect=fake_run):
             response, _, artifacts = validation_ops.start_test_runtime(store, {
                 "adapter": "BDS_DOCKER", "execute": True, "image": "registry/bds@sha256:" + "b" * 64,
+                "console_probes": [{
+                    "check_id": "probe-one", "cycle": 1, "after_boot_seconds": 1,
+                    "command": "testforblock 1 2 3 stone", "expect_output": "Successfully found",
+                }],
             }, revision)
         self.assertEqual(revision + 1, response["revision"])
         self.assertFalse(response["run"]["claims"]["gameplay_verified"])

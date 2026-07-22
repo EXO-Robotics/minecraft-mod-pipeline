@@ -14,7 +14,7 @@ from mccompiler.performance import audit_archive_performance, audit_static_perfo
 from mccompiler.project.store import ProjectStore
 from mccompiler.rights import evaluate_marketplace_rights
 from mccompiler.runtime.evidence import EvidenceExpectation, validate_runtime_evidence
-from mccompiler.runtime.bds import BDSDiagnosticError, BDSRunRequest, run_bds_diagnostic
+from mccompiler.runtime.bds import BDSConsoleProbe, BDSDiagnosticError, BDSRunRequest, run_bds_diagnostic
 from mccompiler.targets import get_target
 from mccompiler.validate import validate_output
 
@@ -203,6 +203,25 @@ def start_test_runtime(store: ProjectStore, parameters: dict[str, Any], expected
         raise OperationError("NETWORK_NOT_AUTHORIZED", "Set allow_bootstrap_network=true to permit the pinned BDS wrapper to download the requested server version")
     if network_mode not in {"none", "bridge"}:
         raise OperationError("INVALID_PARAMETERS", "network_mode must be none or bridge")
+    raw_probes = parameters.get("console_probes", [])
+    if not isinstance(raw_probes, list):
+        raise OperationError("INVALID_PARAMETERS", "console_probes must be an array")
+    probes: list[BDSConsoleProbe] = []
+    required_probe_fields = {"check_id", "cycle", "after_boot_seconds", "command", "expect_output"}
+    for index, raw in enumerate(raw_probes):
+        if not isinstance(raw, dict) or set(raw) != required_probe_fields:
+            raise OperationError("INVALID_PARAMETERS", f"console_probes[{index}] must contain exactly {sorted(required_probe_fields)}")
+        if not isinstance(raw["cycle"], int) or isinstance(raw["cycle"], bool):
+            raise OperationError("INVALID_PARAMETERS", f"console_probes[{index}].cycle must be an integer")
+        delay = raw["after_boot_seconds"]
+        if not isinstance(delay, (int, float)) or isinstance(delay, bool):
+            raise OperationError("INVALID_PARAMETERS", f"console_probes[{index}].after_boot_seconds must be numeric")
+        if not all(isinstance(raw[field], str) for field in ("check_id", "command", "expect_output")):
+            raise OperationError("INVALID_PARAMETERS", f"console_probes[{index}] string fields must be strings")
+        probes.append(BDSConsoleProbe(
+            check_id=raw["check_id"], cycle=raw["cycle"], after_boot_seconds=float(delay),
+            command=raw["command"], expect_output=raw["expect_output"],
+        ))
     run_id = f"run-{store.revision}-{uuid.uuid4().hex[:12]}"
     run_root = store.resolve(f"runtime/bds/{run_id}")
     try:
@@ -217,6 +236,7 @@ def start_test_runtime(store: ProjectStore, parameters: dict[str, Any], expected
             bds_version=str(parameters["bds_version"]) if parameters.get("bds_version") else None,
             restart_count=int(parameters.get("restart_count", 1)),
             upgrade_mcworld=upgrade_world,
+            console_probes=tuple(probes),
         ))
     except (BDSDiagnosticError, OSError, ValueError) as exc:
         raise OperationError("BDS_DIAGNOSTIC_FAILED", str(exc), details={"run_id": run_id, "success_implied": False}) from exc

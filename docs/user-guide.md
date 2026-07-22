@@ -51,7 +51,7 @@ PYTHONPATH=src python3 -m mccompiler validate \
   --path out/representative --runtime --record
 ```
 
-An AI agent can run the isolated boot diagnostic through the structured operation interface with `adapter: "BDS_DOCKER"`, `execute: true`, a project-relative `world`, an image pinned by `@sha256`, and an exact `bds_version`. If the wrapper must download that exact server build into a fresh volume, both `network_mode: "bridge"` and `allow_bootstrap_network: true` are required. The operation never publishes gameplay ports and does not claim action-driven behavior validation.
+An AI agent can run the isolated boot diagnostic through the structured operation interface with `adapter: "BDS_DOCKER"`, `execute: true`, a project-relative `world`, an image pinned by `@sha256`, and an exact `bds_version`. If the wrapper must download that exact server build into a fresh volume, both `network_mode: "bridge"` and `allow_bootstrap_network: true` are required. Optional cycle-scoped `console_probes` are capped at 16, run only during the boot grace window, and accept bounded `setblock`, `testforblock`, or one/two-chunk named `tickingarea add circle` commands. Literal expected output must match for the cycle to pass. These checks are classified as `adapter_integration`; the operation never publishes gameplay ports or upgrades them to player gameplay, multiplayer, Realm, or console evidence.
 
 Compile twice into separate directories and compare `sha256sum` of `converted-mod.mcaddon` to verify regeneration. The committed tests do this automatically.
 

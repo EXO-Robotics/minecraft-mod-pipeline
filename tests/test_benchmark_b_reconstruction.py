@@ -242,6 +242,7 @@ const coverage = {
   door: isLockableBlockType('minecraft:oak_door'),
   gate: isLockableBlockType('minecraft:warped_fence_gate'),
   trapdoor: isLockableBlockType('minecraft:iron_trapdoor'),
+  legacyTrapdoor: isLockableBlockType('minecraft:trapdoor'),
   shulker: isLockableBlockType('minecraft:purple_shulker_box'),
   chest: isLockableBlockType('minecraft:chest'),
   anvil: isLockableBlockType('minecraft:anvil'),
@@ -249,6 +250,7 @@ const coverage = {
   doorRedstone: isRedstoneProtectedBlockType('minecraft:oak_door'),
   gateRedstone: isRedstoneProtectedBlockType('minecraft:warped_fence_gate'),
   trapdoorRedstone: isRedstoneProtectedBlockType('minecraft:iron_trapdoor'),
+  legacyTrapdoorRedstone: isRedstoneProtectedBlockType('minecraft:trapdoor'),
   chestRedstone: isRedstoneProtectedBlockType('minecraft:chest'),
   ironUniversal: universalKeyAllowedForBlock('minecraft:iron_door'),
   oakUniversal: universalKeyAllowedForBlock('minecraft:oak_door'),
@@ -309,9 +311,9 @@ console.log(JSON.stringify({ record, created, competingCreate, twoLocks, dimensi
         self.assertEqual(result["canonical"]["chestLeft"], result["canonical"]["chestRight"])
         self.assertEqual("minecraft:overworld:11:70:5", result["canonical"]["ambiguousChest"])
         self.assertEqual(
-            {"door": True, "gate": True, "trapdoor": True, "shulker": True, "chest": True,
+            {"door": True, "gate": True, "trapdoor": True, "legacyTrapdoor": True, "shulker": True, "chest": True,
              "anvil": False, "barrel": False, "doorRedstone": True, "gateRedstone": True,
-             "trapdoorRedstone": True, "chestRedstone": False,
+             "trapdoorRedstone": True, "legacyTrapdoorRedstone": True, "chestRedstone": False,
              "ironUniversal": False, "oakUniversal": True},
             result["coverage"],
         )
@@ -331,7 +333,7 @@ console.log(JSON.stringify({ record, created, competingCreate, twoLocks, dimensi
 
     def test_status_exposes_every_unfinished_claim(self) -> None:
         status = json.loads((RECONSTRUCTION / "implementation-status.json").read_text())
-        self.assertEqual("PARTIAL_TECHNICAL_RECONSTRUCTION_BDS_UPGRADE_VERIFIED", status["status"])
+        self.assertEqual("PARTIAL_TECHNICAL_RECONSTRUCTION_BDS_ADAPTER_VERIFIED", status["status"])
         self.assertIsNone(status["approved_quality_claim"])
         self.assertEqual(
             {
@@ -352,7 +354,7 @@ console.log(JSON.stringify({ record, created, competingCreate, twoLocks, dimensi
 
     def test_external_validation_is_hash_bound_and_narrow(self) -> None:
         validation = json.loads((RECONSTRUCTION / "technical-build-validation.json").read_text())
-        self.assertEqual("STATIC_AND_BDS_UPGRADE_VERIFIED", validation["status"])
+        self.assertEqual("STATIC_BDS_UPGRADE_AND_ADAPTER_INTEGRATION_VERIFIED", validation["status"])
         self.assertEqual(0, validation["creator_tools"]["errors"])
         self.assertEqual(0, validation["creator_tools"]["warnings"])
         self.assertFalse(validation["creator_tools"]["marketplace_approval_implied"])
@@ -367,6 +369,11 @@ console.log(JSON.stringify({ record, created, competingCreate, twoLocks, dimensi
         )
         self.assertTrue(validation["bds_diagnostic"]["migrated_state_restart_verified"])
         self.assertEqual(1, validation["bds_diagnostic"]["migrated_lock_records"])
+        self.assertTrue(validation["bds_diagnostic"]["adapter_integration_verified"])
+        self.assertTrue(validation["bds_diagnostic"]["redstone_reconciliation_adapter_verified"])
+        self.assertFalse(validation["bds_diagnostic"]["gameplay_verified"])
+        self.assertFalse(validation["bds_diagnostic"]["multiplayer_verified"])
+        self.assertFalse(validation["bds_diagnostic"]["console_verified"])
         self.assertFalse(validation["bds_diagnostic"]["feature_persistence_verified"])
         self.assertEqual([1, 2, 3], validation["bds_diagnostic"]["persistent_boot_values"])
         self.assertFalse(validation["bds_diagnostic"]["published_ports"])
@@ -376,6 +383,23 @@ console.log(JSON.stringify({ record, created, competingCreate, twoLocks, dimensi
         self.assertEqual(3, validation["bds_diagnostic"]["restart_cycles"])
         self.assertFalse(validation["marketplace_candidate"]["passed"])
         self.assertIn("actual player item and block event adapters", validation["unverified"])
+
+    def test_bds_redstone_probes_are_adapter_integration_only(self) -> None:
+        probes = json.loads((RECONSTRUCTION / "bds-console-probes.json").read_text())
+        self.assertEqual("adapter_integration", probes["classification"])
+        self.assertFalse(probes["gameplay_or_console_evidence"])
+        self.assertEqual(
+            {
+                "doorlock-fixture-ticking-area",
+                "doorlock-fixture-trapdoor",
+                "doorlock-redstone-force-open",
+                "doorlock-redstone-restored",
+                "doorlock-redstone-restart-state",
+            },
+            {probe["check_id"] for probe in probes["probes"]},
+        )
+        self.assertEqual([1, 1, 2, 2, 3], [probe["cycle"] for probe in probes["probes"]])
+        self.assertTrue(all(probe["command"].split()[0] in {"setblock", "testforblock", "tickingarea"} for probe in probes["probes"]))
 
 
 if __name__ == "__main__":
