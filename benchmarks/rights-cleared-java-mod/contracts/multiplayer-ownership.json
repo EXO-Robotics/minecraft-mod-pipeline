@@ -1,14 +1,15 @@
 {
   "schema_version": "1.0.0",
   "contract_id": "doorlock-multiplayer-ownership-v1",
-  "status": "DEFINED_NOT_RUN",
+  "status": "PURE_HANDLER_CONCURRENCY_IMPLEMENTED_RUNTIME_NOT_VERIFIED",
   "authority": "server",
   "owner_scope": "lock_record",
   "authorization": {
-    "create": ["requesting_player_holds_configured_key", "target_is_supported_and_unlocked"],
-    "remove": ["matching_key", "authorized_universal_key"],
-    "open": ["matching_key", "authorized_universal_key"],
-    "administrative_override": "explicit_operator_action_only"
+    "active_proposed_redesign": "owner-bound key authorization; not approved as source parity",
+    "create": ["requesting_player_holds_key_item", "target_is_supported_and_unlocked"],
+    "remove": ["requesting_player_matches_owner", "universal_key"],
+    "open": ["requesting_player_matches_owner", "universal_key"],
+    "administrative_override": "universal_key; operator audit is not implemented"
   },
   "invariants": [
     "Client input never directly mutates lock state.",
@@ -19,5 +20,24 @@
     "Two players using different locks cannot affect each other's records."
   ],
   "required_scenarios": ["two_players_two_locks", "wrong_key_denied", "matching_key_allowed", "simultaneous_lock_attempt", "simultaneous_remove_and_open", "disconnect_reconnect", "dimension_collision", "operator_override_audited"],
-  "evidence": []
+  "handler_scenarios_passed": [
+    "two_players_two_locks",
+    "wrong_owner_denied",
+    "owner_allowed",
+    "simultaneous_lock_attempt",
+    "stale_revision_remove_denied",
+    "dimension_collision"
+  ],
+  "evidence": [
+    "reconstruction/custom/scripts/doorlock-state.js",
+    "tests/test_benchmark_b_reconstruction.py::BenchmarkBReconstructionTests.test_authorization_handler_preserves_two_player_isolation",
+    "tests/test_benchmark_b_reconstruction.py::BenchmarkBReconstructionTests.test_state_records_and_revision_checks_match_the_v1_contract"
+  ],
+  "unverified": [
+    "real two-player actions",
+    "simultaneous remove and open through event adapters",
+    "disconnect and reconnect",
+    "operator override audit",
+    "Realm and console multiplayer"
+  ]
 }

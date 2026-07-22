@@ -5,12 +5,12 @@
   "status": "STATIC_AND_BDS_BOOT_VERIFIED",
   "artifacts": {
     "mcaddon": {
-      "sha256": "394278575a3979834e796246bd1edda4ccc224481f937f82a94e8ec54efe7b7e",
-      "bytes": 12415
+      "sha256": "e815512009d8f89b2defc02636a4b440352a49dbc27db0d22876098c786c21f3",
+      "bytes": 13402
     },
     "mcworld": {
-      "sha256": "3bf0aa0e33bdffc794614abe67eea10ead6db7195a0238bafaae4072e86df13e",
-      "bytes": 15132,
+      "sha256": "9986296c62b0b320dc0a289a12c0b8b0bef49924b8c5ea6b73b7aea7f72cfb3d",
+      "bytes": 16119,
       "behavior_pack_id": "04b46aef-f3f7-5049-a62d-ae9672c9a456",
       "resource_pack_id": "0d1ede4c-c129-512e-91d6-68c9f227b97f"
     }
@@ -29,7 +29,7 @@
     "errors": 0,
     "warnings": 0,
     "exit_codes": [0, 0],
-    "cache_safe_input": "artifact-394278575a3979834e796246bd1edda4ccc224481f937f82a94e8ec54efe7b7e.mcaddon",
+    "cache_safe_input": "artifact-e815512009d8f89b2defc02636a4b440352a49dbc27db0d22876098c786c21f3.mcaddon",
     "marketplace_approval_implied": false
   },
   "bds_diagnostic": {
@@ -37,11 +37,13 @@
     "bedrock_version": "1.26.33.2",
     "bedrock_build_id": "47564860",
     "image": "itzg/minecraft-bedrock-server@sha256:12c7047cc149bd517d6dbc2339163cf62a4f1044c10e759c45c8b387e9784e39",
-    "world_sha256": "3bf0aa0e33bdffc794614abe67eea10ead6db7195a0238bafaae4072e86df13e",
-    "log_sha256": "95edcc41ae9d0e66b98f1b41e204f756a007731649b5a7e3d2d5618146c05830",
+    "world_sha256": "9986296c62b0b320dc0a289a12c0b8b0bef49924b8c5ea6b73b7aea7f72cfb3d",
+    "log_sha256": "dc4e367770ac1de282874dbc7e05f10191a04e739517cdb09292bc0972dbc8d4",
     "script_initialized": true,
     "restart_cycles": 2,
     "persistent_boot_values": [1, 2],
+    "empty_state_migration_executed": true,
+    "nonempty_state_migration_verified": false,
     "diagnostic_state_persistence_verified": true,
     "feature_persistence_verified": false,
     "critical_lines": 0,

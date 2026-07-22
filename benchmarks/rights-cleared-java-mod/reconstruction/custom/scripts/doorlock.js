@@ -1,5 +1,8 @@
 import { system, world } from '@minecraft/server';
-import { decideBreak, decideInteraction, migrateLegacyState } from './doorlock-state.js';
+import {
+  buildOwnerLock, createLockIfAbsent, decideBreak, decideInteraction,
+  migrateLegacyState, normalizeLockMap, removeLockIfRevision, validateLockMap,
+} from './doorlock-state.js';
 
 const STATE_KEY = 'mccompiler:doorlock:locks:v1';
 const LEGACY_STATE_KEY = 'mccompiler:doorlock:locks:v0';
@@ -19,7 +22,13 @@ function readLocks() {
   if (typeof encoded !== 'string' || encoded.length === 0) return {};
   try {
     const parsed = JSON.parse(encoded);
-    return parsed && typeof parsed === 'object' && !Array.isArray(parsed) ? parsed : {};
+    const normalized = normalizeLockMap(parsed);
+    const errors = validateLockMap(normalized.locks);
+    if (errors.length > 0) {
+      console.warn(`[mccompiler:doorlock] invalid lock state: ${errors.join('; ')}`);
+      return null;
+    }
+    return normalized.locks;
   } catch {
     console.warn('[mccompiler:doorlock] invalid lock state; writes remain fail-closed');
     return null;
@@ -40,10 +49,13 @@ function deferMessage(player, message) {
 }
 
 function runLegacyMigration() {
+  const current = readLocks();
+  if (current === null) return;
   const journal = world.getDynamicProperty(MIGRATION_KEY);
   if (typeof journal === 'string' && journal.length > 0) {
     try {
       if (JSON.parse(journal)?.status === 'completed') {
+        writeLocks(current);
         migrationReady = true;
         return;
       }
@@ -51,8 +63,6 @@ function runLegacyMigration() {
       console.warn('[mccompiler:doorlock] invalid migration journal; retrying migration');
     }
   }
-  const current = readLocks();
-  if (current === null) return;
   const result = migrateLegacyState(world.getDynamicProperty(LEGACY_STATE_KEY), current);
   writeLocks(result.locks);
   if (result.quarantine.length > 0) {
@@ -95,9 +105,12 @@ world.beforeEvents.playerInteractWithBlock.subscribe((event) => {
     event.cancel = true;
     system.run(() => {
       const current = readLocks();
-      if (current === null || current[location]?.owner !== decision.expectedOwner) return;
-      delete current[location];
-      writeLocks(current);
+      if (current === null) return;
+      const result = removeLockIfRevision(
+        current, location, decision.expectedOwner, decision.expectedRevision,
+      );
+      if (!result.changed) return;
+      writeLocks(result.locks);
       player.sendMessage('Lock removed.');
     });
     return;
@@ -106,9 +119,11 @@ world.beforeEvents.playerInteractWithBlock.subscribe((event) => {
     event.cancel = true;
     system.run(() => {
       const current = readLocks();
-      if (current === null || current[location]) return;
-      current[location] = { owner: decision.owner, schema: 1 };
-      writeLocks(current);
+      if (current === null) return;
+      const record = buildOwnerLock(location, decision.owner, system.currentTick);
+      const result = createLockIfAbsent(current, location, record);
+      if (!result.changed) return;
+      writeLocks(result.locks);
       player.sendMessage('Block locked to your player identity. Sneak-use a key to remove it.');
     });
   }

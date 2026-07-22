@@ -23,7 +23,7 @@ This matrix describes the repository after the executable Benchmark A foundation
 | DOC-09 | Creator Tools | `IMPLEMENTED` for Benchmark A/B static validation | Pinned official Creator Tools 0.17.6 passed `addon` and `currentplatform` with zero errors/warnings on exact hash-bound archives; no approval is implied |
 | DOC-10 | Performance budgets | `DOCUMENTED`; implementation `PARTIAL` | Static budget and attributable exception gates tested; runtime/device measurements absent |
 | DOC-11 | Controller redesign | `DOCUMENTED`; runtime status `UNVERIFIED` | No physical controller benchmark evidence |
-| DOC-12 | Persistence/migrations | `DOCUMENTED`; implementation `PARTIAL` | Ordered compiler migrations and Benchmark B's deterministic v0-to-v1 lock migration/quarantine logic are tested; real-world migration, interrupted writes, reconnect and machine restoration remain unproven |
+| DOC-12 | Persistence/migrations | `DOCUMENTED`; implementation `PARTIAL` | Benchmark B now validates complete revisioned records, normalizes prior sparse records, tests v0-to-v1 migration/quarantine logic, and executes the empty migration path in BDS; nonempty world migration, interrupted writes, reconnect and machine restoration remain unproven |
 | DOC-13 | Validation | `DOCUMENTED`; implementation `PARTIAL` | Profile, symbol, rights, static performance, packaging, live Creator Tools, and isolated BDS boot/restart gates exist; real player-action execution is missing |
 | DOC-14 | Console testing | `DOCUMENTED`; execution `EXTERNAL_BLOCKED` | Protocol/checklists exist; physical hardware/Realm execution not recorded |
 | DOC-15 | Known limitations | `DOCUMENTED` | `docs/known-limitations-marketplace.md` |
@@ -43,9 +43,9 @@ This matrix describes the repository after the executable Benchmark A foundation
 | GEN-01 | Baseline BP/RP/script generation | `PARTIAL` | Deterministic scaffolds and profile-aware outputs exist; product fidelity/runtime not qualified |
 | GEN-02 | `.mcaddon` generation | `PARTIAL` for production | Deterministic clean archive and live official static validation pass for Benchmark A; gameplay/runtime qualification is missing |
 | GEN-03 | `.mcworld` generation | `IMPLEMENTED` foundation | Deterministic world archive, embedded BP/RP bindings, minimal little-endian `level.dat`, and artifact hashes are tested; Minecraft runtime import remains unverified |
-| VAL-01 | Current repository unit suite | `IMPLEMENTED` | 133 tests pass; one compiled-Java test is skipped because this host has no usable JDK; strict mypy passes 56 source files |
+| VAL-01 | Current repository unit suite | `IMPLEMENTED` | 134 tests pass; one compiled-Java test is skipped because this host has no usable JDK; strict mypy passes 56 source files |
 | VAL-02 | Real-action event integration | `NOT_IMPLEMENTED` | Internal dispatch tests cannot satisfy this gate |
-| VAL-03 | Persistence/multiplayer/migration | `PARTIAL` logic; end-to-end `NOT_IMPLEMENTED` | Pure migration and owner/non-owner authorization scenarios plus narrow BDS restart property pass; real migration execution, reconnect, and multiplayer actions remain unverified |
+| VAL-03 | Persistence/multiplayer/migration | `PARTIAL` logic; end-to-end `NOT_IMPLEMENTED` | Revision-checked state operations, schema validation, pure migration/authorization scenarios, empty BDS migration, and narrow restart property pass; nonempty migration, reconnect, and multiplayer actions remain unverified |
 | VAL-04 | Creator Tools suites | `IMPLEMENTED` for Benchmark A/B static artifacts | Live pinned official suites passed with artifact-bound checked-in summaries; runtime and Marketplace approval remain separate |
 | VAL-05 | Performance limits | `PARTIAL` | Static limits/approvals tested; runtime limits and device evidence absent |
 | BENCH-A | Original Marketplace showcase | `IMPLEMENTED` static benchmark; BDS diagnostic `PARTIAL` | Executable 21-family fixture, IR/quality/test contracts, clean archive, live Creator Tools, and isolated server diagnostics exist; real player-action qualification remains |

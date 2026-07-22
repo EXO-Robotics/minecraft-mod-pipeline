@@ -116,6 +116,65 @@ console.log(JSON.stringify({
             "unlockedBreak": "ALLOW_BREAK",
         }, json.loads(completed.stdout))
 
+    def test_state_records_and_revision_checks_match_the_v1_contract(self) -> None:
+        node = shutil.which("node")
+        if not node:
+            self.skipTest("node is required for clean-room state operation tests")
+        module_source = RECONSTRUCTION / "custom/scripts/doorlock-state.js"
+        with tempfile.TemporaryDirectory() as directory:
+            module = Path(directory) / "doorlock-state.mjs"
+            shutil.copyfile(module_source, module)
+            runner = """
+import { buildOwnerLock, createLockIfAbsent, normalizeLockMap, removeLockIfRevision, validateLockMap } from './doorlock-state.mjs';
+const location = 'minecraft:nether:-4:65:12';
+const record = buildOwnerLock(location, 'player-a', 42);
+const created = createLockIfAbsent({}, location, record);
+const competingCreate = createLockIfAbsent(created.locks, location, buildOwnerLock(location, 'player-b', 43));
+const secondLocation = 'minecraft:nether:9:65:12';
+const twoLocks = createLockIfAbsent(created.locks, secondLocation, buildOwnerLock(secondLocation, 'player-b', 44));
+const sameCoordinatesOverworld = 'minecraft:overworld:-4:65:12';
+const dimensions = createLockIfAbsent(twoLocks.locks, sameCoordinatesOverworld, buildOwnerLock(sameCoordinatesOverworld, 'player-b', 45));
+const staleRemove = removeLockIfRevision({ [location]: { ...record, revision: 2 } }, location, 'player-a', 1);
+const wrongOwnerRemove = removeLockIfRevision(created.locks, location, 'player-b', 1);
+const removed = removeLockIfRevision(created.locks, location, 'player-a', 1);
+const validErrors = validateLockMap(dimensions.locks);
+const badDimension = validateLockMap({ [location]: { ...record, dimension: 'minecraft:overworld' } });
+const badRevision = validateLockMap({ [location]: { ...record, revision: 0 } });
+const badMode = validateLockMap({ [location]: { ...record, authorization_mode: 'unknown' } });
+const sparse = normalizeLockMap({ [location]: { owner: 'player-a', schema: 1 } });
+console.log(JSON.stringify({ record, created, competingCreate, twoLocks, dimensions, staleRemove, wrongOwnerRemove, removed, validErrors, badDimension, badRevision, badMode, sparse, sparseErrors: validateLockMap(sparse.locks) }));
+"""
+            completed = subprocess.run(
+                [node, "--input-type=module", "--eval", runner], cwd=directory,
+                capture_output=True, text=True, check=False,
+            )
+        self.assertEqual(0, completed.returncode, completed.stderr)
+        result = json.loads(completed.stdout)
+        self.assertEqual({"x": -4, "y": 65, "z": 12}, result["record"]["position"])
+        self.assertEqual("minecraft:nether", result["record"]["dimension"])
+        self.assertEqual("owner_identity", result["record"]["authorization_mode"])
+        self.assertEqual("player-a", result["record"]["created_by_player_id"])
+        self.assertEqual(42, result["record"]["created_at_tick"])
+        self.assertEqual(1, result["record"]["revision"])
+        self.assertTrue(result["created"]["changed"])
+        self.assertFalse(result["competingCreate"]["changed"])
+        self.assertEqual("player-a", result["competingCreate"]["locks"]["minecraft:nether:-4:65:12"]["owner"])
+        self.assertEqual(2, len(result["twoLocks"]["locks"]))
+        self.assertEqual("player-b", result["twoLocks"]["locks"]["minecraft:nether:9:65:12"]["owner"])
+        self.assertEqual(3, len(result["dimensions"]["locks"]))
+        self.assertEqual("player-b", result["dimensions"]["locks"]["minecraft:overworld:-4:65:12"]["owner"])
+        self.assertFalse(result["staleRemove"]["changed"])
+        self.assertFalse(result["wrongOwnerRemove"]["changed"])
+        self.assertTrue(result["removed"]["changed"])
+        self.assertEqual({}, result["removed"]["locks"])
+        self.assertEqual([], result["validErrors"])
+        self.assertTrue(any("dimension does not match" in error for error in result["badDimension"]))
+        self.assertTrue(any("revision must be positive" in error for error in result["badRevision"]))
+        self.assertTrue(any("authorization mode is unsupported" in error for error in result["badMode"]))
+        self.assertTrue(result["sparse"]["upgraded"])
+        self.assertEqual([], result["sparseErrors"])
+        self.assertEqual("owner_identity", result["sparse"]["locks"]["minecraft:nether:-4:65:12"]["authorization_mode"])
+
     def test_every_declared_api_symbol_is_stable_and_marketplace_candidate(self) -> None:
         metadata = json.loads((RECONSTRUCTION / "custom-handler.json").read_text())
         requirements = [
@@ -152,6 +211,8 @@ console.log(JSON.stringify({
         self.assertFalse(validation["creator_tools"]["marketplace_approval_implied"])
         self.assertTrue(validation["bds_diagnostic"]["script_initialized"])
         self.assertTrue(validation["bds_diagnostic"]["diagnostic_state_persistence_verified"])
+        self.assertTrue(validation["bds_diagnostic"]["empty_state_migration_executed"])
+        self.assertFalse(validation["bds_diagnostic"]["nonempty_state_migration_verified"])
         self.assertFalse(validation["bds_diagnostic"]["feature_persistence_verified"])
         self.assertEqual([1, 2], validation["bds_diagnostic"]["persistent_boot_values"])
         self.assertFalse(validation["bds_diagnostic"]["published_ports"])
