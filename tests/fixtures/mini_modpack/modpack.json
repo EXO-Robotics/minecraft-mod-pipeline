@@ -1,0 +1,11 @@
+{
+  "schema_version": 1,
+  "id": "representative-mini-modpack",
+  "version": "1.0.0",
+  "mods": [
+    { "id": "representative", "source": "../representative_mod", "required": true },
+    { "id": "compat_companion", "source": "mods/compat_companion", "required": true }
+  ],
+  "load_order": ["representative", "compat_companion"],
+  "expected_cross_mod_reference": "compat_companion:attuned_token -> representative:phase_blade"
+}
