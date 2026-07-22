@@ -1,7 +1,8 @@
 import { system, world } from '@minecraft/server';
+import { ActionFormData } from '@minecraft/server-ui';
 import {
   buildOwnerLock, createLockIfAbsent, decideBreak, decideInteraction,
-  migrateLegacyState, normalizeLockMap, removeLockIfRevision, validateLockMap,
+  migrateLegacyState, normalizeLockMap, removalConfirmed, removeLockIfRevision, validateLockMap,
 } from './doorlock-state.js';
 
 const STATE_KEY = 'mccompiler:doorlock:locks:v1';
@@ -46,6 +47,22 @@ function blockKey(block) {
 
 function deferMessage(player, message) {
   system.run(() => player.sendMessage(message));
+}
+
+async function confirmLockRemoval(player) {
+  try {
+    const response = await new ActionFormData()
+      .title('Remove lock?')
+      .body('This block will become available to every player.')
+      .button('Remove lock')
+      .button('Keep lock')
+      .show(player);
+    return removalConfirmed(response);
+  } catch (error) {
+    player.sendMessage('Lock removal confirmation could not be opened. No changes were made.');
+    console.warn(`[mccompiler:doorlock] removal_form_failed=${String(error)}`);
+    return false;
+  }
 }
 
 function runLegacyMigration() {
@@ -109,7 +126,8 @@ world.beforeEvents.playerInteractWithBlock.subscribe((event) => {
   }
   if (decision.action === 'REMOVE_LOCK') {
     event.cancel = true;
-    system.run(() => {
+    system.run(async () => {
+      if (!await confirmLockRemoval(player)) return;
       const current = readLocks();
       if (current === null) return;
       const result = removeLockIfRevision(

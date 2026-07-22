@@ -19,6 +19,10 @@ export function decideBreak(lock) {
   return lock ? { action: 'DENY_LOCKED' } : { action: 'ALLOW_BREAK' };
 }
 
+export function removalConfirmed(response) {
+  return response?.canceled === false && response.selection === 0;
+}
+
 function locationFields(location) {
   const match = /^(.+):(-?\d+):(-?\d+):(-?\d+)$/.exec(location);
   if (!match) throw new Error(`invalid lock location: ${location}`);

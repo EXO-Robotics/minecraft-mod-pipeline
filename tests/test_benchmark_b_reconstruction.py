@@ -22,6 +22,8 @@ class BenchmarkBReconstructionTests(unittest.TestCase):
         self.assertIn("world.beforeEvents.playerBreakBlock.subscribe", script)
         self.assertIn("event.cancel = true", script)
         self.assertIn("system.run(() =>", script)
+        self.assertIn("ActionFormData", script)
+        self.assertIn("if (!await confirmLockRemoval(player)) return", script)
         self.assertIn("persistent_boot=${current}", script)
         self.assertNotIn("password", script.lower())
         self.assertNotIn("src/main/java", script)
@@ -79,7 +81,7 @@ console.log(JSON.stringify(cases));
             module = Path(directory) / "doorlock-state.mjs"
             shutil.copyfile(module_source, module)
             runner = """
-import { decideBreak, decideInteraction } from './doorlock-state.mjs';
+import { decideBreak, decideInteraction, removalConfirmed } from './doorlock-state.mjs';
 const owner = 'player-a';
 const stranger = 'player-b';
 const lock = { owner, schema: 1 };
@@ -96,6 +98,9 @@ console.log(JSON.stringify({
   universalUnlock: decide(stranger, 'door_lock:universal_key', true),
   lockedBreak: decideBreak(lock).action,
   unlockedBreak: decideBreak(undefined).action,
+  confirmed: removalConfirmed({ canceled: false, selection: 0 }),
+  kept: removalConfirmed({ canceled: false, selection: 1 }),
+  canceled: removalConfirmed({ canceled: true, selection: 0 }),
 }));
 """
             completed = subprocess.run(
@@ -114,6 +119,9 @@ console.log(JSON.stringify({
             "universalUnlock": "REMOVE_LOCK",
             "lockedBreak": "DENY_LOCKED",
             "unlockedBreak": "ALLOW_BREAK",
+            "confirmed": True,
+            "kept": False,
+            "canceled": False,
         }, json.loads(completed.stdout))
 
     def test_state_records_and_revision_checks_match_the_v1_contract(self) -> None:
@@ -184,6 +192,7 @@ console.log(JSON.stringify({ record, created, competingCreate, twoLocks, dimensi
         ]
         versions, evidence = ApiCatalog.load_default().resolve_versions(requirements, marketplace=True)
         self.assertEqual("2.0.0", versions["@minecraft/server"])
+        self.assertEqual("2.0.0", versions["@minecraft/server-ui"])
         self.assertEqual(len(requirements), len(evidence))
         self.assertTrue(all(row["stability"] == "stable" and not row["bds_only"] for row in evidence))
 

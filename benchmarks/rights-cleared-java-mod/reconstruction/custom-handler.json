@@ -20,7 +20,12 @@
         {"module": "@minecraft/server", "symbol": "Player.sendMessage"},
         {"module": "@minecraft/server", "symbol": "Block.location"},
         {"module": "@minecraft/server", "symbol": "Block.dimension"},
-        {"module": "@minecraft/server", "symbol": "Block.typeId"}
+        {"module": "@minecraft/server", "symbol": "Block.typeId"},
+        {"module": "@minecraft/server-ui", "symbol": "ActionFormData"},
+        {"module": "@minecraft/server-ui", "symbol": "ActionFormData.title"},
+        {"module": "@minecraft/server-ui", "symbol": "ActionFormData.body"},
+        {"module": "@minecraft/server-ui", "symbol": "ActionFormData.button"},
+        {"module": "@minecraft/server-ui", "symbol": "ActionFormData.show"}
       ],
       "behavior_id": "doorlock:clean_room_lock_controller",
       "destination": "scripts/custom/doorlock.js",

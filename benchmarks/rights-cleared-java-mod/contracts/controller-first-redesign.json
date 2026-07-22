@@ -1,17 +1,18 @@
 {
   "schema_version": "1.0.0",
   "decision_id": "doorlock-controller-first-redesign-v1",
-  "status": "PROPOSED_NOT_APPROVED",
+  "status": "PARTIAL_IMPLEMENTATION_NOT_RUNTIME_VERIFIED_PENDING_APPROVAL",
   "source_interactions_replaced": ["typed /doorlock password command", "keyboard sneak assumptions", "anvil rename password entry"],
   "bedrock_flow": [
     {"step": 1, "input": "controller_use_key_in_air", "result": "open_key_configuration_form"},
     {"step": 2, "input": "form_text_submit", "result": "validate_and_store_credential_digest"},
     {"step": 3, "input": "controller_use_key_on_supported_block", "result": "lock_or_authorize_open according to current state"},
-    {"step": 4, "input": "controller_crouch_plus_use", "result": "request lock removal"},
+    {"step": 4, "input": "controller_crouch_plus_use", "result": "open controller-native destructive-action confirmation before lock removal"},
     {"step": 5, "input": "cancel_or_back", "result": "close_without_mutation"}
   ],
   "requirements": ["all actions reachable with standard controller", "no chat command required", "no hover-only information", "focus order deterministic", "destructive removal requires confirmation", "secrets never echoed after submission", "localizable feedback"],
   "approval": {"approved": false, "reviewer": null, "reviewed_at": null},
-  "runtime_evidence": "NOT_RUN",
+  "implemented": ["item-use and sneak-use interaction path", "ActionFormData removal confirmation", "cancel, back, keep, form-error, and stale-revision paths make no state change"],
+  "runtime_evidence": "STATIC_AND_HANDLER_TEST_ONLY",
   "console_evidence": {"playstation": "UNVERIFIED", "xbox": "UNVERIFIED"}
 }

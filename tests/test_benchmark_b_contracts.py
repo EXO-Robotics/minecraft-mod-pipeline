@@ -73,7 +73,8 @@ class BenchmarkBContractTests(unittest.TestCase):
         controller = load("contracts/controller-first-redesign.json")
         mapping = load("contracts/unsupported-mixin-mapping.json")
         self.assertFalse(controller["approval"]["approved"])
-        self.assertEqual(controller["runtime_evidence"], "NOT_RUN")
+        self.assertEqual(controller["runtime_evidence"], "STATIC_AND_HANDLER_TEST_ONLY")
+        self.assertIn("ActionFormData removal confirmation", controller["implemented"])
         self.assertEqual(set(controller["console_evidence"].values()), {"UNVERIFIED"})
         sources = {item["source"] for item in mapping["mappings"]}
         self.assertEqual(

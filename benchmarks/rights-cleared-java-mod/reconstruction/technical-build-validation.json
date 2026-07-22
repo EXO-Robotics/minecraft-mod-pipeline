@@ -5,18 +5,18 @@
   "status": "STATIC_AND_BDS_UPGRADE_VERIFIED",
   "artifacts": {
     "mcaddon": {
-      "sha256": "0675b905ece93d144983963346122402dcedbd8ea738a4f089cedc23ba76e698",
-      "bytes": 13519
+      "sha256": "cb16889c40031d1db50476aa9389a56963d1c5193bcd2fac11101b628be515f3",
+      "bytes": 13781
     },
     "mcworld": {
-      "sha256": "bd123489d2bf7875a1f347d8893c07d23df828deaba8cbe60d3522fb402b0ce9",
-      "bytes": 16236,
+      "sha256": "9ea2e63db289af9fda59bf8ea11f03957b860f14a4efb97cb9d2562fd09dc122",
+      "bytes": 16498,
       "behavior_pack_id": "04b46aef-f3f7-5049-a62d-ae9672c9a456",
       "resource_pack_id": "0d1ede4c-c129-512e-91d6-68c9f227b97f"
     },
     "legacy_seed_mcworld": {
-      "sha256": "19e9fb09f7daa30b970afe7c623b51b7291ca19270d7492a87b5ac0337379eff",
-      "bytes": 14836,
+      "sha256": "f21b488c76602fd9d5c14043299320e7411254466ac285a09445a9d74248d30c",
+      "bytes": 14887,
       "fixture_only": true
     }
   },
@@ -26,7 +26,8 @@
     "assets": "PASSED",
     "api_symbols": "PASSED",
     "performance_static": "PASSED",
-    "deterministic_regeneration": "PASSED"
+    "deterministic_regeneration": "PASSED",
+    "resolved_modules": {"@minecraft/server": "2.0.0", "@minecraft/server-ui": "2.0.0"}
   },
   "creator_tools": {
     "version": "0.17.6",
@@ -34,7 +35,7 @@
     "errors": 0,
     "warnings": 0,
     "exit_codes": [0, 0],
-    "cache_safe_input": "artifact-0675b905ece93d144983963346122402dcedbd8ea738a4f089cedc23ba76e698.mcaddon",
+    "cache_safe_input": "artifact-cb16889c40031d1db50476aa9389a56963d1c5193bcd2fac11101b628be515f3.mcaddon",
     "marketplace_approval_implied": false
   },
   "bds_diagnostic": {
@@ -42,9 +43,9 @@
     "bedrock_version": "1.26.33.2",
     "bedrock_build_id": "47564860",
     "image": "itzg/minecraft-bedrock-server@sha256:12c7047cc149bd517d6dbc2339163cf62a4f1044c10e759c45c8b387e9784e39",
-    "world_sha256": "bd123489d2bf7875a1f347d8893c07d23df828deaba8cbe60d3522fb402b0ce9",
-    "legacy_seed_world_sha256": "19e9fb09f7daa30b970afe7c623b51b7291ca19270d7492a87b5ac0337379eff",
-    "log_sha256": "797515ae8d11e06601029021690061b27d1b983588ab83c1886ca70c46fa8850",
+    "world_sha256": "9ea2e63db289af9fda59bf8ea11f03957b860f14a4efb97cb9d2562fd09dc122",
+    "legacy_seed_world_sha256": "f21b488c76602fd9d5c14043299320e7411254466ac285a09445a9d74248d30c",
+    "log_sha256": "101e8ddc6ef5c8ff045412de632b434bea3d2958240d67baaf570f745fd7a294",
     "script_initialized": true,
     "restart_cycles": 3,
     "persistent_boot_values": [1, 2, 3],
