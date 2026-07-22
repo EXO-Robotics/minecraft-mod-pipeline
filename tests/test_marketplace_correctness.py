@@ -41,8 +41,9 @@ class MarketplaceCorrectnessTests(unittest.TestCase):
             self.assertEqual(dependencies, usage["resolved_modules"])
             self.assertTrue(validate_output(root, plan)["valid"])
             marketplace = validate_output(root, plan, marketplace=True)
-            self.assertFalse(marketplace["valid"])
-            self.assertTrue(usage["uncatalogued_symbols"])
+            self.assertTrue(marketplace["valid"], marketplace["errors"])
+            self.assertTrue(usage["complete"])
+            self.assertEqual([], usage["uncatalogued_symbols"])
             with zipfile.ZipFile(root / "converted-mod.mcaddon") as bundle:
                 self.assertTrue(bundle.namelist())
                 self.assertTrue(all(name.startswith(("behavior_pack/", "resource_pack/")) for name in bundle.namelist()))

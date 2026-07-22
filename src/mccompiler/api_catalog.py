@@ -48,9 +48,13 @@ class ApiCatalog:
         self.schema_version = str(document["schema_version"])
         self.catalog_version = str(document["catalog_version"])
         self.last_verified = str(document["last_verified"])
+        rows = list(document.get("symbols", []))
+        for group in document.get("symbol_groups", []):
+            shared = {key: value for key, value in group.items() if key != "symbols"}
+            rows.extend({**shared, "symbol": name} for name in group.get("symbols", []))
         self.symbols = {
             (symbol.module, symbol.symbol): symbol
-            for symbol in (ApiSymbol.from_json(row) for row in document.get("symbols", []))
+            for symbol in (ApiSymbol.from_json(row) for row in rows)
         }
 
     @classmethod
@@ -100,4 +104,3 @@ class ApiCatalog:
                 }
             )
         return versions, evidence
-
