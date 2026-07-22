@@ -68,11 +68,16 @@ class BenchmarkBProjectWorkflowTests(unittest.TestCase):
         archive = self.store.resolve(artifacts[0]["path"])
         with zipfile.ZipFile(archive) as bundle:
             names = set(bundle.namelist())
+            normal_recipe = json.loads(bundle.read("behavior_pack/recipes/door_lock_key_recipe.json"))
+            golden_recipe = json.loads(bundle.read("behavior_pack/recipes/door_lock_golden_key_recipe.json"))
         self.assertIn("behavior_pack/scripts/custom/doorlock.js", names)
         self.assertIn("behavior_pack/scripts/custom/doorlock-state.js", names)
         self.assertTrue(any(name.endswith("items/door_lock_key.json") for name in names))
         self.assertTrue(any(name.endswith("items/door_lock_golden_key.json") for name in names))
         self.assertTrue(any(name.endswith("items/door_lock_universal_key.json") for name in names))
+        self.assertEqual("minecraft:iron_nugget", normal_recipe["minecraft:recipe_shaped"]["key"]["I"]["item"])
+        self.assertEqual("minecraft:gold_nugget", golden_recipe["minecraft:recipe_shaped"]["key"]["G"]["item"])
+        self.assertEqual("door_lock:golden_key", golden_recipe["minecraft:recipe_shaped"]["result"]["item"])
         self.assertFalse(any(name.startswith(("reports/", "custom/", "analysis/", "rights/", "tests/")) for name in names))
         self.assertFalse(any(name.endswith((".java", ".class", ".jar")) for name in names))
 

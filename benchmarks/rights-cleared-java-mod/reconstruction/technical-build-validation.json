@@ -5,18 +5,18 @@
   "status": "STATIC_AND_BDS_UPGRADE_VERIFIED",
   "artifacts": {
     "mcaddon": {
-      "sha256": "20d00527f0ca783fae2f730f28f7ba1c206133c0794e5fb7a2d1c63cd3207dcc",
-      "bytes": 17123
+      "sha256": "d8d6734ae671ca055762b5390ef7f7b86bafba6fadc5d82885adc436c23846c4",
+      "bytes": 17918
     },
     "mcworld": {
-      "sha256": "f08bcf4c680a2ec685acbf6c5026d77a0ab783017fdfbcf484a3e5ad9a8193a0",
-      "bytes": 19846,
-      "behavior_pack_id": "7c7b14cc-e506-567a-bac4-d0a998aac615",
-      "resource_pack_id": "6609568c-cfab-578a-9823-122dfa8e4fc1"
+      "sha256": "74d6e6af4c5a71bb48b553b82c4ecc6c8b6924c3f9fa37ef8eb6d850576dc6d4",
+      "bytes": 20814,
+      "behavior_pack_id": "bed878b7-fa4f-555d-94f1-7397ab01ccbd",
+      "resource_pack_id": "3dbe59c3-822d-5b92-8604-32056610abfb"
     },
     "legacy_seed_mcworld": {
-      "sha256": "0218efcb157e3e5f8928e31c024ba442323b8fb76e34f422ed33640952d5022a",
-      "bytes": 17164,
+      "sha256": "2535274f64662303a84d9996fc047dcfc36eabe29369f86a809970c08df81c05",
+      "bytes": 18131,
       "fixture_only": true
     }
   },
@@ -26,6 +26,7 @@
     "assets": "PASSED",
     "api_symbols": "PASSED",
     "performance_static": "PASSED",
+    "source_shaped_key_recipes": "PASSED",
     "deterministic_regeneration": "PASSED",
     "resolved_modules": {"@minecraft/server": "2.0.0", "@minecraft/server-ui": "2.0.0"}
   },
@@ -35,7 +36,7 @@
     "errors": 0,
     "warnings": 0,
     "exit_codes": [0, 0],
-    "cache_safe_input": "artifact-20d00527f0ca783fae2f730f28f7ba1c206133c0794e5fb7a2d1c63cd3207dcc.mcaddon",
+    "cache_safe_input": "artifact-d8d6734ae671ca055762b5390ef7f7b86bafba6fadc5d82885adc436c23846c4.mcaddon",
     "marketplace_approval_implied": false
   },
   "bds_diagnostic": {
@@ -43,9 +44,9 @@
     "bedrock_version": "1.26.33.2",
     "bedrock_build_id": "47564860",
     "image": "itzg/minecraft-bedrock-server@sha256:12c7047cc149bd517d6dbc2339163cf62a4f1044c10e759c45c8b387e9784e39",
-    "world_sha256": "f08bcf4c680a2ec685acbf6c5026d77a0ab783017fdfbcf484a3e5ad9a8193a0",
-    "legacy_seed_world_sha256": "0218efcb157e3e5f8928e31c024ba442323b8fb76e34f422ed33640952d5022a",
-    "log_sha256": "6413debc50b3c8ec26a2db85498fa7f27e844e5c30b445e5720f42789d174b34",
+    "world_sha256": "74d6e6af4c5a71bb48b553b82c4ecc6c8b6924c3f9fa37ef8eb6d850576dc6d4",
+    "legacy_seed_world_sha256": "2535274f64662303a84d9996fc047dcfc36eabe29369f86a809970c08df81c05",
+    "log_sha256": "4d6313e2c750f1385bf8ab970452300b349d4ceed6c395f6483a0ca4e786cc27",
     "script_initialized": true,
     "restart_cycles": 3,
     "persistent_boot_values": [1, 2, 3],
@@ -69,6 +70,7 @@
   },
   "unverified": [
     "actual player item and block event adapters",
+    "actual crafting of normal and golden key recipes",
     "lock, authorize, unlock, and break gameplay",
     "gameplay-created lock-map persistence and correctness across restart",
     "real two-player gameplay isolation (pure authorization decisions only)",

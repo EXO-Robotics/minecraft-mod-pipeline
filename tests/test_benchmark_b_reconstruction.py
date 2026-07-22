@@ -254,7 +254,6 @@ console.log(JSON.stringify({ record, created, competingCreate, twoLocks, dimensi
         self.assertIsNone(status["approved_quality_claim"])
         self.assertEqual(
             {
-                "golden-key behavior distinction",
                 "actual gameplay, persistence, multiplayer, Realm, and console tests",
             },
             set(status["missing"]),

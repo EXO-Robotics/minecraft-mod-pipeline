@@ -34,6 +34,18 @@
       "kind": "item",
       "properties": {"max_stack_size": 1},
       "evidence": [{"source_file": "src/main/java/net/vassbo/door_lock/item/ModItems.java", "start_line": 12, "end_line": 12, "source_mode": "source", "extraction_rule": "fabric-source:registerItem-helper", "analyzer_version": "java-common/1.0.0", "confidence": 0.86}]
+    },
+    {
+      "identifier": "door_lock:key_recipe",
+      "kind": "recipe",
+      "properties": {"recipe_type": "shaped", "pattern": ["TII", "  I"], "key": {"T": "minecraft:tripwire_hook", "I": "minecraft:iron_nugget"}, "result": "door_lock:key"},
+      "evidence": [{"source_file": "src/main/resources/data/door_lock/recipe/key.json", "start_line": 1, "end_line": 16, "source_mode": "source", "extraction_rule": "fabric-resource:crafting-shaped", "analyzer_version": "resource-json/1.0.0", "confidence": 1.0}]
+    },
+    {
+      "identifier": "door_lock:golden_key_recipe",
+      "kind": "recipe",
+      "properties": {"recipe_type": "shaped", "pattern": ["TGG", "  G"], "key": {"T": "minecraft:tripwire_hook", "G": "minecraft:gold_nugget"}, "result": "door_lock:golden_key"},
+      "evidence": [{"source_file": "src/main/resources/data/door_lock/recipe/golden_key.json", "start_line": 1, "end_line": 16, "source_mode": "source", "extraction_rule": "fabric-resource:crafting-shaped", "analyzer_version": "resource-json/1.0.0", "confidence": 1.0}]
     }
   ],
   "assets": [],

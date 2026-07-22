@@ -133,8 +133,29 @@ def _native_content(kind: str, identifier: str, props: dict[str, Any], min_engin
     if kind == "block":
         return f"blocks/{identifier.replace(':', '_')}.json", {"format_version": ".".join(map(str, min_engine)), "minecraft:block": {"description": {**description, "menu_category": {"category": "construction"}}, "components": {"minecraft:destructible_by_mining": {"seconds_to_destroy": float(props.get("destroy_time", 1.0))}, "minecraft:destructible_by_explosion": {"explosion_resistance": float(props.get("explosion_resistance", 1.0))}}}}
     if kind in {"recipe", "crafting_recipe", "processing_recipe"}:
+        recipe_format = str(props.get("format_version", "1.26.0"))
         result = props.get("result", "minecraft:stone")
-        return f"recipes/{identifier.replace(':', '_')}.json", {"format_version": "1.20.10", "minecraft:recipe_shapeless": {"description": {"identifier": identifier}, "tags": ["crafting_table"], "ingredients": [{"item": x} for x in props.get("ingredients", ["minecraft:stone"])], "unlock": [{"item": "minecraft:stone"}], "result": {"item": result if ":" in str(result) else f"minecraft:{result}"}}}
+        result_item = result if ":" in str(result) else f"minecraft:{result}"
+        result_data: dict[str, Any] = {"item": result_item}
+        if int(props.get("count", 1)) != 1:
+            result_data["count"] = int(props["count"])
+        if props.get("recipe_type") == "shaped":
+            pattern = props.get("pattern")
+            key = props.get("key")
+            if not isinstance(pattern, list) or not pattern or not all(isinstance(row, str) and 1 <= len(row) <= 3 for row in pattern) or len(pattern) > 3:
+                raise ValueError(f"Shaped recipe {identifier} requires one to three pattern rows of at most three characters")
+            if not isinstance(key, dict) or not key:
+                raise ValueError(f"Shaped recipe {identifier} requires a nonempty key map")
+            used = {character for row in pattern for character in row if character != " "}
+            if used != set(key) or any(not isinstance(symbol, str) or len(symbol) != 1 or not isinstance(item, str) for symbol, item in key.items()):
+                raise ValueError(f"Shaped recipe {identifier} key map must exactly cover one-character pattern symbols")
+            ingredients = {symbol: {"item": item} for symbol, item in sorted(key.items())}
+            unlock_items = sorted(set(str(item) for item in key.values()))
+            body = {"description": {"identifier": identifier}, "tags": ["crafting_table"], "pattern": pattern, "key": ingredients, "unlock": [{"item": item} for item in unlock_items], "result": result_data}
+            return f"recipes/{identifier.replace(':', '_')}.json", {"format_version": recipe_format, "minecraft:recipe_shaped": body}
+        ingredient_items = [str(item) for item in props.get("ingredients", ["minecraft:stone"])]
+        body = {"description": {"identifier": identifier}, "tags": ["crafting_table"], "ingredients": [{"item": item} for item in ingredient_items], "unlock": [{"item": item} for item in sorted(set(ingredient_items))], "result": result_data}
+        return f"recipes/{identifier.replace(':', '_')}.json", {"format_version": recipe_format, "minecraft:recipe_shapeless": body}
     if kind in {"loot", "loot_table"}:
         return f"loot_tables/{identifier.replace(':', '/')}.json", {"pools": [{"rolls": 1, "entries": [{"type": "item", "name": props.get("item", "minecraft:stone"), "weight": 1}]}]}
     if kind == "entity":

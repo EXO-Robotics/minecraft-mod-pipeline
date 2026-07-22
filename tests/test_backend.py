@@ -47,6 +47,31 @@ class BackendTests(unittest.TestCase):
             report = json.loads((Path(output) / "reports/unsupported-and-approximations.json").read_text())
             self.assertTrue(report["unsupported"])
 
+    def test_shaped_recipe_preserves_pattern_key_and_result(self):
+        ir, _ = self.fixture()
+        ir["content"].append({
+            "kind": "recipe", "identifier": "demo:golden_wand_recipe",
+            "properties": {
+                "recipe_type": "shaped", "pattern": ["TGG", "  G"],
+                "key": {"T": "minecraft:tripwire_hook", "G": "minecraft:gold_nugget"},
+                "result": "demo:wand",
+            },
+            "evidence": ev(),
+        })
+        plan = plan_conversion(ir)
+        with tempfile.TemporaryDirectory() as output:
+            compile_bedrock(ir, plan, output)
+            recipe = json.loads((Path(output) / "behavior_pack/recipes/demo_golden_wand_recipe.json").read_text())
+        body = recipe["minecraft:recipe_shaped"]
+        self.assertEqual("1.26.0", recipe["format_version"])
+        self.assertEqual(["TGG", "  G"], body["pattern"])
+        self.assertEqual({"item": "minecraft:gold_nugget"}, body["key"]["G"])
+        self.assertEqual("demo:wand", body["result"]["item"])
+        self.assertEqual(
+            [{"item": "minecraft:gold_nugget"}, {"item": "minecraft:tripwire_hook"}],
+            body["unlock"],
+        )
+
     def test_validator_detects_archive_tampering(self):
         ir, plan = self.fixture()
         with tempfile.TemporaryDirectory() as output:
