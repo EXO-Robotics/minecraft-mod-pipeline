@@ -257,6 +257,18 @@ def _inventory(view: ArchiveView) -> dict[str, Any]:
     counts["total_files"] = len(entries)
     flags = set()
     lower_entries = [e.lower() for e in entries]
+    special_inventory = {
+        "mixins": sorted(e for e in entries if "mixin" in e.lower()),
+        "access_transformers": sorted(e for e in entries if "access_transformer" in e.lower() or e.lower().endswith("accesstransformer.cfg")),
+        "coremods": sorted(e for e in entries if "coremod" in e.lower()),
+        "data_generators": sorted(e for e in entries if "datagen" in e.lower() or "data_generator" in e.lower()),
+        "configuration": sorted(e for e in entries if "/config/" in f"/{e.lower()}" or e.lower().endswith((".toml", ".properties"))),
+        "scripts": sorted(e for e in entries if e.lower().endswith((".js", ".kts", ".groovy", ".zs"))),
+        "native_libraries": sorted(e for e in entries if e.lower().endswith((".dll", ".so", ".dylib", ".jnilib"))),
+        "client_only": sorted(e for e in entries if any(token in e.lower() for token in ("/client/", "clientonly", "clientside"))),
+        "server_only": sorted(e for e in entries if any(token in e.lower() for token in ("/server/", "serveronly", "serverside"))),
+        "cross_mod_integrations": sorted(e for e in entries if any(token in e.lower() for token in ("/compat/", "/integration/", "/integrations/"))),
+    }
     if any("mixins" in e or e.endswith("mixin.json") for e in lower_entries): flags.add("mixins")
     if any("access_transformer" in e or e.endswith("accesstransformer.cfg") for e in lower_entries): flags.add("access_transformers")
     if any("coremod" in e or "js" in Path(e).suffix.lower() and "core" in e.lower() for e in lower_entries): flags.add("coremods")
@@ -267,7 +279,7 @@ def _inventory(view: ArchiveView) -> dict[str, Any]:
     source_signals = _source_signals(view, entries)
     for signal, flag in (("mixin_injections", "mixins"), ("network_hooks", "network_packets"), ("ui_hooks", "custom_gui"), ("tile_entities", "tile_entities")):
         if source_signals.get(signal): flags.add(flag)
-    return {"file_count": len(entries), "namespaces": {k: sorted(v) for k, v in namespaces.items()}, "content_counts": dict(sorted(counts.items())), "examples": dict(examples), "risk_flags": sorted(flags), "source_signals": source_signals}
+    return {"file_count": len(entries), "namespaces": {k: sorted(v) for k, v in namespaces.items()}, "content_counts": dict(sorted(counts.items())), "examples": dict(examples), "special_inventory": special_inventory, "risk_flags": sorted(flags), "source_signals": source_signals}
 
 
 def _bedrock_target(root: Path) -> dict[str, Any]:
@@ -356,12 +368,30 @@ def scan_path(input_path: str | Path, bedrock_server: str | Path | None = None) 
     ir["metadata"] = {"mods": [{k: v for k, v in mod.items() if k in {"id", "name", "version", "loader"}} for mod in ir["mods"]]}
     ir["dependencies"] = ir["dependency_graph"]["edges"]
     ir["content"] = semantic["content"]
+    declarations: defaultdict[tuple[str, str], list[dict[str, Any]]] = defaultdict(list)
+    for item in ir["content"]:
+        declarations[(str(item.get("kind")), str(item.get("identifier")))].append(item)
+    conflicts = []
+    for (kind, identifier), items in sorted(declarations.items()):
+        source_files = sorted({str(e.get("source_file")) for item in items for e in item.get("evidence", []) if e.get("source_file")})
+        if len(items) > 1 and len(source_files) > 1:
+            conflicts.append({
+                "severity": "error", "code": "identifier_conflict", "feature": identifier,
+                "kind": kind, "sources": source_files,
+                "evidence": [e for item in items for e in item.get("evidence", [])],
+            })
+    ir["registries"] = [
+        {"kind": kind, "identifier": identifier, "declaration_count": len(items),
+         "conflicted": any(row["feature"] == identifier and row["kind"] == kind for row in conflicts),
+         "evidence": [e for item in items for e in item.get("evidence", [])]}
+        for (kind, identifier), items in sorted(declarations.items())
+    ]
     ir["behaviors"] = semantic["behaviors"]
     ir["state"] = semantic["state"]
     ir["presentation_requirements"] = semantic["presentation"]
     ir["ui_intent"] = semantic["ui"]
     ir["networking_intent"] = semantic["networking"]
-    ir["diagnostics"] = semantic["diagnostics"]
+    ir["diagnostics"] = semantic["diagnostics"] + conflicts
     ir["unsupported_hooks"] = [d for d in semantic["diagnostics"] if d.get("code") == "unsupported_hook"]
     ir["bytecode_evidence"] = bytecode_evidence
     ir["assets"] = [{"kind": kind, "count": count, "evidence": ir["mods"][0].get("inventory", {}).get("examples", {}).get(kind, []) if ir["mods"] else []} for kind, count in ir["aggregate"]["asset_counts"].items() if count]

@@ -11,7 +11,20 @@ CLASSES = ("DIRECT", "SCRIPTED_EQUIVALENT", "RECONSTRUCTED", "BEHAVIORAL_APPROXI
 
 
 def _database() -> dict[str, Any]:
-    return read_json(Path(__file__).with_name("capabilities.json")) or {"capabilities": {}}
+    database = read_json(Path(__file__).with_name("capabilities.json")) or {"capabilities": {}}
+    for identifier, capability in database.get("capabilities", {}).items():
+        capability.setdefault("capability_id", identifier)
+        capability.setdefault("bedrock_version", database.get("bedrock_version"))
+        capability.setdefault("status", "stable" if capability.get("stable") else "experimental")
+        capability.setdefault("approximation_strategies", [])
+        capability.setdefault("required_modules", capability.get("modules", []))
+        capability.setdefault("performance_implications", capability.get("performance", "unknown"))
+        capability.setdefault("multiplayer_safety", capability.get("multiplayer_safe", False))
+        capability.setdefault("persistence_support", capability.get("persistent", False))
+        capability.setdefault("known_limitations", capability.get("limitations", []))
+        capability.setdefault("reference_implementation", capability.get("reference"))
+        capability.setdefault("deprecation", None)
+    return database
 
 
 def _scores(classification: str, confidence: float, capability: dict[str, Any]) -> dict[str, Any]:
@@ -32,13 +45,18 @@ def plan_conversion(ir: dict[str, Any]) -> dict[str, Any]:
     capabilities = db["capabilities"]
     features: list[dict[str, Any]] = []
     overrides = {o.get("target"): o for o in ir.get("applied_overrides", [])}
+    conflicted = {d.get("feature") for d in ir.get("diagnostics", []) if d.get("code") == "identifier_conflict"}
     for content in ir.get("content", []):
         key = f"content.{content.get('kind')}"
         cap = capabilities.get(key, {})
         classification = cap.get("classification", "MANUAL_REDESIGN")
+        if content.get("identifier") in conflicted:
+            classification = "MANUAL_REDESIGN"
         override = overrides.get(content.get("identifier"))
         if override and override.get("strategy"): classification = override["strategy"]
-        features.append({"id": content.get("identifier"), "kind": key, "classification": classification, "scores": _scores(classification, 1.0, cap), "capability": cap, "evidence": content.get("evidence", []), "override": override})
+        if any(f["id"] == content.get("identifier") and f["kind"] == key for f in features):
+            continue
+        features.append({"id": content.get("identifier"), "kind": key, "classification": classification, "scores": _scores(classification, 1.0, cap), "capability": cap, "evidence": content.get("evidence", []), "override": override, "diagnostic": "identifier_conflict" if content.get("identifier") in conflicted else None})
     for behavior in ir.get("behaviors", []):
         key = f"behavior.{behavior.get('trigger', {}).get('type')}"
         cap = capabilities.get(key, {})

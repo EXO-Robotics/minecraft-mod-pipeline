@@ -4,5 +4,28 @@
   "title": "Compiler Overrides 1.0.0",
   "type": "object",
   "required": ["schema_version", "overrides"],
-  "properties": {"schema_version": {"const": "1.0.0"}, "overrides": {"type": "array"}}
+  "properties": {
+    "schema_version": {"const": "1.0.0"},
+    "overrides": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["target", "provenance"],
+        "properties": {
+          "target": {"type": "string"},
+          "strategy": {"enum": ["DIRECT", "SCRIPTED_EQUIVALENT", "RECONSTRUCTED", "BEHAVIORAL_APPROXIMATION", "VISUAL_APPROXIMATION", "MANUAL_REDESIGN", "UNSUPPORTED"]},
+          "map_identifier": {"type": "string"},
+          "dependency_resolution": {"type": "object"},
+          "behavior_patch": {"type": "object"},
+          "state_storage": {"type": "string"},
+          "omit": {"type": "boolean"},
+          "licensing_note": {"type": "string"},
+          "custom_script_modules": {"type": "array", "items": {"type": "object", "required": ["destination", "source", "sha256"]}},
+          "provenance": {"type": "object"}
+        },
+        "additionalProperties": false
+      }
+    }
+  },
+  "additionalProperties": false
 }

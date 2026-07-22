@@ -288,6 +288,9 @@ def _content_checks(
 
     start = len(errors)
     known = {identifier for (_, identifier) in definitions}
+    conversion = parsed.get(root / "conversion-manifest.json") or {}
+    if isinstance(conversion, dict):
+        known.update(str(row.get("id")) for row in conversion.get("generated", []) if isinstance(row, dict) and row.get("id"))
     known.update({"minecraft:" + name for name in ("air", "stone")})
     for path, data in parsed.items():
         if root / "behavior_pack" not in path.parents or not isinstance(data, dict):
@@ -307,6 +310,26 @@ def _content_checks(
             for reference in _identifiers(data.get("pools", [])):
                 if _custom(reference) and reference not in known:
                     errors.append(f"Loot table references missing content {reference} in {path}")
+    modir = parsed.get(root / "reports/modir.json") or {}
+    if isinstance(modir, dict):
+        ui_ids = {str(row.get("id")) for row in modir.get("ui_intent", []) if isinstance(row, dict)}
+        reference_fields = {
+            "spawn_entity": "entity", "spawn_projectile": "entity", "set_block": "block",
+            "replace_block": "block", "add_item": "item", "remove_item": "item",
+            "place_structure": "structure",
+        }
+        for behavior in modir.get("behaviors", []):
+            if not isinstance(behavior, dict):
+                continue
+            for action in behavior.get("actions", []):
+                if not isinstance(action, dict):
+                    continue
+                field = reference_fields.get(str(action.get("type")))
+                reference = str(action.get(field, "")) if field else ""
+                if reference and _custom(reference) and reference not in known:
+                    errors.append(f"Behavior {behavior.get('id')} references missing generated content {reference}")
+                if action.get("type") == "open_interaction_ui" and str(action.get("ui")) not in ui_ids:
+                    errors.append(f"Behavior {behavior.get('id')} references missing UI intent {action.get('ui')}")
     _check(checks, "content-cross-references", errors, start)
 
     start = len(errors)

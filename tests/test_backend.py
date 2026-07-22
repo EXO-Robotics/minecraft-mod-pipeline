@@ -31,6 +31,8 @@ class BackendTests(unittest.TestCase):
                 self.assertIn("behavior_pack/scripts/runtime/state.js", archive.namelist())
                 self.assertIn("scripts/runtime/state.js", archive.namelist())
                 self.assertIn("reports/provenance.json", archive.namelist())
+            self.assertIn("c.block?.location||c.location", (Path(a) / "behavior_pack/scripts/runtime/actions.js").read_text())
+            self.assertIn("location:p", (Path(a) / "behavior_pack/scripts/tests/contracts.js").read_text())
             result = validate_output(a, plan)
             self.assertTrue(result["valid"], result)
             self.assertEqual(result["layers"]["runtime"]["status"], "not-run")

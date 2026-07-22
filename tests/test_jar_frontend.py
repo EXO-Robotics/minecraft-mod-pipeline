@@ -40,6 +40,10 @@ class JarFrontendTests(unittest.TestCase):
             source_fingerprints = {x["id"]: x["fingerprint"]["sha256"] for x in source_ir["behaviors"]}
             jar_fingerprints = {x["id"]: x["fingerprint"]["sha256"] for x in jar_ir["behaviors"]}
             self.assertEqual(source_fingerprints, jar_fingerprints)
+            self.assertEqual(
+                {(x["id"], x["scope"], x["persistence"]) for x in source_ir["state"]},
+                {(x["id"], x["scope"], x["persistence"]) for x in jar_ir["state"]},
+            )
             self.assertTrue(all(e["source_mode"] == "bytecode-javap" for b in jar_ir["behaviors"] for e in b["evidence"]))
             self.assertEqual(1, len(jar_ir["unsupported_hooks"]))
 

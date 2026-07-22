@@ -198,11 +198,12 @@ def analyze_archive(path: str | Path) -> dict[str, list[dict[str, Any]]]:
                 }
                 result["behaviors"].append(behavior)
             if form_body is not None:
-                result["ui"].append({"id": owner_id, "title": _value(form_body, "title"), "purpose": _value(form_body, "purpose"), "controls": ["action_buttons"], "evidence": [_ev(archive, class_name, method, start, end, "javap:FormReplacement")]})
+                result["ui"].append({"id": _value(form_body, "id") or owner_id, "title": _value(form_body, "title"), "purpose": _value(form_body, "purpose"), "controls": ["action_buttons"], "evidence": [_ev(archive, class_name, method, start, end, "javap:FormReplacement")]})
         state_body = _annotation(output, "State")
         if state_body is not None:
-            for key in re.findall(r'"([^\"]+)"', state_body.split("persistent=", 1)[0]):
-                result["state"].append({"id": key, "scope": "object", "value_type": "number", "default": 0, "persistence": "persistent" if "persistent=true" in state_body else "temporary", "evidence": [_ev(archive, class_name, None, 0, 0, "javap:State")]})
+            scope = _value(state_body, "scope") or "object"
+            for key in re.findall(r'"([^\"]+)"', state_body.split("scope=", 1)[0]):
+                result["state"].append({"id": key, "scope": scope, "value_type": "number", "default": 0, "persistence": "persistent" if "persistent=true" in state_body else "temporary", "evidence": [_ev(archive, class_name, None, 0, 0, "javap:State")]})
         approximation = _annotation(output, "Approximation")
         if approximation is not None:
             result["presentation"].append({"kind": "visual_approximation", "owner": class_name, "reason": _value(approximation, "reason"), "strategy": _value(approximation, "bedrockStrategy"), "evidence": [_ev(archive, class_name, None, 0, 0, "javap:Approximation")]})

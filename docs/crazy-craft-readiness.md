@@ -37,6 +37,14 @@ Crazy Craft is an integration target, not a single representative mod. A modpack
 
 Select 3–5 legally clear mods spanning declarative content, event behavior, persistence/machines, entities/bosses and one known unsupported primitive. Compile them together as a mini-modpack, resolve identifier/dependency conflicts, run fresh-world and reload tests, then compare the generated report against a human behavior inventory. Only expand when discrepancies are categorized and fixtures added.
 
+## Profile estimate and conversion order
+
+Without a user-supplied, version-pinned Crazy Craft distribution inventory, coverage is necessarily a category estimate rather than a conversion claim. The present foundation is expected to cover roughly **55–70% of conventional static content**, **35–55% of ordinary weapons/combat mechanics**, and **20–40% of complex pack behavior** before manual redesign. Transformations, lucky-event systems, inventory pets, vehicles, dimensions, custom GUIs, and cross-mod energy systems are the highest-risk groups.
+
+Required next patterns are random weighted event tables, transformation selectors with authoritative state, inventory-pet passive/active abilities, vehicle/mount controls, portal/dimension substitutions, machine inventory/energy networks, and dependency-mediated recipe/registry remapping. The dedicated profile should first freeze the exact Minecraft and loader generation, then inventory and topologically sort dependencies, convert static content, combat, structures/spawning, entities/bosses, machines, lucky systems, transformations/pets, and finally dimensions/vehicles/GUI redesigns.
+
+Forge-modern, NeoForge, and legacy Forge semantic adapters will likely all be required; metadata discovery alone is insufficient. Conflicting identifiers must remain blocked until a persistent mapping override is reviewed. Java-only render hooks, mixins/coremods, custom networking, dimensions, and proprietary assets should be expected to require manual redesign or remain unsupported. No generated pack containing third-party code or assets may be redistributed until each artifact's license and transformation/redistribution terms are recorded; local user-supplied conversion is the default.
+
 ## Stop conditions
 
 Do not begin bulk conversion if provenance is incomplete, the target BDS Script API profile has not executed a probe pack, source/JAR results are nondeterministic, state fails restart/reload, pack interactions are not represented in IR, or unsupported features are being hidden as cosmetic success.

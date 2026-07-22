@@ -21,8 +21,17 @@ public final class RepresentativeMod {
     @Register(kind = "item", id = "representative:storm_orb")
     public static final StormOrb STORM_ORB = Registry.register("item", "representative:storm_orb", new StormOrb());
 
+    @Register(kind = "item", id = "representative:bonus_crystal")
+    public static final Object BONUS_CRYSTAL = Registry.register("item", "representative:bonus_crystal", new Object());
+
+    @Register(kind = "item", id = "representative:refined_aether")
+    public static final Object REFINED_AETHER = Registry.register("item", "representative:refined_aether", new Object());
+
     @Register(kind = "block", id = "representative:aether_machine")
     public static final AetherMachine AETHER_MACHINE = Registry.register("block", "representative:aether_machine", new AetherMachine());
+
+    @Register(kind = "block", id = "representative:charged_aether_block")
+    public static final Object CHARGED_AETHER_BLOCK = Registry.register("block", "representative:charged_aether_block", new Object());
 
     @Register(kind = "entity", id = "representative:clockwork_golem")
     public static final ClockworkGolem GOLEM = Registry.register("entity", "representative:clockwork_golem", new ClockworkGolem());
@@ -40,7 +49,7 @@ public final class RepresentativeMod {
         Registry.register("player_state", "representative:rift_attunement", new PlayerProgress());
     }
 
-    @State(keys = {"rift_attunement", "bosses_defeated"}, persistent = true)
+    @State(keys = {"rift_attunement", "bosses_defeated"}, scope = "player", persistent = true)
     public static final class PlayerProgress {
         @Trigger("player_join")
         public void restore(Context context) {
@@ -54,6 +63,7 @@ public final class RepresentativeMod {
         }
     }
 
+    @State(keys = {"blade_charge"}, scope = "item", persistent = true)
     public static final class PhaseBlade {
         @Trigger("item_use")
         public void use(Context context) {
@@ -96,7 +106,7 @@ public final class RepresentativeMod {
         }
     }
 
-    @State(keys = {"energy", "progress", "owner"}, persistent = true)
+    @State(keys = {"energy", "progress", "owner"}, scope = "block", persistent = true)
     @Tick(interval = 20)
     public static final class AetherMachine {
         @Tick(interval = 20)
@@ -113,14 +123,14 @@ public final class RepresentativeMod {
             }
         }
 
-        @FormReplacement(title = "Aether Machine", purpose = "Replace the Java container GUI with a Bedrock action form")
+        @FormReplacement(id = "representative:aether_machine_control", title = "Aether Machine", purpose = "Replace the Java container GUI with a Bedrock action form")
         @Trigger("block_interact")
         public void openMachine(Context context) {
             context.openForm("representative:aether_machine_control");
         }
     }
 
-    @State(keys = {"patrol_point", "temper"}, persistent = true)
+    @State(keys = {"patrol_point", "temper"}, scope = "entity", persistent = true)
     public static class ClockworkGolem {
         @Trigger("entity_spawn")
         public void onSpawn(Context context) {
@@ -134,7 +144,7 @@ public final class RepresentativeMod {
         }
     }
 
-    @State(keys = {"phase", "shield", "arena_initialized"}, persistent = true)
+    @State(keys = {"phase", "shield", "arena_initialized"}, scope = "entity", persistent = true)
     public static final class RiftBoss extends ClockworkGolem {
         @Phase(value = 1, condition = "health > 0.66")
         public void phaseOne(Context context) {

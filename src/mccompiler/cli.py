@@ -5,7 +5,7 @@ import json
 import sys
 from pathlib import Path
 
-from .bedrock import compile_bedrock
+from .bedrock import ARCHIVE_NAME, _zip_deterministic, compile_bedrock
 from .io import write_json
 from .planner import plan_conversion
 from .overrides import apply_overrides, load_overrides
@@ -34,10 +34,25 @@ def main(argv: list[str] | None = None) -> int:
         "--runtime", action="store_true",
         help="Require and validate reports/runtime-evidence.json",
     )
+    validate_parser.add_argument("--record", action="store_true", help="Record validation layers in conversion reports and rebuild the deterministic archive")
     args = parser.parse_args(argv)
 
     if args.command == "validate":
         result = validate_output(args.path, runtime=args.runtime)
+        if args.record:
+            root = Path(args.path).expanduser().resolve()
+            if root.is_file():
+                root = root.parent
+            report_path = root / "reports/conversion-report.json"
+            report = json.loads(report_path.read_text(encoding="utf-8"))
+            report["validation"] = json.loads(json.dumps(result["layers"]).replace(str(root), "."))
+            report["result"] = "validated" if result["valid"] else "validation_failed"
+            write_json(report_path, report)
+            markdown = root / "reports/conversion-report.md"
+            base = markdown.read_text(encoding="utf-8").split("\n## Validation results\n", 1)[0].rstrip()
+            statuses = [f"- {name.title()}: **{layer.get('status', 'unknown')}**" for name, layer in result["layers"].items()]
+            markdown.write_text(base + "\n\n## Validation results\n\n" + "\n".join(statuses) + "\n", encoding="utf-8")
+            _zip_deterministic(root, root / ARCHIVE_NAME)
         print(json.dumps(result, indent=2))
         return 0 if result["valid"] else 1
 

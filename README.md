@@ -44,4 +44,6 @@ Pack UUIDs, JSON ordering, generated modules, ZIP member ordering, timestamps, a
 
 The boundaries are scanner → loader/source/bytecode analyzers → evidence → intent/ModIR/BehaviorIR → fingerprints → capability/pattern planner → Bedrock backend → layered validator → runtime harness → report. Published schemas live in `src/mccompiler/schemas`; architectural decisions and current primary-source research live in `docs/adr` and `docs/research`.
 
-The JAR fallback currently preserves class constant evidence but does not claim semantic bytecode reconstruction without a working JDK-backed analyzer. Runtime activation is reported separately from static and integration validity.
+The compiled-JAR profile uses `javap` from a local OpenJDK to reconstruct the tested annotation-and-call vocabulary with lower-confidence bytecode provenance. The representative source-free JAR must produce the same 15 behavior fingerprints and state declarations as source mode. Without `javap`, class constants remain inventory evidence and no semantic bytecode support is claimed.
+
+See [docs/user-guide.md](docs/user-guide.md) for IR contracts, adapters, patterns, overrides, generation, validation, runtime reproduction, and current limitations.

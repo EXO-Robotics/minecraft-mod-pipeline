@@ -186,13 +186,13 @@ def analyze_java(path: str, text: str) -> dict[str, list[dict[str, Any]]]:
         behavior = {"id": f"{namespace}:{owner_identifier}/{method}", "owner": {"kind": "object", "identifier": f"{namespace}:{owner_identifier}"}, "trigger": {"type": trigger}, "conditions": state_conditions(body), "actions": actions, "stateReads": sorted(set(re.findall(r'context\.get\(\s*"([^"]+)"', body))), "stateWrites": sorted(set(re.findall(r'context\.set\(\s*"([^"]+)"', body))), "feedback": [], "presentationRequirements": [], "evidence": ev, "confidence": 1.0 if trigger in TRIGGERS and not unknown_calls else .75, "diagnostics": [{"severity": "error", "code": "unrecognized_operation", "operation": call} for call in unknown_calls]}
         behaviors.append(behavior)
 
-    for match in re.finditer(r'@State\s*\(\s*keys\s*=\s*\{([^}]*)\}\s*,\s*persistent\s*=\s*(true|false)\s*\)', text):
+    for match in re.finditer(r'@State\s*\(\s*keys\s*=\s*\{([^}]*)\}\s*,\s*scope\s*=\s*"([^"]+)"\s*,\s*persistent\s*=\s*(true|false)\s*\)', text):
         line = text.count("\n", 0, match.start()) + 1
         for key in re.findall(r'"([^"]+)"', match.group(1)):
-            state.append({"id": key, "scope": "object", "value_type": "number", "default": 0, "persistence": "persistent" if match.group(2) == "true" else "temporary", "evidence": [evidence(path, (line, line), "java-common:State", class_name=class_name)]})
-    for match in re.finditer(r'@FormReplacement\s*\(\s*title\s*=\s*"([^"]+)"\s*,\s*purpose\s*=\s*"([^"]+)"\s*\)', text):
+            state.append({"id": key, "scope": match.group(2), "value_type": "number", "default": 0, "persistence": "persistent" if match.group(3) == "true" else "temporary", "evidence": [evidence(path, (line, line), "java-common:State", class_name=class_name)]})
+    for match in re.finditer(r'@FormReplacement\s*\(\s*id\s*=\s*"([^"]+)"\s*,\s*title\s*=\s*"([^"]+)"\s*,\s*purpose\s*=\s*"([^"]+)"\s*\)', text):
         line = text.count("\n", 0, match.start()) + 1
-        ui.append({"id": re.sub(r'\W+', '_', match.group(1).lower()), "title": match.group(1), "purpose": match.group(2), "controls": ["action_buttons"], "evidence": [evidence(path, (line, line), "java-common:FormReplacement", class_name=class_name)]})
+        ui.append({"id": match.group(1), "title": match.group(2), "purpose": match.group(3), "controls": ["action_buttons"], "evidence": [evidence(path, (line, line), "java-common:FormReplacement", class_name=class_name)]})
     for match in re.finditer(r'@Phase\s*\(\s*value\s*=\s*(\d+)\s*,\s*condition\s*=\s*"([^"]+)"\s*\)\s*public\s+void\s+(\w+)\s*\([^)]*\)\s*\{', text):
         phase, condition, method = match.groups(); depth, pos = 1, match.end()
         while pos < len(text) and depth:

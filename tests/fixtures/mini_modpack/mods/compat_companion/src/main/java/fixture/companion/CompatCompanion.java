@@ -10,6 +10,8 @@ public final class CompatCompanion {
 
     public void onInitialize() {
         REGISTRATIONS.put("item:compat_companion:attuned_token", "texture=compat_companion:item/attuned_token");
+        // Deliberate cross-mod collision: the compiler must block this identifier, not overwrite it.
+        REGISTRATIONS.put("item:representative:phase_blade", "conflicts-with=representative");
         REGISTRATIONS.put("recipe:compat_companion:attuned_token", "ingredient=representative:phase_blade");
         REGISTRATIONS.put("behavior:item_use", "effect=minecraft:glowing;cooldown=20");
     }

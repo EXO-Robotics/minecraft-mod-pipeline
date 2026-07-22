@@ -21,13 +21,13 @@ public final class FixtureApi {
     public @interface Tick { int interval(); }
 
     @Retention(RetentionPolicy.RUNTIME) @Target({ElementType.TYPE, ElementType.METHOD})
-    public @interface State { String[] keys(); boolean persistent() default true; }
+    public @interface State { String[] keys(); String scope(); boolean persistent() default true; }
 
     @Retention(RetentionPolicy.RUNTIME) @Target({ElementType.TYPE, ElementType.METHOD})
     public @interface Phase { int value(); String condition(); }
 
     @Retention(RetentionPolicy.RUNTIME) @Target({ElementType.TYPE, ElementType.METHOD})
-    public @interface FormReplacement { String title(); String purpose(); }
+    public @interface FormReplacement { String id(); String title(); String purpose(); }
 
     @Retention(RetentionPolicy.RUNTIME) @Target({ElementType.TYPE, ElementType.METHOD})
     public @interface Approximation { String reason(); String bedrockStrategy(); }
