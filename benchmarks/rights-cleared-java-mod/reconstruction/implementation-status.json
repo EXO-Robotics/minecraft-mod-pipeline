@@ -20,7 +20,8 @@
     "sneak-use lock removal",
     "locked-block break prevention",
     "deferred mutation outside restricted before-event execution",
-    "deterministic legacy-state migration with quarantine and idempotence journal"
+    "deterministic legacy-state migration with quarantine and idempotence journal",
+    "prepared-journal interrupted-write recovery with digest-bound divergence checks"
   ],
   "approved_quality_claim": null,
   "intentional_redesigns": [
@@ -34,7 +35,6 @@
   ],
   "missing": [
     "golden-key behavior distinction",
-    "interrupted-write migration recovery",
     "actual gameplay, persistence, multiplayer, Realm, and console tests"
   ],
   "claims": {

@@ -2,8 +2,9 @@ import { system, world } from '@minecraft/server';
 import { ActionFormData, ModalFormData } from '@minecraft/server-ui';
 import {
   buildCredentialLock, buildOwnerLock, canonicalLocationKey, createLockIfAbsent, credentialFormResult,
-  decideBreak, decideInteraction, migrateLegacyState, NORMAL_KEY_IDS, normalizeLockMap,
-  removalConfirmed, removeLockIfRevision, validateLockMap,
+  decideBreak, decideInteraction, NORMAL_KEY_IDS, normalizeLockMap,
+  prepareLegacyMigration, removalConfirmed, removeLockIfRevision, resumePreparedMigration,
+  validateLockMap,
 } from './doorlock-state.js';
 
 const STATE_KEY = 'mccompiler:doorlock:locks:v1';
@@ -156,10 +157,13 @@ async function configureCredential(player, itemId) {
 function runLegacyMigration() {
   const current = readLocks();
   if (current === null) return;
-  const journal = world.getDynamicProperty(MIGRATION_KEY);
-  if (typeof journal === 'string' && journal.length > 0) {
+  const rawLegacy = world.getDynamicProperty(LEGACY_STATE_KEY);
+  const encodedJournal = world.getDynamicProperty(MIGRATION_KEY);
+  let journal;
+  if (typeof encodedJournal === 'string' && encodedJournal.length > 0) {
     try {
-      if (JSON.parse(journal)?.status === 'completed') {
+      journal = JSON.parse(encodedJournal);
+      if (journal?.status === 'completed') {
         writeLocks(current);
         const migrated = Object.values(current).filter((record) => record.authorization_mode === 'legacy_credential').length;
         console.warn(`[mccompiler:doorlock] migration_state_records=${migrated}`);
@@ -170,18 +174,26 @@ function runLegacyMigration() {
       console.warn('[mccompiler:doorlock] invalid migration journal; retrying migration');
     }
   }
-  const result = migrateLegacyState(world.getDynamicProperty(LEGACY_STATE_KEY), current);
-  writeLocks(result.locks);
-  if (result.quarantine.length > 0) {
-    world.setDynamicProperty(QUARANTINE_KEY, JSON.stringify(result.quarantine));
+  let transaction;
+  if (journal?.status === 'prepared') {
+    transaction = resumePreparedMigration(rawLegacy, current, journal);
+    if (!transaction.ok) throw new Error(`prepared migration recovery failed: ${transaction.error}`);
+  } else {
+    transaction = prepareLegacyMigration(rawLegacy, current);
+    world.setDynamicProperty(MIGRATION_KEY, JSON.stringify(transaction.journal));
   }
-  world.setDynamicProperty(MIGRATION_KEY, JSON.stringify({ schema: 1, status: 'completed', stats: result.stats }));
-  if (result.stats.imported > 0) {
-    const migrated = Object.values(result.locks).filter((record) => record.authorization_mode === 'legacy_credential').length;
+  world.setDynamicProperty(
+    QUARANTINE_KEY,
+    transaction.quarantine.length > 0 ? JSON.stringify(transaction.quarantine) : undefined,
+  );
+  writeLocks(transaction.locks);
+  world.setDynamicProperty(MIGRATION_KEY, JSON.stringify({ ...transaction.journal, status: 'completed' }));
+  if (transaction.stats.imported > 0) {
+    const migrated = Object.values(transaction.locks).filter((record) => record.authorization_mode === 'legacy_credential').length;
     console.warn(`[mccompiler:doorlock] migration_nonempty_verified=${migrated}`);
   }
   migrationReady = true;
-  console.warn(`[mccompiler:doorlock] migration_v0_v1=${JSON.stringify(result.stats)}`);
+  console.warn(`[mccompiler:doorlock] migration_v0_v1=${JSON.stringify(transaction.stats)}`);
 }
 
 world.afterEvents.itemUse.subscribe((event) => {

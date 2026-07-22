@@ -17,17 +17,22 @@ ROOT = Path(__file__).resolve().parents[1]
 RECONSTRUCTION = ROOT / "benchmarks/rights-cleared-java-mod/reconstruction"
 
 LEGACY_SEED_SCRIPT = """import { system, world } from '@minecraft/server';
+import { prepareLegacyMigration } from './doorlock-state.js';
 const LEGACY_STATE_KEY = 'mccompiler:doorlock:locks:v0';
 const SEED_KEY = 'mccompiler:doorlock:legacy-seed';
+const MIGRATION_KEY = 'mccompiler:doorlock:migration:v0-to-v1';
 const BOOT_KEY = 'mccompiler:doorlock:diagnostic_boot';
 system.run(() => {
   if (world.getDynamicProperty(SEED_KEY) !== 'seeded') {
-    world.setDynamicProperty(LEGACY_STATE_KEY, JSON.stringify(['10,64,10_deadbeef']));
+    const legacy = JSON.stringify(['10,64,10_deadbeef']);
+    world.setDynamicProperty(LEGACY_STATE_KEY, legacy);
+    const prepared = prepareLegacyMigration(legacy, {});
+    world.setDynamicProperty(MIGRATION_KEY, JSON.stringify(prepared.journal));
     world.setDynamicProperty(SEED_KEY, 'seeded');
   }
   const current = (Number(world.getDynamicProperty(BOOT_KEY)) || 0) + 1;
   world.setDynamicProperty(BOOT_KEY, current);
-  console.warn('[mccompiler:doorlock] legacy_seed=1');
+  console.warn('[mccompiler:doorlock] legacy_seed=1 interrupted_after_prepare=1');
   console.warn(`[mccompiler:doorlock] persistent_boot=${current}`);
 });
 """

@@ -42,7 +42,7 @@ class BenchmarkBReconstructionTests(unittest.TestCase):
             module = Path(directory) / "doorlock-state.mjs"
             shutil.copyfile(module_source, module)
             runner = """
-import { migrateLegacyState } from './doorlock-state.mjs';
+import { migrateLegacyState, prepareLegacyMigration, resumePreparedMigration } from './doorlock-state.mjs';
 const cases = {};
 cases.empty = migrateLegacyState([]);
 cases.single = migrateLegacyState(['1,2,3_abcd']);
@@ -51,6 +51,12 @@ cases.same = migrateLegacyState(['1,2,3_abcd', '1,2,3_abcd']);
 cases.conflict = migrateLegacyState(['1,2,3_abcd', '1,2,3_efgh']);
 cases.nonOverworld = migrateLegacyState(['1,2,3_abcd'], {}, { dimension: 'minecraft:nether' });
 cases.second = migrateLegacyState(['1,2,3_abcd'], cases.single.locks);
+cases.prepared = prepareLegacyMigration(['1,2,3_abcd'], {});
+cases.resumeBeforeWrite = resumePreparedMigration(['1,2,3_abcd'], {}, cases.prepared.journal);
+cases.resumeAfterStateWrite = resumePreparedMigration(['1,2,3_abcd'], cases.prepared.locks, cases.prepared.journal);
+cases.changedLegacy = resumePreparedMigration(['1,2,3_changed'], {}, cases.prepared.journal);
+cases.divergedCurrent = resumePreparedMigration(['1,2,3_abcd'], { unexpected: {} }, cases.prepared.journal);
+cases.tamperedJournal = resumePreparedMigration(['1,2,3_abcd'], {}, { ...cases.prepared.journal, result_digest: '0'.repeat(64) });
 console.log(JSON.stringify(cases));
 """
             completed = subprocess.run(
@@ -72,6 +78,15 @@ console.log(JSON.stringify(cases));
         self.assertEqual("non_overworld_mapping_requires_approval", cases["nonOverworld"]["quarantine"][0]["error"])
         self.assertEqual(cases["single"]["locks"], cases["second"]["locks"])
         self.assertEqual(0, cases["second"]["stats"]["imported"])
+        self.assertEqual("prepared", cases["prepared"]["journal"]["status"])
+        self.assertTrue(cases["resumeBeforeWrite"]["ok"])
+        self.assertTrue(cases["resumeAfterStateWrite"]["ok"])
+        self.assertEqual(cases["prepared"]["locks"], cases["resumeBeforeWrite"]["locks"])
+        self.assertEqual(cases["prepared"]["locks"], cases["resumeAfterStateWrite"]["locks"])
+        self.assertEqual("completed", cases["resumeAfterStateWrite"]["journal"]["status"])
+        self.assertEqual("legacy_payload_changed", cases["changedLegacy"]["error"])
+        self.assertEqual("current_state_diverged", cases["divergedCurrent"]["error"])
+        self.assertEqual("result_digest_mismatch", cases["tamperedJournal"]["error"])
 
     def test_authorization_handler_preserves_two_player_isolation(self) -> None:
         node = shutil.which("node")
@@ -240,7 +255,6 @@ console.log(JSON.stringify({ record, created, competingCreate, twoLocks, dimensi
         self.assertEqual(
             {
                 "golden-key behavior distinction",
-                "interrupted-write migration recovery",
                 "actual gameplay, persistence, multiplayer, Realm, and console tests",
             },
             set(status["missing"]),
@@ -266,6 +280,11 @@ console.log(JSON.stringify({ record, created, competingCreate, twoLocks, dimensi
         self.assertTrue(validation["bds_diagnostic"]["diagnostic_state_persistence_verified"])
         self.assertTrue(validation["bds_diagnostic"]["empty_state_migration_executed"])
         self.assertTrue(validation["bds_diagnostic"]["nonempty_state_migration_verified"])
+        self.assertTrue(validation["bds_diagnostic"]["interrupted_write_recovery_verified"])
+        self.assertEqual(
+            "prepared_journal_before_current_state_write",
+            validation["bds_diagnostic"]["interruption_fixture_point"],
+        )
         self.assertTrue(validation["bds_diagnostic"]["migrated_state_restart_verified"])
         self.assertEqual(1, validation["bds_diagnostic"]["migrated_lock_records"])
         self.assertFalse(validation["bds_diagnostic"]["feature_persistence_verified"])

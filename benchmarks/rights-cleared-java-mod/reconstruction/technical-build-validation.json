@@ -5,18 +5,18 @@
   "status": "STATIC_AND_BDS_UPGRADE_VERIFIED",
   "artifacts": {
     "mcaddon": {
-      "sha256": "47def66a224652c48f719e1a50f43f6cffbc20c08447ef59def976c15a95b9be",
-      "bytes": 16691
+      "sha256": "20d00527f0ca783fae2f730f28f7ba1c206133c0794e5fb7a2d1c63cd3207dcc",
+      "bytes": 17123
     },
     "mcworld": {
-      "sha256": "8ece6945aa2bb4d89321c6bead946abd464ca986ba6fcfbb14ec2f40931db1f8",
-      "bytes": 19418,
+      "sha256": "f08bcf4c680a2ec685acbf6c5026d77a0ab783017fdfbcf484a3e5ad9a8193a0",
+      "bytes": 19846,
       "behavior_pack_id": "7c7b14cc-e506-567a-bac4-d0a998aac615",
       "resource_pack_id": "6609568c-cfab-578a-9823-122dfa8e4fc1"
     },
     "legacy_seed_mcworld": {
-      "sha256": "986a7094b94b68bd4596f7f0acdf200fc9c334943a8adfd778eea6bb49e9680e",
-      "bytes": 16744,
+      "sha256": "0218efcb157e3e5f8928e31c024ba442323b8fb76e34f422ed33640952d5022a",
+      "bytes": 17164,
       "fixture_only": true
     }
   },
@@ -35,7 +35,7 @@
     "errors": 0,
     "warnings": 0,
     "exit_codes": [0, 0],
-    "cache_safe_input": "artifact-47def66a224652c48f719e1a50f43f6cffbc20c08447ef59def976c15a95b9be.mcaddon",
+    "cache_safe_input": "artifact-20d00527f0ca783fae2f730f28f7ba1c206133c0794e5fb7a2d1c63cd3207dcc.mcaddon",
     "marketplace_approval_implied": false
   },
   "bds_diagnostic": {
@@ -43,14 +43,16 @@
     "bedrock_version": "1.26.33.2",
     "bedrock_build_id": "47564860",
     "image": "itzg/minecraft-bedrock-server@sha256:12c7047cc149bd517d6dbc2339163cf62a4f1044c10e759c45c8b387e9784e39",
-    "world_sha256": "8ece6945aa2bb4d89321c6bead946abd464ca986ba6fcfbb14ec2f40931db1f8",
-    "legacy_seed_world_sha256": "986a7094b94b68bd4596f7f0acdf200fc9c334943a8adfd778eea6bb49e9680e",
-    "log_sha256": "b44a980ed72788650410fa7e9b722956a8b16a3aafc30ea357206dec9a8ff30a",
+    "world_sha256": "f08bcf4c680a2ec685acbf6c5026d77a0ab783017fdfbcf484a3e5ad9a8193a0",
+    "legacy_seed_world_sha256": "0218efcb157e3e5f8928e31c024ba442323b8fb76e34f422ed33640952d5022a",
+    "log_sha256": "6413debc50b3c8ec26a2db85498fa7f27e844e5c30b445e5720f42789d174b34",
     "script_initialized": true,
     "restart_cycles": 3,
     "persistent_boot_values": [1, 2, 3],
     "empty_state_migration_executed": true,
     "nonempty_state_migration_verified": true,
+    "interrupted_write_recovery_verified": true,
+    "interruption_fixture_point": "prepared_journal_before_current_state_write",
     "migrated_state_restart_verified": true,
     "migrated_lock_records": 1,
     "diagnostic_state_persistence_verified": true,
@@ -69,7 +71,6 @@
     "actual player item and block event adapters",
     "lock, authorize, unlock, and break gameplay",
     "gameplay-created lock-map persistence and correctness across restart",
-    "interrupted-write migration recovery",
     "real two-player gameplay isolation (pure authorization decisions only)",
     "controller usability",
     "Minecraft for Windows",

@@ -62,7 +62,7 @@ class BenchmarkBContractTests(unittest.TestCase):
         self.assertTrue(state["evidence"])
         self.assertTrue(state["unverified"])
         self.assertIn("idempotent", migration["invariants"])
-        self.assertEqual("PURE_LOGIC_AND_BDS_NONEMPTY_UPGRADE_VERIFIED", migration["status"])
+        self.assertEqual("PURE_LOGIC_AND_BDS_INTERRUPTED_NONEMPTY_UPGRADE_VERIFIED", migration["status"])
         self.assertTrue(any(step.get("on_malformed") == "quarantine_with_diagnostic" for step in migration["steps"]))
         self.assertEqual(multiplayer["authority"], "server")
         scenarios = set(multiplayer["required_scenarios"])

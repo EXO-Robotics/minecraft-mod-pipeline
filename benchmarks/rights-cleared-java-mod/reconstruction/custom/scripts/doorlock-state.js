@@ -327,3 +327,50 @@ export function migrateLegacyState(rawLegacy, currentLocks = {}, options = {}) {
     stats: { imported, deduplicated, quarantined: quarantine.length },
   };
 }
+
+function payloadDigest(value) {
+  return sha256(JSON.stringify(value));
+}
+
+export function prepareLegacyMigration(rawLegacy, currentLocks = {}, options = {}) {
+  const result = migrateLegacyState(rawLegacy, currentLocks, options);
+  return {
+    ...result,
+    journal: {
+      schema: 1,
+      status: 'prepared',
+      legacy_digest: payloadDigest(rawLegacy ?? null),
+      before_digest: payloadDigest(currentLocks),
+      result_digest: payloadDigest(result.locks),
+      quarantine_digest: payloadDigest(result.quarantine),
+      stats: result.stats,
+    },
+  };
+}
+
+export function resumePreparedMigration(rawLegacy, currentLocks, journal, options = {}) {
+  if (!journal || journal.schema !== 1 || journal.status !== 'prepared') {
+    return { ok: false, error: 'invalid_prepared_journal' };
+  }
+  if (journal.legacy_digest !== payloadDigest(rawLegacy ?? null)) {
+    return { ok: false, error: 'legacy_payload_changed' };
+  }
+  const currentDigest = payloadDigest(currentLocks);
+  if (currentDigest !== journal.before_digest && currentDigest !== journal.result_digest) {
+    return { ok: false, error: 'current_state_diverged' };
+  }
+  const result = migrateLegacyState(rawLegacy, currentLocks, options);
+  if (payloadDigest(result.locks) !== journal.result_digest) {
+    return { ok: false, error: 'result_digest_mismatch' };
+  }
+  if (payloadDigest(result.quarantine) !== journal.quarantine_digest) {
+    return { ok: false, error: 'quarantine_digest_mismatch' };
+  }
+  return {
+    ok: true,
+    locks: result.locks,
+    quarantine: result.quarantine,
+    stats: journal.stats,
+    journal: { ...journal, status: 'completed' },
+  };
+}
