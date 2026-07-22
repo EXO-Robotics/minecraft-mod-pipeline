@@ -463,6 +463,8 @@ def _runtime_evidence(root: Path, parsed: dict[Path, Any], requested: bool) -> t
         reason = "No runtime evidence artifact is present; static and integration validation do not imply activation"
         if requested:
             reason += "; use a configured BDS runtime harness"
+            error = "Runtime validation was required but no runtime evidence artifact is present"
+            return {"status": "failed", "valid": False, "reason": reason, "evidence": None, "errors": [error], "warnings": []}, [error], []
         return {"status": "not-run", "reason": reason, "evidence": None}, [], []
     evidence = parsed[evidence_path]
     errors: list[str] = []

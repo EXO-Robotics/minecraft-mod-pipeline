@@ -49,11 +49,38 @@ def source_actions(body: str) -> list[dict[str, Any]]:
         (r'context\.placeStructure\(\s*"([^"]+)"\s*\)', lambda m: {"type": "place_structure", "structure": m[0]}),
         (r'context\.setBlock\(\s*"([^"]+)"\s*\)', lambda m: {"type": "set_block", "block": m[0]}),
         (r'context\.dropLoot\(\s*"([^"]+)"\s*\)', lambda m: {"type": "add_item", "item": m[0]}),
-        (r'context\.set\(\s*"([^"]+)"\s*,', lambda m: {"type": "update_persistent_state", "key": m[0]}),
+        (r'context\.set\(\s*"([^"]+)"\s*,\s*(.*?)\s*\);', lambda m: state_action(m[0], m[1])),
     ]
     for pattern, factory in specs:
         for match in re.finditer(pattern, body): calls.append((match.start(), factory(match.groups())))
-    return [action for _, action in sorted(calls, key=lambda row: row[0])]
+    ordered = sorted(calls, key=lambda row: row[0])
+    nested = list(re.finditer(r'if\s*\(\s*(?:context\.get\(\s*"([^"]+)"\s*\)|(\w+))\s*>=\s*(\d+)\s*\)', body))
+    variables = dict(re.findall(r'int\s+(\w+)\s*=\s*context\.get\(\s*"([^"]+)"\s*\)', body))
+    for match in nested[1:]:
+        key = match.group(1) or variables.get(match.group(2), match.group(2))
+        condition = {"type": "state_comparison", "key": key, "operator": ">=", "value": int(match.group(3))}
+        for position, action in ordered:
+            if position > match.end(): action["condition"] = condition
+    return [action for _, action in ordered]
+
+
+def state_action(key: str, expression: str) -> dict[str, Any]:
+    action: dict[str, Any] = {"type": "update_persistent_state", "key": key}
+    number = re.fullmatch(r"-?\d+", expression.strip())
+    if number: action["value"] = int(number.group())
+    increment = re.search(r"\+\s*(\d+)\D*$", expression)
+    decrement = re.search(r"-\s*(\d+)\D*$", expression)
+    if increment: action.update({"operation": "increment", "amount": int(increment.group(1))})
+    elif decrement: action.update({"operation": "decrement", "amount": int(decrement.group(1))})
+    return action
+
+
+def state_conditions(body: str) -> list[dict[str, Any]]:
+    variables = dict(re.findall(r'int\s+(\w+)\s*=\s*context\.get\(\s*"([^"]+)"\s*\)', body))
+    match = re.search(r'if\s*\(\s*(?:context\.get\(\s*"([^"]+)"\s*\)|(\w+))\s*>=\s*(\d+)\s*\)', body)
+    if not match: return []
+    key = match.group(1) or variables.get(match.group(2), match.group(2))
+    return [{"type": "state_comparison", "key": key, "operator": ">=", "value": int(match.group(3))}]
 
 
 def evidence(path: str, lines: tuple[int, int], rule: str, *, class_name: str | None = None,
@@ -156,7 +183,7 @@ def analyze_java(path: str, text: str) -> dict[str, list[dict[str, Any]]]:
         actions = source_actions(body)
         unknown_calls = sorted(set(re.findall(r'context\.(\w+)\s*\(', body)) - set(action_calls) - {"get"})
         ev = [evidence(path, (start, end), "java-common:Trigger-method", class_name=owner_name, method=method)]
-        behavior = {"id": f"{namespace}:{owner_identifier}/{method}", "owner": {"kind": "object", "identifier": f"{namespace}:{owner_identifier}"}, "trigger": {"type": trigger}, "conditions": [], "actions": actions, "stateReads": sorted(set(re.findall(r'context\.get\(\s*"([^"]+)"', body))), "stateWrites": sorted(set(re.findall(r'context\.set\(\s*"([^"]+)"', body))), "feedback": [], "presentationRequirements": [], "evidence": ev, "confidence": 1.0 if trigger in TRIGGERS and not unknown_calls else .75, "diagnostics": [{"severity": "error", "code": "unrecognized_operation", "operation": call} for call in unknown_calls]}
+        behavior = {"id": f"{namespace}:{owner_identifier}/{method}", "owner": {"kind": "object", "identifier": f"{namespace}:{owner_identifier}"}, "trigger": {"type": trigger}, "conditions": state_conditions(body), "actions": actions, "stateReads": sorted(set(re.findall(r'context\.get\(\s*"([^"]+)"', body))), "stateWrites": sorted(set(re.findall(r'context\.set\(\s*"([^"]+)"', body))), "feedback": [], "presentationRequirements": [], "evidence": ev, "confidence": 1.0 if trigger in TRIGGERS and not unknown_calls else .75, "diagnostics": [{"severity": "error", "code": "unrecognized_operation", "operation": call} for call in unknown_calls]}
         behaviors.append(behavior)
 
     for match in re.finditer(r'@State\s*\(\s*keys\s*=\s*\{([^}]*)\}\s*,\s*persistent\s*=\s*(true|false)\s*\)', text):

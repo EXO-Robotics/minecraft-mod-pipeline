@@ -123,6 +123,11 @@ class ValidationLayerTests(unittest.TestCase):
     def test_runtime_evidence_is_parsed_and_must_contain_logs(self):
         with tempfile.TemporaryDirectory() as directory:
             root, _, plan = self.generated(directory)
+            missing = validate_output(root, plan, runtime=True)
+            self.assertFalse(missing["valid"])
+            self.assertEqual("failed", missing["layers"]["runtime"]["status"])
+            self.assertTrue(any("was required" in error for error in missing["errors"]))
+
             write_json(root / "reports/runtime-evidence.json", {"status": "passed", "attempted": True, "checks": [{"name": "activation", "passed": True}]})
             rebuild_archive(root)
             result = validate_output(root, plan, runtime=True)

@@ -30,10 +30,14 @@ def main(argv: list[str] | None = None) -> int:
     _scan_args(compile_parser)
     validate_parser = sub.add_parser("validate", help="Validate generated packs")
     validate_parser.add_argument("--path", required=True)
+    validate_parser.add_argument(
+        "--runtime", action="store_true",
+        help="Require and validate reports/runtime-evidence.json",
+    )
     args = parser.parse_args(argv)
 
     if args.command == "validate":
-        result = validate_output(args.path)
+        result = validate_output(args.path, runtime=args.runtime)
         print(json.dumps(result, indent=2))
         return 0 if result["valid"] else 1
 

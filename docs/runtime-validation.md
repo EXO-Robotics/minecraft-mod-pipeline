@@ -8,11 +8,16 @@ Observed gates:
 
 - Pack activation: BDS reported `representative reconstructed behavior` at pack-stack position 06.
 - Content schemas: after correcting manifest metadata, current block components, and recipe unlock data, no `representative` content error appeared during startup.
-- Script execution: BDS emitted `[Scripting] [mccompiler] runtime initialized behaviors=10 persistent_boot=1`.
+- Script execution: BDS emitted `[Scripting] [mccompiler] contract tests passed behaviors=15` and `[Scripting] [mccompiler] runtime initialized behaviors=15 persistent_boot=1`.
 - Persistence and reload: after a full server restart, BDS emitted `persistent_boot=2`, proving a generated world dynamic property survived reload.
 - Content exposure: in a temporary ticking area, console smoke tests reported `Block placed` for `representative:aether_machine`, `Object successfully summoned` for `representative:clockwork_golem` and `representative:rift_boss`, and `Replaced slot.container slot 0 with 1 * item.representative:phase_blade`.
+- Stateful machine behavior: the generated ScriptEvent harness seeded the extracted `energy >= 10` precondition, dispatched `representative:aether_machine/tick`, and BDS reported `behavioral test passed ... energy=0,progress=1`.
+- Multi-phase boss behavior: live damage probes advanced the generated boss phase state through 1, 2, and 3 without a generated-pack error.
+- Compiled input parity: the regression suite compiles the source-free representative JAR with `javac`, analyzes it with `javap`, and requires all 15 behavior fingerprints to match source analysis exactly.
 - Cleanup: the two test entities, machine block, test chest/item, and temporary ticking area were removed after the probe.
 
 The server contains pre-existing errors from unrelated packs such as Just Biome, Underground Biomes, and Immersive Fauna. Those errors were isolated by pack path and were not attributed to generated output.
 
-This record proves import/discovery, activation, generated content registration, Script API startup, and state persistence. It does not claim that every extracted player interaction has been exercised by a real client; those mechanics remain in the generated behavioral test plan.
+This record proves import/discovery, activation, generated content registration, Script API startup, persistent state, state-gated machine processing, and boss phase transitions. It does not claim that every extracted player interaction has been exercised by a real client; those mechanics remain in the generated behavioral test plan.
+
+Run `mccompiler validate --path <output> --runtime` to require a structured runtime evidence artifact in addition to static and integration validation.

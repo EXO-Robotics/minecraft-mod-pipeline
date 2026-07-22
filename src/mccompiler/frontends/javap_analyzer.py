@@ -19,10 +19,12 @@ CALL_ACTIONS = {
 TRIGGER_ALIASES = {"server_tick": "object_tick", "entity_killed": "entity_death"}
 
 
-def _bytecode_actions(block: str) -> tuple[list[dict[str, Any]], list[str]]:
+def _bytecode_actions(block: str) -> tuple[list[dict[str, Any]], list[str], list[dict[str, Any]]]:
     pending: list[Any] = []
     actions: list[dict[str, Any]] = []
     calls: list[str] = []
+    conditions: list[dict[str, Any]] = []
+    active_condition: dict[str, Any] | None = None
     for line in block.splitlines():
         string = re.search(r"\bldc(?:2_w|_w)?\s+#[0-9]+\s+// String (.+)$", line)
         number = re.search(r"\b(?:bipush|sipush)\s+(-?\d+)", line)
@@ -34,6 +36,14 @@ def _bytecode_actions(block: str) -> tuple[list[dict[str, Any]], list[str]]:
         elif small: pending.append(-1 if small.group(1) == "m1" else int(small.group(1)))
         elif small_float: pending.append(float(small_float.group(1)))
         elif floating: pending.append(float(floating.group(1)))
+        elif re.search(r"\bisub\b", line): pending.append("__decrement__")
+        elif re.search(r"\biadd\b", line): pending.append("__increment__")
+        if "if_icmplt" in line:
+            strings = [x for x in pending if isinstance(x, str) and not x.startswith("__")]
+            numbers = [x for x in pending if isinstance(x, (int, float))]
+            if strings and numbers:
+                active_condition = {"type": "state_comparison", "key": strings[-1], "operator": ">=", "value": int(numbers[-1])}
+                conditions.append(active_condition)
         invoke = re.search(r"FixtureApi\$Context\.([A-Za-z_$][\w$]*):", line)
         if not invoke: continue
         call = invoke.group(1); calls.append(call)
@@ -50,10 +60,19 @@ def _bytecode_actions(block: str) -> tuple[list[dict[str, Any]], list[str]]:
         elif call == "placeStructure" and strings: action = {"type": "place_structure", "structure": strings[-1]}
         elif call == "setBlock" and strings: action = {"type": "set_block", "block": strings[-1]}
         elif call == "dropLoot" and strings: action = {"type": "add_item", "item": strings[-1]}
-        elif call == "set" and strings: action = {"type": "update_persistent_state", "key": strings[0]}
-        if action: actions.append(action)
+        elif call == "set" and strings:
+            action = {"type": "update_persistent_state", "key": strings[0]}
+            if "__increment__" in pending: action.update({"operation": "increment", "amount": int(numbers[-1])})
+            elif "__decrement__" in pending: action.update({"operation": "decrement", "amount": int(numbers[-1])})
+            elif numbers: action["value"] = int(numbers[-1])
+        if action:
+            if active_condition: action["condition"] = dict(active_condition)
+            actions.append(action)
         if call != "get": pending = []
-    return actions, calls
+    if conditions:
+        for action in actions:
+            if action.get("condition") == conditions[0]: action.pop("condition", None)
+    return actions, calls, conditions[:1]
 
 
 def _javap() -> str | None:
@@ -151,7 +170,7 @@ def analyze_archive(path: str | Path) -> dict[str, list[dict[str, Any]]]:
                 trigger_raw = "state_transition"
             if trigger_raw:
                 trigger = TRIGGER_ALIASES.get(trigger_raw, trigger_raw)
-                actions, calls = _bytecode_actions(block)
+                actions, calls, bytecode_conditions = _bytecode_actions(block)
                 if phase_body is not None:
                     phase_match = re.search(r"value=(\d+)", phase_body)
                     actions.append({"type": "set_entity_phase", "value": int(phase_match.group(1)) if phase_match else 1})
@@ -168,6 +187,8 @@ def analyze_archive(path: str | Path) -> dict[str, list[dict[str, Any]]]:
                 conditions = []
                 if phase_body is not None:
                     conditions.append(health_threshold(_value(phase_body, "condition") or ""))
+                else:
+                    conditions.extend(bytecode_conditions)
                 behavior = {
                     "id": f"{namespace}:{owner_id}/{method}", "owner": {"kind": "entity" if owner == "RiftBoss" else "object", "identifier": f"{namespace}:{owner_id}"},
                     "trigger": {"type": trigger}, "conditions": conditions, "actions": actions,
