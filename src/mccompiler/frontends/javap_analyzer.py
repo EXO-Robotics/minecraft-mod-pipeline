@@ -127,7 +127,7 @@ def _method_blocks(output: str) -> list[tuple[str, str]]:
 def analyze_archive(path: str | Path) -> dict[str, list[dict[str, Any]]]:
     archive = Path(path).resolve()
     tool = _javap()
-    result = {key: [] for key in ("content", "behaviors", "state", "presentation", "ui", "networking", "diagnostics")}
+    result: dict[str, list[dict[str, Any]]] = {key: [] for key in ("content", "behaviors", "state", "presentation", "ui", "networking", "diagnostics")}
     if not tool or not archive.is_file() or not zipfile.is_zipfile(archive):
         return result
     with zipfile.ZipFile(archive) as jar:
@@ -219,7 +219,7 @@ def analyze_archive(path: str | Path) -> dict[str, list[dict[str, Any]]]:
         result[key] = unique
     content_seen: set[tuple[str, str]] = set(); content_unique = []
     for item in result["content"]:
-        marker = (str(item.get("kind")), str(item.get("identifier")))
-        if marker not in content_seen: content_seen.add(marker); content_unique.append(item)
+        content_marker = (str(item.get("kind")), str(item.get("identifier")))
+        if content_marker not in content_seen: content_seen.add(content_marker); content_unique.append(item)
     result["content"] = content_unique
     return result

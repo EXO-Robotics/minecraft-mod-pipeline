@@ -297,15 +297,15 @@ def _content_checks(
             continue
         definition = _definition(data)
         if definition and definition[0] == "recipe":
-            body = next((data[key] for key in data if key.startswith("minecraft:recipe_")), {})
-            refs = list(_identifiers(body.get("ingredients", []))) + list(_identifiers(body.get("result", {})))
+            recipe_body: dict[str, Any] = next((data[key] for key in data if key.startswith("minecraft:recipe_")), {})
+            refs = list(_identifiers(recipe_body.get("ingredients", []))) + list(_identifiers(recipe_body.get("result", {})))
             for reference in refs:
                 if _custom(reference) and reference not in known:
                     errors.append(f"Missing referenced content {reference} in recipe {path}")
         if "minecraft:spawn_rules" in data:
-            identifier = (data["minecraft:spawn_rules"].get("description") or {}).get("identifier")
-            if _custom(str(identifier)) and ("entity", str(identifier)) not in definitions:
-                errors.append(f"Spawn rule references missing entity {identifier} in {path}")
+            spawn_identifier = (data["minecraft:spawn_rules"].get("description") or {}).get("identifier")
+            if _custom(str(spawn_identifier)) and ("entity", str(spawn_identifier)) not in definitions:
+                errors.append(f"Spawn rule references missing entity {spawn_identifier} in {path}")
         if "pools" in data and "loot_tables" in path.parts:
             for reference in _identifiers(data.get("pools", [])):
                 if _custom(reference) and reference not in known:
@@ -377,12 +377,12 @@ def _content_checks(
     client_entities: set[str] = set()
     for path, data in parsed.items():
         client = data.get("minecraft:client_entity") if isinstance(data, dict) else None
-        identifier = (client.get("description") or {}).get("identifier") if isinstance(client, dict) else None
-        if identifier:
-            client_entities.add(str(identifier))
-    for identifier in client_entities:
-        if ("entity", identifier) not in definitions:
-            errors.append(f"Resource client entity has no behavior entity: {identifier}")
+        client_identifier = (client.get("description") or {}).get("identifier") if isinstance(client, dict) else None
+        if client_identifier:
+            client_entities.add(str(client_identifier))
+    for client_identifier in client_entities:
+        if ("entity", client_identifier) not in definitions:
+            errors.append(f"Resource client entity has no behavior entity: {client_identifier}")
     _check(checks, "resource-behavior-correspondence", errors, start, client_entities=len(client_entities))
 
     language_files = sorted((root / "resource_pack/texts").glob("*.lang")) if (root / "resource_pack/texts").exists() else []

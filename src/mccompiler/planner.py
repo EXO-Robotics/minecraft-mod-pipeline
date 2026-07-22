@@ -35,7 +35,7 @@ def _scores(classification: str, confidence: float, capability: dict[str, Any]) 
         "visual_fidelity": 1.0 if classification == "DIRECT" else (.65 if classification != "UNSUPPORTED" else 0),
         "persistence_fidelity": base if capability.get("persistent") else min(base, .65),
         "multiplayer_fidelity": base if capability.get("multiplayer_safe") else 0,
-        "performance_risk": {"low": .1, "medium": .4, "high": .75, "unknown": 1.0}.get(capability.get("performance"), .5),
+        "performance_risk": {"low": .1, "medium": .4, "high": .75, "unknown": 1.0}.get(str(capability.get("performance")), .5),
         "human_review_required": classification not in {"DIRECT", "SCRIPTED_EQUIVALENT"} or confidence < .9,
     }
 

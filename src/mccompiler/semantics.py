@@ -197,18 +197,18 @@ def analyze_java(path: str, text: str) -> dict[str, list[dict[str, Any]]]:
         phase, condition, method = match.groups(); depth, pos = 1, match.end()
         while pos < len(text) and depth:
             depth += (text[pos] == "{") - (text[pos] == "}"); pos += 1
-        body = text[match.end():pos - 1]
+        phase_body_text = text[match.end():pos - 1]
         start, end = text.count("\n", 0, match.start()) + 1, text.count("\n", 0, pos) + 1
-        actions = source_actions(body) + [{"type": "set_entity_phase", "value": int(phase)}]
-        reads = sorted(set(["health"] + re.findall(r'context\.get\(\s*"([^"]+)"', body)))
-        writes = sorted(set(["phase"] + re.findall(r'context\.set\(\s*"([^"]+)"', body)))
+        actions = source_actions(phase_body_text) + [{"type": "set_entity_phase", "value": int(phase)}]
+        reads = sorted(set(["health"] + re.findall(r'context\.get\(\s*"([^"]+)"', phase_body_text)))
+        writes = sorted(set(["phase"] + re.findall(r'context\.set\(\s*"([^"]+)"', phase_body_text)))
         behaviors.append({"id": f"representative:rift_boss/{method}", "owner": {"kind": "entity", "identifier": "representative:rift_boss"}, "trigger": {"type": "state_transition"}, "conditions": [health_threshold(condition)], "actions": actions, "stateReads": reads, "stateWrites": writes, "feedback": [], "presentationRequirements": [], "evidence": [evidence(path, (start, end), "java-common:Phase-method", class_name="RiftBoss", method=method)], "confidence": 1.0, "diagnostics": []})
     for match in re.finditer(r'@Approximation\s*\((.*?)\)\s*public', text, re.DOTALL):
         args = _args(match.group(1)); line = text.count("\n", 0, match.start()) + 1
         presentation.append({"kind": "visual_approximation", "owner": class_name, "resource": None, "reason": args.get("reason"), "strategy": args.get("bedrockStrategy"), "evidence": [evidence(path, (line, line), "java-common:Approximation", class_name=class_name)]})
 
-    for number, line in enumerate(lines, 1):
-        annotation = re.search(r"@(ModContent|Behavior|StateRequirement|Presentation|UiIntent|NetworkIntent|Unsupported)\s*\((.*)\)", line)
+    for number, fixture_line in enumerate(lines, 1):
+        annotation = re.search(r"@(ModContent|Behavior|StateRequirement|Presentation|UiIntent|NetworkIntent|Unsupported)\s*\((.*)\)", fixture_line)
         if not annotation:
             continue
         kind, raw = annotation.groups()
@@ -218,13 +218,13 @@ def analyze_java(path: str, text: str) -> dict[str, list[dict[str, Any]]]:
             content.append({"kind": args.get("kind", "unknown"), "identifier": args.get("id"), "properties": args, "evidence": ev})
         elif kind == "Behavior":
             trigger = str(args.get("trigger", "unknown"))
-            actions = [x.strip() for x in str(args.get("actions", "")).split(",") if x.strip()]
-            conditions = [x.strip() for x in str(args.get("conditions", "")).split(",") if x.strip()]
-            unknown = ([f"trigger:{trigger}"] if trigger not in TRIGGERS else []) + [f"condition:{x}" for x in conditions if x not in CONDITIONS] + [f"action:{x}" for x in actions if x not in ACTIONS]
+            annotation_actions = [x.strip() for x in str(args.get("actions", "")).split(",") if x.strip()]
+            annotation_conditions = [x.strip() for x in str(args.get("conditions", "")).split(",") if x.strip()]
+            unknown = ([f"trigger:{trigger}"] if trigger not in TRIGGERS else []) + [f"condition:{x}" for x in annotation_conditions if x not in CONDITIONS] + [f"action:{x}" for x in annotation_actions if x not in ACTIONS]
             behavior = {
                 "id": args.get("id"), "owner": {"kind": args.get("ownerKind", "item"), "identifier": args.get("owner")},
-                "trigger": {"type": trigger}, "conditions": [{"type": x} for x in conditions],
-                "actions": [{"type": x} for x in actions], "stateReads": [], "stateWrites": [],
+                "trigger": {"type": trigger}, "conditions": [{"type": x} for x in annotation_conditions],
+                "actions": [{"type": x} for x in annotation_actions], "stateReads": [], "stateWrites": [],
                 "feedback": [], "presentationRequirements": [], "evidence": ev,
                 "confidence": 1.0 if not unknown else 0.5,
                 "diagnostics": [{"severity": "error", "code": "unrecognized_operation", "operation": x} for x in unknown],

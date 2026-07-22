@@ -4,14 +4,10 @@ import hashlib
 import json
 import re
 import zipfile
+import tomllib
 from collections import Counter, defaultdict
 from pathlib import Path
 from typing import Any, Iterable
-
-try:
-    import tomllib
-except ModuleNotFoundError:  # pragma: no cover - Python 3.11 is the baseline runtime.
-    tomllib = None
 
 from .io import read_json, relaxed_json, version_list
 from .ir import empty_ir
@@ -115,19 +111,19 @@ def _metadata(view: ArchiveView) -> tuple[list[dict[str, Any]], list[dict[str, A
     data = _json_text(view, fabric)
     if isinstance(data, dict):
         mod_id = data.get("id") or view.path.stem
-        deps = []
+        fabric_deps: list[dict[str, Any]] = []
         for key, optional in (("depends", False), ("recommends", True), ("suggests", True), ("conflicts", True)):
             values = data.get(key, {})
             if isinstance(values, dict):
-                deps.extend({"id": k, "version": v, "optional": optional, "kind": key} for k, v in values.items())
+                fabric_deps.extend({"id": k, "version": v, "optional": optional, "kind": key} for k, v in values.items())
             elif isinstance(values, list):
-                deps.extend(d for d in (_dependency(v, optional) for v in values) if d)
+                fabric_deps.extend(d for d in (_dependency(v, optional) for v in values) if d)
         mods.append({
             "id": mod_id,
             "name": data.get("name") or mod_id,
             "version": data.get("version"),
             "loader": "fabric",
-            "dependencies": deps,
+            "dependencies": fabric_deps,
             "metadata": {"environment": data.get("environment"), "entrypoints": sorted((data.get("entrypoints") or {}).keys())},
         })
         evidence.append({"path": fabric, "kind": "fabric.mod.json"})
@@ -135,26 +131,32 @@ def _metadata(view: ArchiveView) -> tuple[list[dict[str, Any]], list[dict[str, A
     quilt = "quilt.mod.json"
     data = _json_text(view, quilt)
     if isinstance(data, dict):
-        loader = data.get("quilt_loader") if isinstance(data.get("quilt_loader"), dict) else data
-        mod_id = loader.get("id") or view.path.stem
-        deps = []
-        for value in loader.get("depends", []) or []:
+        quilt_loader_raw = data.get("quilt_loader")
+        quilt_loader: dict[str, Any] = quilt_loader_raw if isinstance(quilt_loader_raw, dict) else data
+        mod_id = quilt_loader.get("id") or view.path.stem
+        quilt_deps: list[dict[str, Any]] = []
+        for value in quilt_loader.get("depends", []) or []:
             if isinstance(value, dict):
-                dep_id = value.get("id") or value.get("versions", {}).get("id")
+                raw_versions = value.get("versions")
+                versions: dict[str, Any] = raw_versions if isinstance(raw_versions, dict) else {}
+                dep_id = value.get("id") or versions.get("id")
                 if dep_id:
-                    deps.append({"id": dep_id, "version": value.get("versions"), "optional": False})
-        mods.append({"id": mod_id, "name": loader.get("metadata", {}).get("name", mod_id), "version": loader.get("version"), "loader": "quilt", "dependencies": deps, "metadata": {}})
+                    quilt_deps.append({"id": dep_id, "version": value.get("versions"), "optional": False})
+        raw_metadata = quilt_loader.get("metadata")
+        metadata: dict[str, Any] = raw_metadata if isinstance(raw_metadata, dict) else {}
+        mods.append({"id": mod_id, "name": metadata.get("name", mod_id), "version": quilt_loader.get("version"), "loader": "quilt", "dependencies": quilt_deps, "metadata": {}})
         evidence.append({"path": quilt, "kind": "quilt.mod.json"})
 
-    for filename, loader in (("META-INF/mods.toml", "forge"), ("META-INF/neoforge.mods.toml", "neoforge")):
+    for filename, loader_name in (("META-INF/mods.toml", "forge"), ("META-INF/neoforge.mods.toml", "neoforge")):
         text = view.read_text(filename)
-        if not text or tomllib is None:
+        if not text:
             continue
         try:
             parsed = tomllib.loads(text)
         except tomllib.TOMLDecodeError:
             continue
-        mod_entries = parsed.get("mods") if isinstance(parsed.get("mods"), list) else []
+        raw_mod_entries = parsed.get("mods")
+        mod_entries: list[Any] = raw_mod_entries if isinstance(raw_mod_entries, list) else []
         dependency_table = parsed.get("dependencies", {})
         for mod in mod_entries:
             if not isinstance(mod, dict):
@@ -167,7 +169,7 @@ def _metadata(view: ArchiveView) -> tuple[list[dict[str, Any]], list[dict[str, A
                     rows = [rows]
                 if isinstance(rows, list):
                     deps.extend(d for d in (_dependency(row) for row in rows) if d)
-            mods.append({"id": mod_id, "name": mod.get("displayName") or mod_id, "version": mod.get("version"), "loader": loader, "dependencies": deps, "metadata": {"loader_version": mod.get("loaderVersion"), "description": mod.get("description")}})
+            mods.append({"id": mod_id, "name": mod.get("displayName") or mod_id, "version": mod.get("version"), "loader": loader_name, "dependencies": deps, "metadata": {"loader_version": mod.get("loaderVersion"), "description": mod.get("description")}})
         evidence.append({"path": filename, "kind": filename.rsplit("/", 1)[-1]})
 
     info = "mcmod.info"
@@ -201,7 +203,7 @@ def _modpack_metadata(view: ArchiveView) -> dict[str, Any] | None:
 
 
 def _source_signals(view: ArchiveView, entries: list[str]) -> dict[str, int]:
-    signals = Counter()
+    signals: Counter[str] = Counter()
     for entry in entries:
         lower = entry.lower()
         if lower.endswith(".java"):
@@ -233,8 +235,8 @@ def _source_signals(view: ArchiveView, entries: list[str]) -> dict[str, int]:
 
 def _inventory(view: ArchiveView) -> dict[str, Any]:
     entries = view.entries()
-    counts = Counter()
-    namespaces = {"assets": set(), "data": set()}
+    counts: Counter[str] = Counter()
+    namespaces: dict[str, set[str]] = {"assets": set(), "data": set()}
     examples: defaultdict[str, list[str]] = defaultdict(list)
     for entry in entries:
         parts = entry.split("/")
@@ -327,10 +329,10 @@ def scan_path(input_path: str | Path, bedrock_server: str | Path | None = None) 
         if not sources:
             sources = [path]
 
-    aggregate_counts = Counter()
-    aggregate_signals = Counter()
+    aggregate_counts: Counter[str] = Counter()
+    aggregate_signals: Counter[str] = Counter()
     aggregate_flags: set[str] = set()
-    semantic = {key: [] for key in ("content", "behaviors", "state", "presentation", "ui", "networking", "diagnostics")}
+    semantic: dict[str, list[dict[str, Any]]] = {key: [] for key in ("content", "behaviors", "state", "presentation", "ui", "networking", "diagnostics")}
     bytecode_evidence: list[dict[str, Any]] = []
     nodes: dict[str, dict[str, Any]] = {}
     edges: list[dict[str, Any]] = []

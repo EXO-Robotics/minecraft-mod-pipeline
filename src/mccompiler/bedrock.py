@@ -118,10 +118,10 @@ def _projectile_definition(identifier: str, min_engine: list[int]) -> dict[str, 
     return {"format_version": ".".join(map(str, min_engine)), "minecraft:entity": {"description": {"identifier": identifier, "is_spawnable": False, "is_summonable": True}, "component_groups": {}, "components": {"minecraft:type_family": {"family": ["converted_projectile"]}, "minecraft:collision_box": {"width": 0.25, "height": 0.25}, "minecraft:physics": {}, "minecraft:projectile": {"power": 1.0, "gravity": 0.05, "on_hit": {"remove_on_hit": {}}}}, "events": {}}}
 
 
-def _script_modules(ir: dict[str, Any], plan: dict[str, Any]) -> dict[str, str]:
+def _script_modules(ir: dict[str, Any], plan: dict[str, Any]) -> dict[str, Any]:
     index = _feature_index(plan)
-    approved = []
-    rejected = []
+    approved: list[dict[str, Any]] = []
+    rejected: list[dict[str, Any]] = []
     for behavior in sorted(ir.get("behaviors", []), key=lambda x: str(x.get("id"))):
         feature = index.get((f"behavior.{behavior.get('trigger', {}).get('type')}", str(behavior.get("id"))))
         (approved if _approved(feature, behavior) else rejected).append({**behavior, "classification": (feature or {}).get("classification", "UNPLANNED")})
@@ -129,7 +129,7 @@ def _script_modules(ir: dict[str, Any], plan: dict[str, Any]) -> dict[str, str]:
     state_data = _canonical([x for x in ir.get("state", []) if x.get("evidence") or x.get("override_provenance")])
     ui_data = _canonical([x for x in ir.get("ui_intent", []) if x.get("evidence") or x.get("override_provenance")])
     owned_data = _canonical(sorted({str(x.get("identifier")) for x in ir.get("content", []) if x.get("kind") in {"item", "block", "entity"} and x.get("identifier")}))
-    modules = {
+    modules: dict[str, Any] = {
         "scripts/main.js": "import { world, system } from '@minecraft/server';\nimport { registerGeneratedEvents, behaviors } from './events/generated.js';\nimport { startScheduler } from './runtime/scheduler.js';\nimport { runContractTests, registerRuntimeTestCommands } from './tests/contracts.js';\nregisterGeneratedEvents();\nstartScheduler(behaviors);\nregisterRuntimeTestCommands(behaviors);\nsystem.run(()=>{const key='mccompiler:runtime_boots';const boots=Number(world.getDynamicProperty(key)||0)+1;world.setDynamicProperty(key,boots);runContractTests(behaviors);console.warn(`[mccompiler] runtime initialized behaviors=${behaviors.length} persistent_boot=${boots}`);});\n",
         "scripts/events/generated.js": "import { world } from '@minecraft/server';\nimport { dispatch } from '../runtime/actions.js';\nimport { registerActive, unregisterActive } from '../runtime/scheduler.js';\nexport const behaviors = " + behavior_data + ";\nconst owned=new Set(" + owned_data + ");\nexport const eventMap={item_use:'itemUse',item_use_on_block:'itemUseOn',block_interact:'playerInteractWithBlock',block_break:'playerBreakBlock',entity_hit:'entityHitEntity',entity_hurt:'entityHurt',entity_death:'entityDie',entity_spawn:'entitySpawn',player_join:'playerSpawn',projectile_impact:'projectileHitEntity'};\nconst key=b=>`${b.dimension.id}:${b.location.x}:${b.location.y}:${b.location.z}`;\nconst matches=(b,c)=>{if(!owned.has(b.owner.identifier))return true;const ids=[c.itemStack?.typeId,c.block?.typeId,c.entity?.typeId,c.hitEntity?.typeId,c.hurtEntity?.typeId,c.deadEntity?.typeId];return ids.includes(b.owner.identifier)};\nexport function registerGeneratedEvents(){for(const b of behaviors){const e=world.afterEvents[eventMap[b.trigger.type]];if(e)e.subscribe(ctx=>{if(matches(b,ctx))dispatch(b,ctx)});}world.afterEvents.playerPlaceBlock?.subscribe(e=>registerActive(key(e.block),{block:e.block,source:e.player,owner:e.block.typeId}));world.afterEvents.playerBreakBlock?.subscribe(e=>unregisterActive(key(e.block)));world.afterEvents.entitySpawn?.subscribe(e=>registerActive(e.entity.id,{target:e.entity,owner:e.entity.typeId}));world.afterEvents.entityDie?.subscribe(e=>unregisterActive(e.deadEntity.id));}\n",
         "scripts/runtime/actions.js": """// Conservative dispatcher: only evidence-backed IR reaches this module.
@@ -288,7 +288,7 @@ def compile_bedrock(ir: dict[str, Any], plan: dict[str, Any], output_dir: str | 
         ):
             properties.setdefault("health", 200)
         native = _native_content(kind, _identifier(raw, namespace), properties, min_engine)
-        if _approved(feature, content) and native:
+        if _approved(feature, content) and native and feature is not None:
             rel, data = native
             path = bp / rel
             path.parent.mkdir(parents=True, exist_ok=True)
