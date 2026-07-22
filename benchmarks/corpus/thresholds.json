@@ -1,0 +1,13 @@
+{
+  "schema_version": "1.0.0",
+  "metrics": {
+    "behavior_precision": {"comparison": ">=", "threshold": 0.9},
+    "determinism": {"comparison": ">=", "threshold": 1.0},
+    "fabrication_rate": {"comparison": "<=", "threshold": 0.0},
+    "recoverable_behavior_recall": {"comparison": ">=", "threshold": 0.7},
+    "registration_precision": {"comparison": ">=", "threshold": 0.95},
+    "registration_recall": {"comparison": ">=", "threshold": 0.9},
+    "source_jar_agreement": {"comparison": ">=", "threshold": 0.95},
+    "unsupported_detection": {"comparison": ">=", "threshold": 0.95}
+  }
+}

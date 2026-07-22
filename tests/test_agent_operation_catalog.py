@@ -83,7 +83,7 @@ class AgentOperationCatalogTests(unittest.TestCase):
         required = {name for names in REQUIRED_OPERATION_CATALOG.values() for name in names}
         self.assertEqual(required, set(self.registry.catalog()))
         self.assertTrue(required <= set(self.registry.handlers))
-        self.assertEqual({"AVAILABLE", "NOT_AVAILABLE"}, {row["status"] for row in self.registry.catalog().values()})
+        self.assertEqual({"AVAILABLE"}, {row["status"] for row in self.registry.catalog().values()})
 
     def test_focused_artifact_inspection_and_tracing(self) -> None:
         cases = {
@@ -166,9 +166,17 @@ class AgentOperationCatalogTests(unittest.TestCase):
         self.assertFalse(persisted["claims"]["marketplace_approval_implied"])
         self.assertFalse(persisted["claims"]["runtime_verified"])
         self.assertFalse(persisted["claims"]["console_verified"])
+        for relative in (
+            "conversion-report.html", "conversion-report.json", "provenance.json", "fidelity.json",
+            "rights-report.json", "validation-report.json", "performance-report.json", "console-evidence.json",
+        ):
+            self.assertTrue((self.root / "dist/reports" / relative).is_file(), relative)
 
         current = ProjectStore.open(self.root).revision
-        for operation in ("generate_pack", "install_test_pack", "start_test_runtime", "run_multiplayer_test", "verify_persistence"):
+        generated = self.run_operation("generate_pack", expected_revision=current)
+        self.assertTrue(generated["ok"], generated)
+        current = generated["project_revision"]
+        for operation in ("install_test_pack", "start_test_runtime", "run_multiplayer_test", "verify_persistence"):
             blocked = self.run_operation(operation)
             self.assertFalse(blocked["ok"], blocked)
             self.assertEqual("NOT_AVAILABLE", blocked["diagnostics"][0]["code"])

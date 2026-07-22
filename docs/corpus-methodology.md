@@ -8,7 +8,7 @@ The corpus must be legally clean, loader-diverse, behavior-representative, and s
 - Validation corpus: unseen variants used during development.
 - Final holdout: frozen before tuning and evaluated once per declared release candidate.
 - Benchmark A: original backend/product showcase.
-- Benchmark B: one rights-cleared real Java reconstruction, not yet selected.
+- Benchmark B: DoorLock is a pinned technical candidate with real-source scan evidence; it is not selected as rights-cleared and has not passed reconstruction fidelity or runtime gates.
 
 ## Metrics
 
@@ -18,3 +18,4 @@ Initial targets are 95% registration precision, 90% registration recall, 90% beh
 
 Every metric publishes numerator, denominator, exclusion rules, confidence/uncertainty, corpus revision, and failures. Unsupported and ambiguous cases remain in denominators according to a predeclared policy. Do not tune against final holdout results.
 
+The executable evaluator and fixed thresholds live under `benchmarks/corpus/`. Empty or unlabeled samples, missing evidence, zero denominators, and holdout-policy violations fail closed. Synthetic evaluator tests do not imply completion of a legally reviewed real corpus.

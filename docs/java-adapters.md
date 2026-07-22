@@ -14,8 +14,8 @@ Fixtures must represent `@Mod` lifecycle handlers, `GameRegistry`, `EntityRegist
 
 ## Compiled-JAR mode
 
-The planned bytecode fact layer includes class, annotation, field, method, invocation, constant, control-flow, and resource-reference facts. It records archive and class hashes, tool/JDK versions, nested archives, missing dependencies, obfuscation, and lower confidence. Adverse fixtures cover stripped debug data, lambdas, nested classes, missing dependencies, multi-release archives, and malformed input.
+The loader-neutral bytecode fact layer includes class, annotation, field, method, invocation, constant, and resource-reference facts with lower-confidence provenance. It diagnoses unavailable analyzers, missing dependencies, suspected obfuscation, unresolved semantics, unsupported multi-release selection, invalid archives, and `javap` failures. Control-flow reconstruction, decompiler integration, and broader adverse-corpus coverage remain incomplete.
 
 ## Current qualification and rule
 
-A loader is semantically supported only after authentic source fixtures, compiled-JAR fixtures, explicit expected facts, source/JAR agreement for supported patterns, and honest degradation tests pass. The current worktree adds authentic-pattern Fabric and Forge 1.7.10 source fixtures and scoped extractors, with passing metadata/source-evidence tests. This is an initial source-pattern slice, not complete loader support; authentic compiled-JAR parity, broader APIs, adverse bytecode fixtures, and corpus qualification remain missing.
+A loader is semantically supported only after authentic source fixtures, compiled-JAR fixtures, explicit expected facts, source/JAR agreement for supported patterns, and honest degradation tests pass. Defined Fabric and Forge source/JAR facts have parity tests that run when a usable JDK exists; this host currently records an explicit skip because no usable JDK is installed. Conventional nested Fabric source trees and registration helpers are covered. This remains scoped pattern support, not complete loader support; broader APIs, decompiler adapters, adverse bytecode fixtures, and real-corpus qualification remain incomplete.

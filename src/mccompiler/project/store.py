@@ -86,6 +86,23 @@ class ProjectStore:
                 pass
             raise
 
+    def write_text(self, relative: str | Path, value: str) -> None:
+        path = self.resolve(relative)
+        path.parent.mkdir(parents=True, exist_ok=True)
+        descriptor, temporary = tempfile.mkstemp(prefix=f".{path.name}.", suffix=".tmp", dir=path.parent)
+        try:
+            with os.fdopen(descriptor, "w", encoding="utf-8") as handle:
+                handle.write(value)
+                handle.flush()
+                os.fsync(handle.fileno())
+            os.replace(temporary, path)
+        except BaseException:
+            try:
+                os.unlink(temporary)
+            except FileNotFoundError:
+                pass
+            raise
+
     @property
     def manifest(self) -> dict[str, Any]:
         return cast(dict[str, Any], self.read("project.yaml"))
@@ -104,6 +121,34 @@ class ProjectStore:
                 raise ProjectError("PROTECTED_PATH", f"Operations cannot overwrite protected path: {relative}")
             self.write(relative, value)
         manifest.update(dict(manifest_updates or {}))
+        manifest["revision"] = current + 1
+        self.write("project.yaml", manifest)
+        return current + 1
+
+    def commit_protected(self, relative: str | Path, value: Any, *, expected_revision: int, author: str, reason: str) -> int:
+        """Write one explicitly user-owned custom artifact with revision provenance.
+
+        Ordinary generated commits remain forbidden from touching ``custom/``.
+        This separate entry point exists only for deliberate safe-edit operations.
+        """
+        path_text = str(relative)
+        allowed = ("custom/scripts/", "custom/entities/", "custom/models/", "custom/assets/")
+        if not path_text.startswith(allowed) or path_text.endswith("/"):
+            raise ProjectError("INVALID_PROTECTED_PATH", f"Protected edits require a file under an allowed custom directory: {relative}")
+        if not author.strip() or not reason.strip():
+            raise ProjectError("MISSING_PROVENANCE", "Protected edits require author and reason")
+        current = self.revision
+        if expected_revision != current:
+            raise ProjectError("REVISION_CONFLICT", f"Expected project revision {expected_revision}, found {current}")
+        if isinstance(value, str):
+            self.write_text(relative, value)
+        else:
+            self.write(relative, value)
+        audit = self.read("decisions/protected-edits.json", {"schema_version": "1.0.0", "edits": []})
+        edits = list(audit.get("edits", [])) if isinstance(audit, dict) else []
+        edits.append({"path": path_text, "author": author, "reason": reason, "revision": current + 1})
+        self.write("decisions/protected-edits.json", {"schema_version": "1.0.0", "edits": edits})
+        manifest = self.manifest
         manifest["revision"] = current + 1
         self.write("project.yaml", manifest)
         return current + 1

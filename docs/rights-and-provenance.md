@@ -8,5 +8,4 @@ Allowed states are `UNKNOWN`, `REVIEW_REQUIRED`, `PERSONAL_USE_ONLY`, `ATTRIBUTI
 
 Uncleared material is excluded or blocks candidate packaging. Automated scanning may find license files and conflicts but must not issue legal approval. Review records identify reviewer, date, evidence, scope, and content hashes. Re-review is required if inputs or intended distribution change.
 
-Benchmark A uses an original-authorship declaration but still requires a human gate before any commercial claim. Benchmark B remains unselected until all categories are evidenced; see its selection scaffold.
-
+Benchmark A uses an original-authorship declaration but still requires a human gate before any commercial claim. Benchmark B has a pinned technical candidate and source-scan evidence, but `selected_mod` remains null until all rights categories are evidenced and reviewed by an accountable human.

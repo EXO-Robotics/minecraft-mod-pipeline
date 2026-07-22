@@ -4,7 +4,7 @@ from typing import Any, Callable
 
 from mccompiler.project.store import ProjectError, ProjectStore
 
-from . import analysis_ops, planning_ops, project_ops, reporting_ops
+from . import analysis_ops, generation_ops, intent_ops, planning_ops, project_ops, query_ops, reporting_ops, safe_edit_ops, validation_ops
 from .envelope import OperationError, failure, success
 
 
@@ -93,6 +93,10 @@ class OperationRegistry:
             "trace_dependency": analysis_ops.trace_dependency,
             "show_evidence": analysis_ops.show_evidence,
             "extract_behavior_intent": analysis_ops.inspect_behavior,
+            "propose_behavior_intent": intent_ops.propose_behavior_intent,
+            "accept_behavior_intent": intent_ops.accept_behavior_intent,
+            "edit_behavior_intent": intent_ops.edit_behavior_intent,
+            "reject_behavior_intent": intent_ops.reject_behavior_intent,
             "list_ambiguous_behaviors": analysis_ops.list_ambiguous_behaviors,
             "list_unsupported_operations": analysis_ops.list_unsupported_operations,
             "compare_bedrock_strategies": planning_ops.compare_bedrock_strategies,
@@ -102,7 +106,41 @@ class OperationRegistry:
             "reject_approximation": planning_ops.reject_approximation,
             "record_manual_redesign": planning_ops.record_manual_redesign,
             "apply_override": planning_ops.apply_override,
+            "select_pattern": query_ops.select_pattern,
+            "estimate_fidelity": query_ops.estimate_fidelity,
+            "estimate_performance": query_ops.estimate_performance,
+            "trace_callers": query_ops.trace_callers,
+            "trace_callees": query_ops.trace_callees,
+            "compare_source_and_jar": query_ops.compare_source_and_jar,
+            "generate_item": generation_ops.generate_item,
+            "generate_block": generation_ops.generate_block,
+            "generate_entity": generation_ops.generate_entity,
+            "generate_projectile": generation_ops.generate_projectile,
+            "generate_recipe": generation_ops.generate_recipe,
+            "generate_loot": generation_ops.generate_loot,
+            "generate_structure": generation_ops.generate_structure,
+            "generate_spawn_rules": generation_ops.generate_spawn_rules,
+            "generate_animation": generation_ops.generate_animation,
+            "generate_form": generation_ops.generate_form,
+            "generate_script_scaffold": generation_ops.generate_script_scaffold,
+            "generate_pack": generation_ops.generate_pack,
+            "generate_world": generation_ops.generate_world,
+            "package_mcaddon": generation_ops.package_mcaddon,
             "validate_ir": reporting_ops.validate_ir,
+            "validate_api_symbols": validation_ops.validate_api_symbols,
+            "validate_marketplace_profile": validation_ops.validate_marketplace_profile,
+            "validate_rights": validation_ops.validate_rights,
+            "validate_static": validation_ops.validate_static,
+            "validate_scripts": validation_ops.validate_scripts,
+            "validate_assets": validation_ops.validate_assets,
+            "validate_performance": validation_ops.validate_performance,
+            "install_test_pack": validation_ops.install_test_pack,
+            "start_test_runtime": validation_ops.start_test_runtime,
+            "run_behavior_test": validation_ops.run_behavior_test,
+            "run_multiplayer_test": validation_ops.run_multiplayer_test,
+            "verify_persistence": validation_ops.verify_persistence,
+            "inspect_content_log": validation_ops.inspect_content_log,
+            "compare_expected_behavior": validation_ops.compare_expected_behavior,
             "generate_conversion_report": reporting_ops.generate_conversion_report,
         }
         unavailable_reasons = {
@@ -143,6 +181,14 @@ class OperationRegistry:
             "list_unresolved": project_ops.list_unresolved_work,
             "list_blocking": project_ops.list_blocking_failures,
             "get_next_task": project_ops.get_next_recommended_task,
+            "write_custom_implementation": safe_edit_ops.write_custom_implementation,
+            "register_custom_behavior_handler": safe_edit_ops.register_custom_behavior_handler,
+            "add_project_pattern": safe_edit_ops.add_project_pattern,
+            "patch_ir_with_provenance": safe_edit_ops.patch_ir_with_provenance,
+            "add_rights_evidence": safe_edit_ops.add_rights_evidence,
+            "resolve_mapping": safe_edit_ops.resolve_mapping,
+            "validate_creator_tools": validation_ops.validate_creator_tools,
+            "evaluate_marketplace_candidate": validation_ops.evaluate_marketplace_candidate,
         })
 
     def catalog(self) -> dict[str, dict[str, Any]]:

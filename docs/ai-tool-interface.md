@@ -33,4 +33,6 @@ AI proposals are advisory. Acceptance is a distinct authorized action. Rights cl
 
 ## Current status
 
-The current worktree includes a versioned operation registry, JSON envelopes, a JSON-lines stdio adapter, project create/status/open/unresolved/blocking/next-task operations, focused behavior/evidence queries, and strategy decisions. Tests prove create/scan/resume/query/revision-conflict and shared adapter behavior. Most operation families listed above remain unimplemented, and there is no complete MCP transport or end-to-end conversion-project workflow yet.
+All 76 required operation names are dispatchable through the versioned registry and JSON-lines adapter. Artifact-backed analysis, intent review, planning, generation, validation, reporting, and safe-edit operations run against persistent revisioned projects. Runtime installation/execution operations remain callable but return structured `NOT_AVAILABLE` until a managed Minecraft adapter is configured. Tests exercise Benchmark A through create, scan, generate, validate, package, report, and reopen/resume. Full MCP transport remains incomplete.
+
+Additional safe operations expose protected custom implementations, custom behavior-handler records, project patterns, provenance-bound IR patches, rights evidence, and mappings. Additional qualification operations expose pinned Creator Tools invocation and aggregate Marketplace-candidate evaluation; neither implies runtime execution or Marketplace approval.

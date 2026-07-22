@@ -12,6 +12,14 @@ FIXTURES = Path(__file__).parent / "fixtures" / "frontends"
 
 
 class LoaderFrontendTests(unittest.TestCase):
+    def test_conventional_fabric_source_tree_and_registration_helper(self):
+        ir = scan_path(FIXTURES / "fabric_source_tree")
+        self.assertEqual("source_tree", ir["mods"][0]["id"])
+        self.assertEqual("fabric", ir["mods"][0]["loader"])
+        self.assertEqual({("item", "source_tree:key")}, {(row["kind"], row["identifier"]) for row in ir["content"]})
+        behavior = next(row for row in ir["behaviors"] if row["trigger"]["type"] == "item_use_on_block")
+        self.assertEqual("fabric-source:Item.useOnBlock", behavior["evidence"][0]["extraction_rule"])
+
     def test_modern_fabric_metadata_is_lossless_and_source_evidence_is_scoped(self):
         root = FIXTURES / "fabric_modern"
         raw = (root / "fabric.mod.json").read_text()

@@ -612,7 +612,7 @@ def validate_output(
         errors.append("Script/profile mismatch: manifest dependencies do not match API usage evidence")
     if target.production and (root / "behavior_pack/scripts/tests").exists():
         errors.append("Production target contains debug script commands")
-    if target.production and (root / "scripts").exists():
+    if target.production and (root / "scripts").is_dir() and any(path.is_file() for path in (root / "scripts").rglob("*")):
         errors.append("Production target contains inspectable script mirrors")
     for module, version in dependencies.items():
         if module in EXPERIMENTAL_MODULES or module not in SUPPORTED_MODULES:

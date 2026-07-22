@@ -68,10 +68,11 @@ def _identifier(expression: str, mod_id: str) -> str | None:
     return single.group(1) if single else None
 
 
-def analyze_source(path: str, text: str) -> dict[str, list[dict[str, Any]]]:
+def analyze_source(path: str, text: str, project_mod_id: str | None = None) -> dict[str, list[dict[str, Any]]]:
     """Recognize a deliberately small, authentic modern Fabric API surface."""
     result: dict[str, list[dict[str, Any]]] = {key: [] for key in ("content", "behaviors", "state", "presentation", "ui", "networking", "diagnostics")}
-    mod_id = _mod_id(text)
+    inferred_mod_id = _mod_id(text)
+    mod_id = project_mod_id if inferred_mod_id == "fabric_mod" and project_mod_id else inferred_mod_id
     class_match = re.search(r'\bclass\s+(\w+)', text)
     class_name = class_match.group(1) if class_match else None
     initializer = re.search(r'\bimplements\s+(?:ModInitializer|ClientModInitializer)\b', text)
@@ -87,6 +88,27 @@ def analyze_source(path: str, text: str) -> dict[str, list[dict[str, Any]]]:
             continue
         line = _line(text, match.start())
         result["content"].append({"kind": kinds[match.group(1)], "identifier": identifier, "properties": {"loader": "fabric", "registry": match.group(1)}, "evidence": [evidence(path, (line, line), "fabric-source:Registry.register", class_name=class_name, confidence=.9)]})
+
+    helper_kinds = (("ITEM", "Item", "registerItem", "item"), ("BLOCK", "Block", "registerBlock", "block"))
+    for registry_name, java_type, helper, kind in helper_kinds:
+        if not re.search(rf'Registry\.register\s*\(\s*Registries\.{registry_name}\b', text) or not re.search(rf'\b{helper}\s*\(\s*String\s+', text):
+            continue
+        for match in re.finditer(rf'\b{java_type}\s+\w+\s*=\s*{helper}\s*\(\s*"([a-z0-9_./-]+)"', text):
+            line = _line(text, match.start())
+            result["content"].append({"kind": kind, "identifier": f"{mod_id}:{match.group(1)}", "properties": {"loader": "fabric", "registry": registry_name, "registration_helper": helper}, "evidence": [evidence(path, (line, line), f"fabric-source:{helper}-helper", class_name=class_name, confidence=.86)]})
+
+    if re.search(r'\bextends\s+\w*Item\b', text):
+        overrides = (("useOnBlock", "item_use_on_block"), ("use", "item_use"))
+        for method, trigger in overrides:
+            for index, match in enumerate(re.finditer(rf'@Override[\s\S]{{0,160}}?\b{method}\s*\(', text)):
+                line = _line(text, match.start())
+                owner_id = re.sub(r'(?<!^)(?=[A-Z])', '_', class_name or "item").lower()
+                result["behaviors"].append({
+                    "id": f"{mod_id}:{owner_id}/{method}_{index}", "owner": {"kind": "item_class", "identifier": f"{mod_id}:{owner_id}"},
+                    "trigger": {"type": trigger}, "conditions": [], "actions": [], "stateReads": [], "stateWrites": [],
+                    "feedback": [], "presentationRequirements": [], "evidence": [evidence(path, (line, line), f"fabric-source:Item.{method}", class_name=class_name, confidence=.82)],
+                    "confidence": .82, "diagnostics": [{"severity": "info", "code": "method_body_unresolved", "message": f"Item override {method} is proven; detailed actions require intent review."}],
+                })
 
     callbacks = [
         (r'UseItemCallback\.EVENT\.register\s*\(', "item_use", "fabric-source:UseItemCallback"),

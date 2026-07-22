@@ -1,0 +1,14 @@
+{
+  "corpus_revision": "UNPOPULATED",
+  "samples": [],
+  "schema_version": "1.0.0",
+  "split_policy": {
+    "assignment_method": "content_hash_before_tuning",
+    "final_holdout_tuning_prohibited": true,
+    "frozen_at": "REPLACE_WITH_ISO_8601_TIMESTAMP",
+    "tuning_splits": [
+      "development",
+      "validation"
+    ]
+  }
+}

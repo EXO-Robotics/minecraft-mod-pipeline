@@ -109,7 +109,13 @@ def _metadata(view: ArchiveView) -> tuple[list[dict[str, Any]], list[dict[str, A
     mods: list[dict[str, Any]] = []
     evidence: list[dict[str, Any]] = []
 
-    fabric = "fabric.mod.json"
+    entries = view.entries()
+    def manifest_path(name: str) -> str:
+        exact = next((entry for entry in entries if entry == name), None)
+        nested = next((entry for entry in entries if entry.endswith("/" + name) and "/resources/" in "/" + entry), None)
+        return exact or nested or name
+
+    fabric = manifest_path("fabric.mod.json")
     fabric_text = view.read_text(fabric)
     data = _json_text(view, fabric)
     if isinstance(data, dict):
@@ -117,7 +123,7 @@ def _metadata(view: ArchiveView) -> tuple[list[dict[str, Any]], list[dict[str, A
         mods.append(mod)
         evidence.append(provenance)
 
-    quilt = "quilt.mod.json"
+    quilt = manifest_path("quilt.mod.json")
     data = _json_text(view, quilt)
     if isinstance(data, dict):
         quilt_loader_raw = data.get("quilt_loader")
@@ -136,7 +142,8 @@ def _metadata(view: ArchiveView) -> tuple[list[dict[str, Any]], list[dict[str, A
         mods.append({"id": mod_id, "name": metadata.get("name", mod_id), "version": quilt_loader.get("version"), "loader": "quilt", "dependencies": quilt_deps, "metadata": {}})
         evidence.append({"path": quilt, "kind": "quilt.mod.json"})
 
-    for filename, loader_name in (("META-INF/mods.toml", "forge"), ("META-INF/neoforge.mods.toml", "neoforge")):
+    for raw_filename, loader_name in (("META-INF/mods.toml", "forge"), ("META-INF/neoforge.mods.toml", "neoforge")):
+        filename = manifest_path(raw_filename)
         text = view.read_text(filename)
         if not text:
             continue
@@ -161,7 +168,7 @@ def _metadata(view: ArchiveView) -> tuple[list[dict[str, Any]], list[dict[str, A
             mods.append({"id": mod_id, "name": mod.get("displayName") or mod_id, "version": mod.get("version"), "loader": loader_name, "dependencies": deps, "metadata": {"loader_version": mod.get("loaderVersion"), "description": mod.get("description")}})
         evidence.append({"path": filename, "kind": filename.rsplit("/", 1)[-1]})
 
-    info = "mcmod.info"
+    info = manifest_path("mcmod.info")
     info_text = view.read_text(info)
     data = _json_text(view, info)
     if isinstance(data, (dict, list)):
@@ -310,7 +317,8 @@ def scan_path(input_path: str | Path, bedrock_server: str | Path | None = None) 
             sources = [((path / row["source"]).resolve()) for row in ir["modpack"]["mods"] if isinstance(row, dict) and row.get("source")]
             sources = [source for source in sources if source.exists()]
         else:
-            sources = sorted(p for p in path.rglob("*") if p.is_file() and p.suffix.lower() in {".jar", ".zip", ".mrpack"})
+            has_java_sources = any(p.is_file() for p in path.rglob("*.java"))
+            sources = [path] if has_java_sources else sorted(p for p in path.rglob("*") if p.is_file() and p.suffix.lower() in {".jar", ".zip", ".mrpack"})
         if not sources:
             sources = [path]
 
@@ -348,7 +356,8 @@ def scan_path(input_path: str | Path, bedrock_server: str | Path | None = None) 
                     for key, values in extracted.items():
                         semantic[key].extend(values)
                     if "fabric" in loaders:
-                        extracted = analyze_fabric_source(entry, view.read_text(entry) or "")
+                        fabric_mod_id = next((str(mod.get("id")) for mod in mods if mod.get("loader") == "fabric" and mod.get("id")), None)
+                        extracted = analyze_fabric_source(entry, view.read_text(entry) or "", fabric_mod_id)
                         for key, values in extracted.items():
                             semantic[key].extend(values)
                     if "forge-legacy" in loaders:
@@ -385,6 +394,20 @@ def scan_path(input_path: str | Path, bedrock_server: str | Path | None = None) 
                 "kind": kind, "sources": source_files,
                 "evidence": [e for item in items for e in item.get("evidence", [])],
             })
+    merged_content: list[dict[str, Any]] = []
+    for (kind, identifier), items in sorted(declarations.items()):
+        merged = dict(items[0])
+        evidence_by_key: dict[str, dict[str, Any]] = {}
+        for item in items:
+            for evidence in item.get("evidence", []):
+                key = json.dumps(evidence, sort_keys=True, separators=(",", ":"), ensure_ascii=False)
+                evidence_by_key.setdefault(key, evidence)
+        merged["kind"] = kind
+        merged["identifier"] = identifier
+        merged["evidence"] = [evidence_by_key[key] for key in sorted(evidence_by_key)]
+        merged["declaration_count"] = len(items)
+        merged_content.append(merged)
+    ir["content"] = merged_content
     ir["registries"] = [
         {"kind": kind, "identifier": identifier, "declaration_count": len(items),
          "conflicted": any(row["feature"] == identifier and row["kind"] == kind for row in conflicts),
