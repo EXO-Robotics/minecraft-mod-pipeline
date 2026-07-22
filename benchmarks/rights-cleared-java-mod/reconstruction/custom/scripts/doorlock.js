@@ -176,9 +176,9 @@ function deferMessage(player, message) {
   system.run(() => player.sendMessage(message));
 }
 
-function rawBreakKey(player, block) {
+function rawBreakKey(block) {
   const { x, y, z } = block.location;
-  return `${player.id}:${block.dimension.id}:${x}:${y}:${z}`;
+  return `${block.dimension.id}:${x}:${y}:${z}`;
 }
 
 function readBreakPolicy() {
@@ -482,7 +482,7 @@ world.beforeEvents.playerBreakBlock.subscribe((event) => {
     return;
   }
   if (decision.action === 'ALLOW_BREAK_REMOVE_LOCK') {
-    const key = rawBreakKey(event.player, event.block);
+    const key = rawBreakKey(event.block);
     const pending = {
       location,
       expectedOwner: decision.expectedOwner,
@@ -496,7 +496,7 @@ world.beforeEvents.playerBreakBlock.subscribe((event) => {
 });
 
 world.afterEvents.playerBreakBlock.subscribe((event) => {
-  const key = rawBreakKey(event.player, event.block);
+  const key = rawBreakKey(event.block);
   const pending = pendingBreaks.get(key);
   if (!pending) return;
   pendingBreaks.delete(key);

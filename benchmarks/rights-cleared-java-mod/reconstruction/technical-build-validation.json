@@ -2,15 +2,15 @@
   "schema_version": "1.0.0",
   "benchmark_id": "benchmark-b-doorlock-technical-reconstruction",
   "executed_at": "2026-07-22",
-  "status": "STATIC_BDS_UPGRADE_AND_ADAPTER_INTEGRATION_VERIFIED",
+  "status": "STATIC_BDS_UPGRADE_ADAPTER_AND_SIMULATED_BREAK_INTEGRATION_VERIFIED",
   "artifacts": {
     "mcaddon": {
-      "sha256": "abbe1186dfff239e6f51a47482beb8103fb3b78f473c5ef7440be2f9154d726f",
-      "bytes": 20165
+      "sha256": "9e8eecc9c804bbf856ce60026ecc25e8bbd5fe9da29cbc101d6a84a95ea5cbf5",
+      "bytes": 20163
     },
     "mcworld": {
-      "sha256": "abb1e2dc8f257386c4f2562f8fac927e3db85fb5e6a0ff21b3e46371d5d66f8c",
-      "bytes": 23069,
+      "sha256": "951296d7145bdbc6ea7e5533f194b5aab66649ce017092a52f55a301f5812dbc",
+      "bytes": 23065,
       "behavior_pack_id": "8e52df20-94ec-5143-b203-491fd4c88b83",
       "resource_pack_id": "38f1bee1-2b1b-5221-b4e4-418216443168"
     },
@@ -36,7 +36,7 @@
     "errors": 0,
     "warnings": 0,
     "exit_codes": [0, 0],
-    "cache_safe_input": "artifact-abbe1186dfff239e6f51a47482beb8103fb3b78f473c5ef7440be2f9154d726f.mcaddon",
+    "cache_safe_input": "artifact-9e8eecc9c804bbf856ce60026ecc25e8bbd5fe9da29cbc101d6a84a95ea5cbf5.mcaddon",
     "marketplace_approval_implied": false
   },
   "bds_diagnostic": {
@@ -44,9 +44,9 @@
     "bedrock_version": "1.26.33.2",
     "bedrock_build_id": "47564860",
     "image": "itzg/minecraft-bedrock-server@sha256:12c7047cc149bd517d6dbc2339163cf62a4f1044c10e759c45c8b387e9784e39",
-    "world_sha256": "abb1e2dc8f257386c4f2562f8fac927e3db85fb5e6a0ff21b3e46371d5d66f8c",
+    "world_sha256": "951296d7145bdbc6ea7e5533f194b5aab66649ce017092a52f55a301f5812dbc",
     "legacy_seed_world_sha256": "6e51316c70ee6599c5992190d3ea9744524970227849409b118db3eb242ce940",
-    "log_sha256": "e6242bbaa759d98c6d32009c5ddcc9c3a4b7e79377d76e81e0d70fb9586d9fbd",
+    "log_sha256": "80f768878cf91fa3cbf33661706c83c17167392c18c39f2ec34e1945730c5f79",
     "script_initialized": true,
     "restart_cycles": 3,
     "persistent_boot_values": [1, 2, 3],
@@ -75,13 +75,38 @@
     "stop_exit_codes": [0, 0, 0],
     "published_ports": false
   },
+  "simulated_player_diagnostic": {
+    "status": "BDS_DIAGNOSTIC_BOOT_VERIFIED",
+    "classification": "EVENT_ADAPTER_INTEGRATION_TEST",
+    "bedrock_version": "1.26.50.20",
+    "bedrock_build_id": "47971866",
+    "preview_channel": true,
+    "gametest_experiment": true,
+    "image": "itzg/minecraft-bedrock-server@sha256:12c7047cc149bd517d6dbc2339163cf62a4f1044c10e759c45c8b387e9784e39",
+    "legacy_diagnostic_world_sha256": "34a2e0a7789e81ce7fd460380d8ec1bc606954a330c128170591ad7d937f3b59",
+    "upgrade_diagnostic_world_sha256": "d79c3ebb4018c446806c2dafa1e5b53542968e7555c25830a1f416172f244691",
+    "log_sha256": "824f1ab96c548707d589c0a0c0aa2e45e4979190d94b233cae776b2e1c728413",
+    "restart_cycles": 2,
+    "critical_lines": 0,
+    "simulated_player_break_before_event_observed": true,
+    "simulated_player_break_after_event_observed": true,
+    "locked_block_removed": true,
+    "nonempty_state_migration_verified": true,
+    "simulated_player_integration_verified": true,
+    "physical_player_verified": false,
+    "gameplay_verified": false,
+    "multiplayer_verified": false,
+    "console_verified": false,
+    "marketplace_or_console_evidence": false
+  },
   "marketplace_candidate": {
     "passed": false,
     "status": "VALID_MCADDON_NOT_MARKETPLACE_CANDIDATE",
     "blocking_gates": ["rights", "quality"]
   },
   "unverified": [
-    "actual player item and block event adapters",
+    "actual physical-player item and block-interaction event adapters",
+    "physical-player block-break event adapter (Preview SimulatedPlayer break is diagnostic-only)",
     "actual door, chest, fence-gate, trapdoor, and shulker-box interactions",
     "actual player-driven redstone suppression and authorized-open reconciliation",
     "actual iron door and trapdoor permutation toggling",

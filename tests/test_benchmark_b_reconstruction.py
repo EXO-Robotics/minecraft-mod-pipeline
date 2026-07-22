@@ -22,6 +22,8 @@ class BenchmarkBReconstructionTests(unittest.TestCase):
         self.assertIn("world.beforeEvents.playerInteractWithBlock.subscribe", script)
         self.assertIn("world.beforeEvents.playerBreakBlock.subscribe", script)
         self.assertIn("world.afterEvents.playerBreakBlock.subscribe", script)
+        self.assertIn("function rawBreakKey(block)", script)
+        self.assertNotIn("rawBreakKey(event.player", script)
         self.assertIn("world.afterEvents.playerInteractWithBlock.subscribe", script)
         self.assertIn("system.runTimeout", script)
         self.assertIn("system.runInterval(reconcileLockedOpenables, 1)", script)
@@ -337,7 +339,7 @@ console.log(JSON.stringify({ record, created, competingCreate, twoLocks, dimensi
         self.assertIsNone(status["approved_quality_claim"])
         self.assertEqual(
             {
-                "actual gameplay, persistence, multiplayer, Realm, and console tests",
+                "physical-player gameplay, feature persistence, multiplayer, Realm, and console tests",
             },
             set(status["missing"]),
         )
@@ -354,7 +356,7 @@ console.log(JSON.stringify({ record, created, competingCreate, twoLocks, dimensi
 
     def test_external_validation_is_hash_bound_and_narrow(self) -> None:
         validation = json.loads((RECONSTRUCTION / "technical-build-validation.json").read_text())
-        self.assertEqual("STATIC_BDS_UPGRADE_AND_ADAPTER_INTEGRATION_VERIFIED", validation["status"])
+        self.assertEqual("STATIC_BDS_UPGRADE_ADAPTER_AND_SIMULATED_BREAK_INTEGRATION_VERIFIED", validation["status"])
         self.assertEqual(0, validation["creator_tools"]["errors"])
         self.assertEqual(0, validation["creator_tools"]["warnings"])
         self.assertFalse(validation["creator_tools"]["marketplace_approval_implied"])
@@ -381,8 +383,19 @@ console.log(JSON.stringify({ record, created, competingCreate, twoLocks, dimensi
         self.assertEqual(validation["artifacts"]["legacy_seed_mcworld"]["sha256"], validation["bds_diagnostic"]["legacy_seed_world_sha256"])
         self.assertTrue(validation["artifacts"]["legacy_seed_mcworld"]["fixture_only"])
         self.assertEqual(3, validation["bds_diagnostic"]["restart_cycles"])
+        simulated = validation["simulated_player_diagnostic"]
+        self.assertEqual("EVENT_ADAPTER_INTEGRATION_TEST", simulated["classification"])
+        self.assertEqual("1.26.50.20", simulated["bedrock_version"])
+        self.assertTrue(simulated["preview_channel"])
+        self.assertTrue(simulated["simulated_player_break_before_event_observed"])
+        self.assertTrue(simulated["simulated_player_break_after_event_observed"])
+        self.assertTrue(simulated["simulated_player_integration_verified"])
+        self.assertFalse(simulated["physical_player_verified"])
+        self.assertFalse(simulated["gameplay_verified"])
+        self.assertFalse(simulated["console_verified"])
+        self.assertFalse(simulated["marketplace_or_console_evidence"])
         self.assertFalse(validation["marketplace_candidate"]["passed"])
-        self.assertIn("actual player item and block event adapters", validation["unverified"])
+        self.assertIn("actual physical-player item and block-interaction event adapters", validation["unverified"])
 
     def test_bds_redstone_probes_are_adapter_integration_only(self) -> None:
         probes = json.loads((RECONSTRUCTION / "bds-console-probes.json").read_text())

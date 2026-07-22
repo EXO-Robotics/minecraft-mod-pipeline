@@ -32,7 +32,8 @@
     "deferred mutation outside restricted before-event execution",
     "deterministic legacy-state migration with quarantine and idempotence journal",
     "prepared-journal interrupted-write recovery with digest-bound divergence checks",
-    "BDS adapter integration for forced trapdoor open-state restoration and restart survival"
+    "BDS adapter integration for forced trapdoor open-state restoration and restart survival",
+    "Preview-only SimulatedPlayer break action reached real before-break and after-break event adapters without script errors"
   ],
   "approved_quality_claim": null,
   "intentional_redesigns": [
@@ -57,7 +58,7 @@
     }
   ],
   "missing": [
-    "actual gameplay, persistence, multiplayer, Realm, and console tests"
+    "physical-player gameplay, feature persistence, multiplayer, Realm, and console tests"
   ],
   "claims": {
     "technical_reconstruction_complete": false,

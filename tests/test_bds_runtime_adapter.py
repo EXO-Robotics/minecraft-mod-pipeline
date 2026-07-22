@@ -10,7 +10,7 @@ from unittest.mock import patch
 from mccompiler.operations import validation_ops
 from mccompiler.operations.envelope import OperationError
 from mccompiler.project.store import ProjectStore
-from mccompiler.runtime.bds import BDSConsoleProbe, BDSDiagnosticError, BDSRunRequest, analyze_bds_log, docker_run_command, extract_mcworld, overlay_mcworld_packs, validate_console_probes
+from mccompiler.runtime.bds import BDSConsoleProbe, BDSDiagnosticError, BDSLogProbe, BDSRunRequest, analyze_bds_log, docker_run_command, extract_mcworld, overlay_mcworld_packs, run_bds_diagnostic, validate_console_probes, validate_log_probes
 
 
 class BDSRuntimeAdapterTests(unittest.TestCase):
@@ -56,6 +56,21 @@ class BDSRuntimeAdapterTests(unittest.TestCase):
         self.assertIn("bridge", networked_command)
         self.assertIn("VERSION=1.26.33.2", networked_command)
         self.assertNotIn("-p", networked_command)
+
+        preview = BDSRunRequest(
+            request.image, request.mcworld, request.run_root,
+            network_mode="bridge", bds_version="1.26.50.20", preview_channel=True,
+        )
+        preview_command = docker_run_command(
+            preview, container_name="mccompiler-bds-preview", data_root=data, level_name=level_name,
+        )
+        self.assertIn("VERSION=1.26.50.20", preview_command)
+        self.assertIn("PREVIEW=true", preview_command)
+        with self.assertRaisesRegex(BDSDiagnosticError, "exact bds_version"):
+            docker_run_command(
+                BDSRunRequest(request.image, request.mcworld, request.run_root, preview_channel=True),
+                container_name="mccompiler-bds-invalid-preview", data_root=data, level_name=level_name,
+            )
 
     def test_archive_traversal_is_rejected(self) -> None:
         path = self.root / "unsafe.mcworld"
@@ -121,6 +136,11 @@ class BDSRuntimeAdapterTests(unittest.TestCase):
         failed = analyze_bds_log(["Server started.", "[ERROR] script failed to load"])
         self.assertFalse(failed["script_initialized"])
         self.assertFalse(failed["clean"])
+        timestamped = analyze_bds_log([
+            "Server started.", "runtime initialized",
+            "[2026-07-22 22:53:17:568 ERROR] [Scripting] Plugin failed to create context.",
+        ])
+        self.assertFalse(timestamped["clean"])
 
     def test_public_operation_requires_explicit_execution_and_digest(self) -> None:
         store = ProjectStore.create(self.root / "project")
@@ -139,6 +159,13 @@ class BDSRuntimeAdapterTests(unittest.TestCase):
                 "image": "registry/bds@sha256:" + "a" * 64, "network_mode": "bridge",
             })
         self.assertEqual("NETWORK_NOT_AUTHORIZED", network.exception.code)
+        with self.assertRaises(OperationError) as preview_type:
+            validation_ops.start_test_runtime(store, {
+                "adapter": "BDS_DOCKER", "execute": True,
+                "image": "registry/bds@sha256:" + "a" * 64,
+                "preview_channel": "true",
+            })
+        self.assertEqual("INVALID_PARAMETERS", preview_type.exception.code)
 
     def test_restart_count_is_bounded(self) -> None:
         request = BDSRunRequest("registry/bds@sha256:" + "a" * 64, self.world(), self.root / "run", restart_count=0)
@@ -187,6 +214,51 @@ class BDSRuntimeAdapterTests(unittest.TestCase):
             (BDSConsoleProbe("small-area", 1, 1.0, "tickingarea add circle 1 2 3 1 safe true", "Added"),),
             restart_count=1, boot_grace_seconds=10,
         )
+
+    def test_log_probes_are_cycle_scoped_and_classified_narrowly(self) -> None:
+        valid = (BDSLogProbe(
+            "simulated-action", 2, "[mccompiler:test] passed", "simulated_player_integration",
+        ),)
+        validate_log_probes(valid, restart_count=2)
+        with self.assertRaisesRegex(BDSDiagnosticError, "invalid classification"):
+            validate_log_probes(
+                (BDSLogProbe("broad", 1, "passed", "gameplay"),), restart_count=1,
+            )
+        with self.assertRaisesRegex(BDSDiagnosticError, "invalid cycle"):
+            validate_log_probes(valid, restart_count=1)
+
+    def test_failed_cycle_cannot_emit_positive_integration_claims(self) -> None:
+        console = BDSConsoleProbe("fixture", 1, 1.0, "setblock 1 2 3 stone", "Block placed")
+        logged = BDSLogProbe("action", 1, "action=passed", "simulated_player_integration")
+        execution = {
+            "cycle": 1, "timeout_seconds": 30, "timed_out": False, "elapsed_seconds": 1.0,
+            "container_exit_code": 0, "stop_exit_code": 0,
+            "analysis": analyze_bds_log(["Server started.", "runtime initialized", "[ERROR] script failed"]),
+            "console_probes": [{
+                "check_id": "fixture", "classification": "adapter_integration",
+                "command": console.command, "expect_output": console.expect_output,
+                "sent": True, "matched": True, "status": "PASSED",
+            }],
+            "log_probes": [{
+                "check_id": "action", "classification": "simulated_player_integration",
+                "expect_output": logged.expect_output, "matched": True, "status": "PASSED",
+            }],
+            "passed": False,
+        }
+        request = BDSRunRequest(
+            "registry/bds@sha256:" + "a" * 64, self.world(), self.root / "failed-claims",
+            timeout_seconds=30, boot_grace_seconds=10,
+            console_probes=(console,), log_probes=(logged,),
+        )
+        with patch("mccompiler.runtime.bds.shutil.which", return_value="/fake/docker"), patch(
+            "mccompiler.runtime.bds._run_cycle",
+            return_value=(["Server started.", "runtime initialized", "[ERROR] script failed"], execution),
+        ):
+            result = run_bds_diagnostic(request)
+        self.assertFalse(result["passed"])
+        self.assertFalse(result["claims"]["adapter_integration_verified"])
+        self.assertFalse(result["claims"]["simulated_player_integration_verified"])
+        self.assertFalse(result["claims"]["diagnostic_state_persistence_verified"])
 
     def test_public_operation_persists_narrow_boot_claims(self) -> None:
         store = ProjectStore.create(self.root / "project")

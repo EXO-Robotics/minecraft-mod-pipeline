@@ -36,6 +36,14 @@ class BDSConsoleProbe:
 
 
 @dataclass(frozen=True)
+class BDSLogProbe:
+    check_id: str
+    cycle: int
+    expect_output: str
+    classification: str
+
+
+@dataclass(frozen=True)
 class BDSRunRequest:
     image: str
     mcworld: Path
@@ -45,9 +53,11 @@ class BDSRunRequest:
     docker_executable: str = "docker"
     network_mode: str = "none"
     bds_version: str | None = None
+    preview_channel: bool = False
     restart_count: int = 1
     upgrade_mcworld: Path | None = None
     console_probes: tuple[BDSConsoleProbe, ...] = ()
+    log_probes: tuple[BDSLogProbe, ...] = ()
 
 
 def validate_console_probes(probes: tuple[BDSConsoleProbe, ...], *, restart_count: int, boot_grace_seconds: int) -> None:
@@ -76,6 +86,25 @@ def validate_console_probes(probes: tuple[BDSConsoleProbe, ...], *, restart_coun
             raise BDSDiagnosticError(f"console probe {probe.check_id} uses an unbounded tickingarea command")
         if not probe.expect_output or len(probe.expect_output) > 512 or any(ord(char) < 32 for char in probe.expect_output):
             raise BDSDiagnosticError(f"console probe {probe.check_id} has invalid expected output")
+
+
+def validate_log_probes(probes: tuple[BDSLogProbe, ...], *, restart_count: int) -> None:
+    if len(probes) > 16:
+        raise BDSDiagnosticError("log_probes cannot contain more than 16 checks")
+    seen: set[str] = set()
+    allowed_classifications = {"adapter_integration", "simulated_player_integration", "diagnostic"}
+    for probe in probes:
+        if not re.fullmatch(r"[a-z0-9][a-z0-9._-]{0,63}", probe.check_id):
+            raise BDSDiagnosticError(f"invalid log probe check_id: {probe.check_id}")
+        if probe.check_id in seen:
+            raise BDSDiagnosticError(f"duplicate log probe check_id: {probe.check_id}")
+        seen.add(probe.check_id)
+        if probe.cycle < 1 or probe.cycle > restart_count:
+            raise BDSDiagnosticError(f"log probe {probe.check_id} has an invalid cycle")
+        if probe.classification not in allowed_classifications:
+            raise BDSDiagnosticError(f"log probe {probe.check_id} has an invalid classification")
+        if not probe.expect_output or len(probe.expect_output) > 512 or any(ord(char) < 32 for char in probe.expect_output):
+            raise BDSDiagnosticError(f"log probe {probe.check_id} has invalid expected output")
 
 
 def sha256_file(path: Path) -> str:
@@ -183,6 +212,10 @@ def docker_run_command(request: BDSRunRequest, *, container_name: str, data_root
         command.insert(2, "-i")
     if request.bds_version:
         command.extend(("-e", f"VERSION={request.bds_version}"))
+    if request.preview_channel:
+        if not request.bds_version:
+            raise BDSDiagnosticError("preview_channel requires an exact bds_version")
+        command.extend(("-e", "PREVIEW=true"))
     command.append(request.image)
     return command
 
@@ -192,7 +225,10 @@ def analyze_bds_log(lines: Iterable[str]) -> dict[str, Any]:
     lowered = [line.lower() for line in materialized]
     booted = any(any(marker.lower() in line for marker in _BOOT_MARKERS) for line in lowered)
     script_initialized = any(any(marker in line for marker in _SCRIPT_MARKERS) for line in lowered)
-    errors = [line for line in materialized if any(marker in line.lower() for marker in _ERROR_MARKERS)]
+    errors = [
+        line for line in materialized
+        if any(marker in line.lower() for marker in _ERROR_MARKERS) or re.search(r"\bERROR\]", line) is not None
+    ]
     version = next((match.group(1) for line in materialized if (match := re.search(r"Version:\s*([^\s]+)", line))), None)
     build_id = next((match.group(1) for line in materialized if (match := re.search(r"Build Id:\s*([^\s]+)", line, re.I))), None)
     persistent_boot_values = [int(match.group(1)) for line in materialized if (match := re.search(r"persistent_boot=(\d+)", line))]
@@ -238,6 +274,10 @@ def _run_cycle(request: BDSRunRequest, *, docker: str, data_root: Path, level_na
         key=lambda probe: (probe.after_boot_seconds, probe.check_id),
     )
     probe_results: list[dict[str, Any]] = []
+    log_probe_results: list[dict[str, Any]] = []
+    cycle_log_probes = sorted(
+        (probe for probe in request.log_probes if probe.cycle == cycle), key=lambda probe: probe.check_id,
+    )
     next_probe = 0
     try:
         process = subprocess.Popen(
@@ -309,6 +349,14 @@ def _run_cycle(request: BDSRunRequest, *, docker: str, data_root: Path, level_na
             result["matched"] = bool(result["sent"] and any(str(result["expect_output"]) in line for line in observed))
             result["status"] = "PASSED" if result["matched"] else "FAILED"
             del result["line_start"]
+        log_probe_results = [{
+            "check_id": probe.check_id,
+            "classification": probe.classification,
+            "expect_output": probe.expect_output,
+            "matched": any(probe.expect_output in line for line in lines),
+        } for probe in cycle_log_probes]
+        for result in log_probe_results:
+            result["status"] = "PASSED" if result["matched"] else "FAILED"
     finally:
         subprocess.run([docker, "rm", "-f", container_name], capture_output=True, text=True, timeout=30, check=False)
     analysis = analyze_bds_log(lines)
@@ -321,9 +369,11 @@ def _run_cycle(request: BDSRunRequest, *, docker: str, data_root: Path, level_na
         "stop_exit_code": stop_result.returncode if stop_result else None,
         "analysis": analysis,
         "console_probes": probe_results,
+        "log_probes": log_probe_results,
         "passed": bool(
             analysis["booted"] and analysis["script_initialized"] and analysis["clean"] and not timed_out
             and len(probe_results) == len(cycle_probes) and all(bool(result["matched"]) for result in probe_results)
+            and len(log_probe_results) == len(cycle_log_probes) and all(bool(result["matched"]) for result in log_probe_results)
         ),
     }
 
@@ -340,6 +390,9 @@ def run_bds_diagnostic(request: BDSRunRequest) -> dict[str, Any]:
     validate_console_probes(
         request.console_probes, restart_count=request.restart_count, boot_grace_seconds=request.boot_grace_seconds,
     )
+    validate_log_probes(request.log_probes, restart_count=request.restart_count)
+    if len(request.console_probes) + len(request.log_probes) > 16:
+        raise BDSDiagnosticError("console_probes and log_probes cannot contain more than 16 combined checks")
     docker = shutil.which(request.docker_executable)
     if docker is None:
         raise BDSDiagnosticError(f"Docker executable is unavailable: {request.docker_executable}")
@@ -373,21 +426,28 @@ def run_bds_diagnostic(request: BDSRunRequest) -> dict[str, Any]:
     nonempty_state_migration_verified = bool(request.upgrade_mcworld is not None and any(value > 0 for value in analysis["migrated_lock_values"]))
     migrated_state_restart_verified = bool(request.restart_count >= 3 and any(value > 0 for value in analysis["migrated_state_records"]))
     console_probe_results = [probe for cycle in cycles for probe in cycle["console_probes"]]
+    log_probe_results = [probe for cycle in cycles for probe in cycle["log_probes"]]
     adapter_integration_verified = bool(
-        request.console_probes and len(console_probe_results) == len(request.console_probes)
+        passed and request.console_probes and len(console_probe_results) == len(request.console_probes)
         and all(probe["status"] == "PASSED" for probe in console_probe_results)
+    )
+    simulated_requested = [probe for probe in request.log_probes if probe.classification == "simulated_player_integration"]
+    simulated_results = [probe for probe in log_probe_results if probe["classification"] == "simulated_player_integration"]
+    simulated_player_integration_verified = bool(
+        passed and simulated_requested and len(simulated_results) == len(simulated_requested)
+        and all(probe["status"] == "PASSED" for probe in simulated_results)
     )
     result = {
         "schema_version": "1.0.0",
         "status": "BDS_DIAGNOSTIC_BOOT_VERIFIED" if passed else "BDS_DIAGNOSTIC_FAILED",
         "passed": passed,
         "artifact": {"path": str(request.mcworld), "sha256": sha256_file(request.mcworld)},
-        "runtime": {"adapter": "docker-bds", "image": request.image, "requested_bds_version": request.bds_version, "network": request.network_mode, "published_ports": False, "level_name": level_name},
+        "runtime": {"adapter": "docker-bds", "image": request.image, "requested_bds_version": request.bds_version, "preview_channel": request.preview_channel, "network": request.network_mode, "published_ports": False, "level_name": level_name},
         "execution": {"restart_count": request.restart_count, "elapsed_seconds": round(time.time() - started_at, 3), "cycles": cycles},
         "upgrade": upgrade,
         "log": {**analysis, "path": str(log_path), "sha256": hashlib.sha256(log_text.encode()).hexdigest()},
-        "checks": console_probe_results,
-        "claims": {"bds_boot_verified": passed, "adapter_integration_verified": adapter_integration_verified, "diagnostic_state_persistence_verified": diagnostic_state_persistence_verified, "nonempty_state_migration_verified": nonempty_state_migration_verified, "migrated_state_restart_verified": migrated_state_restart_verified, "gameplay_verified": False, "persistence_verified": False, "multiplayer_verified": False, "console_verified": False, "marketplace_approval_implied": False},
+        "checks": [*console_probe_results, *log_probe_results],
+        "claims": {"bds_boot_verified": passed, "adapter_integration_verified": adapter_integration_verified, "simulated_player_integration_verified": simulated_player_integration_verified, "diagnostic_state_persistence_verified": bool(passed and diagnostic_state_persistence_verified), "nonempty_state_migration_verified": bool(passed and nonempty_state_migration_verified), "migrated_state_restart_verified": bool(passed and migrated_state_restart_verified), "gameplay_verified": False, "persistence_verified": False, "multiplayer_verified": False, "console_verified": False, "marketplace_approval_implied": False},
     }
     (request.run_root / "result.json").write_text(json.dumps(result, indent=2, sort_keys=True) + "\n", encoding="utf-8")
     return result
