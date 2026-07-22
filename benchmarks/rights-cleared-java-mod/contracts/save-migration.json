@@ -1,7 +1,7 @@
 {
   "schema_version": "1.0.0",
   "contract_id": "doorlock-state-v0-to-v1",
-  "status": "PURE_LOGIC_IMPLEMENTED_RUNTIME_NOT_VERIFIED",
+  "status": "PURE_LOGIC_AND_BDS_NONEMPTY_UPGRADE_VERIFIED",
   "from_schema": 0,
   "to_schema": 1,
   "steps": [
@@ -23,10 +23,10 @@
   },
   "evidence": [
     "reconstruction/custom/scripts/doorlock-state.js",
-    "tests/test_benchmark_b_reconstruction.py::BenchmarkBReconstructionTests.test_legacy_state_migration_is_idempotent_and_fail_closed"
+    "tests/test_benchmark_b_reconstruction.py::BenchmarkBReconstructionTests.test_legacy_state_migration_is_idempotent_and_fail_closed",
+    "reconstruction/technical-build-validation.json"
   ],
   "unverified": [
-    "Minecraft dynamic-property migration execution",
     "interrupted-write recovery in a real world",
     "legacy credential gameplay authorization",
     "upgrade and rollback on Windows, Realm, and consoles"

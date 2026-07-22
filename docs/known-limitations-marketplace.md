@@ -7,7 +7,7 @@
 - Event registration improvements are statically tested, but real Minecraft action adapters remain unverified.
 - Marketplace package separation is unit tested and exact Benchmark A/B archives pass pinned Creator Tools suites; no client qualification exists.
 - Rights gates, static performance, compiler migrations, Benchmark B pure lock-state migration logic, and the complete operation-name catalog are present; measured runtime budgets, real-action runtime operations, and full MCP transport remain incomplete.
-- Existing isolated BDS evidence proves hash-bound pack boot, stable script initialization, and a narrow diagnostic dynamic property across restart. It does not prove gameplay, feature-state migration, multiplayer, controller, or console behavior.
+- Existing isolated BDS evidence proves hash-bound pack boot, stable script initialization, a narrow diagnostic property across restart, and one nonempty Benchmark B lock migration that survives a third boot. It does not prove player-created state, interrupted-write recovery, gameplay, multiplayer, controller, or console behavior.
 - No local Windows, Realm Windows, PS4, PS5, Xbox One, or Xbox Series benchmark is claimed here.
 - Benchmark A is an executable static showcase and BDS diagnostic fixture, not a fully gameplay-qualified Marketplace candidate.
 - Benchmark B has a deterministic clean-room technical reconstruction, complete unresolved quality records, pinned Creator Tools proof, and BDS boot/restart proof. It is not rights-cleared or gameplay-qualified; attributable human review remains mandatory.

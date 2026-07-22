@@ -189,7 +189,7 @@ console.log(JSON.stringify({ record, created, competingCreate, twoLocks, dimensi
 
     def test_status_exposes_every_unfinished_claim(self) -> None:
         status = json.loads((RECONSTRUCTION / "implementation-status.json").read_text())
-        self.assertEqual("PARTIAL_TECHNICAL_RECONSTRUCTION_BDS_BOOT_VERIFIED", status["status"])
+        self.assertEqual("PARTIAL_TECHNICAL_RECONSTRUCTION_BDS_UPGRADE_VERIFIED", status["status"])
         self.assertIsNone(status["approved_quality_claim"])
         self.assertGreater(len(status["missing"]), 5)
         self.assertFalse(status["claims"]["technical_reconstruction_complete"])
@@ -205,18 +205,23 @@ console.log(JSON.stringify({ record, created, competingCreate, twoLocks, dimensi
 
     def test_external_validation_is_hash_bound_and_narrow(self) -> None:
         validation = json.loads((RECONSTRUCTION / "technical-build-validation.json").read_text())
-        self.assertEqual("STATIC_AND_BDS_BOOT_VERIFIED", validation["status"])
+        self.assertEqual("STATIC_AND_BDS_UPGRADE_VERIFIED", validation["status"])
         self.assertEqual(0, validation["creator_tools"]["errors"])
         self.assertEqual(0, validation["creator_tools"]["warnings"])
         self.assertFalse(validation["creator_tools"]["marketplace_approval_implied"])
         self.assertTrue(validation["bds_diagnostic"]["script_initialized"])
         self.assertTrue(validation["bds_diagnostic"]["diagnostic_state_persistence_verified"])
         self.assertTrue(validation["bds_diagnostic"]["empty_state_migration_executed"])
-        self.assertFalse(validation["bds_diagnostic"]["nonempty_state_migration_verified"])
+        self.assertTrue(validation["bds_diagnostic"]["nonempty_state_migration_verified"])
+        self.assertTrue(validation["bds_diagnostic"]["migrated_state_restart_verified"])
+        self.assertEqual(1, validation["bds_diagnostic"]["migrated_lock_records"])
         self.assertFalse(validation["bds_diagnostic"]["feature_persistence_verified"])
-        self.assertEqual([1, 2], validation["bds_diagnostic"]["persistent_boot_values"])
+        self.assertEqual([1, 2, 3], validation["bds_diagnostic"]["persistent_boot_values"])
         self.assertFalse(validation["bds_diagnostic"]["published_ports"])
         self.assertEqual(validation["artifacts"]["mcworld"]["sha256"], validation["bds_diagnostic"]["world_sha256"])
+        self.assertEqual(validation["artifacts"]["legacy_seed_mcworld"]["sha256"], validation["bds_diagnostic"]["legacy_seed_world_sha256"])
+        self.assertTrue(validation["artifacts"]["legacy_seed_mcworld"]["fixture_only"])
+        self.assertEqual(3, validation["bds_diagnostic"]["restart_cycles"])
         self.assertFalse(validation["marketplace_candidate"]["passed"])
         self.assertIn("actual player item and block event adapters", validation["unverified"])
 

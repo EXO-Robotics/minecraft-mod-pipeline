@@ -1,7 +1,7 @@
 {
   "schema_version": "1.0.0",
   "benchmark_id": "benchmark-b-doorlock-technical-reconstruction",
-  "status": "PARTIAL_TECHNICAL_RECONSTRUCTION_BDS_BOOT_VERIFIED",
+  "status": "PARTIAL_TECHNICAL_RECONSTRUCTION_BDS_UPGRADE_VERIFIED",
   "source_policy": "clean-room implementation from evidence contracts; no DoorLock source or asset payload copied",
   "implemented": [
     "cancellable supported-block interaction",
@@ -11,6 +11,7 @@
     "deterministic two-player owner/non-owner authorization decisions",
     "revision-checked create/remove and complete validated state records",
     "compatibility normalization for earlier sparse owner records",
+    "nonempty legacy lock migration and migrated-record survival across BDS restart",
     "sneak-use lock removal",
     "locked-block break prevention",
     "deferred mutation outside restricted before-event execution",
@@ -30,7 +31,7 @@
     "double-container paired-location normalization",
     "controller form for explicit credential configuration",
     "golden-key behavior distinction",
-    "real-world legacy-state migration execution and interrupted-write recovery",
+    "interrupted-write migration recovery",
     "actual gameplay, persistence, multiplayer, Realm, and console tests"
   ],
   "claims": {

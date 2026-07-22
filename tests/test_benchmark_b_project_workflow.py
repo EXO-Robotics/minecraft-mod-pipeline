@@ -9,6 +9,7 @@ from pathlib import Path
 
 from mccompiler.operations import generation_ops, validation_ops
 from mccompiler.project.store import ProjectStore
+from tools.build_benchmark_b import build_legacy_seed_world
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -50,6 +51,16 @@ class BenchmarkBProjectWorkflowTests(unittest.TestCase):
         self.assertTrue(performance["passed"], performance)
 
         world, _, _ = generation_ops.generate_world(self.store, {"world_name": "DoorLock Technical Validation"}, self.store.revision)
+        current_world = self.store.resolve(world["world"]["path"])
+        legacy_a = build_legacy_seed_world(current_world, self.store.resolve("runtime/legacy-a.mcworld"))
+        legacy_b = build_legacy_seed_world(current_world, self.store.resolve("runtime/legacy-b.mcworld"))
+        self.assertEqual(legacy_a["sha256"], legacy_b["sha256"])
+        self.assertNotEqual(world["world"]["world_hash"], legacy_a["sha256"])
+        with zipfile.ZipFile(self.store.resolve("runtime/legacy-a.mcworld")) as legacy_bundle:
+            legacy_script_name = next(name for name in legacy_bundle.namelist() if name.endswith("/scripts/custom/doorlock.js"))
+            legacy_script = legacy_bundle.read(legacy_script_name).decode()
+        self.assertIn("legacy_seed=1", legacy_script)
+        self.assertNotIn("migration_nonempty_verified", legacy_script)
         package, _, artifacts = generation_ops.package_mcaddon(self.store, {}, self.store.revision)
         self.assertEqual("GENERATED", world["status"])
         self.assertEqual(recorded["artifacts"]["mcworld"]["sha256"], world["world"]["world_hash"])

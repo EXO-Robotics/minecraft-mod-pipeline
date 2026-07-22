@@ -8,3 +8,4 @@ Required scenarios include fresh world, save/reload, process restart, player lea
 
 Compiler IR migration and Minecraft world-state migration are separate systems. A dynamic property surviving restart does not prove that scheduled machines, ownership indexes, or all schema migrations recover.
 
+Benchmark B now adds a narrow state-preserving BDS upgrade test: a fixture-only legacy pack writes one v0 lock, the harness overlays the current packs without replacing the world database, the production migration imports and validates the record, and a third boot reads it through the completed journal. Malformed/conflicting cases remain pure-logic tests, and interrupted writes, player reconnect, real gameplay-created locks, Realm, and console upgrades remain unverified.

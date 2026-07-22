@@ -8,6 +8,7 @@ import shutil
 import subprocess
 import threading
 import time
+import tempfile
 import uuid
 import zipfile
 from dataclasses import dataclass
@@ -36,6 +37,7 @@ class BDSRunRequest:
     network_mode: str = "none"
     bds_version: str | None = None
     restart_count: int = 1
+    upgrade_mcworld: Path | None = None
 
 
 def sha256_file(path: Path) -> str:
@@ -78,6 +80,56 @@ def extract_mcworld(mcworld: Path, data_root: Path) -> tuple[str, Path]:
     return level_name, destination
 
 
+def overlay_mcworld_packs(mcworld: Path, world_root: Path, *, expected_level_name: str) -> dict[str, Any]:
+    """Replace only embedded packs and bindings while preserving the world database."""
+    if not mcworld.is_file() or not zipfile.is_zipfile(mcworld):
+        raise BDSDiagnosticError(f"Not a readable upgrade .mcworld archive: {mcworld}")
+    managed_roots = {"behavior_packs", "resource_packs"}
+    managed_files = {"world_behavior_packs.json", "world_resource_packs.json"}
+    with tempfile.TemporaryDirectory(prefix="mccompiler-upgrade-", dir=world_root.parent) as temporary:
+        stage = Path(temporary)
+        with zipfile.ZipFile(mcworld) as archive:
+            try:
+                level_name = _safe_level_name(archive.read("levelname.txt").decode("utf-8", errors="strict"))
+            except KeyError as exc:
+                raise BDSDiagnosticError("The upgrade .mcworld is missing levelname.txt") from exc
+            if level_name != expected_level_name:
+                raise BDSDiagnosticError(f"Upgrade world name mismatch: expected {expected_level_name}, got {level_name}")
+            for member in archive.infolist():
+                relative = PurePosixPath(member.filename)
+                if relative.is_absolute() or ".." in relative.parts:
+                    raise BDSDiagnosticError(f"Unsafe path in upgrade .mcworld: {member.filename}")
+                if not relative.parts or (relative.parts[0] not in managed_roots and relative.as_posix() not in managed_files):
+                    continue
+                target = stage.joinpath(*relative.parts)
+                if member.is_dir():
+                    target.mkdir(parents=True, exist_ok=True)
+                    continue
+                target.parent.mkdir(parents=True, exist_ok=True)
+                with archive.open(member) as archive_source, target.open("wb") as output:
+                    shutil.copyfileobj(archive_source, output)
+        if not any((stage / root).is_dir() for root in managed_roots):
+            raise BDSDiagnosticError("The upgrade .mcworld contains no embedded packs")
+        inventory: list[dict[str, Any]] = []
+        for root in sorted(managed_roots):
+            source = stage / root
+            target = world_root / root
+            if target.exists():
+                shutil.rmtree(target)
+            if source.is_dir():
+                shutil.copytree(source, target)
+                inventory.extend({"path": path.relative_to(world_root).as_posix(), "sha256": sha256_file(path)} for path in sorted(target.rglob("*")) if path.is_file())
+        for name in sorted(managed_files):
+            source = stage / name
+            target = world_root / name
+            if source.is_file():
+                shutil.copyfile(source, target)
+                inventory.append({"path": name, "sha256": sha256_file(target)})
+            elif target.exists():
+                target.unlink()
+        return {"artifact": {"path": str(mcworld), "sha256": sha256_file(mcworld)}, "files": inventory}
+
+
 def docker_run_command(request: BDSRunRequest, *, container_name: str, data_root: Path, level_name: str) -> list[str]:
     if request.network_mode not in {"none", "bridge"}:
         raise BDSDiagnosticError("network_mode must be none or bridge")
@@ -104,6 +156,8 @@ def analyze_bds_log(lines: Iterable[str]) -> dict[str, Any]:
     version = next((match.group(1) for line in materialized if (match := re.search(r"Version:\s*([^\s]+)", line))), None)
     build_id = next((match.group(1) for line in materialized if (match := re.search(r"Build Id:\s*([^\s]+)", line, re.I))), None)
     persistent_boot_values = [int(match.group(1)) for line in materialized if (match := re.search(r"persistent_boot=(\d+)", line))]
+    migrated_lock_values = [int(match.group(1)) for line in materialized if (match := re.search(r"migration_nonempty_verified=(\d+)", line))]
+    migrated_state_records = [int(match.group(1)) for line in materialized if (match := re.search(r"migration_state_records=(\d+)", line))]
     return {
         "booted": booted,
         "script_initialized": script_initialized,
@@ -112,6 +166,8 @@ def analyze_bds_log(lines: Iterable[str]) -> dict[str, Any]:
         "bedrock_version": version,
         "bedrock_build_id": build_id,
         "persistent_boot_values": persistent_boot_values,
+        "migrated_lock_values": migrated_lock_values,
+        "migrated_state_records": migrated_state_records,
         "line_count": len(materialized),
     }
 
@@ -197,16 +253,19 @@ def run_bds_diagnostic(request: BDSRunRequest) -> dict[str, Any]:
         raise BDSDiagnosticError("boot_grace_seconds must be between 0 and 30")
     if request.restart_count < 1 or request.restart_count > 3:
         raise BDSDiagnosticError("restart_count must be between 1 and 3")
+    if request.upgrade_mcworld is not None and request.restart_count < 2:
+        raise BDSDiagnosticError("upgrade_mcworld requires restart_count of at least 2")
     docker = shutil.which(request.docker_executable)
     if docker is None:
         raise BDSDiagnosticError(f"Docker executable is unavailable: {request.docker_executable}")
     request.run_root.mkdir(parents=True, exist_ok=False)
     data_root = request.run_root / "data"
     data_root.mkdir()
-    level_name, _ = extract_mcworld(request.mcworld, data_root)
+    level_name, world_root = extract_mcworld(request.mcworld, data_root)
     started_at = time.time()
     cycles: list[dict[str, Any]] = []
     combined_lines: list[str] = []
+    upgrade: dict[str, Any] | None = None
     for cycle in range(1, request.restart_count + 1):
         lines, execution = _run_cycle(request, docker=docker, data_root=data_root, level_name=level_name, cycle=cycle)
         combined_lines.append(f"[mccompiler-harness] cycle={cycle}")
@@ -214,6 +273,9 @@ def run_bds_diagnostic(request: BDSRunRequest) -> dict[str, Any]:
         cycles.append(execution)
         if not execution["passed"]:
             break
+        if cycle == 1 and request.upgrade_mcworld is not None:
+            upgrade = overlay_mcworld_packs(request.upgrade_mcworld, world_root, expected_level_name=level_name)
+            combined_lines.append(f"[mccompiler-harness] upgrade={upgrade['artifact']['sha256']}")
     log_text = "\n".join(combined_lines) + ("\n" if combined_lines else "")
     log_path = request.run_root / "content.log"
     log_path.write_text(log_text, encoding="utf-8")
@@ -223,6 +285,8 @@ def run_bds_diagnostic(request: BDSRunRequest) -> dict[str, Any]:
         request.restart_count >= 2
         and analysis["persistent_boot_values"][:request.restart_count] == list(range(1, request.restart_count + 1))
     )
+    nonempty_state_migration_verified = bool(request.upgrade_mcworld is not None and any(value > 0 for value in analysis["migrated_lock_values"]))
+    migrated_state_restart_verified = bool(request.restart_count >= 3 and any(value > 0 for value in analysis["migrated_state_records"]))
     result = {
         "schema_version": "1.0.0",
         "status": "BDS_DIAGNOSTIC_BOOT_VERIFIED" if passed else "BDS_DIAGNOSTIC_FAILED",
@@ -230,8 +294,9 @@ def run_bds_diagnostic(request: BDSRunRequest) -> dict[str, Any]:
         "artifact": {"path": str(request.mcworld), "sha256": sha256_file(request.mcworld)},
         "runtime": {"adapter": "docker-bds", "image": request.image, "requested_bds_version": request.bds_version, "network": request.network_mode, "published_ports": False, "level_name": level_name},
         "execution": {"restart_count": request.restart_count, "elapsed_seconds": round(time.time() - started_at, 3), "cycles": cycles},
+        "upgrade": upgrade,
         "log": {**analysis, "path": str(log_path), "sha256": hashlib.sha256(log_text.encode()).hexdigest()},
-        "claims": {"bds_boot_verified": passed, "diagnostic_state_persistence_verified": diagnostic_state_persistence_verified, "gameplay_verified": False, "persistence_verified": False, "multiplayer_verified": False, "console_verified": False, "marketplace_approval_implied": False},
+        "claims": {"bds_boot_verified": passed, "diagnostic_state_persistence_verified": diagnostic_state_persistence_verified, "nonempty_state_migration_verified": nonempty_state_migration_verified, "migrated_state_restart_verified": migrated_state_restart_verified, "gameplay_verified": False, "persistence_verified": False, "multiplayer_verified": False, "console_verified": False, "marketplace_approval_implied": False},
     }
     (request.run_root / "result.json").write_text(json.dumps(result, indent=2, sort_keys=True) + "\n", encoding="utf-8")
     return result

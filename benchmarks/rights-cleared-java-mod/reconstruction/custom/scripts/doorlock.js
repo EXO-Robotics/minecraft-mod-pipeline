@@ -56,6 +56,8 @@ function runLegacyMigration() {
     try {
       if (JSON.parse(journal)?.status === 'completed') {
         writeLocks(current);
+        const migrated = Object.values(current).filter((record) => record.authorization_mode === 'legacy_credential').length;
+        console.warn(`[mccompiler:doorlock] migration_state_records=${migrated}`);
         migrationReady = true;
         return;
       }
@@ -69,6 +71,10 @@ function runLegacyMigration() {
     world.setDynamicProperty(QUARANTINE_KEY, JSON.stringify(result.quarantine));
   }
   world.setDynamicProperty(MIGRATION_KEY, JSON.stringify({ schema: 1, status: 'completed', stats: result.stats }));
+  if (result.stats.imported > 0) {
+    const migrated = Object.values(result.locks).filter((record) => record.authorization_mode === 'legacy_credential').length;
+    console.warn(`[mccompiler:doorlock] migration_nonempty_verified=${migrated}`);
+  }
   migrationReady = true;
   console.warn(`[mccompiler:doorlock] migration_v0_v1=${JSON.stringify(result.stats)}`);
 }

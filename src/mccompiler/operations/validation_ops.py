@@ -187,6 +187,11 @@ def start_test_runtime(store: ProjectStore, parameters: dict[str, Any], expected
     ))
     if world is None or not world.is_file():
         _unavailable(store, "start_test_runtime", "Generate a .mcworld or provide a project-relative world path")
+    upgrade_world: Path | None = None
+    if parameters.get("upgrade_world") is not None:
+        upgrade_world = _relative(store, parameters["upgrade_world"], parameter="upgrade_world")
+        if not upgrade_world.is_file():
+            raise OperationError("INVALID_PARAMETERS", "upgrade_world must reference an existing project-relative .mcworld")
     image = parameters.get("image")
     if not isinstance(image, str) or not image.strip():
         raise OperationError("INVALID_PARAMETERS", "image must identify the BDS Docker image")
@@ -211,6 +216,7 @@ def start_test_runtime(store: ProjectStore, parameters: dict[str, Any], expected
             network_mode=network_mode,
             bds_version=str(parameters["bds_version"]) if parameters.get("bds_version") else None,
             restart_count=int(parameters.get("restart_count", 1)),
+            upgrade_mcworld=upgrade_world,
         ))
     except (BDSDiagnosticError, OSError, ValueError) as exc:
         raise OperationError("BDS_DIAGNOSTIC_FAILED", str(exc), details={"run_id": run_id, "success_implied": False}) from exc
@@ -218,12 +224,15 @@ def start_test_runtime(store: ProjectStore, parameters: dict[str, Any], expected
     result["project"] = {"revision_before_run": store.revision, "target_profile": store.manifest.get("target_profile")}
     store.write(f"runtime/bds/{run_id}/result.json", result)
     revision = store.commit({"reports/bds-diagnostic-validation.json": result}, expected_revision=expected_revision)
-    return {"run": result, "revision": revision}, store, [
+    artifacts = [
         {"path": str(world.relative_to(store.root)), "kind": "mcworld"},
         {"path": f"runtime/bds/{run_id}/content.log", "kind": "bds-content-log"},
         {"path": f"runtime/bds/{run_id}/result.json", "kind": "bds-run-result"},
         {"path": "reports/bds-diagnostic-validation.json", "kind": "bds-diagnostic-validation"},
     ]
+    if upgrade_world is not None:
+        artifacts.append({"path": str(upgrade_world.relative_to(store.root)), "kind": "upgrade-mcworld"})
+    return {"run": result, "revision": revision}, store, artifacts
 
 
 def run_behavior_test(store: ProjectStore, parameters: dict[str, Any], expected_revision: int | None = None) -> HandlerResult:

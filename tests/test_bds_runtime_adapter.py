@@ -10,7 +10,7 @@ from unittest.mock import patch
 from mccompiler.operations import validation_ops
 from mccompiler.operations.envelope import OperationError
 from mccompiler.project.store import ProjectStore
-from mccompiler.runtime.bds import BDSDiagnosticError, BDSRunRequest, analyze_bds_log, docker_run_command, extract_mcworld
+from mccompiler.runtime.bds import BDSDiagnosticError, BDSRunRequest, analyze_bds_log, docker_run_command, extract_mcworld, overlay_mcworld_packs
 
 
 class BDSRuntimeAdapterTests(unittest.TestCase):
@@ -19,8 +19,8 @@ class BDSRuntimeAdapterTests(unittest.TestCase):
         self.addCleanup(temporary.cleanup)
         self.root = Path(temporary.name)
 
-    def world(self, name: str = "Adapter Fixture") -> Path:
-        path = self.root / "fixture.mcworld"
+    def world(self, name: str = "Adapter Fixture", filename: str = "fixture.mcworld") -> Path:
+        path = self.root / filename
         with zipfile.ZipFile(path, "w") as archive:
             archive.writestr("levelname.txt", name)
             archive.writestr("level.dat", b"fixture")
@@ -58,6 +58,43 @@ class BDSRuntimeAdapterTests(unittest.TestCase):
             extract_mcworld(path, self.root / "data")
         self.assertFalse((self.root / "escape.txt").exists())
 
+    def test_upgrade_overlay_replaces_only_packs_and_preserves_world_database(self) -> None:
+        initial = self.world(filename="initial.mcworld")
+        data = self.root / "data"
+        level_name, destination = extract_mcworld(initial, data)
+        database = destination / "db/current"
+        database.parent.mkdir()
+        database.write_bytes(b"persistent-world-state")
+        upgrade = self.root / "upgrade.mcworld"
+        with zipfile.ZipFile(upgrade, "w") as archive:
+            archive.writestr("levelname.txt", "Adapter Fixture")
+            archive.writestr("level.dat", b"must-not-replace-world-database")
+            archive.writestr("behavior_packs/next/manifest.json", '{"version":2}')
+            archive.writestr("resource_packs/next/manifest.json", '{"version":2}')
+            archive.writestr("world_behavior_packs.json", "[]")
+            archive.writestr("world_resource_packs.json", "[]")
+        result = overlay_mcworld_packs(upgrade, destination, expected_level_name=level_name)
+        self.assertEqual(b"persistent-world-state", database.read_bytes())
+        self.assertFalse((destination / "behavior_packs/demo").exists())
+        self.assertTrue((destination / "behavior_packs/next/manifest.json").is_file())
+        self.assertTrue((destination / "resource_packs/next/manifest.json").is_file())
+        self.assertTrue(result["files"])
+        self.assertEqual(64, len(result["artifact"]["sha256"]))
+
+    def test_upgrade_overlay_rejects_name_mismatch_and_traversal(self) -> None:
+        initial = self.world(filename="initial.mcworld")
+        level_name, destination = extract_mcworld(initial, self.root / "data")
+        mismatch = self.world(name="Different", filename="mismatch.mcworld")
+        with self.assertRaisesRegex(BDSDiagnosticError, "name mismatch"):
+            overlay_mcworld_packs(mismatch, destination, expected_level_name=level_name)
+        unsafe = self.root / "unsafe-upgrade.mcworld"
+        with zipfile.ZipFile(unsafe, "w") as archive:
+            archive.writestr("levelname.txt", level_name)
+            archive.writestr("behavior_packs/../../escape.txt", "no")
+        with self.assertRaisesRegex(BDSDiagnosticError, "Unsafe path"):
+            overlay_mcworld_packs(unsafe, destination, expected_level_name=level_name)
+        self.assertFalse((self.root / "escape.txt").exists())
+
     def test_log_analysis_requires_boot_script_and_clean_log(self) -> None:
         passed = analyze_bds_log([
             "Version: 1.26.33.2", "Build Id: 47564860", "Server started.",
@@ -69,6 +106,10 @@ class BDSRuntimeAdapterTests(unittest.TestCase):
         self.assertEqual("1.26.33.2", passed["bedrock_version"])
         persisted = analyze_bds_log(["runtime initialized persistent_boot=1", "runtime initialized persistent_boot=2"])
         self.assertEqual([1, 2], persisted["persistent_boot_values"])
+        migrated = analyze_bds_log(["runtime initialized migration_nonempty_verified=1"])
+        self.assertEqual([1], migrated["migrated_lock_values"])
+        restarted = analyze_bds_log(["runtime initialized migration_state_records=1"])
+        self.assertEqual([1], restarted["migrated_state_records"])
         failed = analyze_bds_log(["Server started.", "[ERROR] script failed to load"])
         self.assertFalse(failed["script_initialized"])
         self.assertFalse(failed["clean"])
@@ -97,6 +138,14 @@ class BDSRuntimeAdapterTests(unittest.TestCase):
             with self.assertRaisesRegex(BDSDiagnosticError, "restart_count"):
                 from mccompiler.runtime.bds import run_bds_diagnostic
                 run_bds_diagnostic(request)
+        upgrade = BDSRunRequest(
+            "registry/bds@sha256:" + "a" * 64, self.world(filename="upgrade-source.mcworld"),
+            self.root / "upgrade-run", restart_count=1, upgrade_mcworld=self.world(filename="upgrade-target.mcworld"),
+        )
+        with patch("mccompiler.runtime.bds.shutil.which", return_value="/fake/docker"):
+            with self.assertRaisesRegex(BDSDiagnosticError, "restart_count"):
+                from mccompiler.runtime.bds import run_bds_diagnostic
+                run_bds_diagnostic(upgrade)
 
     def test_public_operation_persists_narrow_boot_claims(self) -> None:
         store = ProjectStore.create(self.root / "project")
