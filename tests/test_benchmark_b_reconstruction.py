@@ -24,6 +24,8 @@ class BenchmarkBReconstructionTests(unittest.TestCase):
         self.assertIn("world.afterEvents.playerBreakBlock.subscribe", script)
         self.assertIn("function rawBreakKey(block)", script)
         self.assertNotIn("rawBreakKey(event.player", script)
+        self.assertIn("block interaction omitted its required player; interaction denied", script)
+        self.assertIn("pendingAuthorizedOpens.delete(pending.key)", script)
         self.assertIn("world.afterEvents.playerInteractWithBlock.subscribe", script)
         self.assertIn("system.runTimeout", script)
         self.assertIn("system.runInterval(reconcileLockedOpenables, 1)", script)

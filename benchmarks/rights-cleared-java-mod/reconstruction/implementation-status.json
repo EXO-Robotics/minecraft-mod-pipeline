@@ -33,7 +33,8 @@
     "deterministic legacy-state migration with quarantine and idempotence journal",
     "prepared-journal interrupted-write recovery with digest-bound divergence checks",
     "BDS adapter integration for forced trapdoor open-state restoration and restart survival",
-    "Preview-only SimulatedPlayer break action reached real before-break and after-break event adapters without script errors"
+    "Preview-only SimulatedPlayer break action reached real before-break and after-break event adapters without script errors",
+    "block interaction events that violate the stable API contract by omitting their required player are denied without script failure"
   ],
   "approved_quality_claim": null,
   "intentional_redesigns": [

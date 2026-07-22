@@ -173,6 +173,10 @@ export function canonicalBlockKey(block) {
 }
 
 function deferMessage(player, message) {
+  if (!player) {
+    console.warn('[mccompiler:doorlock] player event omitted its required player; action denied');
+    return;
+  }
   system.run(() => player.sendMessage(message));
 }
 
@@ -357,6 +361,11 @@ world.afterEvents.itemUse.subscribe((event) => {
 world.beforeEvents.playerInteractWithBlock.subscribe((event) => {
   const { block, itemStack, player } = event;
   if (!isLockableBlockType(block.typeId)) return;
+  if (!player) {
+    event.cancel = true;
+    console.warn('[mccompiler:doorlock] block interaction omitted its required player; interaction denied');
+    return;
+  }
   if (!migrationReady) {
     event.cancel = true;
     deferMessage(player, 'Lock data is still initializing.');
@@ -402,6 +411,7 @@ world.beforeEvents.playerInteractWithBlock.subscribe((event) => {
   if (decision.action === 'ALLOW_OPEN' && isRedstoneProtectedBlockType(block.typeId)) {
     const key = authorizedOpenKey(player, location);
     const pending = {
+      key,
       location,
       expectedOwner: lock.owner,
       expectedRevision: lock.revision,
@@ -448,10 +458,11 @@ world.beforeEvents.playerInteractWithBlock.subscribe((event) => {
 world.afterEvents.playerInteractWithBlock.subscribe((event) => {
   if (!isRedstoneProtectedBlockType(event.block.typeId)) return;
   const location = canonicalBlockKey(event.block);
-  const key = authorizedOpenKey(event.player, location);
-  const pending = pendingAuthorizedOpens.get(key);
+  const pending = event.player
+    ? pendingAuthorizedOpens.get(authorizedOpenKey(event.player, location))
+    : pendingAuthorizedLocations.get(location);
   if (!pending) return;
-  pendingAuthorizedOpens.delete(key);
+  pendingAuthorizedOpens.delete(pending.key);
   if (pendingAuthorizedLocations.get(location) === pending) pendingAuthorizedLocations.delete(location);
   const open = state(event.block, 'open_bit');
   if (typeof open === 'boolean') {

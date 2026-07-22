@@ -5,12 +5,12 @@
   "status": "STATIC_BDS_UPGRADE_ADAPTER_AND_SIMULATED_BREAK_INTEGRATION_VERIFIED",
   "artifacts": {
     "mcaddon": {
-      "sha256": "9e8eecc9c804bbf856ce60026ecc25e8bbd5fe9da29cbc101d6a84a95ea5cbf5",
-      "bytes": 20163
+      "sha256": "b361d0623a09f6d446e969ceb2a9919e3594ab49bd54246296ff1430741fcb50",
+      "bytes": 20245
     },
     "mcworld": {
-      "sha256": "951296d7145bdbc6ea7e5533f194b5aab66649ce017092a52f55a301f5812dbc",
-      "bytes": 23065,
+      "sha256": "75b4b36446ff058d8597e0c8edeb5af5ba080b9dbe4ae14c90b888da4d67327f",
+      "bytes": 23150,
       "behavior_pack_id": "8e52df20-94ec-5143-b203-491fd4c88b83",
       "resource_pack_id": "38f1bee1-2b1b-5221-b4e4-418216443168"
     },
@@ -36,7 +36,7 @@
     "errors": 0,
     "warnings": 0,
     "exit_codes": [0, 0],
-    "cache_safe_input": "artifact-9e8eecc9c804bbf856ce60026ecc25e8bbd5fe9da29cbc101d6a84a95ea5cbf5.mcaddon",
+    "cache_safe_input": "artifact-b361d0623a09f6d446e969ceb2a9919e3594ab49bd54246296ff1430741fcb50.mcaddon",
     "marketplace_approval_implied": false
   },
   "bds_diagnostic": {
@@ -44,9 +44,9 @@
     "bedrock_version": "1.26.33.2",
     "bedrock_build_id": "47564860",
     "image": "itzg/minecraft-bedrock-server@sha256:12c7047cc149bd517d6dbc2339163cf62a4f1044c10e759c45c8b387e9784e39",
-    "world_sha256": "951296d7145bdbc6ea7e5533f194b5aab66649ce017092a52f55a301f5812dbc",
+    "world_sha256": "75b4b36446ff058d8597e0c8edeb5af5ba080b9dbe4ae14c90b888da4d67327f",
     "legacy_seed_world_sha256": "6e51316c70ee6599c5992190d3ea9744524970227849409b118db3eb242ce940",
-    "log_sha256": "80f768878cf91fa3cbf33661706c83c17167392c18c39f2ec34e1945730c5f79",
+    "log_sha256": "c7f6aa9a4fbe96c4fd8c532a95d4487885399b0d9a11a975ac108fdcb98ea922",
     "script_initialized": true,
     "restart_cycles": 3,
     "persistent_boot_values": [1, 2, 3],
@@ -84,8 +84,8 @@
     "gametest_experiment": true,
     "image": "itzg/minecraft-bedrock-server@sha256:12c7047cc149bd517d6dbc2339163cf62a4f1044c10e759c45c8b387e9784e39",
     "legacy_diagnostic_world_sha256": "34a2e0a7789e81ce7fd460380d8ec1bc606954a330c128170591ad7d937f3b59",
-    "upgrade_diagnostic_world_sha256": "d79c3ebb4018c446806c2dafa1e5b53542968e7555c25830a1f416172f244691",
-    "log_sha256": "824f1ab96c548707d589c0a0c0aa2e45e4979190d94b233cae776b2e1c728413",
+    "upgrade_diagnostic_world_sha256": "b2b342de3555b9f18ca6bc77e6c1a303d51c88d95ecc006c5df09a9937ba7369",
+    "log_sha256": "02bb56f60e5bc6d87e3b428a19f5d40cb12c93771ec78d3a9f15f61e3ccfba8d",
     "restart_cycles": 2,
     "critical_lines": 0,
     "simulated_player_break_before_event_observed": true,
