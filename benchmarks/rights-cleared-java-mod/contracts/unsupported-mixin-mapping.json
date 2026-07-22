@@ -1,0 +1,16 @@
+{
+  "schema_version": "1.0.0",
+  "contract_id": "doorlock-mixin-redesign-map-v1",
+  "status": "MAPPING_DEFINED_NOT_IMPLEMENTED",
+  "rule": "Fabric bytecode injection is unsupported and must never be copied into the Bedrock output.",
+  "mappings": [
+    {"source": "mixin/DoorBlockMixin.java", "target_family": "door", "source_hook": "onUse and neighborUpdate", "strategy": "stable block-interaction subscription plus bounded redstone reconciliation", "classification": "MANUAL_REDESIGN_REQUIRED"},
+    {"source": "mixin/TrapdoorBlockMixin.java", "target_family": "trapdoor", "source_hook": "onUse and neighborUpdate", "strategy": "stable block-interaction subscription plus bounded redstone reconciliation", "classification": "MANUAL_REDESIGN_REQUIRED"},
+    {"source": "mixin/FenceGateBlockMixin.java", "target_family": "fence_gate", "source_hook": "onUse and neighborUpdate", "strategy": "stable block-interaction subscription plus bounded redstone reconciliation", "classification": "MANUAL_REDESIGN_REQUIRED"},
+    {"source": "mixin/ChestBlockMixin.java", "target_family": "chest", "source_hook": "onUse", "strategy": "pre-open interaction authorization where stable API coverage is proven; otherwise explicit unsupported blocker", "classification": "CONDITIONAL_REDESIGN"},
+    {"source": "mixin/ShulkerBoxBlockMixin.java", "target_family": "shulker_box", "source_hook": "onUse", "strategy": "pre-open interaction authorization where stable API coverage is proven; otherwise explicit unsupported blocker", "classification": "CONDITIONAL_REDESIGN"},
+    {"source": "mixin/AnvilScreenHandlerMixin.java", "target_family": "key_configuration", "source_hook": "updateResult", "strategy": "replace with controller-first form; no anvil interception", "classification": "ACCEPTABLE_REDESIGN_PENDING_APPROVAL"}
+  ],
+  "acceptance": ["all discovered mixin files mapped", "zero mixin code emitted", "conditional strategies fail closed when stable API coverage is absent", "redstone behavior has bounded work", "each mapping receives runtime evidence before parity claims"],
+  "evidence": []
+}

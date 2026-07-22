@@ -1,0 +1,23 @@
+{
+  "schema_version": "1.0.0",
+  "contract_id": "doorlock-multiplayer-ownership-v1",
+  "status": "DEFINED_NOT_RUN",
+  "authority": "server",
+  "owner_scope": "lock_record",
+  "authorization": {
+    "create": ["requesting_player_holds_configured_key", "target_is_supported_and_unlocked"],
+    "remove": ["matching_key", "authorized_universal_key"],
+    "open": ["matching_key", "authorized_universal_key"],
+    "administrative_override": "explicit_operator_action_only"
+  },
+  "invariants": [
+    "Client input never directly mutates lock state.",
+    "Player A cannot mutate Player B's key credential or inventory.",
+    "A lock in one dimension cannot authorize or block the same coordinates in another dimension.",
+    "Concurrent create/remove uses record revision checks and produces one authoritative result.",
+    "Disconnect and reconnect preserve authorization behavior without duplicating records.",
+    "Two players using different locks cannot affect each other's records."
+  ],
+  "required_scenarios": ["two_players_two_locks", "wrong_key_denied", "matching_key_allowed", "simultaneous_lock_attempt", "simultaneous_remove_and_open", "disconnect_reconnect", "dimension_collision", "operator_override_audited"],
+  "evidence": []
+}

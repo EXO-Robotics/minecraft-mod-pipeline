@@ -7,3 +7,17 @@ Status: `TECHNICAL_CANDIDATE_REVIEW_REQUIRED`.
 A future candidate must have source access, representative registrations/events/assets/state, at least one custom behavior, one reconstruction decision, and one redesigned or unsupported feature. Code, assets, names, branding, trademarks, dependencies, commercial derivatives, and Marketplace distribution are reviewed separately before any material is imported.
 
 DoorLock is technically useful because it contains Fabric entrypoints, registrations, mixin-injected interactions, custom networking, commands, persistent lock state, recipes, textures, and controller-relevant gameplay. Those same mixins and packet/UI assumptions create meaningful redesign work. See `selection-criteria.yaml` for the pinned source and unresolved gates.
+
+## Technical reconstruction contracts
+
+The machine-readable Benchmark B contract set is deliberately separate from imported source or assets:
+
+- `expected-behaviors.json` defines evidence-traceable lock, unlock, open, and break behavior.
+- `contracts/state-schema.json` and `contracts/save-migration.json` define structured world state and a fail-closed legacy migration.
+- `contracts/multiplayer-ownership.json` defines server authority, isolation, conflict, reconnect, and dimension rules.
+- `contracts/controller-first-redesign.json` replaces command/anvil/keyboard assumptions with a proposed controller flow; it is not approved or console-tested.
+- `contracts/unsupported-mixin-mapping.json` maps every observed mixin file to an explicit redesign or blocker. No mixin is portable to Bedrock.
+- `expected-quality.json` records omissions and quality status with runtime `NOT_RUN` and console/Realm `UNVERIFIED`.
+- `rights-blockers.json` keeps code, assets, branding, trademark, dependency, and Marketplace-distribution review open.
+
+These files are specifications for a future reconstruction. They do not claim implementation, runtime fidelity, console compatibility, rights clearance, Marketplace eligibility, or approval. No DoorLock source or asset is vendored here.

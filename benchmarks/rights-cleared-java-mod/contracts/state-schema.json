@@ -1,0 +1,33 @@
+{
+  "schema_version": "1.0.0",
+  "contract_id": "doorlock-bedrock-state-v1",
+  "status": "DEFINED_NOT_RUN",
+  "storage_scope": "world",
+  "logical_schema": {
+    "schema_version": {"type": "integer", "const": 1},
+    "locks": {
+      "type": "map",
+      "key_format": "<dimension>:<x>:<y>:<z>",
+      "value": {
+        "dimension": "string",
+        "position": {"x": "integer", "y": "integer", "z": "integer"},
+        "credential_digest": "nonempty_string",
+        "created_by_player_id": "stable_player_id",
+        "created_at_tick": "nonnegative_integer",
+        "revision": "positive_integer"
+      }
+    }
+  },
+  "source_evidence": [
+    {"path": "src/main/java/net/vassbo/door_lock/data/ModData.java", "lines": [6, 8], "claim": "Java source stores a global list of locked-block strings."},
+    {"path": "src/main/java/net/vassbo/door_lock/util/LockData.java", "lines": [5, 8], "claim": "Each Java lock has a block position and key hash."},
+    {"path": "src/main/java/net/vassbo/door_lock/util/LockCheck.java", "lines": [120, 145], "claim": "Java serialization combines coordinates and key hash."}
+  ],
+  "redesign_decisions": [
+    "Dimension is added to prevent cross-dimension coordinate collisions.",
+    "Creator identity and revision are added for multiplayer authorization and conflict control.",
+    "Structured records replace delimiter-encoded strings.",
+    "Credential digests are opaque and plaintext secrets are prohibited."
+  ],
+  "evidence": []
+}

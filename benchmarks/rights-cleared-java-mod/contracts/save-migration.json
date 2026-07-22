@@ -1,0 +1,19 @@
+{
+  "schema_version": "1.0.0",
+  "contract_id": "doorlock-state-v0-to-v1",
+  "status": "DEFINED_NOT_RUN",
+  "from_schema": 0,
+  "to_schema": 1,
+  "steps": [
+    {"operation": "parse_legacy_entry", "input_format": "x,y,z_keyHash", "on_malformed": "quarantine_with_diagnostic"},
+    {"operation": "require_dimension", "default": "overworld", "limitation": "Legacy format contains no dimension; human approval is required before importing non-overworld saves."},
+    {"operation": "rename", "from": "keyHash", "to": "credential_digest"},
+    {"operation": "add", "path": "created_by_player_id", "default": "legacy-unclaimed"},
+    {"operation": "add", "path": "created_at_tick", "default": 0},
+    {"operation": "add", "path": "revision", "default": 1},
+    {"operation": "deduplicate", "key": "dimension_and_position", "on_digest_conflict": "quarantine_all_conflicting_records"}
+  ],
+  "invariants": ["idempotent", "no_silent_record_loss", "no_plaintext_secret_creation", "failed_entries remain diagnosable", "migration never implies successful gameplay validation"],
+  "required_scenarios": ["empty_save", "single_lock", "multiple_dimensions_rejected_without_mapping", "malformed_entry", "duplicate_same_digest", "duplicate_conflicting_digest", "second_migration_is_noop"],
+  "evidence": []
+}
