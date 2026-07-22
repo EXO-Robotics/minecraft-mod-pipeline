@@ -15,6 +15,8 @@ except ModuleNotFoundError:  # pragma: no cover - Python 3.11 is the baseline ru
 
 from .io import read_json, relaxed_json, version_list
 from .ir import empty_ir
+from .semantics import analyze_java, attach_fingerprints
+from .frontends.jar_bytecode import class_constant_evidence
 
 
 CONTENT_DIRS = {
@@ -191,6 +193,9 @@ def _modpack_metadata(view: ArchiveView) -> dict[str, Any] | None:
     data = _json_text(view, "modrinth.index.json")
     if isinstance(data, dict):
         return {"format": "modrinth", "name": data.get("name"), "version_id": data.get("versionId"), "dependencies": data.get("dependencies", {}), "file_count": len(data.get("files", []))}
+    data = _json_text(view, "modpack.json")
+    if isinstance(data, dict) and isinstance(data.get("mods"), list):
+        return {"format": "mccompiler-directory", "name": data.get("id"), "version": data.get("version"), "mods": data["mods"], "load_order": data.get("load_order", [])}
     return None
 
 
@@ -301,13 +306,19 @@ def scan_path(input_path: str | Path, bedrock_server: str | Path | None = None) 
     if path.is_file():
         sources = [path]
     else:
-        sources = sorted(p for p in path.rglob("*") if p.is_file() and p.suffix.lower() in {".jar", ".zip", ".mrpack"})
+        if ir["modpack"] and ir["modpack"].get("format") == "mccompiler-directory":
+            sources = [((path / row["source"]).resolve()) for row in ir["modpack"]["mods"] if isinstance(row, dict) and row.get("source")]
+            sources = [source for source in sources if source.exists()]
+        else:
+            sources = sorted(p for p in path.rglob("*") if p.is_file() and p.suffix.lower() in {".jar", ".zip", ".mrpack"})
         if not sources:
             sources = [path]
 
     aggregate_counts = Counter()
     aggregate_signals = Counter()
     aggregate_flags: set[str] = set()
+    semantic = {key: [] for key in ("content", "behaviors", "state", "presentation", "ui", "networking", "diagnostics")}
+    bytecode_evidence: list[dict[str, Any]] = []
     nodes: dict[str, dict[str, Any]] = {}
     edges: list[dict[str, Any]] = []
     for source in sources:
@@ -324,10 +335,30 @@ def scan_path(input_path: str | Path, bedrock_server: str | Path | None = None) 
             aggregate_counts.update(inventory["content_counts"])
             aggregate_signals.update(inventory["source_signals"])
             aggregate_flags.update(inventory["risk_flags"])
+            for entry in view.entries():
+                if entry.lower().endswith(".java"):
+                    extracted = analyze_java(entry, view.read_text(entry) or "")
+                    for key, values in extracted.items():
+                        semantic[key].extend(values)
+                elif entry.lower().endswith(".class"):
+                    bytecode_evidence.append(class_constant_evidence(entry, view.read_bytes(entry)))
         finally:
             view.close()
     ir["dependency_graph"] = {"nodes": sorted(nodes.values(), key=lambda n: n["id"]), "edges": edges}
     ir["aggregate"] = {"content_counts": dict(sorted(aggregate_counts.items())), "asset_counts": {k: aggregate_counts.get(k, 0) for k in ASSET_DIRS}, "risk_flags": sorted(aggregate_flags), "source_signals": dict(sorted(aggregate_signals.items()))}
     if path.is_dir() and ir["modpack"] is None:
         ir["modpack"] = {"format": "directory", "name": path.name, "file_count": len(sources)}
+    ir["metadata"] = {"mods": [{k: v for k, v in mod.items() if k in {"id", "name", "version", "loader"}} for mod in ir["mods"]]}
+    ir["dependencies"] = ir["dependency_graph"]["edges"]
+    ir["content"] = semantic["content"]
+    ir["behaviors"] = semantic["behaviors"]
+    ir["state"] = semantic["state"]
+    ir["presentation_requirements"] = semantic["presentation"]
+    ir["ui_intent"] = semantic["ui"]
+    ir["networking_intent"] = semantic["networking"]
+    ir["diagnostics"] = semantic["diagnostics"]
+    ir["unsupported_hooks"] = [d for d in semantic["diagnostics"] if d.get("code") == "unsupported_hook"]
+    ir["bytecode_evidence"] = bytecode_evidence
+    ir["assets"] = [{"kind": kind, "count": count, "evidence": ir["mods"][0].get("inventory", {}).get("examples", {}).get(kind, []) if ir["mods"] else []} for kind, count in ir["aggregate"]["asset_counts"].items() if count]
+    attach_fingerprints(ir)
     return ir

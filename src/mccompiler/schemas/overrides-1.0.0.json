@@ -1,0 +1,8 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://mccompiler.local/schemas/overrides-1.0.0.json",
+  "title": "Compiler Overrides 1.0.0",
+  "type": "object",
+  "required": ["schema_version", "overrides"],
+  "properties": {"schema_version": {"const": "1.0.0"}, "overrides": {"type": "array"}}
+}

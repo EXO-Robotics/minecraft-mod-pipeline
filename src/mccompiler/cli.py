@@ -8,6 +8,8 @@ from pathlib import Path
 from .bedrock import compile_bedrock
 from .io import write_json
 from .planner import plan_conversion
+from .overrides import apply_overrides, load_overrides
+from .schema import validate_ir
 from .scan import scan_path
 from .validate import validate_output
 
@@ -16,6 +18,7 @@ def _scan_args(parser: argparse.ArgumentParser) -> None:
     parser.add_argument("--input", required=True, help="Mod JAR, source directory, or modpack directory")
     parser.add_argument("--output", required=True, help="JSON path or output directory")
     parser.add_argument("--bedrock-server", help="Optional Bedrock server root to use as a read-only target profile")
+    parser.add_argument("--overrides", help="Persistent compiler override JSON")
 
 
 def main(argv: list[str] | None = None) -> int:
@@ -35,6 +38,14 @@ def main(argv: list[str] | None = None) -> int:
         return 0 if result["valid"] else 1
 
     ir = scan_path(args.input, args.bedrock_server)
+    try:
+        apply_overrides(ir, load_overrides(args.overrides))
+    except ValueError as exc:
+        print(f"Override error: {exc}", file=sys.stderr)
+        return 2
+    schema_errors = validate_ir(ir)
+    if schema_errors:
+        ir.setdefault("errors", []).extend(schema_errors)
     if args.command == "scan":
         write_json(Path(args.output), ir)
         print(f"Wrote ModIR: {args.output}")
@@ -50,4 +61,3 @@ def main(argv: list[str] | None = None) -> int:
 
 if __name__ == "__main__":
     sys.exit(main())
-

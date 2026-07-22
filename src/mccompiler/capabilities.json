@@ -1,32 +1,22 @@
 {
-  "schema_version": "0.1.0",
-  "target": "bedrock-addon",
-  "target_default": {
-    "min_engine_version": [1, 21, 90],
-    "script_api_version": "2.0.0"
-  },
+  "schema_version": "1.0.0",
+  "bedrock_version": "1.21.90",
   "capabilities": {
-    "manifest": {"strategy": "direct", "technical": 1.0, "gameplay": 1.0},
-    "items": {"strategy": "direct", "technical": 0.9, "gameplay": 0.9},
-    "blocks": {"strategy": "direct", "technical": 0.8, "gameplay": 0.85},
-    "recipes": {"strategy": "direct", "technical": 0.95, "gameplay": 0.95},
-    "loot_tables": {"strategy": "direct", "technical": 0.9, "gameplay": 0.9},
-    "sounds": {"strategy": "direct", "technical": 0.85, "gameplay": 0.85},
-    "textures": {"strategy": "direct", "technical": 0.8, "gameplay": 0.8},
-    "models": {"strategy": "reconstructed", "technical": 0.6, "gameplay": 0.75},
-    "entities": {"strategy": "reconstructed", "technical": 0.65, "gameplay": 0.75},
-    "structures": {"strategy": "reconstructed", "technical": 0.65, "gameplay": 0.8},
-    "worldgen": {"strategy": "approximated", "technical": 0.4, "gameplay": 0.6},
-    "item_use": {"strategy": "scripted", "technical": 0.75, "gameplay": 0.85},
-    "entity_hit": {"strategy": "scripted", "technical": 0.7, "gameplay": 0.8},
-    "server_tick": {"strategy": "scripted", "technical": 0.65, "gameplay": 0.75},
-    "persistent_state": {"strategy": "scripted", "technical": 0.65, "gameplay": 0.75},
-    "custom_gui": {"strategy": "approximated", "technical": 0.3, "gameplay": 0.6},
-    "network_packets": {"strategy": "approximated", "technical": 0.25, "gameplay": 0.55},
-    "mixins": {"strategy": "manual", "technical": 0.15, "gameplay": 0.4},
-    "client_rendering": {"strategy": "reconstructed", "technical": 0.45, "gameplay": 0.7},
-    "tile_entities": {"strategy": "scripted", "technical": 0.55, "gameplay": 0.7},
-    "custom_dimensions": {"strategy": "approximated", "technical": 0.3, "gameplay": 0.5}
+    "content.item": {"classification":"DIRECT","stable":true,"native":true,"scripted":true,"modules":[],"performance":"low","multiplayer_safe":true,"persistent":true,"limitations":[],"reference":"bp/items","tests":["manifest","item-visible"]},
+    "content.block": {"classification":"DIRECT","stable":true,"native":true,"scripted":true,"modules":[],"performance":"low","multiplayer_safe":true,"persistent":true,"limitations":[],"reference":"bp/blocks","tests":["block-place-break"]},
+    "content.recipe": {"classification":"DIRECT","stable":true,"native":true,"scripted":false,"modules":[],"performance":"low","multiplayer_safe":true,"persistent":true,"limitations":[],"reference":"bp/recipes","tests":["recipe-load"]},
+    "content.loot_table": {"classification":"DIRECT","stable":true,"native":true,"scripted":false,"modules":[],"performance":"low","multiplayer_safe":true,"persistent":true,"limitations":[],"reference":"bp/loot_tables","tests":["loot-load"]},
+    "content.entity": {"classification":"RECONSTRUCTED","stable":true,"native":true,"scripted":true,"modules":["@minecraft/server"],"performance":"medium","multiplayer_safe":true,"persistent":true,"limitations":["Java AI is reconstructed"],"reference":"bp/entities","tests":["entity-spawn"]},
+    "content.structure": {"classification":"RECONSTRUCTED","stable":true,"native":true,"scripted":true,"modules":[],"performance":"medium","multiplayer_safe":true,"persistent":true,"limitations":[],"reference":"bp/structures","tests":["structure-place"]},
+    "behavior.item_use": {"classification":"SCRIPTED_EQUIVALENT","stable":true,"native":false,"scripted":true,"modules":["@minecraft/server"],"performance":"low","multiplayer_safe":true,"persistent":true,"limitations":[],"reference":"scripts/events/items.js","tests":["item-use"]},
+    "behavior.item_use_on_block": {"classification":"SCRIPTED_EQUIVALENT","stable":true,"native":false,"scripted":true,"modules":["@minecraft/server"],"performance":"low","multiplayer_safe":true,"persistent":true,"limitations":[],"reference":"scripts/events/items.js","tests":["item-use-on"]},
+    "behavior.entity_hit": {"classification":"SCRIPTED_EQUIVALENT","stable":true,"native":false,"scripted":true,"modules":["@minecraft/server"],"performance":"low","multiplayer_safe":true,"persistent":true,"limitations":[],"reference":"scripts/events/combat.js","tests":["entity-hit"]},
+    "behavior.block_break": {"classification":"SCRIPTED_EQUIVALENT","stable":true,"native":false,"scripted":true,"modules":["@minecraft/server"],"performance":"medium","multiplayer_safe":true,"persistent":true,"limitations":[],"reference":"scripts/events/blocks.js","tests":["block-break"]},
+    "behavior.object_tick": {"classification":"RECONSTRUCTED","stable":true,"native":false,"scripted":true,"modules":["@minecraft/server"],"performance":"high","multiplayer_safe":true,"persistent":true,"limitations":["batched scheduler required"],"reference":"scripts/runtime/scheduler.js","tests":["machine-tick"]},
+    "behavior.scheduled_tick": {"classification":"SCRIPTED_EQUIVALENT","stable":true,"native":false,"scripted":true,"modules":["@minecraft/server"],"performance":"medium","multiplayer_safe":true,"persistent":true,"limitations":[],"reference":"scripts/runtime/scheduler.js","tests":["scheduled-tick"]},
+    "behavior.projectile_impact": {"classification":"RECONSTRUCTED","stable":true,"native":true,"scripted":true,"modules":["@minecraft/server"],"performance":"medium","multiplayer_safe":true,"persistent":false,"limitations":[],"reference":"scripts/events/projectiles.js","tests":["projectile-impact"]},
+    "behavior.state_transition": {"classification":"RECONSTRUCTED","stable":true,"native":true,"scripted":true,"modules":["@minecraft/server"],"performance":"medium","multiplayer_safe":true,"persistent":true,"limitations":[],"reference":"scripts/runtime/state.js","tests":["boss-phase"]},
+    "ui.form": {"classification":"BEHAVIORAL_APPROXIMATION","stable":true,"native":false,"scripted":true,"modules":["@minecraft/server-ui"],"performance":"low","multiplayer_safe":true,"persistent":false,"limitations":["not pixel-equivalent"],"reference":"scripts/ui/forms.js","tests":["form-open"]},
+    "unsupported.mixin": {"classification":"UNSUPPORTED","stable":true,"native":false,"scripted":false,"modules":[],"performance":"unknown","multiplayer_safe":false,"persistent":false,"limitations":["Java bytecode injection has no Bedrock equivalent"],"reference":null,"tests":[]}
   }
 }
-

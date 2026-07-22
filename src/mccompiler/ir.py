@@ -15,9 +15,23 @@ class SourceUnit:
 
 def empty_ir(input_path: str) -> dict[str, Any]:
     return {
-        "schema_version": "0.1.0",
-        "tool": {"name": "minecraft-compiler-baseline", "version": "0.1.0"},
+        "schema_version": "1.0.0",
+        "tool": {"name": "minecraft-compiler-baseline", "version": "0.2.0"},
         "input": {"path": input_path},
+        "metadata": {},
+        "dependencies": [],
+        "content": [],
+        "assets": [],
+        "registries": [],
+        "behaviors": [],
+        "state": [],
+        "presentation_requirements": [],
+        "world_requirements": [],
+        "ui_intent": [],
+        "networking_intent": [],
+        "unsupported_hooks": [],
+        "diagnostics": [],
+        "tests": [],
         "target": None,
         "modpack": None,
         "mods": [],
@@ -28,6 +42,5 @@ def empty_ir(input_path: str) -> dict[str, Any]:
             "risk_flags": [],
             "source_signals": {},
         },
-        "evidence_policy": "Every extracted fact should retain a relative source path.",
+        "evidence_policy": "No generated behavior without traceable evidence or explicit override.",
     }
-

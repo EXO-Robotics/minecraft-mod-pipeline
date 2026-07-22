@@ -1,33 +1,20 @@
-[
-  {
-    "id": "item-ability",
-    "when": ["item_interactions"],
-    "description": "A custom item interaction is a candidate for a scripted item-use ability.",
-    "strategy": "scripted"
-  },
-  {
-    "id": "entity-behavior",
-    "when": ["entities"],
-    "description": "A custom entity can begin as a behavior/resource pack entity pair.",
-    "strategy": "reconstructed"
-  },
-  {
-    "id": "server-tick-system",
-    "when": ["tick_hooks"],
-    "description": "A server tick hook is a candidate for a scheduled Script API system.",
-    "strategy": "scripted"
-  },
-  {
-    "id": "machine-or-block-entity",
-    "when": ["tile_entities"],
-    "description": "Block entity state needs a script-managed state and interaction plan.",
-    "strategy": "scripted"
-  },
-  {
-    "id": "mixin-rewrite",
-    "when": ["mixins"],
-    "description": "A mixin requires intent extraction and a Bedrock alternative; the injection cannot be translated directly.",
-    "strategy": "manual"
-  }
-]
-
+{
+  "schema_version": "1.0.0",
+  "patterns": [
+    {"id":"items/cooldown-ability","requires":{"triggers":["item_use"],"actions":["start_cooldown"]},"classification":"SCRIPTED_EQUIVALENT"},
+    {"id":"weapons/projectile","requires":{"triggers":["item_use"],"actions":["spawn_projectile"]},"classification":"RECONSTRUCTED"},
+    {"id":"weapons/explosive-staff","requires":{"actions":["spawn_projectile","create_explosion"]},"classification":"RECONSTRUCTED"},
+    {"id":"tools/area-mining","requires":{"triggers":["block_break"],"actions":["break_block"]},"classification":"SCRIPTED_EQUIVALENT"},
+    {"id":"armor/passive-effect","requires":{"actions":["apply_effect"]},"classification":"SCRIPTED_EQUIVALENT"},
+    {"id":"abilities/teleport","requires":{"actions":["teleport"]},"classification":"SCRIPTED_EQUIVALENT"},
+    {"id":"machines/processing","requires":{"triggers":["object_tick"],"actions":["update_persistent_state","add_item"]},"classification":"RECONSTRUCTED"},
+    {"id":"entities/companion","requires":{"triggers":["entity_spawn"]},"classification":"RECONSTRUCTED"},
+    {"id":"bosses/multiphase","requires":{"triggers":["state_transition"],"actions":["set_entity_phase"]},"classification":"RECONSTRUCTED"},
+    {"id":"structures/place","requires":{"actions":["place_structure"]},"classification":"RECONSTRUCTED"},
+    {"id":"forms/interaction","requires":{"actions":["open_interaction_ui"]},"classification":"BEHAVIORAL_APPROXIMATION"},
+    {"id":"spawning/entity","requires":{"triggers":["entity_spawn"]},"classification":"RECONSTRUCTED"},
+    {"id":"transformations/selector","requires":{"triggers":["state_transition"]},"classification":"RECONSTRUCTED"},
+    {"id":"inventory/reward","requires":{"actions":["add_item"]},"classification":"SCRIPTED_EQUIVALENT"},
+    {"id":"world/structure-portal","requires":{"actions":["place_structure","teleport"]},"classification":"BEHAVIORAL_APPROXIMATION"}
+  ]
+}
