@@ -22,7 +22,10 @@
     "default source iron policy: normal/golden key authorization with universal key denied",
     "deferred iron door and trapdoor open-state toggling",
     "sneak-use lock removal",
-    "locked-block break prevention",
+    "source-default successful-break lock removal confirmed by the after-break event",
+    "universal-key world configuration for allow-and-remove or deny break policy",
+    "invalid break-policy values fail closed without deleting lock state",
+    "revision-checked lock cleanup after successful breaks",
     "deferred mutation outside restricted before-event execution",
     "deterministic legacy-state migration with quarantine and idempotence journal",
     "prepared-journal interrupted-write recovery with digest-bound divergence checks"
@@ -37,15 +40,14 @@
       "security_note": "Deterministic SHA-256 digests prevent plaintext persistence but remain vulnerable to offline guessing and are not a password-security boundary."
     },
     {
-      "id": "fail-secure-break-policy",
+      "id": "universal-key-break-policy-controller",
       "status": "PROPOSED_NOT_APPROVED",
-      "preserved": ["locked blocks cannot leave orphan lock records", "server-authoritative cancellation"],
-      "lost": ["Java configuration defaults to allowing break and removing the lock", "runtime-selectable break policy"]
+      "preserved": ["source-default allow-and-remove policy", "selectable deny policy", "world-persistent configuration", "controller accessibility"],
+      "lost": ["Java server configuration-file interaction", "server-operator authorization is represented by possession of the uncraftable universal key"]
     }
   ],
   "missing": [
     "locked redstone suppression for doors, trapdoors, and fence gates",
-    "runtime-selectable locked-block break policy",
     "actual gameplay, persistence, multiplayer, Realm, and console tests"
   ],
   "claims": {

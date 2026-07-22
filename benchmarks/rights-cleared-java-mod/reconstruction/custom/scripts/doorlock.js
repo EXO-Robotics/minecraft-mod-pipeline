@@ -1,10 +1,11 @@
 import { system, world } from '@minecraft/server';
 import { ActionFormData, ModalFormData } from '@minecraft/server-ui';
 import {
-  buildCredentialLock, canonicalLocationKey, createLockIfAbsent, credentialFormResult,
+  BREAK_POLICY_DENY, BREAK_POLICY_REMOVE, buildCredentialLock, canonicalLocationKey,
+  createLockIfAbsent, credentialFormResult,
   decideBreak, decideInteraction, isLockableBlockType, NORMAL_KEY_IDS, normalizeLockMap,
-  prepareLegacyMigration, removalConfirmed, removeLockIfRevision, resumePreparedMigration,
-  universalKeyAllowedForBlock, validateLockMap,
+  normalizeBreakPolicy, prepareLegacyMigration, removalConfirmed, removeLockIfRevision,
+  resumePreparedMigration, UNIVERSAL_KEY_ID, universalKeyAllowedForBlock, validateLockMap,
 } from './doorlock-state.js';
 
 const STATE_KEY = 'mccompiler:doorlock:locks:v1';
@@ -12,7 +13,9 @@ const LEGACY_STATE_KEY = 'mccompiler:doorlock:locks:v0';
 const MIGRATION_KEY = 'mccompiler:doorlock:migration:v0-to-v1';
 const QUARANTINE_KEY = 'mccompiler:doorlock:migration-quarantine:v0-to-v1';
 const BOOT_KEY = 'mccompiler:doorlock:diagnostic_boot';
+const BREAK_POLICY_KEY = 'mccompiler:doorlock:break-policy:v1';
 const CHEST_IDS = new Set(['minecraft:chest', 'minecraft:trapped_chest']);
+const pendingBreaks = new Map();
 let migrationReady = false;
 
 function credentialProperty(itemId) {
@@ -144,6 +147,39 @@ function deferMessage(player, message) {
   system.run(() => player.sendMessage(message));
 }
 
+function rawBreakKey(player, block) {
+  const { x, y, z } = block.location;
+  return `${player.id}:${block.dimension.id}:${x}:${y}:${z}`;
+}
+
+function readBreakPolicy() {
+  const result = normalizeBreakPolicy(world.getDynamicProperty(BREAK_POLICY_KEY));
+  if (!result.valid) console.warn('[mccompiler:doorlock] invalid break policy; locked breaks are denied');
+  return result.policy;
+}
+
+async function configureBreakPolicy(player) {
+  const current = readBreakPolicy();
+  try {
+    const response = await new ActionFormData()
+      .title('Locked-block break policy')
+      .body(`Current policy: ${current === BREAK_POLICY_REMOVE ? 'break and remove lock' : 'deny break'}`)
+      .button('Break and remove lock')
+      .button('Deny locked breaks')
+      .button('Keep current policy')
+      .show(player);
+    if (response.canceled || (response.selection !== 0 && response.selection !== 1)) return;
+    const selected = response.selection === 0 ? BREAK_POLICY_REMOVE : BREAK_POLICY_DENY;
+    world.setDynamicProperty(BREAK_POLICY_KEY, selected);
+    player.sendMessage(selected === BREAK_POLICY_REMOVE
+      ? 'Locked blocks may be broken; their lock is removed after a successful break.'
+      : 'Locked blocks cannot be broken until unlocked.');
+  } catch (error) {
+    player.sendMessage('Break policy configuration could not be opened. No changes were made.');
+    console.warn(`[mccompiler:doorlock] break_policy_form_failed=${String(error)}`);
+  }
+}
+
 async function confirmLockRemoval(player) {
   try {
     const response = await new ActionFormData()
@@ -226,8 +262,12 @@ function runLegacyMigration() {
 }
 
 world.afterEvents.itemUse.subscribe((event) => {
-  if (!NORMAL_KEY_IDS.has(event.itemStack.typeId) || event.source.typeId !== 'minecraft:player') return;
-  system.run(() => configureCredential(event.source, event.itemStack.typeId));
+  if (event.source.typeId !== 'minecraft:player') return;
+  if (NORMAL_KEY_IDS.has(event.itemStack.typeId)) {
+    system.run(() => configureCredential(event.source, event.itemStack.typeId));
+  } else if (event.itemStack.typeId === UNIVERSAL_KEY_ID) {
+    system.run(() => configureBreakPolicy(event.source));
+  }
 });
 
 world.beforeEvents.playerInteractWithBlock.subscribe((event) => {
@@ -309,10 +349,43 @@ world.beforeEvents.playerBreakBlock.subscribe((event) => {
     return;
   }
   const locks = readLocks();
-  if (locks === null || decideBreak(locks[canonicalBlockKey(event.block)]).action === 'DENY_LOCKED') {
+  if (locks === null) {
     event.cancel = true;
     deferMessage(event.player, 'Unlock this block before breaking it.');
+    return;
   }
+  const location = canonicalBlockKey(event.block);
+  const decision = decideBreak(locks[location], readBreakPolicy());
+  if (decision.action === 'DENY_LOCKED') {
+    event.cancel = true;
+    deferMessage(event.player, 'Unlock this block before breaking it.');
+    return;
+  }
+  if (decision.action === 'ALLOW_BREAK_REMOVE_LOCK') {
+    const key = rawBreakKey(event.player, event.block);
+    const pending = {
+      location,
+      expectedOwner: decision.expectedOwner,
+      expectedRevision: decision.expectedRevision,
+    };
+    pendingBreaks.set(key, pending);
+    system.runTimeout(() => {
+      if (pendingBreaks.get(key) === pending) pendingBreaks.delete(key);
+    }, 40);
+  }
+});
+
+world.afterEvents.playerBreakBlock.subscribe((event) => {
+  const key = rawBreakKey(event.player, event.block);
+  const pending = pendingBreaks.get(key);
+  if (!pending) return;
+  pendingBreaks.delete(key);
+  const locks = readLocks();
+  if (locks === null) return;
+  const result = removeLockIfRevision(
+    locks, pending.location, pending.expectedOwner, pending.expectedRevision,
+  );
+  if (result.changed) writeLocks(result.locks);
 });
 
 system.run(() => {

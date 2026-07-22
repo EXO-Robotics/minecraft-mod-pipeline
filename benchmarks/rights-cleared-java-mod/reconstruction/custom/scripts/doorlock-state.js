@@ -2,6 +2,8 @@ export const LEGACY_UNCLAIMED_OWNER = 'legacy-unclaimed';
 export const CURRENT_STATE_SCHEMA = 1;
 export const NORMAL_KEY_IDS = new Set(['door_lock:key', 'door_lock:golden_key']);
 export const UNIVERSAL_KEY_ID = 'door_lock:universal_key';
+export const BREAK_POLICY_REMOVE = 'remove';
+export const BREAK_POLICY_DENY = 'deny';
 const LOCKABLE_EXACT_IDS = new Set(['minecraft:chest', 'minecraft:trapped_chest']);
 const LOCKABLE_SUFFIXES = ['_door', '_fence_gate', '_trapdoor', '_shulker_box'];
 const SHA256_K = [
@@ -119,8 +121,24 @@ export function decideInteraction({ lock, itemId, playerId, isSneaking, credenti
   return { action: 'ALLOW_DEFAULT' };
 }
 
-export function decideBreak(lock) {
-  return lock ? { action: 'DENY_LOCKED' } : { action: 'ALLOW_BREAK' };
+export function normalizeBreakPolicy(value) {
+  if (value === undefined) return { policy: BREAK_POLICY_REMOVE, valid: true, usedDefault: true };
+  if (value === BREAK_POLICY_REMOVE || value === BREAK_POLICY_DENY) {
+    return { policy: value, valid: true, usedDefault: false };
+  }
+  return { policy: BREAK_POLICY_DENY, valid: false, usedDefault: false };
+}
+
+export function decideBreak(lock, policy = BREAK_POLICY_REMOVE) {
+  if (!lock) return { action: 'ALLOW_BREAK' };
+  if (policy === BREAK_POLICY_REMOVE) {
+    return {
+      action: 'ALLOW_BREAK_REMOVE_LOCK',
+      expectedOwner: lock.owner,
+      expectedRevision: lock.revision,
+    };
+  }
+  return { action: 'DENY_LOCKED' };
 }
 
 export function removalConfirmed(response) {

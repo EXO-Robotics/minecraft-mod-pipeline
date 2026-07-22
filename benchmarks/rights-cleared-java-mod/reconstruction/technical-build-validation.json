@@ -5,18 +5,18 @@
   "status": "STATIC_AND_BDS_UPGRADE_VERIFIED",
   "artifacts": {
     "mcaddon": {
-      "sha256": "0d8bd9cb9c07bef76d2b37068e9b12ce02e44d75303981b7706406975324aeb9",
-      "bytes": 18278
+      "sha256": "07c6567556e323dfb6177183ca9f4e5774eb2a0ce54f2d6541495015db03b289",
+      "bytes": 18997
     },
     "mcworld": {
-      "sha256": "e1d52a1c8868d9f915d4c342511f81f64224bb13a7baf16c1c3376af07686dfe",
-      "bytes": 21172,
+      "sha256": "2422e4fe438aa50c1e7df4a01959231890750143c48c2064a1ac98dd8f69b8ce",
+      "bytes": 21895,
       "behavior_pack_id": "e37351e8-413f-5e9e-a85f-b77694893583",
       "resource_pack_id": "d80784dd-5977-5296-942b-145c7ad85c73"
     },
     "legacy_seed_mcworld": {
-      "sha256": "3dfc3c727ad9cf7c661ff7034bf0faba6a2c9eb8ed8ab43849d08f49d6d24132",
-      "bytes": 18310,
+      "sha256": "c8eec4f2dd0f136e8e85c7a79b0c3e5da2b4e98447d8e5da9d85a2373e71ea70",
+      "bytes": 18445,
       "fixture_only": true
     }
   },
@@ -36,7 +36,7 @@
     "errors": 0,
     "warnings": 0,
     "exit_codes": [0, 0],
-    "cache_safe_input": "artifact-0d8bd9cb9c07bef76d2b37068e9b12ce02e44d75303981b7706406975324aeb9.mcaddon",
+    "cache_safe_input": "artifact-07c6567556e323dfb6177183ca9f4e5774eb2a0ce54f2d6541495015db03b289.mcaddon",
     "marketplace_approval_implied": false
   },
   "bds_diagnostic": {
@@ -44,9 +44,9 @@
     "bedrock_version": "1.26.33.2",
     "bedrock_build_id": "47564860",
     "image": "itzg/minecraft-bedrock-server@sha256:12c7047cc149bd517d6dbc2339163cf62a4f1044c10e759c45c8b387e9784e39",
-    "world_sha256": "e1d52a1c8868d9f915d4c342511f81f64224bb13a7baf16c1c3376af07686dfe",
-    "legacy_seed_world_sha256": "3dfc3c727ad9cf7c661ff7034bf0faba6a2c9eb8ed8ab43849d08f49d6d24132",
-    "log_sha256": "32fea3a5af610624967b7f891f022ca81c0f666eeb3386aea7b9f967587bc2c9",
+    "world_sha256": "2422e4fe438aa50c1e7df4a01959231890750143c48c2064a1ac98dd8f69b8ce",
+    "legacy_seed_world_sha256": "c8eec4f2dd0f136e8e85c7a79b0c3e5da2b4e98447d8e5da9d85a2373e71ea70",
+    "log_sha256": "46718e2fd944db768490600a7446b04166462b1115ef98e7ea6fe47fdb11d660",
     "script_initialized": true,
     "restart_cycles": 3,
     "persistent_boot_values": [1, 2, 3],

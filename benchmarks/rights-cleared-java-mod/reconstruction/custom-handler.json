@@ -11,8 +11,10 @@
       "api_symbols": [
         {"module": "@minecraft/server", "symbol": "world.beforeEvents.playerInteractWithBlock"},
         {"module": "@minecraft/server", "symbol": "world.beforeEvents.playerBreakBlock"},
+        {"module": "@minecraft/server", "symbol": "world.afterEvents.playerBreakBlock"},
         {"module": "@minecraft/server", "symbol": "world.afterEvents.itemUse"},
         {"module": "@minecraft/server", "symbol": "system.run"},
+        {"module": "@minecraft/server", "symbol": "system.runTimeout"},
         {"module": "@minecraft/server", "symbol": "system.currentTick"},
         {"module": "@minecraft/server", "symbol": "World.getDynamicProperty"},
         {"module": "@minecraft/server", "symbol": "World.setDynamicProperty"},

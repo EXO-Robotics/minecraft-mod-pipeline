@@ -21,6 +21,9 @@ class BenchmarkBReconstructionTests(unittest.TestCase):
         script = script_path.read_text(encoding="utf-8")
         self.assertIn("world.beforeEvents.playerInteractWithBlock.subscribe", script)
         self.assertIn("world.beforeEvents.playerBreakBlock.subscribe", script)
+        self.assertIn("world.afterEvents.playerBreakBlock.subscribe", script)
+        self.assertIn("system.runTimeout", script)
+        self.assertIn("removeLockIfRevision", script)
         self.assertIn("event.cancel = true", script)
         self.assertIn("system.run(() =>", script)
         self.assertIn("ActionFormData", script)
@@ -97,7 +100,7 @@ console.log(JSON.stringify(cases));
             module = Path(directory) / "doorlock-state.mjs"
             shutil.copyfile(module_source, module)
             runner = """
-import { credentialFormResult, decideBreak, decideInteraction, removalConfirmed, sha256 } from './doorlock-state.mjs';
+import { credentialFormResult, decideBreak, decideInteraction, normalizeBreakPolicy, removalConfirmed, sha256 } from './doorlock-state.mjs';
 const owner = 'player-a';
 const stranger = 'player-b';
 const digest = 'a'.repeat(64);
@@ -119,8 +122,16 @@ console.log(JSON.stringify({
   universalUnlock: decide(stranger, 'door_lock:universal_key', true),
   ironUniversalDenied: decideInteraction({ lock, playerId: stranger, itemId: 'door_lock:universal_key', isSneaking: false, universalAllowed: false }).action,
   ironUniversalDoesNotCreate: decideInteraction({ lock: null, playerId: stranger, itemId: 'door_lock:universal_key', isSneaking: false, universalAllowed: false }).action,
-  lockedBreak: decideBreak(lock).action,
+  lockedBreakDefault: decideBreak(lock).action,
+  lockedBreakRemoveOwner: decideBreak(lock).expectedOwner,
+  lockedBreakRemoveRevision: decideBreak(lock).expectedRevision,
+  lockedBreakDenied: decideBreak(lock, 'deny').action,
+  invalidBreakDenied: decideBreak(lock, 'invalid').action,
   unlockedBreak: decideBreak(undefined).action,
+  defaultBreakPolicy: normalizeBreakPolicy(undefined),
+  removeBreakPolicy: normalizeBreakPolicy('remove'),
+  denyBreakPolicy: normalizeBreakPolicy('deny'),
+  invalidBreakPolicy: normalizeBreakPolicy('invalid'),
   confirmed: removalConfirmed({ canceled: false, selection: 0 }),
   kept: removalConfirmed({ canceled: false, selection: 1 }),
   canceled: removalConfirmed({ canceled: true, selection: 0 }),
@@ -151,7 +162,11 @@ console.log(JSON.stringify({
             "universalUnlock": "REMOVE_LOCK",
             "ironUniversalDenied": "DENY_LOCKED",
             "ironUniversalDoesNotCreate": "ALLOW_DEFAULT",
-            "lockedBreak": "DENY_LOCKED",
+            "lockedBreakDefault": "ALLOW_BREAK_REMOVE_LOCK",
+            "lockedBreakRemoveOwner": "player-a",
+            "lockedBreakRemoveRevision": 1,
+            "lockedBreakDenied": "DENY_LOCKED",
+            "invalidBreakDenied": "DENY_LOCKED",
             "unlockedBreak": "ALLOW_BREAK",
             "confirmed": True,
             "kept": False,
@@ -165,6 +180,10 @@ console.log(JSON.stringify({
         self.assertFalse(result["tooShort"]["ok"])
         self.assertTrue(result["formCanceled"]["canceled"])
         self.assertNotIn("shared-code", json.dumps(result["configured"]))
+        self.assertEqual({"policy": "remove", "valid": True, "usedDefault": True}, result["defaultBreakPolicy"])
+        self.assertEqual({"policy": "remove", "valid": True, "usedDefault": False}, result["removeBreakPolicy"])
+        self.assertEqual({"policy": "deny", "valid": True, "usedDefault": False}, result["denyBreakPolicy"])
+        self.assertEqual({"policy": "deny", "valid": False, "usedDefault": False}, result["invalidBreakPolicy"])
 
     def test_state_records_and_revision_checks_match_the_v1_contract(self) -> None:
         node = shutil.which("node")
@@ -275,7 +294,6 @@ console.log(JSON.stringify({ record, created, competingCreate, twoLocks, dimensi
         self.assertEqual(
             {
                 "locked redstone suppression for doors, trapdoors, and fence gates",
-                "runtime-selectable locked-block break policy",
                 "actual gameplay, persistence, multiplayer, Realm, and console tests",
             },
             set(status["missing"]),
@@ -289,7 +307,7 @@ console.log(JSON.stringify({ record, created, competingCreate, twoLocks, dimensi
         self.assertFalse(status["claims"]["console_verified"])
         redesign = status["intentional_redesigns"][0]
         self.assertEqual("PROPOSED_NOT_APPROVED", redesign["status"])
-        self.assertTrue(redesign["lost"])
+        self.assertEqual(["anvil and command configuration parity", "item-instance credential storage"], redesign["lost"])
 
     def test_external_validation_is_hash_bound_and_narrow(self) -> None:
         validation = json.loads((RECONSTRUCTION / "technical-build-validation.json").read_text())

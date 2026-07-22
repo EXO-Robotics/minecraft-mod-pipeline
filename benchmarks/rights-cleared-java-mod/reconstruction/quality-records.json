@@ -42,7 +42,7 @@
       "classification": "MANUAL_REDESIGN_REQUIRED",
       "dimensions": {"gameplay_fidelity": 0.5, "visual_fidelity": 0.0, "audio_fidelity": 0.0, "interaction_fidelity": 0.5, "controller_usability": 0.6, "multiplayer_fidelity": 0.0, "persistence_fidelity": 0.2, "performance": 0.8, "stability": 0.5, "discoverability": 0.3, "feedback_clarity": 0.5, "world_update_compatibility": 0.2},
       "evidence": ["technical-build-validation.json"],
-      "losses": ["Configured shared-credential authorization is unapproved and lacks real multiplayer evidence; digest storage is not a password-security boundary"]
+      "losses": ["Configured shared-credential authorization is unapproved and lacks real multiplayer evidence; digest storage is not a password-security boundary; selectable break handling has static and pure-logic evidence but no real player break test"]
     },
     {
       "feature_id": "doorlock:mixin_anvil",
