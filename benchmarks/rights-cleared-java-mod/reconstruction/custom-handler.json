@@ -1,0 +1,23 @@
+{
+  "schema_version": "1.0.0",
+  "handlers": [
+    {
+      "api_symbols": [
+        {"module": "@minecraft/server", "symbol": "world.beforeEvents.playerInteractWithBlock"},
+        {"module": "@minecraft/server", "symbol": "world.beforeEvents.playerBreakBlock"},
+        {"module": "@minecraft/server", "symbol": "system.run"},
+        {"module": "@minecraft/server", "symbol": "World.getDynamicProperty"},
+        {"module": "@minecraft/server", "symbol": "World.setDynamicProperty"},
+        {"module": "@minecraft/server", "symbol": "Entity.id"},
+        {"module": "@minecraft/server", "symbol": "Player.isSneaking"},
+        {"module": "@minecraft/server", "symbol": "Player.sendMessage"},
+        {"module": "@minecraft/server", "symbol": "Block.location"},
+        {"module": "@minecraft/server", "symbol": "Block.dimension"},
+        {"module": "@minecraft/server", "symbol": "Block.typeId"}
+      ],
+      "behavior_id": "doorlock:clean_room_lock_controller",
+      "destination": "scripts/custom/doorlock.js",
+      "source_path": "custom/scripts/doorlock.js"
+    }
+  ]
+}

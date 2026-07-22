@@ -1,0 +1,41 @@
+{
+  "schema_version": "1.0.0",
+  "benchmark_id": "benchmark-b-doorlock-technical-reconstruction",
+  "status": "PARTIAL_TECHNICAL_RECONSTRUCTION_NOT_RUN",
+  "source_policy": "clean-room implementation from evidence contracts; no DoorLock source or asset payload copied",
+  "implemented": [
+    "cancellable supported-block interaction",
+    "server-authoritative world lock map",
+    "player-identity lock ownership",
+    "universal-key authorization",
+    "sneak-use lock removal",
+    "locked-block break prevention",
+    "deferred mutation outside restricted before-event execution"
+  ],
+  "approved_quality_claim": null,
+  "intentional_redesigns": [
+    {
+      "id": "owner-bound-key",
+      "status": "PROPOSED_NOT_APPROVED",
+      "preserved": ["lock ownership", "wrong-owner denial", "universal-key override", "controller item-use interaction"],
+      "lost": ["user-entered secret", "matching configured keys shared between players", "anvil and command configuration parity"]
+    }
+  ],
+  "missing": [
+    "door upper/lower-half normalization",
+    "double-container paired-location normalization",
+    "controller form for explicit credential configuration",
+    "golden-key behavior distinction",
+    "legacy-state migration implementation",
+    "generated item and resource definitions",
+    "packaging and Creator Tools validation",
+    "actual gameplay, persistence, multiplayer, Realm, and console tests"
+  ],
+  "claims": {
+    "technical_reconstruction_complete": false,
+    "runtime_verified": false,
+    "rights_cleared": false,
+    "marketplace_candidate": false,
+    "console_verified": false
+  }
+}

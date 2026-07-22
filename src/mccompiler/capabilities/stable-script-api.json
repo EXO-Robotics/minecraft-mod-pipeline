@@ -22,6 +22,7 @@
         "system.currentTick",
         "Entity.location",
         "Entity.dimension",
+        "Entity.id",
         "Entity.typeId",
         "Entity.remove",
         "Entity.applyDamage",
@@ -33,6 +34,7 @@
         "Entity.teleport",
         "Entity.applyImpulse",
         "Player.sendMessage",
+        "Player.isSneaking",
         "Player.startItemCooldown",
         "Player.getItemCooldown",
         "Dimension.spawnEntity",
@@ -234,6 +236,30 @@
       "realm_candidate": true,
       "bds_only": false,
       "replacement_strategies": ["scoreboard", "entity_property"]
+    },
+    {
+      "module": "@minecraft/server",
+      "symbol": "World.getDynamicProperty",
+      "minimum_stable_version": "2.0.0",
+      "engine_version": "1.21.90",
+      "stability": "stable",
+      "experiments_required": [],
+      "marketplace_candidate": true,
+      "realm_candidate": true,
+      "bds_only": false,
+      "replacement_strategies": ["scoreboard"]
+    },
+    {
+      "module": "@minecraft/server",
+      "symbol": "World.setDynamicProperty",
+      "minimum_stable_version": "2.0.0",
+      "engine_version": "1.21.90",
+      "stability": "stable",
+      "experiments_required": [],
+      "marketplace_candidate": true,
+      "realm_candidate": true,
+      "bds_only": false,
+      "replacement_strategies": ["scoreboard"]
     },
     {
       "module": "@minecraft/server-ui",
