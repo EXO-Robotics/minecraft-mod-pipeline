@@ -50,6 +50,9 @@ def plan_conversion(ir: dict[str, Any]) -> dict[str, Any]:
     for ui in ir.get("ui_intent", []):
         cap = capabilities.get("ui.form", {})
         features.append({"id": ui.get("id"), "kind": "ui.form", "classification": cap["classification"], "scores": _scores(cap["classification"], 1, cap), "capability": cap, "evidence": ui.get("evidence", [])})
+    for intent in ir.get("networking_intent", []):
+        cap = capabilities["networking.intent"]
+        features.append({"id": intent.get("id"), "kind": "networking.intent", "classification": cap["classification"], "scores": _scores(cap["classification"], 1, cap), "capability": cap, "evidence": intent.get("evidence", []), "replacement_strategy": intent.get("replacement_strategy")})
     for diagnostic in ir.get("unsupported_hooks", []):
         cap = capabilities["unsupported.mixin"]
         features.append({"id": diagnostic.get("feature"), "kind": "unsupported.mixin", "classification": "UNSUPPORTED", "scores": _scores("UNSUPPORTED", 1, cap), "capability": cap, "evidence": diagnostic.get("evidence", [])})

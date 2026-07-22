@@ -147,13 +147,12 @@ def analyze_java(path: str, text: str) -> dict[str, list[dict[str, Any]]]:
         start, end = text.count("\n", 0, match.start()) + 1, text.count("\n", 0, pos) + 1
         calls = {call for call in action_calls if re.search(rf'context\.{call}\s*\(', body)}
         actions = [{"type": action_calls[call]} for call in sorted(calls)] + [{"type": "set_entity_phase", "value": int(phase)}]
-        behaviors.append({"id": f"representative:rift_boss/{method}", "owner": {"kind": "entity", "identifier": "representative:rift_boss"}, "trigger": {"type": "state_transition"}, "conditions": [{"type": "health_threshold", "expression": condition}], "actions": actions, "stateReads": ["health"], "stateWrites": ["phase"], "feedback": [], "presentationRequirements": [], "evidence": [evidence(path, (start, end), "java-common:Phase-method", class_name="RiftBoss", method=method)], "confidence": 1.0, "diagnostics": []})
+        reads = sorted(set(["health"] + re.findall(r'context\.get\(\s*"([^"]+)"', body)))
+        writes = sorted(set(["phase"] + re.findall(r'context\.set\(\s*"([^"]+)"', body)))
+        behaviors.append({"id": f"representative:rift_boss/{method}", "owner": {"kind": "entity", "identifier": "representative:rift_boss"}, "trigger": {"type": "state_transition"}, "conditions": [{"type": "health_threshold", "expression": condition}], "actions": actions, "stateReads": reads, "stateWrites": writes, "feedback": [], "presentationRequirements": [], "evidence": [evidence(path, (start, end), "java-common:Phase-method", class_name="RiftBoss", method=method)], "confidence": 1.0, "diagnostics": []})
     for match in re.finditer(r'@Approximation\s*\((.*?)\)\s*public', text, re.DOTALL):
         args = _args(match.group(1)); line = text.count("\n", 0, match.start()) + 1
         presentation.append({"kind": "visual_approximation", "owner": class_name, "resource": None, "reason": args.get("reason"), "strategy": args.get("bedrockStrategy"), "evidence": [evidence(path, (line, line), "java-common:Approximation", class_name=class_name)]})
-    for match in re.finditer(r'@Unsupported\s*\((.*?)\)\s*public', text, re.DOTALL):
-        args = _args(match.group(1)); line = text.count("\n", 0, match.start()) + 1
-        diagnostics.append({"severity": "error", "code": "unsupported_hook", "feature": args.get("javaFeature"), "reason": args.get("reason"), "evidence": [evidence(path, (line, line), "java-common:Unsupported", class_name=class_name)]})
 
     for number, line in enumerate(lines, 1):
         annotation = re.search(r"@(ModContent|Behavior|StateRequirement|Presentation|UiIntent|NetworkIntent|Unsupported)\s*\((.*)\)", line)
@@ -187,7 +186,13 @@ def analyze_java(path: str, text: str) -> dict[str, list[dict[str, Any]]]:
         elif kind == "NetworkIntent":
             networking.append({"id": args.get("id"), "direction": args.get("direction"), "trigger": args.get("trigger"), "payload": args.get("payload"), "authority": args.get("authority", "server"), "action": args.get("action"), "replacement_strategy": args.get("replacement"), "evidence": ev})
         else:
-            diagnostics.append({"severity": "error", "code": "unsupported_hook", "feature": args.get("feature"), "reason": args.get("reason"), "evidence": ev})
+            diagnostics.append({"severity": "error", "code": "unsupported_hook", "feature": args.get("feature") or args.get("javaFeature"), "reason": args.get("reason"), "evidence": ev})
+    for match in re.finditer(r'@Unsupported\s*\((.*?)\)\s*public', text, re.DOTALL):
+        args = _args(match.group(1)); feature = args.get("feature") or args.get("javaFeature")
+        if any(row.get("code") == "unsupported_hook" and row.get("feature") == feature for row in diagnostics):
+            continue
+        line = text.count("\n", 0, match.start()) + 1
+        diagnostics.append({"severity": "error", "code": "unsupported_hook", "feature": feature, "reason": args.get("reason"), "evidence": [evidence(path, (line, line), "java-common:Unsupported", class_name=class_name)]})
     return {"content": content, "behaviors": behaviors, "state": state, "presentation": presentation, "ui": ui, "networking": networking, "diagnostics": diagnostics}
 
 

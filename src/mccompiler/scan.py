@@ -17,6 +17,7 @@ from .io import read_json, relaxed_json, version_list
 from .ir import empty_ir
 from .semantics import analyze_java, attach_fingerprints
 from .frontends.jar_bytecode import class_constant_evidence
+from .frontends.javap_analyzer import analyze_archive
 
 
 CONTENT_DIRS = {
@@ -342,6 +343,10 @@ def scan_path(input_path: str | Path, bedrock_server: str | Path | None = None) 
                         semantic[key].extend(values)
                 elif entry.lower().endswith(".class"):
                     bytecode_evidence.append(class_constant_evidence(entry, view.read_bytes(entry)))
+            if source.is_file() and inventory["content_counts"].get("class_files") and not inventory["content_counts"].get("java_sources"):
+                extracted = analyze_archive(source)
+                for key, values in extracted.items():
+                    semantic[key].extend(values)
         finally:
             view.close()
     ir["dependency_graph"] = {"nodes": sorted(nodes.values(), key=lambda n: n["id"]), "edges": edges}
