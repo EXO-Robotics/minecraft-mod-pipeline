@@ -210,6 +210,7 @@ def start_test_runtime(store: ProjectStore, parameters: dict[str, Any], expected
             docker_executable=str(parameters.get("docker_executable", "docker")),
             network_mode=network_mode,
             bds_version=str(parameters["bds_version"]) if parameters.get("bds_version") else None,
+            restart_count=int(parameters.get("restart_count", 1)),
         ))
     except (BDSDiagnosticError, OSError, ValueError) as exc:
         raise OperationError("BDS_DIAGNOSTIC_FAILED", str(exc), details={"run_id": run_id, "success_implied": False}) from exc

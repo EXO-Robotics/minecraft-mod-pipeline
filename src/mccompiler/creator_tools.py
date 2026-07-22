@@ -13,6 +13,30 @@ from typing import Any, Callable, Mapping, Sequence, cast
 Runner = Callable[..., subprocess.CompletedProcess[str]]
 
 
+def _parse_creator_tools_json(stdout: str, *, suite: str) -> tuple[Mapping[str, Any], list[str]]:
+    """Extract the CLI JSON object while preserving its occasional debug prelude.
+
+    Creator Tools 0.17.6 can write a timestamped DEBUG line to stdout before
+    its JSON even with ``--offline --json``. Only a complete object consuming
+    the rest of stdout is accepted; arbitrary mixed output still fails.
+    """
+    decoder = json.JSONDecoder()
+    for index, character in enumerate(stdout):
+        if character != "{":
+            continue
+        try:
+            parsed, end = decoder.raw_decode(stdout[index:])
+        except json.JSONDecodeError:
+            continue
+        if stdout[index + end:].strip() or not isinstance(parsed, Mapping):
+            continue
+        if not any(key in parsed for key in ("diagnostics", "findings", "projects")):
+            continue
+        prelude = [line for line in stdout[:index].splitlines() if line.strip()]
+        return parsed, prelude
+    raise RuntimeError(f"Creator Tools did not return a complete JSON validation object for suite {suite}")
+
+
 def load_creator_tools_lock(path: str | Path | None = None) -> dict[str, Any]:
     lock_path = Path(path) if path else Path(__file__).with_name("creator-tools.lock.json")
     return cast(dict[str, Any], json.loads(lock_path.read_text(encoding="utf-8")))
@@ -106,6 +130,7 @@ def invoke_creator_tools(
     payloads: list[Mapping[str, Any]] = []
     commands: list[list[str]] = []
     exit_codes: list[int] = []
+    cli_prelude: list[dict[str, Any]] = []
     try:
         for suite in selected:
             input_flag = "--input-file" if resolved_project.is_file() else "--input-folder"
@@ -117,12 +142,9 @@ def invoke_creator_tools(
             commands.append(command)
             result = runner(command, capture_output=True, text=True, check=False)
             exit_codes.append(result.returncode)
-            try:
-                parsed = json.loads(result.stdout)
-            except json.JSONDecodeError as exc:
-                raise RuntimeError(f"Creator Tools did not return JSON for suite {suite}") from exc
-            if not isinstance(parsed, Mapping):
-                raise RuntimeError(f"Creator Tools returned a non-object result for suite {suite}")
+            parsed, prelude = _parse_creator_tools_json(result.stdout, suite=str(suite))
+            if prelude:
+                cli_prelude.append({"suite": str(suite), "lines": prelude})
             payloads.append(parsed)
     finally:
         if temporary is not None:
@@ -140,6 +162,7 @@ def invoke_creator_tools(
     normalized["creator_tools"]["exit_codes"] = exit_codes
     normalized["creator_tools"]["commands"] = commands
     normalized["creator_tools"]["validated_input"] = input_identity
+    normalized["creator_tools"]["cli_stdout_prelude"] = cli_prelude
     if archive_members is not None:
         stale_paths = sorted({
             str(row["path"]).lstrip("/") for row in normalized["creator_tools"]["findings"]

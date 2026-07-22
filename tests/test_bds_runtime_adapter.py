@@ -67,6 +67,8 @@ class BDSRuntimeAdapterTests(unittest.TestCase):
         self.assertTrue(passed["script_initialized"])
         self.assertTrue(passed["clean"])
         self.assertEqual("1.26.33.2", passed["bedrock_version"])
+        persisted = analyze_bds_log(["runtime initialized persistent_boot=1", "runtime initialized persistent_boot=2"])
+        self.assertEqual([1, 2], persisted["persistent_boot_values"])
         failed = analyze_bds_log(["Server started.", "[ERROR] script failed to load"])
         self.assertFalse(failed["script_initialized"])
         self.assertFalse(failed["clean"])
@@ -89,6 +91,13 @@ class BDSRuntimeAdapterTests(unittest.TestCase):
             })
         self.assertEqual("NETWORK_NOT_AUTHORIZED", network.exception.code)
 
+    def test_restart_count_is_bounded(self) -> None:
+        request = BDSRunRequest("registry/bds@sha256:" + "a" * 64, self.world(), self.root / "run", restart_count=0)
+        with patch("mccompiler.runtime.bds.shutil.which", return_value="/fake/docker"):
+            with self.assertRaisesRegex(BDSDiagnosticError, "restart_count"):
+                from mccompiler.runtime.bds import run_bds_diagnostic
+                run_bds_diagnostic(request)
+
     def test_public_operation_persists_narrow_boot_claims(self) -> None:
         store = ProjectStore.create(self.root / "project")
         world = store.resolve("dist/test-world/converted-test-world.mcworld")
@@ -101,7 +110,7 @@ class BDSRuntimeAdapterTests(unittest.TestCase):
             result: dict[str, object] = {
                 "status": "BDS_DIAGNOSTIC_BOOT_VERIFIED", "passed": True,
                 "runtime": {"image": request.image},
-                "claims": {"bds_boot_verified": True, "gameplay_verified": False, "persistence_verified": False, "multiplayer_verified": False, "console_verified": False, "marketplace_approval_implied": False},
+                "claims": {"bds_boot_verified": True, "diagnostic_state_persistence_verified": False, "gameplay_verified": False, "persistence_verified": False, "multiplayer_verified": False, "console_verified": False, "marketplace_approval_implied": False},
             }
             (request.run_root / "result.json").write_text(json.dumps(result))
             return result

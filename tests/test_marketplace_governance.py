@@ -133,6 +133,18 @@ class CreatorToolsTests(unittest.TestCase):
         self.assertTrue(any(row["code"] == "STALE_CACHE_PATH" for row in result["creator_tools"]["findings"]))
         self.assertFalse(result["passed"])
 
+    def test_timestamped_debug_prelude_is_preserved_before_complete_json(self) -> None:
+        clean = json.loads((FIXTURES / "recorded-clean.json").read_text())
+        stdout = "[2026-07-22T20:26:36.999Z] [DEBUG] offline lookup unavailable\n" + json.dumps(clean)
+        def fake_runner(command, **kwargs):
+            if "--version" in command:
+                return subprocess.CompletedProcess(command, 0, stdout="0.17.6\n", stderr="")
+            return subprocess.CompletedProcess(command, 0, stdout=stdout, stderr="")
+        result = invoke_creator_tools("/fake/mct", ".", lock=self.lock, policy=self.policy, runner=fake_runner)
+        self.assertTrue(result["passed"])
+        self.assertEqual(2, len(result["creator_tools"]["cli_stdout_prelude"]))
+        self.assertTrue(all("offline lookup unavailable" in row["lines"][0] for row in result["creator_tools"]["cli_stdout_prelude"]))
+
     def test_version_mismatch_and_unknown_suite_fail(self) -> None:
         def bad_version(command, **kwargs):
             return subprocess.CompletedProcess(command, 0, stdout="9.9.9\n", stderr="")

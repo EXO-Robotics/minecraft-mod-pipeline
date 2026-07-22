@@ -35,6 +35,7 @@ class BDSRunRequest:
     docker_executable: str = "docker"
     network_mode: str = "none"
     bds_version: str | None = None
+    restart_count: int = 1
 
 
 def sha256_file(path: Path) -> str:
@@ -102,6 +103,7 @@ def analyze_bds_log(lines: Iterable[str]) -> dict[str, Any]:
     errors = [line for line in materialized if any(marker in line.lower() for marker in _ERROR_MARKERS)]
     version = next((match.group(1) for line in materialized if (match := re.search(r"Version:\s*([^\s]+)", line))), None)
     build_id = next((match.group(1) for line in materialized if (match := re.search(r"Build Id:\s*([^\s]+)", line, re.I))), None)
+    persistent_boot_values = [int(match.group(1)) for line in materialized if (match := re.search(r"persistent_boot=(\d+)", line))]
     return {
         "booted": booted,
         "script_initialized": script_initialized,
@@ -109,6 +111,7 @@ def analyze_bds_log(lines: Iterable[str]) -> dict[str, Any]:
         "critical_lines": errors,
         "bedrock_version": version,
         "bedrock_build_id": build_id,
+        "persistent_boot_values": persistent_boot_values,
         "line_count": len(materialized),
     }
 
@@ -122,18 +125,7 @@ def _stream_lines(process: subprocess.Popen[str], output: queue.Queue[str | None
         output.put(None)
 
 
-def run_bds_diagnostic(request: BDSRunRequest) -> dict[str, Any]:
-    if request.timeout_seconds < 10 or request.timeout_seconds > 900:
-        raise BDSDiagnosticError("timeout_seconds must be between 10 and 900")
-    if request.boot_grace_seconds < 0 or request.boot_grace_seconds > 30:
-        raise BDSDiagnosticError("boot_grace_seconds must be between 0 and 30")
-    docker = shutil.which(request.docker_executable)
-    if docker is None:
-        raise BDSDiagnosticError(f"Docker executable is unavailable: {request.docker_executable}")
-    request.run_root.mkdir(parents=True, exist_ok=False)
-    data_root = request.run_root / "data"
-    data_root.mkdir()
-    level_name, _ = extract_mcworld(request.mcworld, data_root)
+def _run_cycle(request: BDSRunRequest, *, docker: str, data_root: Path, level_name: str, cycle: int) -> tuple[list[str], dict[str, Any]]:
     container_name = f"mccompiler-bds-{uuid.uuid4().hex[:12]}"
     command = docker_run_command(request, container_name=container_name, data_root=data_root, level_name=level_name)
     command[0] = docker
@@ -144,9 +136,11 @@ def run_bds_diagnostic(request: BDSRunRequest) -> dict[str, Any]:
     stop_result: subprocess.CompletedProcess[str] | None = None
     timed_out = False
     boot_seen_at: float | None = None
+    reader: threading.Thread | None = None
     try:
         process = subprocess.Popen(command, stdout=subprocess.PIPE, stderr=subprocess.STDOUT, text=True, encoding="utf-8", errors="replace", bufsize=1)
-        threading.Thread(target=_stream_lines, args=(process, output), daemon=True).start()
+        reader = threading.Thread(target=_stream_lines, args=(process, output), daemon=True)
+        reader.start()
         deadline = time.monotonic() + request.timeout_seconds
         stream_done = False
         while time.monotonic() < deadline:
@@ -172,6 +166,8 @@ def run_bds_diagnostic(request: BDSRunRequest) -> dict[str, Any]:
         except subprocess.TimeoutExpired:
             process.kill()
             process.wait(timeout=10)
+        if reader is not None:
+            reader.join(timeout=5)
         while True:
             try:
                 item = output.get_nowait()
@@ -181,21 +177,61 @@ def run_bds_diagnostic(request: BDSRunRequest) -> dict[str, Any]:
                 lines.append(item)
     finally:
         subprocess.run([docker, "rm", "-f", container_name], capture_output=True, text=True, timeout=30, check=False)
+    analysis = analyze_bds_log(lines)
+    return lines, {
+        "cycle": cycle,
+        "timeout_seconds": request.timeout_seconds,
+        "timed_out": timed_out,
+        "elapsed_seconds": round(time.time() - started_at, 3),
+        "container_exit_code": process.returncode if process else None,
+        "stop_exit_code": stop_result.returncode if stop_result else None,
+        "analysis": analysis,
+        "passed": bool(analysis["booted"] and analysis["script_initialized"] and analysis["clean"] and not timed_out),
+    }
 
-    log_text = "\n".join(lines) + ("\n" if lines else "")
+
+def run_bds_diagnostic(request: BDSRunRequest) -> dict[str, Any]:
+    if request.timeout_seconds < 10 or request.timeout_seconds > 900:
+        raise BDSDiagnosticError("timeout_seconds must be between 10 and 900")
+    if request.boot_grace_seconds < 0 or request.boot_grace_seconds > 30:
+        raise BDSDiagnosticError("boot_grace_seconds must be between 0 and 30")
+    if request.restart_count < 1 or request.restart_count > 3:
+        raise BDSDiagnosticError("restart_count must be between 1 and 3")
+    docker = shutil.which(request.docker_executable)
+    if docker is None:
+        raise BDSDiagnosticError(f"Docker executable is unavailable: {request.docker_executable}")
+    request.run_root.mkdir(parents=True, exist_ok=False)
+    data_root = request.run_root / "data"
+    data_root.mkdir()
+    level_name, _ = extract_mcworld(request.mcworld, data_root)
+    started_at = time.time()
+    cycles: list[dict[str, Any]] = []
+    combined_lines: list[str] = []
+    for cycle in range(1, request.restart_count + 1):
+        lines, execution = _run_cycle(request, docker=docker, data_root=data_root, level_name=level_name, cycle=cycle)
+        combined_lines.append(f"[mccompiler-harness] cycle={cycle}")
+        combined_lines.extend(lines)
+        cycles.append(execution)
+        if not execution["passed"]:
+            break
+    log_text = "\n".join(combined_lines) + ("\n" if combined_lines else "")
     log_path = request.run_root / "content.log"
     log_path.write_text(log_text, encoding="utf-8")
-    analysis = analyze_bds_log(lines)
-    passed = bool(analysis["booted"] and analysis["script_initialized"] and analysis["clean"] and not timed_out)
+    analysis = analyze_bds_log(combined_lines)
+    passed = len(cycles) == request.restart_count and all(bool(cycle["passed"]) for cycle in cycles)
+    diagnostic_state_persistence_verified = bool(
+        request.restart_count >= 2
+        and analysis["persistent_boot_values"][:request.restart_count] == list(range(1, request.restart_count + 1))
+    )
     result = {
         "schema_version": "1.0.0",
         "status": "BDS_DIAGNOSTIC_BOOT_VERIFIED" if passed else "BDS_DIAGNOSTIC_FAILED",
         "passed": passed,
         "artifact": {"path": str(request.mcworld), "sha256": sha256_file(request.mcworld)},
         "runtime": {"adapter": "docker-bds", "image": request.image, "requested_bds_version": request.bds_version, "network": request.network_mode, "published_ports": False, "level_name": level_name},
-        "execution": {"timeout_seconds": request.timeout_seconds, "timed_out": timed_out, "elapsed_seconds": round(time.time() - started_at, 3), "container_exit_code": process.returncode if process else None, "stop_exit_code": stop_result.returncode if stop_result else None},
+        "execution": {"restart_count": request.restart_count, "elapsed_seconds": round(time.time() - started_at, 3), "cycles": cycles},
         "log": {**analysis, "path": str(log_path), "sha256": hashlib.sha256(log_text.encode()).hexdigest()},
-        "claims": {"bds_boot_verified": passed, "gameplay_verified": False, "persistence_verified": False, "multiplayer_verified": False, "console_verified": False, "marketplace_approval_implied": False},
+        "claims": {"bds_boot_verified": passed, "diagnostic_state_persistence_verified": diagnostic_state_persistence_verified, "gameplay_verified": False, "persistence_verified": False, "multiplayer_verified": False, "console_verified": False, "marketplace_approval_implied": False},
     }
     (request.run_root / "result.json").write_text(json.dumps(result, indent=2, sort_keys=True) + "\n", encoding="utf-8")
     return result

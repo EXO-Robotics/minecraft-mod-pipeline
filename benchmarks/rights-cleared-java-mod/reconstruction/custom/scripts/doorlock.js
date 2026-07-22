@@ -1,6 +1,7 @@
 import { system, world } from '@minecraft/server';
 
 const STATE_KEY = 'mccompiler:doorlock:locks:v1';
+const BOOT_KEY = 'mccompiler:doorlock:diagnostic_boot';
 const NORMAL_KEYS = new Set(['door_lock:key', 'door_lock:golden_key']);
 const UNIVERSAL_KEY = 'door_lock:universal_key';
 const SUPPORTED_BLOCKS = new Set([
@@ -87,4 +88,11 @@ world.beforeEvents.playerBreakBlock.subscribe((event) => {
     event.cancel = true;
     deferMessage(event.player, 'Unlock this block before breaking it.');
   }
+});
+
+system.run(() => {
+  const previous = Number(world.getDynamicProperty(BOOT_KEY)) || 0;
+  const current = previous + 1;
+  world.setDynamicProperty(BOOT_KEY, current);
+  console.warn(`[mccompiler:doorlock] persistent_boot=${current}`);
 });
