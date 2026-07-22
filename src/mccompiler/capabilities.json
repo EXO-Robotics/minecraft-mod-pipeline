@@ -1,0 +1,32 @@
+{
+  "schema_version": "0.1.0",
+  "target": "bedrock-addon",
+  "target_default": {
+    "min_engine_version": [1, 21, 90],
+    "script_api_version": "2.0.0"
+  },
+  "capabilities": {
+    "manifest": {"strategy": "direct", "technical": 1.0, "gameplay": 1.0},
+    "items": {"strategy": "direct", "technical": 0.9, "gameplay": 0.9},
+    "blocks": {"strategy": "direct", "technical": 0.8, "gameplay": 0.85},
+    "recipes": {"strategy": "direct", "technical": 0.95, "gameplay": 0.95},
+    "loot_tables": {"strategy": "direct", "technical": 0.9, "gameplay": 0.9},
+    "sounds": {"strategy": "direct", "technical": 0.85, "gameplay": 0.85},
+    "textures": {"strategy": "direct", "technical": 0.8, "gameplay": 0.8},
+    "models": {"strategy": "reconstructed", "technical": 0.6, "gameplay": 0.75},
+    "entities": {"strategy": "reconstructed", "technical": 0.65, "gameplay": 0.75},
+    "structures": {"strategy": "reconstructed", "technical": 0.65, "gameplay": 0.8},
+    "worldgen": {"strategy": "approximated", "technical": 0.4, "gameplay": 0.6},
+    "item_use": {"strategy": "scripted", "technical": 0.75, "gameplay": 0.85},
+    "entity_hit": {"strategy": "scripted", "technical": 0.7, "gameplay": 0.8},
+    "server_tick": {"strategy": "scripted", "technical": 0.65, "gameplay": 0.75},
+    "persistent_state": {"strategy": "scripted", "technical": 0.65, "gameplay": 0.75},
+    "custom_gui": {"strategy": "approximated", "technical": 0.3, "gameplay": 0.6},
+    "network_packets": {"strategy": "approximated", "technical": 0.25, "gameplay": 0.55},
+    "mixins": {"strategy": "manual", "technical": 0.15, "gameplay": 0.4},
+    "client_rendering": {"strategy": "reconstructed", "technical": 0.45, "gameplay": 0.7},
+    "tile_entities": {"strategy": "scripted", "technical": 0.55, "gameplay": 0.7},
+    "custom_dimensions": {"strategy": "approximated", "technical": 0.3, "gameplay": 0.5}
+  }
+}
+

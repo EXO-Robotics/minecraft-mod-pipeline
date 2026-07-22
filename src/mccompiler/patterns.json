@@ -1,0 +1,33 @@
+[
+  {
+    "id": "item-ability",
+    "when": ["item_interactions"],
+    "description": "A custom item interaction is a candidate for a scripted item-use ability.",
+    "strategy": "scripted"
+  },
+  {
+    "id": "entity-behavior",
+    "when": ["entities"],
+    "description": "A custom entity can begin as a behavior/resource pack entity pair.",
+    "strategy": "reconstructed"
+  },
+  {
+    "id": "server-tick-system",
+    "when": ["tick_hooks"],
+    "description": "A server tick hook is a candidate for a scheduled Script API system.",
+    "strategy": "scripted"
+  },
+  {
+    "id": "machine-or-block-entity",
+    "when": ["tile_entities"],
+    "description": "Block entity state needs a script-managed state and interaction plan.",
+    "strategy": "scripted"
+  },
+  {
+    "id": "mixin-rewrite",
+    "when": ["mixins"],
+    "description": "A mixin requires intent extraction and a Bedrock alternative; the injection cannot be translated directly.",
+    "strategy": "manual"
+  }
+]
+
