@@ -4,7 +4,7 @@ import hashlib
 import json
 import re
 from pathlib import Path
-from typing import Any, Iterable
+from typing import Any, Callable, Iterable, cast
 
 
 SCHEMA_VERSION = "1.0.0"
@@ -38,7 +38,7 @@ ACTIONS = {
 
 def source_actions(body: str) -> list[dict[str, Any]]:
     calls: list[tuple[int, dict[str, Any]]] = []
-    specs = [
+    specs: list[tuple[str, Callable[[tuple[str, ...]], dict[str, Any]]]] = [
         (r'context\.addEffect\(\s*"([^"]+)"\s*,\s*(\d+)\s*,\s*(\d+)\s*\)', lambda m: {"type": "apply_effect", "effect": m[0], "duration": int(m[1]), "amplifier": int(m[2])}),
         (r'context\.cooldown\(\s*"([^"]+)"\s*,\s*(\d+)\s*\)', lambda m: {"type": "start_cooldown", "category": m[0], "ticks": int(m[1])}),
         (r'context\.spawnProjectile\(\s*"([^"]+)"\s*,\s*([\d.]+)\s*\)', lambda m: {"type": "spawn_projectile", "entity": m[0], "velocity": {"x": 0, "y": 0, "z": float(m[1])}}),
@@ -257,7 +257,7 @@ def normalized_behavior(behavior: dict[str, Any]) -> dict[str, Any]:
             items = [clean(v) for v in value]
             return sorted(items, key=lambda x: json.dumps(x, sort_keys=True, separators=(",", ":")))
         return value
-    return clean(behavior)
+    return cast(dict[str, Any], clean(behavior))
 
 
 def fingerprint(behavior: dict[str, Any]) -> dict[str, Any]:

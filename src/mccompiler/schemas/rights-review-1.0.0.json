@@ -1,0 +1,24 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://mccompiler.local/schemas/rights-review-1.0.0.json",
+  "title": "Rights Review 1.0.0",
+  "$defs": {
+    "decision": {
+      "type": "object",
+      "required": ["status"],
+      "properties": {
+        "status": {"enum": ["UNKNOWN", "REVIEW_REQUIRED", "PERSONAL_USE_ONLY", "ATTRIBUTION_REQUIRED", "PERMISSION_REQUIRED", "MARKETPLACE_CLEARED", "EXCLUDE"]},
+        "reviewer_type": {"enum": ["human", "ai", "automated"]},
+        "reviewed_by": {"type": "string", "minLength": 1},
+        "reviewer_id": {"type": "string", "minLength": 1},
+        "reviewed_at": {"type": "string", "format": "date-time"},
+        "notes": {"type": "string"}
+      },
+      "allOf": [{
+        "if": {"properties": {"status": {"const": "MARKETPLACE_CLEARED"}}, "required": ["status"]},
+        "then": {"required": ["reviewer_type", "reviewed_by", "reviewer_id", "reviewed_at"], "properties": {"reviewer_type": {"const": "human"}}}
+      }],
+      "additionalProperties": false
+    }
+  }
+}

@@ -14,6 +14,19 @@ from .scan import scan_path
 from .validate import validate_output
 
 
+def _run_operation_request(path: str) -> int:
+    from .operations.registry import execute_request
+    try:
+        payload = sys.stdin.read() if path == "-" else Path(path).read_text(encoding="utf-8")
+        request = json.loads(payload)
+    except (OSError, json.JSONDecodeError) as exc:
+        response = {"schema_version": "1.0.0", "request_id": None, "operation": "<invalid>", "ok": False, "project_revision": None, "result": None, "diagnostics": [{"severity": "error", "code": "INVALID_JSON", "message": str(exc)}], "artifacts": []}
+    else:
+        response = execute_request(request)
+    print(json.dumps(response, sort_keys=True, ensure_ascii=False))
+    return 0 if response["ok"] else 2
+
+
 def _scan_args(parser: argparse.ArgumentParser) -> None:
     parser.add_argument("--input", required=True, help="Mod JAR, source directory, or modpack directory")
     parser.add_argument("--output", required=True, help="JSON path or output directory")
@@ -35,7 +48,12 @@ def main(argv: list[str] | None = None) -> int:
         help="Require and validate reports/runtime-evidence.json",
     )
     validate_parser.add_argument("--record", action="store_true", help="Record validation layers in conversion reports and rebuild the deterministic archive")
+    operation_parser = sub.add_parser("operation", help="Execute one structured conversion-project operation")
+    operation_parser.add_argument("--request", required=True, help="JSON request file, or - for stdin")
     args = parser.parse_args(argv)
+
+    if args.command == "operation":
+        return _run_operation_request(args.request)
 
     if args.command == "validate":
         result = validate_output(args.path, runtime=args.runtime)

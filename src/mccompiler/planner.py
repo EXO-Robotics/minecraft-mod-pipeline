@@ -5,6 +5,7 @@ from typing import Any
 from .io import read_json
 from pathlib import Path
 from .patterns import match_patterns
+from .targets import get_target
 
 
 CLASSES = ("DIRECT", "SCRIPTED_EQUIVALENT", "RECONSTRUCTED", "BEHAVIORAL_APPROXIMATION", "VISUAL_APPROXIMATION", "MANUAL_REDESIGN", "UNSUPPORTED")
@@ -41,6 +42,19 @@ def _scores(classification: str, confidence: float, capability: dict[str, Any]) 
 
 
 def plan_conversion(ir: dict[str, Any]) -> dict[str, Any]:
+    raw_target = ir.get("target")
+    target_name: str | None
+    if isinstance(raw_target, str):
+        target_name = raw_target
+    elif isinstance(raw_target, dict):
+        selected_target = raw_target.get("profile") or raw_target.get("identifier") or raw_target.get("target_profile")
+        target_name = str(selected_target) if selected_target else None
+        # Preserve the pre-profile test/development contract for explicitly pinned legacy inputs.
+        if not target_name and raw_target.get("script_api_version"):
+            target_name = "LOCAL_WINDOWS_DEVELOPMENT"
+    else:
+        target_name = None
+    target = get_target(target_name)
     db = _database()
     capabilities = db["capabilities"]
     features: list[dict[str, Any]] = []
@@ -54,6 +68,8 @@ def plan_conversion(ir: dict[str, Any]) -> dict[str, Any]:
             classification = "MANUAL_REDESIGN"
         override = overrides.get(content.get("identifier"))
         if override and override.get("strategy"): classification = override["strategy"]
+        if cap.get("scripted") and not cap.get("native") and not target.scripts:
+            classification = "MANUAL_REDESIGN"
         if any(f["id"] == content.get("identifier") and f["kind"] == key for f in features):
             continue
         features.append({"id": content.get("identifier"), "kind": key, "classification": classification, "scores": _scores(classification, 1.0, cap), "capability": cap, "evidence": content.get("evidence", []), "override": override, "diagnostic": "identifier_conflict" if content.get("identifier") in conflicted else None})
@@ -64,10 +80,13 @@ def plan_conversion(ir: dict[str, Any]) -> dict[str, Any]:
         if behavior.get("diagnostics"): classification = "UNSUPPORTED"
         override = overrides.get(behavior.get("id"))
         if override and override.get("strategy"): classification = override["strategy"]
+        if cap.get("scripted") and not target.scripts:
+            classification = "MANUAL_REDESIGN"
         features.append({"id": behavior.get("id"), "kind": key, "classification": classification, "scores": _scores(classification, behavior.get("confidence", 0), cap), "capability": cap, "evidence": behavior.get("evidence", []), "fingerprint": behavior.get("fingerprint"), "override": override})
     for ui in ir.get("ui_intent", []):
         cap = capabilities.get("ui.form", {})
-        features.append({"id": ui.get("id"), "kind": "ui.form", "classification": cap["classification"], "scores": _scores(cap["classification"], 1, cap), "capability": cap, "evidence": ui.get("evidence", [])})
+        classification = cap["classification"] if target.scripts else "MANUAL_REDESIGN"
+        features.append({"id": ui.get("id"), "kind": "ui.form", "classification": classification, "scores": _scores(classification, 1, cap), "capability": cap, "evidence": ui.get("evidence", [])})
     for intent in ir.get("networking_intent", []):
         cap = capabilities["networking.intent"]
         features.append({"id": intent.get("id"), "kind": "networking.intent", "classification": cap["classification"], "scores": _scores(cap["classification"], 1, cap), "capability": cap, "evidence": intent.get("evidence", []), "replacement_strategy": intent.get("replacement_strategy")})
@@ -77,4 +96,4 @@ def plan_conversion(ir: dict[str, Any]) -> dict[str, Any]:
     counts = {name: sum(1 for f in features if f["classification"] == name) for name in CLASSES}
     numeric = [f["scores"] for f in features]
     summary = {key: round(sum(x[key] for x in numeric) / len(numeric), 3) if numeric else 0 for key in ("extraction_confidence", "technical_similarity", "gameplay_fidelity", "visual_fidelity", "persistence_fidelity", "multiplayer_fidelity", "performance_risk")}
-    return {"schema_version": "1.0.0", "capability_database_version": db.get("schema_version"), "target": ir.get("target"), "features": features, "patterns": match_patterns(ir), "strategy_counts": counts, "scores": summary, "constraints": ["Every downgrade is explicit.", "Runtime validation determines completion; static validity alone is insufficient."]}
+    return {"schema_version": "1.0.0", "capability_database_version": db.get("schema_version"), "target": ir.get("target"), "target_profile": target.identifier, "features": features, "patterns": match_patterns(ir), "strategy_counts": counts, "scores": summary, "constraints": ["Every downgrade is explicit.", "Runtime validation determines completion; static validity alone is insufficient."]}

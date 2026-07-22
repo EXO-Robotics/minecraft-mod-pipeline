@@ -1,0 +1,16 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://mccompiler.local/schemas/conversion-project-1.0.0.json",
+  "title": "Conversion Project 1.0.0",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "name", "target_profile", "revision", "analysis_revision", "input"],
+  "properties": {
+    "schema_version": {"const": "1.0.0"},
+    "name": {"type": "string", "minLength": 1},
+    "target_profile": {"type": "string", "minLength": 1},
+    "revision": {"type": "integer", "minimum": 1},
+    "analysis_revision": {"type": "integer", "minimum": 0},
+    "input": {"type": ["object", "null"]}
+  }
+}

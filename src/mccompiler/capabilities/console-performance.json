@@ -1,0 +1,15 @@
+{
+  "schema_version": "1.0.0",
+  "catalog_version": "2026-07-22-foundation-1",
+  "target": "MARKETPLACE_ADDON_STABLE",
+  "static_budgets": {
+    "pack_bytes": 104857600,
+    "file_count": 4096,
+    "texture_count": 1024
+  },
+  "policy": {
+    "budget_exceptions_require_attributable_human": true,
+    "runtime_performance_implied": false,
+    "notes": "Foundational conservative static budgets; calibrate with measured console benchmark evidence before production release."
+  }
+}

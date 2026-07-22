@@ -1,0 +1,27 @@
+schema_version: 1.0.0
+platforms: [XBOX_ONE, XBOX_SERIES]
+status: UNVERIFIED
+marketplace_targeted: true
+artifact_sha256: null
+game_version: null
+device_model: null
+tester: null
+completed_at: null
+external_blocker: "Physical Xbox execution has not been performed."
+checks:
+  - {id: resource_download, status: NOT_RUN}
+  - {id: realm_world_join, status: NOT_RUN}
+  - {id: stable_scripts_initialize, status: NOT_RUN}
+  - {id: controller_forms, status: NOT_RUN}
+  - {id: actual_item_events, status: NOT_RUN}
+  - {id: actual_block_events, status: NOT_RUN}
+  - {id: actual_entity_events, status: NOT_RUN}
+  - {id: projectile_impact, status: NOT_RUN}
+  - {id: dynamic_properties_persist, status: NOT_RUN}
+  - {id: scheduled_behavior_normal_play, status: NOT_RUN}
+  - {id: two_player_state_isolation, status: NOT_RUN}
+  - {id: input_and_frame_responsiveness, status: NOT_RUN}
+  - {id: leave_and_reconnect, status: NOT_RUN}
+  - {id: realm_restart_and_reconnect, status: NOT_RUN}
+evidence: []
+

@@ -1,5 +1,7 @@
 # Compiler contracts and reproduction guide
 
+> This guide describes the current research baseline. The planned Marketplace product architecture, target profiles, console protocol, agent workflow, and implementation-status matrix are indexed in [documentation-index.md](documentation-index.md). Do not interpret planned contracts as current compiler features.
+
 ## Supported profiles and boundaries
 
 The production-tested semantic profile is the legally clean Fabric-style fixture vocabulary in `tests/fixtures`. `SOURCE_PROJECT`, source-free `COMPILED_JAR` with OpenJDK `javap`, and `MODPACK_DIRECTORY` are tested input modes. Fabric metadata and this profile are semantic support; Quilt, Forge, NeoForge, legacy Forge, CurseForge, and Modrinth readers are inventory-only until dedicated semantic fixtures pass.

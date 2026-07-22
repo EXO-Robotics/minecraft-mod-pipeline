@@ -11,6 +11,8 @@ from pathlib import Path
 from typing import Any
 
 from .io import write_json
+from .api_catalog import ApiCatalog
+from .targets import get_target
 
 
 TOOL_VERSION = "0.2.0"
@@ -19,6 +21,35 @@ ZIP_TIME = (1980, 1, 1, 0, 0, 0)
 UUID_NAMESPACE = uuid.UUID("c9383f7f-e377-5cf8-af37-2a34029b29b9")
 GENERATABLE = {"DIRECT", "SCRIPTED_EQUIVALENT", "RECONSTRUCTED", "BEHAVIORAL_APPROXIMATION", "VISUAL_APPROXIMATION"}
 PLACEHOLDER_PNG = base64.b64decode("iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNk+A8AAQUBAScY42YAAAAASUVORK5CYII=")
+EVENT_SYMBOLS = {
+    "item_use": ("itemUse", "world.afterEvents.itemUse"),
+    "item_use_on_block": ("playerInteractWithBlock", "world.afterEvents.playerInteractWithBlock"),
+    "block_interact": ("playerInteractWithBlock", "world.afterEvents.playerInteractWithBlock"),
+    "block_break": ("playerBreakBlock", "world.afterEvents.playerBreakBlock"),
+    "entity_hit": ("entityHitEntity", "world.afterEvents.entityHitEntity"),
+    "entity_hurt": ("entityHurt", "world.afterEvents.entityHurt"),
+    "entity_death": ("entityDie", "world.afterEvents.entityDie"),
+    "entity_spawn": ("entitySpawn", "world.afterEvents.entitySpawn"),
+    "player_join": ("playerSpawn", "world.afterEvents.playerSpawn"),
+    "projectile_impact": ("projectileHitEntity", "world.afterEvents.projectileHitEntity"),
+}
+SCHEDULED_TRIGGERS = {"object_tick", "scheduled_tick", "state_transition"}
+COMMON_RUNTIME_SYMBOLS = {
+    ("@minecraft/server", name) for name in {
+        "ItemStack", "MolangVariableMap", "world.getDimension", "world.dynamicProperties",
+        "system.run", "system.runTimeout", "Entity.location", "Entity.dimension", "Entity.typeId",
+        "Entity.remove", "Entity.applyDamage", "Entity.getComponent", "Entity.addEffect",
+        "Entity.removeEffect", "Entity.setDynamicProperty", "Entity.getDynamicProperty",
+        "Entity.teleport", "Entity.applyImpulse", "Player.sendMessage", "Player.startItemCooldown",
+        "Player.getItemCooldown", "Dimension.spawnEntity", "Dimension.createExplosion",
+        "Dimension.playSound", "Dimension.spawnParticle", "Dimension.runCommand",
+        "Dimension.spawnItem", "Block.location", "Block.dimension", "Block.typeId", "Block.setType",
+        "EntityInventoryComponent.container", "Container.addItem", "Container.size",
+        "Container.getItem", "Container.setItem", "EntityHealthComponent.currentValue",
+        "EntityHealthComponent.effectiveMax", "EntityHealthComponent.setCurrentValue",
+        "ItemDurabilityComponent.damage",
+    }
+}
 
 
 def _safe_id(value: str) -> str:
@@ -38,7 +69,9 @@ def _write(path: Path, value: Any) -> None:
 
 
 def _target_min_version(ir: dict[str, Any]) -> list[int]:
-    for marker in (ir.get("target") or {}).get("version_markers", []):
+    raw_target = ir.get("target")
+    target = raw_target if isinstance(raw_target, dict) else {}
+    for marker in target.get("version_markers", []):
         match = re.search(r"(\d+)\.(\d+)\.(\d+)", str(marker))
         if match:
             return [int(x) for x in match.groups()]
@@ -118,7 +151,7 @@ def _projectile_definition(identifier: str, min_engine: list[int]) -> dict[str, 
     return {"format_version": ".".join(map(str, min_engine)), "minecraft:entity": {"description": {"identifier": identifier, "is_spawnable": False, "is_summonable": True}, "component_groups": {}, "components": {"minecraft:type_family": {"family": ["converted_projectile"]}, "minecraft:collision_box": {"width": 0.25, "height": 0.25}, "minecraft:physics": {}, "minecraft:projectile": {"power": 1.0, "gravity": 0.05, "on_hit": {"remove_on_hit": {}}}}, "events": {}}}
 
 
-def _script_modules(ir: dict[str, Any], plan: dict[str, Any]) -> dict[str, Any]:
+def _script_modules(ir: dict[str, Any], plan: dict[str, Any], *, debug: bool) -> tuple[dict[str, Any], list[dict[str, Any]], dict[str, str], list[dict[str, str]]]:
     index = _feature_index(plan)
     approved: list[dict[str, Any]] = []
     rejected: list[dict[str, Any]] = []
@@ -129,9 +162,37 @@ def _script_modules(ir: dict[str, Any], plan: dict[str, Any]) -> dict[str, Any]:
     state_data = _canonical([x for x in ir.get("state", []) if x.get("evidence") or x.get("override_provenance")])
     ui_data = _canonical([x for x in ir.get("ui_intent", []) if x.get("evidence") or x.get("override_provenance")])
     owned_data = _canonical(sorted({str(x.get("identifier")) for x in ir.get("content", []) if x.get("kind") in {"item", "block", "entity"} and x.get("identifier")}))
+    requirements: set[tuple[str, str]] = set(COMMON_RUNTIME_SYMBOLS)
+    for behavior in approved:
+        trigger = str((behavior.get("trigger") or {}).get("type"))
+        if trigger in EVENT_SYMBOLS:
+            requirements.add(("@minecraft/server", EVENT_SYMBOLS[trigger][1]))
+        elif trigger in SCHEDULED_TRIGGERS:
+            requirements.add(("@minecraft/server", "system.runInterval"))
+            requirements.update({
+                ("@minecraft/server", "world.afterEvents.playerInteractWithBlock"),
+                ("@minecraft/server", "world.afterEvents.playerBreakBlock"),
+                ("@minecraft/server", "world.afterEvents.entitySpawn"),
+                ("@minecraft/server", "world.afterEvents.entityDie"),
+                ("@minecraft/server", "system.currentTick"),
+            })
+        else:
+            raise ValueError(f"unmapped required trigger: {trigger} ({behavior.get('id')})")
+        if any(action.get("type") in {"update_persistent_state", "set_entity_phase"} for action in behavior.get("actions", [])):
+            requirements.add(("@minecraft/server", "world.dynamicProperties"))
+    if ui_data != "[]":
+        requirements.update({("@minecraft/server-ui", name) for name in ("ActionFormData", "ActionFormData.title", "ActionFormData.body", "ActionFormData.button", "ActionFormData.show")})
+    if debug:
+        requirements.add(("@minecraft/server", "system.afterEvents.scriptEventReceive"))
+    target = get_target(plan.get("target_profile"))
+    catalog = ApiCatalog.load_default()
+    catalogued = [requirement for requirement in requirements if requirement in catalog.symbols]
+    uncatalogued = [{"module": module, "symbol": symbol, "reason": "emitted Script API use is absent from the stable symbol catalog"} for module, symbol in sorted(requirements - set(catalogued))]
+    versions, api_evidence = catalog.resolve_versions(catalogued, marketplace=target.identifier == "MARKETPLACE_ADDON_STABLE")
+    event_map = {trigger: signal for trigger, (signal, _) in EVENT_SYMBOLS.items()}
     modules: dict[str, Any] = {
-        "scripts/main.js": "import { world, system } from '@minecraft/server';\nimport { registerGeneratedEvents, behaviors } from './events/generated.js';\nimport { startScheduler } from './runtime/scheduler.js';\nimport { runContractTests, registerRuntimeTestCommands } from './tests/contracts.js';\nregisterGeneratedEvents();\nstartScheduler(behaviors);\nregisterRuntimeTestCommands(behaviors);\nsystem.run(()=>{const key='mccompiler:runtime_boots';const boots=Number(world.getDynamicProperty(key)||0)+1;world.setDynamicProperty(key,boots);runContractTests(behaviors);console.warn(`[mccompiler] runtime initialized behaviors=${behaviors.length} persistent_boot=${boots}`);});\n",
-        "scripts/events/generated.js": "import { world } from '@minecraft/server';\nimport { dispatch } from '../runtime/actions.js';\nimport { registerActive, unregisterActive } from '../runtime/scheduler.js';\nexport const behaviors = " + behavior_data + ";\nconst owned=new Set(" + owned_data + ");\nexport const eventMap={item_use:'itemUse',item_use_on_block:'itemUseOn',block_interact:'playerInteractWithBlock',block_break:'playerBreakBlock',entity_hit:'entityHitEntity',entity_hurt:'entityHurt',entity_death:'entityDie',entity_spawn:'entitySpawn',player_join:'playerSpawn',projectile_impact:'projectileHitEntity'};\nconst key=b=>`${b.dimension.id}:${b.location.x}:${b.location.y}:${b.location.z}`;\nconst matches=(b,c)=>{if(!owned.has(b.owner.identifier))return true;const ids=[c.itemStack?.typeId,c.block?.typeId,c.entity?.typeId,c.hitEntity?.typeId,c.hurtEntity?.typeId,c.deadEntity?.typeId];return ids.includes(b.owner.identifier)};\nexport function registerGeneratedEvents(){for(const b of behaviors){const e=world.afterEvents[eventMap[b.trigger.type]];if(e)e.subscribe(ctx=>{if(matches(b,ctx))dispatch(b,ctx)});}world.afterEvents.playerPlaceBlock?.subscribe(e=>registerActive(key(e.block),{block:e.block,source:e.player,owner:e.block.typeId}));world.afterEvents.playerBreakBlock?.subscribe(e=>unregisterActive(key(e.block)));world.afterEvents.entitySpawn?.subscribe(e=>registerActive(e.entity.id,{target:e.entity,owner:e.entity.typeId}));world.afterEvents.entityDie?.subscribe(e=>unregisterActive(e.deadEntity.id));}\n",
+        "scripts/main.js": "import { world, system } from '@minecraft/server';\nimport { registerGeneratedEvents, behaviors } from './events/generated.js';\nimport { startScheduler } from './runtime/scheduler.js';\nregisterGeneratedEvents();\nstartScheduler(behaviors);\nsystem.run(()=>{console.warn(`[mccompiler] runtime initialized behaviors=${behaviors.length}`);});\n",
+        "scripts/events/generated.js": "import { world } from '@minecraft/server';\nimport { dispatch } from '../runtime/actions.js';\nimport { registerActive, unregisterActive } from '../runtime/scheduler.js';\nexport const behaviors = " + behavior_data + ";\nconst owned=new Set(" + owned_data + ");\nexport const eventMap=" + _canonical(event_map) + ";\nconst scheduled=new Set(['object_tick','scheduled_tick','state_transition']);\nconst key=b=>`${b.dimension.id}:${b.location.x}:${b.location.y}:${b.location.z}`;\nconst matches=(b,c)=>{if(!owned.has(b.owner.identifier))return true;const ids=[c.itemStack?.typeId,c.block?.typeId,c.entity?.typeId,c.hitEntity?.typeId,c.hurtEntity?.typeId,c.deadEntity?.typeId];return ids.includes(b.owner.identifier)};\nexport function registerGeneratedEvents(){for(const b of behaviors){if(scheduled.has(b.trigger.type))continue;world.afterEvents[eventMap[b.trigger.type]].subscribe(ctx=>{if(matches(b,ctx))dispatch(b,ctx)});}const ticking=behaviors.some(b=>scheduled.has(b.trigger.type));if(ticking){world.afterEvents.playerInteractWithBlock.subscribe(e=>registerActive(key(e.block),{block:e.block,source:e.player,owner:e.block.typeId}));world.afterEvents.playerBreakBlock.subscribe(e=>unregisterActive(key(e.block)));world.afterEvents.entitySpawn.subscribe(e=>registerActive(e.entity.id,{target:e.entity,owner:e.entity.typeId}));world.afterEvents.entityDie.subscribe(e=>unregisterActive(e.deadEntity.id));}}\n",
         "scripts/runtime/actions.js": """// Conservative dispatcher: only evidence-backed IR reaches this module.
 import { world, system, ItemStack, MolangVariableMap } from '@minecraft/server';
 import { openGeneratedForm } from '../ui/forms.js';
@@ -149,15 +210,13 @@ export function dispatch(behavior,c={}){if(!conditionsPass(behavior,c))return fa
 """,
         "scripts/runtime/state.js": "export const stateRequirements = " + state_data + ";\nexport function stateKey(id){return `mccompiler:${id.replace(/[^a-z0-9_.-]/gi,'_')}`;}\n",
         "scripts/runtime/scheduler.js": "import { system } from '@minecraft/server';\nimport { dispatch } from './actions.js';\nconst active=new Map();let cursor=0;const TICK_BUDGET=32;\nexport function registerActive(id,context){active.set(id,{id,context,lastSeen:system.currentTick});}\nexport function unregisterActive(id){active.delete(id);}\nconst invalid=e=>{try{return e.context.target&&e.context.target.isValid===false}catch{return true}};\nexport function startScheduler(behaviors){const ticking=behaviors.filter(b=>['object_tick','scheduled_tick','state_transition'].includes(b.trigger.type));if(!ticking.length)return;system.runInterval(()=>{const entries=[...active.values()];if(!entries.length)return;let used=0;while(used<Math.min(TICK_BUDGET,entries.length)){const entry=entries[cursor%entries.length];cursor=(cursor+1)%entries.length;if(invalid(entry)){active.delete(entry.id);continue}for(const b of ticking){if(entry.context.owner!==b.owner.identifier)continue;const phase=(b.actions||[]).find(x=>x.type==='set_entity_phase')?.value;if(phase&&entry.context.target?.getDynamicProperty?.('mccompiler:phase')===phase)continue;dispatch(b,entry.context);}used++;}for(const [id,e] of active){if(system.currentTick-e.lastSeen>72000||invalid(e))active.delete(id);}},1);}\n",
-        "scripts/tests/contracts.js": "import { world, system } from '@minecraft/server';\nimport { eventMap } from '../events/generated.js';\nimport { dispatch, readState, writeState } from '../runtime/actions.js';\nconst scheduled=new Set(['object_tick','scheduled_tick','state_transition']);\nconst actions=new Set(['spawn_entity','spawn_projectile','remove_entity','create_explosion','damage','heal','apply_effect','remove_effect','play_sound','spawn_particles','set_block','replace_block','break_block','place_structure','teleport','apply_velocity','modify_item_durability','add_item','remove_item','update_persistent_state','start_cooldown','set_entity_phase','trigger_behavior','send_player_feedback','open_interaction_ui','schedule_delayed_action']);\nconst conditions=new Set(['player_sneaking','held_item_match','equipped_armor_match','target_entity_match','block_match','dimension_match','random_probability','cooldown_ready','state_comparison','health_threshold','distance_threshold','time_or_tick','permission_or_ownership','client_server_side','configuration_flag','dependency_presence']);\nexport function runContractTests(behaviors){const failures=[];for(const b of behaviors){if(!eventMap[b.trigger.type]&&!scheduled.has(b.trigger.type))failures.push(`${b.id}:trigger:${b.trigger.type}`);for(const x of b.actions||[])if(!actions.has(x.type))failures.push(`${b.id}:action:${x.type}`);for(const x of b.conditions||[])if(!conditions.has(x.type))failures.push(`${b.id}:condition:${x.type}`);}if(failures.length)throw new Error(`[mccompiler] contract tests failed ${failures.join(',')}`);console.warn(`[mccompiler] contract tests passed behaviors=${behaviors.length}`);}\nexport function registerRuntimeTestCommands(behaviors){system.afterEvents.scriptEventReceive.subscribe(e=>{if(e.id!=='mccompiler:test')return;const [id,x='0',y='100',z='0']=e.message.split('|');const b=behaviors.find(v=>v.id===id);if(!b){console.error(`[mccompiler] behavioral test missing ${id}`);return}const d=world.getDimension('overworld'),p={x:Number(x),y:Number(y),z:Number(z)};const entity=d.getEntities({type:b.owner.identifier,location:p,maxDistance:16})[0];const context={block:d.getBlock(p),target:entity,owner:b.owner.identifier};for(const condition of b.conditions||[])if(condition.type==='state_comparison')writeState(b,context,condition.key,condition.value);const passed=dispatch(b,context);const state=(b.stateWrites||[]).map(k=>`${k}=${readState(b,context,k)}`).join(',');console.warn(`[mccompiler] behavioral test ${passed?'passed':'condition-not-met'} ${id}${state?' '+state:''}`);});}\n",
-        "scripts/ui/forms.js": "import { ActionFormData } from '@minecraft/server-ui';\nexport const forms = " + ui_data + ";\nexport async function openGeneratedForm(player,id){const f=forms.find(x=>x.id===id);if(!f)return;const form=new ActionFormData().title(f.title||id).body(f.purpose||'');for(const c of f.controls||[])form.button(String(c));return form.show(player);}\n",
+        "scripts/ui/forms.js": (("import { ActionFormData } from '@minecraft/server-ui';\nexport const forms = " + ui_data + ";\nexport async function openGeneratedForm(player,id){const f=forms.find(x=>x.id===id);if(!f)throw new Error(`[mccompiler] missing generated form ${id}`);const form=new ActionFormData().title(f.title||id).body(f.purpose||'');for(const c of f.controls||[])form.button(String(c));return form.show(player);}\n") if ui_data != "[]" else "export const forms=[];\nexport async function openGeneratedForm(_player,id){throw new Error(`[mccompiler] form unavailable ${id}`);}\n"),
         "scripts/README.md": "Generated modules are deterministic. Unsupported and evidence-free behavior is intentionally omitted.\n",
         "tests/behavior-plan.json": {"approved": [x.get("id") for x in approved], "omitted": [{"id": x.get("id"), "reason": "unsupported, unplanned, or missing evidence"} for x in rejected]},
     }
-    modules["scripts/tests/contracts.js"] = modules["scripts/tests/contracts.js"].replace(
-        "const context={block:d.getBlock(p),target:",
-        "const context={block:d.getBlock(p),location:p,target:",
-    )
+    if debug:
+        modules["scripts/tests/contracts.js"] = "import { world, system } from '@minecraft/server';\nimport { dispatch } from '../runtime/actions.js';\nexport function registerRuntimeTestCommands(behaviors){system.afterEvents.scriptEventReceive.subscribe(e=>{if(e.id!=='mccompiler:test')return;const b=behaviors.find(v=>v.id===e.message);if(!b)return;const p={x:0,y:100,z:0};dispatch(b,{source:e.sourceEntity,location:p});});}\n"
+        modules["scripts/main.js"] += "import { registerRuntimeTestCommands } from './tests/contracts.js';\nregisterRuntimeTestCommands(behaviors);\n"
     modules["scripts/runtime/actions.js"] = modules["scripts/runtime/actions.js"].replace(
         "else d.spawnItem(item,{x:p.x,y:p.y+1,z:p.z});break",
         "else d.spawnItem(item,{x:p.x,y:p.y+1,z:p.z});console.warn(`[mccompiler] item output ${x.item||'minecraft:stone'} behavior=${behavior.id}`);break",
@@ -173,7 +232,7 @@ export function dispatch(behavior,c={}){if(!conditionsPass(behavior,c))return fa
         "const invalid=e=>{try{return e.context.target&&e.context.target.isValid===false}catch{return true}};",
         "const invalid=e=>{try{const t=e.context.target;if(!t)return false;const p=t.location;if(p&&(p.y<-64||p.y>320))return true;t.getDynamicProperty?.('mccompiler:phase');return false}catch{return true}};",
     )
-    return modules
+    return modules, api_evidence, versions, uncatalogued
 
 
 def _copy_assets(ir: dict[str, Any], output: Path) -> list[dict[str, str]]:
@@ -247,8 +306,17 @@ def _resource_content(ir: dict[str, Any], rp: Path, namespace: str) -> list[dict
     return placeholders
 
 
-def _zip_deterministic(root: Path, archive: Path) -> None:
-    members = sorted(p for p in root.rglob("*") if p.is_file() and p != archive)
+def _zip_deterministic(root: Path, archive: Path, *, consumer_only: bool | None = None) -> None:
+    if consumer_only is None:
+        try:
+            plan = json.loads((root / "reports/conversion-plan.json").read_text(encoding="utf-8"))
+            consumer_only = get_target(plan.get("target_profile")).production
+        except (OSError, json.JSONDecodeError, ValueError, AttributeError):
+            consumer_only = False
+    if consumer_only:
+        members = sorted(p for folder in (root / "behavior_pack", root / "resource_pack") for p in folder.rglob("*") if p.is_file())
+    else:
+        members = sorted(p for p in root.rglob("*") if p.is_file() and p != archive)
     with zipfile.ZipFile(archive, "w", compression=zipfile.ZIP_DEFLATED, compresslevel=9) as bundle:
         for path in members:
             info = zipfile.ZipInfo(path.relative_to(root).as_posix(), ZIP_TIME)
@@ -261,20 +329,19 @@ def _zip_deterministic(root: Path, archive: Path) -> None:
 def compile_bedrock(ir: dict[str, Any], plan: dict[str, Any], output_dir: str | Path) -> Path:
     output = Path(output_dir).expanduser().resolve()
     output.mkdir(parents=True, exist_ok=True)
-    for name in ("behavior_pack", "resource_pack", "scripts", "tests", "reports"):
-        target = output / name
-        if target.exists():
-            shutil.rmtree(target)
-        target.mkdir(parents=True)
+    for name in ("behavior_pack", "resource_pack", "tests", "reports"):
+        output_section = output / name
+        if output_section.exists():
+            shutil.rmtree(output_section)
+        output_section.mkdir(parents=True)
     for old in (output / "generated.mcaddon", output / ARCHIVE_NAME):
         if old.exists(): old.unlink()
     namespace, seed = _identity(ir, plan)
     min_engine, version = _target_min_version(ir), [0, 2, 0]
     ids = {role: _uuid(seed, role) for role in ("bp", "bp-data", "bp-script", "rp", "rp-data")}
-    script_api = (ir.get("target") or {}).get("script_api_version", "2.0.0")
-    if isinstance(script_api, list): script_api = ".".join(map(str, script_api))
+    target_profile = get_target(plan.get("target_profile"))
     bp, rp = output / "behavior_pack", output / "resource_pack"
-    _write(bp / "manifest.json", {"format_version": 2, "header": {"name": f"{namespace} reconstructed behavior", "description": "Deterministic output from minecraft-compiler-baseline", "uuid": ids["bp"], "version": version, "min_engine_version": min_engine}, "modules": [{"type": "data", "uuid": ids["bp-data"], "version": version}, {"type": "script", "language": "javascript", "entry": "scripts/main.js", "uuid": ids["bp-script"], "version": version}], "dependencies": [{"uuid": ids["rp"], "version": version}, {"module_name": "@minecraft/server", "version": str(script_api)}, {"module_name": "@minecraft/server-ui", "version": str(script_api)}], "metadata": {"authors": ["minecraft-compiler-baseline"], "generated_with": {"minecraft-compiler-baseline": [TOOL_VERSION]}}})
+    bp_manifest: dict[str, Any] = {"format_version": 2, "header": {"name": f"{namespace} reconstructed behavior", "description": "Deterministic output from minecraft-compiler-baseline", "uuid": ids["bp"], "version": version, "min_engine_version": min_engine}, "modules": [{"type": "data", "uuid": ids["bp-data"], "version": version}], "dependencies": [{"uuid": ids["rp"], "version": version}], "metadata": {"authors": ["minecraft-compiler-baseline"], "generated_with": {"minecraft-compiler-baseline": [TOOL_VERSION]}}}
     _write(rp / "manifest.json", {"format_version": 2, "header": {"name": f"{namespace} reconstructed resources", "description": "Deterministic output from minecraft-compiler-baseline", "uuid": ids["rp"], "version": version, "min_engine_version": min_engine}, "modules": [{"type": "resources", "uuid": ids["rp-data"], "version": version}], "metadata": {"authors": ["minecraft-compiler-baseline"], "generated_with": {"minecraft-compiler-baseline": [TOOL_VERSION]}}})
     index = _feature_index(plan)
     generated, omitted = [], []
@@ -305,20 +372,45 @@ def compile_bedrock(ir: dict[str, Any], plan: dict[str, Any], output_dir: str | 
         rel = f"entities/{identifier.replace(':', '_')}.json"
         _write(bp / rel, _projectile_definition(identifier, min_engine))
         generated.append({"id": identifier, "kind": "projectile", "path": f"behavior_pack/{rel}", "classification": "RECONSTRUCTED", "evidence": evidence_rows})
-    modules = _script_modules(ir, plan)
+    modules: dict[str, Any] = {}
+    api_evidence: list[dict[str, Any]] = []
+    module_versions: dict[str, str] = {}
+    uncatalogued_symbols: list[dict[str, str]] = []
+    if target_profile.scripts:
+        candidate_modules, api_evidence, module_versions, uncatalogued_symbols = _script_modules(ir, plan, debug=target_profile.debug_content)
+        has_script_features = bool(json.loads(candidate_modules["tests/behavior-plan.json"])["approved"] if isinstance(candidate_modules["tests/behavior-plan.json"], str) else candidate_modules["tests/behavior-plan.json"]["approved"]) or bool(module_versions)
+        if has_script_features:
+            modules = candidate_modules
+            bp_manifest["modules"].append({"type": "script", "language": "javascript", "entry": "scripts/main.js", "uuid": ids["bp-script"], "version": version})
+            bp_manifest["dependencies"].extend({"module_name": name, "version": value} for name, value in sorted(module_versions.items()))
+    _write(bp / "manifest.json", bp_manifest)
     custom_modules = [module for override in ir.get("applied_overrides", []) for module in override.get("custom_script_modules", [])]
     custom_imports = "".join(f"import './{str(module['destination']).removeprefix('scripts/')}';\n" for module in custom_modules)
-    modules["scripts/main.js"] = custom_imports + modules["scripts/main.js"]
+    if custom_modules and not target_profile.scripts:
+        raise ValueError(f"target profile {target_profile.identifier} prohibits custom script modules")
+    if modules and custom_imports:
+        modules["scripts/main.js"] = custom_imports + modules["scripts/main.js"]
     for rel, value in modules.items():
         if rel.startswith("scripts/"):
             _write(bp / rel, value)
-            _write(output / rel, value)  # inspectable source mirror outside the pack
+            if target_profile.debug_content:
+                _write(output / rel, value)  # development-only inspectable mirror
         else:
             _write(output / rel, value)
     for module in custom_modules:
         destination = str(module["destination"])
         _write(bp / destination, module["source"])
-        _write(output / destination, module["source"])
+        if target_profile.debug_content:
+            _write(output / destination, module["source"])
+    if not (output / "tests/behavior-plan.json").exists():
+        approved_ids: list[dict[str, Any]] = []
+        omitted_ids: list[dict[str, Any]] = []
+        feature_index = _feature_index(plan)
+        for behavior in ir.get("behaviors", []):
+            feature = feature_index.get((f"behavior.{behavior.get('trigger', {}).get('type')}", str(behavior.get("id"))))
+            row = {"id": behavior.get("id"), "reason": "target profile does not emit scripts"}
+            (approved_ids if target_profile.scripts and _approved(feature, behavior) else omitted_ids).append(row)
+        _write(output / "tests/behavior-plan.json", {"approved": [row["id"] for row in approved_ids], "omitted": omitted_ids})
     assets = _copy_assets(ir, output)
     placeholders = _resource_content(ir, rp, namespace)
     _write(rp / "_source_asset_map.json", assets)
@@ -326,6 +418,7 @@ def compile_bedrock(ir: dict[str, Any], plan: dict[str, Any], output_dir: str | 
     _write(output / "reports" / "modir.json", ir)
     _write(output / "reports" / "conversion-plan.json", plan)
     _write(output / "reports" / "provenance.json", {"schema_version": "1.0.0", "features": feature_report, "generated_content": generated})
+    _write(output / "reports" / "api-usage.json", {"schema_version": "1.0.0", "target_profile": target_profile.identifier, "complete": not uncatalogued_symbols, "resolved_modules": module_versions, "symbols": api_evidence, "uncatalogued_symbols": uncatalogued_symbols})
     _write(output / "reports" / "unsupported-and-approximations.json", {"unsupported": [x for x in feature_report if x["classification"] in {"UNSUPPORTED", "MANUAL_REDESIGN"}] + omitted, "approximations": [x for x in feature_report if "APPROXIMATION" in str(x["classification"])] + placeholders})
     _write(output / "reports" / "conversion-report.md", _report(ir, plan, namespace, generated, omitted, assets))
     manifest = {"schema_version": "1.0.0", "generator": {"name": "minecraft-compiler-baseline", "version": TOOL_VERSION}, "determinism": {"seed_sha256": seed, "uuid_scheme": "UUID5", "archive_order": "lexicographic", "archive_timestamp": "1980-01-01T00:00:00Z"}, "packs": {"behavior": ids["bp"], "resource": ids["rp"]}, "generated": generated, "omitted": omitted, "plan_feature_ids": [x.get("id") for x in plan.get("features", [])]}
@@ -348,7 +441,7 @@ def compile_bedrock(ir: dict[str, Any], plan: dict[str, Any], output_dir: str | 
         "remaining_human_tasks": [x.get("id") for x in feature_report if (x.get("scores") or {}).get("human_review_required")],
     }
     _write(output / "reports" / "conversion-report.json", report_json)
-    _zip_deterministic(output, output / ARCHIVE_NAME)
+    _zip_deterministic(output, output / ARCHIVE_NAME, consumer_only=target_profile.production)
     return output / ARCHIVE_NAME
 
 

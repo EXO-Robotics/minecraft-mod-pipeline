@@ -1,0 +1,18 @@
+schema_version: 1.0.0
+surfaces:
+  local_windows: UNVERIFIED
+  realm_windows: UNVERIFIED
+artifact_sha256: null
+game_version: null
+checks:
+  - {id: clean_import, status: NOT_RUN}
+  - {id: local_world_activation, status: NOT_RUN}
+  - {id: actual_gameplay_actions, status: NOT_RUN}
+  - {id: controller_input, status: NOT_RUN}
+  - {id: persistence_restart, status: NOT_RUN}
+  - {id: multiplayer_isolation, status: NOT_RUN}
+  - {id: realm_upload, status: NOT_RUN}
+  - {id: realm_windows_join, status: NOT_RUN}
+  - {id: realm_restart, status: NOT_RUN}
+evidence: []
+

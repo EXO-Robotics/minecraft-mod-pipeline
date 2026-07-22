@@ -11,6 +11,7 @@ from pathlib import Path
 from typing import Any, Iterable
 
 from .bedrock import ARCHIVE_NAME, ZIP_TIME
+from .targets import get_target
 
 
 IDENTIFIER = re.compile(r"^[a-z0-9_.-]+:[a-z0-9_./-]+$")
@@ -536,6 +537,7 @@ def validate_output(
     *,
     runtime: bool = False,
     artifacts: dict[str, Any] | None = None,
+    marketplace: bool = False,
 ) -> dict[str, Any]:
     """Validate generated output in static, integration, and evidenced-runtime layers.
 
@@ -562,7 +564,7 @@ def validate_output(
 
     required = [
         "behavior_pack/manifest.json", "resource_pack/manifest.json", "conversion-manifest.json",
-        "reports/provenance.json", "reports/unsupported-and-approximations.json",
+        "reports/provenance.json", "reports/unsupported-and-approximations.json", "reports/api-usage.json",
         "tests/behavior-plan.json", ARCHIVE_NAME,
     ]
     start = len(errors)
@@ -575,6 +577,12 @@ def validate_output(
     parsed = {json_path: _json(json_path, errors) for json_path in json_files}
     _check(checks, "json-parse", errors, start, files=len(json_files))
     conversion = parsed.get(root / "conversion-manifest.json") or {}
+    plan_document = plan or parsed.get(root / "reports/conversion-plan.json") or {}
+    try:
+        target = get_target(plan_document.get("target_profile"))
+    except ValueError as exc:
+        errors.append(str(exc))
+        target = get_target(None)
     embedded = _embedded_artifacts(root, parsed, conversion if isinstance(conversion, dict) else {}, artifacts)
 
     start = len(errors)
@@ -589,6 +597,38 @@ def validate_output(
     manifests = [(manifest, parsed.get(manifest)) for manifest in manifest_paths if manifest.exists()]
     _manifest_checks(root, manifests, errors, warnings, checks)
     _script_check(root, errors, warnings, checks)
+    start = len(errors)
+    bp_manifest = parsed.get(root / "behavior_pack/manifest.json") or {}
+    script_modules = [row for row in bp_manifest.get("modules", []) if isinstance(row, dict) and row.get("type") == "script"]
+    dependencies = {row.get("module_name"): row.get("version") for row in bp_manifest.get("dependencies", []) if isinstance(row, dict) and row.get("module_name")}
+    script_files = list((root / "behavior_pack/scripts").rglob("*.js")) if (root / "behavior_pack/scripts").exists() else []
+    usage = parsed.get(root / "reports/api-usage.json") or {}
+    resolved = usage.get("resolved_modules", {}) if isinstance(usage, dict) else {}
+    if not target.scripts and (script_modules or dependencies or script_files):
+        errors.append(f"Target profile {target.identifier} prohibits scripts and Script API dependencies")
+    if bool(script_modules) != bool(script_files):
+        errors.append("Script/profile mismatch: script module and generated script files must appear together")
+    if dependencies != resolved:
+        errors.append("Script/profile mismatch: manifest dependencies do not match API usage evidence")
+    if target.production and (root / "behavior_pack/scripts/tests").exists():
+        errors.append("Production target contains debug script commands")
+    if target.production and (root / "scripts").exists():
+        errors.append("Production target contains inspectable script mirrors")
+    for module, version in dependencies.items():
+        if module in EXPERIMENTAL_MODULES or module not in SUPPORTED_MODULES:
+            errors.append(f"Target profile {target.identifier} prohibits BDS/unsupported module {module}")
+        if target.stable_scripts_only and isinstance(version, str) and ("beta" in version or "preview" in version):
+            errors.append(f"Target profile {target.identifier} prohibits non-stable module {module} {version}")
+    if usage and usage.get("target_profile") != target.identifier:
+        errors.append("Script/profile mismatch: API usage evidence target differs from validation target")
+    uncatalogued = usage.get("uncatalogued_symbols", []) if isinstance(usage, dict) else []
+    if marketplace and target.identifier != "MARKETPLACE_ADDON_STABLE":
+        errors.append(f"Marketplace validation requires MARKETPLACE_ADDON_STABLE, got {target.identifier}")
+    if marketplace and uncatalogued:
+        errors.append(f"Marketplace API usage is incomplete: {len(uncatalogued)} emitted symbols are uncatalogued")
+    if marketplace and script_files and usage.get("complete") is not True:
+        errors.append("Marketplace API usage report does not claim complete symbol coverage")
+    _check(checks, "target-profile-and-api-usage", errors, start, target_profile=target.identifier, resolved_modules=resolved)
     _content_checks(root, parsed, errors, warnings, checks)
 
     start = len(errors)
@@ -604,7 +644,13 @@ def validate_output(
                     errors.append("Archive contains nondeterministic timestamps")
                 if bundle.testzip() is not None:
                     errors.append("Archive contains a corrupt member")
-                disk = sorted(file.relative_to(root).as_posix() for file in root.rglob("*") if file.is_file() and file != archive)
+                if target.production:
+                    unexpected = [name for name in names if not name.startswith(("behavior_pack/", "resource_pack/"))]
+                    if unexpected:
+                        errors.append("Marketplace consumer archive contains internal artifacts: " + ", ".join(unexpected[:5]))
+                    disk = sorted(file.relative_to(root).as_posix() for folder in (root / "behavior_pack", root / "resource_pack") for file in folder.rglob("*") if file.is_file())
+                else:
+                    disk = sorted(file.relative_to(root).as_posix() for file in root.rglob("*") if file.is_file() and file != archive)
                 if names != disk:
                     errors.append("Archive member set differs from generated output")
         except zipfile.BadZipFile:

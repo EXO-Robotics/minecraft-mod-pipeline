@@ -14,6 +14,8 @@ from .ir import empty_ir
 from .semantics import analyze_java, attach_fingerprints
 from .frontends.jar_bytecode import class_constant_evidence
 from .frontends.javap_analyzer import analyze_archive
+from .frontends.fabric import analyze_source as analyze_fabric_source, metadata as fabric_metadata
+from .frontends.forge_legacy import analyze_source as analyze_forge_legacy_source, metadata as forge_legacy_metadata
 
 
 CONTENT_DIRS = {
@@ -108,25 +110,12 @@ def _metadata(view: ArchiveView) -> tuple[list[dict[str, Any]], list[dict[str, A
     evidence: list[dict[str, Any]] = []
 
     fabric = "fabric.mod.json"
+    fabric_text = view.read_text(fabric)
     data = _json_text(view, fabric)
     if isinstance(data, dict):
-        mod_id = data.get("id") or view.path.stem
-        fabric_deps: list[dict[str, Any]] = []
-        for key, optional in (("depends", False), ("recommends", True), ("suggests", True), ("conflicts", True)):
-            values = data.get(key, {})
-            if isinstance(values, dict):
-                fabric_deps.extend({"id": k, "version": v, "optional": optional, "kind": key} for k, v in values.items())
-            elif isinstance(values, list):
-                fabric_deps.extend(d for d in (_dependency(v, optional) for v in values) if d)
-        mods.append({
-            "id": mod_id,
-            "name": data.get("name") or mod_id,
-            "version": data.get("version"),
-            "loader": "fabric",
-            "dependencies": fabric_deps,
-            "metadata": {"environment": data.get("environment"), "entrypoints": sorted((data.get("entrypoints") or {}).keys())},
-        })
-        evidence.append({"path": fabric, "kind": "fabric.mod.json"})
+        mod, provenance = fabric_metadata(data, fabric_text or "", fabric)
+        mods.append(mod)
+        evidence.append(provenance)
 
     quilt = "quilt.mod.json"
     data = _json_text(view, quilt)
@@ -173,16 +162,12 @@ def _metadata(view: ArchiveView) -> tuple[list[dict[str, Any]], list[dict[str, A
         evidence.append({"path": filename, "kind": filename.rsplit("/", 1)[-1]})
 
     info = "mcmod.info"
+    info_text = view.read_text(info)
     data = _json_text(view, info)
-    if isinstance(data, dict):
-        data = [data]
-    if isinstance(data, list):
-        for mod in data:
-            if isinstance(mod, dict):
-                mod_id = mod.get("modid") or mod.get("modId") or view.path.stem
-                deps = [{"id": dep, "version": None, "optional": False} for dep in mod.get("dependencies", []) if isinstance(dep, str)]
-                mods.append({"id": mod_id, "name": mod.get("name") or mod_id, "version": mod.get("version"), "loader": "forge-legacy", "dependencies": deps, "metadata": {}})
-        evidence.append({"path": info, "kind": info})
+    if isinstance(data, (dict, list)):
+        legacy_mods, legacy_evidence, _ = forge_legacy_metadata(data, info_text or "", view.read_text("META-INF/MANIFEST.MF"), info)
+        mods.extend(legacy_mods)
+        evidence.extend(legacy_evidence)
 
     if not mods:
         mods.append({"id": re.sub(r"[^a-z0-9_]+", "_", view.path.stem.lower()).strip("_") or "unknown_mod", "name": view.path.stem, "version": None, "loader": "unknown", "dependencies": [], "metadata": {}})
@@ -340,6 +325,13 @@ def scan_path(input_path: str | Path, bedrock_server: str | Path | None = None) 
         view = ArchiveView(source)
         try:
             mods, metadata_evidence = _metadata(view)
+            loaders = {mod.get("loader") for mod in mods}
+            legacy_metadata_diagnostics: list[dict[str, Any]] = []
+            if "forge-legacy" in loaders:
+                legacy_document = _json_text(view, "mcmod.info")
+                if isinstance(legacy_document, (dict, list)):
+                    _, _, legacy_metadata_diagnostics = forge_legacy_metadata(legacy_document, view.read_text("mcmod.info") or "", view.read_text("META-INF/MANIFEST.MF"))
+                    semantic["diagnostics"].extend(legacy_metadata_diagnostics)
             inventory = _inventory(view)
             for mod in mods:
                 record = {**mod, "source": {"path": str(source), "sha256": view.sha256()}, "metadata_evidence": metadata_evidence, "inventory": inventory}
@@ -355,6 +347,14 @@ def scan_path(input_path: str | Path, bedrock_server: str | Path | None = None) 
                     extracted = analyze_java(entry, view.read_text(entry) or "")
                     for key, values in extracted.items():
                         semantic[key].extend(values)
+                    if "fabric" in loaders:
+                        extracted = analyze_fabric_source(entry, view.read_text(entry) or "")
+                        for key, values in extracted.items():
+                            semantic[key].extend(values)
+                    if "forge-legacy" in loaders:
+                        extracted = analyze_forge_legacy_source(entry, view.read_text(entry) or "")
+                        for key, values in extracted.items():
+                            semantic[key].extend(values)
                 elif entry.lower().endswith(".class"):
                     bytecode_evidence.append(class_constant_evidence(entry, view.read_bytes(entry)))
             if source.is_file() and inventory["content_counts"].get("class_files") and not inventory["content_counts"].get("java_sources"):

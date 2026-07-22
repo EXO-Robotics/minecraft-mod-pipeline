@@ -1,0 +1,18 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://mccompiler.local/schemas/operation-response-1.0.0.json",
+  "title": "Operation Response 1.0.0",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "request_id", "operation", "ok", "project_revision", "result", "diagnostics", "artifacts"],
+  "properties": {
+    "schema_version": {"const": "1.0.0"},
+    "request_id": {"type": ["string", "null"]},
+    "operation": {"type": "string"},
+    "ok": {"type": "boolean"},
+    "project_revision": {"type": ["integer", "null"]},
+    "result": {},
+    "diagnostics": {"type": "array", "items": {"type": "object"}},
+    "artifacts": {"type": "array", "items": {"type": "object"}}
+  }
+}

@@ -1,0 +1,40 @@
+schema_version: 1.0.0
+benchmark_id: benchmark-a-original-marketplace-showcase
+title: Original Marketplace Showcase
+status: SPECIFICATION_ONLY
+target_profile: MARKETPLACE_ADDON_STABLE
+authorship: ORIGINAL_PLANNED
+marketplace_approval_claimed: false
+platform_status:
+  local_windows: UNVERIFIED
+  bds_diagnostic: UNVERIFIED
+  realm_windows: UNVERIFIED
+  ps4: UNVERIFIED
+  ps5: UNVERIFIED
+  xbox_one: UNVERIFIED
+  xbox_series: UNVERIFIED
+features:
+  - custom_item
+  - custom_block
+  - recipes
+  - loot
+  - projectile
+  - status_effect
+  - cooldown
+  - persistent_player_progression
+  - persistent_machine_state
+  - processing_machine
+  - custom_mob
+  - multiphase_boss
+  - structure
+  - spawn_rules
+  - controller_friendly_form
+  - multiplayer_state_isolation
+  - save_migration
+  - data_driven_mechanic
+  - stable_script_mechanic
+  - approved_redesign
+  - deliberately_unsupported_mechanic
+artifact_paths: []
+evidence_paths: []
+

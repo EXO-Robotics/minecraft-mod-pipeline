@@ -1,0 +1,11 @@
+{
+  "schema_version": "1.0.0",
+  "tool": "Minecraft Creator Tools",
+  "version": "1.0.0",
+  "executables": ["mctools", "minecraft-creator-tools"],
+  "version_args": ["--version"],
+  "validate_args": ["validate", "--format", "json"],
+  "suite_flag": "--suite",
+  "required_suites": ["addon", "manifest", "scripts", "sharing"],
+  "allowed_suites": ["addon", "manifest", "scripts", "sharing", "platform", "resources", "pack-size"]
+}

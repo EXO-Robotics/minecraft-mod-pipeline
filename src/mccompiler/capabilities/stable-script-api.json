@@ -1,0 +1,151 @@
+{
+  "schema_version": "1.0.0",
+  "catalog_version": "2026.07.22.1",
+  "last_verified": "2026-07-22",
+  "symbols": [
+    {
+      "module": "@minecraft/server",
+      "symbol": "world.afterEvents.itemUse",
+      "minimum_stable_version": "2.0.0",
+      "engine_version": "1.21.90",
+      "stability": "stable",
+      "experiments_required": [],
+      "marketplace_candidate": true,
+      "realm_candidate": true,
+      "bds_only": false,
+      "replacement_strategies": ["custom_item_component"]
+    },
+    {
+      "module": "@minecraft/server",
+      "symbol": "world.afterEvents.playerInteractWithBlock",
+      "minimum_stable_version": "2.0.0",
+      "engine_version": "1.21.90",
+      "stability": "stable",
+      "experiments_required": [],
+      "marketplace_candidate": true,
+      "realm_candidate": true,
+      "bds_only": false,
+      "replacement_strategies": ["custom_block_component"]
+    },
+    {
+      "module": "@minecraft/server",
+      "symbol": "world.afterEvents.playerBreakBlock",
+      "minimum_stable_version": "2.0.0",
+      "engine_version": "1.21.90",
+      "stability": "stable",
+      "experiments_required": [],
+      "marketplace_candidate": true,
+      "realm_candidate": true,
+      "bds_only": false,
+      "replacement_strategies": []
+    },
+    {
+      "module": "@minecraft/server",
+      "symbol": "world.afterEvents.entityHitEntity",
+      "minimum_stable_version": "2.0.0",
+      "engine_version": "1.21.90",
+      "stability": "stable",
+      "experiments_required": [],
+      "marketplace_candidate": true,
+      "realm_candidate": true,
+      "bds_only": false,
+      "replacement_strategies": []
+    },
+    {
+      "module": "@minecraft/server",
+      "symbol": "world.afterEvents.entityHurt",
+      "minimum_stable_version": "2.0.0",
+      "engine_version": "1.21.90",
+      "stability": "stable",
+      "experiments_required": [],
+      "marketplace_candidate": true,
+      "realm_candidate": true,
+      "bds_only": false,
+      "replacement_strategies": []
+    },
+    {
+      "module": "@minecraft/server",
+      "symbol": "world.afterEvents.entityDie",
+      "minimum_stable_version": "2.0.0",
+      "engine_version": "1.21.90",
+      "stability": "stable",
+      "experiments_required": [],
+      "marketplace_candidate": true,
+      "realm_candidate": true,
+      "bds_only": false,
+      "replacement_strategies": []
+    },
+    {
+      "module": "@minecraft/server",
+      "symbol": "world.afterEvents.entitySpawn",
+      "minimum_stable_version": "2.0.0",
+      "engine_version": "1.21.90",
+      "stability": "stable",
+      "experiments_required": [],
+      "marketplace_candidate": true,
+      "realm_candidate": true,
+      "bds_only": false,
+      "replacement_strategies": []
+    },
+    {
+      "module": "@minecraft/server",
+      "symbol": "world.afterEvents.playerSpawn",
+      "minimum_stable_version": "2.0.0",
+      "engine_version": "1.21.90",
+      "stability": "stable",
+      "experiments_required": [],
+      "marketplace_candidate": true,
+      "realm_candidate": true,
+      "bds_only": false,
+      "replacement_strategies": []
+    },
+    {
+      "module": "@minecraft/server",
+      "symbol": "world.afterEvents.projectileHitEntity",
+      "minimum_stable_version": "2.0.0",
+      "engine_version": "1.21.90",
+      "stability": "stable",
+      "experiments_required": [],
+      "marketplace_candidate": true,
+      "realm_candidate": true,
+      "bds_only": false,
+      "replacement_strategies": ["projectile_entity_on_hit"]
+    },
+    {
+      "module": "@minecraft/server",
+      "symbol": "system.runInterval",
+      "minimum_stable_version": "2.0.0",
+      "engine_version": "1.21.90",
+      "stability": "stable",
+      "experiments_required": [],
+      "marketplace_candidate": true,
+      "realm_candidate": true,
+      "bds_only": false,
+      "replacement_strategies": ["animation_controller", "entity_timer"]
+    },
+    {
+      "module": "@minecraft/server",
+      "symbol": "world.dynamicProperties",
+      "minimum_stable_version": "2.0.0",
+      "engine_version": "1.21.90",
+      "stability": "stable",
+      "experiments_required": [],
+      "marketplace_candidate": true,
+      "realm_candidate": true,
+      "bds_only": false,
+      "replacement_strategies": ["scoreboard", "entity_property"]
+    },
+    {
+      "module": "@minecraft/server-ui",
+      "symbol": "ActionFormData",
+      "minimum_stable_version": "2.0.0",
+      "engine_version": "1.21.90",
+      "stability": "stable",
+      "experiments_required": [],
+      "marketplace_candidate": true,
+      "realm_candidate": true,
+      "bds_only": false,
+      "replacement_strategies": ["sequential_selector", "in_world_controls"]
+    }
+  ]
+}

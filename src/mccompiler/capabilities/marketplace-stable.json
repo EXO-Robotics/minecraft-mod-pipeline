@@ -1,0 +1,15 @@
+{
+  "schema_version": "1.0.0",
+  "catalog_version": "2026.07.22.1",
+  "profile": "MARKETPLACE_ADDON_STABLE",
+  "permitted_modules": ["@minecraft/server", "@minecraft/server-ui"],
+  "prohibited_modules": ["@minecraft/server-net", "@minecraft/server-admin"],
+  "stable_only": true,
+  "experiments_allowed": false,
+  "external_services_allowed": false,
+  "native_binaries_allowed": false,
+  "offline_required": true,
+  "controller_review_required": true,
+  "rights_review_required": true,
+  "marketplace_approval_implied": false
+}
