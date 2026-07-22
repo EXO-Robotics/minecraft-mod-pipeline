@@ -2,6 +2,8 @@ export const LEGACY_UNCLAIMED_OWNER = 'legacy-unclaimed';
 export const CURRENT_STATE_SCHEMA = 1;
 export const NORMAL_KEY_IDS = new Set(['door_lock:key', 'door_lock:golden_key']);
 export const UNIVERSAL_KEY_ID = 'door_lock:universal_key';
+const LOCKABLE_EXACT_IDS = new Set(['minecraft:chest', 'minecraft:trapped_chest']);
+const LOCKABLE_SUFFIXES = ['_door', '_fence_gate', '_trapdoor', '_shulker_box'];
 const SHA256_K = [
   0x428a2f98, 0x71374491, 0xb5c0fbcf, 0xe9b5dba5, 0x3956c25b, 0x59f111f1, 0x923f82a4, 0xab1c5ed5,
   0xd807aa98, 0x12835b01, 0x243185be, 0x550c7dc3, 0x72be5d74, 0x80deb1fe, 0x9bdc06a7, 0xc19bf174,
@@ -22,6 +24,15 @@ export function canonicalLocationKey({ dimensionId, location, doorLowerLocation,
   if (doorLowerLocation) canonical = doorLowerLocation;
   else if (pairedLocations.length === 1) canonical = [location, pairedLocations[0]].sort(locationOrder)[0];
   return `${dimensionId}:${canonical.x}:${canonical.y}:${canonical.z}`;
+}
+
+export function isLockableBlockType(typeId) {
+  return typeof typeId === 'string'
+    && (LOCKABLE_EXACT_IDS.has(typeId) || LOCKABLE_SUFFIXES.some((suffix) => typeId.endsWith(suffix)));
+}
+
+export function universalKeyAllowedForBlock(typeId) {
+  return typeId !== 'minecraft:iron_door' && typeId !== 'minecraft:iron_trapdoor';
 }
 
 function utf8Bytes(text) {
@@ -92,8 +103,8 @@ export function credentialFormResult(response) {
   return digestCredential(response.formValues?.[0]);
 }
 
-export function decideInteraction({ lock, itemId, playerId, isSneaking, credentialDigest }) {
-  const universal = itemId === UNIVERSAL_KEY_ID;
+export function decideInteraction({ lock, itemId, playerId, isSneaking, credentialDigest, universalAllowed = true }) {
+  const universal = itemId === UNIVERSAL_KEY_ID && universalAllowed;
   if (lock) {
     const credentialMode = lock.authorization_mode === 'shared_credential' || lock.authorization_mode === 'legacy_credential';
     const ownerMode = lock.authorization_mode === 'owner_identity';
@@ -102,7 +113,7 @@ export function decideInteraction({ lock, itemId, playerId, isSneaking, credenti
     if (isSneaking) return { action: 'REMOVE_LOCK', expectedOwner: lock.owner, expectedRevision: lock.revision };
     return { action: 'ALLOW_OPEN' };
   }
-  if (universal) return { action: 'CREATE_OWNER_LOCK', owner: playerId };
+  if (itemId === UNIVERSAL_KEY_ID) return { action: 'ALLOW_DEFAULT' };
   if (NORMAL_KEY_IDS.has(itemId) && !credentialDigest) return { action: 'DENY_UNCONFIGURED' };
   if (NORMAL_KEY_IDS.has(itemId)) return { action: 'CREATE_CREDENTIAL_LOCK', owner: playerId, credentialDigest };
   return { action: 'ALLOW_DEFAULT' };

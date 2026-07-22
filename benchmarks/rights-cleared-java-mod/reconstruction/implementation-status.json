@@ -8,9 +8,9 @@
     "server-authoritative world lock map",
     "shared-credential locks for configured normal and golden keys",
     "source-faithful identical normal/golden lock behavior with distinct iron/gold shaped recipes",
-    "owner-identity compatibility locks for universal-key creation",
+    "owner-identity compatibility reads for earlier reconstruction records",
     "controller-native credential configuration with digest-only persistence",
-    "universal-key authorization",
+    "source-faithful universal-key override and no-lock-creation behavior",
     "deterministic two-player owner/non-owner authorization decisions",
     "revision-checked create/remove and complete validated state records",
     "compatibility normalization for earlier sparse owner records",
@@ -18,6 +18,9 @@
     "controller-native removal confirmation with cancel-safe handling",
     "canonical lower-half door lock locations",
     "canonical paired double-chest lock locations with ambiguous-neighbor fail-closed handling",
+    "source-observed door, chest, trapped-chest, fence-gate, trapdoor, and shulker-box families",
+    "default source iron policy: normal/golden key authorization with universal key denied",
+    "deferred iron door and trapdoor open-state toggling",
     "sneak-use lock removal",
     "locked-block break prevention",
     "deferred mutation outside restricted before-event execution",
@@ -32,9 +35,17 @@
       "preserved": ["user-entered gameplay credential", "matching configured keys shared between players", "wrong-credential denial", "universal-key override", "controller item-use interaction"],
       "lost": ["anvil and command configuration parity", "item-instance credential storage"],
       "security_note": "Deterministic SHA-256 digests prevent plaintext persistence but remain vulnerable to offline guessing and are not a password-security boundary."
+    },
+    {
+      "id": "fail-secure-break-policy",
+      "status": "PROPOSED_NOT_APPROVED",
+      "preserved": ["locked blocks cannot leave orphan lock records", "server-authoritative cancellation"],
+      "lost": ["Java configuration defaults to allowing break and removing the lock", "runtime-selectable break policy"]
     }
   ],
   "missing": [
+    "locked redstone suppression for doors, trapdoors, and fence gates",
+    "runtime-selectable locked-block break policy",
     "actual gameplay, persistence, multiplayer, Realm, and console tests"
   ],
   "claims": {

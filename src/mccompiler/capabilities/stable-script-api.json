@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0.0",
-  "catalog_version": "2026.07.22.4",
+  "catalog_version": "2026.07.22.5",
   "last_verified": "2026-07-22",
   "symbol_groups": [
     {
@@ -51,7 +51,9 @@
         "Block.permutation",
         "Block.getComponent",
         "Block.setType",
+        "Block.setPermutation",
         "BlockPermutation.getState",
+        "BlockPermutation.withState",
         "BlockInventoryComponent.container",
         "EntityInventoryComponent.container",
         "Container.addItem",

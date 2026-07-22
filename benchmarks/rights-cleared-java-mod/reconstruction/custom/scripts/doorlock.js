@@ -1,10 +1,10 @@
 import { system, world } from '@minecraft/server';
 import { ActionFormData, ModalFormData } from '@minecraft/server-ui';
 import {
-  buildCredentialLock, buildOwnerLock, canonicalLocationKey, createLockIfAbsent, credentialFormResult,
-  decideBreak, decideInteraction, NORMAL_KEY_IDS, normalizeLockMap,
+  buildCredentialLock, canonicalLocationKey, createLockIfAbsent, credentialFormResult,
+  decideBreak, decideInteraction, isLockableBlockType, NORMAL_KEY_IDS, normalizeLockMap,
   prepareLegacyMigration, removalConfirmed, removeLockIfRevision, resumePreparedMigration,
-  validateLockMap,
+  universalKeyAllowedForBlock, validateLockMap,
 } from './doorlock-state.js';
 
 const STATE_KEY = 'mccompiler:doorlock:locks:v1';
@@ -13,12 +13,6 @@ const MIGRATION_KEY = 'mccompiler:doorlock:migration:v0-to-v1';
 const QUARANTINE_KEY = 'mccompiler:doorlock:migration-quarantine:v0-to-v1';
 const BOOT_KEY = 'mccompiler:doorlock:diagnostic_boot';
 const CHEST_IDS = new Set(['minecraft:chest', 'minecraft:trapped_chest']);
-const SUPPORTED_BLOCKS = new Set([
-  'minecraft:acacia_door', 'minecraft:anvil', 'minecraft:barrel', 'minecraft:birch_door',
-  'minecraft:chest', 'minecraft:copper_door', 'minecraft:dark_oak_door', 'minecraft:iron_door',
-  'minecraft:jungle_door', 'minecraft:mangrove_door', 'minecraft:oak_door',
-  'minecraft:spruce_door', 'minecraft:trapped_chest',
-]);
 let migrationReady = false;
 
 function credentialProperty(itemId) {
@@ -69,6 +63,41 @@ function inventorySize(block) {
     return block.getComponent('inventory')?.container?.size;
   } catch {
     return undefined;
+  }
+}
+
+function isIronOpenable(typeId) {
+  return typeId === 'minecraft:iron_door' || typeId === 'minecraft:iron_trapdoor';
+}
+
+function toggleIronOpen(block, player) {
+  const open = state(block, 'minecraft:open_bit');
+  if (typeof open !== 'boolean') {
+    player.sendMessage('This iron block could not be toggled safely.');
+    return;
+  }
+  const targets = [block];
+  if (block.typeId === 'minecraft:iron_door') {
+    const upper = state(block, 'minecraft:upper_block_bit') === true;
+    const otherLocation = { ...block.location, y: block.location.y + (upper ? -1 : 1) };
+    try {
+      const other = block.dimension.getBlock(otherLocation);
+      if (!other || other.typeId !== block.typeId) {
+        player.sendMessage('This iron door is incomplete and was not toggled.');
+        return;
+      }
+      targets.push(other);
+    } catch {
+      player.sendMessage('This iron door could not be toggled safely.');
+      return;
+    }
+  }
+  try {
+    for (const target of targets) {
+      target.setPermutation(target.permutation.withState('minecraft:open_bit', !open));
+    }
+  } catch {
+    player.sendMessage('This iron block could not be toggled safely.');
   }
 }
 
@@ -203,7 +232,7 @@ world.afterEvents.itemUse.subscribe((event) => {
 
 world.beforeEvents.playerInteractWithBlock.subscribe((event) => {
   const { block, itemStack, player } = event;
-  if (!SUPPORTED_BLOCKS.has(block.typeId)) return;
+  if (!isLockableBlockType(block.typeId)) return;
   if (!migrationReady) {
     event.cancel = true;
     deferMessage(player, 'Lock data is still initializing.');
@@ -223,6 +252,7 @@ world.beforeEvents.playerInteractWithBlock.subscribe((event) => {
     playerId: player.id,
     isSneaking: player.isSneaking,
     credentialDigest: playerCredential(player, itemStack?.typeId),
+    universalAllowed: universalKeyAllowedForBlock(block.typeId),
   });
 
   if (decision.action === 'DENY_LOCKED') {
@@ -233,6 +263,11 @@ world.beforeEvents.playerInteractWithBlock.subscribe((event) => {
   if (decision.action === 'DENY_UNCONFIGURED') {
     event.cancel = true;
     deferMessage(player, 'Configure this key by using it away from a block first.');
+    return;
+  }
+  if (decision.action === 'ALLOW_OPEN' && isIronOpenable(block.typeId)) {
+    event.cancel = true;
+    system.run(() => toggleIronOpen(block, player));
     return;
   }
   if (decision.action === 'REMOVE_LOCK') {
@@ -250,26 +285,24 @@ world.beforeEvents.playerInteractWithBlock.subscribe((event) => {
     });
     return;
   }
-  if (decision.action === 'CREATE_OWNER_LOCK' || decision.action === 'CREATE_CREDENTIAL_LOCK') {
+  if (decision.action === 'CREATE_CREDENTIAL_LOCK') {
     event.cancel = true;
     system.run(() => {
       const current = readLocks();
       if (current === null) return;
-      const record = decision.action === 'CREATE_CREDENTIAL_LOCK'
-        ? buildCredentialLock(location, decision.credentialDigest, decision.owner, system.currentTick)
-        : buildOwnerLock(location, decision.owner, system.currentTick);
+      const record = buildCredentialLock(
+        location, decision.credentialDigest, decision.owner, system.currentTick,
+      );
       const result = createLockIfAbsent(current, location, record);
       if (!result.changed) return;
       writeLocks(result.locks);
-      player.sendMessage(decision.action === 'CREATE_CREDENTIAL_LOCK'
-        ? 'Block locked with this shared credential. Sneak-use a matching key to remove it.'
-        : 'Block locked to your player identity. Sneak-use a key to remove it.');
+      player.sendMessage('Block locked with this shared credential. Sneak-use a matching key to remove it.');
     });
   }
 });
 
 world.beforeEvents.playerBreakBlock.subscribe((event) => {
-  if (!SUPPORTED_BLOCKS.has(event.block.typeId)) return;
+  if (!isLockableBlockType(event.block.typeId)) return;
   if (!migrationReady) {
     event.cancel = true;
     deferMessage(event.player, 'Lock data is still initializing.');

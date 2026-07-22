@@ -6,7 +6,7 @@
   "owner_scope": "lock_record",
   "authorization": {
     "active_proposed_redesign": "configured shared-credential authorization for normal and golden keys, with owner-bound compatibility records; not approved as source parity",
-    "create": ["requesting_player_holds_configured_key_item", "target_is_supported_and_unlocked", "universal_key_creates_owner_identity_record"],
+    "create": ["requesting_player_holds_configured_normal_or_golden_key", "target_is_supported_and_unlocked", "universal_key_never_creates_lock"],
     "remove": ["requesting_player_credential_matches_lock", "owner_matches_owner_identity_record", "universal_key"],
     "open": ["requesting_player_credential_matches_lock", "owner_matches_owner_identity_record", "universal_key"],
     "administrative_override": "universal_key; operator audit is not implemented"

@@ -35,7 +35,7 @@
     "Door records use the validated lower-half location and double chests use the lexicographically first validated paired location.",
     "Creator identity and revision are added for multiplayer authorization and conflict control.",
     "Structured records replace delimiter-encoded strings.",
-    "New normal and golden key locks use a configured shared credential digest; universal-key-created locks use owner identity.",
+    "New normal and golden key locks use a configured shared credential digest; owner-identity records are retained only for compatibility with earlier reconstruction builds.",
     "Credential plaintext is transient form input and is never persisted or logged; deterministic SHA-256 digests are gameplay identifiers, not password-security boundaries.",
     "Migrated legacy records preserve opaque credential digests but remain unclaimed; plaintext secrets are prohibited."
   ],

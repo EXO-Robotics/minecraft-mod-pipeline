@@ -108,7 +108,7 @@ const decide = (playerId, itemId, isSneaking = false, current = lock, credential
 console.log(JSON.stringify({
   create: decide(owner, 'door_lock:key', false, null, digest),
   createUnconfigured: decide(owner, 'door_lock:key', false, null),
-  universalCreate: decide(owner, 'door_lock:universal_key', false, null),
+  universalDoesNotCreate: decide(owner, 'door_lock:universal_key', false, null),
   ownerWithoutCredentialDenied: decide(owner, 'door_lock:key'),
   matchingOtherPlayerOpen: decide(stranger, 'door_lock:key', false, lock, digest),
   wrongCredentialDenied: decide(stranger, 'door_lock:key', false, lock, wrongDigest),
@@ -117,6 +117,8 @@ console.log(JSON.stringify({
   strangerUnlockDenied: decide(stranger, 'door_lock:key', true, lock, wrongDigest),
   universalOpen: decide(stranger, 'door_lock:universal_key'),
   universalUnlock: decide(stranger, 'door_lock:universal_key', true),
+  ironUniversalDenied: decideInteraction({ lock, playerId: stranger, itemId: 'door_lock:universal_key', isSneaking: false, universalAllowed: false }).action,
+  ironUniversalDoesNotCreate: decideInteraction({ lock: null, playerId: stranger, itemId: 'door_lock:universal_key', isSneaking: false, universalAllowed: false }).action,
   lockedBreak: decideBreak(lock).action,
   unlockedBreak: decideBreak(undefined).action,
   confirmed: removalConfirmed({ canceled: false, selection: 0 }),
@@ -138,7 +140,7 @@ console.log(JSON.stringify({
         expected = {
             "create": "CREATE_CREDENTIAL_LOCK",
             "createUnconfigured": "DENY_UNCONFIGURED",
-            "universalCreate": "CREATE_OWNER_LOCK",
+            "universalDoesNotCreate": "ALLOW_DEFAULT",
             "ownerWithoutCredentialDenied": "DENY_LOCKED",
             "matchingOtherPlayerOpen": "ALLOW_OPEN",
             "wrongCredentialDenied": "DENY_LOCKED",
@@ -147,6 +149,8 @@ console.log(JSON.stringify({
             "strangerUnlockDenied": "DENY_LOCKED",
             "universalOpen": "ALLOW_OPEN",
             "universalUnlock": "REMOVE_LOCK",
+            "ironUniversalDenied": "DENY_LOCKED",
+            "ironUniversalDoesNotCreate": "ALLOW_DEFAULT",
             "lockedBreak": "DENY_LOCKED",
             "unlockedBreak": "ALLOW_BREAK",
             "confirmed": True,
@@ -171,7 +175,7 @@ console.log(JSON.stringify({
             module = Path(directory) / "doorlock-state.mjs"
             shutil.copyfile(module_source, module)
             runner = """
-import { buildCredentialLock, buildOwnerLock, canonicalLocationKey, createLockIfAbsent, normalizeLockMap, removeLockIfRevision, validateLockMap } from './doorlock-state.mjs';
+import { buildCredentialLock, buildOwnerLock, canonicalLocationKey, createLockIfAbsent, isLockableBlockType, normalizeLockMap, removeLockIfRevision, universalKeyAllowedForBlock, validateLockMap } from './doorlock-state.mjs';
 const location = 'minecraft:nether:-4:65:12';
 const record = buildOwnerLock(location, 'player-a', 42);
 const created = createLockIfAbsent({}, location, record);
@@ -196,7 +200,18 @@ const canonical = {
   chestRight: canonicalLocationKey({ dimensionId: 'minecraft:overworld', location: { x: 11, y: 70, z: 5 }, pairedLocations: [{ x: 10, y: 70, z: 5 }] }),
   ambiguousChest: canonicalLocationKey({ dimensionId: 'minecraft:overworld', location: { x: 11, y: 70, z: 5 }, pairedLocations: [{ x: 10, y: 70, z: 5 }, { x: 12, y: 70, z: 5 }] }),
 };
-console.log(JSON.stringify({ record, created, competingCreate, twoLocks, dimensions, staleRemove, wrongOwnerRemove, removed, validErrors, badDimension, badRevision, badMode, sparse, sparseErrors: validateLockMap(sparse.locks), shared, sharedErrors: validateLockMap({ 'minecraft:overworld:1:2:3': shared }), canonical }));
+const coverage = {
+  door: isLockableBlockType('minecraft:oak_door'),
+  gate: isLockableBlockType('minecraft:warped_fence_gate'),
+  trapdoor: isLockableBlockType('minecraft:iron_trapdoor'),
+  shulker: isLockableBlockType('minecraft:purple_shulker_box'),
+  chest: isLockableBlockType('minecraft:chest'),
+  anvil: isLockableBlockType('minecraft:anvil'),
+  barrel: isLockableBlockType('minecraft:barrel'),
+  ironUniversal: universalKeyAllowedForBlock('minecraft:iron_door'),
+  oakUniversal: universalKeyAllowedForBlock('minecraft:oak_door'),
+};
+console.log(JSON.stringify({ record, created, competingCreate, twoLocks, dimensions, staleRemove, wrongOwnerRemove, removed, validErrors, badDimension, badRevision, badMode, sparse, sparseErrors: validateLockMap(sparse.locks), shared, sharedErrors: validateLockMap({ 'minecraft:overworld:1:2:3': shared }), canonical, coverage }));
 """
             completed = subprocess.run(
                 [node, "--input-type=module", "--eval", runner], cwd=directory,
@@ -234,6 +249,11 @@ console.log(JSON.stringify({ record, created, competingCreate, twoLocks, dimensi
         self.assertEqual(result["canonical"]["lowerDoor"], result["canonical"]["upperDoor"])
         self.assertEqual(result["canonical"]["chestLeft"], result["canonical"]["chestRight"])
         self.assertEqual("minecraft:overworld:11:70:5", result["canonical"]["ambiguousChest"])
+        self.assertEqual(
+            {"door": True, "gate": True, "trapdoor": True, "shulker": True, "chest": True,
+             "anvil": False, "barrel": False, "ironUniversal": False, "oakUniversal": True},
+            result["coverage"],
+        )
 
     def test_every_declared_api_symbol_is_stable_and_marketplace_candidate(self) -> None:
         metadata = json.loads((RECONSTRUCTION / "custom-handler.json").read_text())
@@ -254,6 +274,8 @@ console.log(JSON.stringify({ record, created, competingCreate, twoLocks, dimensi
         self.assertIsNone(status["approved_quality_claim"])
         self.assertEqual(
             {
+                "locked redstone suppression for doors, trapdoors, and fence gates",
+                "runtime-selectable locked-block break policy",
                 "actual gameplay, persistence, multiplayer, Realm, and console tests",
             },
             set(status["missing"]),

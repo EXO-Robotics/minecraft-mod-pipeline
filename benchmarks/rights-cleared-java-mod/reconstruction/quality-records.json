@@ -46,10 +46,10 @@
     },
     {
       "feature_id": "doorlock:mixin_anvil",
-      "classification": "UNSUPPORTED",
-      "dimensions": {"gameplay_fidelity": 0.0, "visual_fidelity": 0.0, "audio_fidelity": 0.0, "interaction_fidelity": 0.0, "controller_usability": 0.0, "multiplayer_fidelity": 0.0, "persistence_fidelity": 0.0, "performance": 1.0, "stability": 1.0, "discoverability": 0.0, "feedback_clarity": 0.0, "world_update_compatibility": 1.0},
-      "evidence": ["contracts/unsupported-mixin-mapping.json"],
-      "losses": ["Anvil password entry is absent"]
+      "classification": "MANUAL_REDESIGN_REQUIRED",
+      "dimensions": {"gameplay_fidelity": 0.5, "visual_fidelity": 0.0, "audio_fidelity": 0.0, "interaction_fidelity": 0.6, "controller_usability": 0.8, "multiplayer_fidelity": 0.0, "persistence_fidelity": 0.2, "performance": 1.0, "stability": 0.5, "discoverability": 0.5, "feedback_clarity": 0.6, "world_update_compatibility": 0.4},
+      "evidence": ["technical-build-validation.json", "contracts/unsupported-mixin-mapping.json"],
+      "losses": ["Controller form replaces anvil-name syntax and item-instance storage; actual form operation remains untested"]
     },
     {
       "feature_id": "doorlock:mixin_chest",
@@ -74,17 +74,17 @@
     },
     {
       "feature_id": "doorlock:mixin_shulker",
-      "classification": "UNSUPPORTED",
-      "dimensions": {"gameplay_fidelity": 0.0, "visual_fidelity": 0.0, "audio_fidelity": 0.0, "interaction_fidelity": 0.0, "controller_usability": 0.0, "multiplayer_fidelity": 0.0, "persistence_fidelity": 0.0, "performance": 1.0, "stability": 1.0, "discoverability": 0.0, "feedback_clarity": 0.0, "world_update_compatibility": 1.0},
-      "evidence": ["contracts/unsupported-mixin-mapping.json"],
-      "losses": ["Shulker-box authorization is absent"]
+      "classification": "MANUAL_REDESIGN_REQUIRED",
+      "dimensions": {"gameplay_fidelity": 0.5, "visual_fidelity": 0.0, "audio_fidelity": 0.0, "interaction_fidelity": 0.5, "controller_usability": 0.7, "multiplayer_fidelity": 0.0, "persistence_fidelity": 0.2, "performance": 0.9, "stability": 0.5, "discoverability": 0.3, "feedback_clarity": 0.5, "world_update_compatibility": 0.2},
+      "evidence": ["technical-build-validation.json"],
+      "losses": ["Shulker-box authorization is implemented through the stable shared adapter but not action-tested"]
     },
     {
       "feature_id": "doorlock:mixin_trapdoor",
-      "classification": "UNSUPPORTED",
-      "dimensions": {"gameplay_fidelity": 0.0, "visual_fidelity": 0.0, "audio_fidelity": 0.0, "interaction_fidelity": 0.0, "controller_usability": 0.0, "multiplayer_fidelity": 0.0, "persistence_fidelity": 0.0, "performance": 1.0, "stability": 1.0, "discoverability": 0.0, "feedback_clarity": 0.0, "world_update_compatibility": 1.0},
-      "evidence": ["contracts/unsupported-mixin-mapping.json"],
-      "losses": ["Trapdoor authorization is absent"]
+      "classification": "MANUAL_REDESIGN_REQUIRED",
+      "dimensions": {"gameplay_fidelity": 0.5, "visual_fidelity": 0.0, "audio_fidelity": 0.0, "interaction_fidelity": 0.5, "controller_usability": 0.7, "multiplayer_fidelity": 0.0, "persistence_fidelity": 0.2, "performance": 0.9, "stability": 0.5, "discoverability": 0.3, "feedback_clarity": 0.5, "world_update_compatibility": 0.2},
+      "evidence": ["technical-build-validation.json"],
+      "losses": ["Trapdoor authorization and default iron universal-key denial are implemented, but redstone suppression and actual interaction remain untested"]
     }
   ]
 }
