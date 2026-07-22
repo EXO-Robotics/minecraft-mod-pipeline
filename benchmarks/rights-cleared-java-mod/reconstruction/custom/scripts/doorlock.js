@@ -1,7 +1,7 @@
 import { system, world } from '@minecraft/server';
 import { ActionFormData, ModalFormData } from '@minecraft/server-ui';
 import {
-  buildCredentialLock, buildOwnerLock, createLockIfAbsent, credentialFormResult,
+  buildCredentialLock, buildOwnerLock, canonicalLocationKey, createLockIfAbsent, credentialFormResult,
   decideBreak, decideInteraction, migrateLegacyState, NORMAL_KEY_IDS, normalizeLockMap,
   removalConfirmed, removeLockIfRevision, validateLockMap,
 } from './doorlock-state.js';
@@ -11,6 +11,7 @@ const LEGACY_STATE_KEY = 'mccompiler:doorlock:locks:v0';
 const MIGRATION_KEY = 'mccompiler:doorlock:migration:v0-to-v1';
 const QUARANTINE_KEY = 'mccompiler:doorlock:migration-quarantine:v0-to-v1';
 const BOOT_KEY = 'mccompiler:doorlock:diagnostic_boot';
+const CHEST_IDS = new Set(['minecraft:chest', 'minecraft:trapped_chest']);
 const SUPPORTED_BLOCKS = new Set([
   'minecraft:acacia_door', 'minecraft:anvil', 'minecraft:barrel', 'minecraft:birch_door',
   'minecraft:chest', 'minecraft:copper_door', 'minecraft:dark_oak_door', 'minecraft:iron_door',
@@ -54,9 +55,59 @@ function writeLocks(locks) {
   world.setDynamicProperty(STATE_KEY, JSON.stringify(locks));
 }
 
-function blockKey(block) {
-  const p = block.location;
-  return `${block.dimension.id}:${p.x}:${p.y}:${p.z}`;
+function state(block, name) {
+  try {
+    return block.permutation.getState(name);
+  } catch {
+    return undefined;
+  }
+}
+
+function inventorySize(block) {
+  try {
+    return block.getComponent('inventory')?.container?.size;
+  } catch {
+    return undefined;
+  }
+}
+
+export function canonicalBlockKey(block) {
+  const { dimension, location, typeId } = block;
+  if (typeId.endsWith('_door') && state(block, 'minecraft:upper_block_bit') === true) {
+    const lowerLocation = { x: location.x, y: location.y - 1, z: location.z };
+    try {
+      const lower = dimension.getBlock(lowerLocation);
+      if (lower?.typeId === typeId && state(lower, 'minecraft:upper_block_bit') === false) {
+        return canonicalLocationKey({ dimensionId: dimension.id, location, doorLowerLocation: lowerLocation });
+      }
+    } catch {
+      return canonicalLocationKey({ dimensionId: dimension.id, location });
+    }
+  }
+  if (CHEST_IDS.has(typeId) && inventorySize(block) === 54) {
+    const direction = state(block, 'minecraft:cardinal_direction');
+    const offsets = direction === 'north' || direction === 'south'
+      ? [{ x: -1, z: 0 }, { x: 1, z: 0 }]
+      : direction === 'east' || direction === 'west'
+        ? [{ x: 0, z: -1 }, { x: 0, z: 1 }]
+        : [];
+    const partners = [];
+    for (const offset of offsets) {
+      const candidateLocation = { x: location.x + offset.x, y: location.y, z: location.z + offset.z };
+      try {
+        const candidate = dimension.getBlock(candidateLocation);
+        if (candidate?.typeId === typeId
+          && state(candidate, 'minecraft:cardinal_direction') === direction
+          && inventorySize(candidate) === 54) partners.push(candidateLocation);
+      } catch {
+        // An unloaded or invalid adjacent block cannot be treated as an authoritative partner.
+      }
+    }
+    if (partners.length === 1) {
+      return canonicalLocationKey({ dimensionId: dimension.id, location, pairedLocations: partners });
+    }
+  }
+  return canonicalLocationKey({ dimensionId: dimension.id, location });
 }
 
 function deferMessage(player, message) {
@@ -152,7 +203,7 @@ world.beforeEvents.playerInteractWithBlock.subscribe((event) => {
     deferMessage(player, 'Lock data needs administrator repair.');
     return;
   }
-  const location = blockKey(block);
+  const location = canonicalBlockKey(block);
   const lock = locks[location];
   const decision = decideInteraction({
     lock,
@@ -198,7 +249,9 @@ world.beforeEvents.playerInteractWithBlock.subscribe((event) => {
       const result = createLockIfAbsent(current, location, record);
       if (!result.changed) return;
       writeLocks(result.locks);
-      player.sendMessage('Block locked to your player identity. Sneak-use a key to remove it.');
+      player.sendMessage(decision.action === 'CREATE_CREDENTIAL_LOCK'
+        ? 'Block locked with this shared credential. Sneak-use a matching key to remove it.'
+        : 'Block locked to your player identity. Sneak-use a key to remove it.');
     });
   }
 });
@@ -211,7 +264,7 @@ world.beforeEvents.playerBreakBlock.subscribe((event) => {
     return;
   }
   const locks = readLocks();
-  if (locks === null || decideBreak(locks[blockKey(event.block)]).action === 'DENY_LOCKED') {
+  if (locks === null || decideBreak(locks[canonicalBlockKey(event.block)]).action === 'DENY_LOCKED') {
     event.cancel = true;
     deferMessage(event.player, 'Unlock this block before breaking it.');
   }

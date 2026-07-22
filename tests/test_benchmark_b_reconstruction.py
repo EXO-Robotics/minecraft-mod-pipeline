@@ -156,7 +156,7 @@ console.log(JSON.stringify({
             module = Path(directory) / "doorlock-state.mjs"
             shutil.copyfile(module_source, module)
             runner = """
-import { buildCredentialLock, buildOwnerLock, createLockIfAbsent, normalizeLockMap, removeLockIfRevision, validateLockMap } from './doorlock-state.mjs';
+import { buildCredentialLock, buildOwnerLock, canonicalLocationKey, createLockIfAbsent, normalizeLockMap, removeLockIfRevision, validateLockMap } from './doorlock-state.mjs';
 const location = 'minecraft:nether:-4:65:12';
 const record = buildOwnerLock(location, 'player-a', 42);
 const created = createLockIfAbsent({}, location, record);
@@ -174,7 +174,14 @@ const badRevision = validateLockMap({ [location]: { ...record, revision: 0 } });
 const badMode = validateLockMap({ [location]: { ...record, authorization_mode: 'unknown' } });
 const sparse = normalizeLockMap({ [location]: { owner: 'player-a', schema: 1 } });
 const shared = buildCredentialLock('minecraft:overworld:1:2:3', 'a'.repeat(64), 'player-a', 46);
-console.log(JSON.stringify({ record, created, competingCreate, twoLocks, dimensions, staleRemove, wrongOwnerRemove, removed, validErrors, badDimension, badRevision, badMode, sparse, sparseErrors: validateLockMap(sparse.locks), shared, sharedErrors: validateLockMap({ 'minecraft:overworld:1:2:3': shared }) }));
+const canonical = {
+  lowerDoor: canonicalLocationKey({ dimensionId: 'minecraft:overworld', location: { x: 4, y: 64, z: 8 } }),
+  upperDoor: canonicalLocationKey({ dimensionId: 'minecraft:overworld', location: { x: 4, y: 65, z: 8 }, doorLowerLocation: { x: 4, y: 64, z: 8 } }),
+  chestLeft: canonicalLocationKey({ dimensionId: 'minecraft:overworld', location: { x: 10, y: 70, z: 5 }, pairedLocations: [{ x: 11, y: 70, z: 5 }] }),
+  chestRight: canonicalLocationKey({ dimensionId: 'minecraft:overworld', location: { x: 11, y: 70, z: 5 }, pairedLocations: [{ x: 10, y: 70, z: 5 }] }),
+  ambiguousChest: canonicalLocationKey({ dimensionId: 'minecraft:overworld', location: { x: 11, y: 70, z: 5 }, pairedLocations: [{ x: 10, y: 70, z: 5 }, { x: 12, y: 70, z: 5 }] }),
+};
+console.log(JSON.stringify({ record, created, competingCreate, twoLocks, dimensions, staleRemove, wrongOwnerRemove, removed, validErrors, badDimension, badRevision, badMode, sparse, sparseErrors: validateLockMap(sparse.locks), shared, sharedErrors: validateLockMap({ 'minecraft:overworld:1:2:3': shared }), canonical }));
 """
             completed = subprocess.run(
                 [node, "--input-type=module", "--eval", runner], cwd=directory,
@@ -209,6 +216,9 @@ console.log(JSON.stringify({ record, created, competingCreate, twoLocks, dimensi
         self.assertEqual("shared_credential", result["shared"]["authorization_mode"])
         self.assertEqual("a" * 64, result["shared"]["credential_digest"])
         self.assertEqual([], result["sharedErrors"])
+        self.assertEqual(result["canonical"]["lowerDoor"], result["canonical"]["upperDoor"])
+        self.assertEqual(result["canonical"]["chestLeft"], result["canonical"]["chestRight"])
+        self.assertEqual("minecraft:overworld:11:70:5", result["canonical"]["ambiguousChest"])
 
     def test_every_declared_api_symbol_is_stable_and_marketplace_candidate(self) -> None:
         metadata = json.loads((RECONSTRUCTION / "custom-handler.json").read_text())
@@ -229,8 +239,6 @@ console.log(JSON.stringify({ record, created, competingCreate, twoLocks, dimensi
         self.assertIsNone(status["approved_quality_claim"])
         self.assertEqual(
             {
-                "door upper/lower-half normalization",
-                "double-container paired-location normalization",
                 "golden-key behavior distinction",
                 "interrupted-write migration recovery",
                 "actual gameplay, persistence, multiplayer, Realm, and console tests",

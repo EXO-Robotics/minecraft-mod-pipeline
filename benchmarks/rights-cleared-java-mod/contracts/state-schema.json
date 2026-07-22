@@ -32,6 +32,7 @@
   ],
   "redesign_decisions": [
     "Dimension is added to prevent cross-dimension coordinate collisions.",
+    "Door records use the validated lower-half location and double chests use the lexicographically first validated paired location.",
     "Creator identity and revision are added for multiplayer authorization and conflict control.",
     "Structured records replace delimiter-encoded strings.",
     "New normal and golden key locks use a configured shared credential digest; universal-key-created locks use owner identity.",

@@ -5,18 +5,18 @@
   "status": "STATIC_AND_BDS_UPGRADE_VERIFIED",
   "artifacts": {
     "mcaddon": {
-      "sha256": "9a62a3e525d438e17834d2e7ea2ffb2d3d6d0be090228ede8ce92c9380234a3e",
-      "bytes": 15972
+      "sha256": "47def66a224652c48f719e1a50f43f6cffbc20c08447ef59def976c15a95b9be",
+      "bytes": 16691
     },
     "mcworld": {
-      "sha256": "8e12fd7aa744058979f9563e36268c4c52a65440a4be1622babd2b8bbb82c07e",
-      "bytes": 18699,
-      "behavior_pack_id": "04b46aef-f3f7-5049-a62d-ae9672c9a456",
-      "resource_pack_id": "0d1ede4c-c129-512e-91d6-68c9f227b97f"
+      "sha256": "8ece6945aa2bb4d89321c6bead946abd464ca986ba6fcfbb14ec2f40931db1f8",
+      "bytes": 19418,
+      "behavior_pack_id": "7c7b14cc-e506-567a-bac4-d0a998aac615",
+      "resource_pack_id": "6609568c-cfab-578a-9823-122dfa8e4fc1"
     },
     "legacy_seed_mcworld": {
-      "sha256": "74fc57ac38c50c66fae765cec485fd8a46346f7e5ce0465b3021f5cc76ab3b7c",
-      "bytes": 16588,
+      "sha256": "986a7094b94b68bd4596f7f0acdf200fc9c334943a8adfd778eea6bb49e9680e",
+      "bytes": 16744,
       "fixture_only": true
     }
   },
@@ -35,7 +35,7 @@
     "errors": 0,
     "warnings": 0,
     "exit_codes": [0, 0],
-    "cache_safe_input": "artifact-9a62a3e525d438e17834d2e7ea2ffb2d3d6d0be090228ede8ce92c9380234a3e.mcaddon",
+    "cache_safe_input": "artifact-47def66a224652c48f719e1a50f43f6cffbc20c08447ef59def976c15a95b9be.mcaddon",
     "marketplace_approval_implied": false
   },
   "bds_diagnostic": {
@@ -43,9 +43,9 @@
     "bedrock_version": "1.26.33.2",
     "bedrock_build_id": "47564860",
     "image": "itzg/minecraft-bedrock-server@sha256:12c7047cc149bd517d6dbc2339163cf62a4f1044c10e759c45c8b387e9784e39",
-    "world_sha256": "8e12fd7aa744058979f9563e36268c4c52a65440a4be1622babd2b8bbb82c07e",
-    "legacy_seed_world_sha256": "74fc57ac38c50c66fae765cec485fd8a46346f7e5ce0465b3021f5cc76ab3b7c",
-    "log_sha256": "94e9aef0ecc87a62e826c65c51be795899fa2d2194da1a24b64db04b3b667d00",
+    "world_sha256": "8ece6945aa2bb4d89321c6bead946abd464ca986ba6fcfbb14ec2f40931db1f8",
+    "legacy_seed_world_sha256": "986a7094b94b68bd4596f7f0acdf200fc9c334943a8adfd778eea6bb49e9680e",
+    "log_sha256": "b44a980ed72788650410fa7e9b722956a8b16a3aafc30ea357206dec9a8ff30a",
     "script_initialized": true,
     "restart_cycles": 3,
     "persistent_boot_values": [1, 2, 3],

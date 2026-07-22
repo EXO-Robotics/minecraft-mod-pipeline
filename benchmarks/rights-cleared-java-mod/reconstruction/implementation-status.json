@@ -15,6 +15,8 @@
     "compatibility normalization for earlier sparse owner records",
     "nonempty legacy lock migration and migrated-record survival across BDS restart",
     "controller-native removal confirmation with cancel-safe handling",
+    "canonical lower-half door lock locations",
+    "canonical paired double-chest lock locations with ambiguous-neighbor fail-closed handling",
     "sneak-use lock removal",
     "locked-block break prevention",
     "deferred mutation outside restricted before-event execution",
@@ -31,8 +33,6 @@
     }
   ],
   "missing": [
-    "door upper/lower-half normalization",
-    "double-container paired-location normalization",
     "golden-key behavior distinction",
     "interrupted-write migration recovery",
     "actual gameplay, persistence, multiplayer, Realm, and console tests"

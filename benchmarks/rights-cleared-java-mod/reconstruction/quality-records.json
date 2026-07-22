@@ -42,14 +42,14 @@
       "classification": "MANUAL_REDESIGN_REQUIRED",
       "dimensions": {"gameplay_fidelity": 0.6, "visual_fidelity": 0.0, "audio_fidelity": 0.0, "interaction_fidelity": 0.6, "controller_usability": 0.7, "multiplayer_fidelity": 0.0, "persistence_fidelity": 0.2, "performance": 0.9, "stability": 0.5, "discoverability": 0.3, "feedback_clarity": 0.5, "world_update_compatibility": 0.2},
       "evidence": ["technical-build-validation.json"],
-      "losses": ["Double-chest normalization and actual cancellation remain untested"]
+      "losses": ["Double-chest canonicalization has pure-handler and static adapter evidence only; actual paired-container cancellation remains untested"]
     },
     {
       "feature_id": "doorlock:mixin_door",
       "classification": "MANUAL_REDESIGN_REQUIRED",
       "dimensions": {"gameplay_fidelity": 0.5, "visual_fidelity": 0.0, "audio_fidelity": 0.0, "interaction_fidelity": 0.5, "controller_usability": 0.7, "multiplayer_fidelity": 0.0, "persistence_fidelity": 0.2, "performance": 0.9, "stability": 0.4, "discoverability": 0.3, "feedback_clarity": 0.5, "world_update_compatibility": 0.2},
       "evidence": ["technical-build-validation.json"],
-      "losses": ["Upper and lower door halves are not normalized"]
+      "losses": ["Door-half canonicalization has pure-handler and static adapter evidence only; actual upper/lower interaction remains untested"]
     },
     {
       "feature_id": "doorlock:mixin_fence_gate",

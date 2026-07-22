@@ -13,6 +13,17 @@ const SHA256_K = [
   0x748f82ee, 0x78a5636f, 0x84c87814, 0x8cc70208, 0x90befffa, 0xa4506ceb, 0xbef9a3f7, 0xc67178f2,
 ];
 
+function locationOrder(a, b) {
+  return a.x - b.x || a.y - b.y || a.z - b.z;
+}
+
+export function canonicalLocationKey({ dimensionId, location, doorLowerLocation, pairedLocations = [] }) {
+  let canonical = location;
+  if (doorLowerLocation) canonical = doorLowerLocation;
+  else if (pairedLocations.length === 1) canonical = [location, pairedLocations[0]].sort(locationOrder)[0];
+  return `${dimensionId}:${canonical.x}:${canonical.y}:${canonical.z}`;
+}
+
 function utf8Bytes(text) {
   const bytes = [];
   for (const character of text) {

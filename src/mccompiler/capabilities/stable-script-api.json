@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0.0",
-  "catalog_version": "2026.07.22.3",
+  "catalog_version": "2026.07.22.4",
   "last_verified": "2026-07-22",
   "symbol_groups": [
     {
@@ -44,10 +44,15 @@
         "Dimension.spawnParticle",
         "Dimension.runCommand",
         "Dimension.spawnItem",
+        "Dimension.getBlock",
         "Block.location",
         "Block.dimension",
         "Block.typeId",
+        "Block.permutation",
+        "Block.getComponent",
         "Block.setType",
+        "BlockPermutation.getState",
+        "BlockInventoryComponent.container",
         "EntityInventoryComponent.container",
         "Container.addItem",
         "Container.size",
