@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import hashlib
 import json
+import uuid
 from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any, Mapping, NoReturn
@@ -13,6 +14,7 @@ from mccompiler.performance import audit_archive_performance, audit_static_perfo
 from mccompiler.project.store import ProjectStore
 from mccompiler.rights import evaluate_marketplace_rights
 from mccompiler.runtime.evidence import EvidenceExpectation, validate_runtime_evidence
+from mccompiler.runtime.bds import BDSDiagnosticError, BDSRunRequest, run_bds_diagnostic
 from mccompiler.targets import get_target
 from mccompiler.validate import validate_output
 
@@ -178,8 +180,49 @@ def install_test_pack(store: ProjectStore, parameters: dict[str, Any], expected_
 
 
 def start_test_runtime(store: ProjectStore, parameters: dict[str, Any], expected_revision: int | None = None) -> HandlerResult:
-    _unavailable(store, "start_test_runtime", "No configured managed Bedrock runtime adapter exists")
-    raise AssertionError("unreachable")
+    if parameters.get("adapter") != "BDS_DOCKER" or parameters.get("execute") is not True:
+        _unavailable(store, "start_test_runtime", "Set adapter=BDS_DOCKER and execute=true to authorize an isolated project-scoped diagnostic run")
+    world = _first_existing(store, parameters, "world", (
+        "dist/test-world/converted-test-world.mcworld", "bedrock/converted-test-world.mcworld",
+    ))
+    if world is None or not world.is_file():
+        _unavailable(store, "start_test_runtime", "Generate a .mcworld or provide a project-relative world path")
+    image = parameters.get("image")
+    if not isinstance(image, str) or not image.strip():
+        raise OperationError("INVALID_PARAMETERS", "image must identify the BDS Docker image")
+    mutable_image = "@sha256:" not in image
+    if mutable_image and parameters.get("allow_mutable_image") is not True:
+        raise OperationError("MUTABLE_RUNTIME_IMAGE", "Use an image digest or explicitly set allow_mutable_image=true for diagnostic-only evidence")
+    network_mode = str(parameters.get("network_mode", "none"))
+    if network_mode == "bridge" and parameters.get("allow_bootstrap_network") is not True:
+        raise OperationError("NETWORK_NOT_AUTHORIZED", "Set allow_bootstrap_network=true to permit the pinned BDS wrapper to download the requested server version")
+    if network_mode not in {"none", "bridge"}:
+        raise OperationError("INVALID_PARAMETERS", "network_mode must be none or bridge")
+    run_id = f"run-{store.revision}-{uuid.uuid4().hex[:12]}"
+    run_root = store.resolve(f"runtime/bds/{run_id}")
+    try:
+        result = run_bds_diagnostic(BDSRunRequest(
+            image=image,
+            mcworld=world,
+            run_root=run_root,
+            timeout_seconds=int(parameters.get("timeout_seconds", 120)),
+            boot_grace_seconds=int(parameters.get("boot_grace_seconds", 15)),
+            docker_executable=str(parameters.get("docker_executable", "docker")),
+            network_mode=network_mode,
+            bds_version=str(parameters["bds_version"]) if parameters.get("bds_version") else None,
+        ))
+    except (BDSDiagnosticError, OSError, ValueError) as exc:
+        raise OperationError("BDS_DIAGNOSTIC_FAILED", str(exc), details={"run_id": run_id, "success_implied": False}) from exc
+    result["runtime"]["mutable_image_allowed"] = mutable_image
+    result["project"] = {"revision_before_run": store.revision, "target_profile": store.manifest.get("target_profile")}
+    store.write(f"runtime/bds/{run_id}/result.json", result)
+    revision = store.commit({"reports/bds-diagnostic-validation.json": result}, expected_revision=expected_revision)
+    return {"run": result, "revision": revision}, store, [
+        {"path": str(world.relative_to(store.root)), "kind": "mcworld"},
+        {"path": f"runtime/bds/{run_id}/content.log", "kind": "bds-content-log"},
+        {"path": f"runtime/bds/{run_id}/result.json", "kind": "bds-run-result"},
+        {"path": "reports/bds-diagnostic-validation.json", "kind": "bds-diagnostic-validation"},
+    ]
 
 
 def run_behavior_test(store: ProjectStore, parameters: dict[str, Any], expected_revision: int | None = None) -> HandlerResult:

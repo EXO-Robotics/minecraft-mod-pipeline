@@ -128,6 +128,12 @@ class OriginalMarketplaceShowcaseTests(unittest.TestCase):
         self.assertFalse(bds["claims"]["console_verified"])
         self.assertFalse(bds["claims"]["marketplace_approval_implied"])
         self.assertIn("actual player event adapters", bds["unverified_scope"])
+        adapter = bds["automated_adapter_validation"]
+        self.assertTrue(adapter["passed"])
+        self.assertTrue(adapter["script_initialized"])
+        self.assertFalse(adapter["published_ports"])
+        self.assertEqual(bds["artifact"]["world_hash"], adapter["world_sha256"])
+        self.assertIn("@sha256:", adapter["image"])
 
         rights = (SHOWCASE / "rights/original-authorship-declaration.yaml").read_text(encoding="utf-8")
         self.assertIn("ORIGINAL_FIXTURE_DECLARED_NOT_MARKETPLACE_CLEARED", rights)

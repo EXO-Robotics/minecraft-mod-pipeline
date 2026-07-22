@@ -21,3 +21,9 @@ The server contains pre-existing errors from unrelated packs such as Just Biome,
 This record proves import/discovery, activation, generated content registration, Script API startup, persistent state, state-gated machine processing, and boss phase transitions. It does not claim that every extracted player interaction has been exercised by a real client; those mechanics remain in the generated behavioral test plan.
 
 Run `mccompiler validate --path <output> --runtime` to require a structured runtime evidence artifact in addition to static and integration validation.
+
+## Managed isolated BDS adapter
+
+The structured `start_test_runtime` operation supports an explicitly authorized `BDS_DOCKER` adapter. It accepts only a project-relative `.mcworld`, requires an immutable container-image digest unless the caller explicitly allows weaker diagnostic evidence, publishes no ports, bounds execution time, preserves the raw content log and result, and removes its named container. A fresh wrapper volume may use bridge networking only when the caller explicitly authorizes downloading an exact requested BDS version; that bootstrap is recorded and is not an Add-On runtime dependency.
+
+The adapter proves only generated-world loading, behavior-pack activation, stable script initialization, clean startup, and graceful shutdown. Gameplay, persistence, multiplayer, Windows, Realm, controller, console, and Marketplace claims remain false.
