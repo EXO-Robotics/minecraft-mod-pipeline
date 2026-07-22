@@ -63,14 +63,14 @@
       "classification": "MANUAL_REDESIGN_REQUIRED",
       "dimensions": {"gameplay_fidelity": 0.5, "visual_fidelity": 0.0, "audio_fidelity": 0.0, "interaction_fidelity": 0.5, "controller_usability": 0.7, "multiplayer_fidelity": 0.0, "persistence_fidelity": 0.2, "performance": 0.9, "stability": 0.4, "discoverability": 0.3, "feedback_clarity": 0.5, "world_update_compatibility": 0.2},
       "evidence": ["technical-build-validation.json"],
-      "losses": ["Door-half canonicalization has pure-handler and static adapter evidence only; actual upper/lower interaction remains untested"]
+      "losses": ["Door-half canonicalization and bounded open-state reconciliation have pure/static evidence only; reconciliation is delayed above 32 locks, skips unloaded chunks, restores non-player state changes, and lacks real door/redstone tests"]
     },
     {
       "feature_id": "doorlock:mixin_fence_gate",
       "classification": "MANUAL_REDESIGN_REQUIRED",
       "dimensions": {"gameplay_fidelity": 0.5, "visual_fidelity": 0.0, "audio_fidelity": 0.0, "interaction_fidelity": 0.5, "controller_usability": 0.7, "multiplayer_fidelity": 0.0, "persistence_fidelity": 0.2, "performance": 0.9, "stability": 0.5, "discoverability": 0.3, "feedback_clarity": 0.5, "world_update_compatibility": 0.2},
       "evidence": ["technical-build-validation.json"],
-      "losses": ["Fence-gate behavior is not action-tested"]
+      "losses": ["Fence-gate authorization and bounded open-state reconciliation are not action-tested; reconciliation is delayed above 32 locks, skips unloaded chunks, and restores non-player state changes"]
     },
     {
       "feature_id": "doorlock:mixin_shulker",
@@ -84,7 +84,7 @@
       "classification": "MANUAL_REDESIGN_REQUIRED",
       "dimensions": {"gameplay_fidelity": 0.5, "visual_fidelity": 0.0, "audio_fidelity": 0.0, "interaction_fidelity": 0.5, "controller_usability": 0.7, "multiplayer_fidelity": 0.0, "persistence_fidelity": 0.2, "performance": 0.9, "stability": 0.5, "discoverability": 0.3, "feedback_clarity": 0.5, "world_update_compatibility": 0.2},
       "evidence": ["technical-build-validation.json"],
-      "losses": ["Trapdoor authorization and default iron universal-key denial are implemented, but redstone suppression and actual interaction remain untested"]
+      "losses": ["Trapdoor authorization, default iron universal-key denial, and bounded open-state reconciliation are implemented but not action-tested; reconciliation is delayed above 32 locks, skips unloaded chunks, and restores non-player state changes"]
     }
   ]
 }

@@ -55,6 +55,19 @@
         {"kind": "source", "path": "src/main/java/net/vassbo/door_lock/event/BlockBreakEvent.java", "lines": [13, 25], "claim": "A pre-break callback checks lock state and removes it when breaking succeeds."}
       ],
       "verification": "NOT_RUN"
+    },
+    {
+      "id": "doorlock:suppress_locked_redstone",
+      "trigger": "neighbor_update_on_locked_openable",
+      "expected": ["retain_last_key_authorized_open_state", "apply_to_door_trapdoor_and_fence_gate", "default_enabled"],
+      "reconstruction": "BOUNDED_LOADED_BLOCK_STATE_RECONCILIATION",
+      "evidence": [
+        {"kind": "source", "path": "src/main/java/net/vassbo/door_lock/mixin/DoorBlockMixin.java", "lines": [93, 98], "claim": "Locked doors cancel neighbor updates when configured redstone suppression is enabled."},
+        {"kind": "source", "path": "src/main/java/net/vassbo/door_lock/mixin/TrapdoorBlockMixin.java", "lines": [92, 97], "claim": "Locked trapdoors cancel neighbor updates when configured redstone suppression is enabled."},
+        {"kind": "source", "path": "src/main/java/net/vassbo/door_lock/mixin/FenceGateBlockMixin.java", "lines": [29, 34], "claim": "Locked fence gates cancel neighbor updates when configured redstone suppression is enabled."},
+        {"kind": "source", "path": "src/main/java/net/vassbo/door_lock/config/ModConfig.java", "lines": [30, 33], "claim": "Redstone suppression defaults to enabled."}
+      ],
+      "verification": "NOT_RUN"
     }
   ],
   "global_invariants": [

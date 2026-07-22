@@ -22,7 +22,16 @@ class BenchmarkBReconstructionTests(unittest.TestCase):
         self.assertIn("world.beforeEvents.playerInteractWithBlock.subscribe", script)
         self.assertIn("world.beforeEvents.playerBreakBlock.subscribe", script)
         self.assertIn("world.afterEvents.playerBreakBlock.subscribe", script)
+        self.assertIn("world.afterEvents.playerInteractWithBlock.subscribe", script)
         self.assertIn("system.runTimeout", script)
+        self.assertIn("system.runInterval(reconcileLockedOpenables, 1)", script)
+        self.assertIn("REDSTONE_RECONCILE_BUDGET = 32", script)
+        self.assertIn("const locations = lockLocationCache", script)
+        self.assertIn("if (lockCacheReady) return lockCache", script)
+        self.assertIn("state(block, 'open_bit')", script)
+        self.assertIn("state(block, 'upper_block_bit')", script)
+        self.assertNotIn("minecraft:open_bit", script)
+        self.assertNotIn("minecraft:upper_block_bit", script)
         self.assertIn("removeLockIfRevision", script)
         self.assertIn("event.cancel = true", script)
         self.assertIn("system.run(() =>", script)
@@ -194,7 +203,7 @@ console.log(JSON.stringify({
             module = Path(directory) / "doorlock-state.mjs"
             shutil.copyfile(module_source, module)
             runner = """
-import { buildCredentialLock, buildOwnerLock, canonicalLocationKey, createLockIfAbsent, isLockableBlockType, normalizeLockMap, removeLockIfRevision, universalKeyAllowedForBlock, validateLockMap } from './doorlock-state.mjs';
+import { buildCredentialLock, buildOwnerLock, canonicalLocationKey, createLockIfAbsent, decideOpenReconciliation, isLockableBlockType, isRedstoneProtectedBlockType, normalizeLockMap, removeLockIfRevision, universalKeyAllowedForBlock, updateProtectedOpenIfRevision, validateLockMap } from './doorlock-state.mjs';
 const location = 'minecraft:nether:-4:65:12';
 const record = buildOwnerLock(location, 'player-a', 42);
 const created = createLockIfAbsent({}, location, record);
@@ -210,8 +219,18 @@ const validErrors = validateLockMap(dimensions.locks);
 const badDimension = validateLockMap({ [location]: { ...record, dimension: 'minecraft:overworld' } });
 const badRevision = validateLockMap({ [location]: { ...record, revision: 0 } });
 const badMode = validateLockMap({ [location]: { ...record, authorization_mode: 'unknown' } });
+const badProtectedOpen = validateLockMap({ [location]: { ...record, protected_open: 'yes' } });
 const sparse = normalizeLockMap({ [location]: { owner: 'player-a', schema: 1 } });
-const shared = buildCredentialLock('minecraft:overworld:1:2:3', 'a'.repeat(64), 'player-a', 46);
+const shared = buildCredentialLock('minecraft:overworld:1:2:3', 'a'.repeat(64), 'player-a', 46, false);
+const protectedCaptured = updateProtectedOpenIfRevision(created.locks, location, 'player-a', 1, false);
+const protectedStale = updateProtectedOpenIfRevision(protectedCaptured.locks, location, 'player-a', 1, true);
+const protectedUpdated = updateProtectedOpenIfRevision(protectedCaptured.locks, location, 'player-a', 2, true);
+const reconciliation = {
+  missing: decideOpenReconciliation(undefined, false),
+  stable: decideOpenReconciliation(true, true),
+  changed: decideOpenReconciliation(true, false),
+  unsupported: decideOpenReconciliation(true, undefined),
+};
 const canonical = {
   lowerDoor: canonicalLocationKey({ dimensionId: 'minecraft:overworld', location: { x: 4, y: 64, z: 8 } }),
   upperDoor: canonicalLocationKey({ dimensionId: 'minecraft:overworld', location: { x: 4, y: 65, z: 8 }, doorLowerLocation: { x: 4, y: 64, z: 8 } }),
@@ -227,10 +246,14 @@ const coverage = {
   chest: isLockableBlockType('minecraft:chest'),
   anvil: isLockableBlockType('minecraft:anvil'),
   barrel: isLockableBlockType('minecraft:barrel'),
+  doorRedstone: isRedstoneProtectedBlockType('minecraft:oak_door'),
+  gateRedstone: isRedstoneProtectedBlockType('minecraft:warped_fence_gate'),
+  trapdoorRedstone: isRedstoneProtectedBlockType('minecraft:iron_trapdoor'),
+  chestRedstone: isRedstoneProtectedBlockType('minecraft:chest'),
   ironUniversal: universalKeyAllowedForBlock('minecraft:iron_door'),
   oakUniversal: universalKeyAllowedForBlock('minecraft:oak_door'),
 };
-console.log(JSON.stringify({ record, created, competingCreate, twoLocks, dimensions, staleRemove, wrongOwnerRemove, removed, validErrors, badDimension, badRevision, badMode, sparse, sparseErrors: validateLockMap(sparse.locks), shared, sharedErrors: validateLockMap({ 'minecraft:overworld:1:2:3': shared }), canonical, coverage }));
+console.log(JSON.stringify({ record, created, competingCreate, twoLocks, dimensions, staleRemove, wrongOwnerRemove, removed, validErrors, badDimension, badRevision, badMode, badProtectedOpen, sparse, sparseErrors: validateLockMap(sparse.locks), shared, sharedErrors: validateLockMap({ 'minecraft:overworld:1:2:3': shared }), protectedCaptured, protectedStale, protectedUpdated, reconciliation, canonical, coverage }));
 """
             completed = subprocess.run(
                 [node, "--input-type=module", "--eval", runner], cwd=directory,
@@ -259,18 +282,37 @@ console.log(JSON.stringify({ record, created, competingCreate, twoLocks, dimensi
         self.assertTrue(any("dimension does not match" in error for error in result["badDimension"]))
         self.assertTrue(any("revision must be positive" in error for error in result["badRevision"]))
         self.assertTrue(any("authorization mode is unsupported" in error for error in result["badMode"]))
+        self.assertTrue(any("protected_open must be boolean" in error for error in result["badProtectedOpen"]))
         self.assertTrue(result["sparse"]["upgraded"])
         self.assertEqual([], result["sparseErrors"])
         self.assertEqual("owner_identity", result["sparse"]["locks"]["minecraft:nether:-4:65:12"]["authorization_mode"])
         self.assertEqual("shared_credential", result["shared"]["authorization_mode"])
         self.assertEqual("a" * 64, result["shared"]["credential_digest"])
+        self.assertFalse(result["shared"]["protected_open"])
         self.assertEqual([], result["sharedErrors"])
+        self.assertTrue(result["protectedCaptured"]["changed"])
+        self.assertEqual(2, result["protectedCaptured"]["locks"]["minecraft:nether:-4:65:12"]["revision"])
+        self.assertFalse(result["protectedCaptured"]["locks"]["minecraft:nether:-4:65:12"]["protected_open"])
+        self.assertFalse(result["protectedStale"]["changed"])
+        self.assertTrue(result["protectedUpdated"]["changed"])
+        self.assertTrue(result["protectedUpdated"]["locks"]["minecraft:nether:-4:65:12"]["protected_open"])
+        self.assertEqual(
+            {
+                "missing": {"action": "CAPTURE_OPEN_STATE", "open": False},
+                "stable": {"action": "OPEN_STATE_STABLE"},
+                "changed": {"action": "RESTORE_OPEN_STATE", "open": True},
+                "unsupported": {"action": "NO_OPEN_STATE"},
+            },
+            result["reconciliation"],
+        )
         self.assertEqual(result["canonical"]["lowerDoor"], result["canonical"]["upperDoor"])
         self.assertEqual(result["canonical"]["chestLeft"], result["canonical"]["chestRight"])
         self.assertEqual("minecraft:overworld:11:70:5", result["canonical"]["ambiguousChest"])
         self.assertEqual(
             {"door": True, "gate": True, "trapdoor": True, "shulker": True, "chest": True,
-             "anvil": False, "barrel": False, "ironUniversal": False, "oakUniversal": True},
+             "anvil": False, "barrel": False, "doorRedstone": True, "gateRedstone": True,
+             "trapdoorRedstone": True, "chestRedstone": False,
+             "ironUniversal": False, "oakUniversal": True},
             result["coverage"],
         )
 
@@ -293,7 +335,6 @@ console.log(JSON.stringify({ record, created, competingCreate, twoLocks, dimensi
         self.assertIsNone(status["approved_quality_claim"])
         self.assertEqual(
             {
-                "locked redstone suppression for doors, trapdoors, and fence gates",
                 "actual gameplay, persistence, multiplayer, Realm, and console tests",
             },
             set(status["missing"]),

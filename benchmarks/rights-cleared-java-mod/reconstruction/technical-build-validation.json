@@ -5,18 +5,18 @@
   "status": "STATIC_AND_BDS_UPGRADE_VERIFIED",
   "artifacts": {
     "mcaddon": {
-      "sha256": "07c6567556e323dfb6177183ca9f4e5774eb2a0ce54f2d6541495015db03b289",
-      "bytes": 18997
+      "sha256": "d45a787ddecdf3a8eece21d96cb59e009c0cc0594a21c75eb12080e5a7f9b48f",
+      "bytes": 20126
     },
     "mcworld": {
-      "sha256": "2422e4fe438aa50c1e7df4a01959231890750143c48c2064a1ac98dd8f69b8ce",
-      "bytes": 21895,
-      "behavior_pack_id": "e37351e8-413f-5e9e-a85f-b77694893583",
-      "resource_pack_id": "d80784dd-5977-5296-942b-145c7ad85c73"
+      "sha256": "6159dfa341424b059c5476f803b2794b9a9028684534c2dd3e84cd0333c77f11",
+      "bytes": 23030,
+      "behavior_pack_id": "bc87a095-ddaa-562f-ab58-e0a7ee84f359",
+      "resource_pack_id": "a73218e8-336b-5f43-99dc-17ec30f1e282"
     },
     "legacy_seed_mcworld": {
-      "sha256": "c8eec4f2dd0f136e8e85c7a79b0c3e5da2b4e98447d8e5da9d85a2373e71ea70",
-      "bytes": 18445,
+      "sha256": "03a6d747769a0740ab12d0f62f5b5ce4b42d5a83f961b8047b058a792394d7e1",
+      "bytes": 18753,
       "fixture_only": true
     }
   },
@@ -36,7 +36,7 @@
     "errors": 0,
     "warnings": 0,
     "exit_codes": [0, 0],
-    "cache_safe_input": "artifact-07c6567556e323dfb6177183ca9f4e5774eb2a0ce54f2d6541495015db03b289.mcaddon",
+    "cache_safe_input": "artifact-d45a787ddecdf3a8eece21d96cb59e009c0cc0594a21c75eb12080e5a7f9b48f.mcaddon",
     "marketplace_approval_implied": false
   },
   "bds_diagnostic": {
@@ -44,9 +44,9 @@
     "bedrock_version": "1.26.33.2",
     "bedrock_build_id": "47564860",
     "image": "itzg/minecraft-bedrock-server@sha256:12c7047cc149bd517d6dbc2339163cf62a4f1044c10e759c45c8b387e9784e39",
-    "world_sha256": "2422e4fe438aa50c1e7df4a01959231890750143c48c2064a1ac98dd8f69b8ce",
-    "legacy_seed_world_sha256": "c8eec4f2dd0f136e8e85c7a79b0c3e5da2b4e98447d8e5da9d85a2373e71ea70",
-    "log_sha256": "46718e2fd944db768490600a7446b04166462b1115ef98e7ea6fe47fdb11d660",
+    "world_sha256": "6159dfa341424b059c5476f803b2794b9a9028684534c2dd3e84cd0333c77f11",
+    "legacy_seed_world_sha256": "03a6d747769a0740ab12d0f62f5b5ce4b42d5a83f961b8047b058a792394d7e1",
+    "log_sha256": "66bda460406a84f48f3ec766081e54080435d239d08f342961d7240b8d77fb84",
     "script_initialized": true,
     "restart_cycles": 3,
     "persistent_boot_values": [1, 2, 3],
@@ -71,6 +71,7 @@
   "unverified": [
     "actual player item and block event adapters",
     "actual door, chest, fence-gate, trapdoor, and shulker-box interactions",
+    "actual redstone suppression and authorized-open reconciliation",
     "actual iron door and trapdoor permutation toggling",
     "actual crafting of normal and golden key recipes",
     "lock, authorize, unlock, and break gameplay",

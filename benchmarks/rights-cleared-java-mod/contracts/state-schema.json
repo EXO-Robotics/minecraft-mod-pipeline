@@ -21,7 +21,8 @@
         },
         "created_by_player_id": "stable_player_id",
         "created_at_tick": "nonnegative_integer",
-        "revision": "positive_integer"
+        "revision": "positive_integer",
+        "protected_open": {"type": "boolean", "optional": true, "purpose": "last key-authorized open state for bounded redstone reconciliation"}
       }
     }
   },
@@ -37,7 +38,8 @@
     "Structured records replace delimiter-encoded strings.",
     "New normal and golden key locks use a configured shared credential digest; owner-identity records are retained only for compatibility with earlier reconstruction builds.",
     "Credential plaintext is transient form input and is never persisted or logged; deterministic SHA-256 digests are gameplay identifiers, not password-security boundaries.",
-    "Migrated legacy records preserve opaque credential digests but remain unclaimed; plaintext secrets are prohibited."
+    "Migrated legacy records preserve opaque credential digests but remain unclaimed; plaintext secrets are prohibited.",
+    "New openable locks capture their current open state; earlier records capture it on their first loaded bounded reconciliation pass."
   ],
   "compatibility": {
     "sparse_owner_v1": "deterministically normalized to the complete owner_identity record before validation and persisted during startup",

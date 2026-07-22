@@ -37,6 +37,18 @@ export function universalKeyAllowedForBlock(typeId) {
   return typeId !== 'minecraft:iron_door' && typeId !== 'minecraft:iron_trapdoor';
 }
 
+export function isRedstoneProtectedBlockType(typeId) {
+  return typeof typeId === 'string'
+    && (typeId.endsWith('_door') || typeId.endsWith('_trapdoor') || typeId.endsWith('_fence_gate'));
+}
+
+export function decideOpenReconciliation(expectedOpen, currentOpen) {
+  if (typeof currentOpen !== 'boolean') return { action: 'NO_OPEN_STATE' };
+  if (typeof expectedOpen !== 'boolean') return { action: 'CAPTURE_OPEN_STATE', open: currentOpen };
+  if (expectedOpen === currentOpen) return { action: 'OPEN_STATE_STABLE' };
+  return { action: 'RESTORE_OPEN_STATE', open: expectedOpen };
+}
+
 function utf8Bytes(text) {
   const bytes = [];
   for (const character of text) {
@@ -177,6 +189,7 @@ export function validateLockMap(locks) {
     if (!Number.isInteger(record.revision) || record.revision < 1) errors.push(`${location}: revision must be positive`);
     if (!Number.isInteger(record.created_at_tick) || record.created_at_tick < 0) errors.push(`${location}: created_at_tick must be nonnegative`);
     if (typeof record.created_by_player_id !== 'string' || record.created_by_player_id.length === 0) errors.push(`${location}: creator identity is required`);
+    if (record.protected_open !== undefined && typeof record.protected_open !== 'boolean') errors.push(`${location}: protected_open must be boolean when present`);
     if (record.authorization_mode === 'owner_identity') {
       if (typeof record.owner !== 'string' || record.owner.length === 0 || record.owner === LEGACY_UNCLAIMED_OWNER) errors.push(`${location}: owner identity is invalid`);
     } else if (record.authorization_mode === 'shared_credential') {
@@ -228,8 +241,8 @@ export function buildOwnerLock(location, owner, createdAtTick) {
   };
 }
 
-export function buildCredentialLock(location, credentialDigest, creator, createdAtTick) {
-  return {
+export function buildCredentialLock(location, credentialDigest, creator, createdAtTick, protectedOpen) {
+  const record = {
     schema: CURRENT_STATE_SCHEMA,
     ...locationFields(location),
     authorization_mode: 'shared_credential',
@@ -239,6 +252,8 @@ export function buildCredentialLock(location, credentialDigest, creator, created
     created_at_tick: createdAtTick,
     revision: 1,
   };
+  if (typeof protectedOpen === 'boolean') record.protected_open = protectedOpen;
+  return record;
 }
 
 export function createLockIfAbsent(locks, location, record) {
@@ -254,6 +269,20 @@ export function removeLockIfRevision(locks, location, expectedOwner, expectedRev
   const next = { ...locks };
   delete next[location];
   return { changed: true, locks: next };
+}
+
+export function updateProtectedOpenIfRevision(locks, location, expectedOwner, expectedRevision, protectedOpen) {
+  const current = locks[location];
+  if (!current || current.owner !== expectedOwner || current.revision !== expectedRevision
+    || typeof protectedOpen !== 'boolean') return { changed: false, locks };
+  if (current.protected_open === protectedOpen) return { changed: false, locks };
+  return {
+    changed: true,
+    locks: {
+      ...locks,
+      [location]: { ...current, protected_open: protectedOpen, revision: current.revision + 1 },
+    },
+  };
 }
 
 function clone(value) {
