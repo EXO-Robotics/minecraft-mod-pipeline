@@ -1,0 +1,98 @@
+{
+  "schema_version": "1.0.0",
+  "manifest_revision": 1,
+  "feature_id": "ccoriginal_cc:resonance_sling",
+  "display_name": "Resonance Sling",
+  "production_lane": "ORIGINAL_BEDROCK_NATIVE",
+  "authorship_mode": "ORIGINAL_AUTHORSHIP",
+  "product_role": "Ranged forest-fantasy utility weapon",
+  "player_fantasy": "Launch a compact amethyst resonance pulse that pushes threats away.",
+  "primary_use_case": "Controller-friendly mid-range single-target damage and bounded knockback.",
+  "explicit_non_goals": [
+    "No Java-mod fidelity claim",
+    "No area damage, stun, homing, splitting, block breaking, custom GUI, or permanent projectile state",
+    "No dependency on another Forest Wave feature"
+  ],
+  "dependencies": [
+    "Minecraft Bedrock behavior and resource packs",
+    "@minecraft/server stable 2.0.0",
+    "Repository-local qualification tooling"
+  ],
+  "future_extension_interfaces": [
+    "Additional original ammunition may use a distinct item and projectile identifier",
+    "Visual variants may replace textures without changing the gameplay contract"
+  ],
+  "gameplay": {
+    "obtain": "Craft from string, sticks, and an amethyst shard; internal test function also grants the kit.",
+    "ammunition": "Resonance Pebble; one consumed per valid activation.",
+    "activation": "Tap use. Stable itemUse is used because a portable stable hold-release event is not present in the pinned API catalog.",
+    "controller_contract": "Single use-button press with owner-only action-bar feedback.",
+    "projectile": {
+      "identifier": "ccoriginal_cc:resonance_pulse",
+      "speed": 1.55,
+      "gravity": 0.045,
+      "lifetime_ticks": 60,
+      "maximum_per_owner": 4,
+      "maximum_global": 16
+    },
+    "entity_impact": {
+      "damage": 4,
+      "horizontal_knockback": 0.7,
+      "vertical_knockback": 0.14,
+      "single_processing_path": "Script projectileHitEntity; projectile is removed immediately after processing."
+    },
+    "block_impact": "Remove projectile and emit a bounded impact particle.",
+    "cooldown_ticks": 16,
+    "durability": 256,
+    "empty_ammunition": "No cooldown or durability cost; owner receives an action-bar message.",
+    "cleanup": "Impact removal or entity timer expiry at 60 ticks; no global per-tick scan and no persistent projectile records."
+  },
+  "multiplayer": {
+    "owner_attribution": "EntityProjectileComponent.owner",
+    "damage_attribution": "Entity.applyDamage with damagingEntity set to the owner",
+    "knockback_attribution": "Impulse computed from projectile travel direction",
+    "friendly_fire": "Follows ordinary Bedrock damage rules; no custom team bypass.",
+    "disconnect": "Projectile remains bounded by its entity timer; an invalid owner prevents scripted damage and the projectile is removed.",
+    "dimension_change": "Projectile remains in its spawn dimension and expires normally.",
+    "death": "Same as disconnect; no projectile state is restored.",
+    "duplicate_prevention": "One event path plus immediate projectile removal and an in-memory processed-ID set.",
+    "simultaneous_use": "Cooldown, inventory, durability, and live-projectile counts are owner-scoped.",
+    "server_authority": true,
+    "client_boundary": "Resource pack presentation only"
+  },
+  "persistence": {
+    "persistent_projectile_records": 0,
+    "restart_contract": "No projectile or script record is restored or duplicated after restart."
+  },
+  "originality": {
+    "java_evidence": "NOT_APPLICABLE",
+    "java_fidelity_claimed": false,
+    "specific_java_feature_targeted": false,
+    "source_expression_used": false,
+    "third_party_production_materials": false,
+    "newly_authored": [
+      "model",
+      "textures",
+      "animations",
+      "particle",
+      "item icon",
+      "naming and localization",
+      "recipe and balance",
+      "script and behavior definitions"
+    ],
+    "sound_direction": "Temporary use of a built-in Bedrock sound; no third-party sound file is shipped."
+  },
+  "performance_limits": {
+    "global_scans_per_tick": 0,
+    "persistent_records": 0,
+    "particle_count_per_impact": 6,
+    "animation_controllers": 1,
+    "maximum_active_projectiles": 16
+  },
+  "release_status": {
+    "internal_test_build": true,
+    "marketplace_approved": false,
+    "physical_ps4_certified": false,
+    "public_release_authorized": false
+  }
+}

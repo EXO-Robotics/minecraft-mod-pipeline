@@ -1,0 +1,146 @@
+[mccompiler-harness] cycle=1
+WARNING: The requested image's platform (linux/amd64) does not match the detected host platform (linux/arm64/v8) and no specific platform was requested
+time="2026-07-23T17:31:47Z" level=debug msg="Using /data to match uid and gid"
+time="2026-07-23T17:31:47Z" level=debug msg="Resolved UID=0 from match path"
+time="2026-07-23T17:31:47Z" level=debug msg="Resolved GID=0 from match path"
+Image info: buildtime=2025-12-13T02:14:45.091Z,version=master,revision=19ecd3aaf1bca5daa6a68526e6f51bb84732953a
+Using given version 1.26.33.2
+Downloading Bedrock server version 1.26.33.2 ...
+2026/07/23 17:32:05 Setting online-mode to false in server.properties
+2026/07/23 17:32:05 Setting allow-list to false in server.properties
+2026/07/23 17:32:05 Setting level-name to Resonance Sling INTERNAL TEST in server.properties
+2026/07/23 17:32:05 Setting content-log-console-output-enabled to true in server.properties
+2026/07/23 17:32:05 Setting white-list to false in server.properties
+Starting Bedrock server...
+NO LOG FILE! - setting up server logging...
+[2026-07-23 17:32:05:885 INFO] Starting Server
+[2026-07-23 17:32:05:885 INFO] Version: 1.26.33.2
+[2026-07-23 17:32:05:886 INFO] Session ID: ca7e9a85-deec-4816-b56c-9e3261f918a9
+[2026-07-23 17:32:05:886 INFO] Build ID: 47564860
+[2026-07-23 17:32:05:886 INFO] Branch: r/26_u3
+[2026-07-23 17:32:05:886 INFO] Commit ID: 677921346ba4ea8fe5a0bed9807f2227f5352d7d
+[2026-07-23 17:32:05:886 INFO] Configuration: Publish
+[2026-07-23 17:32:05:890 INFO] Level Name: Resonance Sling INTERNAL TEST
+[2026-07-23 17:32:05:894 INFO] No CDN config file found at: cdn_config.json for dedicated server
+[2026-07-23 17:32:05:894 INFO] Game mode: 0 Survival
+[2026-07-23 17:32:05:894 INFO] Difficulty: 1 EASY
+[2026-07-23 17:32:05:901 INFO] Content logging to console is enabled.
+[2026-07-23 17:32:05:948 INFO] 
+#####################################################
+#                                                   #
+#               LOADING VANILLA WORLD               #
+#                                                   #
+#####################################################
+[2026-07-23 17:32:07:120 INFO] Opening level 'worlds/Resonance Sling INTERNAL TEST/db'
+[2026-07-23 17:32:07:740 INFO] Pack Stack - [00] Resonance Sling INTERNAL TEST BP (id: 61e0bbf4-0051-4bb0-a5bb-19e1cd68db0f, version: 1.0.0) @ worlds/Resonance Sling INTERNAL TEST/behavior_packs/Resonance_Sling_INTERNAL_TEST_BP-61e0bbf4
+[2026-07-23 17:32:08:458 WARN] [Scripting] [resonance-sling] script runtime initialized stable_api=2.0.0 persistent_records=0 global_scan_per_tick=0 cap=16
+[2026-07-23 17:32:10:717 INFO] IPv4 supported, port: 19132: Used for gameplay and LAN discovery
+[2026-07-23 17:32:10:717 INFO] IPv6 supported, port: 19133: Used for gameplay
+[2026-07-23 17:32:10:776 INFO] Server started.
+[2026-07-23 17:32:10:777 INFO] ================ TELEMETRY MESSAGE ===================
+[2026-07-23 17:32:10:777 INFO] Server Telemetry is currently not enabled. 
+[2026-07-23 17:32:10:777 INFO] Enabling this telemetry helps us improve the game.
+[2026-07-23 17:32:10:777 INFO] 
+[2026-07-23 17:32:10:777 INFO] To enable this feature, add the line 'emit-server-telemetry=true'
+[2026-07-23 17:32:10:777 INFO] to the server.properties file in the handheld/src-server directory
+[2026-07-23 17:32:10:777 INFO] ======================================================
+time="2026-07-23T17:32:26Z" level=debug msg="Forwarding signal" signal=terminated
+time="2026-07-23T17:32:26Z" level=debug msg="Sending message on stdin due to SIGTERM" message=stop
+[2026-07-23 17:32:26:158 INFO] Server stop requested.
+[2026-07-23 17:32:26:188 INFO] Stopping server...
+Quit correctly
+2026-07-23T17:32:26.600Z	INFO	mc-server-runner	Done
+[mccompiler-harness] cycle=2
+WARNING: The requested image's platform (linux/amd64) does not match the detected host platform (linux/arm64/v8) and no specific platform was requested
+time="2026-07-23T17:32:26Z" level=debug msg="Using /data to match uid and gid"
+time="2026-07-23T17:32:26Z" level=debug msg="Resolved UID=0 from match path"
+time="2026-07-23T17:32:26Z" level=debug msg="Resolved GID=0 from match path"
+Image info: buildtime=2025-12-13T02:14:45.091Z,version=master,revision=19ecd3aaf1bca5daa6a68526e6f51bb84732953a
+Using given version 1.26.33.2
+2026/07/23 17:32:27 Setting white-list to false in server.properties
+Starting Bedrock server...
+NO LOG FILE! - setting up server logging...
+[2026-07-23 17:32:28:016 INFO] Starting Server
+[2026-07-23 17:32:28:016 INFO] Version: 1.26.33.2
+[2026-07-23 17:32:28:016 INFO] Session ID: 74cf5981-46b8-48da-9be4-216b64f514d3
+[2026-07-23 17:32:28:016 INFO] Build ID: 47564860
+[2026-07-23 17:32:28:016 INFO] Branch: r/26_u3
+[2026-07-23 17:32:28:016 INFO] Commit ID: 677921346ba4ea8fe5a0bed9807f2227f5352d7d
+[2026-07-23 17:32:28:016 INFO] Configuration: Publish
+[2026-07-23 17:32:28:021 INFO] Level Name: Resonance Sling INTERNAL TEST
+[2026-07-23 17:32:28:025 INFO] No CDN config file found at: cdn_config.json for dedicated server
+[2026-07-23 17:32:28:025 INFO] Game mode: 0 Survival
+[2026-07-23 17:32:28:026 INFO] Difficulty: 1 EASY
+[2026-07-23 17:32:28:032 INFO] Content logging to console is enabled.
+[2026-07-23 17:32:28:081 INFO] 
+#####################################################
+#                                                   #
+#               LOADING VANILLA WORLD               #
+#                                                   #
+#####################################################
+[2026-07-23 17:32:29:171 INFO] Opening level 'worlds/Resonance Sling INTERNAL TEST/db'
+[2026-07-23 17:32:29:789 INFO] Pack Stack - [00] Resonance Sling INTERNAL TEST BP (id: 61e0bbf4-0051-4bb0-a5bb-19e1cd68db0f, version: 1.0.0) @ worlds/Resonance Sling INTERNAL TEST/behavior_packs/Resonance_Sling_INTERNAL_TEST_BP-61e0bbf4
+[2026-07-23 17:32:30:508 WARN] [Scripting] [resonance-sling] script runtime initialized stable_api=2.0.0 persistent_records=0 global_scan_per_tick=0 cap=16
+[2026-07-23 17:32:32:803 INFO] IPv4 supported, port: 19132: Used for gameplay and LAN discovery
+[2026-07-23 17:32:32:803 INFO] IPv6 supported, port: 19133: Used for gameplay
+[2026-07-23 17:32:32:862 INFO] Server started.
+[2026-07-23 17:32:32:863 INFO] ================ TELEMETRY MESSAGE ===================
+[2026-07-23 17:32:32:863 INFO] Server Telemetry is currently not enabled. 
+[2026-07-23 17:32:32:863 INFO] Enabling this telemetry helps us improve the game.
+[2026-07-23 17:32:32:863 INFO] 
+[2026-07-23 17:32:32:863 INFO] To enable this feature, add the line 'emit-server-telemetry=true'
+[2026-07-23 17:32:32:863 INFO] to the server.properties file in the handheld/src-server directory
+[2026-07-23 17:32:32:863 INFO] ======================================================
+time="2026-07-23T17:32:48Z" level=debug msg="Forwarding signal" signal=terminated
+time="2026-07-23T17:32:48Z" level=debug msg="Sending message on stdin due to SIGTERM" message=stop
+[2026-07-23 17:32:48:213 INFO] Server stop requested.
+[2026-07-23 17:32:48:236 INFO] Stopping server...
+Quit correctly
+2026-07-23T17:32:48.673Z	INFO	mc-server-runner	Done
+[mccompiler-harness] cycle=3
+WARNING: The requested image's platform (linux/amd64) does not match the detected host platform (linux/arm64/v8) and no specific platform was requested
+time="2026-07-23T17:32:48Z" level=debug msg="Using /data to match uid and gid"
+time="2026-07-23T17:32:48Z" level=debug msg="Resolved UID=0 from match path"
+time="2026-07-23T17:32:48Z" level=debug msg="Resolved GID=0 from match path"
+Image info: buildtime=2025-12-13T02:14:45.091Z,version=master,revision=19ecd3aaf1bca5daa6a68526e6f51bb84732953a
+Using given version 1.26.33.2
+2026/07/23 17:32:50 Setting white-list to false in server.properties
+Starting Bedrock server...
+NO LOG FILE! - setting up server logging...
+[2026-07-23 17:32:50:255 INFO] Starting Server
+[2026-07-23 17:32:50:255 INFO] Version: 1.26.33.2
+[2026-07-23 17:32:50:255 INFO] Session ID: 79978bdc-4644-4748-9556-1cf2eeaa7dc5
+[2026-07-23 17:32:50:255 INFO] Build ID: 47564860
+[2026-07-23 17:32:50:255 INFO] Branch: r/26_u3
+[2026-07-23 17:32:50:255 INFO] Commit ID: 677921346ba4ea8fe5a0bed9807f2227f5352d7d
+[2026-07-23 17:32:50:255 INFO] Configuration: Publish
+[2026-07-23 17:32:50:260 INFO] Level Name: Resonance Sling INTERNAL TEST
+[2026-07-23 17:32:50:264 INFO] No CDN config file found at: cdn_config.json for dedicated server
+[2026-07-23 17:32:50:264 INFO] Game mode: 0 Survival
+[2026-07-23 17:32:50:264 INFO] Difficulty: 1 EASY
+[2026-07-23 17:32:50:271 INFO] Content logging to console is enabled.
+[2026-07-23 17:32:50:324 INFO] 
+#####################################################
+#                                                   #
+#               LOADING VANILLA WORLD               #
+#                                                   #
+#####################################################
+[2026-07-23 17:32:51:443 INFO] Opening level 'worlds/Resonance Sling INTERNAL TEST/db'
+[2026-07-23 17:32:52:083 INFO] Pack Stack - [00] Resonance Sling INTERNAL TEST BP (id: 61e0bbf4-0051-4bb0-a5bb-19e1cd68db0f, version: 1.0.0) @ worlds/Resonance Sling INTERNAL TEST/behavior_packs/Resonance_Sling_INTERNAL_TEST_BP-61e0bbf4
+[2026-07-23 17:32:52:779 WARN] [Scripting] [resonance-sling] script runtime initialized stable_api=2.0.0 persistent_records=0 global_scan_per_tick=0 cap=16
+[2026-07-23 17:32:55:153 INFO] IPv4 supported, port: 19132: Used for gameplay and LAN discovery
+[2026-07-23 17:32:55:153 INFO] IPv6 supported, port: 19133: Used for gameplay
+[2026-07-23 17:32:55:211 INFO] Server started.
+[2026-07-23 17:32:55:212 INFO] ================ TELEMETRY MESSAGE ===================
+[2026-07-23 17:32:55:212 INFO] Server Telemetry is currently not enabled. 
+[2026-07-23 17:32:55:212 INFO] Enabling this telemetry helps us improve the game.
+[2026-07-23 17:32:55:212 INFO] 
+[2026-07-23 17:32:55:212 INFO] To enable this feature, add the line 'emit-server-telemetry=true'
+[2026-07-23 17:32:55:212 INFO] to the server.properties file in the handheld/src-server directory
+[2026-07-23 17:32:55:212 INFO] ======================================================
+time="2026-07-23T17:33:10Z" level=debug msg="Forwarding signal" signal=terminated
+time="2026-07-23T17:33:10Z" level=debug msg="Sending message on stdin due to SIGTERM" message=stop
+[2026-07-23 17:33:10:561 INFO] Server stop requested.
+[2026-07-23 17:33:10:589 INFO] Stopping server...
+Quit correctly
+2026-07-23T17:33:11.017Z	INFO	mc-server-runner	Done

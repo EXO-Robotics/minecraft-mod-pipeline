@@ -1,0 +1,43 @@
+{
+  "format_version": "1.21.90",
+  "minecraft:entity": {
+    "components": {
+      "minecraft:collision_box": {
+        "height": 0.2,
+        "width": 0.2
+      },
+      "minecraft:physics": {},
+      "minecraft:projectile": {
+        "anchor": 1,
+        "gravity": 0.045,
+        "on_hit": {
+          "remove_on_hit": {}
+        },
+        "power": 1.0
+      },
+      "minecraft:timer": {
+        "looping": false,
+        "time": 3.0,
+        "time_down_event": {
+          "event": "ccoriginal_cc:expire",
+          "target": "self"
+        }
+      },
+      "minecraft:type_family": {
+        "family": [
+          "resonance_projectile"
+        ]
+      }
+    },
+    "description": {
+      "identifier": "ccoriginal_cc:resonance_pulse",
+      "is_spawnable": false,
+      "is_summonable": true
+    },
+    "events": {
+      "ccoriginal_cc:expire": {
+        "remove": {}
+      }
+    }
+  }
+}

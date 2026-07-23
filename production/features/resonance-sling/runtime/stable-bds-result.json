@@ -1,0 +1,168 @@
+{
+  "artifact": {
+    "path": "/Users/blakegrove/Desktop/bedrock-server/minecraft-compiler-baseline/production/features/resonance-sling/dist/resonance-sling-INTERNAL-TEST.mcworld",
+    "sha256": "6be8b1853993eeed03515acc21c999726f0acd8f9d7228372067f202338287ab"
+  },
+  "checks": [
+    {
+      "check_id": "stable-init-1",
+      "classification": "bds_restart_diagnostic",
+      "expect_output": "[resonance-sling] script runtime initialized stable_api=2.0.0",
+      "matched": true,
+      "status": "PASSED"
+    },
+    {
+      "check_id": "stable-init-2",
+      "classification": "bds_restart_diagnostic",
+      "expect_output": "[resonance-sling] script runtime initialized stable_api=2.0.0",
+      "matched": true,
+      "status": "PASSED"
+    },
+    {
+      "check_id": "stable-init-3",
+      "classification": "bds_restart_diagnostic",
+      "expect_output": "[resonance-sling] script runtime initialized stable_api=2.0.0",
+      "matched": true,
+      "status": "PASSED"
+    }
+  ],
+  "claims": {
+    "adapter_integration_verified": false,
+    "bds_boot_verified": true,
+    "console_verified": false,
+    "diagnostic_state_persistence_verified": false,
+    "gameplay_verified": false,
+    "marketplace_approval_implied": false,
+    "migrated_state_restart_verified": false,
+    "multiplayer_verified": false,
+    "nonempty_state_migration_verified": false,
+    "persistence_verified": false,
+    "simulated_player_integration_verified": false
+  },
+  "execution": {
+    "cycles": [
+      {
+        "analysis": {
+          "bedrock_build_id": "47564860",
+          "bedrock_version": "1.26.33.2",
+          "booted": true,
+          "clean": true,
+          "critical_lines": [],
+          "line_count": 51,
+          "migrated_lock_values": [],
+          "migrated_state_records": [],
+          "persistent_boot_values": [],
+          "script_initialized": true
+        },
+        "console_probes": [],
+        "container_exit_code": 0,
+        "cycle": 1,
+        "elapsed_seconds": 39.236,
+        "log_probes": [
+          {
+            "check_id": "stable-init-1",
+            "classification": "bds_restart_diagnostic",
+            "expect_output": "[resonance-sling] script runtime initialized stable_api=2.0.0",
+            "matched": true,
+            "status": "PASSED"
+          }
+        ],
+        "passed": true,
+        "stop_exit_code": 0,
+        "timed_out": false,
+        "timeout_seconds": 180
+      },
+      {
+        "analysis": {
+          "bedrock_build_id": "47564860",
+          "bedrock_version": "1.26.33.2",
+          "booted": true,
+          "clean": true,
+          "critical_lines": [],
+          "line_count": 46,
+          "migrated_lock_values": [],
+          "migrated_state_records": [],
+          "persistent_boot_values": [],
+          "script_initialized": true
+        },
+        "console_probes": [],
+        "container_exit_code": 0,
+        "cycle": 2,
+        "elapsed_seconds": 22.082,
+        "log_probes": [
+          {
+            "check_id": "stable-init-2",
+            "classification": "bds_restart_diagnostic",
+            "expect_output": "[resonance-sling] script runtime initialized stable_api=2.0.0",
+            "matched": true,
+            "status": "PASSED"
+          }
+        ],
+        "passed": true,
+        "stop_exit_code": 0,
+        "timed_out": false,
+        "timeout_seconds": 180
+      },
+      {
+        "analysis": {
+          "bedrock_build_id": "47564860",
+          "bedrock_version": "1.26.33.2",
+          "booted": true,
+          "clean": true,
+          "critical_lines": [],
+          "line_count": 46,
+          "migrated_lock_values": [],
+          "migrated_state_records": [],
+          "persistent_boot_values": [],
+          "script_initialized": true
+        },
+        "console_probes": [],
+        "container_exit_code": 0,
+        "cycle": 3,
+        "elapsed_seconds": 22.326,
+        "log_probes": [
+          {
+            "check_id": "stable-init-3",
+            "classification": "bds_restart_diagnostic",
+            "expect_output": "[resonance-sling] script runtime initialized stable_api=2.0.0",
+            "matched": true,
+            "status": "PASSED"
+          }
+        ],
+        "passed": true,
+        "stop_exit_code": 0,
+        "timed_out": false,
+        "timeout_seconds": 180
+      }
+    ],
+    "elapsed_seconds": 83.646,
+    "restart_count": 3
+  },
+  "log": {
+    "bedrock_build_id": "47564860",
+    "bedrock_version": "1.26.33.2",
+    "booted": true,
+    "clean": true,
+    "critical_lines": [],
+    "line_count": 146,
+    "migrated_lock_values": [],
+    "migrated_state_records": [],
+    "path": "/Users/blakegrove/Desktop/bedrock-server/minecraft-compiler-baseline/production/features/resonance-sling/runtime/stable-bds/content.log",
+    "persistent_boot_values": [],
+    "script_initialized": true,
+    "sha256": "d79db0d399a22299c66a4fa097ab91c2489eee29118fbb6af8463983213840e4"
+  },
+  "passed": true,
+  "runtime": {
+    "adapter": "docker-bds",
+    "image": "itzg/minecraft-bedrock-server@sha256:12c7047cc149bd517d6dbc2339163cf62a4f1044c10e759c45c8b387e9784e39",
+    "level_name": "Resonance Sling INTERNAL TEST",
+    "network": "bridge",
+    "preview_channel": false,
+    "published_ports": false,
+    "requested_bds_version": "1.26.33.2"
+  },
+  "schema_version": "1.0.0",
+  "status": "BDS_DIAGNOSTIC_BOOT_VERIFIED",
+  "upgrade": null
+}
