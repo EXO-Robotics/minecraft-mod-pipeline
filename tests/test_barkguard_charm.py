@@ -104,6 +104,12 @@ class BarkguardCharmTests(unittest.TestCase):
         geo = json.loads((ASSETS / "barkguard_charm.geo.json").read_text())["minecraft:geometry"][0]
         self.assertEqual(geo["description"]["texture_width"], 32)
         self.assertEqual(sum(len(b.get("cubes", [])) for b in geo["bones"]), 7)
+        for bone in geo["bones"]:
+            for cube in bone.get("cubes", []):
+                self.assertTrue(
+                    all(dimension >= 1 for dimension in cube["size"]),
+                    f"Box UV cube has a sub-unit dimension: {cube}",
+                )
         animations = json.loads((RP / "animations/barkguard_charm.animation.json").read_text())["animations"]
         self.assertEqual(len(animations), 2)
         self.assertTrue((RP / "textures/items/barkguard_charm.png").read_bytes().startswith(b"\x89PNG\r\n\x1a\n"))

@@ -110,8 +110,8 @@ console.warn("[barkguard-charm] stable_api=2.0.0 event_driven=true global_scans_
 def model_files() -> None:
     elements = [
         ("back_plate", [-4, 6, -1], [4, 14, 0], "medallion"),
-        ("heartwood", [-3, 7, -1.5], [3, 13, -1], "medallion"),
-        ("leaf", [-1, 8, -2], [2, 12, -1.5], "leaf_inlay"),
+        ("heartwood", [-3, 7, -2], [3, 13, -1], "medallion"),
+        ("leaf", [-1, 8, -3], [2, 12, -2], "leaf_inlay"),
         ("rim_top", [-3, 13, -2], [3, 14, -1], "medallion"),
         ("notch_left", [-5, 8, -1.5], [-4, 10, -0.5], "bindings"),
         ("notch_right", [4, 10, -1.5], [5, 12, -0.5], "bindings"),
