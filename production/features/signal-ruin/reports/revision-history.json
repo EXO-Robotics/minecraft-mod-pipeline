@@ -24,6 +24,16 @@
         "Each active encounter resets at the 80-second interval boundary",
         "Stress function places instances 24 blocks apart"
       ]
+    },
+    {
+      "candidate_commit": "c1f58f18c0658ab5ce77659a52fbbfde402101e8",
+      "packet_delivery": "FOLLOW_UP_PACKET_ONLY_COMMIT",
+      "disposition": "READY_FOR_MAIN_CODEX_REVIEW",
+      "closures": [
+        "Removed trailing whitespace from the JavaScript build template",
+        "Regenerated the runtime script and deterministic package",
+        "Exact base-to-candidate git diff --check passes"
+      ]
     }
   ]
 }

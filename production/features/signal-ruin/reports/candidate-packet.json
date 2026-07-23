@@ -3,7 +3,7 @@
   "label": "INTERNAL TEST BUILD / NOT MARKETPLACE APPROVED / NOT PHYSICAL PS4 CERTIFIED / NOT FOR PUBLIC RELEASE",
   "feature_id": "signal_ruin",
   "base_commit": "0db4c8a5f504106b4a601afa6f7bc225eb697dcd",
-  "candidate_commit": "38d33913b9a7daa18080be1a4d3e4c6f4c7c9550",
+  "candidate_commit": "c1f58f18c0658ab5ce77659a52fbbfde402101e8",
   "packet_delivery": "FOLLOW_UP_PACKET_ONLY_COMMIT",
   "branch": "codex/parallel-batch-1/signal-ruin",
   "changed_paths": [
@@ -42,7 +42,7 @@
   "assets_and_packages": [
     {
       "path": "production/features/signal-ruin/dist/signal-ruin-INTERNAL-TEST.mcaddon",
-      "sha256": "0fcda7f556bea8f677c76394704f10c0e4e0cd56a55d84074a7951369884ec7e"
+      "sha256": "0b3102c9a57f0e07bf492e5e683e0cf04407994943ad9a7e3dded08153e37180"
     },
     {
       "path": "production/features/signal-ruin/bedrock/behavior_pack/structures/ccoriginal_cc/signal_ruin.mcstructure",
@@ -118,13 +118,14 @@
     "effort_note": "The requested light setting was unavailable; the actual allocation was low."
   },
   "revision": {
-    "disposition_addressed": "REVISE",
-    "supersedes_candidate_commit": "fb33af831cbc147199b119f7efc8cf7011e61da8",
+    "disposition_addressed": "FINAL_BOUNDED_REVISION",
+    "supersedes_candidate_commit": "38d33913b9a7daa18080be1a4d3e4c6f4c7c9550",
     "findings_closed": [
       "Evidence-preserving deterministic rebuild",
       "Two-active-instance hard cap before mutation",
       "Eighty-second encounter cleanup ceiling",
-      "Spatially distinct two-instance stress placement"
+      "Spatially distinct two-instance stress placement",
+      "Generated JavaScript and authoring template have no trailing whitespace"
     ]
   },
   "recommendation": "ACCEPT_FOR_MAIN_CODEX_QUALIFICATION_ONLY; DO_NOT PUBLICLY RELEASE OR CLAIM MARKETPLACE OR PHYSICAL PS4 READINESS"
