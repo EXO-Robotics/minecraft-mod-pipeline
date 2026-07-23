@@ -100,7 +100,9 @@ def test_spawn_stress_cleanup_and_multiplayer_fallback_contracts() -> None:
     assert spawn["minecraft:spawn_rules"]["conditions"] == []
     assert spawn["_ccoriginal_cc"]["natural_spawn_enabled"] is False
     stress = (BP / "functions/ccoriginal_cc/gloamwing/stress_20.mcfunction").read_text().splitlines()
-    assert len(stress) == 20 and all("ccoriginal_cc:gloamwing_test" in line for line in stress)
+    assert len(stress) == 40
+    assert sum(line.startswith("summon ccoriginal_cc:gloamwing_stalker ") for line in stress) == 20
+    assert sum(line.endswith("add ccoriginal_cc:gloamwing_test") for line in stress) == 20
     cleanup = (BP / "functions/ccoriginal_cc/gloamwing/cleanup.mcfunction").read_text()
     assert cleanup == "kill @e[type=ccoriginal_cc:gloamwing_stalker,tag=ccoriginal_cc:gloamwing_test]\n"
     target = read(BP / "entities/gloamwing_stalker.json")["minecraft:entity"]["components"]["minecraft:behavior.nearest_attackable_target"]

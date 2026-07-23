@@ -1,0 +1,37 @@
+{
+  "schema_version": "1.0.0",
+  "batch_id": "forest-wave-1-parallel-batch-1",
+  "status": "BLOCKED_PENDING_REQUIRED_EXTERNAL_GROK_REVIEW",
+  "final_accepted": false,
+  "artifacts": {
+    "mcaddon_sha256": "6a6d4ed26b936bfd4a717047c5f94e6cba27ecdf8275f4a7205ad4619af406d5",
+    "mcworld_sha256": "dc110378a76a3f9be30bb6e9a3f730aab1cd5bb038715f15d89bb53c2bc3f667",
+    "preview_diagnostic_mcworld_sha256": "171bdbe71f6ab0d9ba840ffac47bdf324777736c26e393571ae4910d794e6879"
+  },
+  "gates": {
+    "static_repository_suite": "PASSED_363_TESTS_1_SKIPPED_107_SUBTESTS",
+    "blockbench_authoritative_round_trip": "PASSED",
+    "stable_bds_three_restart": "PASSED",
+    "preview_bds_two_cycle_simulated_player": "PASSED_WITH_DOCUMENTED_HARNESS_LIMITS",
+    "creator_tools": "NOT_EXECUTED_ENVIRONMENT_UNAVAILABLE",
+    "external_grok_red_team": "PENDING_EXPLICIT_USER_APPROVAL",
+    "bedrock_desktop_client": "PENDING",
+    "live_multiplayer_clients": "PENDING",
+    "realm": "NOT_DEPLOYED",
+    "physical_ps4": "PENDING",
+    "marketplace": "NOT_SUBMITTED"
+  },
+  "protected_resonance_sling": {
+    "mcaddon_sha256": "0bbd00a285cb8c7ccab49cf9a246f2ad95386eeaa239631a1c6463c0c84855ec",
+    "mcworld_sha256": "061501b67b0886296ad2765f1b7c5246efbe38d64b9494303a05b9ee81a58d9a",
+    "unchanged": true
+  },
+  "external_actions": {
+    "push": false,
+    "tag": false,
+    "release": false,
+    "realm_deployment": false,
+    "marketplace_submission": false,
+    "physical_ps4_claim": false
+  }
+}

@@ -76,6 +76,10 @@ def _pack_inventory(bindings: Iterable[PackBinding]) -> list[tuple[str, bytes]]:
 
 def compute_pack_hash(behavior_pack: str | Path, resource_pack: str | Path) -> str:
     bindings = (_load_binding(Path(behavior_pack), "behavior"), _load_binding(Path(resource_pack), "resource"))
+    return _compute_inventory_hash(bindings)
+
+
+def _compute_inventory_hash(bindings: Iterable[PackBinding]) -> str:
     digest = hashlib.sha256()
     for relative, payload in _pack_inventory(bindings):
         encoded = relative.encode("utf-8")
@@ -159,4 +163,49 @@ def generate_test_world(
         "world_hash": world_hash,
         "behavior_pack": bp.world_record(),
         "resource_pack": rp.world_record(),
+    }
+
+
+def generate_multi_pack_test_world(
+    behavior_packs: Iterable[str | Path],
+    resource_packs: Iterable[str | Path],
+    output: str | Path,
+    *,
+    world_name: str = "MCCompiler Multi-Pack Test World",
+) -> dict[str, Any]:
+    """Create a deterministic minimal .mcworld containing multiple bound BP/RP packs."""
+    behavior_bindings = tuple(_load_binding(Path(pack), "behavior") for pack in behavior_packs)
+    resource_bindings = tuple(_load_binding(Path(pack), "resource") for pack in resource_packs)
+    if not behavior_bindings or not resource_bindings:
+        raise ValueError("Multi-pack test worlds require at least one behavior and resource pack")
+
+    bindings = (*behavior_bindings, *resource_bindings)
+    uuids = [binding.uuid for binding in bindings]
+    if len(uuids) != len(set(uuids)):
+        raise ValueError("Multi-pack test worlds require unique pack UUIDs")
+    folders = [(binding.kind, binding.folder) for binding in bindings]
+    if len(folders) != len(set(folders)):
+        raise ValueError("Multi-pack test worlds require unique pack folders")
+
+    inventory = _pack_inventory(bindings)
+    pack_hash = _compute_inventory_hash(bindings)
+    world_files = [
+        ("level.dat", _minimal_level_dat(world_name)),
+        ("levelname.txt", (world_name + "\n").encode("utf-8")),
+        ("world_behavior_packs.json", _canonical_json([binding.world_record() for binding in behavior_bindings])),
+        ("world_resource_packs.json", _canonical_json([binding.world_record() for binding in resource_bindings])),
+    ]
+    destination = Path(output)
+    if destination.suffix.lower() != ".mcworld":
+        raise ValueError("Test-world output must use the .mcworld extension")
+    _write_zip(destination, [*world_files, *inventory])
+    world_hash = hashlib.sha256(destination.read_bytes()).hexdigest()
+    return {
+        "schema_version": "1.0.0",
+        "path": str(destination.resolve()),
+        "world_name": world_name,
+        "pack_hash": pack_hash,
+        "world_hash": world_hash,
+        "behavior_packs": [binding.world_record() for binding in behavior_bindings],
+        "resource_packs": [binding.world_record() for binding in resource_bindings],
     }

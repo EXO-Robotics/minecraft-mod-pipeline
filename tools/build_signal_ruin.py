@@ -55,7 +55,7 @@ def structure_nbt(spec: dict) -> bytes:
         x, y, z = row["pos"]
         layer[x * sy * sz + y * sz + z] = indexes[row["block"]]
     palette = b"".join(
-        bytes([10]) + compound([
+        compound([
             named(8, "name", nbt_string(name)),
             named(10, "states", compound([])),
             named(3, "version", struct.pack("<i", 18168865)),
@@ -79,7 +79,9 @@ def structure_nbt(spec: dict) -> bytes:
             ])),
         ])),
     ])
-    return root
+    # Bedrock .mcstructure files are little-endian NBT documents with a named
+    # root compound. The root name is empty, hence the two zero length bytes.
+    return bytes([10, 0, 0]) + root
 
 
 def stable_zip(output: Path, roots: list[tuple[Path, str]]) -> None:
@@ -172,7 +174,7 @@ def main() -> None:
                 "minecraft:type_family": {"family": ["signal_ruin_anchor", "inanimate"]},
                 "minecraft:collision_box": {"width": 0.8, "height": 1.0},
                 "minecraft:health": {"value": 1, "max": 1},
-                "minecraft:damage_sensor": {"triggers": [{"cause": "all", "deals_damage": False}]},
+                "minecraft:damage_sensor": {"triggers": [{"cause": "all", "deals_damage": "no"}]},
                 "minecraft:physics": {"has_gravity": False, "has_collision": False},
                 "minecraft:pushable": {"is_pushable": False, "is_pushable_by_piston": False},
                 "minecraft:interact": {"interactions": [{"interact_text": "action.interact.signal_ruin", "on_interact": {"event": "ccoriginal_cc:signal_ruin_activation", "target": "self"}}]},

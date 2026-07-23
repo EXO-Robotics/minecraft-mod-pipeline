@@ -44,6 +44,10 @@
                 },
                 "target": "self"
               },
+              "spawn_items": {
+                "table": "loot_tables/ccoriginal_cc/entities/mossback_forager_gift.json",
+                "y_offset": 1
+              },
               "use_item": true
             }
           ]
@@ -127,11 +131,6 @@
           {
             "set_property": {
               "ccoriginal_cc:mossback_cooling": true
-            }
-          },
-          {
-            "spawn_loot": {
-              "table": "loot_tables/ccoriginal_cc/entities/mossback_forager_gift.json"
             }
           },
           {

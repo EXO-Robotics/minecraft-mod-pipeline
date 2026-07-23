@@ -1,0 +1,210 @@
+{
+  "artifact": {
+    "path": "/Users/blakegrove/Desktop/bedrock-server/.derivedData/worktrees/parallel-batch-1/red-team-staging/production/batches/forest-wave-1-parallel-batch-1/dist/forest-wave-1-parallel-batch-1-INTERNAL-TEST.mcworld",
+    "sha256": "dc110378a76a3f9be30bb6e9a3f730aab1cd5bb038715f15d89bb53c2bc3f667"
+  },
+  "checks": [
+    {
+      "check_id": "stable-barkguard-cycle-1",
+      "classification": "bds_restart_diagnostic",
+      "expect_output": "[barkguard-charm] stable_api=2.0.0",
+      "matched": true,
+      "status": "PASSED"
+    },
+    {
+      "check_id": "stable-resonance-cycle-1",
+      "classification": "bds_restart_diagnostic",
+      "expect_output": "[resonance-sling] script runtime initialized stable_api=2.0.0",
+      "matched": true,
+      "status": "PASSED"
+    },
+    {
+      "check_id": "stable-barkguard-cycle-2",
+      "classification": "bds_restart_diagnostic",
+      "expect_output": "[barkguard-charm] stable_api=2.0.0",
+      "matched": true,
+      "status": "PASSED"
+    },
+    {
+      "check_id": "stable-resonance-cycle-2",
+      "classification": "bds_restart_diagnostic",
+      "expect_output": "[resonance-sling] script runtime initialized stable_api=2.0.0",
+      "matched": true,
+      "status": "PASSED"
+    },
+    {
+      "check_id": "stable-barkguard-cycle-3",
+      "classification": "bds_restart_diagnostic",
+      "expect_output": "[barkguard-charm] stable_api=2.0.0",
+      "matched": true,
+      "status": "PASSED"
+    },
+    {
+      "check_id": "stable-resonance-cycle-3",
+      "classification": "bds_restart_diagnostic",
+      "expect_output": "[resonance-sling] script runtime initialized stable_api=2.0.0",
+      "matched": true,
+      "status": "PASSED"
+    }
+  ],
+  "claims": {
+    "adapter_integration_verified": false,
+    "bds_boot_verified": true,
+    "console_verified": false,
+    "diagnostic_state_persistence_verified": false,
+    "gameplay_verified": false,
+    "marketplace_approval_implied": false,
+    "migrated_state_restart_verified": false,
+    "multiplayer_verified": false,
+    "nonempty_state_migration_verified": false,
+    "persistence_verified": false,
+    "simulated_player_integration_verified": false
+  },
+  "execution": {
+    "cycles": [
+      {
+        "analysis": {
+          "bedrock_build_id": "47564860",
+          "bedrock_version": "1.26.33.2",
+          "booted": true,
+          "clean": true,
+          "critical_lines": [],
+          "line_count": 54,
+          "migrated_lock_values": [],
+          "migrated_state_records": [],
+          "persistent_boot_values": [],
+          "script_initialized": true
+        },
+        "console_probes": [],
+        "container_exit_code": 0,
+        "cycle": 1,
+        "elapsed_seconds": 27.365,
+        "log_probes": [
+          {
+            "check_id": "stable-barkguard-cycle-1",
+            "classification": "bds_restart_diagnostic",
+            "expect_output": "[barkguard-charm] stable_api=2.0.0",
+            "matched": true,
+            "status": "PASSED"
+          },
+          {
+            "check_id": "stable-resonance-cycle-1",
+            "classification": "bds_restart_diagnostic",
+            "expect_output": "[resonance-sling] script runtime initialized stable_api=2.0.0",
+            "matched": true,
+            "status": "PASSED"
+          }
+        ],
+        "passed": true,
+        "stop_exit_code": 0,
+        "timed_out": false,
+        "timeout_seconds": 180
+      },
+      {
+        "analysis": {
+          "bedrock_build_id": "47564860",
+          "bedrock_version": "1.26.33.2",
+          "booted": true,
+          "clean": true,
+          "critical_lines": [],
+          "line_count": 53,
+          "migrated_lock_values": [],
+          "migrated_state_records": [],
+          "persistent_boot_values": [],
+          "script_initialized": true
+        },
+        "console_probes": [],
+        "container_exit_code": 0,
+        "cycle": 2,
+        "elapsed_seconds": 27.099,
+        "log_probes": [
+          {
+            "check_id": "stable-barkguard-cycle-2",
+            "classification": "bds_restart_diagnostic",
+            "expect_output": "[barkguard-charm] stable_api=2.0.0",
+            "matched": true,
+            "status": "PASSED"
+          },
+          {
+            "check_id": "stable-resonance-cycle-2",
+            "classification": "bds_restart_diagnostic",
+            "expect_output": "[resonance-sling] script runtime initialized stable_api=2.0.0",
+            "matched": true,
+            "status": "PASSED"
+          }
+        ],
+        "passed": true,
+        "stop_exit_code": 0,
+        "timed_out": false,
+        "timeout_seconds": 180
+      },
+      {
+        "analysis": {
+          "bedrock_build_id": "47564860",
+          "bedrock_version": "1.26.33.2",
+          "booted": true,
+          "clean": true,
+          "critical_lines": [],
+          "line_count": 53,
+          "migrated_lock_values": [],
+          "migrated_state_records": [],
+          "persistent_boot_values": [],
+          "script_initialized": true
+        },
+        "console_probes": [],
+        "container_exit_code": 0,
+        "cycle": 3,
+        "elapsed_seconds": 27.038,
+        "log_probes": [
+          {
+            "check_id": "stable-barkguard-cycle-3",
+            "classification": "bds_restart_diagnostic",
+            "expect_output": "[barkguard-charm] stable_api=2.0.0",
+            "matched": true,
+            "status": "PASSED"
+          },
+          {
+            "check_id": "stable-resonance-cycle-3",
+            "classification": "bds_restart_diagnostic",
+            "expect_output": "[resonance-sling] script runtime initialized stable_api=2.0.0",
+            "matched": true,
+            "status": "PASSED"
+          }
+        ],
+        "passed": true,
+        "stop_exit_code": 0,
+        "timed_out": false,
+        "timeout_seconds": 180
+      }
+    ],
+    "elapsed_seconds": 81.503,
+    "restart_count": 3
+  },
+  "log": {
+    "bedrock_build_id": "47564860",
+    "bedrock_version": "1.26.33.2",
+    "booted": true,
+    "clean": true,
+    "critical_lines": [],
+    "line_count": 163,
+    "migrated_lock_values": [],
+    "migrated_state_records": [],
+    "path": "/Users/blakegrove/Desktop/bedrock-server/.derivedData/worktrees/parallel-batch-1/red-team-staging/production/batches/forest-wave-1-parallel-batch-1/runtime/stable-bds/content.log",
+    "persistent_boot_values": [],
+    "script_initialized": true,
+    "sha256": "f8f589db76922b27096b7e50fc69775e0b228cd342f85a6ad14133b0031483ee"
+  },
+  "passed": true,
+  "runtime": {
+    "adapter": "docker-bds",
+    "image": "itzg/minecraft-bedrock-server@sha256:12c7047cc149bd517d6dbc2339163cf62a4f1044c10e759c45c8b387e9784e39",
+    "level_name": "Forest Wave 1 Parallel Batch 1 INTERNAL TEST",
+    "network": "bridge",
+    "preview_channel": false,
+    "published_ports": false,
+    "requested_bds_version": "1.26.33.2"
+  },
+  "schema_version": "1.0.0",
+  "status": "BDS_DIAGNOSTIC_BOOT_VERIFIED",
+  "upgrade": null
+}

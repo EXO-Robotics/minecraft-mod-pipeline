@@ -223,8 +223,23 @@ def build() -> dict:
     write_json(BP / "spawn_rules/gloamwing_stalker.json", {"format_version": "1.8.0", "minecraft:spawn_rules": {"description": {"identifier": "ccoriginal_cc:gloamwing_stalker", "population_control": "monster"}, "conditions": []}, "_ccoriginal_cc": {"natural_spawn_enabled": False, "qualification_required": "server_stress_20"}})
     function_dir = BP / "functions/ccoriginal_cc/gloamwing"
     function_dir.mkdir(parents=True, exist_ok=True)
-    (function_dir / "summon.mcfunction").write_text("summon ccoriginal_cc:gloamwing_stalker ~ ~1 ~ ccoriginal_cc:gloamwing_test\n", encoding="utf-8")
-    summons = [f"summon ccoriginal_cc:gloamwing_stalker ~{(i % 5) * 2} ~1 ~{(i // 5) * 2} ccoriginal_cc:gloamwing_test" for i in range(20)]
+    (function_dir / "summon.mcfunction").write_text(
+        "summon ccoriginal_cc:gloamwing_stalker ~ ~1 ~\n"
+        "tag @e[type=ccoriginal_cc:gloamwing_stalker,tag=!ccoriginal_cc:gloamwing_test,c=1] add ccoriginal_cc:gloamwing_test\n",
+        encoding="utf-8",
+    )
+    summons = [
+        line
+        for i in range(20)
+        for line in (
+            f"summon ccoriginal_cc:gloamwing_stalker ~{(i % 5) * 2} ~1 ~{(i // 5) * 2}",
+            (
+                "tag @e[type=ccoriginal_cc:gloamwing_stalker,"
+                "tag=!ccoriginal_cc:gloamwing_test,c=1] "
+                "add ccoriginal_cc:gloamwing_test"
+            ),
+        )
+    ]
     (function_dir / "stress_20.mcfunction").write_text("\n".join(summons) + "\n", encoding="utf-8")
     (function_dir / "cleanup.mcfunction").write_text("kill @e[type=ccoriginal_cc:gloamwing_stalker,tag=ccoriginal_cc:gloamwing_test]\n", encoding="utf-8")
     write_json(BP / "manifest.json", {"format_version": 2, "header": {"name": "Gloamwing Stalker BP (Internal)", "description": "Original internal-test behavior pack", "uuid": "e2b0816e-74ed-4457-a8af-a9eb889ecbcb", "version": [1, 0, 0], "min_engine_version": [1, 20, 50]}, "modules": [{"type": "data", "uuid": "00f4fc42-7b63-4860-bcd2-06d31724130c", "version": [1, 0, 0]}], "dependencies": [{"uuid": "3a750a45-d232-4a26-aef0-4844df456d74", "version": [1, 0, 0]}]})

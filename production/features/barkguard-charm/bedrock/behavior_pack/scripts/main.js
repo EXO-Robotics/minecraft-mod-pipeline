@@ -34,7 +34,7 @@ function tryActivate(player, damage) {
 
 world.afterEvents.entityHurt.subscribe((event) => {
   const player = event.hurtEntity;
-  if (player.typeId !== "minecraft:player") return;
+  if (player?.typeId !== "minecraft:player") return;
   tryActivate(player, event.damage);
 });
 

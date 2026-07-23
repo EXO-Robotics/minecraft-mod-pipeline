@@ -118,7 +118,7 @@ function activate(player) {
 }
 
 world.afterEvents.itemUse.subscribe(({ itemStack, source }) => {
-  if (itemStack.typeId === SIGIL_ID) activate(source);
+  if (itemStack?.typeId === SIGIL_ID && source) activate(source);
 });
 
 system.afterEvents.scriptEventReceive.subscribe(({ id, sourceEntity }) => {
@@ -134,6 +134,7 @@ system.afterEvents.scriptEventReceive.subscribe(({ id, sourceEntity }) => {
 
 system.runInterval(() => {
   for (const player of world.getAllPlayers()) {
+    if (!player) continue;
     if (!isForestAttuned(player)) continue;
     try {
       const biome = player.dimension.getBiome(player.location);

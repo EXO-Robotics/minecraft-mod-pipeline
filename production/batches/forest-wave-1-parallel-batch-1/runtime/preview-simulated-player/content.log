@@ -1,0 +1,147 @@
+[mccompiler-harness] cycle=1
+WARNING: The requested image's platform (linux/amd64) does not match the detected host platform (linux/arm64/v8) and no specific platform was requested
+time="2026-07-23T21:53:24Z" level=debug msg="Using /data to match uid and gid"
+time="2026-07-23T21:53:24Z" level=debug msg="Resolved UID=0 from match path"
+time="2026-07-23T21:53:24Z" level=debug msg="Resolved GID=0 from match path"
+Image info: buildtime=2025-12-13T02:14:45.091Z,version=master,revision=19ecd3aaf1bca5daa6a68526e6f51bb84732953a
+Using existing bedrock server executable
+2026/07/23 21:53:24 Setting level-name to Forest Wave 1 Parallel Batch 1 INTERNAL TEST in server.properties
+2026/07/23 21:53:24 Setting white-list to false in server.properties
+Starting Bedrock server...
+NO LOG FILE! - setting up server logging...
+[2026-07-23 21:53:24:495 INFO] Starting Server
+[2026-07-23 21:53:24:495 INFO] Version: 1.26.50.20
+[2026-07-23 21:53:24:495 INFO] Session ID: 3131e587-99f2-419f-890f-3d5f50257294
+[2026-07-23 21:53:24:495 INFO] Build ID: 47971866
+[2026-07-23 21:53:24:495 INFO] Branch: main
+[2026-07-23 21:53:24:495 INFO] Commit ID: a3447f3c9f0a25124e670a72f2f995e046e1acee
+[2026-07-23 21:53:24:495 INFO] Configuration: Publish
+[2026-07-23 21:53:24:500 INFO] Contents of server.properties: {}
+[2026-07-23 21:53:24:500 INFO] Level Name: Forest Wave 1 Parallel Batch 1 INTERNAL TEST
+[2026-07-23 21:53:24:502 INFO] Profiler config ('bootstrap.json') load result: success=1, errorMessage=(null)
+[2026-07-23 21:53:24:512 INFO] No CDN config file found at: cdn_config.json for dedicated server
+[2026-07-23 21:53:24:512 INFO] Game mode: 0 Survival
+[2026-07-23 21:53:24:512 INFO] Difficulty: 1 EASY
+[2026-07-23 21:53:24:520 INFO] Content logging to console is enabled.
+[2026-07-23 21:53:24:573 INFO]
+#####################################################
+#                                                   #
+#               LOADING VANILLA WORLD               #
+#                                                   #
+#####################################################
+[2026-07-23 21:53:25:613 INFO] Experiment(s) active: gtst
+[2026-07-23 21:53:25:615 INFO] Opening level 'worlds/Forest Wave 1 Parallel Batch 1 INTERNAL TEST/db'
+[2026-07-23 21:53:26:632 INFO] Pack Stack - [00] Resonance Sling INTERNAL TEST BP (id: 61e0bbf4-0051-4bb0-a5bb-19e1cd68db0f, version: 1.0.0) @ worlds/Forest Wave 1 Parallel Batch 1 INTERNAL TEST/behavior_packs/Resonance_Sling_INTERNAL_TEST_BP-61e0bbf4
+[2026-07-23 21:53:26:632 INFO] Pack Stack - [01] Signal Ruin - INTERNAL TEST BUILD / NOT MARKETPLACE APPROVED / NOT PHYSICAL PS4 CERTIFIED / NOT FOR PUBLIC RELEASE (id: 556acdce-2ddc-4cbd-b08d-f62681387306, version: 0.1.0) @ worlds/Forest Wave 1 Parallel Batch 1 INTERNAL TEST/behavior_packs/Signal_Ruin_-_INTERNAL_TEST_BUILD___NOT_MARKETPLACE_APPROVED___NOT_PHYSICAL_PS4_CERTIFIED___NOT_FOR_PUBLIC_RELEASE-556acdce
+[2026-07-23 21:53:26:632 INFO] Pack Stack - [02] Mossback Forager INTERNAL TEST BP (id: 6a67bb25-2953-4be9-9b32-611cf09be04a, version: 1.0.0) @ worlds/Forest Wave 1 Parallel Batch 1 INTERNAL TEST/behavior_packs/Mossback_Forager_INTERNAL_TEST_BP-6a67bb25
+[2026-07-23 21:53:26:632 INFO] Pack Stack - [03] Barkguard Charm INTERNAL TEST BP (id: 2985974d-139b-4142-9c25-ae1aba1f95bf, version: 1.0.0) @ worlds/Forest Wave 1 Parallel Batch 1 INTERNAL TEST/behavior_packs/Barkguard_Charm_INTERNAL_TEST_BP-2985974d
+[2026-07-23 21:53:26:632 INFO] Pack Stack - [04] Gloamwing Stalker BP (Internal) (id: e2b0816e-74ed-4457-a8af-a9eb889ecbcb, version: 1.0.0) @ worlds/Forest Wave 1 Parallel Batch 1 INTERNAL TEST/behavior_packs/Gloamwing_Stalker_BP__Internal-e2b0816e
+[2026-07-23 21:53:26:632 INFO] Pack Stack - [05] Forest Attunement BP [INTERNAL TEST] (id: 43b642d0-a651-45cf-ae20-96a0b853fba5, version: 1.0.0) @ worlds/Forest Wave 1 Parallel Batch 1 INTERNAL TEST/behavior_packs/Forest_Attunement_BP__INTERNAL_TEST-43b642d0
+[2026-07-23 21:53:26:632 INFO] Pack Stack - [06] Forest Wave 1 Batch 1 Preview Qualification (id: f510b35e-62c1-44d7-804e-10d742b80fd5, version: 0.1.0) @ worlds/Forest Wave 1 Parallel Batch 1 INTERNAL TEST/behavior_packs/Forest_Wave_1_Batch_1_Preview_Qualification-f510b35e
+[2026-07-23 21:53:27:575 WARN] [Scripting] [resonance-sling] script runtime initialized stable_api=2.0.0 persistent_records=0 global_scan_per_tick=0 cap=16
+[2026-07-23 21:53:27:602 WARN] [Scripting] [barkguard-charm] stable_api=2.0.0 event_driven=true global_scans_per_tick=0 persistent_records=0
+[2026-07-23 21:53:28:749 WARN] [Components] Forest Wave 1 Parallel Batch 1 INTERNAL TEST | actor_definitions | worlds/Forest Wave 1 Parallel Batch 1 INTERNAL TEST/behavior_packs/Resonance_Sling_INTERNAL_TEST_BP-61e0bbf4 | ccoriginal_cc:resonance_pulse | minecraft:entity | Invalid particle type 'ccoriginal_cc:resonance_impact' specified.
+[2026-07-23 21:53:30:332 INFO] IPv4 supported, port: 19132: Used for gameplay and LAN discovery
+[2026-07-23 21:53:30:332 INFO] IPv6 supported, port: 19133: Used for gameplay
+[2026-07-23 21:53:30:393 INFO] Signed in to signaling service successfully
+[2026-07-23 21:53:30:403 INFO] Server started.
+[2026-07-23 21:53:30:404 INFO] ================ TELEMETRY MESSAGE ===================
+[2026-07-23 21:53:30:404 INFO] Server Telemetry is currently not enabled.
+[2026-07-23 21:53:30:404 INFO] Enabling this telemetry helps us improve the game.
+[2026-07-23 21:53:30:404 INFO]
+[2026-07-23 21:53:30:404 INFO] To enable this feature, add the line 'emit-server-telemetry=true'
+[2026-07-23 21:53:30:404 INFO] to the server.properties file in the handheld/src-server directory
+[2026-07-23 21:53:30:404 INFO] ======================================================
+[2026-07-23 21:53:31:502 INFO] Added ticking area centered at 8, 0, 8 with a radius of 2 chunks marked for preload.
+1/10 ticking areas in use.
+[2026-07-23 21:53:34:664 INFO] Block placed
+[2026-07-23 21:53:35:193 INFO] Player Spawned: ForestBatchBot1 xuid: , pfid:
+[2026-07-23 21:53:35:197 INFO] Player Spawned: ForestBatchBot2 xuid: , pfid:
+[2026-07-23 21:53:35:199 INFO] Player Spawned: ForestBatchBot3 xuid: , pfid:
+[2026-07-23 21:53:35:200 INFO] Player Spawned: ForestBatchBot4 xuid: , pfid:
+[2026-07-23 21:53:35:200 WARN] [Scripting] [forest-batch-1:preview] four_players_created=passed detail=count=4
+[2026-07-23 21:53:35:202 WARN] [Scripting] [forest-batch-1:preview] custom_items_registered=passed detail=
+[2026-07-23 21:53:35:569 WARN] [Scripting] [forest-batch-1:preview] barkguard_damage_event_harness_limit_observed=passed detail=attack=true cooldown=0 damage=0
+[2026-07-23 21:53:35:570 WARN] [Scripting] [forest-batch-1:preview] player_state_isolation=passed detail=
+[2026-07-23 21:53:35:667 WARN] [Scripting] [forest-batch-1:preview] gloamwing_stress_spawn=passed detail=count=20
+[2026-07-23 21:53:35:667 WARN] [Scripting] [forest-batch-1:preview] mossback_stress_spawn=passed detail=count=20
+[2026-07-23 21:53:35:667 WARN] [Scripting] [forest-batch-1:preview] signal_ruin_instances_spawn=passed detail=count=2
+[2026-07-23 21:53:35:765 WARN] [Scripting] [forest-batch-1:preview] forest_item_use_harness_limit_observed=passed detail=accepted=true state=undefined
+[2026-07-23 21:53:35:771 WARN] [Scripting] [forest-batch-1:preview] forest_state_roundtrip=passed detail=
+[2026-07-23 21:53:35:772 WARN] [Scripting] [forest-batch-1:preview] forest_inventory_isolation=passed detail=
+[2026-07-23 21:53:36:367 WARN] [Scripting] [forest-batch-1:preview] signal_interaction_event_harness_limit_observed=passed detail=accepted=[true,true] mobs=0
+[2026-07-23 21:53:36:565 WARN] [Scripting] [forest-batch-1:preview] resonance_global_cap=passed detail=pulses=16
+[2026-07-23 21:53:36:565 WARN] [Scripting] [forest-batch-1:preview] worst_credible_combined_load=passed detail=players=4 ambient=24 custom=58
+[2026-07-23 21:53:36:565 WARN] [Scripting] [forest-batch-1:preview] bounded_custom_entity_load=passed detail=custom=58
+[2026-07-23 21:53:37:061 WARN] [Scripting] [forest-batch-1:preview] deterministic_cleanup=passed detail=remaining=0
+[2026-07-23 21:53:37:061 WARN] [Scripting] [forest-batch-1:preview] checkpoint_written=passed detail=queue_peak=4
+time="2026-07-23T21:55:00Z" level=debug msg="Forwarding signal" signal=terminated
+time="2026-07-23T21:55:00Z" level=debug msg="Sending message on stdin due to SIGTERM" message=stop
+[2026-07-23 21:55:00:548 INFO] Server stop requested.
+[2026-07-23 21:55:00:598 INFO] Stopping server...
+Quit correctly
+2026-07-23T21:55:01.116Z	INFO	mc-server-runner	Done
+[mccompiler-harness] cycle=2
+WARNING: The requested image's platform (linux/amd64) does not match the detected host platform (linux/arm64/v8) and no specific platform was requested
+time="2026-07-23T21:55:01Z" level=debug msg="Using /data to match uid and gid"
+time="2026-07-23T21:55:01Z" level=debug msg="Resolved UID=0 from match path"
+time="2026-07-23T21:55:01Z" level=debug msg="Resolved GID=0 from match path"
+Image info: buildtime=2025-12-13T02:14:45.091Z,version=master,revision=19ecd3aaf1bca5daa6a68526e6f51bb84732953a
+Using existing bedrock server executable
+2026/07/23 21:55:01 Setting white-list to false in server.properties
+Starting Bedrock server...
+NO LOG FILE! - setting up server logging...
+[2026-07-23 21:55:01:836 INFO] Starting Server
+[2026-07-23 21:55:01:837 INFO] Version: 1.26.50.20
+[2026-07-23 21:55:01:837 INFO] Session ID: 014d1e77-f200-48aa-af03-850b525525a9
+[2026-07-23 21:55:01:837 INFO] Build ID: 47971866
+[2026-07-23 21:55:01:837 INFO] Branch: main
+[2026-07-23 21:55:01:837 INFO] Commit ID: a3447f3c9f0a25124e670a72f2f995e046e1acee
+[2026-07-23 21:55:01:837 INFO] Configuration: Publish
+[2026-07-23 21:55:01:841 INFO] Contents of server.properties: {}
+[2026-07-23 21:55:01:841 INFO] Level Name: Forest Wave 1 Parallel Batch 1 INTERNAL TEST
+[2026-07-23 21:55:01:843 INFO] Profiler config ('bootstrap.json') load result: success=1, errorMessage=(null)
+[2026-07-23 21:55:01:849 INFO] No CDN config file found at: cdn_config.json for dedicated server
+[2026-07-23 21:55:01:849 INFO] Game mode: 0 Survival
+[2026-07-23 21:55:01:849 INFO] Difficulty: 1 EASY
+[2026-07-23 21:55:01:857 INFO] Content logging to console is enabled.
+[2026-07-23 21:55:01:913 INFO]
+#####################################################
+#                                                   #
+#               LOADING VANILLA WORLD               #
+#                                                   #
+#####################################################
+[2026-07-23 21:55:02:861 INFO] Experiment(s) active: gtst
+[2026-07-23 21:55:02:863 INFO] Opening level 'worlds/Forest Wave 1 Parallel Batch 1 INTERNAL TEST/db'
+[2026-07-23 21:55:03:942 INFO] Pack Stack - [00] Resonance Sling INTERNAL TEST BP (id: 61e0bbf4-0051-4bb0-a5bb-19e1cd68db0f, version: 1.0.0) @ worlds/Forest Wave 1 Parallel Batch 1 INTERNAL TEST/behavior_packs/Resonance_Sling_INTERNAL_TEST_BP-61e0bbf4
+[2026-07-23 21:55:03:942 INFO] Pack Stack - [01] Signal Ruin - INTERNAL TEST BUILD / NOT MARKETPLACE APPROVED / NOT PHYSICAL PS4 CERTIFIED / NOT FOR PUBLIC RELEASE (id: 556acdce-2ddc-4cbd-b08d-f62681387306, version: 0.1.0) @ worlds/Forest Wave 1 Parallel Batch 1 INTERNAL TEST/behavior_packs/Signal_Ruin_-_INTERNAL_TEST_BUILD___NOT_MARKETPLACE_APPROVED___NOT_PHYSICAL_PS4_CERTIFIED___NOT_FOR_PUBLIC_RELEASE-556acdce
+[2026-07-23 21:55:03:942 INFO] Pack Stack - [02] Mossback Forager INTERNAL TEST BP (id: 6a67bb25-2953-4be9-9b32-611cf09be04a, version: 1.0.0) @ worlds/Forest Wave 1 Parallel Batch 1 INTERNAL TEST/behavior_packs/Mossback_Forager_INTERNAL_TEST_BP-6a67bb25
+[2026-07-23 21:55:03:942 INFO] Pack Stack - [03] Barkguard Charm INTERNAL TEST BP (id: 2985974d-139b-4142-9c25-ae1aba1f95bf, version: 1.0.0) @ worlds/Forest Wave 1 Parallel Batch 1 INTERNAL TEST/behavior_packs/Barkguard_Charm_INTERNAL_TEST_BP-2985974d
+[2026-07-23 21:55:03:942 INFO] Pack Stack - [04] Gloamwing Stalker BP (Internal) (id: e2b0816e-74ed-4457-a8af-a9eb889ecbcb, version: 1.0.0) @ worlds/Forest Wave 1 Parallel Batch 1 INTERNAL TEST/behavior_packs/Gloamwing_Stalker_BP__Internal-e2b0816e
+[2026-07-23 21:55:03:942 INFO] Pack Stack - [05] Forest Attunement BP [INTERNAL TEST] (id: 43b642d0-a651-45cf-ae20-96a0b853fba5, version: 1.0.0) @ worlds/Forest Wave 1 Parallel Batch 1 INTERNAL TEST/behavior_packs/Forest_Attunement_BP__INTERNAL_TEST-43b642d0
+[2026-07-23 21:55:03:942 INFO] Pack Stack - [06] Forest Wave 1 Batch 1 Preview Qualification (id: f510b35e-62c1-44d7-804e-10d742b80fd5, version: 0.1.0) @ worlds/Forest Wave 1 Parallel Batch 1 INTERNAL TEST/behavior_packs/Forest_Wave_1_Batch_1_Preview_Qualification-f510b35e
+[2026-07-23 21:55:04:888 WARN] [Scripting] [resonance-sling] script runtime initialized stable_api=2.0.0 persistent_records=0 global_scan_per_tick=0 cap=16
+[2026-07-23 21:55:04:914 WARN] [Scripting] [barkguard-charm] stable_api=2.0.0 event_driven=true global_scans_per_tick=0 persistent_records=0
+[2026-07-23 21:55:06:075 WARN] [Components] Forest Wave 1 Parallel Batch 1 INTERNAL TEST | actor_definitions | worlds/Forest Wave 1 Parallel Batch 1 INTERNAL TEST/behavior_packs/Resonance_Sling_INTERNAL_TEST_BP-61e0bbf4 | ccoriginal_cc:resonance_pulse | minecraft:entity | Invalid particle type 'ccoriginal_cc:resonance_impact' specified.
+[2026-07-23 21:55:07:630 INFO] IPv4 supported, port: 19132: Used for gameplay and LAN discovery
+[2026-07-23 21:55:07:630 INFO] IPv6 supported, port: 19133: Used for gameplay
+[2026-07-23 21:55:07:688 INFO] Signed in to signaling service successfully
+[2026-07-23 21:55:07:698 INFO] Server started.
+[2026-07-23 21:55:07:699 INFO] ================ TELEMETRY MESSAGE ===================
+[2026-07-23 21:55:07:699 INFO] Server Telemetry is currently not enabled.
+[2026-07-23 21:55:07:699 INFO] Enabling this telemetry helps us improve the game.
+[2026-07-23 21:55:07:699 INFO]
+[2026-07-23 21:55:07:699 INFO] To enable this feature, add the line 'emit-server-telemetry=true'
+[2026-07-23 21:55:07:699 INFO] to the server.properties file in the handheld/src-server directory
+[2026-07-23 21:55:07:699 INFO] ======================================================
+[2026-07-23 21:55:11:915 INFO] Block placed
+[2026-07-23 21:55:12:018 INFO] Player Spawned: ForestBatchBot1 xuid: , pfid:
+[2026-07-23 21:55:12:021 WARN] [Scripting] [forest-batch-1:preview] restart_checkpoint_recovered=passed detail=
+[2026-07-23 21:55:12:021 WARN] [Scripting] [forest-batch-1:preview] restart_simulated_player_identity_limit_observed=passed detail=state=undefined
+[2026-07-23 21:55:12:021 WARN] [Scripting] [forest-batch-1:preview] restart_cleanup_preserved=passed detail=remaining=0
+time="2026-07-23T21:56:37Z" level=debug msg="Forwarding signal" signal=terminated
+time="2026-07-23T21:56:37Z" level=debug msg="Sending message on stdin due to SIGTERM" message=stop
+[2026-07-23 21:56:38:009 INFO] Server stop requested.
+[2026-07-23 21:56:38:067 INFO] Stopping server...
+Quit correctly
+2026-07-23T21:56:38.581Z	INFO	mc-server-runner	Done

@@ -57,7 +57,8 @@ def test_structure_is_original_bounded_and_valid_little_endian_nbt() -> None:
     structure = FEATURE / "bedrock/behavior_pack/structures/ccoriginal_cc/signal_ruin.mcstructure"
     assert structure.stat().st_size < 131072
     raw = structure.read_bytes()
-    assert raw[0] == 3 and b"format_version" in raw and b"block_palette" in raw
+    assert raw[:3] == bytes([10, 0, 0])
+    assert b"format_version" in raw and b"block_palette" in raw
     assert b"minecraft:stripped_spruce_log" in raw and b"minecraft:ochre_froglight" in raw
 
 

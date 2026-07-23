@@ -1,0 +1,17 @@
+{
+  "schema_version": "1.0.0",
+  "status": "PENDING_EXPLICIT_EXTERNAL_DISCLOSURE_APPROVAL",
+  "review_executed": false,
+  "requested_model": "grok-4.5",
+  "safety_profile": {
+    "read_only": true,
+    "web_search": false,
+    "subagents": false,
+    "production_writes": false,
+    "java_or_licensed_material": false,
+    "credentials_or_secrets": false,
+    "unrelated_files": false
+  },
+  "approval_scope_requested": "Original-production contracts, candidate diffs, tests, and qualification reports only.",
+  "reason": "The external reviewer would receive project content. The escalation reviewer requires explicit user approval for that disclosure."
+}

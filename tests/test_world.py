@@ -7,7 +7,7 @@ import unittest
 import zipfile
 from pathlib import Path
 
-from mccompiler.world import compute_pack_hash, generate_test_world
+from mccompiler.world import compute_pack_hash, generate_multi_pack_test_world, generate_test_world
 
 
 def make_pack(root: Path, name: str, uuid: str, module_type: str) -> Path:
@@ -67,6 +67,48 @@ class TestWorldTests(unittest.TestCase):
             valid_rp = make_pack(root / "valid-rp", "RP", "22222222-2222-2222-2222-222222222222", "resources")
             with self.assertRaisesRegex(ValueError, r"\.mcworld"):
                 generate_test_world(bp, valid_rp, root / "test.zip")
+
+    def test_multi_pack_world_is_deterministic_and_binds_every_pack(self) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            behavior = [
+                make_pack(
+                    root / f"bp-{index}",
+                    f"BP {index}",
+                    f"00000000-0000-4000-8000-{index:012d}",
+                    "data",
+                )
+                for index in (1, 2)
+            ]
+            resource = [
+                make_pack(
+                    root / f"rp-{index}",
+                    f"RP {index}",
+                    f"00000000-0000-4000-8000-{index:012d}",
+                    "resources",
+                )
+                for index in (3, 4)
+            ]
+            first = generate_multi_pack_test_world(behavior, resource, root / "first.mcworld")
+            second = generate_multi_pack_test_world(behavior, resource, root / "second.mcworld")
+            self.assertEqual((root / "first.mcworld").read_bytes(), (root / "second.mcworld").read_bytes())
+            self.assertEqual(first["pack_hash"], second["pack_hash"])
+            with zipfile.ZipFile(root / "first.mcworld") as archive:
+                behavior_records = json.loads(archive.read("world_behavior_packs.json"))
+                resource_records = json.loads(archive.read("world_resource_packs.json"))
+                self.assertEqual(2, len(behavior_records))
+                self.assertEqual(2, len(resource_records))
+                manifests = [name for name in archive.namelist() if name.endswith("/manifest.json")]
+                self.assertEqual(4, len(manifests))
+
+    def test_multi_pack_world_rejects_duplicate_pack_uuids(self) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            shared = "00000000-0000-4000-8000-000000000001"
+            bp = make_pack(root / "bp", "BP", shared, "data")
+            rp = make_pack(root / "rp", "RP", shared, "resources")
+            with self.assertRaisesRegex(ValueError, "unique pack UUIDs"):
+                generate_multi_pack_test_world([bp], [rp], root / "test.mcworld")
 
 
 if __name__ == "__main__":

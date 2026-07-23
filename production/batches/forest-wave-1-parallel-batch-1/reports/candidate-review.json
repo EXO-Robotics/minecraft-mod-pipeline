@@ -1,0 +1,81 @@
+{
+  "schema_version": "1.0.0",
+  "batch_id": "forest-wave-1-parallel-batch-1",
+  "review_owner": "MAIN_CODEX",
+  "status": "LOCAL_ACCEPTANCE_COMPLETE_EXTERNAL_RED_TEAM_PENDING",
+  "candidates": [
+    {
+      "feature_id": "signal_ruin",
+      "agent_head": "7d7907ecaa5c4be60a3ca0ad2e2351aa2a0631a0",
+      "final_package_sha256": "b9890cf0037c8d76ee616d05631233b431bc0c26b827563b3488290677a8b6e9",
+      "main_codex_revision_rounds": 2,
+      "main_review_finding_count": 7,
+      "accepted_repairs": [
+        "Preserved review evidence across deterministic rebuilds",
+        "Applied a two-instance cap before mutation",
+        "Applied an 80-second cleanup ceiling and spatially distinct stress pair",
+        "Corrected damage_sensor deals_damage to the supported string enum",
+        "Corrected little-endian NBT root and list-of-compound encoding"
+      ],
+      "disposition": "ACCEPT_LOCALLY_PENDING_GROK"
+    },
+    {
+      "feature_id": "gloamwing_stalker",
+      "agent_head": "0dbbb4a",
+      "final_package_sha256": "045e7d41e5a02ea2b6112db9657bb38305a884d4cf76d916fe46510aafacba98",
+      "main_codex_revision_rounds": 3,
+      "main_review_finding_count": 3,
+      "accepted_repairs": [
+        "Made telegraph, pounce, recovery, and 4-7 second cooldown reachable",
+        "Replaced the empty editable wrapper with a native Blockbench project",
+        "Replaced invalid summon-event tagging with explicit bounded summon and tag commands"
+      ],
+      "disposition": "ACCEPT_LOCALLY_PENDING_GROK"
+    },
+    {
+      "feature_id": "forest_attunement",
+      "agent_head": "9c7b8a65be389cc21d384fb90711d9f823f8164a",
+      "final_package_sha256": "1803664fb6dfced97ec4252fb3c8ad398f4bd9995e6bbea44dc8205ce37945c7",
+      "main_codex_revision_rounds": 2,
+      "main_review_finding_count": 4,
+      "accepted_repairs": [
+        "Separated committed persistence and inventory consumption from optional presentation",
+        "Added the required modern recipe unlock",
+        "Made item-use and player iteration callbacks defensive against incomplete diagnostic payloads"
+      ],
+      "disposition": "ACCEPT_LOCALLY_PENDING_GROK"
+    },
+    {
+      "feature_id": "mossback_forager",
+      "agent_head": "481041c90e09783ab928addf32c8d7cb647d20d0",
+      "final_package_sha256": "2decec3b76aa1ec520007bdeaaf0afaaf5761ef53c06230f67cf384801347d64",
+      "main_codex_revision_rounds": 3,
+      "main_review_finding_count": 3,
+      "accepted_repairs": [
+        "Bound flee and forage state durations",
+        "Replaced the empty editable wrapper with a native Blockbench project",
+        "Moved gift loot to the supported interact spawn_items field"
+      ],
+      "disposition": "ACCEPT_LOCALLY_PENDING_GROK"
+    },
+    {
+      "feature_id": "barkguard_charm",
+      "agent_head": "4c2dd216ae7dde60b719c4579a5ecbb4e0de2879",
+      "final_package_sha256": "1cc4920ae51dc237a6e9bf633480546ccb744b2dc0c2a979498a71399b0afbbe",
+      "main_codex_revision_rounds": 2,
+      "main_review_finding_count": 2,
+      "accepted_repairs": [
+        "Removed sub-unit Box UV dimensions and revalidated the native project",
+        "Made the damage callback defensive against incomplete diagnostic payloads"
+      ],
+      "disposition": "ACCEPT_LOCALLY_PENDING_GROK"
+    }
+  ],
+  "shared_disposition": {
+    "no_child_self_accepted_or_integrated": true,
+    "grok_finding_count": null,
+    "grok_status": "PENDING_EXPLICIT_EXTERNAL_DISCLOSURE_APPROVAL",
+    "creator_tools_status": "NOT_EXECUTED_ENVIRONMENT_UNAVAILABLE",
+    "physical_ps4_status": "PENDING"
+  }
+}

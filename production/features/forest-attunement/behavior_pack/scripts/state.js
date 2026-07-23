@@ -29,6 +29,7 @@ export function canonicalState() {
 }
 
 export function isForestAttuned(player) {
+  if (!player) return false;
   const decoded = decodeState(player.getDynamicProperty(PROPERTY_ID));
   if (decoded.kind === "legacy") {
     try {

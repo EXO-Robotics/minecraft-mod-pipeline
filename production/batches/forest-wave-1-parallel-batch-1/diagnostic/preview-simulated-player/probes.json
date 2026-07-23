@@ -1,0 +1,51 @@
+{
+  "classification": "PREVIEW_SIMULATED_PLAYER_VERIFIED",
+  "console_probes": [
+    {
+      "after_boot_seconds": 1,
+      "check_id": "batch-ticking-area-1",
+      "command": "tickingarea add circle 8 64 8 2 forest_batch_q true",
+      "cycle": 1,
+      "expect_output": "Added ticking area"
+    },
+    {
+      "after_boot_seconds": 4,
+      "check_id": "batch-arm-1",
+      "command": "setblock 8 64 8 gold_block",
+      "cycle": 1,
+      "expect_output": "Block placed"
+    },
+    {
+      "after_boot_seconds": 4,
+      "check_id": "batch-arm-2",
+      "command": "setblock 8 64 8 gold_block",
+      "cycle": 2,
+      "expect_output": "Block placed"
+    }
+  ],
+  "cycle_1_checks": [
+    "four_players_created",
+    "custom_items_registered",
+    "forest_item_use_harness_limit_observed",
+    "forest_state_roundtrip",
+    "forest_inventory_isolation",
+    "barkguard_damage_event_harness_limit_observed",
+    "player_state_isolation",
+    "gloamwing_stress_spawn",
+    "mossback_stress_spawn",
+    "signal_ruin_instances_spawn",
+    "signal_interaction_event_harness_limit_observed",
+    "resonance_global_cap",
+    "worst_credible_combined_load",
+    "bounded_custom_entity_load",
+    "deterministic_cleanup",
+    "checkpoint_written"
+  ],
+  "cycle_2_checks": [
+    "restart_checkpoint_recovered",
+    "restart_simulated_player_identity_limit_observed",
+    "restart_cleanup_preserved"
+  ],
+  "preview_only": true,
+  "schema_version": "1.0.0"
+}

@@ -107,6 +107,10 @@ def animations() -> dict:
 def behavior() -> dict:
     ready_interact = {"minecraft:interact": {"interactions": [{
         "interact_text": "action.interact.feed", "use_item": True, "hurt_item": 0,
+        "spawn_items": {
+            "table": "loot_tables/ccoriginal_cc/entities/mossback_forager_gift.json",
+            "y_offset": 1,
+        },
         "on_interact": {"filters": {"test": "has_equipment", "subject": "other", "domain": "hand",
                                     "value": "minecraft:sweet_berries"},
                         "event": "ccoriginal_cc:accept_berry", "target": "self"}}]}}
@@ -142,7 +146,6 @@ def behavior() -> dict:
             "ccoriginal_cc:accept_berry": {"sequence": [
                 {"remove": {"component_groups": ["ccoriginal_cc:ready"]}},
                 {"set_property": {"ccoriginal_cc:mossback_cooling": True}},
-                {"spawn_loot": {"table": "loot_tables/ccoriginal_cc/entities/mossback_forager_gift.json"}},
                 {"add": {"component_groups": ["ccoriginal_cc:cooling"]}}]},
             "ccoriginal_cc:cooldown_complete": {"sequence": [
                 {"remove": {"component_groups": ["ccoriginal_cc:cooling"]}},

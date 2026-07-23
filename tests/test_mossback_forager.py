@@ -65,9 +65,13 @@ def test_exact_consumption_gift_atomic_contention_and_restart_safe_model():
     interaction = entity["component_groups"]["ccoriginal_cc:ready"]["minecraft:interact"]["interactions"][0]
     assert interaction["use_item"] is True
     assert interaction["on_interact"]["filters"]["value"] == "minecraft:sweet_berries"
+    assert interaction["spawn_items"] == {
+        "table": "loot_tables/ccoriginal_cc/entities/mossback_forager_gift.json",
+        "y_offset": 1,
+    }
     sequence = entity["events"]["ccoriginal_cc:accept_berry"]["sequence"]
     assert sequence[0] == {"remove": {"component_groups": ["ccoriginal_cc:ready"]}}
-    assert sum("spawn_loot" in step for step in sequence) == 1
+    assert all("spawn_loot" not in step for step in sequence)
     gift = load("bedrock/behavior_pack/loot_tables/ccoriginal_cc/entities/mossback_forager_gift.json")
     assert gift["pools"][0]["rolls"] == 1
     assert all("count" not in e or e["count"] == 1 for e in gift["pools"][0]["entries"])
