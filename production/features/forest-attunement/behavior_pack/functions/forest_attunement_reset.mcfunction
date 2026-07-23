@@ -1,0 +1,1 @@
+scriptevent ccoriginal_cc:forest_attunement_reset

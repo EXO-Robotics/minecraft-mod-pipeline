@@ -1,0 +1,103 @@
+{
+  "schema_version": "1.0.0",
+  "candidate": "forest-attunement-INTERNAL-TEST",
+  "feature_id": "forest_attunement",
+  "production_lane": "ORIGINAL_BEDROCK_NATIVE",
+  "authorship": {
+    "model": "gpt-5.6-sol",
+    "requested_reasoning_effort": "light",
+    "actual_reasoning_effort": "low",
+    "source_expression_used": false,
+    "java_evidence": "NOT_APPLICABLE",
+    "provenance": "Original code, writing, recipe, and procedural 32x32 pixel icon authored solely from the consumer-safe production manifest."
+  },
+  "git": {
+    "base_commit": "0db4c8a5f504106b4a601afa6f7bc225eb697dcd",
+    "branch": "codex/parallel-batch-1/forest-attunement",
+    "implementation_commit": "TO_BE_RECORDED_AFTER_FREEZE",
+    "note": "The packet cannot embed the hash of the commit containing itself; delivery evidence records the final packet commit."
+  },
+  "owned_paths": [
+    "production/features/forest-attunement/",
+    "prototypes/blockbench/forest_attunement/",
+    "tools/build_forest_attunement.py",
+    "tests/test_forest_attunement.py"
+  ],
+  "identifiers": [
+    "ccoriginal_cc:forest_attunement_sigil",
+    "ccoriginal_cc:forest_attunement_v1",
+    "ccoriginal_cc:forest_attunement_reset",
+    "ccoriginal_cc:forest_attunement_test"
+  ],
+  "uuids": {
+    "behavior_header": "43b642d0-a651-45cf-ae20-96a0b853fba5",
+    "behavior_data_module": "e7798870-c7e2-4522-87bf-d046b08b442f",
+    "behavior_script_module": "2db423eb-5691-4207-bb37-01751206657d",
+    "resource_header": "0317044d-9b78-4101-aa2e-cb395af4e948",
+    "resource_module": "f00200ff-d682-4f87-9873-2e92abe15060"
+  },
+  "artifacts": [
+    {
+      "path": "dist/forest-attunement-behavior-INTERNAL-TEST.mcpack",
+      "sha256": "a12fb86c11d78625f413d030d8e699dc009805819547a1db1ce375fb6fb3dc02",
+      "bytes": 3860
+    },
+    {
+      "path": "dist/forest-attunement-resource-INTERNAL-TEST.mcpack",
+      "sha256": "fcb91eaa6134e86125438a8ceff93425678c5f8caba95720623994f67b596bdb",
+      "bytes": 1394
+    },
+    {
+      "path": "dist/forest-attunement-INTERNAL-TEST.mcaddon",
+      "sha256": "906b05973fef5fc561edcbd08c7b89ead3c5652dfd6bb546c17c12b5f1c96096",
+      "bytes": 5712
+    }
+  ],
+  "tests": {
+    "command": "python3 -m unittest tests/test_forest_attunement.py -v",
+    "result": "PASS",
+    "count": 10,
+    "coverage": [
+      "fresh and duplicate activation with exact consumption",
+      "two- and four-player isolation",
+      "death, disconnect, reconnect, and restart model",
+      "boolean and unversioned-object migrations",
+      "unknown-version and corrupt-state preservation",
+      "operator reset isolation",
+      "one 100-tick global interval and no per-tick scan",
+      "reserved identifiers, UUIDs, stable API dependency, JSON and PNG",
+      "deterministic package rebuild and internal labels"
+    ]
+  },
+  "metrics": {
+    "texture_pixels": [32, 32],
+    "persistent_records_per_player": 1,
+    "in_memory_records": 0,
+    "scheduled_callbacks_global": 1,
+    "interval_ticks": 100,
+    "global_scans_per_tick": 0,
+    "particles_per_activation": 1,
+    "modeled_players_max": 4
+  },
+  "contamination": {
+    "third_party_assets_or_expression": "NONE",
+    "java_source_or_benchmark_expression": "NONE",
+    "shared_files_edited": "NONE"
+  },
+  "unexecuted_gates": [
+    "Creator Tools current addon/currentplatform checks",
+    "stable BDS boot/load/restart",
+    "Bedrock desktop visual and gameplay check",
+    "live multiplayer and persistence",
+    "performance profiling",
+    "Realm/controller/split-screen/physical PS4",
+    "Marketplace review"
+  ],
+  "limitations": [
+    "Biome allowlist is an implementation approximation, not a biome-tag query.",
+    "Automated tests model Bedrock state and statically inspect script contracts; they do not execute @minecraft/server.",
+    "2D item art does not require or claim a Blockbench geometry round trip.",
+    "No PS4 compatibility, Marketplace approval, or public-release claim is made."
+  ],
+  "recommendation": "Accept as an internal-test candidate for Main Codex-owned Creator Tools and stable BDS gates; do not promote beyond internal test until all listed live gates pass."
+}

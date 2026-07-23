@@ -1,0 +1,15 @@
+{
+  "schema_version": "1.0.0",
+  "executed_at": "2026-07-23",
+  "command": "python3 -m unittest tests/test_forest_attunement.py -v",
+  "result": "PASS",
+  "tests_run": 10,
+  "failures": 0,
+  "errors": 0,
+  "modeled_players_max": 4,
+  "source_syntax_checks": [
+    "node --check production/features/forest-attunement/behavior_pack/scripts/main.js",
+    "node --check production/features/forest-attunement/behavior_pack/scripts/state.js"
+  ],
+  "limitations": "Python tests model state transitions and inspect source/package contracts; they are not live Bedrock clients or BDS evidence."
+}
