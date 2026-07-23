@@ -25,6 +25,25 @@ def test_geometry_texture_and_animation_budgets() -> None:
     assert {"idle", "stalk", "telegraph", "pounce", "landing"} <= {name.rsplit(".", 1)[-1] for name in clips}
 
 
+def test_editable_source_is_a_real_blockbench_project_and_builder_preserves_it() -> None:
+    source = ASSET / "gloamwing_stalker.bbmodel"
+    before = hashlib.sha256(source.read_bytes()).hexdigest()
+    model = read(source)
+    assert model["meta"]["model_format"] == "bedrock"
+    assert model["model_identifier"] == "ccoriginal_cc.gloamwing_stalker"
+    assert len(model["elements"]) == 23
+    assert len(model["groups"]) == 10
+    assert len(model["outliner"]) == 1
+    assert len(model["textures"]) == 1
+    assert model["textures"][0]["source"].startswith("data:image/png;base64,")
+    assert len(model["animations"]) == 5
+    assert len(model["animation_controllers"]) == 1
+    outliner = json.dumps(model["outliner"])
+    assert all(element["uuid"] in outliner for element in model["elements"])
+    build()
+    assert hashlib.sha256(source.read_bytes()).hexdigest() == before
+
+
 def test_cross_file_references_and_stable_behavior() -> None:
     build()
     client = read(RP / "entity/gloamwing_stalker.entity.json")["minecraft:client_entity"]["description"]

@@ -165,13 +165,30 @@ def behavior_entity() -> dict:
     }}
 
 
-def bbmodel(geo: dict, anim: dict) -> dict:
-    # Controlled editable source mirroring the native export; GUI round-trip remains an explicit owner gate.
-    return {"meta": {"format_version": "4.10", "model_format": "bedrock", "box_uv": True},
-            "name": "Gloamwing Stalker", "model_identifier": "ccoriginal_cc:gloamwing_stalker",
-            "resolution": {"width": 64, "height": 64},
-            "bedrock_geometry_source": geo, "animations": anim["animations"],
-            "provenance": "Original deterministic production authored for this repository; no third-party expression."}
+def validate_editable_source(path: Path) -> dict:
+    """Reject wrapper-shaped JSON that Blockbench would open as an empty project."""
+    model = json.loads(path.read_text(encoding="utf-8"))
+    expected = {
+        "elements": 23,
+        "outliner": 1,
+        "textures": 1,
+        "animations": 5,
+        "animation_controllers": 1,
+    }
+    actual = {key: len(model.get(key, [])) for key in expected}
+    if actual != expected:
+        raise ValueError(f"invalid editable Blockbench source: expected {expected}, got {actual}")
+    if model.get("meta", {}).get("model_format") != "bedrock":
+        raise ValueError("editable source is not a Bedrock Blockbench project")
+    if model.get("model_identifier") != "ccoriginal_cc.gloamwing_stalker":
+        raise ValueError("editable source has wrong model identifier")
+    element_uuids = {row["uuid"] for row in model["elements"]}
+    outliner_text = json.dumps(model["outliner"])
+    if not all(uuid in outliner_text for uuid in element_uuids):
+        raise ValueError("editable source outliner does not reference every cube")
+    if not model["textures"][0].get("source", "").startswith("data:image/png;base64,"):
+        raise ValueError("editable source does not embed its PNG texture")
+    return actual
 
 
 def zip_tree(output: Path, roots: list[tuple[Path, str]]) -> None:
@@ -192,7 +209,7 @@ def sha(path: Path) -> str:
 def build() -> dict:
     geo, anim, ctrl = geometry(), animations(), controller()
     write_json(ASSET / "gloamwing_stalker.geo.json", geo)
-    write_json(ASSET / "gloamwing_stalker.bbmodel", bbmodel(geo, anim))
+    editable_counts = validate_editable_source(ASSET / "gloamwing_stalker.bbmodel")
     write_texture(ASSET / "gloamwing_stalker.png")
     write_json(RP / "models/entity/gloamwing_stalker.geo.json", geo)
     write_json(RP / "animations/gloamwing_stalker.animation.json", anim)
@@ -212,10 +229,10 @@ def build() -> dict:
     (function_dir / "cleanup.mcfunction").write_text("kill @e[type=ccoriginal_cc:gloamwing_stalker,tag=ccoriginal_cc:gloamwing_test]\n", encoding="utf-8")
     write_json(BP / "manifest.json", {"format_version": 2, "header": {"name": "Gloamwing Stalker BP (Internal)", "description": "Original internal-test behavior pack", "uuid": "e2b0816e-74ed-4457-a8af-a9eb889ecbcb", "version": [1, 0, 0], "min_engine_version": [1, 20, 50]}, "modules": [{"type": "data", "uuid": "00f4fc42-7b63-4860-bcd2-06d31724130c", "version": [1, 0, 0]}], "dependencies": [{"uuid": "3a750a45-d232-4a26-aef0-4844df456d74", "version": [1, 0, 0]}]})
     write_json(FEATURE / "asset-brief.json", {"asset_class": "entity", "asset_id": "ccoriginal_cc:gloamwing_stalker", "role": "Escalating nocturnal regional threat", "shape_grammar": "Low six-limbed glider, leaf-shaped shoulder fins, lantern throat, short tail", "palette": ["deep indigo", "desaturated teal", "warm amber", "pale claws"], "budgets": {"bones": 10, "cubes": 23, "texture": [64, 64], "clips": 5, "controllers": 1, "entities": 20}, "provenance": "Original repository authorship from consumer-safe production contract only."})
-    write_json(FEATURE / "reports/readiness-matrix.json", {"STATIC": "PASSED", "BLOCKBENCH_NATIVE_ROUNDTRIP": "PENDING_MAIN_CODEX_GUI", "CREATOR_TOOLS": "PENDING", "STABLE_BDS": "PENDING_MAIN_CODEX", "BEDROCK_DESKTOP": "PENDING", "MULTIPLAYER": "PENDING", "PHYSICAL_PS4": "PENDING", "MARKETPLACE": "NOT_SUBMITTED"})
+    write_json(FEATURE / "reports/readiness-matrix.json", {"STATIC": "PASSED", "BLOCKBENCH_NATIVE_ROUNDTRIP": "PASSED_AUTHORITATIVE_GUI_REVIEW", "CREATOR_TOOLS": "PENDING", "STABLE_BDS": "PENDING_MAIN_CODEX", "BEDROCK_DESKTOP": "PENDING", "MULTIPLAYER": "PENDING", "PHYSICAL_PS4": "PENDING", "MARKETPLACE": "NOT_SUBMITTED"})
     zip_tree(PACKAGES / "gloamwing_stalker.mcaddon", [(BP, "behavior_pack"), (RP, "resource_pack")])
     hashes = {"mcaddon": sha(PACKAGES / "gloamwing_stalker.mcaddon"), "bbmodel": sha(ASSET / "gloamwing_stalker.bbmodel"), "geometry": sha(ASSET / "gloamwing_stalker.geo.json"), "texture": sha(ASSET / "gloamwing_stalker.png")}
-    write_json(FEATURE / "reports/build-report.json", {"status": "STATIC_CANDIDATE", "hashes": hashes, "counts": {"bones": 10, "cubes": 23, "clips": 5, "controllers": 1, "stress_entities": 20, "attack_state_groups": 5}, "attack_cycle": {"initial_trigger": "minecraft:entity_spawned -> ready environment sensor", "telegraph_seconds": 0.5, "pounce_seconds": 0.4, "recovery_seconds": 0.7, "cooldown_seconds": [4.0, 7.0], "timer_stacking_prevented": True}, "labels": {"ps4_verified": False, "marketplace_approved": False}})
+    write_json(FEATURE / "reports/build-report.json", {"status": "STATIC_CANDIDATE", "hashes": hashes, "counts": {"bones": 10, "cubes": 23, "clips": 5, "controllers": 1, "stress_entities": 20, "attack_state_groups": 5}, "editable_source": {"validation": "PASSED", "blockbench_native": True, "counts": editable_counts, "builder_policy": "IMMUTABLE_INPUT_NOT_REGENERATED"}, "attack_cycle": {"initial_trigger": "minecraft:entity_spawned -> ready environment sensor", "telegraph_seconds": 0.5, "pounce_seconds": 0.4, "recovery_seconds": 0.7, "cooldown_seconds": [4.0, 7.0], "timer_stacking_prevented": True}, "labels": {"ps4_verified": False, "marketplace_approved": False}})
     write_json(FEATURE / "reports/revision-history.json", {
         "schema_version": "1.0.0",
         "revisions": [
@@ -235,6 +252,15 @@ def build() -> dict:
                     "Made all attack-cycle groups mutually exclusive through explicit remove/add transitions",
                     "Added randomized non-looping 4-7 second cooldown before re-arm",
                     "Added structural event and component-group reachability test"
+                ]
+            },
+            {
+                "revision": 3,
+                "disposition": "READY_FOR_MAIN_CODEX_REVIEW",
+                "changes": [
+                    "Installed authoritative Blockbench GUI-saved native project",
+                    "Builder now validates and preserves editable source as immutable input",
+                    "Added structural checks for real elements, outliner, embedded texture, animations, and controller"
                 ]
             }
         ]
