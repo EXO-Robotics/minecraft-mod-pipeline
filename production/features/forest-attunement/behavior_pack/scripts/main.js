@@ -23,10 +23,18 @@ function warn(player, decoded) {
   player.sendMessage("§cThe sigil found unreadable attunement data. No item was consumed; ask an operator to reset it.");
 }
 
-function consumeSelectedSigil(player) {
+function selectedSigil(player) {
   const inventory = player.getComponent("minecraft:inventory")?.container;
-  if (!inventory) return false;
+  if (!inventory) return undefined;
   const slot = player.selectedSlotIndex;
+  const stack = inventory.getItem(slot);
+  if (!stack || stack.typeId !== SIGIL_ID || stack.amount < 1) return undefined;
+  return { inventory, slot };
+}
+
+function consumeSelectedSigil(player, selection = selectedSigil(player)) {
+  if (!selection) return false;
+  const { inventory, slot } = selection;
   const stack = inventory.getItem(slot);
   if (!stack || stack.typeId !== SIGIL_ID || stack.amount < 1) return false;
   if (stack.amount === 1) inventory.setItem(slot, undefined);
@@ -37,31 +45,76 @@ function consumeSelectedSigil(player) {
   return true;
 }
 
+function bestEffortMessage(player, message) {
+  try {
+    player.sendMessage(message);
+  } catch (error) {
+    console.warn(`[Forest Attunement] optional message failed for ${player.name}: ${error}`);
+  }
+}
+
+function rollbackUncommittedWrite(player, reason) {
+  try {
+    player.setDynamicProperty(PROPERTY_ID, undefined);
+  } catch (rollbackError) {
+    console.warn(`[Forest Attunement] rollback failed for ${player.name} after ${reason}: ${rollbackError}`);
+  }
+}
+
+function presentActivation(player) {
+  try {
+    player.sendMessage("§2The forest's cadence settles into your steps.");
+    player.dimension.spawnParticle("minecraft:villager_happy", player.location);
+  } catch (error) {
+    console.warn(`[Forest Attunement] optional activation presentation failed for ${player.name}: ${error}`);
+  }
+}
+
 function activate(player) {
   const decoded = decodeState(player.getDynamicProperty(PROPERTY_ID));
   if (decoded.kind === "current" || decoded.kind === "legacy") {
     if (decoded.kind === "legacy") isForestAttuned(player);
-    player.sendMessage("§aYou are already attuned. The sigil remains in your hand.");
+    bestEffortMessage(player, "§aYou are already attuned. The sigil remains in your hand.");
     return;
   }
   if (decoded.kind === "unknown" || decoded.kind === "corrupt") {
     warn(player, decoded);
     return;
   }
+
+  // Snapshot and validate the exact selected inventory slot before persisting.
+  const selection = selectedSigil(player);
+  if (!selection) {
+    bestEffortMessage(player, "§cActivation stopped because no valid sigil is selected.");
+    return;
+  }
+
   try {
     player.setDynamicProperty(PROPERTY_ID, canonicalState());
-    if (!consumeSelectedSigil(player)) {
-      player.setDynamicProperty(PROPERTY_ID, undefined);
-      player.sendMessage("§cActivation stopped because the held sigil changed.");
+  } catch (error) {
+    console.warn(`[Forest Attunement] activation write failed for ${player.name}: ${error}`);
+    bestEffortMessage(player, "§cAttunement could not be saved. No item was consumed.");
+    return;
+  }
+
+  // Inventory consumption is the final transactional mutation. A failure here
+  // rolls back only the uncommitted property write.
+  try {
+    if (!consumeSelectedSigil(player, selection)) {
+      rollbackUncommittedWrite(player, "inventory validation failure");
+      bestEffortMessage(player, "§cActivation stopped because the held sigil changed.");
       return;
     }
-    player.sendMessage("§2The forest's cadence settles into your steps.");
-    player.dimension.spawnParticle("minecraft:villager_happy", player.location);
   } catch (error) {
-    try { player.setDynamicProperty(PROPERTY_ID, undefined); } catch {}
-    console.warn(`[Forest Attunement] activation write failed for ${player.name}: ${error}`);
-    player.sendMessage("§cAttunement could not be saved. No unlock was retained.");
+    rollbackUncommittedWrite(player, "inventory mutation exception");
+    console.warn(`[Forest Attunement] sigil consumption failed for ${player.name}: ${error}`);
+    bestEffortMessage(player, "§cActivation stopped before commitment.");
+    return;
   }
+
+  // Persistence and consumption are now committed. Presentation is optional
+  // and must never clear the unlock or restore/consume another item.
+  presentActivation(player);
 }
 
 world.afterEvents.itemUse.subscribe(({ itemStack, source }) => {

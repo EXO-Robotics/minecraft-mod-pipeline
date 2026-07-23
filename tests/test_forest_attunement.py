@@ -45,8 +45,9 @@ def decode(raw):
 class Player:
     count: int
     raw: object = None
+    presentation_errors: int = 0
 
-    def activate(self):
+    def activate(self, presentation_throws=False):
         kind, unlocked = decode(self.raw)
         if unlocked:
             if kind == "legacy":
@@ -56,6 +57,11 @@ class Player:
             return False
         self.raw = CANONICAL
         self.count -= 1
+        try:
+            if presentation_throws:
+                raise RuntimeError("simulated particle failure")
+        except RuntimeError:
+            self.presentation_errors += 1
         return True
 
     def attuned(self):
@@ -76,6 +82,25 @@ class ForestAttunementTests(unittest.TestCase):
         self.assertEqual((player.count, player.raw), (2, CANONICAL))
         self.assertFalse(player.activate())
         self.assertEqual((player.count, player.raw), (2, CANONICAL))
+
+    def test_presentation_failure_after_consumption_preserves_commit(self):
+        player = Player(2)
+        self.assertTrue(player.activate(presentation_throws=True))
+        self.assertEqual(player.presentation_errors, 1)
+        self.assertEqual(player.count, 1)
+        self.assertEqual(player.raw, CANONICAL)
+        self.assertFalse(player.activate())
+        self.assertEqual((player.count, player.raw), (1, CANONICAL))
+
+        source = MAIN_JS.read_text()
+        presentation = source.split("function presentActivation(player) {", 1)[1].split(
+            "\n}\n\nfunction activate", 1
+        )[0]
+        committed_tail = source.split("presentActivation(player);", 1)[1].split(
+            "\n}\n\nworld.afterEvents", 1
+        )[0]
+        self.assertNotIn("setDynamicProperty", presentation + committed_tail)
+        self.assertNotIn("PROPERTY_ID", presentation + committed_tail)
 
     def test_two_and_four_player_isolation_and_simultaneous_activation(self):
         players = [Player(i + 1) for i in range(4)]

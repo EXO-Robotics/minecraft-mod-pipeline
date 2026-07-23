@@ -1,5 +1,5 @@
 {
-  "schema_version": "1.0.0",
+  "schema_version": "1.1.0",
   "candidate": "forest-attunement-INTERNAL-TEST",
   "feature_id": "forest_attunement",
   "production_lane": "ORIGINAL_BEDROCK_NATIVE",
@@ -17,6 +17,20 @@
     "implementation_commit": "e8346f826afb7c231bb3dcc9ff71a27f5c78f96a",
     "note": "The packet cannot embed the hash of the commit containing itself; delivery evidence records the final packet commit."
   },
+  "revision_history": [
+    {
+      "revision": 1,
+      "commit": "e8346f826afb7c231bb3dcc9ff71a27f5c78f96a",
+      "disposition": "REVISE",
+      "summary": "Initial candidate; optional presentation incorrectly shared the rollback catch with committed persistence and inventory mutations."
+    },
+    {
+      "revision": 2,
+      "commit": "TO_BE_RECORDED_AFTER_REVISION_FREEZE",
+      "disposition": "CANDIDATE",
+      "summary": "Explicit transaction boundary validates the selected sigil, writes state, consumes once with pre-commit rollback, then runs non-transactional presentation that cannot clear committed state."
+    }
+  ],
   "owned_paths": [
     "production/features/forest-attunement/",
     "prototypes/blockbench/forest_attunement/",
@@ -39,8 +53,8 @@
   "artifacts": [
     {
       "path": "dist/forest-attunement-behavior-INTERNAL-TEST.mcpack",
-      "sha256": "a12fb86c11d78625f413d030d8e699dc009805819547a1db1ce375fb6fb3dc02",
-      "bytes": 3860
+      "sha256": "49b714e7df850f4cde762f5633a73374427ad2f18048edf6e6d762917cb3e8d2",
+      "bytes": 4244
     },
     {
       "path": "dist/forest-attunement-resource-INTERNAL-TEST.mcpack",
@@ -49,16 +63,21 @@
     },
     {
       "path": "dist/forest-attunement-INTERNAL-TEST.mcaddon",
-      "sha256": "906b05973fef5fc561edcbd08c7b89ead3c5652dfd6bb546c17c12b5f1c96096",
-      "bytes": 5712
+      "sha256": "96ecd6c74b135d4ec55b7602e077efc87dca9e23a3111137729c5a0fb019ae27",
+      "bytes": 6096
     }
   ],
   "tests": {
     "command": "python3 -m unittest tests/test_forest_attunement.py -v",
     "result": "PASS",
-    "count": 10,
+    "count": 11,
+    "adjacent_suites": {
+      "parallel_batch_preflight": "4/4 PASS by direct pytest-style function invocation",
+      "resonance_sling": "4/4 PASS by direct pytest-style function invocation"
+    },
     "coverage": [
       "fresh and duplicate activation with exact consumption",
+      "post-consumption presentation exception preserves committed state and duplicate refusal",
       "two- and four-player isolation",
       "death, disconnect, reconnect, and restart model",
       "boolean and unversioned-object migrations",
@@ -77,7 +96,10 @@
     "interval_ticks": 100,
     "global_scans_per_tick": 0,
     "particles_per_activation": 1,
-    "modeled_players_max": 4
+    "modeled_players_max": 4,
+    "transactional_mutations_per_fresh_activation": 2,
+    "post_commit_property_clear_paths": 0,
+    "presentation_failure_regressions": 1
   },
   "contamination": {
     "third_party_assets_or_expression": "NONE",

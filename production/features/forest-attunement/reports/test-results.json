@@ -3,13 +3,31 @@
   "executed_at": "2026-07-23",
   "command": "python3 -m unittest tests/test_forest_attunement.py -v",
   "result": "PASS",
-  "tests_run": 10,
+  "tests_run": 11,
   "failures": 0,
   "errors": 0,
   "modeled_players_max": 4,
   "source_syntax_checks": [
     "node --check production/features/forest-attunement/behavior_pack/scripts/main.js",
     "node --check production/features/forest-attunement/behavior_pack/scripts/state.js"
+  ],
+  "adjacent_gates": [
+    {
+      "suite": "tests/test_parallel_batch_preflight.py",
+      "result": "PASS",
+      "tests_run": 4,
+      "runner": "direct invocation of all pytest-style test functions because pytest was unavailable offline"
+    },
+    {
+      "suite": "tests/test_resonance_sling.py",
+      "result": "PASS",
+      "tests_run": 4,
+      "runner": "direct invocation of all pytest-style test functions because pytest was unavailable offline"
+    }
+  ],
+  "regressions": [
+    "Presentation exception after exact consumption preserves canonical state and duplicate activation cannot consume again.",
+    "Presentation phase and committed tail contain no dynamic-property clearing path."
   ],
   "limitations": "Python tests model state transitions and inspect source/package contracts; they are not live Bedrock clients or BDS evidence."
 }
