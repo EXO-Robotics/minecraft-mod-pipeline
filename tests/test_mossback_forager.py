@@ -2,6 +2,7 @@ import hashlib
 import json
 import subprocess
 import sys
+import tempfile
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -115,3 +116,19 @@ def test_deterministic_package_rebuild():
     subprocess.run([sys.executable, str(BUILD)], cwd=ROOT, check=True)
     after = hashlib.sha256(package.read_bytes()).hexdigest()
     assert before == after
+
+
+def test_candidate_packet_metadata_is_stable_outside_assigned_checkout():
+    report = FEATURE / "reports/candidate-packet.json"
+    expected_worktree = (
+        "/Users/blakegrove/Desktop/bedrock-server/.derivedData/worktrees/"
+        "parallel-batch-1/mossback-forager"
+    )
+    before = report.read_bytes()
+    with tempfile.TemporaryDirectory() as outside:
+        subprocess.run([sys.executable, str(BUILD)], cwd=outside, check=True)
+    after_first = report.read_bytes()
+    subprocess.run([sys.executable, str(BUILD)], cwd="/private/tmp", check=True)
+    after_second = report.read_bytes()
+    assert before == after_first == after_second
+    assert json.loads(after_second)["worktree"] == expected_worktree

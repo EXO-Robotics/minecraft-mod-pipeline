@@ -14,6 +14,7 @@ ROOT = Path(__file__).resolve().parents[1]
 FEATURE = ROOT / "production/features/mossback-forager"
 PROTO = ROOT / "prototypes/blockbench/mossback_forager"
 EPOCH = (1980, 1, 1, 0, 0, 0)
+ASSIGNED_WORKTREE = "/Users/blakegrove/Desktop/bedrock-server/.derivedData/worktrees/parallel-batch-1/mossback-forager"
 
 
 def write_json(path: Path, value: object) -> None:
@@ -268,7 +269,7 @@ def build() -> None:
         "candidate_commit": "HANDOFF_GIT_HEAD",
         "candidate_commit_convention": "Resolve HANDOFF_GIT_HEAD to the exact commit reported with this frozen packet; a Git commit cannot embed its own object ID.",
         "branch": "codex/parallel-batch-1/mossback-forager",
-        "worktree": str(ROOT), "owned_paths": ["production/features/mossback-forager/",
+        "worktree": ASSIGNED_WORKTREE, "owned_paths": ["production/features/mossback-forager/",
         "prototypes/blockbench/mossback_forager/", "tools/build_mossback_forager.py", "tests/test_mossback_forager.py"],
         "shared_requests": [], "identifiers": ["ccoriginal_cc:mossback_forager",
         "geometry.ccoriginal_cc.mossback_forager", "animation.ccoriginal_cc.mossback_forager",
@@ -280,7 +281,7 @@ def build() -> None:
         "assets": {"geometry": "9 bones, 18 cubes, 1 locator", "texture": "64x64 original RGBA PNG",
                    "animations": 4, "controllers": 1, "package_sha256": hashlib.sha256(internal.read_bytes()).hexdigest()},
         "hash_manifest": "reports/artifact-hashes.json",
-        "tests": {"static_feature_tests": "PASS_7_DIRECT_HARNESS",
+        "tests": {"static_feature_tests": "PASS_8_DIRECT_HARNESS",
                   "parallel_batch_preflight": "PASS_4_DIRECT_HARNESS",
                   "resonance_regression": "PASS_4_DIRECT_HARNESS",
                   "json_parse": "PASS", "python_compileall": "PASS",
@@ -292,6 +293,8 @@ def build() -> None:
              "summary": "Initial complete static vertical slice."},
             {"revision": 2, "commit": "HANDOFF_GIT_HEAD",
              "summary": "Bound flee to five seconds and bound forage playback with cooling-idle controller state."}
+            ,{"revision": 3, "commit": "HANDOFF_GIT_HEAD",
+              "summary": "Made candidate metadata independent of the review or integration checkout path."}
         ],
         "performance": {"caps_structurally_met": True, "runtime_measurements": None,
                         "simultaneous_entities_cap": 20, "scripts_per_tick": 0},

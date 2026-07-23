@@ -78,6 +78,11 @@
       "commit": "HANDOFF_GIT_HEAD",
       "revision": 2,
       "summary": "Bound flee to five seconds and bound forage playback with cooling-idle controller state."
+    },
+    {
+      "commit": "HANDOFF_GIT_HEAD",
+      "revision": 3,
+      "summary": "Made candidate metadata independent of the review or integration checkout path."
     }
   ],
   "shared_requests": [],
@@ -89,7 +94,7 @@
     "pytest": "UNAVAILABLE_NO_MODULE",
     "python_compileall": "PASS",
     "resonance_regression": "PASS_4_DIRECT_HARNESS",
-    "static_feature_tests": "PASS_7_DIRECT_HARNESS"
+    "static_feature_tests": "PASS_8_DIRECT_HARNESS"
   },
   "unexecuted_gates": [
     "Blockbench GUI native round-trip and visual captures",
