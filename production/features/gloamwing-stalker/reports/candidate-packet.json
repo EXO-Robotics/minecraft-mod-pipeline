@@ -7,7 +7,7 @@
   "requested_reasoning_effort": "light",
   "actual_reasoning_effort": "low",
   "base_commit": "0db4c8a5f504106b4a601afa6f7bc225eb697dcd",
-  "candidate_commit": "e86d4ed1f99676a5bf8660a9bd2864f3aa0d46a9",
+  "candidate_commit": "9a268e388af17afbbfea79017e077c0314f20865",
   "candidate_commit_scope": "Implementation and generated artifacts before this packet-only evidence commit",
   "branch": "codex/parallel-batch-1/gloamwing-stalker",
   "worktree": "/Users/blakegrove/Desktop/bedrock-server/.derivedData/worktrees/parallel-batch-1/gloamwing-stalker",
@@ -42,14 +42,19 @@
     "bbmodel": "2edb9eddb3717b366ccd60bef71d20d1689e4ff20f1d9d085c8b2090239b7960",
     "geometry": "36b960ec289b18041f5fbb4b2345419ca415b9d5d4b4d53336f6851dec1f1635",
     "texture": "0ef6e1d297940c4edb4091454852f14e74b42a3f9193315ccd4e958785062fb7",
-    "mcaddon": "385de156c907dcc9f225103d7262c21bf1bea791e2510ed60d5cc5104060035e"
+    "mcaddon": "dc2fce6347aef51793563334d4b89ea161c9c20aa104d86bfc159531fdf0abb5"
   },
   "validations": [
     {
       "name": "feature_static_tests",
       "command": "direct invocation of four tests in tests/test_gloamwing_stalker.py",
       "status": "PASSED",
-      "result": "4 feature tests passed"
+      "result": "5 feature tests passed, including structural trigger graph and cooldown bounds"
+    },
+    {
+      "name": "batch_preflight_and_resonance_regressions",
+      "status": "PASSED",
+      "result": "8 tests passed"
     },
     {
       "name": "bundled_geometry_validator",
@@ -77,6 +82,9 @@
     "pathfinding_radius": 16,
     "scripts_per_tick": 0,
     "natural_spawn_enabled": false,
+    "attack_cycle_reachable": true,
+    "pounce_cooldown_seconds": [4.0, 7.0],
+    "timer_stacking_prevented_by_exclusive_group_transitions": true,
     "classification": "STATIC_BUDGET_PASS_RUNTIME_UNTESTED"
   },
   "cleanup": {
@@ -110,10 +118,14 @@
     ]
   },
   "metrics": {
-    "owned_files": 23,
-    "feature_tests": 4,
+    "owned_files": 24,
+    "feature_tests": 5,
+    "regression_tests": 8,
     "static_validators": 2,
     "test_framework_note": "pytest was unavailable; the four assertion-based feature tests were invoked directly"
   },
+  "revision": 2,
+  "revision_history": "production/features/gloamwing-stalker/reports/revision-history.json",
+  "review_finding_resolution": "Resolved unreachable begin_telegraph and missing cooldown with spawn-armed target sensor and mutually exclusive native timed component groups.",
   "recommendation": "ACCEPT_FOR_MAIN_CODEX_GUI_AND_RUNTIME_QUALIFICATION"
 }
