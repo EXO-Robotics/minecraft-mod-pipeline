@@ -1,0 +1,177 @@
+{
+  "format_version": "1.21.90",
+  "minecraft:entity": {
+    "component_groups": {
+      "ccoriginal_cc:cooling": {
+        "minecraft:timer": {
+          "looping": false,
+          "time": 45.0,
+          "time_down_event": {
+            "event": "ccoriginal_cc:cooldown_complete",
+            "target": "self"
+          }
+        }
+      },
+      "ccoriginal_cc:fleeing": {
+        "minecraft:behavior.panic": {
+          "force": true,
+          "prefer_water": false,
+          "priority": 1,
+          "speed_multiplier": 1.45
+        }
+      },
+      "ccoriginal_cc:ready": {
+        "minecraft:interact": {
+          "interactions": [
+            {
+              "hurt_item": 0,
+              "interact_text": "action.interact.feed",
+              "on_interact": {
+                "event": "ccoriginal_cc:accept_berry",
+                "filters": {
+                  "domain": "hand",
+                  "subject": "other",
+                  "test": "has_equipment",
+                  "value": "minecraft:sweet_berries"
+                },
+                "target": "self"
+              },
+              "use_item": true
+            }
+          ]
+        }
+      }
+    },
+    "components": {
+      "minecraft:behavior.float": {
+        "priority": 0
+      },
+      "minecraft:behavior.look_at_player": {
+        "look_distance": 8,
+        "priority": 7,
+        "probability": 0.025
+      },
+      "minecraft:behavior.random_look_around": {
+        "priority": 8
+      },
+      "minecraft:behavior.random_stroll": {
+        "interval": 100,
+        "priority": 6,
+        "speed_multiplier": 0.75,
+        "xz_dist": 8,
+        "y_dist": 3
+      },
+      "minecraft:collision_box": {
+        "height": 0.9,
+        "width": 0.9
+      },
+      "minecraft:health": {
+        "max": 18,
+        "value": 18
+      },
+      "minecraft:loot": {
+        "table": "loot_tables/ccoriginal_cc/entities/mossback_forager_death.json"
+      },
+      "minecraft:movement": {
+        "value": 0.18
+      },
+      "minecraft:movement.basic": {},
+      "minecraft:navigation.walk": {
+        "avoid_water": true,
+        "can_open_doors": false,
+        "can_pass_doors": false,
+        "can_path_over_water": false
+      },
+      "minecraft:physics": {},
+      "minecraft:pushable": {
+        "is_pushable": true,
+        "is_pushable_by_piston": true
+      },
+      "minecraft:type_family": {
+        "family": [
+          "mossback",
+          "ccoriginal_cc:mossback"
+        ]
+      }
+    },
+    "description": {
+      "identifier": "ccoriginal_cc:mossback_forager",
+      "is_spawnable": false,
+      "is_summonable": true,
+      "properties": {
+        "ccoriginal_cc:mossback_cooling": {
+          "client_sync": true,
+          "default": false,
+          "type": "bool"
+        }
+      }
+    },
+    "events": {
+      "ccoriginal_cc:accept_berry": {
+        "sequence": [
+          {
+            "remove": {
+              "component_groups": [
+                "ccoriginal_cc:ready"
+              ]
+            }
+          },
+          {
+            "set_property": {
+              "ccoriginal_cc:mossback_cooling": true
+            }
+          },
+          {
+            "spawn_loot": {
+              "table": "loot_tables/ccoriginal_cc/entities/mossback_forager_gift.json"
+            }
+          },
+          {
+            "add": {
+              "component_groups": [
+                "ccoriginal_cc:cooling"
+              ]
+            }
+          }
+        ]
+      },
+      "ccoriginal_cc:cooldown_complete": {
+        "sequence": [
+          {
+            "remove": {
+              "component_groups": [
+                "ccoriginal_cc:cooling"
+              ]
+            }
+          },
+          {
+            "set_property": {
+              "ccoriginal_cc:mossback_cooling": false
+            }
+          },
+          {
+            "add": {
+              "component_groups": [
+                "ccoriginal_cc:ready"
+              ]
+            }
+          }
+        ]
+      },
+      "minecraft:entity_hurt": {
+        "add": {
+          "component_groups": [
+            "ccoriginal_cc:fleeing"
+          ]
+        }
+      },
+      "minecraft:entity_spawned": {
+        "add": {
+          "component_groups": [
+            "ccoriginal_cc:ready"
+          ]
+        }
+      }
+    }
+  }
+}

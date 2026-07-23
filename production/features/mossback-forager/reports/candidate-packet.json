@@ -1,0 +1,92 @@
+{
+  "actual_reasoning_effort": "low",
+  "assets": {
+    "animations": 4,
+    "controllers": 1,
+    "geometry": "9 bones, 18 cubes, 1 locator",
+    "package_sha256": "5945cdabb08fca2d31d87e8b944c7e5562b666c5fddb5d14206444874dd32221",
+    "texture": "64x64 original RGBA PNG"
+  },
+  "base_commit": "0db4c8a5f504106b4a601afa6f7bc225eb697dcd",
+  "branch": "codex/parallel-batch-1/mossback-forager",
+  "candidate_commit": "SELF_REFERENTIAL_COMMIT_REPORTED_IN_HANDOFF",
+  "cleanup": {
+    "latency_target_ticks": 20,
+    "runtime_zero_count": null,
+    "selector_is_tag_scoped": true
+  },
+  "contamination": {
+    "controlled_chaos_expression_inspected": false,
+    "java_inspected": false,
+    "third_party_assets_used": false
+  },
+  "display_name": "Mossback Forager",
+  "feature_id": "mossback_forager",
+  "hash_manifest": "reports/artifact-hashes.json",
+  "identifiers": [
+    "ccoriginal_cc:mossback_forager",
+    "geometry.ccoriginal_cc.mossback_forager",
+    "animation.ccoriginal_cc.mossback_forager",
+    "controller.animation.ccoriginal_cc.mossback_forager",
+    "ccoriginal_cc:mossback_gift",
+    "ccoriginal_cc:mossback_test"
+  ],
+  "limitations": [
+    "Native interaction atomicity requires Bedrock runtime confirmation.",
+    "Timer persistence/restart behavior requires stable BDS confirmation."
+  ],
+  "metrics": {
+    "animation_clips": 4,
+    "animation_controllers": 1,
+    "bones": 9,
+    "cubes": 18,
+    "particles_per_interaction": 0,
+    "pathfinding_radius": 8,
+    "scripts_per_tick": 0,
+    "stress_count": 20,
+    "texture": [
+      64,
+      64
+    ]
+  },
+  "model": "gpt-5.6-sol",
+  "owned_paths": [
+    "production/features/mossback-forager/",
+    "prototypes/blockbench/mossback_forager/",
+    "tools/build_mossback_forager.py",
+    "tests/test_mossback_forager.py"
+  ],
+  "performance": {
+    "caps_structurally_met": true,
+    "runtime_measurements": null,
+    "scripts_per_tick": 0,
+    "simultaneous_entities_cap": 20
+  },
+  "recommendation": "Accept as an internal static candidate; hold promotion pending authoritative runtime and platform gates.",
+  "requested_reasoning_effort": "light",
+  "shared_requests": [],
+  "tests": {
+    "deterministic_rebuild": "PASS",
+    "json_parse": "PASS",
+    "pytest": "UNAVAILABLE_NO_MODULE",
+    "static_feature_tests": "PASS_6_DIRECT_HARNESS"
+  },
+  "unexecuted_gates": [
+    "Blockbench GUI native round-trip and visual captures",
+    "Creator Tools",
+    "authoritative stable BDS",
+    "Bedrock desktop",
+    "multiplayer clients",
+    "performance profiling",
+    "Realm/controller/split-screen",
+    "physical PS4",
+    "Marketplace submission"
+  ],
+  "uuids": {
+    "behavior_data_module": "73f807d7-55f1-479e-92b7-017aaba56863",
+    "behavior_header": "6a67bb25-2953-4be9-9b32-611cf09be04a",
+    "resource_header": "698f7eac-f081-49f9-8e82-1e0f362d704d",
+    "resource_module": "d25ac1b1-2d66-475c-bc0a-c5f33620fbb2"
+  },
+  "worktree": "/Users/blakegrove/Desktop/bedrock-server/.derivedData/worktrees/parallel-batch-1/mossback-forager"
+}
