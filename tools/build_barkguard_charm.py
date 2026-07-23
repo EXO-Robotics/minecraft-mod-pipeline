@@ -5,7 +5,6 @@ from __future__ import annotations
 import hashlib
 import json
 import struct
-import subprocess
 import zipfile
 import zlib
 from pathlib import Path
@@ -19,6 +18,7 @@ ASSETS = ROOT / "prototypes/blockbench/barkguard_charm"
 DIST = FEATURE / "dist"
 REPORTS = FEATURE / "reports"
 EPOCH = (1980, 1, 1, 0, 0, 0)
+IMPLEMENTATION_COMMIT = "c88d4d025c00ab474a951cd71ff28745dbdf40a8"
 
 
 def write_json(path: Path, value: Any) -> None:
@@ -221,10 +221,6 @@ def build() -> dict[str, Any]:
     model_files()
     pack_files()
     package = zip_pack()
-    try:
-        head = subprocess.check_output(["git", "rev-parse", "HEAD"], cwd=ROOT, text=True).strip()
-    except Exception:
-        head = "UNAVAILABLE"
     packet = {
         "schema_version": "1.0.0",
         "feature": "Barkguard Charm",
@@ -235,7 +231,7 @@ def build() -> dict[str, Any]:
         "worktree": str(ROOT),
         "branch": "codex/parallel-batch-1/barkguard-charm",
         "base_commit": "0db4c8a5f504106b4a601afa6f7bc225eb697dcd",
-        "implementation_head_at_build": head,
+        "implementation_head_at_build": IMPLEMENTATION_COMMIT,
         "owned_paths": ["production/features/barkguard-charm/", "prototypes/blockbench/barkguard_charm/", "tools/build_barkguard_charm.py", "tests/test_barkguard_charm.py"],
         "identifiers": ["ccoriginal_cc:barkguard_charm", "geometry.ccoriginal_cc.barkguard_charm", "animation.ccoriginal_cc.barkguard_charm", "controller.animation.ccoriginal_cc.barkguard_charm", "ccoriginal_cc:barkguard_test"],
         "uuids": {"behavior_header": "2985974d-139b-4142-9c25-ae1aba1f95bf", "behavior_data_module": "1ace8116-c3de-4fa4-b083-c6a3b2c79d39", "behavior_script_module": "a8cbf915-0ec4-4c20-95c0-5905667428fd", "resource_header": "29eb411e-8ad2-4666-bb55-756efbd4944c", "resource_module": "5580dd51-6b31-414b-b15e-0160f5f5b34f"},
