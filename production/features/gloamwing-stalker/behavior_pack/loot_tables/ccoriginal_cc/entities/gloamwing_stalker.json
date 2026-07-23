@@ -1,0 +1,37 @@
+{
+  "pools": [
+    {
+      "entries": [
+        {
+          "functions": [
+            {
+              "count": {
+                "max": 1,
+                "min": 0
+              },
+              "function": "set_count"
+            }
+          ],
+          "name": "minecraft:phantom_membrane",
+          "type": "item",
+          "weight": 1
+        },
+        {
+          "functions": [
+            {
+              "count": {
+                "max": 2,
+                "min": 0
+              },
+              "function": "set_count"
+            }
+          ],
+          "name": "minecraft:string",
+          "type": "item",
+          "weight": 3
+        }
+      ],
+      "rolls": 1
+    }
+  ]
+}

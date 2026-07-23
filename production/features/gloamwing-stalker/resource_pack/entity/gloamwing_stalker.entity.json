@@ -1,0 +1,37 @@
+{
+  "format_version": "1.10.0",
+  "minecraft:client_entity": {
+    "description": {
+      "animations": {
+        "controller": "controller.animation.ccoriginal_cc.gloamwing_stalker",
+        "idle": "animation.ccoriginal_cc.gloamwing_stalker.idle",
+        "landing": "animation.ccoriginal_cc.gloamwing_stalker.landing",
+        "pounce": "animation.ccoriginal_cc.gloamwing_stalker.pounce",
+        "stalk": "animation.ccoriginal_cc.gloamwing_stalker.stalk",
+        "telegraph": "animation.ccoriginal_cc.gloamwing_stalker.telegraph"
+      },
+      "geometry": {
+        "default": "geometry.ccoriginal_cc.gloamwing_stalker"
+      },
+      "identifier": "ccoriginal_cc:gloamwing_stalker",
+      "materials": {
+        "default": "entity_alphatest"
+      },
+      "render_controllers": [
+        "controller.render.ccoriginal_cc.gloamwing_stalker"
+      ],
+      "scripts": {
+        "animate": [
+          "controller"
+        ]
+      },
+      "spawn_egg": {
+        "base_color": "#23213F",
+        "overlay_color": "#E09836"
+      },
+      "textures": {
+        "default": "textures/ccoriginal_cc/entity/gloamwing_stalker"
+      }
+    }
+  }
+}

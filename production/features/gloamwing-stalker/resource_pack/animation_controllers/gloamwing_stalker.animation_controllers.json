@@ -1,0 +1,65 @@
+{
+  "animation_controllers": {
+    "controller.animation.ccoriginal_cc.gloamwing_stalker": {
+      "initial_state": "idle",
+      "states": {
+        "idle": {
+          "animations": [
+            "idle"
+          ],
+          "blend_transition": 0.15,
+          "transitions": [
+            {
+              "stalk": "query.modified_move_speed > 0.05"
+            }
+          ]
+        },
+        "landing": {
+          "animations": [
+            "landing"
+          ],
+          "transitions": [
+            {
+              "idle": "query.property('ccoriginal_cc:attack_phase') == 0"
+            }
+          ]
+        },
+        "pounce": {
+          "animations": [
+            "pounce"
+          ],
+          "transitions": [
+            {
+              "landing": "query.property('ccoriginal_cc:attack_phase') == 3"
+            }
+          ]
+        },
+        "stalk": {
+          "animations": [
+            "stalk"
+          ],
+          "blend_transition": 0.1,
+          "transitions": [
+            {
+              "telegraph": "query.property('ccoriginal_cc:attack_phase') == 1"
+            },
+            {
+              "idle": "query.modified_move_speed <= 0.05"
+            }
+          ]
+        },
+        "telegraph": {
+          "animations": [
+            "telegraph"
+          ],
+          "transitions": [
+            {
+              "pounce": "query.property('ccoriginal_cc:attack_phase') == 2"
+            }
+          ]
+        }
+      }
+    }
+  },
+  "format_version": "1.10.0"
+}
