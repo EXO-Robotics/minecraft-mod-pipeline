@@ -1,0 +1,105 @@
+{
+  "schema_version": "1.0.0",
+  "contract_revision": 1,
+  "feature_id": "forest_attunement",
+  "runtime_namespace": "ccoriginal_cc",
+  "display_name": "Forest Attunement",
+  "production_lane": "ORIGINAL_BEDROCK_NATIVE",
+  "authorship_mode": "ORIGINAL_AUTHORSHIP",
+  "java_evidence": "NOT_APPLICABLE",
+  "java_fidelity_claimed": false,
+  "source_expression_used": false,
+  "execution_authorized": true,
+  "product_role": "Optional per-player persistent unlock proving additive progression, migration, isolation, and recovery.",
+  "identity": {
+    "player_loop": "Use an independently authored Attunement Sigil once to unlock a subtle forest-trail benefit and receive clear status feedback.",
+    "benefit": "While in ordinary forest biomes, an attuned player receives a short low-amplifier Speed effect at a bounded low-frequency interval."
+  },
+  "explicit_non_goals": [
+    "No mandatory campaign gate, custom skill tree, custom GUI, dimension, or world lock",
+    "No dependency on Signal Ruin or another unfinished feature",
+    "No copied progression system, names, writing, iconography, balance, or state layout",
+    "No global per-tick player scan"
+  ],
+  "dependencies": [
+    "Minecraft Bedrock behavior and resource packs",
+    "@minecraft/server stable 2.0.0",
+    "Repository-local deterministic package and qualification tooling"
+  ],
+  "extension_interfaces": [
+    "Read-only exported helper isForestAttuned(player)",
+    "Versioned player property ccoriginal_cc:forest_attunement_v1",
+    "Administrative reset function operates on the invoking player only"
+  ],
+  "gameplay": {
+    "acquisition": "Internal-test recipe and grant function produce one Attunement Sigil.",
+    "activation": "Use the sigil; consume exactly one only if the player is not already attuned.",
+    "duplicate_use": "Already-attuned players keep the item and receive status feedback.",
+    "benefit_interval_ticks": 100,
+    "benefit": "Speed I for 120 ticks only when the player is in a vanilla forest-tagged biome approximation defined by the implementation contract.",
+    "reset": "Operator-only internal test function clears the invoking player's state."
+  },
+  "multiplayer": {
+    "state_owner": "Individual player dynamic property",
+    "isolation": "One player's unlock, reset, death, reconnect, or migration cannot alter another player's record",
+    "simultaneous_activation": "Each player consumes at most one sigil and receives one state transition",
+    "server_authority": true
+  },
+  "persistence": {
+    "schema_version": 1,
+    "current_shape": {
+      "version": 1,
+      "unlocked": true
+    },
+    "legacy_inputs": [
+      "Boolean true",
+      "JSON object with unlocked=true and no version"
+    ],
+    "migration": "Migrate known legacy values once to version 1; reject unknown versions without overwriting them.",
+    "corrupt_state": "Fail closed as not attuned, preserve a diagnostic warning, and do not consume an activation item until a valid write succeeds.",
+    "reconnect": "Read the player's property on demand; no duplicate global cache."
+  },
+  "cleanup": {
+    "persistent_records_per_player": 1,
+    "in_memory_records": 0,
+    "scheduled_callbacks_global_max": 1,
+    "global_scans_per_tick": 0,
+    "unsubscribe_required": false
+  },
+  "performance_caps": {
+    "player_check_interval_ticks": 100,
+    "players_modeled_max": 4,
+    "dynamic_properties_per_player_max": 1,
+    "script_callbacks_per_interval_max": 4,
+    "particles_per_activation_max": 8,
+    "texture_size_max": [32, 32]
+  },
+  "required_tests": [
+    "Fresh activation and exact item consumption",
+    "Duplicate activation refusal",
+    "Two- and four-player state isolation",
+    "Death, disconnect, reconnect, and restart persistence",
+    "Known legacy migrations",
+    "Unknown-version and corrupt-state handling",
+    "Administrative reset isolation",
+    "Bounded interval and no per-tick scan",
+    "Deterministic package rebuild"
+  ],
+  "permitted_creative_latitude": [
+    "Original sigil icon, recipe ingredients, feedback wording, bounded particle expression, and exact forest-biome approximation"
+  ],
+  "forbidden_design_changes": [
+    "World-owned unlock",
+    "Mandatory progression",
+    "Unversioned persistence",
+    "Unknown-state overwrite",
+    "Per-tick player scanning",
+    "Experimental APIs or third-party expression"
+  ],
+  "release_status": {
+    "internal_test_build": true,
+    "marketplace_approved": false,
+    "physical_ps4_certified": false,
+    "public_release_authorized": false
+  }
+}

@@ -1,0 +1,104 @@
+{
+  "schema_version": "1.0.0",
+  "batch_id": "forest-wave-1-parallel-batch-1",
+  "status": "BATCH_PREFLIGHT_READY",
+  "prepared_from_branch": "codex/forest-wave-1-resonance-sling",
+  "immutable_base_commit": "e9009b70502f4e0db57986ea52cf8d4f7998cc1b",
+  "integration_branch": "codex/forest-wave-1-parallel-batch-1",
+  "production_model": "gpt-5.6-sol",
+  "production_reasoning_effort": "light",
+  "wave_policy": {
+    "maximum_child_concurrency": 3,
+    "wave_a": [
+      "signal_ruin",
+      "gloamwing_stalker",
+      "forest_attunement"
+    ],
+    "wave_b": [
+      "mossback_forager",
+      "barkguard_charm"
+    ],
+    "start_wave_b_when_slot_free": true
+  },
+  "contracts": {
+    "signal_ruin": "production/reconstruction-waves/forest-wave-1/signal_ruin/original-production-manifest.json",
+    "gloamwing_stalker": "production/reconstruction-waves/forest-wave-1/gloamwing_stalker/original-production-manifest.json",
+    "forest_attunement": "production/reconstruction-waves/forest-wave-1/forest_attunement/original-production-manifest.json",
+    "mossback_forager": "production/reconstruction-waves/forest-wave-1/mossback_forager/original-production-manifest.json",
+    "barkguard_charm": "production/reconstruction-waves/forest-wave-1/barkguard_charm/original-production-manifest.json"
+  },
+  "assignment_directory": "production/batches/forest-wave-1-parallel-batch-1/assignments",
+  "reservation_manifest": "production/batches/forest-wave-1-parallel-batch-1/reservations.json",
+  "shared_registration_request_schema": {
+    "kind": "identifier|uuid|localization|script-entry|texture-atlas|spawn|structure|persistence",
+    "requested_value": "string",
+    "feature_local_source": "repository-relative path",
+    "integration_action": "string",
+    "collision_check": "PASS|FAIL",
+    "required": true
+  },
+  "resource_ownership": {
+    "authoritative_bds": "MAIN_CODEX_SERIALIZED",
+    "stable_installation": "production/features/resonance-sling/runtime/stable-server-seed",
+    "preview_installation": "production/features/resonance-sling/runtime/preview-server-seed",
+    "runtime_copy_policy": "REUSE_ONE_INSTALLATION_PER_VERSION_DO_NOT_COPY_TO_WORKTREES",
+    "blockbench_gui": "MAIN_CODEX_SERIALIZED",
+    "desktop_minecraft": "MAIN_CODEX_ONLY",
+    "creator_tools": "MAIN_CODEX_ONLY"
+  },
+  "integration_order": [
+    "forest_attunement",
+    "barkguard_charm",
+    "mossback_forager",
+    "gloamwing_stalker",
+    "signal_ruin"
+  ],
+  "acceptance": {
+    "candidate_dispositions": [
+      "ACCEPT_CANDIDATE",
+      "ACCEPT_WITH_LIMITATIONS",
+      "REVISE",
+      "REJECT",
+      "BLOCKED",
+      "QUARANTINED"
+    ],
+    "required_before_acceptance": [
+      "Contract compliance",
+      "Write-scope compliance",
+      "Originality and contamination scan",
+      "Stable API validation",
+      "Feature-local deterministic tests",
+      "Main-Codex authoritative qualification",
+      "Resolved critical and high red-team findings",
+      "Deterministic cleanup",
+      "Clean candidate worktree"
+    ],
+    "unavailable_gates": {
+      "desktop_client": "PENDING",
+      "physical_ps4": "PENDING_PHYSICAL_HARDWARE",
+      "marketplace_submission": "NOT_SUBMITTED"
+    }
+  },
+  "batch_stop_conditions": [
+    "Shared identifier or UUID ownership cannot be trusted",
+    "Multiple candidates mutate the same unassigned shared state",
+    "Qualification infrastructure produces contradictory results",
+    "Resonance Sling frozen artifacts or source require destructive mutation",
+    "Systemic critical originality, persistence, or world-integrity failure"
+  ],
+  "protected_paths": [
+    "production/features/resonance-sling",
+    "production/reconstruction-waves/forest-wave-1/resonance_sling",
+    "prototypes/blockbench/phase_anchor_test.bbmodel",
+    "production/batches/forest-wave-1-parallel-batch-1",
+    "Combined manifests and global registries"
+  ],
+  "release_restrictions": [
+    "NO_PUSH",
+    "NO_TAG",
+    "NO_RELEASE",
+    "NO_REALM_DEPLOYMENT",
+    "NO_MARKETPLACE_SUBMISSION",
+    "NO_PHYSICAL_PS4_CLAIM"
+  ]
+}

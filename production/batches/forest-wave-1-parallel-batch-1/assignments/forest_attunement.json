@@ -1,0 +1,37 @@
+{
+  "batch_id": "forest-wave-1-parallel-batch-1",
+  "agent_id": "production-agent-forest-attunement",
+  "model": "gpt-5.6-sol",
+  "reasoning_effort": "light",
+  "feature_id": "forest_attunement",
+  "feature_name": "Forest Attunement",
+  "wave": "A",
+  "base_commit": "PREFLIGHT_COMMIT",
+  "branch": "codex/parallel-batch-1/forest-attunement",
+  "worktree": "/Users/blakegrove/Desktop/bedrock-server/.derivedData/worktrees/parallel-batch-1/forest-attunement",
+  "contract": "production/reconstruction-waves/forest-wave-1/forest_attunement/original-production-manifest.json",
+  "reservations": "production/batches/forest-wave-1-parallel-batch-1/reservations.json",
+  "owned_paths": [
+    "production/features/forest-attunement/",
+    "prototypes/blockbench/forest_attunement/",
+    "tools/build_forest_attunement.py",
+    "tests/test_forest_attunement.py"
+  ],
+  "required_outputs": [
+    "Original sigil icon and item",
+    "Stable versioned per-player persistence implementation",
+    "Migration, corruption, reset, multiplayer, reconnect, and restart tests",
+    "Behavior and resource packs",
+    "Feature-local deterministic packages",
+    "reports/candidate-packet.json"
+  ],
+  "authoritative_bds_owner": "MAIN_CODEX",
+  "blockbench_gui_owner": "MAIN_CODEX",
+  "shared_files_may_be_edited": false,
+  "stop_conditions": [
+    "Stable API cannot safely preserve unknown persistence versions",
+    "World or player-state integrity risk",
+    "Write-scope collision",
+    "Third-party contamination"
+  ]
+}

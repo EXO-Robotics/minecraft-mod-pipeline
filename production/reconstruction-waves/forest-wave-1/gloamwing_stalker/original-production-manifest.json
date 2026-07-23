@@ -1,0 +1,99 @@
+{
+  "schema_version": "1.0.0",
+  "contract_revision": 1,
+  "feature_id": "gloamwing_stalker",
+  "runtime_namespace": "ccoriginal_cc",
+  "display_name": "Gloamwing Stalker",
+  "production_lane": "ORIGINAL_BEDROCK_NATIVE",
+  "authorship_mode": "ORIGINAL_AUTHORSHIP",
+  "java_evidence": "NOT_APPLICABLE",
+  "java_fidelity_claimed": false,
+  "source_expression_used": false,
+  "execution_authorized": true,
+  "product_role": "Escalating nocturnal regional threat with a readable stalk-then-pounce rhythm.",
+  "identity": {
+    "shape_grammar": "A low six-limbed glider with broad leaf-shaped shoulder fins, a lantern-like throat patch, and a short counterbalancing tail.",
+    "palette": "Deep indigo, desaturated teal, warm throat amber, and pale claw tips.",
+    "player_loop": "Notice the throat flash, create distance or block, survive a short pounce, then counterattack during recovery."
+  },
+  "explicit_non_goals": [
+    "No flight simulation, invisibility, teleportation, wall climbing, custom shader, or boss phases",
+    "No copied creature silhouette, texture language, animation timing, sound, name, or lore",
+    "No dependency on another Forest Wave feature",
+    "No natural spawning until server stress qualification passes"
+  ],
+  "dependencies": [
+    "Minecraft Bedrock behavior and resource packs",
+    "Native entity components and animation controllers",
+    "Repository-local asset and qualification tooling"
+  ],
+  "extension_interfaces": [
+    "Family tag ccoriginal_cc:gloamwing for later original encounter selection",
+    "Loot table may later include an independently authored progression ingredient"
+  ],
+  "gameplay": {
+    "health": 24,
+    "movement": "Ground navigation with short native leap/pounce behavior; no script tick loop.",
+    "detection_radius_blocks": 16,
+    "melee_damage": 4,
+    "pounce_cooldown_seconds_min": 4,
+    "pounce_cooldown_seconds_max": 7,
+    "telegraph": "Throat and fins brighten for at least 0.45 seconds before the pounce state.",
+    "recovery": "At least 0.6 seconds of reduced pursuit after landing.",
+    "loot": "Bounded original loot table using vanilla materials."
+  },
+  "multiplayer": {
+    "targeting": "Nearest valid survival player selected by native priority and range",
+    "retargeting": "Native target ownership may change after damage or target loss",
+    "rewards": "One entity loot roll; no per-player script reward",
+    "disconnect": "Native target clears and the entity returns to bounded roam",
+    "server_authority": true
+  },
+  "persistence": {
+    "custom_records": 0,
+    "restart_recovery": "Entity component state is native and may safely return to base stalking state after restart."
+  },
+  "cleanup": {
+    "natural_spawn_enabled": false,
+    "stress_function_count": 20,
+    "cleanup_function": "Removes only tagged Gloamwing test entities",
+    "cleanup_latency_ticks": 20
+  },
+  "performance_caps": {
+    "bones_max": 10,
+    "cubes_max": 24,
+    "texture_size_max": [64, 64],
+    "animation_clips_max": 5,
+    "animation_controllers_max": 1,
+    "simultaneous_entities_max": 20,
+    "pathfinding_search_radius_max": 16,
+    "particles_per_pounce_max": 6,
+    "scripts_per_tick": 0
+  },
+  "required_tests": [
+    "Blockbench source and native geometry round trip",
+    "texture, geometry, animation, controller, client, and behavior reference validation",
+    "idle, stalk, telegraph, pounce, landing, damage, and death state checks",
+    "two- and four-player target switching",
+    "disconnect and restart fallback",
+    "1, 10, and 20 entity stress",
+    "cleanup to zero",
+    "deterministic package rebuild"
+  ],
+  "permitted_creative_latitude": [
+    "Original proportions, fin construction, texture expression, locomotion poses, pounce timing within limits, and vanilla-material loot weights"
+  ],
+  "forbidden_design_changes": [
+    "Natural spawn activation before qualification",
+    "Per-tick script scans",
+    "Experimental APIs",
+    "Persistent player tracking",
+    "Third-party or source-derived expression"
+  ],
+  "release_status": {
+    "internal_test_build": true,
+    "marketplace_approved": false,
+    "physical_ps4_certified": false,
+    "public_release_authorized": false
+  }
+}
