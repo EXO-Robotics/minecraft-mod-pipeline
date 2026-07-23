@@ -3,7 +3,7 @@
   "label": "INTERNAL TEST BUILD / NOT MARKETPLACE APPROVED / NOT PHYSICAL PS4 CERTIFIED / NOT FOR PUBLIC RELEASE",
   "feature_id": "signal_ruin",
   "base_commit": "0db4c8a5f504106b4a601afa6f7bc225eb697dcd",
-  "candidate_commit": "fb33af831cbc147199b119f7efc8cf7011e61da8",
+  "candidate_commit": "38d33913b9a7daa18080be1a4d3e4c6f4c7c9550",
   "packet_delivery": "FOLLOW_UP_PACKET_ONLY_COMMIT",
   "branch": "codex/parallel-batch-1/signal-ruin",
   "changed_paths": [
@@ -42,7 +42,7 @@
   "assets_and_packages": [
     {
       "path": "production/features/signal-ruin/dist/signal-ruin-INTERNAL-TEST.mcaddon",
-      "sha256": "9e9f388c6d942ee096bbd3819b0381199b866c2531ba2646a5fa27613367ec4c"
+      "sha256": "0fcda7f556bea8f677c76394704f10c0e4e0cd56a55d84074a7951369884ec7e"
     },
     {
       "path": "production/features/signal-ruin/bedrock/behavior_pack/structures/ccoriginal_cc/signal_ruin.mcstructure",
@@ -59,9 +59,14 @@
   ],
   "tests": [
     {
-      "command": "/Users/blakegrove/Desktop/bedrock-server/minecraft-compiler-baseline/.venv/bin/pytest -q tests/test_signal_ruin.py tests/test_parallel_batch_preflight.py",
+      "command": "/Users/blakegrove/Desktop/bedrock-server/minecraft-compiler-baseline/.venv/bin/pytest -q tests/test_signal_ruin.py tests/test_parallel_batch_preflight.py tests/test_resonance_sling.py",
       "result": "PASS",
-      "evidence": "9 passed in 0.10s"
+      "evidence": "17 passed in 0.14s"
+    },
+    {
+      "command": "/Users/blakegrove/Desktop/bedrock-server/minecraft-compiler-baseline/.venv/bin/pytest -q tests/test_signal_ruin.py && git status --porcelain=v1 && git diff --exit-code",
+      "result": "PASS",
+      "evidence": "9 passed after a clean commit; no status or diff output, proving deterministic rebuild preservation."
     },
     {
       "command": "PYTHONPATH=. /Users/blakegrove/Desktop/bedrock-server/minecraft-compiler-baseline/.venv/bin/pytest -q",
@@ -107,10 +112,20 @@
   },
   "working_tree_status": "CLEAN_AT_CANDIDATE_COMMIT; PACKET_FILE_ADDED_FOR_FOLLOW_UP_COMMIT",
   "timing_and_effort_metrics": {
-    "elapsed_minutes_approximate": 14,
+    "elapsed_minutes_approximate": 24,
     "requested_reasoning_effort": "light",
     "actual_reasoning_effort": "low",
     "effort_note": "The requested light setting was unavailable; the actual allocation was low."
+  },
+  "revision": {
+    "disposition_addressed": "REVISE",
+    "supersedes_candidate_commit": "fb33af831cbc147199b119f7efc8cf7011e61da8",
+    "findings_closed": [
+      "Evidence-preserving deterministic rebuild",
+      "Two-active-instance hard cap before mutation",
+      "Eighty-second encounter cleanup ceiling",
+      "Spatially distinct two-instance stress placement"
+    ]
   },
   "recommendation": "ACCEPT_FOR_MAIN_CODEX_QUALIFICATION_ONLY; DO_NOT PUBLICLY RELEASE OR CLAIM MARKETPLACE OR PHYSICAL PS4 READINESS"
 }
