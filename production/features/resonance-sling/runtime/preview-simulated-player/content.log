@@ -1,0 +1,144 @@
+[mccompiler-harness] cycle=1
+WARNING: The requested image's platform (linux/amd64) does not match the detected host platform (linux/arm64/v8) and no specific platform was requested
+time="2026-07-23T19:26:22Z" level=debug msg="Using /data to match uid and gid"
+time="2026-07-23T19:26:22Z" level=debug msg="Resolved UID=0 from match path"
+time="2026-07-23T19:26:22Z" level=debug msg="Resolved GID=0 from match path"
+Image info: buildtime=2025-12-13T02:14:45.091Z,version=master,revision=19ecd3aaf1bca5daa6a68526e6f51bb84732953a
+Using existing bedrock server executable
+2026/07/23 19:26:22 Setting white-list to false in server.properties
+Starting Bedrock server...
+NO LOG FILE! - setting up server logging...
+[2026-07-23 19:26:22:988 INFO] Starting Server
+[2026-07-23 19:26:22:988 INFO] Version: 1.26.50.20
+[2026-07-23 19:26:22:988 INFO] Session ID: 18c18fc9-50b6-41e6-94cf-d46cbbc45344
+[2026-07-23 19:26:22:988 INFO] Build ID: 47971866
+[2026-07-23 19:26:22:988 INFO] Branch: main
+[2026-07-23 19:26:22:988 INFO] Commit ID: a3447f3c9f0a25124e670a72f2f995e046e1acee
+[2026-07-23 19:26:22:988 INFO] Configuration: Publish
+[2026-07-23 19:26:22:992 INFO] Contents of server.properties: {}
+[2026-07-23 19:26:22:993 INFO] Level Name: Resonance Sling INTERNAL TEST
+[2026-07-23 19:26:22:994 INFO] Profiler config ('bootstrap.json') load result: success=1, errorMessage=(null)
+[2026-07-23 19:26:23:000 INFO] No CDN config file found at: cdn_config.json for dedicated server
+[2026-07-23 19:26:23:000 INFO] Game mode: 0 Survival
+[2026-07-23 19:26:23:000 INFO] Difficulty: 1 EASY
+[2026-07-23 19:26:23:007 INFO] Content logging to console is enabled.
+[2026-07-23 19:26:23:056 INFO]
+#####################################################
+#                                                   #
+#               LOADING VANILLA WORLD               #
+#                                                   #
+#####################################################
+[2026-07-23 19:26:23:940 INFO] Experiment(s) active: gtst
+[2026-07-23 19:26:23:941 INFO] Opening level 'worlds/Resonance Sling INTERNAL TEST/db'
+[2026-07-23 19:26:24:883 INFO] Pack Stack - [00] Resonance Sling INTERNAL TEST BP (id: 61e0bbf4-0051-4bb0-a5bb-19e1cd68db0f, version: 1.0.0) @ worlds/Resonance Sling INTERNAL TEST/behavior_packs/Resonance_Sling_INTERNAL_TEST_BP-61e0bbf4
+[2026-07-23 19:26:24:883 INFO] Pack Stack - [01] Resonance Sling Preview Qualification (id: 133dc368-e574-4b78-8ed3-c62af92e6e6b, version: 0.1.0) @ worlds/Resonance Sling INTERNAL TEST/behavior_packs/Resonance_Sling_Preview_Qualification-133dc368
+[2026-07-23 19:26:25:651 WARN] [Scripting] [resonance-sling] script runtime initialized stable_api=2.0.0 persistent_records=0 global_scan_per_tick=0 cap=16
+[2026-07-23 19:26:26:701 WARN] [Components] Resonance Sling INTERNAL TEST | actor_definitions | worlds/Resonance Sling INTERNAL TEST/behavior_packs/Resonance_Sling_INTERNAL_TEST_BP-61e0bbf4 | ccoriginal_cc:resonance_pulse | minecraft:entity | Invalid particle type 'ccoriginal_cc:resonance_impact' specified.
+[2026-07-23 19:26:28:032 INFO] IPv4 supported, port: 19132: Used for gameplay and LAN discovery
+[2026-07-23 19:26:28:032 INFO] IPv6 supported, port: 19133: Used for gameplay
+[2026-07-23 19:26:28:086 INFO] Signed in to signaling service successfully
+[2026-07-23 19:26:28:094 INFO] Server started.
+[2026-07-23 19:26:28:096 INFO] ================ TELEMETRY MESSAGE ===================
+[2026-07-23 19:26:28:096 INFO] Server Telemetry is currently not enabled.
+[2026-07-23 19:26:28:096 INFO] Enabling this telemetry helps us improve the game.
+[2026-07-23 19:26:28:096 INFO]
+[2026-07-23 19:26:28:096 INFO] To enable this feature, add the line 'emit-server-telemetry=true'
+[2026-07-23 19:26:28:096 INFO] to the server.properties file in the handheld/src-server directory
+[2026-07-23 19:26:28:096 INFO] ======================================================
+[2026-07-23 19:26:29:230 INFO] Added ticking area centered at 8, 0, 8 with a radius of 2 chunks marked for preload.
+1/10 ticking areas in use.
+[2026-07-23 19:26:32:334 INFO] Block placed
+[2026-07-23 19:26:32:718 INFO] Player Spawned: SlingBot1 xuid: , pfid:
+[2026-07-23 19:26:32:729 INFO] Player Spawned: SlingBot2 xuid: , pfid:
+[2026-07-23 19:26:32:730 INFO] Player Spawned: SlingBot3 xuid: , pfid:
+[2026-07-23 19:26:32:731 INFO] Player Spawned: SlingBot4 xuid: , pfid:
+[2026-07-23 19:26:32:732 WARN] [Scripting] [resonance-sling:preview] four_players_created=passed detail=count=4
+[2026-07-23 19:26:33:232 WARN] [Scripting] [resonance-sling:preview] cooldown_isolation=passed detail=
+[2026-07-23 19:26:34:176 WARN] [Scripting] [resonance-sling:preview] actual_item_use=passed detail=
+[2026-07-23 19:26:34:177 WARN] [Scripting] [resonance-sling:preview] ammo_consumption=passed detail=
+[2026-07-23 19:26:34:183 WARN] [Scripting] [resonance-sling:preview] durability_cost=passed detail=before=0 after=1 stack=ccoriginal_cc:resonance_sling components=minecraft:cooldown,minecraft:durability
+[2026-07-23 19:26:34:183 WARN] [Scripting] [resonance-sling:preview] projectile_owner=passed detail=
+[2026-07-23 19:26:35:077 WARN] [Scripting] [resonance-sling:preview] entity_damage=passed detail=nominal_component_damage=4 before=10 after=5.602473258972168 observed=4.397526741027832
+[2026-07-23 19:26:35:078 WARN] [Scripting] [resonance-sling:preview] damage_attribution=passed detail=owner=-4294967295
+[2026-07-23 19:26:35:078 WARN] [Scripting] [resonance-sling:preview] bounded_knockback=passed detail=distance=1.3789041156774338
+[2026-07-23 19:26:35:078 WARN] [Scripting] [resonance-sling:preview] single_damage_event=passed detail=events=1
+[2026-07-23 19:26:35:176 WARN] [Scripting] [resonance-sling:preview] block_impact_cleanup=passed detail=remaining=0
+[2026-07-23 19:26:36:327 WARN] [Scripting] [resonance-sling:preview] empty_ammo_no_cost=passed detail=
+[2026-07-23 19:26:37:072 WARN] [Scripting] [resonance-sling:preview] four_player_concurrent_use=passed detail=spawn_count=4
+[2026-07-23 19:26:37:073 WARN] [Scripting] [resonance-sling:preview] owner_isolation=passed detail=ammo_deltas=1,1,1,1
+[2026-07-23 19:26:40:373 WARN] [Scripting] [resonance-sling:preview] global_cap=passed detail=stationary_fixture_projectiles=16
+[2026-07-23 19:26:40:373 WARN] [Scripting] [resonance-sling:preview] worst_credible_load=passed detail=players=4 projectiles=16 ambient=24
+[2026-07-23 19:26:43:932 WARN] [Scripting] [resonance-sling:preview] dimension_transition_cleanup=passed detail=
+[2026-07-23 19:26:44:174 WARN] [Scripting] [resonance-sling:preview] disconnect_cleanup=passed detail=
+[2026-07-23 19:26:44:177 INFO] Player Spawned: SlingBot4R xuid: , pfid:
+[2026-07-23 19:26:44:179 WARN] [Scripting] [resonance-sling:preview] reconnect_no_state=passed detail=
+[2026-07-23 19:26:44:927 WARN] [Scripting] [resonance-sling:preview] death_in_flight_cleanup=passed detail=
+[2026-07-23 19:26:46:179 WARN] [Scripting] [resonance-sling:preview] rapid_alternating_use=passed detail=attempts=16
+[2026-07-23 19:26:48:671 WARN] [Scripting] [resonance-sling:preview] expiration_cleanup=passed detail=
+[2026-07-23 19:26:49:673 WARN] [Scripting] [resonance-sling:preview] repeated_use_cleanup=passed detail=
+[2026-07-23 19:27:53:926 WARN] [Scripting] [resonance-sling:preview] endurance_repeated_use=passed detail=rounds=100 attempts=400
+[2026-07-23 19:27:53:927 WARN] [Scripting] [resonance-sling:preview] endurance_cleanup=passed detail=remaining=0
+[2026-07-23 19:27:53:927 WARN] [Scripting] [resonance-sling:preview] bounded_queue=passed detail=peak=15
+[2026-07-23 19:27:53:927 WARN] [Scripting] [resonance-sling:preview] final_cleanup=passed detail=remaining=0
+[2026-07-23 19:27:53:932 WARN] [Scripting] [resonance-sling:preview] metrics={"players":4,"peak_scheduled":15,"stationary_worst_credible_attempts":20,"endurance_rounds":100,"endurance_attempts":400,"production_global_cap":16,"persistent_records":0}
+time="2026-07-23T19:27:58Z" level=debug msg="Forwarding signal" signal=terminated
+time="2026-07-23T19:27:58Z" level=debug msg="Sending message on stdin due to SIGTERM" message=stop
+[2026-07-23 19:27:58:333 INFO] Server stop requested.
+[2026-07-23 19:27:58:394 INFO] Stopping server...
+Quit correctly
+2026-07-23T19:27:58.878Z	INFO	mc-server-runner	Done
+[mccompiler-harness] cycle=2
+WARNING: The requested image's platform (linux/amd64) does not match the detected host platform (linux/arm64/v8) and no specific platform was requested
+time="2026-07-23T19:27:59Z" level=debug msg="Using /data to match uid and gid"
+time="2026-07-23T19:27:59Z" level=debug msg="Resolved UID=0 from match path"
+time="2026-07-23T19:27:59Z" level=debug msg="Resolved GID=0 from match path"
+Image info: buildtime=2025-12-13T02:14:45.091Z,version=master,revision=19ecd3aaf1bca5daa6a68526e6f51bb84732953a
+Using existing bedrock server executable
+2026/07/23 19:27:59 Setting white-list to false in server.properties
+Starting Bedrock server...
+NO LOG FILE! - setting up server logging...
+[2026-07-23 19:27:59:525 INFO] Starting Server
+[2026-07-23 19:27:59:525 INFO] Version: 1.26.50.20
+[2026-07-23 19:27:59:525 INFO] Session ID: 60714983-de5a-4195-a563-a59e2f5ed94d
+[2026-07-23 19:27:59:525 INFO] Build ID: 47971866
+[2026-07-23 19:27:59:525 INFO] Branch: main
+[2026-07-23 19:27:59:525 INFO] Commit ID: a3447f3c9f0a25124e670a72f2f995e046e1acee
+[2026-07-23 19:27:59:525 INFO] Configuration: Publish
+[2026-07-23 19:27:59:529 INFO] Contents of server.properties: {}
+[2026-07-23 19:27:59:530 INFO] Level Name: Resonance Sling INTERNAL TEST
+[2026-07-23 19:27:59:531 INFO] Profiler config ('bootstrap.json') load result: success=1, errorMessage=(null)
+[2026-07-23 19:27:59:537 INFO] No CDN config file found at: cdn_config.json for dedicated server
+[2026-07-23 19:27:59:537 INFO] Game mode: 0 Survival
+[2026-07-23 19:27:59:537 INFO] Difficulty: 1 EASY
+[2026-07-23 19:27:59:544 INFO] Content logging to console is enabled.
+[2026-07-23 19:27:59:594 INFO]
+#####################################################
+#                                                   #
+#               LOADING VANILLA WORLD               #
+#                                                   #
+#####################################################
+[2026-07-23 19:28:00:409 INFO] Experiment(s) active: gtst
+[2026-07-23 19:28:00:410 INFO] Opening level 'worlds/Resonance Sling INTERNAL TEST/db'
+[2026-07-23 19:28:01:359 INFO] Pack Stack - [00] Resonance Sling INTERNAL TEST BP (id: 61e0bbf4-0051-4bb0-a5bb-19e1cd68db0f, version: 1.0.0) @ worlds/Resonance Sling INTERNAL TEST/behavior_packs/Resonance_Sling_INTERNAL_TEST_BP-61e0bbf4
+[2026-07-23 19:28:01:359 INFO] Pack Stack - [01] Resonance Sling Preview Qualification (id: 133dc368-e574-4b78-8ed3-c62af92e6e6b, version: 0.1.0) @ worlds/Resonance Sling INTERNAL TEST/behavior_packs/Resonance_Sling_Preview_Qualification-133dc368
+[2026-07-23 19:28:02:185 WARN] [Scripting] [resonance-sling] script runtime initialized stable_api=2.0.0 persistent_records=0 global_scan_per_tick=0 cap=16
+[2026-07-23 19:28:03:175 WARN] [Components] Resonance Sling INTERNAL TEST | actor_definitions | worlds/Resonance Sling INTERNAL TEST/behavior_packs/Resonance_Sling_INTERNAL_TEST_BP-61e0bbf4 | ccoriginal_cc:resonance_pulse | minecraft:entity | Invalid particle type 'ccoriginal_cc:resonance_impact' specified.
+[2026-07-23 19:28:04:471 INFO] IPv4 supported, port: 19132: Used for gameplay and LAN discovery
+[2026-07-23 19:28:04:471 INFO] IPv6 supported, port: 19133: Used for gameplay
+[2026-07-23 19:28:04:525 INFO] Signed in to signaling service successfully
+[2026-07-23 19:28:04:534 INFO] Server started.
+[2026-07-23 19:28:04:534 INFO] ================ TELEMETRY MESSAGE ===================
+[2026-07-23 19:28:04:534 INFO] Server Telemetry is currently not enabled.
+[2026-07-23 19:28:04:534 INFO] Enabling this telemetry helps us improve the game.
+[2026-07-23 19:28:04:534 INFO]
+[2026-07-23 19:28:04:534 INFO] To enable this feature, add the line 'emit-server-telemetry=true'
+[2026-07-23 19:28:04:534 INFO] to the server.properties file in the handheld/src-server directory
+[2026-07-23 19:28:04:534 INFO] ======================================================
+[2026-07-23 19:28:08:700 INFO] Block placed
+[2026-07-23 19:28:08:712 WARN] [Scripting] [resonance-sling:preview] restart_no_persistent_projectiles=passed detail=
+time="2026-07-23T19:29:34Z" level=debug msg="Forwarding signal" signal=terminated
+time="2026-07-23T19:29:34Z" level=debug msg="Sending message on stdin due to SIGTERM" message=stop
+[2026-07-23 19:29:34:689 INFO] Server stop requested.
+[2026-07-23 19:29:34:748 INFO] Stopping server...
+Quit correctly
+2026-07-23T19:29:35.266Z	INFO	mc-server-runner	Done

@@ -404,8 +404,8 @@ def _run_cycle(request: BDSRunRequest, *, docker: str, data_root: Path, level_na
 def run_bds_diagnostic(request: BDSRunRequest) -> dict[str, Any]:
     if request.timeout_seconds < 10 or request.timeout_seconds > 900:
         raise BDSDiagnosticError("timeout_seconds must be between 10 and 900")
-    if request.boot_grace_seconds < 0 or request.boot_grace_seconds > 30:
-        raise BDSDiagnosticError("boot_grace_seconds must be between 0 and 30")
+    if request.boot_grace_seconds < 0 or request.boot_grace_seconds > 120:
+        raise BDSDiagnosticError("boot_grace_seconds must be between 0 and 120")
     if request.restart_count < 1 or request.restart_count > 3:
         raise BDSDiagnosticError("restart_count must be between 1 and 3")
     if request.upgrade_mcworld is not None and request.restart_count < 2:
@@ -452,10 +452,11 @@ def run_bds_diagnostic(request: BDSRunRequest) -> dict[str, Any]:
         if cycle == 1 and request.upgrade_mcworld is not None:
             upgrade = overlay_mcworld_packs(request.upgrade_mcworld, world_root, expected_level_name=level_name)
             combined_lines.append(f"[mccompiler-harness] upgrade={upgrade['artifact']['sha256']}")
-    log_text = "\n".join(combined_lines) + ("\n" if combined_lines else "")
+    normalized_lines = [line.rstrip() for line in combined_lines]
+    log_text = "\n".join(normalized_lines) + ("\n" if normalized_lines else "")
     log_path = request.run_root / "content.log"
     log_path.write_text(log_text, encoding="utf-8")
-    analysis = analyze_bds_log(combined_lines)
+    analysis = analyze_bds_log(normalized_lines)
     passed = len(cycles) == request.restart_count and all(bool(cycle["passed"]) for cycle in cycles)
     diagnostic_state_persistence_verified = bool(
         request.restart_count >= 2

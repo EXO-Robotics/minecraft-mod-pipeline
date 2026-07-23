@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0.0",
-  "manifest_revision": 1,
+  "manifest_revision": 3,
   "feature_id": "ccoriginal_cc:resonance_sling",
   "display_name": "Resonance Sling",
   "production_lane": "ORIGINAL_BEDROCK_NATIVE",
@@ -25,37 +25,41 @@
   "gameplay": {
     "obtain": "Craft from string, sticks, and an amethyst shard; internal test function also grants the kit.",
     "ammunition": "Resonance Pebble; one consumed per valid activation.",
-    "activation": "Tap use. Stable itemUse is used because a portable stable hold-release event is not present in the pinned API catalog.",
-    "controller_contract": "Single use-button press with owner-only action-bar feedback.",
+    "activation": "Hold use to draw for up to 0.7 seconds, then release. Stable native shooter and use-modifier components own firing, ammunition consumption, cooldown, durability, and player attribution.",
+    "controller_contract": "One controller use button; a forgiving 14-tick maximum draw window scales projectile power.",
     "projectile": {
       "identifier": "ccoriginal_cc:resonance_pulse",
-      "speed": 1.55,
+      "speed": "Native shooter power scaled by a 0.7-second draw",
       "gravity": 0.045,
       "lifetime_ticks": 60,
       "maximum_per_owner": 4,
       "maximum_global": 16
     },
     "entity_impact": {
-      "damage": 4,
-      "horizontal_knockback": 0.7,
-      "vertical_knockback": 0.14,
-      "single_processing_path": "Script projectileHitEntity; projectile is removed immediately after processing."
+      "nominal_component_damage": 4,
+      "power_multiplier": 0.23,
+      "qualified_observed_damage_range": [
+        3.5,
+        5.5
+      ],
+      "knockback": "Native projectile knockback enabled; Preview qualification observed 1.44 blocks in the bounded fixture.",
+      "single_processing_path": "The native projectile on_hit component owns damage, knockback, particles, and immediate removal."
     },
-    "block_impact": "Remove projectile and emit a bounded impact particle.",
+    "block_impact": "Native on_hit removes the projectile and emits six bounded impact particles.",
     "cooldown_ticks": 16,
     "durability": 256,
-    "empty_ammunition": "No cooldown or durability cost; owner receives an action-bar message.",
+    "empty_ammunition": "Native shooter refuses to fire and applies no ammunition or durability cost.",
     "cleanup": "Impact removal or entity timer expiry at 60 ticks; no global per-tick scan and no persistent projectile records."
   },
   "multiplayer": {
     "owner_attribution": "EntityProjectileComponent.owner",
-    "damage_attribution": "Entity.applyDamage with damagingEntity set to the owner",
-    "knockback_attribution": "Impulse computed from projectile travel direction",
+    "damage_attribution": "Native projectile attribution to EntityProjectileComponent.owner",
+    "knockback_attribution": "Native projectile hit direction",
     "friendly_fire": "Follows ordinary Bedrock damage rules; no custom team bypass.",
-    "disconnect": "Projectile remains bounded by its entity timer; an invalid owner prevents scripted damage and the projectile is removed.",
+    "disconnect": "Projectile remains bounded by native impact removal and its 60-tick entity timer; no owner record persists.",
     "dimension_change": "Projectile remains in its spawn dimension and expires normally.",
     "death": "Same as disconnect; no projectile state is restored.",
-    "duplicate_prevention": "One event path plus immediate projectile removal and an in-memory processed-ID set.",
+    "duplicate_prevention": "One native on_hit path, remove_on_hit, and one observed damage event per projectile.",
     "simultaneous_use": "Cooldown, inventory, durability, and live-projectile counts are owner-scoped.",
     "server_authority": true,
     "client_boundary": "Resource pack presentation only"
@@ -80,7 +84,7 @@
       "recipe and balance",
       "script and behavior definitions"
     ],
-    "sound_direction": "Temporary use of a built-in Bedrock sound; no third-party sound file is shipped."
+    "sound_direction": "Sound is deferred for this slice; no custom or third-party sound file is shipped."
   },
   "performance_limits": {
     "global_scans_per_tick": 0,

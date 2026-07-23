@@ -1,0 +1,30 @@
+{
+  "format_version": "1.10.0",
+  "minecraft:attachable": {
+    "description": {
+      "animations": {
+        "controller": "controller.animation.ccoriginal_cc.resonance_sling",
+        "idle": "animation.ccoriginal_cc.resonance_sling.idle",
+        "release": "animation.ccoriginal_cc.resonance_sling.release"
+      },
+      "geometry": {
+        "default": "geometry.ccoriginal_cc.resonance_sling"
+      },
+      "identifier": "ccoriginal_cc:resonance_sling",
+      "materials": {
+        "default": "entity_alphatest"
+      },
+      "render_controllers": [
+        "controller.render.default"
+      ],
+      "scripts": {
+        "animate": [
+          "controller"
+        ]
+      },
+      "textures": {
+        "default": "textures/entity/resonance_sling"
+      }
+    }
+  }
+}

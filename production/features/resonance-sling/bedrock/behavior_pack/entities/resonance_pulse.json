@@ -11,6 +11,18 @@
         "anchor": 1,
         "gravity": 0.045,
         "on_hit": {
+          "impact_damage": {
+            "damage": 4,
+            "knockback": true,
+            "power_multiplier": 0.23,
+            "semi_random_diff_damage": false
+          },
+          "particle_on_hit": {
+            "num_particles": 6,
+            "on_entity_hit": true,
+            "on_other_hit": true,
+            "particle_type": "ccoriginal_cc:resonance_impact"
+          },
           "remove_on_hit": {}
         },
         "power": 1.0

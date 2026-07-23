@@ -1,0 +1,95 @@
+{
+  "schema_version": "1.0.0",
+  "feature_id": "ccoriginal_cc:resonance_sling",
+  "production_lane": "ORIGINAL_BEDROCK_NATIVE",
+  "manifest_revision": 3,
+  "starting_commit": "e25c151d9a434a067eda3de2a94a42bbb4d16fba",
+  "branch": "codex/forest-wave-1-resonance-sling",
+  "requirements": {
+    "original_authorship": {
+      "status": "PASS",
+      "evidence": "original-production-manifest.json and prototypes/blockbench/resonance_sling/originality-and-authoring.json"
+    },
+    "java_fidelity_not_claimed": {
+      "status": "PASS",
+      "evidence": "java_evidence=NOT_APPLICABLE; java_fidelity_claimed=false; specific_java_feature_targeted=false"
+    },
+    "dependency_closed": {
+      "status": "PASS",
+      "evidence": "Bedrock packs, stable @minecraft/server 2.0.0, and repository-local tooling only"
+    },
+    "behavior_and_resource_packs": {
+      "status": "PASS",
+      "evidence": "Deterministic behavior/resource packs and importable .mcaddon/.mcworld generated"
+    },
+    "editable_and_native_assets": {
+      "status": "PASS",
+      "evidence": "Two editable .bbmodel files reopened/saved in Blockbench 5.1.5 and two native .geo.json exports retained"
+    },
+    "static_validation": {
+      "status": "PASS",
+      "evidence": "4 feature tests passed; repository suite 305 passed, 1 skipped, 107 subtests passed"
+    },
+    "deterministic_packaging": {
+      "status": "PASS",
+      "evidence": "Two consecutive builds produced identical hashes",
+      "mcaddon_sha256": "0bbd00a285cb8c7ccab49cf9a246f2ad95386eeaa239631a1c6463c0c84855ec",
+      "mcworld_sha256": "061501b67b0886296ad2765f1b7c5246efbe38d64b9494303a05b9ee81a58d9a"
+    },
+    "stable_bds": {
+      "status": "PASS",
+      "version": "1.26.33.2",
+      "cycles": 3,
+      "clean_cycles": 3,
+      "failed_checks": 0,
+      "log_sha256": "f9ac525bd9fd03d93b26c312df20ae5a872cd948979bb3578c7b9cba31418878"
+    },
+    "preview_gameplay": {
+      "status": "PASS",
+      "version": "1.26.50.20",
+      "cycles": 2,
+      "checks": 31,
+      "failed_checks": 0,
+      "log_sha256": "0733a356c41ad7c8f85439e6a0a4b5b8a4a16b191d22e77bc585e0d796e98389"
+    },
+    "multiplayer": {
+      "status": "PASS",
+      "evidence": "Four SimulatedPlayers: simultaneous use, owner and ammunition isolation, cooldown isolation, disconnect, death, reconnect, rapid alternation, and dimension transition"
+    },
+    "cleanup_and_restart": {
+      "status": "PASS",
+      "evidence": "Impact cleanup, block cleanup, 60-tick expiration, cleanup-to-zero, zero persistent records, and restart-no-projectiles passed"
+    },
+    "performance_measurement": {
+      "status": "PASS",
+      "evidence": "Worst-credible 4-player/24-mob/16-projectile scene and 100-round/400-attempt endurance scene passed; queue peak 15"
+    },
+    "blockbench_authoring": {
+      "status": "PASS",
+      "evidence": "Native round-trip, cube/bone/locator counts, and editable sources recorded"
+    },
+    "creator_tools": {
+      "status": "NOT_EXECUTED_ENVIRONMENT_UNAVAILABLE"
+    },
+    "desktop_client": {
+      "status": "NOT_EXECUTED_ENVIRONMENT_UNAVAILABLE"
+    },
+    "physical_ps4": {
+      "status": "PENDING_PHYSICAL_HARDWARE",
+      "evidence": "physical-ps4-test-plan.md"
+    },
+    "contamination_scan": {
+      "status": "PASS",
+      "evidence": "No third-party production material, Java-fidelity marker, Forge/Fabric/Mixin dependency, experimental production API, external service, or copied expression found"
+    },
+    "publication_lock": {
+      "status": "PASS",
+      "pushed": false,
+      "tagged": false,
+      "released": false,
+      "realm_deployed": false,
+      "marketplace_submission": false
+    }
+  },
+  "completion_conclusion": "ALL_AVAILABLE_GATES_PASS_WITH_DESKTOP_CREATOR_TOOLS_UNAVAILABLE_AND_PHYSICAL_PS4_PENDING"
+}
