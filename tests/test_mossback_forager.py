@@ -43,6 +43,22 @@ def test_geometry_texture_animation_and_controller_budgets_and_references():
     assert set(client["animations"]) == {"idle", "walk", "forage", "flee", "controller"}
 
 
+def test_editable_blockbench_source_has_real_native_project_content():
+    project = json.loads((PROTO / "mossback_forager.bbmodel").read_text())
+    assert project["meta"]["model_format"] == "bedrock"
+    assert len(project["elements"]) == 19
+    assert sum(element["type"] == "cube" for element in project["elements"]) == 18
+    locators = [element for element in project["elements"] if element["type"] == "locator"]
+    assert [(item["name"], item["position"]) for item in locators] == [("gift", [0, 7, -13])]
+    assert len(project["groups"]) == 9
+    assert len(project["outliner"]) == 1 and project["outliner"][0]["children"]
+    assert len(project["textures"]) == 1
+    assert project["textures"][0]["internal"] is True
+    assert project["textures"][0]["source"].startswith("data:image/png;base64,")
+    assert len(project["animations"]) == 4
+    assert len(project["animation_controllers"]) == 1
+
+
 def test_exact_consumption_gift_atomic_contention_and_restart_safe_model():
     entity = load("bedrock/behavior_pack/entities/mossback_forager.json")["minecraft:entity"]
     assert list(entity["description"]["properties"]) == ["ccoriginal_cc:mossback_cooling"]

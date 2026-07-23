@@ -8,6 +8,20 @@
     "texture": "64x64 original RGBA PNG"
   },
   "base_commit": "0db4c8a5f504106b4a601afa6f7bc225eb697dcd",
+  "blockbench_gui": {
+    "counts": {
+      "animations": 4,
+      "bones": 9,
+      "controllers": 1,
+      "cubes": 18,
+      "elements": 19,
+      "locators": 1,
+      "textures": 1
+    },
+    "editable_project_open": "PASS",
+    "native_round_trip": "PASS",
+    "visual_capture_inventory": "NOT_EXECUTED"
+  },
   "branch": "codex/parallel-batch-1/mossback-forager",
   "candidate_commit": "HANDOFF_GIT_HEAD",
   "candidate_commit_convention": "Resolve HANDOFF_GIT_HEAD to the exact commit reported with this frozen packet; a Git commit cannot embed its own object ID.",
@@ -83,6 +97,11 @@
       "commit": "HANDOFF_GIT_HEAD",
       "revision": 3,
       "summary": "Made candidate metadata independent of the review or integration checkout path."
+    },
+    {
+      "commit": "HANDOFF_GIT_HEAD",
+      "revision": 4,
+      "summary": "Installed and made reproducible the authoritative GUI-serialized native Blockbench project."
     }
   ],
   "shared_requests": [],
@@ -94,10 +113,10 @@
     "pytest": "UNAVAILABLE_NO_MODULE",
     "python_compileall": "PASS",
     "resonance_regression": "PASS_4_DIRECT_HARNESS",
-    "static_feature_tests": "PASS_8_DIRECT_HARNESS"
+    "static_feature_tests": "PASS_9_DIRECT_HARNESS"
   },
   "unexecuted_gates": [
-    "Blockbench GUI native round-trip and visual captures",
+    "Blockbench visual capture inventory",
     "Creator Tools",
     "authoritative stable BDS",
     "Bedrock desktop",

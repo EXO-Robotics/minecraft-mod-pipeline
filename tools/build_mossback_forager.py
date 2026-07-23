@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import hashlib
+import base64
 import json
 import shutil
 import struct
@@ -15,6 +16,9 @@ FEATURE = ROOT / "production/features/mossback-forager"
 PROTO = ROOT / "prototypes/blockbench/mossback_forager"
 EPOCH = (1980, 1, 1, 0, 0, 0)
 ASSIGNED_WORKTREE = "/Users/blakegrove/Desktop/bedrock-server/.derivedData/worktrees/parallel-batch-1/mossback-forager"
+BLOCKBENCH_PROJECT_ZLIB_BASE64 = (
+    "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"
+)
 
 
 def write_json(path: Path, value: object) -> None:
@@ -238,12 +242,10 @@ def build() -> None:
     write_text(bp / f"{base}/stress_10.mcfunction", summon_lines(10))
     write_text(bp / f"{base}/stress_20.mcfunction", summon_lines(20))
     write_text(bp / f"{base}/cleanup.mcfunction", "kill @e[type=ccoriginal_cc:mossback_forager,tag=ccoriginal_cc:mossback_test]\n")
-    # Blockbench source is an editable, original project representation; GUI/native round-trip remains an explicit gate.
-    bb = {"meta": {"format_version": "4.10", "model_format": "bedrock", "box_uv": True},
-          "name": "Mossback Forager", "model_identifier": "ccoriginal_cc:mossback_forager",
-          "resolution": {"width": 64, "height": 64}, "elements": [], "outliner": [],
-          "animations": list(anim["animations"].keys()), "provenance": "Original Codex-authored shape grammar; no third-party expression."}
-    write_json(PROTO / "mossback_forager.bbmodel", bb)
+    # Exact native project serialized during the authoritative Blockbench GUI round-trip.
+    bbmodel = zlib.decompress(base64.b64decode(BLOCKBENCH_PROJECT_ZLIB_BASE64))
+    (PROTO / "mossback_forager.bbmodel").parent.mkdir(parents=True, exist_ok=True)
+    (PROTO / "mossback_forager.bbmodel").write_bytes(bbmodel)
     write_json(PROTO / "native-export/mossback_forager.geo.json", geo)
     write_json(PROTO / "native-export/mossback_forager.animation.json", anim)
     png(PROTO / "mossback_forager.png")
@@ -281,7 +283,7 @@ def build() -> None:
         "assets": {"geometry": "9 bones, 18 cubes, 1 locator", "texture": "64x64 original RGBA PNG",
                    "animations": 4, "controllers": 1, "package_sha256": hashlib.sha256(internal.read_bytes()).hexdigest()},
         "hash_manifest": "reports/artifact-hashes.json",
-        "tests": {"static_feature_tests": "PASS_8_DIRECT_HARNESS",
+        "tests": {"static_feature_tests": "PASS_9_DIRECT_HARNESS",
                   "parallel_batch_preflight": "PASS_4_DIRECT_HARNESS",
                   "resonance_regression": "PASS_4_DIRECT_HARNESS",
                   "json_parse": "PASS", "python_compileall": "PASS",
@@ -295,13 +297,19 @@ def build() -> None:
              "summary": "Bound flee to five seconds and bound forage playback with cooling-idle controller state."}
             ,{"revision": 3, "commit": "HANDOFF_GIT_HEAD",
               "summary": "Made candidate metadata independent of the review or integration checkout path."}
+            ,{"revision": 4, "commit": "HANDOFF_GIT_HEAD",
+              "summary": "Installed and made reproducible the authoritative GUI-serialized native Blockbench project."}
         ],
         "performance": {"caps_structurally_met": True, "runtime_measurements": None,
                         "simultaneous_entities_cap": 20, "scripts_per_tick": 0},
         "cleanup": {"selector_is_tag_scoped": True, "latency_target_ticks": 20, "runtime_zero_count": None},
         "limitations": ["Native interaction atomicity requires Bedrock runtime confirmation.",
                         "Timer persistence/restart behavior requires stable BDS confirmation."],
-        "unexecuted_gates": ["Blockbench GUI native round-trip and visual captures", "Creator Tools",
+        "blockbench_gui": {"editable_project_open": "PASS", "native_round_trip": "PASS",
+                           "counts": {"elements": 19, "bones": 9, "cubes": 18, "locators": 1,
+                                      "textures": 1, "animations": 4, "controllers": 1},
+                           "visual_capture_inventory": "NOT_EXECUTED"},
+        "unexecuted_gates": ["Blockbench visual capture inventory", "Creator Tools",
         "authoritative stable BDS", "Bedrock desktop", "multiplayer clients", "performance profiling",
         "Realm/controller/split-screen", "physical PS4", "Marketplace submission"],
         "contamination": {"java_inspected": False, "controlled_chaos_expression_inspected": False,
