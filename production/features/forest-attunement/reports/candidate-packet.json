@@ -14,7 +14,7 @@
   "git": {
     "base_commit": "0db4c8a5f504106b4a601afa6f7bc225eb697dcd",
     "branch": "codex/parallel-batch-1/forest-attunement",
-    "implementation_commit": "e8346f826afb7c231bb3dcc9ff71a27f5c78f96a",
+    "implementation_commit": "983b64988c2f6811e10b4fd429770567d5bb0d9d",
     "note": "The packet cannot embed the hash of the commit containing itself; delivery evidence records the final packet commit."
   },
   "revision_history": [
@@ -26,7 +26,7 @@
     },
     {
       "revision": 2,
-      "commit": "TO_BE_RECORDED_AFTER_REVISION_FREEZE",
+      "commit": "983b64988c2f6811e10b4fd429770567d5bb0d9d",
       "disposition": "CANDIDATE",
       "summary": "Explicit transaction boundary validates the selected sigil, writes state, consumes once with pre-commit rollback, then runs non-transactional presentation that cannot clear committed state."
     }
