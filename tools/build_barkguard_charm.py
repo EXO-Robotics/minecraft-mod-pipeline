@@ -18,7 +18,7 @@ ASSETS = ROOT / "prototypes/blockbench/barkguard_charm"
 DIST = FEATURE / "dist"
 REPORTS = FEATURE / "reports"
 EPOCH = (1980, 1, 1, 0, 0, 0)
-IMPLEMENTATION_COMMIT = "c88d4d025c00ab474a951cd71ff28745dbdf40a8"
+IMPLEMENTATION_COMMIT = "24748af8d8f1d2b13bdd6010b875c043a22e3b3a"
 ASSIGNED_WORKTREE = "/Users/blakegrove/Desktop/bedrock-server/.derivedData/worktrees/parallel-batch-1/barkguard-charm"
 
 
