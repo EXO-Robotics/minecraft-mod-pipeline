@@ -101,7 +101,10 @@ def sha(path: Path) -> str:
 
 
 def main() -> None:
-    for path in (FEATURE, PROTO):
+    # Runtime outputs are wholly generated. Reports and the prototype directory
+    # can also contain Main-Codex review/qualification evidence, so never delete
+    # either tree during a feature-local rebuild.
+    for path in (BP, RP, FEATURE / "dist"):
         if path.exists():
             shutil.rmtree(path)
     spec = {
@@ -224,7 +227,7 @@ def main() -> None:
     })
     functions = {
         "place": f"# {LABEL}\nstructure load ccoriginal_cc:signal_ruin ~ ~ ~\nsummon ccoriginal_cc:signal_ruin_anchor ~8.5 ~1 ~5.5\n",
-        "stress": f"# {LABEL}\nfunction ccoriginal_cc/signal_ruin/cleanup\nfunction ccoriginal_cc/signal_ruin/place\nfunction ccoriginal_cc/signal_ruin/place\n",
+        "stress": f"# {LABEL}\nfunction ccoriginal_cc/signal_ruin/cleanup\nstructure load ccoriginal_cc:signal_ruin ~ ~ ~\nsummon ccoriginal_cc:signal_ruin_anchor ~8.5 ~1 ~5.5\nstructure load ccoriginal_cc:signal_ruin ~24 ~ ~\nsummon ccoriginal_cc:signal_ruin_anchor ~32.5 ~1 ~5.5\n",
         "cleanup": f"# {LABEL}\nkill @e[type=ccoriginal_cc:signal_ruin_anchor]\nkill @e[tag=ccoriginal_cc_signal_ruin_mob]\n",
     }
     for name, body in functions.items():
@@ -256,7 +259,15 @@ def main() -> None:
                LABEL + "\nImport the mcaddon, enable both packs in an existing internal-test world, then run /function ccoriginal_cc/signal_ruin/place.\n"
                "A .mcworld is intentionally not emitted because this feature-local builder does not own a qualified Bedrock world database.\n")
     artifact_rows = []
-    for path in sorted(p for p in FEATURE.rglob("*") if p.is_file() and "reports/artifact-manifest.json" not in str(p)):
+    generated_roots = (BP, RP, FEATURE / "dist")
+    generated_files = [
+        p for root in generated_roots for p in root.rglob("*") if p.is_file()
+    ] + [
+        FEATURE / "tests/scenarios.json",
+        PROTO / "signal_ruin.structure.json",
+        PROTO / "originality-and-authoring.json",
+    ]
+    for path in sorted(generated_files):
         artifact_rows.append({"path": path.relative_to(ROOT).as_posix(), "bytes": path.stat().st_size, "sha256": sha(path)})
     write_json(FEATURE / "reports/artifact-manifest.json", {"label": LABEL, "artifacts": artifact_rows,
         "package_sha256": {"mcaddon": sha(addon)}, "mcworld": "NOT_EMITTED_NO_QUALIFIED_WORLD_DATABASE"})
@@ -266,6 +277,8 @@ SCRIPT = r'''import { world, system } from "@minecraft/server";
 const NS = "ccoriginal_cc:signal_ruin_";
 const VALID = new Set(["READY","ACTIVE_WAVE_1","ACTIVE_WAVE_2","ACTIVE_WAVE_3","REWARD_READY","COMPLETE"]);
 const CAP = 12;
+const INSTANCE_CAP = 2;
+const ENCOUNTER_SECONDS_CAP = 80;
 function get(a,k,d){ const v=a.getDynamicProperty(NS+k); return v===undefined?d:v; }
 function set(a,k,v){ a.setDynamicProperty(NS+k,v); }
 function state(a){
@@ -275,6 +288,13 @@ function state(a){
 }
 function mobs(a){ const id=String(get(a,"instance",a.id)).replace(/[^A-Za-z0-9_-]/g,"_"); return a.dimension.getEntities({tags:["ccoriginal_cc_signal_ruin_mob","sri_"+id]}); }
 function clean(a){ for(const e of mobs(a)) e.remove(); set(a,"token",Number(get(a,"token",0))+1); }
+function activeInstances(){
+  let count=0;
+  for(const d of ["overworld","nether","the_end"].map(x=>world.getDimension(x)))
+    for(const a of d.getEntities({type:"ccoriginal_cc:signal_ruin_anchor"}))
+      if(state(a).startsWith("ACTIVE_")) count++;
+  return count;
+}
 function spawnWave(a,w){
   const token=Number(get(a,"token",0))+1; set(a,"token",token); set(a,"state","ACTIVE_WAVE_"+w); set(a,"wave",w);
   const id=String(get(a,"instance",a.id)).replace(/[^A-Za-z0-9_-]/g,"_");
@@ -289,19 +309,22 @@ function reward(a){
 }
 function activate(a,p){
   if(state(a)!=="READY"){ p.sendMessage(state(a)==="COMPLETE"?"This Signal Ruin is quiet; its cache was already issued.":"This Signal Ruin is already active."); return; }
-  set(a,"schema",1); set(a,"instance",a.id); set(a,"reward_issued",false); set(a,"absent_seconds",0); spawnWave(a,1);
+  if(activeInstances()>=INSTANCE_CAP){ p.sendMessage("Only two Signal Ruins may be active at once. This ruin remains ready."); return; }
+  set(a,"schema",1); set(a,"instance",a.id); set(a,"reward_issued",false); set(a,"absent_seconds",0); set(a,"elapsed_seconds",0); spawnWave(a,1);
 }
 world.afterEvents.playerInteractWithEntity.subscribe(e=>{ if(e.target.typeId==="ccoriginal_cc:signal_ruin_anchor") activate(e.target,e.player); });
 world.afterEvents.worldLoad.subscribe(()=>system.runTimeout(()=>{
   for(const d of ["overworld","nether","the_end"].map(x=>world.getDimension(x))) for(const a of d.getEntities({type:"ccoriginal_cc:signal_ruin_anchor"})){
-    const s=state(a); if(s==="COMPLETE"){set(a,"state","COMPLETE");continue;} if(s.startsWith("ACTIVE_")){clean(a);spawnWave(a,Math.max(1,Math.min(3,Number(get(a,"wave",1)))));}
+    const s=state(a); if(s==="COMPLETE"){set(a,"state","COMPLETE");continue;} if(s.startsWith("ACTIVE_")){clean(a);set(a,"elapsed_seconds",0);spawnWave(a,Math.max(1,Math.min(3,Number(get(a,"wave",1)))));}
   }
 },1));
 system.runInterval(()=>{
   for(const d of ["overworld","nether","the_end"].map(x=>world.getDimension(x))) for(const a of d.getEntities({type:"ccoriginal_cc:signal_ruin_anchor"})){
     const s=state(a); if(!s.startsWith("ACTIVE_")) continue;
+    const elapsed=Number(get(a,"elapsed_seconds",0))+1; set(a,"elapsed_seconds",elapsed);
+    if(elapsed>=ENCOUNTER_SECONDS_CAP){ clean(a); set(a,"state","READY"); set(a,"wave",0); set(a,"absent_seconds",0); set(a,"elapsed_seconds",0); continue; }
     const near=d.getPlayers({location:a.location,maxDistance:32});
-    if(!near.length){ const absent=Number(get(a,"absent_seconds",0))+1; set(a,"absent_seconds",absent); if(absent>=20){clean(a);set(a,"state","READY");set(a,"wave",0);} continue; }
+    if(!near.length){ const absent=Number(get(a,"absent_seconds",0))+1; set(a,"absent_seconds",absent); if(absent>=20){clean(a);set(a,"state","READY");set(a,"wave",0);set(a,"elapsed_seconds",0);} continue; }
     set(a,"absent_seconds",0);
     if(mobs(a).length===0){ const w=Number(get(a,"wave",1)); if(w<3) spawnWave(a,w+1); else reward(a); }
   }

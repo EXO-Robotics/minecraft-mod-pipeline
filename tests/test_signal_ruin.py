@@ -35,6 +35,20 @@ def test_build_is_deterministic_and_all_json_parses() -> None:
         json.loads(path.read_text(encoding="utf-8"))
 
 
+def test_rebuild_preserves_candidate_and_review_evidence() -> None:
+    candidate = FEATURE / "reports/candidate-packet.json"
+    candidate_before = candidate.read_bytes()
+    review = FEATURE / "reports/main-codex-review-evidence.TEST.json"
+    review.write_text('{"owner":"MAIN_CODEX","test_fixture":true}\n', encoding="utf-8")
+    try:
+        review_before = review.read_bytes()
+        run_build()
+        assert candidate.read_bytes() == candidate_before
+        assert review.read_bytes() == review_before
+    finally:
+        review.unlink(missing_ok=True)
+
+
 def test_structure_is_original_bounded_and_valid_little_endian_nbt() -> None:
     spec = json.loads((PROTO / "signal_ruin.structure.json").read_text())
     assert spec["size"] == [11, 9, 11]
@@ -69,15 +83,66 @@ def test_reserved_identity_and_package_contents() -> None:
 def test_encounter_contract_is_bounded_idempotent_and_recoverable() -> None:
     script = (FEATURE / "bedrock/behavior_pack/scripts/signal_ruin.js").read_text()
     assert "const CAP = 12" in script
+    assert "const INSTANCE_CAP = 2" in script
+    assert "const ENCOUNTER_SECONDS_CAP = 80" in script
     assert "system.runInterval" in script and "},20)" in script
     assert "reward_issued" in script and 'if(get(a,"reward_issued",false))' in script
     assert "playerInteractWithEntity" in script
     assert "absent>=20" in script and 'set(a,"state","READY")' in script
     assert "worldLoad" in script and "spawnWave(a,Math.max" in script
+    assert 'set(a,"elapsed_seconds",0)' in script
     assert script.count("runTimeout") == 1
     assert "runJob" not in script
     scenarios = json.loads((FEATURE / "tests/scenarios.json").read_text())
     assert len(scenarios["scenarios"]) == 9
+
+
+def test_third_concurrent_activation_is_rejected_before_mutation() -> None:
+    script = (FEATURE / "bedrock/behavior_pack/scripts/signal_ruin.js").read_text()
+    function = script[script.index("function activate"):script.index("world.afterEvents.playerInteractWithEntity")]
+    cap_check = function.index("activeInstances()>=INSTANCE_CAP")
+    feedback = function.index("Only two Signal Ruins may be active at once")
+    first_mutation = function.index('set(a,"schema",1)')
+    assert cap_check < feedback < first_mutation
+    assert function[cap_check:first_mutation].count("set(a,") == 0
+
+
+def test_encounter_timer_has_hard_80_second_cleanup_model() -> None:
+    script = (FEATURE / "bedrock/behavior_pack/scripts/signal_ruin.js").read_text()
+    tick = script[script.index("system.runInterval"):]
+    timer_check = tick.index("elapsed>=ENCOUNTER_SECONDS_CAP")
+    player_query = tick.index("getPlayers")
+    assert timer_check < player_query
+    timeout_body = tick[timer_check:player_query]
+    assert "clean(a)" in timeout_body
+    assert 'set(a,"state","READY")' in timeout_body
+    assert 'set(a,"elapsed_seconds",0)' in timeout_body
+    # One interval is one second; model the boundary independently.
+    elapsed = 0
+    states = []
+    for _ in range(80):
+        elapsed += 1
+        states.append("READY" if elapsed >= 80 else "ACTIVE")
+    assert states[78] == "ACTIVE"
+    assert states[79] == "READY"
+
+
+def test_stress_places_two_spatially_distinct_instances() -> None:
+    lines = [
+        line for line in
+        (FEATURE / "bedrock/behavior_pack/functions/ccoriginal_cc/signal_ruin/stress.mcfunction").read_text().splitlines()
+        if line.startswith(("structure load", "summon ccoriginal_cc:signal_ruin_anchor"))
+    ]
+    structures = [line for line in lines if line.startswith("structure load")]
+    anchors = [line for line in lines if line.startswith("summon")]
+    assert structures == [
+        "structure load ccoriginal_cc:signal_ruin ~ ~ ~",
+        "structure load ccoriginal_cc:signal_ruin ~24 ~ ~",
+    ]
+    assert anchors == [
+        "summon ccoriginal_cc:signal_ruin_anchor ~8.5 ~1 ~5.5",
+        "summon ccoriginal_cc:signal_ruin_anchor ~32.5 ~1 ~5.5",
+    ]
 
 
 def test_release_labels_and_no_public_claims() -> None:
