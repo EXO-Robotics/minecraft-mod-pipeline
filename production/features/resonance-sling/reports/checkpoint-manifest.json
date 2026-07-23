@@ -1,0 +1,51 @@
+{
+  "schema_version": "1.0.0",
+  "branch": "codex/forest-wave-1-resonance-sling",
+  "frozen_feature_commit": "d189d3059f179296b9a3001a5c57258943fbd679",
+  "parent_commit": "e25c151d9a434a067eda3de2a94a42bbb4d16fba",
+  "commit_message": "feat(forest-wave-1): implement and qualify resonance sling",
+  "manifest_revision": 1,
+  "pack_version": [
+    1,
+    0,
+    0
+  ],
+  "pack_uuids": {
+    "behavior": "61e0bbf4-0051-4bb0-a5bb-19e1cd68db0f",
+    "resource": "ae5d1908-8fbe-4282-83a4-8509606aceda"
+  },
+  "artifact_hashes": {
+    "mcaddon": "a1725fa76bd1859da84794dee66e948e3b6bfbfc3b00de3b8741cf3189ef56a5",
+    "mcworld": "6be8b1853993eeed03515acc21c999726f0acd8f9d7228372067f202338287ab",
+    "stable_bds_log": "d79db0d399a22299c66a4fa097ab91c2489eee29118fbb6af8463983213840e4"
+  },
+  "test_commands": [
+    ".venv/bin/pytest -q tests/test_resonance_sling.py",
+    "PYTHONPATH=src .venv/bin/python tools/build_resonance_sling.py",
+    "PYTHONPATH=src .venv/bin/python tools/run_resonance_sling_bds.py"
+  ],
+  "results": {
+    "static_validation": "PASS",
+    "stable_bds_pack_boot_restart": "PASS",
+    "stable_bds_gameplay": "BLOCKED",
+    "creator_tools": "NOT_EXECUTED_ENVIRONMENT_UNAVAILABLE",
+    "desktop_client": "NOT_EXECUTED_ENVIRONMENT_UNAVAILABLE",
+    "multiplayer": "NOT_EXECUTED_ENVIRONMENT_UNAVAILABLE",
+    "physical_ps4": "PENDING_PHYSICAL_HARDWARE",
+    "contamination_scan": "PASS"
+  },
+  "qualification_status": "INTERNAL_TEST_BUILD_PARTIALLY_QUALIFIED",
+  "known_limitations": [
+    "Tap activation replaces hold-release because the pinned stable catalog has no portable stable hold/release event pair.",
+    "Headless stable BDS proves clean load and restart, not player-owned gameplay.",
+    "Blockbench native export, desktop presentation, multiplayer, endurance, and physical PS4 gates remain unexecuted."
+  ],
+  "publication": {
+    "pushed": false,
+    "tagged": false,
+    "released": false,
+    "realm_deployed": false
+  },
+  "rollback_document": "production/features/resonance-sling/reports/dependency-rights-and-rollback.md",
+  "working_tree_note": "Only the pre-existing unrelated prototypes/blockbench/phase_anchor_test.bbmodel remained untracked at checkpoint creation."
+}
