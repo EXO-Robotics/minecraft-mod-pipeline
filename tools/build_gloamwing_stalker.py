@@ -117,9 +117,23 @@ def behavior_entity() -> dict:
                         "is_summonable": True, "is_experimental": False,
                         "properties": {"ccoriginal_cc:attack_phase": {"type": "int", "range": [0, 3], "default": 0, "client_sync": True}}},
         "component_groups": {
+            "ccoriginal_cc:ready": {
+                "minecraft:environment_sensor": {
+                    "triggers": [{
+                        "filters": {
+                            "all_of": [
+                                {"test": "has_target", "subject": "self", "value": True},
+                                {"test": "distance_to_nearest_player", "subject": "self", "operator": "<=", "value": 16}
+                            ]
+                        },
+                        "event": "ccoriginal_cc:begin_telegraph"
+                    }]
+                }
+            },
             "ccoriginal_cc:telegraph": {"minecraft:movement": {"value": 0.0}, "minecraft:timer": {"time": 0.5, "looping": False, "time_down_event": {"event": "ccoriginal_cc:pounce"}}},
             "ccoriginal_cc:pounce": {"minecraft:movement": {"value": 0.42}, "minecraft:behavior.leap_at_target": {"priority": 1, "yd": 0.35, "must_be_on_ground": True}, "minecraft:timer": {"time": 0.4, "looping": False, "time_down_event": {"event": "ccoriginal_cc:land"}}},
-            "ccoriginal_cc:recovery": {"minecraft:movement": {"value": 0.08}, "minecraft:timer": {"time": 0.7, "looping": False, "time_down_event": {"event": "ccoriginal_cc:reset"}}},
+            "ccoriginal_cc:recovery": {"minecraft:movement": {"value": 0.08}, "minecraft:timer": {"time": 0.7, "looping": False, "time_down_event": {"event": "ccoriginal_cc:begin_cooldown"}}},
+            "ccoriginal_cc:cooldown": {"minecraft:movement": {"value": 0.14}, "minecraft:timer": {"time": [4.0, 7.0], "looping": False, "time_down_event": {"event": "ccoriginal_cc:arm"}}},
             "ccoriginal_cc:damage_reaction": {"minecraft:timer": {"time": 0.2, "looping": False, "time_down_event": {"event": "ccoriginal_cc:reset"}}},
             "ccoriginal_cc:death_state": {"minecraft:movement": {"value": 0.0}},
         },
@@ -138,10 +152,13 @@ def behavior_entity() -> dict:
             "minecraft:behavior.random_look_around": {"priority": 10},
         },
         "events": {
-            "ccoriginal_cc:begin_telegraph": {"set_property": {"ccoriginal_cc:attack_phase": 1}, "add": {"component_groups": ["ccoriginal_cc:telegraph"]}},
+            "minecraft:entity_spawned": {"set_property": {"ccoriginal_cc:attack_phase": 0}, "add": {"component_groups": ["ccoriginal_cc:ready"]}},
+            "ccoriginal_cc:begin_telegraph": {"set_property": {"ccoriginal_cc:attack_phase": 1}, "remove": {"component_groups": ["ccoriginal_cc:ready", "ccoriginal_cc:cooldown"]}, "add": {"component_groups": ["ccoriginal_cc:telegraph"]}},
             "ccoriginal_cc:pounce": {"set_property": {"ccoriginal_cc:attack_phase": 2}, "remove": {"component_groups": ["ccoriginal_cc:telegraph"]}, "add": {"component_groups": ["ccoriginal_cc:pounce"]}},
             "ccoriginal_cc:land": {"set_property": {"ccoriginal_cc:attack_phase": 3}, "remove": {"component_groups": ["ccoriginal_cc:pounce"]}, "add": {"component_groups": ["ccoriginal_cc:recovery"]}},
-            "ccoriginal_cc:reset": {"set_property": {"ccoriginal_cc:attack_phase": 0}, "remove": {"component_groups": ["ccoriginal_cc:telegraph", "ccoriginal_cc:pounce", "ccoriginal_cc:recovery", "ccoriginal_cc:damage_reaction"]}},
+            "ccoriginal_cc:begin_cooldown": {"set_property": {"ccoriginal_cc:attack_phase": 0}, "remove": {"component_groups": ["ccoriginal_cc:ready", "ccoriginal_cc:telegraph", "ccoriginal_cc:pounce", "ccoriginal_cc:recovery", "ccoriginal_cc:damage_reaction"]}, "add": {"component_groups": ["ccoriginal_cc:cooldown"]}},
+            "ccoriginal_cc:arm": {"set_property": {"ccoriginal_cc:attack_phase": 0}, "remove": {"component_groups": ["ccoriginal_cc:cooldown"]}, "add": {"component_groups": ["ccoriginal_cc:ready"]}},
+            "ccoriginal_cc:reset": {"set_property": {"ccoriginal_cc:attack_phase": 0}, "remove": {"component_groups": ["ccoriginal_cc:ready", "ccoriginal_cc:telegraph", "ccoriginal_cc:pounce", "ccoriginal_cc:recovery", "ccoriginal_cc:damage_reaction"]}, "add": {"component_groups": ["ccoriginal_cc:cooldown"]}},
             "ccoriginal_cc:on_damage": {"add": {"component_groups": ["ccoriginal_cc:damage_reaction"]}},
             "ccoriginal_cc:on_death": {"add": {"component_groups": ["ccoriginal_cc:death_state"]}},
         },
@@ -198,7 +215,30 @@ def build() -> dict:
     write_json(FEATURE / "reports/readiness-matrix.json", {"STATIC": "PASSED", "BLOCKBENCH_NATIVE_ROUNDTRIP": "PENDING_MAIN_CODEX_GUI", "CREATOR_TOOLS": "PENDING", "STABLE_BDS": "PENDING_MAIN_CODEX", "BEDROCK_DESKTOP": "PENDING", "MULTIPLAYER": "PENDING", "PHYSICAL_PS4": "PENDING", "MARKETPLACE": "NOT_SUBMITTED"})
     zip_tree(PACKAGES / "gloamwing_stalker.mcaddon", [(BP, "behavior_pack"), (RP, "resource_pack")])
     hashes = {"mcaddon": sha(PACKAGES / "gloamwing_stalker.mcaddon"), "bbmodel": sha(ASSET / "gloamwing_stalker.bbmodel"), "geometry": sha(ASSET / "gloamwing_stalker.geo.json"), "texture": sha(ASSET / "gloamwing_stalker.png")}
-    write_json(FEATURE / "reports/build-report.json", {"status": "STATIC_CANDIDATE", "hashes": hashes, "counts": {"bones": 10, "cubes": 23, "clips": 5, "controllers": 1, "stress_entities": 20}, "labels": {"ps4_verified": False, "marketplace_approved": False}})
+    write_json(FEATURE / "reports/build-report.json", {"status": "STATIC_CANDIDATE", "hashes": hashes, "counts": {"bones": 10, "cubes": 23, "clips": 5, "controllers": 1, "stress_entities": 20, "attack_state_groups": 5}, "attack_cycle": {"initial_trigger": "minecraft:entity_spawned -> ready environment sensor", "telegraph_seconds": 0.5, "pounce_seconds": 0.4, "recovery_seconds": 0.7, "cooldown_seconds": [4.0, 7.0], "timer_stacking_prevented": True}, "labels": {"ps4_verified": False, "marketplace_approved": False}})
+    write_json(FEATURE / "reports/revision-history.json", {
+        "schema_version": "1.0.0",
+        "revisions": [
+            {
+                "revision": 1,
+                "implementation_commit": "e86d4ed1f99676a5bf8660a9bd2864f3aa0d46a9",
+                "package_sha256": "385de156c907dcc9f225103d7262c21bf1bea791e2510ed60d5cc5104060035e",
+                "disposition": "REVISE",
+                "finding": "Telegraph entry event was unreachable and no 4-7 second cooldown existed."
+            },
+            {
+                "revision": 2,
+                "package_sha256": hashes["mcaddon"],
+                "disposition": "READY_FOR_MAIN_CODEX_REVIEW",
+                "changes": [
+                    "Added spawn-armed target sensor",
+                    "Made all attack-cycle groups mutually exclusive through explicit remove/add transitions",
+                    "Added randomized non-looping 4-7 second cooldown before re-arm",
+                    "Added structural event and component-group reachability test"
+                ]
+            }
+        ]
+    })
     return hashes
 
 

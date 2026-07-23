@@ -2,6 +2,21 @@
   "format_version": "1.20.50",
   "minecraft:entity": {
     "component_groups": {
+      "ccoriginal_cc:cooldown": {
+        "minecraft:movement": {
+          "value": 0.14
+        },
+        "minecraft:timer": {
+          "looping": false,
+          "time": [
+            4.0,
+            7.0
+          ],
+          "time_down_event": {
+            "event": "ccoriginal_cc:arm"
+          }
+        }
+      },
       "ccoriginal_cc:damage_reaction": {
         "minecraft:timer": {
           "looping": false,
@@ -33,6 +48,30 @@
           }
         }
       },
+      "ccoriginal_cc:ready": {
+        "minecraft:environment_sensor": {
+          "triggers": [
+            {
+              "event": "ccoriginal_cc:begin_telegraph",
+              "filters": {
+                "all_of": [
+                  {
+                    "subject": "self",
+                    "test": "has_target",
+                    "value": true
+                  },
+                  {
+                    "operator": "<=",
+                    "subject": "self",
+                    "test": "distance_to_nearest_player",
+                    "value": 16
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
       "ccoriginal_cc:recovery": {
         "minecraft:movement": {
           "value": 0.08
@@ -41,7 +80,7 @@
           "looping": false,
           "time": 0.7,
           "time_down_event": {
-            "event": "ccoriginal_cc:reset"
+            "event": "ccoriginal_cc:begin_cooldown"
           }
         }
       },
@@ -149,10 +188,50 @@
       }
     },
     "events": {
+      "ccoriginal_cc:arm": {
+        "add": {
+          "component_groups": [
+            "ccoriginal_cc:ready"
+          ]
+        },
+        "remove": {
+          "component_groups": [
+            "ccoriginal_cc:cooldown"
+          ]
+        },
+        "set_property": {
+          "ccoriginal_cc:attack_phase": 0
+        }
+      },
+      "ccoriginal_cc:begin_cooldown": {
+        "add": {
+          "component_groups": [
+            "ccoriginal_cc:cooldown"
+          ]
+        },
+        "remove": {
+          "component_groups": [
+            "ccoriginal_cc:ready",
+            "ccoriginal_cc:telegraph",
+            "ccoriginal_cc:pounce",
+            "ccoriginal_cc:recovery",
+            "ccoriginal_cc:damage_reaction"
+          ]
+        },
+        "set_property": {
+          "ccoriginal_cc:attack_phase": 0
+        }
+      },
       "ccoriginal_cc:begin_telegraph": {
         "add": {
           "component_groups": [
             "ccoriginal_cc:telegraph"
+          ]
+        },
+        "remove": {
+          "component_groups": [
+            "ccoriginal_cc:ready",
+            "ccoriginal_cc:cooldown"
           ]
         },
         "set_property": {
@@ -204,12 +283,28 @@
         }
       },
       "ccoriginal_cc:reset": {
+        "add": {
+          "component_groups": [
+            "ccoriginal_cc:cooldown"
+          ]
+        },
         "remove": {
           "component_groups": [
+            "ccoriginal_cc:ready",
             "ccoriginal_cc:telegraph",
             "ccoriginal_cc:pounce",
             "ccoriginal_cc:recovery",
             "ccoriginal_cc:damage_reaction"
+          ]
+        },
+        "set_property": {
+          "ccoriginal_cc:attack_phase": 0
+        }
+      },
+      "minecraft:entity_spawned": {
+        "add": {
+          "component_groups": [
+            "ccoriginal_cc:ready"
           ]
         },
         "set_property": {

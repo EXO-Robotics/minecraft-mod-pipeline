@@ -40,6 +40,41 @@ def test_cross_file_references_and_stable_behavior() -> None:
     assert all(module["type"] != "script" for module in read(BP / "manifest.json")["modules"])
 
 
+def test_attack_cycle_is_structurally_reachable_and_cooldown_is_bounded() -> None:
+    build()
+    entity = read(BP / "entities/gloamwing_stalker.json")["minecraft:entity"]
+    groups, events = entity["component_groups"], entity["events"]
+
+    # Walk actual native trigger edges: spawn -> ready sensor -> telegraph timer ->
+    # pounce timer -> recovery timer -> cooldown timer -> ready.
+    def group_trigger(group: str, component: str) -> str:
+        value = groups[group][component]
+        if component == "minecraft:environment_sensor":
+            return value["triggers"][0]["event"]
+        return value["time_down_event"]["event"]
+
+    assert "ccoriginal_cc:ready" in events["minecraft:entity_spawned"]["add"]["component_groups"]
+    cycle = [
+        ("ccoriginal_cc:ready", "minecraft:environment_sensor", "ccoriginal_cc:begin_telegraph", "ccoriginal_cc:telegraph"),
+        ("ccoriginal_cc:telegraph", "minecraft:timer", "ccoriginal_cc:pounce", "ccoriginal_cc:pounce"),
+        ("ccoriginal_cc:pounce", "minecraft:timer", "ccoriginal_cc:land", "ccoriginal_cc:recovery"),
+        ("ccoriginal_cc:recovery", "minecraft:timer", "ccoriginal_cc:begin_cooldown", "ccoriginal_cc:cooldown"),
+        ("ccoriginal_cc:cooldown", "minecraft:timer", "ccoriginal_cc:arm", "ccoriginal_cc:ready"),
+    ]
+    for source_group, component, event_name, destination_group in cycle:
+        assert group_trigger(source_group, component) == event_name
+        transition = events[event_name]
+        assert source_group in transition["remove"]["component_groups"]
+        assert destination_group in transition["add"]["component_groups"]
+        assert source_group != destination_group
+
+    sensor_filters = groups["ccoriginal_cc:ready"]["minecraft:environment_sensor"]["triggers"][0]["filters"]["all_of"]
+    assert {"test": "has_target", "subject": "self", "value": True} in sensor_filters
+    assert any(row.get("test") == "distance_to_nearest_player" and row.get("value") == 16 for row in sensor_filters)
+    cooldown = groups["ccoriginal_cc:cooldown"]["minecraft:timer"]
+    assert cooldown["time"] == [4.0, 7.0] and cooldown["looping"] is False
+
+
 def test_spawn_stress_cleanup_and_multiplayer_fallback_contracts() -> None:
     build()
     spawn = read(BP / "spawn_rules/gloamwing_stalker.json")
