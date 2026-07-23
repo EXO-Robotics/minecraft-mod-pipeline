@@ -10,7 +10,7 @@ PROJECT_DIRECTORIES = (
     "bedrock/behavior_pack", "bedrock/resource_pack", "bedrock/scripts",
     "custom/scripts", "custom/entities", "custom/models", "custom/assets",
     "tests", "runtime", "console", "dist/marketplace-candidate", "dist/test-world",
-    "dist/reports", "reports",
+    "dist/reports", "reports", "analysis/distillation", "decisions/distillation", "distillation",
 )
 
 PROTECTED_DIRECTORIES = (
@@ -39,6 +39,7 @@ INITIAL_DOCUMENTS = {
     "decisions/approvals.yaml": {"schema_version": "1.0.0", "approvals": []},
     "rights/rights-manifest.yaml": {"schema_version": "1.0.0", "content": []},
     "rights/review.yaml": {"schema_version": "1.0.0", "status": "REVIEW_REQUIRED", "reviews": []},
+    "decisions/distillation/review-adjustments.json": {"schema_version": "1.0.0", "adjustments": []},
 }
 
 

@@ -1,0 +1,46 @@
+{
+  "limit_units": 80,
+  "measurement_status": "STATIC_ESTIMATE_ONLY_CONSOLE_RUNTIME_PENDING",
+  "risks": [
+    {
+      "cost_units": 80,
+      "risks": [
+        "world generation and storage scope unknown"
+      ],
+      "system_id": "deferred_dimensions"
+    },
+    {
+      "cost_units": 35,
+      "risks": [],
+      "system_id": "deferred_energy_networks"
+    },
+    {
+      "cost_units": 20,
+      "risks": [],
+      "system_id": "deferred_inventory_pets"
+    },
+    {
+      "cost_units": 35,
+      "risks": [
+        "animation, model, state, and multiplayer synchronization unknown"
+      ],
+      "system_id": "deferred_transformations"
+    },
+    {
+      "cost_units": 70,
+      "risks": [
+        "physics and multiplayer synchronization unknown"
+      ],
+      "system_id": "deferred_vehicles"
+    },
+    {
+      "cost_units": 17,
+      "risks": [
+        "entity, particle, and script spikes require hard per-tick and per-area caps"
+      ],
+      "system_id": "original_controlled_chaos"
+    }
+  ],
+  "schema_version": "1.0.0",
+  "selected_units": 77
+}

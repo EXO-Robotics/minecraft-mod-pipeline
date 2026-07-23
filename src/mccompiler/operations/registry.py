@@ -4,7 +4,7 @@ from typing import Any, Callable
 
 from mccompiler.project.store import ProjectError, ProjectStore
 
-from . import analysis_ops, generation_ops, intent_ops, planning_ops, project_ops, query_ops, reporting_ops, safe_edit_ops, validation_ops
+from . import analysis_ops, distillation_ops, generation_ops, intent_ops, planning_ops, project_ops, query_ops, reporting_ops, safe_edit_ops, validation_ops
 from .envelope import OperationError, failure, success
 
 
@@ -45,6 +45,12 @@ REQUIRED_OPERATION_CATALOG: dict[str, tuple[str, ...]] = {
         "install_test_pack", "start_test_runtime", "run_behavior_test", "run_multiplayer_test",
         "verify_persistence", "inspect_content_log", "compare_expected_behavior",
         "generate_conversion_report",
+    ),
+    "distillation": (
+        "analyze_modpack_identity", "cluster_gameplay_systems", "score_feature_value",
+        "estimate_conversion_effort", "estimate_console_cost", "estimate_pattern_reuse",
+        "identify_progression_dependencies", "select_quarter_scope", "explain_selection",
+        "generate_conversion_roadmap", "record_distillation_adjustment",
     ),
 }
 
@@ -142,6 +148,17 @@ class OperationRegistry:
             "inspect_content_log": validation_ops.inspect_content_log,
             "compare_expected_behavior": validation_ops.compare_expected_behavior,
             "generate_conversion_report": reporting_ops.generate_conversion_report,
+            "analyze_modpack_identity": distillation_ops.analyze_modpack_identity,
+            "cluster_gameplay_systems": distillation_ops.cluster_gameplay_systems,
+            "score_feature_value": distillation_ops.score_feature_value,
+            "estimate_conversion_effort": distillation_ops.estimate_conversion_effort,
+            "estimate_console_cost": distillation_ops.estimate_console_cost,
+            "estimate_pattern_reuse": distillation_ops.estimate_pattern_reuse,
+            "identify_progression_dependencies": distillation_ops.identify_progression_dependencies,
+            "select_quarter_scope": distillation_ops.select_quarter_scope,
+            "explain_selection": distillation_ops.explain_selection,
+            "generate_conversion_roadmap": distillation_ops.generate_conversion_roadmap,
+            "record_distillation_adjustment": distillation_ops.record_distillation_adjustment,
         }
         unavailable_reasons = {
             "trace_callers": "No persisted call graph exists in analysis/source-index/calls.json",

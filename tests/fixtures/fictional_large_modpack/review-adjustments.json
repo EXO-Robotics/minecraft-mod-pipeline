@@ -1,0 +1,18 @@
+{
+  "schema_version": "1.0.0",
+  "adjustments": [
+    {
+      "id": "review-001",
+      "author": "fixture-review-agent",
+      "author_type": "AI",
+      "reason": "Flag a possible alternate build order for human review.",
+      "evidence": ["fictional fixture design review"],
+      "change": {
+        "kind": "selection",
+        "system_id": "elite_hunts",
+        "prior": "phase_4",
+        "replacement": "phase_3_candidate"
+      }
+    }
+  ]
+}

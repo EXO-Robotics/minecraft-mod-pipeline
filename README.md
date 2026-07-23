@@ -6,6 +6,13 @@ An evidence-backed assisted compiler that reconstructs validated Java mod intent
 
 The currently tested semantic profile accepts the included dependency-free Fabric-style Java source fixture. It extracts registrations, triggers, actions, persistent state, boss phases, form intent, approximations, unsupported hooks, and full source provenance into versioned ModIR/BehaviorIR. Loader metadata inventory supports Fabric, Quilt, modern/legacy Forge, NeoForge, CurseForge, Modrinth, and the compiler's directory-modpack manifest; those metadata readers are not claims of full semantic loader support.
 
+Large, evidence-inventoried modpacks can also be reduced to a deterministic,
+progression-coherent planning scope with `mccompiler distill-modpack`. The
+distiller treats 25% as estimated conversion effort, enforces prerequisites,
+rights and static console constraints, emits the required planning reports, and
+keeps qualitative review adjustments separate from deterministic scores. See
+`docs/modpack-distillation.md`.
+
 The planner gives every feature one explicit strategy: `DIRECT`, `SCRIPTED_EQUIVALENT`, `RECONSTRUCTED`, `BEHAVIORAL_APPROXIMATION`, `VISUAL_APPROXIMATION`, `MANUAL_REDESIGN`, or `UNSUPPORTED`. Persistent JSON overrides survive regeneration.
 
 ## Run

@@ -3,6 +3,12 @@
 Assessment date: **2026-07-22**  
 Status: **Not ready for a full Crazy Craft conversion; ready to define the qualification gates.**
 
+The repository now includes a metadata-only preliminary distillation under
+`planning/crazycraft-preliminary/`. It recommends original category-level
+systems and records evidence gaps; it does not identify or convert named Crazy
+Craft content, establish component rights, or claim Marketplace/console
+approval.
+
 Crazy Craft is an integration target, not a single representative mod. A modpack can combine different loaders/generations, inter-mod APIs, configs, scripts, assets, dimensions/world generation, client rendering, custom networking and behavior that exists only through interactions. The compiler must prove itself on controlled fixtures and a legally reviewable modpack inventory before attempting conversion.
 
 ## Entry requirements
