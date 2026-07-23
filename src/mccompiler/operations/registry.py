@@ -4,7 +4,7 @@ from typing import Any, Callable
 
 from mccompiler.project.store import ProjectError, ProjectStore
 
-from . import analysis_ops, blockbench_ops, distillation_ops, generation_ops, intent_ops, planning_ops, project_ops, query_ops, reporting_ops, safe_edit_ops, validation_ops
+from . import analysis_ops, blockbench_ops, distillation_ops, gameplay_distillation_ops, generation_ops, intent_ops, planning_ops, project_ops, query_ops, reporting_ops, safe_edit_ops, validation_ops
 from .envelope import OperationError, failure, success
 
 
@@ -52,6 +52,13 @@ REQUIRED_OPERATION_CATALOG: dict[str, tuple[str, ...]] = {
         "estimate_conversion_effort", "estimate_console_cost", "estimate_pattern_reuse",
         "identify_progression_dependencies", "select_quarter_scope", "explain_selection",
         "generate_conversion_roadmap", "record_distillation_adjustment",
+    ),
+    "gameplay_distillation": (
+        "create_rights_strategy", "register_rights_material", "inspect_rights_material",
+        "build_gameplay_intent", "validate_gameplay_intent", "export_clean_room_contract",
+        "screen_product_similarity", "build_experience_graph",
+        "calculate_experience_coverage", "plan_production_wave",
+        "validate_production_wave", "show_production_wave",
     ),
 }
 
@@ -161,6 +168,18 @@ class OperationRegistry:
             "explain_selection": distillation_ops.explain_selection,
             "generate_conversion_roadmap": distillation_ops.generate_conversion_roadmap,
             "record_distillation_adjustment": distillation_ops.record_distillation_adjustment,
+            "create_rights_strategy": gameplay_distillation_ops.create_rights_strategy,
+            "register_rights_material": gameplay_distillation_ops.register_rights_material,
+            "inspect_rights_material": gameplay_distillation_ops.inspect_rights_material,
+            "build_gameplay_intent": gameplay_distillation_ops.build_gameplay_intent,
+            "validate_gameplay_intent": gameplay_distillation_ops.validate_gameplay_intent,
+            "export_clean_room_contract": gameplay_distillation_ops.export_clean_room_contract,
+            "screen_product_similarity": gameplay_distillation_ops.screen_product_similarity,
+            "build_experience_graph": gameplay_distillation_ops.build_experience_graph,
+            "calculate_experience_coverage": gameplay_distillation_ops.calculate_experience_coverage,
+            "plan_production_wave": gameplay_distillation_ops.plan_production_wave,
+            "validate_production_wave": gameplay_distillation_ops.validate_production_wave,
+            "show_production_wave": gameplay_distillation_ops.show_production_wave,
         }
         unavailable_reasons = {
             "trace_callers": "No persisted call graph exists in analysis/source-index/calls.json",

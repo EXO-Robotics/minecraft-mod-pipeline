@@ -1,0 +1,39 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "clean-room-design-contract-1.0.0",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "contract_id", "intent_id", "intent_type", "experience_family", "abstract_role", "design_constraints", "qualification_requirements", "provenance", "semantic_hash"],
+  "properties": {
+    "schema_version": {"const": "1.0.0"},
+    "contract_id": {"type": "string", "minLength": 1},
+    "intent_id": {"type": "string", "minLength": 1},
+    "intent_type": {"type": "string"},
+    "experience_family": {"type": "string"},
+    "abstract_role": {"type": "string"},
+    "player_fantasy": {},
+    "gameplay_loop": {},
+    "combat_pattern": {},
+    "exploration_pattern": {},
+    "reward_function": {},
+    "progression_role": {},
+    "multiplayer_requirements": {},
+    "persistence_requirements": {},
+    "cleanup_requirements": {},
+    "performance_expectations": {},
+    "dependencies": {"type": "array"},
+    "design_constraints": {"type": "object"},
+    "qualification_requirements": {"type": "object"},
+    "provenance": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["gameplay_intent_id", "gameplay_intent_semantic_hash", "taint"],
+      "properties": {
+        "gameplay_intent_id": {"type": "string"},
+        "gameplay_intent_semantic_hash": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+        "taint": {"type": "array", "items": {"enum": ["ABSTRACTED_MECHANIC", "CLEAN_ROOM_ORIGINAL"]}}
+      }
+    },
+    "semantic_hash": {"type": "string", "pattern": "^[a-f0-9]{64}$"}
+  }
+}

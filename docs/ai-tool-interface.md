@@ -36,3 +36,11 @@ AI proposals are advisory. Acceptance is a distinct authorized action. Rights cl
 All 77 required operation names are dispatchable through the versioned registry and JSON-lines adapter. Artifact-backed analysis, intent review, planning, generation, validation, reporting, and safe-edit operations run against persistent revisioned projects. `author_blockbench_asset` accepts validated native Blockbench sources, Bedrock exports, machine visual-quality evidence, rights provenance, and deterministic revision data. `start_test_runtime` supports an explicitly authorized, immutable-image, port-free Docker BDS diagnostic adapter; installation, physical clients, multiplayer clients, and console operations remain unavailable. Tests exercise Benchmark A through create, scan, overrides, deterministic generation, validation, package, report, and reopen/resume. Full MCP transport remains incomplete.
 
 Additional safe operations expose protected custom implementations, custom behavior-handler records, project patterns, provenance-bound IR patches, rights evidence, and mappings. Additional qualification operations expose pinned Creator Tools invocation and aggregate Marketplace-candidate evaluation; neither implies runtime execution or Marketplace approval.
+
+Gameplay-distillation operations expose material-level rights strategy, abstract
+Gameplay Intent IR, clean-room export, similarity screening, experience
+coverage, and bounded production-wave planning through the same revision-safe
+operation envelope. See
+[gameplay-distillation-operations.md](gameplay-distillation-operations.md).
+Production-facing exports are allowlisted and must not expose restricted source
+expression; automated similarity screening is not legal clearance.

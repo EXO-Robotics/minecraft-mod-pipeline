@@ -15,6 +15,22 @@ from .scan import scan_path
 from .validate import validate_output
 
 
+MILESTONE_COMMANDS = {
+    "create-rights-strategy": "create_rights_strategy",
+    "register-rights-material": "register_rights_material",
+    "inspect-rights-material": "inspect_rights_material",
+    "build-gameplay-intent": "build_gameplay_intent",
+    "validate-gameplay-intent": "validate_gameplay_intent",
+    "export-clean-room-contract": "export_clean_room_contract",
+    "screen-product-similarity": "screen_product_similarity",
+    "build-experience-graph": "build_experience_graph",
+    "calculate-experience-coverage": "calculate_experience_coverage",
+    "plan-production-wave": "plan_production_wave",
+    "validate-production-plan": "validate_production_wave",
+    "show-production-plan": "show_production_wave",
+}
+
+
 def _run_operation_request(path: str) -> int:
     from .operations.registry import execute_request
     try:
@@ -25,6 +41,48 @@ def _run_operation_request(path: str) -> int:
     else:
         response = execute_request(request)
     print(json.dumps(response, sort_keys=True, ensure_ascii=False))
+    return 0 if response["ok"] else 2
+
+
+def _run_milestone_operation(args: argparse.Namespace) -> int:
+    from .operations.registry import execute_request
+
+    try:
+        if args.parameters is None:
+            parameters = {}
+        else:
+            payload = sys.stdin.read() if args.parameters == "-" else Path(args.parameters).read_text(encoding="utf-8")
+            parameters = json.loads(payload)
+        if not isinstance(parameters, dict):
+            raise ValueError("parameters must contain a JSON object")
+    except (OSError, json.JSONDecodeError, ValueError) as exc:
+        print(json.dumps({"ok": False, "code": "INVALID_PARAMETERS", "message": str(exc)}, sort_keys=True), file=sys.stderr)
+        return 2
+    request = {
+        "schema_version": "1.0.0",
+        "request_id": args.request_id,
+        "operation": MILESTONE_COMMANDS[args.command],
+        "project": args.project,
+        "parameters": parameters,
+    }
+    if args.expected_revision is not None:
+        request["expected_revision"] = args.expected_revision
+    response = execute_request(request)
+    if args.output_json:
+        print(json.dumps(response, sort_keys=True, ensure_ascii=False))
+    elif response["ok"]:
+        result = response.get("result") or {}
+        status = result.get("status", "OK") if isinstance(result, dict) else "OK"
+        print(f"{response['operation']}: {status}")
+        print(f"project revision: {response['project_revision']}")
+        for artifact in response.get("artifacts", []):
+            print(f"artifact: {artifact['path']}")
+    else:
+        diagnostic = response["diagnostics"][0]
+        print(f"{response['operation']}: {diagnostic['code']}: {diagnostic['message']}", file=sys.stderr)
+        details = diagnostic.get("details")
+        if isinstance(details, dict) and details.get("remediation"):
+            print(f"remediation: {details['remediation']}", file=sys.stderr)
     return 0 if response["ok"] else 2
 
 
@@ -57,10 +115,20 @@ def main(argv: list[str] | None = None) -> int:
     distill_parser.add_argument("--effort-budget", default="0.25", help="Fraction of estimated full conversion effort")
     distill_parser.add_argument("--output", required=True, help="Output root for the distillation directory")
     distill_parser.add_argument("--review-adjustments", help="Optional separately recorded AI/human review-adjustment JSON")
+    for command in MILESTONE_COMMANDS:
+        milestone = sub.add_parser(command, help=f"Run the {MILESTONE_COMMANDS[command]} project operation")
+        milestone.add_argument("--project", required=True, help="Conversion-project root")
+        milestone.add_argument("--parameters", help="JSON parameter file, or - for stdin")
+        milestone.add_argument("--expected-revision", type=int)
+        milestone.add_argument("--request-id")
+        milestone.add_argument("--json", action="store_true", dest="output_json", help="Emit the complete operation response as JSON")
     args = parser.parse_args(argv)
 
     if args.command == "operation":
         return _run_operation_request(args.request)
+
+    if args.command in MILESTONE_COMMANDS:
+        return _run_milestone_operation(args)
 
     if args.command == "distill-modpack":
         from .distillation import DistillationError, distill_modpack

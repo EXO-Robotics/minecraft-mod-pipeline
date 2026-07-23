@@ -6,6 +6,7 @@ import json
 import shutil
 import sys
 from pathlib import Path
+from typing import Any
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -23,7 +24,7 @@ RUN_ROOT = QUALIFICATION / "stable-bds"
 IMAGE = "itzg/minecraft-bedrock-server@sha256:12c7047cc149bd517d6dbc2339163cf62a4f1044c10e759c45c8b387e9784e39"
 
 
-def run() -> dict:
+def run() -> dict[str, Any]:
     QUALIFICATION.mkdir(parents=True, exist_ok=True)
     generate_test_world(
         ADDON / "behavior_pack",

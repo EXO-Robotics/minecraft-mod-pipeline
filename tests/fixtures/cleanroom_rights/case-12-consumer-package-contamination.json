@@ -1,0 +1,7 @@
+{
+  "case": 12,
+  "name": "consumer_package_contamination",
+  "paths": ["behavior_pack/manifest.json", "resource_pack/textures/product/original.png", "analysis/evidence/source-model.json"],
+  "expected_code": "CONSUMER_PACKAGE_CONTAMINATION",
+  "expected_path": "$[2]"
+}

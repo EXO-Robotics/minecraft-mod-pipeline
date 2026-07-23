@@ -4,7 +4,7 @@ import hashlib
 import json
 import math
 from pathlib import Path
-from typing import Any, Mapping, Sequence
+from typing import Any, Mapping, Sequence, cast
 
 
 RELEASABLE_RIGHTS_STATES = {"original_generated", "licensed_reuse", "public_domain"}
@@ -237,11 +237,13 @@ def validate_semantic_coordinates(geometry: Mapping[str, Any]) -> dict[str, Any]
         left_pivot, right_pivot = pivots.get(left), pivots.get(right)
         if not _finite_vector(left_pivot) or not _finite_vector(right_pivot):
             raise AssetContractError(f"Semantic leg pivots are missing for {left}/{right}")
-        if not (left_pivot[0] < 0 < right_pivot[0]):
+        left_vector = cast(list[float], left_pivot)
+        right_vector = cast(list[float], right_pivot)
+        if not (left_vector[0] < 0 < right_vector[0]):
             raise AssetContractError(f"Exported semantic left/right assignment is inverted for {left}/{right}")
-        if expected_z_sign < 0 and not (left_pivot[front_axis] < 0 and right_pivot[front_axis] < 0):
+        if expected_z_sign < 0 and not (left_vector[front_axis] < 0 and right_vector[front_axis] < 0):
             raise AssetContractError("Front leg pivots are not in the front half")
-        if expected_z_sign > 0 and not (left_pivot[front_axis] > 0 and right_pivot[front_axis] > 0):
+        if expected_z_sign > 0 and not (left_vector[front_axis] > 0 and right_vector[front_axis] > 0):
             raise AssetContractError("Rear leg pivots are not in the rear half")
     return {"left_right": "PRESERVED", "front_rear": "PRESERVED", "raw_sign_comparison_used": False}
 

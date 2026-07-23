@@ -1,0 +1,7 @@
+{
+  "case": 9,
+  "name": "restricted_evidence_leakage",
+  "artifact": {"contract_id": "product:test", "notes": "Use evidence://source-a/model/secret"},
+  "expected_code": "RESTRICTED_REFERENCE_LEAK",
+  "expected_path": "$.notes"
+}

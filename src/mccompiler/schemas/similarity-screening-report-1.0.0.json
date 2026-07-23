@@ -1,0 +1,21 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "similarity-screening-report-1.0.0",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "product_id", "outcome", "compared_categories", "available_evidence", "unavailable_evidence", "triggered_rules", "findings", "required_action", "screening_limitations", "legal_clearance_implied", "notice"],
+  "properties": {
+    "schema_version": {"const": "1.0.0"},
+    "product_id": {"type": ["string", "null"]},
+    "outcome": {"enum": ["AUTOMATED_SCREEN_LOW_RISK", "HUMAN_REVIEW_REQUIRED", "REVISION_REQUIRED", "OMIT_PENDING_LICENSE", "SCREENING_INSUFFICIENT"]},
+    "compared_categories": {"type": "array", "items": {"type": "string"}},
+    "available_evidence": {"type": "array", "items": {"type": "string"}},
+    "unavailable_evidence": {"type": "array", "items": {"type": "string"}},
+    "triggered_rules": {"type": "array", "items": {"type": "string"}},
+    "findings": {"type": "array", "items": {"type": "object"}},
+    "required_action": {"type": "string"},
+    "screening_limitations": {"type": "array", "items": {"type": "string"}},
+    "legal_clearance_implied": {"const": false},
+    "notice": {"const": "Not legal clearance."}
+  }
+}

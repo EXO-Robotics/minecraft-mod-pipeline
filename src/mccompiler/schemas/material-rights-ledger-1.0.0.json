@@ -1,0 +1,73 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "material-rights-ledger-1.0.0",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "records"],
+  "properties": {
+    "schema_version": {"const": "1.0.0"},
+    "records": {"type": "array", "minItems": 1, "items": {"$ref": "#/$defs/material"}}
+  },
+  "$defs": {
+    "state": {"enum": ["allowed", "prohibited", "unknown", "not_applicable", "requires_review"]},
+    "material": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["material_id", "source_id", "material_type", "ownership", "permissions", "restrictions", "production_disposition"],
+      "properties": {
+        "material_id": {"type": "string", "minLength": 1},
+        "source_id": {"type": "string", "minLength": 1},
+        "material_type": {"enum": ["source_code", "compiled_binary", "model", "texture", "animation", "audio", "music", "writing", "localization", "logo", "trademark", "character", "structure_layout", "progression_design", "dependency", "documentation", "runtime_observation"]},
+        "ownership": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["asserted_owner", "verified_owner", "evidence_refs"],
+          "properties": {
+            "asserted_owner": {"type": ["string", "null"]},
+            "verified_owner": {"type": ["string", "null"]},
+            "evidence_refs": {"type": "array", "items": {"type": "string"}}
+          }
+        },
+        "permissions": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["analysis", "redistribution", "commercial_use", "derivatives", "marketplace_distribution", "attribution_required", "source_disclosure_required"],
+          "properties": {
+            "analysis": {"$ref": "#/$defs/state"},
+            "redistribution": {"$ref": "#/$defs/state"},
+            "commercial_use": {"$ref": "#/$defs/state"},
+            "derivatives": {"$ref": "#/$defs/state"},
+            "marketplace_distribution": {"$ref": "#/$defs/state"},
+            "attribution_required": {"$ref": "#/$defs/state"},
+            "source_disclosure_required": {"$ref": "#/$defs/state"}
+          }
+        },
+        "restrictions": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["noncommercial", "share_alike", "trademark_restriction", "third_party_content_present", "ambiguous_ownership"],
+          "properties": {
+            "noncommercial": {"type": "boolean"},
+            "share_alike": {"type": "boolean"},
+            "trademark_restriction": {"type": "boolean"},
+            "third_party_content_present": {"type": "boolean"},
+            "ambiguous_ownership": {"type": "boolean"}
+          }
+        },
+        "production_disposition": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["direct_reuse", "production_reference", "abstract_mechanic_extraction", "clean_room_replacement", "authorized_adaptation_eligible"],
+          "properties": {
+            "direct_reuse": {"$ref": "#/$defs/state"},
+            "production_reference": {"$ref": "#/$defs/state"},
+            "abstract_mechanic_extraction": {"$ref": "#/$defs/state"},
+            "clean_room_replacement": {"$ref": "#/$defs/state"},
+            "authorized_adaptation_eligible": {"$ref": "#/$defs/state"}
+          }
+        },
+        "protected_hashes": {"type": "array", "items": {"type": "string", "pattern": "^[a-fA-F0-9]{64}$"}}
+      }
+    }
+  }
+}

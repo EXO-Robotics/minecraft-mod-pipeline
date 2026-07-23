@@ -1,0 +1,18 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "rights-strategy-1.0.0",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "mode"],
+  "properties": {
+    "schema_version": {"const": "1.0.0"},
+    "mode": {"enum": ["clean_room_originalization", "authorized_adaptation"]},
+    "inspiration_scope": {"enum": ["abstract_gameplay_patterns_only", "authorized_expression"]},
+    "direct_source_expression_reuse": {"enum": ["prohibited", "permission_gated"]},
+    "third_party_assets_allowed": {"type": "boolean"},
+    "third_party_names_allowed": {"type": "boolean"},
+    "third_party_branding_allowed": {"type": "boolean"},
+    "distinctive_expression_allowed": {"type": "boolean"},
+    "commercial_marketplace_rights_required": {"const": true}
+  }
+}

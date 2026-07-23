@@ -1,0 +1,8 @@
+{
+  "case": 11,
+  "name": "restricted_hash_leakage",
+  "blocked_hash": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+  "artifact": {"contract_id": "product:test", "asset_digest": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"},
+  "expected_code": "RESTRICTED_HASH_LEAK",
+  "expected_path": "$.asset_digest"
+}

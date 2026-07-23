@@ -6,6 +6,7 @@ import hashlib
 import json
 import sys
 from pathlib import Path
+from typing import Any
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -23,7 +24,7 @@ PACKAGE = ASSET / "addon/bramblehorn_animated.mcaddon"
 OUTPUT = ASSET / "qualification/creator-tools-result.json"
 
 
-def run(executable: Path) -> dict:
+def run(executable: Path) -> dict[str, Any]:
     result = invoke_creator_tools(
         executable,
         PACKAGE,

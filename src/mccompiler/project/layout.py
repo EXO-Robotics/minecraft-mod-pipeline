@@ -5,13 +5,16 @@ from pathlib import Path
 
 PROJECT_DIRECTORIES = (
     "input/source", "input/jars", "input/mods", "input/configuration",
-    "analysis/evidence", "analysis/diagnostics", "analysis/source-index", "analysis/proposals",
+    "analysis/evidence", "analysis/rights-ledger", "analysis/gameplay-intent",
+    "analysis/diagnostics", "analysis/source-index", "analysis/proposals",
     "ir", "decisions", "rights/evidence",
     "bedrock/behavior_pack", "bedrock/resource_pack", "bedrock/scripts",
     "custom/scripts", "custom/entities", "custom/models", "custom/assets",
     "assets/blockbench", "assets/previews", "assets/revisions",
     "tests", "runtime", "console", "dist/marketplace-candidate", "dist/test-world",
     "dist/reports", "reports", "analysis/distillation", "decisions/distillation", "distillation",
+    "production/design-contracts", "production/originality",
+    "production/similarity-screening", "production/production-plans",
 )
 
 PROTECTED_DIRECTORIES = (
@@ -23,6 +26,18 @@ INITIAL_DOCUMENTS = {
     "analysis/dependency-graph.json": {"schema_version": "1.0.0", "nodes": [], "edges": []},
     "analysis/registrations.json": {"schema_version": "1.0.0", "registrations": []},
     "analysis/evidence/index.json": {"schema_version": "1.0.0", "evidence": []},
+    "analysis/rights-ledger/strategy.json": {
+        "schema_version": "1.0.0",
+        "mode": "clean_room_originalization",
+        "inspiration_scope": "abstract_gameplay_patterns_only",
+        "direct_source_expression_reuse": "prohibited",
+        "third_party_assets_allowed": False,
+        "third_party_names_allowed": False,
+        "third_party_branding_allowed": False,
+        "distinctive_expression_allowed": False,
+        "commercial_marketplace_rights_required": True,
+    },
+    "analysis/rights-ledger/materials.json": {"schema_version": "1.0.0", "records": []},
     "analysis/diagnostics/index.json": {"schema_version": "1.0.0", "diagnostics": []},
     "analysis/source-index/files.json": {"schema_version": "1.0.0", "files": []},
     "analysis/source-index/symbols.json": {"schema_version": "1.0.0", "symbols": []},
