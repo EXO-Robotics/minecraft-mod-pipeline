@@ -1,0 +1,21 @@
+{
+  "schema_version": "1.0.0",
+  "entries": {
+    "CAPABILITY_CATALOG": ["src/mccompiler/capabilities.json", "src/mccompiler/patterns.json"],
+    "CLOCKWORK_BDS": ["benchmarks/original-marketplace-showcase/bds-diagnostic-validation.json"],
+    "CLOCKWORK_CREATOR_TOOLS": ["benchmarks/original-marketplace-showcase/creator-tools-validation.json"],
+    "CLOCKWORK_EXPECTED": ["benchmarks/original-marketplace-showcase/expected-behavior.yaml", "benchmarks/original-marketplace-showcase/expected-ir.json"],
+    "DISTILLATION_OUTPUT": ["planning/crazycraft-preliminary/distillation/distillation-manifest.json", "planning/crazycraft-preliminary/distillation/scoring-report.json", "planning/crazycraft-preliminary/distillation/quarter-scope.json", "planning/crazycraft-preliminary/distillation/console-performance-risk.json"],
+    "DISTILLATION_SOURCE": ["src/mccompiler/distillation/service.py", "src/mccompiler/distillation/scoring.py", "src/mccompiler/distillation/selector.py", "src/mccompiler/distillation/validation.py"],
+    "DOORLOCK_BDS": ["benchmarks/rights-cleared-java-mod/reconstruction/technical-build-validation.json"],
+    "DOORLOCK_CONTRACTS": ["benchmarks/rights-cleared-java-mod/contracts/state-schema.json", "benchmarks/rights-cleared-java-mod/contracts/save-migration.json", "benchmarks/rights-cleared-java-mod/contracts/multiplayer-ownership.json"],
+    "DOORLOCK_HANDLER": ["benchmarks/rights-cleared-java-mod/reconstruction/custom/scripts/doorlock-state.js", "benchmarks/rights-cleared-java-mod/reconstruction/custom/scripts/doorlock.js"],
+    "FRONTENDS": ["src/mccompiler/scan.py", "src/mccompiler/frontends/fabric.py", "src/mccompiler/frontends/forge_legacy.py", "src/mccompiler/frontends/jar_bytecode.py", "src/mccompiler/frontends/javap_analyzer.py"],
+    "GENERATOR": ["src/mccompiler/bedrock.py", "src/mccompiler/operations/generation_ops.py"],
+    "IR_SCHEMAS": ["src/mccompiler/ir.py", "src/mccompiler/schemas/modir-1.0.0.json", "src/mccompiler/schemas/behavior-ir-1.0.0.json"],
+    "LIMITATIONS": ["docs/known-limitations-marketplace.md", "docs/runtime-validation.md"],
+    "OPERATIONS": ["src/mccompiler/operations/registry.py", "src/mccompiler/agent/stdio_server.py", "tests/test_agent_operation_catalog.py"],
+    "PROJECT_STORE": ["src/mccompiler/project/store.py", "src/mccompiler/project/status.py"],
+    "VALIDATION": ["src/mccompiler/validate.py", "src/mccompiler/creator_tools.py", "src/mccompiler/marketplace.py", "src/mccompiler/performance.py", "src/mccompiler/rights.py"]
+  }
+}
