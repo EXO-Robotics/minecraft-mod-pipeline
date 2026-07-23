@@ -1,0 +1,119 @@
+{
+  "schema_version": "1.0.0",
+  "batch_id": "forest-wave-1-parallel-batch-1",
+  "feature_id": "gloamwing_stalker",
+  "agent_id": "production-agent-gloamwing-stalker",
+  "model": "gpt-5.6-sol",
+  "requested_reasoning_effort": "light",
+  "actual_reasoning_effort": "low",
+  "base_commit": "0db4c8a5f504106b4a601afa6f7bc225eb697dcd",
+  "candidate_commit": "e86d4ed1f99676a5bf8660a9bd2864f3aa0d46a9",
+  "candidate_commit_scope": "Implementation and generated artifacts before this packet-only evidence commit",
+  "branch": "codex/parallel-batch-1/gloamwing-stalker",
+  "worktree": "/Users/blakegrove/Desktop/bedrock-server/.derivedData/worktrees/parallel-batch-1/gloamwing-stalker",
+  "changed_paths": [
+    "production/features/gloamwing-stalker/",
+    "prototypes/blockbench/gloamwing_stalker/",
+    "tools/build_gloamwing_stalker.py",
+    "tests/test_gloamwing_stalker.py"
+  ],
+  "shared_requests": [],
+  "reserved_identifiers": [
+    "ccoriginal_cc:gloamwing_stalker",
+    "geometry.ccoriginal_cc.gloamwing_stalker",
+    "animation.ccoriginal_cc.gloamwing_stalker",
+    "controller.animation.ccoriginal_cc.gloamwing_stalker",
+    "ccoriginal_cc:gloamwing_test"
+  ],
+  "uuids": {
+    "behavior_header": "e2b0816e-74ed-4457-a8af-a9eb889ecbcb",
+    "behavior_data_module": "00f4fc42-7b63-4860-bcd2-06d31724130c",
+    "behavior_script_module_unused": "09f04f92-c28a-40a4-935e-8968a7ccb3c3",
+    "resource_header": "3a750a45-d232-4a26-aef0-4844df456d74",
+    "resource_module": "b503a43d-5d18-4147-8958-bd948d2d73b4"
+  },
+  "assets": {
+    "editable_model": "prototypes/blockbench/gloamwing_stalker/gloamwing_stalker.bbmodel",
+    "native_geometry": "prototypes/blockbench/gloamwing_stalker/gloamwing_stalker.geo.json",
+    "texture": "prototypes/blockbench/gloamwing_stalker/gloamwing_stalker.png",
+    "package": "production/features/gloamwing-stalker/packages/gloamwing_stalker.mcaddon"
+  },
+  "hashes_sha256": {
+    "bbmodel": "2edb9eddb3717b366ccd60bef71d20d1689e4ff20f1d9d085c8b2090239b7960",
+    "geometry": "36b960ec289b18041f5fbb4b2345419ca415b9d5d4b4d53336f6851dec1f1635",
+    "texture": "0ef6e1d297940c4edb4091454852f14e74b42a3f9193315ccd4e958785062fb7",
+    "mcaddon": "385de156c907dcc9f225103d7262c21bf1bea791e2510ed60d5cc5104060035e"
+  },
+  "validations": [
+    {
+      "name": "feature_static_tests",
+      "command": "direct invocation of four tests in tests/test_gloamwing_stalker.py",
+      "status": "PASSED",
+      "result": "4 feature tests passed"
+    },
+    {
+      "name": "bundled_geometry_validator",
+      "status": "PASSED",
+      "result": "1 geometry, 10 bones, 23 cubes, 0 locators"
+    },
+    {
+      "name": "bundled_animated_entity_validator",
+      "status": "PASSED",
+      "result": "5 clips, 1 controller, 7 animated bones, 5 AI goals"
+    },
+    {
+      "name": "deterministic_rebuild",
+      "status": "PASSED",
+      "result": "Two consecutive builds produced identical mcaddon SHA-256"
+    }
+  ],
+  "performance": {
+    "bones": 10,
+    "cubes": 23,
+    "texture": [64, 64],
+    "animation_clips": 5,
+    "animation_controllers": 1,
+    "simultaneous_entities": 20,
+    "pathfinding_radius": 16,
+    "scripts_per_tick": 0,
+    "natural_spawn_enabled": false,
+    "classification": "STATIC_BUDGET_PASS_RUNTIME_UNTESTED"
+  },
+  "cleanup": {
+    "stress_count": 20,
+    "selector_is_tag_scoped": true,
+    "latency_target_ticks": 20,
+    "runtime_result": "UNEXECUTED"
+  },
+  "limitations": [
+    "Editable bbmodel is deterministic controlled source and has not been reopened/saved in the shared Blockbench GUI.",
+    "Native behavior timers encode a readable telegraph and recovery, but combat feel requires desktop runtime testing.",
+    "No performance, multiplayer, persistence, Realm, split-screen, or physical-console claim is made."
+  ],
+  "unexecuted_gates": [
+    "Blockbench GUI native-codec round-trip and visual evidence",
+    "Creator Tools validation",
+    "Stable BDS summon, 1/10/20 stress, cleanup, and restart",
+    "Bedrock desktop controller/combat/pathing",
+    "Two- and four-player target switching and disconnect",
+    "Persistence and performance measurement",
+    "Physical PS4 and Marketplace review"
+  ],
+  "contamination": {
+    "java_source_inspected": false,
+    "controlled_chaos_expression_inspected": false,
+    "third_party_expression_used": false,
+    "production_inputs": [
+      "original-production-manifest.json",
+      "batch reservations",
+      "Blockbench Bedrock asset skill references"
+    ]
+  },
+  "metrics": {
+    "owned_files": 23,
+    "feature_tests": 4,
+    "static_validators": 2,
+    "test_framework_note": "pytest was unavailable; the four assertion-based feature tests were invoked directly"
+  },
+  "recommendation": "ACCEPT_FOR_MAIN_CODEX_GUI_AND_RUNTIME_QUALIFICATION"
+}
