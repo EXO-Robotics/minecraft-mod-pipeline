@@ -1,0 +1,128 @@
+{
+  "schema_version": "1.0.0",
+  "review_id": "forest-wave-1-parallel-batch-1-grok-red-team",
+  "review_result": "PASS_WITH_FINDINGS",
+  "main_codex_disposition": "ALL_ACCEPTED_CRITICAL_AND_HIGH_FINDINGS_RESOLVED",
+  "counts": {
+    "total": 16,
+    "accepted": 9,
+    "qualified": 5,
+    "rejected": 2,
+    "deferred_medium_or_lower": 5,
+    "unresolved_accepted_critical_or_high": 0
+  },
+  "findings": [
+    {
+      "id": "GROK-001",
+      "severity": "HIGH",
+      "disposition": "ACCEPTED_RESOLVED",
+      "verification": "Three historical candidate packets contained pre-repair hashes; Mossback and Barkguard already matched.",
+      "resolution": "Added final-digest-freeze.json as the only authoritative post-review digest table, with explicit supersession pointers and a byte-level integration test."
+    },
+    {
+      "id": "GROK-002",
+      "severity": "HIGH",
+      "disposition": "ACCEPTED_RESOLVED",
+      "verification": "Signal Ruin enumerated all three dimensions every 20 ticks despite global_scans_per_tick=0.",
+      "resolution": "Runtime interval now iterates a maximum-two active-anchor registry; the only dimension scan is one-time world-load recovery."
+    },
+    {
+      "id": "GROK-003",
+      "severity": "HIGH",
+      "disposition": "ACCEPTED_RESOLVED",
+      "verification": "reward_issued was committed before the loot command, permitting permanent loss on command failure.",
+      "resolution": "A uniquely tagged persistent chest-minecart cache is now created/reconciled and deterministically filled before reward_issued and COMPLETE are committed."
+    },
+    {
+      "id": "GROK-004",
+      "severity": "HIGH",
+      "disposition": "REJECTED_FALSE_CONCURRENCY_MODEL_DEFENSE_IN_DEPTH_ADDED",
+      "verification": "The activation callback has no await/yield; Script API events execute serially and ACTIVE was synchronously written before another callback. No TOCTOU window was demonstrated.",
+      "resolution": "An immediate activeAnchors reservation plus rollback was added before other activation mutation."
+    },
+    {
+      "id": "GROK-005",
+      "severity": "HIGH",
+      "disposition": "REJECTED_ALREADY_HONESTLY_LABELED",
+      "verification": "The authoritative report explicitly calls Stable a boot/restart gate and Preview a diagnostic harness, lists undelivered production events, and keeps real gameplay/client/PS4 gates pending.",
+      "resolution": "Existing limitation language retained; no gameplay certification claim added."
+    },
+    {
+      "id": "GROK-006",
+      "severity": "MEDIUM",
+      "disposition": "QUALIFIED_PENDING_CLIENT_GATE",
+      "verification": "Static tests cannot prove getBiome/isOp behavior on the pinned engine; BDS boot did load the scripted pack without a startup failure.",
+      "resolution": "Kept runtime exception guards and the desktop-client activation/reset/biome gate explicitly pending."
+    },
+    {
+      "id": "GROK-007",
+      "severity": "MEDIUM",
+      "disposition": "ACCEPTED_RESOLVED",
+      "verification": "Forest Attunement iterated the entire player array although its planning cap is four.",
+      "resolution": "The 100-tick callback now slices the player list to four and the feature test asserts the cap."
+    },
+    {
+      "id": "GROK-008",
+      "severity": "MEDIUM",
+      "disposition": "QUALIFIED_DEFERRED_RUNTIME_EVIDENCE",
+      "verification": "Native ready-state removal is structurally contention-aware but simultaneous two-client atomicity is not proven.",
+      "resolution": "Limitation remains explicit; live two-client interaction stays pending and is not represented as passed."
+    },
+    {
+      "id": "GROK-009",
+      "severity": "MEDIUM",
+      "disposition": "ACCEPTED_DEFERRED_BEFORE_GAMEPLAY_PROMOTION",
+      "verification": "Gloamwing damage/death events are not wired to native triggers and damage does not remove mutually exclusive attack groups.",
+      "resolution": "Candidate remains internal/static with desktop combat pending; wiring and exclusivity are required before gameplay promotion."
+    },
+    {
+      "id": "GROK-010",
+      "severity": "MEDIUM",
+      "disposition": "QUALIFIED_DEFERRED_RUNTIME_EVIDENCE",
+      "verification": "Barkguard correctly triggers after damage, but API failure between effect/cooldown and equipment write could create a partial activation.",
+      "resolution": "No mitigation-of-triggering-hit claim exists; injected failure and live damage evidence remain required before gameplay promotion."
+    },
+    {
+      "id": "GROK-011",
+      "severity": "MEDIUM",
+      "disposition": "ACCEPTED_RESOLVED",
+      "verification": "Signal Ruin's generic CLEAN label overstated its allowlisted production-input inspection.",
+      "resolution": "Renamed to NO_CONTAMINATION_OBSERVED_WITHIN_DISCLOSED_PRODUCTION_INPUTS and recorded method and scope."
+    },
+    {
+      "id": "GROK-012",
+      "severity": "MEDIUM",
+      "disposition": "QUALIFIED_ALREADY_DISCLOSED",
+      "verification": "Feature suites contain static/model tests, while the authoritative batch report already separates them from runtime gameplay evidence.",
+      "resolution": "Static/model evidence remains useful but cannot promote pending gameplay gates."
+    },
+    {
+      "id": "GROK-013",
+      "severity": "LOW",
+      "disposition": "ACCEPTED_RESOLVED",
+      "verification": "The reserved completion marker was declared but not emitted.",
+      "resolution": "Reward commit now idempotently sets world dynamic property ccoriginal_cc:signal_ruin_completed."
+    },
+    {
+      "id": "GROK-014",
+      "severity": "LOW",
+      "disposition": "QUALIFIED_DEFERRED_COMPATIBILITY_FLOOR",
+      "verification": "Mixed minimum engine versions are legal but do not prove each older declared floor.",
+      "resolution": "The tested current Stable/Preview binaries remain the only server evidence; exact-minimum and Creator Tools gates remain pending."
+    },
+    {
+      "id": "GROK-015",
+      "severity": "INFO",
+      "disposition": "ACCEPTED",
+      "verification": "No physical PS4, Marketplace, Realm, push, tag, or release claim was made.",
+      "resolution": "Negative labels retained."
+    },
+    {
+      "id": "GROK-016",
+      "severity": "INFO",
+      "disposition": "ACCEPTED_WITH_TERMINOLOGY_LIMIT",
+      "verification": "The original-production lane, disjoint reservations, and write-scope isolation are sound process scaffolding.",
+      "resolution": "Retained ORIGINAL_BEDROCK_NATIVE language; no clean-room certification claim is introduced."
+    }
+  ]
+}

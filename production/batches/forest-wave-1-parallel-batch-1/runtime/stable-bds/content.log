@@ -1,163 +1,163 @@
 [mccompiler-harness] cycle=1
 WARNING: The requested image's platform (linux/amd64) does not match the detected host platform (linux/arm64/v8) and no specific platform was requested
-time="2026-07-23T21:56:49Z" level=debug msg="Using /data to match uid and gid"
-time="2026-07-23T21:56:49Z" level=debug msg="Resolved UID=0 from match path"
-time="2026-07-23T21:56:49Z" level=debug msg="Resolved GID=0 from match path"
+time="2026-07-23T22:41:24Z" level=debug msg="Using /data to match uid and gid"
+time="2026-07-23T22:41:24Z" level=debug msg="Resolved UID=0 from match path"
+time="2026-07-23T22:41:24Z" level=debug msg="Resolved GID=0 from match path"
 Image info: buildtime=2025-12-13T02:14:45.091Z,version=master,revision=19ecd3aaf1bca5daa6a68526e6f51bb84732953a
 Using existing bedrock server executable
-2026/07/23 21:56:50 Setting level-name to Forest Wave 1 Parallel Batch 1 INTERNAL TEST in server.properties
-2026/07/23 21:56:50 Setting white-list to false in server.properties
+2026/07/23 22:41:24 Setting level-name to Forest Wave 1 Parallel Batch 1 INTERNAL TEST in server.properties
+2026/07/23 22:41:24 Setting white-list to false in server.properties
 Starting Bedrock server...
 NO LOG FILE! - setting up server logging...
-[2026-07-23 21:56:50:336 INFO] Starting Server
-[2026-07-23 21:56:50:336 INFO] Version: 1.26.33.2
-[2026-07-23 21:56:50:336 INFO] Session ID: 75efb6b7-20e0-4067-b9df-6c0b96e9a1a9
-[2026-07-23 21:56:50:336 INFO] Build ID: 47564860
-[2026-07-23 21:56:50:336 INFO] Branch: r/26_u3
-[2026-07-23 21:56:50:336 INFO] Commit ID: 677921346ba4ea8fe5a0bed9807f2227f5352d7d
-[2026-07-23 21:56:50:336 INFO] Configuration: Publish
-[2026-07-23 21:56:50:341 INFO] Level Name: Forest Wave 1 Parallel Batch 1 INTERNAL TEST
-[2026-07-23 21:56:50:346 INFO] No CDN config file found at: cdn_config.json for dedicated server
-[2026-07-23 21:56:50:346 INFO] Game mode: 0 Survival
-[2026-07-23 21:56:50:347 INFO] Difficulty: 1 EASY
-[2026-07-23 21:56:50:354 INFO] Content logging to console is enabled.
-[2026-07-23 21:56:50:407 INFO]
+[2026-07-23 22:41:24:672 INFO] Starting Server
+[2026-07-23 22:41:24:673 INFO] Version: 1.26.33.2
+[2026-07-23 22:41:24:673 INFO] Session ID: a625dcc0-8656-4de4-a44a-94a29f4f0f5b
+[2026-07-23 22:41:24:673 INFO] Build ID: 47564860
+[2026-07-23 22:41:24:673 INFO] Branch: r/26_u3
+[2026-07-23 22:41:24:673 INFO] Commit ID: 677921346ba4ea8fe5a0bed9807f2227f5352d7d
+[2026-07-23 22:41:24:673 INFO] Configuration: Publish
+[2026-07-23 22:41:24:677 INFO] Level Name: Forest Wave 1 Parallel Batch 1 INTERNAL TEST
+[2026-07-23 22:41:24:681 INFO] No CDN config file found at: cdn_config.json for dedicated server
+[2026-07-23 22:41:24:682 INFO] Game mode: 0 Survival
+[2026-07-23 22:41:24:682 INFO] Difficulty: 1 EASY
+[2026-07-23 22:41:24:689 INFO] Content logging to console is enabled.
+[2026-07-23 22:41:24:739 INFO]
 #####################################################
 #                                                   #
 #               LOADING VANILLA WORLD               #
 #                                                   #
 #####################################################
-[2026-07-23 21:56:51:913 INFO] Opening level 'worlds/Forest Wave 1 Parallel Batch 1 INTERNAL TEST/db'
-[2026-07-23 21:56:52:666 INFO] Pack Stack - [00] Resonance Sling INTERNAL TEST BP (id: 61e0bbf4-0051-4bb0-a5bb-19e1cd68db0f, version: 1.0.0) @ worlds/Forest Wave 1 Parallel Batch 1 INTERNAL TEST/behavior_packs/Resonance_Sling_INTERNAL_TEST_BP-61e0bbf4
-[2026-07-23 21:56:52:666 INFO] Pack Stack - [01] Signal Ruin - INTERNAL TEST BUILD / NOT MARKETPLACE APPROVED / NOT PHYSICAL PS4 CERTIFIED / NOT FOR PUBLIC RELEASE (id: 556acdce-2ddc-4cbd-b08d-f62681387306, version: 0.1.0) @ worlds/Forest Wave 1 Parallel Batch 1 INTERNAL TEST/behavior_packs/Signal_Ruin_-_INTERNAL_TEST_BUILD___NOT_MARKETPLACE_APPROVED___NOT_PHYSICAL_PS4_CERTIFIED___NOT_FOR_PUBLIC_RELEASE-556acdce
-[2026-07-23 21:56:52:666 INFO] Pack Stack - [02] Mossback Forager INTERNAL TEST BP (id: 6a67bb25-2953-4be9-9b32-611cf09be04a, version: 1.0.0) @ worlds/Forest Wave 1 Parallel Batch 1 INTERNAL TEST/behavior_packs/Mossback_Forager_INTERNAL_TEST_BP-6a67bb25
-[2026-07-23 21:56:52:666 INFO] Pack Stack - [03] Barkguard Charm INTERNAL TEST BP (id: 2985974d-139b-4142-9c25-ae1aba1f95bf, version: 1.0.0) @ worlds/Forest Wave 1 Parallel Batch 1 INTERNAL TEST/behavior_packs/Barkguard_Charm_INTERNAL_TEST_BP-2985974d
-[2026-07-23 21:56:52:666 INFO] Pack Stack - [04] Gloamwing Stalker BP (Internal) (id: e2b0816e-74ed-4457-a8af-a9eb889ecbcb, version: 1.0.0) @ worlds/Forest Wave 1 Parallel Batch 1 INTERNAL TEST/behavior_packs/Gloamwing_Stalker_BP__Internal-e2b0816e
-[2026-07-23 21:56:52:666 INFO] Pack Stack - [05] Forest Attunement BP [INTERNAL TEST] (id: 43b642d0-a651-45cf-ae20-96a0b853fba5, version: 1.0.0) @ worlds/Forest Wave 1 Parallel Batch 1 INTERNAL TEST/behavior_packs/Forest_Attunement_BP__INTERNAL_TEST-43b642d0
-[2026-07-23 21:56:53:499 WARN] [Scripting] [resonance-sling] script runtime initialized stable_api=2.0.0 persistent_records=0 global_scan_per_tick=0 cap=16
-[2026-07-23 21:56:53:532 WARN] [Scripting] [barkguard-charm] stable_api=2.0.0 event_driven=true global_scans_per_tick=0 persistent_records=0
-[2026-07-23 21:56:54:641 WARN] [Components] Forest Wave 1 Parallel Batch 1 INTERNAL TEST | actor_definitions | worlds/Forest Wave 1 Parallel Batch 1 INTERNAL TEST/behavior_packs/Resonance_Sling_INTERNAL_TEST_BP-61e0bbf4 | ccoriginal_cc:resonance_pulse | minecraft:entity | components | Invalid particle type 'ccoriginal_cc:resonance_impact' specified.
-[2026-07-23 21:56:56:154 INFO] IPv4 supported, port: 19132: Used for gameplay and LAN discovery
-[2026-07-23 21:56:56:154 INFO] IPv6 supported, port: 19133: Used for gameplay
-[2026-07-23 21:56:56:218 INFO] Server started.
-[2026-07-23 21:56:56:219 INFO] ================ TELEMETRY MESSAGE ===================
-[2026-07-23 21:56:56:219 INFO] Server Telemetry is currently not enabled.
-[2026-07-23 21:56:56:219 INFO] Enabling this telemetry helps us improve the game.
-[2026-07-23 21:56:56:219 INFO]
-[2026-07-23 21:56:56:219 INFO] To enable this feature, add the line 'emit-server-telemetry=true'
-[2026-07-23 21:56:56:219 INFO] to the server.properties file in the handheld/src-server directory
-[2026-07-23 21:56:56:219 INFO] ======================================================
-time="2026-07-23T21:57:16Z" level=debug msg="Forwarding signal" signal=terminated
-time="2026-07-23T21:57:16Z" level=debug msg="Sending message on stdin due to SIGTERM" message=stop
-[2026-07-23 21:57:16:459 INFO] Server stop requested.
-[2026-07-23 21:57:16:505 INFO] Stopping server...
+[2026-07-23 22:41:26:126 INFO] Opening level 'worlds/Forest Wave 1 Parallel Batch 1 INTERNAL TEST/db'
+[2026-07-23 22:41:26:810 INFO] Pack Stack - [00] Resonance Sling INTERNAL TEST BP (id: 61e0bbf4-0051-4bb0-a5bb-19e1cd68db0f, version: 1.0.0) @ worlds/Forest Wave 1 Parallel Batch 1 INTERNAL TEST/behavior_packs/Resonance_Sling_INTERNAL_TEST_BP-61e0bbf4
+[2026-07-23 22:41:26:810 INFO] Pack Stack - [01] Signal Ruin - INTERNAL TEST BUILD / NOT MARKETPLACE APPROVED / NOT PHYSICAL PS4 CERTIFIED / NOT FOR PUBLIC RELEASE (id: 556acdce-2ddc-4cbd-b08d-f62681387306, version: 0.1.0) @ worlds/Forest Wave 1 Parallel Batch 1 INTERNAL TEST/behavior_packs/Signal_Ruin_-_INTERNAL_TEST_BUILD___NOT_MARKETPLACE_APPROVED___NOT_PHYSICAL_PS4_CERTIFIED___NOT_FOR_PUBLIC_RELEASE-556acdce
+[2026-07-23 22:41:26:810 INFO] Pack Stack - [02] Mossback Forager INTERNAL TEST BP (id: 6a67bb25-2953-4be9-9b32-611cf09be04a, version: 1.0.0) @ worlds/Forest Wave 1 Parallel Batch 1 INTERNAL TEST/behavior_packs/Mossback_Forager_INTERNAL_TEST_BP-6a67bb25
+[2026-07-23 22:41:26:810 INFO] Pack Stack - [03] Barkguard Charm INTERNAL TEST BP (id: 2985974d-139b-4142-9c25-ae1aba1f95bf, version: 1.0.0) @ worlds/Forest Wave 1 Parallel Batch 1 INTERNAL TEST/behavior_packs/Barkguard_Charm_INTERNAL_TEST_BP-2985974d
+[2026-07-23 22:41:26:810 INFO] Pack Stack - [04] Gloamwing Stalker BP (Internal) (id: e2b0816e-74ed-4457-a8af-a9eb889ecbcb, version: 1.0.0) @ worlds/Forest Wave 1 Parallel Batch 1 INTERNAL TEST/behavior_packs/Gloamwing_Stalker_BP__Internal-e2b0816e
+[2026-07-23 22:41:26:810 INFO] Pack Stack - [05] Forest Attunement BP [INTERNAL TEST] (id: 43b642d0-a651-45cf-ae20-96a0b853fba5, version: 1.0.0) @ worlds/Forest Wave 1 Parallel Batch 1 INTERNAL TEST/behavior_packs/Forest_Attunement_BP__INTERNAL_TEST-43b642d0
+[2026-07-23 22:41:27:566 WARN] [Scripting] [resonance-sling] script runtime initialized stable_api=2.0.0 persistent_records=0 global_scan_per_tick=0 cap=16
+[2026-07-23 22:41:27:594 WARN] [Scripting] [barkguard-charm] stable_api=2.0.0 event_driven=true global_scans_per_tick=0 persistent_records=0
+[2026-07-23 22:41:28:592 WARN] [Components] Forest Wave 1 Parallel Batch 1 INTERNAL TEST | actor_definitions | worlds/Forest Wave 1 Parallel Batch 1 INTERNAL TEST/behavior_packs/Resonance_Sling_INTERNAL_TEST_BP-61e0bbf4 | ccoriginal_cc:resonance_pulse | minecraft:entity | components | Invalid particle type 'ccoriginal_cc:resonance_impact' specified.
+[2026-07-23 22:41:30:032 INFO] IPv4 supported, port: 19132: Used for gameplay and LAN discovery
+[2026-07-23 22:41:30:032 INFO] IPv6 supported, port: 19133: Used for gameplay
+[2026-07-23 22:41:30:093 INFO] Server started.
+[2026-07-23 22:41:30:094 INFO] ================ TELEMETRY MESSAGE ===================
+[2026-07-23 22:41:30:094 INFO] Server Telemetry is currently not enabled.
+[2026-07-23 22:41:30:094 INFO] Enabling this telemetry helps us improve the game.
+[2026-07-23 22:41:30:094 INFO]
+[2026-07-23 22:41:30:094 INFO] To enable this feature, add the line 'emit-server-telemetry=true'
+[2026-07-23 22:41:30:094 INFO] to the server.properties file in the handheld/src-server directory
+[2026-07-23 22:41:30:094 INFO] ======================================================
+time="2026-07-23T22:41:50Z" level=debug msg="Forwarding signal" signal=terminated
+time="2026-07-23T22:41:50Z" level=debug msg="Sending message on stdin due to SIGTERM" message=stop
+[2026-07-23 22:41:50:343 INFO] Server stop requested.
+[2026-07-23 22:41:50:374 INFO] Stopping server...
 Quit correctly
-2026-07-23T21:57:16.978Z	INFO	mc-server-runner	Done
+2026-07-23T22:41:50.880Z	INFO	mc-server-runner	Done
 [mccompiler-harness] cycle=2
 WARNING: The requested image's platform (linux/amd64) does not match the detected host platform (linux/arm64/v8) and no specific platform was requested
-time="2026-07-23T21:57:17Z" level=debug msg="Using /data to match uid and gid"
-time="2026-07-23T21:57:17Z" level=debug msg="Resolved UID=0 from match path"
-time="2026-07-23T21:57:17Z" level=debug msg="Resolved GID=0 from match path"
+time="2026-07-23T22:41:51Z" level=debug msg="Using /data to match uid and gid"
+time="2026-07-23T22:41:51Z" level=debug msg="Resolved UID=0 from match path"
+time="2026-07-23T22:41:51Z" level=debug msg="Resolved GID=0 from match path"
 Image info: buildtime=2025-12-13T02:14:45.091Z,version=master,revision=19ecd3aaf1bca5daa6a68526e6f51bb84732953a
 Using existing bedrock server executable
-2026/07/23 21:57:17 Setting white-list to false in server.properties
+2026/07/23 22:41:51 Setting white-list to false in server.properties
 Starting Bedrock server...
 NO LOG FILE! - setting up server logging...
-[2026-07-23 21:57:17:737 INFO] Starting Server
-[2026-07-23 21:57:17:737 INFO] Version: 1.26.33.2
-[2026-07-23 21:57:17:737 INFO] Session ID: 132517b6-28c8-46f0-b55b-6a0e6aff1216
-[2026-07-23 21:57:17:737 INFO] Build ID: 47564860
-[2026-07-23 21:57:17:737 INFO] Branch: r/26_u3
-[2026-07-23 21:57:17:737 INFO] Commit ID: 677921346ba4ea8fe5a0bed9807f2227f5352d7d
-[2026-07-23 21:57:17:737 INFO] Configuration: Publish
-[2026-07-23 21:57:17:742 INFO] Level Name: Forest Wave 1 Parallel Batch 1 INTERNAL TEST
-[2026-07-23 21:57:17:747 INFO] No CDN config file found at: cdn_config.json for dedicated server
-[2026-07-23 21:57:17:748 INFO] Game mode: 0 Survival
-[2026-07-23 21:57:17:748 INFO] Difficulty: 1 EASY
-[2026-07-23 21:57:17:756 INFO] Content logging to console is enabled.
-[2026-07-23 21:57:17:813 INFO]
+[2026-07-23 22:41:51:521 INFO] Starting Server
+[2026-07-23 22:41:51:521 INFO] Version: 1.26.33.2
+[2026-07-23 22:41:51:521 INFO] Session ID: 572039a1-5724-467d-80c7-5cc5260d558a
+[2026-07-23 22:41:51:521 INFO] Build ID: 47564860
+[2026-07-23 22:41:51:521 INFO] Branch: r/26_u3
+[2026-07-23 22:41:51:521 INFO] Commit ID: 677921346ba4ea8fe5a0bed9807f2227f5352d7d
+[2026-07-23 22:41:51:521 INFO] Configuration: Publish
+[2026-07-23 22:41:51:526 INFO] Level Name: Forest Wave 1 Parallel Batch 1 INTERNAL TEST
+[2026-07-23 22:41:51:530 INFO] No CDN config file found at: cdn_config.json for dedicated server
+[2026-07-23 22:41:51:530 INFO] Game mode: 0 Survival
+[2026-07-23 22:41:51:531 INFO] Difficulty: 1 EASY
+[2026-07-23 22:41:51:538 INFO] Content logging to console is enabled.
+[2026-07-23 22:41:51:588 INFO]
 #####################################################
 #                                                   #
 #               LOADING VANILLA WORLD               #
 #                                                   #
 #####################################################
-[2026-07-23 21:57:19:102 INFO] Opening level 'worlds/Forest Wave 1 Parallel Batch 1 INTERNAL TEST/db'
-[2026-07-23 21:57:19:873 INFO] Pack Stack - [00] Resonance Sling INTERNAL TEST BP (id: 61e0bbf4-0051-4bb0-a5bb-19e1cd68db0f, version: 1.0.0) @ worlds/Forest Wave 1 Parallel Batch 1 INTERNAL TEST/behavior_packs/Resonance_Sling_INTERNAL_TEST_BP-61e0bbf4
-[2026-07-23 21:57:19:873 INFO] Pack Stack - [01] Signal Ruin - INTERNAL TEST BUILD / NOT MARKETPLACE APPROVED / NOT PHYSICAL PS4 CERTIFIED / NOT FOR PUBLIC RELEASE (id: 556acdce-2ddc-4cbd-b08d-f62681387306, version: 0.1.0) @ worlds/Forest Wave 1 Parallel Batch 1 INTERNAL TEST/behavior_packs/Signal_Ruin_-_INTERNAL_TEST_BUILD___NOT_MARKETPLACE_APPROVED___NOT_PHYSICAL_PS4_CERTIFIED___NOT_FOR_PUBLIC_RELEASE-556acdce
-[2026-07-23 21:57:19:873 INFO] Pack Stack - [02] Mossback Forager INTERNAL TEST BP (id: 6a67bb25-2953-4be9-9b32-611cf09be04a, version: 1.0.0) @ worlds/Forest Wave 1 Parallel Batch 1 INTERNAL TEST/behavior_packs/Mossback_Forager_INTERNAL_TEST_BP-6a67bb25
-[2026-07-23 21:57:19:873 INFO] Pack Stack - [03] Barkguard Charm INTERNAL TEST BP (id: 2985974d-139b-4142-9c25-ae1aba1f95bf, version: 1.0.0) @ worlds/Forest Wave 1 Parallel Batch 1 INTERNAL TEST/behavior_packs/Barkguard_Charm_INTERNAL_TEST_BP-2985974d
-[2026-07-23 21:57:19:873 INFO] Pack Stack - [04] Gloamwing Stalker BP (Internal) (id: e2b0816e-74ed-4457-a8af-a9eb889ecbcb, version: 1.0.0) @ worlds/Forest Wave 1 Parallel Batch 1 INTERNAL TEST/behavior_packs/Gloamwing_Stalker_BP__Internal-e2b0816e
-[2026-07-23 21:57:19:873 INFO] Pack Stack - [05] Forest Attunement BP [INTERNAL TEST] (id: 43b642d0-a651-45cf-ae20-96a0b853fba5, version: 1.0.0) @ worlds/Forest Wave 1 Parallel Batch 1 INTERNAL TEST/behavior_packs/Forest_Attunement_BP__INTERNAL_TEST-43b642d0
-[2026-07-23 21:57:20:692 WARN] [Scripting] [resonance-sling] script runtime initialized stable_api=2.0.0 persistent_records=0 global_scan_per_tick=0 cap=16
-[2026-07-23 21:57:20:723 WARN] [Scripting] [barkguard-charm] stable_api=2.0.0 event_driven=true global_scans_per_tick=0 persistent_records=0
-[2026-07-23 21:57:21:814 WARN] [Components] Forest Wave 1 Parallel Batch 1 INTERNAL TEST | actor_definitions | worlds/Forest Wave 1 Parallel Batch 1 INTERNAL TEST/behavior_packs/Resonance_Sling_INTERNAL_TEST_BP-61e0bbf4 | ccoriginal_cc:resonance_pulse | minecraft:entity | components | Invalid particle type 'ccoriginal_cc:resonance_impact' specified.
-[2026-07-23 21:57:23:325 INFO] IPv4 supported, port: 19132: Used for gameplay and LAN discovery
-[2026-07-23 21:57:23:325 INFO] IPv6 supported, port: 19133: Used for gameplay
-[2026-07-23 21:57:23:387 INFO] Server started.
-[2026-07-23 21:57:23:388 INFO] ================ TELEMETRY MESSAGE ===================
-[2026-07-23 21:57:23:388 INFO] Server Telemetry is currently not enabled.
-[2026-07-23 21:57:23:388 INFO] Enabling this telemetry helps us improve the game.
-[2026-07-23 21:57:23:388 INFO]
-[2026-07-23 21:57:23:388 INFO] To enable this feature, add the line 'emit-server-telemetry=true'
-[2026-07-23 21:57:23:388 INFO] to the server.properties file in the handheld/src-server directory
-[2026-07-23 21:57:23:388 INFO] ======================================================
-time="2026-07-23T21:57:43Z" level=debug msg="Forwarding signal" signal=terminated
-time="2026-07-23T21:57:43Z" level=debug msg="Sending message on stdin due to SIGTERM" message=stop
-[2026-07-23 21:57:43:577 INFO] Server stop requested.
-[2026-07-23 21:57:43:624 INFO] Stopping server...
+[2026-07-23 22:41:52:778 INFO] Opening level 'worlds/Forest Wave 1 Parallel Batch 1 INTERNAL TEST/db'
+[2026-07-23 22:41:53:474 INFO] Pack Stack - [00] Resonance Sling INTERNAL TEST BP (id: 61e0bbf4-0051-4bb0-a5bb-19e1cd68db0f, version: 1.0.0) @ worlds/Forest Wave 1 Parallel Batch 1 INTERNAL TEST/behavior_packs/Resonance_Sling_INTERNAL_TEST_BP-61e0bbf4
+[2026-07-23 22:41:53:474 INFO] Pack Stack - [01] Signal Ruin - INTERNAL TEST BUILD / NOT MARKETPLACE APPROVED / NOT PHYSICAL PS4 CERTIFIED / NOT FOR PUBLIC RELEASE (id: 556acdce-2ddc-4cbd-b08d-f62681387306, version: 0.1.0) @ worlds/Forest Wave 1 Parallel Batch 1 INTERNAL TEST/behavior_packs/Signal_Ruin_-_INTERNAL_TEST_BUILD___NOT_MARKETPLACE_APPROVED___NOT_PHYSICAL_PS4_CERTIFIED___NOT_FOR_PUBLIC_RELEASE-556acdce
+[2026-07-23 22:41:53:474 INFO] Pack Stack - [02] Mossback Forager INTERNAL TEST BP (id: 6a67bb25-2953-4be9-9b32-611cf09be04a, version: 1.0.0) @ worlds/Forest Wave 1 Parallel Batch 1 INTERNAL TEST/behavior_packs/Mossback_Forager_INTERNAL_TEST_BP-6a67bb25
+[2026-07-23 22:41:53:474 INFO] Pack Stack - [03] Barkguard Charm INTERNAL TEST BP (id: 2985974d-139b-4142-9c25-ae1aba1f95bf, version: 1.0.0) @ worlds/Forest Wave 1 Parallel Batch 1 INTERNAL TEST/behavior_packs/Barkguard_Charm_INTERNAL_TEST_BP-2985974d
+[2026-07-23 22:41:53:474 INFO] Pack Stack - [04] Gloamwing Stalker BP (Internal) (id: e2b0816e-74ed-4457-a8af-a9eb889ecbcb, version: 1.0.0) @ worlds/Forest Wave 1 Parallel Batch 1 INTERNAL TEST/behavior_packs/Gloamwing_Stalker_BP__Internal-e2b0816e
+[2026-07-23 22:41:53:474 INFO] Pack Stack - [05] Forest Attunement BP [INTERNAL TEST] (id: 43b642d0-a651-45cf-ae20-96a0b853fba5, version: 1.0.0) @ worlds/Forest Wave 1 Parallel Batch 1 INTERNAL TEST/behavior_packs/Forest_Attunement_BP__INTERNAL_TEST-43b642d0
+[2026-07-23 22:41:54:229 WARN] [Scripting] [resonance-sling] script runtime initialized stable_api=2.0.0 persistent_records=0 global_scan_per_tick=0 cap=16
+[2026-07-23 22:41:54:258 WARN] [Scripting] [barkguard-charm] stable_api=2.0.0 event_driven=true global_scans_per_tick=0 persistent_records=0
+[2026-07-23 22:41:55:252 WARN] [Components] Forest Wave 1 Parallel Batch 1 INTERNAL TEST | actor_definitions | worlds/Forest Wave 1 Parallel Batch 1 INTERNAL TEST/behavior_packs/Resonance_Sling_INTERNAL_TEST_BP-61e0bbf4 | ccoriginal_cc:resonance_pulse | minecraft:entity | components | Invalid particle type 'ccoriginal_cc:resonance_impact' specified.
+[2026-07-23 22:41:56:638 INFO] IPv4 supported, port: 19132: Used for gameplay and LAN discovery
+[2026-07-23 22:41:56:638 INFO] IPv6 supported, port: 19133: Used for gameplay
+[2026-07-23 22:41:56:698 INFO] Server started.
+[2026-07-23 22:41:56:699 INFO] ================ TELEMETRY MESSAGE ===================
+[2026-07-23 22:41:56:699 INFO] Server Telemetry is currently not enabled.
+[2026-07-23 22:41:56:699 INFO] Enabling this telemetry helps us improve the game.
+[2026-07-23 22:41:56:699 INFO]
+[2026-07-23 22:41:56:699 INFO] To enable this feature, add the line 'emit-server-telemetry=true'
+[2026-07-23 22:41:56:699 INFO] to the server.properties file in the handheld/src-server directory
+[2026-07-23 22:41:56:699 INFO] ======================================================
+time="2026-07-23T22:42:16Z" level=debug msg="Forwarding signal" signal=terminated
+time="2026-07-23T22:42:16Z" level=debug msg="Sending message on stdin due to SIGTERM" message=stop
+[2026-07-23 22:42:16:891 INFO] Server stop requested.
+[2026-07-23 22:42:16:922 INFO] Stopping server...
 Quit correctly
-2026-07-23T21:57:44.094Z	INFO	mc-server-runner	Done
+2026-07-23T22:42:17.386Z	INFO	mc-server-runner	Done
 [mccompiler-harness] cycle=3
 WARNING: The requested image's platform (linux/amd64) does not match the detected host platform (linux/arm64/v8) and no specific platform was requested
-time="2026-07-23T21:57:44Z" level=debug msg="Using /data to match uid and gid"
-time="2026-07-23T21:57:44Z" level=debug msg="Resolved UID=0 from match path"
-time="2026-07-23T21:57:44Z" level=debug msg="Resolved GID=0 from match path"
+time="2026-07-23T22:42:17Z" level=debug msg="Using /data to match uid and gid"
+time="2026-07-23T22:42:17Z" level=debug msg="Resolved UID=0 from match path"
+time="2026-07-23T22:42:17Z" level=debug msg="Resolved GID=0 from match path"
 Image info: buildtime=2025-12-13T02:14:45.091Z,version=master,revision=19ecd3aaf1bca5daa6a68526e6f51bb84732953a
 Using existing bedrock server executable
-2026/07/23 21:57:44 Setting white-list to false in server.properties
+2026/07/23 22:42:17 Setting white-list to false in server.properties
 Starting Bedrock server...
 NO LOG FILE! - setting up server logging...
-[2026-07-23 21:57:44:773 INFO] Starting Server
-[2026-07-23 21:57:44:773 INFO] Version: 1.26.33.2
-[2026-07-23 21:57:44:773 INFO] Session ID: dc20b297-bedc-4d9d-bd0b-03960591eabb
-[2026-07-23 21:57:44:773 INFO] Build ID: 47564860
-[2026-07-23 21:57:44:773 INFO] Branch: r/26_u3
-[2026-07-23 21:57:44:773 INFO] Commit ID: 677921346ba4ea8fe5a0bed9807f2227f5352d7d
-[2026-07-23 21:57:44:773 INFO] Configuration: Publish
-[2026-07-23 21:57:44:778 INFO] Level Name: Forest Wave 1 Parallel Batch 1 INTERNAL TEST
-[2026-07-23 21:57:44:782 INFO] No CDN config file found at: cdn_config.json for dedicated server
-[2026-07-23 21:57:44:783 INFO] Game mode: 0 Survival
-[2026-07-23 21:57:44:783 INFO] Difficulty: 1 EASY
-[2026-07-23 21:57:44:790 INFO] Content logging to console is enabled.
-[2026-07-23 21:57:44:844 INFO]
+[2026-07-23 22:42:18:029 INFO] Starting Server
+[2026-07-23 22:42:18:029 INFO] Version: 1.26.33.2
+[2026-07-23 22:42:18:029 INFO] Session ID: e5eeb08f-4b1e-4280-9627-d069a7d82b59
+[2026-07-23 22:42:18:029 INFO] Build ID: 47564860
+[2026-07-23 22:42:18:029 INFO] Branch: r/26_u3
+[2026-07-23 22:42:18:029 INFO] Commit ID: 677921346ba4ea8fe5a0bed9807f2227f5352d7d
+[2026-07-23 22:42:18:029 INFO] Configuration: Publish
+[2026-07-23 22:42:18:034 INFO] Level Name: Forest Wave 1 Parallel Batch 1 INTERNAL TEST
+[2026-07-23 22:42:18:038 INFO] No CDN config file found at: cdn_config.json for dedicated server
+[2026-07-23 22:42:18:039 INFO] Game mode: 0 Survival
+[2026-07-23 22:42:18:039 INFO] Difficulty: 1 EASY
+[2026-07-23 22:42:18:046 INFO] Content logging to console is enabled.
+[2026-07-23 22:42:18:096 INFO]
 #####################################################
 #                                                   #
 #               LOADING VANILLA WORLD               #
 #                                                   #
 #####################################################
-[2026-07-23 21:57:46:141 INFO] Opening level 'worlds/Forest Wave 1 Parallel Batch 1 INTERNAL TEST/db'
-[2026-07-23 21:57:46:874 INFO] Pack Stack - [00] Resonance Sling INTERNAL TEST BP (id: 61e0bbf4-0051-4bb0-a5bb-19e1cd68db0f, version: 1.0.0) @ worlds/Forest Wave 1 Parallel Batch 1 INTERNAL TEST/behavior_packs/Resonance_Sling_INTERNAL_TEST_BP-61e0bbf4
-[2026-07-23 21:57:46:874 INFO] Pack Stack - [01] Signal Ruin - INTERNAL TEST BUILD / NOT MARKETPLACE APPROVED / NOT PHYSICAL PS4 CERTIFIED / NOT FOR PUBLIC RELEASE (id: 556acdce-2ddc-4cbd-b08d-f62681387306, version: 0.1.0) @ worlds/Forest Wave 1 Parallel Batch 1 INTERNAL TEST/behavior_packs/Signal_Ruin_-_INTERNAL_TEST_BUILD___NOT_MARKETPLACE_APPROVED___NOT_PHYSICAL_PS4_CERTIFIED___NOT_FOR_PUBLIC_RELEASE-556acdce
-[2026-07-23 21:57:46:874 INFO] Pack Stack - [02] Mossback Forager INTERNAL TEST BP (id: 6a67bb25-2953-4be9-9b32-611cf09be04a, version: 1.0.0) @ worlds/Forest Wave 1 Parallel Batch 1 INTERNAL TEST/behavior_packs/Mossback_Forager_INTERNAL_TEST_BP-6a67bb25
-[2026-07-23 21:57:46:874 INFO] Pack Stack - [03] Barkguard Charm INTERNAL TEST BP (id: 2985974d-139b-4142-9c25-ae1aba1f95bf, version: 1.0.0) @ worlds/Forest Wave 1 Parallel Batch 1 INTERNAL TEST/behavior_packs/Barkguard_Charm_INTERNAL_TEST_BP-2985974d
-[2026-07-23 21:57:46:874 INFO] Pack Stack - [04] Gloamwing Stalker BP (Internal) (id: e2b0816e-74ed-4457-a8af-a9eb889ecbcb, version: 1.0.0) @ worlds/Forest Wave 1 Parallel Batch 1 INTERNAL TEST/behavior_packs/Gloamwing_Stalker_BP__Internal-e2b0816e
-[2026-07-23 21:57:46:874 INFO] Pack Stack - [05] Forest Attunement BP [INTERNAL TEST] (id: 43b642d0-a651-45cf-ae20-96a0b853fba5, version: 1.0.0) @ worlds/Forest Wave 1 Parallel Batch 1 INTERNAL TEST/behavior_packs/Forest_Attunement_BP__INTERNAL_TEST-43b642d0
-[2026-07-23 21:57:47:686 WARN] [Scripting] [resonance-sling] script runtime initialized stable_api=2.0.0 persistent_records=0 global_scan_per_tick=0 cap=16
-[2026-07-23 21:57:47:717 WARN] [Scripting] [barkguard-charm] stable_api=2.0.0 event_driven=true global_scans_per_tick=0 persistent_records=0
-[2026-07-23 21:57:48:818 WARN] [Components] Forest Wave 1 Parallel Batch 1 INTERNAL TEST | actor_definitions | worlds/Forest Wave 1 Parallel Batch 1 INTERNAL TEST/behavior_packs/Resonance_Sling_INTERNAL_TEST_BP-61e0bbf4 | ccoriginal_cc:resonance_pulse | minecraft:entity | components | Invalid particle type 'ccoriginal_cc:resonance_impact' specified.
-[2026-07-23 21:57:50:348 INFO] IPv4 supported, port: 19132: Used for gameplay and LAN discovery
-[2026-07-23 21:57:50:348 INFO] IPv6 supported, port: 19133: Used for gameplay
-[2026-07-23 21:57:50:408 INFO] Server started.
-[2026-07-23 21:57:50:409 INFO] ================ TELEMETRY MESSAGE ===================
-[2026-07-23 21:57:50:409 INFO] Server Telemetry is currently not enabled.
-[2026-07-23 21:57:50:409 INFO] Enabling this telemetry helps us improve the game.
-[2026-07-23 21:57:50:409 INFO]
-[2026-07-23 21:57:50:409 INFO] To enable this feature, add the line 'emit-server-telemetry=true'
-[2026-07-23 21:57:50:409 INFO] to the server.properties file in the handheld/src-server directory
-[2026-07-23 21:57:50:409 INFO] ======================================================
-time="2026-07-23T21:58:10Z" level=debug msg="Forwarding signal" signal=terminated
-time="2026-07-23T21:58:10Z" level=debug msg="Sending message on stdin due to SIGTERM" message=stop
-[2026-07-23 21:58:10:599 INFO] Server stop requested.
-[2026-07-23 21:58:10:644 INFO] Stopping server...
+[2026-07-23 22:42:19:300 INFO] Opening level 'worlds/Forest Wave 1 Parallel Batch 1 INTERNAL TEST/db'
+[2026-07-23 22:42:19:989 INFO] Pack Stack - [00] Resonance Sling INTERNAL TEST BP (id: 61e0bbf4-0051-4bb0-a5bb-19e1cd68db0f, version: 1.0.0) @ worlds/Forest Wave 1 Parallel Batch 1 INTERNAL TEST/behavior_packs/Resonance_Sling_INTERNAL_TEST_BP-61e0bbf4
+[2026-07-23 22:42:19:989 INFO] Pack Stack - [01] Signal Ruin - INTERNAL TEST BUILD / NOT MARKETPLACE APPROVED / NOT PHYSICAL PS4 CERTIFIED / NOT FOR PUBLIC RELEASE (id: 556acdce-2ddc-4cbd-b08d-f62681387306, version: 0.1.0) @ worlds/Forest Wave 1 Parallel Batch 1 INTERNAL TEST/behavior_packs/Signal_Ruin_-_INTERNAL_TEST_BUILD___NOT_MARKETPLACE_APPROVED___NOT_PHYSICAL_PS4_CERTIFIED___NOT_FOR_PUBLIC_RELEASE-556acdce
+[2026-07-23 22:42:19:989 INFO] Pack Stack - [02] Mossback Forager INTERNAL TEST BP (id: 6a67bb25-2953-4be9-9b32-611cf09be04a, version: 1.0.0) @ worlds/Forest Wave 1 Parallel Batch 1 INTERNAL TEST/behavior_packs/Mossback_Forager_INTERNAL_TEST_BP-6a67bb25
+[2026-07-23 22:42:19:989 INFO] Pack Stack - [03] Barkguard Charm INTERNAL TEST BP (id: 2985974d-139b-4142-9c25-ae1aba1f95bf, version: 1.0.0) @ worlds/Forest Wave 1 Parallel Batch 1 INTERNAL TEST/behavior_packs/Barkguard_Charm_INTERNAL_TEST_BP-2985974d
+[2026-07-23 22:42:19:989 INFO] Pack Stack - [04] Gloamwing Stalker BP (Internal) (id: e2b0816e-74ed-4457-a8af-a9eb889ecbcb, version: 1.0.0) @ worlds/Forest Wave 1 Parallel Batch 1 INTERNAL TEST/behavior_packs/Gloamwing_Stalker_BP__Internal-e2b0816e
+[2026-07-23 22:42:19:989 INFO] Pack Stack - [05] Forest Attunement BP [INTERNAL TEST] (id: 43b642d0-a651-45cf-ae20-96a0b853fba5, version: 1.0.0) @ worlds/Forest Wave 1 Parallel Batch 1 INTERNAL TEST/behavior_packs/Forest_Attunement_BP__INTERNAL_TEST-43b642d0
+[2026-07-23 22:42:20:742 WARN] [Scripting] [resonance-sling] script runtime initialized stable_api=2.0.0 persistent_records=0 global_scan_per_tick=0 cap=16
+[2026-07-23 22:42:20:771 WARN] [Scripting] [barkguard-charm] stable_api=2.0.0 event_driven=true global_scans_per_tick=0 persistent_records=0
+[2026-07-23 22:42:21:764 WARN] [Components] Forest Wave 1 Parallel Batch 1 INTERNAL TEST | actor_definitions | worlds/Forest Wave 1 Parallel Batch 1 INTERNAL TEST/behavior_packs/Resonance_Sling_INTERNAL_TEST_BP-61e0bbf4 | ccoriginal_cc:resonance_pulse | minecraft:entity | components | Invalid particle type 'ccoriginal_cc:resonance_impact' specified.
+[2026-07-23 22:42:23:140 INFO] IPv4 supported, port: 19132: Used for gameplay and LAN discovery
+[2026-07-23 22:42:23:140 INFO] IPv6 supported, port: 19133: Used for gameplay
+[2026-07-23 22:42:23:198 INFO] Server started.
+[2026-07-23 22:42:23:199 INFO] ================ TELEMETRY MESSAGE ===================
+[2026-07-23 22:42:23:199 INFO] Server Telemetry is currently not enabled.
+[2026-07-23 22:42:23:199 INFO] Enabling this telemetry helps us improve the game.
+[2026-07-23 22:42:23:199 INFO]
+[2026-07-23 22:42:23:199 INFO] To enable this feature, add the line 'emit-server-telemetry=true'
+[2026-07-23 22:42:23:199 INFO] to the server.properties file in the handheld/src-server directory
+[2026-07-23 22:42:23:199 INFO] ======================================================
+time="2026-07-23T22:42:43Z" level=debug msg="Forwarding signal" signal=terminated
+time="2026-07-23T22:42:43Z" level=debug msg="Sending message on stdin due to SIGTERM" message=stop
+[2026-07-23 22:42:43:403 INFO] Server stop requested.
+[2026-07-23 22:42:43:424 INFO] Stopping server...
 Quit correctly
-2026-07-23T21:58:11.121Z	INFO	mc-server-runner	Done
+2026-07-23T22:42:43.912Z	INFO	mc-server-runner	Done

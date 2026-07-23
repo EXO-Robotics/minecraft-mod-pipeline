@@ -1,0 +1,37 @@
+{
+  "schema_version": "1.0.0",
+  "status": "AUTHORITATIVE_POST_RED_TEAM_DIGESTS",
+  "policy": "Only the final_package_sha256 values in this file are authoritative for integration. Candidate-packet hashes are immutable historical handoff evidence and are superseded where listed.",
+  "features": {
+    "signal_ruin": {
+      "package": "production/features/signal-ruin/dist/signal-ruin-INTERNAL-TEST.mcaddon",
+      "final_package_sha256": "2fab6ffb12ad8e268d54bd4d6ae830fa604a289164c07dac9010b2265f7430e5",
+      "superseded_candidate_packet_sha256": "0b3102c9a57f0e07bf492e5e683e0cf04407994943ad9a7e3dded08153e37180",
+      "reason": "Main review repairs plus accepted Grok findings GROK-002, GROK-003, and GROK-013"
+    },
+    "gloamwing_stalker": {
+      "package": "production/features/gloamwing-stalker/packages/gloamwing_stalker.mcaddon",
+      "final_package_sha256": "045e7d41e5a02ea2b6112db9657bb38305a884d4cf76d916fe46510aafacba98",
+      "superseded_candidate_packet_sha256": "dc2fce6347aef51793563334d4b89ea161c9c20aa104d86bfc159531fdf0abb5",
+      "reason": "Main review repair and authoritative Blockbench round trip"
+    },
+    "forest_attunement": {
+      "package": "production/features/forest-attunement/dist/forest-attunement-INTERNAL-TEST.mcaddon",
+      "final_package_sha256": "41cac5508cd7cf97078f2a99494e79b457e93e07fcabb1182c8e339d58a96a19",
+      "superseded_candidate_packet_sha256": "96ecd6c74b135d4ec55b7602e077efc87dca9e23a3111137729c5a0fb019ae27",
+      "reason": "Main review transaction repair plus accepted Grok finding GROK-007"
+    },
+    "mossback_forager": {
+      "package": "production/features/mossback-forager/dist/mossback-forager-INTERNAL-TEST.mcaddon",
+      "final_package_sha256": "2decec3b76aa1ec520007bdeaaf0afaaf5761ef53c06230f67cf384801347d64",
+      "superseded_candidate_packet_sha256": null,
+      "reason": "Candidate packet already matches frozen artifact"
+    },
+    "barkguard_charm": {
+      "package": "production/features/barkguard-charm/dist/barkguard-charm-INTERNAL-TEST.mcaddon",
+      "final_package_sha256": "1cc4920ae51dc237a6e9bf633480546ccb744b2dc0c2a979498a71399b0afbbe",
+      "superseded_candidate_packet_sha256": null,
+      "reason": "Candidate packet already matches frozen artifact"
+    }
+  }
+}

@@ -2,22 +2,25 @@
   "schema_version": "1.0.0",
   "batch_id": "forest-wave-1-parallel-batch-1",
   "review_owner": "MAIN_CODEX",
-  "status": "LOCAL_ACCEPTANCE_COMPLETE_EXTERNAL_RED_TEAM_PENDING",
+  "status": "POST_RED_TEAM_INTERNAL_ACCEPTANCE_COMPLETE",
   "candidates": [
     {
       "feature_id": "signal_ruin",
       "agent_head": "7d7907ecaa5c4be60a3ca0ad2e2351aa2a0631a0",
-      "final_package_sha256": "b9890cf0037c8d76ee616d05631233b431bc0c26b827563b3488290677a8b6e9",
-      "main_codex_revision_rounds": 2,
-      "main_review_finding_count": 7,
+      "final_package_sha256": "2fab6ffb12ad8e268d54bd4d6ae830fa604a289164c07dac9010b2265f7430e5",
+      "main_codex_revision_rounds": 3,
+      "main_review_finding_count": 10,
       "accepted_repairs": [
         "Preserved review evidence across deterministic rebuilds",
         "Applied a two-instance cap before mutation",
         "Applied an 80-second cleanup ceiling and spatially distinct stress pair",
         "Corrected damage_sensor deals_damage to the supported string enum",
-        "Corrected little-endian NBT root and list-of-compound encoding"
+        "Corrected little-endian NBT root and list-of-compound encoding",
+        "Replaced periodic all-dimension scans with a maximum-two active-anchor registry",
+        "Replaced the lossy reward command window with a persistent idempotent shared-cache witness",
+        "Emitted the reserved completion marker after durable reward commitment"
       ],
-      "disposition": "ACCEPT_LOCALLY_PENDING_GROK"
+      "disposition": "ACCEPT_INTERNAL_WITH_DOCUMENTED_CLIENT_LIMITATIONS"
     },
     {
       "feature_id": "gloamwing_stalker",
@@ -30,20 +33,21 @@
         "Replaced the empty editable wrapper with a native Blockbench project",
         "Replaced invalid summon-event tagging with explicit bounded summon and tag commands"
       ],
-      "disposition": "ACCEPT_LOCALLY_PENDING_GROK"
+      "disposition": "ACCEPT_INTERNAL_WITH_DOCUMENTED_CLIENT_LIMITATIONS"
     },
     {
       "feature_id": "forest_attunement",
       "agent_head": "9c7b8a65be389cc21d384fb90711d9f823f8164a",
-      "final_package_sha256": "1803664fb6dfced97ec4252fb3c8ad398f4bd9995e6bbea44dc8205ce37945c7",
-      "main_codex_revision_rounds": 2,
-      "main_review_finding_count": 4,
+      "final_package_sha256": "41cac5508cd7cf97078f2a99494e79b457e93e07fcabb1182c8e339d58a96a19",
+      "main_codex_revision_rounds": 3,
+      "main_review_finding_count": 5,
       "accepted_repairs": [
         "Separated committed persistence and inventory consumption from optional presentation",
         "Added the required modern recipe unlock",
-        "Made item-use and player iteration callbacks defensive against incomplete diagnostic payloads"
+        "Made item-use and player iteration callbacks defensive against incomplete diagnostic payloads",
+        "Enforced the four-player planning cap in the 100-tick benefit callback"
       ],
-      "disposition": "ACCEPT_LOCALLY_PENDING_GROK"
+      "disposition": "ACCEPT_INTERNAL_WITH_DOCUMENTED_CLIENT_LIMITATIONS"
     },
     {
       "feature_id": "mossback_forager",
@@ -56,7 +60,7 @@
         "Replaced the empty editable wrapper with a native Blockbench project",
         "Moved gift loot to the supported interact spawn_items field"
       ],
-      "disposition": "ACCEPT_LOCALLY_PENDING_GROK"
+      "disposition": "ACCEPT_INTERNAL_WITH_DOCUMENTED_CLIENT_LIMITATIONS"
     },
     {
       "feature_id": "barkguard_charm",
@@ -68,13 +72,13 @@
         "Removed sub-unit Box UV dimensions and revalidated the native project",
         "Made the damage callback defensive against incomplete diagnostic payloads"
       ],
-      "disposition": "ACCEPT_LOCALLY_PENDING_GROK"
+      "disposition": "ACCEPT_INTERNAL_WITH_DOCUMENTED_CLIENT_LIMITATIONS"
     }
   ],
   "shared_disposition": {
     "no_child_self_accepted_or_integrated": true,
-    "grok_finding_count": null,
-    "grok_status": "PENDING_EXPLICIT_EXTERNAL_DISCLOSURE_APPROVAL",
+    "grok_finding_count": 16,
+    "grok_status": "COMPLETED_ALL_ACCEPTED_CRITICAL_AND_HIGH_RESOLVED",
     "creator_tools_status": "NOT_EXECUTED_ENVIRONMENT_UNAVAILABLE",
     "physical_ps4_status": "PENDING"
   }

@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.0.0",
+  "attempt": 3,
+  "command": "/Users/<USER>/.grok/bin/grok --single \"$(cat /private/tmp/forest-wave-1-grok-disclosure/REVIEW_PROMPT.md)\" --cwd /private/tmp/forest-wave-1-grok-disclosure --output-format json --disable-web-search --no-subagents --tools \"read_file,grep,list_dir\" --max-turns 6",
+  "exit_code": 0,
+  "session_id": "019f9117-6ba3-7e81-af11-1a75651500a1",
+  "request_id": "f62447a9-e53c-4280-be40-edbc49d1378b",
+  "model_cli": "grok-4.5-build",
+  "model_reported": "Grok 4.5",
+  "exact_output_path": "attempt-3-exact-grok-output.txt",
+  "exact_output_sha256": "14dc8f57ee5e754b3cf85d2b85fdab3a3f599d4406d19f29aa0d759195749744",
+  "turn_completed": {
+    "sessionUpdate": "turn_completed",
+    "prompt_id": "f62447a9-e53c-4280-be40-edbc49d1378b",
+    "stop_reason": "end_turn",
+    "usage": {
+      "inputTokens": 383374,
+      "outputTokens": 12081,
+      "totalTokens": 395455,
+      "cachedReadTokens": 295936,
+      "reasoningTokens": 4511,
+      "modelCalls": 6,
+      "apiDurationMs": 198066,
+      "costUsdTicks": 3361428000,
+      "modelUsage": {
+        "grok-4.5-build": {
+          "inputTokens": 383374,
+          "outputTokens": 12081,
+          "totalTokens": 395455,
+          "cachedReadTokens": 295936,
+          "reasoningTokens": 4511,
+          "modelCalls": 6,
+          "apiDurationMs": 198066,
+          "costUsdTicks": 3361428000
+        }
+      },
+      "numTurns": 6
+    }
+  }
+}

@@ -157,6 +157,7 @@ class ForestAttunementTests(unittest.TestCase):
         self.assertNotIn("beforeEvents.tick", source)
         self.assertNotRegex(source, r"new\s+Map|new\s+WeakMap")
         self.assertEqual(source.count("world.getAllPlayers()"), 1)
+        self.assertIn("world.getAllPlayers().slice(0, 4)", source)
 
     def test_stable_api_version_reserved_ids_and_pack_uuids(self):
         bp = json.loads((FEATURE / "behavior_pack/manifest.json").read_text())

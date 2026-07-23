@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import importlib.util
 import json
+import hashlib
 import sys
 import tempfile
 import unittest
@@ -118,6 +119,22 @@ class ForestWave1ParallelBatch1IntegrationTests(unittest.TestCase):
             path = Path(directory) / "duplicate.mcaddon"
             with self.assertRaisesRegex(ValueError, "Duplicate integration archive entry"):
                 BUILDER.write_zip(path, BUILDER.pack_entries([duplicate, duplicate]))
+
+    def test_final_digest_freeze_matches_every_integrated_feature_package(self) -> None:
+        freeze = json.loads(
+            (
+                ROOT
+                / "production/batches/forest-wave-1-parallel-batch-1/reports/final-digest-freeze.json"
+            ).read_text()
+        )
+        self.assertEqual("AUTHORITATIVE_POST_RED_TEAM_DIGESTS", freeze["status"])
+        for feature in freeze["features"].values():
+            package = ROOT / feature["package"]
+            self.assertTrue(package.is_file())
+            self.assertEqual(
+                hashlib.sha256(package.read_bytes()).hexdigest(),
+                feature["final_package_sha256"],
+            )
 
 
 if __name__ == "__main__":

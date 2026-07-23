@@ -99,7 +99,9 @@
     "Marketplace partner review"
   ],
   "contamination_status": {
-    "status": "CLEAN",
+    "status": "NO_CONTAMINATION_OBSERVED_WITHIN_DISCLOSED_PRODUCTION_INPUTS",
+    "verification_method": "Production-input allowlist and changed-path inspection; no restricted Java or third-party expression was inspected.",
+    "scope": "Signal Ruin original-production contract, batch assignment/reservations, and candidate-owned changed paths only",
     "third_party_or_java_expression_inspected": false,
     "controlled_chaos_benchmark_inspected": false,
     "resonance_sling_inspected_or_edited": false,

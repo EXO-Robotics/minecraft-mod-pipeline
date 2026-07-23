@@ -133,7 +133,7 @@ system.afterEvents.scriptEventReceive.subscribe(({ id, sourceEntity }) => {
 });
 
 system.runInterval(() => {
-  for (const player of world.getAllPlayers()) {
+  for (const player of world.getAllPlayers().slice(0, 4)) {
     if (!player) continue;
     if (!isForestAttuned(player)) continue;
     try {

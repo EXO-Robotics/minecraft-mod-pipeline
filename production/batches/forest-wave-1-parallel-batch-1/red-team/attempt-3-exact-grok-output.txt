@@ -1,0 +1,406 @@
+I'll read the six disclosure evidence files in parallel and then produce the required red-team JSON assessment.Targeting critical implementation gaps in the patch and qualification claims next.```json
+{
+  "review_id": "forest-wave-1-parallel-batch-1-grok-red-team",
+  "model_identifier": "Grok 4.5",
+  "overall_assessment": "PASS_WITH_FINDINGS",
+  "findings": [
+    {
+      "id": "GROK-001",
+      "severity": "HIGH",
+      "candidate": "batch",
+      "title": "Contradictory package SHA-256 across candidate packets and final manifests",
+      "claim": "Multiple features publish different mcaddon digests in candidate-packet versus later artifact-manifest / candidate-review final_package_sha256, so chain-of-custody for the integrated artifact set is not single-valued without an explicit supersession record.",
+      "evidence": [
+        {
+          "file": "QUALIFICATION_EVIDENCE.md",
+          "location": "signal-ruin candidate-packet assets_and_packages vs artifact-manifest package_sha256 / candidate-review final_package_sha256",
+          "detail": "Signal Ruin candidate-packet lists mcaddon sha256 0b3102c9… while artifact-manifest and final_package_sha256 use b9890cf0…; structure hashes also diverge (331fe344… vs 2e03a94a…)."
+        },
+        {
+          "file": "QUALIFICATION_EVIDENCE.md",
+          "location": "gloamwing-stalker candidate-packet hashes_sha256.mcaddon vs build-report / final_package_sha256",
+          "detail": "Gloamwing candidate-packet mcaddon dc2fce63… versus build-report and final_package_sha256 045e7d41…."
+        },
+        {
+          "file": "QUALIFICATION_EVIDENCE.md",
+          "location": "forest-attunement candidate-packet artifacts vs artifact-manifest / final_package_sha256",
+          "detail": "Forest Attunement candidate-packet mcaddon 96ecd6c7… / behavior 49b714e7… versus artifact-manifest mcaddon 1803664f… / behavior ab52f568… and matching final_package_sha256."
+        }
+      ],
+      "recommended_resolution": "Freeze one authoritative digest table per feature (final package only), mark prior packet hashes as superseded with revision pointers, and re-bind integration/BDS receipts only to the frozen digests."
+    },
+    {
+      "id": "GROK-002",
+      "severity": "HIGH",
+      "candidate": "signal_ruin",
+      "title": "Contract global_scans_per_tick=0 violated by multi-dimension entity scans",
+      "claim": "Signal Ruin’s 20-tick interval and activation path repeatedly query all dimensions for anchors, nearby players, and tagged mobs, contradicting the production contract cleanup cap of zero global scans per tick and creating a PS4-relevant entity-query load pattern.",
+      "evidence": [
+        {
+          "file": "CONTRACTS_AND_ASSIGNMENTS.md",
+          "location": "signal_ruin original-production-manifest cleanup.global_scans_per_tick",
+          "detail": "Contract requires global_scans_per_tick: 0 and cleanup_latency_ticks: 40."
+        },
+        {
+          "file": "CANDIDATE_DIFF.patch",
+          "location": "signal_ruin.js activeInstances/worldLoad/runInterval",
+          "detail": "activeInstances(), worldLoad recovery, and system.runInterval(...,20) each iterate overworld/nether/the_end via getEntities({type: signal_ruin_anchor}); active ticks also call getPlayers and mobs()->getEntities by tag."
+        },
+        {
+          "file": "FEATURE_TESTS.md",
+          "location": "test_encounter_contract_is_bounded_idempotent_and_recoverable",
+          "detail": "Static tests assert runInterval },20) and CAP strings but do not enforce the contract’s global_scans_per_tick=0 constraint."
+        }
+      ],
+      "recommended_resolution": "Replace world-wide scans with instance-local bookkeeping (register active anchors on activate/complete; no per-second full-dimension enumeration), then update contract/tests to the real query budget."
+    },
+    {
+      "id": "GROK-003",
+      "severity": "HIGH",
+      "candidate": "signal_ruin",
+      "title": "Reward marker committed before loot command success",
+      "claim": "reward() sets reward_issued=true and advances toward COMPLETE before runCommand loot spawn is known to succeed, so a failed loot command permanently consumes the one-shot reward without delivering the shared cache.",
+      "evidence": [
+        {
+          "file": "CANDIDATE_DIFF.patch",
+          "location": "signal_ruin.js function reward",
+          "detail": "Sequence is set REWARD_READY + reward_issued true, then dimension.runCommand(loot spawn …), then COMPLETE; no success check or retry path."
+        },
+        {
+          "file": "CONTRACTS_AND_ASSIGNMENTS.md",
+          "location": "signal_ruin gameplay.reward / persistence.restart_recovery",
+          "detail": "Contract requires one cache per structure instance with restart-safe non-duplication; it does not authorize silent permanent loss of the sole reward on command failure."
+        },
+        {
+          "file": "QUALIFICATION_EVIDENCE.md",
+          "location": "signal-ruin candidate-packet limitations",
+          "detail": "Packet itself states reward command and stable Script API behavior require authoritative BDS qualification; disclosed tests only string-match script text."
+        }
+      ],
+      "recommended_resolution": "Issue reward only after confirmed loot success, or keep REWARD_READY until a verified spawn/retry succeeds while still blocking duplicate grants."
+    },
+    {
+      "id": "GROK-004",
+      "severity": "HIGH",
+      "candidate": "signal_ruin",
+      "title": "INSTANCE_CAP check is non-atomic under concurrent activation",
+      "claim": "activeInstances() is read, then later mutations set ACTIVE state; concurrent interactions can all observe count < 2 and exceed the hard two-active-instance cap.",
+      "evidence": [
+        {
+          "file": "CANDIDATE_DIFF.patch",
+          "location": "signal_ruin.js activate / activeInstances",
+          "detail": "activate checks activeInstances()>=INSTANCE_CAP then mutates schema/instance/wave; no reservation lock or single-writer token before the check window."
+        },
+        {
+          "file": "FEATURE_TESTS.md",
+          "location": "test_third_concurrent_activation_is_rejected_before_mutation",
+          "detail": "Only proves static source order of cap check before set() in one function body; does not exercise concurrent multiplayer activation."
+        },
+        {
+          "file": "CONTRACTS_AND_ASSIGNMENTS.md",
+          "location": "signal_ruin performance_caps.active_instances_max",
+          "detail": "active_instances_max is 2 and multiplayer.lock requires server-authoritative rejection of concurrent activation."
+        }
+      ],
+      "recommended_resolution": "Use a single authoritative reservation (world/entity property or immediate ACTIVE write before any other work) proven under simultaneous interact events."
+    },
+    {
+      "id": "GROK-005",
+      "severity": "HIGH",
+      "candidate": "batch",
+      "title": "Stable/Preview BDS passes are boot/load diagnostics, not feature gameplay qualification",
+      "claim": "Gate labels report Stable and Preview BDS as passed, but disclosed probes primarily verify boot/restart log snippets and SimulatedPlayer harness limits; real item/damage/interact activation and reconnect persistence remain pending, so gameplay/multiplayer integrity is not established.",
+      "evidence": [
+        {
+          "file": "INTEGRATION_TESTS_AND_ORCHESTRATION.md",
+          "location": "run_forest_wave_1_parallel_batch_1_bds.py run_stable expected probes",
+          "detail": "Stable probes only expect resonance-sling init and barkguard-charm stable_api log lines across three restart cycles—not signal_ruin encounter, forest_attunement activation, or mossback interact."
+        },
+        {
+          "file": "QUALIFICATION_EVIDENCE.md",
+          "location": "qualification-report.md SimulatedPlayer boundaries",
+          "detail": "Explicitly records that simulated item use, damage, entity interaction, and post-restart player identity did not deliver production payloads; real activation/persistence remain pending."
+        },
+        {
+          "file": "QUALIFICATION_EVIDENCE.md",
+          "location": "checkpoint-manifest.json gates",
+          "detail": "stable_bds_three_restart=PASSED and preview=PASSED_WITH_DOCUMENTED_HARNESS_LIMITS while bedrock_desktop_client, live_multiplayer_clients, physical_ps4, and creator_tools remain pending/not executed."
+        }
+      ],
+      "recommended_resolution": "Keep BDS status as diagnostic-only; require production-event gameplay probes per contract required_tests before any ACCEPT disposition beyond internal static candidate."
+    },
+    {
+      "id": "GROK-006",
+      "severity": "MEDIUM",
+      "candidate": "forest_attunement",
+      "title": "Stable API surface risk for getBiome and isOp under declared 2.0.0 dependency",
+      "claim": "Benefit and admin-reset paths call dimension.getBiome and player.isOp without disclosed runtime proof on @minecraft/server 2.0.0; failures are catch-logged, so the core benefit may silently never apply while still claiming stable API compliance.",
+      "evidence": [
+        {
+          "file": "CANDIDATE_DIFF.patch",
+          "location": "forest-attunement behavior_pack/scripts/main.js",
+          "detail": "runInterval uses player.dimension.getBiome(player.location); reset path uses player.isOp(); manifest depends on @minecraft/server 2.0.0."
+        },
+        {
+          "file": "QUALIFICATION_EVIDENCE.md",
+          "location": "forest-attunement candidate-packet limitations",
+          "detail": "States automated tests do not execute @minecraft/server and biome allowlist is an approximation; unexecuted gates include stable BDS and live multiplayer."
+        },
+        {
+          "file": "FEATURE_TESTS.md",
+          "location": "ForestAttunementTests Player model",
+          "detail": "Activation/migration tests use a pure-Python Player model; only static source inspection covers interval bounds."
+        }
+      ],
+      "recommended_resolution": "Confirm both APIs on the pinned stable module/engine pair in BDS logs; if unavailable, replace with supported stable biome/permission surfaces and add a failing boot probe."
+    },
+    {
+      "id": "GROK-007",
+      "severity": "MEDIUM",
+      "candidate": "forest_attunement",
+      "title": "players_modeled_max=4 not enforced at runtime",
+      "claim": "Performance contract caps modeled players at 4, but the interval iterates world.getAllPlayers() with no bound, risking uncapped per-interval work on larger multiplayer/PS4 sessions.",
+      "evidence": [
+        {
+          "file": "CONTRACTS_AND_ASSIGNMENTS.md",
+          "location": "forest_attunement performance_caps.players_modeled_max",
+          "detail": "players_modeled_max: 4 and player_check_interval_ticks: 100."
+        },
+        {
+          "file": "CANDIDATE_DIFF.patch",
+          "location": "main.js system.runInterval",
+          "detail": "for (const player of world.getAllPlayers()) with no slice/cap."
+        },
+        {
+          "file": "FEATURE_TESTS.md",
+          "location": "test_runtime_has_one_bounded_interval_and_no_tick_subscription_or_cache",
+          "detail": "Asserts a single getAllPlayers call and 100-tick interval, not a four-player processing cap."
+        }
+      ],
+      "recommended_resolution": "Either enforce a hard max of four processed players per interval or revise the contract/cap to the real multiplayer design and re-score PS4 planning."
+    },
+    {
+      "id": "GROK-008",
+      "severity": "MEDIUM",
+      "candidate": "mossback_forager",
+      "title": "Native interact contention and restart gift safety are structural only",
+      "claim": "First-valid-interaction atomicity and cooldown restart safety are asserted by entity JSON shape and Python structural tests, not by multiplayer runtime evidence; native interact+spawn_items races remain an open integrity risk.",
+      "evidence": [
+        {
+          "file": "CANDIDATE_DIFF.patch",
+          "location": "mossback_forager.json ccoriginal_cc:ready interact / accept_berry sequence",
+          "detail": "Gift emission is on interact spawn_items with use_item true; accept_berry only removes ready and starts cooling—no scripted mutex."
+        },
+        {
+          "file": "FEATURE_TESTS.md",
+          "location": "test_exact_consumption_gift_atomic_contention_and_restart_safe_model",
+          "detail": "Checks component/event structure and absence of scripts; explicitly models contention as 'one entity property' without concurrent clients."
+        },
+        {
+          "file": "QUALIFICATION_EVIDENCE.md",
+          "location": "mossback-forager candidate-packet limitations",
+          "detail": "States native interaction atomicity and timer restart behavior require Bedrock/BDS confirmation; runtime_zero_count is null."
+        }
+      ],
+      "recommended_resolution": "Run two-client simultaneous feed and restart-during-cooling probes on authoritative BDS before accepting contention claims."
+    },
+    {
+      "id": "GROK-009",
+      "severity": "MEDIUM",
+      "candidate": "gloamwing_stalker",
+      "title": "Attack-cycle exclusivity and multiplayer retargeting unproven at runtime",
+      "claim": "Telegraph/pounce/recovery/cooldown reachability is only structural graph testing; damage_reaction can coexist with other timer groups, and required two-/four-player target switching remains unexecuted.",
+      "evidence": [
+        {
+          "file": "CANDIDATE_DIFF.patch",
+          "location": "gloamwing_stalker.json events ccoriginal_cc:on_damage / component_groups",
+          "detail": "on_damage only adds damage_reaction; it does not remove telegraph/pounce/recovery groups before the 0.2s reset path."
+        },
+        {
+          "file": "FEATURE_TESTS.md",
+          "location": "test_attack_cycle_is_structurally_reachable_and_cooldown_is_bounded",
+          "detail": "Walks declared event edges and cooldown timer bounds only."
+        },
+        {
+          "file": "QUALIFICATION_EVIDENCE.md",
+          "location": "gloamwing candidate-packet unexecuted_gates / performance.classification",
+          "detail": "classification STATIC_BUDGET_PASS_RUNTIME_UNTESTED; unexecuted two-/four-player target switching, disconnect, BDS stress, and desktop combat."
+        }
+      ],
+      "recommended_resolution": "Make damage interrupt remove exclusive attack groups immediately and qualify retargeting under multi-player BDS/desktop combat."
+    },
+    {
+      "id": "GROK-010",
+      "severity": "MEDIUM",
+      "candidate": "barkguard_charm",
+      "title": "Effect/cooldown applied before durability commit",
+      "claim": "tryActivate grants resistance and starts cooldown before durability mutation/equipment write; a failed durability write yields free protection without the intended durability cost.",
+      "evidence": [
+        {
+          "file": "CANDIDATE_DIFF.patch",
+          "location": "barkguard-charm scripts/main.js tryActivate",
+          "detail": "Order: addEffect resistance, startItemCooldown, then durability.damage++/setEquipment or clear offhand."
+        },
+        {
+          "file": "CONTRACTS_AND_ASSIGNMENTS.md",
+          "location": "barkguard_charm gameplay durability_cost_per_trigger / multiplayer.duplicate_prevention",
+          "detail": "Requires one effect and one durability increment per qualifying after-damage event."
+        },
+        {
+          "file": "FEATURE_TESTS.md",
+          "location": "PlayerModel.hurt",
+          "detail": "Python model applies effect, cooldown, and damage together atomically; it cannot detect partial Script API failure ordering."
+        }
+      ],
+      "recommended_resolution": "Commit durability (or break) before applying effect/cooldown, or roll back effect/cooldown if equipment write fails; prove on BDS damage events."
+    },
+    {
+      "id": "GROK-011",
+      "severity": "MEDIUM",
+      "candidate": "batch",
+      "title": "Contamination marked CLEAN without inspection of restricted materials",
+      "claim": "Candidate packets assert CLEAN / no third-party expression while simultaneously recording that Java/third-party/controlled-chaos materials were not inspected, so originality is self-attested process status rather than verified evidence.",
+      "evidence": [
+        {
+          "file": "QUALIFICATION_EVIDENCE.md",
+          "location": "signal-ruin contamination_status",
+          "detail": "status CLEAN with third_party_or_java_expression_inspected false and controlled_chaos_benchmark_inspected false."
+        },
+        {
+          "file": "QUALIFICATION_EVIDENCE.md",
+          "location": "gloamwing/mossback contamination blocks",
+          "detail": "java_source_inspected/java_inspected false while claiming no third-party expression used."
+        },
+        {
+          "file": "CONTRACTS_AND_ASSIGNMENTS.md",
+          "location": "batch-preflight acceptance.required_before_acceptance",
+          "detail": "Requires originality and contamination scan before acceptance."
+        }
+      ],
+      "recommended_resolution": "Run a documented feature-local contamination scan against reserved inputs only, or downgrade status to UNVERIFIED_SELF_ATTESTED until that scan exists."
+    },
+    {
+      "id": "GROK-012",
+      "severity": "MEDIUM",
+      "candidate": "batch",
+      "title": "Feature tests are largely static/string/model suites, not Bedrock runtime proofs",
+      "claim": "Contract-required multiplayer, restart, stress, and reward scenarios are mostly encoded as source-string assertions or offline player models; several agents also report pytest unavailable and direct harness invocation, weakening confidence that required_tests were executed as runtime tests.",
+      "evidence": [
+        {
+          "file": "FEATURE_TESTS.md",
+          "location": "tests/test_signal_ruin.py / test_gloamwing_stalker.py / test_mossback_forager.py",
+          "detail": "Heavy use of script/JSON string membership and structural graph checks rather than in-engine simulation."
+        },
+        {
+          "file": "FEATURE_TESTS.md",
+          "location": "ForestAttunementTests / BarkguardCharmTests PlayerModel",
+          "detail": "Persistence and damage semantics are reimplemented in Python dataclasses, not @minecraft/server."
+        },
+        {
+          "file": "QUALIFICATION_EVIDENCE.md",
+          "location": "gloamwing metrics.test_framework_note / mossback tests.pytest",
+          "detail": "pytest unavailable; direct harness invocation recorded for feature and adjacent suites."
+        }
+      ],
+      "recommended_resolution": "Treat current suites as static preflight only; map each contract required_test to an authoritative BDS/desktop evidence row before acceptance."
+    },
+    {
+      "id": "GROK-013",
+      "severity": "LOW",
+      "candidate": "signal_ruin",
+      "title": "Extension marker signal_ruin_completed not implemented",
+      "claim": "Contract extension_interfaces list a world event marker ccoriginal_cc:signal_ruin_completed, but the candidate only sends a chat message on completion.",
+      "evidence": [
+        {
+          "file": "CONTRACTS_AND_ASSIGNMENTS.md",
+          "location": "signal_ruin extension_interfaces",
+          "detail": "Lists ccoriginal_cc:signal_ruin_completed world event marker for later progression."
+        },
+        {
+          "file": "CANDIDATE_DIFF.patch",
+          "location": "signal_ruin.js reward",
+          "detail": "Completes with world.sendMessage only; no scoreboard/event/property marker matching the reserved completed identifier."
+        }
+      ],
+      "recommended_resolution": "Emit the reserved completion marker or explicitly defer the extension interface in the contract revision."
+    },
+    {
+      "id": "GROK-014",
+      "severity": "LOW",
+      "candidate": "gloamwing_stalker",
+      "title": "min_engine_version skew versus rest of batch",
+      "claim": "Gloamwing BP declares min_engine_version 1.20.50 while peer scripted packs target 1.21.80/1.21.90, increasing integrated engine-floor ambiguity for the batch mcaddon.",
+      "evidence": [
+        {
+          "file": "CANDIDATE_DIFF.patch",
+          "location": "gloamwing-stalker behavior_pack/manifest.json min_engine_version",
+          "detail": "min_engine_version [1,20,50] with entity format_version 1.20.50."
+        },
+        {
+          "file": "CANDIDATE_DIFF.patch",
+          "location": "forest-attunement / barkguard / mossback manifests",
+          "detail": "Peer packs use 1.21.80 or 1.21.90 floors."
+        }
+      ],
+      "recommended_resolution": "Align Gloamwing min_engine_version with the batch integration floor after validating components on that engine."
+    },
+    {
+      "id": "GROK-015",
+      "severity": "INFO",
+      "candidate": "batch",
+      "title": "Release and PS4 boundaries are honestly labeled in current checkpoint",
+      "claim": "Disclosed preflight, integration claims, and checkpoint external_actions correctly withhold marketplace, Realm, push/tag/release, and physical PS4 certification claims while batch remains blocked on external red-team disposition.",
+      "evidence": [
+        {
+          "file": "CONTRACTS_AND_ASSIGNMENTS.md",
+          "location": "batch-preflight release_restrictions / unavailable_gates",
+          "detail": "NO_PHYSICAL_PS4_CLAIM, NO_MARKETPLACE_SUBMISSION; physical_ps4 PENDING_PHYSICAL_HARDWARE."
+        },
+        {
+          "file": "QUALIFICATION_EVIDENCE.md",
+          "location": "checkpoint-manifest.json",
+          "detail": "final_accepted false; physical_ps4_claim false; marketplace NOT_SUBMITTED; status BLOCKED_PENDING_REQUIRED_EXTERNAL_GROK_REVIEW."
+        }
+      ],
+      "recommended_resolution": "Retain these labels; do not promote language from diagnostic PASS gates into readiness or certification claims."
+    },
+    {
+      "id": "GROK-016",
+      "severity": "INFO",
+      "candidate": "batch",
+      "title": "Clean-room lane and write-scope isolation are well structured on paper",
+      "claim": "Contracts consistently declare ORIGINAL_BEDROCK_NATIVE / no Java fidelity, reservations use disjoint UUID/prefix sets, and assignments forbid shared-file edits and Resonance Sling mutation—sound clean-room scaffolding if contamination scans and hash freezes are completed.",
+      "evidence": [
+        {
+          "file": "CONTRACTS_AND_ASSIGNMENTS.md",
+          "location": "reservations.json / assignments / original-production-manifest authorship fields",
+          "detail": "Disjoint owned_paths, unique UUIDs, java_evidence NOT_APPLICABLE, source_expression_used false."
+        },
+        {
+          "file": "INTEGRATION_TESTS_AND_ORCHESTRATION.md",
+          "location": "test_reservations_have_unique_valid_uuids_and_disjoint_prefixes",
+          "detail": "Preflight test enforces 25 unique UUIDs and disjoint prefixes/identifiers."
+        }
+      ],
+      "recommended_resolution": "Keep isolation model; close GROK-001/011 before treating originality as qualification-complete."
+    }
+  ],
+  "evidence_limitations": [
+    "Review is limited to the six consolidated disclosure files; no Java sources, third-party assets, live Bedrock client, physical PS4, credentials, or repository history were available or used.",
+    "CANDIDATE_DIFF.patch is a text-only candidate slice; binary textures/structures/packages are represented by hashes/reports rather than re-executable artifacts in this review.",
+    "Feature tests and many qualification rows are static, model-based, or harness-limited; this advisory review is not implementation or qualification evidence.",
+    "BDS results are disclosed as logs/summaries only; runtime behavior of loot commands, interact atomicity, and Script API availability cannot be re-executed here.",
+    "Contamination CLEAN labels are self-attested; absence of inspected Java/third-party material in the disclosure prevents positive originality proof."
+  ],
+  "release_claim_check": {
+    "ps4_physical_claimed": false,
+    "marketplace_ready_claimed": false,
+    "overstatement_notes": [
+      "Candidate and batch documents correctly label INTERNAL TEST / NOT PHYSICAL PS4 CERTIFIED / NOT MARKETPLACE APPROVED in the reviewed materials.",
+      "Risk of overstatement is mainly gate naming: stable_bds_three_restart=PASSED and preview PASSED_WITH_DOCUMENTED_HARNESS_LIMITS can be misread as full multiplayer/gameplay qualification despite explicit harness and pending-desktop caveats.",
+      "Workload measurement attributes shared 276.318s qualification duration to every feature; that is batch-shared diagnostic time, not per-feature gameplay certification.",
+      "LOCAL_ACCEPTANCE_COMPLETE_EXTERNAL_RED_TEAM_PENDING and ACCEPT_LOCALLY_PENDING_GROK are local process states, not release authorization; checkpoint final_accepted remains false."
+    ]
+  }
+}
+```

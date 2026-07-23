@@ -88,6 +88,9 @@ def test_encounter_contract_is_bounded_idempotent_and_recoverable() -> None:
     assert "const ENCOUNTER_SECONDS_CAP = 80" in script
     assert "system.runInterval" in script and "},20)" in script
     assert "reward_issued" in script and 'if(get(a,"reward_issued",false))' in script
+    assert "materializeCache(a)" in script
+    assert 'world.setDynamicProperty("ccoriginal_cc:signal_ruin_completed",true)' in script
+    assert 'type:"minecraft:chest_minecart"' in script
     assert "playerInteractWithEntity" in script
     assert "absent>=20" in script and 'set(a,"state","READY")' in script
     assert "worldLoad" in script and "spawnWave(a,Math.max" in script
@@ -103,9 +106,34 @@ def test_third_concurrent_activation_is_rejected_before_mutation() -> None:
     function = script[script.index("function activate"):script.index("world.afterEvents.playerInteractWithEntity")]
     cap_check = function.index("activeInstances()>=INSTANCE_CAP")
     feedback = function.index("Only two Signal Ruins may be active at once")
+    reservation = function.index("activeAnchors.set(a.id,a)")
     first_mutation = function.index('set(a,"schema",1)')
-    assert cap_check < feedback < first_mutation
-    assert function[cap_check:first_mutation].count("set(a,") == 0
+    assert cap_check < feedback < reservation < first_mutation
+    assert function[cap_check:reservation].count("set(a,") == 0
+    assert "activeAnchors.delete(a.id)" in function
+
+
+def test_interval_uses_only_the_two_entry_active_registry() -> None:
+    script = (FEATURE / "bedrock/behavior_pack/scripts/signal_ruin.js").read_text()
+    assert "const activeAnchors = new Map()" in script
+    assert "function activeInstances(){\n  return activeAnchors.size;" in script
+    tick = script[script.index("system.runInterval"):]
+    assert "for(const [id,a] of activeAnchors)" in tick
+    assert "world.getDimension" not in tick
+    assert 'getEntities({type:"ccoriginal_cc:signal_ruin_anchor"})' not in tick
+
+
+def test_reward_cache_is_a_persistent_idempotent_witness() -> None:
+    script = (FEATURE / "bedrock/behavior_pack/scripts/signal_ruin.js").read_text()
+    reward = script[script.index("function materializeCache"):script.index("function activate")]
+    witness_lookup = reward.index('type:"minecraft:chest_minecart"')
+    conditional_spawn = reward.index("if(!cache)")
+    inventory_fill = reward.index("container.clearAll()")
+    commit = reward.index('set(a,"reward_issued",true)')
+    completion_marker = reward.index('world.setDynamicProperty("ccoriginal_cc:signal_ruin_completed",true)')
+    assert witness_lookup < conditional_spawn < inventory_fill < commit < completion_marker
+    assert 'cache.addTag("ccoriginal_cc_signal_ruin_cache")' in reward
+    assert "loot spawn" not in reward
 
 
 def test_encounter_timer_has_hard_80_second_cleanup_model() -> None:

@@ -106,6 +106,8 @@ def main() -> None:
     # Runtime outputs are wholly generated. Reports and the prototype directory
     # can also contain Main-Codex review/qualification evidence, so never delete
     # either tree during a feature-local rebuild.
+    script_path = BP / "scripts/signal_ruin.js"
+    script_source = script_path.read_text(encoding="utf-8")
     for path in (BP, RP, FEATURE / "dist"):
         if path.exists():
             shutil.rmtree(path)
@@ -235,7 +237,7 @@ def main() -> None:
     for name, body in functions.items():
         write_text(BP / f"functions/ccoriginal_cc/signal_ruin/{name}.mcfunction", body)
     write_text(BP / "functions/ccoriginal_cc/signal_ruin/INTERNAL-TEST-ONLY.txt", LABEL + "\n")
-    write_text(BP / "scripts/signal_ruin.js", SCRIPT)
+    write_text(BP / "scripts/signal_ruin.js", script_source)
     write_json(FEATURE / "tests/scenarios.json", {
         "label": LABEL, "scenarios": [
             "single activation and three-wave completion", "two-player activation contention",

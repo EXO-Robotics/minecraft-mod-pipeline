@@ -4,7 +4,7 @@
   "measurement_policy": {
     "token_usage": "The collaboration runtime did not expose per-agent token usage; null is recorded instead of an estimate.",
     "elapsed_time": "Only Signal Ruin supplied an approximate wall-clock value. Git commit span is retained as a proxy, not relabeled as wall-clock time.",
-    "qualification_duration": "Authoritative qualification was shared across the assembled batch: 81.503 Stable seconds plus 194.815 Preview seconds."
+    "qualification_duration": "Post-red-team authoritative qualification was shared across the assembled batch: 79.925 Stable seconds plus 193.518 Preview seconds."
   },
   "features": [
     {
@@ -17,12 +17,12 @@
       "editable_asset_count": 1,
       "generated_runtime_artifact_count": 18,
       "automated_test_count": 9,
-      "qualification_duration_seconds_shared": 276.318,
+      "qualification_duration_seconds_shared": 273.443,
       "main_codex_revision_count": 2,
       "main_review_finding_count": 7,
-      "red_team_finding_count": null,
+      "red_team_finding_count": 4,
       "blocker_count": 0,
-      "final_disposition": "ACCEPT_LOCALLY_PENDING_GROK"
+      "final_disposition": "ACCEPT_INTERNAL_WITH_DOCUMENTED_CLIENT_LIMITATIONS"
     },
     {
       "feature_id": "gloamwing_stalker",
@@ -34,12 +34,12 @@
       "editable_asset_count": 1,
       "generated_runtime_artifact_count": 15,
       "automated_test_count": 6,
-      "qualification_duration_seconds_shared": 276.318,
+      "qualification_duration_seconds_shared": 273.443,
       "main_codex_revision_count": 3,
       "main_review_finding_count": 3,
-      "red_team_finding_count": null,
+      "red_team_finding_count": 2,
       "blocker_count": 0,
-      "final_disposition": "ACCEPT_LOCALLY_PENDING_GROK"
+      "final_disposition": "ACCEPT_INTERNAL_WITH_DOCUMENTED_CLIENT_LIMITATIONS"
     },
     {
       "feature_id": "forest_attunement",
@@ -51,12 +51,12 @@
       "editable_asset_count": 1,
       "generated_runtime_artifact_count": 15,
       "automated_test_count": 11,
-      "qualification_duration_seconds_shared": 276.318,
+      "qualification_duration_seconds_shared": 273.443,
       "main_codex_revision_count": 2,
       "main_review_finding_count": 4,
-      "red_team_finding_count": null,
+      "red_team_finding_count": 2,
       "blocker_count": 0,
-      "final_disposition": "ACCEPT_LOCALLY_PENDING_GROK"
+      "final_disposition": "ACCEPT_INTERNAL_WITH_DOCUMENTED_CLIENT_LIMITATIONS"
     },
     {
       "feature_id": "mossback_forager",
@@ -68,12 +68,12 @@
       "editable_asset_count": 1,
       "generated_runtime_artifact_count": 20,
       "automated_test_count": 9,
-      "qualification_duration_seconds_shared": 276.318,
+      "qualification_duration_seconds_shared": 273.443,
       "main_codex_revision_count": 3,
       "main_review_finding_count": 3,
-      "red_team_finding_count": null,
+      "red_team_finding_count": 1,
       "blocker_count": 0,
-      "final_disposition": "ACCEPT_LOCALLY_PENDING_GROK"
+      "final_disposition": "ACCEPT_INTERNAL_WITH_DOCUMENTED_CLIENT_LIMITATIONS"
     },
     {
       "feature_id": "barkguard_charm",
@@ -85,15 +85,14 @@
       "editable_asset_count": 1,
       "generated_runtime_artifact_count": 16,
       "automated_test_count": 8,
-      "qualification_duration_seconds_shared": 276.318,
+      "qualification_duration_seconds_shared": 273.443,
       "main_codex_revision_count": 2,
       "main_review_finding_count": 2,
-      "red_team_finding_count": null,
+      "red_team_finding_count": 1,
       "blocker_count": 0,
-      "final_disposition": "ACCEPT_LOCALLY_PENDING_GROK"
+      "final_disposition": "ACCEPT_INTERNAL_WITH_DOCUMENTED_CLIENT_LIMITATIONS"
     }
   ],
-  "batch_blockers": [
-    "External Grok repository-content disclosure requires explicit user approval."
-  ]
+  "batch_red_team_finding_count": 6,
+  "batch_blockers": []
 }
