@@ -14,7 +14,7 @@ This matrix describes the repository after the executable Benchmark A foundation
 |---|---|---|---|
 | DOC-01 | Product architecture | `DOCUMENTED` | `docs/product-architecture.md` |
 | DOC-02 | Target profiles | `DOCUMENTED`; implementation `PARTIAL` | Executable profiles and Marketplace/data-only unit gates exist; end-to-end qualification does not |
-| DOC-03 | AI tool interface | `IMPLEMENTED` operation catalog; external execution `PARTIAL` | All 76 required names dispatch; persistent artifact-backed workflow and safe edits run, while unmanaged runtime operations fail closed |
+| DOC-03 | AI tool interface | `IMPLEMENTED` operation catalog; external execution `PARTIAL` | All 77 required names dispatch, including autonomous Blockbench asset authoring; persistent artifact-backed workflow and safe edits run, while unmanaged runtime operations fail closed |
 | DOC-04 | Java adapters | `DOCUMENTED`; implementation `PARTIAL` | Authentic-pattern Fabric/Forge source fixtures and defined source/JAR semantic parity pass when a JDK is available; broad API qualification remains |
 | DOC-05 | Behavior IR/evidence | `DOCUMENTED`; implementation `PARTIAL` | Versioned IR/evidence and persistent project storage exist; exhaustive source indexes and broad corpus qualification remain |
 | DOC-06 | Capability catalog | `DOCUMENTED`; implementation `PARTIAL` | Initial symbol/version and target catalogs are tested; full symbol/source/device coverage is not proven |

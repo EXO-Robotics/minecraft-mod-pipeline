@@ -4,7 +4,7 @@ from typing import Any, Callable
 
 from mccompiler.project.store import ProjectError, ProjectStore
 
-from . import analysis_ops, distillation_ops, generation_ops, intent_ops, planning_ops, project_ops, query_ops, reporting_ops, safe_edit_ops, validation_ops
+from . import analysis_ops, blockbench_ops, distillation_ops, generation_ops, intent_ops, planning_ops, project_ops, query_ops, reporting_ops, safe_edit_ops, validation_ops
 from .envelope import OperationError, failure, success
 
 
@@ -34,6 +34,7 @@ REQUIRED_OPERATION_CATALOG: dict[str, tuple[str, ...]] = {
         "estimate_fidelity", "estimate_performance",
     ),
     "generation": (
+        "author_blockbench_asset",
         "generate_item", "generate_block", "generate_entity", "generate_projectile",
         "generate_recipe", "generate_loot", "generate_structure", "generate_spawn_rules",
         "generate_animation", "generate_form", "generate_script_scaffold", "generate_pack",
@@ -119,6 +120,7 @@ class OperationRegistry:
             "trace_callees": query_ops.trace_callees,
             "compare_source_and_jar": query_ops.compare_source_and_jar,
             "generate_item": generation_ops.generate_item,
+            "author_blockbench_asset": blockbench_ops.author_blockbench_asset,
             "generate_block": generation_ops.generate_block,
             "generate_entity": generation_ops.generate_entity,
             "generate_projectile": generation_ops.generate_projectile,

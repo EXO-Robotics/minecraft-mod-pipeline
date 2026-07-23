@@ -1,0 +1,32 @@
+{
+  "schema_version": "1.0.0",
+  "asset_id": "ccoriginal:creature.bramblehorn",
+  "rights_status": "original_generated",
+  "releasable": true,
+  "model": {
+    "method": "Codex-authored native Blockbench Bedrock entity project",
+    "source": "internal written shape grammar",
+    "third_party_geometry_used": false
+  },
+  "texture": {
+    "method": "original deterministic 64x64 pixel texture",
+    "source": "internal moss, bark, and horn palette",
+    "third_party_pixels_used": false,
+    "seed": 7305
+  },
+  "animation": {
+    "method": "original keyframes authored for Bramblehorn pivots",
+    "third_party_keyframes_used": false
+  },
+  "reference_policy": {
+    "java_evidence": "behavioral evidence only",
+    "broad_visual_reference": "excluded from direct generation",
+    "licensed_reuse": [],
+    "prohibited": ["source model tracing", "source texture recoloring", "recognizable protected characters"]
+  },
+  "similarity_review": {
+    "status": "PASSED_POLICY_REVIEW",
+    "automated_pixel_source_match_available": false,
+    "finding": "No third-party model or texture was provided to the authoring stage."
+  }
+}

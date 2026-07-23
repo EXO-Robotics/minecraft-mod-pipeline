@@ -236,6 +236,8 @@ def build_documents(root: Path) -> dict[str, dict[str, Any]]:
         "long_duration_claim": False,
     }
     stats = zip_stats(bench / "dist/controlled-chaos-qualification.mcaddon")
+    bramblehorn_cost_path = root / "prototypes/blockbench/bramblehorn/cost-report.json"
+    bramblehorn_cost = read_json(bramblehorn_cost_path)
     systems = [
         ("weapon_projectile", 7, 8, 4, "MODERATE"),
         ("creatures_elite", 8, 10, 4, "MODERATE"),
@@ -254,6 +256,20 @@ def build_documents(root: Path) -> dict[str, dict[str, Any]]:
         "weights_label": "UNCALIBRATED_PS4_PLANNING_WEIGHTS",
         "budgets": {"hard_ceiling": 80, "planning_ceiling": 64, "required_reserve": 16},
         "static_inputs": stats,
+        "authored_asset_inputs": {
+            "bramblehorn": {
+                **bramblehorn_cost["final"],
+                "runtime": bramblehorn_cost["runtime"],
+                "risk": bramblehorn_cost["risk"],
+                "marginal_planning_cost_units": bramblehorn_cost["marginal_ps4_planning_cost_units"],
+                "planning_treatment": "INCLUDED_WITHIN_CREATURES_ELITE_SYSTEM_NOT_ADDITIVE",
+                "physical_ps4": "PENDING",
+                "source": {
+                    "path": bramblehorn_cost_path.relative_to(root).as_posix(),
+                    "sha256": sha(bramblehorn_cost_path),
+                },
+            }
+        },
         "runtime_inputs": {"peak_entities": metrics.get("peak_entities"),
                            "peak_projectiles": metrics.get("peak_projectiles"),
                            "peak_scheduled_queue_depth": metrics.get("peak_queue_depth"),
@@ -305,6 +321,7 @@ def build_documents(root: Path) -> dict[str, dict[str, Any]]:
             "Reduced the historical 77-unit selection to 62 measured/derived planning units.",
             "Deferred postgame mutators; retained weapons, creatures, structures, elites, bosses, progression, and controlled chaos.",
             "Applied bounded concurrency, projectile, entity, persistence, and cleanup costs from qualification.",
+            "Included the three-unit Bramblehorn authored-asset estimate inside the existing creatures/elite allocation, preserving the 18-unit reserve.",
         ],
         "rights_originality": "Original-replacement strategies preserved; legal and Marketplace review remain pending.",
         "implementation_started": False,

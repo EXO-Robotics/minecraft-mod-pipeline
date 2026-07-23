@@ -1,0 +1,59 @@
+{
+  "schema_version": "1.0.0",
+  "namespace": "ccoriginal",
+  "theme": "storm-touched forest machinery and living mineral growth",
+  "shape_language": [
+    "broad readable masses",
+    "offset organic plates",
+    "short sturdy limbs",
+    "small asymmetric accents"
+  ],
+  "blockiness": "HIGH_MINECRAFT_NATIVE",
+  "silhouette_priorities": [
+    "role readable at 16 blocks",
+    "distinct head and attack direction",
+    "no paper-thin primary forms"
+  ],
+  "palette_families": ["deep moss", "weathered bark", "warm horn", "cool shadow"],
+  "material_families": ["moss", "bark", "stone", "oxidized metal"],
+  "contrast": {"minimum_role_contrast": 0.35, "focal_regions": ["head", "weapon", "effect locator"]},
+  "texture_density": "LOW_FREQUENCY_PIXEL_ART",
+  "texture_resolution_limits": {"ordinary_block": 16, "creature": 64, "boss": 64},
+  "noise_limits": {"isolated_single_pixel_noise_ratio_max": 0.02, "transparency_primary_forms": false},
+  "anatomy_conventions": [
+    "joint pivots at visible limb roots",
+    "front and rear limbs remain semantically named",
+    "head communicates target direction"
+  ],
+  "weapon_proportions": ["held silhouette clears the hand", "first-person view avoids center-screen obstruction"],
+  "boss_escalation": ["scale through layered plates before cube count", "phase reads through color and motion"],
+  "animation_timing": {
+    "idle_seconds": [3.0, 5.0],
+    "locomotion_seconds": [0.8, 1.2],
+    "attack_seconds_max": 1.0,
+    "hurt_seconds_max": 0.5,
+    "blend_seconds_max": 0.25
+  },
+  "readability": ["controller-distance telegraphs", "clear attack anticipation", "bounded visual overlap"],
+  "originality_constraints": [
+    "generate geometry and pixels from the internal brief",
+    "use Java evidence only for abstract gameplay intent",
+    "do not trace or recolor third-party assets"
+  ],
+  "prohibited_traits": [
+    "recognizable protected characters",
+    "copied mod silhouettes",
+    "high-frequency texture noise",
+    "unbounded particles",
+    "vanilla namespace overrides"
+  ],
+  "performance_budgets": {
+    "regional_creature_cubes_max": 24,
+    "regional_creature_bones_max": 10,
+    "regional_creature_locators_max": 3,
+    "regional_creature_clips_max": 6,
+    "controller_states_max": 5,
+    "natural_density_surface_max": 2,
+    "simultaneous_pathfinding_target": 20
+  }
+}

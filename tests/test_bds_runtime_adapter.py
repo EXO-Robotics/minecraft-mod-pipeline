@@ -213,6 +213,11 @@ class BDSRuntimeAdapterTests(unittest.TestCase):
                 (BDSConsoleProbe("unsafe", 1, 1.0, "op Player", "ok"),),
                 restart_count=1, boot_grace_seconds=10,
             )
+        with self.assertRaisesRegex(BDSDiagnosticError, "unbounded selector"):
+            validate_console_probes(
+                (BDSConsoleProbe("unbounded", 1, 1.0, "testfor @e", "ok"),),
+                restart_count=1, boot_grace_seconds=10,
+            )
         with self.assertRaisesRegex(BDSDiagnosticError, "invalid command"):
             validate_console_probes(
                 (BDSConsoleProbe("newline", 1, 1.0, "setblock 1 2 3 stone\nstop", "ok"),),
@@ -232,6 +237,14 @@ class BDSRuntimeAdapterTests(unittest.TestCase):
             )
         validate_console_probes(
             (BDSConsoleProbe("small-area", 1, 1.0, "tickingarea add circle 1 2 3 1 safe true", "Added"),),
+            restart_count=1, boot_grace_seconds=10,
+        )
+        validate_console_probes(
+            (
+                BDSConsoleProbe("summon-safe", 1, 1.0, "summon ccoriginal_cc:bramblehorn 0 70 0", "summoned"),
+                BDSConsoleProbe("test-safe", 1, 2.0, "testfor @e[type=ccoriginal_cc:bramblehorn,c=20]", "Found"),
+                BDSConsoleProbe("function-safe", 1, 3.0, "function ccoriginal_cc/stress", "Executed"),
+            ),
             restart_count=1, boot_grace_seconds=10,
         )
 

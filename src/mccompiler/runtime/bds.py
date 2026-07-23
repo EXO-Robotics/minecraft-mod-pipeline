@@ -78,13 +78,28 @@ def validate_console_probes(probes: tuple[BDSConsoleProbe, ...], *, restart_coun
         if not probe.command or len(probe.command) > 512 or any(ord(char) < 32 for char in probe.command):
             raise BDSDiagnosticError(f"console probe {probe.check_id} has an invalid command")
         verb = probe.command.split(maxsplit=1)[0].lower()
-        if verb not in {"setblock", "testforblock", "tickingarea"}:
+        if verb not in {"setblock", "testforblock", "tickingarea", "summon", "testfor", "function"}:
             raise BDSDiagnosticError(f"console probe {probe.check_id} uses disallowed command: {verb}")
         if verb == "tickingarea" and not re.fullmatch(
             r"tickingarea add circle -?\d+ -?\d+ -?\d+ [12] [a-z0-9_-]{1,32} true",
             probe.command,
         ):
             raise BDSDiagnosticError(f"console probe {probe.check_id} uses an unbounded tickingarea command")
+        if verb == "summon" and not re.fullmatch(
+            r"summon [a-z0-9_]+:[a-z0-9_./-]+ -?\d+ -?\d+ -?\d+",
+            probe.command,
+        ):
+            raise BDSDiagnosticError(f"console probe {probe.check_id} uses an unsafe summon command")
+        if verb == "testfor" and not re.fullmatch(
+            r"testfor @e\[type=[a-z0-9_]+:[a-z0-9_./-]+,c=\d{1,2}\]",
+            probe.command,
+        ):
+            raise BDSDiagnosticError(f"console probe {probe.check_id} uses an unbounded selector")
+        if verb == "function" and not re.fullmatch(
+            r"function [a-z0-9_]+/[a-z0-9_./-]+",
+            probe.command,
+        ):
+            raise BDSDiagnosticError(f"console probe {probe.check_id} uses an unsafe function path")
         if not probe.expect_output or len(probe.expect_output) > 512 or any(ord(char) < 32 for char in probe.expect_output):
             raise BDSDiagnosticError(f"console probe {probe.check_id} has invalid expected output")
 

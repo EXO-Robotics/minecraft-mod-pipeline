@@ -1,0 +1,53 @@
+{
+  "format_version": "1.10.0",
+  "animation_controllers": {
+    "controller.animation.ccoriginal_cc.bramblehorn.lifecycle": {
+      "initial_state": "idle",
+      "states": {
+        "idle": {
+          "blend_transition": 0.2,
+          "animations": ["idle", "look"],
+          "transitions": [
+            {"death": "!query.is_alive"},
+            {"hurt": "query.hurt_time > 0"},
+            {"attack": "query.is_angry && query.modified_move_speed <= 0.05"},
+            {"walk": "query.modified_move_speed > 0.01"}
+          ]
+        },
+        "walk": {
+          "blend_transition": 0.15,
+          "animations": [{"walk": "math.clamp(query.modified_move_speed * 4.0, 0.35, 1.0)"}, "look"],
+          "transitions": [
+            {"death": "!query.is_alive"},
+            {"hurt": "query.hurt_time > 0"},
+            {"attack": "query.is_angry && query.modified_move_speed <= 0.05"},
+            {"idle": "query.modified_move_speed <= 0.01"}
+          ]
+        },
+        "attack": {
+          "blend_transition": 0.08,
+          "animations": ["attack"],
+          "transitions": [
+            {"death": "!query.is_alive"},
+            {"hurt": "query.hurt_time > 0"},
+            {"walk": "query.any_animation_finished && query.modified_move_speed > 0.01"},
+            {"idle": "query.any_animation_finished"}
+          ]
+        },
+        "hurt": {
+          "blend_transition": 0.05,
+          "animations": ["hurt"],
+          "transitions": [
+            {"death": "!query.is_alive"},
+            {"walk": "query.any_animation_finished && query.modified_move_speed > 0.01"},
+            {"idle": "query.any_animation_finished"}
+          ]
+        },
+        "death": {
+          "blend_transition": 0.05,
+          "animations": ["death"]
+        }
+      }
+    }
+  }
+}

@@ -9,6 +9,7 @@ PROJECT_DIRECTORIES = (
     "ir", "decisions", "rights/evidence",
     "bedrock/behavior_pack", "bedrock/resource_pack", "bedrock/scripts",
     "custom/scripts", "custom/entities", "custom/models", "custom/assets",
+    "assets/blockbench", "assets/previews", "assets/revisions",
     "tests", "runtime", "console", "dist/marketplace-candidate", "dist/test-world",
     "dist/reports", "reports", "analysis/distillation", "decisions/distillation", "distillation",
 )
@@ -39,6 +40,8 @@ INITIAL_DOCUMENTS = {
     "decisions/approvals.yaml": {"schema_version": "1.0.0", "approvals": []},
     "rights/rights-manifest.yaml": {"schema_version": "1.0.0", "content": []},
     "rights/review.yaml": {"schema_version": "1.0.0", "status": "REVIEW_REQUIRED", "reviews": []},
+    "assets/registry.json": {"schema_version": "1.0.0", "assets": []},
+    "assets/visual-style-profile.json": {"schema_version": "1.0.0", "status": "UNCONFIGURED"},
     "decisions/distillation/review-adjustments.json": {"schema_version": "1.0.0", "adjustments": []},
 }
 

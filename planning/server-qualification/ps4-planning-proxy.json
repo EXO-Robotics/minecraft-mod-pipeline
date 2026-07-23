@@ -1,4 +1,36 @@
 {
+  "authored_asset_inputs": {
+    "bramblehorn": {
+      "animations": 6,
+      "bones": 8,
+      "compressed_package_bytes": 7780,
+      "controller_states": 5,
+      "controller_transitions": 15,
+      "cubes": 18,
+      "locators": 3,
+      "marginal_planning_cost_units": 3,
+      "physical_ps4": "PENDING",
+      "planning_treatment": "INCLUDED_WITHIN_CREATURES_ELITE_SYSTEM_NOT_ADDITIVE",
+      "risk": "LOW_TO_MODERATE",
+      "runtime": {
+        "herd_max": 1,
+        "natural_density_surface": 2,
+        "particles": 0,
+        "pathfinding_entity_cap": 20,
+        "projectiles": 0,
+        "scripts_per_tick": 0,
+        "target_radius_blocks": 10,
+        "target_scan_interval_ticks": 20
+      },
+      "source": {
+        "path": "prototypes/blockbench/bramblehorn/cost-report.json",
+        "sha256": "105bf7f50815a268da0bb9371b11ee1d19b50076e4d9699bfde31b30f90e3675"
+      },
+      "texture_count": 1,
+      "texture_memory_rgba_bytes_estimate": 16384,
+      "uncompressed_pack_bytes": 16064
+    }
+  },
   "budgets": {
     "hard_ceiling": 80,
     "planning_ceiling": 64,

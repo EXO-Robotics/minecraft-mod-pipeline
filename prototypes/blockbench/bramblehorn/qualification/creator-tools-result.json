@@ -1,0 +1,351 @@
+{
+  "claims": {
+    "marketplace_approved": false,
+    "physical_ps4_verified": false
+  },
+  "classification": "CREATOR_TOOLS_STATIC_QUALIFICATION",
+  "package_sha256": "83d8c5b450939c40cde0c561d57310702da91429bc51d7a775c5a2a04a192e46",
+  "result": {
+    "creator_tools": {
+      "cli_stdout_prelude": [],
+      "commands": [
+        [
+          "/Users/blakegrove/.npm/_npx/1238674d9f793ff4/node_modules/@minecraft/creator-tools/cli/index.mjs",
+          "--input-file",
+          "/var/folders/s0/94917qnx6jl2rsnzq_94vxj80000gn/T/mccompiler-creator-tools-zaim0dh8/artifact-83d8c5b450939c40cde0c561d57310702da91429bc51d7a775c5a2a04a192e46.mcaddon",
+          "--offline",
+          "--json",
+          "--yes",
+          "validate",
+          "addon"
+        ],
+        [
+          "/Users/blakegrove/.npm/_npx/1238674d9f793ff4/node_modules/@minecraft/creator-tools/cli/index.mjs",
+          "--input-file",
+          "/var/folders/s0/94917qnx6jl2rsnzq_94vxj80000gn/T/mccompiler-creator-tools-zaim0dh8/artifact-83d8c5b450939c40cde0c561d57310702da91429bc51d7a775c5a2a04a192e46.mcaddon",
+          "--offline",
+          "--json",
+          "--yes",
+          "validate",
+          "currentplatform"
+        ]
+      ],
+      "errors": 0,
+      "exit_codes": [
+        0,
+        0
+      ],
+      "findings": [
+        {
+          "code": "CADDONIREQ",
+          "message": "Cooperative Add-On Item Requirements Generator completed successfully",
+          "path": "",
+          "severity": "info",
+          "suite": "CADDONIREQ"
+        },
+        {
+          "code": "CADDONIREQ",
+          "message": "Cooperative Add-On Item Requirements Generator completed successfully",
+          "path": "",
+          "severity": "info",
+          "suite": "CADDONIREQ"
+        },
+        {
+          "code": "CADDONREQ",
+          "message": "Cooperative Add-On Requirements completed successfully",
+          "path": "",
+          "severity": "info",
+          "suite": "CADDONREQ"
+        },
+        {
+          "code": "CADDONREQ",
+          "message": "Cooperative Add-On Requirements completed successfully",
+          "path": "",
+          "severity": "info",
+          "suite": "CADDONREQ"
+        },
+        {
+          "code": "CADDONREQ",
+          "message": "Behavior pack manifest found.",
+          "path": "/behavior_pack/manifest.json",
+          "severity": "info",
+          "suite": "CADDONREQ"
+        },
+        {
+          "code": "CADDONREQ",
+          "message": "Behavior pack manifest found.",
+          "path": "/behavior_pack/manifest.json",
+          "severity": "info",
+          "suite": "CADDONREQ"
+        },
+        {
+          "code": "MINENGINEVER",
+          "message": "Min Engine Version completed successfully",
+          "path": "",
+          "severity": "info",
+          "suite": "MINENGINEVER"
+        },
+        {
+          "code": "MINENGINEVER",
+          "message": "Min Engine Version completed successfully",
+          "path": "",
+          "severity": "info",
+          "suite": "MINENGINEVER"
+        },
+        {
+          "code": "MINENGINEVER",
+          "message": "Behavior pack manifest min_engine_version",
+          "path": "/behavior_pack/manifest.json",
+          "severity": "info",
+          "suite": "MINENGINEVER"
+        },
+        {
+          "code": "MINENGINEVER",
+          "message": "Behavior pack manifest min_engine_version",
+          "path": "/behavior_pack/manifest.json",
+          "severity": "info",
+          "suite": "MINENGINEVER"
+        },
+        {
+          "code": "MINENGINEVER",
+          "message": "Resource pack manifest format_version",
+          "path": "/resource_pack/manifest.json",
+          "severity": "info",
+          "suite": "MINENGINEVER"
+        },
+        {
+          "code": "MINENGINEVER",
+          "message": "Resource pack manifest format_version",
+          "path": "/resource_pack/manifest.json",
+          "severity": "info",
+          "suite": "MINENGINEVER"
+        },
+        {
+          "code": "PACKSIZE",
+          "message": "",
+          "path": "",
+          "severity": "info",
+          "suite": "PACKSIZE"
+        },
+        {
+          "code": "PACKSIZE",
+          "message": "",
+          "path": "",
+          "severity": "info",
+          "suite": "PACKSIZE"
+        },
+        {
+          "code": "PACKSIZE",
+          "message": "",
+          "path": "",
+          "severity": "info",
+          "suite": "PACKSIZE"
+        },
+        {
+          "code": "PACKSIZE",
+          "message": "",
+          "path": "",
+          "severity": "info",
+          "suite": "PACKSIZE"
+        },
+        {
+          "code": "PACKSIZE",
+          "message": "",
+          "path": "",
+          "severity": "info",
+          "suite": "PACKSIZE"
+        },
+        {
+          "code": "PACKSIZE",
+          "message": "",
+          "path": "",
+          "severity": "info",
+          "suite": "PACKSIZE"
+        },
+        {
+          "code": "PACKSIZE",
+          "message": "Content File Count",
+          "path": "",
+          "severity": "info",
+          "suite": "PACKSIZE"
+        },
+        {
+          "code": "PACKSIZE",
+          "message": "Content File Count",
+          "path": "",
+          "severity": "info",
+          "suite": "PACKSIZE"
+        },
+        {
+          "code": "PACKSIZE",
+          "message": "Content Folder Count",
+          "path": "",
+          "severity": "info",
+          "suite": "PACKSIZE"
+        },
+        {
+          "code": "PACKSIZE",
+          "message": "Content Folder Count",
+          "path": "",
+          "severity": "info",
+          "suite": "PACKSIZE"
+        },
+        {
+          "code": "PACKSIZE",
+          "message": "Overall Size",
+          "path": "",
+          "severity": "info",
+          "suite": "PACKSIZE"
+        },
+        {
+          "code": "PACKSIZE",
+          "message": "Overall Size",
+          "path": "",
+          "severity": "info",
+          "suite": "PACKSIZE"
+        },
+        {
+          "code": "PACKSIZE",
+          "message": "Pack Size Information completed successfully",
+          "path": "",
+          "severity": "info",
+          "suite": "PACKSIZE"
+        },
+        {
+          "code": "PACKSIZE",
+          "message": "Pack Size Information completed successfully",
+          "path": "",
+          "severity": "info",
+          "suite": "PACKSIZE"
+        },
+        {
+          "code": "STRICT",
+          "message": "Strict Platform completed successfully",
+          "path": "",
+          "severity": "info",
+          "suite": "STRICT"
+        },
+        {
+          "code": "STRICT",
+          "message": "Strict Platform completed successfully",
+          "path": "",
+          "severity": "info",
+          "suite": "STRICT"
+        },
+        {
+          "code": "TEXTURE",
+          "message": "",
+          "path": "",
+          "severity": "info",
+          "suite": "TEXTURE"
+        },
+        {
+          "code": "TEXTURE",
+          "message": "",
+          "path": "",
+          "severity": "info",
+          "suite": "TEXTURE"
+        },
+        {
+          "code": "TEXTURE",
+          "message": "Texture Validation completed successfully",
+          "path": "",
+          "severity": "info",
+          "suite": "TEXTURE"
+        },
+        {
+          "code": "TEXTURE",
+          "message": "Texture Validation completed successfully",
+          "path": "",
+          "severity": "info",
+          "suite": "TEXTURE"
+        },
+        {
+          "code": "WORLDDATA",
+          "message": "World Data Validation completed successfully",
+          "path": "",
+          "severity": "info",
+          "suite": "WORLDDATA"
+        },
+        {
+          "code": "WORLDDATA",
+          "message": "World Data Validation completed successfully",
+          "path": "",
+          "severity": "info",
+          "suite": "WORLDDATA"
+        },
+        {
+          "code": "WORLDDATA",
+          "message": "",
+          "path": "/behavior_pack/functions/ccoriginal_cc/bramblehorn/cleanup.mcfunction",
+          "severity": "info",
+          "suite": "WORLDDATA"
+        },
+        {
+          "code": "WORLDDATA",
+          "message": "",
+          "path": "/behavior_pack/functions/ccoriginal_cc/bramblehorn/cleanup.mcfunction",
+          "severity": "info",
+          "suite": "WORLDDATA"
+        },
+        {
+          "code": "WORLDDATA",
+          "message": "Execute Sub Command",
+          "path": "/behavior_pack/functions/ccoriginal_cc/bramblehorn/cleanup.mcfunction",
+          "severity": "info",
+          "suite": "WORLDDATA"
+        },
+        {
+          "code": "WORLDDATA",
+          "message": "Execute Sub Command",
+          "path": "/behavior_pack/functions/ccoriginal_cc/bramblehorn/cleanup.mcfunction",
+          "severity": "info",
+          "suite": "WORLDDATA"
+        },
+        {
+          "code": "WORLDDATA",
+          "message": "",
+          "path": "/behavior_pack/functions/ccoriginal_cc/bramblehorn/stress.mcfunction",
+          "severity": "info",
+          "suite": "WORLDDATA"
+        },
+        {
+          "code": "WORLDDATA",
+          "message": "",
+          "path": "/behavior_pack/functions/ccoriginal_cc/bramblehorn/stress.mcfunction",
+          "severity": "info",
+          "suite": "WORLDDATA"
+        },
+        {
+          "code": "WORLDDATA",
+          "message": "Execute Sub Command",
+          "path": "/behavior_pack/functions/ccoriginal_cc/bramblehorn/stress.mcfunction",
+          "severity": "info",
+          "suite": "WORLDDATA"
+        },
+        {
+          "code": "WORLDDATA",
+          "message": "Execute Sub Command",
+          "path": "/behavior_pack/functions/ccoriginal_cc/bramblehorn/stress.mcfunction",
+          "severity": "info",
+          "suite": "WORLDDATA"
+        }
+      ],
+      "marketplace_approval_implied": false,
+      "suites": [
+        "addon",
+        "currentplatform"
+      ],
+      "validated_input": {
+        "cache_safe_name": "artifact-83d8c5b450939c40cde0c561d57310702da91429bc51d7a775c5a2a04a192e46.mcaddon",
+        "sha256": "83d8c5b450939c40cde0c561d57310702da91429bc51d7a775c5a2a04a192e46",
+        "source": "/Users/blakegrove/Desktop/bedrock-server/minecraft-compiler-baseline/prototypes/blockbench/bramblehorn/addon/bramblehorn_animated.mcaddon"
+      },
+      "version": "0.17.6",
+      "warnings": 0
+    },
+    "passed": true
+  },
+  "schema_version": "1.0.0",
+  "status": "PASSED"
+}
