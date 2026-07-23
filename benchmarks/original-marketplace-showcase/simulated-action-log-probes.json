@@ -2,48 +2,47 @@
   "schema_version": "1.0.0",
   "classification": "simulated_player_integration",
   "gameplay_or_console_evidence": false,
+  "evidence_levels_exercised": [
+    "EVENT_ADAPTER",
+    "SIMULATED_GAMEPLAY"
+  ],
+  "evidence_levels_not_exercised": [
+    "INTERNAL_HANDLER",
+    "REAL_CLIENT",
+    "MULTIPLAYER",
+    "CONSOLE"
+  ],
   "probes": [
-    {
-      "check_id": "showcase-simulated-item-use-event",
-      "cycle": 1,
-      "expect_output": "[mccompiler:showcase-actions] item_use_event=passed",
-      "classification": "simulated_player_integration"
-    },
-    {
-      "check_id": "showcase-entity-spawn-adapter",
-      "cycle": 1,
-      "expect_output": "[mccompiler] phase clockwork_gardens:brass_sprout/on_spawn -> 1 verified",
-      "classification": "simulated_player_integration"
-    },
-    {
-      "check_id": "showcase-block-interaction-events",
-      "cycle": 1,
-      "expect_output": "[mccompiler:showcase-actions] block_interaction_events=passed",
-      "classification": "simulated_player_integration"
-    },
-    {
-      "check_id": "showcase-scheduled-boss-behavior",
-      "cycle": 1,
-      "expect_output": "[mccompiler] phase clockwork_gardens:verdant_colossus/phase_one -> 1 verified",
-      "classification": "adapter_integration"
-    },
-    {
-      "check_id": "showcase-projectile-impact-adapter",
-      "cycle": 1,
-      "expect_output": "[mccompiler:showcase-actions] projectile_impact_adapter=passed",
-      "classification": "simulated_player_integration"
-    },
-    {
-      "check_id": "showcase-melee-hurt-and-death-actions",
-      "cycle": 1,
-      "expect_output": "[mccompiler:showcase-actions] melee_hurt_and_death_actions=passed",
-      "classification": "simulated_player_integration"
-    },
-    {
-      "check_id": "showcase-entity-damages-player",
-      "cycle": 1,
-      "expect_output": "[mccompiler:showcase-actions] entity_damages_player=passed",
-      "classification": "simulated_player_integration"
-    }
+    {"check_id": "showcase-item-use-adapter", "cycle": 1, "expect_output": "[mccompiler:showcase-actions] item_use_adapter=passed", "classification": "simulated_player_integration"},
+    {"check_id": "showcase-item-use-on-block-adapter", "cycle": 1, "expect_output": "[mccompiler:showcase-actions] item_use_on_block_adapter=passed", "classification": "simulated_player_integration"},
+    {"check_id": "showcase-block-interaction-adapter", "cycle": 1, "expect_output": "[mccompiler:showcase-actions] block_interaction_adapter=passed", "classification": "event_adapter"},
+    {"check_id": "showcase-effect-api-invocation", "cycle": 1, "expect_output": "[mccompiler:showcase-actions] effect_api_invocation=passed", "classification": "preview_api_diagnostic"},
+    {"check_id": "showcase-effect-immediate-observation", "cycle": 1, "expect_output": "[mccompiler:showcase-actions] effect_immediate_observation=passed", "classification": "preview_api_diagnostic"},
+    {"check_id": "showcase-effect-delayed-observation", "cycle": 1, "expect_output": "[mccompiler:showcase-actions] effect_delayed_observation=passed", "classification": "preview_api_diagnostic"},
+    {"check_id": "showcase-effect-target-comparison", "cycle": 1, "expect_output": "[mccompiler:showcase-actions] effect_target_comparison=passed", "classification": "preview_api_diagnostic"},
+    {"check_id": "showcase-projectile-creation", "cycle": 1, "expect_output": "[mccompiler:showcase-actions] projectile_creation=passed", "classification": "simulated_player_integration"},
+    {"check_id": "showcase-projectile-entity-impact", "cycle": 1, "expect_output": "[mccompiler:showcase-actions] projectile_entity_impact=passed", "classification": "simulated_player_integration"},
+    {"check_id": "showcase-projectile-entity-cleanup", "cycle": 1, "expect_output": "[mccompiler:showcase-actions] projectile_entity_cleanup=passed", "classification": "simulated_player_integration"},
+    {"check_id": "showcase-projectile-block-impact", "cycle": 1, "expect_output": "[mccompiler:showcase-actions] projectile_block_impact=passed", "classification": "simulated_player_integration"},
+    {"check_id": "showcase-projectile-block-cleanup", "cycle": 1, "expect_output": "[mccompiler:showcase-actions] projectile_block_cleanup=passed", "classification": "simulated_player_integration"},
+    {"check_id": "showcase-machine-cycle", "cycle": 1, "expect_output": "[mccompiler] item output clockwork_gardens:charged_sunseed behavior=clockwork_gardens:lumen_press/process", "classification": "adapter_integration"},
+    {"check_id": "showcase-progression-state-update", "cycle": 1, "expect_output": "[mccompiler:showcase-actions] progression_state_update=passed", "classification": "adapter_integration"},
+    {"check_id": "showcase-entity-spawn", "cycle": 1, "expect_output": "[mccompiler] phase clockwork_gardens:brass_sprout/on_spawn -> 1 verified", "classification": "adapter_integration"},
+    {"check_id": "showcase-growing-entity", "cycle": 1, "expect_output": "[mccompiler] phase clockwork_gardens:brass_sprout/on_spawn -> 2 verified", "classification": "adapter_integration"},
+    {"check_id": "showcase-entity-hit", "cycle": 1, "expect_output": "[mccompiler:showcase-actions] entity_hit=passed", "classification": "simulated_player_integration"},
+    {"check_id": "showcase-entity-hurt", "cycle": 1, "expect_output": "[mccompiler:showcase-actions] entity_hurt=passed", "classification": "simulated_player_integration"},
+    {"check_id": "showcase-entity-death", "cycle": 1, "expect_output": "[mccompiler:showcase-actions] entity_death=passed", "classification": "simulated_player_integration"},
+    {"check_id": "showcase-boss-phase-1", "cycle": 1, "expect_output": "[mccompiler] phase clockwork_gardens:verdant_colossus/phase_one -> 1 verified", "classification": "adapter_integration"},
+    {"check_id": "showcase-boss-phase-2", "cycle": 1, "expect_output": "[mccompiler] phase clockwork_gardens:verdant_colossus/phase_two -> 2 verified", "classification": "adapter_integration"},
+    {"check_id": "showcase-boss-phase-3", "cycle": 1, "expect_output": "[mccompiler] phase clockwork_gardens:verdant_colossus/phase_three -> 3 verified", "classification": "adapter_integration"},
+    {"check_id": "showcase-persistence-after-restart", "cycle": 2, "expect_output": "[mccompiler:showcase-actions] persistence_after_restart=passed", "classification": "bds_restart_diagnostic"}
+  ],
+  "unsupported_or_unobservable": [
+    {"check_id": "internal-handler-instrumentation", "reason": "The separate diagnostic pack observes event and state boundaries but does not import or invoke generated internal handlers."},
+    {"check_id": "effect-generated-dispatch", "reason": "A separate diagnostic pack cannot instrument the generated dispatch function; state observation is logged but not required as a pass."},
+    {"check_id": "effect-real-player", "reason": "Requires a local Minecraft client and human observation."},
+    {"check_id": "cooldown", "reason": "Reported independently at runtime; a pass is not required until generated player-owned actions are observable across packs."},
+    {"check_id": "form-invocation", "reason": "Preview BDS does not expose an independent ActionForm presentation observation for SimulatedPlayer."},
+    {"check_id": "projectile-block-impact-action", "reason": "The compiler adapter supports block impact, but this benchmark has no generated block-impact behavior contract; block collision remains an independent diagnostic."}
   ]
 }

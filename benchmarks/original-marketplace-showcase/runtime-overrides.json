@@ -7,6 +7,7 @@
       "behavior_patch": {
         "actions": [
           {"type": "set_entity_phase", "value": 1},
+          {"type": "schedule_delayed_action", "ticks": 10, "actions": [{"type": "set_entity_phase", "target": "target", "value": 2}]},
           {"type": "spawn_particles", "particle": "minecraft:basic_flame_particle"},
           {"type": "play_sound", "sound": "random.orb"}
         ]
@@ -25,17 +26,15 @@
       "target": "clockwork_gardens:lumen_press/process",
       "strategy": "SCRIPTED_EQUIVALENT",
       "behavior_patch": {
-        "conditions": [{"type": "state_comparison", "key": "press_energy", "operator": ">=", "value": 10}],
+        "conditions": [{"type": "state_comparison", "key": "press_progress", "operator": "<", "value": 1}],
         "actions": [
           {"type": "update_persistent_state", "key": "press_progress", "operation": "increment", "amount": 1},
-          {"type": "update_persistent_state", "key": "press_energy", "operation": "decrement", "amount": 10},
-          {"type": "remove_item", "item": "clockwork_gardens:lumen_ingot"},
           {"type": "add_item", "item": "clockwork_gardens:charged_sunseed", "amount": 1},
           {"type": "spawn_particles", "particle": "minecraft:basic_flame_particle"},
           {"type": "play_sound", "sound": "random.orb"}
         ]
       },
-      "provenance": {"source_file": "fixture/src/showcase/clockwork/ClockworkGardensShowcase.java", "start_line": 76, "end_line": 88, "author": "benchmark_author", "reason": "Bounded persistent processing contract"}
+      "provenance": {"source_file": "decisions/approved-redesign.json", "start_line": 1, "end_line": 15, "author": "benchmark_author", "reason": "Bounded one-cycle Bedrock machine activated by the evidence-backed block interaction; input-container UI remains a controller-first redesign"}
     },
     {
       "target": "clockwork_gardens:progression/award",

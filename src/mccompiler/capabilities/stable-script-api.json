@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0.0",
-  "catalog_version": "2026.07.22.6",
+  "catalog_version": "2026.07.22.7",
   "last_verified": "2026-07-22",
   "symbol_groups": [
     {
@@ -31,6 +31,7 @@
         "Entity.getHeadLocation",
         "Entity.getViewDirection",
         "Entity.addEffect",
+        "Entity.getEffect",
         "Entity.removeEffect",
         "Entity.setDynamicProperty",
         "Entity.getDynamicProperty",
@@ -227,6 +228,32 @@
       "realm_candidate": true,
       "bds_only": false,
       "replacement_strategies": ["projectile_entity_on_hit"]
+    },
+    {
+      "module": "@minecraft/server",
+      "symbol": "world.afterEvents.projectileHitBlock",
+      "minimum_stable_version": "2.0.0",
+      "engine_version": "1.21.90",
+      "stability": "stable",
+      "experiments_required": [],
+      "marketplace_candidate": true,
+      "realm_candidate": true,
+      "bds_only": false,
+      "source_documentation": "https://learn.microsoft.com/en-us/minecraft/creator/scriptapi/minecraft/server/worldafterevents?view=minecraft-bedrock-stable",
+      "replacement_strategies": ["projectile_block_on_hit"]
+    },
+    {
+      "module": "@minecraft/server",
+      "symbol": "ProjectileHitBlockAfterEvent.getBlockHit",
+      "minimum_stable_version": "2.0.0",
+      "engine_version": "1.21.90",
+      "stability": "stable",
+      "experiments_required": [],
+      "marketplace_candidate": true,
+      "realm_candidate": true,
+      "bds_only": false,
+      "source_documentation": "https://learn.microsoft.com/en-us/minecraft/creator/scriptapi/minecraft/server/projectilehitblockafterevent?view=minecraft-bedrock-stable",
+      "replacement_strategies": ["projectile_block_on_hit"]
     },
     {
       "module": "@minecraft/server",

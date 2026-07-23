@@ -182,6 +182,26 @@ class BDSRuntimeAdapterTests(unittest.TestCase):
                 from mccompiler.runtime.bds import run_bds_diagnostic
                 run_bds_diagnostic(upgrade)
 
+    def test_server_seed_requires_exact_requested_binary(self) -> None:
+        seed = self.root / "seed"
+        seed.mkdir()
+        request = BDSRunRequest(
+            "registry/bds@sha256:" + "a" * 64,
+            self.world(filename="seeded.mcworld"),
+            self.root / "seeded-run",
+            bds_version="1.2.3.4",
+            server_seed_root=seed,
+        )
+        with patch("mccompiler.runtime.bds.shutil.which", return_value="/fake/docker"):
+            with self.assertRaisesRegex(BDSDiagnosticError, "does not contain"):
+                run_bds_diagnostic(request)
+        binary = seed / "bedrock_server-1.2.3.4"
+        binary.write_bytes(b"fixture")
+        command = docker_run_command(
+            request, container_name="seeded", data_root=self.root / "data", level_name="World",
+        )
+        self.assertIn("VERSION=EXISTING", command)
+
     def test_console_probes_are_bounded_cycle_scoped_and_command_allowlisted(self) -> None:
         valid = (
             BDSConsoleProbe("open-fixture", 2, 1.0, "setblock 1 2 3 stone", "Block placed"),
@@ -226,6 +246,11 @@ class BDSRuntimeAdapterTests(unittest.TestCase):
             )
         with self.assertRaisesRegex(BDSDiagnosticError, "invalid cycle"):
             validate_log_probes(valid, restart_count=1)
+        expanded = tuple(
+            BDSLogProbe(f"check-{index}", 1, f"marker-{index}", "preview_api_diagnostic")
+            for index in range(22)
+        )
+        validate_log_probes(expanded, restart_count=1)
 
     def test_failed_cycle_cannot_emit_positive_integration_claims(self) -> None:
         console = BDSConsoleProbe("fixture", 1, 1.0, "setblock 1 2 3 stone", "Block placed")

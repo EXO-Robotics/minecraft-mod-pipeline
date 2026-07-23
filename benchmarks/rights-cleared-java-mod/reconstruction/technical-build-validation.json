@@ -5,18 +5,18 @@
   "status": "STATIC_BDS_UPGRADE_ADAPTER_AND_SIMULATED_BREAK_INTEGRATION_VERIFIED",
   "artifacts": {
     "mcaddon": {
-      "sha256": "a5efd524bb04de90859a89becce39afefa1def6eb34b02b1d1888daf561937e5",
-      "bytes": 21278
+      "sha256": "eb6d312cc9c424be7a5c0d395841a37eb80d114899daa7868ccbb043b1a384de",
+      "bytes": 21675
     },
     "mcworld": {
-      "sha256": "69faeee6fb23392b6e57c0de139306571cf90cab231a5f22720a48c3f366adeb",
-      "bytes": 24183,
+      "sha256": "a6de2894dbfb3a049fa1e6169e729e33bbae92f36a4bf4901c7e986ef7774ed6",
+      "bytes": 24582,
       "behavior_pack_id": "8e52df20-94ec-5143-b203-491fd4c88b83",
       "resource_pack_id": "38f1bee1-2b1b-5221-b4e4-418216443168"
     },
     "legacy_seed_mcworld": {
-      "sha256": "bdbf0eb904984bfcc50d86cb3e85547dd43fd2bbcf073be9b9df165fa4745a57",
-      "bytes": 19825,
+      "sha256": "3c8bb8bc5b3f2953eb3bda7f36bc1192fe2e27d5a69d9f70953f21d25053b68f",
+      "bytes": 20222,
       "fixture_only": true
     }
   },
@@ -36,7 +36,7 @@
     "errors": 0,
     "warnings": 0,
     "exit_codes": [0, 0],
-    "cache_safe_input": "artifact-a5efd524bb04de90859a89becce39afefa1def6eb34b02b1d1888daf561937e5.mcaddon",
+    "cache_safe_input": "artifact-eb6d312cc9c424be7a5c0d395841a37eb80d114899daa7868ccbb043b1a384de.mcaddon",
     "marketplace_approval_implied": false
   },
   "bds_diagnostic": {
@@ -44,9 +44,9 @@
     "bedrock_version": "1.26.33.2",
     "bedrock_build_id": "47564860",
     "image": "itzg/minecraft-bedrock-server@sha256:12c7047cc149bd517d6dbc2339163cf62a4f1044c10e759c45c8b387e9784e39",
-    "world_sha256": "69faeee6fb23392b6e57c0de139306571cf90cab231a5f22720a48c3f366adeb",
-    "legacy_seed_world_sha256": "bdbf0eb904984bfcc50d86cb3e85547dd43fd2bbcf073be9b9df165fa4745a57",
-    "log_sha256": "205e883465fe582ca756a1841af80f00d21d280c874e923bd8b9a072d9f3288f",
+    "world_sha256": "a6de2894dbfb3a049fa1e6169e729e33bbae92f36a4bf4901c7e986ef7774ed6",
+    "legacy_seed_world_sha256": "3c8bb8bc5b3f2953eb3bda7f36bc1192fe2e27d5a69d9f70953f21d25053b68f",
+    "log_sha256": "88318ed315ff958db093f3cef501a576c0ad19249c44bdbbb9516f0a52050fb1",
     "script_initialized": true,
     "restart_cycles": 3,
     "persistent_boot_values": [1, 2, 3],
@@ -60,8 +60,10 @@
     "adapter_integration_check_ids": [
       "doorlock-fixture-ticking-area",
       "doorlock-fixture-trapdoor",
+      "doorlock-upgrade-ticking-area",
       "doorlock-redstone-force-open",
       "doorlock-redstone-restored",
+      "doorlock-restart-ticking-area",
       "doorlock-redstone-restart-state"
     ],
     "redstone_reconciliation_adapter_verified": true,

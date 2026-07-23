@@ -407,13 +407,15 @@ console.log(JSON.stringify({ record, created, competingCreate, twoLocks, dimensi
             {
                 "doorlock-fixture-ticking-area",
                 "doorlock-fixture-trapdoor",
+                "doorlock-upgrade-ticking-area",
                 "doorlock-redstone-force-open",
                 "doorlock-redstone-restored",
+                "doorlock-restart-ticking-area",
                 "doorlock-redstone-restart-state",
             },
             {probe["check_id"] for probe in probes["probes"]},
         )
-        self.assertEqual([1, 1, 2, 2, 3], [probe["cycle"] for probe in probes["probes"]])
+        self.assertEqual([1, 1, 2, 2, 2, 3, 3], [probe["cycle"] for probe in probes["probes"]])
         self.assertTrue(all(probe["command"].split()[0] in {"setblock", "testforblock", "tickingarea"} for probe in probes["probes"]))
 
 

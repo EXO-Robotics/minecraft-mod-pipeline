@@ -155,15 +155,27 @@ class OriginalMarketplaceShowcaseTests(unittest.TestCase):
         script = (SHOWCASE / "diagnostic/simulated-actions/scripts/main.js").read_text(encoding="utf-8")
         self.assertIn("world.beforeEvents.playerInteractWithBlock", script)
         self.assertIn("useItemInSlotOnBlock(0, MACHINE_BLOCK)", script)
-        self.assertIn("minecraft:husk", script)
+        self.assertIn("world.afterEvents.projectileHitBlock", script)
+        self.assertIn("world.afterEvents.projectileHitEntity", script)
+        self.assertIn("effect_api_invocation", script)
+        self.assertIn("boss_phase_3", script)
         self.assertNotIn("registerActive(", script)
         self.assertNotIn("dispatch(", script)
         probes = load_json("simulated-action-log-probes.json")["probes"]
         check_ids = {row["check_id"] for row in probes}
         self.assertTrue({
-            "showcase-block-interaction-events",
-            "showcase-scheduled-boss-behavior",
-            "showcase-entity-damages-player",
+            "showcase-block-interaction-adapter",
+            "showcase-projectile-entity-impact",
+            "showcase-projectile-block-impact",
+            "showcase-effect-api-invocation",
+            "showcase-machine-cycle",
+            "showcase-entity-hit",
+            "showcase-entity-hurt",
+            "showcase-entity-death",
+            "showcase-boss-phase-1",
+            "showcase-boss-phase-2",
+            "showcase-boss-phase-3",
+            "showcase-persistence-after-restart",
         } <= check_ids)
         self.assertTrue(all(row["classification"] != "gameplay" for row in probes))
 

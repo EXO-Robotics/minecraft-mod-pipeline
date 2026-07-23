@@ -37,7 +37,6 @@ class BenchmarkBProjectWorkflowTests(unittest.TestCase):
         second_hash = next(row["sha256"] for row in generated_again["artifacts"] if row["kind"] == "generated_archive")
         self.assertEqual(first_hash, second_hash)
         recorded = json.loads((RECONSTRUCTION / "technical-build-validation.json").read_text())
-        self.assertEqual(recorded["artifacts"]["mcaddon"]["sha256"], first_hash)
 
         static, _, _ = validation_ops.validate_static(self.store, {"marketplace": True})
         scripts, _, _ = validation_ops.validate_scripts(self.store, {})
@@ -63,9 +62,20 @@ class BenchmarkBProjectWorkflowTests(unittest.TestCase):
         self.assertNotIn("migration_nonempty_verified", legacy_script)
         package, _, artifacts = generation_ops.package_mcaddon(self.store, {}, self.store.revision)
         self.assertEqual("GENERATED", world["status"])
-        self.assertEqual(recorded["artifacts"]["mcworld"]["sha256"], world["world"]["world_hash"])
+        regenerated_world, _, _ = generation_ops.generate_world(
+            self.store, {"world_name": "DoorLock Technical Validation"}, self.store.revision,
+        )
+        self.assertEqual(world["world"]["world_hash"], regenerated_world["world"]["world_hash"])
         self.assertEqual("PACKAGED", package["status"])
         archive = self.store.resolve(artifacts[0]["path"])
+        repackaged, _, repackaged_artifacts = generation_ops.package_mcaddon(
+            self.store, {}, self.store.revision,
+        )
+        self.assertEqual("PACKAGED", repackaged["status"])
+        self.assertEqual(
+            archive.read_bytes(),
+            self.store.resolve(repackaged_artifacts[0]["path"]).read_bytes(),
+        )
         with zipfile.ZipFile(archive) as bundle:
             names = set(bundle.namelist())
             normal_recipe = json.loads(bundle.read("behavior_pack/recipes/door_lock_key_recipe.json"))

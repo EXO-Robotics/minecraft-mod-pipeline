@@ -58,6 +58,7 @@ class BDSRunRequest:
     upgrade_mcworld: Path | None = None
     console_probes: tuple[BDSConsoleProbe, ...] = ()
     log_probes: tuple[BDSLogProbe, ...] = ()
+    server_seed_root: Path | None = None
 
 
 def validate_console_probes(probes: tuple[BDSConsoleProbe, ...], *, restart_count: int, boot_grace_seconds: int) -> None:
@@ -89,10 +90,17 @@ def validate_console_probes(probes: tuple[BDSConsoleProbe, ...], *, restart_coun
 
 
 def validate_log_probes(probes: tuple[BDSLogProbe, ...], *, restart_count: int) -> None:
-    if len(probes) > 16:
-        raise BDSDiagnosticError("log_probes cannot contain more than 16 checks")
+    if len(probes) > 64:
+        raise BDSDiagnosticError("log_probes cannot contain more than 64 checks")
     seen: set[str] = set()
-    allowed_classifications = {"adapter_integration", "simulated_player_integration", "diagnostic"}
+    allowed_classifications = {
+        "adapter_integration",
+        "event_adapter",
+        "simulated_player_integration",
+        "preview_api_diagnostic",
+        "bds_restart_diagnostic",
+        "diagnostic",
+    }
     for probe in probes:
         if not re.fullmatch(r"[a-z0-9][a-z0-9._-]{0,63}", probe.check_id):
             raise BDSDiagnosticError(f"invalid log probe check_id: {probe.check_id}")
@@ -211,7 +219,7 @@ def docker_run_command(request: BDSRunRequest, *, container_name: str, data_root
     if request.console_probes:
         command.insert(2, "-i")
     if request.bds_version:
-        command.extend(("-e", f"VERSION={request.bds_version}"))
+        command.extend(("-e", f"VERSION={'EXISTING' if request.server_seed_root else request.bds_version}"))
     if request.preview_channel:
         if not request.bds_version:
             raise BDSDiagnosticError("preview_channel requires an exact bds_version")
@@ -391,14 +399,29 @@ def run_bds_diagnostic(request: BDSRunRequest) -> dict[str, Any]:
         request.console_probes, restart_count=request.restart_count, boot_grace_seconds=request.boot_grace_seconds,
     )
     validate_log_probes(request.log_probes, restart_count=request.restart_count)
-    if len(request.console_probes) + len(request.log_probes) > 16:
-        raise BDSDiagnosticError("console_probes and log_probes cannot contain more than 16 combined checks")
+    if len(request.console_probes) + len(request.log_probes) > 80:
+        raise BDSDiagnosticError("console_probes and log_probes cannot contain more than 80 combined checks")
     docker = shutil.which(request.docker_executable)
     if docker is None:
         raise BDSDiagnosticError(f"Docker executable is unavailable: {request.docker_executable}")
     request.run_root.mkdir(parents=True, exist_ok=False)
     data_root = request.run_root / "data"
-    data_root.mkdir()
+    if request.server_seed_root is None:
+        data_root.mkdir()
+    else:
+        seed = request.server_seed_root.resolve()
+        expected_binary = seed / (
+            f"bedrock_server-{request.bds_version}" if request.bds_version else "bedrock_server"
+        )
+        if not seed.is_dir() or not expected_binary.is_file():
+            raise BDSDiagnosticError(
+                f"server_seed_root does not contain the requested Bedrock server: {expected_binary}"
+            )
+        shutil.copytree(
+            seed,
+            data_root,
+            ignore=shutil.ignore_patterns("worlds", "logs", "*.log"),
+        )
     level_name, world_root = extract_mcworld(request.mcworld, data_root)
     started_at = time.time()
     cycles: list[dict[str, Any]] = []

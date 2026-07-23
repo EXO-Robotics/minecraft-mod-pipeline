@@ -117,6 +117,7 @@ class MarketplaceCorrectnessTests(unittest.TestCase):
     def test_event_specific_context_normalizers_are_catalogued_and_emitted(self):
         expected = {
             "projectile_impact": "ProjectileHitEntityAfterEvent.getEntityHit",
+            "projectile_block_impact": "ProjectileHitBlockAfterEvent.getBlockHit",
             "entity_hurt": "EntityDamageSource.damagingEntity",
             "entity_death": "EntityDamageSource.damagingEntity",
         }
@@ -132,7 +133,9 @@ class MarketplaceCorrectnessTests(unittest.TestCase):
                 self.assertIn(required_symbol, symbols)
                 self.assertIn("normalizeEvent(b.trigger.type,raw)", generated)
                 self.assertIn("system.run(()=>dispatch(b,ctx))", generated)
-                self.assertIn("contextComplete(b.trigger.type,ctx)", generated)
+                self.assertIn("contextComplete(b,ctx)", generated)
+                self.assertIn("const contextRequirements=", generated)
+                self.assertIn("const hasContext=", generated)
                 self.assertIn("missing required event context", generated)
                 self.assertIn("type==='item_use_on_block'", generated)
                 self.assertNotIn("type==='item_use_on'", generated)
@@ -141,6 +144,10 @@ class MarketplaceCorrectnessTests(unittest.TestCase):
                     self.assertIn("hitEntity:hit?.entity", generated)
                     self.assertIn("projectile:raw.projectile", generated)
                     self.assertIn("c.projectile?.typeId", generated)
+                elif trigger == "projectile_block_impact":
+                    self.assertIn("raw.getBlockHit()", generated)
+                    self.assertIn("block:hit?.block", generated)
+                    self.assertIn("projectileHitBlock", generated)
                 else:
                     self.assertIn("raw.damageSource?.damagingEntity", generated)
                 self.assertTrue(validate_output(root, plan)["valid"])
@@ -157,8 +164,10 @@ class MarketplaceCorrectnessTests(unittest.TestCase):
             scheduler = (root / "behavior_pack/scripts/runtime/scheduler.js").read_text()
             events = (root / "behavior_pack/scripts/events/generated.js").read_text()
             self.assertIn("world.getDimension(c.dimensionId).getBlock(c.blockLocation)", scheduler)
-            self.assertIn("blockLocation:{...e.block.location}", events)
+            self.assertIn("eventSource:'scheduler',blockLocation:{...e.block.location}", events)
+            self.assertIn("eventSource:'scheduler',source:e.entity,target:e.entity", events)
             self.assertNotIn("{block:e.block,owner:", events)
+            self.assertIn("const inventory=(c,a)=>", generated)
             usage = json.loads((root / "reports/api-usage.json").read_text())
             symbols = {row["symbol"] for row in usage["symbols"]}
             self.assertTrue({
@@ -168,6 +177,10 @@ class MarketplaceCorrectnessTests(unittest.TestCase):
             self.assertIn("projectile.owner=a", generated)
             self.assertIn("projectile.shoot(velocity)", generated)
             self.assertIn("effectId(x.effect)", generated)
+            self.assertIn("effect invocation accepted", generated)
+            self.assertIn("effect observation immediate", generated)
+            self.assertIn("effect observation delayed", generated)
+            self.assertIn("cooldown invocation accepted", generated)
             self.assertIn("phase write failed", generated)
             self.assertNotIn("e.applyImpulse?.(x.velocity", generated)
             self.assertTrue(validate_output(root, plan)["valid"])

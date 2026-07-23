@@ -1,8 +1,8 @@
 # Benchmark A: Original Marketplace showcase
 
-Status: `EXECUTABLE_STATIC_BENCHMARK`, Preview event-adapter diagnostic `PARTIAL`, and platform `UNVERIFIED`.
+Status: `EXECUTABLE_STATIC_BENCHMARK`, expanded two-cycle Preview diagnostic `PASSED`, and physical-platform qualification `UNVERIFIED`.
 
-This benchmark contains a legally original source fixture that executes through the compiler's scanner, planner, Bedrock generator, and static validator. A separate experimental Preview world verifies simulated item-use observation, generated entity-spawn phase handling, generated projectile impact behavior, and melee hit/hurt/death events. These narrow diagnostics do not claim a player-ready Add-On, physical-player gameplay, Marketplace clearance, or console verification.
+This benchmark contains a legally original source fixture that executes through the compiler's scanner, planner, Bedrock generator, and static validator. A separate experimental Preview world independently verifies item use/use-on-block, block interaction, projectile creation and entity/block impact, effect API invocation plus immediate/delayed observation, progression-state storage, one bounded machine cycle, entity spawn/growth, hit/hurt/death, three generated boss phases, cleanup, and a diagnostic checkpoint across restart. The normal-entity comparison proves that SimulatedPlayer can expose the tested speed effect; the generated player-owned launcher chain remains unavailable across the separate pack boundary and is not claimed. These narrow diagnostics do not claim a player-ready Add-On, physical-player gameplay, Marketplace clearance, or console verification.
 
 Required features are defined in `project.yaml` and `expected-behavior.yaml`. A feature passes only when its named static, real-action, persistence, multiplayer, migration, controller, performance, and platform obligations have artifact-bound evidence.
 

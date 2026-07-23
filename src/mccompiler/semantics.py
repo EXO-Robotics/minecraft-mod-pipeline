@@ -15,7 +15,7 @@ TRIGGERS = {
     "entity_hurt", "entity_death", "entity_spawn", "block_interact",
     "block_place", "block_break", "player_join", "player_spawn",
     "player_death", "scheduled_tick", "object_tick", "processing_complete",
-    "projectile_impact", "state_transition",
+    "projectile_impact", "projectile_block_impact", "state_transition",
 }
 CONDITIONS = {
     "player_sneaking", "held_item_match", "equipped_armor_match",

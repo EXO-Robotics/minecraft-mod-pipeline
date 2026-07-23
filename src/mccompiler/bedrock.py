@@ -13,6 +13,7 @@ from typing import Any
 from .io import write_json
 from .api_catalog import ApiCatalog
 from .targets import get_target
+from .context_requirements import javascript_context_contract, validate_context_contracts
 
 
 TOOL_VERSION = "0.2.0"
@@ -32,6 +33,7 @@ EVENT_SYMBOLS = {
     "entity_spawn": ("entitySpawn", "world.afterEvents.entitySpawn"),
     "player_join": ("playerSpawn", "world.afterEvents.playerSpawn"),
     "projectile_impact": ("projectileHitEntity", "world.afterEvents.projectileHitEntity"),
+    "projectile_block_impact": ("projectileHitBlock", "world.afterEvents.projectileHitBlock"),
 }
 SCHEDULED_TRIGGERS = {"object_tick", "scheduled_tick", "state_transition"}
 COMMON_RUNTIME_SYMBOLS = {
@@ -39,7 +41,7 @@ COMMON_RUNTIME_SYMBOLS = {
         "ItemStack", "MolangVariableMap", "world.getDimension", "world.dynamicProperties",
         "system.run", "system.runTimeout", "Entity.location", "Entity.dimension", "Entity.typeId",
         "Entity.remove", "Entity.applyDamage", "Entity.getComponent", "Entity.addEffect",
-        "Entity.removeEffect", "Entity.setDynamicProperty", "Entity.getDynamicProperty",
+        "Entity.getEffect", "Entity.removeEffect", "Entity.setDynamicProperty", "Entity.getDynamicProperty",
         "Entity.teleport", "Entity.applyImpulse", "Player.sendMessage", "Player.startItemCooldown",
         "Player.getItemCooldown", "Dimension.spawnEntity", "Dimension.createExplosion",
         "Dimension.playSound", "Dimension.spawnParticle", "Dimension.runCommand",
@@ -180,6 +182,8 @@ def _script_modules(ir: dict[str, Any], plan: dict[str, Any], *, debug: bool) ->
         feature = index.get((f"behavior.{behavior.get('trigger', {}).get('type')}", str(behavior.get("id"))))
         (approved if _approved(feature, behavior) else rejected).append({**behavior, "classification": (feature or {}).get("classification", "UNPLANNED")})
     behavior_data = _canonical(approved)
+    validate_context_contracts(approved)
+    context_contract = javascript_context_contract(approved)
     state_data = _canonical([x for x in ir.get("state", []) if x.get("evidence") or x.get("override_provenance")])
     ui_data = _canonical([x for x in ir.get("ui_intent", []) if x.get("evidence") or x.get("override_provenance")])
     owned_data = _canonical(sorted({str(x.get("identifier")) for x in ir.get("content", []) if x.get("kind") in {"item", "block", "entity"} and x.get("identifier")}))
@@ -190,6 +194,8 @@ def _script_modules(ir: dict[str, Any], plan: dict[str, Any], *, debug: bool) ->
             requirements.add(("@minecraft/server", EVENT_SYMBOLS[trigger][1]))
             if trigger == "projectile_impact":
                 requirements.add(("@minecraft/server", "ProjectileHitEntityAfterEvent.getEntityHit"))
+            if trigger == "projectile_block_impact":
+                requirements.add(("@minecraft/server", "ProjectileHitBlockAfterEvent.getBlockHit"))
             if trigger in {"entity_hurt", "entity_death"}:
                 requirements.add(("@minecraft/server", "EntityDamageSource.damagingEntity"))
         elif trigger in SCHEDULED_TRIGGERS:
@@ -224,13 +230,14 @@ def _script_modules(ir: dict[str, Any], plan: dict[str, Any], *, debug: bool) ->
     event_map = {trigger: signal for trigger, (signal, _) in EVENT_SYMBOLS.items()}
     modules: dict[str, Any] = {
         "scripts/main.js": "import { world, system } from '@minecraft/server';\nimport { registerGeneratedEvents, behaviors } from './events/generated.js';\nimport { startScheduler } from './runtime/scheduler.js';\nregisterGeneratedEvents();\nstartScheduler(behaviors);\nsystem.run(()=>{console.warn(`[mccompiler] runtime initialized behaviors=${behaviors.length}`);});\n",
-        "scripts/events/generated.js": "import { world } from '@minecraft/server';\nimport { dispatch } from '../runtime/actions.js';\nimport { registerActive, unregisterActive } from '../runtime/scheduler.js';\nexport const behaviors = " + behavior_data + ";\nconst owned=new Set(" + owned_data + ");\nexport const eventMap=" + _canonical(event_map) + ";\nconst scheduled=new Set(['object_tick','scheduled_tick','state_transition']);\nconst before=new Set(['item_use_on_block','block_interact']);\nconst key=b=>`${b.dimension.id}:${b.location.x}:${b.location.y}:${b.location.z}`;\nexport function normalizeEvent(type,raw){if(type==='projectile_impact'){let hit;try{hit=raw.getEntityHit()}catch{}return {...raw,hitEntity:hit?.entity,damagingEntity:raw.source};}if(type==='entity_hurt'||type==='entity_death')return {...raw,damagingEntity:raw.damageSource?.damagingEntity};return raw;}\nconst matches=(b,c)=>{if(!owned.has(b.owner.identifier))return true;const ids=[c.itemStack?.typeId,c.block?.typeId,c.entity?.typeId,c.projectile?.typeId,c.hitEntity?.typeId,c.hurtEntity?.typeId,c.deadEntity?.typeId];return ids.includes(b.owner.identifier)};\nexport function registerGeneratedEvents(){for(const b of behaviors){if(scheduled.has(b.trigger.type))continue;const source=before.has(b.trigger.type)?world.beforeEvents:world.afterEvents;source[eventMap[b.trigger.type]].subscribe(raw=>{const ctx=normalizeEvent(b.trigger.type,raw);if(matches(b,ctx))dispatch(b,ctx)});}const ticking=behaviors.some(b=>scheduled.has(b.trigger.type));if(ticking){world.beforeEvents.playerInteractWithBlock.subscribe(e=>registerActive(key(e.block),{block:e.block,owner:e.block.typeId}));world.afterEvents.playerBreakBlock.subscribe(e=>unregisterActive(key(e.block)));world.afterEvents.entitySpawn.subscribe(e=>registerActive(e.entity.id,{target:e.entity,owner:e.entity.typeId}));world.afterEvents.entityDie.subscribe(e=>unregisterActive(e.deadEntity.id));}}\n",
+        "scripts/events/generated.js": "import { world } from '@minecraft/server';\nimport { dispatch } from '../runtime/actions.js';\nimport { registerActive, unregisterActive } from '../runtime/scheduler.js';\nexport const behaviors = " + behavior_data + ";\nconst owned=new Set(" + owned_data + ");\nexport const eventMap=" + _canonical(event_map) + ";\nconst scheduled=new Set(['object_tick','scheduled_tick','state_transition']);\nconst before=new Set(['item_use_on_block','block_interact']);\nconst key=b=>`${b.dimension.id}:${b.location.x}:${b.location.y}:${b.location.z}`;\nexport function normalizeEvent(type,raw){if(type==='projectile_impact'){let hit;try{hit=raw.getEntityHit()}catch{}return {...raw,eventSource:raw,hitEntity:hit?.entity,damagingEntity:raw.source};}if(type==='projectile_block_impact'){let hit;try{hit=raw.getBlockHit()}catch{}return {...raw,eventSource:raw,block:hit?.block,damagingEntity:raw.source};}if(type==='entity_hurt'||type==='entity_death')return {...raw,eventSource:raw,damagingEntity:raw.damageSource?.damagingEntity};return {...raw,eventSource:raw};}\n" + context_contract + "const matches=(b,c)=>{if(!owned.has(b.owner.identifier))return true;const ids=[c.itemStack?.typeId,c.block?.typeId,c.entity?.typeId,c.projectile?.typeId,c.hitEntity?.typeId,c.hurtEntity?.typeId,c.deadEntity?.typeId];return ids.includes(b.owner.identifier)};\nexport function registerGeneratedEvents(){for(const b of behaviors){if(scheduled.has(b.trigger.type))continue;const source=before.has(b.trigger.type)?world.beforeEvents:world.afterEvents;source[eventMap[b.trigger.type]].subscribe(raw=>{const ctx=normalizeEvent(b.trigger.type,raw);if(matches(b,ctx))dispatch(b,ctx)});}const ticking=behaviors.some(b=>scheduled.has(b.trigger.type));if(ticking){world.beforeEvents.playerInteractWithBlock.subscribe(e=>registerActive(key(e.block),{block:e.block,owner:e.block.typeId}));world.afterEvents.playerBreakBlock.subscribe(e=>unregisterActive(key(e.block)));world.afterEvents.entitySpawn.subscribe(e=>registerActive(e.entity.id,{target:e.entity,owner:e.entity.typeId}));world.afterEvents.entityDie.subscribe(e=>unregisterActive(e.deadEntity.id));}}\n",
         "scripts/runtime/actions.js": """// Conservative dispatcher: only evidence-backed IR reaches this module.
 import { world, system, ItemStack, MolangVariableMap } from '@minecraft/server';
 import { openGeneratedForm } from '../ui/forms.js';
 const actor=c=>c.source||c.player||c.damagingEntity;
 const target=c=>c.hitEntity||c.hurtEntity||c.deadEntity||c.target;
 const recipient=(x,a,t)=>x.target==='actor'?a:x.target==='target'?t:(t||a);
+const inventory=(c,a)=>a?.getComponent?.('minecraft:inventory')?.container||c.block?.getComponent?.('minecraft:inventory')?.container;
 const effectId=id=>String(id||'speed').includes(':')?String(id||'speed'):`minecraft:${id||'speed'}`;
 const vector=(value,fallback={x:0,y:0,z:1})=>value&&Number.isFinite(value.x)&&Number.isFinite(value.y)&&Number.isFinite(value.z)?value:fallback;
 const scale=(value,magnitude)=>({x:value.x*magnitude,y:value.y*magnitude,z:value.z*magnitude});
@@ -254,21 +261,24 @@ export function dispatch(behavior,c={}){if(!conditionsPass(behavior,c))return fa
         "import { world } from '@minecraft/server';",
         "import { world, system } from '@minecraft/server';",
     ).replace(
-        "export function normalizeEvent(type,raw){if(type==='projectile_impact'){let hit;try{hit=raw.getEntityHit()}catch{}return {...raw,hitEntity:hit?.entity,damagingEntity:raw.source};}if(type==='entity_hurt'||type==='entity_death')return {...raw,damagingEntity:raw.damageSource?.damagingEntity};return raw;}",
-        "export function normalizeEvent(type,raw){if(type==='projectile_impact'){let hit;try{hit=raw.getEntityHit()}catch{}return {source:raw.source,projectile:raw.projectile,hitEntity:hit?.entity,damagingEntity:raw.source};}if(type==='entity_hurt')return {hurtEntity:raw.hurtEntity,damageSource:raw.damageSource,damagingEntity:raw.damageSource?.damagingEntity};if(type==='entity_death')return {deadEntity:raw.deadEntity,damageSource:raw.damageSource,damagingEntity:raw.damageSource?.damagingEntity};if(type==='entity_hit')return {damagingEntity:raw.damagingEntity,hitEntity:raw.hitEntity};if(type==='item_use')return {source:raw.source,itemStack:raw.itemStack};if(type==='item_use_on'||type==='block_interact')return {source:raw.source,player:raw.player,itemStack:raw.itemStack,block:raw.block};if(type==='block_break')return {source:raw.player,player:raw.player,block:raw.block,brokenBlockPermutation:raw.brokenBlockPermutation,itemStack:raw.itemStackBeforeBreak};if(type==='player_join')return {source:raw.player,player:raw.player,initialSpawn:raw.initialSpawn};if(type==='entity_spawn')return {entity:raw.entity,target:raw.entity};return raw;}",
+        "export function normalizeEvent(type,raw){if(type==='projectile_impact'){let hit;try{hit=raw.getEntityHit()}catch{}return {...raw,eventSource:raw,hitEntity:hit?.entity,damagingEntity:raw.source};}if(type==='projectile_block_impact'){let hit;try{hit=raw.getBlockHit()}catch{}return {...raw,eventSource:raw,block:hit?.block,damagingEntity:raw.source};}if(type==='entity_hurt'||type==='entity_death')return {...raw,eventSource:raw,damagingEntity:raw.damageSource?.damagingEntity};return {...raw,eventSource:raw};}",
+        "export function normalizeEvent(type,raw){if(type==='projectile_impact'){let hit;try{hit=raw.getEntityHit()}catch{}return {eventSource:raw,source:raw.source,projectile:raw.projectile,hitEntity:hit?.entity,damagingEntity:raw.source};}if(type==='projectile_block_impact'){let hit;try{hit=raw.getBlockHit()}catch{}return {eventSource:raw,source:raw.source,projectile:raw.projectile,block:hit?.block,damagingEntity:raw.source,dimension:raw.dimension,location:raw.location};}if(type==='entity_hurt')return {eventSource:raw,hurtEntity:raw.hurtEntity,damageSource:raw.damageSource,damagingEntity:raw.damageSource?.damagingEntity};if(type==='entity_death')return {eventSource:raw,deadEntity:raw.deadEntity,damageSource:raw.damageSource,damagingEntity:raw.damageSource?.damagingEntity};if(type==='entity_hit')return {eventSource:raw,damagingEntity:raw.damagingEntity,hitEntity:raw.hitEntity};if(type==='item_use')return {eventSource:raw,source:raw.source,itemStack:raw.itemStack};if(type==='item_use_on'||type==='block_interact')return {eventSource:raw,source:raw.source,player:raw.player,itemStack:raw.itemStack,block:raw.block};if(type==='block_break')return {eventSource:raw,source:raw.player,player:raw.player,block:raw.block,brokenBlockPermutation:raw.brokenBlockPermutation,itemStack:raw.itemStackBeforeBreak};if(type==='player_join')return {eventSource:raw,source:raw.player,player:raw.player,initialSpawn:raw.initialSpawn};if(type==='entity_spawn')return {eventSource:raw,entity:raw.entity,target:raw.entity};return {...raw,eventSource:raw};}",
     ).replace(
         "if(matches(b,ctx))dispatch(b,ctx)",
-        "if(matches(b,ctx)){if(!contextComplete(b.trigger.type,ctx)){console.warn(`[mccompiler] skipped ${b.trigger.type} missing required event context`);return;}system.run(()=>dispatch(b,ctx));}",
+        "if(matches(b,ctx)){if(!contextComplete(b,ctx)){console.warn(`[mccompiler] skipped ${b.trigger.type} missing required event context`);return;}system.run(()=>dispatch(b,ctx));}",
     ).replace(
         "const matches=(b,c)=>",
-        "const contextComplete=(type,c)=>type==='item_use'?!!c.source:type==='item_use_on_block'||type==='block_interact'||type==='block_break'?!!(c.player||c.source)&&!!c.block:type==='entity_hit'?!!c.damagingEntity&&!!c.hitEntity:type==='entity_hurt'?!!c.hurtEntity:type==='entity_death'?!!c.deadEntity&&!!c.damagingEntity:type==='projectile_impact'?!!c.projectile&&!!c.hitEntity:type==='player_join'?!!c.player:type==='entity_spawn'?!!c.entity:true;\nconst matches=(b,c)=>",
+        "const matches=(b,c)=>",
     ).replace(
         "type==='item_use_on'||type==='block_interact'",
         "type==='item_use_on_block'||type==='block_interact'",
     )
     modules["scripts/events/generated.js"] = modules["scripts/events/generated.js"].replace(
         "registerActive(key(e.block),{block:e.block,owner:e.block.typeId})",
-        "registerActive(key(e.block),{blockLocation:{...e.block.location},dimensionId:e.block.dimension.id,owner:e.block.typeId})",
+        "registerActive(key(e.block),{eventSource:'scheduler',blockLocation:{...e.block.location},dimensionId:e.block.dimension.id,owner:e.block.typeId})",
+    ).replace(
+        "registerActive(e.entity.id,{target:e.entity,owner:e.entity.typeId})",
+        "registerActive(e.entity.id,{eventSource:'scheduler',source:e.entity,target:e.entity,owner:e.entity.typeId})",
     )
     modules["scripts/runtime/actions.js"] = modules["scripts/runtime/actions.js"].replace(
         "const scale=(value,magnitude)=>({x:value.x*magnitude,y:value.y*magnitude,z:value.z*magnitude});",
@@ -282,6 +292,12 @@ export function dispatch(behavior,c={}){if(!conditionsPass(behavior,c))return fa
     ).replace(
         "case 'set_entity_phase':recipient(x,a,t)?.setDynamicProperty?.('mccompiler:phase',x.value||1);console.warn(`[mccompiler] phase ${behavior.id} -> ${x.value||1}`);break",
         "case 'set_entity_phase':{const r=recipient(x,a,t),value=x.value||1;r?.setDynamicProperty?.('mccompiler:phase',value);if(r?.getDynamicProperty?.('mccompiler:phase')!==value)throw new Error(`[mccompiler] phase write failed ${behavior.id}`);console.warn(`[mccompiler] phase ${behavior.id} -> ${value} verified`);break}",
+    ).replace(
+        "case 'apply_effect':recipient(x,a,t)?.addEffect?.(effectId(x.effect),x.duration||20,{amplifier:x.amplifier||0});break",
+        "case 'apply_effect':{const r=recipient(x,a,t),id=effectId(x.effect);if(!r?.addEffect)throw new Error(`[mccompiler] effect target unavailable ${behavior.id}`);console.warn(`[mccompiler] effect dispatch ${behavior.id} target=${r.typeId} effect=${id}`);r.addEffect(id,x.duration||20,{amplifier:x.amplifier||0});console.warn(`[mccompiler] effect invocation accepted ${behavior.id} effect=${id}`);const immediate=!!r.getEffect?.(id);console.warn(`[mccompiler] effect observation immediate ${behavior.id} effect=${id} present=${immediate}`);system.runTimeout(()=>{try{console.warn(`[mccompiler] effect observation delayed ${behavior.id} effect=${id} present=${!!r.getEffect?.(id)}`)}catch(error){console.warn(`[mccompiler] effect observation delayed unavailable ${behavior.id} ${String(error)}`)}},2);break}",
+    ).replace(
+        "case 'start_cooldown':a?.startItemCooldown?.(x.category||behavior.id,x.ticks||20);break",
+        "case 'start_cooldown':{if(!a?.startItemCooldown)throw new Error(`[mccompiler] cooldown actor unavailable ${behavior.id}`);const category=x.category||behavior.id,ticks=x.ticks||20;a.startItemCooldown(category,ticks);console.warn(`[mccompiler] cooldown invocation accepted ${behavior.id} category=${category} observed=${a.getItemCooldown?.(category)??'unavailable'}`);break}",
     )
     if debug:
         modules["scripts/tests/contracts.js"] = "import { world, system } from '@minecraft/server';\nimport { dispatch } from '../runtime/actions.js';\nexport function registerRuntimeTestCommands(behaviors){system.afterEvents.scriptEventReceive.subscribe(e=>{if(e.id!=='mccompiler:test')return;const b=behaviors.find(v=>v.id===e.message);if(!b)return;const p={x:0,y:100,z:0};dispatch(b,{source:e.sourceEntity,location:p});});}\n"
@@ -289,6 +305,12 @@ export function dispatch(behavior,c={}){if(!conditionsPass(behavior,c))return fa
     modules["scripts/runtime/actions.js"] = modules["scripts/runtime/actions.js"].replace(
         "else d.spawnItem(item,{x:p.x,y:p.y+1,z:p.z});break",
         "else d.spawnItem(item,{x:p.x,y:p.y+1,z:p.z});console.warn(`[mccompiler] item output ${x.item||'minecraft:stone'} behavior=${behavior.id}`);break",
+    ).replace(
+        "const bag=a?.getComponent?.('minecraft:inventory')?.container;if(bag)bag.addItem(item)",
+        "const bag=inventory(c,a);if(bag)bag.addItem(item)",
+    ).replace(
+        "const bag=a?.getComponent?.('minecraft:inventory')?.container;if(bag)for(let i=0;i<bag.size;i++",
+        "const bag=inventory(c,a);if(!bag)throw new Error(`[mccompiler] inventory owner unavailable ${behavior.id}`);for(let i=0;i<bag.size;i++",
     )
     modules["scripts/runtime/actions.js"] = modules["scripts/runtime/actions.js"].replace(
         "export function readState(behavior,c,key){return stateOwner(c).getDynamicProperty?.(stateKey(behavior,c,key))??0}",
