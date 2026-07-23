@@ -9,8 +9,8 @@
       ]
     },
     "compiler_commit": "4324586",
-    "pack_hash": "16af4357dcef1b2637d3b20086123124db130a69b2bfd9f8c5042c795871bfb1",
-    "world_hash": "06dbbd7f96fdeb510c0051b211736d9cf5a78a5451e16f0d91d16c48c55a0889"
+    "pack_hash": "cb0b8ed0986d87e7d09a13df950069d448d8145c190710dd7defe6a0871a2bed",
+    "world_hash": "17629da16fdeed4d50c3d0223b3a7e5a3be93c4555997070ff1f999a9dc0e9a8"
   },
   "automated_adapter_validation": {
     "adapter": "docker-bds",
@@ -19,13 +19,13 @@
     "container_exit_code": 0,
     "executed_at": "2026-07-22T16:08:00-04:00",
     "image": "itzg/minecraft-bedrock-server@sha256:12c7047cc149bd517d6dbc2339163cf62a4f1044c10e759c45c8b387e9784e39",
-    "log_sha256": "cd345c9e09b4c5cffe9526de2f75ef2aa9d82b04ffbbe58a927a98d7803544b4",
+    "log_sha256": "956cf4dc3e264d1c9c860c41c7971946106a792dbb5c234f3133c4635909117c",
     "network": "bridge for exact-version BDS bootstrap only",
     "passed": true,
     "published_ports": false,
     "script_initialized": true,
     "stop_exit_code": 0,
-    "world_sha256": "06dbbd7f96fdeb510c0051b211736d9cf5a78a5451e16f0d91d16c48c55a0889"
+    "world_sha256": "17629da16fdeed4d50c3d0223b3a7e5a3be93c4555997070ff1f999a9dc0e9a8"
   },
   "preview_simulated_action_validation": {
     "status": "BDS_DIAGNOSTIC_BOOT_VERIFIED",
@@ -33,8 +33,8 @@
     "bedrock_version": "1.26.50.20",
     "bedrock_build_id": "47971866",
     "image": "itzg/minecraft-bedrock-server@sha256:12c7047cc149bd517d6dbc2339163cf62a4f1044c10e759c45c8b387e9784e39",
-    "diagnostic_world_sha256": "be514507fea8909cec9069153075ba5e87458559b767cde8cc265237959118a2",
-    "log_sha256": "b5b27f85c65c6fb82b3103297d1f6225ce2099b3755cb43e18b2e74f2b53f6af",
+    "diagnostic_world_sha256": "a9e0221c42556a2d053f77051e4089a70e6e11abc82215bd1ca2be05bd023c62",
+    "log_sha256": "9405023483aee8a491a1f90c45bfb49778df82a0c66c034035ba668c415c4a4b",
     "passed": true,
     "critical_lines": 0,
     "simulated_item_use_event_observed": true,
@@ -45,6 +45,10 @@
     "entity_hit_adapter_observed": true,
     "entity_hurt_adapter_observed": true,
     "entity_death_adapter_observed": true,
+    "item_use_on_block_observed": true,
+    "block_interaction_observed": true,
+    "hostile_entity_damaged_player": true,
+    "scheduled_boss_phase_adapter_verified": true,
     "gameplay_verified": false,
     "console_verified": false,
     "marketplace_or_console_evidence": false

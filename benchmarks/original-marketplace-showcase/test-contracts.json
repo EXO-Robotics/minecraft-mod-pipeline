@@ -30,6 +30,9 @@
     {"id": "simulated_item_use_event", "status": "PASSED", "scope": "Preview GameTest pack event observation only"},
     {"id": "generated_entity_spawn_phase", "status": "PASSED", "scope": "same-pack dynamic-property write/read verification"},
     {"id": "generated_projectile_impact", "status": "PASSED", "scope": "Preview SimulatedPlayer integration"},
-    {"id": "simulated_melee_hit_hurt_death", "status": "PASSED", "scope": "Preview SimulatedPlayer event observation"}
+    {"id": "simulated_melee_hit_hurt_death", "status": "PASSED", "scope": "Preview SimulatedPlayer event observation"},
+    {"id": "simulated_item_use_on_block_and_block_interaction", "status": "PASSED", "scope": "Preview GameTest pack before-event observation only"},
+    {"id": "hostile_entity_damages_player", "status": "PASSED", "scope": "Preview SimulatedPlayer integration with vanilla husk AI"},
+    {"id": "generated_scheduled_boss_phase", "status": "PASSED", "scope": "generated entity lifecycle registration and scheduler adapter integration"}
   ]
 }

@@ -16,6 +16,18 @@
       "classification": "simulated_player_integration"
     },
     {
+      "check_id": "showcase-block-interaction-events",
+      "cycle": 1,
+      "expect_output": "[mccompiler:showcase-actions] block_interaction_events=passed",
+      "classification": "simulated_player_integration"
+    },
+    {
+      "check_id": "showcase-scheduled-boss-behavior",
+      "cycle": 1,
+      "expect_output": "[mccompiler] phase clockwork_gardens:verdant_colossus/phase_one -> 1 verified",
+      "classification": "adapter_integration"
+    },
+    {
       "check_id": "showcase-projectile-impact-adapter",
       "cycle": 1,
       "expect_output": "[mccompiler:showcase-actions] projectile_impact_adapter=passed",
@@ -25,6 +37,12 @@
       "check_id": "showcase-melee-hurt-and-death-actions",
       "cycle": 1,
       "expect_output": "[mccompiler:showcase-actions] melee_hurt_and_death_actions=passed",
+      "classification": "simulated_player_integration"
+    },
+    {
+      "check_id": "showcase-entity-damages-player",
+      "cycle": 1,
+      "expect_output": "[mccompiler:showcase-actions] entity_damages_player=passed",
       "classification": "simulated_player_integration"
     }
   ]

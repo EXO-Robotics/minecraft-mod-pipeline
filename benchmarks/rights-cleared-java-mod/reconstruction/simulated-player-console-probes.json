@@ -18,9 +18,16 @@
       "expect_output": "Block placed"
     },
     {
+      "check_id": "doorlock-simulated-upgrade-ticking-area",
+      "cycle": 2,
+      "after_boot_seconds": 1,
+      "command": "tickingarea add circle 10 64 10 1 mccompiler_upgrade true",
+      "expect_output": "Added ticking area"
+    },
+    {
       "check_id": "doorlock-simulated-arm-after-upgrade",
       "cycle": 2,
-      "after_boot_seconds": 2,
+      "after_boot_seconds": 3,
       "command": "setblock 11 64 10 gold_block",
       "expect_output": "Block placed"
     },

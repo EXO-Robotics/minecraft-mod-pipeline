@@ -5,18 +5,18 @@
   "status": "STATIC_BDS_UPGRADE_ADAPTER_AND_SIMULATED_BREAK_INTEGRATION_VERIFIED",
   "artifacts": {
     "mcaddon": {
-      "sha256": "911b4294f8f02f96f1bc19621d44e685380345ec461299f0c4cba107a1bd6aae",
-      "bytes": 21146
+      "sha256": "a5efd524bb04de90859a89becce39afefa1def6eb34b02b1d1888daf561937e5",
+      "bytes": 21278
     },
     "mcworld": {
-      "sha256": "fa2b2c6a4047074a00cee22be90675d478a8be933862ec57a9561db09c6d541c",
-      "bytes": 24051,
+      "sha256": "69faeee6fb23392b6e57c0de139306571cf90cab231a5f22720a48c3f366adeb",
+      "bytes": 24183,
       "behavior_pack_id": "8e52df20-94ec-5143-b203-491fd4c88b83",
       "resource_pack_id": "38f1bee1-2b1b-5221-b4e4-418216443168"
     },
     "legacy_seed_mcworld": {
-      "sha256": "fbb45fd494e3354f3aafc75ae017f3b542af17d57ce6fd37f8d76727596a3076",
-      "bytes": 19693,
+      "sha256": "bdbf0eb904984bfcc50d86cb3e85547dd43fd2bbcf073be9b9df165fa4745a57",
+      "bytes": 19825,
       "fixture_only": true
     }
   },
@@ -36,7 +36,7 @@
     "errors": 0,
     "warnings": 0,
     "exit_codes": [0, 0],
-    "cache_safe_input": "artifact-911b4294f8f02f96f1bc19621d44e685380345ec461299f0c4cba107a1bd6aae.mcaddon",
+    "cache_safe_input": "artifact-a5efd524bb04de90859a89becce39afefa1def6eb34b02b1d1888daf561937e5.mcaddon",
     "marketplace_approval_implied": false
   },
   "bds_diagnostic": {
@@ -44,9 +44,9 @@
     "bedrock_version": "1.26.33.2",
     "bedrock_build_id": "47564860",
     "image": "itzg/minecraft-bedrock-server@sha256:12c7047cc149bd517d6dbc2339163cf62a4f1044c10e759c45c8b387e9784e39",
-    "world_sha256": "fa2b2c6a4047074a00cee22be90675d478a8be933862ec57a9561db09c6d541c",
-    "legacy_seed_world_sha256": "fbb45fd494e3354f3aafc75ae017f3b542af17d57ce6fd37f8d76727596a3076",
-    "log_sha256": "d998d7e5db82949b982ad764407d96da8391ddc59b6635eb1f2abb8c626f212f",
+    "world_sha256": "69faeee6fb23392b6e57c0de139306571cf90cab231a5f22720a48c3f366adeb",
+    "legacy_seed_world_sha256": "bdbf0eb904984bfcc50d86cb3e85547dd43fd2bbcf073be9b9df165fa4745a57",
+    "log_sha256": "205e883465fe582ca756a1841af80f00d21d280c874e923bd8b9a072d9f3288f",
     "script_initialized": true,
     "restart_cycles": 3,
     "persistent_boot_values": [1, 2, 3],
@@ -83,9 +83,9 @@
     "preview_channel": true,
     "gametest_experiment": true,
     "image": "itzg/minecraft-bedrock-server@sha256:12c7047cc149bd517d6dbc2339163cf62a4f1044c10e759c45c8b387e9784e39",
-    "legacy_diagnostic_world_sha256": "a38eb47681fdc692d6f4232999388193a6dbcc8b865726e2c011609f41aef5e1",
-    "upgrade_diagnostic_world_sha256": "92be7324f2c058cbfcdc20b9745dcf5fbe0d8ccbda4a64ded4beefd11b3ef4c1",
-    "log_sha256": "1e9ff78f4282dc02bef789bef394d9eff54c34472382492776c683d8b8bb69d2",
+    "legacy_diagnostic_world_sha256": "c34411b76b89a9b631c228ae2020f7aaae60bdcc687a1528f03888f7050d0bf8",
+    "upgrade_diagnostic_world_sha256": "90de85944c8a6ffafa3e5cc465228b8344ac1348a0c40b0364fc20280f1e2a25",
+    "log_sha256": "79363218a4a259e5bfc366bb425a11371dd1ab888c971e42d509ea944f501ca7",
     "restart_cycles": 2,
     "critical_lines": 0,
     "simulated_player_break_before_event_observed": true,

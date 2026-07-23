@@ -151,6 +151,22 @@ class OriginalMarketplaceShowcaseTests(unittest.TestCase):
         self.assertIn("marketplace_cleared: false", rights)
         self.assertIn("commercial_marketplace_clearance: NOT_REVIEWED", rights)
 
+    def test_preview_action_diagnostic_covers_remaining_real_action_families(self) -> None:
+        script = (SHOWCASE / "diagnostic/simulated-actions/scripts/main.js").read_text(encoding="utf-8")
+        self.assertIn("world.beforeEvents.playerInteractWithBlock", script)
+        self.assertIn("useItemInSlotOnBlock(0, MACHINE_BLOCK)", script)
+        self.assertIn("minecraft:husk", script)
+        self.assertNotIn("registerActive(", script)
+        self.assertNotIn("dispatch(", script)
+        probes = load_json("simulated-action-log-probes.json")["probes"]
+        check_ids = {row["check_id"] for row in probes}
+        self.assertTrue({
+            "showcase-block-interaction-events",
+            "showcase-scheduled-boss-behavior",
+            "showcase-entity-damages-player",
+        } <= check_ids)
+        self.assertTrue(all(row["classification"] != "gameplay" for row in probes))
+
     def test_plan_covers_every_feature_and_all_required_outcomes(self) -> None:
         features = {(row["kind"], row["id"]): row for row in self.plan["features"]}
         expected_keys = {(f"content.{kind}", identifier) for kind, identifier in expected_content(self.expected)}

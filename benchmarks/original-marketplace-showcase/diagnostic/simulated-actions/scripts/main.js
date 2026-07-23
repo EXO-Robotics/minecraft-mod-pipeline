@@ -4,6 +4,7 @@ import { spawnSimulatedPlayer } from '@minecraft/server-gametest';
 const ARM_MARKER = { x: 11, y: 64, z: 10 };
 const PLAYER_SPAWN = { x: 10.5, y: 65, z: 10.5 };
 const PROJECTILE_TARGET = { x: 10.5, y: 65, z: 12.5 };
+const MACHINE_BLOCK = { x: 12, y: 64, z: 10 };
 const observed = {
   playerId: undefined,
   itemUse: false,
@@ -16,6 +17,9 @@ const observed = {
   entityHit: false,
   entityHurt: false,
   entityDeath: false,
+  machineBlockInteract: false,
+  itemUseOnBlock: false,
+  entityDamagesPlayer: false,
 };
 
 function diagnosticPlayer(entity) {
@@ -29,6 +33,16 @@ function fail(message) {
 world.afterEvents.itemUse.subscribe((event) => {
   if (diagnosticPlayer(event.source)
     && event.itemStack?.typeId === 'clockwork_gardens:sunseed_launcher') observed.itemUse = true;
+});
+world.beforeEvents.playerInteractWithBlock.subscribe((event) => {
+  if (!diagnosticPlayer(event.player)) return;
+  if (event.block?.location.x !== MACHINE_BLOCK.x
+    || event.block?.location.y !== MACHINE_BLOCK.y
+    || event.block?.location.z !== MACHINE_BLOCK.z) return;
+  observed.machineBlockInteract = true;
+  const usedItem = event.itemStack?.typeId || event.beforeItemStack?.typeId;
+  if (usedItem === 'clockwork_gardens:lumen_ingot') observed.itemUseOnBlock = true;
+  console.warn(`[mccompiler:showcase-actions] machine_event item=${event.itemStack?.typeId} before=${event.beforeItemStack?.typeId}`);
 });
 world.afterEvents.entitySpawn.subscribe((event) => {
   if (event.entity?.typeId === 'clockwork_gardens:sunseed_projectile') {
@@ -53,6 +67,8 @@ world.afterEvents.entityHitEntity.subscribe((event) => {
 });
 world.afterEvents.entityHurt.subscribe((event) => {
   if (diagnosticPlayer(event.damageSource?.damagingEntity)) observed.entityHurt = true;
+  if (diagnosticPlayer(event.hurtEntity)
+    && event.damageSource?.damagingEntity?.typeId === 'minecraft:husk') observed.entityDamagesPlayer = true;
 });
 world.afterEvents.entityDie.subscribe((event) => {
   if (diagnosticPlayer(event.damageSource?.damagingEntity)) observed.entityDeath = true;
@@ -66,13 +82,23 @@ function runWhenArmed() {
       return;
     }
     const player = spawnSimulatedPlayer(
-      { dimension, ...PLAYER_SPAWN }, 'MCCompilerShowcaseBot', GameMode.creative,
+      { dimension, ...PLAYER_SPAWN }, 'MCCompilerShowcaseBot', GameMode.survival,
     );
     observed.playerId = player.id;
+    player.setItem(new ItemStack('clockwork_gardens:lumen_ingot', 1), 0, true);
+    const usedOnBlock = player.useItemInSlotOnBlock(0, MACHINE_BLOCK);
+    console.warn(`[mccompiler:showcase-actions] item_use_on_block_started=${usedOnBlock}`);
     dimension.spawnEntity('clockwork_gardens:brass_sprout', { x: 14.5, y: 65, z: 10.5 });
-    // A tall target intersects the launcher trajectory without relying on mob movement.
-    const itemStarted = player.useItem(new ItemStack('clockwork_gardens:sunseed_launcher', 1));
-    console.warn(`[mccompiler:showcase-actions] item_use_started=${itemStarted}`);
+    // The generated entitySpawn lifecycle registration must place this boss
+    // into the production scheduler; the diagnostic never invokes dispatch.
+    dimension.spawnEntity('clockwork_gardens:verdant_colossus', { x: 16.5, y: 65, z: 10.5 });
+    let itemStarted = false;
+    // Keep independent player actions on separate ticks; GameTest rejects a
+    // second use while the first interaction is still active.
+    system.runTimeout(() => {
+      itemStarted = player.useItem(new ItemStack('clockwork_gardens:sunseed_launcher', 1));
+      console.warn(`[mccompiler:showcase-actions] item_use_started=${itemStarted}`);
+    }, 20);
 
     system.runTimeout(() => {
       try {
@@ -82,7 +108,17 @@ function runWhenArmed() {
       } catch (error) {
         console.error(String(error));
       }
-    }, 5);
+    }, 25);
+
+    system.runTimeout(() => {
+      try {
+        if (!observed.machineBlockInteract) fail('machine block interaction was not observed');
+        if (!usedOnBlock || !observed.itemUseOnBlock) fail('item use on machine block was not observed');
+        console.warn('[mccompiler:showcase-actions] block_interaction_events=passed');
+      } catch (error) {
+        console.error(String(error));
+      }
+    }, 10);
 
     let projectileTarget;
     system.runTimeout(() => {
@@ -111,6 +147,23 @@ function runWhenArmed() {
       }
     }, 60);
 
+    system.runTimeout(() => {
+      try {
+        dimension.spawnEntity('minecraft:husk', { x: 11.5, y: 65, z: 10.5 });
+      } catch (error) {
+        console.error(String(error));
+      }
+    }, 65);
+
+    system.runTimeout(() => {
+      try {
+        if (!observed.entityDamagesPlayer) fail('hostile entity did not damage the simulated player');
+        console.warn('[mccompiler:showcase-actions] entity_damages_player=passed');
+      } catch (error) {
+        console.error(String(error));
+      }
+    }, 120);
+
     // Keep combat independent: a projectile failure must not hide other real event adapters.
     system.runTimeout(() => {
       try {
@@ -138,7 +191,7 @@ function runWhenArmed() {
       } catch (error) {
         console.error(String(error));
       }
-    }, 80);
+    }, 140);
   } catch (error) {
     console.error(String(error));
   }

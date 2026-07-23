@@ -109,7 +109,7 @@ class MarketplaceCorrectnessTests(unittest.TestCase):
             usage = json.loads((Path(directory) / "reports/api-usage.json").read_text())
             catalogued = {row["symbol"] for row in usage["symbols"]}
             self.assertTrue({
-                "system.runInterval", "world.afterEvents.playerInteractWithBlock",
+                "system.runInterval", "world.beforeEvents.playerInteractWithBlock",
                 "world.afterEvents.playerBreakBlock", "world.afterEvents.entitySpawn",
                 "world.afterEvents.entityDie",
             } <= catalogued)
@@ -153,6 +153,12 @@ class MarketplaceCorrectnessTests(unittest.TestCase):
             compile_bedrock(document, plan, directory)
             root = Path(directory)
             generated = (root / "behavior_pack/scripts/runtime/actions.js").read_text()
+            self.assertIn("const stateOwner=c=>c.block?world:", generated)
+            scheduler = (root / "behavior_pack/scripts/runtime/scheduler.js").read_text()
+            events = (root / "behavior_pack/scripts/events/generated.js").read_text()
+            self.assertIn("world.getDimension(c.dimensionId).getBlock(c.blockLocation)", scheduler)
+            self.assertIn("blockLocation:{...e.block.location}", events)
+            self.assertNotIn("{block:e.block,owner:", events)
             usage = json.loads((root / "reports/api-usage.json").read_text())
             symbols = {row["symbol"] for row in usage["symbols"]}
             self.assertTrue({
