@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0.0",
-  "catalog_version": "2026.07.22.5",
+  "catalog_version": "2026.07.22.6",
   "last_verified": "2026-07-22",
   "symbol_groups": [
     {
@@ -28,6 +28,8 @@
         "Entity.remove",
         "Entity.applyDamage",
         "Entity.getComponent",
+        "Entity.getHeadLocation",
+        "Entity.getViewDirection",
         "Entity.addEffect",
         "Entity.removeEffect",
         "Entity.setDynamicProperty",
@@ -90,6 +92,34 @@
     }
   ],
   "symbols": [
+    {
+      "module": "@minecraft/server",
+      "symbol": "EntityProjectileComponent.owner",
+      "minimum_stable_version": "2.0.0",
+      "engine_version": "1.21.90",
+      "stability": "stable",
+      "experiments_required": [],
+      "marketplace_candidate": true,
+      "realm_candidate": true,
+      "bds_only": false,
+      "replacement_strategies": ["data_driven_shooter"],
+      "source_documentation": "https://learn.microsoft.com/en-us/minecraft/creator/scriptapi/minecraft/server/entityprojectilecomponent?view=minecraft-bedrock-stable",
+      "last_verified": "2026-07-22"
+    },
+    {
+      "module": "@minecraft/server",
+      "symbol": "EntityProjectileComponent.shoot",
+      "minimum_stable_version": "2.0.0",
+      "engine_version": "1.21.90",
+      "stability": "stable",
+      "experiments_required": [],
+      "marketplace_candidate": true,
+      "realm_candidate": true,
+      "bds_only": false,
+      "replacement_strategies": ["data_driven_shooter"],
+      "source_documentation": "https://learn.microsoft.com/en-us/minecraft/creator/scriptapi/minecraft/server/entityprojectilecomponent?view=minecraft-bedrock-stable",
+      "last_verified": "2026-07-22"
+    },
     {
       "module": "@minecraft/server",
       "symbol": "world.afterEvents.itemUse",
@@ -197,6 +227,32 @@
       "realm_candidate": true,
       "bds_only": false,
       "replacement_strategies": ["projectile_entity_on_hit"]
+    },
+    {
+      "module": "@minecraft/server",
+      "symbol": "ProjectileHitEntityAfterEvent.getEntityHit",
+      "minimum_stable_version": "2.0.0",
+      "engine_version": "1.21.90",
+      "stability": "stable",
+      "experiments_required": [],
+      "marketplace_candidate": true,
+      "realm_candidate": true,
+      "bds_only": false,
+      "source_documentation": "https://learn.microsoft.com/en-us/minecraft/creator/scriptapi/minecraft/server/projectilehitentityafterevent?view=minecraft-bedrock-stable",
+      "replacement_strategies": ["projectile_entity_on_hit"]
+    },
+    {
+      "module": "@minecraft/server",
+      "symbol": "EntityDamageSource.damagingEntity",
+      "minimum_stable_version": "2.0.0",
+      "engine_version": "1.21.90",
+      "stability": "stable",
+      "experiments_required": [],
+      "marketplace_candidate": true,
+      "realm_candidate": true,
+      "bds_only": false,
+      "source_documentation": "https://learn.microsoft.com/en-us/minecraft/creator/scriptapi/minecraft/server/entitydamagesource?view=minecraft-bedrock-stable",
+      "replacement_strategies": []
     },
     {
       "module": "@minecraft/server",

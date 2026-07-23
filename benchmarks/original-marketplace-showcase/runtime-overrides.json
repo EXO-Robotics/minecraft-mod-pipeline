@@ -1,0 +1,127 @@
+{
+  "schema_version": "1.0.0",
+  "overrides": [
+    {
+      "target": "clockwork_gardens:brass_sprout/on_spawn",
+      "strategy": "SCRIPTED_EQUIVALENT",
+      "behavior_patch": {
+        "actions": [
+          {"type": "set_entity_phase", "value": 1},
+          {"type": "spawn_particles", "particle": "minecraft:basic_flame_particle"},
+          {"type": "play_sound", "sound": "random.orb"}
+        ]
+      },
+      "provenance": {"source_file": "fixture/src/showcase/clockwork/ClockworkGardensShowcase.java", "start_line": 108, "end_line": 109, "author": "benchmark_author", "reason": "Original benchmark spawn feedback contract"}
+    },
+    {
+      "target": "clockwork_gardens:lumen_press/openControls",
+      "strategy": "RECONSTRUCTED",
+      "behavior_patch": {
+        "actions": [{"type": "open_interaction_ui", "ui": "clockwork_gardens:lumen_press_controls"}]
+      },
+      "provenance": {"source_file": "decisions/approved-redesign.json", "start_line": 1, "end_line": 15, "author": "benchmark_author", "reason": "Approved controller-first form redesign"}
+    },
+    {
+      "target": "clockwork_gardens:lumen_press/process",
+      "strategy": "SCRIPTED_EQUIVALENT",
+      "behavior_patch": {
+        "conditions": [{"type": "state_comparison", "key": "press_energy", "operator": ">=", "value": 10}],
+        "actions": [
+          {"type": "update_persistent_state", "key": "press_progress", "operation": "increment", "amount": 1},
+          {"type": "update_persistent_state", "key": "press_energy", "operation": "decrement", "amount": 10},
+          {"type": "remove_item", "item": "clockwork_gardens:lumen_ingot"},
+          {"type": "add_item", "item": "clockwork_gardens:charged_sunseed", "amount": 1},
+          {"type": "spawn_particles", "particle": "minecraft:basic_flame_particle"},
+          {"type": "play_sound", "sound": "random.orb"}
+        ]
+      },
+      "provenance": {"source_file": "fixture/src/showcase/clockwork/ClockworkGardensShowcase.java", "start_line": 76, "end_line": 88, "author": "benchmark_author", "reason": "Bounded persistent processing contract"}
+    },
+    {
+      "target": "clockwork_gardens:progression/award",
+      "strategy": "SCRIPTED_EQUIVALENT",
+      "behavior_patch": {
+        "actions": [
+          {"type": "update_persistent_state", "key": "garden_rank", "operation": "increment", "amount": 1},
+          {"type": "send_player_feedback", "message": "Garden rank increased."}
+        ]
+      },
+      "provenance": {"source_file": "fixture/src/showcase/clockwork/ClockworkGardensShowcase.java", "start_line": 62, "end_line": 74, "author": "benchmark_author", "reason": "Player-scoped progression contract"}
+    },
+    {
+      "target": "clockwork_gardens:progression/restore",
+      "strategy": "SCRIPTED_EQUIVALENT",
+      "behavior_patch": {
+        "actions": [{"type": "send_player_feedback", "message": "Garden progress restored."}]
+      },
+      "provenance": {"source_file": "fixture/src/showcase/clockwork/ClockworkGardensShowcase.java", "start_line": 62, "end_line": 71, "author": "benchmark_author", "reason": "Reconnect feedback contract"}
+    },
+    {
+      "target": "clockwork_gardens:sunseed_launcher/use",
+      "strategy": "SCRIPTED_EQUIVALENT",
+      "behavior_patch": {
+        "actions": [
+          {"type": "spawn_projectile", "entity": "clockwork_gardens:sunseed_projectile", "velocity": {"x": 0, "y": 0, "z": 1.2}},
+          {"type": "apply_effect", "target": "actor", "effect": "speed", "duration": 40, "amplifier": 0},
+          {"type": "start_cooldown", "category": "clockwork_gardens:sunseed_launcher", "ticks": 20},
+          {"type": "play_sound", "sound": "random.bow"}
+        ]
+      },
+      "provenance": {"source_file": "fixture/src/showcase/clockwork/ClockworkGardensShowcase.java", "start_line": 54, "end_line": 57, "author": "benchmark_author", "reason": "Launcher gameplay contract"}
+    },
+    {
+      "target": "clockwork_gardens:sunseed_projectile/impact",
+      "strategy": "SCRIPTED_EQUIVALENT",
+      "behavior_patch": {
+        "actions": [
+          {"type": "create_explosion", "power": 2, "breaks_blocks": false},
+          {"type": "apply_effect", "target": "target", "effect": "slowness", "duration": 40, "amplifier": 0},
+          {"type": "spawn_particles", "particle": "minecraft:basic_flame_particle"},
+          {"type": "play_sound", "sound": "random.explode"}
+        ]
+      },
+      "provenance": {"source_file": "fixture/src/showcase/clockwork/ClockworkGardensShowcase.java", "start_line": 59, "end_line": 60, "author": "benchmark_author", "reason": "Projectile impact gameplay contract"}
+    },
+    {
+      "target": "clockwork_gardens:verdant_colossus/phase_one",
+      "strategy": "SCRIPTED_EQUIVALENT",
+      "behavior_patch": {
+        "conditions": [{"type": "health_threshold", "min_ratio_exclusive": 0.66, "max_ratio_inclusive": 1.0}],
+        "actions": [
+          {"type": "set_entity_phase", "value": 1},
+          {"type": "spawn_projectile", "entity": "clockwork_gardens:sunseed_projectile", "velocity": {"x": 0, "y": 0.2, "z": 0.8}},
+          {"type": "send_player_feedback", "message": "The Verdant Colossus awakens."}
+        ]
+      },
+      "provenance": {"source_file": "fixture/src/showcase/clockwork/ClockworkGardensShowcase.java", "start_line": 111, "end_line": 118, "author": "benchmark_author", "reason": "Deterministic boss phase one threshold"}
+    },
+    {
+      "target": "clockwork_gardens:verdant_colossus/phase_two",
+      "strategy": "SCRIPTED_EQUIVALENT",
+      "behavior_patch": {
+        "conditions": [{"type": "health_threshold", "min_ratio_exclusive": 0.33, "max_ratio_inclusive": 0.66}],
+        "actions": [
+          {"type": "set_entity_phase", "value": 2},
+          {"type": "place_structure", "structure": "clockwork_gardens:colossus_grove"},
+          {"type": "spawn_entity", "entity": "clockwork_gardens:brass_sprout"},
+          {"type": "send_player_feedback", "message": "The grove answers the Colossus."}
+        ]
+      },
+      "provenance": {"source_file": "fixture/src/showcase/clockwork/ClockworkGardensShowcase.java", "start_line": 120, "end_line": 121, "author": "benchmark_author", "reason": "Deterministic boss phase two threshold"}
+    },
+    {
+      "target": "clockwork_gardens:verdant_colossus/phase_three",
+      "strategy": "SCRIPTED_EQUIVALENT",
+      "behavior_patch": {
+        "conditions": [{"type": "health_threshold", "max_ratio_inclusive": 0.33}],
+        "actions": [
+          {"type": "set_entity_phase", "value": 3},
+          {"type": "spawn_projectile", "entity": "clockwork_gardens:sunseed_projectile", "velocity": {"x": 0, "y": 0.3, "z": 1.4}},
+          {"type": "apply_effect", "target": "target", "effect": "strength", "duration": 100, "amplifier": 0},
+          {"type": "send_player_feedback", "message": "The Verdant Colossus enters its final phase."}
+        ]
+      },
+      "provenance": {"source_file": "fixture/src/showcase/clockwork/ClockworkGardensShowcase.java", "start_line": 123, "end_line": 124, "author": "benchmark_author", "reason": "Deterministic boss phase three threshold"}
+    }
+  ]
+}

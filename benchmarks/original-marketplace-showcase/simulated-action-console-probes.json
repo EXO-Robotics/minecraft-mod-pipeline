@@ -1,0 +1,21 @@
+{
+  "schema_version": "1.0.0",
+  "classification": "simulated_player_fixture",
+  "gameplay_or_console_evidence": false,
+  "probes": [
+    {
+      "check_id": "showcase-simulated-fixture-ticking-area",
+      "cycle": 1,
+      "after_boot_seconds": 1,
+      "command": "tickingarea add circle 10 64 10 2 mccompiler_showcase true",
+      "expect_output": "Added ticking area"
+    },
+    {
+      "check_id": "showcase-simulated-action-arm",
+      "cycle": 1,
+      "after_boot_seconds": 3,
+      "command": "setblock 11 64 10 gold_block",
+      "expect_output": "Block placed"
+    }
+  ]
+}

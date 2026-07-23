@@ -2,7 +2,7 @@
   "schema_version": "1.0.0",
   "benchmark_id": "benchmark-a-original-marketplace-showcase",
   "status": "STATIC_CONTRACT_EXECUTABLE",
-  "runtime_status": "NOT_RUN",
+  "runtime_status": "PARTIAL_EVENT_ADAPTER_DIAGNOSTIC",
   "console_status": "UNVERIFIED",
   "quality_claim": "No runtime parity, Marketplace approval, or console compatibility is claimed.",
   "required_feature_families": [
@@ -34,14 +34,21 @@
       "family": "stable_script_mechanic",
       "quality_classification": "MANUAL_REDESIGN_REQUIRED",
       "expected_actions": ["spawn_projectile", "apply_effect", "start_cooldown", "play_sound"],
-      "runtime_evidence": "NOT_RUN"
+      "runtime_evidence": "SIMULATED_ITEM_EVENT_ONLY_GENERATED_ACTION_SOURCE_UNAVAILABLE"
     },
     {
       "id": "clockwork_gardens:brass_sprout",
       "family": "data_mechanic",
       "quality_classification": "MANUAL_REDESIGN_REQUIRED",
       "expected_output_kind": "spawn_rule",
-      "runtime_evidence": "NOT_RUN"
+      "runtime_evidence": "ENTITY_SPAWN_PHASE_WRITE_READ_VERIFIED"
+    },
+    {
+      "id": "clockwork_gardens:sunseed_projectile/impact",
+      "family": "projectile",
+      "quality_classification": "MANUAL_REDESIGN_REQUIRED",
+      "expected_actions": ["create_explosion", "apply_effect", "spawn_particles", "play_sound"],
+      "runtime_evidence": "PREVIEW_SIMULATED_PROJECTILE_IMPACT_ADAPTER_VERIFIED"
     },
     {
       "id": "clockwork_gardens:lumen_press/process",

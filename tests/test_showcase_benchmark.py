@@ -100,7 +100,7 @@ class OriginalMarketplaceShowcaseTests(unittest.TestCase):
     def test_feature_matrix_and_non_runtime_records_are_machine_readable(self) -> None:
         required = set(self.quality["required_feature_families"])
         self.assertEqual(21, len(required))
-        self.assertEqual("NOT_RUN", self.quality["runtime_status"])
+        self.assertEqual("PARTIAL_EVENT_ADAPTER_DIAGNOSTIC", self.quality["runtime_status"])
         self.assertEqual("UNVERIFIED", self.quality["console_status"])
         self.assertFalse(self.quality["thresholds"]["runtime_thresholds_evaluated"])
 
@@ -127,13 +127,24 @@ class OriginalMarketplaceShowcaseTests(unittest.TestCase):
         self.assertFalse(bds["claims"]["gameplay_verified"])
         self.assertFalse(bds["claims"]["console_verified"])
         self.assertFalse(bds["claims"]["marketplace_approval_implied"])
-        self.assertIn("actual player event adapters", bds["unverified_scope"])
+        self.assertIn("physical-player item-use and generated launcher action chain", bds["unverified_scope"])
         adapter = bds["automated_adapter_validation"]
         self.assertTrue(adapter["passed"])
         self.assertTrue(adapter["script_initialized"])
         self.assertFalse(adapter["published_ports"])
         self.assertEqual(bds["artifact"]["world_hash"], adapter["world_sha256"])
         self.assertIn("@sha256:", adapter["image"])
+        preview = bds["preview_simulated_action_validation"]
+        self.assertTrue(preview["passed"])
+        self.assertEqual("1.26.50.20", preview["bedrock_version"])
+        self.assertTrue(preview["simulated_item_use_event_observed"])
+        self.assertFalse(preview["stable_pack_item_source_available"])
+        self.assertTrue(preview["entity_spawn_phase_write_read_verified"])
+        self.assertTrue(preview["projectile_hit_entity_adapter_verified"])
+        self.assertTrue(preview["entity_hit_adapter_observed"])
+        self.assertFalse(preview["gameplay_verified"])
+        self.assertFalse(preview["console_verified"])
+        self.assertTrue(all(row["status"] == "PASSED" for row in self.contracts["diagnostic_checks"]))
 
         rights = (SHOWCASE / "rights/original-authorship-declaration.yaml").read_text(encoding="utf-8")
         self.assertIn("ORIGINAL_FIXTURE_DECLARED_NOT_MARKETPLACE_CLEARED", rights)

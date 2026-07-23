@@ -100,6 +100,8 @@ def augment_mcworld_with_gametest_pack(
     source_world: str | Path,
     diagnostic_pack: str | Path,
     destination: str | Path,
+    *,
+    diagnostic_server_version: str | None = None,
 ) -> dict[str, Any]:
     source = Path(source_world).resolve()
     pack_root = Path(diagnostic_pack).resolve()
@@ -117,6 +119,37 @@ def augment_mcworld_with_gametest_pack(
         raise GameTestDiagnosticError("source world is missing valid pack bindings or level.dat") from exc
     if not isinstance(bindings, list):
         raise GameTestDiagnosticError("world_behavior_packs.json must be an array")
+    module_overrides: list[dict[str, str]] = []
+    if diagnostic_server_version is not None:
+        parts = diagnostic_server_version.split(".")
+        if len(parts) != 3 or not all(part.isdigit() for part in parts):
+            raise GameTestDiagnosticError("diagnostic server version must be a three-part numeric version")
+        for relative in sorted(files):
+            if not relative.startswith("behavior_packs/") or not relative.endswith("/manifest.json"):
+                continue
+            try:
+                manifest = json.loads(files[relative])
+            except json.JSONDecodeError as exc:
+                raise GameTestDiagnosticError(f"embedded behavior-pack manifest is invalid: {relative}") from exc
+            changed = False
+            for dependency in manifest.get("dependencies", []):
+                if not isinstance(dependency, dict) or dependency.get("module_name") != "@minecraft/server":
+                    continue
+                previous = str(dependency.get("version", ""))
+                if previous == diagnostic_server_version:
+                    continue
+                dependency["version"] = diagnostic_server_version
+                module_overrides.append({
+                    "manifest": relative,
+                    "module": "@minecraft/server",
+                    "from": previous,
+                    "to": diagnostic_server_version,
+                })
+                changed = True
+            if changed:
+                files[relative] = _canonical_json(manifest)
+        if not module_overrides:
+            raise GameTestDiagnosticError("diagnostic server version requested but no embedded @minecraft/server dependency was found")
     pack_files, pack_id, version, folder = _load_diagnostic_pack(pack_root)
     if any(isinstance(row, dict) and row.get("pack_id") == pack_id for row in bindings):
         raise GameTestDiagnosticError("diagnostic behavior pack is already bound")
@@ -144,5 +177,7 @@ def augment_mcworld_with_gametest_pack(
         "diagnostic_world": {"path": str(output), "sha256": hashlib.sha256(payload).hexdigest(), "bytes": len(payload)},
         "diagnostic_pack": {"uuid": pack_id, "version": version, "folder": folder},
         "experiments": ["gametest"],
+        "production_pack_module_overrides": module_overrides,
+        "production_pack_modified_for_preview_diagnostic": bool(module_overrides),
         "marketplace_or_console_evidence": False,
     }

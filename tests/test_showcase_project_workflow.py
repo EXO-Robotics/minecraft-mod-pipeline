@@ -4,17 +4,56 @@ import tempfile
 import unittest
 import zipfile
 import json
+import hashlib
 from pathlib import Path
 
 from mccompiler.operations.registry import OperationRegistry
 from mccompiler.project.store import ProjectStore
+from tools.build_benchmark_a import build
 
 
 ROOT = Path(__file__).resolve().parents[1]
 FIXTURE = ROOT / "benchmarks/original-marketplace-showcase/fixture"
+SHOWCASE = ROOT / "benchmarks/original-marketplace-showcase"
 
 
 class ShowcaseProjectWorkflowTests(unittest.TestCase):
+    def test_reproducible_builder_applies_all_evidence_linked_runtime_overrides(self) -> None:
+        override_document = json.loads((SHOWCASE / "runtime-overrides.json").read_text())
+        overrides = override_document["overrides"]
+        self.assertEqual(10, len(overrides))
+        self.assertEqual(10, len({row["target"] for row in overrides}))
+        for row in overrides:
+            self.assertIn(row["strategy"], {"SCRIPTED_EQUIVALENT", "RECONSTRUCTED"})
+            self.assertTrue(row["behavior_patch"]["actions"])
+            self.assertTrue(row["provenance"]["author"])
+            self.assertTrue(row["provenance"]["reason"])
+
+        with tempfile.TemporaryDirectory() as directory:
+            first = Path(directory) / "first"
+            second = Path(directory) / "second"
+            first_result = build(first)
+            second_result = build(second)
+            self.assertEqual(13, first_result["content_count"])
+            self.assertEqual(10, first_result["behavior_count"])
+            self.assertTrue(all(first_result["validation"].values()))
+            self.assertFalse(first_result["marketplace_candidate"]["passed"])
+            first_addon = first / first_result["mcaddon"]["path"]
+            second_addon = second / second_result["mcaddon"]["path"]
+            self.assertEqual(
+                hashlib.sha256(first_addon.read_bytes()).hexdigest(),
+                hashlib.sha256(second_addon.read_bytes()).hexdigest(),
+            )
+            first_world = first / first_result["mcworld"]["path"]
+            second_world = second / second_result["mcworld"]["path"]
+            self.assertEqual(
+                hashlib.sha256(first_world.read_bytes()).hexdigest(),
+                hashlib.sha256(second_world.read_bytes()).hexdigest(),
+            )
+            with zipfile.ZipFile(first_addon) as archive:
+                names = archive.namelist()
+            self.assertFalse(any("gametest" in name or "diagnostic" in name for name in names))
+
     def test_public_operations_produce_resumable_clean_showcase_artifacts(self) -> None:
         temporary = tempfile.TemporaryDirectory()
         self.addCleanup(temporary.cleanup)

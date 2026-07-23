@@ -25,5 +25,11 @@
     {"id": "realm_windows", "status": "NOT_RUN"},
     {"id": "physical_playstation", "status": "NOT_RUN"},
     {"id": "physical_xbox", "status": "NOT_RUN"}
+  ],
+  "diagnostic_checks": [
+    {"id": "simulated_item_use_event", "status": "PASSED", "scope": "Preview GameTest pack event observation only"},
+    {"id": "generated_entity_spawn_phase", "status": "PASSED", "scope": "same-pack dynamic-property write/read verification"},
+    {"id": "generated_projectile_impact", "status": "PASSED", "scope": "Preview SimulatedPlayer integration"},
+    {"id": "simulated_melee_hit_hurt_death", "status": "PASSED", "scope": "Preview SimulatedPlayer event observation"}
   ]
 }

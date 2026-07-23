@@ -1,7 +1,7 @@
 {
   "artifact": {
     "behavior_pack": {
-      "pack_id": "15be7814-3690-545a-b085-8aeda1c66c03",
+      "pack_id": "3217a26a-944e-5e62-80bd-f4449bea8785",
       "version": [
         0,
         2,
@@ -9,8 +9,8 @@
       ]
     },
     "compiler_commit": "4324586",
-    "pack_hash": "2d5b966a5a6ab557400ac725f1eb990f2814ae2b2c6aac48ffd32ee71824ea91",
-    "world_hash": "c15fde98d75b015ede074a3b1538e122d58f867cec201c18f75f795449b0870b"
+    "pack_hash": "16af4357dcef1b2637d3b20086123124db130a69b2bfd9f8c5042c795871bfb1",
+    "world_hash": "06dbbd7f96fdeb510c0051b211736d9cf5a78a5451e16f0d91d16c48c55a0889"
   },
   "automated_adapter_validation": {
     "adapter": "docker-bds",
@@ -19,13 +19,35 @@
     "container_exit_code": 0,
     "executed_at": "2026-07-22T16:08:00-04:00",
     "image": "itzg/minecraft-bedrock-server@sha256:12c7047cc149bd517d6dbc2339163cf62a4f1044c10e759c45c8b387e9784e39",
-    "log_sha256": "49c9e5f1730887e9829e8394af0707587c888e19acfa392df96ec1c939a10ba0",
+    "log_sha256": "cd345c9e09b4c5cffe9526de2f75ef2aa9d82b04ffbbe58a927a98d7803544b4",
     "network": "bridge for exact-version BDS bootstrap only",
     "passed": true,
     "published_ports": false,
     "script_initialized": true,
     "stop_exit_code": 0,
-    "world_sha256": "c15fde98d75b015ede074a3b1538e122d58f867cec201c18f75f795449b0870b"
+    "world_sha256": "06dbbd7f96fdeb510c0051b211736d9cf5a78a5451e16f0d91d16c48c55a0889"
+  },
+  "preview_simulated_action_validation": {
+    "status": "BDS_DIAGNOSTIC_BOOT_VERIFIED",
+    "classification": "EVENT_ADAPTER_INTEGRATION_TEST",
+    "bedrock_version": "1.26.50.20",
+    "bedrock_build_id": "47971866",
+    "image": "itzg/minecraft-bedrock-server@sha256:12c7047cc149bd517d6dbc2339163cf62a4f1044c10e759c45c8b387e9784e39",
+    "diagnostic_world_sha256": "be514507fea8909cec9069153075ba5e87458559b767cde8cc265237959118a2",
+    "log_sha256": "b5b27f85c65c6fb82b3103297d1f6225ce2099b3755cb43e18b2e74f2b53f6af",
+    "passed": true,
+    "critical_lines": 0,
+    "simulated_item_use_event_observed": true,
+    "stable_pack_item_source_available": false,
+    "entity_spawn_phase_write_read_verified": true,
+    "projectile_hit_entity_adapter_verified": true,
+    "projectile_slowness_action_verified": true,
+    "entity_hit_adapter_observed": true,
+    "entity_hurt_adapter_observed": true,
+    "entity_death_adapter_observed": true,
+    "gameplay_verified": false,
+    "console_verified": false,
+    "marketplace_or_console_evidence": false
   },
   "claims": {
     "bds_boot_verified": true,
@@ -69,7 +91,8 @@
     "clean graceful shutdown"
   ],
   "unverified_scope": [
-    "actual player event adapters",
+    "physical-player item-use and generated launcher action chain",
+    "physical-player projectile, melee, hurt, death, and entity-spawn actions",
     "gameplay behavior",
     "persistence and migration",
     "multiplayer isolation",

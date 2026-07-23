@@ -73,6 +73,44 @@ class GameTestDiagnosticTests(unittest.TestCase):
         with self.assertRaisesRegex(GameTestDiagnosticError, "beta @minecraft/server-gametest"):
             augment_mcworld_with_gametest_pack(source, invalid_pack, self.root / "invalid-output.mcworld")
 
+    def test_preview_module_overlay_is_explicit_deterministic_and_diagnostic_only(self) -> None:
+        source = self.source_world()
+        production_manifest = {
+            "format_version": 2,
+            "header": {"name": "Production", "uuid": str(uuid.uuid4()), "version": [1, 0, 0]},
+            "modules": [],
+            "dependencies": [{"module_name": "@minecraft/server", "version": "2.0.0"}],
+        }
+        with zipfile.ZipFile(source, "a") as archive:
+            archive.writestr("behavior_packs/production/manifest.json", json.dumps(production_manifest))
+        source_hash = hashlib.sha256(source.read_bytes()).hexdigest()
+        first = self.root / "overlay-first.mcworld"
+        second = self.root / "overlay-second.mcworld"
+        first_result = augment_mcworld_with_gametest_pack(
+            source, DIAGNOSTIC_PACK, first, diagnostic_server_version="2.10.0",
+        )
+        second_result = augment_mcworld_with_gametest_pack(
+            source, DIAGNOSTIC_PACK, second, diagnostic_server_version="2.10.0",
+        )
+        self.assertEqual(first_result["diagnostic_world"]["sha256"], second_result["diagnostic_world"]["sha256"])
+        self.assertTrue(first_result["production_pack_modified_for_preview_diagnostic"])
+        self.assertEqual("2.0.0", first_result["production_pack_module_overrides"][0]["from"])
+        self.assertEqual("2.10.0", first_result["production_pack_module_overrides"][0]["to"])
+        self.assertFalse(first_result["marketplace_or_console_evidence"])
+        self.assertEqual(source_hash, hashlib.sha256(source.read_bytes()).hexdigest())
+        with zipfile.ZipFile(first) as archive:
+            overlaid = json.loads(archive.read("behavior_packs/production/manifest.json"))
+        self.assertEqual("2.10.0", overlaid["dependencies"][0]["version"])
+        with zipfile.ZipFile(source) as archive:
+            original = json.loads(archive.read("behavior_packs/production/manifest.json"))
+        self.assertEqual("2.0.0", original["dependencies"][0]["version"])
+
+        with self.assertRaisesRegex(GameTestDiagnosticError, "three-part numeric"):
+            augment_mcworld_with_gametest_pack(
+                source, DIAGNOSTIC_PACK, self.root / "bad-version.mcworld",
+                diagnostic_server_version="latest",
+            )
+
     def test_consumer_artifact_contract_excludes_preview_diagnostic(self) -> None:
         technical = json.loads((BENCHMARK / "technical-build-validation.json").read_text())
         self.assertNotEqual("8d3f2291-f637-5c61-98cc-d970761177c8", technical["artifacts"]["mcworld"]["behavior_pack_id"])

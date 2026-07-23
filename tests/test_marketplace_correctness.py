@@ -114,6 +114,58 @@ class MarketplaceCorrectnessTests(unittest.TestCase):
                 "world.afterEvents.entityDie",
             } <= catalogued)
 
+    def test_event_specific_context_normalizers_are_catalogued_and_emitted(self):
+        expected = {
+            "projectile_impact": "ProjectileHitEntityAfterEvent.getEntityHit",
+            "entity_hurt": "EntityDamageSource.damagingEntity",
+            "entity_death": "EntityDamageSource.damagingEntity",
+        }
+        for trigger, required_symbol in expected.items():
+            with self.subTest(trigger=trigger), tempfile.TemporaryDirectory() as directory:
+                document = ir(trigger=trigger)
+                plan = plan_conversion(document)
+                compile_bedrock(document, plan, directory)
+                root = Path(directory)
+                generated = (root / "behavior_pack/scripts/events/generated.js").read_text()
+                usage = json.loads((root / "reports/api-usage.json").read_text())
+                symbols = {row["symbol"] for row in usage["symbols"]}
+                self.assertIn(required_symbol, symbols)
+                self.assertIn("normalizeEvent(b.trigger.type,raw)", generated)
+                self.assertIn("system.run(()=>dispatch(b,ctx))", generated)
+                self.assertIn("contextComplete(b.trigger.type,ctx)", generated)
+                self.assertIn("missing required event context", generated)
+                self.assertIn("type==='item_use_on_block'", generated)
+                self.assertNotIn("type==='item_use_on'", generated)
+                if trigger == "projectile_impact":
+                    self.assertIn("raw.getEntityHit()", generated)
+                    self.assertIn("hitEntity:hit?.entity", generated)
+                    self.assertIn("projectile:raw.projectile", generated)
+                    self.assertIn("c.projectile?.typeId", generated)
+                else:
+                    self.assertIn("raw.damageSource?.damagingEntity", generated)
+                self.assertTrue(validate_output(root, plan)["valid"])
+
+    def test_projectile_actions_use_stable_source_aware_projectile_component(self):
+        with tempfile.TemporaryDirectory() as directory:
+            document = ir()
+            document["behaviors"][0]["actions"] = [{"type": "spawn_projectile", "entity": "market:bolt"}]
+            plan = plan_conversion(document)
+            compile_bedrock(document, plan, directory)
+            root = Path(directory)
+            generated = (root / "behavior_pack/scripts/runtime/actions.js").read_text()
+            usage = json.loads((root / "reports/api-usage.json").read_text())
+            symbols = {row["symbol"] for row in usage["symbols"]}
+            self.assertTrue({
+                "Entity.getHeadLocation", "Entity.getViewDirection",
+                "EntityProjectileComponent.owner", "EntityProjectileComponent.shoot",
+            } <= symbols)
+            self.assertIn("projectile.owner=a", generated)
+            self.assertIn("projectile.shoot(velocity)", generated)
+            self.assertIn("effectId(x.effect)", generated)
+            self.assertIn("phase write failed", generated)
+            self.assertNotIn("e.applyImpulse?.(x.velocity", generated)
+            self.assertTrue(validate_output(root, plan)["valid"])
+
     def test_marketplace_archive_rejects_internal_artifact(self):
         with tempfile.TemporaryDirectory() as directory:
             document = ir()
