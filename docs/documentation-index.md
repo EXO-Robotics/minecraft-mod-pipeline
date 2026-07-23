@@ -9,6 +9,7 @@
 - [Reconstruction patterns](reconstruction-patterns.md)
 - [Rights and provenance](rights-and-provenance.md)
 - [Java mod reconstruction baseline](java-mod-reconstruction-baseline.md)
+- [Forest Wave 1 transformation diagnosis](forest-wave-1-transformation-diagnosis.md)
 - [Creator Tools integration](creator-tools-integration.md)
 - [Performance budgets](performance-budgets.md)
 - [Controller redesign](controller-redesign.md)

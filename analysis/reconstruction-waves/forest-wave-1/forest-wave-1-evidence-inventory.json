@@ -1,0 +1,515 @@
+{
+  "diagnostic_only": true,
+  "execution_not_authorized": true,
+  "features": [
+    {
+      "claims": [
+        {
+          "claim": "the repository selected mossback_forager for the role baseline passive regional creature",
+          "classification": "observed",
+          "confidence": 1.0,
+          "evidence_refs": [
+            "analysis/gameplay-intent/controlled-chaos-forest/mossback_forager.json",
+            "production/planning/controlled-chaos-forest/contracts/mossback_forager/asset.json",
+            "production/planning/controlled-chaos-forest/contracts/mossback_forager/behavior.json",
+            "production/planning/controlled-chaos-forest/contracts/mossback_forager/clean-room-design.json",
+            "production/planning/controlled-chaos-forest/contracts/mossback_forager/qualification.json"
+          ],
+          "rationale": "Directly recorded in the checked-in planning contract.",
+          "rights_disposition": "CLEAN_ROOM_INTERNAL_IDENTITY"
+        },
+        {
+          "claim": "the proposed Bedrock strategy can serve the selected abstract role",
+          "classification": "inferred",
+          "confidence": 0.35,
+          "evidence_refs": [
+            "analysis/gameplay-intent/controlled-chaos-forest/mossback_forager.json",
+            "production/planning/controlled-chaos-forest/contracts/mossback_forager/asset.json",
+            "production/planning/controlled-chaos-forest/contracts/mossback_forager/behavior.json",
+            "production/planning/controlled-chaos-forest/contracts/mossback_forager/clean-room-design.json",
+            "production/planning/controlled-chaos-forest/contracts/mossback_forager/qualification.json"
+          ],
+          "rationale": "Feasibility proposal based on stable Bedrock patterns, not Java evidence.",
+          "rights_disposition": "ABSTRACT_PATTERN_RETAINED"
+        },
+        {
+          "claim": "the intended Java mechanic matches the proposed detailed behavior",
+          "classification": "unknown",
+          "confidence": 0.0,
+          "evidence_refs": [],
+          "rationale": "No authorized Java evidence record is registered.",
+          "rights_disposition": "RIGHTS_BLOCKED_DIRECT_RECONSTRUCTION"
+        }
+      ],
+      "evidence": [
+        {
+          "authorized_java_evidence": false,
+          "does_not_prove": [
+            "any Java source mechanic",
+            "source rights",
+            "implementation",
+            "runtime qualification"
+          ],
+          "evidence_id": "internal-plan-mossback_forager-v1",
+          "kind": "INTERNAL_PLANNING_CONTRACT",
+          "paths": [
+            "analysis/gameplay-intent/controlled-chaos-forest/mossback_forager.json",
+            "production/planning/controlled-chaos-forest/contracts/mossback_forager/asset.json",
+            "production/planning/controlled-chaos-forest/contracts/mossback_forager/behavior.json",
+            "production/planning/controlled-chaos-forest/contracts/mossback_forager/clean-room-design.json",
+            "production/planning/controlled-chaos-forest/contracts/mossback_forager/qualification.json"
+          ],
+          "proves": [
+            "selected clean-room role: baseline passive regional creature",
+            "planning-only status",
+            "generic bounded cleanup/multiplayer/persistence requirements"
+          ],
+          "rights_disposition": "ANALYSIS_ONLY_INTERNAL_PLAN"
+        }
+      ],
+      "evidence_gaps": [
+        "authorized Java registration/symbol evidence",
+        "authorized runtime observation",
+        "material-level ownership and commercial/Marketplace permissions",
+        "source behavior parameters and dependency evidence",
+        "source expression inventory and rights disposition"
+      ],
+      "feature_id": "mossback_forager"
+    },
+    {
+      "claims": [
+        {
+          "claim": "the repository selected resonance_sling for the role first unusual ranged equipment upgrade",
+          "classification": "observed",
+          "confidence": 1.0,
+          "evidence_refs": [
+            "analysis/gameplay-intent/controlled-chaos-forest/resonance_sling.json",
+            "production/planning/controlled-chaos-forest/contracts/resonance_sling/asset.json",
+            "production/planning/controlled-chaos-forest/contracts/resonance_sling/behavior.json",
+            "production/planning/controlled-chaos-forest/contracts/resonance_sling/clean-room-design.json",
+            "production/planning/controlled-chaos-forest/contracts/resonance_sling/qualification.json"
+          ],
+          "rationale": "Directly recorded in the checked-in planning contract.",
+          "rights_disposition": "CLEAN_ROOM_INTERNAL_IDENTITY"
+        },
+        {
+          "claim": "the proposed Bedrock strategy can serve the selected abstract role",
+          "classification": "inferred",
+          "confidence": 0.35,
+          "evidence_refs": [
+            "analysis/gameplay-intent/controlled-chaos-forest/resonance_sling.json",
+            "production/planning/controlled-chaos-forest/contracts/resonance_sling/asset.json",
+            "production/planning/controlled-chaos-forest/contracts/resonance_sling/behavior.json",
+            "production/planning/controlled-chaos-forest/contracts/resonance_sling/clean-room-design.json",
+            "production/planning/controlled-chaos-forest/contracts/resonance_sling/qualification.json"
+          ],
+          "rationale": "Feasibility proposal based on stable Bedrock patterns, not Java evidence.",
+          "rights_disposition": "ABSTRACT_PATTERN_RETAINED"
+        },
+        {
+          "claim": "the intended Java mechanic matches the proposed detailed behavior",
+          "classification": "unknown",
+          "confidence": 0.0,
+          "evidence_refs": [],
+          "rationale": "No authorized Java evidence record is registered.",
+          "rights_disposition": "RIGHTS_BLOCKED_DIRECT_RECONSTRUCTION"
+        }
+      ],
+      "evidence": [
+        {
+          "authorized_java_evidence": false,
+          "does_not_prove": [
+            "any Java source mechanic",
+            "source rights",
+            "implementation",
+            "runtime qualification"
+          ],
+          "evidence_id": "internal-plan-resonance_sling-v1",
+          "kind": "INTERNAL_PLANNING_CONTRACT",
+          "paths": [
+            "analysis/gameplay-intent/controlled-chaos-forest/resonance_sling.json",
+            "production/planning/controlled-chaos-forest/contracts/resonance_sling/asset.json",
+            "production/planning/controlled-chaos-forest/contracts/resonance_sling/behavior.json",
+            "production/planning/controlled-chaos-forest/contracts/resonance_sling/clean-room-design.json",
+            "production/planning/controlled-chaos-forest/contracts/resonance_sling/qualification.json"
+          ],
+          "proves": [
+            "selected clean-room role: first unusual ranged equipment upgrade",
+            "planning-only status",
+            "generic bounded cleanup/multiplayer/persistence requirements"
+          ],
+          "rights_disposition": "ANALYSIS_ONLY_INTERNAL_PLAN"
+        },
+        {
+          "authorized_java_evidence": false,
+          "does_not_prove": [
+            "the intended Java mechanic",
+            "source rights",
+            "production suitability",
+            "controller presentation",
+            "PS4 performance"
+          ],
+          "evidence_id": "bedrock-benchmark-resonance_sling-v1",
+          "kind": "EXISTING_BEDROCK_TECHNICAL_TEMPLATE",
+          "paths": [
+            "benchmarks/controlled-chaos-integration/behavior-model/contract.json",
+            "benchmarks/controlled-chaos-integration/bedrock/behavior_pack/scripts/main.js"
+          ],
+          "proves": [
+            "a Bedrock template implements a 20-tick cooldown",
+            "the template caps projectiles at 12 with 100-tick lifetime",
+            "owner-attributed entity/block impact is technically expressible"
+          ],
+          "redesign_required": "replace broad periodic projectile scans with bounded owned-entity tracking",
+          "rights_disposition": "ANALYSIS_ONLY_TECHNICAL_TEMPLATE"
+        }
+      ],
+      "evidence_gaps": [
+        "authorized Java registration/symbol evidence",
+        "authorized runtime observation",
+        "material-level ownership and commercial/Marketplace permissions",
+        "source behavior parameters and dependency evidence",
+        "source expression inventory and rights disposition"
+      ],
+      "feature_id": "resonance_sling"
+    },
+    {
+      "claims": [
+        {
+          "claim": "the repository selected signal_ruin for the role discoverable forest landmark and encounter initializer",
+          "classification": "observed",
+          "confidence": 1.0,
+          "evidence_refs": [
+            "analysis/gameplay-intent/controlled-chaos-forest/signal_ruin.json",
+            "production/planning/controlled-chaos-forest/contracts/signal_ruin/asset.json",
+            "production/planning/controlled-chaos-forest/contracts/signal_ruin/behavior.json",
+            "production/planning/controlled-chaos-forest/contracts/signal_ruin/clean-room-design.json",
+            "production/planning/controlled-chaos-forest/contracts/signal_ruin/qualification.json",
+            "production/planning/controlled-chaos-forest/contracts/signal_ruin/encounter.json"
+          ],
+          "rationale": "Directly recorded in the checked-in planning contract.",
+          "rights_disposition": "CLEAN_ROOM_INTERNAL_IDENTITY"
+        },
+        {
+          "claim": "the proposed Bedrock strategy can serve the selected abstract role",
+          "classification": "inferred",
+          "confidence": 0.35,
+          "evidence_refs": [
+            "analysis/gameplay-intent/controlled-chaos-forest/signal_ruin.json",
+            "production/planning/controlled-chaos-forest/contracts/signal_ruin/asset.json",
+            "production/planning/controlled-chaos-forest/contracts/signal_ruin/behavior.json",
+            "production/planning/controlled-chaos-forest/contracts/signal_ruin/clean-room-design.json",
+            "production/planning/controlled-chaos-forest/contracts/signal_ruin/qualification.json",
+            "production/planning/controlled-chaos-forest/contracts/signal_ruin/encounter.json"
+          ],
+          "rationale": "Feasibility proposal based on stable Bedrock patterns, not Java evidence.",
+          "rights_disposition": "ABSTRACT_PATTERN_RETAINED"
+        },
+        {
+          "claim": "the intended Java mechanic matches the proposed detailed behavior",
+          "classification": "unknown",
+          "confidence": 0.0,
+          "evidence_refs": [],
+          "rationale": "No authorized Java evidence record is registered.",
+          "rights_disposition": "RIGHTS_BLOCKED_DIRECT_RECONSTRUCTION"
+        }
+      ],
+      "evidence": [
+        {
+          "authorized_java_evidence": false,
+          "does_not_prove": [
+            "any Java source mechanic",
+            "source rights",
+            "implementation",
+            "runtime qualification"
+          ],
+          "evidence_id": "internal-plan-signal_ruin-v1",
+          "kind": "INTERNAL_PLANNING_CONTRACT",
+          "paths": [
+            "analysis/gameplay-intent/controlled-chaos-forest/signal_ruin.json",
+            "production/planning/controlled-chaos-forest/contracts/signal_ruin/asset.json",
+            "production/planning/controlled-chaos-forest/contracts/signal_ruin/behavior.json",
+            "production/planning/controlled-chaos-forest/contracts/signal_ruin/clean-room-design.json",
+            "production/planning/controlled-chaos-forest/contracts/signal_ruin/qualification.json",
+            "production/planning/controlled-chaos-forest/contracts/signal_ruin/encounter.json"
+          ],
+          "proves": [
+            "selected clean-room role: discoverable forest landmark and encounter initializer",
+            "planning-only status",
+            "generic bounded cleanup/multiplayer/persistence requirements"
+          ],
+          "rights_disposition": "ANALYSIS_ONLY_INTERNAL_PLAN"
+        },
+        {
+          "authorized_java_evidence": false,
+          "does_not_prove": [
+            "the intended Java mechanic",
+            "source rights",
+            "production suitability",
+            "controller presentation",
+            "PS4 performance"
+          ],
+          "evidence_id": "bedrock-benchmark-signal_ruin-v1",
+          "kind": "EXISTING_BEDROCK_TECHNICAL_TEMPLATE",
+          "paths": [
+            "benchmarks/controlled-chaos-integration/behavior-model/contract.json",
+            "benchmarks/controlled-chaos-integration/bedrock/behavior_pack/scripts/main.js"
+          ],
+          "proves": [
+            "a Bedrock template can place one mcstructure at a controlled location",
+            "world dynamic property can prevent repeat initialization"
+          ],
+          "redesign_required": "replace fixed-coordinate/console interaction with approved placement and controller-safe activation",
+          "rights_disposition": "ANALYSIS_ONLY_TECHNICAL_TEMPLATE"
+        }
+      ],
+      "evidence_gaps": [
+        "authorized Java registration/symbol evidence",
+        "authorized runtime observation",
+        "material-level ownership and commercial/Marketplace permissions",
+        "source behavior parameters and dependency evidence",
+        "source expression inventory and rights disposition"
+      ],
+      "feature_id": "signal_ruin"
+    },
+    {
+      "claims": [
+        {
+          "claim": "the repository selected thornwarden_elite for the role gated elite encounter",
+          "classification": "observed",
+          "confidence": 1.0,
+          "evidence_refs": [
+            "analysis/gameplay-intent/controlled-chaos-forest/thornwarden_elite.json",
+            "production/planning/controlled-chaos-forest/contracts/thornwarden_elite/asset.json",
+            "production/planning/controlled-chaos-forest/contracts/thornwarden_elite/behavior.json",
+            "production/planning/controlled-chaos-forest/contracts/thornwarden_elite/clean-room-design.json",
+            "production/planning/controlled-chaos-forest/contracts/thornwarden_elite/qualification.json",
+            "production/planning/controlled-chaos-forest/contracts/thornwarden_elite/encounter.json"
+          ],
+          "rationale": "Directly recorded in the checked-in planning contract.",
+          "rights_disposition": "CLEAN_ROOM_INTERNAL_IDENTITY"
+        },
+        {
+          "claim": "the proposed Bedrock strategy can serve the selected abstract role",
+          "classification": "inferred",
+          "confidence": 0.35,
+          "evidence_refs": [
+            "analysis/gameplay-intent/controlled-chaos-forest/thornwarden_elite.json",
+            "production/planning/controlled-chaos-forest/contracts/thornwarden_elite/asset.json",
+            "production/planning/controlled-chaos-forest/contracts/thornwarden_elite/behavior.json",
+            "production/planning/controlled-chaos-forest/contracts/thornwarden_elite/clean-room-design.json",
+            "production/planning/controlled-chaos-forest/contracts/thornwarden_elite/qualification.json",
+            "production/planning/controlled-chaos-forest/contracts/thornwarden_elite/encounter.json"
+          ],
+          "rationale": "Feasibility proposal based on stable Bedrock patterns, not Java evidence.",
+          "rights_disposition": "ABSTRACT_PATTERN_RETAINED"
+        },
+        {
+          "claim": "the intended Java mechanic matches the proposed detailed behavior",
+          "classification": "unknown",
+          "confidence": 0.0,
+          "evidence_refs": [],
+          "rationale": "No authorized Java evidence record is registered.",
+          "rights_disposition": "RIGHTS_BLOCKED_DIRECT_RECONSTRUCTION"
+        }
+      ],
+      "evidence": [
+        {
+          "authorized_java_evidence": false,
+          "does_not_prove": [
+            "any Java source mechanic",
+            "source rights",
+            "implementation",
+            "runtime qualification"
+          ],
+          "evidence_id": "internal-plan-thornwarden_elite-v1",
+          "kind": "INTERNAL_PLANNING_CONTRACT",
+          "paths": [
+            "analysis/gameplay-intent/controlled-chaos-forest/thornwarden_elite.json",
+            "production/planning/controlled-chaos-forest/contracts/thornwarden_elite/asset.json",
+            "production/planning/controlled-chaos-forest/contracts/thornwarden_elite/behavior.json",
+            "production/planning/controlled-chaos-forest/contracts/thornwarden_elite/clean-room-design.json",
+            "production/planning/controlled-chaos-forest/contracts/thornwarden_elite/qualification.json",
+            "production/planning/controlled-chaos-forest/contracts/thornwarden_elite/encounter.json"
+          ],
+          "proves": [
+            "selected clean-room role: gated elite encounter",
+            "planning-only status",
+            "generic bounded cleanup/multiplayer/persistence requirements"
+          ],
+          "rights_disposition": "ANALYSIS_ONLY_INTERNAL_PLAN"
+        }
+      ],
+      "evidence_gaps": [
+        "authorized Java registration/symbol evidence",
+        "authorized runtime observation",
+        "material-level ownership and commercial/Marketplace permissions",
+        "source behavior parameters and dependency evidence",
+        "source expression inventory and rights disposition"
+      ],
+      "feature_id": "thornwarden_elite"
+    },
+    {
+      "claims": [
+        {
+          "claim": "the repository selected forest_attunement for the role persistent distinctive progression unlock",
+          "classification": "observed",
+          "confidence": 1.0,
+          "evidence_refs": [
+            "analysis/gameplay-intent/controlled-chaos-forest/forest_attunement.json",
+            "production/planning/controlled-chaos-forest/contracts/forest_attunement/asset.json",
+            "production/planning/controlled-chaos-forest/contracts/forest_attunement/behavior.json",
+            "production/planning/controlled-chaos-forest/contracts/forest_attunement/clean-room-design.json",
+            "production/planning/controlled-chaos-forest/contracts/forest_attunement/qualification.json"
+          ],
+          "rationale": "Directly recorded in the checked-in planning contract.",
+          "rights_disposition": "CLEAN_ROOM_INTERNAL_IDENTITY"
+        },
+        {
+          "claim": "the proposed Bedrock strategy can serve the selected abstract role",
+          "classification": "inferred",
+          "confidence": 0.35,
+          "evidence_refs": [
+            "analysis/gameplay-intent/controlled-chaos-forest/forest_attunement.json",
+            "production/planning/controlled-chaos-forest/contracts/forest_attunement/asset.json",
+            "production/planning/controlled-chaos-forest/contracts/forest_attunement/behavior.json",
+            "production/planning/controlled-chaos-forest/contracts/forest_attunement/clean-room-design.json",
+            "production/planning/controlled-chaos-forest/contracts/forest_attunement/qualification.json"
+          ],
+          "rationale": "Feasibility proposal based on stable Bedrock patterns, not Java evidence.",
+          "rights_disposition": "ABSTRACT_PATTERN_RETAINED"
+        },
+        {
+          "claim": "the intended Java mechanic matches the proposed detailed behavior",
+          "classification": "unknown",
+          "confidence": 0.0,
+          "evidence_refs": [],
+          "rationale": "No authorized Java evidence record is registered.",
+          "rights_disposition": "RIGHTS_BLOCKED_DIRECT_RECONSTRUCTION"
+        }
+      ],
+      "evidence": [
+        {
+          "authorized_java_evidence": false,
+          "does_not_prove": [
+            "any Java source mechanic",
+            "source rights",
+            "implementation",
+            "runtime qualification"
+          ],
+          "evidence_id": "internal-plan-forest_attunement-v1",
+          "kind": "INTERNAL_PLANNING_CONTRACT",
+          "paths": [
+            "analysis/gameplay-intent/controlled-chaos-forest/forest_attunement.json",
+            "production/planning/controlled-chaos-forest/contracts/forest_attunement/asset.json",
+            "production/planning/controlled-chaos-forest/contracts/forest_attunement/behavior.json",
+            "production/planning/controlled-chaos-forest/contracts/forest_attunement/clean-room-design.json",
+            "production/planning/controlled-chaos-forest/contracts/forest_attunement/qualification.json"
+          ],
+          "proves": [
+            "selected clean-room role: persistent distinctive progression unlock",
+            "planning-only status",
+            "generic bounded cleanup/multiplayer/persistence requirements"
+          ],
+          "rights_disposition": "ANALYSIS_ONLY_INTERNAL_PLAN"
+        }
+      ],
+      "evidence_gaps": [
+        "authorized Java registration/symbol evidence",
+        "authorized runtime observation",
+        "material-level ownership and commercial/Marketplace permissions",
+        "source behavior parameters and dependency evidence",
+        "source expression inventory and rights disposition"
+      ],
+      "feature_id": "forest_attunement"
+    },
+    {
+      "claims": [
+        {
+          "claim": "the repository selected sporefall_event for the role bounded deterministic chaos event",
+          "classification": "observed",
+          "confidence": 1.0,
+          "evidence_refs": [
+            "analysis/gameplay-intent/controlled-chaos-forest/sporefall_event.json",
+            "production/planning/controlled-chaos-forest/contracts/sporefall_event/asset.json",
+            "production/planning/controlled-chaos-forest/contracts/sporefall_event/behavior.json",
+            "production/planning/controlled-chaos-forest/contracts/sporefall_event/clean-room-design.json",
+            "production/planning/controlled-chaos-forest/contracts/sporefall_event/qualification.json",
+            "production/planning/controlled-chaos-forest/contracts/sporefall_event/encounter.json"
+          ],
+          "rationale": "Directly recorded in the checked-in planning contract.",
+          "rights_disposition": "CLEAN_ROOM_INTERNAL_IDENTITY"
+        },
+        {
+          "claim": "the proposed Bedrock strategy can serve the selected abstract role",
+          "classification": "inferred",
+          "confidence": 0.35,
+          "evidence_refs": [
+            "analysis/gameplay-intent/controlled-chaos-forest/sporefall_event.json",
+            "production/planning/controlled-chaos-forest/contracts/sporefall_event/asset.json",
+            "production/planning/controlled-chaos-forest/contracts/sporefall_event/behavior.json",
+            "production/planning/controlled-chaos-forest/contracts/sporefall_event/clean-room-design.json",
+            "production/planning/controlled-chaos-forest/contracts/sporefall_event/qualification.json",
+            "production/planning/controlled-chaos-forest/contracts/sporefall_event/encounter.json"
+          ],
+          "rationale": "Feasibility proposal based on stable Bedrock patterns, not Java evidence.",
+          "rights_disposition": "ABSTRACT_PATTERN_RETAINED"
+        },
+        {
+          "claim": "the intended Java mechanic matches the proposed detailed behavior",
+          "classification": "unknown",
+          "confidence": 0.0,
+          "evidence_refs": [],
+          "rationale": "No authorized Java evidence record is registered.",
+          "rights_disposition": "RIGHTS_BLOCKED_DIRECT_RECONSTRUCTION"
+        }
+      ],
+      "evidence": [
+        {
+          "authorized_java_evidence": false,
+          "does_not_prove": [
+            "any Java source mechanic",
+            "source rights",
+            "implementation",
+            "runtime qualification"
+          ],
+          "evidence_id": "internal-plan-sporefall_event-v1",
+          "kind": "INTERNAL_PLANNING_CONTRACT",
+          "paths": [
+            "analysis/gameplay-intent/controlled-chaos-forest/sporefall_event.json",
+            "production/planning/controlled-chaos-forest/contracts/sporefall_event/asset.json",
+            "production/planning/controlled-chaos-forest/contracts/sporefall_event/behavior.json",
+            "production/planning/controlled-chaos-forest/contracts/sporefall_event/clean-room-design.json",
+            "production/planning/controlled-chaos-forest/contracts/sporefall_event/qualification.json",
+            "production/planning/controlled-chaos-forest/contracts/sporefall_event/encounter.json"
+          ],
+          "proves": [
+            "selected clean-room role: bounded deterministic chaos event",
+            "planning-only status",
+            "generic bounded cleanup/multiplayer/persistence requirements"
+          ],
+          "rights_disposition": "ANALYSIS_ONLY_INTERNAL_PLAN"
+        }
+      ],
+      "evidence_gaps": [
+        "authorized Java registration/symbol evidence",
+        "authorized runtime observation",
+        "material-level ownership and commercial/Marketplace permissions",
+        "source behavior parameters and dependency evidence",
+        "source expression inventory and rights disposition"
+      ],
+      "feature_id": "sporefall_event"
+    }
+  ],
+  "record_hash": "c436376ac6aca557c390fd2bf79a654bdd725493efc2fc1b668e6bad7bfe69d6",
+  "report_type": "evidence_inventory",
+  "repository_evidence_policy": {
+    "authorized_java_evidence_found": false,
+    "existing_bedrock_benchmarks_are_java_evidence": false,
+    "missing_evidence_behavior": "FAIL_CLOSED",
+    "planning_contracts_are_java_evidence": false,
+    "source_expression_production_access": "PROHIBITED"
+  },
+  "schema_version": "1.0.0",
+  "wave_id": "forest-wave-1"
+}

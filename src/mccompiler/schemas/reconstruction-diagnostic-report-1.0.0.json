@@ -1,0 +1,39 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://mccompiler.local/schemas/reconstruction-diagnostic-report-1.0.0.json",
+  "title": "Reconstruction diagnostic report envelope",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "report_type",
+    "wave_id",
+    "diagnostic_only",
+    "execution_not_authorized",
+    "record_hash"
+  ],
+  "properties": {
+    "schema_version": {"const": "1.0.0"},
+    "report_type": {
+      "enum": [
+        "evidence_inventory",
+        "feature_decomposition",
+        "transformation_plan",
+        "expression_disposition",
+        "dependency_graph",
+        "rights_report",
+        "runtime_architecture_plan",
+        "ps4_cost_preview",
+        "artifact_manifest_preview",
+        "qualification_plan",
+        "open_questions",
+        "execution_readiness",
+        "execution_manifest"
+      ]
+    },
+    "wave_id": {"type": "string", "pattern": "^[a-z0-9][a-z0-9._-]*$"},
+    "diagnostic_only": {"const": true},
+    "execution_not_authorized": {"const": true},
+    "record_hash": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+    "execution_authorized": {"const": false}
+  }
+}

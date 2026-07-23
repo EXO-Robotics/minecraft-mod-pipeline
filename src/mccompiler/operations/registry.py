@@ -61,7 +61,7 @@ REQUIRED_OPERATION_CATALOG: dict[str, tuple[str, ...]] = {
         "validate_production_wave", "show_production_wave",
     ),
     "reconstruction": (
-        "prepare_reconstruction_wave",
+        "prepare_reconstruction_wave", "diagnose_reconstruction_wave",
     ),
 }
 
@@ -184,6 +184,11 @@ class OperationRegistry:
             "validate_production_wave": gameplay_distillation_ops.validate_production_wave,
             "show_production_wave": gameplay_distillation_ops.show_production_wave,
             "prepare_reconstruction_wave": reconstruction_ops.prepare_reconstruction_wave,
+            "diagnose_reconstruction_wave": _not_available(
+                "diagnose_reconstruction_wave",
+                "reconstruction",
+                "repository-root diagnostic dispatch is handled before ProjectStore opening",
+            ),
         }
         unavailable_reasons = {
             "trace_callers": "No persisted call graph exists in analysis/source-index/calls.json",
@@ -235,6 +240,7 @@ class OperationRegistry:
 
     def catalog(self) -> dict[str, dict[str, Any]]:
         available = {name for name, handler in self.handlers.items() if getattr(handler, "__name__", "") != "handler"}
+        available.add("diagnose_reconstruction_wave")
         return {
             name: {"category": category, "status": "AVAILABLE" if name in available else "NOT_AVAILABLE"}
             for category, names in REQUIRED_OPERATION_CATALOG.items() for name in names
@@ -263,6 +269,11 @@ class OperationRegistry:
             return failure(str(operation), "INVALID_REQUEST", "expected_revision must be a positive integer", request_id=request_id)
         store: ProjectStore | None = None
         try:
+            if operation == "diagnose_reconstruction_wave":
+                result, artifacts = reconstruction_ops.diagnose_reconstruction_wave_repository(
+                    project, parameters, expected_revision
+                )
+                return success(str(operation), result, request_id=request_id, revision=None, artifacts=artifacts)
             if operation in {"create_conversion_project", "open_conversion_project"}:
                 result, store, artifacts = self.handlers[operation](project, parameters, expected_revision)
             else:

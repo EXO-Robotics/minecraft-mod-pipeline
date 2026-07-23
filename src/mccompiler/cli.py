@@ -32,6 +32,7 @@ MILESTONE_COMMANDS = {
 
 RECONSTRUCTION_COMMANDS = {
     "prepare-reconstruction-wave": "prepare_reconstruction_wave",
+    "diagnose-reconstruction-wave": "diagnose_reconstruction_wave",
 }
 
 PROJECT_OPERATION_COMMANDS = {**MILESTONE_COMMANDS, **RECONSTRUCTION_COMMANDS}
@@ -73,6 +74,8 @@ def _run_milestone_operation(args: argparse.Namespace) -> int:
     }
     if args.expected_revision is not None:
         request["expected_revision"] = args.expected_revision
+    if getattr(args, "dry_run", False):
+        request["parameters"]["dry_run"] = True
     response = execute_request(request)
     if args.output_json:
         print(json.dumps(response, sort_keys=True, ensure_ascii=False))
@@ -89,6 +92,13 @@ def _run_milestone_operation(args: argparse.Namespace) -> int:
         details = diagnostic.get("details")
         if isinstance(details, dict) and details.get("remediation"):
             print(f"remediation: {details['remediation']}", file=sys.stderr)
+    if response["ok"] and response["operation"] == "diagnose_reconstruction_wave":
+        result = response.get("result") or {}
+        if not args.output_json:
+            print("mode: DIAGNOSTIC_ONLY")
+            print("execution: EXECUTION_NOT_AUTHORIZED")
+            print(f"aggregate readiness: {result.get('aggregate_readiness')}")
+        return 3 if result.get("blocking") is True else 0
     return 0 if response["ok"] else 2
 
 
@@ -128,6 +138,8 @@ def main(argv: list[str] | None = None) -> int:
         milestone.add_argument("--expected-revision", type=int)
         milestone.add_argument("--request-id")
         milestone.add_argument("--json", action="store_true", dest="output_json", help="Emit the complete operation response as JSON")
+        if command == "diagnose-reconstruction-wave":
+            milestone.add_argument("--dry-run", action="store_true", help="Required diagnostic-only execution boundary")
     args = parser.parse_args(argv)
 
     if args.command == "operation":

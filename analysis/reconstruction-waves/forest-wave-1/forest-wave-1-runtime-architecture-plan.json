@@ -1,0 +1,262 @@
+{
+  "diagnostic_only": true,
+  "execution_not_authorized": true,
+  "features": [
+    {
+      "atomic_write": "revision compare, write payload, then commit marker; replay idempotently",
+      "cleanup": "bounded selectors/owned IDs; zero-state receipt required",
+      "dynamic_properties": [],
+      "entity_query_frequency": "bounded local query on transition only; never full-world per-tick",
+      "error_handling": "record diagnostic and fail closed without changing vanilla behavior",
+      "event_subscriptions": [],
+      "fail_policy": "FAIL_CLOSED_FOR_ADDON_FEATURE; VANILLA_REMAINS_AVAILABLE",
+      "feature_id": "mossback_forager",
+      "idempotency": "all acquisition, initialization, reward, and cleanup transitions carry stable transaction keys",
+      "migration": "explicit v1 migrator with corrupt/missing-state fallback; no implicit schema drift",
+      "multiplayer_locking": "canonical key plus revision/claim token; duplicate rewards rejected",
+      "planned_systems": [
+        "native creature AI",
+        "bounded optional resource interaction"
+      ],
+      "preview_or_experimental_apis": [],
+      "restart_behavior": "restore valid committed state; roll back incomplete transaction; clean transient entities",
+      "scheduled_callbacks": {
+        "cadence": "event-driven; minimum 20 ticks when polling is unavoidable",
+        "global_per_tick_scan": false
+      },
+      "scoreboards": [],
+      "stable_components": [
+        "minecraft:movement",
+        "minecraft:navigation.walk",
+        "minecraft:behavior.random_stroll",
+        "minecraft:loot"
+      ],
+      "stable_script_api_symbols": [],
+      "state_ownership": "entity-local",
+      "state_schema_version": "1",
+      "status": "PROPOSED_PENDING_EVIDENCE",
+      "worst_credible_runtime_load": "UNKNOWN until evidence defines behavior and concurrency envelope"
+    },
+    {
+      "atomic_write": "revision compare, write payload, then commit marker; replay idempotently",
+      "cleanup": "bounded selectors/owned IDs; zero-state receipt required",
+      "dynamic_properties": [
+        "ccoriginal_cc:resonance_sling:v1"
+      ],
+      "entity_query_frequency": "bounded local query on transition only; never full-world per-tick",
+      "error_handling": "record diagnostic and fail closed without changing vanilla behavior",
+      "event_subscriptions": [
+        "bounded feature-specific after-event subscription"
+      ],
+      "fail_policy": "FAIL_CLOSED_FOR_ADDON_FEATURE; VANILLA_REMAINS_AVAILABLE",
+      "feature_id": "resonance_sling",
+      "idempotency": "all acquisition, initialization, reward, and cleanup transitions carry stable transaction keys",
+      "migration": "explicit v1 migrator with corrupt/missing-state fallback; no implicit schema drift",
+      "multiplayer_locking": "canonical key plus revision/claim token; duplicate rewards rejected",
+      "planned_systems": [
+        "item use",
+        "owner-attributed projectile",
+        "impact and TTL cleanup"
+      ],
+      "preview_or_experimental_apis": [],
+      "restart_behavior": "restore valid committed state; roll back incomplete transaction; clean transient entities",
+      "scheduled_callbacks": {
+        "cadence": "event-driven; minimum 20 ticks when polling is unavoidable",
+        "global_per_tick_scan": false
+      },
+      "scoreboards": [],
+      "stable_components": [
+        "minecraft:cooldown",
+        "minecraft:durability",
+        "minecraft:projectile"
+      ],
+      "stable_script_api_symbols": [
+        "world.afterEvents",
+        "system.runTimeout",
+        "Entity.getDynamicProperty",
+        "Entity.setDynamicProperty"
+      ],
+      "state_ownership": "projectile owner",
+      "state_schema_version": "1",
+      "status": "PROPOSED_PENDING_EVIDENCE",
+      "worst_credible_runtime_load": "UNKNOWN until evidence defines behavior and concurrency envelope"
+    },
+    {
+      "atomic_write": "revision compare, write payload, then commit marker; replay idempotently",
+      "cleanup": "bounded selectors/owned IDs; zero-state receipt required",
+      "dynamic_properties": [
+        "ccoriginal_cc:signal_ruin:v1"
+      ],
+      "entity_query_frequency": "bounded local query on transition only; never full-world per-tick",
+      "error_handling": "record diagnostic and fail closed without changing vanilla behavior",
+      "event_subscriptions": [
+        "bounded feature-specific after-event subscription"
+      ],
+      "fail_policy": "FAIL_CLOSED_FOR_ADDON_FEATURE; VANILLA_REMAINS_AVAILABLE",
+      "feature_id": "signal_ruin",
+      "idempotency": "all acquisition, initialization, reward, and cleanup transitions carry stable transaction keys",
+      "migration": "explicit v1 migrator with corrupt/missing-state fallback; no implicit schema drift",
+      "multiplayer_locking": "canonical key plus revision/claim token; duplicate rewards rejected",
+      "planned_systems": [
+        "placement registry",
+        "idempotent initialization",
+        "encounter state"
+      ],
+      "preview_or_experimental_apis": [],
+      "restart_behavior": "restore valid committed state; roll back incomplete transaction; clean transient entities",
+      "scheduled_callbacks": {
+        "cadence": "event-driven; minimum 20 ticks when polling is unavoidable",
+        "global_per_tick_scan": false
+      },
+      "scoreboards": [],
+      "stable_components": [
+        "mcstructure",
+        "loot_table"
+      ],
+      "stable_script_api_symbols": [
+        "world.afterEvents",
+        "system.runTimeout",
+        "Entity.getDynamicProperty",
+        "Entity.setDynamicProperty"
+      ],
+      "state_ownership": "canonical structure instance",
+      "state_schema_version": "1",
+      "status": "PROPOSED_PENDING_EVIDENCE",
+      "worst_credible_runtime_load": "UNKNOWN until evidence defines behavior and concurrency envelope"
+    },
+    {
+      "atomic_write": "revision compare, write payload, then commit marker; replay idempotently",
+      "cleanup": "bounded selectors/owned IDs; zero-state receipt required",
+      "dynamic_properties": [
+        "ccoriginal_cc:thornwarden_elite:v1"
+      ],
+      "entity_query_frequency": "bounded local query on transition only; never full-world per-tick",
+      "error_handling": "record diagnostic and fail closed without changing vanilla behavior",
+      "event_subscriptions": [
+        "bounded feature-specific after-event subscription"
+      ],
+      "fail_policy": "FAIL_CLOSED_FOR_ADDON_FEATURE; VANILLA_REMAINS_AVAILABLE",
+      "feature_id": "thornwarden_elite",
+      "idempotency": "all acquisition, initialization, reward, and cleanup transitions carry stable transaction keys",
+      "migration": "explicit v1 migrator with corrupt/missing-state fallback; no implicit schema drift",
+      "multiplayer_locking": "canonical key plus revision/claim token; duplicate rewards rejected",
+      "planned_systems": [
+        "single-instance encounter lock",
+        "phase state machine",
+        "reward transaction"
+      ],
+      "preview_or_experimental_apis": [],
+      "restart_behavior": "restore valid committed state; roll back incomplete transaction; clean transient entities",
+      "scheduled_callbacks": {
+        "cadence": "event-driven; minimum 20 ticks when polling is unavoidable",
+        "global_per_tick_scan": false
+      },
+      "scoreboards": [],
+      "stable_components": [
+        "minecraft:health",
+        "minecraft:attack",
+        "minecraft:navigation.walk",
+        "minecraft:loot"
+      ],
+      "stable_script_api_symbols": [
+        "world.afterEvents",
+        "system.runTimeout",
+        "Entity.getDynamicProperty",
+        "Entity.setDynamicProperty"
+      ],
+      "state_ownership": "canonical structure instance",
+      "state_schema_version": "1",
+      "status": "PROPOSED_PENDING_EVIDENCE",
+      "worst_credible_runtime_load": "UNKNOWN until evidence defines behavior and concurrency envelope"
+    },
+    {
+      "atomic_write": "revision compare, write payload, then commit marker; replay idempotently",
+      "cleanup": "bounded selectors/owned IDs; zero-state receipt required",
+      "dynamic_properties": [
+        "ccoriginal_cc:forest_attunement:v1"
+      ],
+      "entity_query_frequency": "bounded local query on transition only; never full-world per-tick",
+      "error_handling": "record diagnostic and fail closed without changing vanilla behavior",
+      "event_subscriptions": [
+        "bounded feature-specific after-event subscription"
+      ],
+      "fail_policy": "FAIL_CLOSED_FOR_ADDON_FEATURE; VANILLA_REMAINS_AVAILABLE",
+      "feature_id": "forest_attunement",
+      "idempotency": "all acquisition, initialization, reward, and cleanup transitions carry stable transaction keys",
+      "migration": "explicit v1 migrator with corrupt/missing-state fallback; no implicit schema drift",
+      "multiplayer_locking": "canonical key plus revision/claim token; duplicate rewards rejected",
+      "planned_systems": [
+        "versioned player unlock",
+        "migration",
+        "administrative recovery"
+      ],
+      "preview_or_experimental_apis": [],
+      "restart_behavior": "restore valid committed state; roll back incomplete transaction; clean transient entities",
+      "scheduled_callbacks": {
+        "cadence": "event-driven; minimum 20 ticks when polling is unavoidable",
+        "global_per_tick_scan": false
+      },
+      "scoreboards": [],
+      "stable_components": [],
+      "stable_script_api_symbols": [
+        "world.afterEvents",
+        "system.runTimeout",
+        "Entity.getDynamicProperty",
+        "Entity.setDynamicProperty"
+      ],
+      "state_ownership": "player with world revision index",
+      "state_schema_version": "1",
+      "status": "PROPOSED_PENDING_EVIDENCE",
+      "worst_credible_runtime_load": "UNKNOWN until evidence defines behavior and concurrency envelope"
+    },
+    {
+      "atomic_write": "revision compare, write payload, then commit marker; replay idempotently",
+      "cleanup": "bounded selectors/owned IDs; zero-state receipt required",
+      "dynamic_properties": [
+        "ccoriginal_cc:sporefall_event:v1"
+      ],
+      "entity_query_frequency": "bounded local query on transition only; never full-world per-tick",
+      "error_handling": "record diagnostic and fail closed without changing vanilla behavior",
+      "event_subscriptions": [
+        "bounded feature-specific after-event subscription"
+      ],
+      "fail_policy": "FAIL_CLOSED_FOR_ADDON_FEATURE; VANILLA_REMAINS_AVAILABLE",
+      "feature_id": "sporefall_event",
+      "idempotency": "all acquisition, initialization, reward, and cleanup transitions carry stable transaction keys",
+      "migration": "explicit v1 migrator with corrupt/missing-state fallback; no implicit schema drift",
+      "multiplayer_locking": "canonical key plus revision/claim token; duplicate rewards rejected",
+      "planned_systems": [
+        "eligibility/cooldown",
+        "bounded phases",
+        "spawn budget",
+        "cleanup-to-zero"
+      ],
+      "preview_or_experimental_apis": [],
+      "restart_behavior": "restore valid committed state; roll back incomplete transaction; clean transient entities",
+      "scheduled_callbacks": {
+        "cadence": "event-driven; minimum 20 ticks when polling is unavoidable",
+        "global_per_tick_scan": false
+      },
+      "scoreboards": [],
+      "stable_components": [
+        "spawn_rules"
+      ],
+      "stable_script_api_symbols": [
+        "world.afterEvents",
+        "system.runTimeout",
+        "Entity.getDynamicProperty",
+        "Entity.setDynamicProperty"
+      ],
+      "state_ownership": "bounded event owner and region",
+      "state_schema_version": "1",
+      "status": "PROPOSED_PENDING_EVIDENCE",
+      "worst_credible_runtime_load": "UNKNOWN until evidence defines behavior and concurrency envelope"
+    }
+  ],
+  "preview_apis_allowed": false,
+  "record_hash": "5496164263693f79467e7f4f4b6593228ae311ac1a330f35df2d3c18639cba9a",
+  "report_type": "runtime_architecture_plan",
+  "schema_version": "1.0.0",
+  "stable_release_only": true,
+  "wave_id": "forest-wave-1"
+}
