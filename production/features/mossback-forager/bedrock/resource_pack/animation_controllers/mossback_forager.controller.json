@@ -3,13 +3,30 @@
     "controller.animation.ccoriginal_cc.mossback_forager": {
       "initial_state": "idle",
       "states": {
+        "cooling_idle": {
+          "animations": [
+            "idle"
+          ],
+          "blend_transition": 0.1,
+          "transitions": [
+            {
+              "flee": "query.hurt_time > 0"
+            },
+            {
+              "idle": "!query.property('ccoriginal_cc:mossback_cooling')"
+            }
+          ]
+        },
         "flee": {
           "animations": [
             "flee"
           ],
           "transitions": [
             {
-              "idle": "query.hurt_time <= 0"
+              "cooling_idle": "query.hurt_time <= 0 && query.property('ccoriginal_cc:mossback_cooling')"
+            },
+            {
+              "idle": "query.hurt_time <= 0 && !query.property('ccoriginal_cc:mossback_cooling')"
             }
           ]
         },
@@ -23,7 +40,7 @@
               "flee": "query.hurt_time > 0"
             },
             {
-              "idle": "!query.property('ccoriginal_cc:mossback_cooling')"
+              "cooling_idle": "query.any_animation_finished"
             }
           ]
         },

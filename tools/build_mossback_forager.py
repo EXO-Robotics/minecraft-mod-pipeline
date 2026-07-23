@@ -112,8 +112,12 @@ def behavior() -> dict:
             "ccoriginal_cc:ready": ready_interact,
             "ccoriginal_cc:cooling": {"minecraft:timer": {"looping": False, "time": 45.0,
                 "time_down_event": {"event": "ccoriginal_cc:cooldown_complete", "target": "self"}}},
-            "ccoriginal_cc:fleeing": {"minecraft:behavior.panic": {"priority": 1, "speed_multiplier": 1.45,
-                "force": True, "prefer_water": False}}},
+            "ccoriginal_cc:fleeing": {
+                "minecraft:behavior.panic": {"priority": 1, "speed_multiplier": 1.45,
+                    "force": True, "prefer_water": False},
+                "minecraft:timer": {"looping": False, "time": 5.0,
+                    "time_down_event": {"event": "ccoriginal_cc:end_flee", "target": "self"}}},
+        },
         "components": {
             "minecraft:type_family": {"family": ["mossback", "ccoriginal_cc:mossback"]},
             "minecraft:health": {"value": 18, "max": 18}, "minecraft:movement": {"value": 0.18},
@@ -140,6 +144,7 @@ def behavior() -> dict:
                 {"set_property": {"ccoriginal_cc:mossback_cooling": False}},
                 {"add": {"component_groups": ["ccoriginal_cc:ready"]}}]},
             "minecraft:entity_hurt": {"add": {"component_groups": ["ccoriginal_cc:fleeing"]}},
+            "ccoriginal_cc:end_flee": {"remove": {"component_groups": ["ccoriginal_cc:fleeing"]}},
         }}}
 
 
@@ -169,8 +174,14 @@ def build() -> None:
                      "transitions": [{"forage": "query.property('ccoriginal_cc:mossback_cooling')"},
                                      {"idle": "query.modified_move_speed <= 0.05"}]},
             "forage": {"animations": ["forage"], "blend_transition": 0.08,
-                       "transitions": [{"flee": "query.hurt_time > 0"}, {"idle": "!query.property('ccoriginal_cc:mossback_cooling')"}]},
-            "flee": {"animations": ["flee"], "transitions": [{"idle": "query.hurt_time <= 0"}]}}}}}
+                       "transitions": [{"flee": "query.hurt_time > 0"},
+                                       {"cooling_idle": "query.any_animation_finished"}]},
+            "cooling_idle": {"animations": ["idle"], "blend_transition": 0.1,
+                             "transitions": [{"flee": "query.hurt_time > 0"},
+                                             {"idle": "!query.property('ccoriginal_cc:mossback_cooling')"}]},
+            "flee": {"animations": ["flee"], "transitions": [
+                {"cooling_idle": "query.hurt_time <= 0 && query.property('ccoriginal_cc:mossback_cooling')"},
+                {"idle": "query.hurt_time <= 0 && !query.property('ccoriginal_cc:mossback_cooling')"}]}}}}}
     client = {"format_version": "1.10.0", "minecraft:client_entity": {"description": {
         "identifier": "ccoriginal_cc:mossback_forager", "materials": {"default": "entity_alphatest"},
         "textures": {"default": "textures/ccoriginal_cc/entity/mossback_forager"},
@@ -254,7 +265,9 @@ def build() -> None:
         "feature_id": "mossback_forager", "display_name": "Mossback Forager",
         "model": "gpt-5.6-sol", "requested_reasoning_effort": "light", "actual_reasoning_effort": "low",
         "base_commit": "0db4c8a5f504106b4a601afa6f7bc225eb697dcd",
-        "candidate_commit": "SELF_REFERENTIAL_COMMIT_REPORTED_IN_HANDOFF", "branch": "codex/parallel-batch-1/mossback-forager",
+        "candidate_commit": "HANDOFF_GIT_HEAD",
+        "candidate_commit_convention": "Resolve HANDOFF_GIT_HEAD to the exact commit reported with this frozen packet; a Git commit cannot embed its own object ID.",
+        "branch": "codex/parallel-batch-1/mossback-forager",
         "worktree": str(ROOT), "owned_paths": ["production/features/mossback-forager/",
         "prototypes/blockbench/mossback_forager/", "tools/build_mossback_forager.py", "tests/test_mossback_forager.py"],
         "shared_requests": [], "identifiers": ["ccoriginal_cc:mossback_forager",
@@ -267,8 +280,19 @@ def build() -> None:
         "assets": {"geometry": "9 bones, 18 cubes, 1 locator", "texture": "64x64 original RGBA PNG",
                    "animations": 4, "controllers": 1, "package_sha256": hashlib.sha256(internal.read_bytes()).hexdigest()},
         "hash_manifest": "reports/artifact-hashes.json",
-        "tests": {"static_feature_tests": "PASS_6_DIRECT_HARNESS", "json_parse": "PASS",
-                  "deterministic_rebuild": "PASS", "pytest": "UNAVAILABLE_NO_MODULE"},
+        "tests": {"static_feature_tests": "PASS_7_DIRECT_HARNESS",
+                  "parallel_batch_preflight": "PASS_4_DIRECT_HARNESS",
+                  "resonance_regression": "PASS_4_DIRECT_HARNESS",
+                  "json_parse": "PASS", "python_compileall": "PASS",
+                  "deterministic_rebuild": "PASS",
+                  "bundled_asset_validators": "UNAVAILABLE_IN_REPOSITORY",
+                  "pytest": "UNAVAILABLE_NO_MODULE"},
+        "revision_history": [
+            {"revision": 1, "commit": "2f2b6d6f9960e16470793bb0fe42ec1b1fa64bb4",
+             "summary": "Initial complete static vertical slice."},
+            {"revision": 2, "commit": "HANDOFF_GIT_HEAD",
+             "summary": "Bound flee to five seconds and bound forage playback with cooling-idle controller state."}
+        ],
         "performance": {"caps_structurally_met": True, "runtime_measurements": None,
                         "simultaneous_entities_cap": 20, "scripts_per_tick": 0},
         "cleanup": {"selector_is_tag_scoped": True, "latency_target_ticks": 20, "runtime_zero_count": None},
@@ -280,7 +304,8 @@ def build() -> None:
         "contamination": {"java_inspected": False, "controlled_chaos_expression_inspected": False,
                           "third_party_assets_used": False},
         "metrics": {"bones": 9, "cubes": 18, "texture": [64, 64], "animation_clips": 4,
-                    "animation_controllers": 1, "stress_count": 20, "pathfinding_radius": 8,
+                    "animation_controllers": 1, "controller_states": 5, "flee_seconds": 5,
+                    "cooldown_seconds": 45, "stress_count": 20, "pathfinding_radius": 8,
                     "particles_per_interaction": 0, "scripts_per_tick": 0},
         "recommendation": "Accept as an internal static candidate; hold promotion pending authoritative runtime and platform gates."})
 

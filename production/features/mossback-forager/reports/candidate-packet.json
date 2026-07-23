@@ -4,12 +4,13 @@
     "animations": 4,
     "controllers": 1,
     "geometry": "9 bones, 18 cubes, 1 locator",
-    "package_sha256": "5945cdabb08fca2d31d87e8b944c7e5562b666c5fddb5d14206444874dd32221",
+    "package_sha256": "6484d22ce1f48bb35d51b2d4536c5766017a896ccdec926f2e3a099b1476c657",
     "texture": "64x64 original RGBA PNG"
   },
   "base_commit": "0db4c8a5f504106b4a601afa6f7bc225eb697dcd",
   "branch": "codex/parallel-batch-1/mossback-forager",
-  "candidate_commit": "SELF_REFERENTIAL_COMMIT_REPORTED_IN_HANDOFF",
+  "candidate_commit": "HANDOFF_GIT_HEAD",
+  "candidate_commit_convention": "Resolve HANDOFF_GIT_HEAD to the exact commit reported with this frozen packet; a Git commit cannot embed its own object ID.",
   "cleanup": {
     "latency_target_ticks": 20,
     "runtime_zero_count": null,
@@ -39,7 +40,10 @@
     "animation_clips": 4,
     "animation_controllers": 1,
     "bones": 9,
+    "controller_states": 5,
+    "cooldown_seconds": 45,
     "cubes": 18,
+    "flee_seconds": 5,
     "particles_per_interaction": 0,
     "pathfinding_radius": 8,
     "scripts_per_tick": 0,
@@ -64,12 +68,28 @@
   },
   "recommendation": "Accept as an internal static candidate; hold promotion pending authoritative runtime and platform gates.",
   "requested_reasoning_effort": "light",
+  "revision_history": [
+    {
+      "commit": "2f2b6d6f9960e16470793bb0fe42ec1b1fa64bb4",
+      "revision": 1,
+      "summary": "Initial complete static vertical slice."
+    },
+    {
+      "commit": "HANDOFF_GIT_HEAD",
+      "revision": 2,
+      "summary": "Bound flee to five seconds and bound forage playback with cooling-idle controller state."
+    }
+  ],
   "shared_requests": [],
   "tests": {
+    "bundled_asset_validators": "UNAVAILABLE_IN_REPOSITORY",
     "deterministic_rebuild": "PASS",
     "json_parse": "PASS",
+    "parallel_batch_preflight": "PASS_4_DIRECT_HARNESS",
     "pytest": "UNAVAILABLE_NO_MODULE",
-    "static_feature_tests": "PASS_6_DIRECT_HARNESS"
+    "python_compileall": "PASS",
+    "resonance_regression": "PASS_4_DIRECT_HARNESS",
+    "static_feature_tests": "PASS_7_DIRECT_HARNESS"
   },
   "unexecuted_gates": [
     "Blockbench GUI native round-trip and visual captures",

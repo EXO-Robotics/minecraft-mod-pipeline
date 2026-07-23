@@ -80,7 +80,33 @@ def test_damage_death_and_flee_states_exist():
     entity = load("bedrock/behavior_pack/entities/mossback_forager.json")["minecraft:entity"]
     assert entity["components"]["minecraft:loot"]["table"].endswith("mossback_forager_death.json")
     assert "minecraft:entity_hurt" in entity["events"]
-    assert entity["component_groups"]["ccoriginal_cc:fleeing"]["minecraft:behavior.panic"]["force"] is True
+    fleeing = entity["component_groups"]["ccoriginal_cc:fleeing"]
+    assert fleeing["minecraft:behavior.panic"]["force"] is True
+    timer = fleeing["minecraft:timer"]
+    assert timer["looping"] is False and 0 < timer["time"] <= 10
+    assert timer["time_down_event"] == {"event": "ccoriginal_cc:end_flee", "target": "self"}
+    assert entity["events"]["ccoriginal_cc:end_flee"] == {
+        "remove": {"component_groups": ["ccoriginal_cc:fleeing"]}}
+
+
+def test_controller_forage_is_bounded_and_all_states_are_reachable():
+    controller = load("bedrock/resource_pack/animation_controllers/mossback_forager.controller.json")
+    states = next(iter(controller["animation_controllers"].values()))["states"]
+    assert set(states) == {"idle", "walk", "forage", "cooling_idle", "flee"}
+    forage_transitions = states["forage"]["transitions"]
+    assert {"cooling_idle": "query.any_animation_finished"} in forage_transitions
+    assert states["cooling_idle"]["animations"] == ["idle"]
+    assert {"idle": "!query.property('ccoriginal_cc:mossback_cooling')"} in states["cooling_idle"]["transitions"]
+    # Directed reachability from initial idle, based on declared transition targets.
+    reached, pending = {"idle"}, ["idle"]
+    while pending:
+        state = pending.pop()
+        for transition in states[state].get("transitions", []):
+            target = next(iter(transition))
+            if target not in reached:
+                reached.add(target)
+                pending.append(target)
+    assert reached == set(states)
 
 
 def test_deterministic_package_rebuild():

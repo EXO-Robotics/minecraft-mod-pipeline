@@ -18,6 +18,14 @@
           "prefer_water": false,
           "priority": 1,
           "speed_multiplier": 1.45
+        },
+        "minecraft:timer": {
+          "looping": false,
+          "time": 5.0,
+          "time_down_event": {
+            "event": "ccoriginal_cc:end_flee",
+            "target": "self"
+          }
         }
       },
       "ccoriginal_cc:ready": {
@@ -157,6 +165,13 @@
             }
           }
         ]
+      },
+      "ccoriginal_cc:end_flee": {
+        "remove": {
+          "component_groups": [
+            "ccoriginal_cc:fleeing"
+          ]
+        }
       },
       "minecraft:entity_hurt": {
         "add": {
