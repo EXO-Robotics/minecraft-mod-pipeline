@@ -1,0 +1,31 @@
+{
+  "animation_controllers": {
+    "controller.animation.ccoriginal_cc.barkguard_charm": {
+      "initial_state": "idle",
+      "states": {
+        "activate": {
+          "animations": [
+            "activate"
+          ],
+          "blend_transition": 0.08,
+          "transitions": [
+            {
+              "idle": "!query.is_on_fire"
+            }
+          ]
+        },
+        "idle": {
+          "animations": [
+            "idle"
+          ],
+          "transitions": [
+            {
+              "activate": "query.is_item_name_any('slot.weapon.offhand', 0, 'ccoriginal_cc:barkguard_charm') && query.is_on_fire"
+            }
+          ]
+        }
+      }
+    }
+  },
+  "format_version": "1.10.0"
+}
