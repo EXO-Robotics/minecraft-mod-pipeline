@@ -1,0 +1,116 @@
+{
+  "schema_version": "1.0.0",
+  "label": "INTERNAL TEST BUILD / NOT MARKETPLACE APPROVED / NOT PHYSICAL PS4 CERTIFIED / NOT FOR PUBLIC RELEASE",
+  "feature_id": "signal_ruin",
+  "base_commit": "0db4c8a5f504106b4a601afa6f7bc225eb697dcd",
+  "candidate_commit": "fb33af831cbc147199b119f7efc8cf7011e61da8",
+  "packet_delivery": "FOLLOW_UP_PACKET_ONLY_COMMIT",
+  "branch": "codex/parallel-batch-1/signal-ruin",
+  "changed_paths": [
+    "production/features/signal-ruin/",
+    "prototypes/blockbench/signal_ruin/",
+    "tests/test_signal_ruin.py",
+    "tools/build_signal_ruin.py"
+  ],
+  "shared_registration_requests": [
+    {
+      "owner": "MAIN_CODEX",
+      "request": "Register the frozen Signal Ruin behavior/resource packs and qualification scenario without modifying feature-local UUIDs.",
+      "behavior_pack_uuid": "556acdce-2ddc-4cbd-b08d-f62681387306",
+      "resource_pack_uuid": "f15d006f-c77c-45e5-a6d8-84da52a5db0e"
+    },
+    {
+      "owner": "MAIN_CODEX",
+      "request": "Run Blockbench/Creator Tools, stable BDS, desktop, persistence, multiplayer, performance, and physical-console gates against the exact package SHA."
+    }
+  ],
+  "identifiers": [
+    "ccoriginal_cc:signal_ruin",
+    "ccoriginal_cc:signal_ruin_anchor",
+    "ccoriginal_cc:signal_ruin_activation",
+    "ccoriginal_cc:signal_ruin_completed",
+    "geometry.ccoriginal_cc.signal_ruin_anchor",
+    "controller.render.signal_ruin_anchor"
+  ],
+  "uuids": {
+    "behavior_header": "556acdce-2ddc-4cbd-b08d-f62681387306",
+    "behavior_data_module": "59c9ac60-a5ba-44a2-8517-c1f7a2fd51e3",
+    "behavior_script_module": "45e8f7ad-197e-45ff-99ee-60b6fec7e30d",
+    "resource_header": "f15d006f-c77c-45e5-a6d8-84da52a5db0e",
+    "resource_module": "214f239c-6fe6-44b1-b69f-38c9b005a3dd"
+  },
+  "assets_and_packages": [
+    {
+      "path": "production/features/signal-ruin/dist/signal-ruin-INTERNAL-TEST.mcaddon",
+      "sha256": "9e9f388c6d942ee096bbd3819b0381199b866c2531ba2646a5fa27613367ec4c"
+    },
+    {
+      "path": "production/features/signal-ruin/bedrock/behavior_pack/structures/ccoriginal_cc/signal_ruin.mcstructure",
+      "sha256": "331fe3449b0335cf08f14d69129c7689e92a287bb0bb27cfb50a6d4ab9df9ded"
+    },
+    {
+      "path": "prototypes/blockbench/signal_ruin/signal_ruin.structure.json",
+      "sha256": "0b7c007beb2d0abad51f0c3d21111be6366162ff1428c93f657f3c2544896461"
+    },
+    {
+      "path": "production/features/signal-ruin/bedrock/resource_pack/textures/entity/signal_ruin_anchor.png",
+      "sha256": "92e31a20671b9a195f3750584f35707648d9bdf04cfd9a601343a7f2e34cb977"
+    }
+  ],
+  "tests": [
+    {
+      "command": "/Users/blakegrove/Desktop/bedrock-server/minecraft-compiler-baseline/.venv/bin/pytest -q tests/test_signal_ruin.py tests/test_parallel_batch_preflight.py",
+      "result": "PASS",
+      "evidence": "9 passed in 0.10s"
+    },
+    {
+      "command": "PYTHONPATH=. /Users/blakegrove/Desktop/bedrock-server/minecraft-compiler-baseline/.venv/bin/pytest -q",
+      "result": "PASS",
+      "evidence": "Full repository regression suite exited 0; one pre-existing skip was reported."
+    },
+    {
+      "command": "node --check production/features/signal-ruin/bedrock/behavior_pack/scripts/signal_ruin.js",
+      "result": "PASS"
+    },
+    {
+      "command": "git diff --check",
+      "result": "PASS"
+    }
+  ],
+  "limitations": [
+    "Feature-local tests statically exercise scenario invariants; they are not in-game proof.",
+    "No .mcworld is emitted because feature-local production does not own a qualified Bedrock world database.",
+    "The anchor model is deterministic JSON authored by the build script; Blockbench GUI/native round-trip is owned by MAIN_CODEX and unexecuted.",
+    "Reward command and stable Script API behavior require authoritative BDS qualification."
+  ],
+  "unexecuted_gates": [
+    "Blockbench GUI/native round-trip and visual capture",
+    "Creator Tools addon/currentplatform validation",
+    "Stable BDS placement, encounter, restart, stress, and cleanup",
+    "Bedrock desktop rendering and interaction",
+    "Real persistence and multiplayer",
+    "Performance profiling",
+    "Realm/controller/split-screen/physical PS4",
+    "Marketplace partner review"
+  ],
+  "contamination_status": {
+    "status": "CLEAN",
+    "third_party_or_java_expression_inspected": false,
+    "controlled_chaos_benchmark_inspected": false,
+    "resonance_sling_inspected_or_edited": false,
+    "inputs": [
+      "consumer-safe original production manifest",
+      "batch reservations and assignment",
+      "generic repository structure tooling search results",
+      "Bedrock asset-production skill and Marketplace gate reference"
+    ]
+  },
+  "working_tree_status": "CLEAN_AT_CANDIDATE_COMMIT; PACKET_FILE_ADDED_FOR_FOLLOW_UP_COMMIT",
+  "timing_and_effort_metrics": {
+    "elapsed_minutes_approximate": 14,
+    "requested_reasoning_effort": "light",
+    "actual_reasoning_effort": "low",
+    "effort_note": "The requested light setting was unavailable; the actual allocation was low."
+  },
+  "recommendation": "ACCEPT_FOR_MAIN_CODEX_QUALIFICATION_ONLY; DO_NOT PUBLICLY RELEASE OR CLAIM MARKETPLACE OR PHYSICAL PS4 READINESS"
+}
