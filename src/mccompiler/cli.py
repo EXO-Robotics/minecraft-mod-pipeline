@@ -30,6 +30,12 @@ MILESTONE_COMMANDS = {
     "show-production-plan": "show_production_wave",
 }
 
+RECONSTRUCTION_COMMANDS = {
+    "prepare-reconstruction-wave": "prepare_reconstruction_wave",
+}
+
+PROJECT_OPERATION_COMMANDS = {**MILESTONE_COMMANDS, **RECONSTRUCTION_COMMANDS}
+
 
 def _run_operation_request(path: str) -> int:
     from .operations.registry import execute_request
@@ -61,7 +67,7 @@ def _run_milestone_operation(args: argparse.Namespace) -> int:
     request = {
         "schema_version": "1.0.0",
         "request_id": args.request_id,
-        "operation": MILESTONE_COMMANDS[args.command],
+        "operation": PROJECT_OPERATION_COMMANDS[args.command],
         "project": args.project,
         "parameters": parameters,
     }
@@ -115,8 +121,8 @@ def main(argv: list[str] | None = None) -> int:
     distill_parser.add_argument("--effort-budget", default="0.25", help="Fraction of estimated full conversion effort")
     distill_parser.add_argument("--output", required=True, help="Output root for the distillation directory")
     distill_parser.add_argument("--review-adjustments", help="Optional separately recorded AI/human review-adjustment JSON")
-    for command in MILESTONE_COMMANDS:
-        milestone = sub.add_parser(command, help=f"Run the {MILESTONE_COMMANDS[command]} project operation")
+    for command in PROJECT_OPERATION_COMMANDS:
+        milestone = sub.add_parser(command, help=f"Run the {PROJECT_OPERATION_COMMANDS[command]} project operation")
         milestone.add_argument("--project", required=True, help="Conversion-project root")
         milestone.add_argument("--parameters", help="JSON parameter file, or - for stdin")
         milestone.add_argument("--expected-revision", type=int)
@@ -127,7 +133,7 @@ def main(argv: list[str] | None = None) -> int:
     if args.command == "operation":
         return _run_operation_request(args.request)
 
-    if args.command in MILESTONE_COMMANDS:
+    if args.command in PROJECT_OPERATION_COMMANDS:
         return _run_milestone_operation(args)
 
     if args.command == "distill-modpack":

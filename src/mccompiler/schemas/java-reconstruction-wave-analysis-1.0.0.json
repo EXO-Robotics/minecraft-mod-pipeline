@@ -1,0 +1,124 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://mccompiler.local/schemas/java-reconstruction-wave-analysis-1.0.0.json",
+  "title": "Java reconstruction wave analysis",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "wave_id",
+    "title",
+    "target_profile",
+    "rights_mode",
+    "preserve_vanilla_gameplay",
+    "mandatory_campaign",
+    "features",
+    "source_expression_boundary",
+    "record_hash"
+  ],
+  "properties": {
+    "schema_version": {"const": "1.0.0"},
+    "wave_id": {"type": "string", "pattern": "^[a-z0-9][a-z0-9._-]*$"},
+    "title": {"type": "string", "minLength": 1},
+    "target_profile": {"const": "PS4_MARKETPLACE_CANDIDATE"},
+    "rights_mode": {"enum": ["clean_room_originalization", "authorized_adaptation"]},
+    "preserve_vanilla_gameplay": {"const": true},
+    "mandatory_campaign": {"const": false},
+    "features": {
+      "type": "array",
+      "minItems": 1,
+      "items": {"$ref": "#/$defs/feature"}
+    },
+    "source_expression_boundary": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["analysis_only", "consumer_package_access", "opaque_evidence_ids_required"],
+      "properties": {
+        "analysis_only": {"const": true},
+        "consumer_package_access": {"const": "prohibited"},
+        "opaque_evidence_ids_required": {"const": true}
+      }
+    },
+    "record_hash": {"type": "string", "pattern": "^[a-f0-9]{64}$"}
+  },
+  "$defs": {
+    "feature": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "feature_id",
+        "category",
+        "abstract_role",
+        "authorized_evidence_refs",
+        "evidence_state",
+        "gameplay_intent_ref",
+        "clean_room_contract_ref",
+        "bedrock_outputs",
+        "gates"
+      ],
+      "properties": {
+        "feature_id": {"type": "string", "pattern": "^[a-z0-9][a-z0-9._-]*$"},
+        "category": {"enum": ["regional_creature", "ranged_item", "structure", "elite_encounter", "additive_unlock", "bounded_event"]},
+        "abstract_role": {"type": "string", "minLength": 1},
+        "authorized_evidence_refs": {
+          "type": "array",
+          "items": {"type": "string", "pattern": "^[a-z0-9][a-z0-9._-]*$"}
+        },
+        "evidence_state": {
+          "enum": [
+            "PENDING_AUTHORIZED_EVIDENCE",
+            "EVIDENCE_RECORDED",
+            "INTENT_DISTILLED",
+            "CLEAN_ROOM_CONTRACTED",
+            "IMPLEMENTED",
+            "STATIC_QUALIFIED",
+            "BDS_QUALIFIED",
+            "DESKTOP_VERIFIED",
+            "PS4_VERIFIED"
+          ]
+        },
+        "gameplay_intent_ref": {"type": "string", "minLength": 1},
+        "clean_room_contract_ref": {"type": "string", "minLength": 1},
+        "bedrock_outputs": {"type": "array", "minItems": 1, "items": {"type": "string", "minLength": 1}},
+        "gates": {"$ref": "#/$defs/gates"}
+      }
+    },
+    "gates": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "rights_and_provenance",
+        "gameplay_intent",
+        "clean_room_contract",
+        "behavior_and_asset_contracts",
+        "implementation",
+        "deterministic_package",
+        "creator_tools",
+        "stable_bds",
+        "multiplayer",
+        "persistence",
+        "cleanup",
+        "desktop_presentation",
+        "ps4_planning",
+        "physical_ps4"
+      ],
+      "properties": {
+        "rights_and_provenance": {"$ref": "#/$defs/gate_status"},
+        "gameplay_intent": {"$ref": "#/$defs/gate_status"},
+        "clean_room_contract": {"$ref": "#/$defs/gate_status"},
+        "behavior_and_asset_contracts": {"$ref": "#/$defs/gate_status"},
+        "implementation": {"$ref": "#/$defs/gate_status"},
+        "deterministic_package": {"$ref": "#/$defs/gate_status"},
+        "creator_tools": {"$ref": "#/$defs/gate_status"},
+        "stable_bds": {"$ref": "#/$defs/gate_status"},
+        "multiplayer": {"$ref": "#/$defs/gate_status"},
+        "persistence": {"$ref": "#/$defs/gate_status"},
+        "cleanup": {"$ref": "#/$defs/gate_status"},
+        "desktop_presentation": {"$ref": "#/$defs/gate_status"},
+        "ps4_planning": {"$ref": "#/$defs/gate_status"},
+        "physical_ps4": {"$ref": "#/$defs/gate_status"}
+      }
+    },
+    "gate_status": {"enum": ["PASSED", "PENDING", "BLOCKED", "NOT_APPLICABLE"]}
+  },
+  "additionalProperties": false
+}

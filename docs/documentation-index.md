@@ -8,6 +8,7 @@
 - [Marketplace capability catalog](marketplace-capability-catalog.md)
 - [Reconstruction patterns](reconstruction-patterns.md)
 - [Rights and provenance](rights-and-provenance.md)
+- [Java mod reconstruction baseline](java-mod-reconstruction-baseline.md)
 - [Creator Tools integration](creator-tools-integration.md)
 - [Performance budgets](performance-budgets.md)
 - [Controller redesign](controller-redesign.md)
@@ -22,4 +23,3 @@
 - [Requirement traceability](requirement-traceability.md)
 
 These documents distinguish intended architecture from the current baseline. Their presence is not evidence that the described implementation or external tests exist.
-

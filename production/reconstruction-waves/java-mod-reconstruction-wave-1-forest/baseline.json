@@ -1,0 +1,237 @@
+{
+  "claims": {
+    "marketplace_approved": false,
+    "physical_ps4_pending": true,
+    "ps4_compatible": false
+  },
+  "features": [
+    {
+      "abstract_role": "existing bounded hostile regional creature and qualification fixture",
+      "bedrock_outputs": [
+        "behavior_entity",
+        "client_entity",
+        "geometry",
+        "texture",
+        "animations"
+      ],
+      "category": "regional_creature",
+      "clean_room_contract": "prototypes/blockbench/bramblehorn/asset-manifest.json",
+      "evidence_state": "BDS_QUALIFIED",
+      "feature_id": "bramblehorn",
+      "gameplay_intent_id": "intent-bramblehorn-v1",
+      "gates": {
+        "behavior_and_asset_contracts": "PASSED",
+        "clean_room_contract": "PASSED",
+        "cleanup": "PASSED",
+        "creator_tools": "PASSED",
+        "desktop_presentation": "PENDING",
+        "deterministic_package": "PASSED",
+        "gameplay_intent": "PASSED",
+        "implementation": "PASSED",
+        "multiplayer": "PENDING",
+        "persistence": "PENDING",
+        "physical_ps4": "PENDING",
+        "ps4_planning": "PASSED",
+        "rights_and_provenance": "PASSED",
+        "stable_bds": "PASSED"
+      }
+    },
+    {
+      "abstract_role": "second regional creature proving reusable original asset and behavior templates",
+      "bedrock_outputs": [
+        "behavior_entity",
+        "spawn_rules",
+        "loot",
+        "client_entity",
+        "geometry",
+        "texture",
+        "animations"
+      ],
+      "category": "regional_creature",
+      "clean_room_contract": "production/planning/controlled-chaos-forest/contracts/mossback_forager/clean-room-design.json",
+      "evidence_state": "PENDING_AUTHORIZED_EVIDENCE",
+      "feature_id": "mossback_forager",
+      "gameplay_intent_id": "intent-mossback_forager-v1",
+      "gates": {
+        "behavior_and_asset_contracts": "PENDING",
+        "clean_room_contract": "PENDING",
+        "cleanup": "PENDING",
+        "creator_tools": "PENDING",
+        "desktop_presentation": "PENDING",
+        "deterministic_package": "PENDING",
+        "gameplay_intent": "PENDING",
+        "implementation": "PENDING",
+        "multiplayer": "PENDING",
+        "persistence": "PENDING",
+        "physical_ps4": "PENDING",
+        "ps4_planning": "PENDING",
+        "rights_and_provenance": "PENDING",
+        "stable_bds": "PENDING"
+      }
+    },
+    {
+      "abstract_role": "controller-usable unusual ranged tool with bounded projectile and cooldown",
+      "bedrock_outputs": [
+        "item",
+        "attachable",
+        "projectile_entity",
+        "recipe",
+        "loot",
+        "geometry",
+        "texture"
+      ],
+      "category": "ranged_item",
+      "clean_room_contract": "production/planning/controlled-chaos-forest/contracts/resonance_sling/clean-room-design.json",
+      "evidence_state": "PENDING_AUTHORIZED_EVIDENCE",
+      "feature_id": "resonance_sling",
+      "gameplay_intent_id": "intent-resonance_sling-v1",
+      "gates": {
+        "behavior_and_asset_contracts": "PENDING",
+        "clean_room_contract": "PENDING",
+        "cleanup": "PENDING",
+        "creator_tools": "PENDING",
+        "desktop_presentation": "PENDING",
+        "deterministic_package": "PENDING",
+        "gameplay_intent": "PENDING",
+        "implementation": "PENDING",
+        "multiplayer": "PENDING",
+        "persistence": "PENDING",
+        "physical_ps4": "PENDING",
+        "ps4_planning": "PENDING",
+        "rights_and_provenance": "PENDING",
+        "stable_bds": "PENDING"
+      }
+    },
+    {
+      "abstract_role": "compact discoverable structure with restart-safe initialization and loot",
+      "bedrock_outputs": [
+        "mcstructure",
+        "structure_placement",
+        "loot",
+        "initialization_state"
+      ],
+      "category": "structure",
+      "clean_room_contract": "production/planning/controlled-chaos-forest/contracts/signal_ruin/clean-room-design.json",
+      "evidence_state": "PENDING_AUTHORIZED_EVIDENCE",
+      "feature_id": "signal_ruin",
+      "gameplay_intent_id": "intent-signal_ruin-v1",
+      "gates": {
+        "behavior_and_asset_contracts": "PENDING",
+        "clean_room_contract": "PENDING",
+        "cleanup": "PENDING",
+        "creator_tools": "PENDING",
+        "desktop_presentation": "PENDING",
+        "deterministic_package": "PENDING",
+        "gameplay_intent": "PENDING",
+        "implementation": "PENDING",
+        "multiplayer": "PENDING",
+        "persistence": "PENDING",
+        "physical_ps4": "PENDING",
+        "ps4_planning": "PENDING",
+        "rights_and_provenance": "PENDING",
+        "stable_bds": "PENDING"
+      }
+    },
+    {
+      "abstract_role": "bounded elite encounter proving rig reuse, orchestration, and higher-tier loot",
+      "bedrock_outputs": [
+        "behavior_entity",
+        "encounter_controller",
+        "loot",
+        "client_entity",
+        "geometry",
+        "texture",
+        "animations"
+      ],
+      "category": "elite_encounter",
+      "clean_room_contract": "production/planning/controlled-chaos-forest/contracts/thornwarden_elite/clean-room-design.json",
+      "evidence_state": "PENDING_AUTHORIZED_EVIDENCE",
+      "feature_id": "thornwarden_elite",
+      "gameplay_intent_id": "intent-thornwarden_elite-v1",
+      "gates": {
+        "behavior_and_asset_contracts": "PENDING",
+        "clean_room_contract": "PENDING",
+        "cleanup": "PENDING",
+        "creator_tools": "PENDING",
+        "desktop_presentation": "PENDING",
+        "deterministic_package": "PENDING",
+        "gameplay_intent": "PENDING",
+        "implementation": "PENDING",
+        "multiplayer": "PENDING",
+        "persistence": "PENDING",
+        "physical_ps4": "PENDING",
+        "ps4_planning": "PENDING",
+        "rights_and_provenance": "PENDING",
+        "stable_bds": "PENDING"
+      }
+    },
+    {
+      "abstract_role": "versioned persistent unlock connecting reconstructed systems without replacing vanilla progression",
+      "bedrock_outputs": [
+        "progression_state",
+        "migration",
+        "recipes",
+        "loot_conditions"
+      ],
+      "category": "additive_unlock",
+      "clean_room_contract": "production/planning/controlled-chaos-forest/contracts/forest_attunement/clean-room-design.json",
+      "evidence_state": "PENDING_AUTHORIZED_EVIDENCE",
+      "feature_id": "forest_attunement",
+      "gameplay_intent_id": "intent-forest_attunement-v1",
+      "gates": {
+        "behavior_and_asset_contracts": "PENDING",
+        "clean_room_contract": "PENDING",
+        "cleanup": "PENDING",
+        "creator_tools": "PENDING",
+        "desktop_presentation": "PENDING",
+        "deterministic_package": "PENDING",
+        "gameplay_intent": "PENDING",
+        "implementation": "PENDING",
+        "multiplayer": "PENDING",
+        "persistence": "PENDING",
+        "physical_ps4": "PENDING",
+        "ps4_planning": "PENDING",
+        "rights_and_provenance": "PENDING",
+        "stable_bds": "PENDING"
+      }
+    },
+    {
+      "abstract_role": "optional controlled-chaos event with explicit spawn, workload, and cleanup caps",
+      "bedrock_outputs": [
+        "event_controller",
+        "spawn_budget",
+        "cleanup_function",
+        "multiplayer_state"
+      ],
+      "category": "bounded_event",
+      "clean_room_contract": "production/planning/controlled-chaos-forest/contracts/sporefall_event/clean-room-design.json",
+      "evidence_state": "PENDING_AUTHORIZED_EVIDENCE",
+      "feature_id": "sporefall_event",
+      "gameplay_intent_id": "intent-sporefall_event-v1",
+      "gates": {
+        "behavior_and_asset_contracts": "PENDING",
+        "clean_room_contract": "PENDING",
+        "cleanup": "PENDING",
+        "creator_tools": "PENDING",
+        "desktop_presentation": "PENDING",
+        "deterministic_package": "PENDING",
+        "gameplay_intent": "PENDING",
+        "implementation": "PENDING",
+        "multiplayer": "PENDING",
+        "persistence": "PENDING",
+        "physical_ps4": "PENDING",
+        "ps4_planning": "PENDING",
+        "rights_and_provenance": "PENDING",
+        "stable_bds": "PENDING"
+      }
+    }
+  ],
+  "mandatory_campaign": false,
+  "preserve_vanilla_gameplay": true,
+  "product_kind": "minecraft_bedrock_addon",
+  "record_hash": "41996fa0d5d5f055ba9c01c007ade7f95c56655f82188cd71099fdf0b4a78b3b",
+  "schema_version": "1.0.0",
+  "target_profile": "PS4_MARKETPLACE_CANDIDATE",
+  "title": "Java Mod Reconstruction Wave 1 - Forest Systems",
+  "wave_id": "java-mod-reconstruction-wave-1-forest"
+}

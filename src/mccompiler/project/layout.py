@@ -6,6 +6,7 @@ from pathlib import Path
 PROJECT_DIRECTORIES = (
     "input/source", "input/jars", "input/mods", "input/configuration",
     "analysis/evidence", "analysis/rights-ledger", "analysis/gameplay-intent",
+    "analysis/reconstruction-waves",
     "analysis/diagnostics", "analysis/source-index", "analysis/proposals",
     "ir", "decisions", "rights/evidence",
     "bedrock/behavior_pack", "bedrock/resource_pack", "bedrock/scripts",
@@ -15,6 +16,7 @@ PROJECT_DIRECTORIES = (
     "dist/reports", "reports", "analysis/distillation", "decisions/distillation", "distillation",
     "production/design-contracts", "production/originality",
     "production/similarity-screening", "production/production-plans",
+    "production/reconstruction-waves",
 )
 
 PROTECTED_DIRECTORIES = (

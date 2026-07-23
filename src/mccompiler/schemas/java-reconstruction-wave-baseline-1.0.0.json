@@ -1,0 +1,67 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://mccompiler.local/schemas/java-reconstruction-wave-baseline-1.0.0.json",
+  "title": "Consumer-safe Java reconstruction wave baseline",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "wave_id",
+    "title",
+    "target_profile",
+    "product_kind",
+    "preserve_vanilla_gameplay",
+    "mandatory_campaign",
+    "features",
+    "claims",
+    "record_hash"
+  ],
+  "properties": {
+    "schema_version": {"const": "1.0.0"},
+    "wave_id": {"type": "string", "pattern": "^[a-z0-9][a-z0-9._-]*$"},
+    "title": {"type": "string", "minLength": 1},
+    "target_profile": {"const": "PS4_MARKETPLACE_CANDIDATE"},
+    "product_kind": {"const": "minecraft_bedrock_addon"},
+    "preserve_vanilla_gameplay": {"const": true},
+    "mandatory_campaign": {"const": false},
+    "features": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "feature_id",
+          "category",
+          "abstract_role",
+          "evidence_state",
+          "gameplay_intent_id",
+          "clean_room_contract",
+          "bedrock_outputs",
+          "gates"
+        ],
+        "properties": {
+          "feature_id": {"type": "string", "pattern": "^[a-z0-9][a-z0-9._-]*$"},
+          "category": {"type": "string"},
+          "abstract_role": {"type": "string", "minLength": 1},
+          "evidence_state": {"type": "string"},
+          "gameplay_intent_id": {"type": "string", "minLength": 1},
+          "clean_room_contract": {"type": "string", "minLength": 1},
+          "bedrock_outputs": {"type": "array", "minItems": 1, "items": {"type": "string", "minLength": 1}},
+          "gates": {"type": "object"}
+        }
+      }
+    },
+    "claims": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["marketplace_approved", "ps4_compatible", "physical_ps4_pending"],
+      "properties": {
+        "marketplace_approved": {"const": false},
+        "ps4_compatible": {"const": false},
+        "physical_ps4_pending": {"type": "boolean"}
+      }
+    },
+    "record_hash": {"type": "string", "pattern": "^[a-f0-9]{64}$"}
+  },
+  "additionalProperties": false
+}

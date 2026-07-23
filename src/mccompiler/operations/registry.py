@@ -4,7 +4,7 @@ from typing import Any, Callable
 
 from mccompiler.project.store import ProjectError, ProjectStore
 
-from . import analysis_ops, blockbench_ops, distillation_ops, gameplay_distillation_ops, generation_ops, intent_ops, planning_ops, project_ops, query_ops, reporting_ops, safe_edit_ops, validation_ops
+from . import analysis_ops, blockbench_ops, distillation_ops, gameplay_distillation_ops, generation_ops, intent_ops, planning_ops, project_ops, query_ops, reconstruction_ops, reporting_ops, safe_edit_ops, validation_ops
 from .envelope import OperationError, failure, success
 
 
@@ -59,6 +59,9 @@ REQUIRED_OPERATION_CATALOG: dict[str, tuple[str, ...]] = {
         "screen_product_similarity", "build_experience_graph",
         "calculate_experience_coverage", "plan_production_wave",
         "validate_production_wave", "show_production_wave",
+    ),
+    "reconstruction": (
+        "prepare_reconstruction_wave",
     ),
 }
 
@@ -180,6 +183,7 @@ class OperationRegistry:
             "plan_production_wave": gameplay_distillation_ops.plan_production_wave,
             "validate_production_wave": gameplay_distillation_ops.validate_production_wave,
             "show_production_wave": gameplay_distillation_ops.show_production_wave,
+            "prepare_reconstruction_wave": reconstruction_ops.prepare_reconstruction_wave,
         }
         unavailable_reasons = {
             "trace_callers": "No persisted call graph exists in analysis/source-index/calls.json",
