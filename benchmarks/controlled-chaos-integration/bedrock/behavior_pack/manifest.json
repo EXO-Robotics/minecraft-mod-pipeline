@@ -1,0 +1,58 @@
+{
+  "dependencies": [
+    {
+      "module_name": "@minecraft/server",
+      "version": "2.0.0"
+    },
+    {
+      "module_name": "@minecraft/server-ui",
+      "version": "2.0.0"
+    },
+    {
+      "uuid": "92d73833-b1c3-4f3e-9344-a69f9fec0975",
+      "version": [
+        1,
+        0,
+        0
+      ]
+    }
+  ],
+  "format_version": 2,
+  "header": {
+    "description": "Original temporary integration fixture",
+    "min_engine_version": [
+      1,
+      21,
+      90
+    ],
+    "name": "Controlled Chaos Qualification BP",
+    "uuid": "d3b77165-3fc6-4f35-b326-15939cd1dbaf",
+    "version": [
+      1,
+      0,
+      0
+    ]
+  },
+  "modules": [
+    {
+      "type": "data",
+      "uuid": "33531779-9da0-41ae-9cab-d5617dfd1651",
+      "version": [
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "entry": "scripts/main.js",
+      "language": "javascript",
+      "type": "script",
+      "uuid": "e1c9f1e3-793a-466b-8c7d-3fe3fac0a7df",
+      "version": [
+        1,
+        0,
+        0
+      ]
+    }
+  ]
+}

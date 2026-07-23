@@ -1,0 +1,45 @@
+{
+  "artifacts": {
+    "mcaddon": {
+      "bytes": 11668,
+      "files": 25,
+      "path": "benchmarks/controlled-chaos-integration/dist/controlled-chaos-qualification.mcaddon",
+      "sha256": "3377cefeaaf7a7ef8b291df4390168ea30d311bf1795e7158b05322f984a5448"
+    },
+    "mcworld": {
+      "bytes": 14677,
+      "files": 29,
+      "path": "benchmarks/controlled-chaos-integration/dist/controlled-chaos-qualification.mcworld",
+      "sha256": "39296f9ccf08764271741dd384e8a137e6bb20058edf06dd0d155c0c8dd55622"
+    }
+  },
+  "qualification_files": [
+    "artifact-manifest.json",
+    "controller-checklist.md",
+    "evidence-capture-guide.md",
+    "exact-test-addon.mcaddon",
+    "exact-test-world.mcworld",
+    "import-results-command.md",
+    "multiplayer-checklist.md",
+    "observation-form.json",
+    "playstation-checklist.md",
+    "realm-checklist.md",
+    "result-schema.json",
+    "windows-client-checklist.md",
+    "xbox-checklist.md"
+  ],
+  "reports": [
+    "evidence-index.json",
+    "evidence-matrix.json",
+    "executive-summary.md",
+    "go-no-go-status.md",
+    "hostile-damage-preflight.json",
+    "multiplayer-results.json",
+    "package-audit.json",
+    "performance-report.json",
+    "persistence-results.json",
+    "physical-test-plan.md",
+    "runtime-results.json",
+    "system-map.md"
+  ]
+}

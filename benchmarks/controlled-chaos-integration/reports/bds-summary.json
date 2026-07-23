@@ -1,0 +1,17 @@
+{
+  "preview_bds": {
+    "evidence_level": "PREVIEW_BDS",
+    "gametest": false,
+    "receipt": "benchmarks/controlled-chaos-integration/runtime/preview-bds/result.json",
+    "simulated_player": false,
+    "status": "PASS_BOOT_ONLY",
+    "version": "1.26.50.20"
+  },
+  "stable_bds": {
+    "evidence_level": "STABLE_BDS",
+    "receipt": "benchmarks/controlled-chaos-integration/runtime/stable-bds/result.json",
+    "restart_cycles": 3,
+    "status": "PASS",
+    "version": "1.26.33.2"
+  }
+}

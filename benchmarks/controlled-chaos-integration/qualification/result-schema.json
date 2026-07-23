@@ -1,0 +1,71 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "properties": {
+    "conclusion": {
+      "enum": [
+        "PASS",
+        "FAIL",
+        "BLOCKED"
+      ]
+    },
+    "mcaddon_sha256": {
+      "const": "3377cefeaaf7a7ef8b291df4390168ea30d311bf1795e7158b05322f984a5448"
+    },
+    "mcworld_sha256": {
+      "const": "39296f9ccf08764271741dd384e8a137e6bb20058edf06dd0d155c0c8dd55622"
+    },
+    "observations": {
+      "items": {
+        "properties": {
+          "case": {
+            "type": "string"
+          },
+          "evidence": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array"
+          },
+          "status": {
+            "enum": [
+              "PASS",
+              "FAIL",
+              "BLOCKED",
+              "NOT_RUN"
+            ]
+          }
+        },
+        "required": [
+          "case",
+          "status",
+          "evidence"
+        ],
+        "type": "object"
+      },
+      "type": "array"
+    },
+    "platform": {
+      "enum": [
+        "WINDOWS",
+        "REAL_MULTIPLAYER",
+        "CONTROLLER",
+        "REALM",
+        "PLAYSTATION",
+        "XBOX"
+      ]
+    },
+    "tester": {
+      "minLength": 1,
+      "type": "string"
+    }
+  },
+  "required": [
+    "platform",
+    "mcaddon_sha256",
+    "mcworld_sha256",
+    "tester",
+    "observations",
+    "conclusion"
+  ],
+  "type": "object"
+}

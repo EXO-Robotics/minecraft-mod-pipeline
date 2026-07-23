@@ -1,0 +1,57 @@
+[mccompiler-harness] cycle=1
+WARNING: The requested image's platform (linux/amd64) does not match the detected host platform (linux/arm64/v8) and no specific platform was requested
+time="2026-07-23T10:30:12Z" level=debug msg="Using /data to match uid and gid"
+time="2026-07-23T10:30:12Z" level=debug msg="Resolved UID=0 from match path"
+time="2026-07-23T10:30:12Z" level=debug msg="Resolved GID=0 from match path"
+Image info: buildtime=2025-12-13T02:14:45.091Z,version=master,revision=19ecd3aaf1bca5daa6a68526e6f51bb84732953a
+Using given preview version 1.26.50.20
+Downloading Bedrock server version 1.26.50.20 ...
+2026/07/23 10:30:27 Setting online-mode to false in server.properties
+2026/07/23 10:30:27 Setting allow-list to false in server.properties
+2026/07/23 10:30:27 Setting level-name to Controlled Chaos Qualification in server.properties
+2026/07/23 10:30:27 Setting content-log-console-output-enabled to true in server.properties
+2026/07/23 10:30:27 Setting white-list to false in server.properties
+Starting Bedrock server...
+NO LOG FILE! - setting up server logging...
+[2026-07-23 10:30:27:498 INFO] Starting Server
+[2026-07-23 10:30:27:498 INFO] Version: 1.26.50.20
+[2026-07-23 10:30:27:498 INFO] Session ID: 89a46056-46ac-4350-bd47-f37d766a355f
+[2026-07-23 10:30:27:498 INFO] Build ID: 47971866
+[2026-07-23 10:30:27:498 INFO] Branch: main
+[2026-07-23 10:30:27:498 INFO] Commit ID: a3447f3c9f0a25124e670a72f2f995e046e1acee
+[2026-07-23 10:30:27:498 INFO] Configuration: Publish
+[2026-07-23 10:30:27:503 INFO] Contents of server.properties: {}
+[2026-07-23 10:30:27:503 INFO] Level Name: Controlled Chaos Qualification
+[2026-07-23 10:30:27:504 INFO] Profiler config ('bootstrap.json') load result: success=1, errorMessage=(null)
+[2026-07-23 10:30:27:509 INFO] No CDN config file found at: cdn_config.json for dedicated server
+[2026-07-23 10:30:27:509 INFO] Game mode: 0 Survival
+[2026-07-23 10:30:27:509 INFO] Difficulty: 1 EASY
+[2026-07-23 10:30:27:516 INFO] Content logging to console is enabled.
+[2026-07-23 10:30:27:564 INFO]
+#####################################################
+#                                                   #
+#               LOADING VANILLA WORLD               #
+#                                                   #
+#####################################################
+[2026-07-23 10:30:28:483 INFO] Opening level 'worlds/Controlled Chaos Qualification/db'
+[2026-07-23 10:30:29:363 INFO] Pack Stack - [00] Controlled Chaos Qualification BP (id: d3b77165-3fc6-4f35-b326-15939cd1dbaf, version: 1.0.0) @ worlds/Controlled Chaos Qualification/behavior_packs/Controlled_Chaos_Qualification_BP-d3b77165
+[2026-07-23 10:30:31:181 WARN] [Item] controlled_chaos:resonance_sling -> components -> minecraft:use_duration: this member was found in the input, but is not present in the Schema
+[2026-07-23 10:30:31:186 WARN] [Item] controlled_chaos:signal_console -> components -> minecraft:use_duration: this member was found in the input, but is not present in the Schema
+[2026-07-23 10:30:32:653 INFO] IPv4 supported, port: 19132: Used for gameplay and LAN discovery
+[2026-07-23 10:30:32:653 INFO] IPv6 supported, port: 19133: Used for gameplay
+[2026-07-23 10:30:32:710 INFO] Signed in to signaling service successfully
+[2026-07-23 10:30:32:720 INFO] Server started.
+[2026-07-23 10:30:32:721 INFO] ================ TELEMETRY MESSAGE ===================
+[2026-07-23 10:30:32:721 INFO] Server Telemetry is currently not enabled.
+[2026-07-23 10:30:32:721 INFO] Enabling this telemetry helps us improve the game.
+[2026-07-23 10:30:32:721 INFO]
+[2026-07-23 10:30:32:721 INFO] To enable this feature, add the line 'emit-server-telemetry=true'
+[2026-07-23 10:30:32:721 INFO] to the server.properties file in the handheld/src-server directory
+[2026-07-23 10:30:32:721 INFO] ======================================================
+[2026-07-23 10:30:32:848 WARN] [Scripting] [controlled_chaos] runtime initialized persistent_boot=1
+time="2026-07-23T10:30:47Z" level=debug msg="Forwarding signal" signal=terminated
+time="2026-07-23T10:30:47Z" level=debug msg="Sending message on stdin due to SIGTERM" message=stop
+[2026-07-23 10:30:47:868 INFO] Server stop requested.
+[2026-07-23 10:30:47:905 INFO] Stopping server...
+Quit correctly
+2026-07-23T10:30:48.358Z	INFO	mc-server-runner	Done

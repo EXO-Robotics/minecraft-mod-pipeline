@@ -1,0 +1,35 @@
+{
+  "schema_version": "1.0.0",
+  "benchmark_id": "controlled-chaos-integration",
+  "namespace": "controlled_chaos",
+  "progression": [
+    "signal_ruin",
+    "mossling",
+    "resonance_sling",
+    "bramble_guard",
+    "tempest_warden_phase_1",
+    "tempest_warden_phase_2",
+    "tempest_warden_phase_3",
+    "resonance_attunement",
+    "bounded_anomaly"
+  ],
+  "bounds": {
+    "active_creatures": 6,
+    "active_projectiles": 12,
+    "chaos_occurrences": 3,
+    "chaos_cooldown_ticks": 1200,
+    "projectile_lifetime_ticks": 100
+  },
+  "persistence": {
+    "version": 1,
+    "player_scoped": ["unlock", "cooldown", "creature_reward", "elite_reward"],
+    "world_scoped": ["structure_initialized", "elite_complete", "boss_complete", "boss_rewarded", "chaos_occurrence"]
+  },
+  "chaos_table": ["haste", "supply", "sprouts"],
+  "temporary_originality": {
+    "names": true,
+    "textures": "generated solid-color originals",
+    "geometry": "vanilla-compatible simple geometry",
+    "audio": "vanilla sound references only"
+  }
+}

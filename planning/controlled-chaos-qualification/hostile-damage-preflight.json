@@ -1,0 +1,37 @@
+{
+  "actual_damage": null,
+  "addon_sha256": "3377cefeaaf7a7ef8b291df4390168ea30d311bf1795e7158b05322f984a5448",
+  "attacker_identifier": "controlled_chaos:bramble_guard",
+  "authoritative": true,
+  "bds_version": "1.26.50.20",
+  "behavior_id": "controlled_chaos:hostile_damage_preflight",
+  "cleanup_result": "PASS_STATIC",
+  "conclusion": "HARNESS_LIMITATION",
+  "damage_source": "entityAttack",
+  "entity_death_observation": "NOT_APPLICABLE",
+  "entity_hurt_observation": "NOT_EXECUTED",
+  "event_adapter_observation": "NOT_EXECUTED",
+  "executions": [
+    {
+      "index": 1,
+      "result": "NOT_EXECUTED"
+    },
+    {
+      "index": 2,
+      "result": "NOT_EXECUTED"
+    }
+  ],
+  "expected_damage": 4,
+  "fixture_sha256": "7b61fa8f2d8640b336d2702b3f39ceabdc50a94c6322ad17cdd5c9b8f04b680f",
+  "internal_handler_observation": "PASS",
+  "reason": "The current repository fixture can independently prove damage handler semantics, but no authorized live Preview BDS execution supplied an actual hostile AI attack in this run. Conflicting historical claims lacked one receipt with health deltas and two executions; neither remains authoritative.",
+  "schema_version": "1.0.0",
+  "supersedes": [
+    "historical hostile_entity_damages_player PASSED",
+    "historical hostile_entity_damaged_player=false"
+  ],
+  "target_health_after": null,
+  "target_health_before": null,
+  "target_identifier": "minecraft:player",
+  "timeout_result": "NOT_EXECUTED"
+}

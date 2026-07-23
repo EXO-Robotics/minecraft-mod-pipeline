@@ -6,7 +6,9 @@ from mccompiler.context_requirements import (
     ACTION_CONTEXT,
     CONDITION_CONTEXT,
     TRIGGER_CONTEXT,
+    behavior_context_contract,
     behavior_context_requirements,
+    context_diagnostics,
     context_is_complete,
     validate_context_contracts,
 )
@@ -96,6 +98,37 @@ class ContextRequirementTests(unittest.TestCase):
         row = behavior("projectile_block_impact", {"type": "set_block"})
         self.assertRequires(row, "projectile", "block")
         self.assertDoesNotRequire(row, "target")
+
+    def test_world_owner_and_location_are_authoritative_optional_context(self) -> None:
+        row = behavior("projectile_impact", {"type": "update_persistent_state"})
+        contract = behavior_context_contract(row)
+        self.assertEqual(
+            frozenset({"projectile", "target", "event_source"}),
+            contract.required,
+        )
+        self.assertTrue({"world", "owner", "location"} <= contract.optional)
+        self.assertEqual([], context_diagnostics(contract, set(contract.required)))
+
+    def test_missing_required_context_has_actionable_diagnostic(self) -> None:
+        contract = behavior_context_contract(
+            behavior("projectile_block_impact", {"type": "set_block"})
+        )
+        diagnostics = context_diagnostics(contract, {"projectile", "event_source"})
+        self.assertEqual("MISSING_REQUIRED_CONTEXT", diagnostics[0]["code"])
+        self.assertEqual(["block"], diagnostics[0]["contexts"])
+        self.assertIn("block", diagnostics[0]["message"])
+
+    def test_unsupported_context_has_supported_registry_diagnostic(self) -> None:
+        contract = behavior_context_contract(
+            behavior("scheduled_tick", {"type": "update_persistent_state"})
+        )
+        diagnostics = context_diagnostics(
+            contract,
+            {"event_source", "world", "unsupported_fixture_context"},
+        )
+        self.assertEqual("UNSUPPORTED_CONTEXT", diagnostics[0]["code"])
+        self.assertEqual(["unsupported_fixture_context"], diagnostics[0]["contexts"])
+        self.assertTrue({"world", "owner", "location"} <= set(diagnostics[0]["supported"]))
 
     def test_nested_actions_and_conditions_are_checked(self) -> None:
         row = behavior(

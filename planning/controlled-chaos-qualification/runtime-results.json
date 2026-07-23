@@ -1,0 +1,159 @@
+{
+  "artifact_sha256": {
+    "mcaddon": "3377cefeaaf7a7ef8b291df4390168ea30d311bf1795e7158b05322f984a5448",
+    "mcworld": "39296f9ccf08764271741dd384e8a137e6bb20058edf06dd0d155c0c8dd55622"
+  },
+  "results": [
+    {
+      "case": "weapon_item_use",
+      "evidence_level": "INTERNAL_HANDLER",
+      "independent": true,
+      "status": "PASS"
+    },
+    {
+      "case": "weapon_projectile_launch",
+      "evidence_level": "INTERNAL_HANDLER",
+      "independent": true,
+      "status": "PASS"
+    },
+    {
+      "case": "projectile_entity_impact",
+      "evidence_level": "INTERNAL_HANDLER",
+      "independent": true,
+      "status": "PASS"
+    },
+    {
+      "case": "projectile_block_impact",
+      "evidence_level": "INTERNAL_HANDLER",
+      "independent": true,
+      "status": "PASS"
+    },
+    {
+      "case": "status_effect_invocation",
+      "evidence_level": "INTERNAL_HANDLER",
+      "independent": true,
+      "status": "PASS"
+    },
+    {
+      "case": "cooldown",
+      "evidence_level": "INTERNAL_HANDLER",
+      "independent": true,
+      "status": "PASS"
+    },
+    {
+      "case": "creature_spawn",
+      "evidence_level": "INTERNAL_HANDLER",
+      "independent": true,
+      "status": "PASS"
+    },
+    {
+      "case": "creature_hit",
+      "evidence_level": "INTERNAL_HANDLER",
+      "independent": true,
+      "status": "PASS"
+    },
+    {
+      "case": "creature_hurt",
+      "evidence_level": "INTERNAL_HANDLER",
+      "independent": true,
+      "status": "PASS"
+    },
+    {
+      "case": "creature_death",
+      "evidence_level": "INTERNAL_HANDLER",
+      "independent": true,
+      "status": "PASS"
+    },
+    {
+      "case": "structure_initialization",
+      "evidence_level": "INTERNAL_HANDLER",
+      "independent": true,
+      "status": "PASS"
+    },
+    {
+      "case": "structure_completion",
+      "evidence_level": "INTERNAL_HANDLER",
+      "independent": true,
+      "status": "PASS"
+    },
+    {
+      "case": "elite_initialization",
+      "evidence_level": "INTERNAL_HANDLER",
+      "independent": true,
+      "status": "PASS"
+    },
+    {
+      "case": "elite_reward",
+      "evidence_level": "INTERNAL_HANDLER",
+      "independent": true,
+      "status": "PASS"
+    },
+    {
+      "case": "boss_phase_1",
+      "evidence_level": "INTERNAL_HANDLER",
+      "independent": true,
+      "status": "PASS"
+    },
+    {
+      "case": "boss_phase_2",
+      "evidence_level": "INTERNAL_HANDLER",
+      "independent": true,
+      "status": "PASS"
+    },
+    {
+      "case": "boss_phase_3",
+      "evidence_level": "INTERNAL_HANDLER",
+      "independent": true,
+      "status": "PASS"
+    },
+    {
+      "case": "boss_completion",
+      "evidence_level": "INTERNAL_HANDLER",
+      "independent": true,
+      "status": "PASS"
+    },
+    {
+      "case": "persistent_unlock",
+      "evidence_level": "INTERNAL_HANDLER",
+      "independent": true,
+      "status": "PASS"
+    },
+    {
+      "case": "bounded_chaos_selection",
+      "evidence_level": "INTERNAL_HANDLER",
+      "independent": true,
+      "status": "PASS"
+    },
+    {
+      "case": "bounded_chaos_execution",
+      "evidence_level": "INTERNAL_HANDLER",
+      "independent": true,
+      "status": "PASS"
+    },
+    {
+      "case": "controller_interaction_invocation",
+      "evidence_level": "INTERNAL_HANDLER",
+      "independent": true,
+      "status": "PASS"
+    },
+    {
+      "case": "restart_persistence",
+      "evidence_level": "INTERNAL_HANDLER",
+      "independent": true,
+      "status": "PASS"
+    },
+    {
+      "case": "cleanup",
+      "evidence_level": "INTERNAL_HANDLER",
+      "independent": true,
+      "status": "PASS"
+    },
+    {
+      "case": "duplicate_reward_prevention",
+      "evidence_level": "INTERNAL_HANDLER",
+      "independent": true,
+      "status": "PASS"
+    }
+  ],
+  "schema_version": "1.0.0"
+}
