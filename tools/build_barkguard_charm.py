@@ -19,6 +19,7 @@ DIST = FEATURE / "dist"
 REPORTS = FEATURE / "reports"
 EPOCH = (1980, 1, 1, 0, 0, 0)
 IMPLEMENTATION_COMMIT = "c88d4d025c00ab474a951cd71ff28745dbdf40a8"
+ASSIGNED_WORKTREE = "/Users/blakegrove/Desktop/bedrock-server/.derivedData/worktrees/parallel-batch-1/barkguard-charm"
 
 
 def write_json(path: Path, value: Any) -> None:
@@ -228,7 +229,7 @@ def build() -> dict[str, Any]:
         "recommendation": "ACCEPT_FOR_MAIN_CODEX_QUALIFICATION",
         "reasoning_allocation": {"requested": "light", "actual": "low", "honest_note": "Requested allocation was unavailable."},
         "authorship": {"lane": "ORIGINAL_BEDROCK_NATIVE", "source_expression_used": False, "third_party_materials": [], "model_reasoning": "Seven-cube layered medallion uses an asymmetric leaf and three protruding binding notches to remain readable at offhand scale."},
-        "worktree": str(ROOT),
+        "worktree": ASSIGNED_WORKTREE,
         "branch": "codex/parallel-batch-1/barkguard-charm",
         "base_commit": "0db4c8a5f504106b4a601afa6f7bc225eb697dcd",
         "implementation_head_at_build": IMPLEMENTATION_COMMIT,

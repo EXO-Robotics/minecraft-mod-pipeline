@@ -113,14 +113,21 @@ class BarkguardCharmTests(unittest.TestCase):
 
     def test_deterministic_build_hashes_and_labels(self):
         builder = ROOT / "tools/build_barkguard_charm.py"
+        packet_path = FEATURE / "reports/candidate-packet.json"
+        committed_packet = packet_path.read_bytes()
         subprocess.run(["python3", str(builder)], cwd=ROOT, check=True, capture_output=True)
         package = FEATURE / "dist/barkguard-charm-INTERNAL-TEST.mcaddon"
         first = hashlib.sha256(package.read_bytes()).hexdigest()
         subprocess.run(["python3", str(builder)], cwd=ROOT, check=True, capture_output=True)
         second = hashlib.sha256(package.read_bytes()).hexdigest()
         self.assertEqual(first, second)
-        packet = json.loads((FEATURE / "reports/candidate-packet.json").read_text())
+        self.assertEqual(packet_path.read_bytes(), committed_packet)
+        packet = json.loads(packet_path.read_text())
         self.assertEqual(packet["package"]["sha256"], first)
+        self.assertEqual(
+            packet["worktree"],
+            "/Users/blakegrove/Desktop/bedrock-server/.derivedData/worktrees/parallel-batch-1/barkguard-charm",
+        )
         self.assertIn("NOT PHYSICAL PS4 CERTIFIED", packet["labels"])
         with zipfile.ZipFile(package) as archive:
             self.assertIn("behavior_pack/manifest.json", archive.namelist())
