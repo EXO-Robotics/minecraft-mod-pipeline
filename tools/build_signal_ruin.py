@@ -305,7 +305,7 @@ function reward(a){
   if(get(a,"reward_issued",false)) { set(a,"state","COMPLETE"); return; }
   set(a,"state","REWARD_READY"); set(a,"reward_issued",true);
   a.dimension.runCommand(`loot spawn ${a.location.x} ${a.location.y+1} ${a.location.z} loot "ccoriginal_cc/signal_ruin_cache"`);
-  set(a,"state","COMPLETE"); world.sendMessage("Signal Ruin completed. One shared cache has formed."); 
+  set(a,"state","COMPLETE"); world.sendMessage("Signal Ruin completed. One shared cache has formed.");
 }
 function activate(a,p){
   if(state(a)!=="READY"){ p.sendMessage(state(a)==="COMPLETE"?"This Signal Ruin is quiet; its cache was already issued.":"This Signal Ruin is already active."); return; }
