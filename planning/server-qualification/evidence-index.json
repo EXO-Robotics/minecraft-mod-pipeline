@@ -1,0 +1,83 @@
+{
+  "entries": [
+    {
+      "path": "planning/server-qualification/stable-bds-results.json",
+      "sha256": "6308d4c44a6fcbb95dd72643933214042c349e171709aed0c8f12f6306947dd1"
+    },
+    {
+      "path": "planning/server-qualification/preview-bds-results.json",
+      "sha256": "0f7025ec889d5690181cd9b60cf80cb8505502e7861576bdd32c8203ed760f9c"
+    },
+    {
+      "path": "planning/server-qualification/two-player-proxy.json",
+      "sha256": "ea8df21bdf8be99390260be585c129ba7fab5733072ab305a9071ce29f8b8d2b"
+    },
+    {
+      "path": "planning/server-qualification/four-player-server-proxy.json",
+      "sha256": "25957708d6299a188ce315c6eeab67f1febfb9184744ed46f2e7320cbe4eb202"
+    },
+    {
+      "path": "planning/server-qualification/stress-matrix.json",
+      "sha256": "f683ecebb903300f5ce4fcc4b72afb6ddb6a60d4d1b100c3c7dd0107a914a9ad"
+    },
+    {
+      "path": "planning/server-qualification/endurance-results.json",
+      "sha256": "356c529209b62748fb76542aeee3c6260f7f61cebf86ae2cd79e4846425098ba"
+    },
+    {
+      "path": "planning/server-qualification/ps4-planning-proxy.json",
+      "sha256": "bf81eece1185fc8c50f3410bc659b9319ebd233e201c979b134b16b182a38ba9"
+    },
+    {
+      "path": "planning/server-qualification/pattern-readiness.json",
+      "sha256": "f805affe57c8cddb016973b80b48a1d8a20fcc8d1603ce9641acb72c9f5c9627"
+    },
+    {
+      "path": "planning/server-qualification/quarter-scope-recalibration.json",
+      "sha256": "3421b3a7f5d5188a79ac01786c0fce8d9eaf5b88052a8444120174e4690cca93"
+    },
+    {
+      "path": "planning/server-qualification/executive-summary.md",
+      "sha256": "a21361536e5eab577c08926f7bcf43a9a05f07e5c0b4d2741f16425ce7afaf50"
+    },
+    {
+      "path": "planning/server-qualification/metric-definitions.md",
+      "sha256": "195ff533baa79dbac8bcebd49a78d95c70e4db2c03dc4791f88421ba6b3dae75"
+    },
+    {
+      "path": "planning/server-qualification/ps4-planning-proxy.md",
+      "sha256": "725103def9b6d375ed787c48debe9a5d4ee25a32de9331a1202bdcc356d9d77c"
+    },
+    {
+      "path": "planning/server-qualification/pattern-readiness.md",
+      "sha256": "d5a6663b3613499e01569d0281969b86ba8cc3787b84d1fca7b4fe93befcb721"
+    },
+    {
+      "path": "planning/server-qualification/quarter-scope-recalibration.md",
+      "sha256": "3a3c436ff0067f46482a409286162025001029fb1b0198330880872389cbe0a3"
+    },
+    {
+      "path": "planning/server-qualification/remaining-physical-gates.md",
+      "sha256": "c3a9a9cbace5789a1cf2dd1275581e8464f5e77de0cb0d49442f9334a29d8d7a"
+    }
+  ],
+  "evidence_levels": [
+    "STATIC_VALIDATED",
+    "STABLE_BDS_VERIFIED",
+    "PREVIEW_GAMETEST_VERIFIED",
+    "SIMULATED_PLAYER_VERIFIED",
+    "TWO_PLAYER_CONCURRENCY_PROXY",
+    "FOUR_PLAYER_SERVER_PROXY",
+    "BDS_STRESS_VERIFIED",
+    "BDS_ENDURANCE_VERIFIED",
+    "WINDOWS_CLIENT_PENDING",
+    "CONTROLLER_PENDING",
+    "REALM_PENDING",
+    "PS4_PENDING",
+    "XBOX_PENDING"
+  ],
+  "physical_evidence_complete": false,
+  "ps4_verified": false,
+  "schema_version": "1.0.0",
+  "status": "SERVER_AUTOMATED_QUALIFICATION_COMPLETE"
+}

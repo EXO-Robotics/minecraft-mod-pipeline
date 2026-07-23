@@ -1,0 +1,660 @@
+{
+  "artifact": {
+    "path": "/Users/blakegrove/Desktop/bedrock-server/minecraft-compiler-baseline/benchmarks/controlled-chaos-integration/runtime/preview-server-qualification.mcworld",
+    "sha256": "37c150a7c6a45dc6b6203b40beb73783a8ff0608c76f47f39b4f8f339ee9959e"
+  },
+  "checks": [
+    {
+      "check_id": "qualification-ticking-area",
+      "classification": "adapter_integration",
+      "command": "tickingarea add circle 8 64 8 2 controlled_chaos_qualification true",
+      "expect_output": "Added ticking area",
+      "matched": true,
+      "sent": true,
+      "status": "PASSED"
+    },
+    {
+      "check_id": "qualification-arm",
+      "classification": "adapter_integration",
+      "command": "setblock 8 64 8 gold_block",
+      "expect_output": "Block placed",
+      "matched": true,
+      "sent": true,
+      "status": "PASSED"
+    },
+    {
+      "check_id": "preview-boss-completion",
+      "classification": "simulated_player_integration",
+      "expect_output": "[controlled-chaos:server-qualification] boss_completion=passed",
+      "matched": true,
+      "status": "PASSED"
+    },
+    {
+      "check_id": "preview-boss-phase-1",
+      "classification": "simulated_player_integration",
+      "expect_output": "[controlled-chaos:server-qualification] boss_phase_1=passed",
+      "matched": true,
+      "status": "PASSED"
+    },
+    {
+      "check_id": "preview-boss-phase-2",
+      "classification": "simulated_player_integration",
+      "expect_output": "[controlled-chaos:server-qualification] boss_phase_2=passed",
+      "matched": true,
+      "status": "PASSED"
+    },
+    {
+      "check_id": "preview-boss-phase-3",
+      "classification": "simulated_player_integration",
+      "expect_output": "[controlled-chaos:server-qualification] boss_phase_3=passed",
+      "matched": true,
+      "status": "PASSED"
+    },
+    {
+      "check_id": "preview-both-players-boss-damage",
+      "classification": "simulated_player_integration",
+      "expect_output": "[controlled-chaos:server-qualification] both_players_boss_damage=passed",
+      "matched": true,
+      "status": "PASSED"
+    },
+    {
+      "check_id": "preview-bounded-queue",
+      "classification": "simulated_player_integration",
+      "expect_output": "[controlled-chaos:server-qualification] bounded_queue=passed",
+      "matched": true,
+      "status": "PASSED"
+    },
+    {
+      "check_id": "preview-cooldown-isolation",
+      "classification": "simulated_player_integration",
+      "expect_output": "[controlled-chaos:server-qualification] cooldown_isolation=passed",
+      "matched": true,
+      "status": "PASSED"
+    },
+    {
+      "check_id": "preview-creature-spawn",
+      "classification": "simulated_player_integration",
+      "expect_output": "[controlled-chaos:server-qualification] creature_spawn=passed",
+      "matched": true,
+      "status": "PASSED"
+    },
+    {
+      "check_id": "preview-cross-player-state-isolation",
+      "classification": "simulated_player_integration",
+      "expect_output": "[controlled-chaos:server-qualification] cross_player_state_isolation=passed",
+      "matched": true,
+      "status": "PASSED"
+    },
+    {
+      "check_id": "preview-duplicate-reward-prevention",
+      "classification": "simulated_player_integration",
+      "expect_output": "[controlled-chaos:server-qualification] duplicate_reward_prevention=passed",
+      "matched": true,
+      "status": "PASSED"
+    },
+    {
+      "check_id": "preview-endurance-repetitions",
+      "classification": "simulated_player_integration",
+      "expect_output": "[controlled-chaos:server-qualification] endurance_repetitions=passed",
+      "matched": true,
+      "status": "PASSED"
+    },
+    {
+      "check_id": "preview-entity-death",
+      "classification": "simulated_player_integration",
+      "expect_output": "[controlled-chaos:server-qualification] entity_death=passed",
+      "matched": true,
+      "status": "PASSED"
+    },
+    {
+      "check_id": "preview-entity-hit",
+      "classification": "simulated_player_integration",
+      "expect_output": "[controlled-chaos:server-qualification] entity_hit=passed",
+      "matched": true,
+      "status": "PASSED"
+    },
+    {
+      "check_id": "preview-entity-hurt",
+      "classification": "simulated_player_integration",
+      "expect_output": "[controlled-chaos:server-qualification] entity_hurt=passed",
+      "matched": true,
+      "status": "PASSED"
+    },
+    {
+      "check_id": "preview-final-cleanup",
+      "classification": "simulated_player_integration",
+      "expect_output": "[controlled-chaos:server-qualification] final_cleanup=passed",
+      "matched": true,
+      "status": "PASSED"
+    },
+    {
+      "check_id": "preview-four-independent-player-records",
+      "classification": "simulated_player_integration",
+      "expect_output": "[controlled-chaos:server-qualification] four_independent_player_records=passed",
+      "matched": true,
+      "status": "PASSED"
+    },
+    {
+      "check_id": "preview-item-use",
+      "classification": "simulated_player_integration",
+      "expect_output": "[controlled-chaos:server-qualification] item_use=passed",
+      "matched": true,
+      "status": "PASSED"
+    },
+    {
+      "check_id": "preview-item-use-on-block-attempted",
+      "classification": "simulated_player_integration",
+      "expect_output": "[controlled-chaos:server-qualification] item_use_on_block_attempted=passed",
+      "matched": true,
+      "status": "PASSED"
+    },
+    {
+      "check_id": "preview-melee-attack",
+      "classification": "simulated_player_integration",
+      "expect_output": "[controlled-chaos:server-qualification] melee_attack=passed",
+      "matched": true,
+      "status": "PASSED"
+    },
+    {
+      "check_id": "preview-movement-into-region",
+      "classification": "simulated_player_integration",
+      "expect_output": "[controlled-chaos:server-qualification] movement_into_region=passed",
+      "matched": true,
+      "status": "PASSED"
+    },
+    {
+      "check_id": "preview-persistent-unlock",
+      "classification": "simulated_player_integration",
+      "expect_output": "[controlled-chaos:server-qualification] persistent_unlock=passed",
+      "matched": true,
+      "status": "PASSED"
+    },
+    {
+      "check_id": "preview-profile-boss-load",
+      "classification": "simulated_player_integration",
+      "expect_output": "[controlled-chaos:server-qualification] profile_boss_load=passed",
+      "matched": true,
+      "status": "PASSED"
+    },
+    {
+      "check_id": "preview-profile-four-player",
+      "classification": "simulated_player_integration",
+      "expect_output": "[controlled-chaos:server-qualification] profile_four_player=passed",
+      "matched": true,
+      "status": "PASSED"
+    },
+    {
+      "check_id": "preview-profile-normal",
+      "classification": "simulated_player_integration",
+      "expect_output": "[controlled-chaos:server-qualification] profile_normal=passed",
+      "matched": true,
+      "status": "PASSED"
+    },
+    {
+      "check_id": "preview-profile-two-player",
+      "classification": "simulated_player_integration",
+      "expect_output": "[controlled-chaos:server-qualification] profile_two_player=passed",
+      "matched": true,
+      "status": "PASSED"
+    },
+    {
+      "check_id": "preview-profile-worst-credible",
+      "classification": "simulated_player_integration",
+      "expect_output": "[controlled-chaos:server-qualification] profile_worst_credible=passed",
+      "matched": true,
+      "status": "PASSED"
+    },
+    {
+      "check_id": "preview-projectile-block-impact",
+      "classification": "simulated_player_integration",
+      "expect_output": "[controlled-chaos:server-qualification] projectile_block_impact=passed",
+      "matched": true,
+      "status": "PASSED"
+    },
+    {
+      "check_id": "preview-projectile-cleanup",
+      "classification": "simulated_player_integration",
+      "expect_output": "[controlled-chaos:server-qualification] projectile_cleanup=passed",
+      "matched": true,
+      "status": "PASSED"
+    },
+    {
+      "check_id": "preview-projectile-entity-impact",
+      "classification": "simulated_player_integration",
+      "expect_output": "[controlled-chaos:server-qualification] projectile_entity_impact=passed",
+      "matched": true,
+      "status": "PASSED"
+    },
+    {
+      "check_id": "preview-projectile-launch",
+      "classification": "simulated_player_integration",
+      "expect_output": "[controlled-chaos:server-qualification] projectile_launch=passed",
+      "matched": true,
+      "status": "PASSED"
+    },
+    {
+      "check_id": "preview-reward-issuance",
+      "classification": "simulated_player_integration",
+      "expect_output": "[controlled-chaos:server-qualification] reward_issuance=passed",
+      "matched": true,
+      "status": "PASSED"
+    },
+    {
+      "check_id": "preview-shared-structure-state",
+      "classification": "simulated_player_integration",
+      "expect_output": "[controlled-chaos:server-qualification] shared_structure_state=passed",
+      "matched": true,
+      "status": "PASSED"
+    },
+    {
+      "check_id": "preview-simulated-player-creation",
+      "classification": "simulated_player_integration",
+      "expect_output": "[controlled-chaos:server-qualification] simulated_player_creation=passed",
+      "matched": true,
+      "status": "PASSED"
+    },
+    {
+      "check_id": "preview-status-effect-invocation",
+      "classification": "simulated_player_integration",
+      "expect_output": "[controlled-chaos:server-qualification] status_effect_invocation=passed",
+      "matched": true,
+      "status": "PASSED"
+    },
+    {
+      "check_id": "preview-weapon-activation",
+      "classification": "simulated_player_integration",
+      "expect_output": "[controlled-chaos:server-qualification] weapon_activation=passed",
+      "matched": true,
+      "status": "PASSED"
+    },
+    {
+      "check_id": "preview-restart-restart-checkpoint",
+      "classification": "bds_restart_diagnostic",
+      "expect_output": "[controlled-chaos:server-qualification] restart_checkpoint=passed",
+      "matched": true,
+      "status": "PASSED"
+    }
+  ],
+  "claims": {
+    "adapter_integration_verified": true,
+    "bds_boot_verified": true,
+    "console_verified": false,
+    "diagnostic_state_persistence_verified": true,
+    "gameplay_verified": false,
+    "marketplace_approval_implied": false,
+    "migrated_state_restart_verified": false,
+    "multiplayer_verified": false,
+    "nonempty_state_migration_verified": false,
+    "persistence_verified": false,
+    "simulated_player_integration_verified": true
+  },
+  "execution": {
+    "cycles": [
+      {
+        "analysis": {
+          "bedrock_build_id": "47971866",
+          "bedrock_version": "1.26.50.20",
+          "booted": true,
+          "clean": true,
+          "critical_lines": [],
+          "line_count": 145,
+          "migrated_lock_values": [],
+          "migrated_state_records": [],
+          "persistent_boot_values": [
+            1
+          ],
+          "script_initialized": true
+        },
+        "console_probes": [
+          {
+            "check_id": "qualification-ticking-area",
+            "classification": "adapter_integration",
+            "command": "tickingarea add circle 8 64 8 2 controlled_chaos_qualification true",
+            "expect_output": "Added ticking area",
+            "matched": true,
+            "sent": true,
+            "status": "PASSED"
+          },
+          {
+            "check_id": "qualification-arm",
+            "classification": "adapter_integration",
+            "command": "setblock 8 64 8 gold_block",
+            "expect_output": "Block placed",
+            "matched": true,
+            "sent": true,
+            "status": "PASSED"
+          }
+        ],
+        "container_exit_code": 0,
+        "cycle": 1,
+        "elapsed_seconds": 62.548,
+        "log_probes": [
+          {
+            "check_id": "preview-boss-completion",
+            "classification": "simulated_player_integration",
+            "expect_output": "[controlled-chaos:server-qualification] boss_completion=passed",
+            "matched": true,
+            "status": "PASSED"
+          },
+          {
+            "check_id": "preview-boss-phase-1",
+            "classification": "simulated_player_integration",
+            "expect_output": "[controlled-chaos:server-qualification] boss_phase_1=passed",
+            "matched": true,
+            "status": "PASSED"
+          },
+          {
+            "check_id": "preview-boss-phase-2",
+            "classification": "simulated_player_integration",
+            "expect_output": "[controlled-chaos:server-qualification] boss_phase_2=passed",
+            "matched": true,
+            "status": "PASSED"
+          },
+          {
+            "check_id": "preview-boss-phase-3",
+            "classification": "simulated_player_integration",
+            "expect_output": "[controlled-chaos:server-qualification] boss_phase_3=passed",
+            "matched": true,
+            "status": "PASSED"
+          },
+          {
+            "check_id": "preview-both-players-boss-damage",
+            "classification": "simulated_player_integration",
+            "expect_output": "[controlled-chaos:server-qualification] both_players_boss_damage=passed",
+            "matched": true,
+            "status": "PASSED"
+          },
+          {
+            "check_id": "preview-bounded-queue",
+            "classification": "simulated_player_integration",
+            "expect_output": "[controlled-chaos:server-qualification] bounded_queue=passed",
+            "matched": true,
+            "status": "PASSED"
+          },
+          {
+            "check_id": "preview-cooldown-isolation",
+            "classification": "simulated_player_integration",
+            "expect_output": "[controlled-chaos:server-qualification] cooldown_isolation=passed",
+            "matched": true,
+            "status": "PASSED"
+          },
+          {
+            "check_id": "preview-creature-spawn",
+            "classification": "simulated_player_integration",
+            "expect_output": "[controlled-chaos:server-qualification] creature_spawn=passed",
+            "matched": true,
+            "status": "PASSED"
+          },
+          {
+            "check_id": "preview-cross-player-state-isolation",
+            "classification": "simulated_player_integration",
+            "expect_output": "[controlled-chaos:server-qualification] cross_player_state_isolation=passed",
+            "matched": true,
+            "status": "PASSED"
+          },
+          {
+            "check_id": "preview-duplicate-reward-prevention",
+            "classification": "simulated_player_integration",
+            "expect_output": "[controlled-chaos:server-qualification] duplicate_reward_prevention=passed",
+            "matched": true,
+            "status": "PASSED"
+          },
+          {
+            "check_id": "preview-endurance-repetitions",
+            "classification": "simulated_player_integration",
+            "expect_output": "[controlled-chaos:server-qualification] endurance_repetitions=passed",
+            "matched": true,
+            "status": "PASSED"
+          },
+          {
+            "check_id": "preview-entity-death",
+            "classification": "simulated_player_integration",
+            "expect_output": "[controlled-chaos:server-qualification] entity_death=passed",
+            "matched": true,
+            "status": "PASSED"
+          },
+          {
+            "check_id": "preview-entity-hit",
+            "classification": "simulated_player_integration",
+            "expect_output": "[controlled-chaos:server-qualification] entity_hit=passed",
+            "matched": true,
+            "status": "PASSED"
+          },
+          {
+            "check_id": "preview-entity-hurt",
+            "classification": "simulated_player_integration",
+            "expect_output": "[controlled-chaos:server-qualification] entity_hurt=passed",
+            "matched": true,
+            "status": "PASSED"
+          },
+          {
+            "check_id": "preview-final-cleanup",
+            "classification": "simulated_player_integration",
+            "expect_output": "[controlled-chaos:server-qualification] final_cleanup=passed",
+            "matched": true,
+            "status": "PASSED"
+          },
+          {
+            "check_id": "preview-four-independent-player-records",
+            "classification": "simulated_player_integration",
+            "expect_output": "[controlled-chaos:server-qualification] four_independent_player_records=passed",
+            "matched": true,
+            "status": "PASSED"
+          },
+          {
+            "check_id": "preview-item-use",
+            "classification": "simulated_player_integration",
+            "expect_output": "[controlled-chaos:server-qualification] item_use=passed",
+            "matched": true,
+            "status": "PASSED"
+          },
+          {
+            "check_id": "preview-item-use-on-block-attempted",
+            "classification": "simulated_player_integration",
+            "expect_output": "[controlled-chaos:server-qualification] item_use_on_block_attempted=passed",
+            "matched": true,
+            "status": "PASSED"
+          },
+          {
+            "check_id": "preview-melee-attack",
+            "classification": "simulated_player_integration",
+            "expect_output": "[controlled-chaos:server-qualification] melee_attack=passed",
+            "matched": true,
+            "status": "PASSED"
+          },
+          {
+            "check_id": "preview-movement-into-region",
+            "classification": "simulated_player_integration",
+            "expect_output": "[controlled-chaos:server-qualification] movement_into_region=passed",
+            "matched": true,
+            "status": "PASSED"
+          },
+          {
+            "check_id": "preview-persistent-unlock",
+            "classification": "simulated_player_integration",
+            "expect_output": "[controlled-chaos:server-qualification] persistent_unlock=passed",
+            "matched": true,
+            "status": "PASSED"
+          },
+          {
+            "check_id": "preview-profile-boss-load",
+            "classification": "simulated_player_integration",
+            "expect_output": "[controlled-chaos:server-qualification] profile_boss_load=passed",
+            "matched": true,
+            "status": "PASSED"
+          },
+          {
+            "check_id": "preview-profile-four-player",
+            "classification": "simulated_player_integration",
+            "expect_output": "[controlled-chaos:server-qualification] profile_four_player=passed",
+            "matched": true,
+            "status": "PASSED"
+          },
+          {
+            "check_id": "preview-profile-normal",
+            "classification": "simulated_player_integration",
+            "expect_output": "[controlled-chaos:server-qualification] profile_normal=passed",
+            "matched": true,
+            "status": "PASSED"
+          },
+          {
+            "check_id": "preview-profile-two-player",
+            "classification": "simulated_player_integration",
+            "expect_output": "[controlled-chaos:server-qualification] profile_two_player=passed",
+            "matched": true,
+            "status": "PASSED"
+          },
+          {
+            "check_id": "preview-profile-worst-credible",
+            "classification": "simulated_player_integration",
+            "expect_output": "[controlled-chaos:server-qualification] profile_worst_credible=passed",
+            "matched": true,
+            "status": "PASSED"
+          },
+          {
+            "check_id": "preview-projectile-block-impact",
+            "classification": "simulated_player_integration",
+            "expect_output": "[controlled-chaos:server-qualification] projectile_block_impact=passed",
+            "matched": true,
+            "status": "PASSED"
+          },
+          {
+            "check_id": "preview-projectile-cleanup",
+            "classification": "simulated_player_integration",
+            "expect_output": "[controlled-chaos:server-qualification] projectile_cleanup=passed",
+            "matched": true,
+            "status": "PASSED"
+          },
+          {
+            "check_id": "preview-projectile-entity-impact",
+            "classification": "simulated_player_integration",
+            "expect_output": "[controlled-chaos:server-qualification] projectile_entity_impact=passed",
+            "matched": true,
+            "status": "PASSED"
+          },
+          {
+            "check_id": "preview-projectile-launch",
+            "classification": "simulated_player_integration",
+            "expect_output": "[controlled-chaos:server-qualification] projectile_launch=passed",
+            "matched": true,
+            "status": "PASSED"
+          },
+          {
+            "check_id": "preview-reward-issuance",
+            "classification": "simulated_player_integration",
+            "expect_output": "[controlled-chaos:server-qualification] reward_issuance=passed",
+            "matched": true,
+            "status": "PASSED"
+          },
+          {
+            "check_id": "preview-shared-structure-state",
+            "classification": "simulated_player_integration",
+            "expect_output": "[controlled-chaos:server-qualification] shared_structure_state=passed",
+            "matched": true,
+            "status": "PASSED"
+          },
+          {
+            "check_id": "preview-simulated-player-creation",
+            "classification": "simulated_player_integration",
+            "expect_output": "[controlled-chaos:server-qualification] simulated_player_creation=passed",
+            "matched": true,
+            "status": "PASSED"
+          },
+          {
+            "check_id": "preview-status-effect-invocation",
+            "classification": "simulated_player_integration",
+            "expect_output": "[controlled-chaos:server-qualification] status_effect_invocation=passed",
+            "matched": true,
+            "status": "PASSED"
+          },
+          {
+            "check_id": "preview-weapon-activation",
+            "classification": "simulated_player_integration",
+            "expect_output": "[controlled-chaos:server-qualification] weapon_activation=passed",
+            "matched": true,
+            "status": "PASSED"
+          }
+        ],
+        "passed": true,
+        "stop_exit_code": 0,
+        "timed_out": false,
+        "timeout_seconds": 240
+      },
+      {
+        "analysis": {
+          "bedrock_build_id": "47971866",
+          "bedrock_version": "1.26.50.20",
+          "booted": true,
+          "clean": true,
+          "critical_lines": [],
+          "line_count": 139,
+          "migrated_lock_values": [],
+          "migrated_state_records": [],
+          "persistent_boot_values": [
+            2
+          ],
+          "script_initialized": true
+        },
+        "console_probes": [],
+        "container_exit_code": 0,
+        "cycle": 2,
+        "elapsed_seconds": 36.234,
+        "log_probes": [
+          {
+            "check_id": "preview-restart-restart-checkpoint",
+            "classification": "bds_restart_diagnostic",
+            "expect_output": "[controlled-chaos:server-qualification] restart_checkpoint=passed",
+            "matched": true,
+            "status": "PASSED"
+          }
+        ],
+        "passed": true,
+        "stop_exit_code": 0,
+        "timed_out": false,
+        "timeout_seconds": 240
+      }
+    ],
+    "elapsed_seconds": 98.784,
+    "restart_count": 2
+  },
+  "log": {
+    "bedrock_build_id": "47971866",
+    "bedrock_version": "1.26.50.20",
+    "booted": true,
+    "clean": true,
+    "critical_lines": [],
+    "line_count": 286,
+    "migrated_lock_values": [],
+    "migrated_state_records": [],
+    "path": "/Users/blakegrove/Desktop/bedrock-server/minecraft-compiler-baseline/benchmarks/controlled-chaos-integration/runtime/preview-server-qualification/content.log",
+    "persistent_boot_values": [
+      1,
+      2
+    ],
+    "script_initialized": true,
+    "sha256": "81f640d37445e8ae19914d623ebb1fbdddc4f3bb3810eb66c55bdc7ec3374ca0"
+  },
+  "passed": true,
+  "receipt": {
+    "duration_seconds": 98.79,
+    "finished_at": "2026-07-23T11:48:36.472896+00:00",
+    "post_run_world_state": {
+      "file_count": 37,
+      "sha256": "50ff2e4d7b4d88409132725f02816a492546ec6c0c4e1753fc2c4d21eb897fd3",
+      "size_bytes": 489736
+    },
+    "started_at": "2026-07-23T11:46:57.682540+00:00"
+  },
+  "runtime": {
+    "adapter": "docker-bds",
+    "image": "itzg/minecraft-bedrock-server@sha256:12c7047cc149bd517d6dbc2339163cf62a4f1044c10e759c45c8b387e9784e39",
+    "level_name": "Controlled Chaos Qualification",
+    "network": "bridge",
+    "preview_channel": true,
+    "published_ports": false,
+    "requested_bds_version": "1.26.50.20"
+  },
+  "schema_version": "1.0.0",
+  "status": "BDS_DIAGNOSTIC_BOOT_VERIFIED",
+  "upgrade": null
+}

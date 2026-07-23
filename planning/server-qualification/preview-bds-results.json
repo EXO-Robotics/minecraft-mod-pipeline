@@ -1,0 +1,85 @@
+{
+  "actions": {
+    "boss_completion": "passed",
+    "boss_phase_1": "passed",
+    "boss_phase_2": "passed",
+    "boss_phase_3": "passed",
+    "both_players_boss_damage": "passed",
+    "bounded_chaos_execution": "PREVIEW_STATE_AND_BOUNDS_VERIFIED",
+    "bounded_chaos_selection": "PREVIEW_STATE_AND_BOUNDS_VERIFIED",
+    "bounded_queue": "passed",
+    "cooldown_isolation": "passed",
+    "creature_spawn": "passed",
+    "creature_target_acquisition": "HARNESS_LIMITATION_NOT_AUTHORITATIVELY_OBSERVABLE",
+    "cross_player_state_isolation": "passed",
+    "duplicate_reward_prevention": "passed",
+    "elite_defeat": "INTERNAL_HANDLER_VERIFIED_PREVIEW_ENTITY_LIFECYCLE_VERIFIED",
+    "endurance_repetitions": "passed",
+    "entity_death": "passed",
+    "entity_hit": "passed",
+    "entity_hurt": "passed",
+    "final_cleanup": "passed",
+    "four_independent_player_records": "passed",
+    "item_use": "passed",
+    "item_use_on_block": "harness_limitation",
+    "item_use_on_block_attempted": "passed",
+    "melee_attack": "passed",
+    "movement_into_region": "passed",
+    "persistent_unlock": "passed",
+    "profile_boss_load": "passed",
+    "profile_four_player": "passed",
+    "profile_normal": "passed",
+    "profile_two_player": "passed",
+    "profile_worst_credible": "passed",
+    "projectile_block_impact": "passed",
+    "projectile_cleanup": "passed",
+    "projectile_entity_impact": "passed",
+    "projectile_launch": "passed",
+    "restart_checkpoint": "passed",
+    "reward_issuance": "passed",
+    "shared_structure_state": "passed",
+    "simulated_player_creation": "passed",
+    "status_effect_invocation": "passed",
+    "weapon_activation": "passed"
+  },
+  "artifact_hashes": {
+    "mcaddon": "348a4cb571c3ece18186592f11466295f6990d97043da3782abff9759ba036f9",
+    "mcworld": "d69a2d6568b96183bf71b4f98cca0e4b878f5f51a3d29ddf5c11a6add88fa45f"
+  },
+  "bds_version": "1.26.50.20",
+  "classification": "PREVIEW_GAMETEST_VERIFIED",
+  "fixture_sha256": "3c7b8ccc8e1ada7bac2fa62b617c52990a4618f18539696b0d736a14bd7daf9c",
+  "hostile_damage": {
+    "actor_target": "SimulatedPlayer to entity was observable; hostile mob to player was not authoritative",
+    "event": "entityHurt observed for controlled diagnostic targets",
+    "health_changed": "not established",
+    "health_queryable": false,
+    "physical_resolution": "Windows client hostile-hit health and death observation",
+    "promotion_blocker": "Preview automation did not expose authoritative hostile health-delta attribution",
+    "status": "HARNESS_LIMITATION"
+  },
+  "limitations": [
+    {
+      "id": "item_use_on_block",
+      "status": "harness_limitation"
+    }
+  ],
+  "receipt": {
+    "duration_seconds": 98.79,
+    "finished_at": "2026-07-23T11:48:36.472896+00:00",
+    "post_run_world_state": {
+      "file_count": 37,
+      "sha256": "50ff2e4d7b4d88409132725f02816a492546ec6c0c4e1753fc2c4d21eb897fd3",
+      "size_bytes": 489736
+    },
+    "started_at": "2026-07-23T11:46:57.682540+00:00"
+  },
+  "restart_cycles": 2,
+  "schema_version": "1.0.0",
+  "seed": 7305,
+  "source_receipt": {
+    "path": "benchmarks/controlled-chaos-integration/runtime/preview-server-qualification/result.json",
+    "sha256": "c89b92191afcb502843aaa23338e6c405281dddf1712998d15b091c519cba341"
+  },
+  "status": "PASSED"
+}

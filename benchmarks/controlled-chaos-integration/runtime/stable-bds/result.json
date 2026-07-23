@@ -1,7 +1,7 @@
 {
   "artifact": {
     "path": "/Users/blakegrove/Desktop/bedrock-server/minecraft-compiler-baseline/benchmarks/controlled-chaos-integration/dist/controlled-chaos-qualification.mcworld",
-    "sha256": "39296f9ccf08764271741dd384e8a137e6bb20058edf06dd0d155c0c8dd55622"
+    "sha256": "d69a2d6568b96183bf71b4f98cca0e4b878f5f51a3d29ddf5c11a6add88fa45f"
   },
   "checks": [
     {
@@ -48,7 +48,7 @@
           "booted": true,
           "clean": true,
           "critical_lines": [],
-          "line_count": 53,
+          "line_count": 51,
           "migrated_lock_values": [],
           "migrated_state_records": [],
           "persistent_boot_values": [
@@ -59,7 +59,7 @@
         "console_probes": [],
         "container_exit_code": 0,
         "cycle": 1,
-        "elapsed_seconds": 38.132,
+        "elapsed_seconds": 47.947,
         "log_probes": [
           {
             "check_id": "stable-runtime-cycle-1",
@@ -81,7 +81,7 @@
           "booted": true,
           "clean": true,
           "critical_lines": [],
-          "line_count": 48,
+          "line_count": 46,
           "migrated_lock_values": [],
           "migrated_state_records": [],
           "persistent_boot_values": [
@@ -92,7 +92,7 @@
         "console_probes": [],
         "container_exit_code": 0,
         "cycle": 2,
-        "elapsed_seconds": 22.381,
+        "elapsed_seconds": 22.653,
         "log_probes": [
           {
             "check_id": "stable-runtime-cycle-2",
@@ -114,7 +114,7 @@
           "booted": true,
           "clean": true,
           "critical_lines": [],
-          "line_count": 48,
+          "line_count": 46,
           "migrated_lock_values": [],
           "migrated_state_records": [],
           "persistent_boot_values": [
@@ -125,7 +125,7 @@
         "console_probes": [],
         "container_exit_code": 0,
         "cycle": 3,
-        "elapsed_seconds": 22.604,
+        "elapsed_seconds": 22.396,
         "log_probes": [
           {
             "check_id": "stable-runtime-cycle-3",
@@ -141,7 +141,7 @@
         "timeout_seconds": 180
       }
     ],
-    "elapsed_seconds": 83.118,
+    "elapsed_seconds": 92.997,
     "restart_count": 3
   },
   "log": {
@@ -150,7 +150,7 @@
     "booted": true,
     "clean": true,
     "critical_lines": [],
-    "line_count": 152,
+    "line_count": 146,
     "migrated_lock_values": [],
     "migrated_state_records": [],
     "path": "/Users/blakegrove/Desktop/bedrock-server/minecraft-compiler-baseline/benchmarks/controlled-chaos-integration/runtime/stable-bds/content.log",
@@ -160,9 +160,19 @@
       3
     ],
     "script_initialized": true,
-    "sha256": "6b6e34c53ab3aade09f470edb45c6297ee4e10269fd9197d6d7e4988579aaa77"
+    "sha256": "36308897574e97d50ae2dc5c45e68846693a5849346a94ec3418b297f538ed88"
   },
   "passed": true,
+  "receipt": {
+    "duration_seconds": 93.003,
+    "finished_at": "2026-07-23T11:48:26.768895+00:00",
+    "post_run_world_state": {
+      "file_count": 35,
+      "sha256": "eaacdc860d54883275cfcd7285ec94f986763089d754ac0eb6c7f8b205cbda1c",
+      "size_bytes": 29191
+    },
+    "started_at": "2026-07-23T11:46:53.765564+00:00"
+  },
   "runtime": {
     "adapter": "docker-bds",
     "image": "itzg/minecraft-bedrock-server@sha256:12c7047cc149bd517d6dbc2339163cf62a4f1044c10e759c45c8b387e9784e39",

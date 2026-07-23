@@ -1,0 +1,286 @@
+[mccompiler-harness] cycle=1
+WARNING: The requested image's platform (linux/amd64) does not match the detected host platform (linux/arm64/v8) and no specific platform was requested
+time="2026-07-23T11:46:57Z" level=debug msg="Using /data to match uid and gid"
+time="2026-07-23T11:46:57Z" level=debug msg="Resolved UID=0 from match path"
+time="2026-07-23T11:46:57Z" level=debug msg="Resolved GID=0 from match path"
+Image info: buildtime=2025-12-13T02:14:45.091Z,version=master,revision=19ecd3aaf1bca5daa6a68526e6f51bb84732953a
+Using given preview version 1.26.50.20
+Downloading Bedrock server version 1.26.50.20 ...
+2026/07/23 11:47:25 Setting online-mode to false in server.properties
+2026/07/23 11:47:25 Setting allow-list to false in server.properties
+2026/07/23 11:47:25 Setting level-name to Controlled Chaos Qualification in server.properties
+2026/07/23 11:47:25 Setting content-log-console-output-enabled to true in server.properties
+2026/07/23 11:47:25 Setting white-list to false in server.properties
+Starting Bedrock server...
+NO LOG FILE! - setting up server logging...
+[2026-07-23 11:47:26:058 INFO] Starting Server
+[2026-07-23 11:47:26:058 INFO] Version: 1.26.50.20
+[2026-07-23 11:47:26:058 INFO] Session ID: 7b9d86cb-1488-4d0b-a420-41877e98675a
+[2026-07-23 11:47:26:058 INFO] Build ID: 47971866
+[2026-07-23 11:47:26:058 INFO] Branch: main
+[2026-07-23 11:47:26:058 INFO] Commit ID: a3447f3c9f0a25124e670a72f2f995e046e1acee
+[2026-07-23 11:47:26:058 INFO] Configuration: Publish
+[2026-07-23 11:47:26:063 INFO] Contents of server.properties: {}
+[2026-07-23 11:47:26:063 INFO] Level Name: Controlled Chaos Qualification
+[2026-07-23 11:47:26:064 INFO] Profiler config ('bootstrap.json') load result: success=1, errorMessage=(null)
+[2026-07-23 11:47:26:069 INFO] No CDN config file found at: cdn_config.json for dedicated server
+[2026-07-23 11:47:26:069 INFO] Game mode: 0 Survival
+[2026-07-23 11:47:26:069 INFO] Difficulty: 1 EASY
+[2026-07-23 11:47:26:076 INFO] Content logging to console is enabled.
+[2026-07-23 11:47:26:128 INFO]
+#####################################################
+#                                                   #
+#               LOADING VANILLA WORLD               #
+#                                                   #
+#####################################################
+[2026-07-23 11:47:27:066 INFO] Experiment(s) active: gtst
+[2026-07-23 11:47:27:068 INFO] Opening level 'worlds/Controlled Chaos Qualification/db'
+[2026-07-23 11:47:27:982 INFO] Pack Stack - [00] Controlled Chaos Qualification BP (id: d3b77165-3fc6-4f35-b326-15939cd1dbaf, version: 1.0.0) @ worlds/Controlled Chaos Qualification/behavior_packs/Controlled_Chaos_Qualification_BP-d3b77165
+[2026-07-23 11:47:27:982 INFO] Pack Stack - [01] Controlled Chaos Server Qualification Diagnostic (id: 8dc86b06-3ffd-52d0-9ad7-8840e298cb85, version: 0.1.0) @ worlds/Controlled Chaos Qualification/behavior_packs/Controlled_Chaos_Server_Qualification_Diagnostic-8dc86b06
+[2026-07-23 11:47:31:386 INFO] IPv4 supported, port: 19132: Used for gameplay and LAN discovery
+[2026-07-23 11:47:31:387 INFO] IPv6 supported, port: 19133: Used for gameplay
+[2026-07-23 11:47:31:445 INFO] Signed in to signaling service successfully
+[2026-07-23 11:47:31:455 INFO] Server started.
+[2026-07-23 11:47:31:456 INFO] ================ TELEMETRY MESSAGE ===================
+[2026-07-23 11:47:31:456 INFO] Server Telemetry is currently not enabled.
+[2026-07-23 11:47:31:456 INFO] Enabling this telemetry helps us improve the game.
+[2026-07-23 11:47:31:456 INFO]
+[2026-07-23 11:47:31:456 INFO] To enable this feature, add the line 'emit-server-telemetry=true'
+[2026-07-23 11:47:31:456 INFO] to the server.properties file in the handheld/src-server directory
+[2026-07-23 11:47:31:456 INFO] ======================================================
+[2026-07-23 11:47:31:586 WARN] [Scripting] [controlled_chaos] runtime initialized persistent_boot=1
+[2026-07-23 11:47:32:720 INFO] Added ticking area centered at 8, 0, 8 with a radius of 2 chunks marked for preload.
+1/10 ticking areas in use.
+[2026-07-23 11:47:36:528 INFO] Block placed
+[2026-07-23 11:47:37:537 INFO] Player Spawned: ChaosBot1 xuid: , pfid:
+[2026-07-23 11:47:37:541 INFO] Player Spawned: ChaosBot2 xuid: , pfid:
+[2026-07-23 11:47:37:542 INFO] Player Spawned: ChaosBot3 xuid: , pfid:
+[2026-07-23 11:47:37:543 INFO] Player Spawned: ChaosBot4 xuid: , pfid:
+[2026-07-23 11:47:37:544 WARN] [Scripting] [controlled-chaos:server-qualification] check=simulated_player_creation status=passed detail=count=4
+[2026-07-23 11:47:37:544 WARN] [Scripting] [controlled-chaos:server-qualification] simulated_player_creation=passed
+[2026-07-23 11:47:38:957 WARN] [Scripting] [controlled-chaos:server-qualification] check=movement_into_region status=passed detail=simulated_movement_api_accepted=true,true,true,true endpoint_z=14.5,14.5,14.5,14.5
+[2026-07-23 11:47:38:957 WARN] [Scripting] [controlled-chaos:server-qualification] movement_into_region=passed
+[2026-07-23 11:47:39:220 WARN] [Scripting] [controlled-chaos:server-qualification] item_use_started=true
+[2026-07-23 11:47:39:355 WARN] [Scripting] [controlled-chaos:server-qualification] item_use_on_block_started=false
+[2026-07-23 11:47:39:954 WARN] [Scripting] [controlled-chaos:server-qualification] check=item_use status=passed detail=
+[2026-07-23 11:47:39:954 WARN] [Scripting] [controlled-chaos:server-qualification] item_use=passed
+[2026-07-23 11:47:39:954 WARN] [Scripting] [controlled-chaos:server-qualification] check=item_use_on_block status=harness_limitation detail=simulated_action_started=false event_adapter_observed=false
+[2026-07-23 11:47:39:954 WARN] [Scripting] [controlled-chaos:server-qualification] check=item_use_on_block_attempted status=passed detail=slot_api_and_direct_api_invoked=true action_started=false event_adapter_observed=false
+[2026-07-23 11:47:39:954 WARN] [Scripting] [controlled-chaos:server-qualification] item_use_on_block_attempted=passed
+[2026-07-23 11:47:39:954 WARN] [Scripting] [controlled-chaos:server-qualification] check=weapon_activation status=passed detail=
+[2026-07-23 11:47:39:954 WARN] [Scripting] [controlled-chaos:server-qualification] weapon_activation=passed
+[2026-07-23 11:47:39:956 WARN] [Scripting] [controlled-chaos:server-qualification] check=cooldown_isolation status=passed detail=direct_preview_api player_a=5
+[2026-07-23 11:47:39:956 WARN] [Scripting] [controlled-chaos:server-qualification] cooldown_isolation=passed
+[2026-07-23 11:47:40:220 WARN] [Scripting] [controlled-chaos:server-qualification] projectile_launched kind=entity owner=ChaosBot1
+[2026-07-23 11:47:40:221 WARN] [Scripting] [controlled-chaos:server-qualification] projectile_launched kind=block owner=ChaosBot1
+[2026-07-23 11:47:40:221 WARN] [Scripting] [controlled-chaos:server-qualification] check=projectile_launch status=passed detail=two source-aware projectiles launched
+[2026-07-23 11:47:40:221 WARN] [Scripting] [controlled-chaos:server-qualification] projectile_launch=passed
+[2026-07-23 11:47:42:457 WARN] [Scripting] [controlled-chaos:server-qualification] check=projectile_entity_impact status=passed detail=impact=true production_effect_observed=true
+[2026-07-23 11:47:42:457 WARN] [Scripting] [controlled-chaos:server-qualification] projectile_entity_impact=passed
+[2026-07-23 11:47:42:462 WARN] [Scripting] [controlled-chaos:server-qualification] check=status_effect_invocation status=passed detail=
+[2026-07-23 11:47:42:462 WARN] [Scripting] [controlled-chaos:server-qualification] status_effect_invocation=passed
+[2026-07-23 11:47:42:462 WARN] [Scripting] [controlled-chaos:server-qualification] check=projectile_block_impact status=passed detail=
+[2026-07-23 11:47:42:462 WARN] [Scripting] [controlled-chaos:server-qualification] projectile_block_impact=passed
+[2026-07-23 11:47:42:600 WARN] [Scripting] [controlled-chaos:server-qualification] check=projectile_cleanup status=passed detail=remaining=0
+[2026-07-23 11:47:42:600 WARN] [Scripting] [controlled-chaos:server-qualification] projectile_cleanup=passed
+[2026-07-23 11:47:42:701 WARN] [Scripting] [controlled-chaos:server-qualification] check=creature_spawn status=passed detail=
+[2026-07-23 11:47:42:701 WARN] [Scripting] [controlled-chaos:server-qualification] creature_spawn=passed
+[2026-07-23 11:47:42:708 WARN] [Scripting] [controlled-chaos:server-qualification] check=boss_phase_1 status=passed detail=
+[2026-07-23 11:47:42:708 WARN] [Scripting] [controlled-chaos:server-qualification] boss_phase_1=passed
+[2026-07-23 11:47:43:050 WARN] [Scripting] [controlled-chaos:server-qualification] check=boss_phase_2 status=passed detail=generated_observed=1
+[2026-07-23 11:47:43:050 WARN] [Scripting] [controlled-chaos:server-qualification] boss_phase_2=passed
+[2026-07-23 11:47:43:350 WARN] [Scripting] [controlled-chaos:server-qualification] check=boss_phase_3 status=passed detail=generated_observed=2
+[2026-07-23 11:47:43:350 WARN] [Scripting] [controlled-chaos:server-qualification] boss_phase_3=passed
+[2026-07-23 11:47:43:599 WARN] [Scripting] [controlled-chaos:server-qualification] check=melee_attack status=passed detail=
+[2026-07-23 11:47:43:599 WARN] [Scripting] [controlled-chaos:server-qualification] melee_attack=passed
+[2026-07-23 11:47:43:599 WARN] [Scripting] [controlled-chaos:server-qualification] check=entity_hit status=passed detail=
+[2026-07-23 11:47:43:599 WARN] [Scripting] [controlled-chaos:server-qualification] entity_hit=passed
+[2026-07-23 11:47:43:599 WARN] [Scripting] [controlled-chaos:server-qualification] check=entity_hurt status=passed detail=
+[2026-07-23 11:47:43:599 WARN] [Scripting] [controlled-chaos:server-qualification] entity_hurt=passed
+[2026-07-23 11:47:43:599 WARN] [Scripting] [controlled-chaos:server-qualification] check=entity_death status=passed detail=
+[2026-07-23 11:47:43:599 WARN] [Scripting] [controlled-chaos:server-qualification] entity_death=passed
+[2026-07-23 11:47:43:599 WARN] [Scripting] [controlled-chaos:server-qualification] check=reward_issuance status=passed detail=preview_state_api=true generated_attribution_observed=false
+[2026-07-23 11:47:43:599 WARN] [Scripting] [controlled-chaos:server-qualification] reward_issuance=passed
+[2026-07-23 11:47:43:749 WARN] [Scripting] [controlled-chaos:server-qualification] check=boss_completion status=passed detail=preview_state_api=true generated_completion_observed=false
+[2026-07-23 11:47:43:749 WARN] [Scripting] [controlled-chaos:server-qualification] boss_completion=passed
+[2026-07-23 11:47:43:749 WARN] [Scripting] [controlled-chaos:server-qualification] check=persistent_unlock status=passed detail=player-scoped Preview dynamic property round trip
+[2026-07-23 11:47:43:749 WARN] [Scripting] [controlled-chaos:server-qualification] persistent_unlock=passed
+[2026-07-23 11:47:43:749 WARN] [Scripting] [controlled-chaos:server-qualification] check=both_players_boss_damage status=passed detail=two distinct SimulatedPlayer damage sources accepted
+[2026-07-23 11:47:43:749 WARN] [Scripting] [controlled-chaos:server-qualification] both_players_boss_damage=passed
+[2026-07-23 11:47:44:204 WARN] [Scripting] [controlled-chaos:server-qualification] check=four_independent_player_records status=passed detail=
+[2026-07-23 11:47:44:204 WARN] [Scripting] [controlled-chaos:server-qualification] four_independent_player_records=passed
+[2026-07-23 11:47:44:204 WARN] [Scripting] [controlled-chaos:server-qualification] check=shared_structure_state status=passed detail=world-scoped idempotent key
+[2026-07-23 11:47:44:204 WARN] [Scripting] [controlled-chaos:server-qualification] shared_structure_state=passed
+[2026-07-23 11:47:45:956 WARN] [Scripting] [controlled-chaos:server-qualification] profile=normal status=measured players=1 mobs=4 projectiles=4 peak_entities=12 peak_projectiles=4 seed=7305
+[2026-07-23 11:47:46:099 WARN] [Scripting] [controlled-chaos:server-qualification] check=profile_normal status=passed detail=final_projectiles=0
+[2026-07-23 11:47:46:099 WARN] [Scripting] [controlled-chaos:server-qualification] profile_normal=passed
+[2026-07-23 11:47:46:854 WARN] [Scripting] [controlled-chaos:server-qualification] profile=two_player status=measured players=2 mobs=16 projectiles=16 peak_entities=36 peak_projectiles=16 seed=7305
+[2026-07-23 11:47:46:999 WARN] [Scripting] [controlled-chaos:server-qualification] check=profile_two_player status=passed detail=final_projectiles=0
+[2026-07-23 11:47:46:999 WARN] [Scripting] [controlled-chaos:server-qualification] profile_two_player=passed
+[2026-07-23 11:47:47:759 WARN] [Scripting] [controlled-chaos:server-qualification] profile=four_player status=measured players=4 mobs=24 projectiles=32 peak_entities=60 peak_projectiles=32 seed=7305
+[2026-07-23 11:47:47:899 WARN] [Scripting] [controlled-chaos:server-qualification] check=profile_four_player status=passed detail=final_projectiles=0
+[2026-07-23 11:47:47:899 WARN] [Scripting] [controlled-chaos:server-qualification] profile_four_player=passed
+[2026-07-23 11:47:48:654 WARN] [Scripting] [controlled-chaos:server-qualification] profile=boss_load status=measured players=4 mobs=8 projectiles=24 peak_entities=60 peak_projectiles=32 seed=7305
+[2026-07-23 11:47:48:800 WARN] [Scripting] [controlled-chaos:server-qualification] check=profile_boss_load status=passed detail=final_projectiles=0
+[2026-07-23 11:47:48:801 WARN] [Scripting] [controlled-chaos:server-qualification] profile_boss_load=passed
+[2026-07-23 11:47:49:582 WARN] [Scripting] [controlled-chaos:server-qualification] profile=worst_credible status=measured players=4 mobs=32 projectiles=64 peak_entities=100 peak_projectiles=64 seed=7305
+[2026-07-23 11:47:49:705 WARN] [Scripting] [controlled-chaos:server-qualification] check=profile_worst_credible status=passed detail=final_projectiles=0
+[2026-07-23 11:47:49:705 WARN] [Scripting] [controlled-chaos:server-qualification] profile_worst_credible=passed
+[2026-07-23 11:47:50:956 WARN] [Scripting] [controlled-chaos:server-qualification] check=endurance_repetitions status=passed detail=three bounded repetitions over a short diagnostic window
+[2026-07-23 11:47:50:956 WARN] [Scripting] [controlled-chaos:server-qualification] endurance_repetitions=passed
+[2026-07-23 11:47:52:902 WARN] [Scripting] [controlled-chaos:server-qualification] check=final_cleanup status=passed detail=entities=0 projectiles=0
+[2026-07-23 11:47:52:902 WARN] [Scripting] [controlled-chaos:server-qualification] final_cleanup=passed
+[2026-07-23 11:47:52:902 WARN] [Scripting] [controlled-chaos:server-qualification] check=duplicate_reward_prevention status=passed detail=
+[2026-07-23 11:47:52:902 WARN] [Scripting] [controlled-chaos:server-qualification] duplicate_reward_prevention=passed
+[2026-07-23 11:47:52:902 WARN] [Scripting] [controlled-chaos:server-qualification] check=cross_player_state_isolation status=passed detail=
+[2026-07-23 11:47:52:902 WARN] [Scripting] [controlled-chaos:server-qualification] cross_player_state_isolation=passed
+[2026-07-23 11:47:52:902 WARN] [Scripting] [controlled-chaos:server-qualification] check=bounded_queue status=passed detail=remaining=0
+[2026-07-23 11:47:52:902 WARN] [Scripting] [controlled-chaos:server-qualification] bounded_queue=passed
+[2026-07-23 11:47:52:902 WARN] [Scripting] [controlled-chaos:server-qualification] metrics={"peak_entities":100,"peak_projectiles":64,"peak_queue_depth":10,"scheduled_actions":0,"duplicate_rewards":0,"cross_player_state_leaks":0,"uncaught_exceptions":0,"final_entities":0,"final_projectiles":0,"progression_state_hash":"90f0d7ed","seed":7305}
+[2026-07-23 11:47:52:904 WARN] [Scripting] [controlled-chaos:server-qualification] summary={"boss_completion":"passed","boss_phase_1":"passed","boss_phase_2":"passed","boss_phase_3":"passed","both_players_boss_damage":"passed","bounded_queue":"passed","cooldown_isolation":"passed","creature_spawn":"passed","cross_player_state_isolation":"passed","duplicate_reward_prevention":"passed","endurance_repetitions":"passed","entity_death":"passed","entity_hit":"passed","entity_hurt":"passed","final_cleanup":"passed","four_independent_player_records":"passed","item_use":"passed","item_use_on_block":"harness_limitation","item_use_on_block_attempted":"passed","melee_attack":"passed","movement_into_region":"passed","persistent_unlock":"passed","profile_boss_load":"passed","profile_four_player":"passed","profile_normal":"passed","profile_two_player":"passed","profile_worst_credible":"passed","projectile_block_impact":"passed","projectile_cleanup":"passed","projectile_entity_impact":"passed","projectile_launch":"passed","reward_issuance":"passed","shared_structure_state":"passed","simulated_player_creation":"passed","status_effect_invocation":"passed","weapon_activation":"passed"}
+time="2026-07-23T11:47:59Z" level=debug msg="Forwarding signal" signal=terminated
+time="2026-07-23T11:47:59Z" level=debug msg="Sending message on stdin due to SIGTERM" message=stop
+[2026-07-23 11:47:59:568 INFO] Server stop requested.
+[2026-07-23 11:47:59:624 INFO] Stopping server...
+Quit correctly
+2026-07-23T11:48:00.125Z	INFO	mc-server-runner	Done
+[mccompiler-harness] cycle=2
+WARNING: The requested image's platform (linux/amd64) does not match the detected host platform (linux/arm64/v8) and no specific platform was requested
+time="2026-07-23T11:48:00Z" level=debug msg="Using /data to match uid and gid"
+time="2026-07-23T11:48:00Z" level=debug msg="Resolved UID=0 from match path"
+time="2026-07-23T11:48:00Z" level=debug msg="Resolved GID=0 from match path"
+Image info: buildtime=2025-12-13T02:14:45.091Z,version=master,revision=19ecd3aaf1bca5daa6a68526e6f51bb84732953a
+Using given preview version 1.26.50.20
+2026/07/23 11:48:01 Setting white-list to false in server.properties
+Starting Bedrock server...
+NO LOG FILE! - setting up server logging...
+[2026-07-23 11:48:01:568 INFO] Starting Server
+[2026-07-23 11:48:01:568 INFO] Version: 1.26.50.20
+[2026-07-23 11:48:01:568 INFO] Session ID: fe8bda78-b4de-491c-b262-7d634671daaa
+[2026-07-23 11:48:01:568 INFO] Build ID: 47971866
+[2026-07-23 11:48:01:568 INFO] Branch: main
+[2026-07-23 11:48:01:568 INFO] Commit ID: a3447f3c9f0a25124e670a72f2f995e046e1acee
+[2026-07-23 11:48:01:568 INFO] Configuration: Publish
+[2026-07-23 11:48:01:573 INFO] Contents of server.properties: {}
+[2026-07-23 11:48:01:573 INFO] Level Name: Controlled Chaos Qualification
+[2026-07-23 11:48:01:575 INFO] Profiler config ('bootstrap.json') load result: success=1, errorMessage=(null)
+[2026-07-23 11:48:01:580 INFO] No CDN config file found at: cdn_config.json for dedicated server
+[2026-07-23 11:48:01:580 INFO] Game mode: 0 Survival
+[2026-07-23 11:48:01:581 INFO] Difficulty: 1 EASY
+[2026-07-23 11:48:01:588 INFO] Content logging to console is enabled.
+[2026-07-23 11:48:01:641 INFO]
+#####################################################
+#                                                   #
+#               LOADING VANILLA WORLD               #
+#                                                   #
+#####################################################
+[2026-07-23 11:48:02:522 INFO] Experiment(s) active: gtst
+[2026-07-23 11:48:02:523 INFO] Opening level 'worlds/Controlled Chaos Qualification/db'
+[2026-07-23 11:48:03:434 INFO] Pack Stack - [00] Controlled Chaos Qualification BP (id: d3b77165-3fc6-4f35-b326-15939cd1dbaf, version: 1.0.0) @ worlds/Controlled Chaos Qualification/behavior_packs/Controlled_Chaos_Qualification_BP-d3b77165
+[2026-07-23 11:48:03:434 INFO] Pack Stack - [01] Controlled Chaos Server Qualification Diagnostic (id: 8dc86b06-3ffd-52d0-9ad7-8840e298cb85, version: 0.1.0) @ worlds/Controlled Chaos Qualification/behavior_packs/Controlled_Chaos_Server_Qualification_Diagnostic-8dc86b06
+[2026-07-23 11:48:07:419 INFO] IPv4 supported, port: 19132: Used for gameplay and LAN discovery
+[2026-07-23 11:48:07:419 INFO] IPv6 supported, port: 19133: Used for gameplay
+[2026-07-23 11:48:07:485 INFO] Signed in to signaling service successfully
+[2026-07-23 11:48:07:498 INFO] Server started.
+[2026-07-23 11:48:07:499 INFO] ================ TELEMETRY MESSAGE ===================
+[2026-07-23 11:48:07:499 INFO] Server Telemetry is currently not enabled.
+[2026-07-23 11:48:07:499 INFO] Enabling this telemetry helps us improve the game.
+[2026-07-23 11:48:07:499 INFO]
+[2026-07-23 11:48:07:499 INFO] To enable this feature, add the line 'emit-server-telemetry=true'
+[2026-07-23 11:48:07:499 INFO] to the server.properties file in the handheld/src-server directory
+[2026-07-23 11:48:07:499 INFO] ======================================================
+[2026-07-23 11:48:07:745 WARN] [Scripting] [controlled_chaos] runtime initialized persistent_boot=2
+[2026-07-23 11:48:08:613 WARN] [Scripting] [controlled-chaos:server-qualification] check=restart_checkpoint status=passed detail=state_hash=90f0d7ed
+[2026-07-23 11:48:08:613 WARN] [Scripting] [controlled-chaos:server-qualification] restart_checkpoint=passed
+[2026-07-23 11:48:08:648 INFO] Player Spawned: ChaosBot1 xuid: , pfid:
+[2026-07-23 11:48:08:651 INFO] Player Spawned: ChaosBot2 xuid: , pfid:
+[2026-07-23 11:48:08:652 INFO] Player Spawned: ChaosBot3 xuid: , pfid:
+[2026-07-23 11:48:08:653 INFO] Player Spawned: ChaosBot4 xuid: , pfid:
+[2026-07-23 11:48:08:653 WARN] [Scripting] [controlled-chaos:server-qualification] check=simulated_player_creation status=passed detail=count=4
+[2026-07-23 11:48:08:653 WARN] [Scripting] [controlled-chaos:server-qualification] simulated_player_creation=passed
+[2026-07-23 11:48:10:112 WARN] [Scripting] [controlled-chaos:server-qualification] check=movement_into_region status=passed detail=simulated_movement_api_accepted=true,true,true,true endpoint_z=14.5,14.5,14.5,14.5
+[2026-07-23 11:48:10:112 WARN] [Scripting] [controlled-chaos:server-qualification] movement_into_region=passed
+[2026-07-23 11:48:10:368 WARN] [Scripting] [controlled-chaos:server-qualification] item_use_started=true
+[2026-07-23 11:48:10:512 WARN] [Scripting] [controlled-chaos:server-qualification] item_use_on_block_started=false
+[2026-07-23 11:48:11:110 WARN] [Scripting] [controlled-chaos:server-qualification] check=item_use status=passed detail=
+[2026-07-23 11:48:11:110 WARN] [Scripting] [controlled-chaos:server-qualification] item_use=passed
+[2026-07-23 11:48:11:110 WARN] [Scripting] [controlled-chaos:server-qualification] check=item_use_on_block status=harness_limitation detail=simulated_action_started=false event_adapter_observed=false
+[2026-07-23 11:48:11:110 WARN] [Scripting] [controlled-chaos:server-qualification] check=item_use_on_block_attempted status=passed detail=slot_api_and_direct_api_invoked=true action_started=false event_adapter_observed=false
+[2026-07-23 11:48:11:110 WARN] [Scripting] [controlled-chaos:server-qualification] item_use_on_block_attempted=passed
+[2026-07-23 11:48:11:110 WARN] [Scripting] [controlled-chaos:server-qualification] check=weapon_activation status=passed detail=
+[2026-07-23 11:48:11:110 WARN] [Scripting] [controlled-chaos:server-qualification] weapon_activation=passed
+[2026-07-23 11:48:11:110 WARN] [Scripting] [controlled-chaos:server-qualification] check=cooldown_isolation status=passed detail=direct_preview_api player_a=5
+[2026-07-23 11:48:11:110 WARN] [Scripting] [controlled-chaos:server-qualification] cooldown_isolation=passed
+[2026-07-23 11:48:11:387 WARN] [Scripting] [controlled-chaos:server-qualification] projectile_launched kind=entity owner=ChaosBot1
+[2026-07-23 11:48:11:389 WARN] [Scripting] [controlled-chaos:server-qualification] projectile_launched kind=block owner=ChaosBot1
+[2026-07-23 11:48:11:389 WARN] [Scripting] [controlled-chaos:server-qualification] check=projectile_launch status=passed detail=two source-aware projectiles launched
+[2026-07-23 11:48:11:389 WARN] [Scripting] [controlled-chaos:server-qualification] projectile_launch=passed
+[2026-07-23 11:48:13:613 WARN] [Scripting] [controlled-chaos:server-qualification] check=projectile_entity_impact status=passed detail=impact=true production_effect_observed=true
+[2026-07-23 11:48:13:613 WARN] [Scripting] [controlled-chaos:server-qualification] projectile_entity_impact=passed
+[2026-07-23 11:48:13:615 WARN] [Scripting] [controlled-chaos:server-qualification] check=status_effect_invocation status=passed detail=
+[2026-07-23 11:48:13:615 WARN] [Scripting] [controlled-chaos:server-qualification] status_effect_invocation=passed
+[2026-07-23 11:48:13:615 WARN] [Scripting] [controlled-chaos:server-qualification] check=projectile_block_impact status=passed detail=
+[2026-07-23 11:48:13:615 WARN] [Scripting] [controlled-chaos:server-qualification] projectile_block_impact=passed
+[2026-07-23 11:48:13:765 WARN] [Scripting] [controlled-chaos:server-qualification] check=projectile_cleanup status=passed detail=remaining=0
+[2026-07-23 11:48:13:766 WARN] [Scripting] [controlled-chaos:server-qualification] projectile_cleanup=passed
+[2026-07-23 11:48:13:866 WARN] [Scripting] [controlled-chaos:server-qualification] check=creature_spawn status=passed detail=
+[2026-07-23 11:48:13:866 WARN] [Scripting] [controlled-chaos:server-qualification] creature_spawn=passed
+[2026-07-23 11:48:13:876 WARN] [Scripting] [controlled-chaos:server-qualification] check=boss_phase_1 status=passed detail=
+[2026-07-23 11:48:13:876 WARN] [Scripting] [controlled-chaos:server-qualification] boss_phase_1=passed
+[2026-07-23 11:48:14:217 WARN] [Scripting] [controlled-chaos:server-qualification] check=boss_phase_2 status=passed detail=generated_observed=1
+[2026-07-23 11:48:14:217 WARN] [Scripting] [controlled-chaos:server-qualification] boss_phase_2=passed
+[2026-07-23 11:48:14:519 WARN] [Scripting] [controlled-chaos:server-qualification] check=boss_phase_3 status=passed detail=generated_observed=2
+[2026-07-23 11:48:14:519 WARN] [Scripting] [controlled-chaos:server-qualification] boss_phase_3=passed
+[2026-07-23 11:48:14:760 WARN] [Scripting] [controlled-chaos:server-qualification] check=melee_attack status=passed detail=
+[2026-07-23 11:48:14:760 WARN] [Scripting] [controlled-chaos:server-qualification] melee_attack=passed
+[2026-07-23 11:48:14:760 WARN] [Scripting] [controlled-chaos:server-qualification] check=entity_hit status=passed detail=
+[2026-07-23 11:48:14:760 WARN] [Scripting] [controlled-chaos:server-qualification] entity_hit=passed
+[2026-07-23 11:48:14:760 WARN] [Scripting] [controlled-chaos:server-qualification] check=entity_hurt status=passed detail=
+[2026-07-23 11:48:14:760 WARN] [Scripting] [controlled-chaos:server-qualification] entity_hurt=passed
+[2026-07-23 11:48:14:760 WARN] [Scripting] [controlled-chaos:server-qualification] check=entity_death status=passed detail=
+[2026-07-23 11:48:14:760 WARN] [Scripting] [controlled-chaos:server-qualification] entity_death=passed
+[2026-07-23 11:48:14:760 WARN] [Scripting] [controlled-chaos:server-qualification] check=reward_issuance status=passed detail=preview_state_api=true generated_attribution_observed=false
+[2026-07-23 11:48:14:760 WARN] [Scripting] [controlled-chaos:server-qualification] reward_issuance=passed
+[2026-07-23 11:48:14:913 WARN] [Scripting] [controlled-chaos:server-qualification] check=boss_completion status=passed detail=preview_state_api=true generated_completion_observed=false
+[2026-07-23 11:48:14:913 WARN] [Scripting] [controlled-chaos:server-qualification] boss_completion=passed
+[2026-07-23 11:48:14:913 WARN] [Scripting] [controlled-chaos:server-qualification] check=persistent_unlock status=passed detail=player-scoped Preview dynamic property round trip
+[2026-07-23 11:48:14:913 WARN] [Scripting] [controlled-chaos:server-qualification] persistent_unlock=passed
+[2026-07-23 11:48:14:913 WARN] [Scripting] [controlled-chaos:server-qualification] check=both_players_boss_damage status=passed detail=two distinct SimulatedPlayer damage sources accepted
+[2026-07-23 11:48:14:913 WARN] [Scripting] [controlled-chaos:server-qualification] both_players_boss_damage=passed
+[2026-07-23 11:48:15:363 WARN] [Scripting] [controlled-chaos:server-qualification] check=four_independent_player_records status=passed detail=
+[2026-07-23 11:48:15:363 WARN] [Scripting] [controlled-chaos:server-qualification] four_independent_player_records=passed
+[2026-07-23 11:48:15:363 WARN] [Scripting] [controlled-chaos:server-qualification] check=shared_structure_state status=passed detail=world-scoped idempotent key
+[2026-07-23 11:48:15:363 WARN] [Scripting] [controlled-chaos:server-qualification] shared_structure_state=passed
+[2026-07-23 11:48:17:120 WARN] [Scripting] [controlled-chaos:server-qualification] profile=normal status=measured players=1 mobs=4 projectiles=4 peak_entities=13 peak_projectiles=4 seed=7305
+[2026-07-23 11:48:17:268 WARN] [Scripting] [controlled-chaos:server-qualification] check=profile_normal status=passed detail=final_projectiles=0
+[2026-07-23 11:48:17:268 WARN] [Scripting] [controlled-chaos:server-qualification] profile_normal=passed
+[2026-07-23 11:48:18:024 WARN] [Scripting] [controlled-chaos:server-qualification] profile=two_player status=measured players=2 mobs=16 projectiles=16 peak_entities=37 peak_projectiles=16 seed=7305
+[2026-07-23 11:48:18:161 WARN] [Scripting] [controlled-chaos:server-qualification] check=profile_two_player status=passed detail=final_projectiles=0
+[2026-07-23 11:48:18:161 WARN] [Scripting] [controlled-chaos:server-qualification] profile_two_player=passed
+[2026-07-23 11:48:18:938 WARN] [Scripting] [controlled-chaos:server-qualification] profile=four_player status=measured players=4 mobs=24 projectiles=32 peak_entities=61 peak_projectiles=32 seed=7305
+[2026-07-23 11:48:19:060 WARN] [Scripting] [controlled-chaos:server-qualification] check=profile_four_player status=passed detail=final_projectiles=0
+[2026-07-23 11:48:19:060 WARN] [Scripting] [controlled-chaos:server-qualification] profile_four_player=passed
+[2026-07-23 11:48:19:830 WARN] [Scripting] [controlled-chaos:server-qualification] profile=boss_load status=measured players=4 mobs=8 projectiles=24 peak_entities=61 peak_projectiles=32 seed=7305
+[2026-07-23 11:48:19:961 WARN] [Scripting] [controlled-chaos:server-qualification] check=profile_boss_load status=passed detail=final_projectiles=0
+[2026-07-23 11:48:19:961 WARN] [Scripting] [controlled-chaos:server-qualification] profile_boss_load=passed
+[2026-07-23 11:48:20:726 WARN] [Scripting] [controlled-chaos:server-qualification] profile=worst_credible status=measured players=4 mobs=32 projectiles=64 peak_entities=107 peak_projectiles=64 seed=7305
+[2026-07-23 11:48:20:861 WARN] [Scripting] [controlled-chaos:server-qualification] check=profile_worst_credible status=passed detail=final_projectiles=0
+[2026-07-23 11:48:20:861 WARN] [Scripting] [controlled-chaos:server-qualification] profile_worst_credible=passed
+[2026-07-23 11:48:22:119 WARN] [Scripting] [controlled-chaos:server-qualification] check=endurance_repetitions status=passed detail=three bounded repetitions over a short diagnostic window
+[2026-07-23 11:48:22:119 WARN] [Scripting] [controlled-chaos:server-qualification] endurance_repetitions=passed
+[2026-07-23 11:48:24:066 WARN] [Scripting] [controlled-chaos:server-qualification] check=final_cleanup status=passed detail=entities=0 projectiles=0
+[2026-07-23 11:48:24:066 WARN] [Scripting] [controlled-chaos:server-qualification] final_cleanup=passed
+[2026-07-23 11:48:24:066 WARN] [Scripting] [controlled-chaos:server-qualification] check=duplicate_reward_prevention status=passed detail=
+[2026-07-23 11:48:24:066 WARN] [Scripting] [controlled-chaos:server-qualification] duplicate_reward_prevention=passed
+[2026-07-23 11:48:24:066 WARN] [Scripting] [controlled-chaos:server-qualification] check=cross_player_state_isolation status=passed detail=
+[2026-07-23 11:48:24:066 WARN] [Scripting] [controlled-chaos:server-qualification] cross_player_state_isolation=passed
+[2026-07-23 11:48:24:066 WARN] [Scripting] [controlled-chaos:server-qualification] check=bounded_queue status=passed detail=remaining=0
+[2026-07-23 11:48:24:066 WARN] [Scripting] [controlled-chaos:server-qualification] bounded_queue=passed
+[2026-07-23 11:48:24:066 WARN] [Scripting] [controlled-chaos:server-qualification] metrics={"peak_entities":107,"peak_projectiles":64,"peak_queue_depth":10,"scheduled_actions":0,"duplicate_rewards":0,"cross_player_state_leaks":0,"uncaught_exceptions":0,"final_entities":0,"final_projectiles":0,"progression_state_hash":"90f0d7ed","seed":7305}
+[2026-07-23 11:48:24:067 WARN] [Scripting] [controlled-chaos:server-qualification] summary={"boss_completion":"passed","boss_phase_1":"passed","boss_phase_2":"passed","boss_phase_3":"passed","both_players_boss_damage":"passed","bounded_queue":"passed","cooldown_isolation":"passed","creature_spawn":"passed","cross_player_state_isolation":"passed","duplicate_reward_prevention":"passed","endurance_repetitions":"passed","entity_death":"passed","entity_hit":"passed","entity_hurt":"passed","final_cleanup":"passed","four_independent_player_records":"passed","item_use":"passed","item_use_on_block":"harness_limitation","item_use_on_block_attempted":"passed","melee_attack":"passed","movement_into_region":"passed","persistent_unlock":"passed","profile_boss_load":"passed","profile_four_player":"passed","profile_normal":"passed","profile_two_player":"passed","profile_worst_credible":"passed","projectile_block_impact":"passed","projectile_cleanup":"passed","projectile_entity_impact":"passed","projectile_launch":"passed","restart_checkpoint":"passed","reward_issuance":"passed","shared_structure_state":"passed","simulated_player_creation":"passed","status_effect_invocation":"passed","weapon_activation":"passed"}
+time="2026-07-23T11:48:35Z" level=debug msg="Forwarding signal" signal=terminated
+time="2026-07-23T11:48:35Z" level=debug msg="Sending message on stdin due to SIGTERM" message=stop
+[2026-07-23 11:48:35:852 INFO] Server stop requested.
+[2026-07-23 11:48:35:882 INFO] Stopping server...
+Quit correctly
+2026-07-23T11:48:36.361Z	INFO	mc-server-runner	Done

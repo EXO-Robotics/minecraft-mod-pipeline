@@ -1,7 +1,7 @@
 # Realm
 
-Exact `.mcaddon` SHA-256: `3377cefeaaf7a7ef8b291df4390168ea30d311bf1795e7158b05322f984a5448`
-Exact `.mcworld` SHA-256: `39296f9ccf08764271741dd384e8a137e6bb20058edf06dd0d155c0c8dd55622`
+Exact `.mcaddon` SHA-256: `348a4cb571c3ece18186592f11466295f6990d97043da3782abff9759ba036f9`
+Exact `.mcworld` SHA-256: `d69a2d6568b96183bf71b4f98cca0e4b878f5f51a3d29ddf5c11a6add88fa45f`
 
 Do not substitute or modify either artifact.
 

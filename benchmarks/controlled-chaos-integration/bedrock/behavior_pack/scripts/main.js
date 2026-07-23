@@ -47,6 +47,7 @@ function initializeStructure(player) {
 }
 
 function launchWeapon(player) {
+  if (!player) return false;
   if (player.getItemCooldown("resonance_sling") > 0) return;
   if (activeProjectiles.size >= MAX_PROJECTILES) {
     player.sendMessage("The sling is stabilizing.");
@@ -64,6 +65,7 @@ function launchWeapon(player) {
   component.shoot({ x: view.x * 1.4, y: view.y * 1.4, z: view.z * 1.4 });
   activeProjectiles.set(projectile.id, { owner: player.id, expires: system.currentTick + 100 });
   player.startItemCooldown("resonance_sling", 20);
+  return true;
 }
 
 async function openConsole(player) {
@@ -131,15 +133,18 @@ world.afterEvents.itemUse.subscribe(event => {
 world.afterEvents.projectileHitEntity.subscribe(event => {
   if (event.projectile?.typeId !== `${NS}:resonance_bolt`) return;
   const hit = event.getEntityHit()?.entity;
-  hit?.applyDamage(4, { damagingEntity: event.source });
+  let owner;
+  try { owner = event.source ?? event.projectile.getComponent("minecraft:projectile")?.owner; } catch {}
+  if (owner) hit?.applyDamage(4, { damagingEntity: owner });
+  else hit?.applyDamage(4);
   hit?.addEffect("minecraft:slowness", 60, { amplifier: 0 });
   activeProjectiles.delete(event.projectile.id);
-  event.projectile.remove();
+  try { if (event.projectile.isValid) event.projectile.remove(); } catch {}
 });
 world.afterEvents.projectileHitBlock.subscribe(event => {
   if (event.projectile?.typeId !== `${NS}:resonance_bolt`) return;
   activeProjectiles.delete(event.projectile.id);
-  event.projectile.remove();
+  try { if (event.projectile.isValid) event.projectile.remove(); } catch {}
 });
 world.afterEvents.entityDie.subscribe(event => {
   const player = playerFromDamage(event);
@@ -169,6 +174,7 @@ world.afterEvents.entityHurt.subscribe(event => {
 world.afterEvents.playerSpawn.subscribe(event => {
   if (!event.initialSpawn) return;
   const player = event.player;
+  if (!player) return;
   player.getComponent("minecraft:inventory")?.container?.addItem(new ItemStack(`${NS}:signal_console`, 1));
 });
 system.run(migrate);

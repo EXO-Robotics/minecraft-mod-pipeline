@@ -1,10 +1,10 @@
 {
   "preview_bds": {
     "evidence_level": "PREVIEW_BDS",
-    "gametest": false,
-    "receipt": "benchmarks/controlled-chaos-integration/runtime/preview-bds/result.json",
-    "simulated_player": false,
-    "status": "PASS_BOOT_ONLY",
+    "gametest": true,
+    "receipt": "benchmarks/controlled-chaos-integration/runtime/preview-server-qualification/result.json",
+    "simulated_player": true,
+    "status": "PASS_WITH_DOCUMENTED_HARNESS_LIMITATION",
     "version": "1.26.50.20"
   },
   "stable_bds": {

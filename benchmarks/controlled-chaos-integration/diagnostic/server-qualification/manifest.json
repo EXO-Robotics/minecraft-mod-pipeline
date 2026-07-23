@@ -1,0 +1,23 @@
+{
+  "format_version": 2,
+  "header": {
+    "name": "Controlled Chaos Server Qualification Diagnostic",
+    "description": "Preview-only GameTest and SimulatedPlayer probes; never ship",
+    "uuid": "8dc86b06-3ffd-52d0-9ad7-8840e298cb85",
+    "version": [0, 1, 0],
+    "min_engine_version": [1, 26, 50]
+  },
+  "modules": [
+    {
+      "type": "script",
+      "language": "javascript",
+      "uuid": "cd27bb31-74f1-539e-b442-b338e8f140e8",
+      "version": [0, 1, 0],
+      "entry": "scripts/main.js"
+    }
+  ],
+  "dependencies": [
+    {"module_name": "@minecraft/server", "version": "2.10.0"},
+    {"module_name": "@minecraft/server-gametest", "version": "1.0.0-beta"}
+  ]
+}

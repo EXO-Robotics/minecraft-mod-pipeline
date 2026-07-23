@@ -1,0 +1,119 @@
+{
+  "budgets": {
+    "hard_ceiling": 80,
+    "planning_ceiling": 64,
+    "required_reserve": 16
+  },
+  "claims": {
+    "physical_client_verified": false,
+    "ps4_certified": false,
+    "ps4_compatible": false,
+    "ps4_verified": false
+  },
+  "classification": "PS4_PLANNING_PROXY",
+  "runtime_inputs": {
+    "boss_concurrency": 1,
+    "chaos_event_concurrency": 1,
+    "endurance": "PASSED_SHORT_DURATION",
+    "entity_cap": 32,
+    "four_player_server_multiplier": 4,
+    "peak_entities": 107,
+    "peak_projectiles": 64,
+    "peak_scheduled_queue_depth": 10,
+    "projectile_cap": 64
+  },
+  "schema_version": "1.0.0",
+  "static_inputs": {
+    "animation_controller_files": 0,
+    "animation_files": 0,
+    "compressed_package_bytes": 12038,
+    "estimated_texture_memory_bytes": 2312,
+    "file_count": 25,
+    "geometry_complexity_proxy_cubes": 8,
+    "geometry_files": 1,
+    "largest_texture_dimensions": "16x16",
+    "persistent_state_schema_fields": 9,
+    "script_file_count": 1,
+    "sound_count": 0,
+    "sound_total_bytes": 0,
+    "structure_count": 1,
+    "structure_total_bytes": 224,
+    "texture_count": 7,
+    "texture_handles": 7,
+    "uncompressed_pack_bytes": 20292
+  },
+  "status": "PS4_PLANNING_PROXY_PASSED",
+  "statuses": [
+    "PS4_STATIC_PROFILE_PASSED",
+    "PS4_SERVER_LOAD_PROXY_PASSED",
+    "PS4_CLIENT_RENDERING_UNVERIFIED",
+    "PS4_CLIENT_MEMORY_UNVERIFIED",
+    "PS4_CONTROLLER_UNVERIFIED",
+    "PS4_SPLIT_SCREEN_UNVERIFIED",
+    "PS4_REALM_UNVERIFIED",
+    "PS4_PHYSICAL_PENDING"
+  ],
+  "systems": [
+    {
+      "conditional_mitigation": "lower-cost configuration",
+      "existing_mitigation": "bounded caps and cleanup",
+      "multiplayer_multiplier": 4,
+      "physical_validation_requirement": "PS4 frozen-artifact run",
+      "risk": "MODERATE",
+      "runtime_proxy_cost": 8,
+      "static_cost": 7,
+      "system": "weapon_projectile"
+    },
+    {
+      "conditional_mitigation": "lower-cost configuration",
+      "existing_mitigation": "bounded caps and cleanup",
+      "multiplayer_multiplier": 4,
+      "physical_validation_requirement": "PS4 frozen-artifact run",
+      "risk": "MODERATE",
+      "runtime_proxy_cost": 10,
+      "static_cost": 8,
+      "system": "creatures_elite"
+    },
+    {
+      "conditional_mitigation": "lower-cost configuration",
+      "existing_mitigation": "bounded caps and cleanup",
+      "multiplayer_multiplier": 4,
+      "physical_validation_requirement": "PS4 frozen-artifact run",
+      "risk": "MODERATE",
+      "runtime_proxy_cost": 9,
+      "static_cost": 7,
+      "system": "three_phase_boss"
+    },
+    {
+      "conditional_mitigation": "lower-cost configuration",
+      "existing_mitigation": "bounded caps and cleanup",
+      "multiplayer_multiplier": 2,
+      "physical_validation_requirement": "PS4 frozen-artifact run",
+      "risk": "LOW",
+      "runtime_proxy_cost": 5,
+      "static_cost": 5,
+      "system": "structure_progression"
+    },
+    {
+      "conditional_mitigation": "lower-cost configuration",
+      "existing_mitigation": "bounded caps and cleanup",
+      "multiplayer_multiplier": 3,
+      "physical_validation_requirement": "PS4 frozen-artifact run",
+      "risk": "MODERATE",
+      "runtime_proxy_cost": 6,
+      "static_cost": 4,
+      "system": "bounded_chaos"
+    },
+    {
+      "conditional_mitigation": "lower-cost configuration",
+      "existing_mitigation": "bounded caps and cleanup",
+      "multiplayer_multiplier": 4,
+      "physical_validation_requirement": "PS4 frozen-artifact run",
+      "risk": "MODERATE",
+      "runtime_proxy_cost": 6,
+      "static_cost": 3,
+      "system": "multiplayer_contention_cleanup"
+    }
+  ],
+  "weights_label": "UNCALIBRATED_PS4_PLANNING_WEIGHTS"
+}
