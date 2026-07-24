@@ -2,6 +2,11 @@
 
 An evidence-backed assisted compiler that reconstructs validated Java mod intent as deterministic Minecraft Bedrock add-ons. It does not translate Java byte-for-byte and it never hides unsupported behavior behind arbitrary generated code.
 
+The private GitHub repository is the authoritative project copy; local clones
+are working copies. Project software is available under the [MIT License](LICENSE).
+Repository processing and external-disclosure boundaries are documented in
+[AI_PROCESSING_POLICY.md](AI_PROCESSING_POLICY.md).
+
 ## Proven baseline
 
 The currently tested semantic profile accepts the included dependency-free Fabric-style Java source fixture. It extracts registrations, triggers, actions, persistent state, boss phases, form intent, approximations, unsupported hooks, and full source provenance into versioned ModIR/BehaviorIR. Loader metadata inventory supports Fabric, Quilt, modern/legacy Forge, NeoForge, CurseForge, Modrinth, and the compiler's directory-modpack manifest; those metadata readers are not claims of full semantic loader support.
