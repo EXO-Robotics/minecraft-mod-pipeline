@@ -21,10 +21,7 @@ BATCH = ROOT / "production/batches/forest-wave-1-parallel-batch-1"
 REPORTS = BATCH / "reports"
 RUNTIME = BATCH / "runtime"
 IMAGE = "itzg/minecraft-bedrock-server@sha256:12c7047cc149bd517d6dbc2339163cf62a4f1044c10e759c45c8b387e9784e39"
-SEED_BASE = (
-    Path("/Users/blakegrove/Desktop/bedrock-server/minecraft-compiler-baseline")
-    / "production/features/resonance-sling/runtime"
-)
+SEED_BASE = ROOT / "production/features/resonance-sling/runtime"
 VERSIONS = {"stable": "1.26.33.2", "preview": "1.26.50.20"}
 
 

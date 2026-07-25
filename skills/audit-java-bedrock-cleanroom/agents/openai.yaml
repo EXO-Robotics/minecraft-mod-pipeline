@@ -1,0 +1,6 @@
+interface:
+  display_name: "Java-Bedrock Independent Auditor"
+  short_description: "Audit semantics, originality, and qualification"
+  default_prompt: "Use $audit-java-bedrock-cleanroom with the supplied post-freeze audit packet to run semantic, lineage, originality, isolation, and BDS gates."
+policy:
+  allow_implicit_invocation: false

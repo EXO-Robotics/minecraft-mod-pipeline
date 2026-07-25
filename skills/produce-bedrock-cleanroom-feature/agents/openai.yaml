@@ -1,0 +1,6 @@
+interface:
+  display_name: "Bedrock Clean-Room Producer"
+  short_description: "Build original Bedrock features from contracts"
+  default_prompt: "Use $produce-bedrock-cleanroom-feature with the supplied production assignment packet to implement and freeze an original Bedrock candidate."
+policy:
+  allow_implicit_invocation: false

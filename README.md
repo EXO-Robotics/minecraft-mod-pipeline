@@ -26,7 +26,7 @@ The planner gives every feature one explicit strategy: `DIRECT`, `SCRIPTED_EQUIV
 PYTHONPATH=src python3 -m mccompiler scan \
   --input tests/fixtures/representative_mod \
   --output out/representative-ir.json \
-  --bedrock-server /Users/blakegrove/Desktop/bedrock-server
+  --bedrock-server /path/to/bedrock-server
 
 PYTHONPATH=src python3 -m mccompiler compile \
   --input tests/fixtures/representative_mod \
@@ -59,3 +59,16 @@ The boundaries are scanner → loader/source/bytecode analyzers → evidence →
 The compiled-JAR profile uses `javap` from a local OpenJDK to reconstruct the tested annotation-and-call vocabulary with lower-confidence bytecode provenance. The representative source-free JAR must produce the same 15 behavior fingerprints and state declarations as source mode. Without `javap`, class constants remain inventory evidence and no semantic bytecode support is claimed.
 
 See [docs/user-guide.md](docs/user-guide.md) for IR contracts, adapters, patterns, overrides, generation, validation, runtime reproduction, and current limitations.
+
+## Bootstrap another pipeline
+
+The complete Codex reconstruction skill pack is tracked under `skills/`.
+Install the compiler and skills from a fresh clone with:
+
+```sh
+python3 tools/bootstrap_pipeline.py --check-only --json
+python3 tools/bootstrap_pipeline.py --json
+```
+
+See [docs/bootstrap.md](docs/bootstrap.md) for prerequisites, safe skill
+replacement, verification, and the first reconstruction invocation.
