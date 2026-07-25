@@ -71,12 +71,38 @@ class ArchiveView:
         except (OSError, UnicodeDecodeError, KeyError):
             return None
 
-    def sha256(self) -> str:
+    def content_sha256(self) -> str:
         digest = hashlib.sha256()
         for entry in self.entries():
             digest.update(entry.encode("utf-8"))
             digest.update(self.read_bytes(entry))
         return digest.hexdigest()
+
+    def artifact_sha256(self) -> str | None:
+        if not self.is_archive:
+            return None
+        digest = hashlib.sha256()
+        with self.path.open("rb") as artifact:
+            for chunk in iter(lambda: artifact.read(1024 * 1024), b""):
+                digest.update(chunk)
+        return digest.hexdigest()
+
+    def hash_identity(self) -> dict[str, str]:
+        content_sha256 = self.content_sha256()
+        identity = {
+            "content_sha256": content_sha256,
+            # Backward-compatible alias for consumers of the original scan IR.
+            "sha256": content_sha256,
+            "sha256_alias_of": "content_sha256",
+        }
+        artifact_sha256 = self.artifact_sha256()
+        if artifact_sha256 is not None:
+            identity["artifact_sha256"] = artifact_sha256
+        return identity
+
+    def sha256(self) -> str:
+        """Return the semantic entry-content digest retained for API compatibility."""
+        return self.content_sha256()
 
 
 def _json_text(view: ArchiveView, path: str) -> Any | None:
@@ -304,7 +330,10 @@ def scan_path(input_path: str | Path, bedrock_server: str | Path | None = None) 
 
     root_view = ArchiveView(path)
     try:
-        ir["input"].update({"kind": "archive" if root_view.is_archive else "directory", "sha256": root_view.sha256()})
+        ir["input"].update({
+            "kind": "archive" if root_view.is_archive else "directory",
+            **root_view.hash_identity(),
+        })
         ir["modpack"] = _modpack_metadata(root_view)
     finally:
         root_view.close()
@@ -342,7 +371,12 @@ def scan_path(input_path: str | Path, bedrock_server: str | Path | None = None) 
                     semantic["diagnostics"].extend(legacy_metadata_diagnostics)
             inventory = _inventory(view)
             for mod in mods:
-                record = {**mod, "source": {"path": str(source), "sha256": view.sha256()}, "metadata_evidence": metadata_evidence, "inventory": inventory}
+                record = {
+                    **mod,
+                    "source": {"path": str(source), **view.hash_identity()},
+                    "metadata_evidence": metadata_evidence,
+                    "inventory": inventory,
+                }
                 ir["mods"].append(record)
                 nodes[mod["id"]] = {"id": mod["id"], "name": mod.get("name"), "version": mod.get("version"), "loader": mod.get("loader"), "source": str(source)}
                 for dep in mod.get("dependencies", []):
