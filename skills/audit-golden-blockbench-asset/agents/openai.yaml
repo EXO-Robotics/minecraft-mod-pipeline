@@ -1,0 +1,6 @@
+interface:
+  display_name: "Golden Blockbench Auditor"
+  short_description: "Audit original Bedrock visual candidates"
+  default_prompt: "Use $audit-golden-blockbench-asset with the supplied post-freeze visual-audit packet to critique and qualify an original Bedrock asset."
+policy:
+  allow_implicit_invocation: false

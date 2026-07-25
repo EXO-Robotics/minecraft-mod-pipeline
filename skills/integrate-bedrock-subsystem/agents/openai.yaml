@@ -1,0 +1,6 @@
+interface:
+  display_name: "Bedrock Segment Integrator"
+  short_description: "Integrate isolated Bedrock feature candidates"
+  default_prompt: "Use $integrate-bedrock-subsystem with the supplied integration assignment packet to merge, repair, package, and freeze a connected Bedrock subsystem."
+policy:
+  allow_implicit_invocation: false
