@@ -39,6 +39,14 @@ BDS-only schema failures must become generator regressions and rejection
 mutations. Historical tests remain bound to immutable candidates and use
 `SUPERSEDED_ASSERTION` when a later repair makes their path or hash obsolete.
 
-The repository copy is authoritative for review and version history. Installed
-copies under `~/.codex/skills` may be refreshed from these directories after
-the repository revision is accepted.
+The repository copy is authoritative for review and version history. Install
+or refresh the complete pack from a fresh clone with:
+
+```sh
+python3 tools/bootstrap_pipeline.py --check-only --json
+python3 tools/bootstrap_pipeline.py --json
+```
+
+The installer refuses to overwrite divergent installed skills unless
+`--replace-skills` is supplied; replaced copies are retained in a timestamped
+backup. See `docs/bootstrap.md` for the complete portable setup.
