@@ -1,0 +1,111 @@
+{
+  "schema_version": "1.0.0",
+  "record_type": "factory_safe_restart_live_status",
+  "observed_at": "2026-07-30T11:53:24Z",
+  "starting_supervisor_commit": "acade0fe248464928e2677c6586f38bf84af0414",
+  "starting_mailbox_commit": "dcbc94f58989c6b952514880a3061c69d809b3dc",
+  "starting_router_cursor": "2b3eac5281c1cea7d0766e5f63e6a6b5e85555e8",
+  "current_mailbox_head": "29da0f26e801e8aadf6d84d0282e51d32f1fa84d",
+  "current_router_cursor": "29da0f26e801e8aadf6d84d0282e51d32f1fa84d",
+  "replay_projection_sha256": "0c48b8f9611bb42a701cb0746e8ff3138e77523f27c6d3107958457140fe64f3",
+  "services": {
+    "router": "LOADED_HEALTHY_ONESHOT",
+    "local_tester": "RUNNING",
+    "t10": "ACTIVE",
+    "t1": "ACTIVE",
+    "t2": "BOUNDED_RESULT_COMPLETE_THEN_QUIESCENT"
+  },
+  "t10_queue": {
+    "active": {
+      "pack_id": "reliquary-vaults",
+      "candidate_generation": 6,
+      "message_id": "MSG-T1R-RELIQUARY-VAULTS-AUDIT-ACTIVE-G000006-DB801E5FB3D3"
+    },
+    "queued": null,
+    "backlog": []
+  },
+  "active_workers": [
+    {
+      "pack_id": "hearth-and-hall",
+      "thread_id": "019fae2a-1e88-7a43-aae5-238305c09a85",
+      "authorized_action": "GENERATION_2_MECHANICAL_REPAIR"
+    },
+    {
+      "pack_id": "latchline-infrastructure",
+      "thread_id": "019fae2a-265c-7163-967f-6076198a1f05",
+      "authorized_action": "GENERATION_7_REACHABLE_BLOB_REPAIR"
+    },
+    {
+      "pack_id": "bounded-outcome-events",
+      "thread_id": "019fae2a-2955-72e2-b3c4-618cb1f1ad10",
+      "authorized_action": "GENERATION_15_PACK_LOCAL_ADAPTER"
+    },
+    {
+      "pack_id": "aspectweave",
+      "thread_id": "019fae2a-2394-7c23-8a00-090d630e4087",
+      "authorized_action": "GENERATION_9_ISOLATION_AND_FINAL_BLOB_SCAN_REPAIR"
+    },
+    {
+      "pack_id": "aperture-foundry",
+      "thread_id": "019fae2a-2ba4-7710-ab61-54ce7e6f9bd1",
+      "authorized_action": "GENERATION_4_T10_BOUNDED_REPAIR_IN_REPRODUCTION_REPOSITORY"
+    }
+  ],
+  "completed_atomic_worker_transition": {
+    "pack_id": "echo-vessels",
+    "thread_id": "019fae2a-31a5-7443-80d9-406c4aa09888",
+    "message_id": "MSG-P13-ECHO-PLATFORM-REQUEST-000003",
+    "mailbox_commit": "aac6e32835680d51083eb7f25b08f45e5917397b",
+    "next_action": "T1_PLATFORM_ADMISSION_AFTER_CURRENT_T2_WORK"
+  },
+  "paused_downstream_owners": [
+    "hearthveil",
+    "reliquary-vaults"
+  ],
+  "product_progress_events_after_restart": [
+    "APERTURE_G3_STABLE_BDS_PASS",
+    "HEARTHVEIL_G5_STABLE_BDS_PASS",
+    "RELIQUARY_G6_STABLE_BDS_PASS",
+    "APERTURE_G3_T10_TEST_FAIL_PRODUCT",
+    "APERTURE_G3_CONSOLIDATED_OWNER_REPAIR",
+    "ECHO_G7_CORRECTED_PLATFORM_REQUEST",
+    "MOMENTUM_G3_PLATFORM_DECISION_RESULT"
+    ,
+    "ASPECTWEAVE_G9_IMMUTABLE_CANDIDATE",
+    "HEARTHVEIL_G5_T10_TEST_FAIL_PRODUCT",
+    "HEARTHVEIL_G5_CONSOLIDATED_OWNER_REPAIR",
+    "RELIQUARY_G6_T10_PROMOTED_ACTIVE"
+    ,
+    "LATCHLINE_G7_IMMUTABLE_CANDIDATE"
+  ],
+  "candidate_bytes_unexpectedly_changed": false,
+  "duplicate_product_or_tester_jobs": false,
+  "superseded_aperture_repository_received_restart_write_authority": false,
+  "remaining_exact_blockers": [
+    {
+      "pack_id": "echo-vessels",
+      "blocker": "VALID_REQUEST_000003_AWAITS_T1_PLATFORM_ADMISSION",
+      "responsible_role": "T1"
+    },
+    {
+      "pack_id": "momentum-menagerie",
+      "blocker": "FROZEN_PLATFORM_LACKS_REGISTRATION_AUTOMATIC_EXACT_ONCE_AND_DURABLE_RECOVERABLE_LEASE_SEMANTICS",
+      "responsible_role": "T1_PLATFORM_POLICY"
+    },
+    {
+      "pack_id": "aspectweave",
+      "blocker": "GENERATION_9_AWAITS_T1_MECHANICAL_PREFLIGHT",
+      "responsible_role": "T1"
+    },
+    {
+      "pack_id": "hearthveil",
+      "blocker": "GENERATION_5_T10_REJECT_REPAIRABLE_REQUIRES_GENERATION_6",
+      "responsible_role": "PACK_WORKER_09"
+    }
+  ],
+  "proof_boundary": [
+    "RUNTIME_PROJECTION_DERIVED_FROM_COMMITTED_MAILBOX_AND_PROCESS_OBSERVATIONS",
+    "ACTIVE_WORKER_DOES_NOT_ESTABLISH_REPLACEMENT_CANDIDATE",
+    "NO_CLIENT_CONSOLE_RIGHTS_MARKETPLACE_INTEGRATION_ACCEPTANCE_OR_RELEASE_CLAIM"
+  ]
+}

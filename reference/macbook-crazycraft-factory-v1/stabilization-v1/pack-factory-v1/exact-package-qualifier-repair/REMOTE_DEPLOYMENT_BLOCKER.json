@@ -1,0 +1,41 @@
+{
+  "schema_version": "1.0.0",
+  "classification": "TEST_FAIL_INFRASTRUCTURE",
+  "component": "MAC_STUDIO_APPROVED_REMOTE_DEPLOYMENT_PATH",
+  "candidate_validity": "UNCHANGED_AND_VALID",
+  "attempts": [
+    {
+      "attempt": 1,
+      "method": "EXISTING_T1_FORCED_COMMAND",
+      "operation": "install",
+      "job_id": "JOB-000000000012",
+      "exit_status": 126,
+      "result": "REJECTED_BY_ALLOWLIST",
+      "evidence": "The deployed forced-command wrapper permits ingest, activate, status, fetch, fetch-failure, and cleanup only. It has no image or runner deployment operation."
+    },
+    {
+      "attempt": 2,
+      "method": "DIRECT_BATCHMODE_SSH",
+      "exit_status": 255,
+      "result": "AUTHENTICATION_FAILED",
+      "evidence": "Permission denied (publickey,password,keyboard-interactive)."
+    },
+    {
+      "attempt": 3,
+      "method": "TAILSCALE_STANDALONE_DIAGNOSTIC",
+      "exit_status": 1,
+      "result": "CLIENT_CAPABILITY_UNAVAILABLE",
+      "evidence": "The installed macOS App Store/TestFlight client does not expose the tailscale ssh subcommand."
+    }
+  ],
+  "blocked_authorities": {
+    "tester_image": "crazycraft-exact-package-qualifier@sha256:b6295416a6bc295aebe84be1d75f7ae9e8bdcc4eeaccbcee6f778c77185ec260",
+    "tester_image_archive_sha256": "d0d4f9dc6033df053b430522010b6b0177e7a2caa130c82e37626288b04e0713",
+    "tester_image_archive_size": 176534016,
+    "qualifier_sha256": "81f16cec2d205cfacff35c85c75b11309c4d0b71946d2b8fef6902b1f3ab2a36",
+    "job_id": "JOB-000000000012"
+  },
+  "why_infrastructure": "The unchanged candidate completed a real local Stable BDS load, clean shutdown, and same-world restart through the repaired image. The remaining failure occurs before Studio execution because the approved remote identity cannot install the new digest-pinned image or updated allowlisted runner.",
+  "smallest_next_action": "Restore one authenticated Studio administration session or add one narrow forced-command operation that installs the committed runner/schema and loads the exact image archive, verifies the resulting digest, and performs no arbitrary shell execution. Then submit the existing JOB-000000000012 request unchanged.",
+  "created_at": "2026-07-29T17:07:14Z"
+}

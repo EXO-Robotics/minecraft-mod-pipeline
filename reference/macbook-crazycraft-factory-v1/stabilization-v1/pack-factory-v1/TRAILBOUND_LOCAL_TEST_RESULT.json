@@ -1,0 +1,62 @@
+{
+  "schema_version": "1.0.0",
+  "record_type": "trailbound_local_test_result_registration",
+  "classification": "TEST_PASS_WITH_DECLARED_PROOF_BOUNDARY",
+  "mailbox_message": {
+    "repository": "/Users/blakegrove/Desktop/bedrock-server/program/crazycraft-pack-factory-mailboxes-v1",
+    "ref": "refs/heads/codex/factory-mailbox-v1",
+    "commit": "851c016483dc5d87329135c3d63eaa8fcd565332",
+    "tree": "8f6fdbb47ba0e5754f4980f1f670c010a58c5425",
+    "message_id": "MSG-T09-TRAILBOUND-BDS-RESULT-000005",
+    "candidate_generation": 2,
+    "parent_message_id": "MSG-T09-TRAILBOUND-BDS-RESULT-000004"
+  },
+  "qualification_authority": {
+    "job_id": "JOB-000000000014",
+    "qualification_receipt_sha256": "df88ccdfc7884c10cc1ee383f970db1b0ca62caed0a3a037b7543388d2452690",
+    "local_wrapper_receipt_sha256": "df88ccdfc7884c10cc1ee383f970db1b0ca62caed0a3a037b7543388d2452690",
+    "qualifier_receipt_sha256": "9f902d1e6c8668411d5c41faa798fd60f76d296159a32d56be69a31b4bca4e80",
+    "tester_image": "crazycraft-exact-package-qualifier@sha256:c3adfe3f7cad7c174d23db52dd14da6937901b1df7f9be853c65167086ed811f",
+    "stable_bds_version": "1.26.33.2"
+  },
+  "policy_disposition": {
+    "selected_authoritative_route": "MACBOOK_LOCAL_DOCKER_BDS",
+    "studio_only_result": "MSG-T09-TRAILBOUND-BDS-RESULT-000003",
+    "studio_only_result_disposition": "HISTORICAL_OPTIONAL_CAPACITY_FAILURE_DOES_NOT_SUPERSEDE_LOCAL_TEST_PASS"
+  },
+  "candidate": {
+    "repository": "/Users/blakegrove/Desktop/bedrock-server/program/crazycraft-autonomous-worker-lanes-v1/thread-09",
+    "ref": "refs/heads/main",
+    "content_commit": "d2d737c5b7110c1c596ce429649fb002efdf9049",
+    "content_tree": "47d8d3e409b8cc1b6de49654456f6cee5ddfb201",
+    "metadata_commit": "3cfcc28f7a15a8f31413b77ca0cbd6f3c137f5e5",
+    "metadata_tree": "f4dfc5db028a709bc89b588b57719ad78b215d8b",
+    "behavior_pack_sha256": "f26e9daddfd7ba8893f6ccd5934b45ec0f88e1380b3e02038c13051d71fad8f3",
+    "resource_pack_sha256": "14fcdba454ab5ca85381628d71845dadc80b9c255eb812b7aaebea84814ef7af",
+    "mcaddon_sha256": "949fa581e930460a8bcc8e02f574d1bc89f848a754c57ec84907f07f27372bc4",
+    "bytes_unchanged": true
+  },
+  "gates": {
+    "EXACT_ARTIFACT_HASH_VERIFICATION": "PASS",
+    "SAFE_EXTRACTION": "PASS",
+    "STABLE_BDS_STARTUP": "PASS",
+    "BEHAVIOR_PACK_LOAD": "PASS",
+    "RESOURCE_PACK_WORLD_ACTIVATION": "PASS",
+    "SHIPPED_ENTRYPOINT": "PASS",
+    "CLEAN_SHUTDOWN": "PASS",
+    "SAME_WORLD_RESTART": "PASS",
+    "TRAILBOUND_EXACT_PACKAGE_LOAD_RESTART_V1": "PASS",
+    "PLAYER_MUTATED_PERSISTENCE": "NOT_RUN_AUTOMATION_HOOK_UNAVAILABLE",
+    "CLEANUP": "PASS"
+  },
+  "proof_boundary": [
+    "CLIENT_RENDERING_NOT_PROVEN",
+    "AUDIBLE_PLAYBACK_NOT_PROVEN",
+    "CONTROLLER_ONLY_NOT_PROVEN",
+    "MULTIPLAYER_NOT_PROVEN",
+    "REALM_NOT_PROVEN",
+    "SPLIT_SCREEN_NOT_PROVEN",
+    "PHYSICAL_PS4_NOT_PROVEN",
+    "RIGHTS_BRANDING_MARKETPLACE_AND_RELEASE_NOT_PROVEN"
+  ]
+}

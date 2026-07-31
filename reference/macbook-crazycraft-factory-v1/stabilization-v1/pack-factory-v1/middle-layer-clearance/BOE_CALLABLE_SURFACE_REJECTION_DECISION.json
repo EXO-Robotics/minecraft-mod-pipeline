@@ -1,0 +1,41 @@
+{
+  "schema_version": "1.0.0",
+  "record_type": "boe_platform_admission_decision",
+  "decision_id": "T1-BOE-PLATFORM-CALLABLE-SURFACE-0001",
+  "created_at": "2026-07-30T00:18:00Z",
+  "pack_id": "bounded-outcome-events",
+  "candidate_generation": 14,
+  "decision": "PLATFORM_CHANGE_REJECTED_WITH_REASON",
+  "request_message_id": "MSG-T01-OUTCOMES-CALLABLE-SURFACE-000001",
+  "result_message_id": "MSG-T02-OUTCOMES-CALLABLE-SURFACE-RESULT-000001",
+  "owner_message_id": "MSG-T01-OUTCOMES-PLATFORM-DECISION-000001",
+  "owner_acknowledgement": {
+    "message_id": "MSG-P14-OUTCOMES-PLATFORM-DISPOSITION-000001",
+    "mailbox_commit": "3a35fd783935ce1aa0cfbc4a9c8fb4d6c45373fc",
+    "mailbox_tree": "f7f5a12d8e7a901498a8f5c5e2a220636c70a4fe",
+    "decision_consumed": true,
+    "generation_15_created": false
+  },
+  "t2_result_authority": {
+    "repository": "/Users/blakegrove/Desktop/bedrock-server/program/crazycraft-autonomous-worker-lanes-v1/thread-02",
+    "ref": "refs/heads/main",
+    "commit": "f643e14c6b81d147563c90d32f873914396828eb",
+    "tree": "b37623ad5afe9a7ce86aeb7713dfeef64f09b07f",
+    "result_sha256": "520671e91e5411a2c34c69c02ae5e2870838c675d5e00e529a754bfa4c8878e7"
+  },
+  "mailbox_authority": {
+    "commit": "bfeb6b7b3713d66028b3ba2a5bdfa93c883088ce",
+    "tree": "071954cbaa0d2425672fccd7b0f2f2efb111263c"
+  },
+  "exact_reason": "The admitted Platform authority provides only an internal same-module-graph registrar. It does not freeze a BOE-consumable acquisition, negotiation, dispose/reload, manifest-linkage, import, or injection surface.",
+  "current_disposition": "WAITING_PLATFORM_ADMISSION",
+  "next_action": "A separate T1 semantic decision must either authorize an integration-level acquisition-and-linkage Platform change or terminalize the blocker. Generation 14 remains immutable and unadmitted.",
+  "product_mutation_authorized": false,
+  "proof_boundary": [
+    "SOURCE_NEUTRAL_PLATFORM_DECISION_ONLY",
+    "NO_BOE_OR_INTEGRATION_MUTATION",
+    "NO_BUDGET_EXPANSION",
+    "NO_PRODUCT_DEFECT",
+    "NO_BDS_T10_CLIENT_CONTROLLER_CONSOLE_RIGHTS_MARKETPLACE_OR_RELEASE_RESULT"
+  ]
+}

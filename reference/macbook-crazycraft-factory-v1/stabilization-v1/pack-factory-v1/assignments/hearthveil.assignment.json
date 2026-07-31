@@ -1,0 +1,295 @@
+{
+  "asset_workload": {
+    "authority_state": "PLANNED_ORIGINAL_PRODUCTION",
+    "class_counts": {
+      "HERO": 4,
+      "ICON": 48,
+      "NOT_REQUIRED": 0,
+      "PARTICLE": 12,
+      "REUSABLE_COMPLEX": 8,
+      "ROUTINE_MODEL": 18,
+      "SOUND": 20
+    },
+    "expected_outputs": {
+      "animation_controllers": 20,
+      "animations": 36,
+      "editable_bbmodel_files": 30,
+      "icons": 48,
+      "localization_sets": 1,
+      "models": 30,
+      "particles": 12,
+      "proof_renders": 180,
+      "sounds": 20,
+      "textures": 120,
+      "ui_elements": 4
+    },
+    "rules": [
+      "Blockbench is NOT_APPLICABLE for flat icons and ordinary full-cube blocks unless custom geometry materially supports the product.",
+      "Every custom geometry source must reopen natively and export twice to normalized equivalent runtime geometry.",
+      "Hero and reusable-complex assets require independent Golden scoring; routine assets require originality, readability, and technical validity.",
+      "Repairs update editable sources first; export-only hand edits are forbidden."
+    ]
+  },
+  "assigned_worker_role": "PACK-WORKER-09-HEARTHVEIL",
+  "assignment_id": "PA-09-HEARTHVEIL-V1",
+  "assignment_payload_sha256": "1ee46c328d222f604328d124e8f32c5d4adefca36dfc373a96ed5577791591bc",
+  "assignment_type": "DURABLE_PACK_OWNERSHIP",
+  "central_authority_bindings": {
+    "asset_workload_ledger_sha256": "ed42ebebd9af60fce60bf3ada9b4e36c263b4bc7d45abbdeef0174142b166ad9",
+    "namespace_uuid_registry_sha256": "966630ecb756190012d3b20604ff148442efa9e98785e53f323f8fd5a27d2f33",
+    "pack_map_sha256": "f60ed61b1c65de6069fadf321b0177dc591db142669f7c4047719c0cef4e2edb",
+    "repository_registry_sha256": "5b5cfb30439676df0f1856ab6820a83949eb16b2aaa8b5e2e3a5565e88da323d",
+    "runtime_budget_registry_sha256": "4bcd007bd5a5af86cd1fc4e74565321914255669c253ee17c7312173e6669f39"
+  },
+  "completion_condition": {
+    "nonterminal_events": [
+      "contract_created",
+      "vertical_slice_created",
+      "preliminary_candidate_published",
+      "candidate_submitted_to_testing",
+      "one_repair_completed",
+      "waiting_for_tester",
+      "standalone_test_pass"
+    ],
+    "terminal_alternatives": [
+      "TERMINALLY_UNAVAILABLE",
+      "USER_DECISION_REQUIRED",
+      "EXTERNAL_PHYSICAL_GATE_REQUIRED"
+    ],
+    "terminal_success": "PACK_ACCEPTED_AND_INTEGRATED"
+  },
+  "control_source_responsibility": {
+    "accepted_foundations": [
+      {
+        "classification": "SANITIZED_FOUNDATION_FOUNDATION_READY",
+        "content_commit": "61591c961ce0dd3f9c4699e7303d6e0d71822d64",
+        "content_tree": "c7591b148780609c419afdc1060f21391a4e3a09",
+        "decision_id": "D-000007",
+        "decision_path": "stabilization-v1/epochs/epoch-0001/decisions/D-000007-hearthveil-foundation-admission.json",
+        "repository": "/Users/blakegrove/Desktop/bedrock-server/program/crazycraft-persistent-orchestrator-v1"
+      },
+      {
+        "classification": "SOURCE_NEUTRAL_TRAVEL_CONTROL_OWNERSHIP_TRANSFER",
+        "content_commit": "1ef47f4ebde3241e3a15ffbc44f8926eb59f8d10",
+        "content_tree": "356caf1424adf2168b901213c5cef76c2f62cab2",
+        "decision_id": "D-000001",
+        "decision_path": "stabilization-v1/decisions/D-000001-ownership-transfer.json",
+        "repository": "/Users/blakegrove/Desktop/bedrock-server/program/crazycraft-persistent-orchestrator-v1"
+      }
+    ],
+    "exact_source_artifacts": [
+      {
+        "final_disposition": "PACK",
+        "path": "mods/Witchery.jar",
+        "sha256": "68c331f624cea6c0827a31e96a6dce2e75461227c42da70f11ba765a8c6a8cec",
+        "source_artifact_id": "CC-SRC-050"
+      },
+      {
+        "final_disposition": "PACK_CONSOLIDATED_ROLE",
+        "path": "mods/Equivalent Exchange 3.jar",
+        "sha256": "e9a5c16287df3a3184721e5829a455115982f99e639e2b6242a2507a3c90c741",
+        "source_artifact_id": "CC-SRC-015"
+      }
+    ],
+    "excluded_scope": [
+      "raw Java code or bytecode",
+      "decompiled text",
+      "source identifiers and paths",
+      "source models, textures, UVs, animations, audio, writing, and branding",
+      "private oracle values and hidden cases"
+    ],
+    "existing_candidate_authority": null,
+    "visibility": "CONTROL_ONLY_NOT_A_PRODUCTION_INPUT"
+  },
+  "identity": {
+    "asset_authority": {
+      "inventory": {
+        "authority_state": "PLANNED_ORIGINAL_PRODUCTION",
+        "class_counts": {
+          "HERO": 4,
+          "ICON": 48,
+          "NOT_REQUIRED": 0,
+          "PARTICLE": 12,
+          "REUSABLE_COMPLEX": 8,
+          "ROUTINE_MODEL": 18,
+          "SOUND": 20
+        },
+        "expected_outputs": {
+          "animation_controllers": 20,
+          "animations": 36,
+          "editable_bbmodel_files": 30,
+          "icons": 48,
+          "localization_sets": 1,
+          "models": 30,
+          "particles": 12,
+          "proof_renders": 180,
+          "sounds": 20,
+          "textures": 120,
+          "ui_elements": 4
+        },
+        "rules": [
+          "Blockbench is NOT_APPLICABLE for flat icons and ordinary full-cube blocks unless custom geometry materially supports the product.",
+          "Every custom geometry source must reopen natively and export twice to normalized equivalent runtime geometry.",
+          "Hero and reusable-complex assets require independent Golden scoring; routine assets require originality, readability, and technical validity.",
+          "Repairs update editable sources first; export-only hand edits are forbidden."
+        ]
+      },
+      "ref": "refs/heads/codex/hearthveil-production-v1",
+      "repository": "/Users/blakegrove/Desktop/bedrock-server/program/crazycraft-pack-production-v1/hearthveil",
+      "root": "assets/editable"
+    },
+    "bp_data_uuid": "16a73a16-09dc-549c-92a0-d240bc8a76fe",
+    "bp_header_uuid": "f045ba15-9cf6-556b-9434-9c5ee89a800d",
+    "namespace": "ccr_p06",
+    "production_ref": "refs/heads/codex/hearthveil-production-v1",
+    "production_repository": "/Users/blakegrove/Desktop/bedrock-server/program/crazycraft-pack-production-v1/hearthveil",
+    "rp_header_uuid": "bd5a4b4c-2c0c-58c7-b387-233934a511de",
+    "rp_module_uuid": "27717b3d-9503-5ba6-a2df-0228e0cf3db6",
+    "script_module_uuid": "c444288d-75c5-552d-8f64-c601d389b6aa",
+    "semantic_version": [
+      1,
+      0,
+      0
+    ],
+    "theme": "Original ritual craft, transmutation, familiars, travel rites, and bounded occult encounters."
+  },
+  "internal_subagent_roles": [
+    "gameplay_runtime",
+    "behavior_pack_content",
+    "resource_pack_and_assets",
+    "blockbench_when_required",
+    "tests",
+    "package_validation"
+  ],
+  "mailbox_contract": {
+    "candidate_submission": "candidate_submissions/hearthveil/",
+    "final_decision": "final_decisions/hearthveil/",
+    "integration_intake": "integration_intake/hearthveil/",
+    "repair_instruction": "worker_repairs/hearthveil/",
+    "repository": "/Users/blakegrove/Desktop/bedrock-server/program/crazycraft-pack-factory-mailboxes-v1",
+    "tester_result": "tester_results/hearthveil/"
+  },
+  "no_ssh_no_studio": {
+    "attempt_is_lane_clean_room_hard_stop": true,
+    "status": "REQUIRED"
+  },
+  "pack_id": "hearthveil",
+  "pack_name": "Hearthveil",
+  "producer_safe_input": {
+    "contract_path": "/Users/blakegrove/Desktop/bedrock-server/program/crazycraft-persistent-orchestrator-v1/stabilization-v1/pack-factory-v1/contracts/hearthveil.production-contract.json",
+    "contract_sha256": "6c08f15a3f84534f5ab95f1916a9013310b14162e28ef2ed3d9514321b93dd03",
+    "source_names_paths_hashes_forbidden": true
+  },
+  "product_scope": {
+    "blocks": [
+      "ritual hearth",
+      "transmutation table",
+      "travel anchor",
+      "reagent plants"
+    ],
+    "controller_conscious_interaction": "All primary actions use ordinary item use, block interact, inventory, dialogue forms, or bounded action forms; no keyboard-only requirement.",
+    "core_gameplay_loop": "Gather original reagents, build ritual arrangements, execute server-authoritative rites, raise familiar bonds, unlock travel, and challenge one leased encounter.",
+    "crafting_and_loot": [
+      "survival reagents, recipes, loot tables, and exactly-once ritual rewards"
+    ],
+    "encounters": [
+      "ritual failures",
+      "familiar trials",
+      "one bounded boss encounter"
+    ],
+    "entities": [
+      "four familiar archetypes",
+      "three encounter creatures",
+      "one global-boss-lease encounter"
+    ],
+    "items": [
+      "ritual tools",
+      "reagent set",
+      "transmutation focus",
+      "familiar tokens",
+      "travel sigils",
+      "boss key"
+    ],
+    "multiplayer_behavior": "Per-player ritual state and reward journals; shared encounters use generation fencing and one boss lease.",
+    "ownership_rules": "Rituals and familiars are player-owned; shared anchors expose explicit access modes.",
+    "persistence": "Versioned ritual, transaction, familiar, travel, encounter, and migration schemas.",
+    "player_progression": [
+      "reagents",
+      "ritual craft",
+      "transmutation mastery",
+      "familiar bond",
+      "travel rites",
+      "encounter mastery"
+    ],
+    "recovery_and_cleanup": "Interrupted rituals roll back or quarantine; entities, adds, projectiles, and anchors use bounded cleanup.",
+    "required_original_presentation": "Original hearth-smoke, woven bark, ceramic, brass, and moonlit mineral language; no source names or visual copying.",
+    "restart_and_reconnect": "Versioned state reconstructs idempotently; stale callbacks and generations are inert."
+  },
+  "publication_rules": {
+    "candidate_publication_is_nonterminal": true,
+    "frozen_candidates_never_edited": true,
+    "new_product_repair_requires_new_generation": true,
+    "one_durable_owner": true,
+    "subagents_are_not_product_owners": true,
+    "tester_wait_is_nonterminal": true,
+    "working_tree_packages_rejected": true
+  },
+  "required_outputs": [
+    "complete_behavior_pack",
+    "complete_resource_pack_when_applicable",
+    "manifest_declared_scripts_main_js_when_scripted",
+    "original_editable_asset_sources",
+    "local_unit_and_integration_tests",
+    "deterministic_builder",
+    "exact_bp_rp_mcaddon_artifacts",
+    "artifact_manifest",
+    "candidate_bound_process_isolation_receipt",
+    "immutable_candidate_submission_message"
+  ],
+  "run_control": "PAUSED_NOT_DISPATCHED",
+  "schema_version": "1.0.0",
+  "technical_allocation": {
+    "dynamic_property_prefix": "ccr_p06:",
+    "integration_adapter_required": true,
+    "migration_version": 1,
+    "persistence_schema": "ccr_p06:state_v1",
+    "platform_authority": {
+      "aggregate_sha256": "84e79568550d800717798858c254498e682d452ec4ab6b95e6320d1a79397f57",
+      "commit": "aba740f136dce5781e68d34e1c7aaa2a0a3d8671",
+      "interface_classification": "FROZEN_PLATFORM_V1_CONTRACTS",
+      "manifest_sha256": "b7de7329fd78b451994b367e0ac226099e8d260bd21309f3f5753b3830c42630",
+      "repository": "/Users/blakegrove/Desktop/bedrock-server/minecraft-compiler-baseline",
+      "tree": "2d5c123c9cbc6d4cdaac2ff922916450b5282d08"
+    },
+    "runtime_budget": {
+      "adds_policy": "SHARED_ADMISSION_CONTROLLER_MAX_8_GLOBAL_MAX_4_PER_ENCOUNTER",
+      "boss_policy": "SHARED_LEASE_ONLY_NO_GUARANTEED_CONCURRENT_BOSS",
+      "combined_reservation_target": {
+        "callbacks_per_heartbeat": 1,
+        "custom_entities": 4,
+        "dynamic_property_bytes": 15360,
+        "particles_per_second": 14,
+        "pathfinders": 2,
+        "persistent_records": 256,
+        "projectiles": 2,
+        "scheduler_pending": 4,
+        "script_time_microseconds_per_tick": 295,
+        "simultaneous_audio_voices": 1
+      },
+      "standalone_policy": "A pack may use a larger standalone test fixture only when its assignment declares that fixture; combined integration must meet this reservation target or return an integration finding."
+    },
+    "shared_runtime_interfaces": [
+      "identity",
+      "persistence",
+      "ownership",
+      "scheduler",
+      "event_router",
+      "reward_journal",
+      "recovery",
+      "diagnostics",
+      "budget_admission",
+      "migration_coordinator"
+    ]
+  },
+  "worker_mission": "Own this entire Bedrock pack. Build all assigned gameplay, runtime, assets, tests, and deterministic package outputs. Submit immutable candidates through the mailbox. Read tester and repair messages from the mailbox. Correct defects in the production repository and publish new immutable candidates. Continue until T1 registers the pack as accepted and integrated or issues an exact terminal disposition."
+}

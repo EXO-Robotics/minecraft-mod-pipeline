@@ -1,0 +1,155 @@
+{
+  "asset_workload": {
+    "animation_controllers": 0,
+    "animations": 0,
+    "authority_state": "PRESERVE_EXISTING",
+    "blockbench": "NOT_APPLICABLE",
+    "class_counts": {
+      "HERO": 0,
+      "ICON": 12,
+      "NOT_REQUIRED": 1,
+      "PARTICLE": 0,
+      "REUSABLE_COMPLEX": 0,
+      "ROUTINE_MODEL": 0,
+      "SOUND": 0
+    },
+    "classification_status": "PRESERVED_AUTHORITY_FACTORY_WORKLOAD_CLASSIFICATION",
+    "custom_geometry": 0,
+    "editable_bbmodel_files": 0,
+    "localization_sets": 2,
+    "particles": 0,
+    "sounds": 0,
+    "textures_png": 50,
+    "ui_elements": 0
+  },
+  "clean_room_boundary": {
+    "permitted": [
+      "this contract",
+      "approved platform interfaces",
+      "qualified production baseline",
+      "original authored assets and code"
+    ],
+    "prohibited": [
+      "raw Java code or bytecode",
+      "decompiled text",
+      "source identifiers and paths",
+      "source models, textures, UVs, animations, audio, writing, and branding",
+      "private oracle values and hidden cases"
+    ],
+    "proof_rule": "Every authoring and product-affecting repair process emits a candidate-bound isolation receipt."
+  },
+  "completion_condition": {
+    "nonterminal_events": [
+      "contract_created",
+      "vertical_slice_created",
+      "preliminary_candidate_published",
+      "candidate_submitted_to_testing",
+      "one_repair_completed",
+      "waiting_for_tester",
+      "standalone_test_pass"
+    ],
+    "terminal_alternatives": [
+      "TERMINALLY_UNAVAILABLE",
+      "USER_DECISION_REQUIRED",
+      "EXTERNAL_PHYSICAL_GATE_REQUIRED"
+    ],
+    "terminal_success": "PACK_ACCEPTED_AND_INTEGRATED"
+  },
+  "contract_id": "PC-QUIETWORK-V1",
+  "gameplay": {
+    "blocks": [
+      "concealed panels",
+      "seam doors",
+      "seam hatches",
+      "facet screens"
+    ],
+    "controller_conscious_interaction": "All primary actions use ordinary item use, block interact, inventory, dialogue forms, or bounded action forms; no keyboard-only requirement.",
+    "core_gameplay_loop": "Craft subtle building controls, bind them to owned structures, and maintain hidden access without replacing vanilla building.",
+    "crafting_and_loot": [
+      "survival recipes with vanilla-reachable inputs"
+    ],
+    "encounters": [],
+    "entities": [],
+    "items": [
+      "finish key",
+      "toggle peg",
+      "pulse stud"
+    ],
+    "multiplayer_behavior": "Other players see the same authoritative open/closed and visible/hidden state.",
+    "ownership_rules": "Owner plus explicitly shared access list.",
+    "persistence": "Versioned owned-block records with bounded reconciliation.",
+    "player_progression": [
+      "basic concealed finishes",
+      "owned control links",
+      "advanced recovery tools"
+    ],
+    "recovery_and_cleanup": "Administrative recovery clears or rebinds orphaned records without deleting unrelated blocks.",
+    "required_original_presentation": "Preserve the existing original Quietwork presentation exactly; no unrelated asset reuse.",
+    "restart_and_reconnect": "Versioned state reconstructs idempotently; stale callbacks and generations are inert."
+  },
+  "namespace": "ccoriginal_cc",
+  "pack_id": "quietwork",
+  "product_name": "Quietwork",
+  "required_outputs": [
+    "complete_behavior_pack",
+    "complete_resource_pack_when_applicable",
+    "manifest_declared_scripts_main_js_when_scripted",
+    "original_editable_asset_sources",
+    "local_unit_and_integration_tests",
+    "deterministic_builder",
+    "exact_bp_rp_mcaddon_artifacts",
+    "artifact_manifest",
+    "candidate_bound_process_isolation_receipt",
+    "immutable_candidate_submission_message"
+  ],
+  "schema_version": "1.0.0",
+  "technical_allocation": {
+    "migration_version": 1,
+    "persistence_schema": "ccoriginal_cc:state_v1",
+    "platform_authority": {
+      "aggregate_sha256": "84e79568550d800717798858c254498e682d452ec4ab6b95e6320d1a79397f57",
+      "commit": "aba740f136dce5781e68d34e1c7aaa2a0a3d8671",
+      "interface_classification": "FROZEN_PLATFORM_V1_CONTRACTS",
+      "manifest_sha256": "b7de7329fd78b451994b367e0ac226099e8d260bd21309f3f5753b3830c42630",
+      "repository": "/Users/blakegrove/Desktop/bedrock-server/minecraft-compiler-baseline",
+      "tree": "2d5c123c9cbc6d4cdaac2ff922916450b5282d08"
+    },
+    "runtime_budget": {
+      "adds_policy": "SHARED_ADMISSION_CONTROLLER_MAX_8_GLOBAL_MAX_4_PER_ENCOUNTER",
+      "boss_policy": "SHARED_LEASE_ONLY_NO_GUARANTEED_CONCURRENT_BOSS",
+      "combined_reservation_target": {
+        "callbacks_per_heartbeat": 1,
+        "custom_entities": 0,
+        "dynamic_property_bytes": 6144,
+        "particles_per_second": 4,
+        "pathfinders": 0,
+        "persistent_records": 96,
+        "projectiles": 0,
+        "scheduler_pending": 2,
+        "script_time_microseconds_per_tick": 95,
+        "simultaneous_audio_voices": 0
+      },
+      "standalone_policy": "A pack may use a larger standalone test fixture only when its assignment declares that fixture; combined integration must meet this reservation target or return an integration finding."
+    },
+    "shared_runtime_dependencies": [
+      "identity",
+      "persistence",
+      "ownership",
+      "scheduler",
+      "event_router",
+      "reward_journal",
+      "recovery",
+      "diagnostics",
+      "budget_admission",
+      "migration_coordinator"
+    ],
+    "uuid_allocations": {
+      "behavior_data_module": "b3eaaf5e-3b66-5e8a-b892-1cf916b22ed5",
+      "behavior_header": "26d31540-44f7-5fb4-9d6f-7e79d720c709",
+      "behavior_script_module": "9f643da5-d813-5e54-af89-28c5dcf41011",
+      "resource_header": "51b31164-ae85-5370-b1a0-4d763539f7ed",
+      "resource_resources_module": "5ad06e65-da09-59a7-864f-c61580bc466b"
+    }
+  },
+  "theme": "Concealed construction, subtle controls, and player-owned hidden access."
+}

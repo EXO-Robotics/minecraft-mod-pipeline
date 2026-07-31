@@ -1,0 +1,109 @@
+{
+  "schema_version": "1.0.0",
+  "record_type": "factory_resume_decision",
+  "decision_id": "FD-T01-PACK-FACTORY-RESUME-0002",
+  "decision_type": "FACTORY_RESUME",
+  "created_at": "2026-07-29T20:21:29Z",
+  "base_supervisor_authority": {
+    "commit": "d1bbd3615ef909afc70406ae9e58381d4590a268",
+    "tree": "42b25a9f6a3d951f9e8b8d87eed506dcb868648d"
+  },
+  "supersedes_run_control_only": {
+    "decision_id": "FD-T01-PACK-FACTORY-PAUSE-0001",
+    "path": "stabilization-v1/pack-factory-v1/FACTORY_PAUSE_DECISION.json"
+  },
+  "user_release": "Start the pack factory. Resume the ten pack workers, local tester, T2, and T10 under the committed factory assignments.",
+  "run_control": "ACTIVE",
+  "mailbox_authority_at_release": {
+    "repository": "/Users/blakegrove/Desktop/bedrock-server/program/crazycraft-pack-factory-mailboxes-v1",
+    "ref": "refs/heads/codex/factory-mailbox-v1",
+    "commit": "cd951c57ad205aa73038d8c59e1200813af66ce1",
+    "tree": "9ce3fd2dcef0b72d60535c7ff38ffbcfcf8bff35"
+  },
+  "durable_pack_workers": [
+    {
+      "assignment_id": "PA-07-RELIQUARY_VAULTS-V1",
+      "task_id": "019fae2a-1ba8-71b1-a5f9-8025bbff1430"
+    },
+    {
+      "assignment_id": "PA-08-HEARTH_AND_HALL-V1",
+      "task_id": "019fae2a-1e88-7a43-aae5-238305c09a85"
+    },
+    {
+      "assignment_id": "PA-09-HEARTHVEIL-V1",
+      "task_id": "019fae2a-2119-7543-aee8-72b261a0db66"
+    },
+    {
+      "assignment_id": "PA-10-ASPECTWEAVE-V1",
+      "task_id": "019fae2a-2394-7c23-8a00-090d630e4087"
+    },
+    {
+      "assignment_id": "PA-11-VANGUARD_ARSENAL-V1",
+      "task_id": "019fae2a-3694-7271-9168-ee644d4886a1"
+    },
+    {
+      "assignment_id": "PA-12-APERTURE_FOUNDRY-V1",
+      "task_id": "019fae2a-2ba4-7710-ab61-54ce7e6f9bd1"
+    },
+    {
+      "assignment_id": "PA-13-ECHO_VESSELS-V1",
+      "task_id": "019fae2a-31a5-7443-80d9-406c4aa09888"
+    },
+    {
+      "assignment_id": "PA-14-BOUNDED_OUTCOME_EVENTS-V1",
+      "task_id": "019fae2a-2955-72e2-b3c4-618cb1f1ad10"
+    },
+    {
+      "assignment_id": "PA-15-MOMENTUM_MENAGERIE-V1",
+      "task_id": "019fae2a-2edf-7b83-9706-b4a7e88d0560"
+    },
+    {
+      "assignment_id": "PA-16-LATCHLINE_INFRASTRUCTURE-V1",
+      "task_id": "019fae2a-265c-7163-967f-6076198a1f05"
+    }
+  ],
+  "services": {
+    "local_tester": {
+      "run_control": "ACTIVE",
+      "max_parallel_jobs": 2,
+      "max_parallel_per_pack": 1,
+      "tester_image": "crazycraft-exact-package-qualifier@sha256:c3adfe3f7cad7c174d23db52dd14da6937901b1df7f9be853c65167086ed811f",
+      "publication_recovery_authority": {
+        "commit": "0b242420b8fd1f4009045a132fb17696d8481ad4",
+        "tree": "ffd4833e6dd5220fab81f66f3abe940fc9c2640b"
+      }
+    },
+    "shared_runtime_integration": {
+      "task_id": "019fa886-8675-7ec3-bd7c-92cced930743",
+      "run_control": "ACTIVE",
+      "write_scope": "SHARED_RUNTIME_AND_INTEGRATION_ONLY"
+    },
+    "t10_audit": {
+      "task_id": "019fa887-8d31-7741-bc92-51fe01bceb5c",
+      "run_control": "ACTIVE",
+      "capacity": {
+        "active": 1,
+        "queued": 1
+      }
+    },
+    "t1_monitoring": "ACTIVE"
+  },
+  "preservation_rules": {
+    "resume_existing_assignments_only": true,
+    "preserve_current_worktrees_and_candidates": true,
+    "do_not_restart_valid_completed_work": true,
+    "do_not_replace_durable_pack_owners": true,
+    "candidate_publication_is_nonterminal": true,
+    "tester_and_auditor_never_repair_products": true,
+    "no_ssh_no_studio_for_t2_through_t9": true
+  },
+  "aperture_foundry": {
+    "assignment_id": "PA-12-APERTURE_FOUNDRY-V1",
+    "resume_disposition": "RESUME_DURABLE_PACK_OWNERSHIP",
+    "preserved_unsubmitted_candidate_commit": "baa848a2aa15dee3001e22546388f1b3de06d665",
+    "preserved_unsubmitted_candidate_tree": "1dd27caccf7d84c69c32ca4c90c81b9b52853f16",
+    "preserved_unsubmitted_mcaddon_sha256": "0bbfeee85e214b6394ca395fb0be1e96b2c0e094847d978841d7c103d6828af8",
+    "publication_authority_still_required": true
+  },
+  "proof_boundary": "This decision releases the existing factory run control and services. It does not admit any unsubmitted candidate, award any package, BDS, client, audit, integration, console, rights, branding, Marketplace, release, or final-product result, or invalidate prior proof boundaries."
+}

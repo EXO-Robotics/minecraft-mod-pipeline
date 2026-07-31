@@ -1,0 +1,105 @@
+{
+  "schema_version": "crazycraft-router-compatibility-v1",
+  "record_type": "EXACT_OBJECT_COMPATIBILITY_LEDGER",
+  "mailbox_repository": "/Users/blakegrove/Desktop/bedrock-server/program/crazycraft-pack-factory-mailboxes-v1",
+  "mailbox_ref": "refs/heads/codex/factory-mailbox-v1",
+  "policy": {
+    "blanket_legacy_acceptance": false,
+    "exact_key": "mailbox_commit + message_path + raw_message_sha256",
+    "unknown_invalid_message": "FAIL_CLOSED",
+    "corrupt_json": "FAIL_CLOSED",
+    "git_ancestry_or_cursor_discontinuity": "GLOBAL_HALT",
+    "entry_count": 4
+  },
+  "entries": [
+    {
+      "entry_key": "f49176cc1fe9ac3e8f7be77a459aa1aead0dcb7b:integration_intake/aspectweave/ASPECTWEAVE-SHARED-RUNTIME-REQUEST-0001.json:ec3cf2132338ba52f8c4d4c2c43057dc19af5ed90e78f0460548e3b8f2d18da0",
+      "message_id": "ASPECTWEAVE-SHARED-RUNTIME-REQUEST-0001",
+      "mailbox_commit": "f49176cc1fe9ac3e8f7be77a459aa1aead0dcb7b",
+      "message_path": "integration_intake/aspectweave/ASPECTWEAVE-SHARED-RUNTIME-REQUEST-0001.json",
+      "raw_message_sha256": "ec3cf2132338ba52f8c4d4c2c43057dc19af5ed90e78f0460548e3b8f2d18da0",
+      "historical_role": "ASPECTWEAVE_GENERATION_2_SHARED_RUNTIME_CONTRACT_REQUEST",
+      "current_disposition": "HISTORICAL_SUPERSEDED",
+      "pack_affected": "aspectweave",
+      "cursor_advancement_permitted": true,
+      "superseding_authority": {
+        "message_id": "ASPECTWEAVE-SHARED-RUNTIME-REQUEST-0002",
+        "mailbox_commit": "7906f76514603f8b3fcdc734cd2ba67b949fbd90",
+        "message_path": "integration_intake/aspectweave/ASPECTWEAVE-SHARED-RUNTIME-REQUEST-0002.json",
+        "raw_message_sha256": "390b8dde2d24fc131d85aa56585a0c15045e7d355c1f57b674fefc54fc6c22ba"
+      },
+      "replay_behavior": "RECORD_HISTORICAL_SUPERSESSION_AND_ADVANCE_WITHOUT_CURRENT_PLATFORM_AUTHORITY",
+      "exact_exemption_reason": "Only this immutable raw object predates the required non-null exact_artifact_hashes rule; request 0002 expressly superseded it."
+    },
+    {
+      "entry_key": "7906f76514603f8b3fcdc734cd2ba67b949fbd90:integration_intake/aspectweave/ASPECTWEAVE-SHARED-RUNTIME-REQUEST-0002.json:390b8dde2d24fc131d85aa56585a0c15045e7d355c1f57b674fefc54fc6c22ba",
+      "message_id": "ASPECTWEAVE-SHARED-RUNTIME-REQUEST-0002",
+      "mailbox_commit": "7906f76514603f8b3fcdc734cd2ba67b949fbd90",
+      "message_path": "integration_intake/aspectweave/ASPECTWEAVE-SHARED-RUNTIME-REQUEST-0002.json",
+      "raw_message_sha256": "390b8dde2d24fc131d85aa56585a0c15045e7d355c1f57b674fefc54fc6c22ba",
+      "historical_role": "ASPECTWEAVE_GENERATION_3_SHARED_RUNTIME_CONTRACT_REQUEST",
+      "current_disposition": "HISTORICAL_SUPERSEDED",
+      "pack_affected": "aspectweave",
+      "cursor_advancement_permitted": true,
+      "superseding_authority": {
+        "message_id": "ASPECTWEAVE-CANDIDATE-0008",
+        "mailbox_commit": "aa7bccf53ad3d401e8bc2bb6dcf55bd983d9e3d8",
+        "message_path": "candidate_submissions/aspectweave/ASPECTWEAVE-CANDIDATE-0008.json",
+        "raw_message_sha256": "a7bae854dab1ae950e1b4c35149076b33da38304663b57f62067f9d95dcf6aeb"
+      },
+      "replay_behavior": "RECORD_PACK_LOCAL_SUPERSESSION_BY_LATER_PRODUCT_GENERATIONS_AND_ADVANCE",
+      "future_platform_request_rule": "Any future Aspectweave Platform request must bind the exact accepted generation-8 authority.",
+      "exact_exemption_reason": "Only this immutable generation-3 request predates the non-null exact_artifact_hashes rule; later Aspectweave product generations supersede its pack-local need."
+    },
+    {
+      "entry_key": "bfeb6b7b3713d66028b3ba2a5bdfa93c883088ce:worker_repairs/bounded-outcome-events/MSG-T01-OUTCOMES-PLATFORM-DECISION-000001.json:5a9e79a55f50fee41dda094194304578de98bf7226fcb5edf4249aec06a59cf6",
+      "message_id": "MSG-T01-OUTCOMES-PLATFORM-DECISION-000001",
+      "mailbox_commit": "bfeb6b7b3713d66028b3ba2a5bdfa93c883088ce",
+      "message_path": "worker_repairs/bounded-outcome-events/MSG-T01-OUTCOMES-PLATFORM-DECISION-000001.json",
+      "raw_message_sha256": "5a9e79a55f50fee41dda094194304578de98bf7226fcb5edf4249aec06a59cf6",
+      "historical_role": "AUTHORITATIVE_PLATFORM_CHANGE_REJECTED_WITH_REASON",
+      "current_disposition": "HISTORICAL_AUTHORITATIVE_REJECTION",
+      "pack_affected": "bounded-outcome-events",
+      "cursor_advancement_permitted": true,
+      "superseding_authority": null,
+      "owner_acknowledgement": {
+        "message_id": "MSG-P14-OUTCOMES-PLATFORM-DISPOSITION-000001",
+        "mailbox_commit": "3a35fd783935ce1aa0cfbc4a9c8fb4d6c45373fc",
+        "message_path": "integration_intake/bounded-outcome-events/MSG-P14-OUTCOMES-PLATFORM-DISPOSITION-000001.json",
+        "raw_message_sha256": "3e6882a530995082c92f54070ae29200c2b3664905a29e75dd1028a20530770a"
+      },
+      "committed_platform_result": {
+        "message_id": "MSG-T02-OUTCOMES-CALLABLE-SURFACE-RESULT-000001",
+        "mailbox_commit": "e5b19d06738a15d73303847d6d3b254eb0519df7",
+        "message_path": "worker_repairs/bounded-outcome-events/MSG-T02-OUTCOMES-CALLABLE-SURFACE-RESULT-000001.json",
+        "raw_message_sha256": "e02b066850f7ff37f8379b36e37b84a09d1fe3d3667da17d0c5f7909d597973f"
+      },
+      "invalid_original_idempotency_length": 65,
+      "canonical_recomputed_idempotency_algorithm": "SHA256 of canonical UTF-8 JSON after removing only idempotency_key; keys sorted; separators comma and colon; ensure_ascii true; no trailing newline",
+      "canonical_recomputed_idempotency_key": "ba1141bcdaec7673e9ff59f43e208719cf7a0bf5b81cae1416bd9b159ffc3b10",
+      "replay_behavior": "RECORD_AUTHORITATIVE_HISTORICAL_REJECTION_WITH_CANONICAL_COMPATIBILITY_KEY_AND_ADVANCE",
+      "exact_exemption_reason": "Only this immutable rejection has the verified 65-character historical key and is independently bound to its owner acknowledgement and committed T2 result."
+    },
+    {
+      "entry_key": "9c23c2501b529a437990200965618d527d7fe034:integration_intake/echo-vessels/MSG-P13-ECHO-PLATFORM-REQUEST-000002.json:a56ea57eabdde0a655cd1154266fba73f5afb0f8e239e2d94b51aa8f928dffe6",
+      "message_id": "MSG-P13-ECHO-PLATFORM-REQUEST-000002",
+      "mailbox_commit": "9c23c2501b529a437990200965618d527d7fe034",
+      "message_path": "integration_intake/echo-vessels/MSG-P13-ECHO-PLATFORM-REQUEST-000002.json",
+      "raw_message_sha256": "a56ea57eabdde0a655cd1154266fba73f5afb0f8e239e2d94b51aa8f928dffe6",
+      "historical_role": "INVALID_ECHO_GENERATION_7_SHARED_RUNTIME_REQUEST",
+      "current_disposition": "PACK_LOCAL_QUARANTINE_SUPERSESSION_REQUIRED",
+      "pack_affected": "echo-vessels",
+      "cursor_advancement_permitted": true,
+      "superseding_authority": null,
+      "replay_behavior": "QUARANTINE_ECHO_ONLY_RECORD_SUPERSESSION_REQUIRED_AND_ADVANCE_UNRELATED_HISTORY",
+      "missing_required_field": "exact_artifact_hashes",
+      "exact_exemption_reason": "Only this exact raw object is quarantined; it lacks exact_artifact_hashes and no immutable generation-7 candidate exists. It cannot authorize Platform or product work."
+    }
+  ],
+  "proof_boundary": [
+    "This ledger changes replay interpretation only.",
+    "It does not edit or validate product bytes.",
+    "It does not authorize new Platform work.",
+    "It does not admit any invalid object not bound by exact commit, path, and raw SHA-256."
+  ]
+}

@@ -1,0 +1,47 @@
+{
+  "schema_version": "crazycraft-factory-mechanical-admission-v1",
+  "admission_id": "MECH-ADMIT-HEARTHVEIL-G000005-000001",
+  "created_at": "2026-07-30T11:02:14Z",
+  "pack_id": "hearthveil",
+  "candidate_generation": 5,
+  "candidate_submission": {
+    "message_id": "MSG-P09-HEARTHVEIL-CANDIDATE-000005",
+    "mailbox_commit": "8d970ba59d70c6177560472ff1bcf1896c1ab25f",
+    "message_sha256": "cf3ae76254a86815b1dad27ff5eb291aadb8fa09e52017d860f4586efa67af39"
+  },
+  "production_authority": {
+    "repository": "/Users/blakegrove/Desktop/bedrock-server/program/crazycraft-pack-production-v1/hearthveil",
+    "ref": "refs/heads/codex/hearthveil-production-v1",
+    "content_commit": "3a483d234dce2e614691b9cee7275cac41f4273b",
+    "content_tree": "b9f2f959313dd4675736f910dbb28413fd745da7",
+    "metadata_commit": "a34a2c1a5669e76fb71a74fce9960f172d158869",
+    "metadata_tree": "6c8c5b527ba97ede3d5609d403e249c79cc74d8f"
+  },
+  "exact_artifact_hashes": {
+    "behavior_pack": "7047fa3e8ab0c5020b197432a4c445357a416d7c8ce24fa0258ba98eebe64ba1",
+    "resource_pack": "7d91862f324bab9318d37531d389d22b0fd1e818977d3b498bc42de028c4d7f0",
+    "mcaddon": "9f80fe50c786759cb3f94baa6514d6eb62615eda356bd49025ffe96b3f51ebd2",
+    "artifact_manifest": "ed4fabc42487313867365ac81336c14dca7cf2a90e709e513bf2a563e7c86242",
+    "independent_preflight_result": "59efff2a1eff0edf2d864f5e18e2bdd83b393d58183d75f905b3b64fdba49473"
+  },
+  "checks": {
+    "tests": "PASS_44_OF_44",
+    "semantic_and_mutation_suites": "PASS",
+    "packaged_entrypoint": "PASS",
+    "deterministic_build": "PASS_EXACT",
+    "media_reference_and_archive_safety": "PASS",
+    "candidate_bound_receipts": "PASS",
+    "reachable_git_blob_scan": "PASS_766_OF_766_ZERO_MANDATORY_RESTRICTED_MATCHES",
+    "worktree_clean": "PASS"
+  },
+  "result": "PASS",
+  "next_actions": [
+    "ROUTE_EXACT_GENERATION_5_TO_STABLE_BDS",
+    "ROUTE_EXACT_GENERATION_5_TO_REQUIRED_PREVIEW_BDS",
+    "ROUTE_EXACT_GENERATION_5_TO_FULL_T10_AUDIT"
+  ],
+  "proof_boundary": [
+    "MECHANICAL_ADMISSION_ONLY",
+    "NO_STABLE_PREVIEW_T10_CLIENT_MULTIPLAYER_CONTROLLER_CONSOLE_RIGHTS_MARKETPLACE_INTEGRATION_ACCEPTANCE_OR_RELEASE_RESULT"
+  ]
+}

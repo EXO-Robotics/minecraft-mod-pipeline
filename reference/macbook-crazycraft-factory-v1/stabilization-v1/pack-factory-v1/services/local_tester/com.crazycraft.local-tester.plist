@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+  <key>Label</key>
+  <string>com.crazycraft.local-tester</string>
+  <key>ProgramArguments</key>
+  <array>
+    <string>/opt/homebrew/bin/python3</string>
+    <string>/Users/blakegrove/Desktop/bedrock-server/program/crazycraft-persistent-orchestrator-v1/stabilization-v1/pack-factory-v1/services/local_tester/local_tester_service.py</string>
+    <string>--config</string>
+    <string>/Users/blakegrove/Desktop/bedrock-server/program/crazycraft-persistent-orchestrator-v1/stabilization-v1/pack-factory-v1/services/local_tester/local-tester-config.json</string>
+    <string>--serve</string>
+  </array>
+  <key>WorkingDirectory</key>
+  <string>/Users/blakegrove/Desktop/bedrock-server/program/crazycraft-persistent-orchestrator-v1</string>
+  <key>RunAtLoad</key>
+  <true/>
+  <key>KeepAlive</key>
+  <dict>
+    <key>SuccessfulExit</key>
+    <false/>
+  </dict>
+  <key>ThrottleInterval</key>
+  <integer>15</integer>
+  <key>StandardOutPath</key>
+  <string>/Users/blakegrove/Desktop/bedrock-server/program/crazycraft-persistent-orchestrator-v1/stabilization-v1/pack-factory-v1/services/local_tester/runtime/launchd.stdout.log</string>
+  <key>StandardErrorPath</key>
+  <string>/Users/blakegrove/Desktop/bedrock-server/program/crazycraft-persistent-orchestrator-v1/stabilization-v1/pack-factory-v1/services/local_tester/runtime/launchd.stderr.log</string>
+  <key>EnvironmentVariables</key>
+  <dict>
+    <key>PATH</key>
+    <string>/opt/homebrew/bin:/usr/local/bin:/usr/bin:/bin</string>
+  </dict>
+</dict>
+</plist>

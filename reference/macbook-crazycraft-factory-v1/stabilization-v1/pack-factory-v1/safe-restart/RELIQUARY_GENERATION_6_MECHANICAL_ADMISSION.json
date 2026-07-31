@@ -1,0 +1,46 @@
+{
+  "schema_version": "crazycraft-factory-mechanical-admission-v1",
+  "admission_id": "MECH-ADMIT-RELIQUARY-G000006-000001",
+  "created_at": "2026-07-30T11:02:14Z",
+  "pack_id": "reliquary-vaults",
+  "candidate_generation": 6,
+  "candidate_submission": {
+    "message_id": "MSG-P07-RELIQUARY-CANDIDATE-000006",
+    "mailbox_commit": "2b3eac5281c1cea7d0766e5f63e6a6b5e85555e8",
+    "message_sha256": "6c7ff54dad59cbe64f758c2b593a85c0f09f8955ee29ec17fb3ac91f16202746"
+  },
+  "production_authority": {
+    "repository": "/Users/blakegrove/Desktop/bedrock-server/program/crazycraft-pack-production-v1/reliquary-vaults",
+    "ref": "refs/heads/codex/reliquary-vaults-production-v1",
+    "content_commit": "c4bdcd5edc396b91989aee1a9e68f5bb7200347f",
+    "content_tree": "5ed1246dcdee6740bc9841b67a0af25d50700eaa",
+    "metadata_commit": "6e9aaedd38cbb8e111b93e0fa39e9ed820b9f2e7",
+    "metadata_tree": "945c809f60a968194241481ad63b70348bd6f722"
+  },
+  "exact_artifact_hashes": {
+    "behavior_pack": "1f494c45cd5aea51ccdf22135a89888fc813b2ef6f0e26dc71570a3f21e376cc",
+    "resource_pack": "22cd91a8e28e4d71ec85cd96ffb1ae04813ab6c49268564e64d80269892dbf99",
+    "mcaddon": "7fd49eae5dc2b9bc170802834095017729586ef1cf7b95575400c8ea9435c442",
+    "artifact_manifest": "4d1b8fafb1ecdfeddfd98862bdda6ab04daba5400c302e1f9186b1c48b989ba2",
+    "independent_preflight_result": "dfecfaed4682cc21d44a94ffa702adde20d2f06aac7b106c3f43c3cd206ad1ac"
+  },
+  "checks": {
+    "tests": "PASS_41_OF_41",
+    "pack_validation": "PASS_150_FILES_ZERO_ISSUES",
+    "deterministic_build": "PASS_EXACT",
+    "reachable_git_blob_scan": "PASS_289_OF_289_ZERO_UNCLASSIFIED_OR_RESTRICTED",
+    "candidate_authoring_receipt": "PASS",
+    "independent_noncircular_validation": "PASS",
+    "worktree_clean": "PASS"
+  },
+  "result": "PASS",
+  "next_actions": [
+    "ROUTE_EXACT_GENERATION_6_TO_FRESH_STABLE_BDS",
+    "ROUTE_EXACT_GENERATION_6_TO_FRESH_T10_AUDIT"
+  ],
+  "proof_boundary": [
+    "MECHANICAL_ADMISSION_ONLY",
+    "GENERATION_4_BDS_AND_T10_EVIDENCE_NOT_CARRIED_FORWARD",
+    "NO_FRESH_BDS_T10_CLIENT_MULTIPLAYER_CONTROLLER_CONSOLE_RIGHTS_MARKETPLACE_INTEGRATION_ACCEPTANCE_OR_RELEASE_RESULT"
+  ]
+}

@@ -1,0 +1,75 @@
+{
+  "schema_version": "crazycraft-factory-mechanical-cycle-v1",
+  "cycle_id": "ROUTING-CYCLE-0004",
+  "created_at": "2026-07-30T01:12:00Z",
+  "mailbox_authority": {
+    "repository": "/Users/blakegrove/Desktop/bedrock-server/program/crazycraft-pack-factory-mailboxes-v1",
+    "ref": "refs/heads/codex/factory-mailbox-v1",
+    "candidate_message_commit": "c8b51cff97f8f9069eeffeb3983f60600db73699",
+    "candidate_message_id": "ASPECTWEAVE-CANDIDATE-0006",
+    "candidate_message_sha256": "adf0450019df2a3bbd5b5a40b38e79e305a916b82698ad55d81d319b116340e9"
+  },
+  "results": [
+    {
+      "pack_id": "aspectweave",
+      "candidate_generation": 6,
+      "classification": "MECHANICAL_DEFECT",
+      "production_authority": {
+        "repository": "/Users/blakegrove/Desktop/bedrock-server/program/crazycraft-pack-production-v1/aspectweave",
+        "ref": "refs/heads/codex/aspectweave-production-v1",
+        "content_commit": "a2d0b1c89264d255148e73637a2b9e6ca711b8b0",
+        "content_tree": "38a438acd1933517de1ec405e337bed9ebed9897",
+        "metadata_commit": "66fb6b0bb384fc5f760e6c9f56005b674fdf49a8",
+        "metadata_tree": "2e9c8e67ec779b46d8a91ad5c420558579ee42d3"
+      },
+      "exact_artifact_hashes": {
+        "behavior_pack": "54174f8dc5682e4469cb2df022c335387b2aa71e400ff8b3d5e3071b8e28e5ff",
+        "resource_pack": "06dc364b6e181bc8b9a089f2a3447b0ea00bf25b48120c7168f79a0e45a6995f",
+        "mcaddon": "5c703614df4774705e3189266b634aee98544c9a8646bd20c22436c87b3f311a",
+        "artifact_manifest": "2132cc88ce8fc92aac208e7bb44af9f31d5eb2b62f5760c35f2333cddd155d39"
+      },
+      "passed_checks": [
+        "Generation 5 to content A to metadata B ancestry is exact; B adds only six receipt files.",
+        "Fresh detached no-local/no-hardlinks build reproduced the exact four-artifact tuple.",
+        "All 68 tests passed without skips; repository and asset validation returned zero findings.",
+        "Literal packaged scripts/main.js executed and matched source bytes.",
+        "Media, JSON, archive traversal, nested-package hashes, dependencies, UUIDs, and references closed.",
+        "All ten T10 repair findings have bounded mappings and focused regressions.",
+        "The PARTIAL isolation boundary is explicit and its independent schema validation passed."
+      ],
+      "failed_checks": [
+        {
+          "finding_id": "MECH-ASPECTWEAVE-ALLOCATION-001",
+          "failed_field": "PLATFORM_RESERVATION.customEntities",
+          "expected": 0,
+          "observed": 1,
+          "affected_authority": "content A a2d0b1c89264d255148e73637a2b9e6ca711b8b0 and its packaged mirror",
+          "required_resubmission": "Conform the shipped reservation and its test to the frozen allocation, or obtain an explicit supervisor allocation change before publishing replacement generation 7."
+        },
+        {
+          "finding_id": "MECH-ASPECTWEAVE-REACHABLE-BLOB-SCAN-001",
+          "failed_field": "restricted_git_object_scan.coverage",
+          "expected": "Byte-read and classify every reachable Git blob against all 14 restricted-content rules.",
+          "observed": "The committed scan inventories objects and checks two forbidden object IDs; it does not byte-read every reachable blob. Current-directory identifier scanning omits reachable authority, receipt, scanner, test, and historical blobs.",
+          "affected_authority": "metadata B 66fb6b0bb384fc5f760e6c9f56005b674fdf49a8",
+          "independent_observation": {
+            "reachable_blobs_read": 552,
+            "bytes_read": 6283963,
+            "rule_occurrences": 91,
+            "paths_with_occurrences": 32,
+            "summary_sha256": "3da100c8b51469b839810667c96d70a87499f8a155f1188194efe9030f5d5dbb"
+          },
+          "required_resubmission": "Commit a candidate-bound full reachable-blob byte scan and narrowly classify declaration-only matches; do not omit matching historical or authority blobs and do not weaken rules."
+        }
+      ],
+      "routing_decision": "RETURN_TO_ORIGINAL_OWNER_FOR_REPLACEMENT_GENERATION_7",
+      "t10_admission": "REJECTED_MECHANICALLY",
+      "tester_admission": "REJECTED_MECHANICALLY"
+    }
+  ],
+  "proof_boundary": [
+    "This record is deterministic mechanical validation, not a substantive audit or Bedrock runtime qualification.",
+    "No candidate file or production repository was modified.",
+    "Stable and Preview BDS, client, multiplayer, controller, Realm, split-screen, physical console, rights, branding, Marketplace, integration, acceptance, and release remain separate."
+  ]
+}

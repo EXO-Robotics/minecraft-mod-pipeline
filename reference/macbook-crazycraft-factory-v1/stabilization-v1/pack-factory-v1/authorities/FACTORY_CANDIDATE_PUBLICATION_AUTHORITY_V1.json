@@ -1,0 +1,404 @@
+{
+  "schema_version": "1.0.0",
+  "record_type": "factory_candidate_publication_authority",
+  "authority_id": "FCPA-T01-V1-0001",
+  "created_at": "2026-07-29T20:36:00Z",
+  "authority_scope": [
+    "candidate publication mechanics",
+    "source-neutral restricted identifier and hash scanning",
+    "restricted Git object scanning",
+    "candidate-bound production process receipts",
+    "noncircular receipt validation",
+    "content A and optional metadata B relationships"
+  ],
+  "parent_authorities": {
+    "factory_resume": {
+      "commit": "34d78ad14d0112e6a5eb010cc4e9fc34645e13e9",
+      "tree": "63bc75d9a1286d3ab4dbbffe85bb33dd0f2c05e1",
+      "decision_id": "FD-T01-PACK-FACTORY-RESUME-0001"
+    },
+    "production_isolation_extension": {
+      "path": "stabilization-v1/pack-factory-v1/FACTORY_PRODUCTION_ISOLATION_EXTENSION.json",
+      "sha256": "2e16021202a3b25f28856b1f3ea8fb64aac2e8eba379a4eef3ede13fcfb31f4d"
+    },
+    "candidate_submission_schema": {
+      "path": "stabilization-v1/pack-factory-v1/mailboxes/schemas/candidate-submission.schema.json",
+      "sha256": "25dd3ea07d6f0d6b3ae33d9a2c484a81c6b6c9d0595304f82e9ccb09b282be65"
+    },
+    "mailbox_publisher": {
+      "path": "stabilization-v1/pack-factory-v1/tools/publish_mailbox_message.py",
+      "sha256": "637d908cd96d2ce5c49b323a1eb6953c1df0b80174a3091474109932562ea310"
+    }
+  },
+  "pack_local_tooling_grant": {
+    "status": "AUTHORIZED",
+    "scope": "A pack owner may create one pack-local source-neutral scan authority, scanner, process-receipt schema, receipt generator, and validator in a tooling-foundation commit made before candidate-affecting work. The tools and inputs must satisfy this authority exactly and must be hash-bound by every resulting receipt.",
+    "prohibited": [
+      "raw Java evidence",
+      "decompiled text",
+      "source-specific names, identifiers, paths, or assets",
+      "private oracle values or hidden cases",
+      "post-hoc claims about an authoring process that was not contemporaneously recorded",
+      "hard-coded PASS values without executed commands and result evidence"
+    ]
+  },
+  "restricted_identifier_and_hash_scan": {
+    "authority_classification": "SOURCE_NEUTRAL_PRODUCTION_SCAN",
+    "proof_limit": "This scan detects generic evidence leakage, foreign namespaces, unclassified hashes, and prohibited production paths. Source-specific semantic or identifier comparison remains private T10 work after candidate freeze.",
+    "minimum_rules": [
+      {
+        "rule_id": "GENERIC-JAVA-ARCHIVE-OR-BYTECODE",
+        "targets": [
+          "path",
+          "content"
+        ],
+        "mode": "regex",
+        "pattern": "(?i)(?:\\.jar|\\.class|java_bytecode|decompiled_java)"
+      },
+      {
+        "rule_id": "GENERIC-EVIDENCE-OR-ORACLE-PATH",
+        "targets": [
+          "path",
+          "content"
+        ],
+        "mode": "regex",
+        "pattern": "(?i)(?:^|[\\\\/])(?:evidence-vault|private-oracle|decompiled|java-evidence)(?:[\\\\/]|$)"
+      },
+      {
+        "rule_id": "ABSOLUTE-USER-PATH",
+        "targets": [
+          "content"
+        ],
+        "mode": "regex",
+        "pattern": "(?:/Users/|/home/|[A-Za-z]:\\\\\\\\Users\\\\\\\\)"
+      },
+      {
+        "rule_id": "CREDENTIAL-OR-REMOTE-MATERIAL",
+        "targets": [
+          "path",
+          "content"
+        ],
+        "mode": "regex",
+        "pattern": "(?i)(?:BEGIN (?:OPENSSH|RSA|EC) PRIVATE KEY|SSH_AUTH_SOCK|tailscale|private[_-]?key|access[_-]?token)"
+      }
+    ],
+    "namespace_policy": {
+      "allowed_pack_namespace": "assignment-bound exact namespace",
+      "allowed_platform_namespaces": [
+        "minecraft:",
+        "@minecraft/"
+      ],
+      "foreign_custom_namespace": "FAIL"
+    },
+    "hash_policy": {
+      "scan": "Every lowercase 64-hex token in tracked candidate text objects.",
+      "classified_when": [
+        "the token equals a SHA-256 of an exact blob reachable from content A or metadata B",
+        "the token equals a SHA-256 of a committed producer-safe assignment, contract, launch packet, allocation, schema, scanner, validator, receipt, test result, or package artifact explicitly listed by the candidate manifest"
+      ],
+      "unclassified_hash": "FAIL"
+    },
+    "input_scope": [
+      "all paths and blobs reachable from content A",
+      "all paths and blobs introduced by optional metadata B",
+      "BP, RP, MCAddon, editable asset sources, tests, tools, reports, receipts, and manifests"
+    ],
+    "result_required_fields": [
+      "authority_id",
+      "authority_sha256",
+      "scanner_path",
+      "scanner_sha256",
+      "exact_argv",
+      "content_a_commit",
+      "content_a_tree",
+      "metadata_b_commit",
+      "metadata_b_tree",
+      "input_path_count",
+      "input_blob_count",
+      "input_aggregate_sha256",
+      "matches",
+      "foreign_namespaces",
+      "unclassified_hashes",
+      "started_at",
+      "ended_at",
+      "exit_status",
+      "result",
+      "proof_boundary"
+    ],
+    "pass_semantics": "PASS only when every required input is scanned, matches is empty, foreign_namespaces is empty, unclassified_hashes is empty, and the scanner exits zero.",
+    "failure_semantics": "Any missing input, unreadable blob, invalid authority, scanner exception, nonzero exit, match, foreign namespace, or unclassified hash is FAIL."
+  },
+  "restricted_git_object_scan": {
+    "exact_scope": [
+      "the production repository Git directory",
+      "all local refs",
+      "content A",
+      "optional metadata B",
+      "the allocated production baseline"
+    ],
+    "required_commands": [
+      [
+        "git",
+        "fsck",
+        "--full",
+        "--strict",
+        "--no-progress"
+      ],
+      [
+        "git",
+        "remote"
+      ],
+      [
+        "git",
+        "config",
+        "--get",
+        "objects.info.alternates"
+      ],
+      [
+        "git",
+        "cat-file",
+        "--batch-all-objects",
+        "--batch-check=%(objectname) %(objecttype)"
+      ],
+      [
+        "git",
+        "rev-list",
+        "--objects",
+        "--all"
+      ],
+      [
+        "git",
+        "merge-base",
+        "--is-ancestor",
+        "<allocated-baseline>",
+        "<content-A>"
+      ]
+    ],
+    "filesystem_checks": [
+      "Git object files have link count one.",
+      "No symlink escapes the repository.",
+      "The Git object store resolves inside the assigned repository.",
+      "No alternates file or configured alternate exists.",
+      "No remote exists.",
+      "Every object in the object database is reachable from an owned authority ref.",
+      "Content A descends from the allocated baseline.",
+      "Metadata B descends from content A when present."
+    ],
+    "result_required_fields": [
+      "repository",
+      "git_directory",
+      "content_a_commit",
+      "content_a_tree",
+      "metadata_b_commit",
+      "metadata_b_tree",
+      "baseline_commit",
+      "commands",
+      "object_counts",
+      "unreachable_objects",
+      "remotes",
+      "alternates",
+      "hardlinked_objects",
+      "escaping_symlinks",
+      "baseline_ancestor",
+      "metadata_descendant",
+      "started_at",
+      "ended_at",
+      "exit_status",
+      "result"
+    ],
+    "pass_semantics": "PASS only when Git fsck succeeds, all required commands execute, no prohibited repository linkage exists, every object is owned and reachable, and required ancestry holds.",
+    "failure_semantics": "A missing command, ambiguous Git directory, remote, alternate, hardlink, escaping symlink, unreachable object, fsck error, or ancestry failure is FAIL."
+  },
+  "candidate_bound_process_receipt": {
+    "schema_authority": "PACK_LOCAL_PRECOMMITTED_SCHEMA_ALLOWED",
+    "minimum_required_fields": [
+      "schema_version",
+      "receipt_id",
+      "assignment_id",
+      "role",
+      "repository",
+      "git_directory",
+      "baseline_commit",
+      "tooling_foundation_commit",
+      "sanitized_input_authorities",
+      "prohibited_input_classes",
+      "launcher_sha256",
+      "environment_manifest_sha256",
+      "prompt_context_sha256",
+      "process_pid",
+      "process_start_identity",
+      "process_executable",
+      "process_argv",
+      "started_at",
+      "ended_at",
+      "exit_status",
+      "network_policy",
+      "ssh_and_studio_policy",
+      "evidence_denial_probes",
+      "private_oracle_denial_probes",
+      "unrelated_repository_denial_probes",
+      "restricted_scan_receipt_path",
+      "restricted_scan_receipt_sha256",
+      "git_object_scan_receipt_path",
+      "git_object_scan_receipt_sha256",
+      "content_a_commit",
+      "content_a_tree",
+      "package_artifacts",
+      "cleanup",
+      "proof_boundary"
+    ],
+    "candidate_binding": "The receipt must bind the process that authored content A. It must not be generated retroactively by a later process.",
+    "cleanup_semantics": [
+      "temporary home and cache disposition recorded",
+      "temporary files and logs either removed or committed as declared evidence",
+      "no active child process remains",
+      "no unexpected mount or remote remains",
+      "worktree status recorded"
+    ],
+    "pass_semantics": "PASS requires contemporaneous process identity, exact sanitized inputs, executed denial probes, executed scans, exact output hashes, successful cleanup, and explicit cooperative-boundary proof limits.",
+    "failure_semantics": "Missing contemporaneous process evidence, retroactive reconstruction, an unbound tool/input, a failed or absent denial probe, an absent scan, cleanup ambiguity, or candidate mismatch is FAIL."
+  },
+  "independent_noncircular_receipt_validation": {
+    "validator_authority": "PACK_LOCAL_PRECOMMITTED_VALIDATOR_PLUS_T1_RERUN",
+    "execution_order": [
+      "Commit tooling foundation containing schema and validator.",
+      "Launch the candidate-affecting authoring process with the committed tooling and sanitized inputs.",
+      "Freeze content A and exact package artifacts.",
+      "After the authoring process exits, generate the candidate-bound process receipt.",
+      "Run the precommitted validator from a separate process after the receipt exists.",
+      "Commit the receipt and validation result in metadata B.",
+      "T1 reruns the exact hash-bound validator during mechanical preflight."
+    ],
+    "validation_evidence_required_fields": [
+      "validator_path",
+      "validator_sha256",
+      "schema_path",
+      "schema_sha256",
+      "receipt_path",
+      "receipt_sha256",
+      "validator_process_pid",
+      "validator_process_start_identity",
+      "started_at",
+      "ended_at",
+      "exit_status",
+      "finding_count",
+      "findings",
+      "result"
+    ],
+    "pass_semantics": "PASS only when the receipt already exists, the validator and schema match their pre-authoring commit hashes, validation runs in a separate process, findings is empty, and exit status is zero.",
+    "failure_semantics": "Self-declared receipt validity, validation before receipt creation, validator mutation after authoring, missing hashes, any finding, or nonzero exit is FAIL."
+  },
+  "candidate_message_mechanics": {
+    "first_candidate_generation": 1,
+    "generation_zero": "Internal preliminary build only; never a candidate submission.",
+    "replacement_generation": "Increment by exactly one for every replacement publication, including metadata-only or envelope-only corrections.",
+    "message_id_format": "MSG-P<two-digit-worker>-<uppercase-pack-token>-CANDIDATE-<six-digit-generation>",
+    "aperture_first_message_id": "MSG-P12-APERTURE-CANDIDATE-000001",
+    "sender_role": "The exact assigned pack-worker role.",
+    "recipient_role": "PACK-TESTER-V1",
+    "parent_message_id": "null for the first submission; exact repair, rejection, or prior candidate message for a replacement.",
+    "idempotency_derivation": {
+      "algorithm": "SHA-256",
+      "canonical_encoding": "UTF-8 JSON with keys sorted lexicographically, separators comma and colon, ensure_ascii true, and no trailing newline",
+      "fields": [
+        "pack_id",
+        "candidate_generation",
+        "production_repository",
+        "production_ref",
+        "production_commit",
+        "production_tree",
+        "metadata_commit",
+        "metadata_tree",
+        "behavior_pack_sha256",
+        "resource_pack_sha256",
+        "mcaddon_sha256",
+        "artifact_manifest_sha256",
+        "parent_message_id"
+      ]
+    },
+    "content_a": {
+      "production_commit": "Exact immutable content commit containing implementation and package artifacts.",
+      "production_tree": "Tree of production_commit.",
+      "artifact_paths": "Repository-relative POSIX paths tracked in production_commit; absolute paths, dot segments, traversal, symlinks, and untracked files are forbidden."
+    },
+    "metadata_b": {
+      "optional": true,
+      "metadata_commit": "Exact descendant commit containing only allowlisted evidence and candidate metadata.",
+      "metadata_tree": "Tree of metadata_commit.",
+      "metadata_parent_commit": "The first parent of metadata B must equal content A exactly.",
+      "metadata_changed_paths": "Explicit sorted list; every path must be evidence, receipt, report, or candidate metadata and must not alter BP, RP, editable assets, runtime, tests, builder, or package bytes.",
+      "evidence_paths": "Repository-relative POSIX paths tracked in metadata_commit with exact size and SHA-256."
+    },
+    "source_authority_semantics": "source_authority_commit/tree bind metadata B when present, otherwise content A. production_commit/tree always bind content A.",
+    "artifact_manifest_semantics": "The top-level artifact_manifest object must bind its repository, ref, commit, tree, relative path, size, and SHA-256. Every BP/RP/MCAddon entry must do the same.",
+    "tests_semantics": "The top-level tests object must name executed suites, pass/fail counts, receipt paths and hashes, exact candidate binding, and any carried-forward evidence with an unchanged-package proof.",
+    "working_tree_or_filename_only_authority": "REJECT"
+  },
+  "aperture_c0_disposition": {
+    "pack_id": "aperture-foundry",
+    "assignment_id": "PA-12-APERTURE_FOUNDRY-V1",
+    "repository": "/Users/blakegrove/Desktop/bedrock-server/program/crazycraft-pack-production-v1/aperture-foundry",
+    "ref": "refs/heads/codex/aperture-foundry-production-v1",
+    "commit": "baa848a2aa15dee3001e22546388f1b3de06d665",
+    "tree": "1dd27caccf7d84c69c32ca4c90c81b9b52853f16",
+    "artifacts": {
+      "behavior_pack": {
+        "path": "dist/aperture-foundry-behavior.mcpack",
+        "size": 118017,
+        "sha256": "9706f8a46aff00d69c3cac731535bf6af5184db90bbdc2d954af532b7825ae85"
+      },
+      "resource_pack": {
+        "path": "dist/aperture-foundry-resources.mcpack",
+        "size": 310778,
+        "sha256": "4d36e125a2c536830ee04ead2017acc346b41dfda8869201e95aa486f3c97395"
+      },
+      "mcaddon": {
+        "path": "dist/aperture-foundry.mcaddon",
+        "size": 438805,
+        "sha256": "0bbfeee85e214b6394ca395fb0be1e96b2c0e094847d978841d7c103d6828af8"
+      },
+      "artifact_manifest": {
+        "path": "dist/artifact-manifest.json",
+        "size": 865,
+        "sha256": "f720abc803063f03e1c362612c6ac222ea1a95aac2db1af64bced07c8bbb4df4"
+      }
+    },
+    "classification": "PRELIMINARY_C0_PRESERVED_ISOLATION_NOT_PROVEN",
+    "candidate_submission_allowed": false,
+    "reason": "No contemporaneous candidate-bound authoring-process receipt or independent post-creation validation exists in C0. A later receipt cannot retroactively prove its authoring boundary.",
+    "preservation": "C0, its Git authority, and exact package bytes remain immutable and may be used only as quarantined product-progress history, not as a promotable or test-routed candidate."
+  },
+  "aperture_authorized_next_action": {
+    "action": "FRESH_SOURCE_NEUTRAL_REPRODUCTION",
+    "durable_owner": "PACK-WORKER-12-APERTURE",
+    "new_repository": "/Users/blakegrove/Desktop/bedrock-server/program/crazycraft-pack-production-v1/aperture-foundry-reproduction-v1",
+    "new_ref": "refs/heads/codex/aperture-foundry-reproduction-v1",
+    "repository_initialization": "The durable Aperture owner is authorized to initialize only this exact repository path as a fresh independent Git object store with no remotes, alternates, hardlinks, or shared worktree. This is not authority to alter or delete the preserved C0 repository.",
+    "initial_inputs": [
+      "the existing producer-safe Aperture launch packet",
+      "the sanitized Aperture production contract",
+      "the frozen Platform interface authority",
+      "this factory candidate publication authority",
+      "the qualified clean production baseline"
+    ],
+    "prohibited_inputs": [
+      "Aperture C0 repository or package bytes",
+      "Aperture C0 code, assets, tests, manifests, builders, reports, or identifiers",
+      "Java evidence, source artifacts, source names and paths, decompiled material, private oracle, or hidden cases",
+      "any other pack repository"
+    ],
+    "tooling_order": "Create and commit the pack-local scanner, schemas, receipt generator, validator, and launch profile before any product-affecting write.",
+    "worker_model": "The durable owner may spawn one fresh bounded producer that has not inspected C0. The parent may pass only the enumerated source-neutral inputs and may not translate C0 details into the prompt.",
+    "first_promotable_generation": 1,
+    "content_reuse_from_c0": "FORBIDDEN",
+    "semantic_scope_change": "FORBIDDEN",
+    "completion": "Publish MSG-P12-APERTURE-CANDIDATE-000001 only after exact package freeze, contemporaneous process receipt, executed scans, noncircular validation, and local required gates pass."
+  },
+  "proof_boundary": [
+    "SOURCE_NEUTRAL_FACTORY_PUBLICATION_AUTHORITY",
+    "PACK_LOCAL_TOOLING_AUTHORIZED_WITH_EXACT_MINIMUM_SEMANTICS",
+    "SOURCE_SPECIFIC_ORACLE_COMPARISON_REMAINS_PRIVATE_T10_WORK",
+    "APERTURE_C0_BYTES_PRESERVED_BUT_AUTHORING_ISOLATION_NOT_PROVEN",
+    "NO_CANDIDATE_TEST_AUDIT_BDS_CLIENT_CONSOLE_OR_RELEASE_RESULT"
+  ]
+}

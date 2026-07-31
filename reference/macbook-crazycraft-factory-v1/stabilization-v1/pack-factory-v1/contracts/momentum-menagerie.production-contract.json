@@ -1,0 +1,167 @@
+{
+  "asset_workload": {
+    "authority_state": "PLANNED_ORIGINAL_PRODUCTION",
+    "class_counts": {
+      "HERO": 3,
+      "ICON": 28,
+      "NOT_REQUIRED": 0,
+      "PARTICLE": 8,
+      "REUSABLE_COMPLEX": 8,
+      "ROUTINE_MODEL": 12,
+      "SOUND": 16
+    },
+    "expected_outputs": {
+      "animation_controllers": 15,
+      "animations": 30,
+      "editable_bbmodel_files": 23,
+      "icons": 28,
+      "localization_sets": 1,
+      "models": 23,
+      "particles": 8,
+      "proof_renders": 140,
+      "sounds": 16,
+      "textures": 84,
+      "ui_elements": 2
+    },
+    "rules": [
+      "Blockbench is NOT_APPLICABLE for flat icons and ordinary full-cube blocks unless custom geometry materially supports the product.",
+      "Every custom geometry source must reopen natively and export twice to normalized equivalent runtime geometry.",
+      "Hero and reusable-complex assets require independent Golden scoring; routine assets require originality, readability, and technical validity.",
+      "Repairs update editable sources first; export-only hand edits are forbidden."
+    ]
+  },
+  "clean_room_boundary": {
+    "permitted": [
+      "this contract",
+      "approved platform interfaces",
+      "qualified production baseline",
+      "original authored assets and code"
+    ],
+    "prohibited": [
+      "raw Java code or bytecode",
+      "decompiled text",
+      "source identifiers and paths",
+      "source models, textures, UVs, animations, audio, writing, and branding",
+      "private oracle values and hidden cases"
+    ],
+    "proof_rule": "Every authoring and product-affecting repair process emits a candidate-bound isolation receipt."
+  },
+  "completion_condition": {
+    "nonterminal_events": [
+      "contract_created",
+      "vertical_slice_created",
+      "preliminary_candidate_published",
+      "candidate_submitted_to_testing",
+      "one_repair_completed",
+      "waiting_for_tester",
+      "standalone_test_pass"
+    ],
+    "terminal_alternatives": [
+      "TERMINALLY_UNAVAILABLE",
+      "USER_DECISION_REQUIRED",
+      "EXTERNAL_PHYSICAL_GATE_REQUIRED"
+    ],
+    "terminal_success": "PACK_ACCEPTED_AND_INTEGRATED"
+  },
+  "contract_id": "PC-MOMENTUM_MENAGERIE-V1",
+  "gameplay": {
+    "blocks": [
+      "forage plants",
+      "cook station"
+    ],
+    "controller_conscious_interaction": "All primary actions use ordinary item use, block interact, inventory, dialogue forms, or bounded action forms; no keyboard-only requirement.",
+    "core_gameplay_loop": "Forage and cook movement foods, use bounded momentum effects, track roaming original creatures, and resolve encounter rewards.",
+    "crafting_and_loot": [
+      "survival forage, recipes, bounded drops, exact-once encounter rewards"
+    ],
+    "encounters": [
+      "roaming, harvest-linked, and momentum challenge encounters"
+    ],
+    "entities": [
+      "five original creature families including one large roaming encounter"
+    ],
+    "items": [
+      "food ingredients",
+      "prepared trail foods",
+      "tracker",
+      "encounter trophies"
+    ],
+    "multiplayer_behavior": "Movement effects never poll inventories; encounters isolate player rewards and shared world entities.",
+    "ownership_rules": "Effects are player-scoped; encounter ownership is generation-fenced and does not duplicate rewards.",
+    "persistence": "Versioned cooldown, effect, encounter, reward, and cleanup state.",
+    "player_progression": [
+      "foraging",
+      "food craft",
+      "movement mastery",
+      "five encounter families"
+    ],
+    "recovery_and_cleanup": "Expired effects, abandoned encounters, projectiles, and temporary terrain feedback clean within fixed deadlines.",
+    "required_original_presentation": "Original bright trail provisions and expressive voxel creatures with distinct, non-source silhouettes.",
+    "restart_and_reconnect": "Versioned state reconstructs idempotently; stale callbacks and generations are inert."
+  },
+  "namespace": "ccr_p17",
+  "pack_id": "momentum-menagerie",
+  "product_name": "Momentum Menagerie",
+  "required_outputs": [
+    "complete_behavior_pack",
+    "complete_resource_pack_when_applicable",
+    "manifest_declared_scripts_main_js_when_scripted",
+    "original_editable_asset_sources",
+    "local_unit_and_integration_tests",
+    "deterministic_builder",
+    "exact_bp_rp_mcaddon_artifacts",
+    "artifact_manifest",
+    "candidate_bound_process_isolation_receipt",
+    "immutable_candidate_submission_message"
+  ],
+  "schema_version": "1.0.0",
+  "technical_allocation": {
+    "migration_version": 1,
+    "persistence_schema": "ccr_p17:state_v1",
+    "platform_authority": {
+      "aggregate_sha256": "84e79568550d800717798858c254498e682d452ec4ab6b95e6320d1a79397f57",
+      "commit": "aba740f136dce5781e68d34e1c7aaa2a0a3d8671",
+      "interface_classification": "FROZEN_PLATFORM_V1_CONTRACTS",
+      "manifest_sha256": "b7de7329fd78b451994b367e0ac226099e8d260bd21309f3f5753b3830c42630",
+      "repository": "/Users/blakegrove/Desktop/bedrock-server/minecraft-compiler-baseline",
+      "tree": "2d5c123c9cbc6d4cdaac2ff922916450b5282d08"
+    },
+    "runtime_budget": {
+      "adds_policy": "SHARED_ADMISSION_CONTROLLER_MAX_8_GLOBAL_MAX_4_PER_ENCOUNTER",
+      "boss_policy": "SHARED_LEASE_ONLY_NO_GUARANTEED_CONCURRENT_BOSS",
+      "combined_reservation_target": {
+        "callbacks_per_heartbeat": 1,
+        "custom_entities": 4,
+        "dynamic_property_bytes": 7168,
+        "particles_per_second": 12,
+        "pathfinders": 2,
+        "persistent_records": 128,
+        "projectiles": 3,
+        "scheduler_pending": 3,
+        "script_time_microseconds_per_tick": 195,
+        "simultaneous_audio_voices": 1
+      },
+      "standalone_policy": "A pack may use a larger standalone test fixture only when its assignment declares that fixture; combined integration must meet this reservation target or return an integration finding."
+    },
+    "shared_runtime_dependencies": [
+      "identity",
+      "persistence",
+      "ownership",
+      "scheduler",
+      "event_router",
+      "reward_journal",
+      "recovery",
+      "diagnostics",
+      "budget_admission",
+      "migration_coordinator"
+    ],
+    "uuid_allocations": {
+      "behavior_data_module": "f0b26a31-13c1-5a79-bf56-451e4a1f8a5a",
+      "behavior_header": "9fec620d-0c14-5c80-ad6c-305e62e615ec",
+      "behavior_script_module": "2bd03457-349f-5807-b0fe-26d270c2f242",
+      "resource_header": "83a98d39-a5a5-537e-bc63-db7a1267ae1b",
+      "resource_resources_module": "98a2cbfb-d459-5594-9e17-58c681412bf8"
+    }
+  },
+  "theme": "Food-linked movement effects and original roaming creature-event encounters."
+}

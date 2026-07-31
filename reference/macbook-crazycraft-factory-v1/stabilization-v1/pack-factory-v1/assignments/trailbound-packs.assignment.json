@@ -1,0 +1,291 @@
+{
+  "asset_workload": {
+    "animation_controllers": 0,
+    "animations": 7,
+    "authority_state": "PRESERVE_EXISTING",
+    "class_counts": {
+      "HERO": 8,
+      "ICON": 8,
+      "NOT_REQUIRED": 0,
+      "PARTICLE": 1,
+      "REUSABLE_COMPLEX": 0,
+      "ROUTINE_MODEL": 0,
+      "SOUND": 12
+    },
+    "classification_status": "PRESERVED_AUTHORITY_FACTORY_WORKLOAD_CLASSIFICATION",
+    "custom_geometry": 8,
+    "editable_bbmodel_files": 8,
+    "native_export_equivalence": "PASS_8_OF_8",
+    "particles": 1,
+    "proof_renders": 104,
+    "sounds": 12,
+    "textures_png": 137
+  },
+  "assigned_worker_role": "PACK-WORKER-04-TRAILBOUND",
+  "assignment_id": "PA-04-TRAILBOUND_PACKS-V1",
+  "assignment_payload_sha256": "480b6d3a8e8abf7df60854703e93a754924831ae846aeadd9abd63b939201b36",
+  "assignment_type": "DURABLE_PACK_OWNERSHIP",
+  "central_authority_bindings": {
+    "asset_workload_ledger_sha256": "ed42ebebd9af60fce60bf3ada9b4e36c263b4bc7d45abbdeef0174142b166ad9",
+    "namespace_uuid_registry_sha256": "966630ecb756190012d3b20604ff148442efa9e98785e53f323f8fd5a27d2f33",
+    "pack_map_sha256": "f60ed61b1c65de6069fadf321b0177dc591db142669f7c4047719c0cef4e2edb",
+    "repository_registry_sha256": "5b5cfb30439676df0f1856ab6820a83949eb16b2aaa8b5e2e3a5565e88da323d",
+    "runtime_budget_registry_sha256": "4bcd007bd5a5af86cd1fc4e74565321914255669c253ee17c7312173e6669f39"
+  },
+  "completion_condition": {
+    "nonterminal_events": [
+      "contract_created",
+      "vertical_slice_created",
+      "preliminary_candidate_published",
+      "candidate_submitted_to_testing",
+      "one_repair_completed",
+      "waiting_for_tester",
+      "standalone_test_pass"
+    ],
+    "terminal_alternatives": [
+      "TERMINALLY_UNAVAILABLE",
+      "USER_DECISION_REQUIRED",
+      "EXTERNAL_PHYSICAL_GATE_REQUIRED"
+    ],
+    "terminal_success": "PACK_ACCEPTED_AND_INTEGRATED"
+  },
+  "control_source_responsibility": {
+    "accepted_foundations": [],
+    "exact_source_artifacts": [
+      {
+        "final_disposition": "EXISTING_AUTHORITY",
+        "path": "mods/Adventure Backpack.jar",
+        "sha256": "432628eceb70323f4977278660cb53ab41e4b835aa0886c68060755d05246f91",
+        "source_artifact_id": "CC-SRC-002"
+      }
+    ],
+    "excluded_scope": [
+      "raw Java code or bytecode",
+      "decompiled text",
+      "source identifiers and paths",
+      "source models, textures, UVs, animations, audio, writing, and branding",
+      "private oracle values and hidden cases"
+    ],
+    "existing_candidate_authority": {
+      "artifact_commit": "3cfcc28f7a15a8f31413b77ca0cbd6f3c137f5e5",
+      "artifacts": {
+        "behavior_pack": {
+          "path": "/Users/blakegrove/Desktop/bedrock-server/program/crazycraft-autonomous-worker-lanes-v1/thread-09/trailbound-golden-repair-v2/candidate/trailbound-packs-behavior.mcpack",
+          "sha256": "f26e9daddfd7ba8893f6ccd5934b45ec0f88e1380b3e02038c13051d71fad8f3"
+        },
+        "mcaddon": {
+          "path": "/Users/blakegrove/Desktop/bedrock-server/program/crazycraft-autonomous-worker-lanes-v1/thread-09/trailbound-golden-repair-v2/candidate/trailbound-packs.mcaddon",
+          "sha256": "949fa581e930460a8bcc8e02f574d1bc89f848a754c57ec84907f07f27372bc4"
+        },
+        "resource_pack": {
+          "path": "/Users/blakegrove/Desktop/bedrock-server/program/crazycraft-autonomous-worker-lanes-v1/thread-09/trailbound-golden-repair-v2/candidate/trailbound-packs-resource.mcpack",
+          "sha256": "14fcdba454ab5ca85381628d71845dadc80b9c255eb812b7aaebea84814ef7af"
+        }
+      },
+      "asset_inventory": {
+        "animation_controllers": 0,
+        "animations": 7,
+        "authority_state": "PRESERVE_EXISTING",
+        "custom_geometry": 8,
+        "editable_bbmodel_files": 8,
+        "native_export_equivalence": "PASS_8_OF_8",
+        "particles": 1,
+        "proof_renders": 104,
+        "sounds": 12,
+        "textures_png": 137
+      },
+      "classification": "AWAITING_TEST",
+      "content_bundle": {
+        "path": "/Users/blakegrove/Desktop/bedrock-server/program/crazycraft-autonomous-worker-lanes-v1/thread-09/trailbound-golden-repair-v2/candidate/trailbound-golden-repair-v2.bundle",
+        "sha256": "64ef65c1a6d5b90ac55af7f4aa05a951574e055966287ec7912eb01aa706be72"
+      },
+      "content_commit": "d2d737c5b7110c1c596ce429649fb002efdf9049",
+      "content_tree": "47d8d3e409b8cc1b6de49654456f6cee5ddfb201",
+      "metadata_commit": "3cfcc28f7a15a8f31413b77ca0cbd6f3c137f5e5",
+      "metadata_tree": "f4dfc5db028a709bc89b588b57719ad78b215d8b",
+      "namespace": "ccr_p07",
+      "ref": "refs/heads/main",
+      "repository": "/Users/blakegrove/Desktop/bedrock-server/program/crazycraft-autonomous-worker-lanes-v1/thread-09",
+      "semantic_version": [
+        1,
+        1,
+        0
+      ],
+      "uuids": {
+        "behavior_data_module": "8ebbf794-79de-5401-845b-8c8e67fb9921",
+        "behavior_header": "7c428986-b20f-548d-84ae-1c56029426b2",
+        "behavior_script_module": "2ed26f2f-0adc-594c-87db-9f0da045b472",
+        "resource_header": "565a3efe-77ac-5533-8097-3098881e17d0",
+        "resource_resources_module": "052be8ee-7a9d-562c-8631-cfb0f1e9d2b1"
+      }
+    },
+    "visibility": "CONTROL_ONLY_NOT_A_PRODUCTION_INPUT"
+  },
+  "identity": {
+    "asset_authority": {
+      "inventory": {
+        "animation_controllers": 0,
+        "animations": 7,
+        "authority_state": "PRESERVE_EXISTING",
+        "class_counts": {
+          "HERO": 8,
+          "ICON": 8,
+          "NOT_REQUIRED": 0,
+          "PARTICLE": 1,
+          "REUSABLE_COMPLEX": 0,
+          "ROUTINE_MODEL": 0,
+          "SOUND": 12
+        },
+        "classification_status": "PRESERVED_AUTHORITY_FACTORY_WORKLOAD_CLASSIFICATION",
+        "custom_geometry": 8,
+        "editable_bbmodel_files": 8,
+        "native_export_equivalence": "PASS_8_OF_8",
+        "particles": 1,
+        "proof_renders": 104,
+        "sounds": 12,
+        "textures_png": 137
+      },
+      "ref": "refs/heads/main",
+      "repository": "/Users/blakegrove/Desktop/bedrock-server/program/crazycraft-autonomous-worker-lanes-v1/thread-09",
+      "root": "assets/editable"
+    },
+    "bp_data_uuid": "8ebbf794-79de-5401-845b-8c8e67fb9921",
+    "bp_header_uuid": "7c428986-b20f-548d-84ae-1c56029426b2",
+    "namespace": "ccr_p07",
+    "production_ref": "refs/heads/main",
+    "production_repository": "/Users/blakegrove/Desktop/bedrock-server/program/crazycraft-autonomous-worker-lanes-v1/thread-09",
+    "rp_header_uuid": "565a3efe-77ac-5533-8097-3098881e17d0",
+    "rp_module_uuid": "052be8ee-7a9d-562c-8631-cfb0f1e9d2b1",
+    "script_module_uuid": "2ed26f2f-0adc-594c-87db-9f0da045b472",
+    "semantic_version": [
+      1,
+      1,
+      0
+    ],
+    "theme": "Player-owned expedition storage, specialization, recovery, and cache rewards."
+  },
+  "internal_subagent_roles": [
+    "gameplay_runtime",
+    "behavior_pack_content",
+    "resource_pack_and_assets",
+    "blockbench_when_required",
+    "tests",
+    "package_validation"
+  ],
+  "mailbox_contract": {
+    "candidate_submission": "candidate_submissions/trailbound-packs/",
+    "final_decision": "final_decisions/trailbound-packs/",
+    "integration_intake": "integration_intake/trailbound-packs/",
+    "repair_instruction": "worker_repairs/trailbound-packs/",
+    "repository": "/Users/blakegrove/Desktop/bedrock-server/program/crazycraft-pack-factory-mailboxes-v1",
+    "tester_result": "tester_results/trailbound-packs/"
+  },
+  "no_ssh_no_studio": {
+    "attempt_is_lane_clean_room_hard_stop": true,
+    "status": "REQUIRED"
+  },
+  "pack_id": "trailbound-packs",
+  "pack_name": "Trailbound Packs",
+  "producer_safe_input": {
+    "contract_path": "/Users/blakegrove/Desktop/bedrock-server/program/crazycraft-persistent-orchestrator-v1/stabilization-v1/pack-factory-v1/contracts/trailbound-packs.production-contract.json",
+    "contract_sha256": "9751b30adc7ba6a263bb721c7c925c5b09b5d02d743e344e557444c176e79701",
+    "source_names_paths_hashes_forbidden": true
+  },
+  "product_scope": {
+    "blocks": [],
+    "controller_conscious_interaction": "All primary actions use ordinary item use, block interact, inventory, dialogue forms, or bounded action forms; no keyboard-only requirement.",
+    "core_gameplay_loop": "Craft, bind, equip, specialize, upgrade, transfer, and recover expedition packs.",
+    "crafting_and_loot": [
+      "survival-reachable crafting and tier upgrades"
+    ],
+    "encounters": [
+      "twelve exact-once cache outcomes"
+    ],
+    "entities": [],
+    "items": [
+      "eight pack variants",
+      "Trailbound Clasp",
+      "upgrade materials",
+      "Wild Cache"
+    ],
+    "multiplayer_behavior": "Player identity, ownership, and cache rewards remain isolated and exact-once.",
+    "ownership_rules": "One authoritative pack identity and owner with explicit transfer.",
+    "persistence": "Versioned virtual storage, transaction journal, duplicate quarantine, and migration.",
+    "player_progression": [
+      "9-slot tier",
+      "18-slot tier",
+      "27-slot tier",
+      "four specializations"
+    ],
+    "recovery_and_cleanup": "Drop, death, reconnect, restart, rollback, quarantine, and administrative recovery remain supported.",
+    "required_original_presentation": "Preserve the repaired eight-model Golden/native authority and exact package tuple.",
+    "restart_and_reconnect": "Versioned state reconstructs idempotently; stale callbacks and generations are inert."
+  },
+  "publication_rules": {
+    "candidate_publication_is_nonterminal": true,
+    "frozen_candidates_never_edited": true,
+    "new_product_repair_requires_new_generation": true,
+    "one_durable_owner": true,
+    "subagents_are_not_product_owners": true,
+    "tester_wait_is_nonterminal": true,
+    "working_tree_packages_rejected": true
+  },
+  "required_outputs": [
+    "complete_behavior_pack",
+    "complete_resource_pack_when_applicable",
+    "manifest_declared_scripts_main_js_when_scripted",
+    "original_editable_asset_sources",
+    "local_unit_and_integration_tests",
+    "deterministic_builder",
+    "exact_bp_rp_mcaddon_artifacts",
+    "artifact_manifest",
+    "candidate_bound_process_isolation_receipt",
+    "immutable_candidate_submission_message"
+  ],
+  "run_control": "PAUSED_NOT_DISPATCHED",
+  "schema_version": "1.0.0",
+  "technical_allocation": {
+    "dynamic_property_prefix": "ccr_p07:",
+    "integration_adapter_required": true,
+    "migration_version": 1,
+    "persistence_schema": "ccr_p07:state_v1",
+    "platform_authority": {
+      "aggregate_sha256": "84e79568550d800717798858c254498e682d452ec4ab6b95e6320d1a79397f57",
+      "commit": "aba740f136dce5781e68d34e1c7aaa2a0a3d8671",
+      "interface_classification": "FROZEN_PLATFORM_V1_CONTRACTS",
+      "manifest_sha256": "b7de7329fd78b451994b367e0ac226099e8d260bd21309f3f5753b3830c42630",
+      "repository": "/Users/blakegrove/Desktop/bedrock-server/minecraft-compiler-baseline",
+      "tree": "2d5c123c9cbc6d4cdaac2ff922916450b5282d08"
+    },
+    "runtime_budget": {
+      "adds_policy": "SHARED_ADMISSION_CONTROLLER_MAX_8_GLOBAL_MAX_4_PER_ENCOUNTER",
+      "boss_policy": "SHARED_LEASE_ONLY_NO_GUARANTEED_CONCURRENT_BOSS",
+      "combined_reservation_target": {
+        "callbacks_per_heartbeat": 1,
+        "custom_entities": 0,
+        "dynamic_property_bytes": 36864,
+        "particles_per_second": 6,
+        "pathfinders": 0,
+        "persistent_records": 512,
+        "projectiles": 0,
+        "scheduler_pending": 5,
+        "script_time_microseconds_per_tick": 235,
+        "simultaneous_audio_voices": 1
+      },
+      "standalone_policy": "A pack may use a larger standalone test fixture only when its assignment declares that fixture; combined integration must meet this reservation target or return an integration finding."
+    },
+    "shared_runtime_interfaces": [
+      "identity",
+      "persistence",
+      "ownership",
+      "scheduler",
+      "event_router",
+      "reward_journal",
+      "recovery",
+      "diagnostics",
+      "budget_admission",
+      "migration_coordinator"
+    ]
+  },
+  "worker_mission": "Own this entire Bedrock pack. Build all assigned gameplay, runtime, assets, tests, and deterministic package outputs. Submit immutable candidates through the mailbox. Read tester and repair messages from the mailbox. Correct defects in the production repository and publish new immutable candidates. Continue until T1 registers the pack as accepted and integrated or issues an exact terminal disposition."
+}

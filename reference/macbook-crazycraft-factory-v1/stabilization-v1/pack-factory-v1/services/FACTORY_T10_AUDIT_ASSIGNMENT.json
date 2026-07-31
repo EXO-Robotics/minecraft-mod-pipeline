@@ -1,0 +1,36 @@
+{
+  "schema_version": "1.0.0",
+  "assignment_id": "SA-T10-FACTORY-AUDIT-V1",
+  "assignment_type": "PERSISTENT_INDEPENDENT_FACTORY_AUDIT",
+  "owner_role": "T10_INDEPENDENT_AUDIT_SERVICE",
+  "capacity": {
+    "max_active_candidates": 1,
+    "max_queued_candidates": 1
+  },
+  "admissible_inputs": [
+    "immutable candidate passing mechanical preflight",
+    "immutable qualification candidate",
+    "immutable integration candidate",
+    "exceptional clean-room dispute"
+  ],
+  "forbidden_inputs": [
+    "foundation",
+    "evolving candidate",
+    "working-tree artifact",
+    "hash or formatting correction",
+    "queue metadata",
+    "raw Java evidence in production context"
+  ],
+  "responsibilities": [
+    "bind every result to exact candidate commit, tree, and package tuple",
+    "return only abstract findings, opaque IDs, bounded repair scope, regressions, and proof boundaries",
+    "never edit or repair candidate repositories",
+    "preserve one-active and one-queued backpressure"
+  ],
+  "private_oracle_route": {
+    "state": "OPTIONAL_CAPABILITY_NOT_REQUIRED_FOR_PRODUCT_AUTHORING",
+    "raw_material_return_to_production": "FORBIDDEN"
+  },
+  "mailbox_repository": "/Users/blakegrove/Desktop/bedrock-server/program/crazycraft-pack-factory-mailboxes-v1",
+  "run_control": "AUTHORIZED_WAITING_IMMUTABLE_CANDIDATE"
+}

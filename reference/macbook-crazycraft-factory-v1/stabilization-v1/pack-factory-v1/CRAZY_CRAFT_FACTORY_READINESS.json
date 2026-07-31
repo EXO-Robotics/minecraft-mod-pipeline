@@ -1,0 +1,70 @@
+{
+  "campaign_workers_started": true,
+  "classification": "PACK_FACTORY_ACTIVE",
+  "gates": {
+    "ALL_52_ARTIFACTS_RECONCILED": {
+      "status": "PASS"
+    },
+    "DOCKER_BDS_ROUTE_PROVEN": {
+      "job_id": "JOB-000000000012",
+      "receipt_sha256": "966987cc5e50b1ee9cdb1381e7b7c50573021165e6ba6cf8a7ce63e936a3785d",
+      "route_status": "MACBOOK_LOCAL_DOCKER_BDS_PACKAGE_LOAD_AND_RESTART_PASS",
+      "status": "PASS"
+    },
+    "EVERY_PACK_HAS_ASSET_MANIFEST": {
+      "status": "PASS"
+    },
+    "EVERY_PACK_HAS_COMPLETE_SCOPE": {
+      "status": "PASS"
+    },
+    "EVERY_PACK_HAS_DURABLE_OWNER": {
+      "status": "PASS"
+    },
+    "EVERY_PACK_HAS_NAMESPACE_AND_UUIDS": {
+      "status": "PASS"
+    },
+    "EVERY_PACK_HAS_PRODUCTION_REPOSITORY": {
+      "status": "PASS"
+    },
+    "EVERY_PACK_HAS_RUNTIME_BUDGET": {
+      "status": "PASS"
+    },
+    "EXISTING_PACK_AUTHORITIES_PRESERVED": {
+      "status": "PASS"
+    },
+    "FACTORY_LAUNCHED": {
+      "reason": "Committed resume authority 34d78ad14d0112e6a5eb010cc4e9fc34645e13e9 restored run control without replacing assignments. Ten durable pack owners accepted resume; T2 is active; T10 is waiting by design; local tester PID 20295 is running with two reusable slots and recovered Reliquary JOB-000000000019 TEST_PASS publication without rerunning BDS.",
+      "status": "PASS"
+    },
+    "FACTORY_READY_TO_RESUME": {
+      "reason": "MacBook-local Docker BDS is the selected authoritative initial qualification route; all pack assignments and central allocations are complete.",
+      "status": "PASS"
+    },
+    "FINAL_PACK_MAP_FROZEN": {
+      "status": "PASS"
+    },
+    "INTEGRATION_ASSIGNMENT_READY": {
+      "status": "PASS"
+    },
+    "MAILBOX_ROUND_TRIP_PROVEN": {
+      "receipt_sha256": "31d0061e72f3b502c44666747fc785e60c501f744e3699a68f5c894783adb893",
+      "status": "PASS"
+    },
+    "MAILBOX_SCHEMAS_READY": {
+      "status": "PASS"
+    },
+    "T1_ROUTING_READY": {
+      "status": "PASS"
+    },
+    "TESTER_ASSIGNMENT_READY": {
+      "status": "PASS"
+    }
+  },
+  "launchd_started": true,
+  "pack_count": 16,
+  "proof_boundary": "Factory structural authority plus exact Trailbound Stable BDS package-load/restart evidence. Player-mutated persistence, Preview, client, audio, controller, multiplayer, Realm, split-screen, physical console, rights, branding, Marketplace, release, and new-pack outcomes remain separate.",
+  "record_type": "crazy_craft_factory_readiness",
+  "run_control": "ACTIVE",
+  "schema_version": "1.0.0",
+  "source_artifact_count": 52
+}

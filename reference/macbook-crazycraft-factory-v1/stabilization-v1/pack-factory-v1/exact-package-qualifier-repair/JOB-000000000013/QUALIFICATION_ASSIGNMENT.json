@@ -1,0 +1,70 @@
+{
+  "schema_version": "1.0.0",
+  "assignment_id": "A-T09-TRAILBOUND-STABLE-RETRY-0002",
+  "role": "bds_qualifier",
+  "skill": "qualify-bedrock-candidate",
+  "lane": "AUDIT",
+  "lane_root": "/Users/blakegrove/Desktop/bedrock-server/program/crazycraft-persistent-orchestrator-v1/stabilization-v1/pack-factory-v1/exact-package-qualifier-repair/JOB-000000000013",
+  "allowed_read_paths": [
+    "/Users/blakegrove/Desktop/bedrock-server/program/crazycraft-autonomous-worker-lanes-v1/thread-09/trailbound-golden-repair-v2/candidate/trailbound-packs-behavior.mcpack",
+    "/Users/blakegrove/Desktop/bedrock-server/program/crazycraft-autonomous-worker-lanes-v1/thread-09/trailbound-golden-repair-v2/candidate/trailbound-packs-resource.mcpack",
+    "/Users/blakegrove/Desktop/bedrock-server/program/crazycraft-autonomous-worker-lanes-v1/thread-09/trailbound-golden-repair-v2/candidate/trailbound-packs.mcaddon",
+    "/Users/blakegrove/Desktop/bedrock-server/program/crazycraft-autonomous-worker-lanes-v1/thread-09/trailbound-golden-repair-v2/candidate/trailbound-golden-repair-v2.bundle"
+  ],
+  "allowed_write_paths": [
+    "/Users/blakegrove/Desktop/bedrock-server/program/crazycraft-persistent-orchestrator-v1/stabilization-v1/pack-factory-v1/exact-package-qualifier-repair/JOB-000000000013"
+  ],
+  "prohibited_paths": [
+    "/Users/blakegrove/.ssh",
+    "/Users/blakegrove/Desktop/bedrock-server/.derivedData/acquisitions",
+    "/Users/blakegrove/Desktop/bedrock-server/program/private-audit-inputs"
+  ],
+  "input_artifacts": [
+    {
+      "path": "/Users/blakegrove/Desktop/bedrock-server/program/crazycraft-autonomous-worker-lanes-v1/thread-09/trailbound-golden-repair-v2/candidate/trailbound-packs-behavior.mcpack",
+      "sha256": "f26e9daddfd7ba8893f6ccd5934b45ec0f88e1380b3e02038c13051d71fad8f3"
+    },
+    {
+      "path": "/Users/blakegrove/Desktop/bedrock-server/program/crazycraft-autonomous-worker-lanes-v1/thread-09/trailbound-golden-repair-v2/candidate/trailbound-packs-resource.mcpack",
+      "sha256": "14fcdba454ab5ca85381628d71845dadc80b9c255eb812b7aaebea84814ef7af"
+    },
+    {
+      "path": "/Users/blakegrove/Desktop/bedrock-server/program/crazycraft-autonomous-worker-lanes-v1/thread-09/trailbound-golden-repair-v2/candidate/trailbound-packs.mcaddon",
+      "sha256": "949fa581e930460a8bcc8e02f574d1bc89f848a754c57ec84907f07f27372bc4"
+    },
+    {
+      "path": "/Users/blakegrove/Desktop/bedrock-server/program/crazycraft-autonomous-worker-lanes-v1/thread-09/trailbound-golden-repair-v2/candidate/trailbound-golden-repair-v2.bundle",
+      "sha256": "64ef65c1a6d5b90ac55af7f4aa05a951574e055966287ec7912eb01aa706be72"
+    }
+  ],
+  "output_artifacts": [
+    "JOB-000000000013 exact Stable BDS result",
+    "JOB-000000000013 restart logs",
+    "JOB-000000000013 fixture and cleanup receipts"
+  ],
+  "required_checks": [
+    "Exact artifact hashes and sizes",
+    "Safe archive traversal and manifest binding",
+    "Stable BDS ready state",
+    "Behavior pack discovery",
+    "Resource pack installation and activation",
+    "Shipped script entrypoint marker",
+    "Clean shutdown and same-world restart",
+    "Candidate byte immutability",
+    "Container and mount cleanup"
+  ],
+  "stop_states": [
+    "Candidate hash mismatch",
+    "Candidate mutation",
+    "Unauthorized mount",
+    "Qualifier or BDS infrastructure failure",
+    "Candidate-scoped blocking content or runtime error"
+  ],
+  "completion_state": "BDS_PACKAGE_LOAD_AND_RESTART_PASS_OR_EXACT_INFRASTRUCTURE_FAILURE",
+  "gate_authority": [
+    "BDS_QUALIFIED",
+    "STABLE_BDS",
+    "RESTART_PERSISTENCE"
+  ],
+  "requires_process_receipt": false
+}

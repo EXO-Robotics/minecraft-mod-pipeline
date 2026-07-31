@@ -1,0 +1,49 @@
+{
+  "schema_version": "crazycraft-t1-activation-state-v1",
+  "snapshot_at": "2026-07-30T14:07:09Z",
+  "mailbox_head": "5f0af42040f403bbc592c7d14ef9abaa8987750c",
+  "state_journal": "stabilization-v1/pack-factory-v1/services/t1_dispatcher/runtime/t1-state.sqlite3",
+  "persistence": {
+    "kind": "ACTIVE_CODEX_HEARTBEAT",
+    "automation_id": "t1-durable-factory-dispatcher",
+    "target_task_id": "019fb31d-6a02-7143-a822-3fa9c7e201c0",
+    "interval_seconds": 60,
+    "status": "ACTIVE"
+  },
+  "tester": {
+    "capacity": 2,
+    "active": [],
+    "queued": [],
+    "completed": [
+      {"job_id": "JOB-000000000036", "pack_id": "aspectweave", "result": "MSG-TESTER-000000000036-PASS"},
+      {"job_id": "JOB-000000000037", "pack_id": "aperture-foundry", "result": "MSG-TESTER-000000000037-PASS"},
+      {"job_id": "JOB-000000000038", "pack_id": "latchline-infrastructure", "result": "MSG-TESTER-000000000038-PASS"},
+      {"job_id": "JOB-000000000039", "pack_id": "bounded-outcome-events", "result": "MSG-TESTER-000000000039-PASS"},
+      {"job_id": "JOB-000000000040", "pack_id": "hearth-and-hall", "result": "MSG-TESTER-000000000040-PASS"}
+    ]
+  },
+  "t10": {
+    "active": {"pack_id": "aspectweave", "generation": 9, "message_id": "MSG-T1D-ASPECTWEAVE-G000009-T10-ACTIVE-96900BFA841C"},
+    "queued": {"pack_id": "bounded-outcome-events", "generation": 15, "message_id": "MSG-T1D-BOUNDED-OUTCOME-EVENTS-G000015-T10-QUEUED-2578E15AEDDA"},
+    "backlog": [
+      {"pack_id": "latchline-infrastructure", "generation": 7},
+      {"pack_id": "hearth-and-hall", "generation": 2}
+    ],
+    "completed_since_activation": [
+      {"pack_id": "aperture-foundry", "generation": 4, "message_id": "MSG-T10-APERTURE-AUDIT-000004", "result": "TEST_FAIL_PRODUCT"}
+    ]
+  },
+  "worker_resumptions": [
+    {"pack_id": "reliquary-vaults", "task_id": "019fae2a-1ba8-71b1-a5f9-8025bbff1430", "state": "SENT_ONCE", "required_generation": 7},
+    {"pack_id": "hearthveil", "task_id": "019fae2a-2119-7543-aee8-72b261a0db66", "state": "SENT_ONCE", "required_generation": 6},
+    {"pack_id": "hearth-and-hall", "task_id": "019fae2a-1e88-7a43-aae5-238305c09a85", "state": "SENT_ONCE_REPLACEMENT_PUBLISHED", "required_generation": 2},
+    {"pack_id": "vanguard-arsenal", "task_id": "019fae2a-3694-7271-9168-ee644d4886a1", "state": "SENT_ONCE", "required_generation": 3},
+    {"pack_id": "aperture-foundry", "task_id": "019fae2a-2ba4-7710-ab61-54ce7e6f9bd1", "state": "SENT_ONCE", "required_generation": 5},
+    {"pack_id": "echo-vessels", "task_id": "019fae2a-31a5-7443-80d9-406c4aa09888", "state": "SENT_ONCE_WITH_SUPERSEDING_AUTHORITY", "required_generation": 7, "candidate_publication_authorized": false}
+  ],
+  "replacement_candidates": [
+    {"pack_id": "hearth-and-hall", "generation": 2, "message_id": "MSG-P08-HEARTH-HALL-CANDIDATE-000002", "mailbox_commit": "33105e6a750a5fb1ede5215a381dc609b3e14ecc"}
+  ],
+  "integration_queue": [],
+  "integration_blocker": "No post-implementation candidate has a T10 PASS."
+}

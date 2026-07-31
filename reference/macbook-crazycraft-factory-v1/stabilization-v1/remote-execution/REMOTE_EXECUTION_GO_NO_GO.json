@@ -1,0 +1,25 @@
+{
+  "schema_version": "1.0.0",
+  "implementation_commit": "62cd0cd42403612060aedad5f5cce738529b5806",
+  "implementation_tree": "1e3b1ce2ec9c8b99ad8253d5372e10b1e87cd42e",
+  "parent_report_commit": "ee0c798a4c4faa354f17f5e8828ea4ab39090403",
+  "network_run_control": "PAUSED",
+  "matrix": {
+    "T1_REMOTE_SPAWN_READY": {"status": "PASS", "reason": "Dedicated pinned T1 SSH identity, forced command, live Studio Codex JOB-5, bounded retrieval, disclosure scan, and receipt passed."},
+    "T10_REMOTE_SPAWN_READY": {"status": "PASS", "reason": "Dedicated pinned T10 SSH identity, forced command, live Studio Codex JOB-4, bounded retrieval, disclosure scan, and receipt passed."},
+    "REMOTE_JOB_RECEIPTS_READY": {"status": "PASS", "reason": "Completed and failed live jobs emitted hash-bound receipts; cleanup and disclosure fields were present."},
+    "SANITIZED_EVIDENCE_RETURN_READY": {"status": "PASS", "reason": "Live T1 synthetic JOB-5 returned only source-neutral abstract findings and opaque IDs. Raw Java evidence was not used."},
+    "PRIVATE_AUDIT_RETURN_READY": {"status": "PASS", "reason": "Live T10 synthetic JOB-4 returned only abstract defects and opaque IDs. A private oracle was not used."},
+    "PARALLEL_BDS_READY": {"status": "PASS", "reason": "Two fixed network-disabled containers ran concurrently on the Studio with distinct inputs, outputs, names and logical ports; this proves container throughput only."},
+    "WORKER_STUDIO_ACCESS_DENIED": {"status": "FAIL", "reason": "All MacBook Codex tasks share the same OS user that owns the dedicated keys; forced commands constrain key use but cannot hide the keys from same-user processes."},
+    "WORKER_PRIVILEGED_KEY_ACCESS_DENIED": {"status": "FAIL", "reason": "The dedicated private keys are mode 0600 but owned by the shared MacBook user. A separate local service identity is required for hard denial."},
+    "REMOTE_EVIDENCE_BOUNDARY_READY": {"status": "BLOCKED", "reason": "The Studio holds the exact frozen archive and sanitized return path works, but T1/T10 share one Studio account and Codex reads are not OS-confined to declared evidence roots."},
+    "REMOTE_PRIVATE_AUDIT_READY": {"status": "BLOCKED", "reason": "The abstract return path works, but separate-account/private-oracle filesystem enforcement and a real oracle-bound audit remain unproven."},
+    "REMOTE_BDS_QUALIFICATION_READY": {"status": "BLOCKED", "reason": "Remote exact-input rejection and parallel container isolation passed; authoritative Stable and Preview BDS images and exact-package runtime gates were not executed."},
+    "MACBOOK_PRODUCTION_ISOLATION_READY": {"status": "FAIL", "reason": "Same-user key access and local evidence/repository denial remain unproven; the remote substrate alone does not cure production isolation."},
+    "NETWORK_PRODUCTION_RESUME_READY": {"status": "FAIL", "reason": "Worker credential denial, OS-enforced evidence/oracle separation, and exact Stable/Preview BDS qualification authority remain incomplete."}
+  },
+  "decision": "REMOTE_EXECUTION_LIVE_SUBSTRATE_ACTIVE_PRODUCTION_RESUME_BLOCKED",
+  "next_supervisor_action": "Keep campaigns paused. Establish a separate MacBook service identity for T1/T10 key custody and separate or sandboxed Studio evidence/audit execution identities; then run one real bounded evidence recovery, one oracle-bound audit, and exact-package Stable/Preview BDS qualification before considering a production epoch.",
+  "proof_boundary": "Live cross-host role-constrained Codex return mechanics, disclosure scanning, receipts, denial probes, exact-input rejection, and synthetic Studio Docker concurrency. No product audit, private-oracle result, BDS runtime, client, controller, console, rights, or release claim."
+}

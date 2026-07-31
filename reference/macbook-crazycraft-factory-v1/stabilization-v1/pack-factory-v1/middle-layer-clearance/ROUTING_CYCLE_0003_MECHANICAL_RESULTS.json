@@ -1,0 +1,52 @@
+{
+  "schema_version": "1.0.0",
+  "record_type": "factory_mechanical_admission_cycle",
+  "cycle_id": "FACTORY-ROUTING-CYCLE-0003",
+  "created_at": "2026-07-30T01:02:00Z",
+  "mailbox_input_commit": "6be7e5791f54da93a5eb580f01861f31ff0230de",
+  "mailbox_input_tree": "aa23a9b817858c3417e1f641e0abe6d941ebdae4",
+  "results": [
+    {
+      "pack_id": "momentum-menagerie",
+      "candidate_generation": 2,
+      "candidate_message_id": "MSG-P15-MOMENTUM-CANDIDATE-000002",
+      "candidate_message_sha256": "b2220e68a6f426dba2c55cd7d95859808833f19833b27acb8e322531d15225c2",
+      "content_commit": "162aa549a100df0e747528e487bd5cded73986b1",
+      "content_tree": "1b37df44093dabbde8978f48314e9a8955d122ae",
+      "metadata_commit": "bf95e35d19c15189a1140335952f262440152ae7",
+      "metadata_tree": "4a258212e62bf7ba24426d4044eb39538576f827",
+      "behavior_pack_sha256": "682df80944a3daffb991c7659146195a14dea6114000b754cc4b2631f809a00d",
+      "resource_pack_sha256": "3dbb7254f8027d606af9246391aba28f3e727e74552a655b8629699ad716fbf6",
+      "mcaddon_sha256": "054290470fb0252159c1af9afedf8084a06b6c90134d05253cee8347f0aa2f44",
+      "status": "FAIL",
+      "passed_checks": {
+        "generation_1_clean_archive_release_gate_repair": "PASS",
+        "assignment_allocation_namespace_uuid": "PASS",
+        "repository_ref_commit_tree_ancestry": "PASS",
+        "artifact_paths_sizes_hashes_manifest": "PASS",
+        "deterministic_rebuild": "PASS",
+        "json_media_archive_reference_closure": "PASS",
+        "shipped_entrypoint": "PASS",
+        "independent_restricted_scans": "PASS",
+        "process_isolation_receipt": "PASS_INDEPENDENT_REPLAY",
+        "proof_boundary": "PASS"
+      },
+      "failed_checks": [
+        {
+          "finding_id": "MECH-MOMENTUM-G2-UNTRACKED-SCAN-AUTHORITY-001",
+          "field": "receipts/CANDIDATE_GENERATION_5_METADATA_B_RESTRICTED_SCAN.json",
+          "expected": "The claimed metadata-B scan receipt is tracked in an immutable candidate-bound evidence authority with exact path, size, and SHA-256.",
+          "observed": "The claimed receipt and companion Git-object scan exist only as untracked working-tree observations and are absent from metadata B, evidence_paths, and metadata_changed_paths."
+        }
+      ],
+      "preserved_passing_evidence": "CLEAN_ARCHIVE_RELEASE_CHECK_PASS; STATIC_16_OF_16; RUNTIME_86_OF_86; EXACT_UNCHANGED_PACKAGE_TUPLE; INDEPENDENT_1268_BLOB_SCAN_ZERO_FINDINGS; PROCESS_RECEIPT_REPLAY_PASS",
+      "next_action": "RETURN_CONSOLIDATED_MECHANICAL_REPAIR_TO_ORIGINAL_OWNER"
+    }
+  ],
+  "proof_boundary": [
+    "MECHANICAL_ADMISSION_ONLY",
+    "WORKING_TREE_OBSERVATION_IS_NOT_AUTHORITY",
+    "GENERATION_2_REMAINS_IMMUTABLE",
+    "NO_BDS_T10_CLIENT_CONTROLLER_CONSOLE_RIGHTS_MARKETPLACE_INTEGRATION_OR_RELEASE_CLAIM"
+  ]
+}

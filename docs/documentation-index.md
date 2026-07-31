@@ -20,6 +20,7 @@
 - [Corpus methodology](corpus-methodology.md)
 - [User guide](user-guide.md)
 - [Agent guide](agent-guide.md)
+- [Studio factory overseer](factory-overseer.md)
 - [Reproduction commands](reproduction.md)
 - [Requirement traceability](requirement-traceability.md)
 

@@ -1,0 +1,274 @@
+{
+  "asset_workload": {
+    "authority_state": "PLANNED_ORIGINAL_PRODUCTION",
+    "class_counts": {
+      "HERO": 2,
+      "ICON": 28,
+      "NOT_REQUIRED": 0,
+      "PARTICLE": 4,
+      "REUSABLE_COMPLEX": 4,
+      "ROUTINE_MODEL": 6,
+      "SOUND": 10
+    },
+    "expected_outputs": {
+      "animation_controllers": 4,
+      "animations": 8,
+      "editable_bbmodel_files": 12,
+      "icons": 28,
+      "localization_sets": 1,
+      "models": 12,
+      "particles": 4,
+      "proof_renders": 60,
+      "sounds": 10,
+      "textures": 40,
+      "ui_elements": 2
+    },
+    "rules": [
+      "Blockbench is NOT_APPLICABLE for flat icons and ordinary full-cube blocks unless custom geometry materially supports the product.",
+      "Every custom geometry source must reopen natively and export twice to normalized equivalent runtime geometry.",
+      "Hero and reusable-complex assets require independent Golden scoring; routine assets require originality, readability, and technical validity.",
+      "Repairs update editable sources first; export-only hand edits are forbidden."
+    ]
+  },
+  "assigned_worker_role": "PACK-WORKER-07-RELIQUARY",
+  "assignment_id": "PA-07-RELIQUARY_VAULTS-V1",
+  "assignment_payload_sha256": "607d3e58f5adf874be5969a528efa2ea1915a4f0670ba2ab87e4c387c538dba7",
+  "assignment_type": "DURABLE_PACK_OWNERSHIP",
+  "central_authority_bindings": {
+    "asset_workload_ledger_sha256": "ed42ebebd9af60fce60bf3ada9b4e36c263b4bc7d45abbdeef0174142b166ad9",
+    "namespace_uuid_registry_sha256": "966630ecb756190012d3b20604ff148442efa9e98785e53f323f8fd5a27d2f33",
+    "pack_map_sha256": "f60ed61b1c65de6069fadf321b0177dc591db142669f7c4047719c0cef4e2edb",
+    "repository_registry_sha256": "5b5cfb30439676df0f1856ab6820a83949eb16b2aaa8b5e2e3a5565e88da323d",
+    "runtime_budget_registry_sha256": "4bcd007bd5a5af86cd1fc4e74565321914255669c253ee17c7312173e6669f39"
+  },
+  "completion_condition": {
+    "nonterminal_events": [
+      "contract_created",
+      "vertical_slice_created",
+      "preliminary_candidate_published",
+      "candidate_submitted_to_testing",
+      "one_repair_completed",
+      "waiting_for_tester",
+      "standalone_test_pass"
+    ],
+    "terminal_alternatives": [
+      "TERMINALLY_UNAVAILABLE",
+      "USER_DECISION_REQUIRED",
+      "EXTERNAL_PHYSICAL_GATE_REQUIRED"
+    ],
+    "terminal_success": "PACK_ACCEPTED_AND_INTEGRATED"
+  },
+  "control_source_responsibility": {
+    "accepted_foundations": [],
+    "exact_source_artifacts": [
+      {
+        "final_disposition": "PACK",
+        "path": "mods/Jewelrycraft 2.jar",
+        "sha256": "7ab1ebb6a53ccc5e02c0ce0f429998e87b29d95dc8c734ab10a3c507362c2769",
+        "source_artifact_id": "CC-SRC-023"
+      },
+      {
+        "final_disposition": "PACK_CONSOLIDATED_DEPENDENCY",
+        "path": "mods/Baubles.jar",
+        "sha256": "05ae8f11b8f9012ebebbf179227b010829739c6284e30da5dd3db220ee682f8a",
+        "source_artifact_id": "CC-SRC-005"
+      },
+      {
+        "final_disposition": "PACK_CONSOLIDATED_ROLE",
+        "path": "mods/Iron Chest.jar",
+        "sha256": "b94b799e7471858b7651728ea56f6cc51087142f0291843d6460fac4225ec28c",
+        "source_artifact_id": "CC-SRC-022"
+      }
+    ],
+    "excluded_scope": [
+      "raw Java code or bytecode",
+      "decompiled text",
+      "source identifiers and paths",
+      "source models, textures, UVs, animations, audio, writing, and branding",
+      "private oracle values and hidden cases"
+    ],
+    "existing_candidate_authority": null,
+    "visibility": "CONTROL_ONLY_NOT_A_PRODUCTION_INPUT"
+  },
+  "identity": {
+    "asset_authority": {
+      "inventory": {
+        "authority_state": "PLANNED_ORIGINAL_PRODUCTION",
+        "class_counts": {
+          "HERO": 2,
+          "ICON": 28,
+          "NOT_REQUIRED": 0,
+          "PARTICLE": 4,
+          "REUSABLE_COMPLEX": 4,
+          "ROUTINE_MODEL": 6,
+          "SOUND": 10
+        },
+        "expected_outputs": {
+          "animation_controllers": 4,
+          "animations": 8,
+          "editable_bbmodel_files": 12,
+          "icons": 28,
+          "localization_sets": 1,
+          "models": 12,
+          "particles": 4,
+          "proof_renders": 60,
+          "sounds": 10,
+          "textures": 40,
+          "ui_elements": 2
+        },
+        "rules": [
+          "Blockbench is NOT_APPLICABLE for flat icons and ordinary full-cube blocks unless custom geometry materially supports the product.",
+          "Every custom geometry source must reopen natively and export twice to normalized equivalent runtime geometry.",
+          "Hero and reusable-complex assets require independent Golden scoring; routine assets require originality, readability, and technical validity.",
+          "Repairs update editable sources first; export-only hand edits are forbidden."
+        ]
+      },
+      "ref": "refs/heads/codex/reliquary-vaults-production-v1",
+      "repository": "/Users/blakegrove/Desktop/bedrock-server/program/crazycraft-pack-production-v1/reliquary-vaults",
+      "root": "assets/editable"
+    },
+    "bp_data_uuid": "13064ecc-fe4d-582b-8dde-67cbfcced72a",
+    "bp_header_uuid": "4635e043-7c04-58a8-a4c2-ef98aaae04dc",
+    "namespace": "ccr_p13",
+    "production_ref": "refs/heads/codex/reliquary-vaults-production-v1",
+    "production_repository": "/Users/blakegrove/Desktop/bedrock-server/program/crazycraft-pack-production-v1/reliquary-vaults",
+    "rp_header_uuid": "36795b18-7ccb-52b8-adbe-d2632812f4bd",
+    "rp_module_uuid": "b798604f-0b38-5ebe-bc79-8764e5f94e6a",
+    "script_module_uuid": "ea09bd6f-27f3-59f5-8be6-ec32894a0a69",
+    "semantic_version": [
+      1,
+      0,
+      0
+    ],
+    "theme": "Crafted relics, equippable effects, and tiered player-owned secure vaults."
+  },
+  "internal_subagent_roles": [
+    "gameplay_runtime",
+    "behavior_pack_content",
+    "resource_pack_and_assets",
+    "blockbench_when_required",
+    "tests",
+    "package_validation"
+  ],
+  "mailbox_contract": {
+    "candidate_submission": "candidate_submissions/reliquary-vaults/",
+    "final_decision": "final_decisions/reliquary-vaults/",
+    "integration_intake": "integration_intake/reliquary-vaults/",
+    "repair_instruction": "worker_repairs/reliquary-vaults/",
+    "repository": "/Users/blakegrove/Desktop/bedrock-server/program/crazycraft-pack-factory-mailboxes-v1",
+    "tester_result": "tester_results/reliquary-vaults/"
+  },
+  "no_ssh_no_studio": {
+    "attempt_is_lane_clean_room_hard_stop": true,
+    "status": "REQUIRED"
+  },
+  "pack_id": "reliquary-vaults",
+  "pack_name": "Reliquary Vaults",
+  "producer_safe_input": {
+    "contract_path": "/Users/blakegrove/Desktop/bedrock-server/program/crazycraft-persistent-orchestrator-v1/stabilization-v1/pack-factory-v1/contracts/reliquary-vaults.production-contract.json",
+    "contract_sha256": "10d0628acddc5d9c784bbdb344796f10b26c320d9db4c7b2b0f903818553147d",
+    "source_names_paths_hashes_forbidden": true
+  },
+  "product_scope": {
+    "blocks": [
+      "three secure vault tiers",
+      "relic workbench"
+    ],
+    "controller_conscious_interaction": "All primary actions use ordinary item use, block interact, inventory, dialogue forms, or bounded action forms; no keyboard-only requirement.",
+    "core_gameplay_loop": "Recover relic components, craft bounded relics, equip one through controller-safe use, and secure collections in owned vault tiers.",
+    "crafting_and_loot": [
+      "vanilla-reachable recipes, bounded trial loot, exact-once upgrades"
+    ],
+    "encounters": [
+      "relic trials with no global boss"
+    ],
+    "entities": [
+      "two optional cosmetic wisps used only as bounded feedback"
+    ],
+    "items": [
+      "twelve original relics",
+      "relic clasp",
+      "three vault upgrades",
+      "recovery seal"
+    ],
+    "multiplayer_behavior": "Concurrent access uses revision fencing; effects and rewards are per-player and exact-once.",
+    "ownership_rules": "Relics use physical item identity; vaults have one owner and an explicit trusted-user list.",
+    "persistence": "Versioned vault inventory, relic attunement, transfer, and rollback records.",
+    "player_progression": [
+      "common relics",
+      "attuned relics",
+      "masterwork relics",
+      "vault tier upgrades"
+    ],
+    "recovery_and_cleanup": "Orphaned vaults and interrupted upgrades remain recoverable; feedback entities self-clean.",
+    "required_original_presentation": "Original faceted metal, cloth, glass, and carved-stone language with clear tier readability.",
+    "restart_and_reconnect": "Versioned state reconstructs idempotently; stale callbacks and generations are inert."
+  },
+  "publication_rules": {
+    "candidate_publication_is_nonterminal": true,
+    "frozen_candidates_never_edited": true,
+    "new_product_repair_requires_new_generation": true,
+    "one_durable_owner": true,
+    "subagents_are_not_product_owners": true,
+    "tester_wait_is_nonterminal": true,
+    "working_tree_packages_rejected": true
+  },
+  "required_outputs": [
+    "complete_behavior_pack",
+    "complete_resource_pack_when_applicable",
+    "manifest_declared_scripts_main_js_when_scripted",
+    "original_editable_asset_sources",
+    "local_unit_and_integration_tests",
+    "deterministic_builder",
+    "exact_bp_rp_mcaddon_artifacts",
+    "artifact_manifest",
+    "candidate_bound_process_isolation_receipt",
+    "immutable_candidate_submission_message"
+  ],
+  "run_control": "PAUSED_NOT_DISPATCHED",
+  "schema_version": "1.0.0",
+  "technical_allocation": {
+    "dynamic_property_prefix": "ccr_p13:",
+    "integration_adapter_required": true,
+    "migration_version": 1,
+    "persistence_schema": "ccr_p13:state_v1",
+    "platform_authority": {
+      "aggregate_sha256": "84e79568550d800717798858c254498e682d452ec4ab6b95e6320d1a79397f57",
+      "commit": "aba740f136dce5781e68d34e1c7aaa2a0a3d8671",
+      "interface_classification": "FROZEN_PLATFORM_V1_CONTRACTS",
+      "manifest_sha256": "b7de7329fd78b451994b367e0ac226099e8d260bd21309f3f5753b3830c42630",
+      "repository": "/Users/blakegrove/Desktop/bedrock-server/minecraft-compiler-baseline",
+      "tree": "2d5c123c9cbc6d4cdaac2ff922916450b5282d08"
+    },
+    "runtime_budget": {
+      "adds_policy": "SHARED_ADMISSION_CONTROLLER_MAX_8_GLOBAL_MAX_4_PER_ENCOUNTER",
+      "boss_policy": "SHARED_LEASE_ONLY_NO_GUARANTEED_CONCURRENT_BOSS",
+      "combined_reservation_target": {
+        "callbacks_per_heartbeat": 1,
+        "custom_entities": 2,
+        "dynamic_property_bytes": 12288,
+        "particles_per_second": 6,
+        "pathfinders": 0,
+        "persistent_records": 192,
+        "projectiles": 1,
+        "scheduler_pending": 3,
+        "script_time_microseconds_per_tick": 155,
+        "simultaneous_audio_voices": 1
+      },
+      "standalone_policy": "A pack may use a larger standalone test fixture only when its assignment declares that fixture; combined integration must meet this reservation target or return an integration finding."
+    },
+    "shared_runtime_interfaces": [
+      "identity",
+      "persistence",
+      "ownership",
+      "scheduler",
+      "event_router",
+      "reward_journal",
+      "recovery",
+      "diagnostics",
+      "budget_admission",
+      "migration_coordinator"
+    ]
+  },
+  "worker_mission": "Own this entire Bedrock pack. Build all assigned gameplay, runtime, assets, tests, and deterministic package outputs. Submit immutable candidates through the mailbox. Read tester and repair messages from the mailbox. Correct defects in the production repository and publish new immutable candidates. Continue until T1 registers the pack as accepted and integrated or issues an exact terminal disposition."
+}

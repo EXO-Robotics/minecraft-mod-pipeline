@@ -1,0 +1,52 @@
+{
+  "schema_version": "1.0.0",
+  "qualifier_source_commit": "bca89f51b10f06a145a8b02928448b98ef5ae5f8",
+  "qualifier_source_tree": "7bd65a75a0730d8818f43a202abda2905feb62ea",
+  "qualifier_sha256": "d1af68f59307d5624352acb2c11f1b24feb66bf1e6351190eb950ff705d56880",
+  "tester_image": "crazycraft-exact-package-qualifier@sha256:c3adfe3f7cad7c174d23db52dd14da6937901b1df7f9be853c65167086ed811f",
+  "tests": {
+    "qualifier_unit_tests": {
+      "command": "python3 -m unittest stabilization-v1/remote-execution/exact-package-qualifier/tests/test_qualifier.py",
+      "passed": 16,
+      "failed": 0,
+      "status": "PASS"
+    },
+    "remote_route_regression_tests": {
+      "command": "python3 -m unittest stabilization-v1/remote-execution/tests/test_remote_execution.py",
+      "passed": 25,
+      "failed": 0,
+      "status": "PASS"
+    },
+    "image_content": {
+      "qualifier_present": "PASS",
+      "qualifier_executable": "PASS",
+      "help_contract": "PASS",
+      "embedded_qualifier_sha256": "d1af68f59307d5624352acb2c11f1b24feb66bf1e6351190eb950ff705d56880",
+      "embedded_bds_binary_sha256": "978ea655c418f112a33b80043d676712ad080724382fafda9509825910fa4043"
+    },
+    "fail_closed_coverage": {
+      "missing_required_field": "PASS",
+      "unexpected_field": "PASS",
+      "invalid_payload_hash": "PASS",
+      "wrong_artifact_hash": "PASS",
+      "missing_artifact": "PASS",
+      "path_traversal": "PASS",
+      "hidden_archive_member": "PASS",
+      "symlink_archive_member": "PASS",
+      "symlink_input": "PASS",
+      "unapproved_image_platform": "PASS",
+      "undeclared_evidence_mount": "PASS",
+      "duplicate_job_id": "PASS",
+      "nonmonotonic_job_id": "PASS"
+    },
+    "real_stable_bds": {
+      "job_id": "JOB-000000000014",
+      "status": "PASS",
+      "cycles": 2,
+      "same_world_restart": true,
+      "container_removed": true,
+      "candidate_mutated": false
+    }
+  },
+  "proof_boundary": "Targeted qualifier and route infrastructure tests plus real MacBook-local Docker Stable BDS execution. Mac Studio image deployment remains a separate gate."
+}

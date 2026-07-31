@@ -1,0 +1,50 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "outcome",
+    "abstract_results",
+    "opaque_contract_ids",
+    "opaque_finding_ids",
+    "required_regression_ids",
+    "proof_boundary"
+  ],
+  "properties": {
+    "outcome": {"enum": ["PASS", "FAIL", "MORE_EVIDENCE_REQUIRED"]},
+    "abstract_results": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "item_id",
+          "category",
+          "summary",
+          "severity",
+          "allowed_repair_scope"
+        ],
+        "properties": {
+          "item_id": {"type": "string"},
+          "category": {"type": "string"},
+          "summary": {"type": "string"},
+          "severity": {"type": "string"},
+          "allowed_repair_scope": {"type": "string"}
+        }
+      }
+    },
+    "opaque_contract_ids": {
+      "type": "array",
+      "items": {"type": "string", "pattern": "^[A-Z0-9][A-Z0-9._:-]{0,127}$"}
+    },
+    "opaque_finding_ids": {
+      "type": "array",
+      "items": {"type": "string", "pattern": "^[A-Z0-9][A-Z0-9._:-]{0,127}$"}
+    },
+    "required_regression_ids": {
+      "type": "array",
+      "items": {"type": "string", "pattern": "^[A-Z0-9][A-Z0-9._:-]{0,127}$"}
+    },
+    "proof_boundary": {"type": "string", "minLength": 1, "maxLength": 1000}
+  }
+}

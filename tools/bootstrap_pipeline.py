@@ -6,6 +6,7 @@ import argparse
 import hashlib
 import json
 import os
+import shlex
 import shutil
 import sys
 import sysconfig
@@ -84,6 +85,11 @@ def install_skills(codex_home: Path, *, replace: bool) -> list[dict[str, str]]:
     return results
 
 
+def render_launcher(executable: str, import_line: str) -> str:
+    code = f"{import_line}\nraise SystemExit(main())"
+    return f"#!/bin/sh\nexec {shlex.quote(executable)} -c {shlex.quote(code)} \"$@\"\n"
+
+
 def install_compiler() -> None:
     purelib = Path(sysconfig.get_path("purelib"))
     scripts = Path(sysconfig.get_path("scripts"))
@@ -96,11 +102,12 @@ def install_compiler() -> None:
     launchers = {
         "mccompiler": "from mccompiler.cli import main",
         "mccompiler-agent": "from mccompiler.agent.stdio_server import main",
+        "mccompiler-orchestrator": "from mccompiler.orchestration.cli import main",
     }
     for name, import_line in launchers.items():
         launcher = scripts / name
         launcher.write_text(
-            f"#!{sys.executable}\n{import_line}\nraise SystemExit(main())\n",
+            render_launcher(sys.executable, import_line),
             encoding="utf-8",
         )
         launcher.chmod(0o755)

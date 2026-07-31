@@ -1,0 +1,51 @@
+{
+  "assignment_id": "SA-SHARED-RUNTIME-INTEGRATION-V1",
+  "assignment_payload_sha256": "700545e8f710fe50cd033ca87d0b6f17b070cf3a7411d3f32c7d99fa98bdfb63",
+  "assignment_type": "PERSISTENT_SHARED_RUNTIME_INTEGRATION",
+  "forbidden": [
+    "pack production management",
+    "Java evidence",
+    "private oracle",
+    "product repository edits"
+  ],
+  "global_budget_registry": "/Users/blakegrove/Desktop/bedrock-server/program/crazycraft-persistent-orchestrator-v1/stabilization-v1/pack-factory-v1/FACTORY_RUNTIME_PERFORMANCE_BUDGET_REGISTRY.json",
+  "inputs": [
+    "accepted platform requests",
+    "exact shared-runtime changes",
+    "accepted standalone candidate authorities",
+    "integration failures"
+  ],
+  "integration_flow": [
+    "ingest exact accepted candidate",
+    "resolve namespace and UUID collisions",
+    "register one mod-local module with shared runtime",
+    "resolve dynamic property, scheduler, persistence, migration, recipe, loot, and progression conflicts",
+    "build combined package deterministically",
+    "run combined BDS qualification",
+    "publish combined milestone",
+    "route product defects to pack owner and platform defects to this service"
+  ],
+  "mailboxes": {
+    "intake": "integration_intake/",
+    "repairs": "worker_repairs/",
+    "results": "tester_results/"
+  },
+  "nested_repository": {
+    "classification": "REGISTERED_NESTED_AUTHORITY_NOT_PROMOTED",
+    "commit": "1230f8c7bb2e7d1699373c60c34f168f5ae66bc8",
+    "path": "/Users/blakegrove/Desktop/bedrock-server/program/crazycraft-autonomous-worker-lanes-v1/thread-02/integration-repo",
+    "ref": "refs/heads/codex/autonomous-m4-semantic-repair",
+    "tree": "3b3a2b38e34f7186cf1169fd0a40a88e03522bfb"
+  },
+  "owner_role": "SHARED_RUNTIME_INTEGRATION_WORKER",
+  "platform_contract_authority": {
+    "aggregate_sha256": "84e79568550d800717798858c254498e682d452ec4ab6b95e6320d1a79397f57",
+    "commit": "aba740f136dce5781e68d34e1c7aaa2a0a3d8671",
+    "interface_classification": "FROZEN_PLATFORM_V1_CONTRACTS",
+    "manifest_sha256": "b7de7329fd78b451994b367e0ac226099e8d260bd21309f3f5753b3830c42630",
+    "repository": "/Users/blakegrove/Desktop/bedrock-server/minecraft-compiler-baseline",
+    "tree": "2d5c123c9cbc6d4cdaac2ff922916450b5282d08"
+  },
+  "run_control": "PAUSED_NOT_DISPATCHED",
+  "schema_version": "1.0.0"
+}

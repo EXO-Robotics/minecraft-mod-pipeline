@@ -1,0 +1,532 @@
+{
+  "created_at": "2026-07-30T00:14:00Z",
+  "entries": [
+    {
+      "artifact_manifest": null,
+      "behavior_pack": {
+        "sha256": "143b0eafc948affc05f52530304ea6bf59059800f530a55444577524e3d34e3f"
+      },
+      "candidate_generation": 1,
+      "content_commit": "26fd00c7e00a8c3ec2f57e5bde071068d5d426e4",
+      "content_tree": "fa74786c8c1b608e7c7662da2c8a33848847a21b",
+      "current_mechanical_state": "ALREADY_AUDITED",
+      "current_t10_state": "NOT_QUEUED",
+      "current_tester_state": "REFERENCE_AUTHORITY_PRESERVED",
+      "exact_blocker": "No new factory candidate; preserve FINAL_OR_REFERENCE authority.",
+      "isolation_receipt": "PRESERVED_EXISTING_AUTHORITY",
+      "mcaddon": {
+        "sha256": "f7ad3aec771a120809b42dd82d6ad92e141ee8eecd5a0e0b4561d3b9ed42fbd5"
+      },
+      "metadata_commit": "14e74bd49d0f04e5f30dea36a336c600d38be8fe",
+      "metadata_tree": "99bff707663b109cd2fcf1b0371a956c0adb3ec6",
+      "next_automatic_action": "REGISTER ONLY THROUGH A LATER EXACT INTEGRATION DECISION",
+      "pack_id": "quietwork",
+      "production_repository": "/Users/blakegrove/Desktop/bedrock-server/.derivedData/worktrees/authorized-java-secretrooms-v1/v1.1-integration",
+      "ref": "refs/heads/codex/quietwork-v1.1-reference",
+      "resource_pack": {
+        "sha256": "66afe2812ba2d7814b33cb11348f03213cf97a00b63d5026d32b6b2ab5541000"
+      },
+      "submission_message": null
+    },
+    {
+      "artifact_manifest": null,
+      "behavior_pack": null,
+      "candidate_generation": 1,
+      "content_commit": "2a72b72002c8eedd787262c1a6c7c00862447920",
+      "content_tree": "ebe24edf61491f8e598574fd3d8ba2881112cf45",
+      "current_mechanical_state": "NO_IMMUTABLE_CANDIDATE",
+      "current_t10_state": "NOT_QUEUED",
+      "current_tester_state": "NOT_ROUTABLE",
+      "exact_blocker": "Registered authority supplies an MCAddon but no exact committed BP/RP tuple or approved flat-addon tester profile.",
+      "isolation_receipt": null,
+      "mcaddon": {
+        "sha256": "86e582665f7e4fa268de977e4fb7a3ff18be9c13a565e72c42f3ee586dffa787"
+      },
+      "metadata_commit": null,
+      "metadata_tree": null,
+      "next_automatic_action": "EXISTING_PRODUCT_CLOSURE_OWNER MUST PUBLISH AN EXACT ROUTABLE TUPLE OR APPROVED PROFILE",
+      "pack_id": "catalyst-wilds",
+      "production_repository": "/Users/blakegrove/Desktop/bedrock-server/.derivedData/authorities/catalyst-wilds",
+      "ref": "refs/heads/main",
+      "resource_pack": null,
+      "submission_message": null
+    },
+    {
+      "artifact_manifest": null,
+      "behavior_pack": {
+        "sha256": "d3f2652738d68ef3b82f713adcf9028a81d5069ff6fc38de58e0ec2cd65ed1da"
+      },
+      "candidate_generation": 1,
+      "content_commit": "11c5d7cfbb887d1f5246f85ffb34e5b340144f5f",
+      "content_tree": "ce1dbafdaa04673885e755f5f9747aaf359b3eea",
+      "current_mechanical_state": "ALREADY_AUDITED",
+      "current_t10_state": "NOT_QUEUED",
+      "current_tester_state": "DESKTOP_SMOKE_READY",
+      "exact_blocker": "No new factory candidate; preserve FINAL_OR_REFERENCE authority.",
+      "isolation_receipt": "PRESERVED_EXISTING_AUTHORITY",
+      "mcaddon": {
+        "sha256": "80467eae5cdb4303593e725572364177d8d53f8e73c5d02538a5469d9837dd56"
+      },
+      "metadata_commit": null,
+      "metadata_tree": null,
+      "next_automatic_action": "REGISTER ONLY THROUGH A LATER EXACT INTEGRATION DECISION",
+      "pack_id": "shatterwild-foundry",
+      "production_repository": "/Users/blakegrove/Desktop/bedrock-server/.derivedData/cleanroom/shatterwild-closure-repair-v1/lanes/production-repair",
+      "ref": "refs/heads/codex/import-shatterwild-foundry",
+      "resource_pack": {
+        "sha256": "10ffb3c6af0b02f2e23a36284ceb249d63b68f23a9fbb961b36d575855aec702"
+      },
+      "submission_message": null
+    },
+    {
+      "artifact_manifest": null,
+      "behavior_pack": {
+        "path": "trailbound-golden-repair-v2/candidate/trailbound-packs-behavior.mcpack",
+        "sha256": "f26e9daddfd7ba8893f6ccd5934b45ec0f88e1380b3e02038c13051d71fad8f3"
+      },
+      "candidate_generation": 2,
+      "content_commit": "d2d737c5b7110c1c596ce429649fb002efdf9049",
+      "content_tree": "47d8d3e409b8cc1b6de49654456f6cee5ddfb201",
+      "current_mechanical_state": "ALREADY_TESTED",
+      "current_t10_state": "NOT_QUEUED_EXISTING_CLOSURE",
+      "current_tester_state": "TEST_PASS:MSG-T09-TRAILBOUND-BDS-RESULT-000005",
+      "exact_blocker": "Client presentation, audio audition, controller, and multiplayer gates remain distinct and unrun.",
+      "isolation_receipt": "REGISTERED_PROVENANCE_AUTHORITY",
+      "mcaddon": {
+        "path": "trailbound-golden-repair-v2/candidate/trailbound-packs.mcaddon",
+        "sha256": "949fa581e930460a8bcc8e02f574d1bc89f848a754c57ec84907f07f27372bc4"
+      },
+      "metadata_commit": "3cfcc28f7a15a8f31413b77ca0cbd6f3c137f5e5",
+      "metadata_tree": "f4dfc5db028a709bc89b588b57719ad78b215d8b",
+      "next_automatic_action": "T9 CONTINUES ONLY THE OUTSTANDING EXACT-PACKAGE CLOSURE GATES",
+      "pack_id": "trailbound-packs",
+      "production_repository": "/Users/blakegrove/Desktop/bedrock-server/program/crazycraft-autonomous-worker-lanes-v1/thread-09",
+      "ref": "refs/heads/main",
+      "resource_pack": {
+        "path": "trailbound-golden-repair-v2/candidate/trailbound-packs-resource.mcpack",
+        "sha256": "14fcdba454ab5ca85381628d71845dadc80b9c255eb812b7aaebea84814ef7af"
+      },
+      "submission_message": "MSG-T09-TRAILBOUND-BDS-000001"
+    },
+    {
+      "artifact_manifest": null,
+      "behavior_pack": {
+        "bytes": 24105,
+        "sha256": "580a9b61e46bbe8cef2a56b7f5bf2936b3d6791651d755dfeb14d4f25d7a245c"
+      },
+      "candidate_generation": 4,
+      "content_commit": "2ab0eba12f93bc0e7d4f1c40f94fb8268e3347fa",
+      "content_tree": "2f07723236a6fff4b5859cf2b888b5a4b815f14a",
+      "current_mechanical_state": "ALREADY_TESTED",
+      "current_t10_state": "QUEUED:MSG-T01-POCKETBOUND-AUDIT-INTAKE-000001",
+      "current_tester_state": "TEST_PASS:MSG-TESTER-000000000017-PASS",
+      "exact_blocker": "T10 active slot occupied by Aspectweave.",
+      "isolation_receipt": "ACCEPTED_CURRENT_CANDIDATE_AUTHORITY",
+      "mcaddon": {
+        "bytes": 27679,
+        "sha256": "69f47526337f8a6cb4975de443e7972f7ec9d08d9b9ff8259bce96d3a0dba404"
+      },
+      "metadata_commit": "96857b6ca1dc80861afd940afa93456abc762bb3",
+      "metadata_tree": "6c66a6525e556cfdb61d709d014eb37602ca1178",
+      "next_automatic_action": "T10 PROMOTES AFTER ASPECTWEAVE RESULT",
+      "pack_id": "pocketbound-companions",
+      "production_repository": "/Users/blakegrove/Desktop/bedrock-server/program/crazycraft-production-lanes-v1/pocketbound-companions-v1",
+      "ref": "refs/heads/codex/pocketbound-production-v1",
+      "resource_pack": {
+        "bytes": 10999,
+        "sha256": "88afed9bedbff89197a75c60aca8316e7909f37fd218b47d5198fcc9024cee66"
+      },
+      "submission_message": "MSG-T01-POCKETBOUND-BDS-RETRY-000002"
+    },
+    {
+      "artifact_manifest": null,
+      "behavior_pack": {
+        "bytes": 58372,
+        "sha256": "eb203817f0e0779f620682fda73db39592a567b3b4099f470d896c09ce9c10b9"
+      },
+      "candidate_generation": 3,
+      "content_commit": "d3096a8c9f84a651934c336914a97857de9fb8b7",
+      "content_tree": "43a961a5f723c02ebb84bf8802d7a77830031d8e",
+      "current_mechanical_state": "ALREADY_TESTED",
+      "current_t10_state": "IMMUTABLE_AUDIT_BACKLOG_POSITION_1",
+      "current_tester_state": "TEST_PASS:MSG-TESTER-000000000018-PASS",
+      "exact_blocker": "T10 one-active/one-queued backpressure; historical audit results do not bind this exact repaired tuple.",
+      "isolation_receipt": "ACCEPTED_CURRENT_CANDIDATE_AUTHORITY",
+      "mcaddon": {
+        "bytes": 73380,
+        "sha256": "19c95a2518dd495328fca3095e7aa45d2cf9d499f636799863a7b494bd951bf4"
+      },
+      "metadata_commit": "a31d1011ffdd7b00e9134cb33ee4a661aa305d1a",
+      "metadata_tree": "3db76f8c7978d12f799f7c3af4dab55a1a954500",
+      "next_automatic_action": "PROMOTE AFTER EARLIER BACKLOG CANDIDATES",
+      "pack_id": "wayfarer-settlements",
+      "production_repository": "/Users/blakegrove/Desktop/bedrock-server/program/crazycraft-production-lanes-v1/wayfarer-settlements-v1",
+      "ref": "refs/heads/main",
+      "resource_pack": {
+        "bytes": 14714,
+        "sha256": "c99266f9e78474924875a74f4e54f0743e658bba26f00ac9ad9dd2a6e4997a39"
+      },
+      "submission_message": "MSG-T01-WAYFARER-BDS-RETRY-000002"
+    },
+    {
+      "artifact_manifest": {
+        "path": "dist/artifact-manifest.json",
+        "sha256": "9b06c21832f6a52f3d2bfafd5375ead089465870b80a0a830e7a71c35f020ea2"
+      },
+      "behavior_pack": {
+        "bytes": 123656,
+        "path": "dist/reliquary-vaults-bp.mcpack",
+        "sha256": "124240f983ddc098a3e86866905f415e4cfc716ffba8db7d458b829ac935d721"
+      },
+      "candidate_generation": 4,
+      "content_commit": "481efdb3535fee7ad7e648ce4f193a9f24aed10a",
+      "content_tree": "96ab0f398e62da3c13a68dd1844470616ccd2f29",
+      "current_mechanical_state": "ALREADY_TESTED",
+      "current_t10_state": "IMMUTABLE_AUDIT_BACKLOG_POSITION_2",
+      "current_tester_state": "TEST_PASS:MSG-TESTER-000000000027-PASS",
+      "exact_blocker": "T10 one-active/one-queued backpressure; generation 4 requires substantive re-audit after product repair.",
+      "isolation_receipt": {
+        "path": "factory/receipts/generation-4-process-isolation.json",
+        "sha256": "7ccf386f782dbec92a41c128b48b67ddfd5bb3b7d27cc6ae1a3d2dff17fbbdcb"
+      },
+      "mcaddon": {
+        "bytes": 303674,
+        "path": "dist/reliquary-vaults.mcaddon",
+        "sha256": "e45d3f44a9e19111490e7b89784eda6ec284468d0f0573991defe7a9d3aa146e"
+      },
+      "metadata_commit": "c4abf960fc4b1e75902f4a1e5d8b5eeaaa97f09c",
+      "metadata_tree": "bdd53cfe9c35e44713491ae14326972fdc62f5c1",
+      "next_automatic_action": "PROMOTE AFTER EARLIER AUDIT BACKLOG CANDIDATES",
+      "pack_id": "reliquary-vaults",
+      "production_repository": "/Users/blakegrove/Desktop/bedrock-server/program/crazycraft-pack-production-v1/reliquary-vaults",
+      "ref": "refs/heads/codex/reliquary-vaults-production-v1",
+      "resource_pack": {
+        "bytes": 179740,
+        "path": "dist/reliquary-vaults-rp.mcpack",
+        "sha256": "22cd91a8e28e4d71ec85cd96ffb1ae04813ab6c49268564e64d80269892dbf99"
+      },
+      "submission_message": "MSG-P07-RELIQUARY-CANDIDATE-000004"
+    },
+    {
+      "artifact_manifest": null,
+      "behavior_pack": null,
+      "candidate_generation": 0,
+      "content_commit": null,
+      "content_tree": null,
+      "current_mechanical_state": "MISSING_ISOLATION_RECEIPT",
+      "current_t10_state": "NOT_QUEUED",
+      "current_tester_state": "NOT_ROUTABLE",
+      "exact_blocker": "Preserved preliminary MCAddon 64118e3c3bf6efe27eb8c0b36e9985f4279f752671fe53d62a82d22993a51fd6 lacks contemporaneous isolation; grandfathering was rejected.",
+      "isolation_receipt": null,
+      "mcaddon": null,
+      "metadata_commit": null,
+      "metadata_tree": null,
+      "next_automatic_action": "DURABLE OWNER COMPLETES FRESH SOURCE-NEUTRAL REPRODUCTION AND PUBLISHES GENERATION 1",
+      "pack_id": "hearth-and-hall",
+      "production_repository": "/Users/blakegrove/Desktop/bedrock-server/program/crazycraft-pack-production-v1/hearth-and-hall-reproduction-v1",
+      "ref": "refs/heads/codex/hearth-and-hall-reproduction-v1",
+      "resource_pack": null,
+      "submission_message": null
+    },
+    {
+      "artifact_manifest": {
+        "path": "dist/artifact-manifest.json",
+        "sha256": "fc05ddd7832844ac2db1ae5c31209d563fd17794741567b082b5b8676eedc8ac"
+      },
+      "behavior_pack": {
+        "bytes": 82444,
+        "path": "dist/Hearthveil_BP.mcpack",
+        "sha256": "470c8a92208c83be9623be1f1e594e290a2ea5377c0d4c39f765b23f145644ea"
+      },
+      "candidate_generation": 4,
+      "content_commit": "62135953c3a6a0e50dfd856e7215034bafc4a3ed",
+      "content_tree": "cc5dbce2a70f68d4931424fbf1ccdfca74e8bf8b",
+      "current_mechanical_state": "ALREADY_TESTED",
+      "current_t10_state": "IMMUTABLE_AUDIT_BACKLOG_POSITION_3",
+      "current_tester_state": "TEST_PASS:MSG-TESTER-000000000028-PASS",
+      "exact_blocker": "T10 one-active/one-queued backpressure.",
+      "isolation_receipt": "GENERATION_4_NONCIRCULAR_COOPERATIVE_PROCESS_RECEIPT_PASS",
+      "mcaddon": {
+        "bytes": 571455,
+        "path": "dist/Hearthveil.mcaddon",
+        "sha256": "b12e9be8bd04f47c73d0cb2cec339a2c943cd1c30af12aaf9a7bc8eaea19ed56"
+      },
+      "metadata_commit": "ad08c439e248e2696a611b39f22188f9e397e14c",
+      "metadata_tree": "d18e3cce0ad1a7a781168b3af10ff5164bc0def6",
+      "next_automatic_action": "PROMOTE AFTER EARLIER AUDIT BACKLOG CANDIDATES",
+      "pack_id": "hearthveil",
+      "production_repository": "/Users/blakegrove/Desktop/bedrock-server/program/crazycraft-pack-production-v1/hearthveil",
+      "ref": "refs/heads/codex/hearthveil-production-v1",
+      "resource_pack": {
+        "bytes": 488757,
+        "path": "dist/Hearthveil_RP.mcpack",
+        "sha256": "e88c152f08d5e64c3e184f016a4c962dc994888c600de04bd70c42fa7965bccb"
+      },
+      "submission_message": "MSG-P09-HEARTHVEIL-CANDIDATE-000004"
+    },
+    {
+      "artifact_manifest": {
+        "path": "dist/artifact-manifest.json",
+        "sha256": "053743b8db5589a616be7dba3089d48fe6cea49c917293c58a37674376f91c30"
+      },
+      "behavior_pack": {
+        "bytes": 80575,
+        "path": "dist/aspectweave-bp.mcpack",
+        "sha256": "468c658ee11ee1abf431c252e4bc43f9cf8241c8626c31c2efcb26858620434b"
+      },
+      "candidate_generation": 5,
+      "content_commit": "64cd8ccdff88f0b15f1f6156bbef1c73cb4caad8",
+      "content_tree": "c0618ba8b6c1b58e6173bf56f7647cdf4e390435",
+      "current_mechanical_state": "ALREADY_AUDITED",
+      "current_t10_state": "TEST_FAIL_PRODUCT:MSG-T10-ASPECTWEAVE-AUDIT-000001",
+      "current_tester_state": "TEST_PASS:MSG-TESTER-000000000026-PASS",
+      "exact_blocker": "Ten bounded substantive T10 findings covering migration, transactions, rewards, Platform selection, durable caps, effect ownership, session fencing, presentation reachability, and literal-package regression evidence.",
+      "isolation_receipt": {
+        "path": "receipts/CANDIDATE-0005_PROCESS_ISOLATION.json",
+        "sha256": "3ea945d427d67d0bf613ef09fb3c6f7eab0ae4d7957c70ee93d215ced1b841f4"
+      },
+      "mcaddon": {
+        "bytes": 502454,
+        "path": "dist/aspectweave.mcaddon",
+        "sha256": "ce1d7071da50ddbb371fcba918cc4c1c515c8f52f3b53bd54f4e22a1fdd1d46b"
+      },
+      "metadata_commit": "620772100f88c5187662551baa8463ea123041f7",
+      "metadata_tree": "2325db922b811d0acf50db2cafdad4b96237fa17",
+      "next_automatic_action": "ORIGINAL OWNER PROCESSES MSG-T01-ASPECTWEAVE-AUDIT-REPAIR-000001 AND PUBLISHES IMMUTABLE GENERATION 6",
+      "pack_id": "aspectweave",
+      "production_repository": "/Users/blakegrove/Desktop/bedrock-server/program/crazycraft-pack-production-v1/aspectweave",
+      "ref": "refs/heads/codex/aspectweave-production-v1",
+      "resource_pack": {
+        "bytes": 421621,
+        "path": "dist/aspectweave-rp.mcpack",
+        "sha256": "f9c2d318a8794288b43af135dba051a3134387cd38b99c7d8af6c12761c34312"
+      },
+      "submission_message": "ASPECTWEAVE-CANDIDATE-0005"
+    },
+    {
+      "artifact_manifest": {
+        "path": "dist/artifact-manifest.json",
+        "sha256": "dc3a75fa2abafad1aaffe4906db57d7a4ed4aaee865a33ffe4fcd9542e138e5b"
+      },
+      "behavior_pack": {
+        "bytes": 28948,
+        "path": "dist/Vanguard_Arsenal_BP.mcpack",
+        "sha256": "97144590cbf973724b9459020bc0942efb5f45863d9e597e7a189bb15cc3303c"
+      },
+      "candidate_generation": 2,
+      "content_commit": "dd0c8c678701370c2ab804c01170fdf88bfdb7bf",
+      "content_tree": "0a11a2956fb9c1a10b0aefc5454541c9ce760e82",
+      "current_mechanical_state": "ALREADY_AUDITED",
+      "current_t10_state": "TEST_FAIL_PRODUCT:MSG-T10-VANGUARD-AUDIT-000001",
+      "current_tester_state": "TEST_PASS:MSG-TESTER-000000000020-PASS",
+      "exact_blocker": "T10 returned twelve bounded major findings.",
+      "isolation_receipt": {
+        "path": "coordination/receipts/candidate-g0002-process-isolation.json",
+        "sha256": "9f85b2b4805c16f75682c05ae31ab16da31d04c75e33e330bb0883a7cf2e6993"
+      },
+      "mcaddon": {
+        "bytes": 102752,
+        "path": "dist/Vanguard_Arsenal.mcaddon",
+        "sha256": "5725bd79a7e08b15de5b7844b881ed7db302fc617d286c250e5de51639b34a9d"
+      },
+      "metadata_commit": "c19da2e385ef958ba5ccd0bfe92e8c0dcf06d0af",
+      "metadata_tree": "bc6fdfd9513b07995ccd4c4e97c35f7b678499d3",
+      "next_automatic_action": "ORIGINAL DURABLE OWNER PROCESSES MSG-T01-VANGUARD-AUDIT-REPAIR-000001",
+      "pack_id": "vanguard-arsenal",
+      "production_repository": "/Users/blakegrove/Desktop/bedrock-server/program/crazycraft-pack-production-v1/vanguard-arsenal",
+      "ref": "refs/heads/codex/vanguard-arsenal-production-v1",
+      "resource_pack": {
+        "bytes": 139409,
+        "path": "dist/Vanguard_Arsenal_RP.mcpack",
+        "sha256": "c5b128d05f7a5cea9355c8a753bab5a5fdcb298dddc20ebf23f1f4db5f719d65"
+      },
+      "submission_message": "VA-G0002-CANDIDATE-0002"
+    },
+    {
+      "artifact_manifest": {
+        "path": "dist/artifact-manifest.json",
+        "sha256": "622be2749b7972cf9b190282764e1ddc6b2c03e64ff99f319ffb2dcd0346339d"
+      },
+      "behavior_pack": {
+        "bytes": 27070,
+        "path": "dist/aperture-foundry-behavior.mcpack",
+        "sha256": "95321fa0e4a155232dcc3d6bfe4c85a70f0cbd59209caa497715977f3cc01fef"
+      },
+      "candidate_generation": 1,
+      "content_commit": "edd158cf9487a06316e55c29fccfd2140193fe2f",
+      "content_tree": "e7942398a484160392fccdcbac0e9c4305ec757d",
+      "current_mechanical_state": "ALREADY_AUDITED",
+      "current_t10_state": "TEST_FAIL_PRODUCT:MSG-T10-APERTURE-AUDIT-000001",
+      "current_tester_state": "TEST_PASS:MSG-TESTER-000000000025-PASS",
+      "exact_blocker": "T10 returned twelve bounded major findings.",
+      "isolation_receipt": "FRESH_REPRODUCTION_BOUNDARY_PASS",
+      "mcaddon": {
+        "bytes": 268455,
+        "path": "dist/aperture-foundry.mcaddon",
+        "sha256": "62b6eaafeae0aee7d190889e608c1551c784139469490f525337ce18dad9e4b9"
+      },
+      "metadata_commit": "abcfedbb75de8988375fb50c9251a8b57bd27c57",
+      "metadata_tree": "28db6776a50f622ba19c4ef29409cb1f1966e180",
+      "next_automatic_action": "ORIGINAL DURABLE OWNER PROCESSES MSG-T01-APERTURE-AUDIT-REPAIR-000001",
+      "pack_id": "aperture-foundry",
+      "production_repository": "/Users/blakegrove/Desktop/bedrock-server/program/crazycraft-pack-production-v1/aperture-foundry-reproduction-v1",
+      "ref": "refs/heads/codex/aperture-foundry-reproduction-v1",
+      "resource_pack": {
+        "bytes": 273635,
+        "path": "dist/aperture-foundry-resources.mcpack",
+        "sha256": "22a5ba62668d5b519f173ddabf797fd7206c33ce77d599898d3bed0bb6821a32"
+      },
+      "submission_message": "MSG-P12-APERTURE-CANDIDATE-000001"
+    },
+    {
+      "artifact_manifest": {
+        "path": "dist/ARTIFACT_MANIFEST.json",
+        "sha256": "aec564cba00168f5efd0bf97efd11a3d5546d3d3203f7888b1c5dbe7ac8b5ec8"
+      },
+      "behavior_pack": {
+        "bytes": 41209,
+        "path": "dist/echo-vessels-behavior.mcpack",
+        "sha256": "76e9cd228c0f1fb8676ffe9cf646388ff7c98f8fdea96b0735a4ab15182772ed"
+      },
+      "candidate_generation": 5,
+      "content_commit": "bea18ae1ea065b7464e66edd0b67aac5465b00e5",
+      "content_tree": "841dba50d3c45f7b7b28e7caf634b0db4d27d2cf",
+      "current_mechanical_state": "MECHANICAL_DEFECT",
+      "current_t10_state": "NOT_ADMITTED_GENERATION_5",
+      "current_tester_state": "NOT_ADMITTED_GENERATION_5",
+      "exact_blocker": "The committed qualification receipt is stale and unsuperseded, and the claimed restricted Git-object scan enumerates object IDs/paths without scanning reachable blob contents.",
+      "isolation_receipt": {
+        "path": "evidence/CANDIDATE_REPAIR_PROCESS_RECEIPT.json",
+        "sha256": "c459c62ed69de44e766aedd0ab1b1eb2d006c8314c4498d1a8aae63ff60b209e",
+        "status": "REJECTED_INCOMPLETE_RESTRICTED_GIT_BLOB_SCAN"
+      },
+      "mcaddon": {
+        "bytes": 410987,
+        "path": "dist/echo-vessels.mcaddon",
+        "sha256": "f9fb661f85b2b70dae979899f955dad9b36d1a628ca7a49ecb5fd4de743db1cf"
+      },
+      "metadata_commit": "bea18ae1ea065b7464e66edd0b67aac5465b00e5",
+      "metadata_tree": "841dba50d3c45f7b7b28e7caf634b0db4d27d2cf",
+      "next_automatic_action": "OWNER PROCESSES MSG-T01-ECHO-MECHANICAL-REPAIR-000003; PRESERVE THE PASSING PACKAGE EVIDENCE AND RESUBMIT A GENUINE REACHABLE-BLOB SCAN AND EXACT RECEIPT LINEAGE",
+      "pack_id": "echo-vessels",
+      "production_repository": "/Users/blakegrove/Desktop/bedrock-server/program/crazycraft-pack-production-v1/echo-vessels",
+      "ref": "refs/heads/codex/echo-vessels-generation-5-content-a-v1",
+      "resource_pack": {
+        "bytes": 395254,
+        "path": "dist/echo-vessels-resource.mcpack",
+        "sha256": "43d370bde3b3bbcf5f742fe2d729474e70bcfebddd99114f16a825bc4b55f9e4"
+      },
+      "submission_message": "MSG-P10-ECHO-CANDIDATE-000005"
+    },
+    {
+      "artifact_manifest": {
+        "path": "artifacts/artifact-manifest.json",
+        "sha256": "fb09453d6dd68c6994c11d0e199555ab6fa6b13ef47c0960e0a9c3e585d873b2"
+      },
+      "behavior_pack": {
+        "bytes": 113055,
+        "path": "artifacts/bounded-outcome-events-bp.mcpack",
+        "sha256": "926cea7a25f640dad2e1c6cd29c97c420523ddc9141f022a9fcfaca09ecd047c"
+      },
+      "candidate_generation": 14,
+      "content_commit": "8c5b33a6eb39b290af0e560724a6fa4e62b83f29",
+      "content_tree": "8d143a058cd671bdee0c9db07cb56230e57d129c",
+      "current_mechanical_state": "WAITING_PLATFORM_ADMISSION",
+      "current_t10_state": "NOT_ADMITTED",
+      "current_tester_state": "NOT_ADMITTED",
+      "exact_blocker": "T2 proved the admitted Platform has only a same-module-graph internal registrar and no deliverable pack-local acquisition, negotiation, lifecycle, or linkage surface. T1 recorded PLATFORM_CHANGE_REJECTED_WITH_REASON.",
+      "isolation_receipt": {
+        "path": "receipts/candidate-g0014-process-isolation.json",
+        "sha256": "98067c6d3535582dc58ca203c12d0d3e0e5dcf41eef70a0e9beb5d41d3be413d"
+      },
+      "mcaddon": {
+        "bytes": 351138,
+        "path": "artifacts/bounded-outcome-events.mcaddon",
+        "sha256": "dc7f417cb42b60504894ec00b444af066029c223adbb7c2f828013df03ed524b"
+      },
+      "metadata_commit": "82e2f323ef2f7f717b583b5f30d27dd6d29bea16",
+      "metadata_tree": "9765e70e3fd13d4ef369c031ccc30494bc13a0d6",
+      "next_automatic_action": "KEEP GENERATION 14 IMMUTABLE; A SEPARATE T1 DECISION MUST AUTHORIZE AN INTEGRATION-LEVEL ACQUISITION_AND_LINKAGE CHANGE OR TERMINALIZE THE BLOCKER",
+      "pack_id": "bounded-outcome-events",
+      "production_repository": "/Users/blakegrove/Desktop/bedrock-server/program/crazycraft-pack-production-v1/bounded-outcome-events",
+      "ref": "refs/heads/codex/bounded-outcome-events-production-v1",
+      "resource_pack": {
+        "bytes": 237781,
+        "path": "artifacts/bounded-outcome-events-rp.mcpack",
+        "sha256": "cbb0e75f69885520d505b8611a5e44c1f6b84798c3a4e7d2713969af520ad835"
+      },
+      "submission_message": "MSG-P14-OUTCOMES-CANDIDATE-000014"
+    },
+    {
+      "artifact_manifest": null,
+      "behavior_pack": null,
+      "candidate_generation": 0,
+      "content_commit": null,
+      "content_tree": null,
+      "current_mechanical_state": "NO_IMMUTABLE_CANDIDATE",
+      "current_t10_state": "NOT_QUEUED",
+      "current_tester_state": "NOT_ROUTABLE",
+      "exact_blocker": "Active runtime closure and Golden asset repairs; bounded budget-admission interface request remains pending.",
+      "isolation_receipt": null,
+      "mcaddon": null,
+      "metadata_commit": null,
+      "metadata_tree": null,
+      "next_automatic_action": "DURABLE OWNER COMPLETES PRODUCT AND GOLDEN REPAIRS, THEN PUBLISHES FIRST CANDIDATE",
+      "pack_id": "momentum-menagerie",
+      "production_repository": "/Users/blakegrove/Desktop/bedrock-server/program/crazycraft-pack-production-v1/momentum-menagerie",
+      "ref": "refs/heads/codex/momentum-menagerie-production-v1",
+      "resource_pack": null,
+      "submission_message": null
+    },
+    {
+      "artifact_manifest": {
+        "path": "dist/ARTIFACT_MANIFEST.json",
+        "sha256": "0b179451c91c99ad2da6022e691da0e186acd162be91c1dda8480f5dc15ebf61"
+      },
+      "behavior_pack": {
+        "bytes": 134683,
+        "path": "dist/Latchline_Infrastructure_BP.mcpack",
+        "sha256": "8d534648dbc1314d5715c847e880b9bf61ffbacfe50c09c3aeaa121a8dbd501c"
+      },
+      "candidate_generation": 5,
+      "content_commit": "3f54f456ddf84f14c891fc768300e48f8b923cdd",
+      "content_tree": "f1f0609317dcb1e663cc243049578ec544d20ab4",
+      "current_mechanical_state": "ALREADY_AUDITED",
+      "current_t10_state": "TEST_FAIL_PRODUCT:MSG-T10-LATCHLINE-AUDIT-000001",
+      "current_tester_state": "TEST_PASS:MSG-TESTER-000000000024-PASS",
+      "exact_blocker": "T10 returned thirteen bounded major findings.",
+      "isolation_receipt": "CANDIDATE_CHILD_SCOPE_PASS",
+      "mcaddon": {
+        "bytes": 446071,
+        "path": "dist/Latchline_Infrastructure.mcaddon",
+        "sha256": "163ac25f6817a80a3c331984c30831c2213ef4396fa97545e93fef005dd96007"
+      },
+      "metadata_commit": "3f54f456ddf84f14c891fc768300e48f8b923cdd",
+      "metadata_tree": "f1f0609317dcb1e663cc243049578ec544d20ab4",
+      "next_automatic_action": "ORIGINAL DURABLE OWNER PROCESSES MSG-T01-LATCHLINE-AUDIT-REPAIR-000001",
+      "pack_id": "latchline-infrastructure",
+      "production_repository": "/Users/blakegrove/Desktop/bedrock-server/program/crazycraft-pack-production-v1/latchline-infrastructure",
+      "ref": "refs/heads/codex/latchline-infrastructure-production-v1",
+      "resource_pack": {
+        "bytes": 311078,
+        "path": "dist/Latchline_Infrastructure_RP.mcpack",
+        "sha256": "719fd1e14ed4da1b01a00d1caf5632b9d2d66b4e418f898f87370f2bbb9d6e46"
+      },
+      "submission_message": "CC-P16-LATCHLINE-CANDIDATE-000005"
+    }
+  ],
+  "ordering_rule": [
+    "immutable candidate and complete tuple first",
+    "complete isolation receipt",
+    "no unresolved Platform dependency",
+    "oldest mechanically ready submission",
+    "lowest expected repair cost"
+  ],
+  "proof_boundary": [
+    "Queue identity is derived from committed repository and mailbox authorities, not filenames or chat summaries.",
+    "Mechanical and tester passes do not establish client, controller, physical console, rights, Marketplace, integration, or release readiness.",
+    "Working-tree-only outputs are excluded."
+  ],
+  "record_type": "factory_candidate_backlog",
+  "schema_version": "1.0.0"
+}

@@ -1,0 +1,86 @@
+{
+  "schema_version": "1.0.0",
+  "record_type": "factory_safe_restart_service_status",
+  "observed_at": "2026-07-30T11:38:00Z",
+  "mailbox_head": "af8e71c93c14dc4aa2c931d678e6dd6ee88a048a",
+  "router": {
+    "label": "com.crazycraft.factory-router",
+    "loaded": true,
+    "execution_model": "ONESHOT_EVERY_120_SECONDS",
+    "state_between_cycles": "NOT_RUNNING_EXPECTED",
+    "scheduled_runs": 12,
+    "last_exit_code": 0,
+    "cursor": "af8e71c93c14dc4aa2c931d678e6dd6ee88a048a",
+    "unseen_messages": 0,
+    "protocol_defects": 0
+  },
+  "local_tester": {
+    "label": "com.crazycraft.local-tester",
+    "loaded": true,
+    "state": "RUNNING",
+    "pid": 23053,
+    "launch_count": 1,
+    "active_jobs": 0,
+    "terminal_jobs": 21,
+    "pack_local_rejections": 0,
+    "latest_completed_jobs": [
+      {
+        "job_id": "JOB-000000000033",
+        "pack_id": "aperture-foundry",
+        "generation": 3,
+        "result": "TEST_PASS",
+        "mailbox_message_id": "MSG-TESTER-000000000033-PASS",
+        "service_receipt_sha256": "0cd63ac7588d1478b188164af05f018b630a95a2ec1dfddd4daed432a13a723d"
+      },
+      {
+        "job_id": "JOB-000000000034",
+        "pack_id": "hearthveil",
+        "generation": 5,
+        "result": "TEST_PASS",
+        "mailbox_message_id": "MSG-TESTER-000000000034-PASS",
+        "service_receipt_sha256": "4bf912b8248445634588ea04caeaf874c43a66ec362103ca8d3da78a90ce81dd"
+      },
+      {
+        "job_id": "JOB-000000000035",
+        "pack_id": "reliquary-vaults",
+        "generation": 6,
+        "result": "TEST_PASS",
+        "mailbox_message_id": "MSG-TESTER-000000000035-PASS",
+        "service_receipt_sha256": "43c14fff436fa13b1190f6a74f9611bf1ad16fea579c375c7226511ae74733e8"
+      }
+    ],
+    "poison_intake_recurrence_after_fix": false
+  },
+  "t10": {
+    "automation_id": "t10-factory-audit-service",
+    "automation_status": "ACTIVE",
+    "thread_id": "019fa887-8d31-7741-bc92-51fe01bceb5c",
+    "thread_state": "ACTIVE",
+    "active_candidate": "hearthveil-generation-5",
+    "queued_candidate": "reliquary-vaults-generation-6",
+    "momentum_generation_3_state": "TERMINAL",
+    "observed_automatic_result": "MSG-T10-APERTURE-AUDIT-000003"
+  },
+  "t2": {
+    "thread_id": "019fa886-8675-7ec3-bd7c-92cced930743",
+    "outer_commit": "298014213c7ccdb013f8fb4d9e7d48fdac7a799e",
+    "outer_tree": "8ca1fa6302af2383b568f5fd23614d12d5a1e2fa",
+    "nested_platform_commit": "4e533598b6b1f5ec1f86fd000b21ee6addab38c1",
+    "nested_platform_tree": "77ff9369d0722982ea603a2c17439f6c4176646a",
+    "working_trees_clean": true,
+    "last_bounded_result": "MSG-T02-MOMENTUM-PLATFORM-ADMISSION-RESULT-000001",
+    "next_state": "QUIESCENT_PENDING_NEXT_EXACT_ADMISSION"
+  },
+  "blockbench": {
+    "superseded_aperture_pid_16180_present": false,
+    "superseded_profile_present_as_live_process": false,
+    "unrelated_main_blockbench_preserved": true,
+    "next_aperture_write_repository": "aperture-foundry-reproduction-v1"
+  },
+  "proof_boundary": [
+    "PROCESS_AND_ROUTING_OBSERVATION_ONLY",
+    "MAILBOX_GIT_HISTORY_REMAINS_SEMANTIC_AUTHORITY",
+    "BDS_RESULTS_ARE_EXACT_PACKAGE_STABLE_SERVER_EVIDENCE_ONLY",
+    "NO_CLIENT_CONSOLE_RIGHTS_MARKETPLACE_INTEGRATION_ACCEPTANCE_OR_RELEASE_CLAIM"
+  ]
+}

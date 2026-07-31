@@ -1,0 +1,17 @@
+{
+  "schema_version": "crazycraft-t1-momentum-next-authority-v1",
+  "snapshot_at": "2026-07-30T14:07:09Z",
+  "pack_id": "momentum-menagerie",
+  "current_generation": 3,
+  "preserved_commit": "4501555d3ff5a59e7175d23ddad33aa9ea08fa71",
+  "decision": "PACK_LOCAL_BLOCK",
+  "resume_worker": false,
+  "exact_blocker": "T2 rejected the prior Platform change; no narrower exact registration or separately authorized owner binding is committed.",
+  "required_next_authority": [
+    "A committed narrower exact registration against the currently admitted Platform callable surface",
+    "or separately authorized owner-binding authority"
+  ],
+  "candidate_generation_4_authorized": false,
+  "untracked_audit_and_tooling_material_in_candidate_authority": false,
+  "direct_worker_action_from_t10_authorized": false
+}

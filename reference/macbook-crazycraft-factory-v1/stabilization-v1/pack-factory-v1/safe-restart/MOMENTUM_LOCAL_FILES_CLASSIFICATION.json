@@ -1,0 +1,47 @@
+{
+  "schema_version": "1.0.0",
+  "record_type": "local_observation_classification",
+  "created_at": "2026-07-30T11:02:14Z",
+  "pack_id": "momentum-menagerie",
+  "repository": "/Users/blakegrove/Desktop/bedrock-server/program/crazycraft-pack-production-v1/momentum-menagerie",
+  "preserved_repair_commit": {
+    "commit": "4501555d3ff5a59e7175d23ddad33aa9ea08fa71",
+    "tree": "171218fd699ca565e19900fa4f14da86afb96eba",
+    "classification": "VALID_PRODUCT_REPAIR_WORK_NOT_REPLACEMENT_CANDIDATE"
+  },
+  "untracked_observations": [
+    {
+      "path": "audits/",
+      "observed_file_count": 2427,
+      "approximate_bytes": 101900000,
+      "classification": "UNCOMMITTED_LOCAL_EVIDENCE_AND_TOOLING_NOT_CANDIDATE_AUTHORITY"
+    },
+    {
+      "path": "tools/native-blockbench-check.mjs",
+      "sha256": "1301cd04d35b76c73903cddb42761160f73a3281360d86644b89e3758edcead1",
+      "classification": "UNCOMMITTED_LOCAL_EVIDENCE_AND_TOOLING_NOT_CANDIDATE_AUTHORITY"
+    },
+    {
+      "path": "tools/prepare-audit-inputs.mjs",
+      "sha256": "f77ec09f05728b67852b399dfb6078ed687b76a8a5d404fe6e54ae97f2dbfcc1",
+      "classification": "UNCOMMITTED_LOCAL_EVIDENCE_AND_TOOLING_NOT_CANDIDATE_AUTHORITY"
+    },
+    {
+      "path": "tools/prepare-candidate-evidence.mjs",
+      "sha256": "8686bec319fbd950728ea71e1373abc876930bc5859ba581a2b10581e5236fd8",
+      "classification": "UNCOMMITTED_LOCAL_EVIDENCE_AND_TOOLING_NOT_CANDIDATE_AUTHORITY"
+    }
+  ],
+  "policy": {
+    "preserve_bytes": true,
+    "execute_automatically": false,
+    "include_in_package": false,
+    "include_in_candidate_authority": false,
+    "require_provenance_review_before_admission": true
+  },
+  "proof_boundary": [
+    "WORKTREE_OBSERVATION_ONLY",
+    "NO_GENERATION_4_AUTHORITY",
+    "NO_PRODUCT_TEST_OR_AUDIT_CLAIM"
+  ]
+}

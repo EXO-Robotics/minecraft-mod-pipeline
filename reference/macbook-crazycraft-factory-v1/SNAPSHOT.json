@@ -1,0 +1,21 @@
+{
+  "schema_version": "macbook-crazycraft-factory-reference-v1",
+  "source_host": "Blakes-MacBook-Pro.local",
+  "source_commit": "9a485501c8df628f04f87cc6ed007a0025405ca0",
+  "source_ref": "refs/heads/codex/pack-factory-organization-v1",
+  "imported_subtrees": [
+    "stabilization-v1/pack-factory-v1",
+    "stabilization-v1/remote-execution"
+  ],
+  "authority": "REFERENCE_ONLY",
+  "excluded_live_state": [
+    "mailbox_repository",
+    "pack_production_repositories",
+    "sqlite_and_wal_state",
+    "active_runtime_queues",
+    "credentials_and_ssh_material",
+    "docker_images_containers_and_volumes"
+  ],
+  "activation_allowed": false,
+  "activation_requirement": "Generate and validate Studio-local configuration first."
+}

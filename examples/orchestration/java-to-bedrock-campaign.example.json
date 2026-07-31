@@ -1,0 +1,185 @@
+{
+  "schema_version": "1.0.0",
+  "campaign_id": "replace-me-java-to-bedrock-v1",
+  "name": "Replace Me Java to Bedrock v1",
+  "kind": "JAVA_TO_BEDROCK",
+  "metadata": {
+    "note": "Template only. Replace every /CHANGE_ME path and every placeholder hash before creating the campaign."
+  },
+  "jobs": [
+    {
+      "id": "authorize-evidence",
+      "name": "Authorize evidence operations and freeze target",
+      "stage": "RIGHTS_AUTHORIZED",
+      "lane": "CONTROL",
+      "kind": "manual_gate",
+      "payload": {}
+    },
+    {
+      "id": "scan-java",
+      "name": "Scan the frozen Java input",
+      "stage": "INVENTORY_COMPLETE",
+      "lane": "EVIDENCE",
+      "kind": "command",
+      "depends_on": [
+        "authorize-evidence"
+      ],
+      "max_attempts": 2,
+      "payload": {
+        "argv": [
+          "/CHANGE_ME/compiler/.venv/bin/mccompiler",
+          "scan",
+          "--input",
+          "/CHANGE_ME/evidence/frozen-java-input",
+          "--output",
+          "/CHANGE_ME/evidence/out/modir.json"
+        ],
+        "cwd": "/CHANGE_ME/compiler",
+        "timeout_seconds": 1800,
+        "retry_backoff_seconds": 10,
+        "allowed_read_roots": [
+          "/CHANGE_ME/compiler",
+          "/CHANGE_ME/evidence"
+        ],
+        "allowed_write_roots": [
+          "/CHANGE_ME/evidence/out"
+        ],
+        "input_artifacts": [
+          {
+            "path": "/CHANGE_ME/evidence/frozen-java-input",
+            "sha256": "0000000000000000000000000000000000000000000000000000000000000000"
+          }
+        ],
+        "expected_outputs": [
+          {
+            "path": "/CHANGE_ME/evidence/out/modir.json"
+          }
+        ]
+      }
+    },
+    {
+      "id": "sanitize-contract",
+      "name": "Review and approve the sanitized production contract",
+      "stage": "CONTRACT_SANITIZED",
+      "lane": "CONTROL",
+      "kind": "manual_gate",
+      "depends_on": [
+        "scan-java"
+      ],
+      "payload": {}
+    },
+    {
+      "id": "authorize-production",
+      "name": "Authorize evidence-blind production",
+      "stage": "PRODUCTION_AUTHORIZED",
+      "lane": "CONTROL",
+      "kind": "manual_gate",
+      "depends_on": [
+        "sanitize-contract"
+      ],
+      "payload": {}
+    },
+    {
+      "id": "produce-bedrock",
+      "name": "Launch the isolated Bedrock production worker",
+      "stage": "PRODUCTION_ACTIVE",
+      "lane": "PRODUCTION",
+      "kind": "command",
+      "depends_on": [
+        "authorize-production"
+      ],
+      "max_attempts": 2,
+      "payload": {
+        "argv": [
+          "/CHANGE_ME/compiler/.venv/bin/python",
+          "/CHANGE_ME/compiler/tools/production_sandbox/studio_launcher.py",
+          "--run-root",
+          "/CHANGE_ME/production/runs/replace-me-001",
+          "--assignment",
+          "/CHANGE_ME/control/assignment.json",
+          "--sanitized-contract",
+          "/CHANGE_ME/control/sanitized-contract.json",
+          "--prompt",
+          "/CHANGE_ME/control/production-prompt.txt",
+          "--worker-command",
+          "/CHANGE_ME/control/studio-worker-command.json",
+          "--base-repo",
+          "/CHANGE_ME/studio-baseline",
+          "--deny",
+          "evidence=/CHANGE_ME/evidence",
+          "--deny",
+          "control=/CHANGE_ME/control",
+          "--deny",
+          "private_oracle=/CHANGE_ME/control/private-oracle",
+          "--deny",
+          "canary=/CHANGE_ME/evidence/canary"
+        ],
+        "cwd": "/CHANGE_ME/compiler",
+        "timeout_seconds": 7200,
+        "retry_backoff_seconds": 30,
+        "allowed_read_roots": [
+          "/CHANGE_ME/compiler",
+          "/CHANGE_ME/control"
+        ],
+        "allowed_write_roots": [
+          "/CHANGE_ME/production"
+        ],
+        "sandbox_profile": {
+          "mode": "generated_by_launcher",
+          "launcher_path": "/CHANGE_ME/compiler/tools/production_sandbox/studio_launcher.py",
+          "launcher_sha256": "0000000000000000000000000000000000000000000000000000000000000000"
+        },
+        "process_receipt_required": true,
+        "process_receipt": {
+          "path": "/CHANGE_ME/production/runs/replace-me-001/runtime/process-receipt.json",
+          "validator_argv": [
+            "/CHANGE_ME/compiler/.venv/bin/python",
+            "/CHANGE_ME/compiler/skills/translate-java-mods-to-bedrock/scripts/validate_production_process_receipt.py",
+            "/CHANGE_ME/production/runs/replace-me-001/runtime/process-receipt.json"
+          ]
+        },
+        "expected_outputs": [
+          {
+            "path": "/CHANGE_ME/production/runs/replace-me-001/runtime/process-receipt.json"
+          }
+        ]
+      }
+    },
+    {
+      "id": "static-qualification",
+      "name": "Run static validation against the frozen Bedrock candidate",
+      "stage": "STATIC_QUALIFIED",
+      "lane": "AUDIT",
+      "kind": "command",
+      "depends_on": [
+        "produce-bedrock"
+      ],
+      "max_attempts": 1,
+      "payload": {
+        "argv": [
+          "/CHANGE_ME/compiler/.venv/bin/mccompiler",
+          "validate",
+          "--path",
+          "/CHANGE_ME/production/frozen-candidate"
+        ],
+        "cwd": "/CHANGE_ME/compiler",
+        "timeout_seconds": 1800,
+        "allowed_read_roots": [
+          "/CHANGE_ME/compiler",
+          "/CHANGE_ME/production/frozen-candidate"
+        ]
+      }
+    },
+    {
+      "id": "authorize-release",
+      "name": "Review the frozen bundle before publication or release",
+      "stage": "RELEASE_AUTHORIZED",
+      "lane": "CONTROL",
+      "kind": "manual_gate",
+      "depends_on": [
+        "static-qualification"
+      ],
+      "payload": {}
+    }
+  ]
+}

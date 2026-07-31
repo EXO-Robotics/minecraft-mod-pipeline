@@ -1,0 +1,28 @@
+{
+  "STABLE_BDS": {
+    "status": "PASSED",
+    "authority": "qualify-bedrock-candidate",
+    "artifact_sha256": "949fa581e930460a8bcc8e02f574d1bc89f848a754c57ec84907f07f27372bc4",
+    "receipt": "JOB-000000000013/local-validation/receipt.json",
+    "classification": "BDS_PACKAGE_LOAD_AND_RESTART_PASS"
+  },
+  "RESTART_PERSISTENCE": {
+    "status": "BLOCKED",
+    "authority": "qualify-bedrock-candidate",
+    "receipt": "JOB-000000000013/local-validation/artifacts/trailbound-fixture-result.json",
+    "classification": "SAME_WORLD_RESTART_PASS_PLAYER_MUTATED_PERSISTENCE_NOT_RUN"
+  },
+  "BDS_QUALIFIED": {
+    "status": "PASSED",
+    "authority": "qualify-bedrock-candidate",
+    "artifact_sha256": "949fa581e930460a8bcc8e02f574d1bc89f848a754c57ec84907f07f27372bc4",
+    "receipt": "TRAILBOUND_EXACT_PACKAGE_QUALIFICATION_RECEIPT.json",
+    "classification": "MACBOOK_LOCAL_STABLE_EXACT_PACKAGE_LOAD_AND_RESTART_PASS"
+  },
+  "PREVIEW_BDS": {
+    "status": "PENDING",
+    "authority": "qualify-bedrock-candidate",
+    "receipt": "",
+    "classification": "NOT_RUN"
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "schema_version": "1.0.0",
+  "record_revision": 3,
+  "classification": "EXACT_PACKAGE_QUALIFIER_REPAIRED_LOCAL_DOCKER_ROUTE_PROVEN",
+  "gates": {
+    "QUALIFIER_SOURCE_COMMITTED": "PASS",
+    "TESTER_IMAGE_REBUILT_OR_REPAIRED": "PASS",
+    "TESTER_IMAGE_DIGEST_PINNED": "PASS",
+    "QUALIFIER_PRESENT_AND_EXECUTABLE": "PASS",
+    "QUALIFIER_FAIL_CLOSED_TESTS": "PASS",
+    "EXACT_ARTIFACT_HASH_VERIFICATION": "PASS",
+    "PATH_AND_MOUNT_SAFETY": "PASS",
+    "STABLE_BDS_IMAGE_PINNED": "PASS",
+    "REAL_STABLE_BDS_PROCESS_STARTED": "PASS",
+    "TRAILBOUND_BP_LOADED": "PASS",
+    "TRAILBOUND_RP_LOADED": "PASS",
+    "TRAILBOUND_SCRIPT_RUNTIME_LOADED": "PASS",
+    "TRAILBOUND_AUTOMATED_FIXTURES": "PASS",
+    "RESTART_AND_PERSISTENCE": "BLOCKED",
+    "COMPLETE_RECEIPT_RETURNED": "PASS",
+    "CLEANUP_PROVEN": "PASS",
+    "CANDIDATE_BYTES_UNCHANGED": "PASS",
+    "MAILBOX_RESULT_PUBLISHED": "PASS",
+    "DOCKER_BDS_ROUTE_PROVEN": "PASS",
+    "FACTORY_TEST_GATE_READY": "PASS"
+  },
+  "gate_notes": {
+    "TRAILBOUND_RP_LOADED": "Exact RP was installed and world activation was written with no dependency/content errors; client rendering is not proven.",
+    "RESTART_AND_PERSISTENCE": "Same-world restart passed; player-mutated persistence was not automatable without modifying the candidate.",
+    "MAILBOX_RESULT_PUBLISHED": "MSG-T09-TRAILBOUND-BDS-RESULT-000005 at mailbox commit 851c016483dc5d87329135c3d63eaa8fcd565332, tree 8f6fdbb47ba0e5754f4980f1f670c010a58c5425.",
+    "DOCKER_BDS_ROUTE_PROVEN": "The selected MacBook-local Docker route ran real Stable BDS twice against the exact immutable tuple and returned complete logs, receipts, and cleanup evidence.",
+    "FACTORY_TEST_GATE_READY": "The generic v2 qualifier accepts profile-bound immutable candidates through the selected MacBook-local route. Git provenance remains a mandatory outer preflight responsibility.",
+    "MAC_STUDIO_ROUTE": "Optional overflow and independent replication capacity; its image-load blocker does not supersede the selected local route."
+  },
+  "factory_run_control": "PAUSED_PENDING_EXPLICIT_USER_RELEASE"
+}

@@ -1,0 +1,42 @@
+{
+  "schema_version": "1.0.0",
+  "record_type": "milestone_mechanical_rejection",
+  "decision_id": "T1-RELIQUARY-G3-MECHANICAL-REJECTION-000001",
+  "pack_id": "reliquary-vaults",
+  "candidate_generation": 3,
+  "candidate_message_id": "MSG-P07-RELIQUARY-CANDIDATE-000003",
+  "candidate_authority": {
+    "repository": "/Users/blakegrove/Desktop/bedrock-server/program/crazycraft-pack-production-v1/reliquary-vaults",
+    "ref": "refs/heads/codex/reliquary-vaults-production-v1",
+    "content_commit": "481efdb3535fee7ad7e648ce4f193a9f24aed10a",
+    "content_tree": "96ab0f398e62da3c13a68dd1844470616ccd2f29",
+    "metadata_commit": "685b9af01580dee3a1af92d69f06e26af6f3899d",
+    "metadata_tree": "588fb74df4690f051e642184f1456bd09e7cc975",
+    "mcaddon_sha256": "e45d3f44a9e19111490e7b89784eda6ec284468d0f0573991defe7a9d3aa146e"
+  },
+  "classification": "MECHANICAL_DEFECT",
+  "failed_validator": "restricted_identifiers_and_git_objects",
+  "finding_id": "MECH-RELIQUARY-SCANNER-EXECUTION-001",
+  "expected": "The committed restricted scanner executes in a fresh no-local detached clone and reproduces the submitted zero-finding result.",
+  "observed": "node tools/run-restricted-scans.mjs aborts before scanning with ReferenceError: Cannot access 'inputs' before initialization at line 9.",
+  "preserved_evidence": [
+    "29_OF_29_TESTS_PASS_TWICE",
+    "150_PACK_FILES_VALIDATE",
+    "EXACT_BP_RP_MCADDDON_AND_MANIFEST_HASHES_REPRODUCED",
+    "DETERMINISTIC_BUILD_PASS"
+  ],
+  "required_resubmission": [
+    "Repair the committed scanner without changing product bytes unless independently necessary.",
+    "Execute the repaired scanner in a fresh no-local detached clone.",
+    "Publish a new immutable candidate generation with exact scanner authority and result hashes.",
+    "Retain the original durable pack owner."
+  ],
+  "t10_disposition": "NOT_ADMITTED",
+  "tester_disposition": "NOT_ADMITTED",
+  "proof_boundary": [
+    "MECHANICAL_REJECTION_ONLY",
+    "NO_NEW_PRODUCT_AUDIT_BDS_CLIENT_INTEGRATION_OR_RELEASE_RESULT",
+    "GENERATION_2_AUTHORITIES_REMAIN_PRESERVED"
+  ],
+  "created_at": "2026-07-29T23:31:45Z"
+}

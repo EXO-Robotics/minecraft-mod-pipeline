@@ -1,0 +1,43 @@
+{
+  "schema_version": "1.0.0",
+  "record_type": "milestone_mechanical_rejection",
+  "decision_id": "T1-HEARTHVEIL-G3-MECHANICAL-REJECTION-000001",
+  "pack_id": "hearthveil",
+  "candidate_generation": 3,
+  "candidate_message_id": "MSG-P09-HEARTHVEIL-CANDIDATE-000003",
+  "candidate_authority": {
+    "repository": "/Users/blakegrove/Desktop/bedrock-server/program/crazycraft-pack-production-v1/hearthveil",
+    "ref": "refs/heads/codex/hearthveil-production-v1",
+    "content_commit": "668bd87e31ca8cf2472798764dbe4e4b823e126f",
+    "content_tree": "8717b423a2ace9eba31d34d2ed2c2cf7ab390409",
+    "metadata_commit": "519cb804eb32b9e403f81f4d367ea62e3baf37e9",
+    "metadata_tree": "f7ec62843c08430530a73f5a54811a807dee084a",
+    "mcaddon_sha256": "b12e9be8bd04f47c73d0cb2cec339a2c943cd1c30af12aaf9a7bc8eaea19ed56"
+  },
+  "classification": "MECHANICAL_DEFECT",
+  "failed_validator": "restricted_identifiers_and_git_objects",
+  "finding_id": "MECH-HEARTHVEIL-RESTRICTED-OBJECTS-001",
+  "expected": "The committed restricted scanner returns zero mandatory findings against immutable content commit A.",
+  "observed": "node tools/restricted-scan.mjs returns FAIL with 13 reachable Git-object findings in committed generation-3 process-receipt blobs.",
+  "preserved_evidence": [
+    "21_OF_21_TESTS_PASS",
+    "10_OF_10_MUTATIONS_KILLED",
+    "229_JSON_122_PNG_20_AUDIO_ZERO_STATIC_ERRORS",
+    "SHIPPED_ENTRYPOINT_WORLD_READY_PASS",
+    "EXACT_BP_RP_MCADDDON_AND_MANIFEST_HASHES_REPRODUCED"
+  ],
+  "required_resubmission": [
+    "Reconcile receipt content with the restricted-object policy without weakening the policy.",
+    "Execute the corrected scanner against the immutable candidate ancestry.",
+    "Publish a new immutable candidate generation with exact scan authority and zero mandatory findings.",
+    "Retain the original durable pack owner."
+  ],
+  "t10_disposition": "NOT_ADMITTED",
+  "tester_disposition": "NOT_ADMITTED",
+  "proof_boundary": [
+    "MECHANICAL_REJECTION_ONLY",
+    "NO_NEW_PRODUCT_AUDIT_BDS_CLIENT_INTEGRATION_OR_RELEASE_RESULT",
+    "GENERATION_2_TEST_FAIL_PRODUCT_REMAINS_PRESERVED"
+  ],
+  "created_at": "2026-07-29T23:31:45Z"
+}

@@ -1,0 +1,95 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://schemas.mccompiler.local/sanitized-workload-1.0.0.json",
+  "title": "Sanitized factory workload packet",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "workload_id",
+    "title",
+    "product_scope",
+    "player_facing_contracts",
+    "inputs_produced_by_other_workloads",
+    "outputs_consumed_by_other_workloads",
+    "shared_runtime_requirements",
+    "asset_contract_ids",
+    "behavior_contract_ids",
+    "progression_nodes",
+    "acceptance_tests",
+    "performance_budget",
+    "console_constraints",
+    "multiplayer_constraints",
+    "persistence_constraints",
+    "known_platform_gaps",
+    "allowed_reconstruction_strategies",
+    "rights_constraints",
+    "source_expression_included"
+  ],
+  "properties": {
+    "workload_id": {"type": "string", "pattern": "^SF-T(?:[1-9]|1[0-2])$"},
+    "title": {"type": "string", "minLength": 1, "maxLength": 100, "pattern": "^[^\\r\\n]+$"},
+    "product_scope": {"$ref": "#/$defs/nonempty_text_array"},
+    "player_facing_contracts": {"$ref": "#/$defs/nonempty_text_array"},
+    "inputs_produced_by_other_workloads": {"$ref": "#/$defs/id_array"},
+    "outputs_consumed_by_other_workloads": {"$ref": "#/$defs/nonempty_id_array"},
+    "shared_runtime_requirements": {"$ref": "#/$defs/nonempty_id_array"},
+    "asset_contract_ids": {"$ref": "#/$defs/id_array"},
+    "behavior_contract_ids": {"$ref": "#/$defs/nonempty_id_array"},
+    "progression_nodes": {"$ref": "#/$defs/nonempty_id_array"},
+    "acceptance_tests": {
+      "type": "array",
+      "minItems": 3,
+      "uniqueItems": true,
+      "items": {"$ref": "#/$defs/acceptance_test"}
+    },
+    "performance_budget": {"$ref": "#/$defs/performance_budget"},
+    "console_constraints": {"$ref": "#/$defs/nonempty_text_array"},
+    "multiplayer_constraints": {"$ref": "#/$defs/nonempty_text_array"},
+    "persistence_constraints": {"$ref": "#/$defs/nonempty_text_array"},
+    "known_platform_gaps": {"$ref": "#/$defs/text_array"},
+    "allowed_reconstruction_strategies": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {
+        "enum": ["NATIVE_MAPPING", "BOUNDED_REDESIGN", "ORIGINAL_SUBSTITUTE", "DEFERRED", "BLOCKED"]
+      }
+    },
+    "rights_constraints": {"$ref": "#/$defs/nonempty_text_array"},
+    "source_expression_included": {"const": false}
+  },
+  "$defs": {
+    "text": {"type": "string", "minLength": 1, "maxLength": 240, "pattern": "^[^\\r\\n]+$"},
+    "portable_id": {"type": "string", "pattern": "^[a-z][a-z0-9]*(?:[._-][a-z0-9]+)+$"},
+    "text_array": {"type": "array", "uniqueItems": true, "items": {"$ref": "#/$defs/text"}},
+    "nonempty_text_array": {"type": "array", "minItems": 1, "uniqueItems": true, "items": {"$ref": "#/$defs/text"}},
+    "id_array": {"type": "array", "uniqueItems": true, "items": {"$ref": "#/$defs/portable_id"}},
+    "nonempty_id_array": {"type": "array", "minItems": 1, "uniqueItems": true, "items": {"$ref": "#/$defs/portable_id"}},
+    "performance_budget": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["profile", "script_tick_units_max", "active_entities_max", "persistent_records_max", "network_events_per_tick_max", "cleanup_ticks_max", "physical_console_verified"],
+      "properties": {
+        "profile": {"const": "BEDROCK_CONSOLE_PLANNING_PROXY"},
+        "script_tick_units_max": {"type": "integer", "minimum": 0, "maximum": 100},
+        "active_entities_max": {"type": "integer", "minimum": 0, "maximum": 128},
+        "persistent_records_max": {"type": "integer", "minimum": 0, "maximum": 4096},
+        "network_events_per_tick_max": {"type": "integer", "minimum": 0, "maximum": 256},
+        "cleanup_ticks_max": {"type": "integer", "minimum": 1, "maximum": 1200},
+        "physical_console_verified": {"const": false}
+      }
+    },
+    "acceptance_test": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["test_id", "class", "owner", "candidate_publication_prerequisite", "contract"],
+      "properties": {
+        "test_id": {"$ref": "#/$defs/portable_id"},
+        "class": {"enum": ["WORKER_LOCAL", "T1_MECHANICAL_PREFLIGHT", "STABLE_BDS", "T10_PRIVATE_AUDIT", "T2_SHARED_ADAPTER", "INTEGRATION", "DESKTOP_CLIENT", "REALMS", "CONTROLLER", "SPLIT_SCREEN", "PHYSICAL_PS4"]},
+        "owner": {"enum": ["feature_producer", "t1_preflight_tester", "bds_tester", "independent_auditor", "t2_adapter_owner", "segment_integrator", "client_qa", "realms_qa", "controller_qa", "multiplayer_qa", "console_qa"]},
+        "candidate_publication_prerequisite": {"type": "boolean"},
+        "contract": {"$ref": "#/$defs/text"}
+      }
+    }
+  }
+}

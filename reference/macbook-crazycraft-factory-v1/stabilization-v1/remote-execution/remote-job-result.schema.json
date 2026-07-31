@@ -1,0 +1,51 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "crazycraft://remote-job-result.schema.json",
+  "title": "Crazy Craft bounded remote job result",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "job_id",
+    "job_type",
+    "requesting_authority",
+    "assignment_id",
+    "campaign_id",
+    "outcome",
+    "abstract_results",
+    "opaque_contract_ids",
+    "opaque_finding_ids",
+    "required_regression_ids",
+    "qualification_references",
+    "proof_boundary",
+    "external_gates_not_run",
+    "disclosure_scan",
+    "result_payload_sha256"
+  ],
+  "properties": {
+    "schema_version": {"const": "crazycraft-remote-v1"},
+    "job_id": {"type": "string", "pattern": "^JOB-[0-9]{12}$"},
+    "job_type": {"type": "string"},
+    "requesting_authority": {"enum": ["T1", "T10"]},
+    "assignment_id": {"type": "string"},
+    "campaign_id": {"type": "string"},
+    "outcome": {"enum": ["PASS", "FAIL", "BLOCKED"]},
+    "abstract_results": {"type": "array", "items": {"type": "object"}},
+    "opaque_contract_ids": {"type": "array", "items": {"type": "string"}},
+    "opaque_finding_ids": {"type": "array", "items": {"type": "string"}},
+    "required_regression_ids": {"type": "array", "items": {"type": "string"}},
+    "qualification_references": {"type": "array", "items": {"type": "string"}},
+    "proof_boundary": {"type": "string", "minLength": 1},
+    "external_gates_not_run": {"type": "array", "items": {"type": "string"}},
+    "disclosure_scan": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["status", "matches"],
+      "properties": {
+        "status": {"enum": ["PASS", "FAIL"]},
+        "matches": {"type": "array"}
+      }
+    },
+    "result_payload_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"}
+  }
+}

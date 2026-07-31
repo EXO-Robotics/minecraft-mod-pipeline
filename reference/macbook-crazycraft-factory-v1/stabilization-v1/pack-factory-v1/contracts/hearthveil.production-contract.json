@@ -1,0 +1,177 @@
+{
+  "asset_workload": {
+    "authority_state": "PLANNED_ORIGINAL_PRODUCTION",
+    "class_counts": {
+      "HERO": 4,
+      "ICON": 48,
+      "NOT_REQUIRED": 0,
+      "PARTICLE": 12,
+      "REUSABLE_COMPLEX": 8,
+      "ROUTINE_MODEL": 18,
+      "SOUND": 20
+    },
+    "expected_outputs": {
+      "animation_controllers": 20,
+      "animations": 36,
+      "editable_bbmodel_files": 30,
+      "icons": 48,
+      "localization_sets": 1,
+      "models": 30,
+      "particles": 12,
+      "proof_renders": 180,
+      "sounds": 20,
+      "textures": 120,
+      "ui_elements": 4
+    },
+    "rules": [
+      "Blockbench is NOT_APPLICABLE for flat icons and ordinary full-cube blocks unless custom geometry materially supports the product.",
+      "Every custom geometry source must reopen natively and export twice to normalized equivalent runtime geometry.",
+      "Hero and reusable-complex assets require independent Golden scoring; routine assets require originality, readability, and technical validity.",
+      "Repairs update editable sources first; export-only hand edits are forbidden."
+    ]
+  },
+  "clean_room_boundary": {
+    "permitted": [
+      "this contract",
+      "approved platform interfaces",
+      "qualified production baseline",
+      "original authored assets and code"
+    ],
+    "prohibited": [
+      "raw Java code or bytecode",
+      "decompiled text",
+      "source identifiers and paths",
+      "source models, textures, UVs, animations, audio, writing, and branding",
+      "private oracle values and hidden cases"
+    ],
+    "proof_rule": "Every authoring and product-affecting repair process emits a candidate-bound isolation receipt."
+  },
+  "completion_condition": {
+    "nonterminal_events": [
+      "contract_created",
+      "vertical_slice_created",
+      "preliminary_candidate_published",
+      "candidate_submitted_to_testing",
+      "one_repair_completed",
+      "waiting_for_tester",
+      "standalone_test_pass"
+    ],
+    "terminal_alternatives": [
+      "TERMINALLY_UNAVAILABLE",
+      "USER_DECISION_REQUIRED",
+      "EXTERNAL_PHYSICAL_GATE_REQUIRED"
+    ],
+    "terminal_success": "PACK_ACCEPTED_AND_INTEGRATED"
+  },
+  "contract_id": "PC-HEARTHVEIL-V1",
+  "gameplay": {
+    "blocks": [
+      "ritual hearth",
+      "transmutation table",
+      "travel anchor",
+      "reagent plants"
+    ],
+    "controller_conscious_interaction": "All primary actions use ordinary item use, block interact, inventory, dialogue forms, or bounded action forms; no keyboard-only requirement.",
+    "core_gameplay_loop": "Gather original reagents, build ritual arrangements, execute server-authoritative rites, raise familiar bonds, unlock travel, and challenge one leased encounter.",
+    "crafting_and_loot": [
+      "survival reagents, recipes, loot tables, and exactly-once ritual rewards"
+    ],
+    "encounters": [
+      "ritual failures",
+      "familiar trials",
+      "one bounded boss encounter"
+    ],
+    "entities": [
+      "four familiar archetypes",
+      "three encounter creatures",
+      "one global-boss-lease encounter"
+    ],
+    "items": [
+      "ritual tools",
+      "reagent set",
+      "transmutation focus",
+      "familiar tokens",
+      "travel sigils",
+      "boss key"
+    ],
+    "multiplayer_behavior": "Per-player ritual state and reward journals; shared encounters use generation fencing and one boss lease.",
+    "ownership_rules": "Rituals and familiars are player-owned; shared anchors expose explicit access modes.",
+    "persistence": "Versioned ritual, transaction, familiar, travel, encounter, and migration schemas.",
+    "player_progression": [
+      "reagents",
+      "ritual craft",
+      "transmutation mastery",
+      "familiar bond",
+      "travel rites",
+      "encounter mastery"
+    ],
+    "recovery_and_cleanup": "Interrupted rituals roll back or quarantine; entities, adds, projectiles, and anchors use bounded cleanup.",
+    "required_original_presentation": "Original hearth-smoke, woven bark, ceramic, brass, and moonlit mineral language; no source names or visual copying.",
+    "restart_and_reconnect": "Versioned state reconstructs idempotently; stale callbacks and generations are inert."
+  },
+  "namespace": "ccr_p06",
+  "pack_id": "hearthveil",
+  "product_name": "Hearthveil",
+  "required_outputs": [
+    "complete_behavior_pack",
+    "complete_resource_pack_when_applicable",
+    "manifest_declared_scripts_main_js_when_scripted",
+    "original_editable_asset_sources",
+    "local_unit_and_integration_tests",
+    "deterministic_builder",
+    "exact_bp_rp_mcaddon_artifacts",
+    "artifact_manifest",
+    "candidate_bound_process_isolation_receipt",
+    "immutable_candidate_submission_message"
+  ],
+  "schema_version": "1.0.0",
+  "technical_allocation": {
+    "migration_version": 1,
+    "persistence_schema": "ccr_p06:state_v1",
+    "platform_authority": {
+      "aggregate_sha256": "84e79568550d800717798858c254498e682d452ec4ab6b95e6320d1a79397f57",
+      "commit": "aba740f136dce5781e68d34e1c7aaa2a0a3d8671",
+      "interface_classification": "FROZEN_PLATFORM_V1_CONTRACTS",
+      "manifest_sha256": "b7de7329fd78b451994b367e0ac226099e8d260bd21309f3f5753b3830c42630",
+      "repository": "/Users/blakegrove/Desktop/bedrock-server/minecraft-compiler-baseline",
+      "tree": "2d5c123c9cbc6d4cdaac2ff922916450b5282d08"
+    },
+    "runtime_budget": {
+      "adds_policy": "SHARED_ADMISSION_CONTROLLER_MAX_8_GLOBAL_MAX_4_PER_ENCOUNTER",
+      "boss_policy": "SHARED_LEASE_ONLY_NO_GUARANTEED_CONCURRENT_BOSS",
+      "combined_reservation_target": {
+        "callbacks_per_heartbeat": 1,
+        "custom_entities": 4,
+        "dynamic_property_bytes": 15360,
+        "particles_per_second": 14,
+        "pathfinders": 2,
+        "persistent_records": 256,
+        "projectiles": 2,
+        "scheduler_pending": 4,
+        "script_time_microseconds_per_tick": 295,
+        "simultaneous_audio_voices": 1
+      },
+      "standalone_policy": "A pack may use a larger standalone test fixture only when its assignment declares that fixture; combined integration must meet this reservation target or return an integration finding."
+    },
+    "shared_runtime_dependencies": [
+      "identity",
+      "persistence",
+      "ownership",
+      "scheduler",
+      "event_router",
+      "reward_journal",
+      "recovery",
+      "diagnostics",
+      "budget_admission",
+      "migration_coordinator"
+    ],
+    "uuid_allocations": {
+      "behavior_data_module": "16a73a16-09dc-549c-92a0-d240bc8a76fe",
+      "behavior_header": "f045ba15-9cf6-556b-9434-9c5ee89a800d",
+      "behavior_script_module": "c444288d-75c5-552d-8f64-c601d389b6aa",
+      "resource_header": "bd5a4b4c-2c0c-58c7-b387-233934a511de",
+      "resource_resources_module": "27717b3d-9503-5ba6-a2df-0228e0cf3db6"
+    }
+  },
+  "theme": "Original ritual craft, transmutation, familiars, travel rites, and bounded occult encounters."
+}

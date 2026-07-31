@@ -1,0 +1,276 @@
+{
+  "asset_workload": {
+    "authority_state": "PLANNED_ORIGINAL_PRODUCTION",
+    "class_counts": {
+      "HERO": 4,
+      "ICON": 40,
+      "NOT_REQUIRED": 0,
+      "PARTICLE": 12,
+      "REUSABLE_COMPLEX": 8,
+      "ROUTINE_MODEL": 10,
+      "SOUND": 18
+    },
+    "expected_outputs": {
+      "animation_controllers": 16,
+      "animations": 30,
+      "editable_bbmodel_files": 22,
+      "icons": 40,
+      "localization_sets": 1,
+      "models": 22,
+      "particles": 12,
+      "proof_renders": 150,
+      "sounds": 18,
+      "textures": 96,
+      "ui_elements": 5
+    },
+    "rules": [
+      "Blockbench is NOT_APPLICABLE for flat icons and ordinary full-cube blocks unless custom geometry materially supports the product.",
+      "Every custom geometry source must reopen natively and export twice to normalized equivalent runtime geometry.",
+      "Hero and reusable-complex assets require independent Golden scoring; routine assets require originality, readability, and technical validity.",
+      "Repairs update editable sources first; export-only hand edits are forbidden."
+    ]
+  },
+  "assigned_worker_role": "PACK-WORKER-11-VANGUARD",
+  "assignment_id": "PA-11-VANGUARD_ARSENAL-V1",
+  "assignment_payload_sha256": "afc4edada0bd52089fb4b243e670ed6c8914f2a50643fb6e972090c4c8dc601a",
+  "assignment_type": "DURABLE_PACK_OWNERSHIP",
+  "central_authority_bindings": {
+    "asset_workload_ledger_sha256": "ed42ebebd9af60fce60bf3ada9b4e36c263b4bc7d45abbdeef0174142b166ad9",
+    "namespace_uuid_registry_sha256": "966630ecb756190012d3b20604ff148442efa9e98785e53f323f8fd5a27d2f33",
+    "pack_map_sha256": "f60ed61b1c65de6069fadf321b0177dc591db142669f7c4047719c0cef4e2edb",
+    "repository_registry_sha256": "5b5cfb30439676df0f1856ab6820a83949eb16b2aaa8b5e2e3a5565e88da323d",
+    "runtime_budget_registry_sha256": "4bcd007bd5a5af86cd1fc4e74565321914255669c253ee17c7312173e6669f39"
+  },
+  "completion_condition": {
+    "nonterminal_events": [
+      "contract_created",
+      "vertical_slice_created",
+      "preliminary_candidate_published",
+      "candidate_submitted_to_testing",
+      "one_repair_completed",
+      "waiting_for_tester",
+      "standalone_test_pass"
+    ],
+    "terminal_alternatives": [
+      "TERMINALLY_UNAVAILABLE",
+      "USER_DECISION_REQUIRED",
+      "EXTERNAL_PHYSICAL_GATE_REQUIRED"
+    ],
+    "terminal_success": "PACK_ACCEPTED_AND_INTEGRATED"
+  },
+  "control_source_responsibility": {
+    "accepted_foundations": [],
+    "exact_source_artifacts": [
+      {
+        "final_disposition": "PACK",
+        "path": "mods/Superheroes Mod.jar",
+        "sha256": "6f5c0426c08dedcd643d0167eee09b519ef6235e09a0fc154d1683bf03a314b0",
+        "source_artifact_id": "CC-SRC-044"
+      },
+      {
+        "final_disposition": "PACK_CONSOLIDATED_ROLE",
+        "path": "mods/Mine & Blade Battlegear 2 - Bullseye.jar",
+        "sha256": "0465f2ffbc9a297995e73c9c287657af67fe1bb521e3ac3aa2fb6b75e03d066b",
+        "source_artifact_id": "CC-SRC-028"
+      },
+      {
+        "final_disposition": "PACK_CONSOLIDATED_ROLE",
+        "path": "mods/GravityGun.jar",
+        "sha256": "407fecb521aaf2c50dd93b46311c8449f08a90db5f3d204e622a92abb4854201",
+        "source_artifact_id": "CC-SRC-017"
+      }
+    ],
+    "excluded_scope": [
+      "raw Java code or bytecode",
+      "decompiled text",
+      "source identifiers and paths",
+      "source models, textures, UVs, animations, audio, writing, and branding",
+      "private oracle values and hidden cases"
+    ],
+    "existing_candidate_authority": null,
+    "visibility": "CONTROL_ONLY_NOT_A_PRODUCTION_INPUT"
+  },
+  "identity": {
+    "asset_authority": {
+      "inventory": {
+        "authority_state": "PLANNED_ORIGINAL_PRODUCTION",
+        "class_counts": {
+          "HERO": 4,
+          "ICON": 40,
+          "NOT_REQUIRED": 0,
+          "PARTICLE": 12,
+          "REUSABLE_COMPLEX": 8,
+          "ROUTINE_MODEL": 10,
+          "SOUND": 18
+        },
+        "expected_outputs": {
+          "animation_controllers": 16,
+          "animations": 30,
+          "editable_bbmodel_files": 22,
+          "icons": 40,
+          "localization_sets": 1,
+          "models": 22,
+          "particles": 12,
+          "proof_renders": 150,
+          "sounds": 18,
+          "textures": 96,
+          "ui_elements": 5
+        },
+        "rules": [
+          "Blockbench is NOT_APPLICABLE for flat icons and ordinary full-cube blocks unless custom geometry materially supports the product.",
+          "Every custom geometry source must reopen natively and export twice to normalized equivalent runtime geometry.",
+          "Hero and reusable-complex assets require independent Golden scoring; routine assets require originality, readability, and technical validity.",
+          "Repairs update editable sources first; export-only hand edits are forbidden."
+        ]
+      },
+      "ref": "refs/heads/codex/vanguard-arsenal-production-v1",
+      "repository": "/Users/blakegrove/Desktop/bedrock-server/program/crazycraft-pack-production-v1/vanguard-arsenal",
+      "root": "assets/editable"
+    },
+    "bp_data_uuid": "e22670e9-6708-5586-80ae-5cb831c39f6b",
+    "bp_header_uuid": "cc372cba-3440-5bb7-ad9a-8f9fc1bebaea",
+    "namespace": "ccr_p04",
+    "production_ref": "refs/heads/codex/vanguard-arsenal-production-v1",
+    "production_repository": "/Users/blakegrove/Desktop/bedrock-server/program/crazycraft-pack-production-v1/vanguard-arsenal",
+    "rp_header_uuid": "de2f8b49-4384-5ba6-9bd3-38cb89b278a8",
+    "rp_module_uuid": "389f1007-6805-5794-af1a-00421508c8d2",
+    "script_module_uuid": "5e847228-d41a-55ed-a47d-130165f15755",
+    "semantic_version": [
+      1,
+      0,
+      0
+    ],
+    "theme": "Original ability loadouts, melee/ranged combat craft, force tools, and bounded trials."
+  },
+  "internal_subagent_roles": [
+    "gameplay_runtime",
+    "behavior_pack_content",
+    "resource_pack_and_assets",
+    "blockbench_when_required",
+    "tests",
+    "package_validation"
+  ],
+  "mailbox_contract": {
+    "candidate_submission": "candidate_submissions/vanguard-arsenal/",
+    "final_decision": "final_decisions/vanguard-arsenal/",
+    "integration_intake": "integration_intake/vanguard-arsenal/",
+    "repair_instruction": "worker_repairs/vanguard-arsenal/",
+    "repository": "/Users/blakegrove/Desktop/bedrock-server/program/crazycraft-pack-factory-mailboxes-v1",
+    "tester_result": "tester_results/vanguard-arsenal/"
+  },
+  "no_ssh_no_studio": {
+    "attempt_is_lane_clean_room_hard_stop": true,
+    "status": "REQUIRED"
+  },
+  "pack_id": "vanguard-arsenal",
+  "pack_name": "Vanguard Arsenal",
+  "producer_safe_input": {
+    "contract_path": "/Users/blakegrove/Desktop/bedrock-server/program/crazycraft-persistent-orchestrator-v1/stabilization-v1/pack-factory-v1/contracts/vanguard-arsenal.production-contract.json",
+    "contract_sha256": "1b626480f5d0a68796c8465bd7e22d293f44deef3cc34ff6b7522676554907b0",
+    "source_names_paths_hashes_forbidden": true
+  },
+  "product_scope": {
+    "blocks": [
+      "training target",
+      "aspect forge"
+    ],
+    "controller_conscious_interaction": "All primary actions use ordinary item use, block interact, inventory, dialogue forms, or bounded action forms; no keyboard-only requirement.",
+    "core_gameplay_loop": "Craft one original aspect loadout, charge abilities through play, use bounded melee/ranged/force actions, and master challenge trials.",
+    "crafting_and_loot": [
+      "survival recipes, drops, cooldown-bound rewards"
+    ],
+    "encounters": [
+      "combat and mobility trials"
+    ],
+    "entities": [
+      "four trial opponents",
+      "one lease-eligible elite"
+    ],
+    "items": [
+      "aspect cores",
+      "weapons",
+      "ranged tools",
+      "bounded force tool",
+      "armor set pieces"
+    ],
+    "multiplayer_behavior": "Damage, projectiles, rewards, and cooldowns are server authoritative and duplicate-safe.",
+    "ownership_rules": "Abilities are player-entitled and physical tools retain unique item identity.",
+    "persistence": "Versioned loadout, cooldown, projectile, entitlement, and reward state.",
+    "player_progression": [
+      "six aspect loadouts",
+      "three mastery tiers",
+      "combat tool upgrades",
+      "trial mastery"
+    ],
+    "recovery_and_cleanup": "Stale projectiles, interrupted charge actions, and invalid loadouts clean or roll back within fixed caps.",
+    "required_original_presentation": "Original practical arcane-tech armor, bold readable effects, and controller-safe feedback.",
+    "restart_and_reconnect": "Versioned state reconstructs idempotently; stale callbacks and generations are inert."
+  },
+  "publication_rules": {
+    "candidate_publication_is_nonterminal": true,
+    "frozen_candidates_never_edited": true,
+    "new_product_repair_requires_new_generation": true,
+    "one_durable_owner": true,
+    "subagents_are_not_product_owners": true,
+    "tester_wait_is_nonterminal": true,
+    "working_tree_packages_rejected": true
+  },
+  "required_outputs": [
+    "complete_behavior_pack",
+    "complete_resource_pack_when_applicable",
+    "manifest_declared_scripts_main_js_when_scripted",
+    "original_editable_asset_sources",
+    "local_unit_and_integration_tests",
+    "deterministic_builder",
+    "exact_bp_rp_mcaddon_artifacts",
+    "artifact_manifest",
+    "candidate_bound_process_isolation_receipt",
+    "immutable_candidate_submission_message"
+  ],
+  "run_control": "PAUSED_NOT_DISPATCHED",
+  "schema_version": "1.0.0",
+  "technical_allocation": {
+    "dynamic_property_prefix": "ccr_p04:",
+    "integration_adapter_required": true,
+    "migration_version": 1,
+    "persistence_schema": "ccr_p04:state_v1",
+    "platform_authority": {
+      "aggregate_sha256": "84e79568550d800717798858c254498e682d452ec4ab6b95e6320d1a79397f57",
+      "commit": "aba740f136dce5781e68d34e1c7aaa2a0a3d8671",
+      "interface_classification": "FROZEN_PLATFORM_V1_CONTRACTS",
+      "manifest_sha256": "b7de7329fd78b451994b367e0ac226099e8d260bd21309f3f5753b3830c42630",
+      "repository": "/Users/blakegrove/Desktop/bedrock-server/minecraft-compiler-baseline",
+      "tree": "2d5c123c9cbc6d4cdaac2ff922916450b5282d08"
+    },
+    "runtime_budget": {
+      "adds_policy": "SHARED_ADMISSION_CONTROLLER_MAX_8_GLOBAL_MAX_4_PER_ENCOUNTER",
+      "boss_policy": "SHARED_LEASE_ONLY_NO_GUARANTEED_CONCURRENT_BOSS",
+      "combined_reservation_target": {
+        "callbacks_per_heartbeat": 1,
+        "custom_entities": 4,
+        "dynamic_property_bytes": 12288,
+        "particles_per_second": 14,
+        "pathfinders": 1,
+        "persistent_records": 192,
+        "projectiles": 4,
+        "scheduler_pending": 4,
+        "script_time_microseconds_per_tick": 275,
+        "simultaneous_audio_voices": 1
+      },
+      "standalone_policy": "A pack may use a larger standalone test fixture only when its assignment declares that fixture; combined integration must meet this reservation target or return an integration finding."
+    },
+    "shared_runtime_interfaces": [
+      "identity",
+      "persistence",
+      "ownership",
+      "scheduler",
+      "event_router",
+      "reward_journal",
+      "recovery",
+      "diagnostics",
+      "budget_admission",
+      "migration_coordinator"
+    ]
+  },
+  "worker_mission": "Own this entire Bedrock pack. Build all assigned gameplay, runtime, assets, tests, and deterministic package outputs. Submit immutable candidates through the mailbox. Read tester and repair messages from the mailbox. Correct defects in the production repository and publish new immutable candidates. Continue until T1 registers the pack as accepted and integrated or issues an exact terminal disposition."
+}

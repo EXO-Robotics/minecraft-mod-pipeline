@@ -1,0 +1,170 @@
+{
+  "asset_workload": {
+    "authority_state": "PLANNED_ORIGINAL_PRODUCTION",
+    "class_counts": {
+      "HERO": 1,
+      "ICON": 32,
+      "NOT_REQUIRED": 0,
+      "PARTICLE": 4,
+      "REUSABLE_COMPLEX": 6,
+      "ROUTINE_MODEL": 24,
+      "SOUND": 12
+    },
+    "expected_outputs": {
+      "animation_controllers": 6,
+      "animations": 12,
+      "editable_bbmodel_files": 18,
+      "icons": 32,
+      "localization_sets": 1,
+      "models": 31,
+      "particles": 4,
+      "proof_renders": 100,
+      "sounds": 12,
+      "textures": 88,
+      "ui_elements": 4
+    },
+    "rules": [
+      "Blockbench is NOT_APPLICABLE for flat icons and ordinary full-cube blocks unless custom geometry materially supports the product.",
+      "Every custom geometry source must reopen natively and export twice to normalized equivalent runtime geometry.",
+      "Hero and reusable-complex assets require independent Golden scoring; routine assets require originality, readability, and technical validity.",
+      "Repairs update editable sources first; export-only hand edits are forbidden."
+    ]
+  },
+  "clean_room_boundary": {
+    "permitted": [
+      "this contract",
+      "approved platform interfaces",
+      "qualified production baseline",
+      "original authored assets and code"
+    ],
+    "prohibited": [
+      "raw Java code or bytecode",
+      "decompiled text",
+      "source identifiers and paths",
+      "source models, textures, UVs, animations, audio, writing, and branding",
+      "private oracle values and hidden cases"
+    ],
+    "proof_rule": "Every authoring and product-affecting repair process emits a candidate-bound isolation receipt."
+  },
+  "completion_condition": {
+    "nonterminal_events": [
+      "contract_created",
+      "vertical_slice_created",
+      "preliminary_candidate_published",
+      "candidate_submitted_to_testing",
+      "one_repair_completed",
+      "waiting_for_tester",
+      "standalone_test_pass"
+    ],
+    "terminal_alternatives": [
+      "TERMINALLY_UNAVAILABLE",
+      "USER_DECISION_REQUIRED",
+      "EXTERNAL_PHYSICAL_GATE_REQUIRED"
+    ],
+    "terminal_success": "PACK_ACCEPTED_AND_INTEGRATED"
+  },
+  "contract_id": "PC-LATCHLINE_INFRASTRUCTURE-V1",
+  "gameplay": {
+    "blocks": [
+      "owned doors",
+      "alarm block",
+      "route station",
+      "signal marker",
+      "secure storage"
+    ],
+    "controller_conscious_interaction": "All primary actions use ordinary item use, block interact, inventory, dialogue forms, or bounded action forms; no keyboard-only requirement.",
+    "core_gameplay_loop": "Craft access tokens, install owned doors and security devices, connect bounded rail dispatch stations, and recover infrastructure after unload or destruction.",
+    "crafting_and_loot": [
+      "survival recipes and recoverable upgrade transactions"
+    ],
+    "encounters": [
+      "security alarms and rail dispatch faults, not combat bosses"
+    ],
+    "entities": [
+      "bounded utility proxies only where required"
+    ],
+    "items": [
+      "access token",
+      "recovery tool",
+      "rail route card",
+      "security modules"
+    ],
+    "multiplayer_behavior": "Access checks and route reservations are server authoritative; concurrent edits use revisions.",
+    "ownership_rules": "Every functional device has one owner, explicit trust policy, and admin recovery boundary.",
+    "persistence": "Versioned device, access-list, route, pending cleanup, and migration records.",
+    "player_progression": [
+      "basic access",
+      "trusted-user control",
+      "security devices",
+      "rail dispatch"
+    ],
+    "recovery_and_cleanup": "Unloaded, blocked, destroyed, stale, and orphaned devices retain bounded cleanup records until reconciled.",
+    "required_original_presentation": "Original industrial wood, riveted metal, colored signal glass, and readable access-state feedback.",
+    "restart_and_reconnect": "Versioned state reconstructs idempotently; stale callbacks and generations are inert."
+  },
+  "namespace": "ccr_p14",
+  "pack_id": "latchline-infrastructure",
+  "product_name": "Latchline Infrastructure",
+  "required_outputs": [
+    "complete_behavior_pack",
+    "complete_resource_pack_when_applicable",
+    "manifest_declared_scripts_main_js_when_scripted",
+    "original_editable_asset_sources",
+    "local_unit_and_integration_tests",
+    "deterministic_builder",
+    "exact_bp_rp_mcaddon_artifacts",
+    "artifact_manifest",
+    "candidate_bound_process_isolation_receipt",
+    "immutable_candidate_submission_message"
+  ],
+  "schema_version": "1.0.0",
+  "technical_allocation": {
+    "migration_version": 1,
+    "persistence_schema": "ccr_p14:state_v1",
+    "platform_authority": {
+      "aggregate_sha256": "84e79568550d800717798858c254498e682d452ec4ab6b95e6320d1a79397f57",
+      "commit": "aba740f136dce5781e68d34e1c7aaa2a0a3d8671",
+      "interface_classification": "FROZEN_PLATFORM_V1_CONTRACTS",
+      "manifest_sha256": "b7de7329fd78b451994b367e0ac226099e8d260bd21309f3f5753b3830c42630",
+      "repository": "/Users/blakegrove/Desktop/bedrock-server/minecraft-compiler-baseline",
+      "tree": "2d5c123c9cbc6d4cdaac2ff922916450b5282d08"
+    },
+    "runtime_budget": {
+      "adds_policy": "SHARED_ADMISSION_CONTROLLER_MAX_8_GLOBAL_MAX_4_PER_ENCOUNTER",
+      "boss_policy": "SHARED_LEASE_ONLY_NO_GUARANTEED_CONCURRENT_BOSS",
+      "combined_reservation_target": {
+        "callbacks_per_heartbeat": 0,
+        "custom_entities": 0,
+        "dynamic_property_bytes": 8192,
+        "particles_per_second": 4,
+        "pathfinders": 0,
+        "persistent_records": 128,
+        "projectiles": 0,
+        "scheduler_pending": 3,
+        "script_time_microseconds_per_tick": 175,
+        "simultaneous_audio_voices": 0
+      },
+      "standalone_policy": "A pack may use a larger standalone test fixture only when its assignment declares that fixture; combined integration must meet this reservation target or return an integration finding."
+    },
+    "shared_runtime_dependencies": [
+      "identity",
+      "persistence",
+      "ownership",
+      "scheduler",
+      "event_router",
+      "reward_journal",
+      "recovery",
+      "diagnostics",
+      "budget_admission",
+      "migration_coordinator"
+    ],
+    "uuid_allocations": {
+      "behavior_data_module": "50472659-219e-57d5-af75-86f274988e62",
+      "behavior_header": "37000d09-ab9f-5c48-a396-7fa03be17a14",
+      "behavior_script_module": "a1617f28-874f-5203-82fd-a77ff83503eb",
+      "resource_header": "4e06709b-1959-55d7-8193-644063de1b6c",
+      "resource_resources_module": "a5d53b4d-a2d7-561d-8106-f2b6463b4c21"
+    }
+  },
+  "theme": "Owned access systems, configurable doors, bounded rail dispatch, and secure infrastructure."
+}

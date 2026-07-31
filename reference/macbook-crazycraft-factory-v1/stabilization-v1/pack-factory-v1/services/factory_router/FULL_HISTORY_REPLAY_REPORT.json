@@ -1,0 +1,562 @@
+{
+  "blocked_packs": [],
+  "compatibility_entry_count": 4,
+  "cursor": null,
+  "head": "29da0f26e801e8aadf6d84d0282e51d32f1fa84d",
+  "mailbox_ref": "refs/heads/codex/factory-mailbox-v1",
+  "mailbox_repository": "/Users/blakegrove/Desktop/bedrock-server/program/crazycraft-pack-factory-mailboxes-v1",
+  "mode": "FULL_HISTORY",
+  "pack_local_quarantine_count": 0,
+  "phases": [
+    {
+      "end_inclusive": "29da0f26e801e8aadf6d84d0282e51d32f1fa84d",
+      "record_count": 245,
+      "start_exclusive": "da6a3bbef4c366fe661e2fabb31673873b48a3a4"
+    }
+  ],
+  "projection": {
+    "active_preflight": [
+      {
+        "candidate_generation": 14,
+        "candidate_identity": "04d1286c78d89dddd38fe058ac6174e187dc0073036c8750fd8b398d472d4e72",
+        "message_id": "MSG-P14-OUTCOMES-CANDIDATE-000014",
+        "message_sha256": "eba0126ce2908546f184c370f9931ec3dff2cfc528adf11d5592e03506985410",
+        "pack_id": "bounded-outcome-events"
+      },
+      {
+        "candidate_generation": 7,
+        "candidate_identity": "7f01715973b4300a20d26c48e0c5a832ba81be816a08e59d288f38165d608517",
+        "message_id": "CC-P16-LATCHLINE-CANDIDATE-000007",
+        "message_sha256": "fd773a485a66b05b66d08d47248413a9ffa2c026501cbb6a6170b6c25313edfb",
+        "pack_id": "latchline-infrastructure"
+      },
+      {
+        "candidate_generation": 9,
+        "candidate_identity": "340cfc366b81d733e72cd4938e9d100ef99d08b6ea5d7d7d63e82b545a6a0db2",
+        "message_id": "ASPECTWEAVE-CANDIDATE-0009",
+        "message_sha256": "a978ad1b0391069ed02671b374671c75bc24b69a1a8dd325276ab260784a7881",
+        "pack_id": "aspectweave"
+      }
+    ],
+    "audit_backlog": [],
+    "audit_results": {
+      "aperture-foundry:1": "MSG-T10-APERTURE-AUDIT-000001",
+      "aperture-foundry:2": "MSG-T10-APERTURE-AUDIT-000002",
+      "aperture-foundry:3": "MSG-T10-APERTURE-AUDIT-000003",
+      "aspectweave:5": "MSG-T10-ASPECTWEAVE-AUDIT-000001",
+      "echo-vessels:4": "MSG-T10-ECHO-AUDIT-000001",
+      "echo-vessels:6": "MSG-T10-ECHO-AUDIT-000002",
+      "hearthveil:4": "MSG-T10-HEARTHVEIL-AUDIT-000001",
+      "hearthveil:5": "MSG-T10-HEARTHVEIL-AUDIT-000002",
+      "latchline-infrastructure:5": "MSG-T10-LATCHLINE-AUDIT-000001",
+      "momentum-menagerie:3": "MSG-T10-MOMENTUM-AUDIT-000001",
+      "pocketbound-companions:4": "MSG-T10-POCKETBOUND-AUDIT-000001",
+      "reliquary-vaults:2": "MSG-T10-RELIQUARY-AUDIT-000002",
+      "reliquary-vaults:4": "MSG-T10-RELIQUARY-AUDIT-000003",
+      "vanguard-arsenal:2": "MSG-T10-VANGUARD-AUDIT-000001",
+      "wayfarer-settlements:3": "MSG-T10-WAYFARER-AUDIT-000001"
+    },
+    "blocked_packs": {},
+    "compatibility_events": [
+      {
+        "disposition": "HISTORICAL_AUTHORITATIVE_REJECTION",
+        "entry_key": "bfeb6b7b3713d66028b3ba2a5bdfa93c883088ce:worker_repairs/bounded-outcome-events/MSG-T01-OUTCOMES-PLATFORM-DECISION-000001.json:5a9e79a55f50fee41dda094194304578de98bf7226fcb5edf4249aec06a59cf6",
+        "message_id": "MSG-T01-OUTCOMES-PLATFORM-DECISION-000001",
+        "message_sha256": "5a9e79a55f50fee41dda094194304578de98bf7226fcb5edf4249aec06a59cf6",
+        "pack_id": "bounded-outcome-events"
+      },
+      {
+        "disposition": "HISTORICAL_SUPERSEDED",
+        "entry_key": "7906f76514603f8b3fcdc734cd2ba67b949fbd90:integration_intake/aspectweave/ASPECTWEAVE-SHARED-RUNTIME-REQUEST-0002.json:390b8dde2d24fc131d85aa56585a0c15045e7d355c1f57b674fefc54fc6c22ba",
+        "message_id": "ASPECTWEAVE-SHARED-RUNTIME-REQUEST-0002",
+        "message_sha256": "390b8dde2d24fc131d85aa56585a0c15045e7d355c1f57b674fefc54fc6c22ba",
+        "pack_id": "aspectweave"
+      },
+      {
+        "disposition": "HISTORICAL_SUPERSEDED",
+        "entry_key": "f49176cc1fe9ac3e8f7be77a459aa1aead0dcb7b:integration_intake/aspectweave/ASPECTWEAVE-SHARED-RUNTIME-REQUEST-0001.json:ec3cf2132338ba52f8c4d4c2c43057dc19af5ed90e78f0460548e3b8f2d18da0",
+        "message_id": "ASPECTWEAVE-SHARED-RUNTIME-REQUEST-0001",
+        "message_sha256": "ec3cf2132338ba52f8c4d4c2c43057dc19af5ed90e78f0460548e3b8f2d18da0",
+        "pack_id": "aspectweave"
+      },
+      {
+        "disposition": "PACK_LOCAL_QUARANTINE_SUPERSESSION_REQUIRED",
+        "entry_key": "9c23c2501b529a437990200965618d527d7fe034:integration_intake/echo-vessels/MSG-P13-ECHO-PLATFORM-REQUEST-000002.json:a56ea57eabdde0a655cd1154266fba73f5afb0f8e239e2d94b51aa8f928dffe6",
+        "message_id": "MSG-P13-ECHO-PLATFORM-REQUEST-000002",
+        "message_sha256": "a56ea57eabdde0a655cd1154266fba73f5afb0f8e239e2d94b51aa8f928dffe6",
+        "pack_id": "echo-vessels"
+      }
+    ],
+    "integration_intake_pending": [
+      {
+        "candidate_generation": 1,
+        "message_id": "MSG-SYNTH-000004",
+        "pack_id": "synthetic-mailbox-fixture"
+      }
+    ],
+    "pending_semantic_actions": [
+      {
+        "action_type": "REPAIR_TESTER_INFRASTRUCTURE_AND_RETRY_UNCHANGED_CANDIDATE",
+        "candidate_generation": 2,
+        "candidate_identity": "10aae66ffefa317acca356d0b3775ebd802d26c6ab0fc12060c8a91011f963fd",
+        "pack_id": "trailbound-packs",
+        "source_message_id": "MSG-T09-TRAILBOUND-BDS-RESULT-000001",
+        "state": "AWAITING_EXACT_PREPARED_SEMANTIC_INPUT"
+      },
+      {
+        "action_type": "REPAIR_TESTER_INFRASTRUCTURE_AND_RETRY_UNCHANGED_CANDIDATE",
+        "candidate_generation": 2,
+        "candidate_identity": "8c93fa0374ed4fa5fea44d33110fb1884343adf620dc4f4721ccfc34ad9cdabb",
+        "pack_id": "trailbound-packs",
+        "source_message_id": "MSG-T09-TRAILBOUND-BDS-RESULT-000003",
+        "state": "AWAITING_EXACT_PREPARED_SEMANTIC_INPUT"
+      },
+      {
+        "action_type": "RESOLVE_T10_ROUTE_STATE",
+        "candidate_generation": 2,
+        "candidate_identity": "4cf826a6feaa28756d8b85d184a49f1a8cab7f34c03695e47d9a8771bccc5ade",
+        "pack_id": "hearthveil",
+        "source_message_id": "MSG-T01-HEARTHVEIL-AUDIT-DEFER-000001",
+        "state": "AWAITING_EXACT_PREPARED_SEMANTIC_INPUT"
+      },
+      {
+        "action_type": "REVIEW_UNCLASSIFIED_MESSAGE",
+        "candidate_generation": 0,
+        "candidate_identity": "024987b06e449c8986af694fdb05072198aa83048b484d94ab0b6baa5dc58ecb",
+        "pack_id": "aperture-foundry",
+        "source_message_id": "MSG-P12-APERTURE-AUTHORITY-REQUEST-000001",
+        "state": "AWAITING_EXACT_PREPARED_SEMANTIC_INPUT"
+      },
+      {
+        "action_type": "REVIEW_UNCLASSIFIED_MESSAGE",
+        "candidate_generation": 0,
+        "candidate_identity": "78d41b80251f8acaf9f4b4877beee0406f67d8855e5dd680f68b50c87e70eac4",
+        "pack_id": "aperture-foundry",
+        "source_message_id": "MSG-T01-APERTURE-AUTHORITY-RESPONSE-000001",
+        "state": "AWAITING_EXACT_PREPARED_SEMANTIC_INPUT"
+      },
+      {
+        "action_type": "REVIEW_UNCLASSIFIED_MESSAGE",
+        "candidate_generation": 0,
+        "candidate_identity": "9cb38ad7840ed6c43e530f2d8e2aa487947737ecb91994354c8f99aeb405b76b",
+        "pack_id": "hearth-and-hall",
+        "source_message_id": "MSG-P08-HEARTH-HALL-AUTHORITY-REQUEST-000001",
+        "state": "AWAITING_EXACT_PREPARED_SEMANTIC_INPUT"
+      },
+      {
+        "action_type": "REVIEW_UNCLASSIFIED_MESSAGE",
+        "candidate_generation": 0,
+        "candidate_identity": "bceb12abc9efd0aeba85600d61014ecb09ae07e52cee008c22c145b3597ed1e9",
+        "pack_id": "latchline-infrastructure",
+        "source_message_id": "CC-P16-LATCHLINE-ISOLATION-ADMISSION-0001",
+        "state": "AWAITING_EXACT_PREPARED_SEMANTIC_INPUT"
+      },
+      {
+        "action_type": "REVIEW_UNCLASSIFIED_MESSAGE",
+        "candidate_generation": 0,
+        "candidate_identity": "d506f123039f6f86294f79a02a5b3a388924f203511b1a3f07863b980512aada",
+        "pack_id": "hearth-and-hall",
+        "source_message_id": "MSG-T01-HEARTH-HALL-ISOLATION-DISPOSITION-000001",
+        "state": "AWAITING_EXACT_PREPARED_SEMANTIC_INPUT"
+      },
+      {
+        "action_type": "REVIEW_UNCLASSIFIED_MESSAGE",
+        "candidate_generation": 1,
+        "candidate_identity": "2abb47b621190f835dc42d1447f404f9c8c7af17a9499c9d9dae6297787fe6c6",
+        "pack_id": "bounded-outcome-events",
+        "source_message_id": "MSG-P14-OUTCOMES-PLATFORM-REQUEST-000001",
+        "state": "AWAITING_EXACT_PREPARED_SEMANTIC_INPUT"
+      },
+      {
+        "action_type": "REVIEW_UNCLASSIFIED_MESSAGE",
+        "candidate_generation": 1,
+        "candidate_identity": "db20b70c6bb3ae2e8af012dc9d1531f1cd3ae6e0614e4be130aff053cd201559",
+        "pack_id": "reliquary-vaults",
+        "source_message_id": "MSG-T02-RELIQUARY-PLATFORM-CHANGE-RESULT-000001",
+        "state": "AWAITING_EXACT_PREPARED_SEMANTIC_INPUT"
+      },
+      {
+        "action_type": "REVIEW_UNCLASSIFIED_MESSAGE",
+        "candidate_generation": 1,
+        "candidate_identity": "fd79f0e65d7566b71183b19c379bdddc1c7a04c320ed33d426455d7dd4c25c95",
+        "pack_id": "reliquary-vaults",
+        "source_message_id": "MSG-T01-RELIQUARY-PLATFORM-CHANGE-ADMISSION-000001",
+        "state": "AWAITING_EXACT_PREPARED_SEMANTIC_INPUT"
+      },
+      {
+        "action_type": "REVIEW_UNCLASSIFIED_MESSAGE",
+        "candidate_generation": 1,
+        "candidate_identity": "ffa7f1c63eef759ee91e46a69b1f6bc5cf43b76ecb9f3c0558ef68759475e5db",
+        "pack_id": "reliquary-vaults",
+        "source_message_id": "MSG-P07-RELIQUARY-PLATFORM-REQUEST-000001",
+        "state": "AWAITING_EXACT_PREPARED_SEMANTIC_INPUT"
+      },
+      {
+        "action_type": "REVIEW_UNCLASSIFIED_MESSAGE",
+        "candidate_generation": 10,
+        "candidate_identity": "785e1afc1ab4c2c2dafe49dd0d60985c47ae34a0910345a58cd4eaa44889d532",
+        "pack_id": "bounded-outcome-events",
+        "source_message_id": "MSG-P14-OUTCOMES-PLATFORM-REQUEST-000011",
+        "state": "AWAITING_EXACT_PREPARED_SEMANTIC_INPUT"
+      },
+      {
+        "action_type": "REVIEW_UNCLASSIFIED_MESSAGE",
+        "candidate_generation": 12,
+        "candidate_identity": "38f0d93ed5435196b6cb26675cde6261ed49a0dd41b92d469f9061856ba9d75f",
+        "pack_id": "bounded-outcome-events",
+        "source_message_id": "MSG-T01-OUTCOMES-PLATFORM-IMPLEMENTATION-000001",
+        "state": "AWAITING_EXACT_PREPARED_SEMANTIC_INPUT"
+      },
+      {
+        "action_type": "REVIEW_UNCLASSIFIED_MESSAGE",
+        "candidate_generation": 12,
+        "candidate_identity": "acf2434fc38a5905ddccf5c43dfa3b922a7a8cc135f413e1df3ede4f3727cf17",
+        "pack_id": "bounded-outcome-events",
+        "source_message_id": "MSG-T02-OUTCOMES-PLATFORM-IMPLEMENTATION-RESULT-000001",
+        "state": "AWAITING_EXACT_PREPARED_SEMANTIC_INPUT"
+      },
+      {
+        "action_type": "REVIEW_UNCLASSIFIED_MESSAGE",
+        "candidate_generation": 12,
+        "candidate_identity": "b65c17469f4a96638ac8f63084353ce0dc150196dbc6f0a8e95b9e1f5c4dae9c",
+        "pack_id": "bounded-outcome-events",
+        "source_message_id": "MSG-P14-OUTCOMES-PLATFORM-REQUEST-000013",
+        "state": "AWAITING_EXACT_PREPARED_SEMANTIC_INPUT"
+      },
+      {
+        "action_type": "REVIEW_UNCLASSIFIED_MESSAGE",
+        "candidate_generation": 13,
+        "candidate_identity": "218f34824b0160819c2aa889d823f1449ff9ae8cb72e0684beba92405cb9529a",
+        "pack_id": "bounded-outcome-events",
+        "source_message_id": "MSG-T01-OUTCOMES-PLATFORM-IMPLEMENTATION-REPAIR-000001",
+        "state": "AWAITING_EXACT_PREPARED_SEMANTIC_INPUT"
+      },
+      {
+        "action_type": "REVIEW_UNCLASSIFIED_MESSAGE",
+        "candidate_generation": 13,
+        "candidate_identity": "2a13651a06dd2c1e50ea594e51fce191d87bf06e643f381f354ffce332861b4f",
+        "pack_id": "bounded-outcome-events",
+        "source_message_id": "MSG-T02-OUTCOMES-PLATFORM-IMPLEMENTATION-RESULT-000002",
+        "state": "AWAITING_EXACT_PREPARED_SEMANTIC_INPUT"
+      },
+      {
+        "action_type": "REVIEW_UNCLASSIFIED_MESSAGE",
+        "candidate_generation": 13,
+        "candidate_identity": "8b41078bef23a36b101f04f6e54197b360b7093210dc16e051e41bab7644350d",
+        "pack_id": "bounded-outcome-events",
+        "source_message_id": "MSG-P14-OUTCOMES-PLATFORM-REQUEST-000014",
+        "state": "AWAITING_EXACT_PREPARED_SEMANTIC_INPUT"
+      },
+      {
+        "action_type": "REVIEW_UNCLASSIFIED_MESSAGE",
+        "candidate_generation": 14,
+        "candidate_identity": "15d90c6a06744e7421de2e1c89f37152377ee84abd608d3705e3d00925cb2452",
+        "pack_id": "bounded-outcome-events",
+        "source_message_id": "MSG-T01-OUTCOMES-CALLABLE-SURFACE-000001",
+        "state": "AWAITING_EXACT_PREPARED_SEMANTIC_INPUT"
+      },
+      {
+        "action_type": "REVIEW_UNCLASSIFIED_MESSAGE",
+        "candidate_generation": 14,
+        "candidate_identity": "1cf5bb8036f50845e4ea20e172ef817bf6e474afe3f50ad86c607fe18df29855",
+        "pack_id": "bounded-outcome-events",
+        "source_message_id": "MSG-P14-OUTCOMES-PLATFORM-DISPOSITION-000001",
+        "state": "AWAITING_EXACT_PREPARED_SEMANTIC_INPUT"
+      },
+      {
+        "action_type": "REVIEW_UNCLASSIFIED_MESSAGE",
+        "candidate_generation": 14,
+        "candidate_identity": "74b15909875fe4554e296c34f649d02e5067b8776adddc2c957be3f9c40680cb",
+        "pack_id": "bounded-outcome-events",
+        "source_message_id": "MSG-P14-OUTCOMES-PLATFORM-REQUEST-000015",
+        "state": "AWAITING_EXACT_PREPARED_SEMANTIC_INPUT"
+      },
+      {
+        "action_type": "REVIEW_UNCLASSIFIED_MESSAGE",
+        "candidate_generation": 14,
+        "candidate_identity": "a434c94d419ad263699ffb8751c16777dac09a2fc3edd07c08b1a2a3a5e40eb7",
+        "pack_id": "bounded-outcome-events",
+        "source_message_id": "MSG-P14-OUTCOMES-PLATFORM-REQUEST-000016",
+        "state": "AWAITING_EXACT_PREPARED_SEMANTIC_INPUT"
+      },
+      {
+        "action_type": "REVIEW_UNCLASSIFIED_MESSAGE",
+        "candidate_generation": 14,
+        "candidate_identity": "a80f601cf489110e31592271c19f33223d6f3c601c6226ce68cc4ff9f7e16587",
+        "pack_id": "bounded-outcome-events",
+        "source_message_id": "MSG-P14-OUTCOMES-PLATFORM-REQUEST-000017",
+        "state": "AWAITING_EXACT_PREPARED_SEMANTIC_INPUT"
+      },
+      {
+        "action_type": "REVIEW_UNCLASSIFIED_MESSAGE",
+        "candidate_generation": 14,
+        "candidate_identity": "da38b9ddc3a7e707e1f271088f67cf0de210425a9d713348b66c275a1a142881",
+        "pack_id": "bounded-outcome-events",
+        "source_message_id": "MSG-T02-OUTCOMES-CALLABLE-SURFACE-RESULT-000001",
+        "state": "AWAITING_EXACT_PREPARED_SEMANTIC_INPUT"
+      },
+      {
+        "action_type": "REVIEW_UNCLASSIFIED_MESSAGE",
+        "candidate_generation": 2,
+        "candidate_identity": "06a7da22564635e1221c79ef7d42ff13b9e64a0f7cae338c14d75c9cfa16ba0d",
+        "pack_id": "bounded-outcome-events",
+        "source_message_id": "MSG-P14-OUTCOMES-PLATFORM-REQUEST-000002",
+        "state": "AWAITING_EXACT_PREPARED_SEMANTIC_INPUT"
+      },
+      {
+        "action_type": "REVIEW_UNCLASSIFIED_MESSAGE",
+        "candidate_generation": 2,
+        "candidate_identity": "7d90412332eb34199c0933787d8edc1e38d945f281e36bd6cd4b2b2dc6ae733c",
+        "pack_id": "reliquary-vaults",
+        "source_message_id": "MSG-P07-RELIQUARY-ISOLATION-REQUEST-000001",
+        "state": "AWAITING_EXACT_PREPARED_SEMANTIC_INPUT"
+      },
+      {
+        "action_type": "REVIEW_UNCLASSIFIED_MESSAGE",
+        "candidate_generation": 3,
+        "candidate_identity": "8b0e0e50845e1c622329937193dfe7875ab2382cec8813b94e4567c26c3a8e29",
+        "pack_id": "bounded-outcome-events",
+        "source_message_id": "MSG-P14-OUTCOMES-PLATFORM-REQUEST-000003",
+        "state": "AWAITING_EXACT_PREPARED_SEMANTIC_INPUT"
+      },
+      {
+        "action_type": "REVIEW_UNCLASSIFIED_MESSAGE",
+        "candidate_generation": 4,
+        "candidate_identity": "5ab69e133dd35fd548cc08f89e3b8231bf90b7cc90a3ebc71b1296fc2b694138",
+        "pack_id": "bounded-outcome-events",
+        "source_message_id": "MSG-P14-OUTCOMES-PLATFORM-REQUEST-000004",
+        "state": "AWAITING_EXACT_PREPARED_SEMANTIC_INPUT"
+      },
+      {
+        "action_type": "REVIEW_UNCLASSIFIED_MESSAGE",
+        "candidate_generation": 4,
+        "candidate_identity": "60a3677976ae0dfb793339f7124a1250fef9c3bac348d7f81fa1b7567f25c8a4",
+        "pack_id": "bounded-outcome-events",
+        "source_message_id": "MSG-P14-OUTCOMES-PLATFORM-REQUEST-000005",
+        "state": "AWAITING_EXACT_PREPARED_SEMANTIC_INPUT"
+      },
+      {
+        "action_type": "REVIEW_UNCLASSIFIED_MESSAGE",
+        "candidate_generation": 5,
+        "candidate_identity": "acea00443dc0d26ff91c90133687868fced267e53e4f75167a9aab3becc7f4ed",
+        "pack_id": "bounded-outcome-events",
+        "source_message_id": "MSG-P14-OUTCOMES-PLATFORM-REQUEST-000006",
+        "state": "AWAITING_EXACT_PREPARED_SEMANTIC_INPUT"
+      },
+      {
+        "action_type": "REVIEW_UNCLASSIFIED_MESSAGE",
+        "candidate_generation": 6,
+        "candidate_identity": "44e256400d3bad22bf61102233c04615808ba71acd7e3d9dc2de43c5e44ac460",
+        "pack_id": "bounded-outcome-events",
+        "source_message_id": "MSG-P14-OUTCOMES-PLATFORM-REQUEST-000007",
+        "state": "AWAITING_EXACT_PREPARED_SEMANTIC_INPUT"
+      },
+      {
+        "action_type": "REVIEW_UNCLASSIFIED_MESSAGE",
+        "candidate_generation": 7,
+        "candidate_identity": "35a7b7f1e25de7db78902ed15d29d94e8434f52d8ffa5225e602cfffaaa8ab78",
+        "pack_id": "bounded-outcome-events",
+        "source_message_id": "MSG-P14-OUTCOMES-PLATFORM-REQUEST-000008",
+        "state": "AWAITING_EXACT_PREPARED_SEMANTIC_INPUT"
+      },
+      {
+        "action_type": "REVIEW_UNCLASSIFIED_MESSAGE",
+        "candidate_generation": 8,
+        "candidate_identity": "ffb66b1ed3d63de5c902cd8fa1cfd8b4992f8c8037aef636e17bd9ab5fd9dd45",
+        "pack_id": "bounded-outcome-events",
+        "source_message_id": "MSG-P14-OUTCOMES-PLATFORM-REQUEST-000009",
+        "state": "AWAITING_EXACT_PREPARED_SEMANTIC_INPUT"
+      },
+      {
+        "action_type": "REVIEW_UNCLASSIFIED_MESSAGE",
+        "candidate_generation": 9,
+        "candidate_identity": "df1017850ba94e589806952c4aa97f7efcfd47304aebc5c64c632b6a87e6d9dc",
+        "pack_id": "bounded-outcome-events",
+        "source_message_id": "MSG-P14-OUTCOMES-PLATFORM-REQUEST-000010",
+        "state": "AWAITING_EXACT_PREPARED_SEMANTIC_INPUT"
+      },
+      {
+        "action_type": "ROUTE_PLATFORM_REQUEST_TO_T2",
+        "candidate_generation": 0,
+        "candidate_identity": "f918172ea834157f92b718f9a025b721f436bb6ad40efd302dcecd9302982dd8",
+        "pack_id": "momentum-menagerie",
+        "source_message_id": "MSG-P15-MOMENTUM-PLATFORM-REQUEST-000001",
+        "state": "AWAITING_EXACT_PREPARED_SEMANTIC_INPUT"
+      },
+      {
+        "action_type": "ROUTE_PLATFORM_REQUEST_TO_T2",
+        "candidate_generation": 4,
+        "candidate_identity": "71060f5b5569d836fd45ff9e15c9a4e29c4e2aec63df817d01e06cff96520e3d",
+        "pack_id": "echo-vessels",
+        "source_message_id": "MSG-P13-ECHO-PLATFORM-REQUEST-000001",
+        "state": "AWAITING_EXACT_PREPARED_SEMANTIC_INPUT"
+      },
+      {
+        "action_type": "ROUTE_PLATFORM_REQUEST_TO_T2",
+        "candidate_generation": 7,
+        "candidate_identity": "8af960633547ebe37eaecc84c1dda7a8d845ddaf7d7002c43100693e441c3c15",
+        "pack_id": "echo-vessels",
+        "source_message_id": "MSG-P13-ECHO-PLATFORM-REQUEST-000003",
+        "state": "AWAITING_EXACT_PREPARED_SEMANTIC_INPUT"
+      },
+      {
+        "action_type": "RUN_MECHANICAL_PREFLIGHT",
+        "candidate_generation": 14,
+        "candidate_identity": "04d1286c78d89dddd38fe058ac6174e187dc0073036c8750fd8b398d472d4e72",
+        "pack_id": "bounded-outcome-events",
+        "source_message_id": "MSG-P14-OUTCOMES-CANDIDATE-000014",
+        "state": "AWAITING_EXACT_PREPARED_SEMANTIC_INPUT"
+      },
+      {
+        "action_type": "RUN_MECHANICAL_PREFLIGHT",
+        "candidate_generation": 7,
+        "candidate_identity": "7f01715973b4300a20d26c48e0c5a832ba81be816a08e59d288f38165d608517",
+        "pack_id": "latchline-infrastructure",
+        "source_message_id": "CC-P16-LATCHLINE-CANDIDATE-000007",
+        "state": "AWAITING_EXACT_PREPARED_SEMANTIC_INPUT"
+      },
+      {
+        "action_type": "RUN_MECHANICAL_PREFLIGHT",
+        "candidate_generation": 9,
+        "candidate_identity": "340cfc366b81d733e72cd4938e9d100ef99d08b6ea5d7d7d63e82b545a6a0db2",
+        "pack_id": "aspectweave",
+        "source_message_id": "ASPECTWEAVE-CANDIDATE-0009",
+        "state": "AWAITING_EXACT_PREPARED_SEMANTIC_INPUT"
+      }
+    ],
+    "repair_messages_pending": [
+      {
+        "failed_generation": 1,
+        "pack_id": "hearth-and-hall",
+        "repair_message_id": "MSG-T01-HEARTH-HALL-MECHANICAL-REPAIR-000001",
+        "repair_state": "OWNER_REPLACEMENT_PENDING",
+        "required_replacement_generation": 2,
+        "source_result_id": "MSG-P08-HEARTH-HALL-CANDIDATE-000001"
+      },
+      {
+        "failed_generation": 14,
+        "pack_id": "bounded-outcome-events",
+        "repair_message_id": "MSG-T01-OUTCOMES-PACK-ADAPTER-AUTHORITY-000002",
+        "repair_state": "OWNER_REPLACEMENT_PENDING",
+        "required_replacement_generation": 15,
+        "source_result_id": "MSG-T01-OUTCOMES-PLATFORM-DECISION-000001"
+      },
+      {
+        "failed_generation": 14,
+        "pack_id": "bounded-outcome-events",
+        "repair_message_id": "MSG-T01-OUTCOMES-PLATFORM-ADAPTER-000001",
+        "repair_state": "OWNER_REPLACEMENT_PENDING",
+        "required_replacement_generation": 15,
+        "source_result_id": "MSG-T02-OUTCOMES-PLATFORM-IMPLEMENTATION-RESULT-000002"
+      },
+      {
+        "failed_generation": 14,
+        "pack_id": "bounded-outcome-events",
+        "repair_message_id": "MSG-T01-OUTCOMES-PLATFORM-ADAPTER-CORRECTION-000001",
+        "repair_state": "OWNER_REPLACEMENT_PENDING",
+        "required_replacement_generation": 15,
+        "source_result_id": "MSG-T01-OUTCOMES-PLATFORM-ADAPTER-000001"
+      },
+      {
+        "failed_generation": 2,
+        "pack_id": "vanguard-arsenal",
+        "repair_message_id": "MSG-T01-VANGUARD-AUDIT-REPAIR-000001",
+        "repair_state": "OWNER_REPLACEMENT_PENDING",
+        "required_replacement_generation": 3,
+        "source_result_id": "MSG-T10-VANGUARD-AUDIT-000001"
+      },
+      {
+        "failed_generation": 3,
+        "pack_id": "aperture-foundry",
+        "repair_message_id": "MSG-T1R-APERTURE-FOUNDRY-OWNER-REPAIR-G000003-66866054D18D",
+        "repair_state": "OWNER_REPLACEMENT_PENDING",
+        "required_replacement_generation": 4,
+        "source_result_id": "MSG-T10-APERTURE-AUDIT-000003"
+      },
+      {
+        "failed_generation": 3,
+        "pack_id": "momentum-menagerie",
+        "repair_message_id": "MSG-T1R-MOMENTUM-MENAGERIE-OWNER-REPAIR-G000003-8FEF231A154C",
+        "repair_state": "OWNER_REPLACEMENT_PENDING",
+        "required_replacement_generation": 4,
+        "source_result_id": "MSG-T10-MOMENTUM-AUDIT-000001"
+      },
+      {
+        "failed_generation": 3,
+        "pack_id": "wayfarer-settlements",
+        "repair_message_id": "MSG-T01-WAYFARER-AUDIT-REPAIR-000001",
+        "repair_state": "OWNER_REPLACEMENT_PENDING",
+        "required_replacement_generation": 4,
+        "source_result_id": "MSG-T10-WAYFARER-AUDIT-000001"
+      },
+      {
+        "failed_generation": 4,
+        "pack_id": "pocketbound-companions",
+        "repair_message_id": "MSG-T01-POCKETBOUND-AUDIT-REPAIR-000001",
+        "repair_state": "OWNER_REPLACEMENT_PENDING",
+        "required_replacement_generation": 5,
+        "source_result_id": "MSG-T10-POCKETBOUND-AUDIT-000001"
+      },
+      {
+        "failed_generation": 5,
+        "pack_id": "hearthveil",
+        "repair_message_id": "MSG-T1R-HEARTHVEIL-OWNER-REPAIR-G000005-3FD25158897C",
+        "repair_state": "OWNER_REPLACEMENT_PENDING",
+        "required_replacement_generation": 6,
+        "source_result_id": "MSG-T10-HEARTHVEIL-AUDIT-000002"
+      },
+      {
+        "failed_generation": 6,
+        "pack_id": "echo-vessels",
+        "repair_message_id": "MSG-T1R-ECHO-VESSELS-OWNER-REPAIR-G000006-CD485FD059EA",
+        "repair_state": "OWNER_REPLACEMENT_PENDING",
+        "required_replacement_generation": 7,
+        "source_result_id": "MSG-T10-ECHO-AUDIT-000002"
+      },
+      {
+        "failed_generation": 7,
+        "pack_id": "echo-vessels",
+        "repair_message_id": "MSG-T1R-ECHO-VESSELS-REQUEST-CORRECTION-G000007-218495F770DB",
+        "repair_state": "OWNER_REPLACEMENT_PENDING",
+        "required_replacement_generation": 7,
+        "source_result_id": "MSG-P13-ECHO-PLATFORM-REQUEST-000002"
+      }
+    ],
+    "t10_active": {
+      "candidate_generation": 6,
+      "pack_id": "reliquary-vaults",
+      "source_message_id": "MSG-T1R-RELIQUARY-VAULTS-AUDIT-ACTIVE-G000006-DB801E5FB3D3"
+    },
+    "t10_queued": null,
+    "tester_active": [],
+    "tester_queued": [],
+    "tester_results": {
+      "aperture-foundry:1": "MSG-TESTER-000000000025-PASS",
+      "aperture-foundry:2": "MSG-TESTER-000000000030-PASS",
+      "aperture-foundry:3": "MSG-TESTER-000000000033-PASS",
+      "aspectweave:4": "MSG-TESTER-000000000023-FAIL_PRODUCT",
+      "aspectweave:5": "MSG-TESTER-000000000026-PASS",
+      "aspectweave:7": "MSG-TESTER-000000000032-FAIL_PRODUCT",
+      "echo-vessels:4": "MSG-TESTER-000000000022-PASS",
+      "echo-vessels:6": "MSG-TESTER-000000000029-PASS",
+      "hearthveil:2": "MSG-TESTER-000000000021-FAIL_PRODUCT",
+      "hearthveil:4": "MSG-TESTER-000000000028-PASS",
+      "hearthveil:5": "MSG-TESTER-000000000034-PASS",
+      "latchline-infrastructure:5": "MSG-TESTER-000000000024-PASS",
+      "momentum-menagerie:3": "MSG-TESTER-000000000031-PASS",
+      "pocketbound-companions:4": "MSG-TESTER-000000000017-PASS",
+      "reliquary-vaults:2": "MSG-TESTER-000000000019-PASS",
+      "reliquary-vaults:4": "MSG-TESTER-000000000027-PASS",
+      "reliquary-vaults:6": "MSG-TESTER-000000000035-PASS",
+      "synthetic-mailbox-fixture:1": "MSG-SYNTH-000003",
+      "trailbound-packs:2": "MSG-T09-TRAILBOUND-BDS-RESULT-000005",
+      "vanguard-arsenal:2": "MSG-TESTER-000000000020-PASS",
+      "wayfarer-settlements:3": "MSG-TESTER-000000000018-PASS"
+    }
+  },
+  "projection_sha256": "0c48b8f9611bb42a701cb0746e8ff3138e77523f27c6d3107958457140fe64f3",
+  "record_count": 245,
+  "recovery_anchor": "3a35fd783935ce1aa0cfbc4a9c8fb4d6c45373fc",
+  "root_commit": "da6a3bbef4c366fe661e2fabb31673873b48a3a4",
+  "schema_version": "crazycraft-router-replay-v1"
+}

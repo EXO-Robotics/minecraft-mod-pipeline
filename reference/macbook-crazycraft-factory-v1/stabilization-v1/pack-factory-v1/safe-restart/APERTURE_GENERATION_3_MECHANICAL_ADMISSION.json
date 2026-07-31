@@ -1,0 +1,73 @@
+{
+  "schema_version": "crazycraft-factory-mechanical-admission-v1",
+  "admission_id": "MECH-ADMIT-APERTURE-G000003-000001",
+  "created_at": "2026-07-30T11:02:14Z",
+  "pack_id": "aperture-foundry",
+  "candidate_generation": 3,
+  "candidate_submission": {
+    "message_id": "MSG-P12-APERTURE-CANDIDATE-000003",
+    "mailbox_commit": "dcbc94f58989c6b952514880a3061c69d809b3dc",
+    "message_sha256": "13b00064a8ca9b45335f6ba7d73db5a8f003b148de90e23b8330bf3c49d9343f"
+  },
+  "production_authority": {
+    "repository": "/Users/blakegrove/Desktop/bedrock-server/program/crazycraft-pack-production-v1/aperture-foundry-reproduction-v1",
+    "ref": "refs/heads/codex/aperture-foundry-reproduction-v1",
+    "content_commit": "861c35bd588af80875d6416a6006fffbd6c8ad96",
+    "content_tree": "c9a27347628e5e7bce533d14c2a200283b2982f7",
+    "metadata_commit": "dc47cd565364f4e470a741a0bc35808999c5c946",
+    "metadata_tree": "b2ca24da94d56f050cf80ff54d42f909eece8a88",
+    "metadata_is_direct_child": true,
+    "worktree_clean": true,
+    "superseded_original_repository_used": false
+  },
+  "artifacts": {
+    "behavior_pack": {
+      "path": "dist/aperture-foundry-behavior.mcpack",
+      "size_bytes": 48255,
+      "sha256": "a0d3b2fbd9d7d49745ab1da186f23687d19af1d616191f04f7c090f5ab1fadff"
+    },
+    "resource_pack": {
+      "path": "dist/aperture-foundry-resources.mcpack",
+      "size_bytes": 273987,
+      "sha256": "2b3ecb89a1ded78465e75017dda293ae16d94cc6936202a9e26cb91a400c3996"
+    },
+    "mcaddon": {
+      "path": "dist/aperture-foundry.mcaddon",
+      "size_bytes": 290646,
+      "sha256": "97bd2f75cd63050da1f62bc5f14bbe85d440dfda3649f37f2b1966bc7d8d62a2"
+    },
+    "artifact_manifest": {
+      "path": "dist/artifact-manifest.json",
+      "size_bytes": 33992,
+      "sha256": "92e24922cb965ef28727780e6b18a62da34725c232781c82c25bce0175fc0e9b"
+    }
+  },
+  "checks": {
+    "assignment_and_allocation_binding": "PASS",
+    "repository_ref_commit_tree": "PASS",
+    "exclusive_writer": "PASS",
+    "candidate_generation_and_ancestry": "PASS",
+    "exact_artifact_hashes_and_manifest": "PASS",
+    "deterministic_rebuild": "PASS_EXACT_TWO_BUILDS",
+    "literal_packaged_scripts_main_js": "PASS_16_OF_16",
+    "source_tests": "PASS_42_OF_42",
+    "committed_static_validation": "PASS_897_OF_897",
+    "json_media_manifest_dependency_uuid_reference_closure": "PASS",
+    "archive_traversal_symlink_and_nested_addon_safety": "PASS",
+    "reachable_git_blob_and_restricted_content_scan": "PASS",
+    "process_isolation_receipt": "PASS",
+    "independent_receipt_validation": "PASS",
+    "proof_boundary": "PASS"
+  },
+  "result": "PASS",
+  "next_actions": [
+    "ROUTE_EXACT_GENERATION_3_TO_LOCAL_STABLE_BDS",
+    "ROUTE_EXACT_GENERATION_3_TO_FULL_T10_AUDIT"
+  ],
+  "proof_boundary": [
+    "MECHANICAL_ADMISSION_ONLY",
+    "EXACT_REPRODUCTION_REPOSITORY_GENERATION_3",
+    "NO_STABLE_OR_PREVIEW_BDS_RESULT",
+    "NO_T10_CLIENT_MULTIPLAYER_CONTROLLER_CONSOLE_RIGHTS_MARKETPLACE_INTEGRATION_ACCEPTANCE_OR_RELEASE_RESULT"
+  ]
+}

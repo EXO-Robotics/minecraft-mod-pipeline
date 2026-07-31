@@ -1,0 +1,33 @@
+{
+  "schema_version": "1.0.0",
+  "record_type": "t10_recurring_service_recreation_authority",
+  "created_at": "2026-07-30T11:31:00Z",
+  "service_assignment": "SA-T10-FACTORY-AUDIT-V1",
+  "automation": {
+    "automation_id": "t10-factory-audit-service",
+    "name": "T10 Factory Audit Service",
+    "kind": "heartbeat",
+    "rrule": "FREQ=MINUTELY;INTERVAL=15",
+    "status": "ACTIVE",
+    "destination_thread_id": "019fa887-8d31-7741-bc92-51fe01bceb5c",
+    "notification_policy": "failed_runs_only"
+  },
+  "recreation_observation": {
+    "thread_turn_id": "019fb2c0-ecfc-7141-9715-f7a6574ea4da",
+    "controller_reported_automation_id": "t10-factory-audit-service",
+    "first_post_recreation_result_message_id": "MSG-T10-APERTURE-AUDIT-000003",
+    "first_post_recreation_result_commit": "2d807b27b7baa982f16dbbd3c02e6d7933a541f6",
+    "first_post_recreation_result_tree": "5a3ba88cfe532e797362a8ebd4388d1cb2e65b3a"
+  },
+  "queue_after_reconciliation": {
+    "active_message_id": "MSG-T1R-HEARTHVEIL-AUDIT-ACTIVE-G000005-EBF122DB14E1",
+    "queued_message_id": "MSG-T1R-RELIQUARY-VAULTS-AUDIT-QUEUED-G000006-B96BA24EBFF3",
+    "momentum_generation_3_terminal": true
+  },
+  "proof_boundary": [
+    "RECURRING_SERVICE_CONFIGURATION_AND_OBSERVED_POST_RECREATION_EXECUTION_ONLY",
+    "MAILBOX_COMMITS_REMAIN_AUDIT_RESULT_AUTHORITY",
+    "NO_PRODUCT_MUTATION",
+    "NO_BDS_CLIENT_CONSOLE_RIGHTS_MARKETPLACE_INTEGRATION_OR_RELEASE_CLAIM"
+  ]
+}

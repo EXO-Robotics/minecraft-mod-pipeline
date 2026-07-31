@@ -1,0 +1,382 @@
+{
+  "boss_and_adds": {
+    "adds_global": 8,
+    "bosses_global": 1,
+    "policy": "Lease/admission controlled; eligibility is not a simultaneous reservation."
+  },
+  "combined_target_check": {
+    "callbacks_per_heartbeat": {
+      "ceiling": 16,
+      "combined": 16,
+      "pack_total": 14,
+      "platform_reserve": 2,
+      "status": "PASS"
+    },
+    "custom_entities": {
+      "ceiling": 64,
+      "combined": 64,
+      "pack_total": 54,
+      "platform_reserve": 10,
+      "status": "PASS"
+    },
+    "dynamic_property_bytes": {
+      "ceiling": 262144,
+      "combined": 262144,
+      "pack_total": 245760,
+      "platform_reserve": 16384,
+      "status": "PASS"
+    },
+    "particles_per_second": {
+      "ceiling": 160,
+      "combined": 160,
+      "pack_total": 150,
+      "platform_reserve": 10,
+      "status": "PASS"
+    },
+    "pathfinders": {
+      "ceiling": 24,
+      "combined": 24,
+      "pack_total": 22,
+      "platform_reserve": 2,
+      "status": "PASS"
+    },
+    "persistent_records": {
+      "ceiling": 4096,
+      "combined": 4096,
+      "pack_total": 3840,
+      "platform_reserve": 256,
+      "status": "PASS"
+    },
+    "projectiles": {
+      "ceiling": 32,
+      "combined": 32,
+      "pack_total": 28,
+      "platform_reserve": 4,
+      "status": "PASS"
+    },
+    "scheduler_pending": {
+      "ceiling": 64,
+      "combined": 64,
+      "pack_total": 56,
+      "platform_reserve": 8,
+      "status": "PASS"
+    },
+    "script_time_microseconds_per_tick": {
+      "ceiling": 4000,
+      "combined": 4000,
+      "pack_total": 3600,
+      "platform_reserve": 400,
+      "status": "PASS"
+    },
+    "simultaneous_audio_voices": {
+      "ceiling": 12,
+      "combined": 12,
+      "pack_total": 12,
+      "platform_reserve": 0,
+      "status": "PASS"
+    }
+  },
+  "created_at": "2026-07-29T16:00:00Z",
+  "frozen_global_ceilings": {
+    "callbacks_per_heartbeat": 16,
+    "custom_entities": 64,
+    "dynamic_property_bytes": 262144,
+    "particles_per_second": 160,
+    "pathfinders": 24,
+    "persistent_records": 4096,
+    "projectiles": 32,
+    "scheduler_pending": 64,
+    "script_time_microseconds_per_tick": 4000,
+    "simultaneous_audio_voices": 12
+  },
+  "pack_allocations": {
+    "aperture-foundry": {
+      "adds_policy": "SHARED_ADMISSION_CONTROLLER_MAX_8_GLOBAL_MAX_4_PER_ENCOUNTER",
+      "boss_policy": "SHARED_LEASE_ONLY_NO_GUARANTEED_CONCURRENT_BOSS",
+      "combined_reservation_target": {
+        "callbacks_per_heartbeat": 1,
+        "custom_entities": 2,
+        "dynamic_property_bytes": 8192,
+        "particles_per_second": 8,
+        "pathfinders": 0,
+        "persistent_records": 128,
+        "projectiles": 4,
+        "scheduler_pending": 4,
+        "script_time_microseconds_per_tick": 255,
+        "simultaneous_audio_voices": 0
+      },
+      "standalone_policy": "A pack may use a larger standalone test fixture only when its assignment declares that fixture; combined integration must meet this reservation target or return an integration finding."
+    },
+    "aspectweave": {
+      "adds_policy": "SHARED_ADMISSION_CONTROLLER_MAX_8_GLOBAL_MAX_4_PER_ENCOUNTER",
+      "boss_policy": "SHARED_LEASE_ONLY_NO_GUARANTEED_CONCURRENT_BOSS",
+      "combined_reservation_target": {
+        "callbacks_per_heartbeat": 1,
+        "custom_entities": 0,
+        "dynamic_property_bytes": 15360,
+        "particles_per_second": 8,
+        "pathfinders": 0,
+        "persistent_records": 256,
+        "projectiles": 0,
+        "scheduler_pending": 4,
+        "script_time_microseconds_per_tick": 255,
+        "simultaneous_audio_voices": 1
+      },
+      "standalone_policy": "A pack may use a larger standalone test fixture only when its assignment declares that fixture; combined integration must meet this reservation target or return an integration finding."
+    },
+    "bounded-outcome-events": {
+      "adds_policy": "SHARED_ADMISSION_CONTROLLER_MAX_8_GLOBAL_MAX_4_PER_ENCOUNTER",
+      "boss_policy": "SHARED_LEASE_ONLY_NO_GUARANTEED_CONCURRENT_BOSS",
+      "combined_reservation_target": {
+        "callbacks_per_heartbeat": 1,
+        "custom_entities": 4,
+        "dynamic_property_bytes": 11264,
+        "particles_per_second": 14,
+        "pathfinders": 1,
+        "persistent_records": 192,
+        "projectiles": 4,
+        "scheduler_pending": 4,
+        "script_time_microseconds_per_tick": 275,
+        "simultaneous_audio_voices": 1
+      },
+      "standalone_policy": "A pack may use a larger standalone test fixture only when its assignment declares that fixture; combined integration must meet this reservation target or return an integration finding."
+    },
+    "catalyst-wilds": {
+      "adds_policy": "SHARED_ADMISSION_CONTROLLER_MAX_8_GLOBAL_MAX_4_PER_ENCOUNTER",
+      "boss_policy": "SHARED_LEASE_ONLY_NO_GUARANTEED_CONCURRENT_BOSS",
+      "combined_reservation_target": {
+        "callbacks_per_heartbeat": 1,
+        "custom_entities": 10,
+        "dynamic_property_bytes": 24576,
+        "particles_per_second": 16,
+        "pathfinders": 5,
+        "persistent_records": 384,
+        "projectiles": 6,
+        "scheduler_pending": 4,
+        "script_time_microseconds_per_tick": 295,
+        "simultaneous_audio_voices": 1
+      },
+      "standalone_policy": "A pack may use a larger standalone test fixture only when its assignment declares that fixture; combined integration must meet this reservation target or return an integration finding."
+    },
+    "echo-vessels": {
+      "adds_policy": "SHARED_ADMISSION_CONTROLLER_MAX_8_GLOBAL_MAX_4_PER_ENCOUNTER",
+      "boss_policy": "SHARED_LEASE_ONLY_NO_GUARANTEED_CONCURRENT_BOSS",
+      "combined_reservation_target": {
+        "callbacks_per_heartbeat": 1,
+        "custom_entities": 6,
+        "dynamic_property_bytes": 15360,
+        "particles_per_second": 10,
+        "pathfinders": 3,
+        "persistent_records": 256,
+        "projectiles": 0,
+        "scheduler_pending": 4,
+        "script_time_microseconds_per_tick": 275,
+        "simultaneous_audio_voices": 1
+      },
+      "standalone_policy": "A pack may use a larger standalone test fixture only when its assignment declares that fixture; combined integration must meet this reservation target or return an integration finding."
+    },
+    "hearth-and-hall": {
+      "adds_policy": "SHARED_ADMISSION_CONTROLLER_MAX_8_GLOBAL_MAX_4_PER_ENCOUNTER",
+      "boss_policy": "SHARED_LEASE_ONLY_NO_GUARANTEED_CONCURRENT_BOSS",
+      "combined_reservation_target": {
+        "callbacks_per_heartbeat": 0,
+        "custom_entities": 0,
+        "dynamic_property_bytes": 8192,
+        "particles_per_second": 4,
+        "pathfinders": 0,
+        "persistent_records": 128,
+        "projectiles": 0,
+        "scheduler_pending": 2,
+        "script_time_microseconds_per_tick": 95,
+        "simultaneous_audio_voices": 0
+      },
+      "standalone_policy": "A pack may use a larger standalone test fixture only when its assignment declares that fixture; combined integration must meet this reservation target or return an integration finding."
+    },
+    "hearthveil": {
+      "adds_policy": "SHARED_ADMISSION_CONTROLLER_MAX_8_GLOBAL_MAX_4_PER_ENCOUNTER",
+      "boss_policy": "SHARED_LEASE_ONLY_NO_GUARANTEED_CONCURRENT_BOSS",
+      "combined_reservation_target": {
+        "callbacks_per_heartbeat": 1,
+        "custom_entities": 4,
+        "dynamic_property_bytes": 15360,
+        "particles_per_second": 14,
+        "pathfinders": 2,
+        "persistent_records": 256,
+        "projectiles": 2,
+        "scheduler_pending": 4,
+        "script_time_microseconds_per_tick": 295,
+        "simultaneous_audio_voices": 1
+      },
+      "standalone_policy": "A pack may use a larger standalone test fixture only when its assignment declares that fixture; combined integration must meet this reservation target or return an integration finding."
+    },
+    "latchline-infrastructure": {
+      "adds_policy": "SHARED_ADMISSION_CONTROLLER_MAX_8_GLOBAL_MAX_4_PER_ENCOUNTER",
+      "boss_policy": "SHARED_LEASE_ONLY_NO_GUARANTEED_CONCURRENT_BOSS",
+      "combined_reservation_target": {
+        "callbacks_per_heartbeat": 0,
+        "custom_entities": 0,
+        "dynamic_property_bytes": 8192,
+        "particles_per_second": 4,
+        "pathfinders": 0,
+        "persistent_records": 128,
+        "projectiles": 0,
+        "scheduler_pending": 3,
+        "script_time_microseconds_per_tick": 175,
+        "simultaneous_audio_voices": 0
+      },
+      "standalone_policy": "A pack may use a larger standalone test fixture only when its assignment declares that fixture; combined integration must meet this reservation target or return an integration finding."
+    },
+    "momentum-menagerie": {
+      "adds_policy": "SHARED_ADMISSION_CONTROLLER_MAX_8_GLOBAL_MAX_4_PER_ENCOUNTER",
+      "boss_policy": "SHARED_LEASE_ONLY_NO_GUARANTEED_CONCURRENT_BOSS",
+      "combined_reservation_target": {
+        "callbacks_per_heartbeat": 1,
+        "custom_entities": 4,
+        "dynamic_property_bytes": 7168,
+        "particles_per_second": 12,
+        "pathfinders": 2,
+        "persistent_records": 128,
+        "projectiles": 3,
+        "scheduler_pending": 3,
+        "script_time_microseconds_per_tick": 195,
+        "simultaneous_audio_voices": 1
+      },
+      "standalone_policy": "A pack may use a larger standalone test fixture only when its assignment declares that fixture; combined integration must meet this reservation target or return an integration finding."
+    },
+    "pocketbound-companions": {
+      "adds_policy": "SHARED_ADMISSION_CONTROLLER_MAX_8_GLOBAL_MAX_4_PER_ENCOUNTER",
+      "boss_policy": "SHARED_LEASE_ONLY_NO_GUARANTEED_CONCURRENT_BOSS",
+      "combined_reservation_target": {
+        "callbacks_per_heartbeat": 1,
+        "custom_entities": 2,
+        "dynamic_property_bytes": 22528,
+        "particles_per_second": 6,
+        "pathfinders": 0,
+        "persistent_records": 352,
+        "projectiles": 0,
+        "scheduler_pending": 3,
+        "script_time_microseconds_per_tick": 195,
+        "simultaneous_audio_voices": 1
+      },
+      "standalone_policy": "A pack may use a larger standalone test fixture only when its assignment declares that fixture; combined integration must meet this reservation target or return an integration finding."
+    },
+    "quietwork": {
+      "adds_policy": "SHARED_ADMISSION_CONTROLLER_MAX_8_GLOBAL_MAX_4_PER_ENCOUNTER",
+      "boss_policy": "SHARED_LEASE_ONLY_NO_GUARANTEED_CONCURRENT_BOSS",
+      "combined_reservation_target": {
+        "callbacks_per_heartbeat": 1,
+        "custom_entities": 0,
+        "dynamic_property_bytes": 6144,
+        "particles_per_second": 4,
+        "pathfinders": 0,
+        "persistent_records": 96,
+        "projectiles": 0,
+        "scheduler_pending": 2,
+        "script_time_microseconds_per_tick": 95,
+        "simultaneous_audio_voices": 0
+      },
+      "standalone_policy": "A pack may use a larger standalone test fixture only when its assignment declares that fixture; combined integration must meet this reservation target or return an integration finding."
+    },
+    "reliquary-vaults": {
+      "adds_policy": "SHARED_ADMISSION_CONTROLLER_MAX_8_GLOBAL_MAX_4_PER_ENCOUNTER",
+      "boss_policy": "SHARED_LEASE_ONLY_NO_GUARANTEED_CONCURRENT_BOSS",
+      "combined_reservation_target": {
+        "callbacks_per_heartbeat": 1,
+        "custom_entities": 2,
+        "dynamic_property_bytes": 12288,
+        "particles_per_second": 6,
+        "pathfinders": 0,
+        "persistent_records": 192,
+        "projectiles": 1,
+        "scheduler_pending": 3,
+        "script_time_microseconds_per_tick": 155,
+        "simultaneous_audio_voices": 1
+      },
+      "standalone_policy": "A pack may use a larger standalone test fixture only when its assignment declares that fixture; combined integration must meet this reservation target or return an integration finding."
+    },
+    "shatterwild-foundry": {
+      "adds_policy": "SHARED_ADMISSION_CONTROLLER_MAX_8_GLOBAL_MAX_4_PER_ENCOUNTER",
+      "boss_policy": "SHARED_LEASE_ONLY_NO_GUARANTEED_CONCURRENT_BOSS",
+      "combined_reservation_target": {
+        "callbacks_per_heartbeat": 1,
+        "custom_entities": 8,
+        "dynamic_property_bytes": 19456,
+        "particles_per_second": 16,
+        "pathfinders": 4,
+        "persistent_records": 288,
+        "projectiles": 4,
+        "scheduler_pending": 4,
+        "script_time_microseconds_per_tick": 255,
+        "simultaneous_audio_voices": 1
+      },
+      "standalone_policy": "A pack may use a larger standalone test fixture only when its assignment declares that fixture; combined integration must meet this reservation target or return an integration finding."
+    },
+    "trailbound-packs": {
+      "adds_policy": "SHARED_ADMISSION_CONTROLLER_MAX_8_GLOBAL_MAX_4_PER_ENCOUNTER",
+      "boss_policy": "SHARED_LEASE_ONLY_NO_GUARANTEED_CONCURRENT_BOSS",
+      "combined_reservation_target": {
+        "callbacks_per_heartbeat": 1,
+        "custom_entities": 0,
+        "dynamic_property_bytes": 36864,
+        "particles_per_second": 6,
+        "pathfinders": 0,
+        "persistent_records": 512,
+        "projectiles": 0,
+        "scheduler_pending": 5,
+        "script_time_microseconds_per_tick": 235,
+        "simultaneous_audio_voices": 1
+      },
+      "standalone_policy": "A pack may use a larger standalone test fixture only when its assignment declares that fixture; combined integration must meet this reservation target or return an integration finding."
+    },
+    "vanguard-arsenal": {
+      "adds_policy": "SHARED_ADMISSION_CONTROLLER_MAX_8_GLOBAL_MAX_4_PER_ENCOUNTER",
+      "boss_policy": "SHARED_LEASE_ONLY_NO_GUARANTEED_CONCURRENT_BOSS",
+      "combined_reservation_target": {
+        "callbacks_per_heartbeat": 1,
+        "custom_entities": 4,
+        "dynamic_property_bytes": 12288,
+        "particles_per_second": 14,
+        "pathfinders": 1,
+        "persistent_records": 192,
+        "projectiles": 4,
+        "scheduler_pending": 4,
+        "script_time_microseconds_per_tick": 275,
+        "simultaneous_audio_voices": 1
+      },
+      "standalone_policy": "A pack may use a larger standalone test fixture only when its assignment declares that fixture; combined integration must meet this reservation target or return an integration finding."
+    },
+    "wayfarer-settlements": {
+      "adds_policy": "SHARED_ADMISSION_CONTROLLER_MAX_8_GLOBAL_MAX_4_PER_ENCOUNTER",
+      "boss_policy": "SHARED_LEASE_ONLY_NO_GUARANTEED_CONCURRENT_BOSS",
+      "combined_reservation_target": {
+        "callbacks_per_heartbeat": 1,
+        "custom_entities": 8,
+        "dynamic_property_bytes": 22528,
+        "particles_per_second": 8,
+        "pathfinders": 4,
+        "persistent_records": 352,
+        "projectiles": 0,
+        "scheduler_pending": 3,
+        "script_time_microseconds_per_tick": 275,
+        "simultaneous_audio_voices": 1
+      },
+      "standalone_policy": "A pack may use a larger standalone test fixture only when its assignment declares that fixture; combined integration must meet this reservation target or return an integration finding."
+    }
+  },
+  "proof_boundary": "Factory combined-reservation target, not proof that existing standalone implementations already meet these targets. Integration must measure and enforce actual use.",
+  "record_type": "factory_runtime_performance_budget_registry",
+  "schema_version": "1.0.0",
+  "shared_runtime_safety_reserve": {
+    "callbacks_per_heartbeat": 2,
+    "custom_entities": 10,
+    "dynamic_property_bytes": 16384,
+    "particles_per_second": 10,
+    "pathfinders": 2,
+    "persistent_records": 256,
+    "projectiles": 4,
+    "scheduler_pending": 8,
+    "script_time_microseconds_per_tick": 400,
+    "simultaneous_audio_voices": 0
+  },
+  "status": "PASS"
+}

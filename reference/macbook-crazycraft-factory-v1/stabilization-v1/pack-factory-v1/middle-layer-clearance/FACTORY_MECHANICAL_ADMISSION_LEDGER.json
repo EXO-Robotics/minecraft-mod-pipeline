@@ -1,0 +1,450 @@
+{
+  "schema_version": "1.0.0",
+  "record_type": "factory_mechanical_admission_ledger",
+  "created_at": "2026-07-30T00:14:00Z",
+  "factory_publication_authority": {
+    "authority_id": "FCPA-T01-V1-0001",
+    "commit": "98b36f1c77b5adbd4b67e6332425f5972f47f929",
+    "tree": "c1cc30c95b8eb420937e1c76b59e5eaa94ccf7cf"
+  },
+  "admissions": [
+    {
+      "pack_id": "vanguard-arsenal",
+      "candidate_generation": 2,
+      "candidate_message_id": "VA-G0002-CANDIDATE-0002",
+      "content_commit": "dd0c8c678701370c2ab804c01170fdf88bfdb7bf",
+      "content_tree": "0a11a2956fb9c1a10b0aefc5454541c9ce760e82",
+      "metadata_commit": "c19da2e385ef958ba5ccd0bfe92e8c0dcf06d0af",
+      "metadata_tree": "bc6fdfd9513b07995ccd4c4e97c35f7b678499d3",
+      "mcaddon_sha256": "5725bd79a7e08b15de5b7844b881ed7db302fc617d286c250e5de51639b34a9d",
+      "status": "PASS",
+      "checks": {
+        "assignment_binding": "PASS",
+        "repository_ref_commit_tree": "PASS",
+        "exclusive_writer_and_clean_worktree": "PASS",
+        "artifact_paths_sizes_hashes": "PASS",
+        "artifact_manifest": "PASS",
+        "deterministic_rebuild": "PASS",
+        "json_media_manifest_dependency_reference_closure": "PASS",
+        "namespace_uuid_allocation": "PASS",
+        "shipped_entrypoint": "PASS",
+        "package_traversal_symlink_safety": "PASS",
+        "restricted_identifiers_and_git_objects": "PASS",
+        "process_isolation_receipt": "PASS_COOPERATIVE_BOUNDARY",
+        "proof_boundary": "PASS"
+      },
+      "fresh_execution": "23_OF_23_TESTS_PASS; 167_JSON_ZERO_STATIC_FAILURES; TWO_BYTE_IDENTICAL_BUILDS; 116_PACKAGED_MEDIA_DECODE; ORIGINAL_PATH_RECEIPT_VALIDATOR_PASS",
+      "next_action": "ROUTE_EXACT_CANDIDATE_TO_LOCAL_TESTER_AND_T10"
+    },
+    {
+      "pack_id": "hearthveil",
+      "candidate_generation": 2,
+      "candidate_message_id": "MSG-P09-HEARTHVEIL-CANDIDATE-000002",
+      "content_commit": "2149bf51cb4649fd051592096a762a2b7531c8a9",
+      "content_tree": "ef93243792bc5169e113a01a351bbe1623ecf2da",
+      "metadata_commit": "f1fc8d3ad8f529ed9a1002383fcbd15aa7647657",
+      "metadata_tree": "5ffa106e86b5f30673adfd091b28605f8c59032b",
+      "mcaddon_sha256": "b4f43c5673fbe6c1bdae890e6a4d912b5bc48e72a64e142f3e125dc28549a219",
+      "status": "PASS",
+      "checks": {
+        "assignment_binding": "PASS",
+        "repository_ref_commit_tree": "PASS",
+        "exclusive_writer_and_clean_worktree": "PASS",
+        "artifact_paths_sizes_hashes": "PASS",
+        "artifact_manifest": "PASS",
+        "deterministic_rebuild": "PASS",
+        "json_media_manifest_dependency_reference_closure": "PASS",
+        "namespace_uuid_allocation": "PASS",
+        "shipped_entrypoint": "PASS",
+        "package_traversal_symlink_safety": "PASS",
+        "restricted_identifiers_and_git_objects": "PASS",
+        "process_isolation_receipt": "PASS_COOPERATIVE_BOUNDARY",
+        "proof_boundary": "PASS"
+      },
+      "fresh_execution": "15_LOCAL_TESTS_PASS; 6_OF_6_MUTATIONS_KILLED; 229_JSON_122_PNG_20_AUDIO_ZERO_ERRORS; EXACT_PACKAGE_AND_RECEIPT_VALIDATION_PASS",
+      "next_action": "ROUTE_EXACT_CANDIDATE_TO_LOCAL_TESTER_AND_T10_QUEUE"
+    },
+    {
+      "pack_id": "echo-vessels",
+      "candidate_generation": 4,
+      "candidate_message_id": "MSG-P10-ECHO-CANDIDATE-000004",
+      "content_commit": "e64be610288de02626430e2633afa839da442377",
+      "content_tree": "517ba92dd778fd1d564591b4db944a8a0466a5eb",
+      "metadata_commit": "d36189c771de3cd63795c7d092257649e1107d1d",
+      "metadata_tree": "026babddb22bff6353fdbc3efd7c126256df04bf",
+      "mcaddon_sha256": "c92c4b8fc09c19de6b7277d0a4a4c2f33b3752b9f7c1ac791a7a56452a957453",
+      "status": "PASS",
+      "checks": {
+        "assignment_binding": "PASS",
+        "repository_ref_commit_tree": "PASS",
+        "exclusive_writer_and_clean_worktree": "PASS",
+        "artifact_paths_sizes_hashes": "PASS",
+        "artifact_manifest": "PASS",
+        "deterministic_rebuild": "PASS",
+        "json_media_manifest_dependency_reference_closure": "PASS",
+        "namespace_uuid_allocation": "PASS",
+        "shipped_entrypoint": "PASS",
+        "package_traversal_symlink_safety": "PASS",
+        "restricted_identifiers_and_git_objects": "PASS",
+        "process_isolation_receipt": "PASS_COOPERATIVE_BOUNDARY",
+        "proof_boundary": "PASS"
+      },
+      "fresh_execution": "51_OF_51_TESTS_PASS; 71_JSON_77_PNG_16_WAV; TWO_BYTE_IDENTICAL_BUILDS; EXACT_CONTENT_A_AND_METADATA_B_VALIDATION_PASS",
+      "next_action": "ROUTE_EXACT_CANDIDATE_TO_LOCAL_TESTER; HOLD_IN_IMMUTABLE_T10_BACKLOG"
+    },
+    {
+      "pack_id": "echo-vessels",
+      "candidate_generation": 5,
+      "candidate_message_id": "MSG-P10-ECHO-CANDIDATE-000005",
+      "content_commit": "bea18ae1ea065b7464e66edd0b67aac5465b00e5",
+      "content_tree": "841dba50d3c45f7b7b28e7caf634b0db4d27d2cf",
+      "metadata_commit": "bea18ae1ea065b7464e66edd0b67aac5465b00e5",
+      "metadata_tree": "841dba50d3c45f7b7b28e7caf634b0db4d27d2cf",
+      "mcaddon_sha256": "f9fb661f85b2b70dae979899f955dad9b36d1a628ca7a49ecb5fd4de743db1cf",
+      "status": "FAIL",
+      "passed_checks": {
+        "assignment_binding": "PASS",
+        "repository_ref_commit_tree": "PASS",
+        "exclusive_writer_and_clean_worktree": "PASS",
+        "artifact_paths_sizes_hashes": "PASS",
+        "artifact_manifest": "PASS",
+        "deterministic_rebuild": "PASS",
+        "json_media_manifest_dependency_reference_closure": "PASS",
+        "namespace_uuid_allocation": "PASS",
+        "shipped_entrypoint": "PASS",
+        "package_traversal_symlink_safety": "PASS",
+        "restricted_identifiers_in_checked_out_tree": "PASS",
+        "proof_boundary": "PASS"
+      },
+      "failed_checks": [
+        {
+          "finding_id": "MECH-ECHO-G5-STALE-QUALIFICATION-RECEIPT",
+          "field": "evidence/QUALIFICATION_RECEIPT.json",
+          "expected": "Exact generation-5 tuple and 82-test result, or an explicit supersession/quarantine disposition.",
+          "observed": "Unsuperseded receipt binds 51 tests and prior BP, MCAddon, manifest, and determinism hashes."
+        },
+        {
+          "finding_id": "MECH-ECHO-G5-RESTRICTED-GIT-BLOB-SCAN-INCOMPLETE",
+          "field": "evidence/CANDIDATE_REPAIR_PROCESS_RECEIPT.json.executed_restricted_scans.git_objects",
+          "expected": "Actual contents of every reachable Git blob scanned against authoritative restricted tokens and hashes.",
+          "observed": "Scanner checks only git rev-list object-ID/path lines and compares SHA-256 deny values against SHA-1 object IDs."
+        }
+      ],
+      "fresh_execution": "82_OF_82_TESTS_PASS; 71_JSON_77_PNG_16_WAV; TWO_BYTE_IDENTICAL_BUILDS; EXACT_PACKAGE_HASHES_REPRODUCED",
+      "repair_message": "MSG-T01-ECHO-MECHANICAL-REPAIR-000003",
+      "next_action": "ORIGINAL OWNER CORRECTS THE TWO MECHANICAL PROOF DEFECTS AND PUBLISHES A NEW IMMUTABLE GENERATION; NO BDS OR T10 ROUTING"
+    },
+    {
+      "pack_id": "aspectweave",
+      "candidate_generation": 3,
+      "candidate_message_id": "ASPECTWEAVE-CANDIDATE-0003",
+      "content_commit": "bcfdf3aeeff89f57304ed1318fb1d43c538d3521",
+      "content_tree": "0c72bcd26bda7a209c34452eb8eeb65cc088c27c",
+      "metadata_commit": "00970f1ed21f0c44849eb0138619f9a3928d23a0",
+      "metadata_tree": "35d0e5d2a4fa624f1d83ae8c1c91f354510aa3af",
+      "mcaddon_sha256": "41623d8d22d3421c032db444601be5d0a246407fec63dd2ec6c6a6e6fa8608e4",
+      "status": "FAIL",
+      "failed_checks": [
+        {
+          "finding_id": "MECH-ASPECT-ENVELOPE-001",
+          "field": "production_repository and production_ref",
+          "expected": "Exact repository identity and protected factory ref inside the immutable candidate submission.",
+          "observed": "Both fields are absent. The repository is discoverable from allocation records but cannot be inferred into candidate authority."
+        }
+      ],
+      "preserved_passing_evidence": "49_OF_49_TESTS_PASS; EXACT_DETERMINISTIC_ARTIFACT_HASHES; STATIC_MEDIA_AND_RESTRICTED_SCANS_REMAIN_BOUND_TO_GENERATION_3",
+      "next_action": "SUPERSEDED_BY_MECHANICALLY_ADMITTED_GENERATION_4"
+    },
+    {
+      "pack_id": "aspectweave",
+      "candidate_generation": 4,
+      "candidate_message_id": "ASPECTWEAVE-CANDIDATE-0004",
+      "content_commit": "bcfdf3aeeff89f57304ed1318fb1d43c538d3521",
+      "content_tree": "0c72bcd26bda7a209c34452eb8eeb65cc088c27c",
+      "metadata_commit": "f009d46b1db0fda29ae06ad8113a1521302710e7",
+      "metadata_tree": "34eaa296de5def04761eb1ab2ee40d601d585a91",
+      "behavior_pack_sha256": "97e60984a86df0823789c206507f5ddd0daed4c11e3594c5770290feb30974ad",
+      "resource_pack_sha256": "f9c2d318a8794288b43af135dba051a3134387cd38b99c7d8af6c12761c34312",
+      "mcaddon_sha256": "41623d8d22d3421c032db444601be5d0a246407fec63dd2ec6c6a6e6fa8608e4",
+      "status": "PASS",
+      "checks": {
+        "assignment_binding": "PASS",
+        "repository_ref_commit_tree": "PASS",
+        "exclusive_writer_and_clean_worktree": "PASS",
+        "candidate_generation_and_parent_repair": "PASS",
+        "content_a_metadata_b_ancestry": "PASS",
+        "metadata_b_product_byte_exclusion": "PASS",
+        "artifact_paths_sizes_hashes": "PASS",
+        "artifact_manifest": "PASS",
+        "deterministic_rebuild": "PASS_CARRIED_FORWARD_EXACT_UNCHANGED_PACKAGE_HASHES",
+        "json_media_manifest_dependency_reference_closure": "PASS_CARRIED_FORWARD_EXACT_UNCHANGED_PACKAGE_HASHES",
+        "namespace_uuid_allocation": "PASS",
+        "shipped_entrypoint": "PASS_CARRIED_FORWARD_EXACT_UNCHANGED_PACKAGE_HASHES",
+        "package_traversal_symlink_safety": "PASS_CARRIED_FORWARD_EXACT_UNCHANGED_PACKAGE_HASHES",
+        "restricted_identifiers_and_git_objects": "PASS",
+        "process_isolation_receipt": "PASS_SCHEMA_COOPERATIVE_BOUNDARY_PARTIAL",
+        "proof_boundary": "PASS"
+      },
+      "fresh_execution": "CONTENT_A_AND_METADATA_B_COMMITS_TREES_AND_ANCESTRY_VERIFIED; FOUR_EXACT_CONTENT_A_ARTIFACT_HASHES_RECOMPUTED; METADATA_B_ADDS_RECEIPT_ONLY_PATHS; NONCIRCULAR_RECEIPT_SCHEMA_VALIDATION_ZERO_ERRORS; 49_OF_49_AND_DETERMINISTIC_PACKAGE_EVIDENCE_CARRIED_FORWARD_ONLY_BECAUSE_PACKAGE_HASHES_ARE_IDENTICAL",
+      "next_action": "ROUTE_EXACT_CANDIDATE_TO_LOCAL_TESTER_AND_IMMUTABLE_T10_BACKLOG"
+    },
+    {
+      "pack_id": "latchline-infrastructure",
+      "candidate_generation": 4,
+      "candidate_message_id": "CC-P16-LATCHLINE-CANDIDATE-000004",
+      "content_commit": "9b4fc69fa249884a9095cc9b55081685ba756557",
+      "content_tree": "4e079cde32795d8d71d1c07a2f5107c382755741",
+      "metadata_commit": "a5c49774e052b559fd2173861f928b28748efbb7",
+      "metadata_tree": "df5de7e707050d0557c7f81b429aad4eef478534",
+      "mcaddon_sha256": "5bb98fb8ac117ddc40f1c93f5ad60ebd6147f9b4a4fc60b83bb98bfd0a45a773",
+      "status": "FAIL",
+      "failed_checks": [
+        {
+          "finding_id": "MECH-LATCHLINE-ARCHIVE-POLICY-001",
+          "field": "artifact_manifest.archive_policy",
+          "expected": "Archive member order matches declared raw UTF-8 lexicographic policy.",
+          "observed": "BP and RP contain independently verified member-order inversions because the builder uses locale-dependent localeCompare."
+        }
+      ],
+      "preserved_passing_evidence": "16_TESTS_PASS; STATIC_PACKAGE_VALIDATION; BYTE_IDENTICAL_REBUILD; EXACT_TWO_MEMBER_MCADDDON; RECEIPT_AND_RESTRICTED_SCANS_PASS",
+      "next_action": "SUPERSEDED_BY_MECHANICALLY_ADMITTED_GENERATION_5"
+    },
+    {
+      "pack_id": "latchline-infrastructure",
+      "candidate_generation": 5,
+      "candidate_message_id": "CC-P16-LATCHLINE-CANDIDATE-000005",
+      "content_commit": "3f54f456ddf84f14c891fc768300e48f8b923cdd",
+      "content_tree": "f1f0609317dcb1e663cc243049578ec544d20ab4",
+      "metadata_commit": "3f54f456ddf84f14c891fc768300e48f8b923cdd",
+      "metadata_tree": "f1f0609317dcb1e663cc243049578ec544d20ab4",
+      "behavior_pack_sha256": "8d534648dbc1314d5715c847e880b9bf61ffbacfe50c09c3aeaa121a8dbd501c",
+      "resource_pack_sha256": "719fd1e14ed4da1b01a00d1caf5632b9d2d66b4e418f898f87370f2bbb9d6e46",
+      "mcaddon_sha256": "163ac25f6817a80a3c331984c30831c2213ef4396fa97545e93fef005dd96007",
+      "status": "PASS",
+      "checks": {
+        "assignment_binding": "PASS",
+        "repository_ref_commit_tree": "PASS",
+        "exclusive_writer_and_clean_worktree": "PASS",
+        "candidate_generation_and_parent_repair": "PASS",
+        "artifact_paths_sizes_hashes": "PASS",
+        "artifact_manifest": "PASS",
+        "deterministic_rebuild": "PASS",
+        "raw_utf8_archive_order": "PASS",
+        "json_media_manifest_dependency_reference_closure": "PASS",
+        "namespace_uuid_allocation": "PASS",
+        "shipped_entrypoint": "PASS",
+        "package_traversal_symlink_safety": "PASS",
+        "restricted_identifiers_and_git_objects": "PASS",
+        "process_isolation_receipt": "PASS_CANDIDATE_CHILD_SCOPE",
+        "proof_boundary": "PASS"
+      },
+      "fresh_execution": "FRESH_DETACHED_NO_LOCAL_CLONE; 18_TESTS_PASS_1_BOUNDED_NESTED_SANDBOX_SKIP; 439_GENERATED_FILES_DETERMINISTIC; 315_STATIC_FILES_AND_127_PNG_PASS; RAW_UTF8_ORDER_VERIFIED_FOR_122_BP_AND_175_RP_MEMBERS; EXACT_BP_RP_MCADDDON_AND_MANIFEST_HASHES_REPRODUCED",
+      "next_action": "ROUTE_EXACT_CANDIDATE_TO_LOCAL_TESTER_AND_IMMUTABLE_T10_BACKLOG"
+    },
+    {
+      "pack_id": "aperture-foundry",
+      "candidate_generation": 1,
+      "candidate_message_id": "MSG-P12-APERTURE-CANDIDATE-000001",
+      "content_commit": "edd158cf9487a06316e55c29fccfd2140193fe2f",
+      "content_tree": "e7942398a484160392fccdcbac0e9c4305ec757d",
+      "metadata_commit": "abcfedbb75de8988375fb50c9251a8b57bd27c57",
+      "metadata_tree": "28db6776a50f622ba19c4ef29409cb1f1966e180",
+      "behavior_pack_sha256": "95321fa0e4a155232dcc3d6bfe4c85a70f0cbd59209caa497715977f3cc01fef",
+      "resource_pack_sha256": "22a5ba62668d5b519f173ddabf797fd7206c33ce77d599898d3bed0bb6821a32",
+      "mcaddon_sha256": "62b6eaafeae0aee7d190889e608c1551c784139469490f525337ce18dad9e4b9",
+      "status": "PASS",
+      "checks": {
+        "assignment_binding": "PASS",
+        "repository_ref_commit_tree": "PASS",
+        "exclusive_writer_and_candidate_authority": "PASS_WITH_UNTRACKED_PYTHON_CACHE_OBSERVATION_OUTSIDE_AUTHORITY",
+        "candidate_generation": "PASS",
+        "content_a_metadata_b_ancestry": "PASS",
+        "metadata_b_product_byte_exclusion": "PASS",
+        "artifact_paths_sizes_hashes": "PASS",
+        "artifact_manifest": "PASS",
+        "deterministic_rebuild": "PASS",
+        "json_media_manifest_dependency_reference_closure": "PASS",
+        "namespace_uuid_allocation": "PASS",
+        "shipped_entrypoint": "PASS",
+        "package_traversal_symlink_safety": "PASS",
+        "restricted_identifiers_and_git_objects": "PASS",
+        "process_isolation_receipt": "PASS_FRESH_REPRODUCTION_BOUNDARY",
+        "native_editable_asset_evidence": "PASS_22_OF_22",
+        "proof_boundary": "PASS"
+      },
+      "fresh_execution": "FRESH_DETACHED_NO_LOCAL_CLONE_OF_METADATA_B; 27_OF_27_NODE_TESTS_PASS; EXACT_CONTENT_A_AND_METADATA_B_COMMITS_TREES_AND_ANCESTRY_VERIFIED; 893_STATIC_AND_PACKAGE_CHECKS_8_MUTATIONS_TWO_BYTE_IDENTICAL_BUILDS_22_NATIVE_EDITABLE_ASSETS_AND_ZERO_RESTRICTED_FINDINGS_REVALIDATED_FROM_COMMITTED_RECEIPTS_AND_EXACT_HASHES",
+      "next_action": "ROUTE_EXACT_CANDIDATE_TO_LOCAL_TESTER_AND_IMMUTABLE_T10_BACKLOG"
+    },
+    {
+      "pack_id": "reliquary-vaults",
+      "candidate_generation": 3,
+      "candidate_message_id": "MSG-P07-RELIQUARY-CANDIDATE-000003",
+      "content_commit": "481efdb3535fee7ad7e648ce4f193a9f24aed10a",
+      "content_tree": "96ab0f398e62da3c13a68dd1844470616ccd2f29",
+      "metadata_commit": "685b9af01580dee3a1af92d69f06e26af6f3899d",
+      "metadata_tree": "588fb74df4690f051e642184f1456bd09e7cc975",
+      "behavior_pack_sha256": "124240f983ddc098a3e86866905f415e4cfc716ffba8db7d458b829ac935d721",
+      "resource_pack_sha256": "22cd91a8e28e4d71ec85cd96ffb1ae04813ab6c49268564e64d80269892dbf99",
+      "mcaddon_sha256": "e45d3f44a9e19111490e7b89784eda6ec284468d0f0573991defe7a9d3aa146e",
+      "status": "FAIL",
+      "failed_checks": [
+        {
+          "finding_id": "MECH-RELIQUARY-SCANNER-EXECUTION-001",
+          "field": "restricted_identifiers_and_git_objects",
+          "expected": "The committed scanner executes from a fresh no-local detached clone and reproduces the submitted zero-finding result.",
+          "observed": "node tools/run-restricted-scans.mjs fails before scanning with ReferenceError: Cannot access 'inputs' before initialization at line 9."
+        }
+      ],
+      "preserved_passing_evidence": "29_OF_29_TESTS_PASS_TWICE; 150_PACK_FILES_VALIDATE; EXACT_BP_RP_MCADDDON_AND_MANIFEST_HASHES_REPRODUCED; DETERMINISTIC_BUILD_PASS",
+      "next_action": "ORIGINAL_PACK_OWNER_REPAIRS_SCANNER_EXECUTION_AND_PUBLISHES_REPLACEMENT_CANDIDATE_GENERATION"
+    },
+    {
+      "pack_id": "hearthveil",
+      "candidate_generation": 3,
+      "candidate_message_id": "MSG-P09-HEARTHVEIL-CANDIDATE-000003",
+      "content_commit": "668bd87e31ca8cf2472798764dbe4e4b823e126f",
+      "content_tree": "8717b423a2ace9eba31d34d2ed2c2cf7ab390409",
+      "metadata_commit": "519cb804eb32b9e403f81f4d367ea62e3baf37e9",
+      "metadata_tree": "f7ec62843c08430530a73f5a54811a807dee084a",
+      "behavior_pack_sha256": "470c8a92208c83be9623be1f1e594e290a2ea5377c0d4c39f765b23f145644ea",
+      "resource_pack_sha256": "e88c152f08d5e64c3e184f016a4c962dc994888c600de04bd70c42fa7965bccb",
+      "mcaddon_sha256": "b12e9be8bd04f47c73d0cb2cec339a2c943cd1c30af12aaf9a7bc8eaea19ed56",
+      "status": "FAIL",
+      "failed_checks": [
+        {
+          "finding_id": "MECH-HEARTHVEIL-RESTRICTED-OBJECTS-001",
+          "field": "restricted_identifiers_and_git_objects",
+          "expected": "The committed scanner returns zero mandatory findings against immutable content commit A.",
+          "observed": "node tools/restricted-scan.mjs returns FAIL with 13 reachable Git-object findings in the committed generation-3 process-receipt blobs."
+        }
+      ],
+      "preserved_passing_evidence": "21_OF_21_TESTS_PASS; 10_OF_10_MUTATIONS_KILLED; 229_JSON_122_PNG_20_AUDIO_ZERO_STATIC_ERRORS; SHIPPED_ENTRYPOINT_WORLD_READY_PASS; EXACT_BP_RP_MCADDDON_AND_MANIFEST_HASHES_REPRODUCED",
+      "next_action": "ORIGINAL_PACK_OWNER_RECONCILES_RECEIPT_CONTENT_WITH_RESTRICTED_OBJECT_POLICY_AND_PUBLISHES_REPLACEMENT_CANDIDATE_GENERATION"
+    },
+    {
+      "pack_id": "aspectweave",
+      "candidate_generation": 5,
+      "candidate_message_id": "ASPECTWEAVE-CANDIDATE-0005",
+      "content_commit": "64cd8ccdff88f0b15f1f6156bbef1c73cb4caad8",
+      "content_tree": "c0618ba8b6c1b58e6173bf56f7647cdf4e390435",
+      "metadata_commit": "620772100f88c5187662551baa8463ea123041f7",
+      "metadata_tree": "2325db922b811d0acf50db2cafdad4b96237fa17",
+      "behavior_pack_sha256": "468c658ee11ee1abf431c252e4bc43f9cf8241c8626c31c2efcb26858620434b",
+      "resource_pack_sha256": "f9c2d318a8794288b43af135dba051a3134387cd38b99c7d8af6c12761c34312",
+      "mcaddon_sha256": "ce1d7071da50ddbb371fcba918cc4c1c515c8f52f3b53bd54f4e22a1fdd1d46b",
+      "status": "PASS",
+      "checks": {
+        "assignment_binding": "PASS",
+        "repository_ref_commit_tree": "PASS",
+        "exclusive_writer_and_candidate_authority": "PASS",
+        "candidate_generation_and_parent_repair": "PASS",
+        "content_a_metadata_b_ancestry": "PASS",
+        "artifact_paths_sizes_hashes": "PASS",
+        "artifact_manifest": "PASS",
+        "deterministic_rebuild": "PASS",
+        "json_media_manifest_dependency_reference_closure": "PASS",
+        "namespace_uuid_allocation": "PASS",
+        "shipped_entrypoint": "PASS",
+        "package_traversal_symlink_safety": "PASS",
+        "restricted_identifiers_and_git_objects": "PASS_RECORDED_AND_TESTED",
+        "process_isolation_receipt": "PASS_COOPERATIVE_BOUNDARY_PARTIAL",
+        "proof_boundary": "PASS"
+      },
+      "fresh_execution": "FRESH_DETACHED_NO_LOCAL_CLONE; 52_OF_52_TESTS_PASS; ZERO_REPOSITORY_FINDINGS; EXACT_BP_RP_MCADDDON_AND_MANIFEST_HASHES_REPRODUCED; TWO_BUILD_DETERMINISM_PASS; CONTENT_A_METADATA_B_ANCESTRY_PASS",
+      "next_action": "ROUTE_EXACT_CANDIDATE_TO_LOCAL_TESTER_AND_IMMUTABLE_T10_BACKLOG"
+    },
+    {
+      "pack_id": "reliquary-vaults",
+      "candidate_generation": 4,
+      "candidate_message_id": "MSG-P07-RELIQUARY-CANDIDATE-000004",
+      "content_commit": "481efdb3535fee7ad7e648ce4f193a9f24aed10a",
+      "content_tree": "96ab0f398e62da3c13a68dd1844470616ccd2f29",
+      "metadata_commit": "c4abf960fc4b1e75902f4a1e5d8b5eeaaa97f09c",
+      "metadata_tree": "bdd53cfe9c35e44713491ae14326972fdc62f5c1",
+      "behavior_pack_sha256": "124240f983ddc098a3e86866905f415e4cfc716ffba8db7d458b829ac935d721",
+      "resource_pack_sha256": "22cd91a8e28e4d71ec85cd96ffb1ae04813ab6c49268564e64d80269892dbf99",
+      "mcaddon_sha256": "e45d3f44a9e19111490e7b89784eda6ec284468d0f0573991defe7a9d3aa146e",
+      "status": "PASS",
+      "checks": {
+        "assignment_binding": "PASS",
+        "repository_ref_commit_tree": "PASS",
+        "exclusive_writer_and_clean_worktree": "PASS",
+        "candidate_generation_and_parent_repair": "PASS",
+        "content_a_metadata_b_ancestry": "PASS",
+        "metadata_b_product_byte_exclusion": "PASS",
+        "artifact_paths_sizes_hashes": "PASS",
+        "artifact_manifest": "PASS",
+        "deterministic_rebuild": "PASS_CARRIED_FORWARD_EXACT_UNCHANGED_PACKAGE_HASHES",
+        "json_media_manifest_dependency_reference_closure": "PASS_CARRIED_FORWARD_EXACT_UNCHANGED_PACKAGE_HASHES",
+        "namespace_uuid_allocation": "PASS",
+        "shipped_entrypoint": "PASS_CARRIED_FORWARD_EXACT_UNCHANGED_PACKAGE_HASHES",
+        "package_traversal_symlink_safety": "PASS",
+        "restricted_identifiers_and_git_objects": "PASS_FRESH_NO_LOCAL_SCAN",
+        "process_isolation_receipt": "PASS_NONCIRCULAR_COOPERATIVE_BOUNDARY",
+        "proof_boundary": "PASS"
+      },
+      "fresh_execution": "FRESH_DETACHED_NO_LOCAL_SCANNER; 280_PATHS_AND_455_OF_455_REACHABLE_OBJECTS; ZERO_IDENTIFIER_HASH_GIT_OBJECT_REMOTE_ALTERNATE_HARDLINK_OR_CROSS_LANE_SYMLINK_FINDINGS; NONCIRCULAR_RECEIPT_VALIDATION_ZERO_FINDINGS; EXACT_TUPLE_RECOMPUTED; PRODUCT_TESTS_AND_DETERMINISM_CARRIED_FORWARD_ONLY_BECAUSE_PRODUCT_BYTES_ARE_IDENTICAL",
+      "next_action": "ROUTE_EXACT_CANDIDATE_TO_LOCAL_TESTER; HOLD_IN_IMMUTABLE_T10_BACKLOG"
+    },
+    {
+      "pack_id": "hearthveil",
+      "candidate_generation": 4,
+      "candidate_message_id": "MSG-P09-HEARTHVEIL-CANDIDATE-000004",
+      "content_commit": "62135953c3a6a0e50dfd856e7215034bafc4a3ed",
+      "content_tree": "cc5dbce2a70f68d4931424fbf1ccdfca74e8bf8b",
+      "metadata_commit": "ad08c439e248e2696a611b39f22188f9e397e14c",
+      "metadata_tree": "d18e3cce0ad1a7a781168b3af10ff5164bc0def6",
+      "behavior_pack_sha256": "470c8a92208c83be9623be1f1e594e290a2ea5377c0d4c39f765b23f145644ea",
+      "resource_pack_sha256": "e88c152f08d5e64c3e184f016a4c962dc994888c600de04bd70c42fa7965bccb",
+      "mcaddon_sha256": "b12e9be8bd04f47c73d0cb2cec339a2c943cd1c30af12aaf9a7bc8eaea19ed56",
+      "status": "PASS",
+      "checks": {
+        "assignment_binding": "PASS",
+        "repository_ref_commit_tree": "PASS",
+        "exclusive_writer_and_clean_worktree": "PASS",
+        "candidate_generation_and_parent_repair": "PASS",
+        "content_a_metadata_b_ancestry": "PASS",
+        "metadata_b_product_byte_exclusion": "PASS",
+        "artifact_paths_sizes_hashes": "PASS",
+        "artifact_manifest": "PASS",
+        "deterministic_rebuild": "PASS",
+        "json_media_manifest_dependency_reference_closure": "PASS",
+        "namespace_uuid_allocation": "PASS",
+        "shipped_entrypoint": "PASS",
+        "package_traversal_symlink_safety": "PASS",
+        "restricted_identifiers_and_git_objects": "PASS_FRESH_NO_LOCAL_SCAN",
+        "process_isolation_receipt": "PASS_NONCIRCULAR_COOPERATIVE_BOUNDARY",
+        "proof_boundary": "PASS"
+      },
+      "fresh_execution": "FRESH_DETACHED_NO_LOCAL_CLONE; 23_OF_23_TESTS_PASS; 5_OF_5_REACHABILITY; 10_OF_10_MUTATIONS_KILLED; 229_JSON_122_PNG_20_AUDIO_ZERO_ERRORS; TWO_BUILD_DETERMINISM_PASS; 691_REACHABLE_GIT_RECORDS_ZERO_MANDATORY_FINDINGS; EXACT_PACKAGE_VERIFIER_PASS",
+      "next_action": "ROUTE_EXACT_CANDIDATE_TO_LOCAL_TESTER; HOLD_IN_IMMUTABLE_T10_BACKLOG"
+    }
+  ],
+  "not_run_here": [
+    {
+      "pack_id": "bounded-outcome-events",
+      "reason": "WAITING_PLATFORM_ADMISSION"
+    },
+    {
+      "pack_id": "hearth-and-hall",
+      "reason": "MISSING_CONTEMPORANEOUS_ISOLATION_RECEIPT_AND_NO_CANDIDATE_SUBMISSION"
+    },
+    {
+      "pack_id": "aperture-foundry",
+      "reason": "FRESH_REPRODUCTION_IN_PROGRESS_NO_IMMUTABLE_CANDIDATE"
+    },
+    {
+      "pack_id": "momentum-menagerie",
+      "reason": "ACTIVE_PRODUCT_AND_GOLDEN_REPAIR_NO_IMMUTABLE_CANDIDATE"
+    },
+    {
+      "pack_id": "reliquary-vaults",
+      "reason": "SUPERSEDED_BY_MECHANICALLY_ADMITTED_GENERATION_4"
+    }
+  ],
+  "proof_boundary": [
+    "MECHANICAL_ADMISSION_ONLY",
+    "PASS_DOES_NOT_ESTABLISH_PRODUCT_SEMANTICS_BDS_CLIENT_MULTIPLAYER_CONTROLLER_CONSOLE_RIGHTS_MARKETPLACE_INTEGRATION_OR_RELEASE",
+    "COOPERATIVE_ROLE_ISOLATION_IS_RECORDED_AS_A_LIMITATION_NOT_STRONG_TECHNICAL_ISOLATION"
+  ]
+}

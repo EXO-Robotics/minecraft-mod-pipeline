@@ -72,3 +72,28 @@ python3 tools/bootstrap_pipeline.py --json
 
 See [docs/bootstrap.md](docs/bootstrap.md) for prerequisites, safe skill
 replacement, verification, and the first reconstruction invocation.
+
+## Automated multi-worker campaigns
+
+The repository includes a durable SQLite-backed orchestration layer for
+dependency-aware Java-to-Bedrock campaigns. It provides bounded threaded
+workers, transactional claims, retries, leases, dead-worker recovery,
+quarantine, append-only events, verified transfers, and process receipts.
+Clean-room production commands fail closed without a hash-bound sandbox profile
+and a separately validated production-process receipt.
+The Studio is the production host; the included clean-room launcher is
+Studio-local and does not depend on the MacBook's paths or runtime.
+
+```sh
+.venv/bin/mccompiler-orchestrator --db .mccompiler/orchestration.sqlite3 init
+.venv/bin/mccompiler-orchestrator --db .mccompiler/orchestration.sqlite3 \
+  create --definition /absolute/path/to/campaign.json
+.venv/bin/mccompiler-orchestrator --db .mccompiler/orchestration.sqlite3 \
+  run --concurrency 4 --runtime-root .mccompiler/runtime
+```
+
+For the no-UI, conversation-facing factory workflow, see
+[docs/factory-overseer.md](docs/factory-overseer.md). See also
+[docs/orchestration.md](docs/orchestration.md) and the editable
+`examples/orchestration/java-to-bedrock-campaign.example.json` campaign
+definition.

@@ -1,0 +1,73 @@
+{
+  "schema_version": "1.0.0",
+  "record_type": "factory_t10_queue",
+  "created_at": "2026-07-30T00:18:00Z",
+  "capacity": {
+    "max_active": 1,
+    "max_queued": 1
+  },
+  "active": {
+    "pack_id": "pocketbound-companions",
+    "candidate_generation": 4,
+    "candidate_message_id": "MSG-T01-POCKETBOUND-BDS-RETRY-000002",
+    "promotion_message_id": "MSG-T01-POCKETBOUND-AUDIT-PROMOTION-000001",
+    "content_commit": "2ab0eba12f93bc0e7d4f1c40f94fb8268e3347fa",
+    "content_tree": "2f07723236a6fff4b5859cf2b888b5a4b815f14a",
+    "metadata_commit": "96857b6ca1dc80861afd940afa93456abc762bb3",
+    "metadata_tree": "6c66a6525e556cfdb61d709d014eb37602ca1178",
+    "mcaddon_sha256": "69f47526337f8a6cb4975de443e7972f7ec9d08d9b9ff8259bce96d3a0dba404",
+    "mechanical_state": "PASS",
+    "stable_bds": "TEST_PASS:MSG-TESTER-000000000017-PASS"
+  },
+  "queued": {
+    "pack_id": "wayfarer-settlements",
+    "candidate_generation": 3,
+    "candidate_message_id": "MSG-T01-WAYFARER-BDS-RETRY-000002",
+    "intake_message_id": "MSG-T01-WAYFARER-AUDIT-INTAKE-000002",
+    "content_commit": "d3096a8c9f84a651934c336914a97857de9fb8b7",
+    "content_tree": "43a961a5f723c02ebb84bf8802d7a77830031d8e",
+    "metadata_commit": "a31d1011ffdd7b00e9134cb33ee4a661aa305d1a",
+    "metadata_tree": "3db76f8c7978d12f799f7c3af4dab55a1a954500",
+    "mcaddon_sha256": "19c95a2518dd495328fca3095e7aa45d2cf9d499f636799863a7b494bd951bf4",
+    "mechanical_state": "PASS",
+    "stable_bds": "TEST_PASS:MSG-TESTER-000000000018-PASS"
+  },
+  "immutable_backlog": [
+    {
+      "position": 1,
+      "pack_id": "reliquary-vaults",
+      "candidate_generation": 4,
+      "content_commit": "481efdb3535fee7ad7e648ce4f193a9f24aed10a",
+      "content_tree": "96ab0f398e62da3c13a68dd1844470616ccd2f29",
+      "metadata_commit": "c4abf960fc4b1e75902f4a1e5d8b5eeaaa97f09c",
+      "metadata_tree": "bdd53cfe9c35e44713491ae14326972fdc62f5c1",
+      "mcaddon_sha256": "e45d3f44a9e19111490e7b89784eda6ec284468d0f0573991defe7a9d3aa146e",
+      "mechanical_state": "PASS",
+      "stable_bds": "TEST_PASS:MSG-TESTER-000000000027-PASS"
+    },
+    {
+      "position": 2,
+      "pack_id": "hearthveil",
+      "candidate_generation": 4,
+      "content_commit": "62135953c3a6a0e50dfd856e7215034bafc4a3ed",
+      "content_tree": "cc5dbce2a70f68d4931424fbf1ccdfca74e8bf8b",
+      "metadata_commit": "ad08c439e248e2696a611b39f22188f9e397e14c",
+      "metadata_tree": "d18e3cce0ad1a7a781168b3af10ff5164bc0def6",
+      "mcaddon_sha256": "b12e9be8bd04f47c73d0cb2cec339a2c943cd1c30af12aaf9a7bc8eaea19ed56",
+      "mechanical_state": "PASS",
+      "stable_bds": "TEST_PASS:MSG-TESTER-000000000028-PASS"
+    }
+  ],
+  "recent_results_consumed": [
+    "MSG-T10-VANGUARD-AUDIT-000001",
+    "MSG-T10-ECHO-AUDIT-000001",
+    "MSG-T10-LATCHLINE-AUDIT-000001",
+    "MSG-T10-APERTURE-AUDIT-000001",
+    "MSG-T10-ASPECTWEAVE-AUDIT-000001"
+  ],
+  "proof_boundary": [
+    "T10 audits substantive immutable candidate semantics only.",
+    "Mechanical defects are excluded.",
+    "One active and one queued limit is enforced; backlog is not an additional queued audit slot."
+  ]
+}

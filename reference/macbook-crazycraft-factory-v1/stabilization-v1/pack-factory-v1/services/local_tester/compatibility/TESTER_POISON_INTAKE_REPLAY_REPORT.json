@@ -1,0 +1,51 @@
+{
+  "schema_version": "crazycraft-tester-poison-replay-report-v1",
+  "source_supervisor_commit": "acade0fe248464928e2677c6586f38bf84af0414",
+  "mailbox_head": "dcbc94f58989c6b952514880a3061c69d809b3dc",
+  "compatibility_ledger": {
+    "path": "stabilization-v1/pack-factory-v1/services/local_tester/compatibility/EXACT_TESTER_INTAKE_COMPATIBILITY_LEDGER.json",
+    "sha256": "d8d9eade1d989e48127dbcdcc6742893224627c4f51219bae622610eceae67e3",
+    "exact_entries": 1
+  },
+  "reconstruction": {
+    "committed_terminal_jobs": 18,
+    "executable_intakes": 0,
+    "pack_local_invalid_intakes": 0,
+    "rebuilt_active_jobs": 0,
+    "invalid_intake_000030_present_in_jobs": false,
+    "retry_intake_000031_state": "COMPLETED"
+  },
+  "targeted_tests": {
+    "tests_run": 13,
+    "tests_passed": 13,
+    "tests_failed": 0,
+    "gates": {
+      "INVALID_HISTORICAL_INTAKE_DISPOSITIONED_ONCE": "PASS",
+      "VALID_RETRY_REMAINS_AUTHORITATIVE": "PASS",
+      "SAME_INTAKE_NOT_REEXECUTED": "PASS",
+      "NEW_INVALID_INTAKE_FAILS_PACK_LOCALLY": "PASS",
+      "VALID_LATER_INTAKE_CONTINUES": "PASS",
+      "CANDIDATE_HASHES_REMAIN_EXACTLY_BOUND": "PASS",
+      "NO_DUPLICATE_BDS_EXECUTION": "PASS"
+    }
+  },
+  "candidate_identity": {
+    "pack_id": "aperture-foundry",
+    "candidate_generation": 2,
+    "content_commit": "324b7e87a4b6d047e43ea7c25f397d610093a4a6",
+    "content_tree": "5d43fd9f13e2090c883834047d30add3f4922e3f",
+    "metadata_commit": "794b276869a8d33f062e656afde3487b5f69930c",
+    "metadata_tree": "976141b6a9ba0e26613f8a05b9fc73da74cbe29e",
+    "behavior_pack_sha256": "f707cbe749f47b4cc8543ba32d08fa42c884d82eb59a9520a6504826fd06687f",
+    "resource_pack_sha256": "2b3ecb89a1ded78465e75017dda293ae16d94cc6936202a9e26cb91a400c3996",
+    "mcaddon_sha256": "40d9f406b7be5fe7748dfe21e1a771cb42d54dcb2861f389c0b1e11c44e28fc2"
+  },
+  "proof_boundary": [
+    "Read-only replay against committed mailbox authority.",
+    "No tester service restart.",
+    "No Docker or BDS execution.",
+    "No product or mailbox mutation.",
+    "Historical Stable BDS result remains the exact authority for retry 000031."
+  ],
+  "classification": "TESTER_POISON_INTAKE_REPLAY_PASS"
+}

@@ -1,0 +1,158 @@
+{
+  "asset_workload": {
+    "animation_controllers": 1,
+    "animations": 1,
+    "authority_state": "PRESERVE_EXISTING",
+    "class_counts": {
+      "HERO": 5,
+      "ICON": 30,
+      "NOT_REQUIRED": 0,
+      "PARTICLE": 11,
+      "REUSABLE_COMPLEX": 18,
+      "ROUTINE_MODEL": 0,
+      "SOUND": 22
+    },
+    "classification_status": "PRESERVED_AUTHORITY_FACTORY_WORKLOAD_CLASSIFICATION",
+    "custom_geometry": 1,
+    "editable_bbmodel_files": 23,
+    "localization_sets": 1,
+    "particles": 11,
+    "sounds": 22,
+    "textures_png": 341,
+    "ui_elements": 0
+  },
+  "clean_room_boundary": {
+    "permitted": [
+      "this contract",
+      "approved platform interfaces",
+      "qualified production baseline",
+      "original authored assets and code"
+    ],
+    "prohibited": [
+      "raw Java code or bytecode",
+      "decompiled text",
+      "source identifiers and paths",
+      "source models, textures, UVs, animations, audio, writing, and branding",
+      "private oracle values and hidden cases"
+    ],
+    "proof_rule": "Every authoring and product-affecting repair process emits a candidate-bound isolation receipt."
+  },
+  "completion_condition": {
+    "nonterminal_events": [
+      "contract_created",
+      "vertical_slice_created",
+      "preliminary_candidate_published",
+      "candidate_submitted_to_testing",
+      "one_repair_completed",
+      "waiting_for_tester",
+      "standalone_test_pass"
+    ],
+    "terminal_alternatives": [
+      "TERMINALLY_UNAVAILABLE",
+      "USER_DECISION_REQUIRED",
+      "EXTERNAL_PHYSICAL_GATE_REQUIRED"
+    ],
+    "terminal_success": "PACK_ACCEPTED_AND_INTEGRATED"
+  },
+  "contract_id": "PC-CATALYST_WILDS-V1",
+  "gameplay": {
+    "blocks": [],
+    "controller_conscious_interaction": "All primary actions use ordinary item use, block interact, inventory, dialogue forms, or bounded action forms; no keyboard-only requirement.",
+    "core_gameplay_loop": "Track, challenge, defeat, and bond with bounded original wild catalysts.",
+    "crafting_and_loot": [
+      "server-authoritative reward journal and survival recipes"
+    ],
+    "encounters": [
+      "bounded boss and elite encounters"
+    ],
+    "entities": [
+      "original elites",
+      "bosses",
+      "helpers",
+      "projectiles"
+    ],
+    "items": [
+      "sigils",
+      "trophies",
+      "crafting materials",
+      "bond tools"
+    ],
+    "multiplayer_behavior": "One global boss lease; rewards deduplicate per encounter generation.",
+    "ownership_rules": "Encounter and bonded-creature records are player-scoped and transfer only through explicit product rules.",
+    "persistence": "Versioned encounter, ownership, projectile, reward, and recovery state.",
+    "player_progression": [
+      "encounter discovery",
+      "boss mastery",
+      "reward crafting",
+      "bonded creature care"
+    ],
+    "recovery_and_cleanup": "Cleanup leases remove adds/projectiles and recover interrupted encounter generations.",
+    "required_original_presentation": "Preserve the promoted Catalyst Wilds candidate; closure repairs must not redesign the portfolio.",
+    "restart_and_reconnect": "Versioned state reconstructs idempotently; stale callbacks and generations are inert."
+  },
+  "namespace": "exowild",
+  "pack_id": "catalyst-wilds",
+  "product_name": "Catalyst Wilds",
+  "required_outputs": [
+    "complete_behavior_pack",
+    "complete_resource_pack_when_applicable",
+    "manifest_declared_scripts_main_js_when_scripted",
+    "original_editable_asset_sources",
+    "local_unit_and_integration_tests",
+    "deterministic_builder",
+    "exact_bp_rp_mcaddon_artifacts",
+    "artifact_manifest",
+    "candidate_bound_process_isolation_receipt",
+    "immutable_candidate_submission_message"
+  ],
+  "schema_version": "1.0.0",
+  "technical_allocation": {
+    "migration_version": 1,
+    "persistence_schema": "exowild:state_v1",
+    "platform_authority": {
+      "aggregate_sha256": "84e79568550d800717798858c254498e682d452ec4ab6b95e6320d1a79397f57",
+      "commit": "aba740f136dce5781e68d34e1c7aaa2a0a3d8671",
+      "interface_classification": "FROZEN_PLATFORM_V1_CONTRACTS",
+      "manifest_sha256": "b7de7329fd78b451994b367e0ac226099e8d260bd21309f3f5753b3830c42630",
+      "repository": "/Users/blakegrove/Desktop/bedrock-server/minecraft-compiler-baseline",
+      "tree": "2d5c123c9cbc6d4cdaac2ff922916450b5282d08"
+    },
+    "runtime_budget": {
+      "adds_policy": "SHARED_ADMISSION_CONTROLLER_MAX_8_GLOBAL_MAX_4_PER_ENCOUNTER",
+      "boss_policy": "SHARED_LEASE_ONLY_NO_GUARANTEED_CONCURRENT_BOSS",
+      "combined_reservation_target": {
+        "callbacks_per_heartbeat": 1,
+        "custom_entities": 10,
+        "dynamic_property_bytes": 24576,
+        "particles_per_second": 16,
+        "pathfinders": 5,
+        "persistent_records": 384,
+        "projectiles": 6,
+        "scheduler_pending": 4,
+        "script_time_microseconds_per_tick": 295,
+        "simultaneous_audio_voices": 1
+      },
+      "standalone_policy": "A pack may use a larger standalone test fixture only when its assignment declares that fixture; combined integration must meet this reservation target or return an integration finding."
+    },
+    "shared_runtime_dependencies": [
+      "identity",
+      "persistence",
+      "ownership",
+      "scheduler",
+      "event_router",
+      "reward_journal",
+      "recovery",
+      "diagnostics",
+      "budget_admission",
+      "migration_coordinator"
+    ],
+    "uuid_allocations": {
+      "behavior_data_module": "bb81ee02-a2c9-5632-b8b2-8f92f7d1a95e",
+      "behavior_header": "451b2d48-282b-5c69-88e9-29fd9f2e29f4",
+      "behavior_script_module": "91cd2202-a58a-5272-a5e8-94f67c63cf53",
+      "resource_header": "d657b69c-4671-57ef-a55f-404fcf64a625",
+      "resource_resources_module": "a98dc5a5-4fa8-5592-bf0c-1b5f8a752e47"
+    }
+  },
+  "theme": "Large original mutant encounters, rewards, bonds, and recovery."
+}

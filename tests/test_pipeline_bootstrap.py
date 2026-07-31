@@ -1,14 +1,19 @@
 from __future__ import annotations
 
 import json
+import os
 import subprocess
 import sys
 import tempfile
 import unittest
 from pathlib import Path
 
-
 ROOT = Path(__file__).resolve().parents[1]
+sys.path.insert(0, str(ROOT))
+
+from tools.bootstrap_pipeline import render_launcher
+
+
 BOOTSTRAP = ROOT / "tools/bootstrap_pipeline.py"
 
 
@@ -65,6 +70,35 @@ class PipelineBootstrapTests(unittest.TestCase):
         forbidden = "/Users/blakegrove/Desktop/bedrock-server"
         for path in checked:
             self.assertNotIn(forbidden, path.read_text(encoding="utf-8"), path)
+
+    def test_launcher_supports_interpreter_paths_with_spaces(self) -> None:
+        with tempfile.TemporaryDirectory(prefix="pipeline launcher with spaces ") as temporary:
+            root = Path(temporary)
+            interpreter = root / "python with spaces"
+            interpreter.symlink_to(sys.executable)
+            launcher = root / "mccompiler"
+            launcher.write_text(
+                render_launcher(str(interpreter), "from mccompiler.cli import main"),
+                encoding="utf-8",
+            )
+            launcher.chmod(0o755)
+            result = subprocess.run(
+                [str(launcher), "--help"],
+                cwd=ROOT,
+                check=False,
+                capture_output=True,
+                text=True,
+                env={**os.environ, "PYTHONPATH": str(ROOT / "src")},
+            )
+            self.assertEqual(result.returncode, 0, result.stderr)
+            self.assertIn("usage:", result.stdout)
+
+    def test_bootstrap_installs_orchestrator_launcher(self) -> None:
+        launcher_source = BOOTSTRAP.read_text(encoding="utf-8")
+        self.assertIn(
+            '"mccompiler-orchestrator": "from mccompiler.orchestration.cli import main"',
+            launcher_source,
+        )
 
 
 if __name__ == "__main__":

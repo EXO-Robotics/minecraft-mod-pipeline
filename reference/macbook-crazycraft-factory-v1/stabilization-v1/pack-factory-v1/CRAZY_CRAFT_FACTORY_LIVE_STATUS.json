@@ -1,0 +1,194 @@
+{
+  "schema_version": "1.1.0",
+  "record_type": "crazy_craft_factory_live_status",
+  "updated_at": "2026-07-29T20:31:00Z",
+  "run_control": "ACTIVE",
+  "factory_activity": "ACTIVE",
+  "resume_authority": {
+    "decision_id": "FD-T01-PACK-FACTORY-RESUME-0001",
+    "commit": "34d78ad14d0112e6a5eb010cc4e9fc34645e13e9",
+    "tree": "63bc75d9a1286d3ab4dbbffe85bb33dd0f2c05e1",
+    "superseded_run_control_only": "FD-T01-PACK-FACTORY-PAUSE-0001"
+  },
+  "mailbox_authority": {
+    "repository": "/Users/blakegrove/Desktop/bedrock-server/program/crazycraft-pack-factory-mailboxes-v1",
+    "ref": "refs/heads/codex/factory-mailbox-v1",
+    "commit": "a3455fcbc8ed71b46bbf13f648a6f5cdd9c4f5c2",
+    "tree": "aa00a05128d5349fe3086f10561e728fb9132bdc",
+    "worktree_clean": true
+  },
+  "services": {
+    "local_tester": {
+      "state": "RUNNING",
+      "launchd_label": "com.crazycraft.local-tester",
+      "pid": 20295,
+      "configured_parallel_jobs": 2,
+      "configured_per_pack_jobs": 1,
+      "image": "crazycraft-exact-package-qualifier@sha256:c3adfe3f7cad7c174d23db52dd14da6937901b1df7f9be853c65167086ed811f",
+      "recovered_job": {
+        "job_id": "JOB-000000000019",
+        "pack_id": "reliquary-vaults",
+        "state": "COMPLETED",
+        "result": "TEST_PASS",
+        "result_message_id": "MSG-TESTER-000000000019-PASS",
+        "service_receipt_sha256": "9e8ccbd2a793e90d499602abaf7d41da397164fccd6a56bf250dfe692e83299d",
+        "mailbox_message_sha256": "489bcc38d41905f71497eeda05b84cb48bb71e05f8f7a5b045fd767661652a3e",
+        "publication_recovered_without_bds_rerun": true
+      }
+    },
+    "shared_runtime_integration": {
+      "task_id": "019fa886-8675-7ec3-bd7c-92cced930743",
+      "state": "ACTIVE",
+      "commit": "7708d3b84120261ce9bebae9f0a1f55db3961936",
+      "tree": "2c6a40cc767a4dbf8e3a484ddef9d82f708c5ebc"
+    },
+    "t10_audit": {
+      "task_id": "019fa887-8d31-7741-bc92-51fe01bceb5c",
+      "state": "WAITING_IMMUTABLE_PREFLIGHTED_CANDIDATE",
+      "task_session_state": "IDLE_BY_DESIGN",
+      "active_limit": 1,
+      "queued_limit": 1,
+      "commit": "b458c6b92a71be47ae87ef4b1c015c702ed3bed2",
+      "tree": "1a27754c6c0cbc576ce1b483d3d056a58427a346"
+    }
+  },
+  "pack_workers": [
+    {
+      "pack_id": "reliquary-vaults",
+      "assignment_id": "PA-07-RELIQUARY_VAULTS-V1",
+      "task_id": "019fae2a-1ba8-71b1-a5f9-8025bbff1430",
+      "task_session_state": "ACTIVE",
+      "head": "1b87f2f61140c131cdae6dc1544c74c96e8845a4",
+      "tree": "f2af04edd3944269d036ebbd0198f6076affa17a",
+      "worktree_changed_paths": 0,
+      "current_frontier": "GENERATION_2_PUBLISHED_STABLE_BDS_PASS_AWAITING_REMAINING_AUDIT_INTEGRATION"
+    },
+    {
+      "pack_id": "hearth-and-hall",
+      "assignment_id": "PA-08-HEARTH_AND_HALL-V1",
+      "task_id": "019fae2a-1e88-7a43-aae5-238305c09a85",
+      "task_session_state": "ACTIVE",
+      "head": "86c5d4ecf4615b6c2ac46493ac55016693311d6f",
+      "tree": "210865a20e712f00a9a6fa94606e1c7d92a7bfe7",
+      "worktree_changed_paths": 10,
+      "current_frontier": "PRODUCT_AND_NATIVE_ASSET_AUTHORING_ACTIVE"
+    },
+    {
+      "pack_id": "hearthveil",
+      "assignment_id": "PA-09-HEARTHVEIL-V1",
+      "task_id": "019fae2a-2119-7543-aee8-72b261a0db66",
+      "task_session_state": "IDLE_AUTOMATION_ACTIVE",
+      "head": "f1fc8d3ad8f529ed9a1002383fcbd15aa7647657",
+      "tree": "5ffa106e86b5f30673adfd091b28605f8c59032b",
+      "worktree_changed_paths": 0,
+      "current_frontier": "GENERATION_2_PUBLISHED_WAITING_TESTER_OR_REPAIR_MESSAGE"
+    },
+    {
+      "pack_id": "aspectweave",
+      "assignment_id": "PA-10-ASPECTWEAVE-V1",
+      "task_id": "019fae2a-2394-7c23-8a00-090d630e4087",
+      "task_session_state": "ACTIVE",
+      "head": "dc4c59d771a5f2527d566d3845eea2c5c6967910",
+      "tree": "6443697ae1f5e93f7f16a69e6fdea81a273b12e6",
+      "worktree_changed_paths": 0,
+      "current_frontier": "CANDIDATE_PUBLISHED_FACTORY_ROUTING_ACTIVE"
+    },
+    {
+      "pack_id": "vanguard-arsenal",
+      "assignment_id": "PA-11-VANGUARD_ARSENAL-V1",
+      "task_id": "019fae2a-3694-7271-9168-ee644d4886a1",
+      "task_session_state": "ACTIVE",
+      "head": "c19da2e385ef958ba5ccd0bfe92e8c0dcf06d0af",
+      "tree": "bc6fdfd9513b07995ccd4c4e97c35f7b678499d3",
+      "worktree_changed_paths": 0,
+      "current_frontier": "GENERATION_2_PUBLISHED_REPAIR_AND_ROUTING_ACTIVE"
+    },
+    {
+      "pack_id": "aperture-foundry",
+      "assignment_id": "PA-12-APERTURE_FOUNDRY-V1",
+      "task_id": "019fae2a-2ba4-7710-ab61-54ce7e6f9bd1",
+      "task_session_state": "ACTIVE",
+      "head": "baa848a2aa15dee3001e22546388f1b3de06d665",
+      "tree": "1dd27caccf7d84c69c32ca4c90c81b9b52853f16",
+      "worktree_changed_paths": 0,
+      "current_frontier": "IMMUTABLE_C0_HELD_FAIL_CLOSED_PENDING_CANONICAL_PUBLICATION_AUTHORITY"
+    },
+    {
+      "pack_id": "echo-vessels",
+      "assignment_id": "PA-13-ECHO_VESSELS-V1",
+      "task_id": "019fae2a-31a5-7443-80d9-406c4aa09888",
+      "task_session_state": "ACTIVE",
+      "head": "602b904ebee81c8ba26e985bc5e82d990b53ac05",
+      "tree": "03cdb853e61629d0294b2ab0cf0118b86fa93264",
+      "worktree_changed_paths": 0,
+      "current_frontier": "GENERATION_4_ENVELOPE_CORRECTION_PUBLISHED_CANDIDATE_BYTES_UNCHANGED"
+    },
+    {
+      "pack_id": "bounded-outcome-events",
+      "assignment_id": "PA-14-BOUNDED_OUTCOME_EVENTS-V1",
+      "task_id": "019fae2a-2955-72e2-b3c4-618cb1f1ad10",
+      "task_session_state": "ACTIVE",
+      "head": "402f64b2990b1ae9f703899501041c225dde5516",
+      "tree": "20b1524a9413d8aad2d8f9537e50ad768567c6dc",
+      "worktree_changed_paths": 0,
+      "current_frontier": "GENERATION_4_PUBLISHED_PLATFORM_REQUEST_ACTIVE"
+    },
+    {
+      "pack_id": "momentum-menagerie",
+      "assignment_id": "PA-15-MOMENTUM_MENAGERIE-V1",
+      "task_id": "019fae2a-2edf-7b83-9706-b4a7e88d0560",
+      "task_session_state": "ACTIVE",
+      "head": "383373d5c15d4e17faae7f65998cd264ebc44c82",
+      "tree": "d12e6ffb47b4da414aaea6b50df71e176d31fc24",
+      "worktree_changed_paths": 240,
+      "current_frontier": "PRODUCT_AND_ASSET_RECONCILIATION_ACTIVE_WORKTREE_NOT_AUTHORITY"
+    },
+    {
+      "pack_id": "latchline-infrastructure",
+      "assignment_id": "PA-16-LATCHLINE_INFRASTRUCTURE-V1",
+      "task_id": "019fae2a-265c-7163-967f-6076198a1f05",
+      "task_session_state": "ACTIVE",
+      "head": "db6e65325864dba03881ae3f5fd58e9116cf9072",
+      "tree": "bd9f843e4fdbaa82ed5e8a22df48a143262862dc",
+      "worktree_changed_paths": 0,
+      "current_frontier": "GENERATION_3_PUBLISHED_FACTORY_ROUTING_ACTIVE"
+    }
+  ],
+  "mailbox_projection": {
+    "pack_candidate_messages": 17,
+    "tester_result_messages": 12,
+    "repair_or_platform_messages": 6,
+    "latest_new_events": [
+      "MSG-P10-ECHO-CANDIDATE-000004",
+      "MSG-T01-ECHO-MECHANICAL-REPAIR-000002",
+      "MSG-TESTER-000000000019-PASS",
+      "MSG-P12-APERTURE-AUTHORITY-REQUEST-000001",
+      "MSG-P07-RELIQUARY-ISOLATION-REQUEST-000001"
+    ]
+  },
+  "mechanical_rejection_count_since_resume": 1,
+  "product_progress_events": {
+    "counted": [
+      "committed runtime or BP/RP implementation",
+      "editable asset sources",
+      "immutable candidate generations",
+      "real Stable BDS qualification"
+    ],
+    "not_counted": [
+      "wake messages",
+      "polls",
+      "heartbeat turns",
+      "queue prose",
+      "supervisor status commits"
+    ]
+  },
+  "current_blockers": [
+    "Aperture Foundry C0 is immutable but not admitted until canonical scan, process-receipt, and mailbox publication authority is committed or an exact pack-local authority is granted.",
+    "Reliquary standalone Stable BDS passed; its remaining integration path depends on the bounded shared-runtime authority and audit disposition.",
+    "Catalyst Wilds still lacks an exact committed BP/RP tuple or approved flat-addon qualifier profile."
+  ],
+  "mac_studio": "OPTIONAL_NOT_SCHEDULING_BLOCKER",
+  "clean_room_events": 0,
+  "factory_launch_classification": "PACK_FACTORY_ACTIVE",
+  "proof_boundary": "This status proves the committed factory resume, live local tester, resumed durable task sessions, mailbox consumption, and exact Stable BDS TEST_PASS for Reliquary generation 2. It does not award any unfinished pack, Preview, desktop client, audio, controller, multiplayer, Realm, split-screen, physical console, rights, branding, Marketplace, release, combined integration, or final portfolio result."
+}

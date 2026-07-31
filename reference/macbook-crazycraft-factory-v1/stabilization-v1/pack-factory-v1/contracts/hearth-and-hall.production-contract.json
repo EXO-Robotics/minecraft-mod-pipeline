@@ -1,0 +1,161 @@
+{
+  "asset_workload": {
+    "authority_state": "PLANNED_ORIGINAL_PRODUCTION",
+    "class_counts": {
+      "HERO": 0,
+      "ICON": 24,
+      "NOT_REQUIRED": 0,
+      "PARTICLE": 2,
+      "REUSABLE_COMPLEX": 4,
+      "ROUTINE_MODEL": 40,
+      "SOUND": 12
+    },
+    "expected_outputs": {
+      "animation_controllers": 4,
+      "animations": 8,
+      "editable_bbmodel_files": 24,
+      "icons": 24,
+      "localization_sets": 1,
+      "models": 44,
+      "particles": 2,
+      "proof_renders": 80,
+      "sounds": 12,
+      "textures": 96,
+      "ui_elements": 4
+    },
+    "rules": [
+      "Blockbench is NOT_APPLICABLE for flat icons and ordinary full-cube blocks unless custom geometry materially supports the product.",
+      "Every custom geometry source must reopen natively and export twice to normalized equivalent runtime geometry.",
+      "Hero and reusable-complex assets require independent Golden scoring; routine assets require originality, readability, and technical validity.",
+      "Repairs update editable sources first; export-only hand edits are forbidden."
+    ]
+  },
+  "clean_room_boundary": {
+    "permitted": [
+      "this contract",
+      "approved platform interfaces",
+      "qualified production baseline",
+      "original authored assets and code"
+    ],
+    "prohibited": [
+      "raw Java code or bytecode",
+      "decompiled text",
+      "source identifiers and paths",
+      "source models, textures, UVs, animations, audio, writing, and branding",
+      "private oracle values and hidden cases"
+    ],
+    "proof_rule": "Every authoring and product-affecting repair process emits a candidate-bound isolation receipt."
+  },
+  "completion_condition": {
+    "nonterminal_events": [
+      "contract_created",
+      "vertical_slice_created",
+      "preliminary_candidate_published",
+      "candidate_submitted_to_testing",
+      "one_repair_completed",
+      "waiting_for_tester",
+      "standalone_test_pass"
+    ],
+    "terminal_alternatives": [
+      "TERMINALLY_UNAVAILABLE",
+      "USER_DECISION_REQUIRED",
+      "EXTERNAL_PHYSICAL_GATE_REQUIRED"
+    ],
+    "terminal_success": "PACK_ACCEPTED_AND_INTEGRATED"
+  },
+  "contract_id": "PC-HEARTH_AND_HALL-V1",
+  "gameplay": {
+    "blocks": [
+      "storage, seating, display, light, shelf, trim, panel, table, statue, and door-adjacent pieces"
+    ],
+    "controller_conscious_interaction": "All primary actions use ordinary item use, block interact, inventory, dialogue forms, or bounded action forms; no keyboard-only requirement.",
+    "core_gameplay_loop": "Gather material families, craft coordinated furnishing sets, place functional pieces, and complete themed halls.",
+    "crafting_and_loot": [
+      "survival recipes grouped by obtainable vanilla material families"
+    ],
+    "encounters": [],
+    "entities": [],
+    "items": [
+      "catalog token",
+      "finish samples",
+      "placement tools"
+    ],
+    "multiplayer_behavior": "Concurrent storage access is revision-fenced; seating and display interactions are server authoritative.",
+    "ownership_rules": "Functional storage blocks have one owner or public mode; purely decorative blocks have no ownership record.",
+    "persistence": "Only functional inventories and selections persist; ordinary blocks rely on world state.",
+    "player_progression": [
+      "basic utility set",
+      "material families",
+      "decorative sets",
+      "masterwork hall pieces"
+    ],
+    "recovery_and_cleanup": "Destroyed functional blocks clear bounded records and return valid inventories according to recovery policy.",
+    "required_original_presentation": "Original warm workshop language with restrained voxel detail and readable material separation.",
+    "restart_and_reconnect": "Versioned state reconstructs idempotently; stale callbacks and generations are inert."
+  },
+  "namespace": "ccr_p11",
+  "pack_id": "hearth-and-hall",
+  "product_name": "Hearth & Hall",
+  "required_outputs": [
+    "complete_behavior_pack",
+    "complete_resource_pack_when_applicable",
+    "manifest_declared_scripts_main_js_when_scripted",
+    "original_editable_asset_sources",
+    "local_unit_and_integration_tests",
+    "deterministic_builder",
+    "exact_bp_rp_mcaddon_artifacts",
+    "artifact_manifest",
+    "candidate_bound_process_isolation_receipt",
+    "immutable_candidate_submission_message"
+  ],
+  "schema_version": "1.0.0",
+  "technical_allocation": {
+    "migration_version": 1,
+    "persistence_schema": "ccr_p11:state_v1",
+    "platform_authority": {
+      "aggregate_sha256": "84e79568550d800717798858c254498e682d452ec4ab6b95e6320d1a79397f57",
+      "commit": "aba740f136dce5781e68d34e1c7aaa2a0a3d8671",
+      "interface_classification": "FROZEN_PLATFORM_V1_CONTRACTS",
+      "manifest_sha256": "b7de7329fd78b451994b367e0ac226099e8d260bd21309f3f5753b3830c42630",
+      "repository": "/Users/blakegrove/Desktop/bedrock-server/minecraft-compiler-baseline",
+      "tree": "2d5c123c9cbc6d4cdaac2ff922916450b5282d08"
+    },
+    "runtime_budget": {
+      "adds_policy": "SHARED_ADMISSION_CONTROLLER_MAX_8_GLOBAL_MAX_4_PER_ENCOUNTER",
+      "boss_policy": "SHARED_LEASE_ONLY_NO_GUARANTEED_CONCURRENT_BOSS",
+      "combined_reservation_target": {
+        "callbacks_per_heartbeat": 0,
+        "custom_entities": 0,
+        "dynamic_property_bytes": 8192,
+        "particles_per_second": 4,
+        "pathfinders": 0,
+        "persistent_records": 128,
+        "projectiles": 0,
+        "scheduler_pending": 2,
+        "script_time_microseconds_per_tick": 95,
+        "simultaneous_audio_voices": 0
+      },
+      "standalone_policy": "A pack may use a larger standalone test fixture only when its assignment declares that fixture; combined integration must meet this reservation target or return an integration finding."
+    },
+    "shared_runtime_dependencies": [
+      "identity",
+      "persistence",
+      "ownership",
+      "scheduler",
+      "event_router",
+      "reward_journal",
+      "recovery",
+      "diagnostics",
+      "budget_admission",
+      "migration_coordinator"
+    ],
+    "uuid_allocations": {
+      "behavior_data_module": "40f6098a-dcf6-59d8-8af8-d0998eec3ce2",
+      "behavior_header": "de6c655e-286d-5af0-898f-cb05dd4b10c5",
+      "behavior_script_module": "3b1e7099-367c-5122-8d85-aa5c6d85b0a1",
+      "resource_header": "2a22aace-a5e2-56e7-8dee-226a9c8b5ff0",
+      "resource_resources_module": "ed600c11-45f7-50b1-914f-dcfb53e4e692"
+    }
+  },
+  "theme": "Original functional furnishings, material families, statuary, and settlement building craft."
+}
