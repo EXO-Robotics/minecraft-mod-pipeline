@@ -10,6 +10,7 @@ import re
 import sys
 from pathlib import Path
 
+from validate_role_contract import validate_assignment
 
 ROLES = {
     "evidence_analyst",
@@ -19,11 +20,15 @@ ROLES = {
     "segment_integrator",
     "independent_auditor",
     "visual_auditor",
+    "portfolio_auditor",
+    "bds_qualifier",
 }
 REQUIRED = {
     "schema_version",
     "assignment_id",
     "role",
+    "skill",
+    "lane",
     "lane_root",
     "allowed_read_paths",
     "allowed_write_paths",
@@ -33,6 +38,8 @@ REQUIRED = {
     "required_checks",
     "stop_states",
     "completion_state",
+    "gate_authority",
+    "requires_process_receipt",
 }
 HEX64 = re.compile(r"^[0-9a-f]{64}$")
 PRODUCTION_ROLES = {"feature_producer", "visual_producer", "segment_integrator"}
@@ -105,6 +112,8 @@ def main() -> int:
     missing = sorted(REQUIRED - set(packet))
     if missing:
         findings.append({"code": "REQUIRED_FIELDS_MISSING", "detail": ", ".join(missing)})
+    for detail in validate_assignment(packet):
+        findings.append({"code": "ROLE_CONTRACT_INVALID", "detail": detail})
 
     role = packet.get("role")
     if role not in ROLES:

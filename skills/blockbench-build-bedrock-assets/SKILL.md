@@ -91,6 +91,20 @@ Export with Blockbench's native Bedrock geometry exporter and retain the editabl
 
 First reopen the `.bbmodel` in Blockbench, use **File > Save Project**, then export geometry and animations through their native codecs. Keep source and native exports separate. Compare expected and exported bone, cube, and locator counts; inspect `minecraft:geometry[].bones[].locators` directly.
 
+Keep these claims separate in every receipt:
+
+- Exact editable source opens in the native Blockbench UI.
+- Fixed proof views show the exact source and selected timeline states.
+- Deterministic project tooling emits a runtime geometry file.
+- Native Blockbench export is structurally equivalent to the runtime geometry.
+- Bedrock client renders and plays the asset correctly.
+- Physical PS4 renders and plays the asset correctly.
+
+Never use proof views or deterministic runtime geometry as a substitute for
+native-export equivalence. If the receipt records native export as false or
+unproven, fail any frozen contract that explicitly requires native exports even
+when the Golden art-direction score passes.
+
 Verify:
 
 - `format_version` is supported by the target Bedrock release.
@@ -121,6 +135,12 @@ Create only the files the asset needs:
 - Behavior pack: server entity or block definitions, components/component groups, events, spawn rules, loot tables, recipes, functions, and manifest.
 
 Use one canonical asset identity and document any binding to a Marketplace-safe runtime namespace. Apply the runtime namespace consistently to geometry, animation, controller, render-controller, entity, and file identifiers. Follow cooperative add-on folder conventions under the creator-project directory; do not scatter loose textures, loot tables, or functions. Avoid vanilla overrides, `runtime_identifier`, experiments, and Java-edition dependencies. Put gameplay decisions in behavior-pack/server-authoritative files. Bound spawning, ticking, pathfinding, particles, animation complexity, and simultaneous entity counts for console hardware.
+
+Use one intentional item-atlas entry per promoted icon. Detect and consolidate
+duplicate atlas keys or duplicate icon files before freeze. Verify each BP item
+identifier resolves through the RP atlas, texture file, attachable when
+applicable, and localization entry; do not call a behavior-only item visually
+complete.
 
 For block materials, use one render method within each
 `minecraft:material_instances` group and its finish permutations. Bedrock BDS
@@ -196,10 +216,26 @@ category to score at least 70/100, weighted overall at least 80/100, and
 originality to pass separately. Return clean-room audit repairs to production
 as opaque product findings; never disclose control-reference values.
 
+For portfolio promotion, score every promoted asset independently. Do not use a
+high boss score or portfolio average to hide weak ordinary creatures. Select a
+representative quality set across boss, elite, ambient, hostile, flying,
+multipart, ranged, and equipment classes, promote each through the same fixed
+proof and critique gates, and convert the passing results into class templates
+before scaling the remaining roster.
+
+Treat presentation as an integrated asset surface. Where the product contract
+calls for it, provide original active/inactive/error feedback, localized
+messages, inventory icon, bounded particles, and original audio. Validate their
+runtime bindings and caps separately from geometry quality.
+
 Never state that an asset is PS4 compatible, PS4 verified, or Marketplace approved solely because static, Blockbench, Creator Tools, or BDS gates pass. Keep desktop, Realm, controller, split-screen, and physical-PS4 statuses explicit and pending until tested. State narrow claims and list every remaining gate.
 
 Record independent statuses for static shape validation, Blockbench UI
 roundtrip, native export, Bedrock rendering, and physical PS4 rendering.
+Bind each proof receipt to the exact `.bbmodel`, runtime geometry, texture,
+animation, RP, package, and candidate-commit hashes. If a test-only commit
+follows the package-bound candidate, record that lineage without silently
+changing the asset or package identity.
 
 ## Deliverables
 

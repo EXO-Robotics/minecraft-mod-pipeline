@@ -1,1 +1,0 @@
-Validate a completed copy against the bundled schema, then place it under `qualification/imported-results/`. No command in this repository uploads, publishes, or converts a pending result into a pass automatically.

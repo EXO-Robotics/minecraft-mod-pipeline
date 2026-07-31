@@ -1,5 +1,0 @@
-# Install only after replacing placeholders with the two dedicated public keys.
-# The forced command receives and validates SSH_ORIGINAL_COMMAND. No PTY,
-# forwarding, agent forwarding, X11, user rc, or additional keys are allowed.
-restrict,command="/Users/REMOTE_USER/crazycraft-remote-runner/studio/forced_command.py --expected-role T1 --root /Users/REMOTE_USER/crazycraft-remote-jobs" <T1_PUBLIC_KEY>
-restrict,command="/Users/REMOTE_USER/crazycraft-remote-runner/studio/forced_command.py --expected-role T10 --root /Users/REMOTE_USER/crazycraft-remote-jobs" <T10_PUBLIC_KEY>

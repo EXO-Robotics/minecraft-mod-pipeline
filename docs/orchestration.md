@@ -42,7 +42,7 @@ attempt numbers and receipts, then re-evaluates dependent jobs. Use it only
 after a material repair or changed external condition:
 
 ```sh
-mccompiler-orchestrator --db /absolute/queue.sqlite3 retry JOB_ID \
+bedrock-factory --db /absolute/queue.sqlite3 retry JOB_ID \
   --operator "$USER" \
   --reason "sandbox profile v2 frozen after denied-path repair" \
   --additional-attempts 1
@@ -53,7 +53,7 @@ mccompiler-orchestrator --db /absolute/queue.sqlite3 retry JOB_ID \
 Install or refresh the repository entry points:
 
 ```sh
-.venv/bin/python tools/bootstrap_pipeline.py --json
+python3.11 tools/bootstrap.py
 ```
 
 Copy and edit
@@ -62,15 +62,15 @@ be absolute and every input or sandbox-profile hash must identify the actual
 frozen bytes.
 
 ```sh
-.venv/bin/mccompiler-orchestrator \
+.venv/bin/bedrock-factory \
   --db .mccompiler/orchestration.sqlite3 \
   init
 
-.venv/bin/mccompiler-orchestrator \
+.venv/bin/bedrock-factory \
   --db .mccompiler/orchestration.sqlite3 \
   create --definition /absolute/path/to/campaign.json
 
-.venv/bin/mccompiler-orchestrator \
+.venv/bin/bedrock-factory \
   --db .mccompiler/orchestration.sqlite3 \
   run --concurrency 4 --runtime-root .mccompiler/runtime
 ```
@@ -78,7 +78,7 @@ frozen bytes.
 When a manual gate becomes ready:
 
 ```sh
-.venv/bin/mccompiler-orchestrator \
+.venv/bin/bedrock-factory \
   --db .mccompiler/orchestration.sqlite3 \
   approve authorize-evidence \
   --operator "$USER" \
@@ -88,11 +88,11 @@ When a manual gate becomes ready:
 Inspect state and history:
 
 ```sh
-.venv/bin/mccompiler-orchestrator \
+.venv/bin/bedrock-factory \
   --db .mccompiler/orchestration.sqlite3 status \
   --campaign replace-me-java-to-bedrock-v1
 
-.venv/bin/mccompiler-orchestrator \
+.venv/bin/bedrock-factory \
   --db .mccompiler/orchestration.sqlite3 events \
   --campaign replace-me-java-to-bedrock-v1
 ```
@@ -124,17 +124,17 @@ separate long-running pools against the same database:
 
 ```sh
 # Evidence/control work
-mccompiler-orchestrator --db /absolute/queue.sqlite3 run --forever \
+bedrock-factory --db /absolute/queue.sqlite3 run --forever \
   --concurrency 6 --lane EVIDENCE --lane CONTROL \
   --runtime-root /absolute/runtime
 
 # Evidence-blind production: intentionally bounded
-mccompiler-orchestrator --db /absolute/queue.sqlite3 run --forever \
+bedrock-factory --db /absolute/queue.sqlite3 run --forever \
   --concurrency 2 --lane PRODUCTION --lane INTEGRATION \
   --runtime-root /absolute/runtime
 
 # Read-only audit and qualification
-mccompiler-orchestrator --db /absolute/queue.sqlite3 run --forever \
+bedrock-factory --db /absolute/queue.sqlite3 run --forever \
   --concurrency 3 --lane AUDIT --lane QUALIFICATION \
   --runtime-root /absolute/runtime
 ```
@@ -167,7 +167,7 @@ Git object store, environment, cache, or output receipt.
 The repository's Studio-native launcher is
 `tools/production_sandbox/studio_launcher.py`. It is backend-neutral: its worker
 command is an explicit JSON argv file, its environment is cleared, and network
-access is denied. It does not assume the MacBook's Ollama service, paths,
+access is denied. It does not assume another host's model service, paths,
 credentials, repository, or runtime state.
 
 The worker command file is a JSON argv array whose executable is absolute:

@@ -10,14 +10,14 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "src"))
 
-from mccompiler.orchestration.campaign import (
+from bedrock_factory.campaign import (
     CampaignDefinitionError,
     load_campaign_definition,
     validate_campaign_definition,
 )
-from mccompiler.orchestration.executor import file_sha256
-from mccompiler.orchestration.runtime import WorkerPool
-from mccompiler.orchestration.store import (
+from bedrock_factory.executor import file_sha256
+from bedrock_factory.runtime import WorkerPool
+from bedrock_factory.store import (
     AWAITING_APPROVAL,
     BLOCKED,
     QUARANTINED,
@@ -421,7 +421,7 @@ class OrchestrationTests(unittest.TestCase):
             lanes=["EVIDENCE", "CONTROL"],
         )
         arguments = payload["ProgramArguments"]
-        self.assertEqual(arguments[0], str(ROOT / ".venv/bin/mccompiler-orchestrator"))
+        self.assertEqual(arguments[0], str(ROOT / ".venv/bin/bedrock-factory"))
         self.assertIn("--forever", arguments)
         self.assertEqual(arguments.count("--lane"), 2)
         self.assertTrue(payload["KeepAlive"])

@@ -16,10 +16,10 @@ from typing import Any
 ROOT = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(ROOT / "src"))
 
-from mccompiler.orchestration.dispatch import ThreadDispatchOutbox
-from mccompiler.orchestration.overseer import POOL_LANES, OverseerRuntime
-from mccompiler.orchestration.planner import write_factory_plan
-from mccompiler.orchestration.store import OrchestrationStore
+from bedrock_factory.dispatch import ThreadDispatchOutbox
+from bedrock_factory.overseer import POOL_LANES, OverseerRuntime
+from bedrock_factory.planner import write_factory_plan
+from bedrock_factory.store import OrchestrationStore
 
 
 CAMPAIGN_ID = "studio-factory-synthetic-v1"

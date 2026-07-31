@@ -11,11 +11,7 @@ from pathlib import Path
 
 
 ROOT = Path(__file__).resolve().parents[2]
-DEFAULT_SCHEMAS = (
-    ROOT
-    / "reference/macbook-crazycraft-factory-v1/stabilization-v1/"
-    "pack-factory-v1/mailboxes/schemas"
-)
+DEFAULT_SCHEMAS = ROOT / "schemas" / "mailbox"
 MAILBOX_ROOTS = (
     "candidate_submissions",
     "tester_intake",

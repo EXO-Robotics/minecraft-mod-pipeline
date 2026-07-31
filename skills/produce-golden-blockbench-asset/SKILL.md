@@ -5,6 +5,11 @@ description: Produce and freeze one original custom-geometry Bedrock asset from 
 
 # Produce a Golden Blockbench Asset
 
+Require a standardized assignment for role `visual_producer`, skill
+`produce-golden-blockbench-asset`, and lane `PRODUCTION`. Validate it with
+`$translate-java-mods-to-bedrock`'s
+role-contract validator. `requires_process_receipt` must be true.
+
 Operate only inside the assigned visual-production lane. The typed visual
 contract, class profile, proof-render contract, and production-facing Bedrock
 interfaces are the sole authority.
@@ -37,6 +42,9 @@ for the reference asset or ask for source-specific clarification.
 4. Put pivots at functional joints and author motion from the new proportions.
 5. Create original texture regions, palette, markings, icons, and feedback.
 6. Implement only approved gameplay-visible states and animation events.
+7. Where assigned, bind original localized feedback, bounded particles, and
+   audio cues; record their event IDs, simultaneous caps, and missing-resource
+   behavior.
 
 Never imitate an unknown source or reuse another validation creature as a shape,
 rig, palette, timing, or presentation template.
@@ -93,6 +101,8 @@ Run production-local:
 - Cycle 2 silhouette/material/readability/originality self-review.
 - Static Bedrock, Creator Tools, provenance, deterministic two-build, and
   production-local BDS checks permitted by the packet.
+- Presentation bindings for localization, icons, audio, particles, and
+  active/inactive/error states when assigned.
 
 For asset-only packs set `require_script_runtime: false`; never create a fake
 script marker. When the packet calls for full server qualification, produce
@@ -118,6 +128,10 @@ all validation and proof receipts to the candidate commit and package hash.
 Require no unresolved high or material medium finding, every public art category
 at least 70, weighted score at least 80, deterministic export/package hashes,
 and a clean candidate commit. Return `CANDIDATE_READY_FOR_VISUAL_AUDIT`.
+
+For a portfolio assignment, return an independent score and promotion decision
+for every asset. Never average a failing asset into a passing batch. Preserve
+unpromoted assets as functional prototypes or backlog.
 
 Do not claim independent originality, semantic preservation, client rendering,
 controller behavior, Realm, split screen, physical PS4, Marketplace, or release

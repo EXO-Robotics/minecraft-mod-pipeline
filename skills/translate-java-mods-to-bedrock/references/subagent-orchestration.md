@@ -30,6 +30,8 @@ Use these tiers:
 | Segment integrator | `$integrate-bedrock-subsystem` | Frozen production candidates and shared interfaces | Java evidence, private oracle | Frozen integrated candidate |
 | Independent auditor | `$audit-java-bedrock-cleanroom` | All lanes after freeze, read-only | Write access to evidence or candidate | Final audit and BDS classification |
 | Visual auditor | `$audit-golden-blockbench-asset` | Frozen visual candidate and authorized control set, read-only | Write access to production | Two-cycle critique, originality and asset qualification |
+| BDS qualifier | `$qualify-bedrock-candidate` | Frozen exact package and bounded runtime contract | Candidate mutation or Java evidence | Stable/Preview exact-package gate ledger |
+| Portfolio auditor | `$audit-bedrock-portfolio-freeze` | Frozen portfolio, receipts, and authorized oracle, read-only | Candidate mutation | Final full or partial freeze classification |
 
 Do not assign evidence analysis and production to the same agent. Use a fresh
 auditor after candidate freeze. Integration is a production role and must remain
@@ -60,6 +62,8 @@ Include:
   "schema_version": "1.0.0",
   "assignment_id": "opaque-id",
   "role": "evidence_analyst",
+  "skill": "analyze-java-mod-evidence",
+  "lane": "EVIDENCE",
   "lane_root": "/absolute/authorized/root",
   "allowed_read_paths": [],
   "allowed_write_paths": [],
@@ -71,7 +75,9 @@ Include:
   "output_artifacts": [],
   "required_checks": [],
   "stop_states": [],
-  "completion_state": "EXPECTED_STATE"
+  "completion_state": "EXPECTED_STATE",
+  "gate_authority": ["EVIDENCE_RECORDED"],
+  "requires_process_receipt": false
 }
 ```
 

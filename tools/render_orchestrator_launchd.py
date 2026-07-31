@@ -19,7 +19,7 @@ def render_launch_agent(
     repository = repository.expanduser().resolve()
     database = database.expanduser().resolve()
     runtime_root = runtime_root.expanduser().resolve()
-    executable = repository / ".venv/bin/mccompiler-orchestrator"
+    executable = repository / ".venv/bin/bedrock-factory"
     if concurrency < 1:
         raise ValueError("concurrency must be at least 1")
     arguments = [

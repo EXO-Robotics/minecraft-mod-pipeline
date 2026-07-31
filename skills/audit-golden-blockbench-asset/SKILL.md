@@ -5,6 +5,11 @@ description: Independently audit a frozen custom-geometry Bedrock asset after pr
 
 # Audit a Golden Blockbench Asset
 
+Require a standardized assignment for role `visual_auditor`, skill
+`audit-golden-blockbench-asset`, and lane `AUDIT`. Validate it with
+`$translate-java-mods-to-bedrock`'s
+role-contract validator. Audit is read-only and cannot repair the candidate.
+
 Operate as a fresh post-freeze visual auditor. You may read the authorized
 control set and private originality cases, but you must not modify production or
 return control-reference details to its agent.
@@ -67,9 +72,19 @@ material 20%, readability 15%, construction 10%, and originality 10%. Require
 each category at least 70 and weighted total at least 80. Originality passes
 independently.
 
+For a portfolio, publish per-asset category scores and decisions. Require every
+promoted asset to meet every floor; do not substitute a portfolio average.
+Check that ordinary creatures have differentiated silhouettes and authored
+motion rather than sharing one body grammar, diagonal texture pattern, or sine
+animation template.
+
 Mutation-test that the gates reject broken UUID/link graphs, missing or renamed
 metrics, dishonest proof `source_type`, a forbidden timing collision, and an
 asset-only candidate containing a fake qualification marker script.
+
+When presentation is in scope, audit localized state feedback, inventory icons,
+audio and particle bindings, bounded simultaneous effects, and deterministic
+archive inclusion. Keep binding validity separate from client playback quality.
 
 ## Audit originality
 

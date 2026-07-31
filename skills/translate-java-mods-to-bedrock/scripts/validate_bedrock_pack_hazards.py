@@ -31,7 +31,25 @@ def material_groups(block: dict[str, Any]) -> list[dict[str, Any]]:
     return groups
 
 
-def validate(bp: Path, rp: Path, cooperative: bool) -> dict[str, Any]:
+def stable_server_major(manifest: dict[str, Any]) -> int | None:
+    for row in manifest.get("dependencies", []):
+        if not isinstance(row, dict) or row.get("module_name") != "@minecraft/server":
+            continue
+        version = row.get("version")
+        if isinstance(version, str):
+            try:
+                return int(version.split(".", 1)[0])
+            except ValueError:
+                return None
+    return None
+
+
+def validate(
+    bp: Path,
+    rp: Path,
+    cooperative: bool,
+    require_pack_icons: bool = False,
+) -> dict[str, Any]:
     findings: list[dict[str, str]] = []
     parsed = 0
     for path in sorted((*bp.rglob("*.json"), *rp.rglob("*.json"))):
@@ -82,8 +100,38 @@ def validate(bp: Path, rp: Path, cooperative: bool) -> dict[str, Any]:
                 "path": str(rp / "manifest.json"),
                 "detail": "resource pack does not depend on behavior pack UUID",
             })
+
+        if stable_server_major(bp_manifest) is not None and stable_server_major(bp_manifest) >= 2:
+            for path in sorted((*bp.rglob("*.js"), *bp.rglob("*.ts"))):
+                try:
+                    source = path.read_text(encoding="utf-8")
+                except OSError as error:
+                    findings.append({
+                        "code": "SCRIPT_READ_FAILED",
+                        "path": str(path),
+                        "detail": str(error),
+                    })
+                    continue
+                if "world.beforeEvents.itemUseOn" in source:
+                    findings.append({
+                        "code": "REMOVED_SCRIPT_EVENT_MEMBER",
+                        "path": str(path),
+                        "detail": (
+                            "world.beforeEvents.itemUseOn is not supported by "
+                            "@minecraft/server 2.x"
+                        ),
+                    })
     except (OSError, KeyError, TypeError, json.JSONDecodeError) as error:
         findings.append({"code": "MANIFEST_INVALID", "path": "manifest.json", "detail": str(error)})
+
+    if require_pack_icons:
+        for root, label in ((bp, "behavior"), (rp, "resource")):
+            if not (root / "pack_icon.png").is_file():
+                findings.append({
+                    "code": "PACK_ICON_MISSING",
+                    "path": str(root / "pack_icon.png"),
+                    "detail": f"{label} pack icon is required by this profile",
+                })
 
     if cooperative:
         for name in ("blocks", "items"):
@@ -108,8 +156,14 @@ def main() -> int:
     parser.add_argument("--behavior-pack", type=Path, required=True)
     parser.add_argument("--resource-pack", type=Path, required=True)
     parser.add_argument("--cooperative", action="store_true")
+    parser.add_argument("--require-pack-icons", action="store_true")
     args = parser.parse_args()
-    result = validate(args.behavior_pack, args.resource_pack, args.cooperative)
+    result = validate(
+        args.behavior_pack,
+        args.resource_pack,
+        args.cooperative,
+        args.require_pack_icons,
+    )
     print(json.dumps(result, indent=2, sort_keys=True))
     return 0 if result["status"] == "PASS" else 1
 

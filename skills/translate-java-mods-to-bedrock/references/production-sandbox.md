@@ -93,3 +93,23 @@ Verify both:
 These are separate claims. A clean contamination scan cannot replace missing
 process receipts. Rebuilding existing implementation bytes under a sandbox
 cannot repair unsandboxed authorship; create a fresh isolated reimplementation.
+
+## Candidate-bound no-change re-attestation
+
+When historical authoring receipts prove the real sandbox process ran but use
+an obsolete role label or omit fields required by the current receipt schema,
+do not rewrite them. Run a fresh accepted integration/audit role inside the
+current sandbox against the exact frozen candidate:
+
+1. Execute the full negative-access preflight from that process.
+2. Bind its receipt to the same candidate commit, tree, package hashes, prompt,
+   profile, launcher, environment, and tool inventory.
+3. Rebuild twice, rerun current gates and mutations, and require no candidate
+   change.
+4. Validate the new receipt mechanically.
+5. Preserve and classify the historical receipts as
+   `ACTUAL_SANDBOX_PROCESS_EVIDENCE_WITH_SCHEMA_GAP`.
+
+This can cure receipt-schema conformance when actual sandbox execution is
+already evidenced. It cannot cure unsandboxed authorship, missing process
+identity, evidence exposure, or a changed candidate.

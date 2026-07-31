@@ -39,7 +39,7 @@ class StudioProductionSandboxTests(unittest.TestCase):
         self.assertIn("(deny default)", profile)
         self.assertIn("(deny network*)", profile)
         self.assertNotIn("ollama", profile.lower())
-        self.assertNotIn("blakegrove", profile.lower())
+        self.assertNotIn("reference/macbook", profile.lower())
         self.assertNotIn("100.84.", profile)
         for target in denied.values():
             self.assertIn(str(target), profile)

@@ -1,99 +1,170 @@
-# Minecraft Reconstruction Compiler
+# Bedrock AI Factory
 
-An evidence-backed assisted compiler that reconstructs validated Java mod intent as deterministic Minecraft Bedrock add-ons. It does not translate Java byte-for-byte and it never hides unsupported behavior behind arbitrary generated code.
+A portable, local-first control plane for an AI to coordinate clean-room
+reconstruction of authorized Java mods into original Minecraft Bedrock Add-Ons.
 
-The private GitHub repository is the authoritative project copy; local clones
-are working copies. Project software is available under the [MIT License](LICENSE).
-Repository processing and external-disclosure boundaries are documented in
-[AI_PROCESSING_POLICY.md](AI_PROCESSING_POLICY.md).
+Give this repository to an AI coding agent, point it at a local modpack you are
+authorized to inspect, and the agent can plan and operate a durable multi-role
+factory without importing this project's original campaign state.
 
-## Proven baseline
+> **Status: alpha factory infrastructure.** The synthetic rehearsal proves the
+> control flow and recovery contracts. It does not prove that every mod can be
+> converted automatically, that a generated pack is production-ready, or that
+> client, console, Marketplace, legal, or release gates passed.
 
-The currently tested semantic profile accepts the included dependency-free Fabric-style Java source fixture. It extracts registrations, triggers, actions, persistent state, boss phases, form intent, approximations, unsupported hooks, and full source provenance into versioned ModIR/BehaviorIR. Loader metadata inventory supports Fabric, Quilt, modern/legacy Forge, NeoForge, CurseForge, Modrinth, and the compiler's directory-modpack manifest; those metadata readers are not claims of full semantic loader support.
+## What is included
 
-Large, evidence-inventoried modpacks can also be reduced to a deterministic,
-progression-coherent planning scope with `mccompiler distill-modpack`. The
-distiller treats 25% as estimated conversion effort, enforces prerequisites,
-rights and static console constraints, emits the required planning reports, and
-keeps qualitative review adjustments separate from deterministic scores. See
-`docs/modpack-distillation.md`.
+- A deterministic, read-only JAR/ZIP/modpack intake planner.
+- SQLite-backed jobs, leases, retries, events, receipts, and recovery.
+- An independent append-only Git mailbox and immutable candidate generations.
+- Hash-bound AI worker dispatch with duplicate-send prevention.
+- Separate evidence, production, integration, qualification, and audit roles.
+- Adaptive thread directives with explicit Stable BDS capacity limits.
+- A macOS deny-by-default production launcher and receipt validator.
+- Seventeen Codex skills that teach an AI how to oversee and staff the factory.
+- Unit tests and an offline end-to-end synthetic rehearsal.
 
-The planner gives every feature one explicit strategy: `DIRECT`, `SCRIPTED_EQUIVALENT`, `RECONSTRUCTED`, `BEHAVIORAL_APPROXIMATION`, `VISUAL_APPROXIMATION`, `MANUAL_REDESIGN`, or `UNSUPPORTED`. Persistent JSON overrides survive regeneration.
-
-## Run
-
-```sh
-PYTHONPATH=src python3 -m mccompiler scan \
-  --input tests/fixtures/representative_mod \
-  --output out/representative-ir.json \
-  --bedrock-server /path/to/bedrock-server
-
-PYTHONPATH=src python3 -m mccompiler compile \
-  --input tests/fixtures/representative_mod \
-  --output out/representative \
-  --overrides overrides.json
-
-PYTHONPATH=src python3 -m mccompiler validate --path out/representative
-PYTHONPATH=src python3 -m unittest discover -s tests -v
-```
-
-Compilation writes:
-
-```text
-out/representative/
-├── behavior_pack/
-├── resource_pack/
-├── scripts/
-├── tests/
-├── reports/
-├── conversion-manifest.json
-└── converted-mod.mcaddon
-```
-
-Pack UUIDs, JSON ordering, generated modules, ZIP member ordering, timestamps, and archive bytes are deterministic for the same semantic input, target, capability database, and overrides.
+The repository intentionally excludes modpacks, Java evidence, generated
+add-ons, campaign databases, worker conversations, credentials, Docker images,
+and machine-specific runtime state.
 
 ## Architecture
 
-The boundaries are scanner → loader/source/bytecode analyzers → evidence → intent/ModIR/BehaviorIR → fingerprints → capability/pattern planner → Bedrock backend → layered validator → runtime harness → report. Published schemas live in `src/mccompiler/schemas`; architectural decisions and current primary-source research live in `docs/adr` and `docs/research`.
-
-The compiled-JAR profile uses `javap` from a local OpenJDK to reconstruct the tested annotation-and-call vocabulary with lower-confidence bytecode provenance. The representative source-free JAR must produce the same 15 behavior fingerprints and state declarations as source mode. Without `javap`, class constants remain inventory evidence and no semantic bytecode support is claimed.
-
-See [docs/user-guide.md](docs/user-guide.md) for IR contracts, adapters, patterns, overrides, generation, validation, runtime reproduction, and current limitations.
-
-## Bootstrap another pipeline
-
-The complete Codex reconstruction skill pack is tracked under `skills/`.
-Install the compiler and skills from a fresh clone with:
-
-```sh
-python3 tools/bootstrap_pipeline.py --check-only --json
-python3 tools/bootstrap_pipeline.py --json
+```mermaid
+flowchart LR
+  U["User + AI overseer"] --> P["Authorized intake + task plan"]
+  P --> E["Evidence and contracts"]
+  E --> W["Isolated production workers"]
+  W --> C["Immutable candidate generation N"]
+  C --> Q["T1 + Stable BDS + private audit"]
+  Q -->|"product repair"| R["Consolidated N to N+1 repair"]
+  R --> W
+  Q -->|"admitted"| I["T2 and integration"]
+  I --> X["Separately owned client and release gates"]
 ```
 
-See [docs/bootstrap.md](docs/bootstrap.md) for prerequisites, safe skill
-replacement, verification, and the first reconstruction invocation.
+SQLite and the Git mailbox are durable authority. Agent chat, process presence,
+and generated status projections are not.
 
-## Automated multi-worker campaigns
+## Requirements
 
-The repository includes a durable SQLite-backed orchestration layer for
-dependency-aware Java-to-Bedrock campaigns. It provides bounded threaded
-workers, transactional claims, retries, leases, dead-worker recovery,
-quarantine, append-only events, verified transfers, and process receipts.
-Clean-room production commands fail closed without a hash-bound sandbox profile
-and a separately validated production-process receipt.
-The Studio is the production host; the included clean-room launcher is
-Studio-local and does not depend on the MacBook's paths or runtime.
+- macOS for the included `sandbox-exec` production launcher. The queue and
+  planning code are standard Python and can run elsewhere, but another OS needs
+  an independently designed and qualified isolation backend.
+- Python 3.11 or newer.
+- Git.
+- Codex or another coding agent that supports local skills and bounded workers.
+- Docker plus a pinned Bedrock Dedicated Server setup only when you choose to
+  run BDS qualification; those binaries/images are not bundled.
 
-```sh
-.venv/bin/mccompiler-orchestrator --db .mccompiler/orchestration.sqlite3 init
-.venv/bin/mccompiler-orchestrator --db .mccompiler/orchestration.sqlite3 \
-  create --definition /absolute/path/to/campaign.json
-.venv/bin/mccompiler-orchestrator --db .mccompiler/orchestration.sqlite3 \
-  run --concurrency 4 --runtime-root .mccompiler/runtime
+Minecraft, Bedrock, and Java are trademarks of their respective owners. This is
+an independent developer tool and is not affiliated with Mojang or Microsoft.
+Repository processing and disclosure boundaries are defined in
+[AI_PROCESSING_POLICY.md](AI_PROCESSING_POLICY.md).
+
+## Quick start
+
+Clone the repository, then run:
+
+```bash
+python3.11 tools/bootstrap.py --check-only
+python3.11 tools/bootstrap.py
 ```
 
-For the no-UI, conversation-facing factory workflow, see
-[docs/factory-overseer.md](docs/factory-overseer.md). See also
-[docs/orchestration.md](docs/orchestration.md) and the editable
-`examples/orchestration/java-to-bedrock-campaign.example.json` campaign
-definition.
+The second command creates `.venv` and installs this checkout in editable mode.
+It does not install skills globally unless you explicitly request that:
+
+```bash
+python3.11 tools/bootstrap.py --install-skills
+```
+
+Existing different skills are moved to a timestamped backup under the selected
+Codex home before replacement. Use `--codex-home /absolute/path` to target an
+isolated Codex configuration instead of the default.
+
+Initialize a fresh local factory:
+
+```bash
+.venv/bin/python tools/factory/init_studio_factory.py \
+  --root .mccompiler/factory-v1
+```
+
+Create or choose a small local JAR/ZIP fixture that you have permission to use,
+then run the offline rehearsal:
+
+```bash
+.venv/bin/python tools/factory/rehearse_studio_factory.py \
+  --factory-root .mccompiler/factory-v1 \
+  --source /absolute/path/to/authorized-fixture.jar
+```
+
+The factory remains inactive until that deterministic rehearsal writes a PASS
+receipt and binds its hash into `factory-config.json`.
+
+## Give it to your AI
+
+Open the repository as the agent workspace and send this prompt:
+
+```text
+Read AGENTS.md and README.md completely. Set up this repository locally, but do
+not inspect any modpack yet. Verify the synthetic rehearsal and report the exact
+factory config and receipt hashes. Then ask me for only: (1) the absolute path
+to the modpack, and (2) confirmation that I am authorized to inspect it and run
+a private clean-room reconstruction. Keep everything private and local unless I
+separately authorize publication. Use the oversee-java-to-bedrock-factory skill
+as the only conversation-facing coordinator and use bounded role workers for
+ready packets. Never treat synthetic or server-only evidence as client, console,
+Marketplace, legal, release, or full-automation proof.
+```
+
+After the user supplies authority and a source path, the overseer starts with:
+
+```bash
+.venv/bin/bedrock-factory \
+  --db .mccompiler/factory-v1/orchestration.sqlite3 \
+  factory-plan \
+  --modpack /absolute/path/to/modpack \
+  --output-root .mccompiler/factory-v1/campaigns/CAMPAIGN_ID \
+  --authority RECORDED_AUTHORITY
+```
+
+See [the overseer runbook](docs/factory-overseer.md) and
+[the queue/orchestration reference](docs/orchestration.md) for role ownership,
+dispatch, recovery, and scaling commands.
+
+## Safety model
+
+- Intake hashes and lists archives without executing or extracting their
+  contents.
+- Raw evidence stays in evidence/control lanes. Production receives only opaque
+  assignments and sanitized product contracts.
+- Production and repair work require independent repositories, explicit read
+  and write roots, denied evidence paths, and process-bound receipts.
+- Candidate generations are append-only. A failed `N` is preserved and a
+  material repair publishes exactly `N+1`; unchanged bytes are not retried.
+- Product failures are separated from host, Docker, toolchain, and missing-gate
+  failures.
+- Public publication and release require separate user authority.
+
+No sandbox can substitute for rights review, host hardening, or independent
+qualification. Read [SECURITY.md](SECURITY.md) and the
+[portability contract](docs/portability.md) before real production.
+
+## Development
+
+```bash
+python3.11 -m unittest discover -s tests -v
+```
+
+The real macOS sandbox integration test is opt-in because it launches an actual
+isolated subprocess:
+
+```bash
+RUN_STUDIO_SANDBOX_INTEGRATION=1 \
+  python3.11 -m unittest tests.test_studio_production_sandbox -v
+```
+
+## License
+
+MIT. Third-party mods, Minecraft assets, Bedrock server distributions, and
+generated campaign artifacts are not included or licensed by this repository.

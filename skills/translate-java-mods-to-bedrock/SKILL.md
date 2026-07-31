@@ -37,6 +37,17 @@ Read `references/production-sandbox.md` before launching any production,
 visual-production, integration, or repair agent. Read
 `references/current-bedrock-schema.md` before generating packs, promoting a
 candidate, or disposing a BDS content error.
+Read `references/product-reachability.md` before calling a feature complete,
+freezing a progression segment, or equating artifact presence with playable
+survival access.
+Read `references/portfolio-freeze-audit.md` before reconciling a full-mod
+backlog, running a private-oracle mutation campaign, carrying qualification
+forward across a metadata-only repair, or assigning a final portfolio freeze
+classification.
+Read `references/role-contract-standard.md` before delegating any pipeline role
+or accepting any role result. Validate every assignment and gate ledger with
+`scripts/validate_role_contract.py`; do not guess missing authority, inputs,
+hashes, or stop conditions.
 
 ## Run the reconstruction flow
 
@@ -71,16 +82,38 @@ candidate, or disposing a BDS content error.
     visual contract, class profile, originality constraints, and console
     budget. Use `$blockbench-build-bedrock-assets` directly for simpler assets.
     Then build and qualify BP/RP/scripts deterministically.
-15. Freeze implementation and metadata separately. Never amend a frozen
+15. Prove `PLAYER_REACHABLE_FEATURE`: trace every promoted feature from a normal
+    survival acquisition or spawn path through its interaction/event handler to
+    its reward or persistent result. Exported functions, stress-only summon
+    helpers, recipes without obtainable inputs, and entities with no spawn or
+    encounter path are artifacts—not completed player-facing features.
+16. Freeze implementation and metadata separately. Never amend a frozen
     candidate; preserve superseded candidate, freeze, and package hashes.
-16. Give a fresh read-only auditor the private oracle only after candidate
+17. Invoke `$qualify-bedrock-candidate` against immutable commit-extracted
+    package bytes. Use `$qualify-bedrock-addon-bds` as its architecture-aware,
+    exact-hash execution harness. Keep BDS execution receipts separate from
+    semantic audit.
+18. Give a fresh read-only auditor the private oracle only after candidate
     freeze. Return abstract defects—not evidence or hidden cases—to production.
-17. Require `REPAIR_RECEIPT_REQUIRED` for every production repair: the repair
+19. Require `REPAIR_RECEIPT_REQUIRED` for every production repair: the repair
     agent must execute inside the same or a newly frozen equivalent boundary,
     and its receipt must bind the process, prompt, inputs, outputs, and candidate.
-18. Complete `CANDIDATE_BOUND_ISOLATION_AUDIT`,
+20. Complete `CANDIDATE_BOUND_ISOLATION_AUDIT`,
     `CURRENT_SCHEMA_BDS_GATE`, `HISTORICAL_TEST_DISPOSITION`, and
     `FINAL_STATUS_REFRESH` before final classification.
+21. Reconcile every raw declaration to one final disposition. Preserve raw
+    declaration totals separately from logical product roles; do not call an
+    inventory complete while an entry remains unclassified.
+22. Require a baseline-clean private mutation harness. The unmutated candidate
+    must produce zero target failures, each mutation must be scoped to its
+    requirement boundary, and a kill caused by a pre-existing unrelated
+    failure is `INCONCLUSIVE`, not `KILLED`.
+23. Freeze a partial candidate when technical qualification is useful but a
+    non-waivable semantic, isolation, lineage, or originality gate fails.
+    Preserve exact packages and evidence, but do not create the full-success tag.
+24. Invoke `$audit-bedrock-portfolio-freeze` for the final independent
+    classification, then use `$freeze-bedrock-campaign-bundle` to assemble and
+    validate the slim immutable handoff.
 
 Validate each production and repair receipt with:
 
@@ -108,12 +141,16 @@ state, identifiers, persistence, cleanup, and event interfaces before consumers.
 Use separate production worktrees for independent branches, then integrate in
 dependency waves. Require a cross-feature interaction, restart behavior, cleanup,
 and two/four-player isolation before calling parallel production proven.
+Count a selected feature as completed only after its player-reachability record
+passes; keep present-but-unreachable content as `INTEGRATED_ARTIFACT_ONLY`.
 
-Delegate with role skills and hash-bound assignment packets rather than repeating
-the campaign prompt. Keep mutable source commits, worktrees, contract hashes, and
-candidate hashes in the packet, not in a skill. Give production and integration
-agents opaque requirement IDs and no evidence paths. Use a fresh auditor after
-candidate freeze.
+Delegate with role skills and standardized hash-bound assignment packets rather
+than repeating the campaign prompt. Keep mutable source commits, worktrees,
+contract hashes, and candidate hashes in the packet, not in a skill. Give
+production and integration agents opaque requirement IDs and no evidence paths.
+Use a fresh auditor after candidate freeze. Reject role/lane mismatches and any
+`PASSED` gate without authority, exact artifact hash, receipt, and narrow
+classification.
 
 Before BDS, commit the candidate package and extract its bytes from that
 immutable commit. Require the runner to accept the candidate commit and
@@ -127,10 +164,41 @@ failed candidate and log, repair the generator rather than only generated
 output, add a static regression plus a mutation that reintroduces the defect,
 freeze a replacement candidate, and rerun the affected gates.
 
+Current-schema regressions must explicitly cover:
+
+- Feature-rule filename stem equals the feature-rule identifier local name.
+- Block-state values use the finite array form accepted by the target Stable
+  and Preview builds.
+- Stable scheduled block behavior uses current `minecraft:tick` and the
+  registered callback name exercised by the shipped integration harness.
+- Recipe `unlock` is a non-empty array whose entries are reachable.
+- Flattened namespaced custom components replace deprecated
+  `minecraft:custom_components`.
+- BP/RP dependencies remain reciprocal and Script API versions remain stable.
+
+When a repair changes tests or evidence but leaves BP, RP, and combined package
+bytes unchanged, carry forward package-bound MCTools/BDS evidence only after
+verifying all exact SHA-256 values again and recording the new metadata commit.
+Do not imply that this cures missing production-process receipts; every
+production or repair commit still requires its own sandbox receipt.
+
+Pin Script API event registration to the exact declared
+`@minecraft/server` version. Static-scan removed event members, then require
+Stable and Preview startup to exercise module import and callback registration.
+For before-events that run in restricted mode, defer world, player, inventory,
+or dynamic-property mutation through the supported scheduler. Add one mutation
+for the removed member and one for an illegal direct mutation whenever BDS
+reveals either escape.
+
 When the exact candidate contains no scripts, set the BDS harness's explicit
 asset-only policy such as `require_script_runtime: false`. Still require clean
 pack/entity loading, bounded probes, stress, cleanup, and restart. Do not add a
 fake Script API marker to turn an asset-only pack into a scripted pack.
+
+For promoted items and wearables, require paired BP/RP presentation: behavior
+definition, client texture or attachable, atlas registration, localization,
+and survival acquisition. A server-loadable behavior item with no client
+binding remains `INTEGRATED_ARTIFACT_ONLY`.
 
 Fail closed if authorized evidence is missing. A planning contract is not an
 implementation. A BDS boot receipt proves only the exact claims its probes
@@ -204,15 +272,21 @@ Require at least one feature per claimed category. Record source evidence only
 in the analysis wave; expose opaque intent IDs and clean-room contracts to the
 production wave.
 
-For the compiler baseline, use:
+For this portable factory, freeze the authorized intake first:
 
 ```bash
-mccompiler prepare-reconstruction-wave \
-  --project path/to/project \
-  --parameters wave.json \
-  --expected-revision REVISION \
-  --json
+.venv/bin/bedrock-factory \
+  --db .mccompiler/factory-v1/orchestration.sqlite3 \
+  factory-plan \
+  --modpack /absolute/path/to/modpack \
+  --output-root .mccompiler/factory-v1/campaigns/CAMPAIGN_ID \
+  --authority RECORDED_AUTHORITY
 ```
+
+Then use the hash-bound plan and the `make-java-to-bedrock-task-packs` skill to
+prepare evidence, sanitized contracts, and production assignments. Do not
+assume operations from a larger compiler repository exist in this standalone
+distribution.
 
 Treat `PENDING_AUTHORIZED_EVIDENCE` as the honest initial state. Advance a
 feature only when its evidence and preceding gates exist.

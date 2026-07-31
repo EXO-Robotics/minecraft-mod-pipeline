@@ -1,8 +1,0 @@
-{
-  "case": 8,
-  "name": "restricted_name_injection",
-  "blocked_name": "Restricted Mod Hero",
-  "artifact": {"contract_id": "product:test", "reward_function": "Defeat Restricted Mod Hero"},
-  "expected_code": "BLOCKED_NAME_LEAK",
-  "expected_path": "$.reward_function"
-}

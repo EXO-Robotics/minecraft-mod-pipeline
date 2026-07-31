@@ -62,6 +62,27 @@ Run all of these checks even when static validation or Creator Tools passes:
   current use/consumable modifiers, and Stable/Preview divergence.
 - Convert every BDS-only schema escape into a generator regression plus a
   mutation that proves the invalid form is rejected.
+- Reject deprecated Script API event members for the pinned module version and
+  direct restricted-mode mutation from before-event callbacks.
+- Require BP/RP pack icons, current localization wiring, and source-neutral
+  pack metadata. Treat stale section names as integration residue.
+
+## Player-reachability gate
+
+Before freezing a connected segment, trace every promoted player-facing feature
+through:
+
+`acquisition/spawn → public event/component → authoritative handler → state
+transition → reward/persistence → cleanup`.
+
+Require current-candidate integration tests at the public edge. Exported
+functions without callers, stress-only summon functions, boss keys without use
+handlers, and entities without survival acquisition remain
+`INTEGRATED_ARTIFACT_ONLY`. Do not count them as complete features.
+
+For a progression chain, require every edge to be reachable and duplicate-safe.
+Record `CLIENT_EVENT_DELIVERY_PENDING` when only direct module tests and BDS
+fixtures exist.
 
 ## Test evidence strata
 
@@ -108,3 +129,7 @@ it does not by itself prove that candidate gameplay callbacks executed. Claim
 candidate pack load only when the exact candidate is bound into the world and
 its content log is clean. Prove semantics through the private oracle and direct
 candidate-module tests.
+
+BDS-triggered test functions prove the fixture path, not normal item/block
+interaction delivery. Report the latter as pending until a real client invokes
+the public event surface.

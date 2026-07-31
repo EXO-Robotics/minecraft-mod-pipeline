@@ -12,6 +12,13 @@ BDS schemas. Do not rely on source-folder JSON parsing alone.
   explicitly requires it.
 - `@minecraft/server` uses the frozen stable version; reject experiments unless
   the product requirement is explicitly blocked without them.
+- Script event members exist in that exact stable version. For
+  `@minecraft/server` 2.x reject removed registrations such as
+  `world.beforeEvents.itemUseOn`; use a supported public interaction event and
+  preserve its first-event/repeat semantics.
+- Before-event callbacks that execute in restricted mode do not mutate the
+  world, player, inventory, or dynamic properties directly. Require an explicit
+  supported scheduler boundary and a regression for it.
 - BP and RP dependencies are reciprocal and UUID/version compatible.
 - Manifest `min_engine_version`, module types, UUIDs, and pack scope match the
   frozen current-platform profile.
@@ -19,6 +26,9 @@ BDS schemas. Do not rely on source-folder JSON parsing alone.
   components; reject obsolete item-use fields.
 - Texture roots, render methods, geometry, animation/controller bindings,
   localization keys, and structure references resolve inside the exact archive.
+- Required BP/RP `pack_icon.png` files exist and pass the current Creator Tools
+  profile. Pack display names/descriptions and player-facing messages resolve
+  through current localization keys; reject stale section/product metadata.
 - Stable and Preview schema divergence is recorded separately.
 
 ## BDS escape-to-regression loop
@@ -32,6 +42,10 @@ For each content-log error:
 5. Add a mutation that deletes or corrupts the required field.
 6. Require the mutation to be killed.
 7. Build twice, freeze a replacement candidate, and rerun Stable and Preview.
+
+For Script API failures, add a module-load registration smoke test in addition
+to a text/schema assertion. A script that parses but throws while registering an
+event is not initialized.
 
 No schema warning is “non-material” merely because pack probes later succeed.
 

@@ -15,21 +15,21 @@ ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "src"))
 sys.path.insert(0, str(ROOT))
 
-from mccompiler.orchestration.activation import (
+from bedrock_factory.activation import (
     activation_digest,
     validate_activation_package,
 )
-from mccompiler.orchestration.dispatch import ThreadDispatchOutbox
-from mccompiler.orchestration.mailbox import MailboxError
-from mccompiler.orchestration.overseer import POOL_LANES, OverseerRuntime
-from mccompiler.orchestration.planner import build_factory_plan, write_factory_plan
-from mccompiler.orchestration.runtime import WorkerPool
-from mccompiler.orchestration.scaling import (
+from bedrock_factory.dispatch import ThreadDispatchOutbox
+from bedrock_factory.mailbox import MailboxError
+from bedrock_factory.overseer import POOL_LANES, OverseerRuntime
+from bedrock_factory.planner import build_factory_plan, write_factory_plan
+from bedrock_factory.runtime import WorkerPool
+from bedrock_factory.scaling import (
     AdaptiveScalingPolicy,
     AdaptiveThreadScaler,
     load_adaptive_scaling_config,
 )
-from mccompiler.orchestration.store import (
+from bedrock_factory.store import (
     BLOCKED,
     QUARANTINED,
     OrchestrationStore,
@@ -106,7 +106,7 @@ class FactoryOverseerTests(unittest.TestCase):
         assignment.write_text('{"assignment_id":"fixture"}\n', encoding="utf-8")
         authority.write_text('{"message_id":"fixture-authority"}\n', encoding="utf-8")
         activation = {
-            "schema_version": "crazycraft.worker-activation-package.v1.0.0",
+            "schema_version": "bedrock-factory.worker-activation-package.v1.0.0",
             "activation_id": "fixture-new-pack-g1",
             "activation_type": "NEW_PACK",
             "state": "AUTHORIZED",

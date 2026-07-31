@@ -3,21 +3,26 @@ requires = ["setuptools>=68"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "minecraft-compiler-baseline"
-version = "0.2.0"
-description = "Evidence-backed Java-to-Bedrock mod reconstruction baseline"
+name = "bedrock-ai-factory"
+version = "0.1.0"
+description = "Portable, durable AI-operated factory for clean-room Java-to-Minecraft-Bedrock reconstruction"
+readme = "README.md"
 requires-python = ">=3.11"
+license = {text = "MIT"}
+authors = [{name = "Bedrock AI Factory contributors"}]
+classifiers = [
+  "Development Status :: 3 - Alpha",
+  "License :: OSI Approved :: MIT License",
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3.11",
+  "Topic :: Games/Entertainment",
+]
 
 [project.scripts]
-mccompiler = "mccompiler.cli:main"
-mccompiler-agent = "mccompiler.agent.stdio_server:main"
-mccompiler-orchestrator = "mccompiler.orchestration.cli:main"
+bedrock-factory = "bedrock_factory.cli:main"
 
 [tool.setuptools]
 package-dir = {"" = "src"}
 
 [tool.setuptools.packages.find]
 where = ["src"]
-
-[tool.setuptools.package-data]
-mccompiler = ["*.json", "schemas/*.json", "capabilities/*.json"]

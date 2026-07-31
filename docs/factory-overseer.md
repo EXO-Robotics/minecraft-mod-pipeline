@@ -27,9 +27,9 @@ is append-only and generation-aware. Worker delivery uses a hash-bound outbox
 that this Codex task consumes with subagents or worker tasks; it deliberately
 does not depend on a particular UI transport.
 
-The imported MacBook factory is reference-only. Its task IDs, absolute paths,
+This distribution does not import another factory's task IDs, absolute paths,
 mailbox history, production repositories, compatibility exceptions, Docker
-state, and runtime projections are never live Studio authority.
+state, or runtime projections as local authority.
 
 ## Role pools
 
@@ -79,14 +79,14 @@ active rather than advancing a duplicate cycle.
 The overseer task reads or advances the controller mechanically:
 
 ```bash
-.venv/bin/mccompiler-orchestrator \
+.venv/bin/bedrock-factory \
   --db .mccompiler/factory-v1/orchestration.sqlite3 \
   scaling-heartbeat \
   --state .mccompiler/factory-v1/runtime/adaptive-scaling/state.json \
   --config .mccompiler/factory-v1/factory-config.json \
   --campaign CAMPAIGN_ID
 
-.venv/bin/mccompiler-orchestrator scaling-ack \
+.venv/bin/bedrock-factory scaling-ack \
   --state .mccompiler/factory-v1/runtime/adaptive-scaling/state.json \
   --config .mccompiler/factory-v1/factory-config.json \
   --directive DIRECTIVE_ID \
@@ -122,7 +122,7 @@ The user supplies an absolute local modpack path and its operating authority.
 The overseer records the authority and runs:
 
 ```bash
-.venv/bin/mccompiler-orchestrator \
+.venv/bin/bedrock-factory \
   --db .mccompiler/factory-v1/orchestration.sqlite3 \
   factory-plan \
   --modpack /absolute/path/to/modpack \
@@ -152,14 +152,14 @@ After planning, the overseer performs the routine loop:
 The overseer can inspect unsent task requests with:
 
 ```bash
-.venv/bin/mccompiler-orchestrator dispatch-pending \
+.venv/bin/bedrock-factory dispatch-pending \
   --outbox .mccompiler/factory-v1/runtime/dispatch
 ```
 
 After this task successfully sends a request, it records the delivery once:
 
 ```bash
-.venv/bin/mccompiler-orchestrator dispatch-ack \
+.venv/bin/bedrock-factory dispatch-ack \
   --outbox .mccompiler/factory-v1/runtime/dispatch \
   --request REQUEST_ID \
   --state SENT \
@@ -213,19 +213,19 @@ failure, ambiguous recovery state, and missing shared-runtime authority.
 The conversation-facing overseer status is available without a UI:
 
 ```bash
-.venv/bin/mccompiler-orchestrator \
+.venv/bin/bedrock-factory \
   --db .mccompiler/factory-v1/orchestration.sqlite3 \
   status --campaign CAMPAIGN_ID
 
-.venv/bin/mccompiler-orchestrator \
+.venv/bin/bedrock-factory \
   --db .mccompiler/factory-v1/orchestration.sqlite3 \
   events --campaign CAMPAIGN_ID --after LAST_SEQUENCE
 
-.venv/bin/mccompiler-orchestrator \
+.venv/bin/bedrock-factory \
   --db .mccompiler/factory-v1/orchestration.sqlite3 \
   mailbox-messages --campaign CAMPAIGN_ID
 
-.venv/bin/mccompiler-orchestrator \
+.venv/bin/bedrock-factory \
   --db .mccompiler/factory-v1/orchestration.sqlite3 \
   candidates --campaign CAMPAIGN_ID
 ```
@@ -234,7 +234,7 @@ The `oversee` command starts the bounded pools and reconciliation loop. It is a
 runtime behind this conversation, not an interface replacing it:
 
 ```bash
-.venv/bin/mccompiler-orchestrator \
+.venv/bin/bedrock-factory \
   --db .mccompiler/factory-v1/orchestration.sqlite3 \
   oversee --runtime-root .mccompiler/factory-v1/runtime
 ```

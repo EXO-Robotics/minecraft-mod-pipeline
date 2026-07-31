@@ -30,9 +30,7 @@ def initialize_factory(root: Path) -> dict[str, object]:
         (root / relative).mkdir(parents=True, exist_ok=True)
     mailbox = initialize_mailbox(
         root / "mailbox",
-        Path(__file__).resolve().parents[2]
-        / "reference/macbook-crazycraft-factory-v1/stabilization-v1/"
-        "pack-factory-v1/mailboxes/schemas",
+        Path(__file__).resolve().parents[2] / "schemas" / "mailbox",
         "codex/studio-factory-mailbox-v1",
     )
     config: dict[str, object] = {
@@ -43,13 +41,9 @@ def initialize_factory(root: Path) -> dict[str, object]:
         "runtime_root": str(root / "runtime"),
         "campaign_root": str(root / "campaigns"),
         "mailbox": mailbox,
-        "reference_factory": {
-            "path": str(
-                Path(__file__).resolve().parents[2]
-                / "reference/macbook-crazycraft-factory-v1"
-            ),
-            "commit": "9a485501c8df628f04f87cc6ed007a0025405ca0",
-            "authority": "REFERENCE_ONLY",
+        "distribution": {
+            "kind": "PORTABLE_STANDALONE_FACTORY",
+            "repository": str(Path(__file__).resolve().parents[2]),
         },
         "pools": {
             "task_maker": {"lanes": ["EVIDENCE", "CONTROL"], "concurrency": 2},

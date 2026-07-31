@@ -121,6 +121,41 @@ Require every category to score at least 70 and the weighted score to be at
 least 80. Technical validity cannot compensate for weak art. Originality also
 passes independently.
 
+## Portfolio promotion
+
+Apply the gate per asset, not to an average. A technically impressive boss
+cannot promote a weak ordinary roster. For a portfolio:
+
+- Include representative boss, elite, ambient, hostile, flying/hovering,
+  multipart, ranged, and equipment classes when present.
+- Record every asset's category scores, weighted score, high findings,
+  proof-inventory hash, native receipt, and promotion decision.
+- Require every promoted asset to pass every category floor and originality.
+- Use promoted assets only as construction and quality templates; do not clone
+  their silhouette, palette, rig, or motion identity across species.
+- Track the unpromoted remainder explicitly as backlog or functional prototype
+  quality.
+
+Prefer authored animation coverage for idle, locomotion, alert, hurt, death,
+and feature action when applicable. Simple sine loops may support secondary
+motion but do not substitute for anticipation, contact, weight, recovery, and
+state-specific posing.
+
+## Presentation bundle
+
+When applicable, bind original audio, bounded particles, state feedback,
+inventory icons, and localized strings to the same candidate. Validate:
+
+- active, inactive, success, rejection, and error readability;
+- audio/particle event identifiers and missing-file handling;
+- simultaneous sound and particle caps;
+- stale localization or pack metadata;
+- deterministic inclusion in the RP/BP archives.
+
+Keep presentation validity and client playback separate. Static bindings and
+BDS load do not prove television-distance readability, audio balance, animation
+playback, or controller feedback.
+
 ## Originality audit and repair
 
 After freeze, compare exact identifiers, byte-identical files, geometry
