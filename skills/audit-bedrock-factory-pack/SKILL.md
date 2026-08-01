@@ -15,6 +15,12 @@ contracts, mailbox history, or worker tasks. Do not reveal private oracle cases
 to production. Report findings through opaque requirement/finding IDs with
 reproducible evidence and a clear proof boundary.
 
+Evaluate contracts through declared semantic modes and acceptable evidence
+classes. Structural record inequality alone is not `FAIL_SEMANTIC`. A missing
+or unsupported field yields insufficient, client-required, or inconclusive
+evidence. Internal hooks, packaged test doubles, and mutation harnesses prove
+only their calibrated paths, not ordinary network-player delivery.
+
 Separate product failures from missing audit authority or infrastructure. A
 product failure goes to the overseer/mailbox owner for consolidation with other
 same-generation findings; do not directly wake or instruct the producer. A PASS

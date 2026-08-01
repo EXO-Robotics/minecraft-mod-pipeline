@@ -40,6 +40,7 @@ hashes.
 | `visual_auditor` | `audit-golden-blockbench-asset` | `AUDIT` |
 | `portfolio_auditor` | `audit-bedrock-portfolio-freeze` | `AUDIT` |
 | `bds_qualifier` | `qualify-bedrock-candidate` | `AUDIT` |
+| `observation_tester` | `observe-bedrock-factory-pack` | `AUDIT` |
 
 ## Lane authority
 
@@ -53,6 +54,10 @@ hashes.
 
 Audit roles are read-only. A repair is a new `PRODUCTION` or `INTEGRATION`
 assignment, never an audit continuation.
+
+An observation tester collects calibrated evidence and may classify collection
+as ready, insufficient, client-required, inconclusive, or infrastructure
+blocked. It does not own semantic PASS or product repair.
 
 ## Gate ledger
 

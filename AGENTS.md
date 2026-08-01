@@ -6,7 +6,8 @@ credentials.
 
 When a user asks you to set up or run the factory:
 
-1. Read `README.md`, then `docs/factory-overseer.md`.
+1. Read `README.md`, `JAVA_BEDROCK_CODEX_SKILLS.md`, then
+   `docs/factory-overseer.md`.
 2. Run `python3.11 tools/bootstrap.py --check-only`.
 3. Do not inspect a supplied modpack until the user confirms they are
    authorized to inspect it and gives the exact local path.

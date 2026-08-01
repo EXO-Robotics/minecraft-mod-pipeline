@@ -27,6 +27,11 @@ is append-only and generation-aware. Worker delivery uses a hash-bound outbox
 that this Codex task consumes with subagents or worker tasks; it deliberately
 does not depend on a particular UI transport.
 
+The complete AI and sub-agent handoff is documented in
+[`JAVA_BEDROCK_CODEX_SKILLS.md`](../JAVA_BEDROCK_CODEX_SKILLS.md). A fresh
+machine should read that catalog before installing skills or activating a
+campaign.
+
 This distribution does not import another factory's task IDs, absolute paths,
 mailbox history, production repositories, compatibility exceptions, Docker
 state, or runtime projections as local authority.
@@ -42,6 +47,13 @@ The overseer runs five separately bounded pools against one durable store:
 | `integration_worker` | `INTEGRATION` | 1 |
 | `tester_workers` | `QUALIFICATION` | 2 |
 | `audit_workers` | `AUDIT` | 1 |
+
+The pools contain narrower roles. Evidence analysis and contract sanitization
+prepare production-safe assignments. Production authors an immutable
+candidate. Qualification owns T1 and BDS lifecycle results. Observation
+collectors use the tester pool to gather calibrated gameplay evidence without
+declaring equivalence. Audit workers own independent T10 disposition.
+Integration begins only after the applicable admission authority exists.
 
 Concurrency is a resource policy, not evidence strength. Stable BDS capacity is
 increased only after distinct containers, ports, input roots, output roots, and
@@ -142,7 +154,10 @@ After planning, the overseer performs the routine loop:
 3. Send only ready assignments through the durable dispatch outbox.
 4. Let workers run their owned local checks, freeze one candidate, and publish
    it without waiting for downstream PASS.
-5. Route T1, Stable BDS, T10, T2, and integration work to their owners.
+5. Route T1, Stable BDS, T10, T2, and integration work to their owners. Route
+   calibrated GameTest, observer, or protocol-player collection through
+   `observe-bedrock-factory-pack` before T10 whenever the contract requires
+   gameplay evidence.
 6. Consolidate product failures into one repair authority bound to rejected
    generation `N`; reactivate the same pack owner for exactly `N+1`.
 7. Preserve every failed generation and every append-only message.

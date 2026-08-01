@@ -21,7 +21,7 @@ factory without importing this project's original campaign state.
 - Separate evidence, production, integration, qualification, and audit roles.
 - Adaptive thread directives with explicit Stable BDS capacity limits.
 - A macOS deny-by-default production launcher and receipt validator.
-- Seventeen Codex skills that teach an AI how to oversee and staff the factory.
+- Twenty-five Codex skills that teach an AI how to oversee and staff the factory.
 - Unit tests and an offline end-to-end synthetic rehearsal.
 
 The repository intentionally excludes modpacks, Java evidence, generated
@@ -106,15 +106,17 @@ receipt and binds its hash into `factory-config.json`.
 Open the repository as the agent workspace and send this prompt:
 
 ```text
-Read AGENTS.md and README.md completely. Set up this repository locally, but do
-not inspect any modpack yet. Verify the synthetic rehearsal and report the exact
-factory config and receipt hashes. Then ask me for only: (1) the absolute path
-to the modpack, and (2) confirmation that I am authorized to inspect it and run
-a private clean-room reconstruction. Keep everything private and local unless I
-separately authorize publication. Use the oversee-java-to-bedrock-factory skill
-as the only conversation-facing coordinator and use bounded role workers for
-ready packets. Never treat synthetic or server-only evidence as client, console,
-Marketplace, legal, release, or full-automation proof.
+Read AGENTS.md, README.md, JAVA_BEDROCK_CODEX_SKILLS.md, and
+docs/factory-overseer.md completely. Set up this repository locally, but do not
+inspect any modpack or install skills globally yet. Verify the synthetic
+rehearsal and report the exact factory config and receipt hashes. Then ask me
+for only: (1) the absolute path to the modpack, and (2) confirmation that I am
+authorized to inspect it and run a private clean-room reconstruction. Keep
+everything private and local unless I separately authorize publication. Use
+the oversee-java-to-bedrock-factory skill as the only conversation-facing
+coordinator and use bounded role workers for ready packets. Never treat
+synthetic or server-only evidence as client, console, Marketplace, legal,
+release, or full-automation proof.
 ```
 
 After the user supplies authority and a source path, the overseer starts with:
@@ -128,7 +130,9 @@ After the user supplies authority and a source path, the overseer starts with:
   --authority RECORDED_AUTHORITY
 ```
 
-See [the overseer runbook](docs/factory-overseer.md) and
+Read [the AI skill and sub-agent operating guide](JAVA_BEDROCK_CODEX_SKILLS.md)
+before starting a campaign on a machine that has not operated this factory.
+Then see [the overseer runbook](docs/factory-overseer.md) and
 [the queue/orchestration reference](docs/orchestration.md) for role ownership,
 dispatch, recovery, and scaling commands.
 

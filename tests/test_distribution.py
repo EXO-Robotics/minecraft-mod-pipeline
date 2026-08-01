@@ -36,6 +36,15 @@ class PortableDistributionTests(unittest.TestCase):
         )
         self.assertEqual(missing, [])
 
+    def test_skill_catalog_covers_every_bundled_skill(self) -> None:
+        catalog = (ROOT / "JAVA_BEDROCK_CODEX_SKILLS.md").read_text(encoding="utf-8")
+        missing = sorted(
+            skill.name
+            for skill in (ROOT / "skills").iterdir()
+            if (skill / "SKILL.md").is_file() and f"`{skill.name}`" not in catalog
+        )
+        self.assertEqual(missing, [])
+
     def test_mailbox_schemas_are_distribution_owned(self) -> None:
         for schema in (ROOT / "schemas" / "mailbox").glob("*.json"):
             self.assertIn("bedrock-ai-factory.local", schema.read_text(encoding="utf-8"))

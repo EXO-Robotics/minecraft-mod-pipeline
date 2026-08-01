@@ -23,6 +23,12 @@ container/ports/input/output roots, logs, restart results, and exact package
 hash. Never infer desktop client, Realms, controller, split-screen, console, or
 release proof from BDS.
 
+Keep candidate-only lifecycle qualification separate from instrumented or
+network-player observation. Record Stable and Preview lifecycle results
+separately from Stable and Preview protocol-player results. Route gameplay
+collection to `$observe-bedrock-factory-pack`; a clean boot, direct hook, test
+double, or mutation harness is not ordinary network-player proof.
+
 Tag queued work mechanically with `payload.qualification_gate: STABLE_BDS`.
 Stable BDS has two proven execution slots on Studio. A tester must not start a
 third concurrent BDS execution or suggest that another conversation task adds

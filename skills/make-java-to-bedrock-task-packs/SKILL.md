@@ -35,6 +35,18 @@ content during intake, create production output, or grant missing authority.
 7. Dispatch only dependency-ready work. A missing trigger produces structured
    `NO_SPAWN`; it does not justify inventing authority.
 
+For a gameplay slice, declare applicable worker-local cases mechanically:
+first use, repeat or redundant use, invalid input, partial or malformed old
+state, migration, duplicate delivery, exact resource accounting, restart,
+second player, cleanup, and bounded scheduling. Mark non-applicable cases
+explicitly. Name admitted shared identity, persistence, reconciliation,
+scheduling, telemetry, and idempotency interfaces; prohibit workload-local
+duplicates.
+
+For repair, include consolidated finding IDs, rejected generation, required
+`N+1`, required worker regression IDs, and the independent gates their owners
+must rerun.
+
 Candidate publication requires worker-local validation and freeze, never a
 downstream PASS. A repair activation must bind one consolidated authoritative
 message, rejected generation `N`, and replacement generation `N+1`.

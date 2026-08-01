@@ -22,6 +22,7 @@ ROLES = {
     "visual_auditor",
     "portfolio_auditor",
     "bds_qualifier",
+    "observation_tester",
 }
 REQUIRED = {
     "schema_version",

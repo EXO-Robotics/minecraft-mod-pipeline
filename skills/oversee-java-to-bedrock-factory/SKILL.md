@@ -35,7 +35,8 @@ another checkout or machine.
 4. Spawn only bounded, role-specific subagents for ready work. Give every agent
    one role, one assignment, one writable scope, and one completion condition.
 5. Route production to `$work-bedrock-factory-pack`, mechanical/BDS testing to
-   `$test-bedrock-factory-pack`, private post-freeze review to
+   `$test-bedrock-factory-pack`, instrumented/protocol evidence collection to
+   `$observe-bedrock-factory-pack`, private post-freeze review to
    `$audit-bedrock-factory-pack`, and T2/integration to
    `$integrate-bedrock-factory-pack`.
 6. Reconcile results through committed repository/mailbox state. Do not rely on
@@ -46,6 +47,8 @@ another checkout or machine.
 Default concurrency is two task-maker workers, two production workers, one
 integration worker, two qualification workers, and one audit worker. These are
 starting capacities, not a fixed worker-auditor-tester ratio.
+Count observation collectors in `tester_workers`; reserve `audit_workers` for
+independent T10/private semantic disposition.
 
 ## Adapt capacity on every heartbeat
 
@@ -120,6 +123,11 @@ Report concise progress while work runs. Surface pack, generation, current
 owner, last durable result, next action, and any structured block. Never ask a
 production worker to obtain T1, BDS, T10, T2, integration, client, Realms,
 controller, split-screen, PS4, or release PASS.
+
+Prefer bounded vertical slices that can traverse all applicable gates. Report
+candidate admitted, slice qualified, integrated, client-qualified,
+console-qualified, and released as separate states. Do not reactivate a product
+repair from missing observation or infrastructure alone.
 
 ## Recovery and safety
 

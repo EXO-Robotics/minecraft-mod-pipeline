@@ -1,0 +1,37 @@
+{
+  "schema_version": "1.0.0",
+  "cases": [
+    {
+      "id": "fictional-large-modpack",
+      "input": "tests/fixtures/fictional_large_modpack",
+      "must_preserve": [
+        "prerequisite closure",
+        "complete progression",
+        "effort budget",
+        "static console budget",
+        "separate review adjustments"
+      ],
+      "must_reject": [
+        "filler-count dominance",
+        "rights-blocked direct reconstruction",
+        "unsupported renderer",
+        "expensive disconnected side content"
+      ]
+    },
+    {
+      "id": "preliminary-crazycraft-metadata",
+      "input": "planning/crazycraft-preliminary/distillation-input.json",
+      "must_preserve": [
+        "category-level original replacements",
+        "evidence gaps",
+        "required full-analysis inputs"
+      ],
+      "must_reject": [
+        "fabricated named content",
+        "rights clearance claims",
+        "Marketplace approval claims",
+        "console certification claims"
+      ]
+    }
+  ]
+}

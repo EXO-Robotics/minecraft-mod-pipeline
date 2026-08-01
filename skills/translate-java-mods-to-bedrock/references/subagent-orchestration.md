@@ -31,6 +31,7 @@ Use these tiers:
 | Independent auditor | `$audit-java-bedrock-cleanroom` | All lanes after freeze, read-only | Write access to evidence or candidate | Final audit and BDS classification |
 | Visual auditor | `$audit-golden-blockbench-asset` | Frozen visual candidate and authorized control set, read-only | Write access to production | Two-cycle critique, originality and asset qualification |
 | BDS qualifier | `$qualify-bedrock-candidate` | Frozen exact package and bounded runtime contract | Candidate mutation or Java evidence | Stable/Preview exact-package gate ledger |
+| Observation tester | `$observe-bedrock-factory-pack` | Frozen candidate, calibrated collectors, sanitized scenarios | Candidate mutation, production authority, private repair routing | Normalized observations for T10 |
 | Portfolio auditor | `$audit-bedrock-portfolio-freeze` | Frozen portfolio, receipts, and authorized oracle, read-only | Candidate mutation | Final full or partial freeze classification |
 
 Do not assign evidence analysis and production to the same agent. Use a fresh

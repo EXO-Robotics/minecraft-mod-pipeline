@@ -131,5 +131,7 @@ its content log is clean. Prove semantics through the private oracle and direct
 candidate-module tests.
 
 BDS-triggered test functions prove the fixture path, not normal item/block
-interaction delivery. Report the latter as pending until a real client invokes
-the public event surface.
+interaction delivery. Report the latter as pending until a calibrated protocol
+or retail client acceptable for that assertion invokes the public event
+surface. Require retail execution for UI, rendering, controller, account, or
+other retail-only claims.

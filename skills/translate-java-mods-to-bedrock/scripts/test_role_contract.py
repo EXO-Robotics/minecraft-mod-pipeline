@@ -51,6 +51,29 @@ class RoleContractTests(unittest.TestCase):
         self.assertEqual(
             validate_assignment(
                 assignment(
+                    "observation_tester",
+                    "observe-bedrock-factory-pack",
+                    "AUDIT",
+                    False,
+                    "OBSERVATIONS_READY_FOR_T10",
+                )
+            ),
+            [],
+        )
+
+    def test_observation_tester_cannot_claim_semantic_pass(self) -> None:
+        packet = assignment(
+            "observation_tester",
+            "observe-bedrock-factory-pack",
+            "AUDIT",
+            False,
+            "SEMANTIC_AUDIT",
+        )
+        errors = validate_assignment(packet)
+        self.assertTrue(any("cannot claim gates" in error for error in errors))
+        self.assertEqual(
+            validate_assignment(
+                assignment(
                     "independent_auditor",
                     "audit-java-bedrock-cleanroom",
                     "AUDIT",

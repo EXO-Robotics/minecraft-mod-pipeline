@@ -20,6 +20,7 @@ ROLE_CONTRACTS = {
     "visual_auditor": ("audit-golden-blockbench-asset", "AUDIT", False),
     "portfolio_auditor": ("audit-bedrock-portfolio-freeze", "AUDIT", False),
     "bds_qualifier": ("qualify-bedrock-candidate", "AUDIT", False),
+    "observation_tester": ("observe-bedrock-factory-pack", "AUDIT", False),
 }
 ROLE_ALLOWED_GATES = {
     "evidence_analyst": {"EVIDENCE_RECORDED", "JAVA_PILOT_CANDIDATE_QUALIFIED"},
@@ -73,6 +74,16 @@ ROLE_ALLOWED_GATES = {
         "RESTART_PERSISTENCE",
         "SIMULATED_ACTIVITY",
         "STRESS_CLEANUP",
+    },
+    "observation_tester": {
+        "INSTRUMENTATION_CALIBRATION",
+        "STABLE_NETWORK_PLAYER_OBSERVATION",
+        "PREVIEW_NETWORK_PLAYER_OBSERVATION",
+        "OBSERVATIONS_READY_FOR_T10",
+        "ORACLE_INSUFFICIENT",
+        "CLIENT_REQUIRED",
+        "INCONCLUSIVE",
+        "INFRASTRUCTURE_BLOCKED",
     },
 }
 GATE_STATUSES = {

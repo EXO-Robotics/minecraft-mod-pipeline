@@ -21,6 +21,10 @@ JSON projections are diagnostic and may be stale.
    event.
 5. Allocate generations transactionally. First publication is generation 1;
    every replacement is exactly the latest generation plus one.
+6. Keep candidate submission, admission, runtime qualification, bounded-slice
+   qualification, integration, client/platform qualification, and release as
+   distinct states. Explicit structured fields take precedence over a broad
+   legacy message-type label.
 
 Use the Studio CLI surfaces:
 
@@ -42,6 +46,9 @@ Bind its rejected generation, required `N+1`, exact failed receipts, allowed
 write scope, prohibited scope, and completion condition. Keep infrastructure
 failures separate from product repairs. Do not modify or delete the failed
 candidate, and do not route unchanged bytes back to qualification.
+
+Bind each repair finding to the worker regression ID added in `N+1` and retain
+that link through the independent retest receipt.
 
 Return a machine-readable frontier: current generation, authoritative message,
 candidate hash, active owner, pending dispatches, downstream results, repairs,

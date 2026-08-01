@@ -51,6 +51,9 @@ Use:
 - `SURVIVAL_ACQUISITION_BLOCKED`
 
 BDS can prove pack loading and server-side fixture execution. It cannot prove
-real controller input or actual client event delivery. Keep
-`CLIENT_EVENT_DELIVERY_PENDING` until a real Bedrock client exercises the exact
-public path.
+ordinary network event delivery by itself. A calibrated protocol client may
+prove join/spawn and server-authoritative public-event delivery for fields it
+actually observes; require a retail client for UI, rendering, audio, controller,
+authenticated-account, or other retail-only behavior. Keep
+`CLIENT_EVENT_DELIVERY_PENDING` until the minimum contract-accepted actor
+exercises the exact public path.

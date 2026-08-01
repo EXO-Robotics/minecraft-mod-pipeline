@@ -1,0 +1,6 @@
+interface:
+  display_name: "Java Mod Evidence Analyst"
+  short_description: "Extract rights-bounded Java behavior evidence"
+  default_prompt: "Use $analyze-java-mod-evidence with the supplied analysis-lane assignment packet to produce evidence-backed claims and feature boundaries."
+policy:
+  allow_implicit_invocation: false
