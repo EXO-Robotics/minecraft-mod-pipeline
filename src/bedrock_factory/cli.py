@@ -12,6 +12,12 @@ from .dispatch import DispatchError, ThreadDispatchOutbox
 from .mailbox import MailboxError
 from .overseer import POOL_LANES, OverseerRuntime
 from .planner import FactoryPlanningError, write_factory_plan
+from .platform_authority import (
+    PlatformAuthorityError,
+    resolve_standing_launch_authority,
+    validate_platform_qualification,
+)
+from .shadow_admission import inspect_mcaddon
 from .campaign import CampaignDefinitionError, load_campaign_definition
 from .runtime import WorkerPool
 from .scaling import (
@@ -183,6 +189,26 @@ def main(argv: list[str] | None = None) -> int:
     candidates = sub.add_parser("candidates", help="Read immutable candidate generations")
     candidates.add_argument("--campaign")
     candidates.add_argument("--pack")
+
+    platform_validate = sub.add_parser(
+        "platform-validate",
+        help="Validate one exact factory-platform qualification receipt",
+    )
+    platform_validate.add_argument("--receipt", type=Path, required=True)
+
+    authority_resolve = sub.add_parser(
+        "authority-resolve",
+        help="Resolve a typed activation against standing and platform authority",
+    )
+    authority_resolve.add_argument("--authority", type=Path, required=True)
+    authority_resolve.add_argument("--activation", type=Path, required=True)
+    authority_resolve.add_argument("--platform-receipt", type=Path, required=True)
+
+    shadow = sub.add_parser(
+        "t1-shadow",
+        help="Run non-authoritative public mechanical checks before submission",
+    )
+    shadow.add_argument("--candidate", type=Path, required=True)
 
     scaling_status = sub.add_parser(
         "scaling-status", help="Read adaptive thread pressure and open directives"
@@ -365,6 +391,27 @@ def main(argv: list[str] | None = None) -> int:
                     )
                 }
             )
+        elif args.command == "platform-validate":
+            receipt = json.loads(args.receipt.read_text(encoding="utf-8"))
+            validate_platform_qualification(receipt)
+            _print({"status": "PASS", "qualification_id": receipt["qualification_id"]})
+        elif args.command == "authority-resolve":
+            authority = json.loads(args.authority.read_text(encoding="utf-8"))
+            activation = json.loads(args.activation.read_text(encoding="utf-8"))
+            platform_receipt = json.loads(
+                args.platform_receipt.read_text(encoding="utf-8")
+            )
+            result = resolve_standing_launch_authority(
+                authority, activation, platform_receipt
+            )
+            _print(result)
+            if result["status"] != "PASS":
+                return 2
+        elif args.command == "t1-shadow":
+            result = inspect_mcaddon(args.candidate)
+            _print(result)
+            if result["status"] != "PASS":
+                return 1
         elif args.command == "scaling-status":
             _, scaling_policy = _adaptive_policy(args.config)
             _print(
@@ -406,6 +453,7 @@ def main(argv: list[str] | None = None) -> int:
     except (
         DispatchError,
         FactoryPlanningError,
+        PlatformAuthorityError,
         MailboxError,
         CampaignDefinitionError,
         StoreError,

@@ -607,7 +607,11 @@ class FactoryOverseerTests(unittest.TestCase):
         self.assertEqual(first["candidate_generations"], [1, 2])
         self.assertEqual(first["dispatch_state"], "ACKNOWLEDGED")
         config = json.loads((factory / "factory-config.json").read_text(encoding="utf-8"))
-        self.assertTrue(config["activation_allowed"])
+        self.assertFalse(config["activation_allowed"])
+        self.assertEqual(
+            config["activation_requirement"],
+            "FACTORY_PLATFORM_QUALIFICATION_REQUIRED_AFTER_SYNTHETIC_REHEARSAL",
+        )
         self.assertEqual(config["overseer_interface"], "CODEX_TASK")
 
 

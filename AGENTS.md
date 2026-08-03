@@ -15,7 +15,9 @@ When a user asks you to set up or run the factory:
    `python3.11 tools/bootstrap.py --install-skills`.
 5. Initialize a new local control root with
    `.venv/bin/python tools/factory/init_studio_factory.py --root .mccompiler/factory-v1`.
-6. Run the offline synthetic rehearsal before activating a real campaign.
+6. Run the offline synthetic rehearsal and validate one exact factory-platform
+   qualification receipt before activating a real campaign. Synthetic control
+   flow does not qualify the launcher, broker, authentication, or BDS adapter.
 7. Use the `oversee-java-to-bedrock-factory` skill as the conversation-facing
    coordinator. Use bounded role-specific subagents only for ready packets.
 8. Treat Git mailbox commits, SQLite records, candidate hashes, and receipts as

@@ -85,6 +85,14 @@ task IDs, worker branches, absolute paths, credentials, compatibility
 exceptions, or runtime projections. Every machine initializes its own control
 root and rehearsal receipt.
 
+The rehearsal qualifies control flow, not the execution platform. Before a real
+campaign, require a hash-bound `FACTORY_PLATFORM_QUALIFICATION` receipt covering
+the launcher, sandbox, Codex executable/startup, ephemeral authentication,
+lane-local home/cache and cwd, canonical paths, negative probes, privileged
+broker, Docker/BDS adapter, cleanup, and process-receipt validation. A platform
+component change invalidates the receipt; a workload or candidate change does
+not. This branch does not bundle the broker and therefore fails closed.
+
 ## How skills and sub-agents work
 
 Every bundled skill has:

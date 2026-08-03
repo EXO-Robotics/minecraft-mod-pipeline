@@ -128,8 +128,16 @@ Run the offline rehearsal against a local JAR or ZIP fixture:
 
 The rehearsal must prove a deterministic plan, one worker dispatch, rejected
 generation 1, one consolidated repair, immutable generation 2, T1/BDS/T10
-results, role-pool start/stop, and replay equivalence. It sets
-`activation_allowed` only after that receipt is written.
+results, role-pool start/stop, and replay equivalence. It does not set
+`activation_allowed` by itself. Real campaign activation additionally requires
+one exact factory-platform qualification receipt bound to the current launcher,
+sandbox, Codex startup, ephemeral authentication, path policy, negative probes,
+privileged broker, Docker/BDS adapter, cleanup, and receipt validators.
+
+The platform qualification is reusable across workloads while every component
+hash remains unchanged. A component change invalidates it; a candidate-byte
+change does not. The broker is not yet bundled, so this distribution correctly
+fails closed until an external qualified broker is supplied.
 
 ## Starting a real campaign from this task
 

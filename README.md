@@ -98,8 +98,20 @@ then run the offline rehearsal:
   --source /absolute/path/to/authorized-fixture.jar
 ```
 
-The factory remains inactive until that deterministic rehearsal writes a PASS
-receipt and binds its hash into `factory-config.json`.
+The synthetic control loop and the execution platform are separate gates. The
+rehearsal writes its PASS receipt, but real campaign activation remains disabled
+until an exact `FACTORY_PLATFORM_QUALIFICATION` receipt also proves the launcher,
+sandbox, Codex startup, ephemeral authentication, lane-local state, negative
+access probes, privileged broker, BDS adapter, cleanup, and receipt validators.
+Validate an existing receipt with:
+
+```bash
+.venv/bin/bedrock-factory platform-validate \
+  --receipt .mccompiler/factory-v1/runtime/receipts/factory-platform-qualification.json
+```
+
+The least-authority privileged broker is not yet bundled, so this branch fails
+closed rather than claiming a real campaign platform PASS without it.
 
 ## Give it to your AI
 
@@ -147,6 +159,12 @@ dispatch, recovery, and scaling commands.
   and write roots, denied evidence paths, and process-bound receipts.
 - Candidate generations are append-only. A failed `N` is preserved and a
   material repair publishes exactly `N+1`; unchanged bytes are not retried.
+- Candidate, activation, repair-authority, gate-run, and integration identities
+  use distinct `C#`, `A#`, `RA#`, `T1-R#`, `BDS-R#`, `OBS-R#`, `T10-R#`, and
+  `I#` namespaces.
+- Producers may run the public deterministic `t1-shadow` check before
+  submission; its result is non-authoritative and independent T1 still owns
+  admission.
 - Product failures are separated from host, Docker, toolchain, and missing-gate
   failures.
 - Public publication and release require separate user authority.

@@ -18,6 +18,7 @@ sys.path.insert(0, str(ROOT / "src"))
 
 from bedrock_factory.dispatch import ThreadDispatchOutbox
 from bedrock_factory.overseer import POOL_LANES, OverseerRuntime
+from bedrock_factory.platform_authority import validate_platform_qualification
 from bedrock_factory.planner import write_factory_plan
 from bedrock_factory.store import OrchestrationStore
 
@@ -238,8 +239,23 @@ def rehearse(factory_root: Path, source: Path) -> dict[str, Any]:
     else:
         atomic_json(receipt_path, receipt)
 
-    config["activation_allowed"] = True
-    config["activation_requirement"] = "SATISFIED_BY_SYNTHETIC_REHEARSAL"
+    platform_path = Path(config["platform_qualification"]["receipt"])
+    platform_qualified = False
+    if platform_path.is_file():
+        platform_receipt = json.loads(platform_path.read_text(encoding="utf-8"))
+        validate_platform_qualification(platform_receipt)
+        platform_qualified = True
+        config["platform_qualification"].update(
+            status="PASS",
+            sha256=hashlib.sha256(platform_path.read_bytes()).hexdigest(),
+            qualification_id=platform_receipt["qualification_id"],
+        )
+    config["activation_allowed"] = platform_qualified
+    config["activation_requirement"] = (
+        "SATISFIED_BY_SYNTHETIC_REHEARSAL_AND_PLATFORM_QUALIFICATION"
+        if platform_qualified
+        else "FACTORY_PLATFORM_QUALIFICATION_REQUIRED_AFTER_SYNTHETIC_REHEARSAL"
+    )
     config["synthetic_rehearsal"] = {
         "receipt": str(receipt_path),
         "sha256": hashlib.sha256(receipt_path.read_bytes()).hexdigest(),

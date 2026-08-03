@@ -101,6 +101,23 @@ def initialize_factory(root: Path) -> dict[str, object]:
                 "MARKETPLACE",
             ],
         },
+        "platform_qualification": {
+            "required_before_campaign_activation": True,
+            "schema_version": "bedrock-factory.platform-qualification.v1.0.0",
+            "receipt": str(root / "runtime" / "receipts" / "factory-platform-qualification.json"),
+            "status": "NOT_QUALIFIED",
+            "invalidate_on_component_hash_change": True,
+        },
+        "identity_namespaces": {
+            "candidate": "C#",
+            "activation": "A#",
+            "repair_authority": "RA#",
+            "t1_run": "T1-R#",
+            "bds_run": "BDS-R#",
+            "observation_run": "OBS-R#",
+            "t10_run": "T10-R#",
+            "integration_candidate": "I#",
+        },
         "activation_allowed": False,
         "activation_requirement": (
             "Submit one hash-bound campaign request and pass the synthetic "

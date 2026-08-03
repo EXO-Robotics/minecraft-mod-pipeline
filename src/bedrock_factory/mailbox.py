@@ -193,6 +193,7 @@ class FactoryMailbox:
     def _candidate_from_row(row: sqlite3.Row) -> dict[str, Any]:
         result = dict(row)
         result["payload"] = json.loads(result.pop("payload_json"))
+        result["candidate_label"] = f"C{result['generation']}"
         return result
 
     @staticmethod
