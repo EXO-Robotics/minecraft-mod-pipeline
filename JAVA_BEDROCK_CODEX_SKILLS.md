@@ -45,6 +45,12 @@ flowchart LR
 Chat summaries, a running process, a clean server boot, and projected status
 are not durable authority.
 
+Product-lifecycle transitions use the chained canonical event envelope
+documented in [the kernel control-plane reference](docs/kernel-control-plane.md).
+The Git mailbox carries the portable audit history; SQLite lifecycle/frontier
+state is rebuilt from that history and must compare exactly. Queue-internal
+events remain scheduler diagnostics rather than product authority.
+
 ## First use on a new machine
 
 From the repository root:
@@ -246,6 +252,12 @@ released. Active or leased work is never interrupted.
 Stable BDS has two proven service slots. More conversation tasks do not create
 Docker capacity. At the cap, apply upstream backpressure rather than starting a
 third BDS execution.
+
+Qualification consumes those slots only after authority and exact package
+binding. Run the producer shadow and independent T1 first, then a one-cycle BDS
+entrypoint smoke before the full restart/persistence sequence. Reuse prior gate
+evidence only when candidate, gate implementation, runtime image, configuration,
+and probe-authority hashes are all unchanged.
 
 ## Recovery after interruption
 

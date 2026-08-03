@@ -1,0 +1,43 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://bedrock-ai-factory.local/schemas/kernel/canonical-event.schema.json",
+  "title": "Canonical Completion Factory lifecycle event",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "event_id",
+    "sequence",
+    "campaign_id",
+    "workload_id",
+    "candidate_id",
+    "activation_id",
+    "gate_run_id",
+    "event_type",
+    "input_hashes",
+    "output_hashes",
+    "authority_hash",
+    "created_at",
+    "payload",
+    "previous_event_sha256",
+    "event_sha256"
+  ],
+  "properties": {
+    "schema_version": {"const": "bedrock-factory.canonical-event.v1.0.0"},
+    "event_id": {"type": "string", "pattern": "^evt-[0-9a-f]{32}$"},
+    "sequence": {"type": "integer", "minimum": 1},
+    "campaign_id": {"type": "string", "minLength": 1},
+    "workload_id": {"type": "string", "minLength": 1},
+    "candidate_id": {"type": ["string", "null"], "pattern": "^C[1-9][0-9]*$"},
+    "activation_id": {"type": ["string", "null"], "pattern": "^A[1-9][0-9]*$"},
+    "gate_run_id": {"type": ["string", "null"]},
+    "event_type": {"type": "string", "minLength": 1},
+    "input_hashes": {"type": "object", "additionalProperties": {"type": "string", "pattern": "^[0-9a-f]{64}$"}},
+    "output_hashes": {"type": "object", "additionalProperties": {"type": "string", "pattern": "^[0-9a-f]{64}$"}},
+    "authority_hash": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "created_at": {"type": "number"},
+    "payload": {"type": "object"},
+    "previous_event_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "event_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"}
+  }
+}

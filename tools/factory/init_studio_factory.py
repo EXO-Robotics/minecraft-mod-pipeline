@@ -23,6 +23,9 @@ def initialize_factory(root: Path) -> dict[str, object]:
         "runtime/receipts",
         "runtime/logs",
         "runtime/dispatch",
+        "runtime/events",
+        "runtime/projections",
+        "objects/sha256",
         "production",
         "audit",
         "qualification",
@@ -117,6 +120,18 @@ def initialize_factory(root: Path) -> dict[str, object]:
             "observation_run": "OBS-R#",
             "t10_run": "T10-R#",
             "integration_candidate": "I#",
+        },
+        "canonical_lifecycle": {
+            "event_log": str(root / "runtime" / "events" / "canonical-events.jsonl"),
+            "projection_database": str(root / "runtime" / "projections" / "lifecycle.sqlite3"),
+            "event_schema": "bedrock-factory.canonical-event.v1.0.0",
+            "projection_policy": "DELETE_AND_REBUILD_FROM_EVENT_LOG",
+            "sqlite_is_authority": False,
+        },
+        "evidence_objects": {
+            "root": str(root / "objects"),
+            "addressing": "SHA256",
+            "portable_receipts_use_logical_paths": True,
         },
         "activation_allowed": False,
         "activation_requirement": (

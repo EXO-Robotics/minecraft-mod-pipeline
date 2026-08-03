@@ -9,6 +9,7 @@ import time
 from pathlib import Path
 
 from .dispatch import DispatchError, ThreadDispatchOutbox
+from .eventlog import CanonicalEventLog, EventLogError, rebuild_projection, verify_projection
 from .mailbox import MailboxError
 from .overseer import POOL_LANES, OverseerRuntime
 from .planner import FactoryPlanningError, write_factory_plan
@@ -18,6 +19,8 @@ from .platform_authority import (
     validate_platform_qualification,
 )
 from .shadow_admission import inspect_mcaddon
+from .metrics import compute_metrics
+from .objects import EvidenceObjectStore, ObjectStoreError
 from .campaign import CampaignDefinitionError, load_campaign_definition
 from .runtime import WorkerPool
 from .scaling import (
@@ -209,6 +212,26 @@ def main(argv: list[str] | None = None) -> int:
         help="Run non-authoritative public mechanical checks before submission",
     )
     shadow.add_argument("--candidate", type=Path, required=True)
+
+    event_append = sub.add_parser("event-append", help="Append one canonical lifecycle event")
+    event_append.add_argument("--log", type=Path, required=True)
+    event_append.add_argument("--event", type=Path, required=True)
+
+    projection_rebuild = sub.add_parser("projection-rebuild", help="Rebuild lifecycle SQLite from zero")
+    projection_rebuild.add_argument("--log", type=Path, required=True)
+    projection_rebuild.add_argument("--projection", type=Path, required=True)
+
+    projection_verify = sub.add_parser("projection-verify", help="Fail closed if retained lifecycle projection differs")
+    projection_verify.add_argument("--log", type=Path, required=True)
+    projection_verify.add_argument("--projection", type=Path, required=True)
+
+    metrics = sub.add_parser("metrics", help="Compute throughput metrics from canonical events")
+    metrics.add_argument("--log", type=Path, required=True)
+
+    object_put = sub.add_parser("object-put", help="Store one content-addressed evidence object")
+    object_put.add_argument("--objects", type=Path, required=True)
+    object_put.add_argument("--file", type=Path, required=True)
+    object_put.add_argument("--object-type", required=True)
 
     scaling_status = sub.add_parser(
         "scaling-status", help="Read adaptive thread pressure and open directives"
@@ -412,6 +435,17 @@ def main(argv: list[str] | None = None) -> int:
             _print(result)
             if result["status"] != "PASS":
                 return 1
+        elif args.command == "event-append":
+            event = json.loads(args.event.read_text(encoding="utf-8"))
+            _print(CanonicalEventLog(args.log).append(**event))
+        elif args.command == "projection-rebuild":
+            _print(rebuild_projection(CanonicalEventLog(args.log).read(), args.projection))
+        elif args.command == "projection-verify":
+            _print(verify_projection(CanonicalEventLog(args.log).read(), args.projection))
+        elif args.command == "metrics":
+            _print(compute_metrics(CanonicalEventLog(args.log).read()))
+        elif args.command == "object-put":
+            _print(EvidenceObjectStore(args.objects).put_file(args.file, object_type=args.object_type))
         elif args.command == "scaling-status":
             _, scaling_policy = _adaptive_policy(args.config)
             _print(
@@ -454,6 +488,8 @@ def main(argv: list[str] | None = None) -> int:
         DispatchError,
         FactoryPlanningError,
         PlatformAuthorityError,
+        EventLogError,
+        ObjectStoreError,
         MailboxError,
         CampaignDefinitionError,
         StoreError,
