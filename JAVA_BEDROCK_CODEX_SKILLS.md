@@ -201,6 +201,18 @@ Do not convert infrastructure failure, unavailable actors, or missing
 observation into a product repair. Preserve a blocked activation and a later
 instrumented or recovered activation as different durable events.
 
+Use generic candidate dispositions: `PRODUCT_CANDIDATE`,
+`DIAGNOSTIC_CANDIDATE`, `EVIDENCE_ENABLING_REPLACEMENT`,
+`INFRASTRUCTURE_ONLY_RETRY`, `HOST_AUTHORITY_REBIND`, `PRODUCT_REPAIR`, and
+`INTEGRATION_REPAIR`. A diagnostic replacement does not reject its predecessor,
+authorize another candidate, or become product authority without explicit
+adjudication.
+
+Begin an integration train after three newly accepted slices, or immediately
+when one accepted slice changes a shared runtime interface. Full-oracle
+authority may back a slice projection only while the source, oracle
+implementation, and comparison-rule hashes remain exact.
+
 ## Standing campaign launch authority
 
 A mechanically validated standing campaign authority may cover routine new,
@@ -210,10 +222,10 @@ paths, and receipt policy remain unchanged. Ask the user again when rights,
 source scope, the security model, authenticated identity, Realms, retail client,
 console, publication, or release scope changes.
 
-The standing-authority contract is documented here, but its newer mechanical
-validator is `STUDIO_PROVEN_PORT_PENDING` and is not bundled in this branch.
-Until a repository-owned validator is ported and passes locally, do not infer
-standing authority from chat prose; obtain an explicit current authorization.
+The standing-authority validator is bundled and requires the exact platform
+qualification hash. It still fails closed until the platform canary proves a
+qualified broker and every other required component. Never infer authority from
+chat prose or bypass a missing platform receipt.
 
 ## Qualification does not all mean the same thing
 

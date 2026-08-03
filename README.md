@@ -150,6 +150,9 @@ Then see [the overseer runbook](docs/factory-overseer.md), the
 [queue/orchestration reference](docs/orchestration.md) for role ownership,
 dispatch, recovery, and scaling commands.
 
+For domain-independent use, read the
+[Completion Factory Kernel architecture](docs/completion-factory-kernel.md).
+
 ## Safety model
 
 - Intake hashes and lists archives without executing or extracting their
@@ -168,6 +171,10 @@ dispatch, recovery, and scaling commands.
   admission.
 - Product failures are separated from host, Docker, toolchain, and missing-gate
   failures.
+- Evidence-enabling candidates, control-only retries, host-authority rebinds,
+  product repairs, and integration repairs have generic lifecycle dispositions.
+- An integration train starts after three accepted slices or any accepted shared
+  runtime-interface change.
 - Public publication and release require separate user authority.
 
 No sandbox can substitute for rights review, host hardening, or independent

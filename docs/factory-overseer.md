@@ -226,9 +226,10 @@ stops for the user only when authority cannot be inferred safely:
 A standing campaign launch authority can suppress repeated routine questions
 only when a repository-owned validator binds the exact campaign, source,
 rights, private scope, security model, role, lane, roots, denied paths, and
-receipt policy to the activation. The validator is
-`STUDIO_PROVEN_PORT_PENDING`, not bundled in this branch. Until it is ported,
-obtain explicit current authority instead of inferring it from chat history.
+receipt policy to the activation. The validator is bundled, but it accepts only
+an exact passing factory-platform qualification receipt. Until the broker and
+the rest of that canary pass, obtain explicit current authority and do not infer
+it from chat history.
 
 No candidate publication depends on downstream PASS. Publication here means
 submission of an immutable private candidate to the factory mailbox, not public

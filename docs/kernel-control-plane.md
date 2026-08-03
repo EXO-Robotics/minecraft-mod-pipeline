@@ -59,6 +59,10 @@ reserved while authority or package binding is unresolved. Prior gate evidence
 may be reused only when candidate bytes, gate implementation, runtime image,
 configuration, and probe authority hashes are all unchanged.
 
+MCTools output is accepted only from one exact structured validation summary or
+one fully anchored plain summary. Missing, malformed, ambiguous, string-valued,
+negative, nonzero-error, version-drifted, or log-unbound results fail closed.
+
 ## Kernel metrics
 
 `bedrock-factory metrics --log PATH` derives these values from canonical events:
