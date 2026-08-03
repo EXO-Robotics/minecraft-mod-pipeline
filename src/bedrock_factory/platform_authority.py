@@ -25,8 +25,8 @@ REQUIRED_PLATFORM_COMPONENTS = {
     "negative_access_probes",
     "privileged_broker",
     "docker_bds_adapter",
-    "cleanup_validator",
-    "process_receipt_validator",
+    "cleanup_policy",
+    "activation_attestation_schema",
 }
 REQUIRED_CANARY_STEPS = {
     "STANDING_AUTHORITY_VALIDATED",
@@ -38,8 +38,8 @@ REQUIRED_CANARY_STEPS = {
     "DENIED_READS_PROVED",
     "PRIVILEGED_BROKER_OPERATION_PROVED",
     "WORKER_TERMINATED",
-    "CLEANUP_VALIDATED",
-    "PROCESS_RECEIPT_VALIDATED",
+    "CLEANUP_POLICY_PROVED",
+    "ACTIVATION_ATTESTATION_RECORDED",
 }
 ROUTINE_ACTIVATION_TYPES = {
     "NEW_PACK",
@@ -98,8 +98,8 @@ def validate_platform_qualification(receipt: dict[str, Any]) -> dict[str, Any]:
     steps = receipt.get("canary_steps")
     _require(isinstance(steps, dict) and set(steps) == REQUIRED_CANARY_STEPS, "PLATFORM_UNQUALIFIED", "platform canary step set changed")
     _require(all(value == "PASS" for value in steps.values()), "PLATFORM_UNQUALIFIED", "platform canary did not fully pass")
-    _sha(receipt.get("process_receipt_sha256"), "process_receipt_sha256")
-    _sha(receipt.get("cleanup_receipt_sha256"), "cleanup_receipt_sha256")
+    _sha(receipt.get("activation_attestation_sha256"), "activation_attestation_sha256")
+    _sha(receipt.get("cleanup_policy_sha256"), "cleanup_policy_sha256")
     integrity = _sha(receipt.get("canonical_payload_sha256"), "canonical_payload_sha256")
     normalized = dict(receipt)
     normalized.pop("canonical_payload_sha256", None)

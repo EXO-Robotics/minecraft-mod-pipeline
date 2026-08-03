@@ -109,7 +109,7 @@ class StudioProductionSandboxTests(unittest.TestCase):
         os.environ.get("RUN_STUDIO_SANDBOX_INTEGRATION") == "1",
         "set RUN_STUDIO_SANDBOX_INTEGRATION=1 for real sandbox-exec proof",
     )
-    def test_real_studio_sandbox_launch_and_receipt(self) -> None:
+    def test_real_studio_sandbox_launch_and_activation_attestation(self) -> None:
         with tempfile.TemporaryDirectory() as temporary:
             root = Path(temporary)
             denied_paths = {}
@@ -127,6 +127,7 @@ class StudioProductionSandboxTests(unittest.TestCase):
                     {
                         "schema_version": "1.0.0",
                         "assignment_id": "studio-integration-test",
+                        "activation_id": "A1",
                         "role": "feature_producer",
                     }
                 ),
@@ -149,6 +150,11 @@ class StudioProductionSandboxTests(unittest.TestCase):
                 json.dumps([sys.executable, "-c", worker_code]),
                 encoding="utf-8",
             )
+            platform_qualification = root / "platform-qualification.json"
+            platform_qualification.write_text(
+                json.dumps({"status": "PASS", "qualification_id": "FPQ-test"}),
+                encoding="utf-8",
+            )
             run_root = root / "run"
             command = [
                 sys.executable,
@@ -163,6 +169,10 @@ class StudioProductionSandboxTests(unittest.TestCase):
                 str(prompt),
                 "--worker-command",
                 str(worker_command),
+                "--platform-qualification",
+                str(platform_qualification),
+                "--platform-qualification-sha256",
+                sha256(platform_qualification),
             ]
             for denied_class, target in denied_paths.items():
                 command.extend(["--deny", f"{denied_class}={target}"])
@@ -186,25 +196,22 @@ class StudioProductionSandboxTests(unittest.TestCase):
                 )
             )
             self.assertEqual(result.returncode, 0, failure_detail)
-            receipt = run_root / "runtime/process-receipt.json"
-            validator = subprocess.run(
-                [
-                    sys.executable,
-                    str(
-                        ROOT
-                        / "skills/translate-java-mods-to-bedrock/scripts/"
-                        "validate_production_process_receipt.py"
-                    ),
-                    str(receipt),
-                ],
-                capture_output=True,
-                text=True,
-                check=False,
+            attestation = run_root / "runtime/activation-attestation.json"
+            data = json.loads(attestation.read_text(encoding="utf-8"))
+            self.assertEqual(
+                data["schema_version"],
+                "bedrock-factory.activation-attestation.v1.0.0",
             )
-            self.assertEqual(validator.returncode, 0, validator.stdout)
-            data = json.loads(receipt.read_text(encoding="utf-8"))
-            self.assertEqual(data["host_role"], "STUDIO_PRODUCTION_HOST")
-            self.assertEqual(data["preflight"]["network"], "DENIED")
+            self.assertEqual(data["activation_id"], "A1")
+            self.assertEqual(set(data), {
+                "schema_version",
+                "activation_id",
+                "assignment_sha256",
+                "platform_qualification_sha256",
+                "repository_ref",
+                "exit_code",
+                "cleanup_status",
+            })
 
 
 if __name__ == "__main__":

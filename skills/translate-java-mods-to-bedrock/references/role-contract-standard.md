@@ -21,7 +21,7 @@ Every assignment is one JSON object with:
 - `required_checks` and `completion_state`: bounded success contract.
 - `gate_authority`: gates this role may pass, fail, or leave pending.
 - `stop_states`: non-empty fail-closed conditions.
-- `requires_process_receipt`: true for every role that may mutate production
+- `requires_activation_attestation`: true for every role that may mutate production
   code, assets, packages, integration state, or repairs.
 
 Do not put mutable branch heads, unbounded directories, secrets, source

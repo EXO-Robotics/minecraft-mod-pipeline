@@ -18,7 +18,7 @@ from .platform_authority import (
     resolve_standing_launch_authority,
     validate_platform_qualification,
 )
-from .shadow_admission import inspect_mcaddon
+from .pre_bds_validation import inspect_mcaddon
 from .metrics import compute_metrics
 from .objects import EvidenceObjectStore, ObjectStoreError
 from .campaign import CampaignDefinitionError, load_campaign_definition
@@ -207,11 +207,11 @@ def main(argv: list[str] | None = None) -> int:
     authority_resolve.add_argument("--activation", type=Path, required=True)
     authority_resolve.add_argument("--platform-receipt", type=Path, required=True)
 
-    shadow = sub.add_parser(
-        "t1-shadow",
-        help="Run non-authoritative public mechanical checks before submission",
+    pre_bds = sub.add_parser(
+        "pre-bds-validate",
+        help="Run the package checks owned by PRE_BDS_MILESTONE",
     )
-    shadow.add_argument("--candidate", type=Path, required=True)
+    pre_bds.add_argument("--candidate", type=Path, required=True)
 
     event_append = sub.add_parser("event-append", help="Append one canonical lifecycle event")
     event_append.add_argument("--log", type=Path, required=True)
@@ -430,7 +430,7 @@ def main(argv: list[str] | None = None) -> int:
             _print(result)
             if result["status"] != "PASS":
                 return 2
-        elif args.command == "t1-shadow":
+        elif args.command == "pre-bds-validate":
             result = inspect_mcaddon(args.candidate)
             _print(result)
             if result["status"] != "PASS":

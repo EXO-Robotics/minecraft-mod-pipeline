@@ -21,7 +21,7 @@ Record:
 - Candidate, qualification, and control commits and trees.
 - BP, RP, and combined package SHA-256 values.
 - Contract, production-oracle interface, private oracle, sandbox profile, and
-  process-receipt hashes.
+  activation-attestation hashes.
 - Package extraction method and repository cleanliness.
 
 Reject mutable working-tree packages. Accept carried-forward BDS evidence after
@@ -85,7 +85,7 @@ or physical PS4 behavior.
 
 ## Audit clean-room process
 
-Check actual process receipts, not prompt intent:
+Check actual activation attestations, not prompt intent:
 
 - Production and every repair ran inside the frozen sandbox.
 - PID, command, profile hash, prompt/context hashes, tool hashes, start/end

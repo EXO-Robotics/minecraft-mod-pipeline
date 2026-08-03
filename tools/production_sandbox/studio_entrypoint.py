@@ -68,6 +68,12 @@ def main() -> int:
         Path(os.environ["STUDIO_ASSIGNMENT"]).read_text(encoding="utf-8")
     )
     command = json.loads(os.environ["STUDIO_WORKER_COMMAND_JSON"])
+    if os.environ.get("STUDIO_PLATFORM_QUALIFIED") == "1":
+        # The expensive denial/network/path canary belongs to the separately
+        # hash-bound platform qualification milestone. Normal activations only
+        # enforce the already-qualified sandbox profile and execute the worker.
+        os.execv(command[0], command)
+        return 98
     denied = {
         row["class"]: Path(row["path"])
         for row in assignment["denied_paths"]

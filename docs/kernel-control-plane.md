@@ -39,25 +39,26 @@ Large manifests, log bundles, inventories, and tree evidence are stored once at
 `objects/sha256/AA/REST_OF_HASH`. Portable receipts carry the object hash,
 object type, relevant delta, disposition, and claim boundary. Merkle manifests
 use logical relative paths; machine-local absolute resolution belongs only in a
-nonportable execution projection or process receipt.
+nonportable execution projection. Per-activation records use the minimal
+activation-attestation schema and never repeat full manifests.
 
-## Queue-aware qualification funnel
+## Milestone-only validation
 
-The default ordered funnel is:
+Broad validation is allowed at exactly two reconstruction points:
 
-1. producer T1 shadow;
-2. independent T1;
-3. one-cycle BDS entrypoint smoke;
-4. Stable restart and persistence;
-5. Preview only when required;
-6. calibrated observation;
-7. parallel read-only T10 component audits;
-8. one deterministic T10 final adjudication.
+1. `PRE_BDS_MILESTONE`, immediately before the first BDS run. It consolidates
+   deterministic packaging, package structure, entrypoint reachability,
+   restricted scans, T1, and MCTools.
+2. `FINAL_MOD_MILESTONE`, immediately before the mod is classified complete.
+   It consolidates final-package binding, BDS evidence, observation, T10,
+   integration/persistence, lineage/originality, claim boundaries, and final
+   bundle coverage.
 
-A failed entrypoint smoke terminates the deeper sequence. BDS capacity is not
-reserved while authority or package binding is unresolved. Prior gate evidence
-may be reused only when candidate bytes, gate implementation, runtime image,
-configuration, and probe authority hashes are all unchanged.
+Producers have no T1 shadow and no broad local validation suite. Activations
+emit only a small attestation. BDS and ordinary observation are runtime work
+between the two milestones. A validator is dispatched only on milestone entry,
+when a bound hash changed, or when the previous receipt is missing/invalid.
+Otherwise the exact prior PASS is reused.
 
 MCTools output is accepted only from one exact structured validation summary or
 one fully anchored plain summary. Missing, malformed, ambiguous, string-valued,

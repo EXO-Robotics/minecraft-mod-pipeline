@@ -17,7 +17,7 @@ never imported as authority.
 - Append-only event history and per-attempt receipts.
 - Hash-bound inputs, output inventories, and atomic local transfers.
 - Explicit human gates for rights, contract approval, publication, and release.
-- External validation of clean-room production-process receipts.
+- Minimal clean-room activation attestations bound to a qualified platform.
 
 It never converts a failed run into a pass, overwrites an existing transfer
 destination, uses a shell to interpret commands, or treats its own queue receipt
@@ -142,7 +142,7 @@ bedrock-factory --db /absolute/queue.sqlite3 run --forever \
 SQLite WAL mode safely coordinates multiple local processes. This is the right
 first deployment for one Studio and hundreds to low thousands of campaign jobs.
 Do not place the SQLite file on NFS or synchronize it with Tailscale. To scale
-to several hosts, keep this job and receipt contract but replace the store with
+to several hosts, keep this job and attestation contract but replace the store with
 a central PostgreSQL/API broker; transfer immutable artifacts through an object
 store or a receipt-bound SSH/rsync adapter. The current built-in transfer
 adapter is deliberately local-only and hash-verifies bytes before atomic
@@ -155,9 +155,9 @@ contains:
 
 - The absolute path and SHA-256 of a frozen sandbox profile, or the exact
   SHA-256 of the Studio launcher that freezes the profile before worker start.
-- `process_receipt_required: true`.
-- The absolute process-receipt output path.
-- A validator command that must accept that receipt.
+- `activation_attestation_required: true`.
+- The absolute activation-attestation output path.
+- The exact reusable platform-qualification receipt hash.
 
 The external launcher must still create and enforce the actual deny-by-default
 boundary. The queue does not manufacture isolation by itself. Evidence and
@@ -183,8 +183,8 @@ The worker command file is a JSON argv array whose executable is absolute:
 The launcher creates a fresh Studio-local repository, transfers only the
 assignment, sanitized contract, and prompt, applies four required denial
 classes, launches the actual worker, verifies the inputs remained unchanged,
-scans for credentials and the canary, and writes
-`runtime/process-receipt.json`. Because the default profile denies all network
+uses the separately qualified platform boundary, verifies transferred input
+hashes, and writes `runtime/activation-attestation.json`. Because the default profile denies all network
 access, the worker must be locally executable and must not depend on a cloud
 API. Any future network-enabled profile is a new security boundary and must be
 separately frozen, reviewed, and requalified.
@@ -195,13 +195,14 @@ Use the campaign gate order:
 
 ```text
 TARGET_FROZEN → INVENTORY_COMPLETE → CLEAN_ROOM_CONTRACTED →
-PRODUCTION_ACTIVE → STATIC_QUALIFIED → GOLDEN_QUALIFIED →
-INTEGRATED → AUDITED → BDS_QUALIFIED → BUNDLE_FROZEN
+PRODUCTION_ACTIVE → PRE_BDS_MILESTONE → FIRST_BDS_RUN →
+IMPLEMENTATION_AND_INTEGRATION → FINAL_MOD_MILESTONE → MOD_COMPLETE
 ```
 
 Independent evidence features can run in parallel. Shared Bedrock interfaces
 and integration must be dependency-ordered. Custom hero assets should normally
-use no more than two concurrent production slots. A production candidate may
-advance only after its exact process receipt and hashes validate. Rights,
+use no more than two concurrent production slots. Broad validation is
+forbidden outside the two named milestones; activations record only their
+small attestation. Rights,
 contract sanitization, publication, Marketplace, and release remain explicit
 human authority gates.

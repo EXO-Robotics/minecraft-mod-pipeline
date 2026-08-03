@@ -47,14 +47,24 @@ runs.
 
 ## Invalidated gates
 
-- Runtime or BP change: static, semantic, deterministic build, MCTools, Stable,
-  Preview, runtime audit.
+There are only two broad validation milestones:
+
+- `PRE_BDS_MILESTONE`, immediately before the first BDS run.
+- `FINAL_MOD_MILESTONE`, immediately before `MOD_COMPLETE`.
+
+Cheap identity, hash, path-containment, lease, and append-only checks remain
+always on. They do not create validation jobs. A valid milestone PASS is reused
+unless one of its declared bound hashes changes.
+
+- Runtime or BP change before first BDS: rerun `PRE_BDS_MILESTONE`; after first
+  BDS, allocate a new candidate and rerun affected runtime work plus
+  `FINAL_MOD_MILESTONE` before completion.
 - RP, geometry, animation, texture, or icon change: static, Golden, proof
   parity, deterministic build, MCTools, Stable, Preview, visual audit.
 - Packaging-only change: deterministic build, package binding, MCTools, Stable,
   Preview.
-- Receipt or report-only change: receipt schema, hashes, claim-boundary audit,
-  final manifest.
+- Activation-attestation or report-only change: update the bounded control
+  record; rerun no product milestone unless a milestone-bound hash changed.
 
 ## Final classifications
 

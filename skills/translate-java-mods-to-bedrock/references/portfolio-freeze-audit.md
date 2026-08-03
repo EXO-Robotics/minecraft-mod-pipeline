@@ -73,7 +73,7 @@ Audit independently:
 - Static contamination scan
 - Originality evidence
 - Actual production-process isolation
-- Repair-process receipts
+- Repair activation attestations
 - Clean-room ancestry and lineage
 
 No prohibited expression detected is narrower than copying prevention proven.

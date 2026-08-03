@@ -1,4 +1,4 @@
-# Production sandbox and process receipts
+# Production sandbox and activation attestations
 
 Use this reference before any evidence-blind production, integration, visual
 production, or repair task.
@@ -79,7 +79,7 @@ Call this hash-bound process attestation, not a legal signature.
 
 Every repair must run through the launcher. A controller editing production
 outside the boundary, even for one line, invalidates continuous isolation.
-Require a new process receipt, candidate commit, deterministic packages, and
+Require a new activation attestation and candidate commit. Deterministic package validation belongs to `PRE_BDS_MILESTONE`, and
 affected re-audits.
 
 ## Audit rule
@@ -91,7 +91,7 @@ Verify both:
    process.
 
 These are separate claims. A clean contamination scan cannot replace missing
-process receipts. Rebuilding existing implementation bytes under a sandbox
+activation attestations. Rebuilding existing implementation bytes under a sandbox
 cannot repair unsandboxed authorship; create a fresh isolated reimplementation.
 
 ## Candidate-bound no-change re-attestation

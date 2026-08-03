@@ -14,11 +14,15 @@ flowchart LR
   O --> E["Evidence and contract workers"]
   E --> P["Isolated production workers"]
   P --> C["Immutable candidate generation N"]
-  C --> Q["T1, Stable BDS, and T10 owners"]
-  Q -->|"PASS"| I["T2 and integration owners"]
-  Q -->|"one consolidated repair"| R["Same pack owner repairs N to N+1"]
+  C --> M1["PRE_BDS_MILESTONE"]
+  M1 --> B["First and later exact-package BDS work"]
+  B --> W["Implementation and integration continue"]
+  W --> M2["FINAL_MOD_MILESTONE"]
+  M2 -->|"PASS"| I["Reconstruction complete"]
+  M1 -->|"one consolidated repair"| R["Same pack owner repairs N to N+1"]
+  M2 -->|"one consolidated repair"| R
   R --> C
-  I --> G["Client and console gates remain separately owned"]
+  I --> G["Optional client or release claims require separate user authority"]
   G --> O
 ```
 
@@ -53,10 +57,10 @@ The overseer runs five separately bounded pools against one durable store:
 
 The pools contain narrower roles. Evidence analysis and contract sanitization
 prepare production-safe assignments. Production authors an immutable
-candidate. Qualification owns T1 and BDS lifecycle results. Observation
-collectors use the tester pool to gather calibrated gameplay evidence without
-declaring equivalence. Audit workers own independent T10 disposition.
-Integration begins only after the applicable admission authority exists.
+candidate. The qualification pool runs one consolidated pre-BDS milestone and
+the BDS runtime work. The audit pool runs one consolidated final-mod milestone;
+observation, T10, integration, persistence, lineage, and bundle checks are
+components of that one job, not separately queued validation work.
 
 Concurrency is a resource policy, not evidence strength. Stable BDS capacity is
 increased only after distinct containers, ports, input roots, output roots, and
@@ -127,12 +131,12 @@ Run the offline rehearsal against a local JAR or ZIP fixture:
 ```
 
 The rehearsal must prove a deterministic plan, one worker dispatch, rejected
-generation 1, one consolidated repair, immutable generation 2, T1/BDS/T10
+generation 1, one consolidated repair, immutable generation 2, pre-BDS/BDS/final-mod
 results, role-pool start/stop, and replay equivalence. It does not set
 `activation_allowed` by itself. Real campaign activation additionally requires
 one exact factory-platform qualification receipt bound to the current launcher,
 sandbox, Codex startup, ephemeral authentication, path policy, negative probes,
-privileged broker, Docker/BDS adapter, cleanup, and receipt validators.
+privileged broker, Docker/BDS adapter, cleanup policy, and activation-attestation schema.
 
 The platform qualification is reusable across workloads while every component
 hash remains unchanged. A component change invalidates it; a candidate-byte
@@ -163,12 +167,13 @@ After planning, the overseer performs the routine loop:
 1. Freeze exact source and plan hashes.
 2. Separate opaque conversion units and prepare hash-bound assignments.
 3. Send only ready assignments through the durable dispatch outbox.
-4. Let workers run their owned local checks, freeze one candidate, and publish
-   it without waiting for downstream PASS.
-5. Route T1, Stable BDS, T10, T2, and integration work to their owners. Route
-   calibrated GameTest, observer, or protocol-player collection through
-   `observe-bedrock-factory-pack` before T10 whenever the contract requires
-   gameplay evidence.
+4. Let workers author, build, freeze one candidate, and publish it without
+   waiting for downstream PASS or running a broad local validation suite.
+5. Dispatch one `PRE_BDS_MILESTONE` job immediately before the first BDS run,
+   run exact-package BDS work, then dispatch one `FINAL_MOD_MILESTONE` job
+   immediately before reconstruction completion. T1, observation, T10,
+   integration, persistence, lineage, and bundle checks execute inside those
+   milestone jobs rather than as extra queue entries.
 6. Route evidence-only work as `CONTINUE_NONTERMINAL` and host-only recovery as
    `RECOVERY_AFTER_INTERRUPTION`; both use a new activation ordinal while
    preserving candidate generation and bytes.
@@ -198,21 +203,19 @@ After this task successfully sends a request, it records the delivery once:
 Replaying a sent identity returns its history record rather than creating a
 second worker.
 
-## Validation ownership
+## Milestone-only validation ownership
 
-A production worker owns only worker-local validation and freezing:
+A production worker owns authoring, building, freezing, and a minimal activation
+attestation. It does not own a T1 shadow, deterministic rebuild gate, broad
+package scan, audit, or standalone receipt-validation job.
 
-- schema and static checks;
-- pack-local unit/integration checks;
-- tests for the exact shipped scripts;
-- deterministic build-twice verification;
-- archive manifest, reference, and media integrity;
-- restricted identifier/object scans;
-- process-isolation receipt validation.
-
-It must not request or wait for T1, Stable BDS, T10, T2, integration, desktop
-client, Realms, controller, split-screen, PS4, Marketplace, or release results.
-Those gates are scheduled by the overseer and executed by their named owners.
+The overseer may dispatch broad validation only at `PRE_BDS_MILESTONE` and
+`FINAL_MOD_MILESTONE`. Sandbox and credential containment, identity syntax,
+hash equality, path containment, leases, and append-only sequencing remain
+cheap fail-closed control invariants on every activation; they are not product
+validation jobs. Optional client, Realms, controller, split-screen, PS4,
+Marketplace, and release claims occur only after explicit user authority and
+outside reconstruction completion.
 
 ## User gates
 

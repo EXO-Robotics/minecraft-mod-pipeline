@@ -122,7 +122,7 @@ def validate_assignment(value: Any) -> list[str]:
         "stop_states",
         "completion_state",
         "gate_authority",
-        "requires_process_receipt",
+        "requires_activation_attestation",
     }
     missing = sorted(required - value.keys())
     if missing:
@@ -136,14 +136,14 @@ def validate_assignment(value: Any) -> list[str]:
     if contract is None:
         errors.append(f"unsupported role: {role}")
     else:
-        expected_skill, expected_lane, expected_receipt = contract
+        expected_skill, expected_lane, expected_attestation = contract
         if value.get("skill") != expected_skill:
             errors.append(f"role {role} requires skill {expected_skill}")
         if value.get("lane") != expected_lane:
             errors.append(f"role {role} requires lane {expected_lane}")
-        if value.get("requires_process_receipt") is not expected_receipt:
+        if value.get("requires_activation_attestation") is not expected_attestation:
             errors.append(
-                f"role {role} requires requires_process_receipt={str(expected_receipt).lower()}"
+                f"role {role} requires requires_activation_attestation={str(expected_attestation).lower()}"
             )
     if not isinstance(value.get("lane_root"), str) or not Path(value["lane_root"]).is_absolute():
         errors.append("lane_root must be absolute")
@@ -178,8 +178,8 @@ def validate_assignment(value: Any) -> list[str]:
                 errors.append("input artifact sha256 must be lowercase SHA-256")
     if not isinstance(value.get("completion_state"), str) or not value.get("completion_state"):
         errors.append("completion_state must be a non-empty string")
-    if not isinstance(value.get("requires_process_receipt"), bool):
-        errors.append("requires_process_receipt must be boolean")
+    if not isinstance(value.get("requires_activation_attestation"), bool):
+        errors.append("requires_activation_attestation must be boolean")
     return errors
 
 

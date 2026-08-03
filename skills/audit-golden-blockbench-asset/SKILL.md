@@ -16,7 +16,7 @@ return control-reference details to its agent.
 
 ## Verify the audit packet
 
-Require production and repair process receipts proving the actual authoring
+Require production and repair activation attestations proving the actual authoring
 processes ran through the recorded sandbox executor.
 
 Require:

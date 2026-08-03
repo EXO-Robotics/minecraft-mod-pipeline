@@ -1,6 +1,6 @@
 ---
 name: work-bedrock-factory-pack
-description: Execute one authorized Java-to-Bedrock production, continuation, repair, or interruption-recovery activation in an isolated pack repository. Use when assigned a hash-bound task pack that requires original Bedrock implementation, worker-local validation, freezing, and submission of at most one immutable candidate generation.
+description: Execute one authorized Java-to-Bedrock production, continuation, repair, or interruption-recovery activation in an isolated pack repository. Use when assigned a hash-bound task pack that requires original Bedrock implementation, a minimal activation attestation, freezing, and submission of at most one immutable candidate generation.
 ---
 
 # Work one Bedrock factory pack
@@ -18,15 +18,19 @@ assignment and activation files and verify their hashes before writing.
    evidence, source identity, private oracle cases, another pack repository, or
    downstream private findings.
 3. Implement original Bedrock behavior only within the authorized scope.
-4. Run every declared worker-local command: static/schema checks, pack-local
-   tests, exact shipped-script tests, deterministic build twice, archive/media
-   integrity, restricted scans, and process-receipt validation.
-5. Freeze and submit at most one candidate. Bind the production commit/tree,
-   artifact/manifest hashes, activation, local results, and process-isolation
-   receipt.
+4. Do not run broad validation jobs. Enforce only cheap control invariants:
+   assignment and authority hashes, repository/ref identity, path containment,
+   exclusive write scope, and candidate immutability.
+5. Freeze and submit at most one candidate. Emit only the bounded activation
+   attestation: activation ID, assignment hash, platform-qualification hash,
+   repository ref, exit code, cleanup status, and optional candidate identity.
+
+Deterministic double builds, package inventories, schema/static suites,
+restricted scans, and package-entrypoint checks belong exclusively to
+`PRE_BDS_MILESTONE`. They are forbidden as routine per-worker validation.
 
 Completion is `CANDIDATE_SUBMITTED`, not downstream acceptance. Do not run,
-request, or wait for T1, Stable BDS, T10, T2, integration, client, Realms,
+request, or wait for either validation milestone, Stable BDS, integration, client, Realms,
 controller, split-screen, PS4, Marketplace, or release gates.
 
 For repair, preserve rejected generation `N`, make a material change, and submit

@@ -56,8 +56,8 @@ For repair, include consolidated finding IDs, rejected generation, required
 `N+1`, required worker regression IDs, and the independent gates their owners
 must rerun.
 
-Candidate publication requires worker-local validation and freeze, never a
-downstream PASS. A repair activation must bind one consolidated authoritative
+Candidate publication requires build and freeze, never a broad worker-local
+validation suite or downstream PASS. A repair activation must bind one consolidated authoritative
 message, rejected generation `N`, and replacement generation `N+1`.
 `CONTINUE_NONTERMINAL` and host-only `RECOVERY_AFTER_INTERRUPTION` preserve the
 candidate generation and bytes unless a separate `REPAIR_REQUIRED` authority

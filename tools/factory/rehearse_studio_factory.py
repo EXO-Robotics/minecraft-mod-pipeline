@@ -144,9 +144,9 @@ def rehearse(factory_root: Path, source: Path) -> dict[str, Any]:
     )
     result_messages = []
     for message_type, sender in (
-        ("T1_PASS", "t1_preflight_tester"),
+        ("PRE_BDS_MILESTONE_PASS", "pre_bds_milestone_owner"),
         ("BDS_PASS", "bds_tester"),
-        ("T10_PASS", "independent_auditor"),
+        ("FINAL_MOD_MILESTONE_PASS", "final_mod_milestone_owner"),
     ):
         result_messages.append(
             store.append_message(

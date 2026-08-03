@@ -31,7 +31,7 @@ def assignment(
         "stop_states": ["hash mismatch"],
         "completion_state": "EXPECTED_STATE",
         "gate_authority": [gate],
-        "requires_process_receipt": receipt,
+        "requires_activation_attestation": receipt,
     }
 
 
@@ -90,7 +90,7 @@ class RoleContractTests(unittest.TestCase):
         )
         self.assertTrue(any("requires skill" in error for error in errors))
         self.assertTrue(any("requires lane PRODUCTION" in error for error in errors))
-        self.assertTrue(any("requires requires_process_receipt=true" in error for error in errors))
+        self.assertTrue(any("requires requires_activation_attestation=true" in error for error in errors))
 
     def test_role_cannot_claim_another_roles_gate(self) -> None:
         packet = assignment(

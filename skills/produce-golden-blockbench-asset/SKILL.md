@@ -8,7 +8,7 @@ description: Produce and freeze one original custom-geometry Bedrock asset from 
 Require a standardized assignment for role `visual_producer`, skill
 `produce-golden-blockbench-asset`, and lane `PRODUCTION`. Validate it with
 `$translate-java-mods-to-bedrock`'s
-role-contract validator. `requires_process_receipt` must be true.
+role-contract validator. `requires_activation_attestation` must be true.
 
 Operate only inside the assigned visual-production lane. The typed visual
 contract, class profile, proof-render contract, and production-facing Bedrock
@@ -17,7 +17,7 @@ interfaces are the sole authority.
 ## Verify the packet and boundary
 
 Require the actual visual-authoring process to run through the recorded
-production sandbox and emit a process receipt. Repairs require fresh receipts.
+production sandbox and emit a minimal activation attestation. Repairs require a fresh attestation.
 
 Require one hash-bound assignment packet containing:
 

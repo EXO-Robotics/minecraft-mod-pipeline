@@ -20,9 +20,13 @@ frozen work order
 
 The kernel owns authority, typed identities, immutable artifact registration,
 the canonical append-only event stream, rebuildable projections, dependency and
-gate graphs, role policy, hash-bound dispatch, process receipts, platform
+gate graphs, role policy, hash-bound dispatch, minimal activation attestations, platform
 qualification, queue backpressure, metrics, promotion boundaries, and portable
 regression fixtures.
+
+Broad validation is restricted to `PRE_BDS_MILESTONE` and
+`FINAL_MOD_MILESTONE`. Cheap identity, hash, path, lease, and append-only
+invariants remain always on; they are not separate validation jobs.
 
 Minecraft Java evidence, Bedrock T1/MCTools/BDS, protocol observation, and
 Blockbench authoring are domain adapters. Blockbench-native authoring is useful

@@ -20,7 +20,7 @@ factory without importing this project's original campaign state.
 - Hash-bound AI worker dispatch with duplicate-send prevention.
 - Separate evidence, production, integration, qualification, and audit roles.
 - Adaptive thread directives with explicit Stable BDS capacity limits.
-- A macOS deny-by-default production launcher and receipt validator.
+- A macOS deny-by-default production launcher with minimal activation attestations.
 - Twenty-five Codex skills that teach an AI how to oversee and staff the factory.
 - Unit tests and an offline end-to-end synthetic rehearsal.
 
@@ -36,11 +36,15 @@ flowchart LR
   P --> E["Evidence and contracts"]
   E --> W["Isolated production workers"]
   W --> C["Immutable candidate generation N"]
-  C --> Q["T1 + Stable BDS + private audit"]
-  Q -->|"product repair"| R["Consolidated N to N+1 repair"]
+  C --> M1["PRE_BDS_MILESTONE"]
+  M1 --> B["Exact-package BDS work"]
+  B --> I["Implementation and integration"]
+  I --> M2["FINAL_MOD_MILESTONE"]
+  M1 -->|"product repair"| R["Consolidated N to N+1 repair"]
+  M2 -->|"product repair"| R
   R --> W
-  Q -->|"admitted"| I["T2 and integration"]
-  I --> X["Separately owned client and release gates"]
+  M2 -->|"PASS"| X["Reconstruction complete"]
+  X --> O["Optional client or release claims need new authority"]
 ```
 
 SQLite and the Git mailbox are durable authority. Agent chat, process presence,
@@ -102,7 +106,7 @@ The synthetic control loop and the execution platform are separate gates. The
 rehearsal writes its PASS receipt, but real campaign activation remains disabled
 until an exact `FACTORY_PLATFORM_QUALIFICATION` receipt also proves the launcher,
 sandbox, Codex startup, ephemeral authentication, lane-local state, negative
-access probes, privileged broker, BDS adapter, cleanup, and receipt validators.
+access probes, privileged broker, BDS adapter, cleanup policy, and activation-attestation schema.
 Validate an existing receipt with:
 
 ```bash
@@ -160,15 +164,15 @@ For domain-independent use, read the
 - Raw evidence stays in evidence/control lanes. Production receives only opaque
   assignments and sanitized product contracts.
 - Production and repair work require independent repositories, explicit read
-  and write roots, denied evidence paths, and process-bound receipts.
+  and write roots, denied evidence paths, a qualified platform, and bounded
+  activation attestations.
 - Candidate generations are append-only. A failed `N` is preserved and a
   material repair publishes exactly `N+1`; unchanged bytes are not retried.
 - Candidate, activation, repair-authority, gate-run, and integration identities
   use distinct `C#`, `A#`, `RA#`, `T1-R#`, `BDS-R#`, `OBS-R#`, `T10-R#`, and
   `I#` namespaces.
-- Producers may run the public deterministic `t1-shadow` check before
-  submission; its result is non-authoritative and independent T1 still owns
-  admission.
+- Broad validation runs only at `PRE_BDS_MILESTONE` and
+  `FINAL_MOD_MILESTONE`; producers do not run a T1 shadow or receipt validator.
 - Product failures are separated from host, Docker, toolchain, and missing-gate
   failures.
 - Evidence-enabling candidates, control-only retries, host-authority rebinds,

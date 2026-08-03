@@ -626,15 +626,15 @@ def _role_boundaries(output: Path) -> list[dict[str, Any]]:
             "role": "feature_producer",
             "lane": "PRODUCTION",
             "write_root": str(lanes / "production"),
-            "may": ["read_sanitized_contract", "author_original_bedrock_output", "run_worker_local_tests", "freeze_candidate"],
+            "may": ["read_sanitized_contract", "author_original_bedrock_output", "build_candidate", "freeze_candidate"],
             "must_not": ["read_evidence_or_private_oracle", "edit_frozen_candidates", "run_or_claim_downstream_gates"],
         },
         {
-            "role": "t1_preflight_tester",
+            "role": "pre_bds_milestone_owner",
             "lane": "QUALIFICATION",
-            "write_root": str(lanes / "qualification" / "t1"),
-            "may": ["mechanically_validate_frozen_candidate"],
-            "must_not": ["repair_candidate", "claim_bds_or_semantic_results"],
+            "write_root": str(lanes / "qualification" / "pre-bds"),
+            "may": ["run_pre_bds_milestone_once", "publish_hash_bound_milestone_receipt"],
+            "must_not": ["repair_candidate", "repeat_worker_validation", "claim_bds_or_semantic_results"],
         },
         {
             "role": "bds_tester",
@@ -644,11 +644,11 @@ def _role_boundaries(output: Path) -> list[dict[str, Any]]:
             "must_not": ["edit_candidate", "claim_client_realms_controller_split_screen_or_console_results"],
         },
         {
-            "role": "independent_auditor",
+            "role": "final_mod_milestone_owner",
             "lane": "AUDIT",
             "write_root": str(lanes / "audit"),
-            "may": ["read_frozen_candidate_and_authorized_oracle", "publish_opaque_findings"],
-            "must_not": ["edit_candidate", "reveal_private_cases_to_production"],
+            "may": ["run_final_mod_milestone_once", "read_frozen_candidate_and_authorized_oracle", "publish_opaque_findings"],
+            "must_not": ["edit_candidate", "reveal_private_cases_to_production", "rerun_unchanged_milestones"],
         },
         {
             "role": "t2_adapter_owner",
@@ -677,9 +677,9 @@ def _unit_tasks(unit: Mapping[str, Any]) -> list[dict[str, Any]]:
     evidence = _task_id("evidence", unit_id)
     contract = _task_id("contract", unit_id)
     production = _task_id("production", unit_id)
-    t1 = _task_id("t1", unit_id)
+    pre_bds = _task_id("pre-bds", unit_id)
     bds = _task_id("bds", unit_id)
-    audit = _task_id("t10", unit_id)
+    final_mod = _task_id("final-mod", unit_id)
     common = {"unit_id": unit_id, "source_identity_exposure": "OPAQUE_ID_ONLY_OUTSIDE_EVIDENCE"}
     tasks = [
         {
@@ -707,30 +707,37 @@ def _unit_tasks(unit: Mapping[str, Any]) -> list[dict[str, Any]]:
             "task_id": production,
             "role": "feature_producer",
             "lane": "PRODUCTION",
-            "action": "AUTHOR_TEST_FREEZE_AND_SUBMIT_ONE_IMMUTABLE_CANDIDATE",
+            "action": "AUTHOR_FREEZE_AND_SUBMIT_ONE_IMMUTABLE_CANDIDATE",
             "depends_on": [contract],
             "required_authorizations": ["PRIVATE_REIMPLEMENTATION_AUTHORIZED", "PRODUCTION_AUTHORIZED"],
             "input_policy": "SANITIZED_CONTRACT_AND_PRODUCTION_ORACLE_INTERFACE_ONLY",
-            "worker_local_validation": [
-                "schema_and_static_checks",
-                "pack_local_unit_and_integration_tests",
-                "exact_shipped_script_tests",
-                "deterministic_build_twice",
-                "archive_manifest_reference_and_media_integrity",
-                "restricted_identifier_and_object_scans",
-                "process_receipt_validation",
+            "always_on_invariants": [
+                "identity_syntax",
+                "referenced_hash_equality",
+                "path_containment",
+                "exclusive_write_scope",
             ],
+            "activation_record": "MINIMAL_ACTIVATION_ATTESTATION",
+            "validation_jobs": "NONE_UNTIL_PRE_BDS_MILESTONE",
             "completion": "CANDIDATE_SUBMITTED",
         },
         {
             **common,
-            "task_id": t1,
-            "role": "t1_preflight_tester",
+            "task_id": pre_bds,
+            "role": "pre_bds_milestone_owner",
             "lane": "QUALIFICATION",
-            "action": "RUN_MECHANICAL_PREFLIGHT",
+            "action": "VALIDATE_PRE_BDS_MILESTONE",
             "depends_on": [production],
             "required_authorizations": [],
-            "completion": "T1_RESULT_PUBLISHED",
+            "validation_scope": [
+                "exact_candidate_binding",
+                "deterministic_build_twice",
+                "package_structure_manifest_icons_entrypoint",
+                "archive_media_reference_integrity",
+                "restricted_identifier_and_object_scans",
+                "t1_and_mctools_mechanical_admission",
+            ],
+            "completion": "PRE_BDS_MILESTONE_PASS",
         },
         {
             **common,
@@ -738,19 +745,27 @@ def _unit_tasks(unit: Mapping[str, Any]) -> list[dict[str, Any]]:
             "role": "bds_tester",
             "lane": "QUALIFICATION",
             "action": "RUN_EXACT_PACKAGE_STABLE_BDS",
-            "depends_on": [t1],
+            "depends_on": [pre_bds],
             "required_authorizations": [],
             "completion": "BDS_RESULT_PUBLISHED",
         },
         {
             **common,
-            "task_id": audit,
-            "role": "independent_auditor",
+            "task_id": final_mod,
+            "role": "final_mod_milestone_owner",
             "lane": "AUDIT",
-            "action": "RUN_POST_FREEZE_PRIVATE_AUDIT",
-            "depends_on": [t1],
+            "action": "VALIDATE_FINAL_MOD_MILESTONE",
+            "depends_on": [bds],
             "required_authorizations": [],
-            "completion": "T10_RESULT_PUBLISHED",
+            "validation_scope": [
+                "exact_final_package_binding",
+                "required_bds_runtime_receipts",
+                "calibrated_observation_and_independent_t10",
+                "integration_and_persistence",
+                "lineage_originality_and_claim_boundaries",
+                "final_bundle_manifest_coverage",
+            ],
+            "completion": "FINAL_MOD_MILESTONE_PASS",
         },
     ]
     if unit["unit_kind"] != "MOD_ARCHIVE":
@@ -802,18 +817,22 @@ def build_factory_plan(
             "worker_completion": "REPLACEMENT_CANDIDATE_SUBMITTED",
             "downstream_retest_owner": "ORIGINAL_GATE_OWNER",
         },
+        "validation_policy": {
+            "mode": "MILESTONE_ONLY",
+            "milestones": ["PRE_BDS_MILESTONE", "FINAL_MOD_MILESTONE"],
+            "rule": "RUN_ONLY_ON_MILESTONE_ENTRY_OR_BOUND_HASH_CHANGE_OR_MISSING_INVALID_RECEIPT",
+            "unchanged_valid_receipt": "REUSE",
+            "per_activation_validation_jobs": "FORBIDDEN",
+        },
         "external_gates": [
-            {"gate": "T1_MECHANICAL_PREFLIGHT", "owner": "t1_preflight_tester", "worker_publication_prerequisite": False},
+            {"gate": "PRE_BDS_MILESTONE", "owner": "pre_bds_milestone_owner", "worker_publication_prerequisite": False},
             {"gate": "STABLE_BDS", "owner": "bds_tester", "worker_publication_prerequisite": False},
-            {"gate": "T10_PRIVATE_AUDIT", "owner": "independent_auditor", "worker_publication_prerequisite": False},
-            {"gate": "T2_SHARED_ADAPTER", "owner": "t2_adapter_owner", "worker_publication_prerequisite": False},
-            {"gate": "INTEGRATION", "owner": "segment_integrator", "worker_publication_prerequisite": False},
-            {"gate": "DESKTOP_CLIENT", "owner": "client_qa", "worker_publication_prerequisite": False},
-            {"gate": "REALMS", "owner": "realms_qa", "worker_publication_prerequisite": False},
-            {"gate": "CONTROLLER", "owner": "controller_qa", "worker_publication_prerequisite": False},
-            {"gate": "SPLIT_SCREEN", "owner": "multiplayer_qa", "worker_publication_prerequisite": False},
-            {"gate": "PHYSICAL_PS4", "owner": "console_qa", "worker_publication_prerequisite": False},
+            {"gate": "FINAL_MOD_MILESTONE", "owner": "final_mod_milestone_owner", "worker_publication_prerequisite": False},
         ],
+        "optional_claim_extensions": {
+            "dispatch": "ONLY_AFTER_EXPLICIT_USER_AUTHORITY_AND_OUTSIDE_RECONSTRUCTION_COMPLETION",
+            "claims": ["DESKTOP_CLIENT", "REALMS", "CONTROLLER", "SPLIT_SCREEN", "PHYSICAL_PS4", "PUBLIC_RELEASE"],
+        },
         "release_authorizations": [
             "PUBLICATION_AUTHORIZED",
             "COMMERCIAL_DISTRIBUTION_AUTHORIZED",

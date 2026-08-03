@@ -304,14 +304,23 @@ class OrchestrationTests(unittest.TestCase):
         self.assertEqual(job["status"], QUARANTINED)
         self.assertIn("hash-bound sandbox profile", job["last_error"])
 
-    def test_sandboxed_production_requires_valid_external_receipt(self) -> None:
+    def test_sandboxed_production_records_minimal_activation_attestation(self) -> None:
         profile = self.root / "production.sb"
         profile.write_text("(version 1)\n(deny default)\n", encoding="utf-8")
-        process_receipt = self.root / "process-receipt.json"
+        activation_attestation = self.root / "activation-attestation.json"
+        attestation = {
+            "schema_version": "bedrock-factory.activation-attestation.v1.0.0",
+            "activation_id": "A1",
+            "assignment_sha256": "a" * 64,
+            "platform_qualification_sha256": "b" * 64,
+            "repository_ref": "refs/heads/codex/test",
+            "exit_code": 0,
+            "cleanup_status": "PASS",
+        }
         code = (
             "import json; from pathlib import Path; "
-            f"Path({str(process_receipt)!r}).write_text("
-            "json.dumps({'schema_version':'1.0.0','status':'PASS'}))"
+            f"Path({str(activation_attestation)!r}).write_text("
+            f"json.dumps({attestation!r}))"
         )
         self.store.enqueue_job(
             campaign_id="test-campaign",
@@ -329,27 +338,16 @@ class OrchestrationTests(unittest.TestCase):
                     "path": str(profile),
                     "sha256": file_sha256(profile),
                 },
-                "process_receipt_required": True,
-                "process_receipt": {
-                    "path": str(process_receipt),
-                    "validator_argv": [
-                        sys.executable,
-                        "-c",
-                        (
-                            "import json,sys; "
-                            f"data=json.load(open({str(process_receipt)!r})); "
-                            "sys.exit(0 if data.get('status') == 'PASS' else 1)"
-                        ),
-                    ],
-                },
+                "activation_attestation_required": True,
+                "activation_attestation": {"path": str(activation_attestation)},
             },
         )
         self.worker_pool(concurrency=1).run()
         job = self.store.get_job("sandboxed-production")
         self.assertEqual(job["status"], SUCCEEDED)
         self.assertEqual(
-            job["result"]["process_receipt"]["sha256"],
-            file_sha256(process_receipt),
+            job["result"]["activation_attestation"]["sha256"],
+            file_sha256(activation_attestation),
         )
 
     def test_generated_profile_mode_binds_studio_launcher(self) -> None:
@@ -374,10 +372,9 @@ class OrchestrationTests(unittest.TestCase):
                             "launcher_path": str(launcher),
                             "launcher_sha256": file_sha256(launcher),
                         },
-                        "process_receipt_required": True,
-                        "process_receipt": {
-                            "path": str(self.root / "receipt.json"),
-                            "validator_argv": [sys.executable, "-c", "pass"],
+                        "activation_attestation_required": True,
+                        "activation_attestation": {
+                            "path": str(self.root / "activation-attestation.json"),
                         },
                     },
                 }

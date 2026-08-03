@@ -93,6 +93,6 @@ worker/tester/auditor ratio. More threads do not create more BDS, client, or
 audit capacity. Apply upstream backpressure when qualification saturates.
 
 Resume solely from committed repositories, append-only mailbox history,
-SQLite projections, hash-bound dispatch state, and process receipts. One
+SQLite projections, hash-bound dispatch state, and activation attestations. One
 semantic dispatch identity creates at most one worker. Preserve failed and
 inconclusive experiments.

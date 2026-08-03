@@ -1,4 +1,4 @@
-"""Public deterministic producer-side shadow checks for Bedrock archives."""
+"""Deterministic package checks owned only by PRE_BDS_MILESTONE."""
 
 from __future__ import annotations
 
@@ -6,11 +6,11 @@ import hashlib
 import json
 import stat
 import zipfile
-from pathlib import PurePosixPath, Path
+from pathlib import Path, PurePosixPath
 from typing import Any
 
 
-SHADOW_SCHEMA = "bedrock-factory.t1-shadow.v1.0.0"
+PRE_BDS_SCHEMA = "bedrock-factory.pre-bds-milestone.v1.0.0"
 
 
 def inspect_mcaddon(path: str | Path) -> dict[str, Any]:
@@ -55,11 +55,10 @@ def inspect_mcaddon(path: str | Path) -> dict[str, Any]:
                     if not isinstance(entry, str) or root + entry not in names:
                         findings.append({"code": "SCRIPT_ENTRYPOINT_MISSING", "path": str(entry)})
     return {
-        "schema_version": SHADOW_SCHEMA,
-        "authority": "NON_AUTHORITATIVE_PRODUCER_SHADOW",
+        "schema_version": PRE_BDS_SCHEMA,
+        "milestone": "PRE_BDS_MILESTONE",
         "candidate_sha256": hashlib.sha256(source.read_bytes()).hexdigest(),
         "manifest_count": len(manifests),
         "status": "PASS" if not findings else "FAIL",
         "findings": sorted(findings, key=lambda row: (row["code"], row["path"])),
-        "independent_t1_still_required": True,
     }

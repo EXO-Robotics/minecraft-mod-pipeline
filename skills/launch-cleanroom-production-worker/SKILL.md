@@ -1,11 +1,11 @@
 ---
 name: launch-cleanroom-production-worker
-description: Initialize and prove an isolated Codex production or repair worker for clean-room Java-to-Bedrock reconstruction. Use when a worker needs minimum local Codex authentication access solely for startup, a separate Git object store and filesystem lane, deny-by-default evidence controls, sanitized prompt transfer, negative-access probes, credential cleanup, and a process-bound receipt that excludes credentials from production lineage.
+description: Launch an isolated Codex production or repair activation using a separately qualified platform and emit one minimal activation attestation. Use for ordinary reconstruction work between the two validation milestones.
 ---
 
 # Launch a clean-room production worker
 
-Read [worker-receipt-contract.md](references/worker-receipt-contract.md) before
+Read [activation-attestation-contract.md](references/activation-attestation-contract.md) before
 startup.
 
 ## Freeze inputs
@@ -13,7 +13,7 @@ startup.
 Require:
 
 - A validated standardized role assignment naming the exact role, skill, lane,
-  gate authority, stop states, artifact hashes, and process-receipt policy.
+  gate authority, stop states, artifact hashes, and activation-attestation policy.
 - An independent production repository or clone with no alternates to the
   evidence repository.
 - A sanitized contract hash and assignment packet.
@@ -22,8 +22,8 @@ Require:
 - A lane-local home, temp root, caches, logs, and output root.
 - The exact worker command and tool inventory.
 
-Do not start production from a clean prompt alone. Prove process and filesystem
-isolation.
+Do not start production from a clean prompt alone. Require a PASS platform
+qualification bound to the exact launcher and security model.
 
 Never mount, expose, or proxy the host Docker socket into the worker boundary.
 That would let the worker ask the host daemon to mount paths outside its lane.
@@ -34,7 +34,7 @@ startup as infrastructure-blocked; do not create a product finding or candidate.
 
 When the repository provides
 `translate-java-mods-to-bedrock/scripts/validate_role_contract.py`, validate
-the assignment and shared gate ledger before startup. A worker receipt cannot
+the assignment and shared gate ledger before startup. An activation attestation cannot
 repair an invalid or ambiguous assignment.
 
 ## Handle authentication minimally
@@ -56,24 +56,23 @@ startup:
 
 Never broaden this permission to evidence or control access.
 
-## Launch and prove
+## Launch
 
-1. Record the environment and prompt hashes without credential content.
-2. Start the actual worker inside the frozen boundary.
-3. From the launched process, probe every denied path and the evidence canary.
-4. Require every denied probe to fail.
-5. Probe approved production inputs and output paths.
-6. Record process ID, launcher identity, start time, exact assignment hash, and
-   output commit.
-7. Search startup and production roots for `auth.json`, `installation_id`,
-   credential exports, evidence paths, and canaries after launch.
-8. Delete temporary authentication copies immediately after the worker is
-   initialized.
+1. Hash-bind the existing platform-qualification receipt.
+2. Start the worker inside the already-qualified boundary.
+3. Enforce cheap assignment, path, ref, and input-hash invariants.
+4. Delete activation-owned temporary cache material.
+5. Emit only the minimal activation attestation.
+
+Do not rerun denial/network/path canaries, full environment inventories,
+package scans, deterministic rebuilds, or receipt validators for every worker.
+Those platform checks belong to platform qualification; package checks belong
+to `PRE_BDS_MILESTONE`.
 
 Stop production if a denied probe succeeds, credential material appears in an
 artifact, or the worker can reach raw Java evidence.
 
-Bind the receipt to the validated role assignment hash. Do not accept a
+Bind the attestation to the validated role assignment hash. Do not accept a
 successful process launch as authority to pass a gate the assignment did not
 delegate.
 
@@ -89,14 +88,5 @@ the superseded candidate, abstract defect, authorized changed paths, new
 candidate, and cleanup proof. Never let a repair worker read the private oracle
 or hidden test that found the defect.
 
-## Validate
-
-Run:
-
-```bash
-python3 scripts/validate_worker_receipt.py /absolute/path/worker-receipt.json
-```
-
-Then independently search the production repository and startup temp root for
-forbidden filenames. The validator proves receipt shape, not operating-system
-enforcement by itself.
+Do not dispatch a worker-receipt validator. The controller records the bounded
+attestation mechanically and defers broad validation to the two milestones.

@@ -15,8 +15,8 @@ Require a standardized assignment for role `bds_qualifier`, skill
 
 Use `$qualify-bedrock-addon-bds` as the exact-package execution harness. Its
 architecture inspection, MCTools log binding, deterministic package checks,
-diagnostic controls, and receipt validator are required infrastructure; they
-do not expand this role's gate authority.
+and diagnostic controls belong to this single milestone execution; do not
+dispatch any of them as separate recurring validation jobs.
 
 ## Bind the immutable candidate
 

@@ -86,13 +86,23 @@ campaign explicitly freezes another bound.
 
 ## Advance gates
 
-Advance only through:
+Broad validation is legal at exactly two milestones:
 
-`TARGET_FROZEN → INVENTORY_COMPLETE → CLEAN_ROOM_CONTRACTED →`
-`PRODUCTION_ACTIVE → STATIC_QUALIFIED → GOLDEN_QUALIFIED →`
-`INTEGRATED → AUDITED → BDS_QUALIFIED → BUNDLE_FROZEN`
+`... PRODUCTION_ACTIVE → PRE_BDS_MILESTONE → FIRST_BDS_RUN →`
+`IMPLEMENTATION_AND_INTEGRATION → FINAL_MOD_MILESTONE → MOD_COMPLETE`
 
-At each gate:
+`PRE_BDS_MILESTONE` owns deterministic packaging, structure, entrypoint,
+restricted scans, T1, and MCTools immediately before the first BDS run.
+`FINAL_MOD_MILESTONE` owns exact final-package binding, required BDS evidence,
+observation, T10, integration/persistence, lineage/originality, claim
+boundaries, and final bundle coverage immediately before completion.
+
+Do not dispatch worker-local validation, T1-shadow, receipt-validator,
+per-slice audit, or repeated unchanged-evidence jobs. An activation writes only
+a minimal attestation. Dispatch a milestone validator only on milestone entry,
+when a bound hash changed, or when its prior receipt is missing/invalid.
+
+At each milestone:
 
 - Record exact commit, tree, artifact hash, receipt hash, passed claims,
   failed claims, and untested claims.
@@ -123,7 +133,7 @@ Require:
 
 - Exact bundled artifact and target freeze.
 - Complete feature disposition matrix with zero unclassified entries.
-- Clean-room production and repair receipts.
+- Clean-room production and repair activation attestations.
 - Deterministic package bytes.
 - MCTools zero errors.
 - Golden thresholds and independent visual audit.

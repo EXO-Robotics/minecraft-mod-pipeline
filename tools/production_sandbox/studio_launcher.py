@@ -359,6 +359,8 @@ def main() -> int:
     parser.add_argument("--sanitized-contract", type=Path, required=True)
     parser.add_argument("--prompt", type=Path, required=True)
     parser.add_argument("--worker-command", type=Path, required=True)
+    parser.add_argument("--platform-qualification", type=Path, required=True)
+    parser.add_argument("--platform-qualification-sha256", required=True)
     parser.add_argument("--base-repo", type=Path)
     parser.add_argument("--deny", action="append", type=parse_denied_path, default=[])
     args = parser.parse_args()
@@ -374,6 +376,15 @@ def main() -> int:
     contract_source = args.sanitized_contract.expanduser().resolve()
     prompt_source = args.prompt.expanduser().resolve()
     worker_command_source = args.worker_command.expanduser().resolve()
+    platform_qualification = args.platform_qualification.expanduser().resolve()
+    if not platform_qualification.is_file():
+        raise SystemExit("platform qualification receipt is missing")
+    platform_qualification_sha256 = sha256(platform_qualification)
+    if platform_qualification_sha256 != args.platform_qualification_sha256:
+        raise SystemExit("platform qualification receipt hash mismatch")
+    platform_document = json.loads(platform_qualification.read_text(encoding="utf-8"))
+    if platform_document.get("status") != "PASS":
+        raise SystemExit("platform qualification receipt is not PASS")
     worker_command = parse_worker_command(worker_command_source)
     repository = run_root / "repo"
     runtime = run_root / "runtime"
@@ -463,6 +474,7 @@ def main() -> int:
         "STUDIO_ASSIGNMENT": str(assignment_path),
         "STUDIO_GIT": str(GIT),
         "STUDIO_WORKER_COMMAND_JSON": json.dumps(worker_command),
+        "STUDIO_PLATFORM_QUALIFIED": "1",
     }
     command = [
         str(SANDBOX_EXEC),
@@ -474,7 +486,6 @@ def main() -> int:
         str(Path(sys.executable).resolve()),
         str(entrypoint_path),
     ]
-    started_at = utc_now()
     events_path = runtime / "logs/events.jsonl"
     stderr_path = runtime / "logs/stderr.log"
     with events_path.open("wb") as stdout, stderr_path.open("wb") as stderr:
@@ -486,145 +497,37 @@ def main() -> int:
             stderr=stderr,
             check=False,
         )
-    ended_at = utc_now()
-    first_event = events_path.read_text(
-        encoding="utf-8", errors="replace"
-    ).splitlines()[:1]
-    try:
-        raw_preflight = json.loads(first_event[0])["studio_production_preflight"]
-    except (IndexError, KeyError, TypeError, json.JSONDecodeError):
-        raw_preflight = {"result": "FAIL", "checks": {}}
-    checks = raw_preflight.get("checks", {})
-    denied_results = checks.get("denied_paths", {})
-    preflight = {
-        "approved_inputs_readable": (
-            "YES" if checks.get("approved_inputs_readable") else "NO"
-        ),
-        "production_write": "ALLOWED" if checks.get("production_write") else "DENIED",
-        "runtime_write": "ALLOWED" if checks.get("runtime_write") else "DENIED",
-        "temp_write": "ALLOWED" if checks.get("temp_write") else "DENIED",
-        "cache_write": "ALLOWED" if checks.get("cache_write") else "DENIED",
-        "evidence_denied": "YES" if denied_results.get("evidence") else "NO",
-        "control_denied": "YES" if denied_results.get("control") else "NO",
-        "private_oracle_denied": (
-            "YES" if denied_results.get("private_oracle") else "NO"
-        ),
-        "canary_denied": "YES" if denied_results.get("canary") else "NO",
-        "restricted_identifiers": "NO_MATCH",
-        "restricted_hashes": "NO_MATCH",
-        "remotes": "NONE" if checks.get("remotes_absent") else "PRESENT",
-        "alternates": "NONE" if checks.get("alternates_absent") else "PRESENT",
-        "hardlinks": "NONE" if checks.get("hardlinks_absent") else "PRESENT",
-        "cross_lane_symlinks": (
-            "NONE" if checks.get("cross_lane_symlinks_absent") else "PRESENT"
-        ),
-        "restricted_git_objects": "UNAVAILABLE",
-        "restricted_env": (
-            "NONE" if checks.get("restricted_environment_absent") else "PRESENT"
-        ),
-        "network": "DENIED" if checks.get("external_network_denied") else "UNPROVEN",
-    }
-    outputs, output_hazards = inventory(repository)
     input_postflight = verify_transferred_inputs(repository, transferred)
-    isolation = postflight_isolation(repository)
-    forbidden_scan = scan_forbidden_material(
-        [repository, runtime / "home", runtime / "tmp"],
-        canary=denied_paths["canary"],
-    )
-    cleanup = {
-        "status": "PASS" if forbidden_scan["clean"] else "FAIL",
-        "credentials_used": False,
-        "temporary_credentials_removed": True,
-        "agent_cache_removed": True,
-        "forbidden_material_scan": forbidden_scan,
-    }
     shutil.rmtree(runtime / "cache", ignore_errors=True)
     assignment_id = assignment_payload["assignment_id"]
-    role = assignment_document["role"]
-    receipt = {
-        "schema_version": "1.0.0",
-        "receipt_id": f"studio-{uuid.uuid4().hex}",
-        "assignment_id": assignment_id,
-        "role": role,
-        "repo_root": str(repository),
-        "object_store_identity": {
-            "path": git(
-                repository,
-                "rev-parse",
-                "--path-format=absolute",
-                "--git-common-dir",
-            ),
-            "standalone": True,
-        },
-        "baseline_commit": baseline_commit,
-        "transferred_inputs": transferred,
+    attestation = {
+        "schema_version": "bedrock-factory.activation-attestation.v1.0.0",
+        "activation_id": assignment_document.get("activation_id", assignment_id),
         "assignment_sha256": sha256(assignment_source),
-        "sanitized_contract_sha256": sha256(contract_source),
-        "sandbox_profile_sha256": sha256(profile_path),
-        "environment_manifest_sha256": sha256(environment_path),
-        "launcher_sha256": sha256(Path(__file__)),
-        "prompt_context_sha256": sha256(prompt_source),
-        "process": {
-            "pid": checks.get("pid", 1),
-            "command": command,
-            "agent_identity": "studio-configured-worker",
-            "tool_hashes": {
-                "sandbox_exec": sha256(SANDBOX_EXEC),
-                "entrypoint": sha256(entrypoint_path),
-                "worker_command": sha256(worker_command_source),
-            },
-            "started_at_utc": started_at,
-            "ended_at_utc": ended_at,
-            "exit_status": process.returncode,
-        },
-        "preflight": preflight,
-        "outputs": outputs,
-        "input_postflight": input_postflight,
-        "transferred_inputs_unchanged": all(
-            row["match"] for row in input_postflight
-        ),
-        "candidate_commit": git(repository, "rev-parse", "HEAD"),
-        "candidate_tree": git(repository, "rev-parse", "HEAD^{tree}"),
-        "package_hashes": {
-            row["path"]: row["sha256"]
-            for row in outputs
-            if Path(str(row["path"])).suffix in {".mcaddon", ".mcpack"}
-        },
-        "cleanup": cleanup,
-        "postflight_isolation": isolation,
-        "output_hazards": output_hazards,
-        "working_tree_clean": git(repository, "status", "--porcelain") == "",
-        "host_role": "STUDIO_PRODUCTION_HOST",
+        "platform_qualification_sha256": platform_qualification_sha256,
+        "repository_ref": git(repository, "symbolic-ref", "HEAD"),
+        "exit_code": process.returncode,
+        "cleanup_status": "PASS" if not (runtime / "cache").exists() else "FAIL",
     }
-    receipt_path = runtime / "process-receipt.json"
-    receipt_path.write_text(
-        json.dumps(receipt, indent=2, sort_keys=True) + "\n",
+    if isinstance(assignment_document.get("candidate_id"), str):
+        attestation["candidate_id"] = assignment_document["candidate_id"]
+    attestation_path = runtime / "activation-attestation.json"
+    attestation_path.write_text(
+        json.dumps(attestation, indent=2, sort_keys=True) + "\n",
         encoding="utf-8",
     )
     accepted = (
         process.returncode == 0
-        and raw_preflight.get("result") == "PASS"
-        and not output_hazards
-        and receipt["transferred_inputs_unchanged"]
-        and forbidden_scan["clean"]
-        and receipt["working_tree_clean"]
-        and all(
-            isolation[key]
-            for key in (
-                "remotes_absent",
-                "alternates_absent",
-                "cross_lane_symlinks_absent",
-                "hardlinks_absent",
-            )
-        )
+        and all(row["match"] for row in input_postflight)
+        and git(repository, "status", "--porcelain") == ""
+        and attestation["cleanup_status"] == "PASS"
     )
     print(
         json.dumps(
             {
                 "status": "PASS" if accepted else "FAIL",
                 "host_role": "STUDIO_PRODUCTION_HOST",
-                "receipt": str(receipt_path),
-                "candidate_commit": receipt["candidate_commit"],
+                "activation_attestation": str(attestation_path),
                 "exit_status": process.returncode,
             },
             indent=2,

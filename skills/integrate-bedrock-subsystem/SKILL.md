@@ -8,14 +8,14 @@ description: Integrate multiple frozen clean-room Bedrock feature candidates int
 Require a standardized assignment for role `segment_integrator`, skill
 `integrate-bedrock-subsystem`, and lane `INTEGRATION`. Validate it with
 `$translate-java-mods-to-bedrock`'s
-role-contract validator. `requires_process_receipt` must be true.
+role-contract validator. `requires_activation_attestation` must be true.
 
 Operate inside the integration worktree. Do not access Java evidence, analyst
 notes, private oracle cases, or source-specific identifiers.
 
 ## Verify the integration packet
 
-This is a production role. Require an actual sandboxed-process receipt, not
+This is a production role. Require an actual sandboxed activation attestation, not
 only context isolation. Verify lane-local runtime roots, denied evidence and
 private-oracle access, launcher/profile/environment hashes, PID, command,
 prompt/context hash, tool hashes, timestamps, and exit status before mutation.

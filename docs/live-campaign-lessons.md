@@ -103,12 +103,12 @@ private evidence into logs.
 | SQLite jobs, leases, events, receipts, and recovery | `BUNDLED_HERE` | Available after local initialization and rehearsal. |
 | Independent Git mailbox and immutable candidate generations | `BUNDLED_HERE` | Durable authority; runtime projections remain diagnostic. |
 | Hash-bound dispatch and adaptive role-pool scaling | `BUNDLED_HERE` | Duplicate delivery and service caps are mechanically represented. |
-| macOS deny-by-default production launcher and process receipt | `BUNDLED_HERE` | Use only with explicit roots and denied-path probes. |
+| macOS deny-by-default production launcher and activation attestation | `BUNDLED_HERE` | Reuse a separately qualified platform; activations record only bounded identity, exit, and cleanup fields. |
 | Candidate-only and instrumented observation role contracts | `BUNDLED_HERE` | Evidence semantics are documented; external clients and servers are not bundled. |
 | Standing campaign launch-authority validator | `BUNDLED_HERE` | Exact campaign, source, rights, security-model, platform-receipt, candidate, and activation bindings fail closed. |
 | Typed candidate, activation, gate-run, repair, and integration identities | `BUNDLED_HERE` | `C#`, `A#`, `T1-R#`, `BDS-R#`, `OBS-R#`, `T10-R#`, `RA#`, and `I#` remain distinct. |
 | Canonical chained lifecycle events and rebuildable SQLite projection | `BUNDLED_HERE` | Projection verification rebuilds from zero and fails on drift. |
-| Producer-side public T1 shadow and queue-aware qualification funnel | `BUNDLED_HERE` | Independent T1 remains the admission authority. |
+| Two milestone validation model | `BUNDLED_HERE` | Broad checks run only at `PRE_BDS_MILESTONE` and `FINAL_MOD_MILESTONE`. |
 | Exact MCTools structured-summary parser | `BUNDLED_HERE` | Ambiguous, malformed, missing, nonzero, or unbound results fail closed. |
 | Content-addressed evidence objects and lifecycle metrics | `BUNDLED_HERE` | Portable receipts use hashes and logical paths. |
 | Exact BDS channel adapter and hardened runtime authority | `STUDIO_PROVEN_PORT_PENDING` | BDS/Docker binaries and the newer adapter implementation are not in this branch. |

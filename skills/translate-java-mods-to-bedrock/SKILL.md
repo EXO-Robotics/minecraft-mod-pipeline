@@ -42,13 +42,12 @@ facts in assignments and repositories, never in this skill.
 4. Select a coherent vertical slice and shared runtime interfaces. Prefer a
    small dependency closure over feature count.
 5. Launch actual authoring and every repair through the frozen clean-room
-   process boundary. Require negative-access proof and a process receipt.
-6. Run worker-local state-machine, deterministic-build, archive, contamination,
-   reachability, persistence, multiplayer, and cleanup checks applicable to the
-   slice.
-7. Freeze exact candidate bytes. Run T1, exact-package BDS baseline,
-   instrumented/protocol observation when required, and independent T10 in
-   their proper lanes.
+   process boundary. Require reusable platform qualification and a minimal activation attestation.
+6. Author, build, and freeze exact candidate bytes without dispatching a broad
+   worker-local validation suite.
+7. Run one `PRE_BDS_MILESTONE` job immediately before first BDS. Run BDS and
+   implementation/integration work, then run one `FINAL_MOD_MILESTONE` job
+   containing observation, T10, persistence, lineage, and bundle checks.
 8. Route only proven product defects to one consolidated repair for generation
    `N+1`. Repair missing evidence or infrastructure without changing product
    generation.
@@ -104,7 +103,7 @@ repairing, qualifying, integrating, or reporting a campaign.
   `references/campaign-checkpoints.md`
 
 Read a reference only when its listed condition applies. Validate role packets,
-process receipts, candidates, and gate ledgers with the bundled scripts named by
+activation attestations, candidates, and milestone ledgers with the bundled scripts named by
 those references; do not replace mechanical validation with prose review.
 
 ## Report narrowly

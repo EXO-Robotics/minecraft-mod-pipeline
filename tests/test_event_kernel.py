@@ -13,7 +13,12 @@ sys.path.insert(0, str(ROOT / "src"))
 from bedrock_factory.eventlog import CanonicalEventLog, EventLogError, rebuild_projection, verify_projection
 from bedrock_factory.metrics import compute_metrics
 from bedrock_factory.objects import EvidenceObjectStore
-from bedrock_factory.qualification import may_reuse_gate_evidence, next_qualification_stage
+from bedrock_factory.qualification import (
+    FINAL_MOD_MILESTONE,
+    PRE_BDS_MILESTONE,
+    may_reuse_milestone_evidence,
+    next_validation_milestone,
+)
 
 
 H = "a" * 64
@@ -92,15 +97,34 @@ class EventKernelTests(unittest.TestCase):
         self.assertEqual(manifest["entry_count"], 1)
         self.assertNotIn(str(self.root), store.get(manifest).decode())
 
-    def test_qualification_reuse_requires_every_exact_binding(self) -> None:
-        previous = {"status": "PASS", **{field: H for field in (
-            "candidate_sha256", "gate_implementation_sha256", "runtime_image_sha256", "configuration_sha256", "probe_authority_sha256"
-        )}}
-        self.assertTrue(may_reuse_gate_evidence(previous, dict(previous)))
-        changed = dict(previous, runtime_image_sha256="b" * 64)
-        self.assertFalse(may_reuse_gate_evidence(previous, changed))
-        self.assertEqual(next_qualification_stage({}, preview_required=False), "PRODUCER_T1_SHADOW")
-        self.assertIsNone(next_qualification_stage({"PRODUCER_T1_SHADOW": "FAIL"}, preview_required=False))
+    def test_milestone_reuse_requires_every_exact_binding(self) -> None:
+        previous = {
+            "status": "PASS",
+            "milestone": PRE_BDS_MILESTONE,
+            **{field: H for field in (
+                "candidate_sha256",
+                "pre_bds_validator_sha256",
+                "configuration_sha256",
+                "package_authority_sha256",
+            )},
+        }
+        self.assertTrue(
+            may_reuse_milestone_evidence(
+                previous, dict(previous), milestone=PRE_BDS_MILESTONE
+            )
+        )
+        changed = dict(previous, candidate_sha256="b" * 64)
+        self.assertFalse(
+            may_reuse_milestone_evidence(
+                previous, changed, milestone=PRE_BDS_MILESTONE
+            )
+        )
+        self.assertEqual(next_validation_milestone({}), PRE_BDS_MILESTONE)
+        self.assertEqual(
+            next_validation_milestone({PRE_BDS_MILESTONE: "PASS"}),
+            FINAL_MOD_MILESTONE,
+        )
+        self.assertIsNone(next_validation_milestone({PRE_BDS_MILESTONE: "FAIL"}))
 
 
 if __name__ == "__main__":

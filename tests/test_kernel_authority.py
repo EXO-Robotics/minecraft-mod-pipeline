@@ -23,7 +23,7 @@ from bedrock_factory.platform_authority import (
     document_sha256,
     resolve_standing_launch_authority,
 )
-from bedrock_factory.shadow_admission import inspect_mcaddon
+from bedrock_factory.pre_bds_validation import inspect_mcaddon
 
 
 H = "a" * 64
@@ -36,8 +36,8 @@ def platform_receipt() -> dict:
         "status": "PASS",
         "components": {name: H for name in sorted(REQUIRED_PLATFORM_COMPONENTS)},
         "canary_steps": {name: "PASS" for name in sorted(REQUIRED_CANARY_STEPS)},
-        "process_receipt_sha256": H,
-        "cleanup_receipt_sha256": H,
+        "activation_attestation_sha256": H,
+        "cleanup_policy_sha256": H,
     }
     receipt["canonical_payload_sha256"] = document_sha256(receipt)
     return receipt
@@ -122,7 +122,7 @@ class KernelAuthorityTests(unittest.TestCase):
         with self.assertRaises(IdentityError):
             LifecycleIdentity("A5", "A25", "PRODUCT_CANDIDATE").validate()
 
-    def test_shadow_admission_catches_icons_symlinks_and_entrypoints(self) -> None:
+    def test_pre_bds_milestone_catches_icons_symlinks_and_entrypoints(self) -> None:
         with tempfile.TemporaryDirectory() as temporary:
             archive = Path(temporary) / "fixture.mcaddon"
             manifest = {
@@ -136,8 +136,7 @@ class KernelAuthorityTests(unittest.TestCase):
                 symlink.external_attr = (stat.S_IFLNK | 0o777) << 16
                 bundle.writestr(symlink, "elsewhere")
             result = inspect_mcaddon(archive)
-            self.assertEqual(result["authority"], "NON_AUTHORITATIVE_PRODUCER_SHADOW")
-            self.assertTrue(result["independent_t1_still_required"])
+            self.assertEqual(result["milestone"], "PRE_BDS_MILESTONE")
             self.assertEqual(
                 {finding["code"] for finding in result["findings"]},
                 {"FORBIDDEN_SPECIAL_FILE", "PACK_ICON_MISSING", "SCRIPT_ENTRYPOINT_MISSING"},

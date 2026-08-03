@@ -1,16 +1,23 @@
 ---
 name: audit-bedrock-factory-pack
-description: Perform an independent post-freeze audit of one exact Bedrock factory candidate or frozen portfolio. Use for T10/private semantic review, shipped-gameplay inspection, originality and lineage checks, hidden-case evaluation, or audit findings that must remain separated from production and candidate mutation.
+description: Own the FINAL_MOD_MILESTONE for one exact final Bedrock candidate or frozen portfolio. Use only immediately before the mod is classified complete, never as a repeating per-slice or per-activation validation job.
 ---
 
-# Audit one Bedrock factory pack
+# Validate the final-mod milestone
+
+Run broad final validation exactly once immediately before completion, unless
+one of its bound hashes changed or the prior receipt is missing/invalid. It
+consolidates final-package binding, required BDS receipts, calibrated
+observation, independent T10, integration/persistence, lineage/originality,
+claim boundaries, and final bundle-manifest coverage.
 
 Use `$audit-bedrock-shipped-gameplay` for an exact `.mcaddon` and
 `$audit-bedrock-portfolio-freeze` for a frozen multi-pack portfolio. Bind the
 candidate generation, artifact hashes, production authority, and audit input
 authority before evaluation.
 
-Remain independent: do not edit candidate bytes, production repositories,
+If final candidate bytes and all final-milestone authority hashes are unchanged,
+reuse the PASS rather than dispatching another auditor. Remain independent: do not edit candidate bytes, production repositories,
 contracts, mailbox history, or worker tasks. Do not reveal private oracle cases
 to production. Report findings through opaque requirement/finding IDs with
 reproducible evidence and a clear proof boundary.

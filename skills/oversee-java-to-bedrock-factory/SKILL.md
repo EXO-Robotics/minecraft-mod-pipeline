@@ -34,11 +34,12 @@ another checkout or machine.
    candidate, message, repair, and dispatch frontier.
 4. Spawn only bounded, role-specific subagents for ready work. Give every agent
    one role, one assignment, one writable scope, and one completion condition.
-5. Route production to `$work-bedrock-factory-pack`, mechanical/BDS testing to
-   `$test-bedrock-factory-pack`, instrumented/protocol evidence collection to
-   `$observe-bedrock-factory-pack`, private post-freeze review to
-   `$audit-bedrock-factory-pack`, and T2/integration to
-   `$integrate-bedrock-factory-pack`.
+5. Route production to `$work-bedrock-factory-pack`. Dispatch
+   `$test-bedrock-factory-pack` once at `PRE_BDS_MILESTONE`, immediately before
+   the first BDS run. Dispatch `$audit-bedrock-factory-pack` once at
+   `FINAL_MOD_MILESTONE`, immediately before completion; observation, T10,
+   T2/integration, persistence, lineage, and bundle specialists operate inside
+   that single milestone packet and do not become separate queue jobs.
 6. Reconcile results through committed repository/mailbox state. Do not rely on
    chat prose as durable authority.
 7. Continue the loop until every pack is accepted, waiting on its proper
@@ -47,8 +48,8 @@ another checkout or machine.
 Default concurrency is two task-maker workers, two production workers, one
 integration worker, two qualification workers, and one audit worker. These are
 starting capacities, not a fixed worker-auditor-tester ratio.
-Count observation collectors in `tester_workers`; reserve `audit_workers` for
-independent T10/private semantic disposition.
+Count the pre-BDS milestone and BDS runtime in `tester_workers`; reserve
+`audit_workers` for the single final-mod milestone packet.
 
 ## Adapt capacity on every heartbeat
 
@@ -129,8 +130,8 @@ release expansion.
 
 Report concise progress while work runs. Surface pack, generation, current
 owner, last durable result, next action, and any structured block. Never ask a
-production worker to obtain T1, BDS, T10, T2, integration, client, Realms,
-controller, split-screen, PS4, or release PASS.
+production worker to obtain milestone, BDS, client, Realms, controller,
+split-screen, PS4, or release PASS.
 
 Prefer bounded vertical slices that can traverse all applicable gates. Report
 candidate admitted, slice qualified, integrated, client-qualified,

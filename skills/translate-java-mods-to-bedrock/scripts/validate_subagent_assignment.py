@@ -40,15 +40,15 @@ REQUIRED = {
     "stop_states",
     "completion_state",
     "gate_authority",
-    "requires_process_receipt",
+    "requires_activation_attestation",
 }
 HEX64 = re.compile(r"^[0-9a-f]{64}$")
 PRODUCTION_ROLES = {"feature_producer", "visual_producer", "segment_integrator"}
-PRODUCTION_PROCESS_REQUIRED = {
+PRODUCTION_ACTIVATION_REQUIRED = {
     "sandbox_profile_sha256",
-    "environment_manifest_sha256",
     "launcher_sha256",
-    "process_receipt_path",
+    "platform_qualification_sha256",
+    "activation_attestation_path",
     "lane_home",
     "lane_tmp",
     "lane_cache",
@@ -188,14 +188,14 @@ def main() -> int:
                     findings.append({"code": "INPUT_HASH_MISMATCH", "detail": path_text})
 
     if role in PRODUCTION_ROLES:
-        process_missing = sorted(PRODUCTION_PROCESS_REQUIRED - set(packet))
-        if process_missing:
-            findings.append({"code": "PROCESS_FIELDS_MISSING", "detail": ", ".join(process_missing)})
-        for field in ("sandbox_profile_sha256", "environment_manifest_sha256", "launcher_sha256"):
+        activation_missing = sorted(PRODUCTION_ACTIVATION_REQUIRED - set(packet))
+        if activation_missing:
+            findings.append({"code": "ACTIVATION_FIELDS_MISSING", "detail": ", ".join(activation_missing)})
+        for field in ("sandbox_profile_sha256", "launcher_sha256", "platform_qualification_sha256"):
             value = packet.get(field)
             if value is not None and (not isinstance(value, str) or not HEX64.fullmatch(value)):
                 findings.append({"code": "PROCESS_HASH_INVALID", "detail": field})
-        for field in ("process_receipt_path", "lane_home", "lane_tmp", "lane_cache", "lane_logs"):
+        for field in ("activation_attestation_path", "lane_home", "lane_tmp", "lane_cache", "lane_logs"):
             value = packet.get(field)
             path = Path(value) if isinstance(value, str) else Path("")
             if not path.is_absolute():
@@ -203,9 +203,9 @@ def main() -> int:
             elif lane_root.is_absolute() and not is_within(path, lane_root):
                 findings.append({"code": "PROCESS_PATH_ESCAPES_LANE", "detail": f"{field}: {value}"})
         if packet.get("repair_of") is not None:
-            parent = packet.get("parent_process_receipt_sha256")
+            parent = packet.get("parent_activation_attestation_sha256")
             if not isinstance(parent, str) or not HEX64.fullmatch(parent):
-                findings.append({"code": "REPAIR_PARENT_RECEIPT_INVALID", "detail": "parent_process_receipt_sha256"})
+                findings.append({"code": "REPAIR_PARENT_ATTESTATION_INVALID", "detail": "parent_activation_attestation_sha256"})
         lowered = raw.decode("utf-8", errors="replace").lower()
         for needle in PRODUCTION_FORBIDDEN_TEXT:
             if needle in lowered:

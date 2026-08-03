@@ -41,7 +41,7 @@ def adjudicate_candidate_outcome(
             "rejected_candidates": [],
             "predecessor_preserved": True,
             "automatic_next_candidate": False,
-            "rerun_scope": ["HOST_BINDING", "PROCESS_RECEIPT"],
+            "rerun_scope": ["HOST_BINDING", "ACTIVATION_ATTESTATION"],
             "product_defect": False,
         }
     if disposition not in CANDIDATE_DISPOSITIONS:

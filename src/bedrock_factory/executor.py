@@ -6,7 +6,6 @@ import os
 import signal
 import shutil
 import subprocess
-import tempfile
 import time
 import uuid
 from pathlib import Path
@@ -231,9 +230,9 @@ class JobExecutor:
                 raise ExecutionError(
                     "production and integration commands require a hash-bound sandbox profile"
                 )
-            if payload.get("process_receipt_required") is not True:
+            if payload.get("activation_attestation_required") is not True:
                 raise ExecutionError(
-                    "production and integration commands require a validated process receipt"
+                    "production and integration commands require a minimal activation attestation"
                 )
         argv = payload.get("argv")
         if (
@@ -317,10 +316,8 @@ class JobExecutor:
             raise ExecutionError(f"command exited with status {exit_code}")
         outputs = self._verify_outputs(payload, heartbeat)
         receipt["output_artifacts"] = outputs
-        process_receipt_record = self._validate_process_receipt(
+        activation_attestation_record = self._record_activation_attestation(
             payload,
-            cwd=cwd,
-            environment=environment,
             receipt=receipt,
             heartbeat=heartbeat,
         )
@@ -329,75 +326,54 @@ class JobExecutor:
             "stdout_path": str(stdout_path),
             "stderr_path": str(stderr_path),
             "output_artifacts": outputs,
-            "process_receipt": process_receipt_record,
+            "activation_attestation": activation_attestation_record,
         }
 
     @staticmethod
-    def _validate_process_receipt(
+    def _record_activation_attestation(
         payload: dict[str, Any],
         *,
-        cwd: Path,
-        environment: dict[str, str],
         receipt: dict[str, Any],
         heartbeat: Callable[[], None],
     ) -> dict[str, Any] | None:
-        required = payload.get("process_receipt_required", False)
-        specification = payload.get("process_receipt")
+        required = payload.get("activation_attestation_required", False)
+        specification = payload.get("activation_attestation")
         if not required and specification is None:
             return None
         if not isinstance(specification, dict):
-            raise ExecutionError("process receipt specification is required")
+            raise ExecutionError("activation attestation specification is required")
         path = Path(specification["path"]).expanduser().resolve()
         _check_path_policy(
             path,
             payload.get("allowed_write_roots"),
-            "process receipt",
+            "activation attestation",
         )
+        if path.stat().st_size > 8192:
+            raise ExecutionError("activation attestation exceeds 8192 bytes")
         record = artifact_record(path, heartbeat)
-        validator_argv = specification.get("validator_argv")
-        if (
-            not isinstance(validator_argv, list)
-            or not validator_argv
-            or not all(isinstance(part, str) and part for part in validator_argv)
-        ):
-            raise ExecutionError("process receipt validator_argv is invalid")
-        timeout = float(specification.get("validator_timeout_seconds", 60))
-        with tempfile.TemporaryFile() as stdout, tempfile.TemporaryFile() as stderr:
-            process = subprocess.Popen(
-                validator_argv,
-                cwd=cwd,
-                env=environment,
-                stdin=subprocess.DEVNULL,
-                stdout=stdout,
-                stderr=stderr,
-                start_new_session=True,
-            )
-            deadline = time.monotonic() + timeout
-            while process.poll() is None:
-                if time.monotonic() >= deadline:
-                    JobExecutor._terminate_process_group(process)
-                    raise ExecutionError(
-                        f"process receipt validator timed out after {timeout} seconds"
-                    )
-                heartbeat()
-                time.sleep(0.2)
-            stdout.seek(0)
-            stderr.seek(0)
-            stdout_bytes = stdout.read()
-            stderr_bytes = stderr.read()
-        receipt["process_receipt_validation"] = {
-            "artifact": record,
-            "validator_argv": validator_argv,
-            "exit_code": process.returncode,
-            "stdout_sha256": hashlib.sha256(stdout_bytes).hexdigest(),
-            "stderr_sha256": hashlib.sha256(stderr_bytes).hexdigest(),
-            "stdout_bytes": len(stdout_bytes),
-            "stderr_bytes": len(stderr_bytes),
+        try:
+            document = json.loads(path.read_text(encoding="utf-8"))
+        except (OSError, UnicodeDecodeError, json.JSONDecodeError) as exc:
+            raise ExecutionError("activation attestation must be valid JSON") from exc
+        required_fields = {
+            "schema_version",
+            "activation_id",
+            "assignment_sha256",
+            "platform_qualification_sha256",
+            "repository_ref",
+            "exit_code",
+            "cleanup_status",
         }
-        if process.returncode != 0:
-            raise ExecutionError(
-                f"process receipt validator exited with status {process.returncode}"
-            )
+        allowed_fields = required_fields | {"candidate_id", "candidate_sha256", "stop_code"}
+        if set(document) - allowed_fields or not required_fields.issubset(document):
+            raise ExecutionError("activation attestation fields are not minimal v1")
+        if document.get("schema_version") != "bedrock-factory.activation-attestation.v1.0.0":
+            raise ExecutionError("activation attestation schema rejected")
+        if not isinstance(document.get("exit_code"), int):
+            raise ExecutionError("activation attestation exit_code is invalid")
+        if document.get("cleanup_status") not in {"PASS", "FAIL"}:
+            raise ExecutionError("activation attestation cleanup_status is invalid")
+        receipt["activation_attestation_recorded"] = record
         return record
 
     @staticmethod

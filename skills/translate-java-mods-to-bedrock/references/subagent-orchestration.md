@@ -78,7 +78,7 @@ Include:
   "stop_states": [],
   "completion_state": "EXPECTED_STATE",
   "gate_authority": ["EVIDENCE_RECORDED"],
-  "requires_process_receipt": false
+  "requires_activation_attestation": false
 }
 ```
 
@@ -109,7 +109,7 @@ or evidence paths in producer or integrator packets.
 
 Every production-role packet must also bind the sandbox profile, environment
 manifest, launcher hashes, lane-local `HOME`, `TMPDIR`, cache/log/index/build
-roots, network policy, negative-access expectations, and process-receipt output.
+roots, network policy, platform qualification, and activation-attestation output.
 Repair packets also bind the superseded candidate and parent receipt hash.
 
 ## Dispatch rules
@@ -119,7 +119,7 @@ Repair packets also bind the superseded candidate and parent receipt hash.
 3. Validate allowed and prohibited paths from the agent's actual execution
    context.
 4. Launch the actual production process through the recorded sandbox executor.
-   A clean prompt without a process receipt is not isolation proof.
+   A clean prompt without platform qualification and an activation attestation is not isolation proof.
 5. Give only the role skill and packet path; avoid retelling the full campaign.
 6. Require the agent to restate its verified lane, inputs, output boundary, and
    stop conditions before mutation.

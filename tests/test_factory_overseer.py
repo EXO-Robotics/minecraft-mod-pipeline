@@ -78,6 +78,18 @@ class FactoryOverseerTests(unittest.TestCase):
         self.assertEqual(first, second)
         self.assertEqual(len(first["intake"]["units"]), 1)
         self.assertEqual(len(first["tasks"]), 6)
+        by_action = {task["action"]: task for task in first["tasks"]}
+        producer = by_action["AUTHOR_FREEZE_AND_SUBMIT_ONE_IMMUTABLE_CANDIDATE"]
+        self.assertNotIn("worker_local_validation", producer)
+        self.assertEqual(producer["validation_jobs"], "NONE_UNTIL_PRE_BDS_MILESTONE")
+        self.assertEqual(
+            by_action["VALIDATE_FINAL_MOD_MILESTONE"]["depends_on"],
+            [by_action["RUN_EXACT_PACKAGE_STABLE_BDS"]["task_id"]],
+        )
+        self.assertEqual(
+            first["validation_policy"]["milestones"],
+            ["PRE_BDS_MILESTONE", "FINAL_MOD_MILESTONE"],
+        )
         self.assertEqual(first["intake"]["units"][0]["unit_kind"], "MOD_ARCHIVE")
         self.assertFalse(first["intake"]["execution"]["archive_content_executed"])
         self.assertFalse(output.exists())

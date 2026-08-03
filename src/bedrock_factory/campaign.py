@@ -18,6 +18,9 @@ JAVA_TO_BEDROCK_STAGES = (
     "INVENTORY_COMPLETE",
     "CLEAN_ROOM_CONTRACTED",
     "PRODUCTION_ACTIVE",
+    "PRE_BDS_MILESTONE",
+    "STABLE_BDS",
+    "FINAL_MOD_MILESTONE",
     "STATIC_QUALIFIED",
     "GOLDEN_QUALIFIED",
     "INTEGRATED",
@@ -83,7 +86,7 @@ def validate_campaign_definition(definition: dict[str, Any]) -> None:
         if job["lane"] in {"PRODUCTION", "INTEGRATION"} and job["kind"] == "command":
             payload = job.get("payload", {})
             sandbox_profile = payload.get("sandbox_profile")
-            process_receipt = payload.get("process_receipt")
+            activation_attestation = payload.get("activation_attestation")
             fixed_profile = (
                 isinstance(sandbox_profile, dict)
                 and isinstance(sandbox_profile.get("path"), str)
@@ -105,20 +108,14 @@ def validate_campaign_definition(definition: dict[str, Any]) -> None:
                 "profile or Studio launcher",
             )
             _require(
-                payload.get("process_receipt_required") is True,
-                f"{prefix} production commands require process_receipt_required=true",
+                payload.get("activation_attestation_required") is True,
+                f"{prefix} production commands require activation_attestation_required=true",
             )
             _require(
-                isinstance(process_receipt, dict)
-                and isinstance(process_receipt.get("path"), str)
-                and Path(process_receipt["path"]).is_absolute()
-                and isinstance(process_receipt.get("validator_argv"), list)
-                and bool(process_receipt["validator_argv"])
-                and all(
-                    isinstance(part, str) and part
-                    for part in process_receipt["validator_argv"]
-                ),
-                f"{prefix} production commands require a receipt path and validator_argv",
+                isinstance(activation_attestation, dict)
+                and isinstance(activation_attestation.get("path"), str)
+                and Path(activation_attestation["path"]).is_absolute(),
+                f"{prefix} production commands require an activation-attestation path",
             )
     for index, job in enumerate(jobs):
         dependencies = job.get("depends_on", [])

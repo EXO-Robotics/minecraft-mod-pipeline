@@ -8,7 +8,7 @@ description: Independently implement an original Bedrock feature or bounded feat
 Require a standardized assignment for role `feature_producer`, skill
 `produce-bedrock-cleanroom-feature`, and lane `PRODUCTION`. Validate it with
 `$translate-java-mods-to-bedrock`'s role-contract validator.
-`requires_process_receipt` must be true.
+`requires_activation_attestation` must be true.
 
 Operate only inside the assigned production worktree. The sanitized contract and
 production oracle interface are the sole semantic authority.
@@ -20,7 +20,7 @@ recorded sandbox executor. Verify lane-local `HOME`, `TMPDIR`, caches, logs, and
 indexes; absent remotes/alternates; denied evidence, control, private oracle,
 and canary; and the approved network policy. Record PID, command,
 prompt/context hash, tool hashes, timestamps, exit status, and input hashes.
-Stop with `CLEANROOM_BOUNDARY_FAILED` when that process receipt is missing.
+Stop with `CLEANROOM_BOUNDARY_FAILED` when that activation attestation is missing.
 
 1. Validate the assignment packet and exact input hashes.
 2. Verify the baseline commit, branch, worktree, remotes, and Git alternates.

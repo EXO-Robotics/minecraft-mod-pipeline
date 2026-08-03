@@ -103,6 +103,10 @@
           "/CHANGE_ME/control/production-prompt.txt",
           "--worker-command",
           "/CHANGE_ME/control/studio-worker-command.json",
+          "--platform-qualification",
+          "/CHANGE_ME/control/platform-qualification.json",
+          "--platform-qualification-sha256",
+          "0000000000000000000000000000000000000000000000000000000000000000",
           "--base-repo",
           "/CHANGE_ME/studio-baseline",
           "--deny",
@@ -129,27 +133,22 @@
           "launcher_path": "/CHANGE_ME/compiler/tools/production_sandbox/studio_launcher.py",
           "launcher_sha256": "0000000000000000000000000000000000000000000000000000000000000000"
         },
-        "process_receipt_required": true,
-        "process_receipt": {
-          "path": "/CHANGE_ME/production/runs/replace-me-001/runtime/process-receipt.json",
-          "validator_argv": [
-            "/CHANGE_ME/compiler/.venv/bin/python",
-            "/CHANGE_ME/compiler/skills/translate-java-mods-to-bedrock/scripts/validate_production_process_receipt.py",
-            "/CHANGE_ME/production/runs/replace-me-001/runtime/process-receipt.json"
-          ]
+        "activation_attestation_required": true,
+        "activation_attestation": {
+          "path": "/CHANGE_ME/production/runs/replace-me-001/runtime/activation-attestation.json"
         },
         "expected_outputs": [
           {
-            "path": "/CHANGE_ME/production/runs/replace-me-001/runtime/process-receipt.json"
+            "path": "/CHANGE_ME/production/runs/replace-me-001/runtime/activation-attestation.json"
           }
         ]
       }
     },
     {
-      "id": "static-qualification",
-      "name": "Run static validation against the frozen Bedrock candidate",
-      "stage": "STATIC_QUALIFIED",
-      "lane": "AUDIT",
+      "id": "pre-bds-milestone",
+      "name": "Run the consolidated pre-BDS validation milestone once",
+      "stage": "PRE_BDS_MILESTONE",
+      "lane": "QUALIFICATION",
       "kind": "command",
       "depends_on": [
         "produce-bedrock"
@@ -157,13 +156,57 @@
       "max_attempts": 1,
       "payload": {
         "argv": [
-          "/CHANGE_ME/compiler/.venv/bin/mccompiler",
-          "validate",
-          "--path",
+          "/CHANGE_ME/control/run-pre-bds-milestone",
           "/CHANGE_ME/production/frozen-candidate"
         ],
         "cwd": "/CHANGE_ME/compiler",
         "timeout_seconds": 1800,
+        "allowed_read_roots": [
+          "/CHANGE_ME/compiler",
+          "/CHANGE_ME/production/frozen-candidate"
+        ]
+      }
+    },
+    {
+      "id": "stable-bds",
+      "name": "Run the exact package in Stable BDS",
+      "stage": "STABLE_BDS",
+      "lane": "QUALIFICATION",
+      "kind": "command",
+      "depends_on": [
+        "pre-bds-milestone"
+      ],
+      "max_attempts": 1,
+      "payload": {
+        "argv": [
+          "/CHANGE_ME/control/run-exact-package-bds",
+          "/CHANGE_ME/production/frozen-candidate"
+        ],
+        "cwd": "/CHANGE_ME/compiler",
+        "timeout_seconds": 3600,
+        "allowed_read_roots": [
+          "/CHANGE_ME/compiler",
+          "/CHANGE_ME/production/frozen-candidate"
+        ]
+      }
+    },
+    {
+      "id": "final-mod-milestone",
+      "name": "Run the consolidated final-mod validation milestone once",
+      "stage": "FINAL_MOD_MILESTONE",
+      "lane": "AUDIT",
+      "kind": "command",
+      "depends_on": [
+        "stable-bds"
+      ],
+      "max_attempts": 1,
+      "payload": {
+        "argv": [
+          "/CHANGE_ME/control/run-final-mod-milestone",
+          "/CHANGE_ME/production/frozen-candidate"
+        ],
+        "cwd": "/CHANGE_ME/compiler",
+        "timeout_seconds": 3600,
         "allowed_read_roots": [
           "/CHANGE_ME/compiler",
           "/CHANGE_ME/production/frozen-candidate"
@@ -177,7 +220,7 @@
       "lane": "CONTROL",
       "kind": "manual_gate",
       "depends_on": [
-        "static-qualification"
+        "final-mod-milestone"
       ],
       "payload": {}
     }
