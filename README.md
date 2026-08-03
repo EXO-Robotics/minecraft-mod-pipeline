@@ -132,7 +132,8 @@ After the user supplies authority and a source path, the overseer starts with:
 
 Read [the AI skill and sub-agent operating guide](JAVA_BEDROCK_CODEX_SKILLS.md)
 before starting a campaign on a machine that has not operated this factory.
-Then see [the overseer runbook](docs/factory-overseer.md) and
+Then see [the overseer runbook](docs/factory-overseer.md), the
+[live campaign lessons and portability inventory](docs/live-campaign-lessons.md), and
 [the queue/orchestration reference](docs/orchestration.md) for role ownership,
 dispatch, recovery, and scaling commands.
 

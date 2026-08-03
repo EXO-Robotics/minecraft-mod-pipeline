@@ -31,6 +31,9 @@ The complete AI and sub-agent handoff is documented in
 [`JAVA_BEDROCK_CODEX_SKILLS.md`](../JAVA_BEDROCK_CODEX_SKILLS.md). A fresh
 machine should read that catalog before installing skills or activating a
 campaign.
+The [live campaign lessons](live-campaign-lessons.md) distinguish mechanisms
+bundled in this distribution from newer Studio-proven behavior that still
+requires a portable implementation.
 
 This distribution does not import another factory's task IDs, absolute paths,
 mailbox history, production repositories, compatibility exceptions, Docker
@@ -158,10 +161,13 @@ After planning, the overseer performs the routine loop:
    calibrated GameTest, observer, or protocol-player collection through
    `observe-bedrock-factory-pack` before T10 whenever the contract requires
    gameplay evidence.
-6. Consolidate product failures into one repair authority bound to rejected
-   generation `N`; reactivate the same pack owner for exactly `N+1`.
-7. Preserve every failed generation and every append-only message.
-8. Reconstruct after interruption from committed repositories, mailbox state,
+6. Route evidence-only work as `CONTINUE_NONTERMINAL` and host-only recovery as
+   `RECOVERY_AFTER_INTERRUPTION`; both use a new activation ordinal while
+   preserving candidate generation and bytes.
+7. Consolidate product failures into one `REPAIR_REQUIRED` authority bound to
+   rejected generation `N`; reactivate the same pack owner for exactly `N+1`.
+8. Preserve every failed activation, generation, and append-only message.
+9. Reconstruct after interruption from committed repositories, mailbox state,
    SQLite, and hash-bound outbox history.
 
 The overseer can inspect unsent task requests with:
@@ -209,6 +215,13 @@ stops for the user only when authority cannot be inferred safely:
 - publication authorization before anything leaves the private factory;
 - release/Marketplace authorization before final distribution.
 
+A standing campaign launch authority can suppress repeated routine questions
+only when a repository-owned validator binds the exact campaign, source,
+rights, private scope, security model, role, lane, roots, denied paths, and
+receipt policy to the activation. The validator is
+`STUDIO_PROVEN_PORT_PENDING`, not bundled in this branch. Until it is ported,
+obtain explicit current authority instead of inferring it from chat history.
+
 No candidate publication depends on downstream PASS. Publication here means
 submission of an immutable private candidate to the factory mailbox, not public
 release.
@@ -222,6 +235,12 @@ is done" are not valid stops. Accepted codes are enforced by
 repository or lease mismatch, missing sanitized contract, unavailable local
 toolchain, clean-room violation, impossible stable API, publication-integrity
 failure, ambiguous recovery state, and missing shared-runtime authority.
+
+Never give a sandboxed worker the host Docker socket. A privileged host action
+requires a controller-owned least-authority broker with allowlisted operations,
+exact path and hash bindings, cleanup, and a receipt. That broker is
+`REQUIRED_NOT_IMPLEMENTED`; if it is needed, stop as infrastructure-blocked
+before worker startup and do not create a product finding or candidate.
 
 ## Status and recovery
 

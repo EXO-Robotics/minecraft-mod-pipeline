@@ -21,6 +21,9 @@ JSON projections are diagnostic and may be stale.
    event.
 5. Allocate generations transactionally. First publication is generation 1;
    every replacement is exactly the latest generation plus one.
+   Track activation ordinals independently: evidence-only continuation and
+   host-only recovery create new activations without consuming a candidate
+   generation or changing product bytes.
 6. Keep candidate submission, admission, runtime qualification, bounded-slice
    qualification, integration, client/platform qualification, and release as
    distinct states. Explicit structured fields take precedence over a broad
@@ -49,6 +52,11 @@ candidate, and do not route unchanged bytes back to qualification.
 
 Bind each repair finding to the worker regression ID added in `N+1` and retain
 that link through the independent retest receipt.
+
+Route missing evidence through `CONTINUE_NONTERMINAL`, host or launcher recovery
+through `RECOVERY_AFTER_INTERRUPTION`, and material product defects through
+`REPAIR_REQUIRED`. Preserve infrastructure-blocked predecessors as distinct
+durable events and never relabel them as product failures.
 
 Return a machine-readable frontier: current generation, authoritative message,
 candidate hash, active owner, pending dispatches, downstream results, repairs,

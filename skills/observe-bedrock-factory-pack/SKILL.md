@@ -41,6 +41,11 @@ reconnect, inventory observation, and player/world scope; they do not prove
 authenticated XUID, Xbox persistence, Realms, retail UI, controller,
 split-screen, rendering, audio, or physical PS4.
 
+Keep the candidate-only baseline and every instrumented overlay as separate
+receipted executions. An instrumentation-only success cannot erase or relabel
+an earlier infrastructure-blocked activation, and overlay packs never become
+candidate bytes.
+
 Return `OBSERVATIONS_READY_FOR_T10`, `ORACLE_INSUFFICIENT`, `CLIENT_REQUIRED`,
 `INCONCLUSIVE`, or `INFRASTRUCTURE_BLOCKED` with exact evidence hashes. Never
 turn collector inability or infrastructure failure into a product defect.

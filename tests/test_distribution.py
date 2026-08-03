@@ -49,6 +49,19 @@ class PortableDistributionTests(unittest.TestCase):
         for schema in (ROOT / "schemas" / "mailbox").glob("*.json"):
             self.assertIn("bedrock-ai-factory.local", schema.read_text(encoding="utf-8"))
 
+    def test_live_lessons_label_portability_status(self) -> None:
+        lessons = (ROOT / "docs" / "live-campaign-lessons.md").read_text(
+            encoding="utf-8"
+        )
+        for status in (
+            "BUNDLED_HERE",
+            "STUDIO_PROVEN_PORT_PENDING",
+            "REQUIRED_NOT_IMPLEMENTED",
+        ):
+            self.assertIn(status, lessons)
+        self.assertIn("host Docker socket", lessons)
+        self.assertIn("activation ordinals", lessons)
+
 
 if __name__ == "__main__":
     unittest.main()

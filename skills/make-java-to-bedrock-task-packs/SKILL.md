@@ -35,6 +35,15 @@ content during intake, create production output, or grant missing authority.
 7. Dispatch only dependency-ready work. A missing trigger produces structured
    `NO_SPAWN`; it does not justify inventing authority.
 
+Record activation ordinal separately from candidate generation. Every launch,
+continuation, repair, or recovery gets a distinct activation identity, while
+only a material product-byte change consumes generation `N+1`.
+
+A standing campaign authority may bind routine activations only when a
+repository-owned validator proves the campaign, source, rights basis, private
+scope, security model, lane, role, roots, denials, and receipt policy are
+unchanged. If that validator is absent, ask for explicit current authority.
+
 For a gameplay slice, declare applicable worker-local cases mechanically:
 first use, repeat or redundant use, invalid input, partial or malformed old
 state, migration, duplicate delivery, exact resource accounting, restart,
@@ -50,6 +59,9 @@ must rerun.
 Candidate publication requires worker-local validation and freeze, never a
 downstream PASS. A repair activation must bind one consolidated authoritative
 message, rejected generation `N`, and replacement generation `N+1`.
+`CONTINUE_NONTERMINAL` and host-only `RECOVERY_AFTER_INTERRUPTION` preserve the
+candidate generation and bytes unless a separate `REPAIR_REQUIRED` authority
+exists.
 
 Finish with plan path/hash, unit count, ready assignments, waiting dependencies,
 and structured blocks. Do not spawn workers from this role unless the overseer

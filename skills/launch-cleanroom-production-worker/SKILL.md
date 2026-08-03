@@ -25,6 +25,13 @@ Require:
 Do not start production from a clean prompt alone. Prove process and filesystem
 isolation.
 
+Never mount, expose, or proxy the host Docker socket into the worker boundary.
+That would let the worker ask the host daemon to mount paths outside its lane.
+Privileged host actions require a controller-owned least-authority broker that
+validates an allowlisted action, exact inputs and outputs, denied paths,
+cleanup, and a receipt. If no qualified broker exists, stop before worker
+startup as infrastructure-blocked; do not create a product finding or candidate.
+
 When the repository provides
 `translate-java-mods-to-bedrock/scripts/validate_role_contract.py`, validate
 the assignment and shared gate ledger before startup. A worker receipt cannot
@@ -69,6 +76,11 @@ artifact, or the worker can reach raw Java evidence.
 Bind the receipt to the validated role assignment hash. Do not accept a
 successful process launch as authority to pass a gate the assignment did not
 delegate.
+
+A standing campaign authority may satisfy routine launch authority only when a
+repository-owned validator binds its exact security model, lane, role, roots,
+denials, source scope, and receipt policy to this activation. If the validator
+is absent or any bound field changed, require explicit current authority.
 
 ## Repair workers
 

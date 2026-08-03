@@ -119,6 +119,14 @@ only for missing rights/operation authority, public publication authority, or
 release/Marketplace authority. Private immutable candidate submission is not
 public publication.
 
+A mechanically validated standing campaign authority may cover routine new,
+continuation, repair, recovery, and bounded T2 launches when every bound source,
+rights, private-scope, security, role, lane, root, denial, and receipt field is
+unchanged. If this checkout does not provide and pass that validator, obtain
+explicit current authority. Always ask again for a rights, source, security
+model, authenticated identity, Realms, retail client, console, publication, or
+release expansion.
+
 Report concise progress while work runs. Surface pack, generation, current
 owner, last durable result, next action, and any structured block. Never ask a
 production worker to obtain T1, BDS, T10, T2, integration, client, Realms,
@@ -137,6 +145,12 @@ worker. An assigned scaling directive stays bound until its exact packet leaves
 the actionable queue. Preserve rejected generation `N`; a material repair
 publishes exactly `N+1`. Never retry unchanged candidate bytes. Reopen only the
 repaired branch and its descendants.
+
+Treat activation ordinal separately from candidate generation. Evidence-only
+continuation and host-only recovery use new activations while preserving exact
+product bytes. Never expose the host Docker socket to a sandboxed worker. Until
+a controller-owned least-authority privileged-action broker exists, stop such
+work as infrastructure-blocked before worker startup.
 
 Do not claim the campaign is fully automated merely because a shadow rollout or
 synthetic rehearsal passed. Require live worker delivery and the named gate

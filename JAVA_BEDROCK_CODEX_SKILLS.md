@@ -1,6 +1,6 @@
 # Java-to-Bedrock AI factory skills
 
-Updated: 2026-08-01
+Updated: 2026-08-03
 
 This is the operating guide for an AI receiving the Bedrock AI Factory on a
 machine with no prior factory context. It explains what the skills do, how the
@@ -10,6 +10,9 @@ to recover without importing another machine's runtime state.
 The repository is a portable control plane. It does not contain a modpack,
 Java source, generated add-on, live campaign database, mailbox history,
 credentials, Docker image, or proof that any client or platform gate passed.
+Read [the live campaign lessons](docs/live-campaign-lessons.md) for the explicit
+boundary between mechanisms bundled here, mechanisms proven in Studio but not
+yet ported, and safety designs that remain unimplemented.
 
 ## The short version
 
@@ -166,6 +169,38 @@ actor capability does not authorize a product repair.
 
 Never retry unchanged candidate bytes to obtain a more favorable streak.
 
+## Activation ordinals, continuations, and repairs
+
+Candidate generation and worker activation are different counters. Every launch
+or reactivation has a new activation ordinal and receipt. A host-only recovery
+or evidence-only continuation can therefore use a new activation while keeping
+the exact candidate generation and product hash unchanged.
+
+- `CONTINUE_NONTERMINAL` finishes missing evidence or another authorized
+  non-product step and does not permit product edits.
+- `RECOVERY_AFTER_INTERRUPTION` repairs delivery, launcher, host, or credential
+  startup while preserving product bytes unless separate repair authority exists.
+- `REPAIR_REQUIRED` binds one consolidated product finding against generation
+  `N` and authorizes exactly one materially changed replacement `N+1`.
+
+Do not convert infrastructure failure, unavailable actors, or missing
+observation into a product repair. Preserve a blocked activation and a later
+instrumented or recovered activation as different durable events.
+
+## Standing campaign launch authority
+
+A mechanically validated standing campaign authority may cover routine new,
+continuation, repair, recovery, and bounded T2 activations while the frozen
+source, rights basis, private scope, security model, role, lane, roots, denied
+paths, and receipt policy remain unchanged. Ask the user again when rights,
+source scope, the security model, authenticated identity, Realms, retail client,
+console, publication, or release scope changes.
+
+The standing-authority contract is documented here, but its newer mechanical
+validator is `STUDIO_PROVEN_PORT_PENDING` and is not bundled in this branch.
+Until a repository-owned validator is ported and passes locally, do not infer
+standing authority from chat prose; obtain an explicit current authorization.
+
 ## Qualification does not all mean the same thing
 
 - Static/T1 checks prove package mechanics and declared local invariants.
@@ -174,7 +209,9 @@ Never retry unchanged candidate bytes to obtain a more favorable streak.
 - GameTest, Script Observer, direct hooks, and mutation harnesses prove only
   their calibrated paths.
 - Protocol clients can prove selected network-player delivery, reconnect, and
-  player/world scoping, but not authenticated retail behavior.
+  player/world scoping. Offline identities do not prove authenticated XUID,
+  Xbox persistence, Realms, retail UI, controller, split-screen, rendering,
+  audio, physical-console behavior, or authenticated retail behavior.
 - A retail client is still required for rendering, UI, audio, controller, and
   other client-owned claims.
 - Realms, split-screen, physical PS4, Marketplace, and release are separate
@@ -302,8 +339,10 @@ receipts. Spawn only ready, bounded, role-specific sub-agents. Keep Java
 evidence and the private oracle out of production. Route T1/BDS, gameplay
 observation, T10, integration, client, console, Marketplace, and release to
 their separate owners. Preserve failed generation N and authorize a material
-repair only as N+1. Keep all work private and local unless I separately approve
-publication or release.
+repair only as N+1. Treat activation ordinals separately from candidate
+generations. Never expose the host Docker socket to a sandboxed worker; stop
+until a controller-owned least-authority broker exists. Keep all work private
+and local unless I separately approve publication or release.
 ```
 
 ## Non-negotiable claims boundary
