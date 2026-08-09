@@ -1,0 +1,36 @@
+{
+  "format_version": "1.20.10",
+  "minecraft:recipe_shaped": {
+    "description": {
+      "identifier": "aionbound:ferrowake_coupling_recipe"
+    },
+    "tags": [
+      "crafting_table"
+    ],
+    "pattern": [
+      " I ",
+      "TCT",
+      " I "
+    ],
+    "key": {
+      "I": {
+        "item": "minecraft:iron_ingot"
+      },
+      "T": {
+        "item": "aionbound:tempered_ferrowake"
+      },
+      "C": {
+        "item": "minecraft:copper_ingot"
+      }
+    },
+    "result": {
+      "item": "aionbound:ferrowake_coupling",
+      "count": 1
+    },
+    "unlock": [
+      {
+        "item": "aionbound:tempered_ferrowake"
+      }
+    ]
+  }
+}

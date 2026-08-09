@@ -1,0 +1,29 @@
+{
+  "format_version": "1.21.80",
+  "minecraft:item": {
+    "components": {
+      "minecraft:display_name": {
+        "value": "Ferrowake Helmet"
+      },
+      "minecraft:icon": {
+        "textures": {
+          "default": "ferrowake_helmet"
+        }
+      },
+      "minecraft:max_stack_size": 1,
+      "minecraft:durability": {
+        "max_durability": 330
+      },
+      "minecraft:wearable": {
+        "slot": "slot.armor.head",
+        "protection": 2
+      }
+    },
+    "description": {
+      "identifier": "aionbound:ferrowake_helmet",
+      "menu_category": {
+        "category": "items"
+      }
+    }
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "authority": {
+    "commit": "390e978d8f1233ad2278d1ef89e4dad33757f68e",
+    "expansion_plan": "authority/aionbound/core-content-beta-expansion-plan.json",
+    "progression_graph": "authority/aionbound/core-content-beta-progression-graph.json",
+    "repository": "EXO-Robotics/minecraft-mod-pipeline",
+    "source_selections": "authority/aionbound/core-content-beta-source-selections.json",
+    "source_snapshot_aggregate_sha256": "b4b6f1d0f1db49a86b3cd6e817023d289a2132ab13de124d09ed3c7c900196da",
+    "source_snapshot_commit": "779e47362ec7aba594338659082c77fe521657f2",
+    "tree": "3f1c2d7500e43122e59f4c4a37137aa05244030d"
+  },
+  "baseline": {
+    "candidate_commit": "a27047ab96a2e40a2b5b4034f3d86402e47dd16a",
+    "candidate_tree": "4bcaaad86597d6687b98d46262d9223539743835",
+    "generation": 6,
+    "immutable": true,
+    "mcaddon_sha256": "3982c1d9f6be1cab6b0fda3f15e219abde8ce585cb5721cdc2f542305ba39ee3"
+  },
+  "generation": 7,
+  "product_id": "aionbound_core",
+  "prohibited": [
+    "modify G6",
+    "start AionWilds",
+    "start AionTech",
+    "start AionChaos",
+    "deep T10"
+  ],
+  "record_type": "AIONBOUND_CORE_CONTENT_BETA_GENERATION_AUTHORITY",
+  "shipping_profile": "LOCAL_RETAIL_CONSOLE_TARGET",
+  "state": "AIONBOUND_CORE_CONTENT_BETA_G7_PRODUCTION_ACTIVE"
+}

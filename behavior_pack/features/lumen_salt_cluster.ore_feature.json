@@ -1,0 +1,19 @@
+{
+  "format_version": "1.21.10",
+  "minecraft:ore_feature": {
+    "description": {
+      "identifier": "aionbound:lumen_salt_cluster_ore_feature"
+    },
+    "count": 6,
+    "discard_chance_on_air_exposure": 0.25,
+    "replace_rules": [
+      {
+        "places_block": "aionbound:lumen_salt_cluster",
+        "may_replace": [
+          "minecraft:stone",
+          "minecraft:deepslate"
+        ]
+      }
+    ]
+  }
+}

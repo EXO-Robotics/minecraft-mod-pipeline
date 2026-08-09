@@ -1,0 +1,51 @@
+{
+  "format_version": "1.21.80",
+  "minecraft:entity": {
+    "components": {
+      "minecraft:behavior.look_at_player": {
+        "look_distance": 8,
+        "priority": 6,
+        "probability": 0.03
+      },
+      "minecraft:behavior.random_fly": {
+        "priority": 5,
+        "xz_dist": 10,
+        "y_dist": 5,
+        "y_offset": 1
+      },
+      "minecraft:can_fly": {},
+      "minecraft:collision_box": {
+        "height": 0.7,
+        "width": 0.8
+      },
+      "minecraft:health": {
+        "max": 12,
+        "value": 12
+      },
+      "minecraft:loot": {
+        "table": "loot_tables/entities/breezetail.json"
+      },
+      "minecraft:movement": {
+        "value": 0.24
+      },
+      "minecraft:movement.fly": {},
+      "minecraft:navigation.fly": {
+        "avoid_water": true,
+        "can_path_from_air": true
+      },
+      "minecraft:physics": {},
+      "minecraft:type_family": {
+        "family": [
+          "aionbound",
+          "creature",
+          "ordinary"
+        ]
+      }
+    },
+    "description": {
+      "identifier": "aionbound:breezetail",
+      "is_spawnable": false,
+      "is_summonable": true
+    }
+  }
+}

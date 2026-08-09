@@ -1,0 +1,43 @@
+{
+  "format_version": "1.21.40",
+  "minecraft:feature_rules": {
+    "description": {
+      "identifier": "aionbound:lumen_salt_cluster_ore_rule",
+      "places_feature": "aionbound:lumen_salt_cluster_ore_feature"
+    },
+    "conditions": {
+      "placement_pass": "underground_pass",
+      "minecraft:biome_filter": {
+        "test": "has_biome_tag",
+        "operator": "==",
+        "value": "overworld"
+      }
+    },
+    "distribution": {
+      "coordinate_eval_order": "xzy",
+      "iterations": 3,
+      "scatter_chance": 1,
+      "x": {
+        "distribution": "uniform",
+        "extent": [
+          0,
+          15
+        ]
+      },
+      "y": {
+        "distribution": "uniform",
+        "extent": [
+          -24,
+          48
+        ]
+      },
+      "z": {
+        "distribution": "uniform",
+        "extent": [
+          0,
+          15
+        ]
+      }
+    }
+  }
+}

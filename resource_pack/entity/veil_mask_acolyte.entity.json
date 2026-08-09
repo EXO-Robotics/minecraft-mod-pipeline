@@ -1,0 +1,32 @@
+{
+  "format_version": "1.10.0",
+  "minecraft:client_entity": {
+    "description": {
+      "animations": {
+        "action": "animation.aionbound.veil_mask_acolyte.action",
+        "idle": "animation.aionbound.veil_mask_acolyte.idle"
+      },
+      "geometry": {
+        "default": "geometry.aionbound.veil_mask_acolyte"
+      },
+      "identifier": "aionbound:veil_mask_acolyte",
+      "materials": {
+        "default": "entity_alphatest"
+      },
+      "render_controllers": [
+        "controller.render.aionbound.default"
+      ],
+      "scripts": {
+        "animate": [
+          "idle",
+          {
+            "action": "query.is_angry"
+          }
+        ]
+      },
+      "textures": {
+        "default": "textures/aionbound/entities/veil_mask_acolyte"
+      }
+    }
+  }
+}

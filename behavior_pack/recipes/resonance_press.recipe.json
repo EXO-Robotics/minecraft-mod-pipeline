@@ -1,0 +1,39 @@
+{
+  "format_version": "1.20.10",
+  "minecraft:recipe_shaped": {
+    "description": {
+      "identifier": "aionbound:resonance_press_recipe"
+    },
+    "tags": [
+      "crafting_table"
+    ],
+    "pattern": [
+      "TCT",
+      "RPR",
+      "T T"
+    ],
+    "key": {
+      "T": {
+        "item": "aionbound:tempered_ferrowake"
+      },
+      "C": {
+        "item": "aionbound:resonance_coil"
+      },
+      "R": {
+        "item": "minecraft:redstone"
+      },
+      "P": {
+        "item": "minecraft:piston"
+      }
+    },
+    "result": {
+      "item": "aionbound:resonance_press",
+      "count": 1
+    },
+    "unlock": [
+      {
+        "item": "aionbound:tempered_ferrowake"
+      }
+    ]
+  }
+}

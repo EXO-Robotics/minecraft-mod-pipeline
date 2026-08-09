@@ -1,48 +1,102 @@
-import { world, system, ItemStack } from "@minecraft/server";
+import { world, system, ItemStack, EquipmentSlot, EntityComponentTypes } from "@minecraft/server";
+import { COMBINED_BUDGETS, RuntimeArbiter } from "./budgets.js";
+import { createStateService } from "./state.js";
+import { createInteractionRouter } from "./router.js";
+import { createCodexService } from "./codex.js";
+import { createCombatService } from "./combat.js";
+import { createDeviceService } from "./devices.js";
+import { createEncounterService } from "./encounters.js";
+import { createChaosService } from "./chaos.js";
+import { createStructureService } from "./structures.js";
 
-const VERSION = 2;
-const IDS = Object.freeze({ world: "aionbound:core/world/v2", player: "aionbound:core/player/v2", oldWorld: "aionbound:core/world/v1", oldPlayer: "aionbound:core/player/v1" });
-const CAPS = Object.freeze({ entityQuery: 96, callbacksTick: 64, structuresQueued: 2, structuresActive: 1, structureBlocks: 4096, mosskipWorld: 24, familiarsWorld: 24, chaosMinute: 2, chaosCooldown: 1800, stripJobs: 3, stripBlocks: 96, stripRadius: 4, editsTick: 32, stripCooldown: 160, stamps: 64, playerBytes: 4096, worldBytes: 24576, cellJobs: 1, cellBlocks: 192, cellEditsTick: 16, mountsWorld: 12, bossesWorld: 3, twinbondMax: 2, rayRange: 24, rayCooldown: 30, rayParticles: 12 });
-const SOFT = new Set(["minecraft:dirt", "minecraft:grass_block", "minecraft:sand", "minecraft:gravel", "minecraft:clay", "minecraft:mud", "minecraft:netherrack", "minecraft:soul_sand", "minecraft:soul_soil", "minecraft:snow", "minecraft:snow_layer", "minecraft:moss_block"]);
-const state = { chaos: null, stripJobs: [], cellJob: null, warned: new Map() };
-const PILGRIMAGE = Object.freeze({ "aionbound:gloam_moss_block":"pilgrimage:gloam", "aionbound:brinewood_planks":"pilgrimage:brine", "aionbound:ember_vent_stone":"pilgrimage:vent", "aionbound:scorch_glass_shard_block":"pilgrimage:cinderglass", "aionbound:storm_slate":"pilgrimage:storm", "aionbound:abyss_silt":"pilgrimage:abyss", "aionbound:boneplain_soil":"pilgrimage:boneplain", "aionbound:rift_crust":"pilgrimage:riftscar", "aionbound:twinbond_obelisk_site":"pilgrimage:twinbond" });
+export function createRuntime(platform = { world, system, ItemStack, EquipmentSlot, EntityComponentTypes }) {
+  const arbiter = new RuntimeArbiter();
+  const state = createStateService({ world: platform.world, system: platform.system, notify: (player, text) => player.sendMessage(`§7[Aionbound] ${text}`) });
 
-function parse(raw, fallback) { try { const v = JSON.parse(raw || ""); return v && typeof v === "object" ? v : fallback; } catch { return fallback; } }
-function worldState() { const current=parse(world.getDynamicProperty(IDS.world),null); if(current?.v===VERSION){current.cells??={};current.encounters??={active:{},terminal:current.terminal||{}};return current} const old=parse(world.getDynamicProperty(IDS.oldWorld),{}); const migrated={v:VERSION,journals:old.journals||{},structures:old.structures||{},quarantine:old.quarantine||[],cells:old.cells||{},encounters:{active:{},terminal:old.terminal||{}}}; saveWorld(migrated); return migrated; }
-function saveWorld(value) { const raw = JSON.stringify(value); if (raw.length <= CAPS.worldBytes) world.setDynamicProperty(IDS.world, raw); }
-function playerState(player) { const current=parse(player.getDynamicProperty(IDS.player),null); if(current?.v===VERSION)return current; const old=parse(player.getDynamicProperty(IDS.oldPlayer),{}); const migrated={v:VERSION,stamps:Array.isArray(old.stamps)?old.stamps.slice(0,CAPS.stamps):[],credits:old.credits||{},cooldowns:old.cooldowns||{},opens:old.opens||[],cell:null,endpoint:false}; savePlayer(player,migrated); return migrated; }
-function savePlayer(player, value) { const raw = JSON.stringify(value); if (raw.length > CAPS.playerBytes) { notice(player, "Codex capacity reached; no progress was changed."); return false; } player.setDynamicProperty(IDS.player, raw); return true; }
-function notice(player, text) { const now = system.currentTick; const key = `${player.id}:${text}`; if ((state.warned.get(key) || 0) + 100 <= now) { state.warned.set(key, now); player.sendMessage(`§7[Aionbound] ${text}`); } }
-function stamp(player, key) { const p = playerState(player); if (p.stamps.includes(key)) return false; if (p.stamps.length >= CAPS.stamps) { notice(player, "Codex stamp limit reached."); return false; } const next = { ...p, stamps: [...p.stamps, key] }; return savePlayer(player, next); }
-function consumeOne(player, typeId) { const c = player.getComponent("minecraft:inventory")?.container; const slot = player.selectedSlotIndex; const item = c?.getItem(slot); if (!item || item.typeId !== typeId) return false; if (item.amount > 1) { item.amount--; c.setItem(slot, item); } else c.setItem(slot, undefined); return true; }
-function boundedEntities(typeId) { const out = []; for (const dimension of ["overworld", "nether", "the_end"]) { for (const e of world.getDimension(dimension).getEntities(typeId ? { type: typeId } : {})) { out.push(e); if (out.length >= CAPS.entityQuery) return out; } } return out; }
+  function consumeOne(player, typeId) {
+    const container = player.getComponent("minecraft:inventory")?.container, slot = player.selectedSlotIndex, item = container?.getItem(slot);
+    if (!item || item.typeId !== typeId) return false;
+    if (item.amount > 1) { item.amount--; container.setItem(slot, item); } else container.setItem(slot, undefined);
+    return true;
+  }
+  function boundedEntities(typeId) {
+    const output = []; arbiter.beginTick(platform.system.currentTick);
+    for (const dimensionId of ["overworld", "nether", "the_end"]) {
+      for (const entity of platform.world.getDimension(dimensionId).getEntities(typeId ? { type: typeId } : {})) {
+        if (!arbiter.spend("entityQuery")) return output;
+        output.push(entity);
+      }
+    }
+    return output;
+  }
 
-function reconcile() { const w=worldState();state.chaos=null;state.stripJobs.length=0;state.cellJob=null;const mounts=boundedEntities("aionbound:waykeeper_courser"),owners=new Set();for(const e of mounts){const o=e.getDynamicProperty("aionbound:owner");if(!o||owners.has(o)||owners.size>=CAPS.mountsWorld)e.remove();else owners.add(o)}const live=new Map();for(const e of activeBosses()){const k=e.getDynamicProperty("aionbound:encounter");if(w.encounters.terminal[k]||live.has(k))e.remove();else{live.set(k,e);w.encounters.active[k]??={v:2,key:k,type:e.typeId,owner:e.getDynamicProperty("aionbound:owner"),state:"active"}}}for(const k of Object.keys(w.encounters.active))if(!live.has(k))delete w.encounters.active[k];for(const player of world.getAllPlayers())playerState(player);const interrupted=Object.values(w.cells).find(c=>c.state==="building");if(interrupted){const p=world.getAllPlayers().find(x=>x.id===interrupted.owner);if(p)p.teleport(interrupted.return.location,{dimension:world.getDimension(interrupted.return.dimension.replace("minecraft:",""))});state.cellJob={owner:interrupted.owner,edits:cellEdits(interrupted.base),cursor:interrupted.cursor}}saveWorld(w); }
-function useBarkling(player) { const existing = boundedEntities("aionbound:barkling_familiar").filter(e => e.getDynamicProperty("aionbound:owner") === player.id); if (existing.length || boundedEntities("aionbound:barkling_familiar").length >= CAPS.familiarsWorld) return notice(player, "Your familiar is already present or the familiar cap is full."); const loc = player.location; const e = player.dimension.spawnEntity("aionbound:barkling_familiar", { x: loc.x + 1, y: loc.y, z: loc.z }); e.setDynamicProperty("aionbound:owner", player.id); if (!consumeOne(player, "aionbound:barkling_token")) e.remove(); }
-function useCodex(player, typeId) { if (typeId === "aionbound:starter_codex_bookmark") stamp(player, "bookmark:first_waystone"); const p = playerState(player); player.sendMessage(`§dAionbound Trophy Codex§r\nStamps ${p.stamps.length}/${CAPS.stamps}\n${p.stamps.join(" · ") || "Seek a waystone ruin."}\nRoyal Moth: discover a creature nest to unlock the clue.`); }
-function useChaos(player, block) { const now = system.currentTick, p = playerState(player); p.opens = p.opens.filter(t => now - t < 1200); if (state.chaos || p.opens.length >= CAPS.chaosMinute || (p.cooldowns.chaos || 0) > now) return notice(player, "The crate refuses while its bounded chaos budget or cooldown is full."); const id = `${player.id}:${block.location.x},${block.location.y},${block.location.z}:${now}`; const w = worldState(); if (w.journals[id]?.terminal) return; const next = { ...p, opens: [...p.opens, now], cooldowns: { ...p.cooldowns, chaos: now + CAPS.chaosCooldown } }; if (!savePlayer(player, next)) return; w.journals[id] = { state: "accepted", owner: player.id, outcome: Math.abs((block.location.x * 31 + block.location.z * 17 + now) | 0) % 3 }; saveWorld(w); state.chaos = id; system.run(() => { const current = worldState(); const j = current.journals[id]; if (!j || j.terminal) { state.chaos = null; return; } if (j.outcome === 0) player.dimension.spawnItem(new ItemStack("minecraft:baked_potato", 3), block.location); else if (j.outcome === 1) player.addEffect("speed", 200, { amplifier: 0 }); else player.dimension.spawnEntity("minecraft:chicken", block.location); j.terminal = true; saveWorld(current); state.chaos = null; }); }
-function useStrip(player) { const now = system.currentTick, p = playerState(player); if ((p.cooldowns.strip || 0) > now || state.stripJobs.length >= CAPS.stripJobs) return notice(player, "Stripvein queue or cooldown is full; the charge was not consumed."); const hit = player.getBlockFromViewDirection({ maxDistance: 6 }); if (!hit?.block) return notice(player, "No bounded excavation origin; the charge was not consumed."); const frozen = [], o = hit.block.location; outer: for (let x = -CAPS.stripRadius; x <= CAPS.stripRadius; x++) for (let y = -CAPS.stripRadius; y <= CAPS.stripRadius; y++) for (let z = -CAPS.stripRadius; z <= CAPS.stripRadius; z++) { if (frozen.length >= CAPS.stripBlocks) break outer; const b = player.dimension.getBlock({ x: o.x + x, y: o.y + y, z: o.z + z }); if (b && SOFT.has(b.typeId)) frozen.push({ x: b.x, y: b.y, z: b.z, type: b.typeId }); }
-  if (!frozen.length || frozen.length > CAPS.stripBlocks) return notice(player, "Preflight found no proven allowlisted job; the charge was not consumed."); if (!consumeOne(player, "aionbound:stripvein_charge")) return; p.cooldowns.strip = now + CAPS.stripCooldown; savePlayer(player, p); state.stripJobs.push({ owner: player.id, dimension: player.dimension.id, frozen, cursor: 0 }); }
-function editTick() { let budget = CAPS.editsTick; while (budget && state.stripJobs.length) { const job = state.stripJobs[0], entry = job.frozen[job.cursor++], b = world.getDimension(job.dimension).getBlock(entry); if (b?.typeId === entry.type && SOFT.has(entry.type)) { b.setType("minecraft:air"); budget--; } if (job.cursor >= job.frozen.length) state.stripJobs.shift(); } }
+  const codex = createCodexService({ state });
+  const structures = createStructureService({ ...platform, state, arbiter, consumeOne });
+  const combat = createCombatService({ ...platform, state, arbiter, boundedEntities, consumeOne });
+  const encounters = createEncounterService({ ...platform, state, boundedEntities, consumeOne });
+  const devices = createDeviceService({ ...platform, state, arbiter, consumeOne });
+  const chaos = createChaosService({ ...platform, state, arbiter });
 
-function activeBosses(){ return boundedEntities().filter(e=>e.getDynamicProperty("aionbound:encounter")&&!e.getDynamicProperty("aionbound:terminal")); }
-function spawnBoss(player,type,location,key){ const w=worldState(),j=w.encounters;if(j.active[key]||j.terminal[key]||Object.keys(j.active).length>=CAPS.bossesWorld)return notice(player,"Encounter is active, terminal, or capped.");j.active[key]={v:2,key,type,owner:player.id,state:"admitted"};saveWorld(w);try{const e=player.dimension.spawnEntity(type,location);e.setDynamicProperty("aionbound:owner",player.id);e.setDynamicProperty("aionbound:encounter",key);j.active[key].state="active";saveWorld(w);return e}catch{delete j.active[key];saveWorld(w);notice(player,"Spawn failed; admission rolled back.")} }
-function guidance(player){const p=playerState(player);player.sendMessage(`§dAionbound Trophy Codex§r\nGlasswing first defeat -> foundry robot -> Vector Ray / Burrowgate pocket / pilgrimage -> Royal Moth, Basalt and Rift bosses -> Trophy Edge -> Twinbond -> Concord beta endpoint.\nStamps ${p.stamps.length}/${CAPS.stamps}`)}
-function useRay(player){ const p=playerState(player),now=system.currentTick; if((p.cooldowns.ray||0)>now)return notice(player,"Vector Ray cooldown is active."); const target=player.getEntitiesFromViewDirection({maxDistance:CAPS.rayRange})[0]?.entity; if(!target)return notice(player,"No view target within 24 blocks."); target.applyDamage(6,{damagingEntity:player}); const v=player.getViewDirection(),head=player.getHeadLocation(); for(let i=1;i<=CAPS.rayParticles;i++)player.dimension.spawnParticle("minecraft:basic_flame_particle",{x:head.x+v.x*i*1.5,y:head.y+v.y*i*1.5,z:head.z+v.z*i*1.5}); p.cooldowns.ray=now+CAPS.rayCooldown; savePlayer(player,p); }
-function useWhistle(player){ const all=boundedEntities("aionbound:waykeeper_courser"),owned=all.filter(e=>e.getDynamicProperty("aionbound:owner")===player.id); if(owned.length||all.length>=CAPS.mountsWorld)return notice(player,"Courser admission refused before consumption."); const e=player.dimension.spawnEntity("aionbound:waykeeper_courser",player.location); e.setDynamicProperty("aionbound:owner",player.id); if(!consumeOne(player,"aionbound:waykeeper_whistle"))e.remove(); }
-function cellEdits(base){const edits=[];for(let y=0;y<3;y++)for(let x=0;x<8;x++)for(let z=0;z<8;z++)edits.push({x:base.x+x,y:base.y+y,z:base.z+z,type:y===0?"minecraft:stone":y===2&&x===0&&z===3?"aionbound:orevein_hollow_gate":"minecraft:air"});return edits}
-function useCell(player,block,item){const p=playerState(player),w=worldState(),cell=w.cells[player.id];if(cell&&block.location.x>=cell.base.x&&block.location.x<cell.base.x+8&&block.location.z>=cell.base.z&&block.location.z<cell.base.z+8)return player.teleport(cell.return.location,{dimension:world.getDimension(cell.return.dimension.replace("minecraft:",""))});if(cell){if(cell.state!=="ready")return notice(player,"Pocket building; you remain safe.");return player.teleport({x:cell.base.x+4.5,y:cell.base.y+1,z:cell.base.z+4.5},{dimension:world.getDimension("overworld")})}if(item!=="aionbound:burrowgate_key"||p.cell||state.cellJob||Object.values(w.cells).some(c=>c.state==="building"))return notice(player,"Pocket admission refused; key not consumed.");const base={x:100000+Object.keys(w.cells).length*32,y:-48,z:100000},next={v:2,owner:player.id,base,cursor:0,state:"building",return:{dimension:player.dimension.id,location:{x:player.location.x,y:player.location.y,z:player.location.z}}};w.cells[player.id]=next;p.cell={owner:player.id};if(!savePlayer(player,p)){delete w.cells[player.id];return}saveWorld(w);if(!consumeOne(player,item)){delete w.cells[player.id];p.cell=null;saveWorld(w);savePlayer(player,p);return}state.cellJob={owner:player.id,edits:cellEdits(base),cursor:0}}
-function cellTick(){const job=state.cellJob;if(!job)return;const w=worldState(),cell=w.cells[job.owner];if(!cell){state.cellJob=null;return}for(let n=0;n<CAPS.cellEditsTick&&job.cursor<job.edits.length;n++){const e=job.edits[job.cursor++];world.getDimension("overworld").getBlock(e)?.setType(e.type)}cell.cursor=job.cursor;if(job.cursor>=job.edits.length){cell.state="ready";state.cellJob=null;const p=world.getAllPlayers().find(x=>x.id===cell.owner);if(p)p.teleport({x:cell.base.x+4.5,y:cell.base.y+1,z:cell.base.z+4.5},{dimension:world.getDimension("overworld")})}saveWorld(w)}
-function useProgressBlock(player,block,item){ const id=block.typeId;if(PILGRIMAGE[id]){stamp(player,PILGRIMAGE[id]);return guidance(player)}if(id==="aionbound:orevein_hollow_gate")return useCell(player,block,item);if(id==="aionbound:roving_foundry_wreck"){if(!playerState(player).stamps.includes("glasswing:first_defeat"))return notice(player,"Defeat Glasswing before foundry admission.");return spawnBoss(player,"aionbound:chrono_robo_sentinel",block.location,`foundry:${player.id}`)};const ladder={"aionbound:creature_nest":["glasswing:first_defeat","aionbound:royal_moth_empress","trophy:royal_moth"],"aionbound:ember_vent_stone":["trophy:royal_moth","aionbound:basalt_behemoth","trophy:basalt"],"aionbound:rift_crust":["trophy:basalt","aionbound:rift_colossus","trophy:rift"]}[id];if(ladder){const p=playerState(player);if(!p.stamps.includes(ladder[0])||p.stamps.includes(ladder[2]))return notice(player,"Boss prerequisite missing or trophy already credited.");return spawnBoss(player,ladder[1],block.location,`${ladder[1]}:${player.id}`)}if(id==="aionbound:twinbond_obelisk_site"&&item==="aionbound:finale_ignition_key"){const p=playerState(player);if(!p.stamps.includes("edge:assembled")||Object.values(PILGRIMAGE).some(s=>!p.stamps.includes(s))||p.endpoint||activeBosses().length>CAPS.bossesWorld-CAPS.twinbondMax)return notice(player,"Twinbond prerequisites or boss budget refused the key.");if(!consumeOne(player,item))return;spawnBoss(player,"aionbound:ash_sovereign_wyrm",block.location,`twinbond:${player.id}:ash`);spawnBoss(player,"aionbound:tide_empress_wyrm",{x:block.location.x+4,y:block.location.y,z:block.location.z},`twinbond:${player.id}:tide`)} }
-function bossDeath(ev){ const e=ev.deadEntity,owner=e.getDynamicProperty("aionbound:owner"),enc=e.getDynamicProperty("aionbound:encounter");const w=worldState();if(!enc)return;if(w.encounters.terminal[enc])return;delete w.encounters.active[enc];w.encounters.terminal[enc]={v:2,state:"terminal",rewarded:true};saveWorld(w);const player=world.getAllPlayers().find(p=>p.id===owner);if(!player)return;const rewards={"aionbound:chrono_robo_sentinel":["chrono:first_defeat","aionbound:chrono_core"],"aionbound:royal_moth_empress":["trophy:royal_moth","minecraft:amethyst_shard"],"aionbound:basalt_behemoth":["trophy:basalt","aionbound:trophy_basalt_tusk"],"aionbound:rift_colossus":["trophy:rift","aionbound:trophy_colossus_shard"]},r=rewards[e.typeId];if(r&&stamp(player,r[0]))player.dimension.spawnItem(new ItemStack(r[1],1),player.location);if(e.typeId==="aionbound:ash_sovereign_wyrm")stamp(player,"twinbond:ash");if(e.typeId==="aionbound:tide_empress_wyrm")stamp(player,"twinbond:tide");const p=playerState(player);if(p.stamps.includes("twinbond:ash")&&p.stamps.includes("twinbond:tide")&&!p.endpoint){p.endpoint=true;p.stamps.push("endpoint:concord");savePlayer(player,p);player.dimension.spawnItem(new ItemStack("aionbound:trophy_concord_scale",1),player.location)} }
+  const bossAction = action => context => encounters.routeBoss(action, context);
+  const blockActions = {
+    guidance: ({ player }) => codex.guidance(player),
+    codex: ({ player }) => codex.use(player, "aionbound:trophy_codex"),
+    pocket: context => structures.useCell(context.player, context.block, context.itemType),
+    chaos: context => chaos.use(context),
+    safe_storage_notice: ({ player }) => state.warn(player, "Use the crafted vanilla chest for authoritative safe storage."),
+    site_reward: context => structures.claimSite(context),
+    "device:salvage": context => devices.useSalvage(context),
+    "device:press": context => devices.usePress(context),
+    "device:survey": context => devices.useSurvey(context),
+    "boss:foundry": bossAction("boss:foundry"),
+    "boss:royal_moth": bossAction("boss:royal_moth"),
+    "boss:basalt": bossAction("boss:basalt"),
+    "boss:rift": bossAction("boss:rift"),
+    "boss:twinbond": bossAction("boss:twinbond"),
+  };
+  const itemActions = {
+    familiar: ({ player }) => combat.useBarkling(player), stripvein: ({ player }) => structures.useStrip(player),
+    ray: ({ player }) => combat.useRay(player), mount: ({ player }) => combat.useWhistle(player),
+    codex: ({ player, itemStack }) => codex.use(player, itemStack.typeId), edge_stamp: ({ player }) => state.stamp(player, "edge:assembled"),
+    ranged: ({ player, itemStack }) => combat.useRanged(player, itemStack.typeId),
+    consumable: ({ player, itemStack }) => combat.useConsumable(player, itemStack.typeId),
+    accessory_pulse: ({ player, itemStack }) => combat.accessoryPulse(player, itemStack.typeId),
+  };
+  const router = createInteractionRouter({ discover: state.stamp, blockActions, itemActions });
 
-export function startRuntime() {
-  system.run(reconcile);
-  world.afterEvents.itemUse.subscribe(ev => { const id=ev.itemStack.typeId,p=ev.source;if(id==="aionbound:barkling_token")useBarkling(p);else if(id==="aionbound:stripvein_charge")useStrip(p);else if(id==="aionbound:vector_ray_projector")useRay(p);else if(id==="aionbound:waykeeper_whistle")useWhistle(p);else if(id==="aionbound:starter_codex_bookmark"||id==="aionbound:trophy_codex"){stamp(p,"bookmark:first_waystone");guidance(p)}else if(id==="aionbound:trophy_edge")stamp(p,"edge:assembled"); });
-  world.beforeEvents.playerInteractWithBlock.subscribe(ev => { const id=ev.block.typeId,item=ev.itemStack?.typeId;if(id==="aionbound:chaos_crate_t0"){ev.cancel=true;system.run(()=>useChaos(ev.player,ev.block))}else if(id==="aionbound:prismglass_chest")system.run(()=>notice(ev.player,"Use the crafted vanilla chest for authoritative safe storage."));else system.run(()=>useProgressBlock(ev.player,ev.block,item)); });
-  world.afterEvents.playerInteractWithEntity.subscribe(ev=>{if(ev.target.typeId==="aionbound:waykeeper_courser")notice(ev.player,"Use ordinary interact to mount; movement input directly controls your courser.")});
-  world.afterEvents.entityHitEntity.subscribe(ev=>{if(ev.entity.typeId==="aionbound:waykeeper_courser"&&Math.abs(ev.entity.getVelocity().x)+Math.abs(ev.entity.getVelocity().z)>.08)ev.entity.applyImpulse({x:0,y:.18,z:0})});
-  world.afterEvents.entityDie.subscribe(ev => { if(ev.deadEntity.getDynamicProperty("aionbound:encounter"))return bossDeath(ev);if(ev.deadEntity.typeId!=="aionbound:glasswing_sentinel")return;const player=ev.damageSource.damagingEntity;if(player?.typeId!=="minecraft:player"||!stamp(player,"glasswing:first_defeat"))return;player.dimension.spawnItem(new ItemStack("minecraft:phantom_membrane",1),player.location); });
-  system.runInterval(editTick, 1);
-  system.runInterval(cellTick, 1);
+  function callback(run) {
+    arbiter.beginTick(platform.system.currentTick);
+    if (!arbiter.spend("callbacksTick")) return false;
+    run(); return true;
+  }
+  function reconcile() {
+    encounters.reconcile(); structures.reconcile(); chaos.reconcile();
+    for (const player of platform.world.getAllPlayers()) state.playerState(player);
+  }
+  function tick() { callback(() => {
+    if (platform.system.currentTick % 100 === 0) combat.reconcileNaturalEntities();
+    if (platform.system.currentTick % 20 === 0) combat.tickPlayers();
+    structures.tick(); devices.tick(); chaos.tick();
+  }); }
+
+  function start() {
+    arbiter.defer(platform.system, reconcile);
+    platform.world.afterEvents.itemUse.subscribe(event => callback(() => router.dispatchItem({ player: event.source, itemStack: event.itemStack })));
+    platform.world.afterEvents.itemCompleteUse.subscribe(event => callback(() => router.dispatchCompletedItem({ player: event.source, itemStack: event.itemStack })));
+    platform.world.beforeEvents.playerInteractWithBlock.subscribe(event => callback(() => {
+      if (event.block.typeId === "aionbound:chaos_crate_t0") event.cancel = true;
+      const context = { player: event.player, block: event.block, itemType: event.itemStack?.typeId };
+      if (!arbiter.defer(platform.system, () => router.dispatchBlock(context))) state.warn(event.player, "Interaction scheduler capacity is full.");
+    }));
+    platform.world.afterEvents.playerInteractWithEntity.subscribe(event => callback(() => {
+      if (event.target.typeId === "aionbound:waykeeper_courser") state.warn(event.player, "Use ordinary interact to mount; movement input directly controls your courser.");
+    }));
+    platform.world.afterEvents.entityHitEntity.subscribe(event => callback(() => combat.mountStep(event)));
+    platform.world.afterEvents.entityHurt.subscribe(event => callback(() => { combat.routeMeleeHurt(event); combat.handlePlayerHurt(event); }));
+    platform.world.afterEvents.entityDie.subscribe(event => callback(() => { if (!encounters.bossDeath(event)) combat.glasswingDeath(event); }));
+    platform.system.runInterval(tick, 1);
+  }
+  return { start, reconcile, tick, state, arbiter, router, codex, combat, devices, encounters, chaos, structures, budgets: COMBINED_BUDGETS };
 }
+
+export function startRuntime() { return createRuntime().start(); }

@@ -1,0 +1,20 @@
+{
+  "format_version": "1.10.0",
+  "minecraft:attachable": {
+    "description": {
+      "identifier": "aionbound:aether_gauntlet",
+      "materials": {
+        "default": "entity_alphatest"
+      },
+      "textures": {
+        "default": "textures/aionbound/aether_gauntlet"
+      },
+      "geometry": {
+        "default": "geometry.aionbound.held_item_plane"
+      },
+      "render_controllers": [
+        "controller.render.aionbound.default"
+      ]
+    }
+  }
+}

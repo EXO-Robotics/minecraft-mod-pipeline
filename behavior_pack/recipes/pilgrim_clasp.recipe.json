@@ -1,0 +1,39 @@
+{
+  "format_version": "1.20.10",
+  "minecraft:recipe_shaped": {
+    "description": {
+      "identifier": "aionbound:pilgrim_clasp_recipe"
+    },
+    "tags": [
+      "crafting_table"
+    ],
+    "pattern": [
+      " L ",
+      "FBF",
+      " S "
+    ],
+    "key": {
+      "L": {
+        "item": "aionbound:lumen_salt"
+      },
+      "F": {
+        "item": "aionbound:pinion_feather_tuft"
+      },
+      "B": {
+        "item": "aionbound:prismatic_binder"
+      },
+      "S": {
+        "item": "aionbound:woven_sinew"
+      }
+    },
+    "result": {
+      "item": "aionbound:pilgrim_clasp",
+      "count": 1
+    },
+    "unlock": [
+      {
+        "item": "aionbound:lumen_salt"
+      }
+    ]
+  }
+}

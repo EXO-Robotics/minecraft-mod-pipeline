@@ -1,0 +1,39 @@
+{
+  "format_version": "1.20.10",
+  "minecraft:recipe_shaped": {
+    "description": {
+      "identifier": "aionbound:survey_core_recipe"
+    },
+    "tags": [
+      "crafting_table"
+    ],
+    "pattern": [
+      " L ",
+      "RCR",
+      " F "
+    ],
+    "key": {
+      "L": {
+        "item": "aionbound:lumen_salt"
+      },
+      "R": {
+        "item": "minecraft:redstone"
+      },
+      "C": {
+        "item": "aionbound:charged_prism"
+      },
+      "F": {
+        "item": "aionbound:ferrowake_coupling"
+      }
+    },
+    "result": {
+      "item": "aionbound:survey_core",
+      "count": 1
+    },
+    "unlock": [
+      {
+        "item": "aionbound:charged_prism"
+      }
+    ]
+  }
+}

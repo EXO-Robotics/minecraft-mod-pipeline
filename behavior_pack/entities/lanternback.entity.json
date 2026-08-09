@@ -1,0 +1,50 @@
+{
+  "format_version": "1.21.80",
+  "minecraft:entity": {
+    "components": {
+      "minecraft:behavior.look_at_player": {
+        "look_distance": 8,
+        "priority": 8,
+        "probability": 0.03
+      },
+      "minecraft:behavior.random_stroll": {
+        "interval": 120,
+        "priority": 7,
+        "speed_multiplier": 0.8
+      },
+      "minecraft:collision_box": {
+        "height": 1.3,
+        "width": 1.1
+      },
+      "minecraft:health": {
+        "max": 36,
+        "value": 36
+      },
+      "minecraft:loot": {
+        "table": "loot_tables/entities/lanternback.json"
+      },
+      "minecraft:movement": {
+        "value": 0.18
+      },
+      "minecraft:movement.basic": {},
+      "minecraft:navigation.walk": {
+        "avoid_damage_blocks": true,
+        "can_path_over_water": false,
+        "can_sink": true
+      },
+      "minecraft:physics": {},
+      "minecraft:type_family": {
+        "family": [
+          "aionbound",
+          "creature",
+          "ordinary"
+        ]
+      }
+    },
+    "description": {
+      "identifier": "aionbound:lanternback",
+      "is_spawnable": false,
+      "is_summonable": true
+    }
+  }
+}

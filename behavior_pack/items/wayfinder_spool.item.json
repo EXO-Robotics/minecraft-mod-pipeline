@@ -1,0 +1,27 @@
+{
+  "format_version": "1.21.80",
+  "minecraft:item": {
+    "components": {
+      "minecraft:display_name": {
+        "value": "Wayfinder Spool"
+      },
+      "minecraft:icon": {
+        "textures": {
+          "default": "wayfinder_spool"
+        }
+      },
+      "minecraft:max_stack_size": 1,
+      "minecraft:wearable": {
+        "slot": "slot.weapon.offhand"
+      },
+      "minecraft:cooldown": { "category": "aionbound_wayfinder_spool", "duration": 2.0 },
+      "minecraft:use_modifiers": { "use_duration": 0.2, "movement_modifier": 0.8 }
+    },
+    "description": {
+      "identifier": "aionbound:wayfinder_spool",
+      "menu_category": {
+        "category": "items"
+      }
+    }
+  }
+}

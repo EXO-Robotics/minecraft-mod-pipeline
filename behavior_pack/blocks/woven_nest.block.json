@@ -1,0 +1,23 @@
+{
+  "format_version": "1.21.80",
+  "minecraft:block": {
+    "description": {
+      "identifier": "aionbound:woven_nest",
+      "menu_category": {
+        "category": "construction"
+      }
+    },
+    "components": {
+      "minecraft:display_name": "Woven Nest",
+      "minecraft:destructible_by_mining": {
+        "seconds_to_destroy": 2
+      },
+      "minecraft:material_instances": {
+        "*": {
+          "texture": "woven_nest",
+          "render_method": "opaque"
+        }
+      }
+    }
+  }
+}

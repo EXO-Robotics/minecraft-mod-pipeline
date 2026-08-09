@@ -1,0 +1,42 @@
+{
+  "format_version": "1.20.10",
+  "minecraft:recipe_shaped": {
+    "description": {
+      "identifier": "aionbound:aether_gauntlet_recipe"
+    },
+    "tags": [
+      "crafting_table"
+    ],
+    "pattern": [
+      "TCT",
+      "RPR",
+      " S "
+    ],
+    "key": {
+      "T": {
+        "item": "aionbound:tempered_ferrowake"
+      },
+      "C": {
+        "item": "aionbound:charged_prism"
+      },
+      "R": {
+        "item": "aionbound:resonance_coil"
+      },
+      "P": {
+        "item": "aionbound:prismatic_binder"
+      },
+      "S": {
+        "item": "aionbound:woven_sinew"
+      }
+    },
+    "result": {
+      "item": "aionbound:aether_gauntlet",
+      "count": 1
+    },
+    "unlock": [
+      {
+        "item": "aionbound:charged_prism"
+      }
+    ]
+  }
+}

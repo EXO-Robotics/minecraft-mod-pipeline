@@ -1,0 +1,32 @@
+{
+  "format_version": "1.10.0",
+  "minecraft:client_entity": {
+    "description": {
+      "animations": {
+        "action": "animation.aionbound.galestrider.action",
+        "idle": "animation.aionbound.galestrider.idle"
+      },
+      "geometry": {
+        "default": "geometry.aionbound.galestrider"
+      },
+      "identifier": "aionbound:galestrider",
+      "materials": {
+        "default": "entity_alphatest"
+      },
+      "render_controllers": [
+        "controller.render.aionbound.default"
+      ],
+      "scripts": {
+        "animate": [
+          "idle",
+          {
+            "action": "query.is_angry"
+          }
+        ]
+      },
+      "textures": {
+        "default": "textures/aionbound/entities/galestrider"
+      }
+    }
+  }
+}

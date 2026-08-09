@@ -1,0 +1,23 @@
+{
+  "format_version": "1.21.80",
+  "minecraft:block": {
+    "description": {
+      "identifier": "aionbound:rootglass_mosaic",
+      "menu_category": {
+        "category": "construction"
+      }
+    },
+    "components": {
+      "minecraft:display_name": "Rootglass Mosaic",
+      "minecraft:destructible_by_mining": {
+        "seconds_to_destroy": 2
+      },
+      "minecraft:material_instances": {
+        "*": {
+          "texture": "rootglass_mosaic",
+          "render_method": "alpha_test"
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "format_version": "1.10.0",
+  "minecraft:client_entity": {
+    "description": {
+      "animations": {
+        "action": "animation.aionbound.ferrowake_bulwark.action",
+        "idle": "animation.aionbound.ferrowake_bulwark.idle"
+      },
+      "geometry": {
+        "default": "geometry.aionbound.ferrowake_bulwark"
+      },
+      "identifier": "aionbound:ferrowake_bulwark",
+      "materials": {
+        "default": "entity_alphatest"
+      },
+      "render_controllers": [
+        "controller.render.aionbound.default"
+      ],
+      "scripts": {
+        "animate": [
+          "idle",
+          {
+            "action": "query.is_angry"
+          }
+        ]
+      },
+      "textures": {
+        "default": "textures/aionbound/entities/ferrowake_bulwark"
+      }
+    }
+  }
+}

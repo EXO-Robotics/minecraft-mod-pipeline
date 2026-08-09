@@ -1,0 +1,39 @@
+{
+  "format_version": "1.20.10",
+  "minecraft:recipe_shaped": {
+    "description": {
+      "identifier": "aionbound:survey_relay_recipe"
+    },
+    "tags": [
+      "crafting_table"
+    ],
+    "pattern": [
+      " A ",
+      "CSC",
+      " T "
+    ],
+    "key": {
+      "A": {
+        "item": "aionbound:aionite_crystal"
+      },
+      "C": {
+        "item": "aionbound:charged_prism"
+      },
+      "S": {
+        "item": "aionbound:survey_core"
+      },
+      "T": {
+        "item": "aionbound:tempered_ferrowake"
+      }
+    },
+    "result": {
+      "item": "aionbound:survey_relay",
+      "count": 1
+    },
+    "unlock": [
+      {
+        "item": "aionbound:aionite_crystal"
+      }
+    ]
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "format_version": "1.10.0",
+  "minecraft:client_entity": {
+    "description": {
+      "animations": {
+        "action": "animation.aionbound.tide_spawn_skitter.action",
+        "idle": "animation.aionbound.tide_spawn_skitter.idle"
+      },
+      "geometry": {
+        "default": "geometry.aionbound.tide_spawn_skitter"
+      },
+      "identifier": "aionbound:tide_spawn_skitter",
+      "materials": {
+        "default": "entity_alphatest"
+      },
+      "render_controllers": [
+        "controller.render.aionbound.default"
+      ],
+      "scripts": {
+        "animate": [
+          "idle",
+          {
+            "action": "query.is_angry"
+          }
+        ]
+      },
+      "textures": {
+        "default": "textures/aionbound/entities/tide_spawn_skitter"
+      }
+    }
+  }
+}

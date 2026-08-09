@@ -1,0 +1,33 @@
+{
+  "format_version": "1.20.10",
+  "minecraft:recipe_shaped": {
+    "description": {
+      "identifier": "aionbound:cinder_saber_recipe"
+    },
+    "tags": [
+      "crafting_table"
+    ],
+    "pattern": [
+      " F ",
+      " F ",
+      " S "
+    ],
+    "key": {
+      "F": {
+        "item": "aionbound:tempered_ferrowake"
+      },
+      "S": {
+        "item": "minecraft:stick"
+      }
+    },
+    "result": {
+      "item": "aionbound:cinder_saber",
+      "count": 1
+    },
+    "unlock": [
+      {
+        "item": "aionbound:tempered_ferrowake"
+      }
+    ]
+  }
+}

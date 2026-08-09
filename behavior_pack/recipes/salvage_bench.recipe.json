@@ -1,0 +1,39 @@
+{
+  "format_version": "1.20.10",
+  "minecraft:recipe_shaped": {
+    "description": {
+      "identifier": "aionbound:salvage_bench_recipe"
+    },
+    "tags": [
+      "crafting_table"
+    ],
+    "pattern": [
+      "TCT",
+      "PBP",
+      "T T"
+    ],
+    "key": {
+      "T": {
+        "item": "aionbound:tempered_ferrowake"
+      },
+      "C": {
+        "item": "aionbound:ferrowake_coupling"
+      },
+      "P": {
+        "item": "minecraft:planks"
+      },
+      "B": {
+        "item": "minecraft:crafting_table"
+      }
+    },
+    "result": {
+      "item": "aionbound:salvage_bench",
+      "count": 1
+    },
+    "unlock": [
+      {
+        "item": "aionbound:tempered_ferrowake"
+      }
+    ]
+  }
+}

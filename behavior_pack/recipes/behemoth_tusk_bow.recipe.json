@@ -1,0 +1,33 @@
+{
+  "format_version": "1.20.10",
+  "minecraft:recipe_shaped": {
+    "description": {
+      "identifier": "aionbound:behemoth_tusk_bow_recipe"
+    },
+    "tags": [
+      "crafting_table"
+    ],
+    "pattern": [
+      " TR",
+      "T R",
+      " TR"
+    ],
+    "key": {
+      "T": {
+        "item": "aionbound:trophy_relic_tooth"
+      },
+      "R": {
+        "item": "aionbound:woven_sinew"
+      }
+    },
+    "result": {
+      "item": "aionbound:behemoth_tusk_bow",
+      "count": 1
+    },
+    "unlock": [
+      {
+        "item": "aionbound:trophy_relic_tooth"
+      }
+    ]
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "format_version": "1.20.10",
+  "minecraft:recipe_shaped": {
+    "description": {
+      "identifier": "aionbound:brood_fang_daggers_recipe"
+    },
+    "tags": [
+      "crafting_table"
+    ],
+    "pattern": [
+      "F F",
+      "S S",
+      " B "
+    ],
+    "key": {
+      "F": {
+        "item": "aionbound:anvil_chitin"
+      },
+      "S": {
+        "item": "aionbound:woven_sinew"
+      },
+      "B": {
+        "item": "aionbound:prismatic_binder"
+      }
+    },
+    "result": {
+      "item": "aionbound:brood_fang_daggers",
+      "count": 1
+    },
+    "unlock": [
+      {
+        "item": "aionbound:anvil_chitin"
+      }
+    ]
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "format_version": "1.21.80",
+  "minecraft:item": {
+    "components": {
+      "minecraft:display_name": {
+        "value": "Concord Chestplate"
+      },
+      "minecraft:icon": {
+        "textures": {
+          "default": "concord_chestplate"
+        }
+      },
+      "minecraft:max_stack_size": 1,
+      "minecraft:durability": {
+        "max_durability": 720
+      },
+      "minecraft:wearable": {
+        "slot": "slot.armor.chest",
+        "protection": 7
+      }
+    },
+    "description": {
+      "identifier": "aionbound:concord_chestplate",
+      "menu_category": {
+        "category": "items"
+      }
+    }
+  }
+}

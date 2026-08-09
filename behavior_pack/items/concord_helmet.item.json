@@ -1,0 +1,29 @@
+{
+  "format_version": "1.21.80",
+  "minecraft:item": {
+    "components": {
+      "minecraft:display_name": {
+        "value": "Concord Helmet"
+      },
+      "minecraft:icon": {
+        "textures": {
+          "default": "concord_helmet"
+        }
+      },
+      "minecraft:max_stack_size": 1,
+      "minecraft:durability": {
+        "max_durability": 520
+      },
+      "minecraft:wearable": {
+        "slot": "slot.armor.head",
+        "protection": 3
+      }
+    },
+    "description": {
+      "identifier": "aionbound:concord_helmet",
+      "menu_category": {
+        "category": "items"
+      }
+    }
+  }
+}

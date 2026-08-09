@@ -1,0 +1,32 @@
+{
+  "format_version": "1.10.0",
+  "minecraft:client_entity": {
+    "description": {
+      "animations": {
+        "action": "animation.aionbound.basalt_magma_spitter.action",
+        "idle": "animation.aionbound.basalt_magma_spitter.idle"
+      },
+      "geometry": {
+        "default": "geometry.aionbound.basalt_magma_spitter"
+      },
+      "identifier": "aionbound:basalt_magma_spitter",
+      "materials": {
+        "default": "entity_alphatest"
+      },
+      "render_controllers": [
+        "controller.render.aionbound.default"
+      ],
+      "scripts": {
+        "animate": [
+          "idle",
+          {
+            "action": "query.is_angry"
+          }
+        ]
+      },
+      "textures": {
+        "default": "textures/aionbound/entities/basalt_magma_spitter"
+      }
+    }
+  }
+}

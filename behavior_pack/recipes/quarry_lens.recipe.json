@@ -1,0 +1,39 @@
+{
+  "format_version": "1.20.10",
+  "minecraft:recipe_shaped": {
+    "description": {
+      "identifier": "aionbound:quarry_lens_recipe"
+    },
+    "tags": [
+      "crafting_table"
+    ],
+    "pattern": [
+      "AGA",
+      "GCG",
+      " F "
+    ],
+    "key": {
+      "A": {
+        "item": "aionbound:aionite_crystal"
+      },
+      "G": {
+        "item": "minecraft:glass_pane"
+      },
+      "C": {
+        "item": "aionbound:charged_prism"
+      },
+      "F": {
+        "item": "aionbound:ferrowake_coupling"
+      }
+    },
+    "result": {
+      "item": "aionbound:quarry_lens",
+      "count": 1
+    },
+    "unlock": [
+      {
+        "item": "aionbound:aionite_crystal"
+      }
+    ]
+  }
+}

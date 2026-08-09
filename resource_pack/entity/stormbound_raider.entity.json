@@ -1,0 +1,32 @@
+{
+  "format_version": "1.10.0",
+  "minecraft:client_entity": {
+    "description": {
+      "animations": {
+        "action": "animation.aionbound.stormbound_raider.action",
+        "idle": "animation.aionbound.stormbound_raider.idle"
+      },
+      "geometry": {
+        "default": "geometry.aionbound.stormbound_raider"
+      },
+      "identifier": "aionbound:stormbound_raider",
+      "materials": {
+        "default": "entity_alphatest"
+      },
+      "render_controllers": [
+        "controller.render.aionbound.default"
+      ],
+      "scripts": {
+        "animate": [
+          "idle",
+          {
+            "action": "query.is_angry"
+          }
+        ]
+      },
+      "textures": {
+        "default": "textures/aionbound/entities/stormbound_raider"
+      }
+    }
+  }
+}

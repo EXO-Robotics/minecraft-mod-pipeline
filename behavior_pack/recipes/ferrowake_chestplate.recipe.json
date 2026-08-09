@@ -1,0 +1,30 @@
+{
+  "format_version": "1.20.10",
+  "minecraft:recipe_shaped": {
+    "description": {
+      "identifier": "aionbound:ferrowake_chestplate_recipe"
+    },
+    "tags": [
+      "crafting_table"
+    ],
+    "pattern": [
+      "T T",
+      "TTT",
+      "TTT"
+    ],
+    "key": {
+      "T": {
+        "item": "aionbound:tempered_ferrowake"
+      }
+    },
+    "result": {
+      "item": "aionbound:ferrowake_chestplate",
+      "count": 1
+    },
+    "unlock": [
+      {
+        "item": "aionbound:tempered_ferrowake"
+      }
+    ]
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "format_version": "1.10.0",
+  "minecraft:attachable": {
+    "description": {
+      "identifier": "aionbound:roc_pinion_glaive",
+      "materials": {
+        "default": "entity_alphatest"
+      },
+      "textures": {
+        "default": "textures/aionbound/roc_pinion_glaive"
+      },
+      "geometry": {
+        "default": "geometry.aionbound.roc_pinion_glaive"
+      },
+      "animations": {
+        "idle": "animation.aionbound.roc_pinion_glaive.idle"
+      },
+      "scripts": {
+        "animate": [
+          "idle"
+        ]
+      },
+      "render_controllers": [
+        "controller.render.aionbound.default"
+      ]
+    }
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "format_version": "1.10.0",
+  "minecraft:client_entity": {
+    "description": {
+      "animations": {
+        "action": "animation.aionbound.storm_egg_totem.action",
+        "idle": "animation.aionbound.storm_egg_totem.idle"
+      },
+      "geometry": {
+        "default": "geometry.aionbound.storm_egg_totem"
+      },
+      "identifier": "aionbound:storm_egg_totem",
+      "materials": {
+        "default": "entity_alphatest"
+      },
+      "render_controllers": [
+        "controller.render.aionbound.default"
+      ],
+      "scripts": {
+        "animate": [
+          "idle",
+          {
+            "action": "query.is_angry"
+          }
+        ]
+      },
+      "textures": {
+        "default": "textures/aionbound/entities/storm_egg_totem"
+      }
+    }
+  }
+}

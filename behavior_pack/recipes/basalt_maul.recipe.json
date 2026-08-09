@@ -1,0 +1,36 @@
+{
+  "format_version": "1.20.10",
+  "minecraft:recipe_shaped": {
+    "description": {
+      "identifier": "aionbound:basalt_maul_recipe"
+    },
+    "tags": [
+      "crafting_table"
+    ],
+    "pattern": [
+      "TAT",
+      " S ",
+      " S "
+    ],
+    "key": {
+      "T": {
+        "item": "aionbound:tempered_ferrowake"
+      },
+      "A": {
+        "item": "aionbound:anvil_chitin"
+      },
+      "S": {
+        "item": "minecraft:stick"
+      }
+    },
+    "result": {
+      "item": "aionbound:basalt_maul",
+      "count": 1
+    },
+    "unlock": [
+      {
+        "item": "aionbound:anvil_chitin"
+      }
+    ]
+  }
+}

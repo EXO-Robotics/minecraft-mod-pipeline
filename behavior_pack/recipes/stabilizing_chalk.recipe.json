@@ -1,0 +1,31 @@
+{
+  "format_version": "1.20.10",
+  "minecraft:recipe_shapeless": {
+    "description": {
+      "identifier": "aionbound:stabilizing_chalk_recipe"
+    },
+    "tags": [
+      "crafting_table"
+    ],
+    "ingredients": [
+      {
+        "item": "aionbound:lumen_salt"
+      },
+      {
+        "item": "minecraft:calcite"
+      },
+      {
+        "item": "aionbound:prismatic_binder"
+      }
+    ],
+    "result": {
+      "item": "aionbound:stabilizing_chalk",
+      "count": 2
+    },
+    "unlock": [
+      {
+        "item": "aionbound:lumen_salt"
+      }
+    ]
+  }
+}

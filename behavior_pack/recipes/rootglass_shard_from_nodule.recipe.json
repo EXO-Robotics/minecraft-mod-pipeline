@@ -1,0 +1,25 @@
+{
+  "format_version": "1.20.10",
+  "minecraft:recipe_shapeless": {
+    "description": {
+      "identifier": "aionbound:rootglass_shard_from_nodule_recipe"
+    },
+    "tags": [
+      "crafting_table"
+    ],
+    "ingredients": [
+      {
+        "item": "aionbound:rootglass_nodule"
+      }
+    ],
+    "result": {
+      "item": "aionbound:rootglass_shard",
+      "count": 3
+    },
+    "unlock": [
+      {
+        "item": "aionbound:rootglass_nodule"
+      }
+    ]
+  }
+}

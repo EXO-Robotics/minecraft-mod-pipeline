@@ -1,0 +1,36 @@
+{
+  "format_version": "1.20.10",
+  "minecraft:recipe_shaped": {
+    "description": {
+      "identifier": "aionbound:resonance_coil_recipe"
+    },
+    "tags": [
+      "crafting_table"
+    ],
+    "pattern": [
+      "CRC",
+      "RPR",
+      "CRC"
+    ],
+    "key": {
+      "C": {
+        "item": "minecraft:copper_ingot"
+      },
+      "R": {
+        "item": "minecraft:redstone"
+      },
+      "P": {
+        "item": "aionbound:charged_prism"
+      }
+    },
+    "result": {
+      "item": "aionbound:resonance_coil",
+      "count": 1
+    },
+    "unlock": [
+      {
+        "item": "aionbound:charged_prism"
+      }
+    ]
+  }
+}

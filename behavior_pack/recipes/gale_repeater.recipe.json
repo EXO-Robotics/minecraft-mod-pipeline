@@ -1,0 +1,39 @@
+{
+  "format_version": "1.20.10",
+  "minecraft:recipe_shaped": {
+    "description": {
+      "identifier": "aionbound:gale_repeater_recipe"
+    },
+    "tags": [
+      "crafting_table"
+    ],
+    "pattern": [
+      "PFP",
+      "CRC",
+      "PFP"
+    ],
+    "key": {
+      "P": {
+        "item": "aionbound:pinion_feather_tuft"
+      },
+      "F": {
+        "item": "aionbound:ferrowake_coupling"
+      },
+      "C": {
+        "item": "minecraft:crossbow"
+      },
+      "R": {
+        "item": "aionbound:resonance_coil"
+      }
+    },
+    "result": {
+      "item": "aionbound:gale_repeater",
+      "count": 1
+    },
+    "unlock": [
+      {
+        "item": "aionbound:pinion_feather_tuft"
+      }
+    ]
+  }
+}

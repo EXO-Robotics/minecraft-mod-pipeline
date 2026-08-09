@@ -1,0 +1,39 @@
+{
+  "format_version": "1.20.10",
+  "minecraft:recipe_shaped": {
+    "description": {
+      "identifier": "aionbound:wayfinder_spool_recipe"
+    },
+    "tags": [
+      "crafting_table"
+    ],
+    "pattern": [
+      " S ",
+      "PCP",
+      " F "
+    ],
+    "key": {
+      "S": {
+        "item": "aionbound:survey_core"
+      },
+      "P": {
+        "item": "aionbound:woven_sinew"
+      },
+      "C": {
+        "item": "minecraft:compass"
+      },
+      "F": {
+        "item": "aionbound:ferrowake_coupling"
+      }
+    },
+    "result": {
+      "item": "aionbound:wayfinder_spool",
+      "count": 1
+    },
+    "unlock": [
+      {
+        "item": "aionbound:survey_core"
+      }
+    ]
+  }
+}

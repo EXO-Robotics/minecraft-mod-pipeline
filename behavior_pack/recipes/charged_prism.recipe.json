@@ -1,0 +1,36 @@
+{
+  "format_version": "1.20.10",
+  "minecraft:recipe_shaped": {
+    "description": {
+      "identifier": "aionbound:charged_prism_recipe"
+    },
+    "tags": [
+      "crafting_table"
+    ],
+    "pattern": [
+      "ARA",
+      "RPR",
+      "ARA"
+    ],
+    "key": {
+      "A": {
+        "item": "aionbound:aionite_crystal"
+      },
+      "R": {
+        "item": "minecraft:redstone"
+      },
+      "P": {
+        "item": "aionbound:prism_dew_crystal"
+      }
+    },
+    "result": {
+      "item": "aionbound:charged_prism",
+      "count": 1
+    },
+    "unlock": [
+      {
+        "item": "aionbound:aionite_crystal"
+      }
+    ]
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "format_version": "1.20.10",
+  "minecraft:recipe_shaped": {
+    "description": {
+      "identifier": "aionbound:ward_knot_recipe"
+    },
+    "tags": [
+      "crafting_table"
+    ],
+    "pattern": [
+      " L ",
+      "SBS",
+      " L "
+    ],
+    "key": {
+      "L": {
+        "item": "aionbound:lumen_salt"
+      },
+      "S": {
+        "item": "aionbound:woven_sinew"
+      },
+      "B": {
+        "item": "aionbound:prismatic_binder"
+      }
+    },
+    "result": {
+      "item": "aionbound:ward_knot",
+      "count": 1
+    },
+    "unlock": [
+      {
+        "item": "aionbound:woven_sinew"
+      }
+    ]
+  }
+}

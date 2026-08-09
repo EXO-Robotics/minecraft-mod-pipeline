@@ -1,0 +1,32 @@
+{
+  "format_version": "1.10.0",
+  "minecraft:client_entity": {
+    "description": {
+      "animations": {
+        "action": "animation.aionbound.cinder_duelist.action",
+        "idle": "animation.aionbound.cinder_duelist.idle"
+      },
+      "geometry": {
+        "default": "geometry.aionbound.cinder_duelist"
+      },
+      "identifier": "aionbound:cinder_duelist",
+      "materials": {
+        "default": "entity_alphatest"
+      },
+      "render_controllers": [
+        "controller.render.aionbound.default"
+      ],
+      "scripts": {
+        "animate": [
+          "idle",
+          {
+            "action": "query.is_angry"
+          }
+        ]
+      },
+      "textures": {
+        "default": "textures/aionbound/entities/cinder_duelist"
+      }
+    }
+  }
+}

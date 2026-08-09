@@ -1,0 +1,25 @@
+{
+  "checks": {
+    "content_counts": "PASS",
+    "identifier_recipe_loot_texture_closure": "PASS",
+    "json_and_png_decode": "PASS",
+    "runtime_semantics": "PASS_14_TESTS",
+    "stable_api_forbidden_runtime_scan": "PASS",
+    "structure_template_static_presence": "PASS_15"
+  },
+  "counts": {
+    "accessories": 6,
+    "armor": 8,
+    "blocks": 49,
+    "custom_entities": 24,
+    "items_weapons_tools_total": 56,
+    "loot_tables": 32,
+    "natural_spawn_rules": 10,
+    "recipes": 55,
+    "resources_and_material_items": 16,
+    "structures": 15,
+    "weapons": 10
+  },
+  "proof_boundary": "Producer-local static and mocked semantic evidence only; no BDS, client, controller, console, rights, Marketplace, or release proof.",
+  "status": "PASS"
+}

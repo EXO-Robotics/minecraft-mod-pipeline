@@ -1,0 +1,32 @@
+{
+  "format_version": "1.10.0",
+  "minecraft:client_entity": {
+    "description": {
+      "animations": {
+        "action": "animation.aionbound.lanternback.action",
+        "idle": "animation.aionbound.lanternback.idle"
+      },
+      "geometry": {
+        "default": "geometry.aionbound.lanternback"
+      },
+      "identifier": "aionbound:lanternback",
+      "materials": {
+        "default": "entity_alphatest"
+      },
+      "render_controllers": [
+        "controller.render.aionbound.default"
+      ],
+      "scripts": {
+        "animate": [
+          "idle",
+          {
+            "action": "query.is_angry"
+          }
+        ]
+      },
+      "textures": {
+        "default": "textures/aionbound/entities/lanternback"
+      }
+    }
+  }
+}

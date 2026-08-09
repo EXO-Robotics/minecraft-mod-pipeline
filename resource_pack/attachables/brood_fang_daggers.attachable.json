@@ -1,0 +1,28 @@
+{
+  "format_version": "1.10.0",
+  "minecraft:attachable": {
+    "description": {
+      "identifier": "aionbound:brood_fang_daggers",
+      "materials": {
+        "default": "entity_alphatest"
+      },
+      "textures": {
+        "default": "textures/aionbound/brood_fang_daggers"
+      },
+      "geometry": {
+        "default": "geometry.aionbound.brood_fang_daggers"
+      },
+      "animations": {
+        "idle": "animation.aionbound.brood_fang_daggers.idle"
+      },
+      "scripts": {
+        "animate": [
+          "idle"
+        ]
+      },
+      "render_controllers": [
+        "controller.render.aionbound.default"
+      ]
+    }
+  }
+}

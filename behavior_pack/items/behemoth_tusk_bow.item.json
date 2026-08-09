@@ -1,0 +1,29 @@
+{
+  "format_version": "1.21.80",
+  "minecraft:item": {
+    "components": {
+      "minecraft:display_name": {
+        "value": "Behemoth Tusk Bow"
+      },
+      "minecraft:icon": {
+        "textures": {
+          "default": "behemoth_tusk_bow"
+        }
+      },
+      "minecraft:max_stack_size": 1,
+      "minecraft:damage": 4,
+      "minecraft:durability": {
+        "max_durability": 576
+      },
+      "minecraft:hand_equipped": true
+      ,"minecraft:cooldown": { "category": "aionbound_behemoth_tusk_bow", "duration": 1.5 }
+      ,"minecraft:use_modifiers": { "use_duration": 0.6, "movement_modifier": 0.5 }
+    },
+    "description": {
+      "identifier": "aionbound:behemoth_tusk_bow",
+      "menu_category": {
+        "category": "items"
+      }
+    }
+  }
+}

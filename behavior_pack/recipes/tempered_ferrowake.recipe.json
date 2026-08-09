@@ -1,0 +1,33 @@
+{
+  "format_version": "1.20.10",
+  "minecraft:recipe_shaped": {
+    "description": {
+      "identifier": "aionbound:tempered_ferrowake_recipe"
+    },
+    "tags": [
+      "crafting_table"
+    ],
+    "pattern": [
+      " R ",
+      "RCR",
+      " R "
+    ],
+    "key": {
+      "R": {
+        "item": "aionbound:raw_ferrowake"
+      },
+      "C": {
+        "item": "minecraft:charcoal"
+      }
+    },
+    "result": {
+      "item": "aionbound:tempered_ferrowake",
+      "count": 1
+    },
+    "unlock": [
+      {
+        "item": "aionbound:raw_ferrowake"
+      }
+    ]
+  }
+}
