@@ -2,9 +2,6 @@
   "format_version": "1.21.80",
   "minecraft:entity": {
     "components": {
-      "minecraft:behavior.controlled_by_player": {
-        "priority": 0
-      },
       "minecraft:behavior.random_stroll": {
         "priority": 6
       },
@@ -42,7 +39,8 @@
               0
             ]
           }
-        ]
+        ],
+        "interact_text": "action.interact.ride.horse"
       },
       "minecraft:type_family": {
         "family": [

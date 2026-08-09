@@ -304,15 +304,15 @@ if __name__=="__main__": unittest.main()
 '''
 
 def beta_prepare():
-    """Fill generation-5 sources while retaining every assigned inode."""
-    version=[1,1,0]
+    """Fill generation-6 sources while retaining every assigned inode."""
+    version=[1,1,1]
     bp=manifest(BP_UUID,"Aionbound Core Beta - Behavior",[
       {"type":"data","uuid":"800fb2fc-25b1-5afa-a036-d3337f69293a","version":version},
       {"type":"script","language":"javascript","entry":"scripts/main.js","uuid":SCRIPT_UUID,"version":version}],
       [{"uuid":RP_UUID,"version":version},{"module_name":"@minecraft/server","version":"2.0.0"}])
     rp=manifest(RP_UUID,"Aionbound Core Beta - Resources",[{"type":"resources","uuid":"8b0cefd8-6e77-5f4a-94bd-629205461405","version":version}],[{"uuid":BP_UUID,"version":version}])
     for m in (bp,rp):
-      m["header"]["version"]=version; m["header"]["description"]="Aionbound Core Beta generation 5"
+      m["header"]["version"]=version; m["header"]["description"]="Aionbound Core Beta generation 6"
       for module in m["modules"]: module["version"]=version
     rp["header"]["pack_scope"]="world"
     emit("behavior_pack/manifest.json",jdump(bp)); emit("resource_pack/manifest.json",jdump(rp))
@@ -339,12 +339,12 @@ def beta_prepare():
        density=384 if name in {"waystone_ruin","loot_ruin","creature_nest"} else 768
        emit(rule,jdump({"format_version":"1.13.0","minecraft:feature_rules":{"description":{"identifier":f"aionbound:{name}.feature_rule","places_feature":f"aionbound:{name}"},"conditions":{"placement_pass":"surface_pass","minecraft:biome_filter":{"test":"has_biome_tag","operator":"==","value":"overworld"}},"distribution":{"iterations":1,"scatter_chance":{"numerator":1,"denominator":density},"x":{"distribution":"uniform","extent":[0,15]},"y":"q.heightmap(v.worldx, v.worldz)","z":{"distribution":"uniform","extent":[0,15]}}}}))
     entity_names=[Path(p).name.removesuffix(".entity.json") for p in ALLOWED if p.startswith("behavior_pack/entities/")]
-    bosses={"royal_moth_empress","basalt_behemoth","rift_colossus","chrono_robo_sentinel","ash_sovereign_wyrm","tide_empress_wyrm"}
+    bosses={"glasswing_sentinel","royal_moth_empress","basalt_behemoth","rift_colossus","chrono_robo_sentinel","ash_sovereign_wyrm","tide_empress_wyrm"}
     for name in entity_names:
       hp=160 if name in bosses else 28
       c={"minecraft:type_family":{"family":["aionbound","monster" if name in bosses else "creature"]},"minecraft:health":{"value":hp,"max":hp},"minecraft:movement":{"value":.28},"minecraft:movement.basic":{},"minecraft:navigation.walk":{},"minecraft:physics":{},"minecraft:collision_box":{"width":1,"height":1.4},"minecraft:behavior.random_stroll":{"priority":6},"minecraft:loot":{"table":f"loot_tables/entities/{name}.json"}}
-      if name in bosses: c.update({"minecraft:attack":{"damage":8},"minecraft:behavior.melee_attack":{"priority":2,"track_target":True}})
-      if name=="waykeeper_courser": c.update({"minecraft:rideable":{"seat_count":1,"family_types":["player"],"seats":[{"position":[0,1.2,0]}]},"minecraft:input_ground_controlled":{},"minecraft:horse.jump_strength":{"value":.7},"minecraft:behavior.controlled_by_player":{"priority":0}})
+      if name in bosses: c.update({"minecraft:attack":{"damage":8},"minecraft:behavior.melee_attack":{"priority":2,"track_target":True},"minecraft:behavior.hurt_by_target":{"priority":1},"minecraft:behavior.nearest_attackable_target":{"priority":3,"must_see":True,"reselect_targets":True,"within_radius":24,"entity_types":[{"filters":{"test":"is_family","subject":"other","value":"player"},"max_dist":24}]}})
+      if name=="waykeeper_courser": c.update({"minecraft:rideable":{"seat_count":1,"family_types":["player"],"interact_text":"action.interact.ride.horse","seats":[{"position":[0,1.2,0]}]},"minecraft:input_ground_controlled":{},"minecraft:horse.jump_strength":{"value":.7}})
       emit(f"behavior_pack/entities/{name}.entity.json",jdump({"format_version":"1.21.80","minecraft:entity":{"description":{"identifier":f"aionbound:{name}","is_spawnable":False,"is_summonable":False},"components":c}}))
     item_names=[Path(p).name.removesuffix(".item.json") for p in ALLOWED if p.startswith("behavior_pack/items/")]
     for name in item_names:
@@ -364,7 +364,7 @@ def beta_prepare():
     atlas={"resource_pack/textures/item_texture.json":{"resource_pack_name":"aionbound_core","texture_name":"atlas.items","texture_data":{n:{"textures":f"textures/aionbound/{n}"} for n in item_names}},"resource_pack/textures/terrain_texture.json":{"resource_pack_name":"aionbound_core","texture_name":"atlas.terrain","texture_data":{n:{"textures":f"textures/aionbound/{legacy if (legacy:={'waystone_arch':'first_waystation_arch','loot_ruin':'prismglass_chest_ruin','creature_nest':'spiral_moth_spire_nest','chaos_crate_t0':'chaos_crate_prime'}.get(n,n)) else n}"} for n in block_names}}}
     for p,v in atlas.items(): emit(p,jdump(v))
     emit("resource_pack/blocks.json",jdump({f"aionbound:{n}":{"textures":n,"sound":"stone"} for n in block_names}))
-    emit("resource_pack/texts/languages.json",jdump(["en_US"])); emit("resource_pack/texts/en_US.lang","pack.name=Aionbound Core Beta\npack.description=Generation 5 bounded flagship beta\n")
+    emit("resource_pack/texts/languages.json",jdump(["en_US"])); emit("resource_pack/texts/en_US.lang","pack.name=Aionbound Core Beta\npack.description=Generation 6 bounded flagship beta\n")
     for name in ["burrowgate_key","finale_ignition_key","trophy_edge","vector_ray_projector","waykeeper_whistle"]:
       art="trophy_edge_assembled" if name=="trophy_edge" else name
       emit(f"resource_pack/attachables/{name}.attachable.json",jdump({"format_version":"1.10.0","minecraft:attachable":{"description":{"identifier":f"aionbound:{name}","materials":{"default":"entity_alphatest"},"textures":{"default":f"textures/aionbound/{art}"},"geometry":{"default":f"geometry.aionbound.{art}"},"animations":{"hold":f"animation.aionbound.{art}.idle"},"scripts":{"animate":["hold"]},"render_controllers":["controller.render.aionbound.default"]}}}))
@@ -375,9 +375,9 @@ def beta_prepare():
 def beta_build():
     bp=[(p.removeprefix("behavior_pack/"),(ROOT/p).read_bytes()) for p in source_members("behavior_pack")]
     rp=[(p.removeprefix("resource_pack/"),(ROOT/p).read_bytes()) for p in source_members("resource_pack")]
-    zip_into("dist/aionbound-core-beta-g5-behavior.mcpack",bp); zip_into("dist/aionbound-core-beta-g5-resources.mcpack",rp)
-    zip_into("dist/aionbound-core-beta-g5.mcaddon",[("aionbound-core-beta-g5-behavior.mcpack",(ROOT/"dist/aionbound-core-beta-g5-behavior.mcpack").read_bytes()),("aionbound-core-beta-g5-resources.mcpack",(ROOT/"dist/aionbound-core-beta-g5-resources.mcpack").read_bytes())])
-    packages=["dist/aionbound-core-beta-g5-behavior.mcpack","dist/aionbound-core-beta-g5-resources.mcpack","dist/aionbound-core-beta-g5.mcaddon"]
+    zip_into("dist/aionbound-core-beta-g6-behavior.mcpack",bp); zip_into("dist/aionbound-core-beta-g6-resources.mcpack",rp)
+    zip_into("dist/aionbound-core-beta-g6.mcaddon",[("aionbound-core-beta-g6-behavior.mcpack",(ROOT/"dist/aionbound-core-beta-g6-behavior.mcpack").read_bytes()),("aionbound-core-beta-g6-resources.mcpack",(ROOT/"dist/aionbound-core-beta-g6-resources.mcpack").read_bytes())])
+    packages=["dist/aionbound-core-beta-g6-behavior.mcpack","dist/aionbound-core-beta-g6-resources.mcpack","dist/aionbound-core-beta-g6.mcaddon"]
     artifacts=[{"path":p,"sha256":sha(ROOT/p),"size":(ROOT/p).stat().st_size} for p in packages]
     members=source_members("behavior_pack")+source_members("resource_pack")
     emit("manifests/source-byte-ledger.json",jdump({"schema":"aionbound.source-byte-ledger.v2","complete":True,"entries":[{"path":p,"sha256":sha(ROOT/p),"size":(ROOT/p).stat().st_size} for p in members]}))
@@ -390,6 +390,6 @@ def beta_main():
     first=beta_build(); second=beta_build(); equal=first==second
     emit("reports/deterministic-build.json",jdump({"schema":"aionbound.two-build-equality.v2","builds":2,"equal":equal,"first":first,"second":second,"timestamp_policy":"1980-01-01T00:00:00Z","member_order":"sorted_posix","mode":"0644"}))
     if not equal: raise SystemExit("deterministic rebuild mismatch")
-    print("built deterministic Aionbound Core Beta generation 5 artifacts")
+    print("built deterministic Aionbound Core Beta generation 6 artifacts")
 
 if __name__ == "__main__": beta_main()
