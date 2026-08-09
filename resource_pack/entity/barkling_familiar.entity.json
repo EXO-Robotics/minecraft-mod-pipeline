@@ -1,0 +1,28 @@
+{
+  "format_version": "1.10.0",
+  "minecraft:client_entity": {
+    "description": {
+      "animations": {
+        "move": "animation.aionbound.barkling_familiar.idle"
+      },
+      "geometry": {
+        "default": "geometry.aionbound.barkling_familiar"
+      },
+      "identifier": "aionbound:barkling_familiar",
+      "materials": {
+        "default": "entity_alphatest"
+      },
+      "render_controllers": [
+        "controller.render.aionbound.default"
+      ],
+      "scripts": {
+        "animate": [
+          "move"
+        ]
+      },
+      "textures": {
+        "default": "textures/aionbound/barkling_familiar"
+      }
+    }
+  }
+}

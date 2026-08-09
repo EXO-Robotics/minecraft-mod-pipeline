@@ -1,0 +1,24 @@
+{
+  "format_version": "1.21.80",
+  "minecraft:block": {
+    "components": {
+      "minecraft:destructible_by_mining": {
+        "seconds_to_destroy": 2
+      },
+      "minecraft:display_name": "Boneplain Soil",
+      "minecraft:geometry": "geometry.aionbound.boneplain_soil",
+      "minecraft:material_instances": {
+        "*": {
+          "render_method": "alpha_test",
+          "texture": "boneplain_soil"
+        }
+      }
+    },
+    "description": {
+      "identifier": "aionbound:boneplain_soil",
+      "menu_category": {
+        "category": "construction"
+      }
+    }
+  }
+}

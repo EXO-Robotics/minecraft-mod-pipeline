@@ -1,0 +1,24 @@
+{
+  "format_version": "1.21.80",
+  "minecraft:block": {
+    "components": {
+      "minecraft:destructible_by_mining": {
+        "seconds_to_destroy": 2
+      },
+      "minecraft:display_name": "Scorch Glass Shard Block",
+      "minecraft:geometry": "geometry.aionbound.scorch_glass_shard_block",
+      "minecraft:material_instances": {
+        "*": {
+          "render_method": "alpha_test",
+          "texture": "scorch_glass_shard_block"
+        }
+      }
+    },
+    "description": {
+      "identifier": "aionbound:scorch_glass_shard_block",
+      "menu_category": {
+        "category": "construction"
+      }
+    }
+  }
+}

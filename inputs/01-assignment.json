@@ -1,0 +1,156 @@
+{
+  "activation_commit": "2c2167f304ba8932b33da4fd3bfe24287b904e8b",
+  "activation_id": "AIONBOUND_CORE_BETA_FEATURE_PRODUCER_G000006_REPAIR_RETRY",
+  "activation_sha256": "e2b777092efe04fda4d109f9914c2004cbf1e8b35d99f15488db88f052487f73",
+  "activation_tree": "fadeff85828cdf49b63a52247a5c2940c20f4288",
+  "allowed_read_paths": [
+    "/Users/blakegrove/Desktop/bedrock-server/program/aionbound-core-beta-production-runs/AIONBOUND_CORE_BETA_FEATURE_PRODUCER_G000005_RETRY/repo",
+    "/Users/blakegrove/Desktop/bedrock-server/program/minecraft-reconstruction-compiler/authority/aionbound/core-beta-production-contract.json",
+    "/Users/blakegrove/Desktop/bedrock-server/program/minecraft-reconstruction-compiler/authority/aionbound/repairs/core-beta-g5-product-repair.json",
+    "/Users/blakegrove/Desktop/bedrock-server/program/minecraft-reconstruction-compiler/authority/aionbound/core-beta-g6-repair-assembly.json"
+  ],
+  "allowed_write_paths": [
+    "/Users/blakegrove/Desktop/bedrock-server/program/aionbound-core-beta-production-runs/AIONBOUND_CORE_BETA_FEATURE_PRODUCER_G000006_REPAIR_RETRY/repo"
+  ],
+  "assignment_id": "AIONBOUND_CORE_BETA_FEATURE_PRODUCER_G000006_REPAIR_RETRY",
+  "base_candidate": {
+    "commit": "85e780385aa1ecb4f5b0aa0114ac7a101dd80c8b",
+    "tree": "7265e00f97319d6f6269911587721f9617542857"
+  },
+  "candidate_id": "AIONBOUND_CORE_BETA_G000006",
+  "completion_state": "AIONBOUND_CORE_BETA_G6_CANDIDATE_FROZEN",
+  "environment_manifest_sha256": "0deb60e298382b1a70532d5930ea8f759bedebeefe2931ac614386304b0b4340",
+  "gate_authority": [
+    "IMPLEMENTED",
+    "STATIC_QUALIFIED",
+    "CANDIDATE_READY_FOR_INDEPENDENT_AUDIT"
+  ],
+  "input_artifacts": [
+    {
+      "path": "/Users/blakegrove/Desktop/bedrock-server/program/minecraft-reconstruction-compiler/authority/aionbound/core-beta-production-contract.json",
+      "sha256": "95c876c07614fefdf0a7789b3d7fa10e1895397b160e0ff18a1a4664557e1538"
+    },
+    {
+      "path": "/Users/blakegrove/Desktop/bedrock-server/program/minecraft-reconstruction-compiler/authority/aionbound/repairs/core-beta-g5-product-repair.json",
+      "sha256": "e7268377d5cdd82f0f5ddffaa2784f91c96752690bd0e685ff8d0c112d34ac30"
+    },
+    {
+      "path": "/Users/blakegrove/Desktop/bedrock-server/program/minecraft-reconstruction-compiler/authority/aionbound/core-beta-g6-repair-assembly.json",
+      "sha256": "e9b9567cb06a55180302e6db30086d08534de7037dba9646ca2d8a21605fde6a"
+    },
+    {
+      "path": "/Users/blakegrove/Desktop/bedrock-server/program/minecraft-reconstruction-compiler/authority/aionbound/activations/core-beta-g6-repair-retry/core-beta-g6-native-repair-activation.json",
+      "sha256": "e2b777092efe04fda4d109f9914c2004cbf1e8b35d99f15488db88f052487f73"
+    }
+  ],
+  "lane": "PRODUCTION",
+  "lane_cache": "/Users/blakegrove/Desktop/bedrock-server/program/aionbound-core-beta-production-runs/AIONBOUND_CORE_BETA_FEATURE_PRODUCER_G000006_REPAIR_RETRY/runtime/cache",
+  "lane_home": "/Users/blakegrove/Desktop/bedrock-server/program/aionbound-core-beta-production-runs/AIONBOUND_CORE_BETA_FEATURE_PRODUCER_G000006_REPAIR_RETRY/runtime/home",
+  "lane_logs": "/Users/blakegrove/Desktop/bedrock-server/program/aionbound-core-beta-production-runs/AIONBOUND_CORE_BETA_FEATURE_PRODUCER_G000006_REPAIR_RETRY/runtime/logs",
+  "lane_root": "/Users/blakegrove/Desktop/bedrock-server/program/aionbound-core-beta-production-runs/AIONBOUND_CORE_BETA_FEATURE_PRODUCER_G000006_REPAIR_RETRY",
+  "lane_tmp": "/Users/blakegrove/Desktop/bedrock-server/program/aionbound-core-beta-production-runs/AIONBOUND_CORE_BETA_FEATURE_PRODUCER_G000006_REPAIR_RETRY/runtime/tmp",
+  "launcher_sha256": "9cabc943c1863d1f0cc814876480eb66a03c02ba306e27766457f8ee1dd9283c",
+  "negative_access_checks": [
+    "CONTROL_SNAPSHOT_KERNEL_DENIED",
+    "JAVA_ORACLE_KERNEL_DENIED",
+    "CANARY_KERNEL_DENIED",
+    "NO_DOCKER_SOCKET",
+    "NO_SHARED_GIT_OBJECTS"
+  ],
+  "network_policy": "OUTBOUND_ALLOWED_EVIDENCE_DENIED",
+  "output_artifacts": [
+    "/Users/blakegrove/Desktop/bedrock-server/program/aionbound-core-beta-production-runs/AIONBOUND_CORE_BETA_FEATURE_PRODUCER_G000006_REPAIR_RETRY/repo/dist/aionbound-core-beta-g6.mcaddon",
+    "/Users/blakegrove/Desktop/bedrock-server/program/aionbound-core-beta-production-runs/AIONBOUND_CORE_BETA_FEATURE_PRODUCER_G000006_REPAIR_RETRY/runtime/production-process-receipt.json"
+  ],
+  "output_policy": {
+    "allowed_changed_paths": [
+      "behavior_pack/entities/ash_sovereign_wyrm.entity.json",
+      "behavior_pack/entities/basalt_behemoth.entity.json",
+      "behavior_pack/entities/chrono_robo_sentinel.entity.json",
+      "behavior_pack/entities/glasswing_sentinel.entity.json",
+      "behavior_pack/entities/rift_colossus.entity.json",
+      "behavior_pack/entities/royal_moth_empress.entity.json",
+      "behavior_pack/entities/tide_empress_wyrm.entity.json",
+      "behavior_pack/entities/waykeeper_courser.entity.json",
+      "behavior_pack/manifest.json",
+      "behavior_pack/scripts/main.js",
+      "behavior_pack/scripts/runtime.js",
+      "dist/aionbound-core-beta-g6-behavior.mcpack",
+      "dist/aionbound-core-beta-g6-resources.mcpack",
+      "dist/aionbound-core-beta-g6.mcaddon",
+      "dist/artifact-manifest.json",
+      "manifests/candidate-manifest.json",
+      "manifests/implementation-map.json",
+      "manifests/source-byte-ledger.json",
+      "reports/deterministic-build.json",
+      "reports/producer-local-validation.json",
+      "resource_pack/manifest.json",
+      "tests/test_core_beta.py",
+      "tooling/build.py",
+      "tooling/validate_core_beta.py"
+    ],
+    "max_total_bytes": 134217728,
+    "required_paths": [
+      "behavior_pack/entities/ash_sovereign_wyrm.entity.json",
+      "behavior_pack/entities/basalt_behemoth.entity.json",
+      "behavior_pack/entities/chrono_robo_sentinel.entity.json",
+      "behavior_pack/entities/glasswing_sentinel.entity.json",
+      "behavior_pack/entities/rift_colossus.entity.json",
+      "behavior_pack/entities/royal_moth_empress.entity.json",
+      "behavior_pack/entities/tide_empress_wyrm.entity.json",
+      "behavior_pack/entities/waykeeper_courser.entity.json",
+      "behavior_pack/manifest.json",
+      "behavior_pack/scripts/main.js",
+      "behavior_pack/scripts/runtime.js",
+      "dist/aionbound-core-beta-g6-behavior.mcpack",
+      "dist/aionbound-core-beta-g6-resources.mcpack",
+      "dist/aionbound-core-beta-g6.mcaddon",
+      "dist/artifact-manifest.json",
+      "manifests/candidate-manifest.json",
+      "manifests/implementation-map.json",
+      "manifests/source-byte-ledger.json",
+      "reports/deterministic-build.json",
+      "resource_pack/manifest.json",
+      "tests/test_core_beta.py",
+      "tooling/build.py",
+      "tooling/validate_core_beta.py"
+    ]
+  },
+  "parent_process_receipt_sha256": "a24b88b2ce5160e909f0d1a018370493c323f8529ddd8dba14b48e8afce763c4",
+  "platform_qualification_sha256": "bde4c43fb3faac06fbd73171d9fc82498c28b4cae87d2808d2f2a33c8a530877",
+  "process_receipt_path": "/Users/blakegrove/Desktop/bedrock-server/program/aionbound-core-beta-production-runs/AIONBOUND_CORE_BETA_FEATURE_PRODUCER_G000006_REPAIR_RETRY/runtime/production-process-receipt.json",
+  "prohibited_paths": [
+    "/Users/blakegrove/Desktop/bedrock-server/crazycraft-java-oracle-v1",
+    "/Users/blakegrove/Desktop/bedrock-server/program/minecraft-reconstruction-compiler/authority/aionbound/UNPROMOTED_SOURCE_SNAPSHOT"
+  ],
+  "repair_of": "AIONBOUND_CORE_BETA_G000005",
+  "required_checks": [
+    "two-way bounded pocket",
+    "restart-resumable pocket journal",
+    "combat target acquisition",
+    "active encounter dedupe",
+    "direct-input rideable",
+    "foundry prerequisite",
+    "stable API no experiments",
+    "packaged literal main",
+    "complete ledger",
+    "two-build equality"
+  ],
+  "requires_activation_attestation": true,
+  "requires_process_receipt": true,
+  "role": "feature_producer",
+  "sandbox_profile_sha256": "ac07e65b007d5dbc90d33ffba2464531c7f80a6193fd83a992e2da10f6517433",
+  "schema_version": "1.0.0",
+  "skill": "produce-bedrock-cleanroom-feature",
+  "stop_states": [
+    "AUTHORITY_MISMATCH",
+    "PRODUCTION_BOUNDARY_FAIL",
+    "AGENT_TIMEOUT",
+    "CLEANUP_FAIL",
+    "REPAIR_NOT_CLOSED"
+  ],
+  "timeouts": {
+    "run_seconds": 5400,
+    "term_grace_seconds": 20
+  }
+}

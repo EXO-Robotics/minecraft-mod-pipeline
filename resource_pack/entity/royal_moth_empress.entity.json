@@ -1,0 +1,28 @@
+{
+  "format_version": "1.10.0",
+  "minecraft:client_entity": {
+    "description": {
+      "animations": {
+        "move": "animation.aionbound.royal_moth_empress.idle"
+      },
+      "geometry": {
+        "default": "geometry.aionbound.royal_moth_empress"
+      },
+      "identifier": "aionbound:royal_moth_empress",
+      "materials": {
+        "default": "entity_alphatest"
+      },
+      "render_controllers": [
+        "controller.render.aionbound.default"
+      ],
+      "scripts": {
+        "animate": [
+          "move"
+        ]
+      },
+      "textures": {
+        "default": "textures/aionbound/royal_moth_empress"
+      }
+    }
+  }
+}

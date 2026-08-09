@@ -1,0 +1,2777 @@
+{
+  "authority_id": "AIONBOUND_CORE_V0_ASSET_PROMOTIONS_V1",
+  "control_lineage_receipt_id": "AIONBOUND_CORE_V0_ASSET_PROMOTION_CONTROL_002",
+  "excluded_selected_context_classes": [
+    "data-only recipe draft explicitly not wired",
+    "warehouse grammar module that is not a selected custom art asset",
+    "runtime logic module that is not a selected custom art asset",
+    "flavor-kit breadth beyond the exact Core v0 art selection"
+  ],
+  "gate_classification": {
+    "BDS_QUALIFIED": "PENDING",
+    "CLEAN_ROOM_CONTRACTED": "PASSED_FOR_BETA_STATIC_ASSET_RUNTIME_PROMOTION",
+    "DESKTOP_VERIFIED": "PENDING",
+    "IMPLEMENTED": "PENDING",
+    "INTENT_DISTILLED": "PASSED_WITH_HASHED_SELECTED_SYSTEMS_INPUT",
+    "PS4_VERIFIED": "PENDING",
+    "STATIC_QUALIFIED": "PASSED_BETA_SCOPE_REIDENTIFIED_EXPORTS_ONLY"
+  },
+  "promotion_scope": "BETA_STATIC_REIDENTIFIED_RUNTIME_EXPORTS_ONLY",
+  "promotions": [
+    {
+      "member_count": 1,
+      "members": [
+        {
+          "asset_id": "mosskip_trail",
+          "generated_export_receipt": {
+            "animation_export_byte_exact_before_reidentification": true,
+            "brief_byte_exact": true,
+            "editable_model_byte_difference_reason": "absolute texture path only",
+            "editable_model_byte_equality": false,
+            "editable_model_canonical_equality": "PASSED",
+            "editable_texture_byte_exact": true,
+            "generator_exit_status": 0,
+            "geometry_export_byte_exact_before_reidentification": true,
+            "native_blockbench_export": "PENDING_NOT_CLAIMED",
+            "native_locator_elements_in_editable_model": 0,
+            "promoted_runtime_geometry_locators": [
+              "effect",
+              "gaze"
+            ],
+            "runtime_texture_byte_exact": true,
+            "selected_only_disposable_rerun": true,
+            "status": "PASSED"
+          },
+          "member_receipt_id": "aionbound-core-v0-mosskip_trail-beta-static-v1",
+          "promoted_runtime_exports": {
+            "animation": {
+              "path": "authority/aionbound/PROMOTED_RUNTIME/core-v0/assets/mosskip_trail/animations/mosskip_trail.animation.json",
+              "sha256": "142b5e72462bfedc320587fc23db2a25ee3700abe98dbf4fc9fb0a093d942a05",
+              "size_bytes": 1037
+            },
+            "geometry": {
+              "path": "authority/aionbound/PROMOTED_RUNTIME/core-v0/assets/mosskip_trail/models/mosskip_trail.geo.json",
+              "sha256": "0844dac36041e864263c07cd06d64439dae2e13be58e5dca8296afd4070751b7",
+              "size_bytes": 43707
+            },
+            "texture": {
+              "path": "authority/aionbound/PROMOTED_RUNTIME/core-v0/assets/mosskip_trail/textures/mosskip_trail.png",
+              "sha256": "a8c9bc9bf2ae79ca042e0d0c2f5362cb2596285edb07f6fef66555427281b39f",
+              "size_bytes": 1075
+            }
+          },
+          "promotion_state": "PROMOTED_BETA_STATIC_RUNTIME_EXPORT",
+          "remaining_gates": [
+            "native Blockbench reopen-save-reopen and native-export equivalence",
+            "fixed proof views and two critique cycles",
+            "BP/RP binding and deterministic package",
+            "Creator Tools and Stable/Preview BDS",
+            "desktop client, persistence, multiplayer, performance, Realm, controller, split-screen, and physical PS4",
+            "commercial distribution and Marketplace rights review"
+          ],
+          "runtime_identity": {
+            "animation_identifier_prefix": "animation.aionbound.mosskip_trail.",
+            "geometry_identifier": "geometry.aionbound.mosskip_trail",
+            "namespace": "aionbound"
+          },
+          "source_neutral_provenance": {
+            "authorship_classification": "CLEAN_ROOM_ORIGINAL_GENERATED_ART_ASSERTION",
+            "beta_static_promotion_provenance_blocker": false,
+            "consumer_distribution_and_marketplace": "NOT_ESTABLISHED_NOT_CLAIMED",
+            "control_receipt_id": "AIONBOUND_CORE_V0_PROVENANCE_MOSSKIP_TRAIL",
+            "internal_core_source_reuse": "AUTHORIZED_BY_CONTROL_PLANE_SELECTION_AND_REUSE_AUDIT",
+            "originality_assertion_classification": "PASSED_ORIGINAL_ART_NO_THIRD_PARTY_PORT_OR_TRACE"
+          },
+          "static_validation_receipt": {
+            "editable_and_runtime_texture_byte_equal": true,
+            "editable_model": {
+              "all_uuids_unique_and_rfc4122_shaped": true,
+              "animation_count": 2,
+              "animator_group_references_resolve": true,
+              "element_count": 30,
+              "embedded_texture_matches_editable_texture": true,
+              "group_count": 9,
+              "keyframe_count": 18,
+              "native_locator_element_count": 0,
+              "outliner_references_resolve_exactly_once": true,
+              "status": "PASSED"
+            },
+            "legacy_namespace_scan": "PASSED_ZERO_MATCHES",
+            "promoted_animation": {
+              "bone_references_resolve": true,
+              "clip_count": 2,
+              "clip_identifiers": [
+                "animation.aionbound.mosskip_trail.action",
+                "animation.aionbound.mosskip_trail.idle"
+              ],
+              "finite_numeric_values": "PASSED",
+              "keyframe_count": 7,
+              "status": "PASSED"
+            },
+            "promoted_geometry": {
+              "bone_count": 9,
+              "cube_count": 30,
+              "finite_numeric_values": "PASSED",
+              "geometry_identifier": "geometry.aionbound.mosskip_trail",
+              "locators": [
+                "effect",
+                "gaze"
+              ],
+              "parent_references_and_cycles": "PASSED",
+              "status": "PASSED",
+              "texture_height": 32,
+              "texture_width": 32,
+              "uv_bounds": "PASSED"
+            },
+            "promoted_texture_byte_equal_to_audited_runtime_texture": true,
+            "source_path_scan": "PASSED_ZERO_MATCHES",
+            "texture_decode": {
+              "bit_depth": 8,
+              "channels": 4,
+              "chunk_sequence": [
+                "IHDR",
+                "IDAT",
+                "IEND"
+              ],
+              "color_type": 6,
+              "crc_all_chunks": "PASSED",
+              "decoded_scanline_bytes": 4128,
+              "decoder": "independent_png_crc_and_idat_v1",
+              "filter_types_observed": [
+                1,
+                2,
+                4
+              ],
+              "height": 32,
+              "idat_decompression": "PASSED",
+              "interlace": 0,
+              "status": "PASSED",
+              "width": 32
+            }
+          },
+          "visual_budget_binding": {
+            "animation_clip_count": 2,
+            "animation_keyframe_count": 7,
+            "computed_bone_count": 9,
+            "computed_cube_count": 30,
+            "declared_bone_count": 9,
+            "declared_cube_count": 30,
+            "declared_density_floor": 28,
+            "decoded_rgba_memory_bytes": 4096,
+            "mechanics_promoted": false,
+            "runtime_budget_binding": "at most four within radius 48 of any player",
+            "texture_dimensions": [
+              32,
+              32
+            ]
+          }
+        }
+      ],
+      "product_owner": "aionbound_core",
+      "promotion_id": "aionbound-core-v0-ambient_strange-beta-static-v1",
+      "promotion_state": "PROMOTED_BETA_STATIC_RUNTIME_EXPORT",
+      "shipping_authority": false,
+      "visual_role_id": "ambient_strange"
+    },
+    {
+      "member_count": 1,
+      "members": [
+        {
+          "asset_id": "glasswing_sentinel",
+          "generated_export_receipt": {
+            "animation_export_byte_exact_before_reidentification": true,
+            "brief_byte_exact": true,
+            "editable_model_byte_difference_reason": "absolute texture path only",
+            "editable_model_byte_equality": false,
+            "editable_model_canonical_equality": "PASSED",
+            "editable_texture_byte_exact": true,
+            "generator_exit_status": 0,
+            "geometry_export_byte_exact_before_reidentification": true,
+            "native_blockbench_export": "PENDING_NOT_CLAIMED",
+            "native_locator_elements_in_editable_model": 0,
+            "promoted_runtime_geometry_locators": [
+              "effect",
+              "projectile"
+            ],
+            "runtime_texture_byte_exact": true,
+            "selected_only_disposable_rerun": true,
+            "status": "PASSED"
+          },
+          "member_receipt_id": "aionbound-core-v0-glasswing_sentinel-beta-static-v1",
+          "promoted_runtime_exports": {
+            "animation": {
+              "path": "authority/aionbound/PROMOTED_RUNTIME/core-v0/assets/glasswing_sentinel/animations/glasswing_sentinel.animation.json",
+              "sha256": "0a16d6947a9ad477a33c10dafe12fc0a8f67d9b2b0d27fba19cdeafdbec7beb0",
+              "size_bytes": 1047
+            },
+            "geometry": {
+              "path": "authority/aionbound/PROMOTED_RUNTIME/core-v0/assets/glasswing_sentinel/models/glasswing_sentinel.geo.json",
+              "sha256": "f481659bfc68c1a8684eefbeee7df3cf3d2108f2030d0ab8501809c1d9897791",
+              "size_bytes": 46821
+            },
+            "texture": {
+              "path": "authority/aionbound/PROMOTED_RUNTIME/core-v0/assets/glasswing_sentinel/textures/glasswing_sentinel.png",
+              "sha256": "2fc6f3db01483af7f0cbb7e74c2e4abf0c90439721b67b8f251430d5fe9b8e5c",
+              "size_bytes": 1099
+            }
+          },
+          "promotion_state": "PROMOTED_BETA_STATIC_RUNTIME_EXPORT",
+          "remaining_gates": [
+            "native Blockbench reopen-save-reopen and native-export equivalence",
+            "fixed proof views and two critique cycles",
+            "BP/RP binding and deterministic package",
+            "Creator Tools and Stable/Preview BDS",
+            "desktop client, persistence, multiplayer, performance, Realm, controller, split-screen, and physical PS4",
+            "commercial distribution and Marketplace rights review"
+          ],
+          "runtime_identity": {
+            "animation_identifier_prefix": "animation.aionbound.glasswing_sentinel.",
+            "geometry_identifier": "geometry.aionbound.glasswing_sentinel",
+            "namespace": "aionbound"
+          },
+          "source_neutral_provenance": {
+            "authorship_classification": "CLEAN_ROOM_ORIGINAL_GENERATED_ART_ASSERTION",
+            "beta_static_promotion_provenance_blocker": false,
+            "consumer_distribution_and_marketplace": "NOT_ESTABLISHED_NOT_CLAIMED",
+            "control_receipt_id": "AIONBOUND_CORE_V0_PROVENANCE_GLASSWING_SENTINEL",
+            "internal_core_source_reuse": "AUTHORIZED_BY_CONTROL_PLANE_SELECTION_AND_REUSE_AUDIT",
+            "originality_assertion_classification": "PASSED_ORIGINAL_ART_NO_THIRD_PARTY_PORT_OR_TRACE"
+          },
+          "static_validation_receipt": {
+            "editable_and_runtime_texture_byte_equal": true,
+            "editable_model": {
+              "all_uuids_unique_and_rfc4122_shaped": true,
+              "animation_count": 2,
+              "animator_group_references_resolve": true,
+              "element_count": 32,
+              "embedded_texture_matches_editable_texture": true,
+              "group_count": 11,
+              "keyframe_count": 18,
+              "native_locator_element_count": 0,
+              "outliner_references_resolve_exactly_once": true,
+              "status": "PASSED"
+            },
+            "legacy_namespace_scan": "PASSED_ZERO_MATCHES",
+            "promoted_animation": {
+              "bone_references_resolve": true,
+              "clip_count": 2,
+              "clip_identifiers": [
+                "animation.aionbound.glasswing_sentinel.action",
+                "animation.aionbound.glasswing_sentinel.idle"
+              ],
+              "finite_numeric_values": "PASSED",
+              "keyframe_count": 7,
+              "status": "PASSED"
+            },
+            "promoted_geometry": {
+              "bone_count": 11,
+              "cube_count": 32,
+              "finite_numeric_values": "PASSED",
+              "geometry_identifier": "geometry.aionbound.glasswing_sentinel",
+              "locators": [
+                "effect",
+                "projectile"
+              ],
+              "parent_references_and_cycles": "PASSED",
+              "status": "PASSED",
+              "texture_height": 32,
+              "texture_width": 32,
+              "uv_bounds": "PASSED"
+            },
+            "promoted_texture_byte_equal_to_audited_runtime_texture": true,
+            "source_path_scan": "PASSED_ZERO_MATCHES",
+            "texture_decode": {
+              "bit_depth": 8,
+              "channels": 4,
+              "chunk_sequence": [
+                "IHDR",
+                "IDAT",
+                "IEND"
+              ],
+              "color_type": 6,
+              "crc_all_chunks": "PASSED",
+              "decoded_scanline_bytes": 4128,
+              "decoder": "independent_png_crc_and_idat_v1",
+              "filter_types_observed": [
+                1,
+                2,
+                4
+              ],
+              "height": 32,
+              "idat_decompression": "PASSED",
+              "interlace": 0,
+              "status": "PASSED",
+              "width": 32
+            }
+          },
+          "visual_budget_binding": {
+            "animation_clip_count": 2,
+            "animation_keyframe_count": 7,
+            "computed_bone_count": 11,
+            "computed_cube_count": 32,
+            "declared_bone_count": 11,
+            "declared_cube_count": 32,
+            "declared_density_floor": 32,
+            "decoded_rgba_memory_bytes": 4096,
+            "mechanics_promoted": false,
+            "runtime_budget_binding": "at most two loaded elites",
+            "texture_dimensions": [
+              32,
+              32
+            ]
+          }
+        }
+      ],
+      "product_owner": "aionbound_core",
+      "promotion_id": "aionbound-core-v0-elite_threat-beta-static-v1",
+      "promotion_state": "PROMOTED_BETA_STATIC_RUNTIME_EXPORT",
+      "shipping_authority": false,
+      "visual_role_id": "elite_threat"
+    },
+    {
+      "member_count": 1,
+      "members": [
+        {
+          "asset_id": "barkling_familiar",
+          "generated_export_receipt": {
+            "animation_export_byte_exact_before_reidentification": true,
+            "brief_byte_exact": true,
+            "editable_model_byte_difference_reason": "absolute texture path only",
+            "editable_model_byte_equality": false,
+            "editable_model_canonical_equality": "PASSED",
+            "editable_texture_byte_exact": true,
+            "generator_exit_status": 0,
+            "geometry_export_byte_exact_before_reidentification": true,
+            "native_blockbench_export": "PENDING_NOT_CLAIMED",
+            "native_locator_elements_in_editable_model": 0,
+            "promoted_runtime_geometry_locators": [
+              "effect"
+            ],
+            "runtime_texture_byte_exact": true,
+            "selected_only_disposable_rerun": true,
+            "status": "PASSED"
+          },
+          "member_receipt_id": "aionbound-core-v0-barkling_familiar-beta-static-v1",
+          "promoted_runtime_exports": {
+            "animation": {
+              "path": "authority/aionbound/PROMOTED_RUNTIME/core-v0/assets/barkling_familiar/animations/barkling_familiar.animation.json",
+              "sha256": "7ec0bf60c93c126abfe5ebae15b3b43cd5a44a9df7d814941d95221098958590",
+              "size_bytes": 1045
+            },
+            "geometry": {
+              "path": "authority/aionbound/PROMOTED_RUNTIME/core-v0/assets/barkling_familiar/models/barkling_familiar.geo.json",
+              "sha256": "ea0605afdc5c492516816cea3d12a224551f75dee1ce019d18b5169bd110c291",
+              "size_bytes": 36462
+            },
+            "texture": {
+              "path": "authority/aionbound/PROMOTED_RUNTIME/core-v0/assets/barkling_familiar/textures/barkling_familiar.png",
+              "sha256": "5251be30b29d458db2834e05e8f5a61c55070becea78522508654999977ed65d",
+              "size_bytes": 1070
+            }
+          },
+          "promotion_state": "PROMOTED_BETA_STATIC_RUNTIME_EXPORT",
+          "remaining_gates": [
+            "native Blockbench reopen-save-reopen and native-export equivalence",
+            "fixed proof views and two critique cycles",
+            "BP/RP binding and deterministic package",
+            "Creator Tools and Stable/Preview BDS",
+            "desktop client, persistence, multiplayer, performance, Realm, controller, split-screen, and physical PS4",
+            "commercial distribution and Marketplace rights review"
+          ],
+          "runtime_identity": {
+            "animation_identifier_prefix": "animation.aionbound.barkling_familiar.",
+            "geometry_identifier": "geometry.aionbound.barkling_familiar",
+            "namespace": "aionbound"
+          },
+          "source_neutral_provenance": {
+            "authorship_classification": "CLEAN_ROOM_ORIGINAL_GENERATED_ART_ASSERTION",
+            "beta_static_promotion_provenance_blocker": false,
+            "consumer_distribution_and_marketplace": "NOT_ESTABLISHED_NOT_CLAIMED",
+            "control_receipt_id": "AIONBOUND_CORE_V0_PROVENANCE_BARKLING_FAMILIAR",
+            "internal_core_source_reuse": "AUTHORIZED_BY_CONTROL_PLANE_SELECTION_AND_REUSE_AUDIT",
+            "originality_assertion_classification": "PASSED_ORIGINAL_ART_NO_THIRD_PARTY_PORT_OR_TRACE"
+          },
+          "static_validation_receipt": {
+            "editable_and_runtime_texture_byte_equal": true,
+            "editable_model": {
+              "all_uuids_unique_and_rfc4122_shaped": true,
+              "animation_count": 2,
+              "animator_group_references_resolve": true,
+              "element_count": 25,
+              "embedded_texture_matches_editable_texture": true,
+              "group_count": 8,
+              "keyframe_count": 18,
+              "native_locator_element_count": 0,
+              "outliner_references_resolve_exactly_once": true,
+              "status": "PASSED"
+            },
+            "legacy_namespace_scan": "PASSED_ZERO_MATCHES",
+            "promoted_animation": {
+              "bone_references_resolve": true,
+              "clip_count": 2,
+              "clip_identifiers": [
+                "animation.aionbound.barkling_familiar.action",
+                "animation.aionbound.barkling_familiar.idle"
+              ],
+              "finite_numeric_values": "PASSED",
+              "keyframe_count": 7,
+              "status": "PASSED"
+            },
+            "promoted_geometry": {
+              "bone_count": 8,
+              "cube_count": 25,
+              "finite_numeric_values": "PASSED",
+              "geometry_identifier": "geometry.aionbound.barkling_familiar",
+              "locators": [
+                "effect"
+              ],
+              "parent_references_and_cycles": "PASSED",
+              "status": "PASSED",
+              "texture_height": 32,
+              "texture_width": 32,
+              "uv_bounds": "PASSED"
+            },
+            "promoted_texture_byte_equal_to_audited_runtime_texture": true,
+            "source_path_scan": "PASSED_ZERO_MATCHES",
+            "texture_decode": {
+              "bit_depth": 8,
+              "channels": 4,
+              "chunk_sequence": [
+                "IHDR",
+                "IDAT",
+                "IEND"
+              ],
+              "color_type": 6,
+              "crc_all_chunks": "PASSED",
+              "decoded_scanline_bytes": 4128,
+              "decoder": "independent_png_crc_and_idat_v1",
+              "filter_types_observed": [
+                1,
+                2,
+                4
+              ],
+              "height": 32,
+              "idat_decompression": "PASSED",
+              "interlace": 0,
+              "status": "PASSED",
+              "width": 32
+            }
+          },
+          "visual_budget_binding": {
+            "animation_clip_count": 2,
+            "animation_keyframe_count": 7,
+            "computed_bone_count": 8,
+            "computed_cube_count": 25,
+            "declared_bone_count": 8,
+            "declared_cube_count": 25,
+            "declared_density_floor": 25,
+            "decoded_rgba_memory_bytes": 4096,
+            "mechanics_promoted": false,
+            "runtime_budget_binding": "one per player",
+            "texture_dimensions": [
+              32,
+              32
+            ]
+          }
+        }
+      ],
+      "product_owner": "aionbound_core",
+      "promotion_id": "aionbound-core-v0-light_familiar-beta-static-v1",
+      "promotion_state": "PROMOTED_BETA_STATIC_RUNTIME_EXPORT",
+      "shipping_authority": false,
+      "visual_role_id": "light_familiar"
+    },
+    {
+      "member_count": 1,
+      "members": [
+        {
+          "asset_id": "royal_moth_empress",
+          "generated_export_receipt": {
+            "animation_export_byte_exact_before_reidentification": true,
+            "brief_byte_exact": true,
+            "editable_model_byte_difference_reason": "absolute texture path only",
+            "editable_model_byte_equality": false,
+            "editable_model_canonical_equality": "PASSED",
+            "editable_texture_byte_exact": true,
+            "generator_exit_status": 0,
+            "geometry_export_byte_exact_before_reidentification": true,
+            "native_blockbench_export": "PENDING_NOT_CLAIMED",
+            "native_locator_elements_in_editable_model": 0,
+            "promoted_runtime_geometry_locators": [
+              "effect",
+              "projectile"
+            ],
+            "runtime_texture_byte_exact": true,
+            "selected_only_disposable_rerun": true,
+            "status": "PASSED"
+          },
+          "member_receipt_id": "aionbound-core-v0-royal_moth_empress-beta-static-v1",
+          "promoted_runtime_exports": {
+            "animation": {
+              "path": "authority/aionbound/PROMOTED_RUNTIME/core-v0/assets/royal_moth_empress/animations/royal_moth_empress.animation.json",
+              "sha256": "0c1c30f5b47866db2f03fd1758bc7ac56c5b87208932716e7c02e6a88646cd8c",
+              "size_bytes": 1047
+            },
+            "geometry": {
+              "path": "authority/aionbound/PROMOTED_RUNTIME/core-v0/assets/royal_moth_empress/models/royal_moth_empress.geo.json",
+              "sha256": "2b8740a394354c83c10325795e882400072224f10946bf20fc2523c43460681c",
+              "size_bytes": 44980
+            },
+            "texture": {
+              "path": "authority/aionbound/PROMOTED_RUNTIME/core-v0/assets/royal_moth_empress/textures/royal_moth_empress.png",
+              "sha256": "4bbd2168cbc79b132b5c0debc6f9855aea54617dff359ba32b98b8cf5e89bc11",
+              "size_bytes": 1037
+            }
+          },
+          "promotion_state": "PROMOTED_BETA_STATIC_RUNTIME_EXPORT",
+          "remaining_gates": [
+            "native Blockbench reopen-save-reopen and native-export equivalence",
+            "fixed proof views and two critique cycles",
+            "BP/RP binding and deterministic package",
+            "Creator Tools and Stable/Preview BDS",
+            "desktop client, persistence, multiplayer, performance, Realm, controller, split-screen, and physical PS4",
+            "commercial distribution and Marketplace rights review"
+          ],
+          "runtime_identity": {
+            "animation_identifier_prefix": "animation.aionbound.royal_moth_empress.",
+            "geometry_identifier": "geometry.aionbound.royal_moth_empress",
+            "namespace": "aionbound"
+          },
+          "source_neutral_provenance": {
+            "authorship_classification": "CLEAN_ROOM_ORIGINAL_GENERATED_ART_ASSERTION",
+            "beta_static_promotion_provenance_blocker": false,
+            "consumer_distribution_and_marketplace": "NOT_ESTABLISHED_NOT_CLAIMED",
+            "control_receipt_id": "AIONBOUND_CORE_V0_PROVENANCE_ROYAL_MOTH_EMPRESS",
+            "internal_core_source_reuse": "AUTHORIZED_BY_CONTROL_PLANE_SELECTION_AND_REUSE_AUDIT",
+            "originality_assertion_classification": "PASSED_ORIGINAL_ART_NO_THIRD_PARTY_PORT_OR_TRACE"
+          },
+          "static_validation_receipt": {
+            "editable_and_runtime_texture_byte_equal": true,
+            "editable_model": {
+              "all_uuids_unique_and_rfc4122_shaped": true,
+              "animation_count": 2,
+              "animator_group_references_resolve": true,
+              "element_count": 31,
+              "embedded_texture_matches_editable_texture": true,
+              "group_count": 8,
+              "keyframe_count": 18,
+              "native_locator_element_count": 0,
+              "outliner_references_resolve_exactly_once": true,
+              "status": "PASSED"
+            },
+            "legacy_namespace_scan": "PASSED_ZERO_MATCHES",
+            "promoted_animation": {
+              "bone_references_resolve": true,
+              "clip_count": 2,
+              "clip_identifiers": [
+                "animation.aionbound.royal_moth_empress.action",
+                "animation.aionbound.royal_moth_empress.idle"
+              ],
+              "finite_numeric_values": "PASSED",
+              "keyframe_count": 7,
+              "status": "PASSED"
+            },
+            "promoted_geometry": {
+              "bone_count": 8,
+              "cube_count": 31,
+              "finite_numeric_values": "PASSED",
+              "geometry_identifier": "geometry.aionbound.royal_moth_empress",
+              "locators": [
+                "effect",
+                "projectile"
+              ],
+              "parent_references_and_cycles": "PASSED",
+              "status": "PASSED",
+              "texture_height": 32,
+              "texture_width": 32,
+              "uv_bounds": "PASSED"
+            },
+            "promoted_texture_byte_equal_to_audited_runtime_texture": true,
+            "source_path_scan": "PASSED_ZERO_MATCHES",
+            "texture_decode": {
+              "bit_depth": 8,
+              "channels": 4,
+              "chunk_sequence": [
+                "IHDR",
+                "IDAT",
+                "IEND"
+              ],
+              "color_type": 6,
+              "crc_all_chunks": "PASSED",
+              "decoded_scanline_bytes": 4128,
+              "decoder": "independent_png_crc_and_idat_v1",
+              "filter_types_observed": [
+                1,
+                2,
+                4
+              ],
+              "height": 32,
+              "idat_decompression": "PASSED",
+              "interlace": 0,
+              "status": "PASSED",
+              "width": 32
+            }
+          },
+          "visual_budget_binding": {
+            "animation_clip_count": 2,
+            "animation_keyframe_count": 7,
+            "computed_bone_count": 8,
+            "computed_cube_count": 31,
+            "declared_bone_count": 8,
+            "declared_cube_count": 31,
+            "declared_density_floor": 30,
+            "decoded_rgba_memory_bytes": 4096,
+            "mechanics_promoted": false,
+            "runtime_budget_binding": "full fight optional; runtime cap pending implementation contract",
+            "texture_dimensions": [
+              32,
+              32
+            ]
+          }
+        }
+      ],
+      "product_owner": "aionbound_core",
+      "promotion_id": "aionbound-core-v0-boss_path_discovery-beta-static-v1",
+      "promotion_state": "PROMOTED_BETA_STATIC_RUNTIME_EXPORT",
+      "shipping_authority": false,
+      "visual_role_id": "boss_path_discovery"
+    },
+    {
+      "member_count": 1,
+      "members": [
+        {
+          "asset_id": "spiral_moth_spire_nest",
+          "generated_export_receipt": {
+            "animation_export_byte_exact_before_reidentification": true,
+            "brief_byte_exact": true,
+            "editable_model_byte_difference_reason": "absolute texture path only",
+            "editable_model_byte_equality": false,
+            "editable_model_canonical_equality": "PASSED",
+            "editable_texture_byte_exact": true,
+            "generator_exit_status": 0,
+            "geometry_export_byte_exact_before_reidentification": true,
+            "native_blockbench_export": "PENDING_NOT_CLAIMED",
+            "native_locator_elements_in_editable_model": 0,
+            "promoted_runtime_geometry_locators": [
+              "effect",
+              "gaze"
+            ],
+            "runtime_texture_byte_exact": true,
+            "selected_only_disposable_rerun": true,
+            "status": "PASSED"
+          },
+          "member_receipt_id": "aionbound-core-v0-spiral_moth_spire_nest-beta-static-v1",
+          "promoted_runtime_exports": {
+            "animation": {
+              "path": "authority/aionbound/PROMOTED_RUNTIME/core-v0/assets/spiral_moth_spire_nest/animations/spiral_moth_spire_nest.animation.json",
+              "sha256": "916f96cbf777363279732444ed06c501405277460d0f14771bef1be75d1ce422",
+              "size_bytes": 1055
+            },
+            "geometry": {
+              "path": "authority/aionbound/PROMOTED_RUNTIME/core-v0/assets/spiral_moth_spire_nest/models/spiral_moth_spire_nest.geo.json",
+              "sha256": "eba7e34c6f6bcab2b59ef3d5a01460b49711021ee5914ff5228f632987c64cf0",
+              "size_bytes": 43048
+            },
+            "texture": {
+              "path": "authority/aionbound/PROMOTED_RUNTIME/core-v0/assets/spiral_moth_spire_nest/textures/spiral_moth_spire_nest.png",
+              "sha256": "e5460ebfc62bf803d2cc706b6f11ccd425d94c02b699ba5525aac03beab4687a",
+              "size_bytes": 1078
+            }
+          },
+          "promotion_state": "PROMOTED_BETA_STATIC_RUNTIME_EXPORT",
+          "remaining_gates": [
+            "native Blockbench reopen-save-reopen and native-export equivalence",
+            "fixed proof views and two critique cycles",
+            "BP/RP binding and deterministic package",
+            "Creator Tools and Stable/Preview BDS",
+            "desktop client, persistence, multiplayer, performance, Realm, controller, split-screen, and physical PS4",
+            "commercial distribution and Marketplace rights review"
+          ],
+          "runtime_identity": {
+            "animation_identifier_prefix": "animation.aionbound.spiral_moth_spire_nest.",
+            "geometry_identifier": "geometry.aionbound.spiral_moth_spire_nest",
+            "namespace": "aionbound"
+          },
+          "source_neutral_provenance": {
+            "authorship_classification": "CLEAN_ROOM_ORIGINAL_GENERATED_ART_ASSERTION",
+            "beta_static_promotion_provenance_blocker": false,
+            "consumer_distribution_and_marketplace": "NOT_ESTABLISHED_NOT_CLAIMED",
+            "control_receipt_id": "AIONBOUND_CORE_V0_PROVENANCE_SPIRAL_MOTH_SPIRE_NEST",
+            "internal_core_source_reuse": "AUTHORIZED_BY_CONTROL_PLANE_SELECTION_AND_REUSE_AUDIT",
+            "originality_assertion_classification": "PASSED_ORIGINAL_ART_NO_THIRD_PARTY_PORT_OR_TRACE"
+          },
+          "static_validation_receipt": {
+            "editable_and_runtime_texture_byte_equal": true,
+            "editable_model": {
+              "all_uuids_unique_and_rfc4122_shaped": true,
+              "animation_count": 2,
+              "animator_group_references_resolve": true,
+              "element_count": 30,
+              "embedded_texture_matches_editable_texture": true,
+              "group_count": 5,
+              "keyframe_count": 15,
+              "native_locator_element_count": 0,
+              "outliner_references_resolve_exactly_once": true,
+              "status": "PASSED"
+            },
+            "legacy_namespace_scan": "PASSED_ZERO_MATCHES",
+            "promoted_animation": {
+              "bone_references_resolve": true,
+              "clip_count": 2,
+              "clip_identifiers": [
+                "animation.aionbound.spiral_moth_spire_nest.action",
+                "animation.aionbound.spiral_moth_spire_nest.idle"
+              ],
+              "finite_numeric_values": "PASSED",
+              "keyframe_count": 7,
+              "status": "PASSED"
+            },
+            "promoted_geometry": {
+              "bone_count": 5,
+              "cube_count": 30,
+              "finite_numeric_values": "PASSED",
+              "geometry_identifier": "geometry.aionbound.spiral_moth_spire_nest",
+              "locators": [
+                "effect",
+                "gaze"
+              ],
+              "parent_references_and_cycles": "PASSED",
+              "status": "PASSED",
+              "texture_height": 32,
+              "texture_width": 32,
+              "uv_bounds": "PASSED"
+            },
+            "promoted_texture_byte_equal_to_audited_runtime_texture": true,
+            "source_path_scan": "PASSED_ZERO_MATCHES",
+            "texture_decode": {
+              "bit_depth": 8,
+              "channels": 4,
+              "chunk_sequence": [
+                "IHDR",
+                "IDAT",
+                "IEND"
+              ],
+              "color_type": 6,
+              "crc_all_chunks": "PASSED",
+              "decoded_scanline_bytes": 4128,
+              "decoder": "independent_png_crc_and_idat_v1",
+              "filter_types_observed": [
+                1,
+                2,
+                4
+              ],
+              "height": 32,
+              "idat_decompression": "PASSED",
+              "interlace": 0,
+              "status": "PASSED",
+              "width": 32
+            }
+          },
+          "visual_budget_binding": {
+            "animation_clip_count": 2,
+            "animation_keyframe_count": 7,
+            "computed_bone_count": 5,
+            "computed_cube_count": 30,
+            "declared_bone_count": 5,
+            "declared_cube_count": 30,
+            "declared_density_floor": 28,
+            "decoded_rgba_memory_bytes": 4096,
+            "mechanics_promoted": false,
+            "runtime_budget_binding": "structure injection budget pending implementation contract",
+            "texture_dimensions": [
+              32,
+              32
+            ]
+          }
+        }
+      ],
+      "product_owner": "aionbound_core",
+      "promotion_id": "aionbound-core-v0-boss_nest_landmark-beta-static-v1",
+      "promotion_state": "PROMOTED_BETA_STATIC_RUNTIME_EXPORT",
+      "shipping_authority": false,
+      "visual_role_id": "boss_nest_landmark"
+    },
+    {
+      "member_count": 2,
+      "members": [
+        {
+          "asset_id": "first_waystation_arch",
+          "generated_export_receipt": {
+            "animation_export_byte_exact_before_reidentification": true,
+            "brief_byte_exact": true,
+            "editable_model_byte_difference_reason": "absolute texture path only",
+            "editable_model_byte_equality": false,
+            "editable_model_canonical_equality": "PASSED",
+            "editable_texture_byte_exact": true,
+            "generator_exit_status": 0,
+            "geometry_export_byte_exact_before_reidentification": true,
+            "native_blockbench_export": "PENDING_NOT_CLAIMED",
+            "native_locator_elements_in_editable_model": 0,
+            "promoted_runtime_geometry_locators": [
+              "effect",
+              "gaze"
+            ],
+            "runtime_texture_byte_exact": true,
+            "selected_only_disposable_rerun": true,
+            "status": "PASSED"
+          },
+          "member_receipt_id": "aionbound-core-v0-first_waystation_arch-beta-static-v1",
+          "promoted_runtime_exports": {
+            "animation": {
+              "path": "authority/aionbound/PROMOTED_RUNTIME/core-v0/assets/first_waystation_arch/animations/first_waystation_arch.animation.json",
+              "sha256": "0ec6dd6821a460b238c4962eddb012bc6f16efda98afc7b2c9691c8f10428083",
+              "size_bytes": 1053
+            },
+            "geometry": {
+              "path": "authority/aionbound/PROMOTED_RUNTIME/core-v0/assets/first_waystation_arch/models/first_waystation_arch.geo.json",
+              "sha256": "f69b713e8940b634107e373e076c60e5ce963f7accb641ddb4eaee4e4290f288",
+              "size_bytes": 31724
+            },
+            "texture": {
+              "path": "authority/aionbound/PROMOTED_RUNTIME/core-v0/assets/first_waystation_arch/textures/first_waystation_arch.png",
+              "sha256": "501bcd418ea5cd075adc84c2444a12c6c11b30b59acd548464eecc10d7733f5d",
+              "size_bytes": 1084
+            }
+          },
+          "promotion_state": "PROMOTED_BETA_STATIC_RUNTIME_EXPORT",
+          "remaining_gates": [
+            "native Blockbench reopen-save-reopen and native-export equivalence",
+            "fixed proof views and two critique cycles",
+            "BP/RP binding and deterministic package",
+            "Creator Tools and Stable/Preview BDS",
+            "desktop client, persistence, multiplayer, performance, Realm, controller, split-screen, and physical PS4",
+            "commercial distribution and Marketplace rights review"
+          ],
+          "runtime_identity": {
+            "animation_identifier_prefix": "animation.aionbound.first_waystation_arch.",
+            "geometry_identifier": "geometry.aionbound.first_waystation_arch",
+            "namespace": "aionbound"
+          },
+          "source_neutral_provenance": {
+            "authorship_classification": "CLEAN_ROOM_ORIGINAL_GENERATED_ART_ASSERTION",
+            "beta_static_promotion_provenance_blocker": false,
+            "consumer_distribution_and_marketplace": "NOT_ESTABLISHED_NOT_CLAIMED",
+            "control_receipt_id": "AIONBOUND_CORE_V0_PROVENANCE_FIRST_WAYSTATION_ARCH",
+            "internal_core_source_reuse": "AUTHORIZED_BY_CONTROL_PLANE_SELECTION_AND_REUSE_AUDIT",
+            "originality_assertion_classification": "PASSED_ORIGINAL_ART_NO_THIRD_PARTY_PORT_OR_TRACE"
+          },
+          "static_validation_receipt": {
+            "editable_and_runtime_texture_byte_equal": true,
+            "editable_model": {
+              "all_uuids_unique_and_rfc4122_shaped": true,
+              "animation_count": 2,
+              "animator_group_references_resolve": true,
+              "element_count": 22,
+              "embedded_texture_matches_editable_texture": true,
+              "group_count": 4,
+              "keyframe_count": 15,
+              "native_locator_element_count": 0,
+              "outliner_references_resolve_exactly_once": true,
+              "status": "PASSED"
+            },
+            "legacy_namespace_scan": "PASSED_ZERO_MATCHES",
+            "promoted_animation": {
+              "bone_references_resolve": true,
+              "clip_count": 2,
+              "clip_identifiers": [
+                "animation.aionbound.first_waystation_arch.action",
+                "animation.aionbound.first_waystation_arch.idle"
+              ],
+              "finite_numeric_values": "PASSED",
+              "keyframe_count": 7,
+              "status": "PASSED"
+            },
+            "promoted_geometry": {
+              "bone_count": 4,
+              "cube_count": 22,
+              "finite_numeric_values": "PASSED",
+              "geometry_identifier": "geometry.aionbound.first_waystation_arch",
+              "locators": [
+                "effect",
+                "gaze"
+              ],
+              "parent_references_and_cycles": "PASSED",
+              "status": "PASSED",
+              "texture_height": 32,
+              "texture_width": 32,
+              "uv_bounds": "PASSED"
+            },
+            "promoted_texture_byte_equal_to_audited_runtime_texture": true,
+            "source_path_scan": "PASSED_ZERO_MATCHES",
+            "texture_decode": {
+              "bit_depth": 8,
+              "channels": 4,
+              "chunk_sequence": [
+                "IHDR",
+                "IDAT",
+                "IEND"
+              ],
+              "color_type": 6,
+              "crc_all_chunks": "PASSED",
+              "decoded_scanline_bytes": 4128,
+              "decoder": "independent_png_crc_and_idat_v1",
+              "filter_types_observed": [
+                1,
+                2,
+                4
+              ],
+              "height": 32,
+              "idat_decompression": "PASSED",
+              "interlace": 0,
+              "status": "PASSED",
+              "width": 32
+            }
+          },
+          "visual_budget_binding": {
+            "animation_clip_count": 2,
+            "animation_keyframe_count": 7,
+            "computed_bone_count": 4,
+            "computed_cube_count": 22,
+            "declared_bone_count": 4,
+            "declared_cube_count": 22,
+            "declared_density_floor": 22,
+            "decoded_rgba_memory_bytes": 4096,
+            "mechanics_promoted": false,
+            "runtime_budget_binding": "compact Overworld injection only",
+            "texture_dimensions": [
+              32,
+              32
+            ]
+          }
+        },
+        {
+          "asset_id": "training_ring",
+          "generated_export_receipt": {
+            "animation_export_byte_exact_before_reidentification": true,
+            "brief_byte_exact": true,
+            "editable_model_byte_difference_reason": "absolute texture path only",
+            "editable_model_byte_equality": false,
+            "editable_model_canonical_equality": "PASSED",
+            "editable_texture_byte_exact": true,
+            "generator_exit_status": 0,
+            "geometry_export_byte_exact_before_reidentification": true,
+            "native_blockbench_export": "PENDING_NOT_CLAIMED",
+            "native_locator_elements_in_editable_model": 0,
+            "promoted_runtime_geometry_locators": [
+              "effect"
+            ],
+            "runtime_texture_byte_exact": true,
+            "selected_only_disposable_rerun": true,
+            "status": "PASSED"
+          },
+          "member_receipt_id": "aionbound-core-v0-training_ring-beta-static-v1",
+          "promoted_runtime_exports": {
+            "animation": {
+              "path": "authority/aionbound/PROMOTED_RUNTIME/core-v0/assets/training_ring/animations/training_ring.animation.json",
+              "sha256": "4d28cc1e45a8e7bce326bb4a6e516afbb8e99ef1b8f085f3956830d726e9a006",
+              "size_bytes": 1037
+            },
+            "geometry": {
+              "path": "authority/aionbound/PROMOTED_RUNTIME/core-v0/assets/training_ring/models/training_ring.geo.json",
+              "sha256": "d169bf9bd74212a5d28050ed92758e9fffc82c16620af79495b088137ed6591b",
+              "size_bytes": 31574
+            },
+            "texture": {
+              "path": "authority/aionbound/PROMOTED_RUNTIME/core-v0/assets/training_ring/textures/training_ring.png",
+              "sha256": "d795c1ae9a00c1fda944d74b514cb27efcaa99cf30c1d8e36443b2be3db808fb",
+              "size_bytes": 1112
+            }
+          },
+          "promotion_state": "PROMOTED_BETA_STATIC_RUNTIME_EXPORT",
+          "remaining_gates": [
+            "native Blockbench reopen-save-reopen and native-export equivalence",
+            "fixed proof views and two critique cycles",
+            "BP/RP binding and deterministic package",
+            "Creator Tools and Stable/Preview BDS",
+            "desktop client, persistence, multiplayer, performance, Realm, controller, split-screen, and physical PS4",
+            "commercial distribution and Marketplace rights review"
+          ],
+          "runtime_identity": {
+            "animation_identifier_prefix": "animation.aionbound.training_ring.",
+            "geometry_identifier": "geometry.aionbound.training_ring",
+            "namespace": "aionbound"
+          },
+          "source_neutral_provenance": {
+            "authorship_classification": "CLEAN_ROOM_ORIGINAL_GENERATED_ART_ASSERTION",
+            "beta_static_promotion_provenance_blocker": false,
+            "consumer_distribution_and_marketplace": "NOT_ESTABLISHED_NOT_CLAIMED",
+            "control_receipt_id": "AIONBOUND_CORE_V0_PROVENANCE_TRAINING_RING",
+            "internal_core_source_reuse": "AUTHORIZED_BY_CONTROL_PLANE_SELECTION_AND_REUSE_AUDIT",
+            "originality_assertion_classification": "PASSED_ORIGINAL_ART_NO_THIRD_PARTY_PORT_OR_TRACE"
+          },
+          "static_validation_receipt": {
+            "editable_and_runtime_texture_byte_equal": true,
+            "editable_model": {
+              "all_uuids_unique_and_rfc4122_shaped": true,
+              "animation_count": 2,
+              "animator_group_references_resolve": true,
+              "element_count": 22,
+              "embedded_texture_matches_editable_texture": true,
+              "group_count": 4,
+              "keyframe_count": 15,
+              "native_locator_element_count": 0,
+              "outliner_references_resolve_exactly_once": true,
+              "status": "PASSED"
+            },
+            "legacy_namespace_scan": "PASSED_ZERO_MATCHES",
+            "promoted_animation": {
+              "bone_references_resolve": true,
+              "clip_count": 2,
+              "clip_identifiers": [
+                "animation.aionbound.training_ring.action",
+                "animation.aionbound.training_ring.idle"
+              ],
+              "finite_numeric_values": "PASSED",
+              "keyframe_count": 7,
+              "status": "PASSED"
+            },
+            "promoted_geometry": {
+              "bone_count": 4,
+              "cube_count": 22,
+              "finite_numeric_values": "PASSED",
+              "geometry_identifier": "geometry.aionbound.training_ring",
+              "locators": [
+                "effect"
+              ],
+              "parent_references_and_cycles": "PASSED",
+              "status": "PASSED",
+              "texture_height": 32,
+              "texture_width": 32,
+              "uv_bounds": "PASSED"
+            },
+            "promoted_texture_byte_equal_to_audited_runtime_texture": true,
+            "source_path_scan": "PASSED_ZERO_MATCHES",
+            "texture_decode": {
+              "bit_depth": 8,
+              "channels": 4,
+              "chunk_sequence": [
+                "IHDR",
+                "IDAT",
+                "IEND"
+              ],
+              "color_type": 6,
+              "crc_all_chunks": "PASSED",
+              "decoded_scanline_bytes": 4128,
+              "decoder": "independent_png_crc_and_idat_v1",
+              "filter_types_observed": [
+                1,
+                2,
+                4
+              ],
+              "height": 32,
+              "idat_decompression": "PASSED",
+              "interlace": 0,
+              "status": "PASSED",
+              "width": 32
+            }
+          },
+          "visual_budget_binding": {
+            "animation_clip_count": 2,
+            "animation_keyframe_count": 7,
+            "computed_bone_count": 4,
+            "computed_cube_count": 22,
+            "declared_bone_count": 4,
+            "declared_cube_count": 22,
+            "declared_density_floor": 22,
+            "decoded_rgba_memory_bytes": 4096,
+            "mechanics_promoted": false,
+            "runtime_budget_binding": "compact Overworld injection only",
+            "texture_dimensions": [
+              32,
+              32
+            ]
+          }
+        }
+      ],
+      "product_owner": "aionbound_core",
+      "promotion_id": "aionbound-core-v0-waystone_landmark_set-beta-static-v1",
+      "promotion_state": "PROMOTED_BETA_STATIC_RUNTIME_EXPORT",
+      "shipping_authority": false,
+      "visual_role_id": "waystone_landmark_set"
+    },
+    {
+      "member_count": 1,
+      "members": [
+        {
+          "asset_id": "prismglass_chest_ruin",
+          "generated_export_receipt": {
+            "animation_export_byte_exact_before_reidentification": true,
+            "brief_byte_exact": true,
+            "editable_model_byte_difference_reason": "absolute texture path only",
+            "editable_model_byte_equality": false,
+            "editable_model_canonical_equality": "PASSED",
+            "editable_texture_byte_exact": true,
+            "generator_exit_status": 0,
+            "geometry_export_byte_exact_before_reidentification": true,
+            "native_blockbench_export": "PENDING_NOT_CLAIMED",
+            "native_locator_elements_in_editable_model": 0,
+            "promoted_runtime_geometry_locators": [
+              "effect"
+            ],
+            "runtime_texture_byte_exact": true,
+            "selected_only_disposable_rerun": true,
+            "status": "PASSED"
+          },
+          "member_receipt_id": "aionbound-core-v0-prismglass_chest_ruin-beta-static-v1",
+          "promoted_runtime_exports": {
+            "animation": {
+              "path": "authority/aionbound/PROMOTED_RUNTIME/core-v0/assets/prismglass_chest_ruin/animations/prismglass_chest_ruin.animation.json",
+              "sha256": "60814b573c03da73c24cf5e1d2f54f05a126fcbd67a9211a9a0697b8c550f332",
+              "size_bytes": 1051
+            },
+            "geometry": {
+              "path": "authority/aionbound/PROMOTED_RUNTIME/core-v0/assets/prismglass_chest_ruin/models/prismglass_chest_ruin.geo.json",
+              "sha256": "f2d771a2ea6ab7fe1d016043fdd62a4718692d1cae2d6f8a4df0368775d024bc",
+              "size_bytes": 34613
+            },
+            "texture": {
+              "path": "authority/aionbound/PROMOTED_RUNTIME/core-v0/assets/prismglass_chest_ruin/textures/prismglass_chest_ruin.png",
+              "sha256": "1ddc3823af84dd7ee3968f1f563d9fca155abaf653caf122a8777259afe02a68",
+              "size_bytes": 1063
+            }
+          },
+          "promotion_state": "PROMOTED_BETA_STATIC_RUNTIME_EXPORT",
+          "remaining_gates": [
+            "native Blockbench reopen-save-reopen and native-export equivalence",
+            "fixed proof views and two critique cycles",
+            "BP/RP binding and deterministic package",
+            "Creator Tools and Stable/Preview BDS",
+            "desktop client, persistence, multiplayer, performance, Realm, controller, split-screen, and physical PS4",
+            "commercial distribution and Marketplace rights review"
+          ],
+          "runtime_identity": {
+            "animation_identifier_prefix": "animation.aionbound.prismglass_chest_ruin.",
+            "geometry_identifier": "geometry.aionbound.prismglass_chest_ruin",
+            "namespace": "aionbound"
+          },
+          "source_neutral_provenance": {
+            "authorship_classification": "CLEAN_ROOM_ORIGINAL_GENERATED_ART_ASSERTION",
+            "beta_static_promotion_provenance_blocker": false,
+            "consumer_distribution_and_marketplace": "NOT_ESTABLISHED_NOT_CLAIMED",
+            "control_receipt_id": "AIONBOUND_CORE_V0_PROVENANCE_PRISMGLASS_CHEST_RUIN",
+            "internal_core_source_reuse": "AUTHORIZED_BY_CONTROL_PLANE_SELECTION_AND_REUSE_AUDIT",
+            "originality_assertion_classification": "PASSED_ORIGINAL_ART_NO_THIRD_PARTY_PORT_OR_TRACE"
+          },
+          "static_validation_receipt": {
+            "editable_and_runtime_texture_byte_equal": true,
+            "editable_model": {
+              "all_uuids_unique_and_rfc4122_shaped": true,
+              "animation_count": 2,
+              "animator_group_references_resolve": true,
+              "element_count": 24,
+              "embedded_texture_matches_editable_texture": true,
+              "group_count": 5,
+              "keyframe_count": 15,
+              "native_locator_element_count": 0,
+              "outliner_references_resolve_exactly_once": true,
+              "status": "PASSED"
+            },
+            "legacy_namespace_scan": "PASSED_ZERO_MATCHES",
+            "promoted_animation": {
+              "bone_references_resolve": true,
+              "clip_count": 2,
+              "clip_identifiers": [
+                "animation.aionbound.prismglass_chest_ruin.action",
+                "animation.aionbound.prismglass_chest_ruin.idle"
+              ],
+              "finite_numeric_values": "PASSED",
+              "keyframe_count": 7,
+              "status": "PASSED"
+            },
+            "promoted_geometry": {
+              "bone_count": 5,
+              "cube_count": 24,
+              "finite_numeric_values": "PASSED",
+              "geometry_identifier": "geometry.aionbound.prismglass_chest_ruin",
+              "locators": [
+                "effect"
+              ],
+              "parent_references_and_cycles": "PASSED",
+              "status": "PASSED",
+              "texture_height": 32,
+              "texture_width": 32,
+              "uv_bounds": "PASSED"
+            },
+            "promoted_texture_byte_equal_to_audited_runtime_texture": true,
+            "source_path_scan": "PASSED_ZERO_MATCHES",
+            "texture_decode": {
+              "bit_depth": 8,
+              "channels": 4,
+              "chunk_sequence": [
+                "IHDR",
+                "IDAT",
+                "IEND"
+              ],
+              "color_type": 6,
+              "crc_all_chunks": "PASSED",
+              "decoded_scanline_bytes": 4128,
+              "decoder": "independent_png_crc_and_idat_v1",
+              "filter_types_observed": [
+                1,
+                2,
+                4
+              ],
+              "height": 32,
+              "idat_decompression": "PASSED",
+              "interlace": 0,
+              "status": "PASSED",
+              "width": 32
+            }
+          },
+          "visual_budget_binding": {
+            "animation_clip_count": 2,
+            "animation_keyframe_count": 7,
+            "computed_bone_count": 5,
+            "computed_cube_count": 24,
+            "declared_bone_count": 5,
+            "declared_cube_count": 24,
+            "declared_density_floor": 22,
+            "decoded_rgba_memory_bytes": 4096,
+            "mechanics_promoted": false,
+            "runtime_budget_binding": "compact Overworld injection only",
+            "texture_dimensions": [
+              32,
+              32
+            ]
+          }
+        }
+      ],
+      "product_owner": "aionbound_core",
+      "promotion_id": "aionbound-core-v0-loot_ruin_landmark-beta-static-v1",
+      "promotion_state": "PROMOTED_BETA_STATIC_RUNTIME_EXPORT",
+      "shipping_authority": false,
+      "visual_role_id": "loot_ruin_landmark"
+    },
+    {
+      "member_count": 1,
+      "members": [
+        {
+          "asset_id": "chaos_crate_prime",
+          "generated_export_receipt": {
+            "animation_export_byte_exact_before_reidentification": true,
+            "brief_byte_exact": true,
+            "editable_model_byte_difference_reason": "absolute texture path only",
+            "editable_model_byte_equality": false,
+            "editable_model_canonical_equality": "PASSED",
+            "editable_texture_byte_exact": true,
+            "generator_exit_status": 0,
+            "geometry_export_byte_exact_before_reidentification": true,
+            "native_blockbench_export": "PENDING_NOT_CLAIMED",
+            "native_locator_elements_in_editable_model": 0,
+            "promoted_runtime_geometry_locators": [
+              "effect",
+              "projectile"
+            ],
+            "runtime_texture_byte_exact": true,
+            "selected_only_disposable_rerun": true,
+            "status": "PASSED"
+          },
+          "member_receipt_id": "aionbound-core-v0-chaos_crate_prime-beta-static-v1",
+          "promoted_runtime_exports": {
+            "animation": {
+              "path": "authority/aionbound/PROMOTED_RUNTIME/core-v0/assets/chaos_crate_prime/animations/chaos_crate_prime.animation.json",
+              "sha256": "9fdcfedb3dff4c035b6ec4ce2c74a07de6d00f9e4acfe1997e2372a69c4d68c4",
+              "size_bytes": 1043
+            },
+            "geometry": {
+              "path": "authority/aionbound/PROMOTED_RUNTIME/core-v0/assets/chaos_crate_prime/models/chaos_crate_prime.geo.json",
+              "sha256": "b98f8ed0e7b19ba4a4ef244e20973c39454c915687f6f2f4bd80ee601cf950a3",
+              "size_bytes": 34489
+            },
+            "texture": {
+              "path": "authority/aionbound/PROMOTED_RUNTIME/core-v0/assets/chaos_crate_prime/textures/chaos_crate_prime.png",
+              "sha256": "95ea2a9b46fc67c39d56b0a7788c30c4b4cefd00791fd3483df4442da91206a9",
+              "size_bytes": 1069
+            }
+          },
+          "promotion_state": "PROMOTED_BETA_STATIC_RUNTIME_EXPORT",
+          "remaining_gates": [
+            "native Blockbench reopen-save-reopen and native-export equivalence",
+            "fixed proof views and two critique cycles",
+            "BP/RP binding and deterministic package",
+            "Creator Tools and Stable/Preview BDS",
+            "desktop client, persistence, multiplayer, performance, Realm, controller, split-screen, and physical PS4",
+            "commercial distribution and Marketplace rights review"
+          ],
+          "runtime_identity": {
+            "animation_identifier_prefix": "animation.aionbound.chaos_crate_prime.",
+            "geometry_identifier": "geometry.aionbound.chaos_crate_prime",
+            "namespace": "aionbound"
+          },
+          "source_neutral_provenance": {
+            "authorship_classification": "CLEAN_ROOM_ORIGINAL_GENERATED_ART_ASSERTION",
+            "beta_static_promotion_provenance_blocker": false,
+            "consumer_distribution_and_marketplace": "NOT_ESTABLISHED_NOT_CLAIMED",
+            "control_receipt_id": "AIONBOUND_CORE_V0_PROVENANCE_CHAOS_CRATE_PRIME",
+            "internal_core_source_reuse": "AUTHORIZED_BY_CONTROL_PLANE_SELECTION_AND_REUSE_AUDIT",
+            "originality_assertion_classification": "PASSED_ORIGINAL_ART_NO_THIRD_PARTY_PORT_OR_TRACE"
+          },
+          "static_validation_receipt": {
+            "editable_and_runtime_texture_byte_equal": true,
+            "editable_model": {
+              "all_uuids_unique_and_rfc4122_shaped": true,
+              "animation_count": 2,
+              "animator_group_references_resolve": true,
+              "element_count": 24,
+              "embedded_texture_matches_editable_texture": true,
+              "group_count": 4,
+              "keyframe_count": 15,
+              "native_locator_element_count": 0,
+              "outliner_references_resolve_exactly_once": true,
+              "status": "PASSED"
+            },
+            "legacy_namespace_scan": "PASSED_ZERO_MATCHES",
+            "promoted_animation": {
+              "bone_references_resolve": true,
+              "clip_count": 2,
+              "clip_identifiers": [
+                "animation.aionbound.chaos_crate_prime.action",
+                "animation.aionbound.chaos_crate_prime.idle"
+              ],
+              "finite_numeric_values": "PASSED",
+              "keyframe_count": 7,
+              "status": "PASSED"
+            },
+            "promoted_geometry": {
+              "bone_count": 4,
+              "cube_count": 24,
+              "finite_numeric_values": "PASSED",
+              "geometry_identifier": "geometry.aionbound.chaos_crate_prime",
+              "locators": [
+                "effect",
+                "projectile"
+              ],
+              "parent_references_and_cycles": "PASSED",
+              "status": "PASSED",
+              "texture_height": 32,
+              "texture_width": 32,
+              "uv_bounds": "PASSED"
+            },
+            "promoted_texture_byte_equal_to_audited_runtime_texture": true,
+            "source_path_scan": "PASSED_ZERO_MATCHES",
+            "texture_decode": {
+              "bit_depth": 8,
+              "channels": 4,
+              "chunk_sequence": [
+                "IHDR",
+                "IDAT",
+                "IEND"
+              ],
+              "color_type": 6,
+              "crc_all_chunks": "PASSED",
+              "decoded_scanline_bytes": 4128,
+              "decoder": "independent_png_crc_and_idat_v1",
+              "filter_types_observed": [
+                1,
+                2,
+                4
+              ],
+              "height": 32,
+              "idat_decompression": "PASSED",
+              "interlace": 0,
+              "status": "PASSED",
+              "width": 32
+            }
+          },
+          "visual_budget_binding": {
+            "animation_clip_count": 2,
+            "animation_keyframe_count": 7,
+            "computed_bone_count": 4,
+            "computed_cube_count": 24,
+            "declared_bone_count": 4,
+            "declared_cube_count": 24,
+            "declared_density_floor": 22,
+            "decoded_rgba_memory_bytes": 4096,
+            "mechanics_promoted": false,
+            "runtime_budget_binding": "mechanics and outcome caps pending implementation contract",
+            "texture_dimensions": [
+              32,
+              32
+            ]
+          }
+        }
+      ],
+      "product_owner": "aionbound_core",
+      "promotion_id": "aionbound-core-v0-chaos_t0_art-beta-static-v1",
+      "promotion_state": "PROMOTED_BETA_STATIC_RUNTIME_EXPORT",
+      "shipping_authority": false,
+      "visual_role_id": "chaos_t0_art"
+    },
+    {
+      "member_count": 1,
+      "members": [
+        {
+          "asset_id": "stripvein_charge",
+          "generated_export_receipt": {
+            "animation_export_byte_exact_before_reidentification": true,
+            "brief_byte_exact": true,
+            "editable_model_byte_difference_reason": "absolute texture path only",
+            "editable_model_byte_equality": false,
+            "editable_model_canonical_equality": "PASSED",
+            "editable_texture_byte_exact": true,
+            "generator_exit_status": 0,
+            "geometry_export_byte_exact_before_reidentification": true,
+            "native_blockbench_export": "PENDING_NOT_CLAIMED",
+            "native_locator_elements_in_editable_model": 0,
+            "promoted_runtime_geometry_locators": [
+              "effect",
+              "projectile"
+            ],
+            "runtime_texture_byte_exact": true,
+            "selected_only_disposable_rerun": true,
+            "status": "PASSED"
+          },
+          "member_receipt_id": "aionbound-core-v0-stripvein_charge-beta-static-v1",
+          "promoted_runtime_exports": {
+            "animation": {
+              "path": "authority/aionbound/PROMOTED_RUNTIME/core-v0/assets/stripvein_charge/animations/stripvein_charge.animation.json",
+              "sha256": "cb3ad8eca242b6b4523a8aa8849b7f12ff1523ecf6d8232f56bb6019b3caf583",
+              "size_bytes": 1043
+            },
+            "geometry": {
+              "path": "authority/aionbound/PROMOTED_RUNTIME/core-v0/assets/stripvein_charge/models/stripvein_charge.geo.json",
+              "sha256": "2f000dcab3cfda7a677576ae9537d1fb298fb444a7a4d4b47e593dcb3f6a885c",
+              "size_bytes": 31970
+            },
+            "texture": {
+              "path": "authority/aionbound/PROMOTED_RUNTIME/core-v0/assets/stripvein_charge/textures/stripvein_charge.png",
+              "sha256": "adc2a1a3c35849fc6e3c5b0a3500e8bbc939b0469caf5d9635d9b81c85576591",
+              "size_bytes": 1053
+            }
+          },
+          "promotion_state": "PROMOTED_BETA_STATIC_RUNTIME_EXPORT",
+          "remaining_gates": [
+            "native Blockbench reopen-save-reopen and native-export equivalence",
+            "fixed proof views and two critique cycles",
+            "BP/RP binding and deterministic package",
+            "Creator Tools and Stable/Preview BDS",
+            "desktop client, persistence, multiplayer, performance, Realm, controller, split-screen, and physical PS4",
+            "commercial distribution and Marketplace rights review"
+          ],
+          "runtime_identity": {
+            "animation_identifier_prefix": "animation.aionbound.stripvein_charge.",
+            "geometry_identifier": "geometry.aionbound.stripvein_charge",
+            "namespace": "aionbound"
+          },
+          "source_neutral_provenance": {
+            "authorship_classification": "CLEAN_ROOM_ORIGINAL_GENERATED_ART_ASSERTION",
+            "beta_static_promotion_provenance_blocker": false,
+            "consumer_distribution_and_marketplace": "NOT_ESTABLISHED_NOT_CLAIMED",
+            "control_receipt_id": "AIONBOUND_CORE_V0_PROVENANCE_STRIPVEIN_CHARGE",
+            "internal_core_source_reuse": "AUTHORIZED_BY_CONTROL_PLANE_SELECTION_AND_REUSE_AUDIT",
+            "originality_assertion_classification": "PASSED_ORIGINAL_ART_NO_THIRD_PARTY_PORT_OR_TRACE"
+          },
+          "static_validation_receipt": {
+            "editable_and_runtime_texture_byte_equal": true,
+            "editable_model": {
+              "all_uuids_unique_and_rfc4122_shaped": true,
+              "animation_count": 2,
+              "animator_group_references_resolve": true,
+              "element_count": 22,
+              "embedded_texture_matches_editable_texture": true,
+              "group_count": 5,
+              "keyframe_count": 15,
+              "native_locator_element_count": 0,
+              "outliner_references_resolve_exactly_once": true,
+              "status": "PASSED"
+            },
+            "legacy_namespace_scan": "PASSED_ZERO_MATCHES",
+            "promoted_animation": {
+              "bone_references_resolve": true,
+              "clip_count": 2,
+              "clip_identifiers": [
+                "animation.aionbound.stripvein_charge.action",
+                "animation.aionbound.stripvein_charge.idle"
+              ],
+              "finite_numeric_values": "PASSED",
+              "keyframe_count": 7,
+              "status": "PASSED"
+            },
+            "promoted_geometry": {
+              "bone_count": 5,
+              "cube_count": 22,
+              "finite_numeric_values": "PASSED",
+              "geometry_identifier": "geometry.aionbound.stripvein_charge",
+              "locators": [
+                "effect",
+                "projectile"
+              ],
+              "parent_references_and_cycles": "PASSED",
+              "status": "PASSED",
+              "texture_height": 32,
+              "texture_width": 32,
+              "uv_bounds": "PASSED"
+            },
+            "promoted_texture_byte_equal_to_audited_runtime_texture": true,
+            "source_path_scan": "PASSED_ZERO_MATCHES",
+            "texture_decode": {
+              "bit_depth": 8,
+              "channels": 4,
+              "chunk_sequence": [
+                "IHDR",
+                "IDAT",
+                "IEND"
+              ],
+              "color_type": 6,
+              "crc_all_chunks": "PASSED",
+              "decoded_scanline_bytes": 4128,
+              "decoder": "independent_png_crc_and_idat_v1",
+              "filter_types_observed": [
+                1,
+                2,
+                4
+              ],
+              "height": 32,
+              "idat_decompression": "PASSED",
+              "interlace": 0,
+              "status": "PASSED",
+              "width": 32
+            }
+          },
+          "visual_budget_binding": {
+            "animation_clip_count": 2,
+            "animation_keyframe_count": 7,
+            "computed_bone_count": 5,
+            "computed_cube_count": 22,
+            "declared_bone_count": 5,
+            "declared_cube_count": 22,
+            "declared_density_floor": 22,
+            "decoded_rgba_memory_bytes": 4096,
+            "mechanics_promoted": false,
+            "runtime_budget_binding": "block-edit allowlist and job budget pending implementation contract",
+            "texture_dimensions": [
+              32,
+              32
+            ]
+          }
+        }
+      ],
+      "product_owner": "aionbound_core",
+      "promotion_id": "aionbound-core-v0-absurd_utility_art-beta-static-v1",
+      "promotion_state": "PROMOTED_BETA_STATIC_RUNTIME_EXPORT",
+      "shipping_authority": false,
+      "visual_role_id": "absurd_utility_art"
+    },
+    {
+      "member_count": 1,
+      "members": [
+        {
+          "asset_id": "prismglass_chest",
+          "generated_export_receipt": {
+            "animation_export_byte_exact_before_reidentification": true,
+            "brief_byte_exact": true,
+            "editable_model_byte_difference_reason": "absolute texture path only",
+            "editable_model_byte_equality": false,
+            "editable_model_canonical_equality": "PASSED",
+            "editable_texture_byte_exact": true,
+            "generator_exit_status": 0,
+            "geometry_export_byte_exact_before_reidentification": true,
+            "native_blockbench_export": "PENDING_NOT_CLAIMED",
+            "native_locator_elements_in_editable_model": 0,
+            "promoted_runtime_geometry_locators": [
+              "effect"
+            ],
+            "runtime_texture_byte_exact": true,
+            "selected_only_disposable_rerun": true,
+            "status": "PASSED"
+          },
+          "member_receipt_id": "aionbound-core-v0-prismglass_chest-beta-static-v1",
+          "promoted_runtime_exports": {
+            "animation": {
+              "path": "authority/aionbound/PROMOTED_RUNTIME/core-v0/assets/prismglass_chest/animations/prismglass_chest.animation.json",
+              "sha256": "aca89ed3abb390f1846daba0b5430e8b3e84037ba35d171ae5aff188f044bd52",
+              "size_bytes": 1043
+            },
+            "geometry": {
+              "path": "authority/aionbound/PROMOTED_RUNTIME/core-v0/assets/prismglass_chest/models/prismglass_chest.geo.json",
+              "sha256": "6be03337170bca39d417dd68aec47c19498a1acfa512b81869e564b5b14ffc89",
+              "size_bytes": 35758
+            },
+            "texture": {
+              "path": "authority/aionbound/PROMOTED_RUNTIME/core-v0/assets/prismglass_chest/textures/prismglass_chest.png",
+              "sha256": "4973128a4284d46f9c238cf03365c0eec4adba52da6bd670ce7ffcfee3514cbd",
+              "size_bytes": 1092
+            }
+          },
+          "promotion_state": "PROMOTED_BETA_STATIC_RUNTIME_EXPORT",
+          "remaining_gates": [
+            "native Blockbench reopen-save-reopen and native-export equivalence",
+            "fixed proof views and two critique cycles",
+            "BP/RP binding and deterministic package",
+            "Creator Tools and Stable/Preview BDS",
+            "desktop client, persistence, multiplayer, performance, Realm, controller, split-screen, and physical PS4",
+            "commercial distribution and Marketplace rights review"
+          ],
+          "runtime_identity": {
+            "animation_identifier_prefix": "animation.aionbound.prismglass_chest.",
+            "geometry_identifier": "geometry.aionbound.prismglass_chest",
+            "namespace": "aionbound"
+          },
+          "source_neutral_provenance": {
+            "authorship_classification": "CLEAN_ROOM_ORIGINAL_GENERATED_ART_ASSERTION",
+            "beta_static_promotion_provenance_blocker": false,
+            "consumer_distribution_and_marketplace": "NOT_ESTABLISHED_NOT_CLAIMED",
+            "control_receipt_id": "AIONBOUND_CORE_V0_PROVENANCE_PRISMGLASS_CHEST",
+            "internal_core_source_reuse": "AUTHORIZED_BY_CONTROL_PLANE_SELECTION_AND_REUSE_AUDIT",
+            "originality_assertion_classification": "PASSED_ORIGINAL_ART_NO_THIRD_PARTY_PORT_OR_TRACE"
+          },
+          "static_validation_receipt": {
+            "editable_and_runtime_texture_byte_equal": true,
+            "editable_model": {
+              "all_uuids_unique_and_rfc4122_shaped": true,
+              "animation_count": 2,
+              "animator_group_references_resolve": true,
+              "element_count": 25,
+              "embedded_texture_matches_editable_texture": true,
+              "group_count": 4,
+              "keyframe_count": 15,
+              "native_locator_element_count": 0,
+              "outliner_references_resolve_exactly_once": true,
+              "status": "PASSED"
+            },
+            "legacy_namespace_scan": "PASSED_ZERO_MATCHES",
+            "promoted_animation": {
+              "bone_references_resolve": true,
+              "clip_count": 2,
+              "clip_identifiers": [
+                "animation.aionbound.prismglass_chest.action",
+                "animation.aionbound.prismglass_chest.idle"
+              ],
+              "finite_numeric_values": "PASSED",
+              "keyframe_count": 7,
+              "status": "PASSED"
+            },
+            "promoted_geometry": {
+              "bone_count": 4,
+              "cube_count": 25,
+              "finite_numeric_values": "PASSED",
+              "geometry_identifier": "geometry.aionbound.prismglass_chest",
+              "locators": [
+                "effect"
+              ],
+              "parent_references_and_cycles": "PASSED",
+              "status": "PASSED",
+              "texture_height": 32,
+              "texture_width": 32,
+              "uv_bounds": "PASSED"
+            },
+            "promoted_texture_byte_equal_to_audited_runtime_texture": true,
+            "source_path_scan": "PASSED_ZERO_MATCHES",
+            "texture_decode": {
+              "bit_depth": 8,
+              "channels": 4,
+              "chunk_sequence": [
+                "IHDR",
+                "IDAT",
+                "IEND"
+              ],
+              "color_type": 6,
+              "crc_all_chunks": "PASSED",
+              "decoded_scanline_bytes": 4128,
+              "decoder": "independent_png_crc_and_idat_v1",
+              "filter_types_observed": [
+                1,
+                2,
+                4
+              ],
+              "height": 32,
+              "idat_decompression": "PASSED",
+              "interlace": 0,
+              "status": "PASSED",
+              "width": 32
+            }
+          },
+          "visual_budget_binding": {
+            "animation_clip_count": 2,
+            "animation_keyframe_count": 7,
+            "computed_bone_count": 4,
+            "computed_cube_count": 25,
+            "declared_bone_count": 4,
+            "declared_cube_count": 25,
+            "declared_density_floor": 24,
+            "decoded_rgba_memory_bytes": 4096,
+            "mechanics_promoted": false,
+            "runtime_budget_binding": "container mechanics pending simplest-safe implementation contract",
+            "texture_dimensions": [
+              32,
+              32
+            ]
+          }
+        }
+      ],
+      "product_owner": "aionbound_core",
+      "promotion_id": "aionbound-core-v0-storage_art-beta-static-v1",
+      "promotion_state": "PROMOTED_BETA_STATIC_RUNTIME_EXPORT",
+      "shipping_authority": false,
+      "visual_role_id": "storage_art"
+    },
+    {
+      "member_count": 2,
+      "members": [
+        {
+          "asset_id": "trophy_codex",
+          "generated_export_receipt": {
+            "animation_export_byte_exact_before_reidentification": true,
+            "brief_byte_exact": true,
+            "editable_model_byte_difference_reason": "absolute texture path only",
+            "editable_model_byte_equality": false,
+            "editable_model_canonical_equality": "PASSED",
+            "editable_texture_byte_exact": true,
+            "generator_exit_status": 0,
+            "geometry_export_byte_exact_before_reidentification": true,
+            "native_blockbench_export": "PENDING_NOT_CLAIMED",
+            "native_locator_elements_in_editable_model": 0,
+            "promoted_runtime_geometry_locators": [
+              "effect"
+            ],
+            "runtime_texture_byte_exact": true,
+            "selected_only_disposable_rerun": true,
+            "status": "PASSED"
+          },
+          "member_receipt_id": "aionbound-core-v0-trophy_codex-beta-static-v1",
+          "promoted_runtime_exports": {
+            "animation": {
+              "path": "authority/aionbound/PROMOTED_RUNTIME/core-v0/assets/trophy_codex/animations/trophy_codex.animation.json",
+              "sha256": "10ba438c6ddb3e9a85793b257f3fa099f63ef5f624cc6f75127eb9656f024fad",
+              "size_bytes": 1035
+            },
+            "geometry": {
+              "path": "authority/aionbound/PROMOTED_RUNTIME/core-v0/assets/trophy_codex/models/trophy_codex.geo.json",
+              "sha256": "5a7fc6fe5d44a7d5c20df09b61204dd905313bd01680cbd329745de3dabca3ea",
+              "size_bytes": 30251
+            },
+            "texture": {
+              "path": "authority/aionbound/PROMOTED_RUNTIME/core-v0/assets/trophy_codex/textures/trophy_codex.png",
+              "sha256": "1523b6611dc0d57bc7489e38fcf12dec51be98a7228d75bf545b5ea0cb5968e8",
+              "size_bytes": 1032
+            }
+          },
+          "promotion_state": "PROMOTED_BETA_STATIC_RUNTIME_EXPORT",
+          "remaining_gates": [
+            "native Blockbench reopen-save-reopen and native-export equivalence",
+            "fixed proof views and two critique cycles",
+            "BP/RP binding and deterministic package",
+            "Creator Tools and Stable/Preview BDS",
+            "desktop client, persistence, multiplayer, performance, Realm, controller, split-screen, and physical PS4",
+            "commercial distribution and Marketplace rights review"
+          ],
+          "runtime_identity": {
+            "animation_identifier_prefix": "animation.aionbound.trophy_codex.",
+            "geometry_identifier": "geometry.aionbound.trophy_codex",
+            "namespace": "aionbound"
+          },
+          "source_neutral_provenance": {
+            "authorship_classification": "CLEAN_ROOM_ORIGINAL_GENERATED_ART_ASSERTION",
+            "beta_static_promotion_provenance_blocker": false,
+            "consumer_distribution_and_marketplace": "NOT_ESTABLISHED_NOT_CLAIMED",
+            "control_receipt_id": "AIONBOUND_CORE_V0_PROVENANCE_TROPHY_CODEX",
+            "internal_core_source_reuse": "AUTHORIZED_BY_CONTROL_PLANE_SELECTION_AND_REUSE_AUDIT",
+            "originality_assertion_classification": "PASSED_ORIGINAL_ART_NO_THIRD_PARTY_PORT_OR_TRACE"
+          },
+          "static_validation_receipt": {
+            "editable_and_runtime_texture_byte_equal": true,
+            "editable_model": {
+              "all_uuids_unique_and_rfc4122_shaped": true,
+              "animation_count": 2,
+              "animator_group_references_resolve": true,
+              "element_count": 21,
+              "embedded_texture_matches_editable_texture": true,
+              "group_count": 4,
+              "keyframe_count": 15,
+              "native_locator_element_count": 0,
+              "outliner_references_resolve_exactly_once": true,
+              "status": "PASSED"
+            },
+            "legacy_namespace_scan": "PASSED_ZERO_MATCHES",
+            "promoted_animation": {
+              "bone_references_resolve": true,
+              "clip_count": 2,
+              "clip_identifiers": [
+                "animation.aionbound.trophy_codex.action",
+                "animation.aionbound.trophy_codex.idle"
+              ],
+              "finite_numeric_values": "PASSED",
+              "keyframe_count": 7,
+              "status": "PASSED"
+            },
+            "promoted_geometry": {
+              "bone_count": 4,
+              "cube_count": 21,
+              "finite_numeric_values": "PASSED",
+              "geometry_identifier": "geometry.aionbound.trophy_codex",
+              "locators": [
+                "effect"
+              ],
+              "parent_references_and_cycles": "PASSED",
+              "status": "PASSED",
+              "texture_height": 32,
+              "texture_width": 32,
+              "uv_bounds": "PASSED"
+            },
+            "promoted_texture_byte_equal_to_audited_runtime_texture": true,
+            "source_path_scan": "PASSED_ZERO_MATCHES",
+            "texture_decode": {
+              "bit_depth": 8,
+              "channels": 4,
+              "chunk_sequence": [
+                "IHDR",
+                "IDAT",
+                "IEND"
+              ],
+              "color_type": 6,
+              "crc_all_chunks": "PASSED",
+              "decoded_scanline_bytes": 4128,
+              "decoder": "independent_png_crc_and_idat_v1",
+              "filter_types_observed": [
+                1,
+                2,
+                4
+              ],
+              "height": 32,
+              "idat_decompression": "PASSED",
+              "interlace": 0,
+              "status": "PASSED",
+              "width": 32
+            }
+          },
+          "visual_budget_binding": {
+            "animation_clip_count": 2,
+            "animation_keyframe_count": 7,
+            "computed_bone_count": 4,
+            "computed_cube_count": 21,
+            "declared_bone_count": 4,
+            "declared_cube_count": 21,
+            "declared_density_floor": 20,
+            "decoded_rgba_memory_bytes": 4096,
+            "mechanics_promoted": false,
+            "runtime_budget_binding": "stamp and UI mechanics pending implementation contract",
+            "texture_dimensions": [
+              32,
+              32
+            ]
+          }
+        },
+        {
+          "asset_id": "starter_codex_bookmark",
+          "generated_export_receipt": {
+            "animation_export_byte_exact_before_reidentification": true,
+            "brief_byte_exact": true,
+            "editable_model_byte_difference_reason": "absolute texture path only",
+            "editable_model_byte_equality": false,
+            "editable_model_canonical_equality": "PASSED",
+            "editable_texture_byte_exact": true,
+            "generator_exit_status": 0,
+            "geometry_export_byte_exact_before_reidentification": true,
+            "native_blockbench_export": "PENDING_NOT_CLAIMED",
+            "native_locator_elements_in_editable_model": 0,
+            "promoted_runtime_geometry_locators": [
+              "effect"
+            ],
+            "runtime_texture_byte_exact": true,
+            "selected_only_disposable_rerun": true,
+            "status": "PASSED"
+          },
+          "member_receipt_id": "aionbound-core-v0-starter_codex_bookmark-beta-static-v1",
+          "promoted_runtime_exports": {
+            "animation": {
+              "path": "authority/aionbound/PROMOTED_RUNTIME/core-v0/assets/starter_codex_bookmark/animations/starter_codex_bookmark.animation.json",
+              "sha256": "f3d597d3b67261a24b896a598e3ae32ae0e0c2102637e580b77b2551accb8d06",
+              "size_bytes": 1055
+            },
+            "geometry": {
+              "path": "authority/aionbound/PROMOTED_RUNTIME/core-v0/assets/starter_codex_bookmark/models/starter_codex_bookmark.geo.json",
+              "sha256": "9afc176b6972fd0531fb7c5953c35f8de03a6a46a59b2e14e4482e1c2f2a3edd",
+              "size_bytes": 25965
+            },
+            "texture": {
+              "path": "authority/aionbound/PROMOTED_RUNTIME/core-v0/assets/starter_codex_bookmark/textures/starter_codex_bookmark.png",
+              "sha256": "6d6efacaf7caf847532a4138f25d79cb61f5bb42dcd4ba9f5576cd15821f808a",
+              "size_bytes": 1117
+            }
+          },
+          "promotion_state": "PROMOTED_BETA_STATIC_RUNTIME_EXPORT",
+          "remaining_gates": [
+            "native Blockbench reopen-save-reopen and native-export equivalence",
+            "fixed proof views and two critique cycles",
+            "BP/RP binding and deterministic package",
+            "Creator Tools and Stable/Preview BDS",
+            "desktop client, persistence, multiplayer, performance, Realm, controller, split-screen, and physical PS4",
+            "commercial distribution and Marketplace rights review"
+          ],
+          "runtime_identity": {
+            "animation_identifier_prefix": "animation.aionbound.starter_codex_bookmark.",
+            "geometry_identifier": "geometry.aionbound.starter_codex_bookmark",
+            "namespace": "aionbound"
+          },
+          "source_neutral_provenance": {
+            "authorship_classification": "CLEAN_ROOM_ORIGINAL_GENERATED_ART_ASSERTION",
+            "beta_static_promotion_provenance_blocker": false,
+            "consumer_distribution_and_marketplace": "NOT_ESTABLISHED_NOT_CLAIMED",
+            "control_receipt_id": "AIONBOUND_CORE_V0_PROVENANCE_STARTER_CODEX_BOOKMARK",
+            "internal_core_source_reuse": "AUTHORIZED_BY_CONTROL_PLANE_SELECTION_AND_REUSE_AUDIT",
+            "originality_assertion_classification": "PASSED_ORIGINAL_ART_NO_THIRD_PARTY_PORT_OR_TRACE"
+          },
+          "static_validation_receipt": {
+            "editable_and_runtime_texture_byte_equal": true,
+            "editable_model": {
+              "all_uuids_unique_and_rfc4122_shaped": true,
+              "animation_count": 2,
+              "animator_group_references_resolve": true,
+              "element_count": 18,
+              "embedded_texture_matches_editable_texture": true,
+              "group_count": 3,
+              "keyframe_count": 15,
+              "native_locator_element_count": 0,
+              "outliner_references_resolve_exactly_once": true,
+              "status": "PASSED"
+            },
+            "legacy_namespace_scan": "PASSED_ZERO_MATCHES",
+            "promoted_animation": {
+              "bone_references_resolve": true,
+              "clip_count": 2,
+              "clip_identifiers": [
+                "animation.aionbound.starter_codex_bookmark.action",
+                "animation.aionbound.starter_codex_bookmark.idle"
+              ],
+              "finite_numeric_values": "PASSED",
+              "keyframe_count": 7,
+              "status": "PASSED"
+            },
+            "promoted_geometry": {
+              "bone_count": 3,
+              "cube_count": 18,
+              "finite_numeric_values": "PASSED",
+              "geometry_identifier": "geometry.aionbound.starter_codex_bookmark",
+              "locators": [
+                "effect"
+              ],
+              "parent_references_and_cycles": "PASSED",
+              "status": "PASSED",
+              "texture_height": 32,
+              "texture_width": 32,
+              "uv_bounds": "PASSED"
+            },
+            "promoted_texture_byte_equal_to_audited_runtime_texture": true,
+            "source_path_scan": "PASSED_ZERO_MATCHES",
+            "texture_decode": {
+              "bit_depth": 8,
+              "channels": 4,
+              "chunk_sequence": [
+                "IHDR",
+                "IDAT",
+                "IEND"
+              ],
+              "color_type": 6,
+              "crc_all_chunks": "PASSED",
+              "decoded_scanline_bytes": 4128,
+              "decoder": "independent_png_crc_and_idat_v1",
+              "filter_types_observed": [
+                1,
+                2,
+                4
+              ],
+              "height": 32,
+              "idat_decompression": "PASSED",
+              "interlace": 0,
+              "status": "PASSED",
+              "width": 32
+            }
+          },
+          "visual_budget_binding": {
+            "animation_clip_count": 2,
+            "animation_keyframe_count": 7,
+            "computed_bone_count": 3,
+            "computed_cube_count": 18,
+            "declared_bone_count": 3,
+            "declared_cube_count": 18,
+            "declared_density_floor": 18,
+            "decoded_rgba_memory_bytes": 4096,
+            "mechanics_promoted": false,
+            "runtime_budget_binding": "item behavior pending implementation contract",
+            "texture_dimensions": [
+              32,
+              32
+            ]
+          }
+        }
+      ],
+      "product_owner": "aionbound_core",
+      "promotion_id": "aionbound-core-v0-codex_art_set-beta-static-v1",
+      "promotion_state": "PROMOTED_BETA_STATIC_RUNTIME_EXPORT",
+      "shipping_authority": false,
+      "visual_role_id": "codex_art_set"
+    },
+    {
+      "member_count": 1,
+      "members": [
+        {
+          "asset_id": "trophy_wing_scale",
+          "generated_export_receipt": {
+            "animation_export_byte_exact_before_reidentification": true,
+            "brief_byte_exact": true,
+            "editable_model_byte_difference_reason": "absolute texture path only",
+            "editable_model_byte_equality": false,
+            "editable_model_canonical_equality": "PASSED",
+            "editable_texture_byte_exact": true,
+            "generator_exit_status": 0,
+            "geometry_export_byte_exact_before_reidentification": true,
+            "native_blockbench_export": "PENDING_NOT_CLAIMED",
+            "native_locator_elements_in_editable_model": 0,
+            "promoted_runtime_geometry_locators": [
+              "effect"
+            ],
+            "runtime_texture_byte_exact": true,
+            "selected_only_disposable_rerun": true,
+            "status": "PASSED"
+          },
+          "member_receipt_id": "aionbound-core-v0-trophy_wing_scale-beta-static-v1",
+          "promoted_runtime_exports": {
+            "animation": {
+              "path": "authority/aionbound/PROMOTED_RUNTIME/core-v0/assets/trophy_wing_scale/animations/trophy_wing_scale.animation.json",
+              "sha256": "92fc8a21c38984edb4d631f79ef6da2dc9ae8aed26b17e43073b133f174382eb",
+              "size_bytes": 1045
+            },
+            "geometry": {
+              "path": "authority/aionbound/PROMOTED_RUNTIME/core-v0/assets/trophy_wing_scale/models/trophy_wing_scale.geo.json",
+              "sha256": "8a400a051a46288e0e3f194d2cbd0a92fdf50a5edf27753add9900e97ea9207f",
+              "size_bytes": 31651
+            },
+            "texture": {
+              "path": "authority/aionbound/PROMOTED_RUNTIME/core-v0/assets/trophy_wing_scale/textures/trophy_wing_scale.png",
+              "sha256": "3320d0065ab06315b5d38d0bf1d3b5322beffbfb102544fefe0e0823824f6459",
+              "size_bytes": 1075
+            }
+          },
+          "promotion_state": "PROMOTED_BETA_STATIC_RUNTIME_EXPORT",
+          "remaining_gates": [
+            "native Blockbench reopen-save-reopen and native-export equivalence",
+            "fixed proof views and two critique cycles",
+            "BP/RP binding and deterministic package",
+            "Creator Tools and Stable/Preview BDS",
+            "desktop client, persistence, multiplayer, performance, Realm, controller, split-screen, and physical PS4",
+            "commercial distribution and Marketplace rights review"
+          ],
+          "runtime_identity": {
+            "animation_identifier_prefix": "animation.aionbound.trophy_wing_scale.",
+            "geometry_identifier": "geometry.aionbound.trophy_wing_scale",
+            "namespace": "aionbound"
+          },
+          "source_neutral_provenance": {
+            "authorship_classification": "CLEAN_ROOM_ORIGINAL_GENERATED_ART_ASSERTION",
+            "beta_static_promotion_provenance_blocker": false,
+            "consumer_distribution_and_marketplace": "NOT_ESTABLISHED_NOT_CLAIMED",
+            "control_receipt_id": "AIONBOUND_CORE_V0_PROVENANCE_TROPHY_WING_SCALE",
+            "internal_core_source_reuse": "AUTHORIZED_BY_CONTROL_PLANE_SELECTION_AND_REUSE_AUDIT",
+            "originality_assertion_classification": "PASSED_ORIGINAL_ART_NO_THIRD_PARTY_PORT_OR_TRACE"
+          },
+          "static_validation_receipt": {
+            "editable_and_runtime_texture_byte_equal": true,
+            "editable_model": {
+              "all_uuids_unique_and_rfc4122_shaped": true,
+              "animation_count": 2,
+              "animator_group_references_resolve": true,
+              "element_count": 22,
+              "embedded_texture_matches_editable_texture": true,
+              "group_count": 4,
+              "keyframe_count": 15,
+              "native_locator_element_count": 0,
+              "outliner_references_resolve_exactly_once": true,
+              "status": "PASSED"
+            },
+            "legacy_namespace_scan": "PASSED_ZERO_MATCHES",
+            "promoted_animation": {
+              "bone_references_resolve": true,
+              "clip_count": 2,
+              "clip_identifiers": [
+                "animation.aionbound.trophy_wing_scale.action",
+                "animation.aionbound.trophy_wing_scale.idle"
+              ],
+              "finite_numeric_values": "PASSED",
+              "keyframe_count": 7,
+              "status": "PASSED"
+            },
+            "promoted_geometry": {
+              "bone_count": 4,
+              "cube_count": 22,
+              "finite_numeric_values": "PASSED",
+              "geometry_identifier": "geometry.aionbound.trophy_wing_scale",
+              "locators": [
+                "effect"
+              ],
+              "parent_references_and_cycles": "PASSED",
+              "status": "PASSED",
+              "texture_height": 32,
+              "texture_width": 32,
+              "uv_bounds": "PASSED"
+            },
+            "promoted_texture_byte_equal_to_audited_runtime_texture": true,
+            "source_path_scan": "PASSED_ZERO_MATCHES",
+            "texture_decode": {
+              "bit_depth": 8,
+              "channels": 4,
+              "chunk_sequence": [
+                "IHDR",
+                "IDAT",
+                "IEND"
+              ],
+              "color_type": 6,
+              "crc_all_chunks": "PASSED",
+              "decoded_scanline_bytes": 4128,
+              "decoder": "independent_png_crc_and_idat_v1",
+              "filter_types_observed": [
+                1,
+                2,
+                4
+              ],
+              "height": 32,
+              "idat_decompression": "PASSED",
+              "interlace": 0,
+              "status": "PASSED",
+              "width": 32
+            }
+          },
+          "visual_budget_binding": {
+            "animation_clip_count": 2,
+            "animation_keyframe_count": 7,
+            "computed_bone_count": 4,
+            "computed_cube_count": 22,
+            "declared_bone_count": 4,
+            "declared_cube_count": 22,
+            "declared_density_floor": 20,
+            "decoded_rgba_memory_bytes": 4096,
+            "mechanics_promoted": false,
+            "runtime_budget_binding": "later trophy; no acquisition path promoted here",
+            "texture_dimensions": [
+              32,
+              32
+            ]
+          }
+        }
+      ],
+      "product_owner": "aionbound_core",
+      "promotion_id": "aionbound-core-v0-later_first_trophy_art-beta-static-v1",
+      "promotion_state": "PROMOTED_BETA_STATIC_RUNTIME_EXPORT",
+      "shipping_authority": false,
+      "visual_role_id": "later_first_trophy_art"
+    },
+    {
+      "member_count": 4,
+      "members": [
+        {
+          "asset_id": "trophy_edge_blade",
+          "generated_export_receipt": {
+            "animation_export_byte_exact_before_reidentification": true,
+            "brief_byte_exact": true,
+            "editable_model_byte_difference_reason": "absolute texture path only",
+            "editable_model_byte_equality": false,
+            "editable_model_canonical_equality": "PASSED",
+            "editable_texture_byte_exact": true,
+            "generator_exit_status": 0,
+            "geometry_export_byte_exact_before_reidentification": true,
+            "native_blockbench_export": "PENDING_NOT_CLAIMED",
+            "native_locator_elements_in_editable_model": 0,
+            "promoted_runtime_geometry_locators": [
+              "effect"
+            ],
+            "runtime_texture_byte_exact": true,
+            "selected_only_disposable_rerun": true,
+            "status": "PASSED"
+          },
+          "member_receipt_id": "aionbound-core-v0-trophy_edge_blade-beta-static-v1",
+          "promoted_runtime_exports": {
+            "animation": {
+              "path": "authority/aionbound/PROMOTED_RUNTIME/core-v0/assets/trophy_edge_blade/animations/trophy_edge_blade.animation.json",
+              "sha256": "63d9720571e33c60b722b365a1b6971f89b89d35f64f0a91d6e7454d07336d98",
+              "size_bytes": 1045
+            },
+            "geometry": {
+              "path": "authority/aionbound/PROMOTED_RUNTIME/core-v0/assets/trophy_edge_blade/models/trophy_edge_blade.geo.json",
+              "sha256": "893829c91bce8f094c3fb00dc87b7bb427a40d4d3425a821db8a19aefdb88001",
+              "size_bytes": 31481
+            },
+            "texture": {
+              "path": "authority/aionbound/PROMOTED_RUNTIME/core-v0/assets/trophy_edge_blade/textures/trophy_edge_blade.png",
+              "sha256": "4141427148b4c3edb748a4bc2ee235034318cc919731a944e1c2cee71b24fa5d",
+              "size_bytes": 1023
+            }
+          },
+          "promotion_state": "PROMOTED_BETA_STATIC_RUNTIME_EXPORT",
+          "remaining_gates": [
+            "native Blockbench reopen-save-reopen and native-export equivalence",
+            "fixed proof views and two critique cycles",
+            "BP/RP binding and deterministic package",
+            "Creator Tools and Stable/Preview BDS",
+            "desktop client, persistence, multiplayer, performance, Realm, controller, split-screen, and physical PS4",
+            "commercial distribution and Marketplace rights review"
+          ],
+          "runtime_identity": {
+            "animation_identifier_prefix": "animation.aionbound.trophy_edge_blade.",
+            "geometry_identifier": "geometry.aionbound.trophy_edge_blade",
+            "namespace": "aionbound"
+          },
+          "source_neutral_provenance": {
+            "authorship_classification": "CLEAN_ROOM_ORIGINAL_GENERATED_ART_ASSERTION",
+            "beta_static_promotion_provenance_blocker": false,
+            "consumer_distribution_and_marketplace": "NOT_ESTABLISHED_NOT_CLAIMED",
+            "control_receipt_id": "AIONBOUND_CORE_V0_PROVENANCE_TROPHY_EDGE_BLADE",
+            "internal_core_source_reuse": "AUTHORIZED_BY_CONTROL_PLANE_SELECTION_AND_REUSE_AUDIT",
+            "originality_assertion_classification": "PASSED_ORIGINAL_ART_NO_THIRD_PARTY_PORT_OR_TRACE"
+          },
+          "static_validation_receipt": {
+            "editable_and_runtime_texture_byte_equal": true,
+            "editable_model": {
+              "all_uuids_unique_and_rfc4122_shaped": true,
+              "animation_count": 2,
+              "animator_group_references_resolve": true,
+              "element_count": 22,
+              "embedded_texture_matches_editable_texture": true,
+              "group_count": 3,
+              "keyframe_count": 18,
+              "native_locator_element_count": 0,
+              "outliner_references_resolve_exactly_once": true,
+              "status": "PASSED"
+            },
+            "legacy_namespace_scan": "PASSED_ZERO_MATCHES",
+            "promoted_animation": {
+              "bone_references_resolve": true,
+              "clip_count": 2,
+              "clip_identifiers": [
+                "animation.aionbound.trophy_edge_blade.action",
+                "animation.aionbound.trophy_edge_blade.idle"
+              ],
+              "finite_numeric_values": "PASSED",
+              "keyframe_count": 7,
+              "status": "PASSED"
+            },
+            "promoted_geometry": {
+              "bone_count": 3,
+              "cube_count": 22,
+              "finite_numeric_values": "PASSED",
+              "geometry_identifier": "geometry.aionbound.trophy_edge_blade",
+              "locators": [
+                "effect"
+              ],
+              "parent_references_and_cycles": "PASSED",
+              "status": "PASSED",
+              "texture_height": 32,
+              "texture_width": 32,
+              "uv_bounds": "PASSED"
+            },
+            "promoted_texture_byte_equal_to_audited_runtime_texture": true,
+            "source_path_scan": "PASSED_ZERO_MATCHES",
+            "texture_decode": {
+              "bit_depth": 8,
+              "channels": 4,
+              "chunk_sequence": [
+                "IHDR",
+                "IDAT",
+                "IEND"
+              ],
+              "color_type": 6,
+              "crc_all_chunks": "PASSED",
+              "decoded_scanline_bytes": 4128,
+              "decoder": "independent_png_crc_and_idat_v1",
+              "filter_types_observed": [
+                1,
+                2,
+                4
+              ],
+              "height": 32,
+              "idat_decompression": "PASSED",
+              "interlace": 0,
+              "status": "PASSED",
+              "width": 32
+            }
+          },
+          "visual_budget_binding": {
+            "animation_clip_count": 2,
+            "animation_keyframe_count": 7,
+            "computed_bone_count": 3,
+            "computed_cube_count": 22,
+            "declared_bone_count": 3,
+            "declared_cube_count": 22,
+            "declared_density_floor": 22,
+            "decoded_rgba_memory_bytes": 4096,
+            "mechanics_promoted": false,
+            "runtime_budget_binding": "display only; no active Edge mechanics promoted",
+            "texture_dimensions": [
+              32,
+              32
+            ]
+          }
+        },
+        {
+          "asset_id": "trophy_edge_guard",
+          "generated_export_receipt": {
+            "animation_export_byte_exact_before_reidentification": true,
+            "brief_byte_exact": true,
+            "editable_model_byte_difference_reason": "absolute texture path only",
+            "editable_model_byte_equality": false,
+            "editable_model_canonical_equality": "PASSED",
+            "editable_texture_byte_exact": true,
+            "generator_exit_status": 0,
+            "geometry_export_byte_exact_before_reidentification": true,
+            "native_blockbench_export": "PENDING_NOT_CLAIMED",
+            "native_locator_elements_in_editable_model": 0,
+            "promoted_runtime_geometry_locators": [
+              "effect"
+            ],
+            "runtime_texture_byte_exact": true,
+            "selected_only_disposable_rerun": true,
+            "status": "PASSED"
+          },
+          "member_receipt_id": "aionbound-core-v0-trophy_edge_guard-beta-static-v1",
+          "promoted_runtime_exports": {
+            "animation": {
+              "path": "authority/aionbound/PROMOTED_RUNTIME/core-v0/assets/trophy_edge_guard/animations/trophy_edge_guard.animation.json",
+              "sha256": "636d9777d9e034f8da9613e7614bb918e96ac0f888329b48c39d7b4eb60a1a7e",
+              "size_bytes": 1045
+            },
+            "geometry": {
+              "path": "authority/aionbound/PROMOTED_RUNTIME/core-v0/assets/trophy_edge_guard/models/trophy_edge_guard.geo.json",
+              "sha256": "bc2eb4427b3cb656dcfddd658f7e496cd0b247d3237a7fc941993fdf2d07e0ca",
+              "size_bytes": 32821
+            },
+            "texture": {
+              "path": "authority/aionbound/PROMOTED_RUNTIME/core-v0/assets/trophy_edge_guard/textures/trophy_edge_guard.png",
+              "sha256": "c5098ad75e674cc32737cbfbdd40221a818aa32d097ceb1419694a546bb6ce50",
+              "size_bytes": 1040
+            }
+          },
+          "promotion_state": "PROMOTED_BETA_STATIC_RUNTIME_EXPORT",
+          "remaining_gates": [
+            "native Blockbench reopen-save-reopen and native-export equivalence",
+            "fixed proof views and two critique cycles",
+            "BP/RP binding and deterministic package",
+            "Creator Tools and Stable/Preview BDS",
+            "desktop client, persistence, multiplayer, performance, Realm, controller, split-screen, and physical PS4",
+            "commercial distribution and Marketplace rights review"
+          ],
+          "runtime_identity": {
+            "animation_identifier_prefix": "animation.aionbound.trophy_edge_guard.",
+            "geometry_identifier": "geometry.aionbound.trophy_edge_guard",
+            "namespace": "aionbound"
+          },
+          "source_neutral_provenance": {
+            "authorship_classification": "CLEAN_ROOM_ORIGINAL_GENERATED_ART_ASSERTION",
+            "beta_static_promotion_provenance_blocker": false,
+            "consumer_distribution_and_marketplace": "NOT_ESTABLISHED_NOT_CLAIMED",
+            "control_receipt_id": "AIONBOUND_CORE_V0_PROVENANCE_TROPHY_EDGE_GUARD",
+            "internal_core_source_reuse": "AUTHORIZED_BY_CONTROL_PLANE_SELECTION_AND_REUSE_AUDIT",
+            "originality_assertion_classification": "PASSED_ORIGINAL_ART_NO_THIRD_PARTY_PORT_OR_TRACE"
+          },
+          "static_validation_receipt": {
+            "editable_and_runtime_texture_byte_equal": true,
+            "editable_model": {
+              "all_uuids_unique_and_rfc4122_shaped": true,
+              "animation_count": 2,
+              "animator_group_references_resolve": true,
+              "element_count": 23,
+              "embedded_texture_matches_editable_texture": true,
+              "group_count": 3,
+              "keyframe_count": 15,
+              "native_locator_element_count": 0,
+              "outliner_references_resolve_exactly_once": true,
+              "status": "PASSED"
+            },
+            "legacy_namespace_scan": "PASSED_ZERO_MATCHES",
+            "promoted_animation": {
+              "bone_references_resolve": true,
+              "clip_count": 2,
+              "clip_identifiers": [
+                "animation.aionbound.trophy_edge_guard.action",
+                "animation.aionbound.trophy_edge_guard.idle"
+              ],
+              "finite_numeric_values": "PASSED",
+              "keyframe_count": 7,
+              "status": "PASSED"
+            },
+            "promoted_geometry": {
+              "bone_count": 3,
+              "cube_count": 23,
+              "finite_numeric_values": "PASSED",
+              "geometry_identifier": "geometry.aionbound.trophy_edge_guard",
+              "locators": [
+                "effect"
+              ],
+              "parent_references_and_cycles": "PASSED",
+              "status": "PASSED",
+              "texture_height": 32,
+              "texture_width": 32,
+              "uv_bounds": "PASSED"
+            },
+            "promoted_texture_byte_equal_to_audited_runtime_texture": true,
+            "source_path_scan": "PASSED_ZERO_MATCHES",
+            "texture_decode": {
+              "bit_depth": 8,
+              "channels": 4,
+              "chunk_sequence": [
+                "IHDR",
+                "IDAT",
+                "IEND"
+              ],
+              "color_type": 6,
+              "crc_all_chunks": "PASSED",
+              "decoded_scanline_bytes": 4128,
+              "decoder": "independent_png_crc_and_idat_v1",
+              "filter_types_observed": [
+                1,
+                2,
+                4
+              ],
+              "height": 32,
+              "idat_decompression": "PASSED",
+              "interlace": 0,
+              "status": "PASSED",
+              "width": 32
+            }
+          },
+          "visual_budget_binding": {
+            "animation_clip_count": 2,
+            "animation_keyframe_count": 7,
+            "computed_bone_count": 3,
+            "computed_cube_count": 23,
+            "declared_bone_count": 3,
+            "declared_cube_count": 23,
+            "declared_density_floor": 22,
+            "decoded_rgba_memory_bytes": 4096,
+            "mechanics_promoted": false,
+            "runtime_budget_binding": "display only; no active Edge mechanics promoted",
+            "texture_dimensions": [
+              32,
+              32
+            ]
+          }
+        },
+        {
+          "asset_id": "trophy_edge_grip",
+          "generated_export_receipt": {
+            "animation_export_byte_exact_before_reidentification": true,
+            "brief_byte_exact": true,
+            "editable_model_byte_difference_reason": "absolute texture path only",
+            "editable_model_byte_equality": false,
+            "editable_model_canonical_equality": "PASSED",
+            "editable_texture_byte_exact": true,
+            "generator_exit_status": 0,
+            "geometry_export_byte_exact_before_reidentification": true,
+            "native_blockbench_export": "PENDING_NOT_CLAIMED",
+            "native_locator_elements_in_editable_model": 0,
+            "promoted_runtime_geometry_locators": [
+              "effect"
+            ],
+            "runtime_texture_byte_exact": true,
+            "selected_only_disposable_rerun": true,
+            "status": "PASSED"
+          },
+          "member_receipt_id": "aionbound-core-v0-trophy_edge_grip-beta-static-v1",
+          "promoted_runtime_exports": {
+            "animation": {
+              "path": "authority/aionbound/PROMOTED_RUNTIME/core-v0/assets/trophy_edge_grip/animations/trophy_edge_grip.animation.json",
+              "sha256": "025dfa8205f9d5ccda10696c31a19b53c5932fcb09077e553962bdeac31d5f6a",
+              "size_bytes": 1043
+            },
+            "geometry": {
+              "path": "authority/aionbound/PROMOTED_RUNTIME/core-v0/assets/trophy_edge_grip/models/trophy_edge_grip.geo.json",
+              "sha256": "197b50d3de976b4d14154bc0794576145cc8240286bd428cad6b953f7f3b724d",
+              "size_bytes": 31622
+            },
+            "texture": {
+              "path": "authority/aionbound/PROMOTED_RUNTIME/core-v0/assets/trophy_edge_grip/textures/trophy_edge_grip.png",
+              "sha256": "571b45e1e9935c645acb7aa11cea2b70f5a07df3e6d64639a315f9940d306b6b",
+              "size_bytes": 1039
+            }
+          },
+          "promotion_state": "PROMOTED_BETA_STATIC_RUNTIME_EXPORT",
+          "remaining_gates": [
+            "native Blockbench reopen-save-reopen and native-export equivalence",
+            "fixed proof views and two critique cycles",
+            "BP/RP binding and deterministic package",
+            "Creator Tools and Stable/Preview BDS",
+            "desktop client, persistence, multiplayer, performance, Realm, controller, split-screen, and physical PS4",
+            "commercial distribution and Marketplace rights review"
+          ],
+          "runtime_identity": {
+            "animation_identifier_prefix": "animation.aionbound.trophy_edge_grip.",
+            "geometry_identifier": "geometry.aionbound.trophy_edge_grip",
+            "namespace": "aionbound"
+          },
+          "source_neutral_provenance": {
+            "authorship_classification": "CLEAN_ROOM_ORIGINAL_GENERATED_ART_ASSERTION",
+            "beta_static_promotion_provenance_blocker": false,
+            "consumer_distribution_and_marketplace": "NOT_ESTABLISHED_NOT_CLAIMED",
+            "control_receipt_id": "AIONBOUND_CORE_V0_PROVENANCE_TROPHY_EDGE_GRIP",
+            "internal_core_source_reuse": "AUTHORIZED_BY_CONTROL_PLANE_SELECTION_AND_REUSE_AUDIT",
+            "originality_assertion_classification": "PASSED_ORIGINAL_ART_NO_THIRD_PARTY_PORT_OR_TRACE"
+          },
+          "static_validation_receipt": {
+            "editable_and_runtime_texture_byte_equal": true,
+            "editable_model": {
+              "all_uuids_unique_and_rfc4122_shaped": true,
+              "animation_count": 2,
+              "animator_group_references_resolve": true,
+              "element_count": 22,
+              "embedded_texture_matches_editable_texture": true,
+              "group_count": 4,
+              "keyframe_count": 15,
+              "native_locator_element_count": 0,
+              "outliner_references_resolve_exactly_once": true,
+              "status": "PASSED"
+            },
+            "legacy_namespace_scan": "PASSED_ZERO_MATCHES",
+            "promoted_animation": {
+              "bone_references_resolve": true,
+              "clip_count": 2,
+              "clip_identifiers": [
+                "animation.aionbound.trophy_edge_grip.action",
+                "animation.aionbound.trophy_edge_grip.idle"
+              ],
+              "finite_numeric_values": "PASSED",
+              "keyframe_count": 7,
+              "status": "PASSED"
+            },
+            "promoted_geometry": {
+              "bone_count": 4,
+              "cube_count": 22,
+              "finite_numeric_values": "PASSED",
+              "geometry_identifier": "geometry.aionbound.trophy_edge_grip",
+              "locators": [
+                "effect"
+              ],
+              "parent_references_and_cycles": "PASSED",
+              "status": "PASSED",
+              "texture_height": 32,
+              "texture_width": 32,
+              "uv_bounds": "PASSED"
+            },
+            "promoted_texture_byte_equal_to_audited_runtime_texture": true,
+            "source_path_scan": "PASSED_ZERO_MATCHES",
+            "texture_decode": {
+              "bit_depth": 8,
+              "channels": 4,
+              "chunk_sequence": [
+                "IHDR",
+                "IDAT",
+                "IEND"
+              ],
+              "color_type": 6,
+              "crc_all_chunks": "PASSED",
+              "decoded_scanline_bytes": 4128,
+              "decoder": "independent_png_crc_and_idat_v1",
+              "filter_types_observed": [
+                1,
+                2,
+                4
+              ],
+              "height": 32,
+              "idat_decompression": "PASSED",
+              "interlace": 0,
+              "status": "PASSED",
+              "width": 32
+            }
+          },
+          "visual_budget_binding": {
+            "animation_clip_count": 2,
+            "animation_keyframe_count": 7,
+            "computed_bone_count": 4,
+            "computed_cube_count": 22,
+            "declared_bone_count": 4,
+            "declared_cube_count": 22,
+            "declared_density_floor": 22,
+            "decoded_rgba_memory_bytes": 4096,
+            "mechanics_promoted": false,
+            "runtime_budget_binding": "display only; no active Edge mechanics promoted",
+            "texture_dimensions": [
+              32,
+              32
+            ]
+          }
+        },
+        {
+          "asset_id": "trophy_edge_assembled",
+          "generated_export_receipt": {
+            "animation_export_byte_exact_before_reidentification": true,
+            "brief_byte_exact": true,
+            "editable_model_byte_difference_reason": "absolute texture path only",
+            "editable_model_byte_equality": false,
+            "editable_model_canonical_equality": "PASSED",
+            "editable_texture_byte_exact": true,
+            "generator_exit_status": 0,
+            "geometry_export_byte_exact_before_reidentification": true,
+            "native_blockbench_export": "PENDING_NOT_CLAIMED",
+            "native_locator_elements_in_editable_model": 0,
+            "promoted_runtime_geometry_locators": [
+              "effect",
+              "projectile"
+            ],
+            "runtime_texture_byte_exact": true,
+            "selected_only_disposable_rerun": true,
+            "status": "PASSED"
+          },
+          "member_receipt_id": "aionbound-core-v0-trophy_edge_assembled-beta-static-v1",
+          "promoted_runtime_exports": {
+            "animation": {
+              "path": "authority/aionbound/PROMOTED_RUNTIME/core-v0/assets/trophy_edge_assembled/animations/trophy_edge_assembled.animation.json",
+              "sha256": "b37f6289a4b10ba4569b0d5a543c58032453c1a8a5ab7c02c60398e97c4515d4",
+              "size_bytes": 1053
+            },
+            "geometry": {
+              "path": "authority/aionbound/PROMOTED_RUNTIME/core-v0/assets/trophy_edge_assembled/models/trophy_edge_assembled.geo.json",
+              "sha256": "befe5dc94885526ed554643cb1856385d99b6da85b87d57264d03479281e0cdb",
+              "size_bytes": 40213
+            },
+            "texture": {
+              "path": "authority/aionbound/PROMOTED_RUNTIME/core-v0/assets/trophy_edge_assembled/textures/trophy_edge_assembled.png",
+              "sha256": "53a9f0c970bb139514f37cda94c997710179b827e384281d0126e9aa22598e99",
+              "size_bytes": 1031
+            }
+          },
+          "promotion_state": "PROMOTED_BETA_STATIC_RUNTIME_EXPORT",
+          "remaining_gates": [
+            "native Blockbench reopen-save-reopen and native-export equivalence",
+            "fixed proof views and two critique cycles",
+            "BP/RP binding and deterministic package",
+            "Creator Tools and Stable/Preview BDS",
+            "desktop client, persistence, multiplayer, performance, Realm, controller, split-screen, and physical PS4",
+            "commercial distribution and Marketplace rights review"
+          ],
+          "runtime_identity": {
+            "animation_identifier_prefix": "animation.aionbound.trophy_edge_assembled.",
+            "geometry_identifier": "geometry.aionbound.trophy_edge_assembled",
+            "namespace": "aionbound"
+          },
+          "source_neutral_provenance": {
+            "authorship_classification": "CLEAN_ROOM_ORIGINAL_GENERATED_ART_ASSERTION",
+            "beta_static_promotion_provenance_blocker": false,
+            "consumer_distribution_and_marketplace": "NOT_ESTABLISHED_NOT_CLAIMED",
+            "control_receipt_id": "AIONBOUND_CORE_V0_PROVENANCE_TROPHY_EDGE_ASSEMBLED",
+            "internal_core_source_reuse": "AUTHORIZED_BY_CONTROL_PLANE_SELECTION_AND_REUSE_AUDIT",
+            "originality_assertion_classification": "PASSED_ORIGINAL_ART_NO_THIRD_PARTY_PORT_OR_TRACE"
+          },
+          "static_validation_receipt": {
+            "editable_and_runtime_texture_byte_equal": true,
+            "editable_model": {
+              "all_uuids_unique_and_rfc4122_shaped": true,
+              "animation_count": 2,
+              "animator_group_references_resolve": true,
+              "element_count": 28,
+              "embedded_texture_matches_editable_texture": true,
+              "group_count": 5,
+              "keyframe_count": 18,
+              "native_locator_element_count": 0,
+              "outliner_references_resolve_exactly_once": true,
+              "status": "PASSED"
+            },
+            "legacy_namespace_scan": "PASSED_ZERO_MATCHES",
+            "promoted_animation": {
+              "bone_references_resolve": true,
+              "clip_count": 2,
+              "clip_identifiers": [
+                "animation.aionbound.trophy_edge_assembled.action",
+                "animation.aionbound.trophy_edge_assembled.idle"
+              ],
+              "finite_numeric_values": "PASSED",
+              "keyframe_count": 7,
+              "status": "PASSED"
+            },
+            "promoted_geometry": {
+              "bone_count": 5,
+              "cube_count": 28,
+              "finite_numeric_values": "PASSED",
+              "geometry_identifier": "geometry.aionbound.trophy_edge_assembled",
+              "locators": [
+                "effect",
+                "projectile"
+              ],
+              "parent_references_and_cycles": "PASSED",
+              "status": "PASSED",
+              "texture_height": 32,
+              "texture_width": 32,
+              "uv_bounds": "PASSED"
+            },
+            "promoted_texture_byte_equal_to_audited_runtime_texture": true,
+            "source_path_scan": "PASSED_ZERO_MATCHES",
+            "texture_decode": {
+              "bit_depth": 8,
+              "channels": 4,
+              "chunk_sequence": [
+                "IHDR",
+                "IDAT",
+                "IEND"
+              ],
+              "color_type": 6,
+              "crc_all_chunks": "PASSED",
+              "decoded_scanline_bytes": 4128,
+              "decoder": "independent_png_crc_and_idat_v1",
+              "filter_types_observed": [
+                1,
+                2,
+                4
+              ],
+              "height": 32,
+              "idat_decompression": "PASSED",
+              "interlace": 0,
+              "status": "PASSED",
+              "width": 32
+            }
+          },
+          "visual_budget_binding": {
+            "animation_clip_count": 2,
+            "animation_keyframe_count": 7,
+            "computed_bone_count": 5,
+            "computed_cube_count": 28,
+            "declared_bone_count": 5,
+            "declared_cube_count": 28,
+            "declared_density_floor": 28,
+            "decoded_rgba_memory_bytes": 4096,
+            "mechanics_promoted": false,
+            "runtime_budget_binding": "display only; no active Edge mechanics promoted",
+            "texture_dimensions": [
+              32,
+              32
+            ]
+          }
+        }
+      ],
+      "product_owner": "aionbound_core",
+      "promotion_id": "aionbound-core-v0-edge_preview_display_only_set-beta-static-v1",
+      "promotion_state": "PROMOTED_BETA_STATIC_RUNTIME_EXPORT",
+      "shipping_authority": false,
+      "visual_role_id": "edge_preview_display_only_set"
+    }
+  ],
+  "proof_boundary": {
+    "candidate_bytes_modified": false,
+    "does_not_prove": [
+      "native Blockbench export equivalence",
+      "BP/RP integration or consumer package",
+      "Creator Tools, BDS, client gameplay, persistence, multiplayer, performance, Realm, controller, split-screen, physical PS4, Marketplace, or release readiness"
+    ],
+    "mailbox_published": false,
+    "proves": [
+      "exact 13-role Core v0 visual selection with 18 required member assets",
+      "committed aionbound-reidentified geometry and animation runtime exports plus byte-exact textures",
+      "source-neutral beta-scope static receipts for editable, geometry, animation, texture, provenance, identifier, owner, budget, and generated exports",
+      "full PNG CRC, IDAT, scanline, channel, bit-depth, and dimension decode",
+      "selected-only deterministic generator reproduction with absolute-path normalization limited to editable model texture paths"
+    ],
+    "runtime_json_change": "IDENTIFIER_REIDENTIFICATION_ONLY",
+    "services_started": false,
+    "source_repositories_modified": false,
+    "texture_bytes_modified": false
+  },
+  "record_type": "CORE_V0_BETA_STATIC_RUNTIME_PROMOTION_AUTHORITY",
+  "runtime_namespace": "aionbound",
+  "schema_version": "aionbound.core-v0-asset-promotions.v1.0.0",
+  "selection": {
+    "alternatives_promoted": 0,
+    "promotion_record_count": 13,
+    "recipes_or_runtime_patterns_promoted": 0,
+    "selected_asset_member_count": 18,
+    "selected_visual_role_count": 13
+  },
+  "source_snapshot_authority": {
+    "classification": "CONTROL_ONLY_NOT_PRODUCTION_INPUT",
+    "sha256": "a7c62e00aaccbf6d2c54dc7bfa426d8aa43710665c3be5b4c01ccf45d2a50adf"
+  },
+  "status": "AIONBOUND_CORE_V0_ASSETS_PROMOTED"
+}

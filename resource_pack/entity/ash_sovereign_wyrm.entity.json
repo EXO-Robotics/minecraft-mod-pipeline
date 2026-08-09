@@ -1,0 +1,28 @@
+{
+  "format_version": "1.10.0",
+  "minecraft:client_entity": {
+    "description": {
+      "animations": {
+        "move": "animation.aionbound.ash_sovereign_wyrm.idle"
+      },
+      "geometry": {
+        "default": "geometry.aionbound.ash_sovereign_wyrm"
+      },
+      "identifier": "aionbound:ash_sovereign_wyrm",
+      "materials": {
+        "default": "entity_alphatest"
+      },
+      "render_controllers": [
+        "controller.render.aionbound.default"
+      ],
+      "scripts": {
+        "animate": [
+          "move"
+        ]
+      },
+      "textures": {
+        "default": "textures/aionbound/ash_sovereign_wyrm"
+      }
+    }
+  }
+}

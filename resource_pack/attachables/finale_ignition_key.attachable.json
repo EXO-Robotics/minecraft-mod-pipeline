@@ -1,0 +1,28 @@
+{
+  "format_version": "1.10.0",
+  "minecraft:attachable": {
+    "description": {
+      "animations": {
+        "hold": "animation.aionbound.finale_ignition_key.idle"
+      },
+      "geometry": {
+        "default": "geometry.aionbound.finale_ignition_key"
+      },
+      "identifier": "aionbound:finale_ignition_key",
+      "materials": {
+        "default": "entity_alphatest"
+      },
+      "render_controllers": [
+        "controller.render.aionbound.default"
+      ],
+      "scripts": {
+        "animate": [
+          "hold"
+        ]
+      },
+      "textures": {
+        "default": "textures/aionbound/finale_ignition_key"
+      }
+    }
+  }
+}

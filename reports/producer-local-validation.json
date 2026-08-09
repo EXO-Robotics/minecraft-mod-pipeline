@@ -1,0 +1,32 @@
+{
+  "checks": {
+    "bounded_queues_and_edits": true,
+    "content_resolution": true,
+    "deterministic_rebuild": true,
+    "ledger_complete": true,
+    "literal_main_initializes": true,
+    "media_references": true,
+    "persistence_v2_migration": true,
+    "progression_closure": true,
+    "stable_script_api": true
+  },
+  "claims": [
+    "IMPLEMENTED",
+    "STATIC_QUALIFIED",
+    "CANDIDATE_READY_FOR_INDEPENDENT_AUDIT"
+  ],
+  "errors": [],
+  "not_claimed": [
+    "BDS PASS",
+    "gameplay",
+    "retail client",
+    "controller",
+    "console",
+    "split-screen",
+    "Marketplace",
+    "rights",
+    "release"
+  ],
+  "schema": "aionbound.producer-local-validation.v2",
+  "status": "PASS"
+}

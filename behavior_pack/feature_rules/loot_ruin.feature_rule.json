@@ -1,0 +1,39 @@
+{
+  "format_version": "1.13.0",
+  "minecraft:feature_rules": {
+    "conditions": {
+      "minecraft:biome_filter": {
+        "operator": "==",
+        "test": "has_biome_tag",
+        "value": "overworld"
+      },
+      "placement_pass": "surface_pass"
+    },
+    "description": {
+      "identifier": "aionbound:loot_ruin.feature_rule",
+      "places_feature": "aionbound:loot_ruin"
+    },
+    "distribution": {
+      "iterations": 1,
+      "scatter_chance": {
+        "denominator": 384,
+        "numerator": 1
+      },
+      "x": {
+        "distribution": "uniform",
+        "extent": [
+          0,
+          15
+        ]
+      },
+      "y": "q.heightmap(v.worldx, v.worldz)",
+      "z": {
+        "distribution": "uniform",
+        "extent": [
+          0,
+          15
+        ]
+      }
+    }
+  }
+}

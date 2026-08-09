@@ -1,0 +1,169 @@
+{
+  "asset_authority": {
+    "path": "authority/aionbound/core-beta-asset-promotions.json",
+    "sha256": "dda10075f0fbf3592b98626983de16ed438c866359f27704c8778d5fb5624a41"
+  },
+  "contract_id": "AIONBOUND_CORE_BETA_PRODUCTION_CONTRACT_001",
+  "feature_rules": {
+    "all": {
+      "controller_path": "ordinary item use, block interaction, entity interaction, attack, movement, riding, and inventory",
+      "graceful_degradation": "refuse before consumption when admission or budget fails",
+      "implementation": "native_or_stable_script",
+      "requires_bds": false,
+      "requires_experiments": false,
+      "requires_external_runtime": false,
+      "restart": "versioned idempotent reconciliation"
+    },
+    "bosses": {
+      "active_bosses_world_max": 3,
+      "duplicate_rewards": "inert",
+      "twinbond_pair_max": 2
+    },
+    "mount": {
+      "owned_mounts_per_player": 1,
+      "world_mount_cap": 12
+    },
+    "persistence": {
+      "player_bytes_soft_max": 4096,
+      "stamp_limit": 64,
+      "world_bytes_soft_max": 24576
+    },
+    "pocket": {
+      "active_build_jobs_max": 1,
+      "blocks_per_cell_max": 192,
+      "cells_per_player": 1,
+      "edits_per_tick": 16
+    },
+    "ray": {
+      "cooldown_ticks": 30,
+      "particles_per_use_max": 12,
+      "projectiles_or_hits_per_use": 1,
+      "range_blocks_max": 24
+    },
+    "scheduler": {
+      "callbacks_per_tick_max": 64,
+      "entity_query_cap": 96,
+      "world_mutation_per_tick_max": 32
+    },
+    "structures": {
+      "active_jobs_max": 1,
+      "blocks_per_job_max": 4096,
+      "families": 9,
+      "queued_jobs_max": 2
+    }
+  },
+  "identity": {
+    "behavior_pack_uuid": "2cf5e36d-e80f-5a00-9d46-adefbac35524",
+    "migration": "ordered_idempotent_v1_to_v2_preserve_existing_stamps_and_journals",
+    "namespace": "aionbound",
+    "pack_version": [
+      1,
+      1,
+      0
+    ],
+    "persistence_schema_version": 2,
+    "resource_pack_uuid": "3b13350a-2634-5083-948e-29f3fef39a45",
+    "script_module_uuid": "a84ee37d-6102-5c17-a730-c868647dbc5a"
+  },
+  "product": {
+    "consumer_package": {
+      "archive_type": "MCADDON",
+      "behavior_packs": 1,
+      "resource_packs": 1
+    },
+    "lineage": {
+      "candidate": "cde486ad60759a02df104095e4062a9978ee7831",
+      "mcaddon_sha256": "5334e3e56b9ddde8653d5ceb8142bf47dbbbc0694b2f6303094d348cbb82c83a",
+      "tree": "7c132dc5012bf97e1110def7517f28d57c1753ad"
+    },
+    "product_id": "aionbound_core",
+    "public_title": "Aionbound Core Beta"
+  },
+  "progression": [
+    "starter bookmark -> overworld discoveries -> first elite and strange loot",
+    "foundry wreck -> bounded robot encounter -> vector ray",
+    "burrowgate -> owner-bound pocket -> return",
+    "pilgrimage stamps -> royal moth, basalt behemoth, and rift colossus trophies",
+    "trophies -> Trophy Edge assembly -> Twinbond pair -> beta endpoint"
+  ],
+  "proof_boundary": {
+    "completion": "AIONBOUND_CORE_BETA_READY_FOR_EXTERNAL_TESTING",
+    "not_claimed": [
+      "retail-client PASS",
+      "controller PASS",
+      "split-screen",
+      "physical-console PASS",
+      "Marketplace",
+      "release"
+    ]
+  },
+  "schema_version": "aionbound.core-beta-production-contract.v1.0.0",
+  "scope": {
+    "excluded": [
+      "standalone-product depth",
+      "historical campaign continuation",
+      "full mount tree",
+      "full robot ecology",
+      "all warehouse assets"
+    ],
+    "selected_asset_ids": [
+      "abyss_silt",
+      "ash_sovereign_wyrm",
+      "basalt_behemoth",
+      "boneplain_soil",
+      "brinewood_planks",
+      "burrowgate_mite",
+      "chrono_robo_sentinel",
+      "ember_vent_stone",
+      "finale_ignition_key",
+      "gloam_moss_block",
+      "orevein_hollow_gate",
+      "rift_colossus",
+      "rift_crust",
+      "roving_foundry_wreck",
+      "scorch_glass_shard_block",
+      "storm_slate",
+      "tide_empress_wyrm",
+      "trophy_basalt_tusk",
+      "trophy_colossus_shard",
+      "trophy_concord_scale",
+      "twinbond_obelisk_site",
+      "vector_ray_projector",
+      "waykeeper_courser"
+    ],
+    "selected_feature_ids": [
+      "core_v0_foundation",
+      "overworld_discovery_density",
+      "starter_progression_loop",
+      "burrowgate_pocket",
+      "chrono_robo_encounter",
+      "vector_ray_projector",
+      "waykeeper_courser",
+      "pilgrimage_cluster",
+      "royal_moth_boss",
+      "basalt_behemoth_boss",
+      "rift_colossus_boss",
+      "twinbond_pair",
+      "trophy_codex_beta",
+      "trophy_edge_complete",
+      "twinbond_beta_endpoint"
+    ],
+    "selection_policy": "ONE_COMPLETE_REPRESENTATIVE_PER_MAJOR_CORE_FANTASY_NO_EXPANSION_DEPTH"
+  },
+  "state": "AIONBOUND_CORE_BETA_CONTRACT_FROZEN",
+  "target": {
+    "pack_scope_basis": "world-scoped add-on and current cooperative validation profile; official stable manifest permits world explicitly",
+    "requires_bds": false,
+    "requires_experiments": false,
+    "requires_external_runtime": false,
+    "resource_pack_scope": "world",
+    "shipping_profile": "LOCAL_RETAIL_CONSOLE_TARGET",
+    "stable_api_modules": [
+      {
+        "module_name": "@minecraft/server",
+        "version": "2.0.0"
+      }
+    ],
+    "stable_bds": "1.26.33.2"
+  }
+}

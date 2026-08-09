@@ -1,0 +1,60 @@
+{
+  "format_version": "1.21.80",
+  "minecraft:entity": {
+    "components": {
+      "minecraft:behavior.controlled_by_player": {
+        "priority": 0
+      },
+      "minecraft:behavior.random_stroll": {
+        "priority": 6
+      },
+      "minecraft:collision_box": {
+        "height": 1.4,
+        "width": 1
+      },
+      "minecraft:health": {
+        "max": 28,
+        "value": 28
+      },
+      "minecraft:horse.jump_strength": {
+        "value": 0.7
+      },
+      "minecraft:input_ground_controlled": {},
+      "minecraft:loot": {
+        "table": "loot_tables/entities/waykeeper_courser.json"
+      },
+      "minecraft:movement": {
+        "value": 0.28
+      },
+      "minecraft:movement.basic": {},
+      "minecraft:navigation.walk": {},
+      "minecraft:physics": {},
+      "minecraft:rideable": {
+        "family_types": [
+          "player"
+        ],
+        "seat_count": 1,
+        "seats": [
+          {
+            "position": [
+              0,
+              1.2,
+              0
+            ]
+          }
+        ]
+      },
+      "minecraft:type_family": {
+        "family": [
+          "aionbound",
+          "creature"
+        ]
+      }
+    },
+    "description": {
+      "identifier": "aionbound:waykeeper_courser",
+      "is_spawnable": false,
+      "is_summonable": false
+    }
+  }
+}

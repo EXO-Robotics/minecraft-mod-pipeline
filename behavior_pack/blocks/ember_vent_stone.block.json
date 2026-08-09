@@ -1,0 +1,24 @@
+{
+  "format_version": "1.21.80",
+  "minecraft:block": {
+    "components": {
+      "minecraft:destructible_by_mining": {
+        "seconds_to_destroy": 2
+      },
+      "minecraft:display_name": "Ember Vent Stone",
+      "minecraft:geometry": "geometry.aionbound.ember_vent_stone",
+      "minecraft:material_instances": {
+        "*": {
+          "render_method": "alpha_test",
+          "texture": "ember_vent_stone"
+        }
+      }
+    },
+    "description": {
+      "identifier": "aionbound:ember_vent_stone",
+      "menu_category": {
+        "category": "construction"
+      }
+    }
+  }
+}

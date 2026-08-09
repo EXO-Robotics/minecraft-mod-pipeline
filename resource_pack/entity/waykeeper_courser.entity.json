@@ -1,0 +1,28 @@
+{
+  "format_version": "1.10.0",
+  "minecraft:client_entity": {
+    "description": {
+      "animations": {
+        "move": "animation.aionbound.waykeeper_courser.idle"
+      },
+      "geometry": {
+        "default": "geometry.aionbound.waykeeper_courser"
+      },
+      "identifier": "aionbound:waykeeper_courser",
+      "materials": {
+        "default": "entity_alphatest"
+      },
+      "render_controllers": [
+        "controller.render.aionbound.default"
+      ],
+      "scripts": {
+        "animate": [
+          "move"
+        ]
+      },
+      "textures": {
+        "default": "textures/aionbound/waykeeper_courser"
+      }
+    }
+  }
+}

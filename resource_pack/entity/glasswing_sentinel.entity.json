@@ -1,0 +1,28 @@
+{
+  "format_version": "1.10.0",
+  "minecraft:client_entity": {
+    "description": {
+      "animations": {
+        "move": "animation.aionbound.glasswing_sentinel.idle"
+      },
+      "geometry": {
+        "default": "geometry.aionbound.glasswing_sentinel"
+      },
+      "identifier": "aionbound:glasswing_sentinel",
+      "materials": {
+        "default": "entity_alphatest"
+      },
+      "render_controllers": [
+        "controller.render.aionbound.default"
+      ],
+      "scripts": {
+        "animate": [
+          "move"
+        ]
+      },
+      "textures": {
+        "default": "textures/aionbound/glasswing_sentinel"
+      }
+    }
+  }
+}

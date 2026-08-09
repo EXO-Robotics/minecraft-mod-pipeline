@@ -1,0 +1,28 @@
+{
+  "format_version": "1.10.0",
+  "minecraft:client_entity": {
+    "description": {
+      "animations": {
+        "move": "animation.aionbound.basalt_behemoth.idle"
+      },
+      "geometry": {
+        "default": "geometry.aionbound.basalt_behemoth"
+      },
+      "identifier": "aionbound:basalt_behemoth",
+      "materials": {
+        "default": "entity_alphatest"
+      },
+      "render_controllers": [
+        "controller.render.aionbound.default"
+      ],
+      "scripts": {
+        "animate": [
+          "move"
+        ]
+      },
+      "textures": {
+        "default": "textures/aionbound/basalt_behemoth"
+      }
+    }
+  }
+}

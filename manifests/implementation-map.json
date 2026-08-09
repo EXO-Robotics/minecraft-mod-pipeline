@@ -1,0 +1,44 @@
+{
+  "caps": {
+    "boss_world": 3,
+    "cell_blocks": 192,
+    "cell_edits_tick": 16,
+    "mount_world": 12,
+    "ray_cooldown": 30,
+    "ray_particles": 12,
+    "ray_range": 24
+  },
+  "migration": "ordered idempotent v1-to-v2 preserving stamps and journals",
+  "proof_boundary": {
+    "not_claimed": [
+      "BDS PASS",
+      "gameplay",
+      "retail client",
+      "controller",
+      "console",
+      "split-screen",
+      "Marketplace",
+      "rights",
+      "release"
+    ]
+  },
+  "schema": "aionbound.implementation-map.v2",
+  "schema_version": 2,
+  "selected_features": [
+    "core_v0_foundation",
+    "overworld_discovery_density",
+    "starter_progression_loop",
+    "burrowgate_pocket",
+    "chrono_robo_encounter",
+    "vector_ray_projector",
+    "waykeeper_courser",
+    "pilgrimage_cluster",
+    "royal_moth_boss",
+    "basalt_behemoth_boss",
+    "rift_colossus_boss",
+    "twinbond_pair",
+    "trophy_codex_beta",
+    "trophy_edge_complete",
+    "twinbond_beta_endpoint"
+  ]
+}

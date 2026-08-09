@@ -1,0 +1,28 @@
+{
+  "format_version": "1.10.0",
+  "minecraft:attachable": {
+    "description": {
+      "animations": {
+        "hold": "animation.aionbound.burrowgate_key.idle"
+      },
+      "geometry": {
+        "default": "geometry.aionbound.burrowgate_key"
+      },
+      "identifier": "aionbound:burrowgate_key",
+      "materials": {
+        "default": "entity_alphatest"
+      },
+      "render_controllers": [
+        "controller.render.aionbound.default"
+      ],
+      "scripts": {
+        "animate": [
+          "hold"
+        ]
+      },
+      "textures": {
+        "default": "textures/aionbound/burrowgate_key"
+      }
+    }
+  }
+}

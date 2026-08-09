@@ -1,0 +1,28 @@
+{
+  "format_version": "1.10.0",
+  "minecraft:client_entity": {
+    "description": {
+      "animations": {
+        "move": "animation.aionbound.tide_empress_wyrm.idle"
+      },
+      "geometry": {
+        "default": "geometry.aionbound.tide_empress_wyrm"
+      },
+      "identifier": "aionbound:tide_empress_wyrm",
+      "materials": {
+        "default": "entity_alphatest"
+      },
+      "render_controllers": [
+        "controller.render.aionbound.default"
+      ],
+      "scripts": {
+        "animate": [
+          "move"
+        ]
+      },
+      "textures": {
+        "default": "textures/aionbound/tide_empress_wyrm"
+      }
+    }
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "schema_version": "aionbound.core-beta-production-seed.v1.0.0",
+  "seed_id": "AIONBOUND_CORE_BETA_PRODUCTION_SEED_G000005",
+  "base_candidate": {
+    "commit": "cde486ad60759a02df104095e4062a9978ee7831",
+    "tree": "7c132dc5012bf97e1110def7517f28d57c1753ad",
+    "mcaddon_sha256": "5334e3e56b9ddde8653d5ceb8142bf47dbbbc0694b2f6303094d348cbb82c83a",
+    "immutable": true
+  },
+  "factory_authority": {
+    "commit": "0a0fb340732fe4e5306529379ffd43b255c75ae2",
+    "tree": "87e4c0b998f04b2e06445a8a1c71549fd451f4a4",
+    "contract_sha256": "95c876c07614fefdf0a7789b3d7fa10e1895397b160e0ff18a1a4664557e1538",
+    "promotions_sha256": "dda10075f0fbf3592b98626983de16ed438c866359f27704c8778d5fb5624a41",
+    "assembly_sha256": "cabbfcb1f022a7872b3006a430751a187184b2e63cc417323b95a4560f199fcc"
+  },
+  "asset_input_root": "assets/beta",
+  "asset_count": 23,
+  "asset_state": "PROMOTED_BETA_RUNTIME_STATIC_EXPORT",
+  "shipping_rule": "assets/beta is producer input and must not be shipped",
+  "proof_boundary": "Exact G4 bytes plus selected promoted Core beta media; no implementation or qualification claim."
+}

@@ -1,0 +1,28 @@
+{
+  "format_version": "1.10.0",
+  "minecraft:client_entity": {
+    "description": {
+      "animations": {
+        "move": "animation.aionbound.burrowgate_mite.idle"
+      },
+      "geometry": {
+        "default": "geometry.aionbound.burrowgate_mite"
+      },
+      "identifier": "aionbound:burrowgate_mite",
+      "materials": {
+        "default": "entity_alphatest"
+      },
+      "render_controllers": [
+        "controller.render.aionbound.default"
+      ],
+      "scripts": {
+        "animate": [
+          "move"
+        ]
+      },
+      "textures": {
+        "default": "textures/aionbound/burrowgate_mite"
+      }
+    }
+  }
+}

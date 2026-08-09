@@ -1,0 +1,24 @@
+{
+  "format_version": "1.21.80",
+  "minecraft:block": {
+    "components": {
+      "minecraft:destructible_by_mining": {
+        "seconds_to_destroy": 2
+      },
+      "minecraft:display_name": "Roving Foundry Wreck",
+      "minecraft:geometry": "geometry.aionbound.roving_foundry_wreck",
+      "minecraft:material_instances": {
+        "*": {
+          "render_method": "alpha_test",
+          "texture": "roving_foundry_wreck"
+        }
+      }
+    },
+    "description": {
+      "identifier": "aionbound:roving_foundry_wreck",
+      "menu_category": {
+        "category": "construction"
+      }
+    }
+  }
+}

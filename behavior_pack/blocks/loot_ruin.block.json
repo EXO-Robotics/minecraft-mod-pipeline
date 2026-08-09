@@ -1,0 +1,24 @@
+{
+  "format_version": "1.21.80",
+  "minecraft:block": {
+    "components": {
+      "minecraft:destructible_by_mining": {
+        "seconds_to_destroy": 2
+      },
+      "minecraft:display_name": "Loot Ruin",
+      "minecraft:geometry": "geometry.aionbound.prismglass_chest_ruin",
+      "minecraft:material_instances": {
+        "*": {
+          "render_method": "alpha_test",
+          "texture": "prismglass_chest_ruin"
+        }
+      }
+    },
+    "description": {
+      "identifier": "aionbound:loot_ruin",
+      "menu_category": {
+        "category": "construction"
+      }
+    }
+  }
+}

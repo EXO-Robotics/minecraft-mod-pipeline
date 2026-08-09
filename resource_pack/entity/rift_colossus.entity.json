@@ -1,0 +1,28 @@
+{
+  "format_version": "1.10.0",
+  "minecraft:client_entity": {
+    "description": {
+      "animations": {
+        "move": "animation.aionbound.rift_colossus.idle"
+      },
+      "geometry": {
+        "default": "geometry.aionbound.rift_colossus"
+      },
+      "identifier": "aionbound:rift_colossus",
+      "materials": {
+        "default": "entity_alphatest"
+      },
+      "render_controllers": [
+        "controller.render.aionbound.default"
+      ],
+      "scripts": {
+        "animate": [
+          "move"
+        ]
+      },
+      "textures": {
+        "default": "textures/aionbound/rift_colossus"
+      }
+    }
+  }
+}

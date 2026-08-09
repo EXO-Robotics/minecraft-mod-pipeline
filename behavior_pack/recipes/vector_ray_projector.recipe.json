@@ -1,0 +1,28 @@
+{
+  "format_version": "1.20.10",
+  "minecraft:recipe_shapeless": {
+    "description": {
+      "identifier": "aionbound:vector_ray_projector_recipe"
+    },
+    "ingredients": [
+      {
+        "item": "aionbound:chrono_core"
+      },
+      {
+        "item": "minecraft:spyglass"
+      }
+    ],
+    "result": {
+      "count": 1,
+      "item": "aionbound:vector_ray_projector"
+    },
+    "tags": [
+      "crafting_table"
+    ],
+    "unlock": [
+      {
+        "item": "aionbound:chrono_core"
+      }
+    ]
+  }
+}

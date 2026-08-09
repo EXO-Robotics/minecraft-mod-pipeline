@@ -1,0 +1,38 @@
+{
+  "format_version": "1.21.80",
+  "minecraft:entity": {
+    "components": {
+      "minecraft:behavior.random_stroll": {
+        "priority": 6
+      },
+      "minecraft:collision_box": {
+        "height": 1.4,
+        "width": 1
+      },
+      "minecraft:health": {
+        "max": 28,
+        "value": 28
+      },
+      "minecraft:loot": {
+        "table": "loot_tables/entities/mosskip.json"
+      },
+      "minecraft:movement": {
+        "value": 0.28
+      },
+      "minecraft:movement.basic": {},
+      "minecraft:navigation.walk": {},
+      "minecraft:physics": {},
+      "minecraft:type_family": {
+        "family": [
+          "aionbound",
+          "creature"
+        ]
+      }
+    },
+    "description": {
+      "identifier": "aionbound:mosskip",
+      "is_spawnable": false,
+      "is_summonable": false
+    }
+  }
+}
