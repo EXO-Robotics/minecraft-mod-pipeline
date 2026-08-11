@@ -1,0 +1,2814 @@
+{
+  "authority": [
+    {
+      "path": "engineering/ashen-intake/authority/ASHEN_HIGHLANDS_VERTICAL_INTAKE_MAP.json",
+      "role": "exact 50-ID authority and blocker partition",
+      "sha256": "2fafe932da68e27f5ad3a67d081ff991f6b7675d57148b83fe9f6c4489db8bab"
+    },
+    {
+      "path": "engineering/ashen-intake/runtime-map/ASHEN_RUNTIME_IMPLEMENTATION_MAP.json",
+      "role": "G7/Whisperwood reuse and ownership map",
+      "sha256": "a54dbe5c440d128c75b2d30cd0db5927c850f9355f0baeba7dc5dbebb120ec52"
+    },
+    {
+      "path": "engineering/whisperwood-intake/codex-extension/WHISPERWOOD_CODEX_EXTENSION_MAP.json",
+      "role": "append-only registry v2 indices and approved WW-to-AH rumor",
+      "sha256": "41a153de2bebf8660af61ebf0bc7d3a5eaf47fd355109990e67369f882cf0a53"
+    },
+    {
+      "path": "behavior_pack/scripts/wave1_codex_data.js",
+      "role": "current registry v2 implementation",
+      "sha256": "4507b12f204fc0c7eb8c04951fb1b02ae478beb3a92711ab90799feb76016a21"
+    },
+    {
+      "path": "behavior_pack/scripts/state.js",
+      "role": "current schema v4 compact discovery implementation",
+      "sha256": "d40710101a34dc30f858ebde9f65c120cf698e1eb88c2b98511b35946a4cfa12"
+    },
+    {
+      "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-002-ashen-highlands/MANIFEST_FULL.json",
+      "role": "exact Packet 002 visual roster and visual-only claim boundary",
+      "sha256": "6cb3bd25a1ef473e60e5ed0ebf78288bcc4d53db1ff4ec74db4d22ddb036c738"
+    },
+    {
+      "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-002-ashen-highlands/SPRINT_002_COMPLETE.md",
+      "role": "50/50 category receipt and canonical source layout",
+      "sha256": "cd62a92f44313bc0b7cea5c2dac08f2a96e04ecf59f8264977eb584e146d264a"
+    },
+    {
+      "path": "program/crazycraft-pack-production-v1/studio-prep/creative/WAVE_1_LIVING_WORLD_IMPLEMENTATION_CONTRACT.json",
+      "role": "machine-readable Packet 002 inventory and completion contract",
+      "sha256": "aa1f54df10d27d5c5675aae843ffe0d2946123d12a6509f7f021408bcdde9fb5"
+    },
+    {
+      "path": "program/crazycraft-pack-production-v1/studio-prep/creative/WAVE_1_LIVING_WORLD_IMPLEMENTATION_CONTRACT.md",
+      "role": "human implementation authority and per-asset relationships",
+      "sha256": "3116c217e06afe1fd0cd56ee742c537f948a4c91193ec831fd1b3ec362837bfc"
+    },
+    {
+      "path": "program/crazycraft-pack-production-v1/studio-prep/creative/01_progression/PLAYER_JOURNEY.md",
+      "role": "chapter order and soft-gate progression",
+      "sha256": "42ba75d9518977c71397826aa9f4daa3864df942019c809b04830fef654a1fa7"
+    },
+    {
+      "path": "program/crazycraft-pack-production-v1/studio-prep/creative/02_loot/LOOT_ASHEN.md",
+      "role": "loot identities and purposes, but not ratified final values",
+      "sha256": "f5b2ff909a6e7b7669da561cc2659439819227f99d15d221dbea0147750d3727"
+    },
+    {
+      "path": "program/crazycraft-pack-production-v1/studio-prep/creative/03_crafting/CRAFTING_TREE.md",
+      "role": "material-to-component-to-equipment graph",
+      "sha256": "1f3482ba3dd9f916e08aa544153cc841871a729a2e82d9e75601715f4b5ee807"
+    },
+    {
+      "path": "program/crazycraft-pack-production-v1/studio-prep/creative/04_equipment/EQUIPMENT_PROGRESSION.md",
+      "role": "equipment roles and sidegrade philosophy",
+      "sha256": "7ecf57e6af099ae3cda8a7432228fb5ee996f20b02b76888a82c0c1a3e3c891d"
+    },
+    {
+      "path": "program/crazycraft-pack-production-v1/studio-prep/creative/05_structures/STRUCTURES_DESIGN.md",
+      "role": "structure purpose, visit, loot identity, story, and progression",
+      "sha256": "9e62ae9ba6c1da33b64ff0bfa4ac4799b083c6de995585424864d5cf2b0cb076"
+    },
+    {
+      "path": "program/crazycraft-pack-production-v1/studio-prep/creative/06_world_gen/WORLD_GENERATION.md",
+      "role": "ecology, placement, and rarity intent",
+      "sha256": "bc18a1e1f73d6045ab7e583afe910ca13d4776d439c8f3dfb45dae5784372f4b"
+    },
+    {
+      "path": "program/crazycraft-pack-production-v1/studio-prep/creative/07_bosses/BOSS_PROGRESSION.md",
+      "role": "Kiln Sky identity, phase kit, attacks, and reward identities",
+      "sha256": "5ef85e1e0b29973a617f7dca4a8b119443c01644ba33f0e11166ef8d417d5a6f"
+    },
+    {
+      "path": "program/crazycraft-pack-production-v1/studio-prep/creative/08_codex/CODEX_ENTRIES_CREATURES.md",
+      "role": "ten creature discovery/crafting/hint entries",
+      "sha256": "fd07694eee0c8d478b44363e822e0116f4ca09c92775661350ed8468342b01bf"
+    },
+    {
+      "path": "engineering/authority/WAVE_1_ENGINEERING_DECISION_LEDGER.json",
+      "role": "ratified and deferred engineering decision state",
+      "sha256": "3e2b64785da9310b098e06981ebc95777ddc7e5d2666f803b79ce374470a9561"
+    }
+  ],
+  "base": {
+    "checkpoint_1_passed": true,
+    "commit": "faf8bab1785b3b847a70268c37ef813afd0495b4",
+    "g7_immutable": true,
+    "tree": "3162be09bb1cb1b4ca10f1bf8132fbbf5e595282"
+  },
+  "blockers": [
+    {
+      "id": "W1-CREATIVE-001-AH",
+      "scope": "non-warehouse Ashen ingredient/drop identities and promoted curiosity items"
+    },
+    {
+      "id": "W1-CREATIVE-003-KILN-SKY",
+      "scope": "executable Kiln Sky thresholds, timing, reset, multiplayer ownership, persistence, terminal grants, recovery, and repeat-clear semantics"
+    },
+    {
+      "id": "W1-CREATIVE-004-AH",
+      "scope": "Ashen loot quantities/probabilities/rolls, boss guarantees, and alternate-seal semantics"
+    },
+    {
+      "id": "W1-CREATIVE-005",
+      "scope": "briar_ring heat-tempered sidegrade identity or representation"
+    }
+  ],
+  "coverage": {
+    "boss_pages": 1,
+    "existing_cross_region_equipment_links": 1,
+    "new_equipment_pages": 13,
+    "new_registry_entries": 66,
+    "packet_002_by_category": {
+      "blocks": 10,
+      "creatures": 10,
+      "plants": 10,
+      "resources": 10,
+      "structures": 10
+    },
+    "packet_002_ids": 50,
+    "packet_006_ashen_links": 14,
+    "progression_pages": 2,
+    "registry_entries_after": 140,
+    "registry_entries_before": 74
+  },
+  "kiln_sky": {
+    "attack_names": [
+      "Cinder Breath",
+      "Tail Slag",
+      "Thermal Dive",
+      "Mite Shake",
+      "Basalt Quake",
+      "Glass Feather Storm"
+    ],
+    "category_index": 0,
+    "codex_category": "boss",
+    "entity_runtime_id": "aionbound:ash_drake",
+    "events": [
+      {
+        "action": "valid_kiln_sky_pull",
+        "authority": "WITHHELD",
+        "blockers": [
+          "W1-CREATIVE-003-KILN-SKY"
+        ],
+        "id": "codex:ah:boss:kiln_sky:encountered",
+        "stage": "partial"
+      },
+      {
+        "action": "valid_kiln_sky_terminal",
+        "authority": "WITHHELD",
+        "blockers": [
+          "W1-CREATIVE-003-KILN-SKY",
+          "W1-CREATIVE-004-AH"
+        ],
+        "id": "codex:ah:boss:kiln_sky:defeated",
+        "stage": "complete"
+      }
+    ],
+    "id": "kiln_sky",
+    "identity_data_authority": "SAFE_NOW",
+    "phase_names": [
+      "Ash Landing",
+      "Vent Choir",
+      "Glass Wing",
+      "Kiln Heart"
+    ],
+    "region": "ah",
+    "runtime_id": "aionbound:kiln_sky",
+    "seal_runtime_id": "aionbound:ash_drake_horn",
+    "seal_semantics": {
+      "ember_forge_core_is_substitute_seal": false,
+      "ember_forge_core_role": "secondary trophy/structure reward and approved pilgrim-part identity; never a Chapter 2 seal substitute",
+      "primary_critical_seal": "aionbound:ash_drake_horn"
+    },
+    "secondary_trophy_runtime_id": "aionbound:ember_forge_core",
+    "structure_runtime_id": "aionbound:ember_forge",
+    "terminal_rule": "No boss, creature, trophy, or chapter completion may be wired until ratification. Later terminal ordering must persist durable ash_drake_horn seal credit before recoverable physical fulfillment."
+  },
+  "packet_002_entries": [
+    {
+      "category_index": 0,
+      "codex_category": "creature",
+      "discovery_routes": [
+        {
+          "action": "swarm_contact",
+          "authority": "SAFE_NOW",
+          "id": "codex:ah:creature:ash_mite:swarm_contact",
+          "stage": "partial"
+        }
+      ],
+      "id": "ash_mite",
+      "importance": "required_coverage",
+      "region": "ah",
+      "relationships": {
+        "rule": "Warehouse identities and approved relationship prose may be indexed; non-warehouse terms remain prose-only and cannot become item IDs, acquisition completion predicates, or shipping loot.",
+        "safe_now": {
+          "acquisition": [
+            "vents",
+            "caves"
+          ],
+          "crafting_and_progression_links": [
+            "ashen_boots",
+            "forge flux",
+            "hazard economy",
+            "heat binding",
+            "heatstone locator hint",
+            "ore_chisel"
+          ],
+          "equipment_links": [
+            "ore_chisel",
+            "ashen_boots"
+          ]
+        },
+        "withheld": {
+          "W1-CREATIVE-001-AH": [
+            "Ash Dust",
+            "Mite Mandible",
+            "ember_resin",
+            "Swarm Queen Scale"
+          ],
+          "W1-CREATIVE-004-AH": "no probabilities, quantities, rolls, or guarantees are bound by this map"
+        }
+      },
+      "runtime_id": "aionbound:ash_mite",
+      "source_category": "creatures",
+      "warehouse_id": "ash_mite"
+    },
+    {
+      "category_index": 1,
+      "codex_category": "creature",
+      "discovery_routes": [
+        {
+          "action": "observe_sky",
+          "authority": "SAFE_NOW",
+          "id": "codex:ah:creature:ember_crow:observe_sky",
+          "stage": "partial"
+        }
+      ],
+      "id": "ember_crow",
+      "importance": "required_coverage",
+      "region": "ah",
+      "relationships": {
+        "rule": "Warehouse identities and approved relationship prose may be indexed; non-warehouse terms remain prose-only and cannot become item IDs, acquisition completion predicates, or shipping loot.",
+        "safe_now": {
+          "acquisition": [
+            "sky",
+            "towers"
+          ],
+          "crafting_and_progression_links": [
+            "Codex traveler notes",
+            "ash_repeater",
+            "ash_repeater fletching",
+            "ash_repeater path",
+            "cooled-kill discovery hint",
+            "small tool tips"
+          ],
+          "equipment_links": [
+            "ash_repeater"
+          ]
+        },
+        "withheld": {
+          "W1-CREATIVE-001-AH": [
+            "Char Feather",
+            "Cinder Beak",
+            "Scorched Message Tube"
+          ],
+          "W1-CREATIVE-004-AH": "no probabilities, quantities, rolls, or guarantees are bound by this map"
+        }
+      },
+      "runtime_id": "aionbound:ember_crow",
+      "source_category": "creatures",
+      "warehouse_id": "ember_crow"
+    },
+    {
+      "category_index": 2,
+      "codex_category": "creature",
+      "discovery_routes": [
+        {
+          "action": "defeat_on_basalt",
+          "authority": "SAFE_NOW",
+          "id": "codex:ah:creature:magma_lizard:defeat_on_basalt",
+          "stage": "complete"
+        }
+      ],
+      "id": "magma_lizard",
+      "importance": "required_coverage",
+      "region": "ah",
+      "relationships": {
+        "rule": "Warehouse identities and approved relationship prose may be indexed; non-warehouse terms remain prose-only and cannot become item IDs, acquisition completion predicates, or shipping loot.",
+        "safe_now": {
+          "acquisition": [
+            "hot rock"
+          ],
+          "crafting_and_progression_links": [
+            "ash_repeater",
+            "ashen_legs",
+            "ashen_legs padding",
+            "edges and panes",
+            "heat-resist precursor",
+            "ranged and tool path",
+            "safe-path environmental hint"
+          ],
+          "equipment_links": [
+            "ashen_legs",
+            "ash_repeater"
+          ]
+        },
+        "withheld": {
+          "W1-CREATIVE-001-AH": [
+            "Heat Scale",
+            "volcanic_glass_shard",
+            "Warm Blood Vial"
+          ],
+          "W1-CREATIVE-004-AH": "no probabilities, quantities, rolls, or guarantees are bound by this map"
+        }
+      },
+      "runtime_id": "aionbound:magma_lizard",
+      "source_category": "creatures",
+      "warehouse_id": "magma_lizard"
+    },
+    {
+      "category_index": 3,
+      "codex_category": "creature",
+      "discovery_routes": [
+        {
+          "action": "defeat",
+          "authority": "SAFE_NOW",
+          "id": "codex:ah:creature:furnace_beetle:defeat",
+          "stage": "complete"
+        }
+      ],
+      "id": "furnace_beetle",
+      "importance": "required_coverage",
+      "region": "ah",
+      "relationships": {
+        "rule": "Warehouse identities and approved relationship prose may be indexed; non-warehouse terms remain prose-only and cannot become item IDs, acquisition completion predicates, or shipping loot.",
+        "safe_now": {
+          "acquisition": [
+            "forge-language areas"
+          ],
+          "crafting_and_progression_links": [
+            "ashen armor set",
+            "ashen_chest",
+            "ashen_chest plates",
+            "basalt_hammer",
+            "basalt_hammer face inlay",
+            "ember accessory path",
+            "ember_totem",
+            "ember_totem fuel",
+            "ore_chisel"
+          ],
+          "equipment_links": [
+            "ashen_chest",
+            "ember_totem",
+            "basalt_hammer",
+            "ore_chisel"
+          ]
+        },
+        "withheld": {
+          "W1-CREATIVE-001-AH": [
+            "furnace_chitin",
+            "Smolder Gland",
+            "Beetle Core Fragment"
+          ],
+          "W1-CREATIVE-004-AH": "no probabilities, quantities, rolls, or guarantees are bound by this map"
+        }
+      },
+      "runtime_id": "aionbound:furnace_beetle",
+      "source_category": "creatures",
+      "warehouse_id": "furnace_beetle"
+    },
+    {
+      "category_index": 4,
+      "codex_category": "creature",
+      "discovery_routes": [
+        {
+          "action": "pack_fight",
+          "authority": "SAFE_NOW",
+          "id": "codex:ah:creature:char_wolf:pack_fight",
+          "stage": "complete"
+        }
+      ],
+      "id": "char_wolf",
+      "importance": "required_coverage",
+      "region": "ah",
+      "relationships": {
+        "rule": "Warehouse identities and approved relationship prose may be indexed; non-warehouse terms remain prose-only and cannot become item IDs, acquisition completion predicates, or shipping loot.",
+        "safe_now": {
+          "acquisition": [
+            "night ash"
+          ],
+          "crafting_and_progression_links": [
+            "AH hostile ecology",
+            "Codex pack record",
+            "ashen lining",
+            "ashen_boots",
+            "ashen_chest",
+            "ashen_helmet",
+            "ashen_legs",
+            "dagger or axe teeth",
+            "tower story link"
+          ],
+          "equipment_links": [
+            "ashen_helmet",
+            "ashen_chest",
+            "ashen_legs",
+            "ashen_boots"
+          ]
+        },
+        "withheld": {
+          "W1-CREATIVE-001-AH": [
+            "Char Pelt",
+            "Ember Fang",
+            "Pack Cinder Mark"
+          ],
+          "W1-CREATIVE-004-AH": "no probabilities, quantities, rolls, or guarantees are bound by this map"
+        }
+      },
+      "runtime_id": "aionbound:char_wolf",
+      "source_category": "creatures",
+      "warehouse_id": "char_wolf"
+    },
+    {
+      "category_index": 5,
+      "codex_category": "creature",
+      "discovery_routes": [
+        {
+          "action": "elite_hunt",
+          "authority": "SAFE_NOW",
+          "id": "codex:ah:creature:cinder_lynx:elite_hunt",
+          "stage": "complete"
+        }
+      ],
+      "id": "cinder_lynx",
+      "importance": "required_coverage",
+      "region": "ah",
+      "relationships": {
+        "rule": "Warehouse identities and approved relationship prose may be indexed; non-warehouse terms remain prose-only and cannot become item IDs, acquisition completion predicates, or shipping loot.",
+        "safe_now": {
+          "acquisition": [
+            "ridges"
+          ],
+          "crafting_and_progression_links": [
+            "ash_repeater",
+            "ash_repeater mechanism",
+            "ash_repeater path",
+            "ashen_boots",
+            "elite heatstone source",
+            "heatstone path",
+            "silent boot pads",
+            "talisman curiosity"
+          ],
+          "equipment_links": [
+            "ashen_boots",
+            "ash_repeater"
+          ]
+        },
+        "withheld": {
+          "W1-CREATIVE-001-AH": [
+            "Cinder Pelt",
+            "Lynx Claw",
+            "heatstone",
+            "Lynx Eye Gem"
+          ],
+          "W1-CREATIVE-004-AH": "no probabilities, quantities, rolls, or guarantees are bound by this map"
+        }
+      },
+      "runtime_id": "aionbound:cinder_lynx",
+      "source_category": "creatures",
+      "warehouse_id": "cinder_lynx"
+    },
+    {
+      "category_index": 6,
+      "codex_category": "creature",
+      "discovery_routes": [
+        {
+          "action": "territorial_clash",
+          "authority": "SAFE_NOW",
+          "id": "codex:ah:creature:ash_ram:territorial_clash",
+          "stage": "complete"
+        }
+      ],
+      "id": "ash_ram",
+      "importance": "required_coverage",
+      "region": "ah",
+      "relationships": {
+        "rule": "Warehouse identities and approved relationship prose may be indexed; non-warehouse terms remain prose-only and cannot become item IDs, acquisition completion predicates, or shipping loot.",
+        "safe_now": {
+          "acquisition": [
+            "plateaus"
+          ],
+          "crafting_and_progression_links": [
+            "armor padding",
+            "basalt force path",
+            "basalt_hammer",
+            "basalt_hammer haft ring",
+            "trophy mount or helmet crest"
+          ],
+          "equipment_links": [
+            "basalt_hammer"
+          ]
+        },
+        "withheld": {
+          "W1-CREATIVE-001-AH": [
+            "basalt_core",
+            "Ash Wool",
+            "Ram Horn Curve"
+          ],
+          "W1-CREATIVE-004-AH": "no probabilities, quantities, rolls, or guarantees are bound by this map"
+        }
+      },
+      "runtime_id": "aionbound:ash_ram",
+      "source_category": "creatures",
+      "warehouse_id": "ash_ram"
+    },
+    {
+      "category_index": 7,
+      "codex_category": "creature",
+      "discovery_routes": [
+        {
+          "action": "rare_plateau_sighting",
+          "authority": "SAFE_NOW",
+          "id": "codex:ah:creature:soot_stag:rare_plateau_sighting",
+          "stage": "partial"
+        }
+      ],
+      "id": "soot_stag",
+      "importance": "required_coverage",
+      "region": "ah",
+      "relationships": {
+        "rule": "Warehouse identities and approved relationship prose may be indexed; non-warehouse terms remain prose-only and cannot become item IDs, acquisition completion predicates, or shipping loot.",
+        "safe_now": {
+          "acquisition": [
+            "high plateaus"
+          ],
+          "crafting_and_progression_links": [
+            "armor",
+            "ember_great_axe",
+            "ember_great_axe catalyst",
+            "ember_great_axe path",
+            "fire_bloom path",
+            "planting",
+            "staff or hammer ornament"
+          ],
+          "equipment_links": [
+            "ember_great_axe"
+          ]
+        },
+        "withheld": {
+          "W1-CREATIVE-001-AH": [
+            "Soot Antler",
+            "Char Hide",
+            "fire_bloom_seed",
+            "Stag Heart Cinder"
+          ],
+          "W1-CREATIVE-004-AH": "no probabilities, quantities, rolls, or guarantees are bound by this map"
+        }
+      },
+      "runtime_id": "aionbound:soot_stag",
+      "source_category": "creatures",
+      "warehouse_id": "soot_stag"
+    },
+    {
+      "category_index": 8,
+      "codex_category": "creature",
+      "discovery_routes": [
+        {
+          "action": "patient_engagement",
+          "authority": "SAFE_NOW",
+          "id": "codex:ah:creature:basalt_tortoise:patient_engagement",
+          "stage": "partial"
+        }
+      ],
+      "id": "basalt_tortoise",
+      "importance": "required_coverage",
+      "region": "ah",
+      "relationships": {
+        "rule": "Warehouse identities and approved relationship prose may be indexed; non-warehouse terms remain prose-only and cannot become item IDs, acquisition completion predicates, or shipping loot.",
+        "safe_now": {
+          "acquisition": [
+            "basalt fields"
+          ],
+          "crafting_and_progression_links": [
+            "Codex geology",
+            "ashen chest or shield-analogue plate",
+            "ashen_chest",
+            "basalt_hammer",
+            "basalt_pick",
+            "force path",
+            "heavy weapon origin",
+            "heavy weapons and tools"
+          ],
+          "equipment_links": [
+            "basalt_hammer",
+            "basalt_pick",
+            "ashen_chest"
+          ]
+        },
+        "withheld": {
+          "W1-CREATIVE-001-AH": [
+            "basalt_core",
+            "Shell Plate",
+            "Slow Stone"
+          ],
+          "W1-CREATIVE-004-AH": "no probabilities, quantities, rolls, or guarantees are bound by this map"
+        }
+      },
+      "runtime_id": "aionbound:basalt_tortoise",
+      "source_category": "creatures",
+      "warehouse_id": "basalt_tortoise"
+    },
+    {
+      "category_index": 9,
+      "codex_category": "creature",
+      "discovery_routes": [
+        {
+          "action": "valid_kiln_sky_pull",
+          "authority": "WITHHELD",
+          "blockers": [
+            "W1-CREATIVE-003-KILN-SKY"
+          ],
+          "id": "codex:ah:creature:ash_drake:encountered",
+          "stage": "partial"
+        },
+        {
+          "action": "valid_kiln_sky_terminal",
+          "authority": "WITHHELD",
+          "blockers": [
+            "W1-CREATIVE-003-KILN-SKY",
+            "W1-CREATIVE-004-AH"
+          ],
+          "id": "codex:ah:creature:ash_drake:defeated",
+          "stage": "complete"
+        }
+      ],
+      "id": "ash_drake",
+      "importance": "critical_path",
+      "region": "ah",
+      "relationships": {
+        "rule": "Warehouse identities and approved relationship prose may be indexed; non-warehouse terms remain prose-only and cannot become item IDs, acquisition completion predicates, or shipping loot.",
+        "safe_now": {
+          "acquisition": [
+            "arena or nest sky",
+            "ember_forge encounter link"
+          ],
+          "crafting_and_progression_links": [
+            "CM maps unlock harder",
+            "Chapter 2 seal",
+            "Pilgrim assembly",
+            "ash_drake_horn",
+            "ashen set finish",
+            "ashen_boots",
+            "ashen_chest",
+            "ashen_helmet",
+            "ashen_legs",
+            "bulk glass",
+            "chapter seal",
+            "ember_great_axe",
+            "ember_great_axe binding",
+            "forge materials"
+          ],
+          "equipment_links": [
+            "ashen_helmet",
+            "ashen_chest",
+            "ashen_legs",
+            "ashen_boots",
+            "ember_great_axe",
+            "ash_drake_horn"
+          ]
+        },
+        "withheld": {
+          "W1-CREATIVE-001-AH": [
+            "Drake Scale",
+            "Ember Sinew",
+            "volcanic_glass_shard",
+            "ash_drake_horn",
+            "heatstone",
+            "ember_resin",
+            "ember_forge_core"
+          ],
+          "W1-CREATIVE-004-AH": "no probabilities, quantities, rolls, or guarantees are bound by this map"
+        }
+      },
+      "runtime_id": "aionbound:ash_drake",
+      "source_category": "creatures",
+      "warehouse_id": "ash_drake"
+    },
+    {
+      "category_index": 0,
+      "codex_category": "resource",
+      "discovery_routes": [
+        {
+          "action": "first_obtain",
+          "authority": "SAFE_NOW",
+          "id": "codex:ah:resource:smolder_bark:obtained",
+          "stage": "complete"
+        }
+      ],
+      "id": "smolder_bark",
+      "importance": "required_coverage",
+      "region": "ah",
+      "relationships": {
+        "rule": "Warehouse identities and approved relationship prose may be indexed; non-warehouse terms remain prose-only and cannot become item IDs, acquisition completion predicates, or shipping loot.",
+        "safe_now": {
+          "acquisition": [
+            "ash logs or harvest"
+          ],
+          "crafting_and_progression_links": [
+            "AH wood language",
+            "ash_repeater",
+            "basalt_hammer",
+            "basalt_pick",
+            "char_planks",
+            "heat-safe handles"
+          ],
+          "equipment_links": [
+            "basalt_hammer",
+            "basalt_pick",
+            "ash_repeater"
+          ]
+        },
+        "withheld": {
+          "W1-CREATIVE-001-AH": [],
+          "W1-CREATIVE-004-AH": "no probabilities, quantities, rolls, or guarantees are bound by this map"
+        }
+      },
+      "runtime_id": "aionbound:smolder_bark",
+      "source_category": "resources",
+      "warehouse_id": "smolder_bark"
+    },
+    {
+      "category_index": 1,
+      "codex_category": "resource",
+      "discovery_routes": [
+        {
+          "action": "first_obtain",
+          "authority": "SAFE_NOW",
+          "id": "codex:ah:resource:charbone:obtained",
+          "stage": "complete"
+        }
+      ],
+      "id": "charbone",
+      "importance": "required_coverage",
+      "region": "ah",
+      "relationships": {
+        "rule": "Warehouse identities and approved relationship prose may be indexed; non-warehouse terms remain prose-only and cannot become item IDs, acquisition completion predicates, or shipping loot.",
+        "safe_now": {
+          "acquisition": [
+            "creatures or ash fields"
+          ],
+          "crafting_and_progression_links": [
+            "ember_hammer",
+            "grim craft",
+            "grim inlays",
+            "ore_chisel",
+            "tool spines"
+          ],
+          "equipment_links": [
+            "ember_hammer",
+            "ore_chisel"
+          ]
+        },
+        "withheld": {
+          "W1-CREATIVE-001-AH": [],
+          "W1-CREATIVE-004-AH": "no probabilities, quantities, rolls, or guarantees are bound by this map"
+        }
+      },
+      "runtime_id": "aionbound:charbone",
+      "source_category": "resources",
+      "warehouse_id": "charbone"
+    },
+    {
+      "category_index": 2,
+      "codex_category": "resource",
+      "discovery_routes": [
+        {
+          "action": "first_obtain",
+          "authority": "SAFE_NOW",
+          "id": "codex:ah:resource:sulfur_cluster:obtained",
+          "stage": "complete"
+        }
+      ],
+      "id": "sulfur_cluster",
+      "importance": "required_coverage",
+      "region": "ah",
+      "relationships": {
+        "rule": "Warehouse identities and approved relationship prose may be indexed; non-warehouse terms remain prose-only and cannot become item IDs, acquisition completion predicates, or shipping loot.",
+        "safe_now": {
+          "acquisition": [
+            "crust nodes"
+          ],
+          "crafting_and_progression_links": [
+            "flux",
+            "hazard economy",
+            "heat crafts"
+          ],
+          "equipment_links": []
+        },
+        "withheld": {
+          "W1-CREATIVE-001-AH": [],
+          "W1-CREATIVE-004-AH": "no probabilities, quantities, rolls, or guarantees are bound by this map"
+        }
+      },
+      "runtime_id": "aionbound:sulfur_cluster",
+      "source_category": "resources",
+      "warehouse_id": "sulfur_cluster"
+    },
+    {
+      "category_index": 3,
+      "codex_category": "resource",
+      "discovery_routes": [
+        {
+          "action": "first_obtain",
+          "authority": "SAFE_NOW",
+          "id": "codex:ah:resource:volcanic_glass_shard:obtained",
+          "stage": "complete"
+        }
+      ],
+      "id": "volcanic_glass_shard",
+      "importance": "required_coverage",
+      "region": "ah",
+      "relationships": {
+        "rule": "Warehouse identities and approved relationship prose may be indexed; non-warehouse terms remain prose-only and cannot become item IDs, acquisition completion predicates, or shipping loot.",
+        "safe_now": {
+          "acquisition": [
+            "cooled flows or magma_lizard"
+          ],
+          "crafting_and_progression_links": [
+            "ash_repeater",
+            "basalt_hammer",
+            "basalt_pick",
+            "edges",
+            "ranged and tool path",
+            "tips"
+          ],
+          "equipment_links": [
+            "basalt_hammer",
+            "basalt_pick",
+            "ash_repeater"
+          ]
+        },
+        "withheld": {
+          "W1-CREATIVE-001-AH": [],
+          "W1-CREATIVE-004-AH": "no probabilities, quantities, rolls, or guarantees are bound by this map"
+        }
+      },
+      "runtime_id": "aionbound:volcanic_glass_shard",
+      "source_category": "resources",
+      "warehouse_id": "volcanic_glass_shard"
+    },
+    {
+      "category_index": 4,
+      "codex_category": "resource",
+      "discovery_routes": [
+        {
+          "action": "first_obtain",
+          "authority": "SAFE_NOW",
+          "id": "codex:ah:resource:ember_resin:obtained",
+          "stage": "complete"
+        }
+      ],
+      "id": "ember_resin",
+      "importance": "required_coverage",
+      "region": "ah",
+      "relationships": {
+        "rule": "Warehouse identities and approved relationship prose may be indexed; non-warehouse terms remain prose-only and cannot become item IDs, acquisition completion predicates, or shipping loot.",
+        "safe_now": {
+          "acquisition": [
+            "beetles or nodes"
+          ],
+          "crafting_and_progression_links": [
+            "Ember Heart",
+            "ashen_boots",
+            "ashen_chest",
+            "ashen_helmet",
+            "ashen_legs",
+            "ember path",
+            "ember_great_axe",
+            "ember_hammer",
+            "ember_totem",
+            "regional repair binder"
+          ],
+          "equipment_links": [
+            "ember_great_axe",
+            "ember_hammer",
+            "ember_totem",
+            "ashen_helmet",
+            "ashen_chest",
+            "ashen_legs",
+            "ashen_boots"
+          ]
+        },
+        "withheld": {
+          "W1-CREATIVE-001-AH": [],
+          "W1-CREATIVE-004-AH": "no probabilities, quantities, rolls, or guarantees are bound by this map"
+        }
+      },
+      "runtime_id": "aionbound:ember_resin",
+      "source_category": "resources",
+      "warehouse_id": "ember_resin"
+    },
+    {
+      "category_index": 5,
+      "codex_category": "resource",
+      "discovery_routes": [
+        {
+          "action": "first_obtain",
+          "authority": "SAFE_NOW",
+          "id": "codex:ah:resource:heatstone:obtained",
+          "stage": "complete"
+        }
+      ],
+      "id": "heatstone",
+      "importance": "required_coverage",
+      "region": "ah",
+      "relationships": {
+        "rule": "Warehouse identities and approved relationship prose may be indexed; non-warehouse terms remain prose-only and cannot become item IDs, acquisition completion predicates, or shipping loot.",
+        "safe_now": {
+          "acquisition": [
+            "vents or elites"
+          ],
+          "crafting_and_progression_links": [
+            "Heat Core",
+            "basalt_pick",
+            "ember_hammer",
+            "tool path"
+          ],
+          "equipment_links": [
+            "basalt_pick",
+            "ember_hammer"
+          ]
+        },
+        "withheld": {
+          "W1-CREATIVE-001-AH": [],
+          "W1-CREATIVE-004-AH": "no probabilities, quantities, rolls, or guarantees are bound by this map"
+        }
+      },
+      "runtime_id": "aionbound:heatstone",
+      "source_category": "resources",
+      "warehouse_id": "heatstone"
+    },
+    {
+      "category_index": 6,
+      "codex_category": "resource",
+      "discovery_routes": [
+        {
+          "action": "first_obtain",
+          "authority": "SAFE_NOW",
+          "id": "codex:ah:resource:furnace_chitin:obtained",
+          "stage": "complete"
+        }
+      ],
+      "id": "furnace_chitin",
+      "importance": "required_coverage",
+      "region": "ah",
+      "relationships": {
+        "rule": "Warehouse identities and approved relationship prose may be indexed; non-warehouse terms remain prose-only and cannot become item IDs, acquisition completion predicates, or shipping loot.",
+        "safe_now": {
+          "acquisition": [
+            "furnace_beetle"
+          ],
+          "crafting_and_progression_links": [
+            "Chitin Plate",
+            "ashen armor",
+            "ashen_boots",
+            "ashen_chest",
+            "ashen_helmet",
+            "ashen_legs",
+            "ore_chisel",
+            "ore_chisel tip",
+            "set path"
+          ],
+          "equipment_links": [
+            "ashen_helmet",
+            "ashen_chest",
+            "ashen_legs",
+            "ashen_boots",
+            "ore_chisel"
+          ]
+        },
+        "withheld": {
+          "W1-CREATIVE-001-AH": [],
+          "W1-CREATIVE-004-AH": "no probabilities, quantities, rolls, or guarantees are bound by this map"
+        }
+      },
+      "runtime_id": "aionbound:furnace_chitin",
+      "source_category": "resources",
+      "warehouse_id": "furnace_chitin"
+    },
+    {
+      "category_index": 7,
+      "codex_category": "resource",
+      "discovery_routes": [
+        {
+          "action": "first_obtain",
+          "authority": "SAFE_NOW",
+          "id": "codex:ah:resource:basalt_core:obtained",
+          "stage": "complete"
+        }
+      ],
+      "id": "basalt_core",
+      "importance": "required_coverage",
+      "region": "ah",
+      "relationships": {
+        "rule": "Warehouse identities and approved relationship prose may be indexed; non-warehouse terms remain prose-only and cannot become item IDs, acquisition completion predicates, or shipping loot.",
+        "safe_now": {
+          "acquisition": [
+            "basalt_tortoise, deep stone, or basalt_arch cache"
+          ],
+          "crafting_and_progression_links": [
+            "Heavy Head",
+            "Trophy Edge catalyst bundle",
+            "ashen_boots",
+            "ashen_chest",
+            "ashen_helmet",
+            "ashen_legs",
+            "basalt_hammer",
+            "basalt_pick",
+            "force path and Pilgrim assembly"
+          ],
+          "equipment_links": [
+            "basalt_hammer",
+            "basalt_pick",
+            "ashen_helmet",
+            "ashen_chest",
+            "ashen_legs",
+            "ashen_boots"
+          ]
+        },
+        "withheld": {
+          "W1-CREATIVE-001-AH": [],
+          "W1-CREATIVE-004-AH": "no probabilities, quantities, rolls, or guarantees are bound by this map"
+        }
+      },
+      "runtime_id": "aionbound:basalt_core",
+      "source_category": "resources",
+      "warehouse_id": "basalt_core"
+    },
+    {
+      "category_index": 8,
+      "codex_category": "resource",
+      "discovery_routes": [
+        {
+          "action": "first_obtain",
+          "authority": "SAFE_NOW",
+          "id": "codex:ah:resource:ash_crystal:obtained",
+          "stage": "complete"
+        }
+      ],
+      "id": "ash_crystal",
+      "importance": "required_coverage",
+      "region": "ah",
+      "relationships": {
+        "rule": "Warehouse identities and approved relationship prose may be indexed; non-warehouse terms remain prose-only and cannot become item IDs, acquisition completion predicates, or shipping loot.",
+        "safe_now": {
+          "acquisition": [
+            "rare nodes or ash_watchtower"
+          ],
+          "crafting_and_progression_links": [
+            "Crystal Marsh bridge hybrid",
+            "Twin Mineral Lens with flood_crystal"
+          ],
+          "equipment_links": []
+        },
+        "withheld": {
+          "W1-CREATIVE-001-AH": [],
+          "W1-CREATIVE-004-AH": "no probabilities, quantities, rolls, or guarantees are bound by this map"
+        }
+      },
+      "runtime_id": "aionbound:ash_crystal",
+      "source_category": "resources",
+      "warehouse_id": "ash_crystal"
+    },
+    {
+      "category_index": 9,
+      "codex_category": "resource",
+      "discovery_routes": [
+        {
+          "action": "first_obtain",
+          "authority": "SAFE_NOW",
+          "id": "codex:ah:resource:fire_bloom_seed:obtained",
+          "stage": "complete"
+        }
+      ],
+      "id": "fire_bloom_seed",
+      "importance": "required_coverage",
+      "region": "ah",
+      "relationships": {
+        "rule": "Warehouse identities and approved relationship prose may be indexed; non-warehouse terms remain prose-only and cannot become item IDs, acquisition completion predicates, or shipping loot.",
+        "safe_now": {
+          "acquisition": [
+            "fire_bloom or soot_stag"
+          ],
+          "crafting_and_progression_links": [
+            "consumable",
+            "heat salve",
+            "heat salve path",
+            "planting"
+          ],
+          "equipment_links": []
+        },
+        "withheld": {
+          "W1-CREATIVE-001-AH": [],
+          "W1-CREATIVE-004-AH": "no probabilities, quantities, rolls, or guarantees are bound by this map"
+        }
+      },
+      "runtime_id": "aionbound:fire_bloom_seed",
+      "source_category": "resources",
+      "warehouse_id": "fire_bloom_seed"
+    },
+    {
+      "category_index": 10,
+      "codex_category": "resource",
+      "discovery_routes": [
+        {
+          "action": "first_obtain_or_recognized_harvest",
+          "authority": "SAFE_NOW",
+          "id": "codex:ah:block:ash_log:obtained",
+          "stage": "complete"
+        }
+      ],
+      "id": "ash_log",
+      "importance": "required_coverage",
+      "region": "ah",
+      "relationships": {
+        "rule": "Warehouse identities and approved relationship prose may be indexed; non-warehouse terms remain prose-only and cannot become item IDs, acquisition completion predicates, or shipping loot.",
+        "safe_now": {
+          "acquisition": [
+            "craft or natural terrain as Creative specifies"
+          ],
+          "crafting_and_progression_links": [
+            "char forest",
+            "char_planks",
+            "dead heat wood"
+          ],
+          "equipment_links": []
+        },
+        "withheld": {
+          "W1-CREATIVE-001-AH": [],
+          "W1-CREATIVE-004-AH": "no probabilities, quantities, rolls, or guarantees are bound by this map"
+        }
+      },
+      "runtime_id": "aionbound:ash_log",
+      "source_category": "blocks",
+      "warehouse_id": "ash_log"
+    },
+    {
+      "category_index": 11,
+      "codex_category": "resource",
+      "discovery_routes": [
+        {
+          "action": "first_obtain_or_recognized_harvest",
+          "authority": "SAFE_NOW",
+          "id": "codex:ah:block:char_planks:obtained",
+          "stage": "complete"
+        }
+      ],
+      "id": "char_planks",
+      "importance": "required_coverage",
+      "region": "ah",
+      "relationships": {
+        "rule": "Warehouse identities and approved relationship prose may be indexed; non-warehouse terms remain prose-only and cannot become item IDs, acquisition completion predicates, or shipping loot.",
+        "safe_now": {
+          "acquisition": [
+            "craft or natural terrain as Creative specifies"
+          ],
+          "crafting_and_progression_links": [
+            "ash_repeater",
+            "ash_repeater stock",
+            "basalt_hammer",
+            "basalt_pick",
+            "builds",
+            "furniture",
+            "handles",
+            "worked ash",
+            "worked ash wood"
+          ],
+          "equipment_links": [
+            "basalt_hammer",
+            "basalt_pick",
+            "ash_repeater"
+          ]
+        },
+        "withheld": {
+          "W1-CREATIVE-001-AH": [],
+          "W1-CREATIVE-004-AH": "no probabilities, quantities, rolls, or guarantees are bound by this map"
+        }
+      },
+      "runtime_id": "aionbound:char_planks",
+      "source_category": "blocks",
+      "warehouse_id": "char_planks"
+    },
+    {
+      "category_index": 12,
+      "codex_category": "resource",
+      "discovery_routes": [
+        {
+          "action": "first_obtain_or_recognized_harvest",
+          "authority": "SAFE_NOW",
+          "id": "codex:ah:block:ash_soil:obtained",
+          "stage": "complete"
+        }
+      ],
+      "id": "ash_soil",
+      "importance": "required_coverage",
+      "region": "ah",
+      "relationships": {
+        "rule": "Warehouse identities and approved relationship prose may be indexed; non-warehouse terms remain prose-only and cannot become item IDs, acquisition completion predicates, or shipping loot.",
+        "safe_now": {
+          "acquisition": [
+            "craft or natural terrain as Creative specifies"
+          ],
+          "crafting_and_progression_links": [
+            "ash fields",
+            "ground cover",
+            "terrain"
+          ],
+          "equipment_links": []
+        },
+        "withheld": {
+          "W1-CREATIVE-001-AH": [],
+          "W1-CREATIVE-004-AH": "no probabilities, quantities, rolls, or guarantees are bound by this map"
+        }
+      },
+      "runtime_id": "aionbound:ash_soil",
+      "source_category": "blocks",
+      "warehouse_id": "ash_soil"
+    },
+    {
+      "category_index": 13,
+      "codex_category": "resource",
+      "discovery_routes": [
+        {
+          "action": "first_obtain_or_recognized_harvest",
+          "authority": "SAFE_NOW",
+          "id": "codex:ah:block:cinder_gravel:obtained",
+          "stage": "complete"
+        }
+      ],
+      "id": "cinder_gravel",
+      "importance": "required_coverage",
+      "region": "ah",
+      "relationships": {
+        "rule": "Warehouse identities and approved relationship prose may be indexed; non-warehouse terms remain prose-only and cannot become item IDs, acquisition completion predicates, or shipping loot.",
+        "safe_now": {
+          "acquisition": [
+            "craft or natural terrain as Creative specifies"
+          ],
+          "crafting_and_progression_links": [
+            "cinder waste",
+            "paths and hazards",
+            "terrain"
+          ],
+          "equipment_links": []
+        },
+        "withheld": {
+          "W1-CREATIVE-001-AH": [],
+          "W1-CREATIVE-004-AH": "no probabilities, quantities, rolls, or guarantees are bound by this map"
+        }
+      },
+      "runtime_id": "aionbound:cinder_gravel",
+      "source_category": "blocks",
+      "warehouse_id": "cinder_gravel"
+    },
+    {
+      "category_index": 14,
+      "codex_category": "resource",
+      "discovery_routes": [
+        {
+          "action": "first_obtain_or_recognized_harvest",
+          "authority": "SAFE_NOW",
+          "id": "codex:ah:block:smolder_stone:obtained",
+          "stage": "complete"
+        }
+      ],
+      "id": "smolder_stone",
+      "importance": "required_coverage",
+      "region": "ah",
+      "relationships": {
+        "rule": "Warehouse identities and approved relationship prose may be indexed; non-warehouse terms remain prose-only and cannot become item IDs, acquisition completion predicates, or shipping loot.",
+        "safe_now": {
+          "acquisition": [
+            "craft or natural terrain as Creative specifies"
+          ],
+          "crafting_and_progression_links": [
+            "builds",
+            "hot stone",
+            "stone body"
+          ],
+          "equipment_links": []
+        },
+        "withheld": {
+          "W1-CREATIVE-001-AH": [],
+          "W1-CREATIVE-004-AH": "no probabilities, quantities, rolls, or guarantees are bound by this map"
+        }
+      },
+      "runtime_id": "aionbound:smolder_stone",
+      "source_category": "blocks",
+      "warehouse_id": "smolder_stone"
+    },
+    {
+      "category_index": 15,
+      "codex_category": "resource",
+      "discovery_routes": [
+        {
+          "action": "first_obtain_or_recognized_harvest",
+          "authority": "SAFE_NOW",
+          "id": "codex:ah:block:basalt_brick:obtained",
+          "stage": "complete"
+        }
+      ],
+      "id": "basalt_brick",
+      "importance": "required_coverage",
+      "region": "ah",
+      "relationships": {
+        "rule": "Warehouse identities and approved relationship prose may be indexed; non-warehouse terms remain prose-only and cannot become item IDs, acquisition completion predicates, or shipping loot.",
+        "safe_now": {
+          "acquisition": [
+            "craft or natural terrain as Creative specifies"
+          ],
+          "crafting_and_progression_links": [
+            "bridge repair",
+            "civilization",
+            "forge pads",
+            "kiln pads",
+            "structures"
+          ],
+          "equipment_links": []
+        },
+        "withheld": {
+          "W1-CREATIVE-001-AH": [],
+          "W1-CREATIVE-004-AH": "no probabilities, quantities, rolls, or guarantees are bound by this map"
+        }
+      },
+      "runtime_id": "aionbound:basalt_brick",
+      "source_category": "blocks",
+      "warehouse_id": "basalt_brick"
+    },
+    {
+      "category_index": 16,
+      "codex_category": "resource",
+      "discovery_routes": [
+        {
+          "action": "first_obtain_or_recognized_harvest",
+          "authority": "SAFE_NOW",
+          "id": "codex:ah:block:basalt_pillar:obtained",
+          "stage": "complete"
+        }
+      ],
+      "id": "basalt_pillar",
+      "importance": "required_coverage",
+      "region": "ah",
+      "relationships": {
+        "rule": "Warehouse identities and approved relationship prose may be indexed; non-warehouse terms remain prose-only and cannot become item IDs, acquisition completion predicates, or shipping loot.",
+        "safe_now": {
+          "acquisition": [
+            "craft or natural terrain as Creative specifies"
+          ],
+          "crafting_and_progression_links": [
+            "landmarks",
+            "massing",
+            "vertical basalt"
+          ],
+          "equipment_links": []
+        },
+        "withheld": {
+          "W1-CREATIVE-001-AH": [],
+          "W1-CREATIVE-004-AH": "no probabilities, quantities, rolls, or guarantees are bound by this map"
+        }
+      },
+      "runtime_id": "aionbound:basalt_pillar",
+      "source_category": "blocks",
+      "warehouse_id": "basalt_pillar"
+    },
+    {
+      "category_index": 17,
+      "codex_category": "resource",
+      "discovery_routes": [
+        {
+          "action": "first_obtain_or_recognized_harvest",
+          "authority": "SAFE_NOW",
+          "id": "codex:ah:block:heat_bark:obtained",
+          "stage": "complete"
+        }
+      ],
+      "id": "heat_bark",
+      "importance": "required_coverage",
+      "region": "ah",
+      "relationships": {
+        "rule": "Warehouse identities and approved relationship prose may be indexed; non-warehouse terms remain prose-only and cannot become item IDs, acquisition completion predicates, or shipping loot.",
+        "safe_now": {
+          "acquisition": [
+            "craft or natural terrain as Creative specifies"
+          ],
+          "crafting_and_progression_links": [
+            "accent",
+            "detail",
+            "heat bark"
+          ],
+          "equipment_links": []
+        },
+        "withheld": {
+          "W1-CREATIVE-001-AH": [],
+          "W1-CREATIVE-004-AH": "no probabilities, quantities, rolls, or guarantees are bound by this map"
+        }
+      },
+      "runtime_id": "aionbound:heat_bark",
+      "source_category": "blocks",
+      "warehouse_id": "heat_bark"
+    },
+    {
+      "category_index": 18,
+      "codex_category": "resource",
+      "discovery_routes": [
+        {
+          "action": "first_obtain_or_recognized_harvest",
+          "authority": "SAFE_NOW",
+          "id": "codex:ah:block:ember_moss:obtained",
+          "stage": "complete"
+        }
+      ],
+      "id": "ember_moss",
+      "importance": "required_coverage",
+      "region": "ah",
+      "relationships": {
+        "rule": "Warehouse identities and approved relationship prose may be indexed; non-warehouse terms remain prose-only and cannot become item IDs, acquisition completion predicates, or shipping loot.",
+        "safe_now": {
+          "acquisition": [
+            "craft or natural terrain as Creative specifies"
+          ],
+          "crafting_and_progression_links": [
+            "detail",
+            "hazard or accent flora block",
+            "living heat"
+          ],
+          "equipment_links": []
+        },
+        "withheld": {
+          "W1-CREATIVE-001-AH": [],
+          "W1-CREATIVE-004-AH": "no probabilities, quantities, rolls, or guarantees are bound by this map"
+        }
+      },
+      "runtime_id": "aionbound:ember_moss",
+      "source_category": "blocks",
+      "warehouse_id": "ember_moss"
+    },
+    {
+      "category_index": 19,
+      "codex_category": "resource",
+      "discovery_routes": [
+        {
+          "action": "first_obtain_or_recognized_harvest",
+          "authority": "SAFE_NOW",
+          "id": "codex:ah:block:volcanic_glass_block:obtained",
+          "stage": "complete"
+        }
+      ],
+      "id": "volcanic_glass_block",
+      "importance": "required_coverage",
+      "region": "ah",
+      "relationships": {
+        "rule": "Warehouse identities and approved relationship prose may be indexed; non-warehouse terms remain prose-only and cannot become item IDs, acquisition completion predicates, or shipping loot.",
+        "safe_now": {
+          "acquisition": [
+            "craft or natural terrain as Creative specifies"
+          ],
+          "crafting_and_progression_links": [
+            "cooled fire",
+            "glass builds",
+            "luxury and windows"
+          ],
+          "equipment_links": []
+        },
+        "withheld": {
+          "W1-CREATIVE-001-AH": [],
+          "W1-CREATIVE-004-AH": "no probabilities, quantities, rolls, or guarantees are bound by this map"
+        }
+      },
+      "runtime_id": "aionbound:volcanic_glass_block",
+      "source_category": "blocks",
+      "warehouse_id": "volcanic_glass_block"
+    },
+    {
+      "category_index": 0,
+      "codex_category": "plant",
+      "discovery_routes": [
+        {
+          "action": "first_harvest",
+          "authority": "SAFE_NOW",
+          "id": "codex:ah:plant:cinder_grass:harvested",
+          "stage": "complete"
+        }
+      ],
+      "id": "cinder_grass",
+      "importance": "required_coverage",
+      "region": "ah",
+      "relationships": {
+        "rule": "Warehouse identities and approved relationship prose may be indexed; non-warehouse terms remain prose-only and cannot become item IDs, acquisition completion predicates, or shipping loot.",
+        "safe_now": {
+          "acquisition": [
+            "fields"
+          ],
+          "crafting_and_progression_links": [
+            "early AH craft",
+            "fiber and tinder"
+          ],
+          "equipment_links": []
+        },
+        "withheld": {
+          "W1-CREATIVE-001-AH": [
+            "cinder_grass"
+          ],
+          "W1-CREATIVE-004-AH": "no probabilities, quantities, rolls, or guarantees are bound by this map"
+        }
+      },
+      "runtime_id": "aionbound:cinder_grass",
+      "source_category": "plants",
+      "warehouse_id": "cinder_grass"
+    },
+    {
+      "category_index": 1,
+      "codex_category": "plant",
+      "discovery_routes": [
+        {
+          "action": "first_harvest",
+          "authority": "SAFE_NOW",
+          "id": "codex:ah:plant:ash_fern:harvested",
+          "stage": "complete"
+        }
+      ],
+      "id": "ash_fern",
+      "importance": "required_coverage",
+      "region": "ah",
+      "relationships": {
+        "rule": "Warehouse identities and approved relationship prose may be indexed; non-warehouse terms remain prose-only and cannot become item IDs, acquisition completion predicates, or shipping loot.",
+        "safe_now": {
+          "acquisition": [
+            "ash understory"
+          ],
+          "crafting_and_progression_links": [
+            "bandage under ash",
+            "soft materials"
+          ],
+          "equipment_links": []
+        },
+        "withheld": {
+          "W1-CREATIVE-001-AH": [
+            "ash_fern"
+          ],
+          "W1-CREATIVE-004-AH": "no probabilities, quantities, rolls, or guarantees are bound by this map"
+        }
+      },
+      "runtime_id": "aionbound:ash_fern",
+      "source_category": "plants",
+      "warehouse_id": "ash_fern"
+    },
+    {
+      "category_index": 2,
+      "codex_category": "plant",
+      "discovery_routes": [
+        {
+          "action": "first_harvest",
+          "authority": "SAFE_NOW",
+          "id": "codex:ah:plant:smoke_reed:harvested",
+          "stage": "complete"
+        }
+      ],
+      "id": "smoke_reed",
+      "importance": "required_coverage",
+      "region": "ah",
+      "relationships": {
+        "rule": "Warehouse identities and approved relationship prose may be indexed; non-warehouse terms remain prose-only and cannot become item IDs, acquisition completion predicates, or shipping loot.",
+        "safe_now": {
+          "acquisition": [
+            "near vents"
+          ],
+          "crafting_and_progression_links": [
+            "arrow or repeater shafts",
+            "ash_repeater"
+          ],
+          "equipment_links": [
+            "ash_repeater"
+          ]
+        },
+        "withheld": {
+          "W1-CREATIVE-001-AH": [
+            "smoke_reed"
+          ],
+          "W1-CREATIVE-004-AH": "no probabilities, quantities, rolls, or guarantees are bound by this map"
+        }
+      },
+      "runtime_id": "aionbound:smoke_reed",
+      "source_category": "plants",
+      "warehouse_id": "smoke_reed"
+    },
+    {
+      "category_index": 3,
+      "codex_category": "plant",
+      "discovery_routes": [
+        {
+          "action": "first_harvest",
+          "authority": "SAFE_NOW",
+          "id": "codex:ah:plant:char_shrub:harvested",
+          "stage": "complete"
+        }
+      ],
+      "id": "char_shrub",
+      "importance": "required_coverage",
+      "region": "ah",
+      "relationships": {
+        "rule": "Warehouse identities and approved relationship prose may be indexed; non-warehouse terms remain prose-only and cannot become item IDs, acquisition completion predicates, or shipping loot.",
+        "safe_now": {
+          "acquisition": [
+            "scrub"
+          ],
+          "crafting_and_progression_links": [
+            "camp craft",
+            "fuel"
+          ],
+          "equipment_links": []
+        },
+        "withheld": {
+          "W1-CREATIVE-001-AH": [
+            "char_shrub"
+          ],
+          "W1-CREATIVE-004-AH": "no probabilities, quantities, rolls, or guarantees are bound by this map"
+        }
+      },
+      "runtime_id": "aionbound:char_shrub",
+      "source_category": "plants",
+      "warehouse_id": "char_shrub"
+    },
+    {
+      "category_index": 4,
+      "codex_category": "plant",
+      "discovery_routes": [
+        {
+          "action": "first_harvest",
+          "authority": "SAFE_NOW",
+          "id": "codex:ah:plant:soot_mushroom:harvested",
+          "stage": "complete"
+        }
+      ],
+      "id": "soot_mushroom",
+      "importance": "required_coverage",
+      "region": "ah",
+      "relationships": {
+        "rule": "Warehouse identities and approved relationship prose may be indexed; non-warehouse terms remain prose-only and cannot become item IDs, acquisition completion predicates, or shipping loot.",
+        "safe_now": {
+          "acquisition": [
+            "shade ash"
+          ],
+          "crafting_and_progression_links": [
+            "consumable",
+            "risky food"
+          ],
+          "equipment_links": []
+        },
+        "withheld": {
+          "W1-CREATIVE-001-AH": [
+            "soot_mushroom"
+          ],
+          "W1-CREATIVE-004-AH": "no probabilities, quantities, rolls, or guarantees are bound by this map"
+        }
+      },
+      "runtime_id": "aionbound:soot_mushroom",
+      "source_category": "plants",
+      "warehouse_id": "soot_mushroom"
+    },
+    {
+      "category_index": 5,
+      "codex_category": "plant",
+      "discovery_routes": [
+        {
+          "action": "first_harvest",
+          "authority": "SAFE_NOW",
+          "id": "codex:ah:plant:magma_moss:harvested",
+          "stage": "complete"
+        }
+      ],
+      "id": "magma_moss",
+      "importance": "required_coverage",
+      "region": "ah",
+      "relationships": {
+        "rule": "Warehouse identities and approved relationship prose may be indexed; non-warehouse terms remain prose-only and cannot become item IDs, acquisition completion predicates, or shipping loot.",
+        "safe_now": {
+          "acquisition": [
+            "hot rock"
+          ],
+          "crafting_and_progression_links": [
+            "heat dye or resist salve",
+            "heat resist path"
+          ],
+          "equipment_links": []
+        },
+        "withheld": {
+          "W1-CREATIVE-001-AH": [
+            "magma_moss"
+          ],
+          "W1-CREATIVE-004-AH": "no probabilities, quantities, rolls, or guarantees are bound by this map"
+        }
+      },
+      "runtime_id": "aionbound:magma_moss",
+      "source_category": "plants",
+      "warehouse_id": "magma_moss"
+    },
+    {
+      "category_index": 6,
+      "codex_category": "plant",
+      "discovery_routes": [
+        {
+          "action": "first_harvest",
+          "authority": "SAFE_NOW",
+          "id": "codex:ah:plant:glow_root:harvested",
+          "stage": "complete"
+        }
+      ],
+      "id": "glow_root",
+      "importance": "required_coverage",
+      "region": "ah",
+      "relationships": {
+        "rule": "Warehouse identities and approved relationship prose may be indexed; non-warehouse terms remain prose-only and cannot become item IDs, acquisition completion predicates, or shipping loot.",
+        "safe_now": {
+          "acquisition": [
+            "caves"
+          ],
+          "crafting_and_progression_links": [
+            "cave light",
+            "cave navigation"
+          ],
+          "equipment_links": []
+        },
+        "withheld": {
+          "W1-CREATIVE-001-AH": [
+            "glow_root"
+          ],
+          "W1-CREATIVE-004-AH": "no probabilities, quantities, rolls, or guarantees are bound by this map"
+        }
+      },
+      "runtime_id": "aionbound:glow_root",
+      "source_category": "plants",
+      "warehouse_id": "glow_root"
+    },
+    {
+      "category_index": 7,
+      "codex_category": "plant",
+      "discovery_routes": [
+        {
+          "action": "first_harvest",
+          "authority": "SAFE_NOW",
+          "id": "codex:ah:plant:basalt_flower:harvested",
+          "stage": "complete"
+        }
+      ],
+      "id": "basalt_flower",
+      "importance": "required_coverage",
+      "region": "ah",
+      "relationships": {
+        "rule": "Warehouse identities and approved relationship prose may be indexed; non-warehouse terms remain prose-only and cannot become item IDs, acquisition completion predicates, or shipping loot.",
+        "safe_now": {
+          "acquisition": [
+            "rare stone"
+          ],
+          "crafting_and_progression_links": [
+            "rare catalyst",
+            "rare craft"
+          ],
+          "equipment_links": []
+        },
+        "withheld": {
+          "W1-CREATIVE-001-AH": [
+            "basalt_flower"
+          ],
+          "W1-CREATIVE-004-AH": "no probabilities, quantities, rolls, or guarantees are bound by this map"
+        }
+      },
+      "runtime_id": "aionbound:basalt_flower",
+      "source_category": "plants",
+      "warehouse_id": "basalt_flower"
+    },
+    {
+      "category_index": 8,
+      "codex_category": "plant",
+      "discovery_routes": [
+        {
+          "action": "first_harvest",
+          "authority": "SAFE_NOW",
+          "id": "codex:ah:plant:ember_vine:harvested",
+          "stage": "complete"
+        }
+      ],
+      "id": "ember_vine",
+      "importance": "required_coverage",
+      "region": "ah",
+      "relationships": {
+        "rule": "Warehouse identities and approved relationship prose may be indexed; non-warehouse terms remain prose-only and cannot become item IDs, acquisition completion predicates, or shipping loot.",
+        "safe_now": {
+          "acquisition": [
+            "cliffs and heat"
+          ],
+          "crafting_and_progression_links": [
+            "binding",
+            "heat rope"
+          ],
+          "equipment_links": []
+        },
+        "withheld": {
+          "W1-CREATIVE-001-AH": [
+            "ember_vine"
+          ],
+          "W1-CREATIVE-004-AH": "no probabilities, quantities, rolls, or guarantees are bound by this map"
+        }
+      },
+      "runtime_id": "aionbound:ember_vine",
+      "source_category": "plants",
+      "warehouse_id": "ember_vine"
+    },
+    {
+      "category_index": 9,
+      "codex_category": "plant",
+      "discovery_routes": [
+        {
+          "action": "first_harvest",
+          "authority": "SAFE_NOW",
+          "id": "codex:ah:plant:fire_bloom:harvested",
+          "stage": "complete"
+        }
+      ],
+      "id": "fire_bloom",
+      "importance": "required_coverage",
+      "region": "ah",
+      "relationships": {
+        "rule": "Warehouse identities and approved relationship prose may be indexed; non-warehouse terms remain prose-only and cannot become item IDs, acquisition completion predicates, or shipping loot.",
+        "safe_now": {
+          "acquisition": [
+            "flower patches"
+          ],
+          "crafting_and_progression_links": [
+            "consumable and seed",
+            "fire_bloom_seed"
+          ],
+          "equipment_links": []
+        },
+        "withheld": {
+          "W1-CREATIVE-001-AH": [
+            "fire_bloom"
+          ],
+          "W1-CREATIVE-004-AH": "no probabilities, quantities, rolls, or guarantees are bound by this map"
+        }
+      },
+      "runtime_id": "aionbound:fire_bloom",
+      "source_category": "plants",
+      "warehouse_id": "fire_bloom"
+    },
+    {
+      "category_index": 0,
+      "codex_category": "structure",
+      "discovery_routes": [
+        {
+          "action": "recognized_structure_visit",
+          "authority": "SAFE_NOW",
+          "id": "codex:ah:structure:fire_totem:visited",
+          "stage": "complete"
+        }
+      ],
+      "id": "fire_totem",
+      "importance": "required_coverage",
+      "region": "ah",
+      "relationships": {
+        "rule": "Warehouse identities and approved relationship prose may be indexed; non-warehouse terms remain prose-only and cannot become item IDs, acquisition completion predicates, or shipping loot.",
+        "safe_now": {
+          "acquisition": [
+            "uncommon clusters"
+          ],
+          "crafting_and_progression_links": [
+            "ambient AH",
+            "ember_totem",
+            "ember_totem path"
+          ],
+          "equipment_links": [
+            "ember_totem"
+          ]
+        },
+        "withheld": {
+          "W1-CREATIVE-001-AH": [
+            "ember_resin",
+            "sulfur_cluster",
+            "First Fire prayer strip"
+          ],
+          "W1-CREATIVE-004-AH": "no probabilities, quantities, rolls, or guarantees are bound by this map"
+        }
+      },
+      "runtime_id": "aionbound:fire_totem",
+      "source_category": "structures",
+      "warehouse_id": "fire_totem"
+    },
+    {
+      "category_index": 1,
+      "codex_category": "structure",
+      "discovery_routes": [
+        {
+          "action": "recognized_structure_visit",
+          "authority": "SAFE_NOW",
+          "id": "codex:ah:structure:burned_camp:visited",
+          "stage": "complete"
+        }
+      ],
+      "id": "burned_camp",
+      "importance": "required_coverage",
+      "region": "ah",
+      "relationships": {
+        "rule": "Warehouse identities and approved relationship prose may be indexed; non-warehouse terms remain prose-only and cannot become item IDs, acquisition completion predicates, or shipping loot.",
+        "safe_now": {
+          "acquisition": [
+            "uncommon edges"
+          ],
+          "crafting_and_progression_links": [
+            "AH onboarding",
+            "CM rumor",
+            "ashen_boots"
+          ],
+          "equipment_links": [
+            "ashen_boots"
+          ]
+        },
+        "withheld": {
+          "W1-CREATIVE-001-AH": [
+            "charred tools",
+            "Char Pelt",
+            "CM teaser map",
+            "ashen_boots pattern scraps"
+          ],
+          "W1-CREATIVE-004-AH": "no probabilities, quantities, rolls, or guarantees are bound by this map"
+        }
+      },
+      "runtime_id": "aionbound:burned_camp",
+      "source_category": "structures",
+      "warehouse_id": "burned_camp"
+    },
+    {
+      "category_index": 2,
+      "codex_category": "structure",
+      "discovery_routes": [
+        {
+          "action": "recognized_structure_visit",
+          "authority": "SAFE_NOW",
+          "id": "codex:ah:structure:char_wagon:visited",
+          "stage": "complete"
+        }
+      ],
+      "id": "char_wagon",
+      "importance": "required_coverage",
+      "region": "ah",
+      "relationships": {
+        "rule": "Warehouse identities and approved relationship prose may be indexed; non-warehouse terms remain prose-only and cannot become item IDs, acquisition completion predicates, or shipping loot.",
+        "safe_now": {
+          "acquisition": [
+            "uncommon routes"
+          ],
+          "crafting_and_progression_links": [
+            "CM map reward identity",
+            "ash_repeater",
+            "mid-AH economy"
+          ],
+          "equipment_links": [
+            "ash_repeater"
+          ]
+        },
+        "withheld": {
+          "W1-CREATIVE-001-AH": [
+            "trade slag",
+            "sulfur_cluster",
+            "volcanic_glass_shard",
+            "ash_repeater stock wood"
+          ],
+          "W1-CREATIVE-004-AH": "no probabilities, quantities, rolls, or guarantees are bound by this map"
+        }
+      },
+      "runtime_id": "aionbound:char_wagon",
+      "source_category": "structures",
+      "warehouse_id": "char_wagon"
+    },
+    {
+      "category_index": 3,
+      "codex_category": "structure",
+      "discovery_routes": [
+        {
+          "action": "recognized_structure_visit",
+          "authority": "SAFE_NOW",
+          "id": "codex:ah:structure:broken_bridge:visited",
+          "stage": "complete"
+        }
+      ],
+      "id": "broken_bridge",
+      "importance": "required_coverage",
+      "region": "ah",
+      "relationships": {
+        "rule": "Warehouse identities and approved relationship prose may be indexed; non-warehouse terms remain prose-only and cannot become item IDs, acquisition completion predicates, or shipping loot.",
+        "safe_now": {
+          "acquisition": [
+            "ravine-gated"
+          ],
+          "crafting_and_progression_links": [
+            "traversal or gear check"
+          ],
+          "equipment_links": []
+        },
+        "withheld": {
+          "W1-CREATIVE-001-AH": [
+            "basalt_brick",
+            "char_planks",
+            "volcanic_glass_shard",
+            "furnace_chitin"
+          ],
+          "W1-CREATIVE-004-AH": "no probabilities, quantities, rolls, or guarantees are bound by this map"
+        }
+      },
+      "runtime_id": "aionbound:broken_bridge",
+      "source_category": "structures",
+      "warehouse_id": "broken_bridge"
+    },
+    {
+      "category_index": 4,
+      "codex_category": "structure",
+      "discovery_routes": [
+        {
+          "action": "recognized_structure_visit",
+          "authority": "SAFE_NOW",
+          "id": "codex:ah:structure:basalt_arch:visited",
+          "stage": "complete"
+        }
+      ],
+      "id": "basalt_arch",
+      "importance": "required_coverage",
+      "region": "ah",
+      "relationships": {
+        "rule": "Warehouse identities and approved relationship prose may be indexed; non-warehouse terms remain prose-only and cannot become item IDs, acquisition completion predicates, or shipping loot.",
+        "safe_now": {
+          "acquisition": [
+            "rare landmark"
+          ],
+          "crafting_and_progression_links": [
+            "route spoiler toward nest or forge"
+          ],
+          "equipment_links": []
+        },
+        "withheld": {
+          "W1-CREATIVE-001-AH": [
+            "basalt_core chance"
+          ],
+          "W1-CREATIVE-004-AH": "no probabilities, quantities, rolls, or guarantees are bound by this map"
+        }
+      },
+      "runtime_id": "aionbound:basalt_arch",
+      "source_category": "structures",
+      "warehouse_id": "basalt_arch"
+    },
+    {
+      "category_index": 5,
+      "codex_category": "structure",
+      "discovery_routes": [
+        {
+          "action": "recognized_structure_visit",
+          "authority": "SAFE_NOW",
+          "id": "codex:ah:structure:ash_watchtower:visited",
+          "stage": "complete"
+        }
+      ],
+      "id": "ash_watchtower",
+      "importance": "required_coverage",
+      "region": "ah",
+      "relationships": {
+        "rule": "Warehouse identities and approved relationship prose may be indexed; non-warehouse terms remain prose-only and cannot become item IDs, acquisition completion predicates, or shipping loot.",
+        "safe_now": {
+          "acquisition": [
+            "rare ridges"
+          ],
+          "crafting_and_progression_links": [
+            "drake watch",
+            "long-sight Codex stamp",
+            "trail_compass"
+          ],
+          "equipment_links": [
+            "trail_compass"
+          ]
+        },
+        "withheld": {
+          "W1-CREATIVE-001-AH": [
+            "survey notes",
+            "trail_compass calibration",
+            "ash_crystal"
+          ],
+          "W1-CREATIVE-004-AH": "no probabilities, quantities, rolls, or guarantees are bound by this map"
+        }
+      },
+      "runtime_id": "aionbound:ash_watchtower",
+      "source_category": "structures",
+      "warehouse_id": "ash_watchtower"
+    },
+    {
+      "category_index": 6,
+      "codex_category": "structure",
+      "discovery_routes": [
+        {
+          "action": "recognized_structure_visit",
+          "authority": "SAFE_NOW",
+          "id": "codex:ah:structure:ancient_kiln:visited",
+          "stage": "complete"
+        }
+      ],
+      "id": "ancient_kiln",
+      "importance": "required_coverage",
+      "region": "ah",
+      "relationships": {
+        "rule": "Warehouse identities and approved relationship prose may be indexed; non-warehouse terms remain prose-only and cannot become item IDs, acquisition completion predicates, or shipping loot.",
+        "safe_now": {
+          "acquisition": [
+            "rare"
+          ],
+          "crafting_and_progression_links": [
+            "basalt_hammer",
+            "basalt_pick",
+            "ember_forge_core",
+            "pre-boss forge language"
+          ],
+          "equipment_links": [
+            "ember_forge_core",
+            "basalt_hammer",
+            "basalt_pick"
+          ]
+        },
+        "withheld": {
+          "W1-CREATIVE-001-AH": [
+            "slag",
+            "heatstone",
+            "ember_forge_core rare",
+            "unfinished basalt tool heads"
+          ],
+          "W1-CREATIVE-004-AH": "no probabilities, quantities, rolls, or guarantees are bound by this map"
+        }
+      },
+      "runtime_id": "aionbound:ancient_kiln",
+      "source_category": "structures",
+      "warehouse_id": "ancient_kiln"
+    },
+    {
+      "category_index": 7,
+      "codex_category": "structure",
+      "discovery_routes": [
+        {
+          "action": "recognized_structure_visit",
+          "authority": "SAFE_NOW",
+          "id": "codex:ah:structure:ember_forge:visited",
+          "stage": "complete"
+        }
+      ],
+      "id": "ember_forge",
+      "importance": "critical_path",
+      "region": "ah",
+      "relationships": {
+        "rule": "Warehouse identities and approved relationship prose may be indexed; non-warehouse terms remain prose-only and cannot become item IDs, acquisition completion predicates, or shipping loot.",
+        "safe_now": {
+          "acquisition": [
+            "very rare goal; design says one per highlands realm"
+          ],
+          "crafting_and_progression_links": [
+            "Ash Drake co-requisite",
+            "basalt_hammer",
+            "basalt_pick",
+            "ember_forge_core",
+            "ember_hammer",
+            "ore_chisel",
+            "primary AH structure goal"
+          ],
+          "equipment_links": [
+            "ember_forge_core",
+            "basalt_hammer",
+            "basalt_pick",
+            "ember_hammer",
+            "ore_chisel"
+          ]
+        },
+        "withheld": {
+          "W1-CREATIVE-001-AH": [
+            "slag",
+            "heatstone",
+            "ember_forge_core",
+            "unfinished basalt tool heads"
+          ],
+          "W1-CREATIVE-004-AH": "no probabilities, quantities, rolls, or guarantees are bound by this map"
+        }
+      },
+      "runtime_id": "aionbound:ember_forge",
+      "source_category": "structures",
+      "warehouse_id": "ember_forge"
+    },
+    {
+      "category_index": 8,
+      "codex_category": "structure",
+      "discovery_routes": [
+        {
+          "action": "recognized_structure_visit",
+          "authority": "SAFE_NOW",
+          "id": "codex:ah:structure:lava_shrine:visited",
+          "stage": "complete"
+        }
+      ],
+      "id": "lava_shrine",
+      "importance": "required_coverage",
+      "region": "ah",
+      "relationships": {
+        "rule": "Warehouse identities and approved relationship prose may be indexed; non-warehouse terms remain prose-only and cannot become item IDs, acquisition completion predicates, or shipping loot.",
+        "safe_now": {
+          "acquisition": [
+            "rare vents"
+          ],
+          "crafting_and_progression_links": [
+            "accessory and heat-ward story",
+            "ember_totem"
+          ],
+          "equipment_links": [
+            "ember_totem"
+          ]
+        },
+        "withheld": {
+          "W1-CREATIVE-001-AH": [
+            "ritual curios",
+            "ember_totem component"
+          ],
+          "W1-CREATIVE-004-AH": "no probabilities, quantities, rolls, or guarantees are bound by this map"
+        }
+      },
+      "runtime_id": "aionbound:lava_shrine",
+      "source_category": "structures",
+      "warehouse_id": "lava_shrine"
+    },
+    {
+      "category_index": 9,
+      "codex_category": "structure",
+      "discovery_routes": [
+        {
+          "action": "recognized_structure_visit",
+          "authority": "SAFE_NOW",
+          "id": "codex:ah:structure:ash_cave:visited",
+          "stage": "complete"
+        }
+      ],
+      "id": "ash_cave",
+      "importance": "required_coverage",
+      "region": "ah",
+      "relationships": {
+        "rule": "Warehouse identities and approved relationship prose may be indexed; non-warehouse terms remain prose-only and cannot become item IDs, acquisition completion predicates, or shipping loot.",
+        "safe_now": {
+          "acquisition": [
+            "uncommon faces"
+          ],
+          "crafting_and_progression_links": [
+            "Drake juvenile tease",
+            "mid-late AH"
+          ],
+          "equipment_links": []
+        },
+        "withheld": {
+          "W1-CREATIVE-001-AH": [
+            "heatstone veins",
+            "ash_mite nests",
+            "basalt_core rare"
+          ],
+          "W1-CREATIVE-004-AH": "no probabilities, quantities, rolls, or guarantees are bound by this map"
+        }
+      },
+      "runtime_id": "aionbound:ash_cave",
+      "source_category": "structures",
+      "warehouse_id": "ash_cave"
+    }
+  ],
+  "packet_006_ashen_links": [
+    {
+      "acquisition_boundary": {
+        "safe_now": "Approved Packet 006 identity, region, role, and relationship may be indexed.",
+        "withheld": [
+          "W1-CREATIVE-001-AH",
+          "W1-CREATIVE-004-AH"
+        ]
+      },
+      "append_new_entry": true,
+      "category_index": 0,
+      "chapter_seal_identity": false,
+      "codex_category": "equipment",
+      "discovery_routes": [
+        {
+          "action": "first_owned",
+          "authority": "SAFE_NOW",
+          "id": "codex:ah:equipment:basalt_hammer:obtained",
+          "note": "First-owned completion is identity-only and does not choose a recipe, reward probability, or non-warehouse ingredient.",
+          "stage": "complete"
+        }
+      ],
+      "equipment_subtype": "weapon",
+      "id": "basalt_hammer",
+      "non_seal_secondary_trophy": false,
+      "region": "ah",
+      "runtime_id": "aionbound:basalt_hammer"
+    },
+    {
+      "acquisition_boundary": {
+        "safe_now": "Approved Packet 006 identity, region, role, and relationship may be indexed.",
+        "withheld": [
+          "W1-CREATIVE-001-AH",
+          "W1-CREATIVE-004-AH"
+        ]
+      },
+      "append_new_entry": true,
+      "category_index": 1,
+      "chapter_seal_identity": false,
+      "codex_category": "equipment",
+      "discovery_routes": [
+        {
+          "action": "first_owned",
+          "authority": "SAFE_NOW",
+          "id": "codex:ah:equipment:ember_great_axe:obtained",
+          "note": "First-owned completion is identity-only and does not choose a recipe, reward probability, or non-warehouse ingredient.",
+          "stage": "complete"
+        }
+      ],
+      "equipment_subtype": "weapon",
+      "id": "ember_great_axe",
+      "non_seal_secondary_trophy": false,
+      "region": "ah",
+      "runtime_id": "aionbound:ember_great_axe"
+    },
+    {
+      "acquisition_boundary": {
+        "safe_now": "Approved Packet 006 identity, region, role, and relationship may be indexed.",
+        "withheld": [
+          "W1-CREATIVE-001-AH",
+          "W1-CREATIVE-004-AH"
+        ]
+      },
+      "append_new_entry": true,
+      "category_index": 2,
+      "chapter_seal_identity": false,
+      "codex_category": "equipment",
+      "discovery_routes": [
+        {
+          "action": "first_owned",
+          "authority": "SAFE_NOW",
+          "id": "codex:ah:equipment:ash_repeater:obtained",
+          "note": "First-owned completion is identity-only and does not choose a recipe, reward probability, or non-warehouse ingredient.",
+          "stage": "complete"
+        }
+      ],
+      "equipment_subtype": "weapon",
+      "id": "ash_repeater",
+      "non_seal_secondary_trophy": false,
+      "region": "ah",
+      "runtime_id": "aionbound:ash_repeater"
+    },
+    {
+      "acquisition_boundary": {
+        "safe_now": "Approved Packet 006 identity, region, role, and relationship may be indexed.",
+        "withheld": [
+          "W1-CREATIVE-001-AH",
+          "W1-CREATIVE-004-AH"
+        ]
+      },
+      "append_new_entry": true,
+      "category_index": 3,
+      "chapter_seal_identity": false,
+      "codex_category": "equipment",
+      "discovery_routes": [
+        {
+          "action": "first_owned",
+          "authority": "SAFE_NOW",
+          "id": "codex:ah:equipment:ashen_helmet:obtained",
+          "note": "First-owned completion is identity-only and does not choose a recipe, reward probability, or non-warehouse ingredient.",
+          "stage": "complete"
+        }
+      ],
+      "equipment_subtype": "armor",
+      "id": "ashen_helmet",
+      "non_seal_secondary_trophy": false,
+      "region": "ah",
+      "runtime_id": "aionbound:ashen_helmet"
+    },
+    {
+      "acquisition_boundary": {
+        "safe_now": "Approved Packet 006 identity, region, role, and relationship may be indexed.",
+        "withheld": [
+          "W1-CREATIVE-001-AH",
+          "W1-CREATIVE-004-AH"
+        ]
+      },
+      "append_new_entry": true,
+      "category_index": 4,
+      "chapter_seal_identity": false,
+      "codex_category": "equipment",
+      "discovery_routes": [
+        {
+          "action": "first_owned",
+          "authority": "SAFE_NOW",
+          "id": "codex:ah:equipment:ashen_chest:obtained",
+          "note": "First-owned completion is identity-only and does not choose a recipe, reward probability, or non-warehouse ingredient.",
+          "stage": "complete"
+        }
+      ],
+      "equipment_subtype": "armor",
+      "id": "ashen_chest",
+      "non_seal_secondary_trophy": false,
+      "region": "ah",
+      "runtime_id": "aionbound:ashen_chest"
+    },
+    {
+      "acquisition_boundary": {
+        "safe_now": "Approved Packet 006 identity, region, role, and relationship may be indexed.",
+        "withheld": [
+          "W1-CREATIVE-001-AH",
+          "W1-CREATIVE-004-AH"
+        ]
+      },
+      "append_new_entry": true,
+      "category_index": 5,
+      "chapter_seal_identity": false,
+      "codex_category": "equipment",
+      "discovery_routes": [
+        {
+          "action": "first_owned",
+          "authority": "SAFE_NOW",
+          "id": "codex:ah:equipment:ashen_legs:obtained",
+          "note": "First-owned completion is identity-only and does not choose a recipe, reward probability, or non-warehouse ingredient.",
+          "stage": "complete"
+        }
+      ],
+      "equipment_subtype": "armor",
+      "id": "ashen_legs",
+      "non_seal_secondary_trophy": false,
+      "region": "ah",
+      "runtime_id": "aionbound:ashen_legs"
+    },
+    {
+      "acquisition_boundary": {
+        "safe_now": "Approved Packet 006 identity, region, role, and relationship may be indexed.",
+        "withheld": [
+          "W1-CREATIVE-001-AH",
+          "W1-CREATIVE-004-AH"
+        ]
+      },
+      "append_new_entry": true,
+      "category_index": 6,
+      "chapter_seal_identity": false,
+      "codex_category": "equipment",
+      "discovery_routes": [
+        {
+          "action": "first_owned",
+          "authority": "SAFE_NOW",
+          "id": "codex:ah:equipment:ashen_boots:obtained",
+          "note": "First-owned completion is identity-only and does not choose a recipe, reward probability, or non-warehouse ingredient.",
+          "stage": "complete"
+        }
+      ],
+      "equipment_subtype": "armor",
+      "id": "ashen_boots",
+      "non_seal_secondary_trophy": false,
+      "region": "ah",
+      "runtime_id": "aionbound:ashen_boots"
+    },
+    {
+      "acquisition_boundary": {
+        "safe_now": "Approved Packet 006 identity, region, role, and relationship may be indexed.",
+        "withheld": [
+          "W1-CREATIVE-001-AH",
+          "W1-CREATIVE-004-AH"
+        ]
+      },
+      "append_new_entry": true,
+      "category_index": 7,
+      "chapter_seal_identity": false,
+      "codex_category": "equipment",
+      "discovery_routes": [
+        {
+          "action": "first_owned",
+          "authority": "SAFE_NOW",
+          "id": "codex:ah:equipment:basalt_pick:obtained",
+          "note": "First-owned completion is identity-only and does not choose a recipe, reward probability, or non-warehouse ingredient.",
+          "stage": "complete"
+        }
+      ],
+      "equipment_subtype": "tool",
+      "id": "basalt_pick",
+      "non_seal_secondary_trophy": false,
+      "region": "ah",
+      "runtime_id": "aionbound:basalt_pick"
+    },
+    {
+      "acquisition_boundary": {
+        "safe_now": "Approved Packet 006 identity, region, role, and relationship may be indexed.",
+        "withheld": [
+          "W1-CREATIVE-001-AH",
+          "W1-CREATIVE-004-AH"
+        ]
+      },
+      "append_new_entry": true,
+      "category_index": 8,
+      "chapter_seal_identity": false,
+      "codex_category": "equipment",
+      "discovery_routes": [
+        {
+          "action": "first_owned",
+          "authority": "SAFE_NOW",
+          "id": "codex:ah:equipment:ember_hammer:obtained",
+          "note": "First-owned completion is identity-only and does not choose a recipe, reward probability, or non-warehouse ingredient.",
+          "stage": "complete"
+        }
+      ],
+      "equipment_subtype": "tool",
+      "id": "ember_hammer",
+      "non_seal_secondary_trophy": false,
+      "region": "ah",
+      "runtime_id": "aionbound:ember_hammer"
+    },
+    {
+      "acquisition_boundary": {
+        "safe_now": "Approved Packet 006 identity, region, role, and relationship may be indexed.",
+        "withheld": [
+          "W1-CREATIVE-001-AH",
+          "W1-CREATIVE-004-AH"
+        ]
+      },
+      "append_new_entry": true,
+      "category_index": 9,
+      "chapter_seal_identity": false,
+      "codex_category": "equipment",
+      "discovery_routes": [
+        {
+          "action": "first_owned",
+          "authority": "SAFE_NOW",
+          "id": "codex:ah:equipment:ore_chisel:obtained",
+          "note": "First-owned completion is identity-only and does not choose a recipe, reward probability, or non-warehouse ingredient.",
+          "stage": "complete"
+        }
+      ],
+      "equipment_subtype": "tool",
+      "id": "ore_chisel",
+      "non_seal_secondary_trophy": false,
+      "region": "ah",
+      "runtime_id": "aionbound:ore_chisel"
+    },
+    {
+      "acquisition_boundary": {
+        "safe_now": "Approved Packet 006 identity, region, role, and relationship may be indexed.",
+        "withheld": [
+          "W1-CREATIVE-001-AH",
+          "W1-CREATIVE-004-AH"
+        ]
+      },
+      "append_new_entry": true,
+      "category_index": 10,
+      "chapter_seal_identity": false,
+      "codex_category": "equipment",
+      "discovery_routes": [
+        {
+          "action": "first_owned",
+          "authority": "SAFE_NOW",
+          "id": "codex:ah:equipment:ember_totem:obtained",
+          "note": "First-owned completion is identity-only and does not choose a recipe, reward probability, or non-warehouse ingredient.",
+          "stage": "complete"
+        }
+      ],
+      "equipment_subtype": "accessory",
+      "id": "ember_totem",
+      "non_seal_secondary_trophy": false,
+      "region": "ah",
+      "runtime_id": "aionbound:ember_totem"
+    },
+    {
+      "append_new_entry": false,
+      "equipment_subtype": "accessory",
+      "existing_registry_reference": {
+        "category": "equipment",
+        "category_index": 16,
+        "region": "ww"
+      },
+      "id": "briar_ring",
+      "region": "ww",
+      "runtime_id": "aionbound:briar_ring",
+      "safe_now_link": "Reference the existing base briar_ring page and its WW craft completion without changing its address.",
+      "withheld_routes": [
+        {
+          "action": "heat_tempered_finish",
+          "authority": "WITHHELD",
+          "blockers": [
+            "W1-CREATIVE-005"
+          ],
+          "id": "codex:ah:equipment:briar_ring:heat_tempered",
+          "stage": "complete"
+        }
+      ]
+    },
+    {
+      "acquisition_boundary": {
+        "safe_now": "Approved Packet 006 identity, region, role, and relationship may be indexed.",
+        "withheld": [
+          "W1-CREATIVE-001-AH",
+          "W1-CREATIVE-004-AH"
+        ]
+      },
+      "append_new_entry": true,
+      "category_index": 11,
+      "chapter_seal_identity": true,
+      "codex_category": "equipment",
+      "discovery_routes": [
+        {
+          "action": "durable_chapter_two_seal_credit",
+          "authority": "WITHHELD",
+          "blockers": [
+            "W1-CREATIVE-003-KILN-SKY",
+            "W1-CREATIVE-004-AH"
+          ],
+          "id": "codex:ah:equipment:ash_drake_horn:seal_credit",
+          "note": "Primary critical Chapter 2 seal page completes from durable seal credit after ratification, not from ecology death or physical-item presence.",
+          "stage": "complete"
+        }
+      ],
+      "equipment_subtype": "trophy",
+      "id": "ash_drake_horn",
+      "non_seal_secondary_trophy": false,
+      "region": "ah",
+      "runtime_id": "aionbound:ash_drake_horn"
+    },
+    {
+      "acquisition_boundary": {
+        "safe_now": "Approved Packet 006 identity, region, role, and relationship may be indexed.",
+        "withheld": [
+          "W1-CREATIVE-001-AH",
+          "W1-CREATIVE-004-AH"
+        ]
+      },
+      "append_new_entry": true,
+      "category_index": 12,
+      "chapter_seal_identity": false,
+      "codex_category": "equipment",
+      "discovery_routes": [
+        {
+          "action": "first_owned",
+          "authority": "SAFE_NOW",
+          "id": "codex:ah:equipment:ember_forge_core:obtained",
+          "note": "First-owned completion is identity-only and does not choose a recipe, reward probability, or non-warehouse ingredient.",
+          "stage": "complete"
+        }
+      ],
+      "equipment_subtype": "trophy",
+      "id": "ember_forge_core",
+      "non_seal_secondary_trophy": true,
+      "region": "ah",
+      "runtime_id": "aionbound:ember_forge_core"
+    }
+  ],
+  "proof_boundary": {
+    "not_proven": [
+      "runtime wiring",
+      "live discovery",
+      "Codex UI",
+      "loot or recipes",
+      "Kiln Sky gameplay",
+      "persistence migration implementation",
+      "BP/RP",
+      "build",
+      "BDS",
+      "client",
+      "multiplayer",
+      "console",
+      "candidate readiness"
+    ],
+    "proven": [
+      "exact roster/link coverage",
+      "hash-bound authority inputs",
+      "append-only index and budget proposal",
+      "decision-blocker separation",
+      "byte-deterministic regeneration"
+    ]
+  },
+  "registry_migration_proposal": {
+    "cap_change_required": false,
+    "category_caps_after": {
+      "boss": 1,
+      "creature": 10,
+      "equipment": 21,
+      "plant": 10,
+      "progression": 2,
+      "resource": 20,
+      "structure": 10
+    },
+    "category_caps_before": {
+      "boss": 1,
+      "creature": 10,
+      "equipment": 21,
+      "plant": 10,
+      "progression": 2,
+      "resource": 20,
+      "structure": 10
+    },
+    "fully_populated_four_region_discovery_json_bytes_after": 596,
+    "fully_populated_four_region_discovery_json_bytes_before": 596,
+    "index_rule": "Append Ashen registry rows after all 74 existing rows; use region-local category indices. Never reorder, renumber, or reinterpret any existing ww address.",
+    "migration": "Idempotently normalize rv 1/2 state to rv 3 while preserving every existing category byte and state; absent AH categories remain zero-state; never downgrade.",
+    "player_budget_bytes": 8192,
+    "registry_version": {
+      "after": 3,
+      "before": 2
+    },
+    "runtime_integration_note": "Change later registry validation/counting from category-only to region+category before appending AH rows; this is a future integrator edit, not performed by this intake map.",
+    "state_schema_version": {
+      "after": 4,
+      "before": 4
+    }
+  },
+  "safe_now_summary": [
+    "Index the exact 50 warehouse IDs and approved relationships without inventing item identities or values.",
+    "Index 13 new Packet 006 pages and reference the existing briar_ring page without duplication.",
+    "Record ordinary non-apex observation, defeat, obtain, harvest, and structure-visit event identities.",
+    "Use the existing WW Ashen rumor only as a non-gating invitation.",
+    "Record Ashen chapter entry and Codex-only Crystal Marsh rumor routes.",
+    "Record Kiln Sky phase/attack names as identity data only."
+  ],
+  "schema": "aionbound.wave1.ashen-codex-progression-intake.v1.0.0",
+  "scope": "Deterministic Ashen Codex/progression intake only; no runtime, BP/RP, Creative, build, BDS, or candidate mutation.",
+  "status": "HASH_BOUND_INTAKE_MAP_SAFE_ROUTES_SEPARATED",
+  "transition_contract": {
+    "ah_chapter": {
+      "category_index": 0,
+      "codex_category": "progression",
+      "events": [
+        {
+          "action": "first_safe_now_ah_discovery",
+          "authority": "SAFE_NOW",
+          "id": "codex:ah:progression:ashen_chapter:entered",
+          "stage": "partial"
+        },
+        {
+          "action": "durable_ash_drake_horn_seal_credit",
+          "authority": "WITHHELD",
+          "blockers": [
+            "W1-CREATIVE-003-KILN-SKY",
+            "W1-CREATIVE-004-AH"
+          ],
+          "id": "codex:ah:progression:ashen_chapter:seal_credit",
+          "stage": "complete"
+        }
+      ],
+      "id": "ashen_chapter",
+      "region": "ah",
+      "runtime_id": "aionbound:codex_progression_ashen_chapter",
+      "seal_rule": "ash_drake_horn is the primary critical Chapter 2 seal. ember_forge_core cannot substitute for it.",
+      "soft_gate": true
+    },
+    "ah_to_cm": {
+      "category_index": 1,
+      "codex_category": "progression",
+      "events": [
+        {
+          "action": "recognized_burned_camp_visit",
+          "authority": "SAFE_NOW",
+          "id": "codex:ah:progression:crystal_marsh_rumor:burned_camp_visited",
+          "note": "No teaser-map item is granted.",
+          "stage": "partial"
+        },
+        {
+          "action": "recognized_char_wagon_visit",
+          "authority": "SAFE_NOW",
+          "id": "codex:ah:progression:crystal_marsh_rumor:char_wagon_visited",
+          "note": "Binds the exact Creative chase 'Marsh pearl maps in char wagons' as a Codex hint only.",
+          "stage": "complete"
+        }
+      ],
+      "id": "crystal_marsh_rumor",
+      "physical_map_or_loot_route": {
+        "authority": "WITHHELD",
+        "blockers": [
+          "W1-CREATIVE-001-AH",
+          "W1-CREATIVE-004-AH"
+        ]
+      },
+      "presentation": "Codex/recognized-structure state only",
+      "region": "ah",
+      "runtime_id": "aionbound:codex_progression_crystal_marsh_rumor"
+    },
+    "ww_to_ah": {
+      "consumption": "invitation_only",
+      "exact_safe_hint": "Heat waits east of the burned wagons.",
+      "forbidden_claims": [
+        "AH implementation proof",
+        "inventory map-scrap",
+        "unlock token",
+        "mandatory gate"
+      ],
+      "source_entry": {
+        "category": "progression",
+        "category_index": 1,
+        "id": "ashen_rumor",
+        "region": "ww"
+      }
+    }
+  }
+}
