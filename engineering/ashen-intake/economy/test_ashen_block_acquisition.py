@@ -19,7 +19,7 @@ class AshenBlockAcquisitionTests(unittest.TestCase):
 
     def test_resource_acquisition_closes_natural_block_resources(self):
         required = {
-            "aionbound:sulfur_cluster",
+            "aionbound:smolder_bark", "aionbound:sulfur_cluster",
             "aionbound:volcanic_glass_shard", "aionbound:ember_resin", "aionbound:heatstone",
             "aionbound:basalt_core", "aionbound:ash_crystal",
         }
@@ -33,6 +33,14 @@ class AshenBlockAcquisitionTests(unittest.TestCase):
         raw = (LOOT / "volcanic_glass_block.json").read_text()
         self.assertIn("volcanic_glass_shard", raw)
         self.assertNotIn('"aionbound:volcanic_glass_block"', raw)
+
+    def test_ash_log_yields_log_or_bark_never_both(self):
+        data = json.loads((LOOT / "ash_log.json").read_text())
+        self.assertEqual(len(data["pools"]), 1)
+        self.assertEqual(
+            {e["name"] for e in data["pools"][0]["entries"]},
+            {"aionbound:ash_log", "aionbound:smolder_bark"},
+        )
 
     def test_one_outcome_per_break_and_no_bonus_duplication(self):
         for block in TABLES:

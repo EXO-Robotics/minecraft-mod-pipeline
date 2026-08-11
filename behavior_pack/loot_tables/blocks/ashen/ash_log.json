@@ -6,7 +6,18 @@
         {
           "type": "item",
           "name": "aionbound:ash_log",
-          "weight": 100,
+          "weight": 75,
+          "functions": [
+            {
+              "function": "set_count",
+              "count": 1
+            }
+          ]
+        },
+        {
+          "type": "item",
+          "name": "aionbound:smolder_bark",
+          "weight": 25,
           "functions": [
             {
               "function": "set_count",

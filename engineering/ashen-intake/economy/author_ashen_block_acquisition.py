@@ -14,7 +14,7 @@ LOOT = ROOT / "behavior_pack/loot_tables/blocks/ashen"
 # returning itself plus a bonus resource and becoming a re-break duplication
 # loop. Rows are (item, weight, min, max).
 TABLES = {
-    "ash_log": [("aionbound:ash_log", 100, 1, 1)],
+    "ash_log": [("aionbound:ash_log", 75, 1, 1), ("aionbound:smolder_bark", 25, 1, 1)],
     "ash_soil": [("aionbound:ash_soil", 100, 1, 1)],
     "basalt_brick": [("aionbound:basalt_brick", 100, 1, 1)],
     "basalt_pillar": [("aionbound:basalt_pillar", 92, 1, 1), ("aionbound:basalt_core", 8, 1, 1)],
