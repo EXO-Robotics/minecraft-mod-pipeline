@@ -1,0 +1,81 @@
+{
+  "authority": "engineering/validation/wave1/WAVE_1_VALIDATION_AUTHORITY.json",
+  "authority_sha256": "a67c6f01decdf1046d7fa375416fa49fa696e21ef37d81cd00ad4aac16a37d5f",
+  "checks": [
+    "json_and_png_structure",
+    "manifest_and_dependency_closure",
+    "identifier_closure",
+    "texture_and_model_closure",
+    "recipe_and_loot_closure",
+    "script_import_and_runtime_policy",
+    "minimum_substrate_inventory",
+    "explicit_successor_additions"
+  ],
+  "inventory": {
+    "animation_controllers": 1,
+    "animations": 118,
+    "attachables": 30,
+    "blocks": 59,
+    "client_entities": 24,
+    "entities": 24,
+    "feature_rules": 33,
+    "features": 33,
+    "geometries": 68,
+    "items": 66,
+    "json_files": 504,
+    "loot_tables": 33,
+    "png_files": 163,
+    "recipes": 59,
+    "render_controllers": 1,
+    "script_files": 12,
+    "spawn_rules": 10,
+    "structures": 15
+  },
+  "proof_boundaries": [
+    "source_tree_mechanical_only",
+    "not_immutable_package_proof",
+    "not_archive_extracted_entrypoint_proof",
+    "not_bedrock_schema_or_stable_bds_proof",
+    "not_client_rendering_or_gameplay_proof",
+    "not_multiplayer_console_marketplace_or_release_proof"
+  ],
+  "required_successor_ids_verified": {
+    "blocks": [
+      "aionbound:forest_brick",
+      "aionbound:hollow_wood",
+      "aionbound:moss_bark",
+      "aionbound:stripped_whisperwood_log",
+      "aionbound:whisperwood_leaves",
+      "aionbound:whisperwood_log",
+      "aionbound:whisperwood_planks",
+      "aionbound:whisperwood_roots",
+      "aionbound:whisperwood_sapling",
+      "aionbound:whisperwood_wood"
+    ],
+    "items": [
+      "aionbound:ancient_acorn",
+      "aionbound:briar_antler",
+      "aionbound:glow_spore",
+      "aionbound:hollow_amber",
+      "aionbound:lantern_fur",
+      "aionbound:moon_sap",
+      "aionbound:moss_resin",
+      "aionbound:root_heart",
+      "aionbound:whisper_bark",
+      "aionbound:widow_silk"
+    ],
+    "recipes": [
+      "aionbound:whisperwood_log_to_planks_recipe",
+      "aionbound:whisperwood_stripped_log_to_planks_recipe",
+      "aionbound:whisperwood_wood_from_logs_recipe",
+      "aionbound:whisperwood_wood_to_planks_recipe"
+    ]
+  },
+  "schema_version": 1,
+  "source_evidence": {
+    "pack_source_file_count": 696,
+    "pack_source_sha256": "cc39fe783e45cefb61e2206c4af287461aa35f5ec41ba154e651f9ddb635af35"
+  },
+  "status": "PASS",
+  "validator": "tools/validate_wave1.py"
+}

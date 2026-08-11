@@ -1,0 +1,75 @@
+{
+  "schema_version": 1,
+  "base_commit": "9064107a8df563796ffe222df506bbc58246f1f6",
+  "scope": "ten_source_closure_findings_only",
+  "status": "SOURCE_CLOSURE_PASS",
+  "dispositions": [
+    {
+      "finding": "attachable_missing_geometry:aionbound:burrowgate_key:geometry.aionbound.burrowgate_key",
+      "disposition": "retired_unsupported_optional_attachable",
+      "evidence": "The shipped item retains its authored 16x16 icon (sha256 ec00de618c59bed4a76b739515a9438605c2cc675b8b3035caab5e074b3cdaca); no authored 3D geometry exists in G7 or the packet evidence, so no geometry was fabricated."
+    },
+    {
+      "finding": "attachable_missing_geometry:aionbound:waykeeper_whistle:geometry.aionbound.waykeeper_whistle",
+      "disposition": "retired_unsupported_optional_attachable",
+      "evidence": "The shipped item retains its authored 16x16 icon (sha256 369cded528cfe35ab06a738a4260361d9c1b5609842e33c9d69d38c79437969d); no authored 3D geometry exists in G7 or the packet evidence, so no geometry was fabricated."
+    },
+    {
+      "finding": "block_missing_material_texture:aionbound:chaos_crate_t0:chaos_crate_prime",
+      "disposition": "added_existing_texture_atlas_alias",
+      "evidence": "Alias chaos_crate_prime resolves the already-authored textures/aionbound/chaos_crate_prime path."
+    },
+    {
+      "finding": "block_missing_material_texture:aionbound:creature_nest:spiral_moth_spire_nest",
+      "disposition": "added_existing_texture_atlas_alias",
+      "evidence": "Alias spiral_moth_spire_nest resolves the already-authored textures/aionbound/spiral_moth_spire_nest path."
+    },
+    {
+      "finding": "block_missing_material_texture:aionbound:loot_ruin:prismglass_chest_ruin",
+      "disposition": "added_existing_texture_atlas_alias",
+      "evidence": "Alias prismglass_chest_ruin resolves the already-authored textures/aionbound/prismglass_chest_ruin path."
+    },
+    {
+      "finding": "block_missing_material_texture:aionbound:waystone_arch:first_waystation_arch",
+      "disposition": "added_existing_texture_atlas_alias",
+      "evidence": "Alias first_waystation_arch resolves the already-authored textures/aionbound/first_waystation_arch path."
+    },
+    {
+      "finding": "client_entity_missing_animation:aionbound:mosskip:animation.aionbound.mosskip.idle",
+      "disposition": "rebound_to_existing_mosskip_trail_idle",
+      "evidence": "animation.aionbound.mosskip_trail.idle already exists (file sha256 142b5e72462bfedc320587fc23db2a25ee3700abe98dbf4fc9fb0a093d942a05)."
+    },
+    {
+      "finding": "client_entity_missing_geometry:aionbound:mosskip:geometry.aionbound.mosskip",
+      "disposition": "rebound_to_existing_mosskip_trail_geometry",
+      "evidence": "geometry.aionbound.mosskip_trail already exists (file sha256 0844dac36041e864263c07cd06d64439dae2e13be58e5dca8296afd4070751b7)."
+    },
+    {
+      "finding": "client_entity_missing_texture:aionbound:mosskip:textures/aionbound/mosskip",
+      "disposition": "rebound_to_existing_mosskip_trail_texture",
+      "evidence": "textures/aionbound/mosskip_trail.png already exists (file sha256 a8c9bc9bf2ae79ca042e0d0c2f5362cb2596285edb07f6fef66555427281b39f)."
+    },
+    {
+      "finding": "missing_entity_loot_table:aionbound:barkling_familiar:loot_tables/entities/barkling_familiar.json",
+      "disposition": "added_explicit_empty_loot_table",
+      "evidence": "The original Barkling familiar entity authority (sha256 76e83f653817f3d546666127157d8126163db8d8e7f1de50c322dcfd7fa78b9c) specifies no loot identity; an empty table closes the inherited reference without inventing a reward."
+    }
+  ],
+  "validator_result": {
+    "status": "PASS",
+    "pack_source_file_count": 696,
+    "pack_source_sha256": "cc39fe783e45cefb61e2206c4af287461aa35f5ec41ba154e651f9ddb635af35"
+  },
+  "tests": {
+    "tests.test_wave1_validator": "10_passed",
+    "remediation.test_closure_remediation": "5_passed"
+  },
+  "proof_boundaries": [
+    "source_tree_mechanical_only",
+    "not_immutable_package_proof",
+    "not_archive_extracted_entrypoint_proof",
+    "not_bedrock_schema_or_stable_bds_proof",
+    "not_client_rendering_or_gameplay_proof",
+    "not_multiplayer_console_marketplace_or_release_proof"
+  ]
+}

@@ -3,10 +3,10 @@
   "minecraft:client_entity": {
     "description": {
       "animations": {
-        "move": "animation.aionbound.mosskip.idle"
+        "move": "animation.aionbound.mosskip_trail.idle"
       },
       "geometry": {
-        "default": "geometry.aionbound.mosskip"
+        "default": "geometry.aionbound.mosskip_trail"
       },
       "identifier": "aionbound:mosskip",
       "materials": {
@@ -21,7 +21,7 @@
         ]
       },
       "textures": {
-        "default": "textures/aionbound/mosskip"
+        "default": "textures/aionbound/mosskip_trail"
       }
     }
   }
