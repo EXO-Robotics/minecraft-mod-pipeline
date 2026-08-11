@@ -146,7 +146,7 @@ def expected_outputs() -> dict[Path, bytes]:
     }
     report = {
         "schema": "aionbound.wave1.whisperwood.sapling_regrowth.v1",
-        "status": "STATIC_ASSEMBLY_AND_INTERFACE_READY",
+        "status": "SOURCE_RUNTIME_WIRED",
         "authority": {
             "tranche": "W1-006-WW-SAPLING",
             "proposal_preserved": "engineering/authority/support-proposals/W1-CREATIVE-006/whisperwood_sapling_regrowth_proposal.json",
@@ -182,6 +182,8 @@ def expected_outputs() -> dict[Path, bytes]:
                 "custom_component": "aionbound:whisperwood_sapling_regrowth",
                 "handlers": ["onTick", "onPlayerInteract"],
             },
+            "runtime_module": "behavior_pack/scripts/whisperwood_regrowth.js",
+            "startup_registration": "behavior_pack/scripts/main.js uses system.beforeEvents.startup and the event blockComponentRegistry",
         },
         "ecology_density_audit": {
             "scope": "12 ww_ecology rules plus two ww_prop rules; landmark structure rules excluded as a separately budgeted surface",
@@ -191,14 +193,14 @@ def expected_outputs() -> dict[Path, bytes]:
             "cap_change": "NONE",
         },
         "blockbench": "NOT_APPLICABLE: assembly uses only ordinary existing block states in a native .mcstructure; no new geometry, UV, rig, animation, or texture",
-        "proof_boundary": "STATIC_AUTHORED_BYTES_SOIL_FILTER_AND_SCRIPT_INTERFACE_ONLY; REGROWTH_RUNTIME_NOT_YET_WIRED; NOT BDS, CLIENT, LOADED-TIME, BONE-MEAL, RESTART, OR CANDIDATE PROOF",
+        "proof_boundary": "STATIC_AUTHORED_BYTES_AND_SOURCE_SEMANTIC_RUNTIME_WIRING_ONLY; NOT BDS, CLIENT, LOADED-TIME, BONE-MEAL_DELIVERY, RESTART, OR CANDIDATE PROOF",
         "official_stable_basis": [
             "https://learn.microsoft.com/en-us/minecraft/creator/reference/content/blockreference/examples/blockcomponents/minecraftblock_tick?view=minecraft-bedrock-stable",
             "https://learn.microsoft.com/en-us/minecraft/creator/scriptapi/minecraft/server/blockcomponentregistry?view=minecraft-bedrock-stable",
             "https://learn.microsoft.com/en-us/minecraft/creator/scriptapi/minecraft/server/structure?view=minecraft-bedrock-stable",
         ],
     }
-    readme = """# Whisperwood Sapling Regrowth\n\nStatus: **STATIC_ASSEMBLY_AND_INTERFACE_READY**\n\nThe ratified W1-006 tree is one `7x9x7` upright asymmetric assembly with a six-block trunk and exactly the approved four-block palette. The sapling now has a stable declarative supported-soil filter.\n\nCurrent stable Bedrock does not offer a declarative-only custom sapling growth action. `minecraft:tick` dispatches `onTick` to a registered custom block component, while the older event-bearing ticking components are deprecated. To avoid a missing-component content error, this lane does not attach the component before the owning runtime lane registers it. `WHISPERWOOD_SAPLING_REGROWTH_REPORT.json` binds the exact integration interface.\n\nThe committed `.mcstructure` is deterministic little-endian NBT. Blockbench is `NOT_APPLICABLE` because this assembly introduces no custom geometry, texture, UV, rig, or animation. Runtime growth, bone meal, loaded-time timing, restart behavior, and Bedrock/client rendering remain unproven until the interface is wired and Checkpoint 1 runs.\n"""
+    readme = """# Whisperwood Sapling Regrowth\n\nStatus: **SOURCE_RUNTIME_WIRED**\n\nThe ratified W1-006 tree is one `7x9x7` upright asymmetric assembly with a six-block trunk and exactly the approved four-block palette. The sapling has a stable supported-soil filter, the approved loaded-time tick interval, and the registered `aionbound:whisperwood_sapling_regrowth` component.\n\nCurrent stable Bedrock dispatches `minecraft:tick` through a registered custom block component. `scripts/main.js` registers this component during `system.beforeEvents.startup`; `scripts/whisperwood_regrowth.js` performs full-footprint obstruction checks before atomic structure placement and applies the bounded one-in-three bone-meal attempt.\n\nThe committed `.mcstructure` is deterministic little-endian NBT. Blockbench is `NOT_APPLICABLE` because this assembly introduces no custom geometry, texture, UV, rig, or animation. Source semantic tests do not prove loaded-time delivery, client interaction, BDS restart behavior, or rendering; those remain within Checkpoint 1 and later client proof boundaries.\n"""
     return {
         structure_path: structure,
         feature_path: json_bytes(feature),

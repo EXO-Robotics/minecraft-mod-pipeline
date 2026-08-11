@@ -98,7 +98,7 @@ export const world={
   getDynamicProperty(){return undefined;},setDynamicProperty(){},getAllPlayers(){return[];},
   getDimension(){return{getEntities(){return[];}};}
 };
-export const system={currentTick:0,queue:[],intervals:[],run(callback){this.queue.push(callback);},runInterval(callback,ticks){this.intervals.push([callback,ticks]);}};
+export const system={beforeEvents:{startup:signal()},currentTick:0,queue:[],intervals:[],run(callback){this.queue.push(callback);},runInterval(callback,ticks){this.intervals.push([callback,ticks]);}};
 export class ItemStack{constructor(typeId,amount){this.typeId=typeId;this.amount=amount;}}
 export const EquipmentSlot={Offhand:"Offhand",Head:"Head",Chest:"Chest",Legs:"Legs",Feet:"Feet"};
 export const EntityComponentTypes={Equippable:"minecraft:equippable"};
@@ -125,7 +125,8 @@ const subscriptions = {
   entityHurt: world.afterEvents.entityHurt.callbacks.length,
   entityDie: world.afterEvents.entityDie.callbacks.length,
   intervals: system.intervals.length,
-  deferred: system.queue.length
+  deferred: system.queue.length,
+  startup: system.beforeEvents.startup.callbacks.length
 };
 console.log(JSON.stringify(subscriptions));
 '''
@@ -204,6 +205,7 @@ class ArchiveExtractedShippedEntrypointProof(unittest.TestCase):
                 "entityDie": 1,
                 "intervals": 1,
                 "deferred": 1,
+                "startup": 1,
             })
 
             script_bytes_after = {

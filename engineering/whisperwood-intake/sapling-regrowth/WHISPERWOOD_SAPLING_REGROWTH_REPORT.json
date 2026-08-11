@@ -1,6 +1,6 @@
 {
   "schema": "aionbound.wave1.whisperwood.sapling_regrowth.v1",
-  "status": "STATIC_ASSEMBLY_AND_INTERFACE_READY",
+  "status": "SOURCE_RUNTIME_WIRED",
   "authority": {
     "tranche": "W1-006-WW-SAPLING",
     "proposal_preserved": "engineering/authority/support-proposals/W1-CREATIVE-006/whisperwood_sapling_regrowth_proposal.json",
@@ -73,7 +73,9 @@
         "onTick",
         "onPlayerInteract"
       ]
-    }
+    },
+    "runtime_module": "behavior_pack/scripts/whisperwood_regrowth.js",
+    "startup_registration": "behavior_pack/scripts/main.js uses system.beforeEvents.startup and the event blockComponentRegistry"
   },
   "ecology_density_audit": {
     "scope": "12 ww_ecology rules plus two ww_prop rules; landmark structure rules excluded as a separately budgeted surface",
@@ -83,7 +85,7 @@
     "cap_change": "NONE"
   },
   "blockbench": "NOT_APPLICABLE: assembly uses only ordinary existing block states in a native .mcstructure; no new geometry, UV, rig, animation, or texture",
-  "proof_boundary": "STATIC_AUTHORED_BYTES_SOIL_FILTER_AND_SCRIPT_INTERFACE_ONLY; REGROWTH_RUNTIME_NOT_YET_WIRED; NOT BDS, CLIENT, LOADED-TIME, BONE-MEAL, RESTART, OR CANDIDATE PROOF",
+  "proof_boundary": "STATIC_AUTHORED_BYTES_AND_SOURCE_SEMANTIC_RUNTIME_WIRING_ONLY; NOT BDS, CLIENT, LOADED-TIME, BONE-MEAL_DELIVERY, RESTART, OR CANDIDATE PROOF",
   "official_stable_basis": [
     "https://learn.microsoft.com/en-us/minecraft/creator/reference/content/blockreference/examples/blockcomponents/minecraftblock_tick?view=minecraft-bedrock-stable",
     "https://learn.microsoft.com/en-us/minecraft/creator/scriptapi/minecraft/server/blockcomponentregistry?view=minecraft-bedrock-stable",

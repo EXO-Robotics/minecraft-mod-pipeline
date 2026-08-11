@@ -26,7 +26,12 @@
             ]
           }
         ]
-      }
+      },
+      "minecraft:tick": {
+        "interval_range": [14400, 36000],
+        "looping": true
+      },
+      "aionbound:whisperwood_sapling_regrowth": {}
     }
   }
 }

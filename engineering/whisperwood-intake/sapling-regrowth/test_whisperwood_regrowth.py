@@ -83,8 +83,8 @@ class RegrowthTests(unittest.TestCase):
         condition = components["minecraft:placement_filter"]["conditions"][0]
         self.assertEqual(["up"], condition["allowed_faces"])
         self.assertEqual(author.SUPPORTED_SOIL, condition["block_filter"])
-        self.assertNotIn("minecraft:tick", components)
-        self.assertNotIn("aionbound:whisperwood_sapling_regrowth", components)
+        self.assertEqual(components["minecraft:tick"], {"interval_range": [14400, 36000], "looping": True})
+        self.assertEqual(components["aionbound:whisperwood_sapling_regrowth"], {})
 
     def test_growth_interface_preserves_timing_retry_and_world_state_only(self):
         report = json.loads(author.expected_outputs()[HERE / "WHISPERWOOD_SAPLING_REGROWTH_REPORT.json"])

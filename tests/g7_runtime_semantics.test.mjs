@@ -7,7 +7,7 @@ import { tmpdir } from "node:os";
 
 const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), "..");
 const SOURCE_DIR = resolve(ROOT, "behavior_pack/scripts");
-const MODULE_NAMES = ["wave1_codex_data", "wave1_codex_ui_data", "wave1_equipment_roles", "catalog", "budgets", "state", "router", "codex", "combat", "devices", "encounters", "chaos", "structures", "runtime", "main"];
+const MODULE_NAMES = ["wave1_codex_data", "wave1_codex_ui_data", "wave1_equipment_roles", "whisperwood_regrowth", "catalog", "budgets", "state", "router", "codex", "combat", "devices", "encounters", "chaos", "structures", "runtime", "main"];
 const MODULE_DIR = await mkdtemp(resolve(tmpdir(), "aionbound-g7-modules-"));
 for (const name of MODULE_NAMES) {
   const source = (await readFile(resolve(SOURCE_DIR, `${name}.js`), "utf8"))
@@ -24,7 +24,7 @@ export const world={
   getDynamicProperty(){return undefined;},setDynamicProperty(){},getAllPlayers(){return[];},
   getDimension(){return{getEntities(){return[];}};}
 };
-export const system={currentTick:0,queue:[],intervals:[],run(callback){this.queue.push(callback);},runInterval(callback,ticks){this.intervals.push([callback,ticks]);}};
+export const system={beforeEvents:{startup:signal()},currentTick:0,queue:[],intervals:[],run(callback){this.queue.push(callback);},runInterval(callback,ticks){this.intervals.push([callback,ticks]);}};
 export class ItemStack{constructor(typeId,amount){this.typeId=typeId;this.amount=amount;}}
 export const EquipmentSlot={Offhand:"Offhand",Head:"Head",Chest:"Chest",Legs:"Legs",Feet:"Feet"};
 export const EntityComponentTypes={Equippable:"minecraft:equippable"};
@@ -222,7 +222,7 @@ test("Pilgrim Clasp proactively refreshes bounded fall mitigation", () => {
 });
 
 test("shipping scripts use approved stable APIs only and one central arbiter", async () => {
-  const scripts = ["main.js", "runtime.js", "catalog.js", "wave1_codex_data.js", "wave1_codex_ui_data.js", "wave1_equipment_roles.js", "budgets.js", "state.js", "router.js", "codex.js", "combat.js", "devices.js", "encounters.js", "chaos.js", "structures.js"];
+  const scripts = ["main.js", "runtime.js", "catalog.js", "wave1_codex_data.js", "wave1_codex_ui_data.js", "wave1_equipment_roles.js", "whisperwood_regrowth.js", "budgets.js", "state.js", "router.js", "codex.js", "combat.js", "devices.js", "encounters.js", "chaos.js", "structures.js"];
   const source = (await Promise.all(scripts.map(name => readFile(resolve(ROOT, "behavior_pack/scripts", name), "utf8")))).join("\n");
   for (const forbidden of ["@minecraft/server-net", "@minecraft/server-admin", "@minecraft/server-gametest", "process.", "require(", "fetch(", "node:"]) assert.equal(source.includes(forbidden), false, forbidden);
   const runtime = await readFile(resolve(ROOT, "behavior_pack/scripts/runtime.js"), "utf8"), main = await readFile(resolve(ROOT, "behavior_pack/scripts/main.js"), "utf8");
@@ -244,6 +244,7 @@ test("transformed source harness starts one stable subscription per routed event
   assert.equal(minecraft.world.afterEvents.entityHitEntity.callbacks.length, 1);
   assert.equal(minecraft.world.afterEvents.entityHurt.callbacks.length, 1);
   assert.equal(minecraft.world.afterEvents.entityDie.callbacks.length, 1);
+  assert.equal(minecraft.system.beforeEvents.startup.callbacks.length, 1);
   assert.equal(minecraft.system.intervals.length, 1);
   assert.equal(minecraft.system.queue.length, 1);
 });
