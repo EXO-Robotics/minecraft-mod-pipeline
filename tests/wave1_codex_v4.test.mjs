@@ -8,7 +8,7 @@ import { fileURLToPath, pathToFileURL } from "node:url";
 const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), "..");
 const SOURCE = resolve(ROOT, "behavior_pack/scripts");
 const MODULE_DIR = await mkdtemp(resolve(tmpdir(), "aionbound-codex-v4-"));
-for (const name of ["wave1_codex_data", "catalog", "budgets", "state", "codex"]) {
+for (const name of ["wave1_codex_data", "wave1_codex_ui_data", "catalog", "budgets", "state", "codex"]) {
   const source = (await readFile(resolve(SOURCE, `${name}.js`), "utf8"))
     .replaceAll(/from "\.\/([a-z0-9_]+)\.js"/g, 'from "./$1.mjs"');
   await writeFile(resolve(MODULE_DIR, `${name}.mjs`), source);

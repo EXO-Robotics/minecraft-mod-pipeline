@@ -1,4 +1,5 @@
 import { world, system, ItemStack, EquipmentSlot, EntityComponentTypes } from "@minecraft/server";
+import { ActionFormData } from "@minecraft/server-ui";
 import { COMBINED_BUDGETS, RuntimeArbiter } from "./budgets.js";
 import { createStateService } from "./state.js";
 import { createInteractionRouter } from "./router.js";
@@ -9,7 +10,7 @@ import { createEncounterService } from "./encounters.js";
 import { createChaosService } from "./chaos.js";
 import { createStructureService } from "./structures.js";
 
-export function createRuntime(platform = { world, system, ItemStack, EquipmentSlot, EntityComponentTypes }) {
+export function createRuntime(platform = { world, system, ItemStack, EquipmentSlot, EntityComponentTypes, ActionFormData }) {
   const arbiter = new RuntimeArbiter();
   const state = createStateService({ world: platform.world, system: platform.system, notify: (player, text) => player.sendMessage(`§7[Aionbound] ${text}`) });
 
@@ -30,7 +31,7 @@ export function createRuntime(platform = { world, system, ItemStack, EquipmentSl
     return output;
   }
 
-  const codex = createCodexService({ state });
+  const codex = createCodexService({ state, ActionFormData: platform.ActionFormData });
   const structures = createStructureService({ ...platform, state, arbiter, consumeOne });
   const combat = createCombatService({ ...platform, state, arbiter, boundedEntities, consumeOne });
   const encounters = createEncounterService({ ...platform, state, boundedEntities, consumeOne });

@@ -1,0 +1,72 @@
+{
+  "schema": "aionbound.wave1.whisperwood-codex-ui-receipt.v1.0.0",
+  "status": "TARGETED_LOCAL_SEMANTIC_PASS_OFFICIAL_AND_LOCAL_STABLE_API_BOUND",
+  "base_commit": "8a92b8c822021232b74ad33771585899cf989400",
+  "stable_api": {
+    "module": "@minecraft/server-ui",
+    "version": "2.0.0",
+    "official_module_reference": "https://learn.microsoft.com/en-us/minecraft/creator/scriptapi/minecraft/server-ui/minecraft-server-ui?view=minecraft-bedrock-stable",
+    "official_action_form_reference": "https://learn.microsoft.com/en-us/minecraft/creator/scriptapi/minecraft/server-ui/actionformdata?view=minecraft-bedrock-stable",
+    "official_manifest_reference": "https://learn.microsoft.com/en-us/minecraft/creator/reference/content/addonsreference/packmanifest?view=minecraft-bedrock-stable",
+    "authority_accessed": "2026-08-11",
+    "selection_reason": "2.0.0 is listed by official stable documentation and present in the exact local Stable 1.26.33.2 server distribution; 2.1.0 is not present locally",
+    "local_evidence": [
+      {
+        "path": "program/aionbound-core-content-beta-qualification-runs/G000007-R1/output/stable-cycle-1.log",
+        "sha256": "0f997e2bca628a0295a525e1a139a2b71e771f12898520e4d3d1f08a8cf46a47",
+        "observation": "Stable BDS version 1.26.33.2"
+      },
+      {
+        "path": "data/behavior_packs/server_ui_library/scripts/server-ui-2.0.0.js",
+        "sha256": "16ea3027fd36b0d39f35b2dd1250e6e2ffdbaea3934cefb86f1c9009abb4ff99",
+        "observation": "local server distribution exports ActionFormData"
+      },
+      {
+        "path": "data/behavior_packs/mccompiler_representative_bp/manifest.json",
+        "sha256": "9c2ed037a7c9fc6529bf3ba3e2d79370d5231a41f2be6768c603b443e3ba271f",
+        "observation": "installed local representative BP declares server-ui 2.0.0"
+      }
+    ]
+  },
+  "ui": {
+    "class": "ActionFormData",
+    "categories": { "resource_and_block": 20, "plant": 10, "creature": 10 },
+    "entries": 40,
+    "question_slots": 3,
+    "locked_identity_disclosed": false,
+    "partial_answer_slots_disclosed": 1,
+    "complete_answer_slots_disclosed": 3,
+    "blocked_answer_text_shipped": false,
+    "chat_on_success_or_cancel": false,
+    "bounded_chat_fallback_on_show_rejection": true
+  },
+  "tests": [
+    {
+      "command": "node --test tests/wave1_codex_ui.test.mjs tests/wave1_codex_runtime_events.test.mjs tests/wave1_codex_v4.test.mjs tests/g7_runtime_semantics.test.mjs",
+      "passed": 35,
+      "failed": 0
+    },
+    {
+      "command": "python3 tests/test_wave1_validator.py",
+      "passed": 12,
+      "failed": 0
+    },
+    {
+      "command": "python3 tools/validate_wave1.py --root .",
+      "status": "PASS",
+      "proof": "source_tree_mechanical_only"
+    }
+  ],
+  "not_proven": [
+    "actual Bedrock form rendering or event delivery",
+    "controller ergonomics",
+    "client or console behavior",
+    "multiplayer",
+    "BP or RP packaging",
+    "deterministic build",
+    "Stable BDS module resolution for this successor",
+    "candidate readiness",
+    "Marketplace",
+    "release"
+  ]
+}

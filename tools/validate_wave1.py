@@ -376,6 +376,7 @@ def validate(root: Path) -> dict[str, Any]:
         if not isinstance(entry, str) or not (bp / entry).is_file():
             errors.append(f"manifest_missing_script_entry:{entry}")
     allowed_modules = set(authority["allowed_script_modules"])
+    allowed_module_versions = authority.get("allowed_script_module_versions", {})
     declared_modules: set[str] = set()
     for dep in bp_deps:
         module = dep.get("module_name") if isinstance(dep, dict) else None
@@ -386,6 +387,8 @@ def validate(root: Path) -> dict[str, Any]:
                 errors.append(f"manifest_unapproved_script_module:{module}")
             if not isinstance(version, str) or not re.fullmatch(r"\d+\.\d+\.\d+", version):
                 errors.append(f"manifest_unstable_script_module_version:{module}:{version}")
+            elif module in allowed_module_versions and version != allowed_module_versions[module]:
+                errors.append(f"manifest_unapproved_script_module_version:{module}:{version}!={allowed_module_versions[module]}")
 
     terrain = parsed.get(rp / "textures" / "terrain_texture.json", {}).get("texture_data", {})
     item_atlas = parsed.get(rp / "textures" / "item_texture.json", {}).get("texture_data", {})

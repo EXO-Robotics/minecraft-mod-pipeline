@@ -104,5 +104,9 @@
     ]
   },
   "minimum_engine_version": [1, 21, 80],
-  "allowed_script_modules": ["@minecraft/server"]
+  "allowed_script_modules": ["@minecraft/server", "@minecraft/server-ui"],
+  "allowed_script_module_versions": {
+    "@minecraft/server": "2.0.0",
+    "@minecraft/server-ui": "2.0.0"
+  }
 }

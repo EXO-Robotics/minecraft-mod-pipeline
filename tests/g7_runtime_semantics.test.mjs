@@ -7,12 +7,13 @@ import { tmpdir } from "node:os";
 
 const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), "..");
 const SOURCE_DIR = resolve(ROOT, "behavior_pack/scripts");
-const MODULE_NAMES = ["wave1_codex_data", "catalog", "budgets", "state", "router", "codex", "combat", "devices", "encounters", "chaos", "structures", "runtime", "main"];
+const MODULE_NAMES = ["wave1_codex_data", "wave1_codex_ui_data", "catalog", "budgets", "state", "router", "codex", "combat", "devices", "encounters", "chaos", "structures", "runtime", "main"];
 const MODULE_DIR = await mkdtemp(resolve(tmpdir(), "aionbound-g7-modules-"));
 for (const name of MODULE_NAMES) {
   const source = (await readFile(resolve(SOURCE_DIR, `${name}.js`), "utf8"))
     .replaceAll(/from "\.\/([a-z0-9_]+)\.js"/g, 'from "./$1.mjs"')
-    .replace('from "@minecraft/server"', 'from "./minecraft-server.mjs"');
+    .replace('from "@minecraft/server"', 'from "./minecraft-server.mjs"')
+    .replace('from "@minecraft/server-ui"', 'from "./minecraft-server-ui.mjs"');
   await writeFile(resolve(MODULE_DIR, `${name}.mjs`), source);
 }
 await writeFile(resolve(MODULE_DIR, "minecraft-server.mjs"), `
@@ -27,6 +28,9 @@ export const system={currentTick:0,queue:[],intervals:[],run(callback){this.queu
 export class ItemStack{constructor(typeId,amount){this.typeId=typeId;this.amount=amount;}}
 export const EquipmentSlot={Offhand:"Offhand",Head:"Head",Chest:"Chest",Legs:"Legs",Feet:"Feet"};
 export const EntityComponentTypes={Equippable:"minecraft:equippable"};
+`);
+await writeFile(resolve(MODULE_DIR, "minecraft-server-ui.mjs"), `
+export class ActionFormData{title(){return this;}body(){return this;}button(){return this;}show(){return Promise.resolve({canceled:true});}}
 `);
 const load = name => import(pathToFileURL(resolve(MODULE_DIR, `${name}.mjs`)).href);
 const { ACCESSORY_ROLES, ARMOR_SETS, BLOCK_ROUTES, CHAOS_OUTCOMES, CONSUMABLE_EFFECTS, MELEE_WEAPON_ROLES, NATURAL_ENTITY_IDS, RANGED_WEAPON_ROLES, STRUCTURE_REWARDS, STRUCTURE_SITES, TECH_LOOPS } = await load("catalog");
@@ -180,11 +184,14 @@ test("Pilgrim Clasp proactively refreshes bounded fall mitigation", () => {
   service.tickPlayers(); assert.deepEqual(effects, [["slow_falling", 60]]);
 });
 
-test("shipping scripts use stable server API only and one central arbiter", async () => {
-  const scripts = ["main.js", "runtime.js", "catalog.js", "wave1_codex_data.js", "budgets.js", "state.js", "router.js", "codex.js", "combat.js", "devices.js", "encounters.js", "chaos.js", "structures.js"];
+test("shipping scripts use approved stable APIs only and one central arbiter", async () => {
+  const scripts = ["main.js", "runtime.js", "catalog.js", "wave1_codex_data.js", "wave1_codex_ui_data.js", "budgets.js", "state.js", "router.js", "codex.js", "combat.js", "devices.js", "encounters.js", "chaos.js", "structures.js"];
   const source = (await Promise.all(scripts.map(name => readFile(resolve(ROOT, "behavior_pack/scripts", name), "utf8")))).join("\n");
-  for (const forbidden of ["@minecraft/server-ui", "@minecraft/server-net", "@minecraft/server-admin", "@minecraft/server-gametest", "process.", "require(", "fetch(", "node:"]) assert.equal(source.includes(forbidden), false, forbidden);
+  for (const forbidden of ["@minecraft/server-net", "@minecraft/server-admin", "@minecraft/server-gametest", "process.", "require(", "fetch(", "node:"]) assert.equal(source.includes(forbidden), false, forbidden);
   const runtime = await readFile(resolve(ROOT, "behavior_pack/scripts/runtime.js"), "utf8"), main = await readFile(resolve(ROOT, "behavior_pack/scripts/main.js"), "utf8");
+  const manifest = JSON.parse(await readFile(resolve(ROOT, "behavior_pack/manifest.json"), "utf8"));
+  assert.equal((runtime.match(/from "@minecraft\/server-ui"/g) ?? []).length, 1);
+  assert.equal(manifest.dependencies.some(dependency => dependency.module_name === "@minecraft/server-ui" && dependency.version === "2.0.0"), true);
   assert.equal((runtime.match(/new RuntimeArbiter\(/g) ?? []).length, 1);
   assert.equal((main.match(/runtime-ready-g7/g) ?? []).length, 1); assert.ok(main.indexOf("runtime-ready-g7") < main.indexOf("startRuntime()"));
   assert.equal(runtime.includes("useProgressBlock"), false); assert.equal(runtime.includes("platform.world.beforeEvents.playerInteractWithBlock.subscribe"), true);

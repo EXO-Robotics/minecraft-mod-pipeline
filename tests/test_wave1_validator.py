@@ -45,7 +45,8 @@ def fixture(root: Path) -> None:
             "features": [], "feature_rules": [],
         },
         "minimum_engine_version": [1, 21, 80],
-        "allowed_script_modules": ["@minecraft/server"],
+        "allowed_script_modules": ["@minecraft/server", "@minecraft/server-ui"],
+        "allowed_script_module_versions": {"@minecraft/server": "2.0.0", "@minecraft/server-ui": "2.0.0"},
     }
     write_json(root / VALIDATOR.AUTHORITY_REL, authority)
     bp_uuid, rp_uuid = "11111111-1111-1111-1111-111111111111", "22222222-2222-2222-2222-222222222222"
@@ -193,6 +194,27 @@ class Wave1ValidatorTests(unittest.TestCase):
         document["dependencies"][0]["version"] = [9, 9, 9]
         write_json(path, document)
         self.assertIn("manifest_missing_exact_rp_to_bp_dependency", self.findings())
+
+    def test_exact_stable_server_ui_dependency_and_import_are_allowed(self):
+        path = self.root / "behavior_pack/manifest.json"
+        document = json.loads(path.read_text())
+        document["dependencies"].append({"module_name": "@minecraft/server-ui", "version": "2.0.0"})
+        write_json(path, document)
+        (self.root / "behavior_pack/scripts/main.js").write_text(
+            'import { world } from "@minecraft/server";\nimport { ActionFormData } from "@minecraft/server-ui";\nvoid world; void ActionFormData;\n',
+            encoding="utf-8",
+        )
+        self.assertEqual(VALIDATOR.validate(self.root)["status"], "PASS")
+
+    def test_unapproved_server_ui_version_fails_closed(self):
+        path = self.root / "behavior_pack/manifest.json"
+        document = json.loads(path.read_text())
+        document["dependencies"].append({"module_name": "@minecraft/server-ui", "version": "2.1.0"})
+        write_json(path, document)
+        self.assertIn(
+            "manifest_unapproved_script_module_version:@minecraft/server-ui:2.1.0!=2.0.0",
+            self.findings(),
+        )
 
     def test_feature_references_must_resolve(self):
         write_json(self.root / "behavior_pack/features/bad.feature.json", {
