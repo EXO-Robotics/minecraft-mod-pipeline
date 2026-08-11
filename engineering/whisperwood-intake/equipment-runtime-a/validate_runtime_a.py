@@ -27,6 +27,13 @@ def check() -> dict:
     language = (ROOT / "resource_pack/texts/en_US.lang").read_text(encoding="utf-8").splitlines()
     authority = read_json(ROOT / "engineering/validation/wave1/WAVE_1_VALIDATION_AUTHORITY.json")
     required_items = set(authority["required_successor_ids"]["items"])
+    icon_receipt_path = ROOT / "assets/wave1/whisperwood/equipment-icons/WHISPERWOOD_EQUIPMENT_ICON_RECEIPT.json"
+    icon_receipt = read_json(icon_receipt_path)
+    receipt_icons = {icon["id"]: icon for icon in icon_receipt.get("icons", [])}
+    if icon_receipt.get("status") != "PASS_STATIC_PRESENTATION": errors.append("icon_receipt_status")
+    global_report_path = Path(__file__).with_name("GLOBAL_WAVE1_VALIDATION.json")
+    global_report = read_json(global_report_path)
+    if global_report.get("status") != "PASS": errors.append("global_validator_status")
 
     for asset_id, spec in SPECS.items():
         item_path = ROOT / f"behavior_pack/items/{asset_id}.item.json"
@@ -55,7 +62,14 @@ def check() -> dict:
 
         expected_icon = f"textures/aionbound/whisperwood/equipment/{asset_id}"
         if atlas.get(asset_id, {}).get("textures") != expected_icon: errors.append(f"atlas:{asset_id}")
-        if shipping_icon.exists(): errors.append(f"reserved_icon_path_modified:{asset_id}")
+        if not shipping_icon.is_file(): errors.append(f"shipping_icon_missing:{asset_id}")
+        receipt_icon = receipt_icons.get(asset_id)
+        if not receipt_icon: errors.append(f"icon_receipt_missing:{asset_id}")
+        elif shipping_icon.is_file():
+            if receipt_icon.get("shipping_path") != shipping_icon.relative_to(ROOT).as_posix(): errors.append(f"icon_receipt_path:{asset_id}")
+            if receipt_icon.get("shipping_sha256") != sha256(shipping_icon): errors.append(f"icon_receipt_hash:{asset_id}")
+            icon_width, icon_height = struct.unpack(">II", shipping_icon.read_bytes()[16:24])
+            if (icon_width, icon_height) != (32, 32) or receipt_icon.get("shipping_size") != [32, 32]: errors.append(f"icon_dimensions:{asset_id}")
 
         attachable = read_json(attachable_path)["minecraft:attachable"]["description"]
         if attachable["geometry"].get("default") != f"geometry.aionbound.{asset_id}": errors.append(f"attachable_geometry:{asset_id}")
@@ -83,8 +97,8 @@ def check() -> dict:
             "geometry_sha256": sha256(geometry_path),
             "animation_sha256": sha256(animation_path),
             "model_texture_sha256": sha256(texture_path),
-            "shipping_icon_dependency": f"resource_pack/textures/aionbound/whisperwood/equipment/{asset_id}.png",
-            "shipping_icon_status": "EXTERNAL_ICON_PASS_PENDING",
+            "shipping_icon_sha256": sha256(shipping_icon),
+            "shipping_icon_status": "PASS_STATIC_PRESENTATION",
         }
 
     recipes_and_loot = [*sorted((ROOT / "behavior_pack/recipes").rglob("*.json")), *sorted((ROOT / "behavior_pack/loot_tables").rglob("*.json"))]
@@ -98,21 +112,22 @@ def check() -> dict:
         raise AssertionError("\n".join(sorted(set(errors))))
     return {
         "schema_version": 1,
-        "status": "PASS_WITH_EXTERNAL_ICON_HANDOFF",
+        "status": "PASS",
         "scope": "eight Packet 006 Whisperwood equipment-A base assets",
         "assets": assets,
         "checks": [
             "exact_native_pass2_geometry_animation_and_32x32_texture_bytes",
             "item_attachable_geometry_animation_model_texture_closure",
             "exact_item_components_and_validator_authority",
-            "reserved_shipping_icon_atlas_contract",
+            "shipping_icon_atlas_and_receipt_hash_closure",
             "no_recipe_or_loot_binding",
         ],
-        "global_validator_before_icon_handoff": {
-            "status": "EXPECTED_FAIL",
-            "finding_class": "atlas_missing_texture",
-            "expected_count": 8,
-            "reason": "shipping icon bytes are owned by the separate icon pass",
+        "global_validator_after_icon_handoff": {
+            "status": "PASS_OBSERVED",
+            "report": global_report_path.relative_to(ROOT).as_posix(),
+            "report_sha256": sha256(global_report_path),
+            "pack_source_sha256": global_report.get("source_evidence", {}).get("pack_source_sha256"),
+            "findings": global_report.get("findings", []),
         },
         "withheld": [
             "extended_melee_reach",
