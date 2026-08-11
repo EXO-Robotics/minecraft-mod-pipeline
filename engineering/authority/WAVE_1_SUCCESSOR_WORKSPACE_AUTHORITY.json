@@ -1,0 +1,38 @@
+{
+  "schema_version": "aionbound.wave1.successor-workspace.v1.0.0",
+  "generation": "AIONBOUND_WAVE_1_INTEGRATION_G000008",
+  "integration_branch": "codex/aionbound-wave1-g8-integration",
+  "worktree": "/Users/blakegrove/Desktop/bedrock-server/program/aionbound-wave-1-engineering-runs/AIONBOUND_WAVE_1_INTEGRATION_G000008/repo",
+  "base": {
+    "commit": "042018eac3bd32b76d135219b9f59502dd4f4692",
+    "tree": "5542639f4c1a932ff1f354dee07dfe448b6491bd",
+    "classification": "IMMUTABLE_G7_ENGINEERING_SUBSTRATE"
+  },
+  "gate0": {
+    "classification": "G7_STABLE_BDS_SUBSTRATE_FAIL_CONTENT_SCHEMA",
+    "receipt": "/Users/blakegrove/Desktop/bedrock-server/program/aionbound-core-content-beta-qualification-runs/G000007-R1/output/GATE_0_G7_SUBSTRATE_QUALIFICATION.json",
+    "repair_policy": "SUCCESSOR_ONLY"
+  },
+  "focused_worktrees": [
+    {
+      "branch": "codex/wave1-g8-asset-normalization",
+      "path": "/Users/blakegrove/Desktop/bedrock-server/program/aionbound-wave-1-engineering-runs/AIONBOUND_WAVE_1_INTEGRATION_G000008/worktrees/asset-normalization",
+      "ownership": "engineering/normalization"
+    },
+    {
+      "branch": "codex/wave1-g8-runtime-substrate",
+      "path": "/Users/blakegrove/Desktop/bedrock-server/program/aionbound-wave-1-engineering-runs/AIONBOUND_WAVE_1_INTEGRATION_G000008/worktrees/runtime-substrate",
+      "ownership": "Gate 0 block/feature/recipe substrate repairs"
+    },
+    {
+      "branch": "codex/wave1-g8-test-evidence",
+      "path": "/Users/blakegrove/Desktop/bedrock-server/program/aionbound-wave-1-engineering-runs/AIONBOUND_WAVE_1_INTEGRATION_G000008/worktrees/test-evidence",
+      "ownership": "tests and engineering/test-evidence"
+    }
+  ],
+  "publication": {
+    "candidate_declaration_owner": "PRIMARY_INTEGRATION_OWNER_ONLY",
+    "subagent_candidate_declaration": false,
+    "subagent_publication": false
+  }
+}
