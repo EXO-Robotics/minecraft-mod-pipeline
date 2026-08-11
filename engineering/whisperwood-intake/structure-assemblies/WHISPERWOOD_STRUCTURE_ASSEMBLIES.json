@@ -1,0 +1,430 @@
+{
+  "schema": "aionbound.wave1.whisperwood.structure_assemblies.v1",
+  "authority": [
+    {
+      "path": "studio-prep/creative/05_structures/STRUCTURES_DESIGN.md",
+      "sha256": "9e62ae9ba6c1da33b64ff0bfa4ac4799b083c6de995585424864d5cf2b0cb076"
+    },
+    {
+      "path": "studio-prep/creative/06_world_gen/WORLD_GENERATION.md",
+      "sha256": "bc18a1e1f73d6045ab7e583afe910ca13d4776d439c8f3dfb45dae5784372f4b"
+    },
+    {
+      "path": "engineering/whisperwood-intake/structure-runtime/WHISPERWOOD_STRUCTURE_RUNTIME_MAP.json",
+      "sha256": "55a3996d5ae247d85a1543205e55a845ba910a971d485b8cd5bb13912aa85b13"
+    }
+  ],
+  "proof_boundary": "STATIC_AUTHORING_PASS_ONLY; NO_BDS, CLIENT, LOOT, RUNTIME_INTERACTION, TERRAIN_TOPOLOGY, OR CANDIDATE CLAIM",
+  "direct_prop_dependency": "lantern_post and moss_cairn omitted from all eight assemblies",
+  "loot_policy": "anchors are inert and empty; no loot tables, reward identities, percentages, or quantities are bound",
+  "placement_policy": "one attempt per selected chunk with forest-surface filters and conservative denominators; qualitative road/ravine/high-ground/face/deep-core affinity remains unproven",
+  "concurrency_policy": "templates contain no entities, processors, or scheduled runtime; registry density does not authorize loaded-area concurrency growth",
+  "assemblies": [
+    {
+      "id": "hunter_camp",
+      "size": [
+        13,
+        7,
+        11
+      ],
+      "volume": 1001,
+      "occupied_blocks": 136,
+      "palette": [
+        "aionbound:glow_moss",
+        "aionbound:stripped_whisperwood_log",
+        "aionbound:whisperwood_leaves",
+        "aionbound:whisperwood_planks",
+        "aionbound:whisperwood_roots",
+        "minecraft:barrel",
+        "minecraft:campfire",
+        "minecraft:lantern",
+        "minecraft:lectern",
+        "minecraft:oak_log"
+      ],
+      "rarity": "uncommon",
+      "scatter": {
+        "numerator": 1,
+        "denominator": 384
+      },
+      "expected_attempts_per_256_chunk_cell_before_filters": 0.666667,
+      "terrain_role": "local forest region cluster",
+      "placement_implementation": "overworld+forest surface proxy; exact terrain topology requires a later biome/terrain integration proof",
+      "silhouette": "low leaf-roof ranger shelter around a fire ring",
+      "anchors": [
+        {
+          "kind": "loot",
+          "coordinate": [
+            8,
+            2,
+            5
+          ],
+          "expected_block": "minecraft:barrel",
+          "purpose": "empty structure-loot handoff",
+          "binding": "RESERVED_INERT_NO_CONTENT_OR_RUNTIME_BINDING"
+        },
+        {
+          "kind": "journal",
+          "coordinate": [
+            4,
+            2,
+            5
+          ],
+          "expected_block": "minecraft:lectern",
+          "purpose": "future authored journal handoff",
+          "binding": "RESERVED_INERT_NO_CONTENT_OR_RUNTIME_BINDING"
+        }
+      ],
+      "structure_path": "behavior_pack/structures/aionbound/hunter_camp.mcstructure",
+      "feature_path": "behavior_pack/features/hunter_camp.structure_feature.json",
+      "feature_rule_path": "behavior_pack/feature_rules/hunter_camp.structure_feature_rule.json",
+      "sha256": "502cae7cfb783c9d4924f07c41017bd94406356d66b6733fa17e8723add877d7"
+    },
+    {
+      "id": "broken_wagon",
+      "size": [
+        11,
+        5,
+        7
+      ],
+      "volume": 385,
+      "occupied_blocks": 52,
+      "palette": [
+        "aionbound:briar_vine",
+        "aionbound:stripped_whisperwood_log",
+        "aionbound:whisper_fern",
+        "aionbound:whisperwood_planks",
+        "aionbound:whisperwood_roots",
+        "minecraft:barrel",
+        "minecraft:blackstone"
+      ],
+      "rarity": "uncommon",
+      "scatter": {
+        "numerator": 1,
+        "denominator": 512
+      },
+      "expected_attempts_per_256_chunk_cell_before_filters": 0.5,
+      "terrain_role": "forest road breadcrumb",
+      "placement_implementation": "overworld+forest surface proxy; exact terrain topology requires a later biome/terrain integration proof",
+      "silhouette": "tilted open wagon bed with four dark wheels and a snapped root-grown shaft",
+      "anchors": [
+        {
+          "kind": "loot",
+          "coordinate": [
+            8,
+            2,
+            3
+          ],
+          "expected_block": "minecraft:barrel",
+          "purpose": "empty structure-loot handoff",
+          "binding": "RESERVED_INERT_NO_CONTENT_OR_RUNTIME_BINDING"
+        }
+      ],
+      "structure_path": "behavior_pack/structures/aionbound/broken_wagon.mcstructure",
+      "feature_path": "behavior_pack/features/broken_wagon.structure_feature.json",
+      "feature_rule_path": "behavior_pack/feature_rules/broken_wagon.structure_feature_rule.json",
+      "sha256": "96a532127e460af3248a409b14dd02f18daa5d9805b21ba0d1ca8dd8e488bced"
+    },
+    {
+      "id": "root_bridge",
+      "size": [
+        17,
+        7,
+        7
+      ],
+      "volume": 833,
+      "occupied_blocks": 91,
+      "palette": [
+        "aionbound:briar_vine",
+        "aionbound:glow_moss",
+        "aionbound:whisperwood_log",
+        "aionbound:whisperwood_roots",
+        "aionbound:whisperwood_wood",
+        "minecraft:barrel"
+      ],
+      "rarity": "uncommon_ravine",
+      "scatter": {
+        "numerator": 1,
+        "denominator": 768
+      },
+      "expected_attempts_per_256_chunk_cell_before_filters": 0.333333,
+      "terrain_role": "ravine traversal landmark",
+      "placement_implementation": "overworld+forest surface proxy; exact terrain topology requires a later biome/terrain integration proof",
+      "silhouette": "two-block-wide arched living-root span with hanging briars and an under-span cache",
+      "anchors": [
+        {
+          "kind": "loot",
+          "coordinate": [
+            8,
+            1,
+            3
+          ],
+          "expected_block": "minecraft:barrel",
+          "purpose": "empty structure-loot handoff",
+          "binding": "RESERVED_INERT_NO_CONTENT_OR_RUNTIME_BINDING"
+        }
+      ],
+      "structure_path": "behavior_pack/structures/aionbound/root_bridge.mcstructure",
+      "feature_path": "behavior_pack/features/root_bridge.structure_feature.json",
+      "feature_rule_path": "behavior_pack/feature_rules/root_bridge.structure_feature_rule.json",
+      "sha256": "4617ad5739a037a45e3b3321bc28042d2d34f3892edaf8565bcdadfcce350615"
+    },
+    {
+      "id": "owl_shrine",
+      "size": [
+        11,
+        10,
+        11
+      ],
+      "volume": 1210,
+      "occupied_blocks": 306,
+      "palette": [
+        "aionbound:glow_moss",
+        "aionbound:lantern_bloom",
+        "aionbound:whisperwood_leaves",
+        "aionbound:whisperwood_log",
+        "minecraft:barrel",
+        "minecraft:chiseled_stone_bricks",
+        "minecraft:lodestone",
+        "minecraft:mossy_stone_bricks"
+      ],
+      "rarity": "rare",
+      "scatter": {
+        "numerator": 1,
+        "denominator": 1536
+      },
+      "expected_attempts_per_256_chunk_cell_before_filters": 0.166667,
+      "terrain_role": "high-ground forest clearing",
+      "placement_implementation": "overworld+forest surface proxy; exact terrain topology requires a later biome/terrain integration proof",
+      "silhouette": "stepped moss-stone dais beneath twin log ears and glowing owl eyes",
+      "anchors": [
+        {
+          "kind": "interaction",
+          "coordinate": [
+            5,
+            4,
+            5
+          ],
+          "expected_block": "minecraft:lodestone",
+          "purpose": "future authored interaction handoff",
+          "binding": "RESERVED_INERT_NO_CONTENT_OR_RUNTIME_BINDING"
+        },
+        {
+          "kind": "loot",
+          "coordinate": [
+            5,
+            3,
+            8
+          ],
+          "expected_block": "minecraft:barrel",
+          "purpose": "empty structure-loot handoff",
+          "binding": "RESERVED_INERT_NO_CONTENT_OR_RUNTIME_BINDING"
+        }
+      ],
+      "structure_path": "behavior_pack/structures/aionbound/owl_shrine.mcstructure",
+      "feature_path": "behavior_pack/features/owl_shrine.structure_feature.json",
+      "feature_rule_path": "behavior_pack/feature_rules/owl_shrine.structure_feature_rule.json",
+      "sha256": "7c11b47e9ee29e6ab86b083e4210da392d4c24849ab0c91041561f91b1761c04"
+    },
+    {
+      "id": "forest_waystone",
+      "size": [
+        9,
+        10,
+        9
+      ],
+      "volume": 810,
+      "occupied_blocks": 37,
+      "palette": [
+        "aionbound:glow_moss",
+        "aionbound:root_flower",
+        "aionbound:whisperwood_roots",
+        "minecraft:chiseled_stone_bricks",
+        "minecraft:lodestone",
+        "minecraft:mossy_stone_bricks"
+      ],
+      "rarity": "rare_expanse",
+      "scatter": {
+        "numerator": 1,
+        "denominator": 2048
+      },
+      "expected_attempts_per_256_chunk_cell_before_filters": 0.125,
+      "terrain_role": "major forest expanse",
+      "placement_implementation": "overworld+forest surface proxy; exact terrain topology requires a later biome/terrain integration proof",
+      "silhouette": "solitary circuit-carved waystone on an eight-point living-root compass",
+      "anchors": [
+        {
+          "kind": "activation",
+          "coordinate": [
+            4,
+            2,
+            4
+          ],
+          "expected_block": "minecraft:lodestone",
+          "purpose": "future network-stamp and multiplayer meeting handoff",
+          "binding": "RESERVED_INERT_NO_CONTENT_OR_RUNTIME_BINDING"
+        }
+      ],
+      "structure_path": "behavior_pack/structures/aionbound/forest_waystone.mcstructure",
+      "feature_path": "behavior_pack/features/forest_waystone.structure_feature.json",
+      "feature_rule_path": "behavior_pack/feature_rules/forest_waystone.structure_feature_rule.json",
+      "sha256": "8c9c925c1303c8ac9a5d6a1458e401b5620753723b48e74483a78ba5620bf206"
+    },
+    {
+      "id": "hollow_cave_entrance",
+      "size": [
+        13,
+        8,
+        11
+      ],
+      "volume": 1144,
+      "occupied_blocks": 393,
+      "palette": [
+        "aionbound:briar_vine",
+        "aionbound:glow_moss",
+        "aionbound:whisperwood_roots",
+        "minecraft:barrel",
+        "minecraft:lodestone",
+        "minecraft:mossy_cobblestone",
+        "minecraft:stone"
+      ],
+      "rarity": "uncommon_face",
+      "scatter": {
+        "numerator": 1,
+        "denominator": 512
+      },
+      "expected_attempts_per_256_chunk_cell_before_filters": 0.5,
+      "terrain_role": "cliff or giant-root face",
+      "placement_implementation": "overworld+forest surface proxy; exact terrain topology requires a later biome/terrain integration proof",
+      "silhouette": "root-ribbed stone mouth descending toward a glow-moss-marked dark pocket",
+      "anchors": [
+        {
+          "kind": "loot",
+          "coordinate": [
+            3,
+            2,
+            7
+          ],
+          "expected_block": "minecraft:barrel",
+          "purpose": "empty structure-loot handoff",
+          "binding": "RESERVED_INERT_NO_CONTENT_OR_RUNTIME_BINDING"
+        },
+        {
+          "kind": "encounter",
+          "coordinate": [
+            6,
+            1,
+            8
+          ],
+          "expected_block": "minecraft:lodestone",
+          "purpose": "future authored encounter handoff",
+          "binding": "RESERVED_INERT_NO_CONTENT_OR_RUNTIME_BINDING"
+        }
+      ],
+      "structure_path": "behavior_pack/structures/aionbound/hollow_cave_entrance.mcstructure",
+      "feature_path": "behavior_pack/features/hollow_cave_entrance.structure_feature.json",
+      "feature_rule_path": "behavior_pack/feature_rules/hollow_cave_entrance.structure_feature_rule.json",
+      "sha256": "54f3d1ed78a18a71cd4b17baeab74b6c1871f5fae37089293f8dd1bc0f4754f4"
+    },
+    {
+      "id": "ancient_totem",
+      "size": [
+        9,
+        13,
+        9
+      ],
+      "volume": 1053,
+      "occupied_blocks": 145,
+      "palette": [
+        "aionbound:glow_moss",
+        "aionbound:hollow_wood",
+        "aionbound:root_flower",
+        "aionbound:whisperwood_roots",
+        "minecraft:barrel",
+        "minecraft:chiseled_stone_bricks",
+        "minecraft:lodestone"
+      ],
+      "rarity": "rare_deep",
+      "scatter": {
+        "numerator": 1,
+        "denominator": 2048
+      },
+      "expected_attempts_per_256_chunk_cell_before_filters": 0.125,
+      "terrain_role": "deep Whisperwood core",
+      "placement_implementation": "overworld+forest surface proxy; exact terrain topology requires a later biome/terrain integration proof",
+      "silhouette": "tall split-root idol with amber-like moss eyes and asymmetric binding arms",
+      "anchors": [
+        {
+          "kind": "interaction",
+          "coordinate": [
+            4,
+            1,
+            4
+          ],
+          "expected_block": "minecraft:lodestone",
+          "purpose": "future authored interaction handoff",
+          "binding": "RESERVED_INERT_NO_CONTENT_OR_RUNTIME_BINDING"
+        },
+        {
+          "kind": "loot",
+          "coordinate": [
+            2,
+            1,
+            6
+          ],
+          "expected_block": "minecraft:barrel",
+          "purpose": "empty structure-loot handoff",
+          "binding": "RESERVED_INERT_NO_CONTENT_OR_RUNTIME_BINDING"
+        }
+      ],
+      "structure_path": "behavior_pack/structures/aionbound/ancient_totem.mcstructure",
+      "feature_path": "behavior_pack/features/ancient_totem.structure_feature.json",
+      "feature_rule_path": "behavior_pack/feature_rules/ancient_totem.structure_feature_rule.json",
+      "sha256": "c2e95e591c78bfa56a20638e1af709a42aa925dccaa9ad867c84ee46f487f22c"
+    },
+    {
+      "id": "fallen_giant_tree",
+      "size": [
+        21,
+        8,
+        11
+      ],
+      "volume": 1848,
+      "occupied_blocks": 223,
+      "palette": [
+        "aionbound:glow_moss",
+        "aionbound:hollow_wood",
+        "aionbound:mooncap_mushroom",
+        "aionbound:whisperwood_leaves",
+        "aionbound:whisperwood_log",
+        "aionbound:whisperwood_roots",
+        "minecraft:barrel"
+      ],
+      "rarity": "very_rare_wonder",
+      "scatter": {
+        "numerator": 1,
+        "denominator": 4096
+      },
+      "expected_attempts_per_256_chunk_cell_before_filters": 0.0625,
+      "terrain_role": "rare forest wonder event",
+      "placement_implementation": "overworld+forest surface proxy; exact terrain topology requires a later biome/terrain integration proof",
+      "silhouette": "twenty-block fallen hollow trunk with exposed root fan and surviving crown",
+      "anchors": [
+        {
+          "kind": "loot",
+          "coordinate": [
+            12,
+            3,
+            5
+          ],
+          "expected_block": "minecraft:barrel",
+          "purpose": "empty structure-loot handoff",
+          "binding": "RESERVED_INERT_NO_CONTENT_OR_RUNTIME_BINDING"
+        }
+      ],
+      "structure_path": "behavior_pack/structures/aionbound/fallen_giant_tree.mcstructure",
+      "feature_path": "behavior_pack/features/fallen_giant_tree.structure_feature.json",
+      "feature_rule_path": "behavior_pack/feature_rules/fallen_giant_tree.structure_feature_rule.json",
+      "sha256": "7a42a59c5141a841594fbc064d685989752e6f149f1bfee530187b93caeac1ec"
+    }
+  ]
+}

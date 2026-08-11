@@ -1,0 +1,150 @@
+{
+  "schema": "aionbound.wave1.whisperwood.structure_validation.v1",
+  "status": "PASS",
+  "checks": [
+    "committed-output deterministic regeneration",
+    "little-endian NBT full decode without trailing bytes",
+    "palette and primary/secondary index closure",
+    "structure dimensions and occupied-coordinate bounds",
+    "inert anchor coordinate and expected-block closure",
+    "custom block identifier closure",
+    "feature, feature-rule, structure-name, and filename closure",
+    "one-iteration conservative scatter policy",
+    "direct custom prop omission",
+    "unratified loot and reward binding omission"
+  ],
+  "commands": [
+    "python3 engineering/whisperwood-intake/structure-assemblies/author_whisperwood_structures.py --check",
+    "python3 -m unittest engineering/whisperwood-intake/structure-assemblies/test_whisperwood_structure_assemblies.py -v"
+  ],
+  "counts": {
+    "assemblies": 8,
+    "structure_files": 8,
+    "features": 8,
+    "feature_rules": 8,
+    "unit_tests": 7
+  },
+  "outputs": [
+    {
+      "path": "behavior_pack/structures/aionbound/ancient_totem.mcstructure",
+      "bytes": 9033,
+      "sha256": "c2e95e591c78bfa56a20638e1af709a42aa925dccaa9ad867c84ee46f487f22c"
+    },
+    {
+      "path": "behavior_pack/structures/aionbound/broken_wagon.mcstructure",
+      "bytes": 3702,
+      "sha256": "96a532127e460af3248a409b14dd02f18daa5d9805b21ba0d1ca8dd8e488bced"
+    },
+    {
+      "path": "behavior_pack/structures/aionbound/fallen_giant_tree.mcstructure",
+      "bytes": 15401,
+      "sha256": "7a42a59c5141a841594fbc064d685989752e6f149f1bfee530187b93caeac1ec"
+    },
+    {
+      "path": "behavior_pack/structures/aionbound/forest_waystone.mcstructure",
+      "bytes": 7046,
+      "sha256": "8c9c925c1303c8ac9a5d6a1458e401b5620753723b48e74483a78ba5620bf206"
+    },
+    {
+      "path": "behavior_pack/structures/aionbound/hollow_cave_entrance.mcstructure",
+      "bytes": 9750,
+      "sha256": "54f3d1ed78a18a71cd4b17baeab74b6c1871f5fae37089293f8dd1bc0f4754f4"
+    },
+    {
+      "path": "behavior_pack/structures/aionbound/hunter_camp.mcstructure",
+      "bytes": 8786,
+      "sha256": "502cae7cfb783c9d4924f07c41017bd94406356d66b6733fa17e8723add877d7"
+    },
+    {
+      "path": "behavior_pack/structures/aionbound/owl_shrine.mcstructure",
+      "bytes": 10358,
+      "sha256": "7c11b47e9ee29e6ab86b083e4210da392d4c24849ab0c91041561f91b1761c04"
+    },
+    {
+      "path": "behavior_pack/structures/aionbound/root_bridge.mcstructure",
+      "bytes": 7218,
+      "sha256": "4617ad5739a037a45e3b3321bc28042d2d34f3892edaf8565bcdadfcce350615"
+    },
+    {
+      "path": "behavior_pack/features/ancient_totem.structure_feature.json",
+      "bytes": 690,
+      "sha256": "4e9ac05ef5641fe0b0f12202c88fa854a68a8d20a305f70527e71291921a80e2"
+    },
+    {
+      "path": "behavior_pack/features/broken_wagon.structure_feature.json",
+      "bytes": 688,
+      "sha256": "d468392c387d3195cf1025a013496c3dcf6da330de064c78f85604ce0a91e248"
+    },
+    {
+      "path": "behavior_pack/features/fallen_giant_tree.structure_feature.json",
+      "bytes": 698,
+      "sha256": "ad1cfa4ed5142040055196d5503d7909e327ae2cfda57f4286565fa61ef42468"
+    },
+    {
+      "path": "behavior_pack/features/forest_waystone.structure_feature.json",
+      "bytes": 694,
+      "sha256": "2bc4f1eefeedeac22133e0465aed1c7035f8c464da4360089e05d4ba6e936d26"
+    },
+    {
+      "path": "behavior_pack/features/hollow_cave_entrance.structure_feature.json",
+      "bytes": 704,
+      "sha256": "0ab50726d0c6555fb674d7678acefc9c6e1916c0fd923203495f1407d8acdb32"
+    },
+    {
+      "path": "behavior_pack/features/hunter_camp.structure_feature.json",
+      "bytes": 686,
+      "sha256": "5a677dcbb31a46645f943b8fe9de0452c2c7d956250b555eb35359cceee12d01"
+    },
+    {
+      "path": "behavior_pack/features/owl_shrine.structure_feature.json",
+      "bytes": 684,
+      "sha256": "28fe0d352c3d64a412092266061bb28140171e5cd2de3bb94368daa2310c6280"
+    },
+    {
+      "path": "behavior_pack/features/root_bridge.structure_feature.json",
+      "bytes": 686,
+      "sha256": "f35e1718b8e9636c394f1d857dc536dc5000a19eebac9dae50d7f61d09a858bb"
+    },
+    {
+      "path": "behavior_pack/feature_rules/ancient_totem.structure_feature_rule.json",
+      "bytes": 1150,
+      "sha256": "38132940c9b96abde5e562df7a9875dbe31fd18838e920aa91cefa7690efb56a"
+    },
+    {
+      "path": "behavior_pack/feature_rules/broken_wagon.structure_feature_rule.json",
+      "bytes": 1147,
+      "sha256": "7f3e90e54db03915a8cfab92f3556d1b4a8bfb745a07574dbb4c23d6e9901100"
+    },
+    {
+      "path": "behavior_pack/feature_rules/fallen_giant_tree.structure_feature_rule.json",
+      "bytes": 1158,
+      "sha256": "db5c7281359bf776af0d5cba5ebf45d442c6ae4c18788e499b92deda931b126b"
+    },
+    {
+      "path": "behavior_pack/feature_rules/forest_waystone.structure_feature_rule.json",
+      "bytes": 1154,
+      "sha256": "bfd62c63c3111d9d4fdb03a27b454ec622404a2b7b864f7c7164617a191e09d8"
+    },
+    {
+      "path": "behavior_pack/feature_rules/hollow_cave_entrance.structure_feature_rule.json",
+      "bytes": 1163,
+      "sha256": "a4f51726eac36bed2bf7d22d6144cc0bacacda8c7aca46cd0306fa4478b83935"
+    },
+    {
+      "path": "behavior_pack/feature_rules/hunter_camp.structure_feature_rule.json",
+      "bytes": 1145,
+      "sha256": "764e50755133f1b85e4ca5f48850916a7e48704b101f4b019399ec200f0c662c"
+    },
+    {
+      "path": "behavior_pack/feature_rules/owl_shrine.structure_feature_rule.json",
+      "bytes": 1144,
+      "sha256": "6b4ccd34df19f0b0badda572389fd2387730e0eeb2d1a8596879df1bc6864023"
+    },
+    {
+      "path": "behavior_pack/feature_rules/root_bridge.structure_feature_rule.json",
+      "bytes": 1145,
+      "sha256": "f46922f01e82ebc0fde53004f3649ce28467569f6924b79295829bd24a5f0683"
+    }
+  ],
+  "proof_boundary": "STATIC_SOURCE_AND_AUTHORED_BYTES_ONLY; NOT BDS, CLIENT, TERRAIN-AFFINITY, LOOT, RUNTIME, OR CANDIDATE PROOF"
+}
