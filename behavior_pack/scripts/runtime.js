@@ -62,7 +62,10 @@ export function createRuntime(platform = { world, system, ItemStack, EquipmentSl
     consumable: ({ player, itemStack }) => combat.useConsumable(player, itemStack.typeId),
     accessory_pulse: ({ player, itemStack }) => combat.accessoryPulse(player, itemStack.typeId),
   };
-  const router = createInteractionRouter({ discover: state.stamp, blockActions, itemActions });
+  const entityActions = {
+    waykeeper_notice: ({ player }) => state.warn(player, "Use ordinary interact to mount; movement input directly controls your courser."),
+  };
+  const router = createInteractionRouter({ discover: state.stamp, codexDiscover: codex.discover, blockActions, itemActions, entityActions });
 
   function callback(run) {
     arbiter.beginTick(platform.system.currentTick);
@@ -88,12 +91,14 @@ export function createRuntime(platform = { world, system, ItemStack, EquipmentSl
       const context = { player: event.player, block: event.block, itemType: event.itemStack?.typeId };
       if (!arbiter.defer(platform.system, () => router.dispatchBlock(context))) state.warn(event.player, "Interaction scheduler capacity is full.");
     }));
-    platform.world.afterEvents.playerInteractWithEntity.subscribe(event => callback(() => {
-      if (event.target.typeId === "aionbound:waykeeper_courser") state.warn(event.player, "Use ordinary interact to mount; movement input directly controls your courser.");
-    }));
+    platform.world.afterEvents.playerInteractWithEntity.subscribe(event => callback(() => router.dispatchEntityInteraction({ player: event.player, target: event.target, itemStack: event.itemStack })));
     platform.world.afterEvents.entityHitEntity.subscribe(event => callback(() => combat.mountStep(event)));
     platform.world.afterEvents.entityHurt.subscribe(event => callback(() => { combat.routeMeleeHurt(event); combat.handlePlayerHurt(event); }));
-    platform.world.afterEvents.entityDie.subscribe(event => callback(() => { if (!encounters.bossDeath(event)) combat.glasswingDeath(event); }));
+    platform.world.afterEvents.entityDie.subscribe(event => callback(() => {
+      router.dispatchEntityDeathEvent(event);
+      encounters.bossDeath(event);
+      combat.glasswingDeath(event);
+    }));
     platform.system.runInterval(tick, 1);
   }
   return { start, reconcile, tick, state, arbiter, router, codex, combat, devices, encounters, chaos, structures, budgets: COMBINED_BUDGETS };

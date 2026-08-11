@@ -17,6 +17,21 @@ export const CODEX_ENTRY_REGISTRY = WHISPERWOOD_CODEX_ENTRIES;
 export const CODEX_EVENT_INDEX = WAVE1_CODEX_EVENT_INDEX;
 export const CODEX_REGISTRY_VERSION = WAVE1_CODEX_REGISTRY_VERSION;
 
+const codexRoutes = (entries, accepts) => Object.freeze(Object.fromEntries(entries.flatMap(entry => {
+  const events = entry.events.filter(accepts).map(event => event.id);
+  return events.length ? [[entry.runtimeId, Object.freeze(events)]] : [];
+})));
+
+// These routes translate live event surfaces to the exact canonical keys in
+// the frozen implementation map. They carry no guidance or reward content.
+export const CODEX_BLOCK_INTERACTION_ROUTES = codexRoutes(CODEX_ENTRY_REGISTRY.filter(entry => entry.kind === "block" || entry.kind === "plant"), event => event.event === "harvested" || event.event === "crafted");
+export const CODEX_ENTITY_INTERACTION_ROUTES = codexRoutes(CODEX_ENTRY_REGISTRY.filter(entry => entry.kind === "creature"), event => event.event === "observe_nearby");
+export const CODEX_ENTITY_DEATH_ROUTES = codexRoutes(CODEX_ENTRY_REGISTRY.filter(entry => entry.kind === "creature"), event => event.event === "defeat");
+
+export const ENTITY_INTERACTION_ACTIONS = Object.freeze({
+  "aionbound:waykeeper_courser": Object.freeze(["waykeeper_notice"]),
+});
+
 export const PILGRIMAGE = Object.freeze({
   "aionbound:gloam_moss_block": "pilgrimage:gloam",
   "aionbound:brinewood_planks": "pilgrimage:brine",
@@ -212,3 +227,7 @@ export const CHAOS_OUTCOMES = Object.freeze([
 export function routeForBlock(typeId) { return BLOCK_ROUTES[typeId] ?? null; }
 export function routeForItem(typeId) { return ITEM_ROUTES[typeId] ?? null; }
 export function routeForCompletedItem(typeId) { return COMPLETED_ITEM_ROUTES[typeId] ?? null; }
+export function codexRouteForBlockInteraction(typeId) { return CODEX_BLOCK_INTERACTION_ROUTES[typeId] ?? null; }
+export function codexRouteForEntityInteraction(typeId) { return CODEX_ENTITY_INTERACTION_ROUTES[typeId] ?? null; }
+export function codexRouteForEntityDeath(typeId) { return CODEX_ENTITY_DEATH_ROUTES[typeId] ?? null; }
+export function actionsForEntityInteraction(typeId) { return ENTITY_INTERACTION_ACTIONS[typeId] ?? null; }

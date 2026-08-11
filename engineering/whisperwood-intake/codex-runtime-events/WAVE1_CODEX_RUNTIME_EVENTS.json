@@ -1,0 +1,48 @@
+{
+  "schema": "aionbound.wave1.codex-runtime-events-receipt.v1.0.0",
+  "status": "TARGETED_LOCAL_SEMANTIC_PASS",
+  "base_commit": "df13d014447dbf3586eab0f373d3a1172e55edb1",
+  "authority": {
+    "path": "engineering/whisperwood-intake/codex/WHISPERWOOD_CODEX_IMPLEMENTATION_MAP.json",
+    "sha256": "d9c1f4c5ad4fbc66afa284da4d2bcc03424b22d6f43c49c5ec76d99198cbc9bf"
+  },
+  "routes": {
+    "integrated_block_and_plant_interactions": 20,
+    "creature_observations": 6,
+    "player_caused_creature_completions": 7,
+    "unknown_or_unauthorized": "no_op"
+  },
+  "composition": {
+    "block_order": ["legacy discoveries", "Codex discoveries", "actions"],
+    "entity_interaction": ["Codex observations", "existing entity actions"],
+    "death_order": ["Codex completion", "boss death", "Glasswing death"],
+    "early_return_between_handlers": false,
+    "waykeeper_notice_preserved": true
+  },
+  "tests": [
+    {
+      "command": "node --test tests/wave1_codex_runtime_events.test.mjs tests/wave1_codex_v4.test.mjs tests/g7_runtime_semantics.test.mjs",
+      "passed": 29,
+      "failed": 0
+    },
+    {
+      "command": "python3 -m unittest engineering/whisperwood-intake/codex/test_whisperwood_codex_map.py -v",
+      "passed": 6,
+      "failed": 0
+    }
+  ],
+  "not_proven": [
+    "Bedrock event delivery",
+    "block-break or recipe telemetry",
+    "natural encounter discoverability",
+    "Codex UI",
+    "loot",
+    "BP or RP packaging",
+    "deterministic build",
+    "Stable BDS",
+    "Bedrock client behavior",
+    "multiplayer",
+    "console",
+    "candidate readiness"
+  ]
+}
