@@ -1,0 +1,588 @@
+{
+  "schema": "aionbound.wave1.crystal_marsh.structure_assemblies.v1",
+  "integration_authority": {
+    "commit": "583279583cc27422c3d2ac6db52ad8a5310ec7dc",
+    "tree": "45e23d9303fae9a0b07ca23ee9bedea9bdb5b5bc"
+  },
+  "authority": [
+    {
+      "path": "engineering/crystal-marsh-intake/authority/CRYSTAL_MARSH_VERTICAL_INTAKE_MAP.json",
+      "sha256": "922b40aaefff220d4bd9b60fa0596b09a76fb6cf7dd181dac42e1dda856417f3"
+    },
+    {
+      "path": "engineering/crystal-marsh-intake/block-runtime/CRYSTAL_BLOCK_RUNTIME_AUTHORITY.json",
+      "sha256": "4712897c58ac7d4a3cf70d04ef3705ca91e8f7a6fc73932fcdc9cf1fcc4ff"
+    }
+  ],
+  "proof_boundary": "STATIC_SOURCE_AND_AUTHORED_BYTES_ONLY; NO_MCSTRUCTURE_CLIENT_LOAD, BDS, TERRAIN_AFFINITY, LOOT, ENCOUNTER, OR CANDIDATE CLAIM",
+  "visual_asset_boundary": "Packet landmark and native Blockbench models are visual evidence only and are not serialized into or proof of these block-built assembly bytes",
+  "anchor_policy": "ordinary barrel, lodestone, and lectern coordinates are machine-recorded inert handoff anchors with empty block_position_data; W1-004-CM and W1-003 remain required before any loot, reward, or encounter binding",
+  "placement_policy": "one conservative attempt per selected chunk with overworld non-ocean swamp-or-river surface proxies; denominators are Crystal-specific and not copied from Whisperwood or Ashen",
+  "content_omissions": [
+    "loot-table NBT",
+    "reward identifiers",
+    "boss activation",
+    "entities",
+    "scripts",
+    "seal semantics",
+    "recovery semantics"
+  ],
+  "assemblies": [
+    {
+      "id": "flooded_dock",
+      "size": [
+        17,
+        6,
+        13
+      ],
+      "volume": 1326,
+      "occupied_blocks": 241,
+      "palette": [
+        "aionbound:flood_planks",
+        "aionbound:marsh_soil",
+        "aionbound:marsh_wood",
+        "minecraft:barrel",
+        "minecraft:lectern"
+      ],
+      "rarity": "uncommon_shore",
+      "scatter": {
+        "numerator": 1,
+        "denominator": 704
+      },
+      "expected_attempts_per_256_chunk_cell_before_filters": 0.363636,
+      "terrain_role": "swamp or river shore discovery proxy",
+      "placement_implementation": "overworld non-ocean swamp-or-river surface proxy; actual shore, water-depth, and regional topology remain unproven",
+      "silhouette": "broad low landing with a long split-water pier",
+      "anchors": [
+        {
+          "anchor_id": "flooded_dock_cache",
+          "kind": "cache",
+          "coordinate": [
+            12,
+            2,
+            3
+          ],
+          "expected_block": "minecraft:barrel",
+          "purpose": "future dock cache",
+          "binding": "RESERVED_INERT_RUNTIME_HANDOFF",
+          "block_entity_nbt": "OMITTED"
+        },
+        {
+          "anchor_id": "flooded_dock_record",
+          "kind": "journal",
+          "coordinate": [
+            4,
+            2,
+            4
+          ],
+          "expected_block": "minecraft:lectern",
+          "purpose": "future dock record",
+          "binding": "RESERVED_INERT_RUNTIME_HANDOFF",
+          "block_entity_nbt": "OMITTED"
+        }
+      ],
+      "structure_path": "behavior_pack/structures/aionbound/flooded_dock.mcstructure",
+      "feature_path": "behavior_pack/features/flooded_dock.structure_feature.json",
+      "feature_rule_path": "behavior_pack/feature_rules/flooded_dock.structure_feature_rule.json",
+      "structure_sha256": "a3738e798e182334b73f1dbd719d7322a64c536a8779190d8067f6a6ea6de5d2",
+      "block_position_data": "EMPTY_NO_BLOCK_ENTITY_NBT"
+    },
+    {
+      "id": "ancient_boat",
+      "size": [
+        19,
+        8,
+        9
+      ],
+      "volume": 1368,
+      "occupied_blocks": 114,
+      "palette": [
+        "aionbound:crystal_log",
+        "aionbound:flood_planks",
+        "aionbound:marsh_wood",
+        "minecraft:barrel"
+      ],
+      "rarity": "rare_stranded",
+      "scatter": {
+        "numerator": 1,
+        "denominator": 1216
+      },
+      "expected_attempts_per_256_chunk_cell_before_filters": 0.210526,
+      "terrain_role": "stranded wetland shelf proxy",
+      "placement_implementation": "overworld non-ocean swamp-or-river surface proxy; actual shore, water-depth, and regional topology remain unproven",
+      "silhouette": "long shallow floodwood hull with a broken crystal mast",
+      "anchors": [
+        {
+          "anchor_id": "ancient_boat_locker",
+          "kind": "cache",
+          "coordinate": [
+            14,
+            2,
+            4
+          ],
+          "expected_block": "minecraft:barrel",
+          "purpose": "future boat locker",
+          "binding": "RESERVED_INERT_RUNTIME_HANDOFF",
+          "block_entity_nbt": "OMITTED"
+        }
+      ],
+      "structure_path": "behavior_pack/structures/aionbound/ancient_boat.mcstructure",
+      "feature_path": "behavior_pack/features/ancient_boat.structure_feature.json",
+      "feature_rule_path": "behavior_pack/feature_rules/ancient_boat.structure_feature_rule.json",
+      "structure_sha256": "e17035dfd6169968706d4f8e5aa7238b53dcb917cf05129a10ea420cfa1941a0",
+      "block_position_data": "EMPTY_NO_BLOCK_ENTITY_NBT"
+    },
+    {
+      "id": "marsh_broken_bridge",
+      "size": [
+        21,
+        7,
+        7
+      ],
+      "volume": 1029,
+      "occupied_blocks": 93,
+      "palette": [
+        "aionbound:crystal_log",
+        "aionbound:flood_planks",
+        "aionbound:marsh_wood",
+        "minecraft:barrel",
+        "minecraft:lodestone"
+      ],
+      "rarity": "channel_crossing",
+      "scatter": {
+        "numerator": 1,
+        "denominator": 1472
+      },
+      "expected_attempts_per_256_chunk_cell_before_filters": 0.173913,
+      "terrain_role": "river and swamp channel proxy",
+      "placement_implementation": "overworld non-ocean swamp-or-river surface proxy; actual shore, water-depth, and regional topology remain unproven",
+      "silhouette": "two low floodwood spans divided by a sunken crystal-log fracture",
+      "anchors": [
+        {
+          "anchor_id": "marsh_bridge_route",
+          "kind": "interaction",
+          "coordinate": [
+            5,
+            2,
+            3
+          ],
+          "expected_block": "minecraft:lodestone",
+          "purpose": "future route stamp",
+          "binding": "RESERVED_INERT_RUNTIME_HANDOFF",
+          "block_entity_nbt": "OMITTED"
+        },
+        {
+          "anchor_id": "marsh_bridge_cache",
+          "kind": "cache",
+          "coordinate": [
+            16,
+            3,
+            3
+          ],
+          "expected_block": "minecraft:barrel",
+          "purpose": "future underwater cache",
+          "binding": "RESERVED_INERT_RUNTIME_HANDOFF",
+          "block_entity_nbt": "OMITTED"
+        }
+      ],
+      "structure_path": "behavior_pack/structures/aionbound/marsh_broken_bridge.mcstructure",
+      "feature_path": "behavior_pack/features/marsh_broken_bridge.structure_feature.json",
+      "feature_rule_path": "behavior_pack/feature_rules/marsh_broken_bridge.structure_feature_rule.json",
+      "structure_sha256": "c6f80ac5c7fc712e5e22952d042dce5fbc2b5ac1110401e4a4fe5ec657ca7199",
+      "block_position_data": "EMPTY_NO_BLOCK_ENTITY_NBT"
+    },
+    {
+      "id": "pearl_cairn",
+      "size": [
+        9,
+        8,
+        9
+      ],
+      "volume": 648,
+      "occupied_blocks": 119,
+      "palette": [
+        "aionbound:crystal_gravel",
+        "aionbound:crystal_stone",
+        "aionbound:prism_brick",
+        "minecraft:barrel"
+      ],
+      "rarity": "uncommon_islet",
+      "scatter": {
+        "numerator": 1,
+        "denominator": 832
+      },
+      "expected_attempts_per_256_chunk_cell_before_filters": 0.307692,
+      "terrain_role": "small wetland islet proxy",
+      "placement_implementation": "overworld non-ocean swamp-or-river surface proxy; actual shore, water-depth, and regional topology remain unproven",
+      "silhouette": "stepped gravel cairn capped by a single prism marker",
+      "anchors": [
+        {
+          "anchor_id": "pearl_cairn_cache",
+          "kind": "cache",
+          "coordinate": [
+            4,
+            1,
+            7
+          ],
+          "expected_block": "minecraft:barrel",
+          "purpose": "future pearl curiosity cache",
+          "binding": "RESERVED_INERT_RUNTIME_HANDOFF",
+          "block_entity_nbt": "OMITTED"
+        }
+      ],
+      "structure_path": "behavior_pack/structures/aionbound/pearl_cairn.mcstructure",
+      "feature_path": "behavior_pack/features/pearl_cairn.structure_feature.json",
+      "feature_rule_path": "behavior_pack/feature_rules/pearl_cairn.structure_feature_rule.json",
+      "structure_sha256": "5e1dc597d338492177791dfb2d2877762672e9a06d38bc89a988d3bff39db569",
+      "block_position_data": "EMPTY_NO_BLOCK_ENTITY_NBT"
+    },
+    {
+      "id": "marsh_totem",
+      "size": [
+        11,
+        13,
+        9
+      ],
+      "volume": 1287,
+      "occupied_blocks": 92,
+      "palette": [
+        "aionbound:glass_root_block",
+        "aionbound:marsh_soil",
+        "aionbound:marsh_wood",
+        "aionbound:prism_brick",
+        "minecraft:lectern",
+        "minecraft:lodestone"
+      ],
+      "rarity": "uncommon_ritual",
+      "scatter": {
+        "numerator": 1,
+        "denominator": 1088
+      },
+      "expected_attempts_per_256_chunk_cell_before_filters": 0.235294,
+      "terrain_role": "open swamp islet proxy",
+      "placement_implementation": "overworld non-ocean swamp-or-river surface proxy; actual shore, water-depth, and regional topology remain unproven",
+      "silhouette": "forked rootwood idol with paired prism eyes",
+      "anchors": [
+        {
+          "anchor_id": "marsh_totem_altar",
+          "kind": "interaction",
+          "coordinate": [
+            5,
+            1,
+            7
+          ],
+          "expected_block": "minecraft:lodestone",
+          "purpose": "future idol path",
+          "binding": "RESERVED_INERT_RUNTIME_HANDOFF",
+          "block_entity_nbt": "OMITTED"
+        },
+        {
+          "anchor_id": "marsh_totem_record",
+          "kind": "journal",
+          "coordinate": [
+            2,
+            1,
+            6
+          ],
+          "expected_block": "minecraft:lectern",
+          "purpose": "future marsh record",
+          "binding": "RESERVED_INERT_RUNTIME_HANDOFF",
+          "block_entity_nbt": "OMITTED"
+        }
+      ],
+      "structure_path": "behavior_pack/structures/aionbound/marsh_totem.mcstructure",
+      "feature_path": "behavior_pack/features/marsh_totem.structure_feature.json",
+      "feature_rule_path": "behavior_pack/feature_rules/marsh_totem.structure_feature_rule.json",
+      "structure_sha256": "59af7eb3dfe1bfff6e425be4ba0095909da781e1a2fbf42748ce17aa81101407",
+      "block_position_data": "EMPTY_NO_BLOCK_ENTITY_NBT"
+    },
+    {
+      "id": "crystal_arch",
+      "size": [
+        15,
+        15,
+        7
+      ],
+      "volume": 1575,
+      "occupied_blocks": 187,
+      "palette": [
+        "aionbound:crystal_gravel",
+        "aionbound:crystal_stone",
+        "aionbound:glass_root_block",
+        "aionbound:prism_brick",
+        "aionbound:prismglass_signal",
+        "minecraft:barrel"
+      ],
+      "rarity": "rare_landmark",
+      "scatter": {
+        "numerator": 1,
+        "denominator": 2432
+      },
+      "expected_attempts_per_256_chunk_cell_before_filters": 0.105263,
+      "terrain_role": "open wetland sightline proxy",
+      "placement_implementation": "overworld non-ocean swamp-or-river surface proxy; actual shore, water-depth, and regional topology remain unproven",
+      "silhouette": "twin crystal piers under a rootglass and signal crown",
+      "anchors": [
+        {
+          "anchor_id": "crystal_arch_cache",
+          "kind": "cache",
+          "coordinate": [
+            7,
+            1,
+            5
+          ],
+          "expected_block": "minecraft:barrel",
+          "purpose": "future flood-crystal cache",
+          "binding": "RESERVED_INERT_RUNTIME_HANDOFF",
+          "block_entity_nbt": "OMITTED"
+        }
+      ],
+      "structure_path": "behavior_pack/structures/aionbound/crystal_arch.mcstructure",
+      "feature_path": "behavior_pack/features/crystal_arch.structure_feature.json",
+      "feature_rule_path": "behavior_pack/feature_rules/crystal_arch.structure_feature_rule.json",
+      "structure_sha256": "0f600c7a7b74f634d6714982fe6059b588588b309e877d9d79a00272f71ef894",
+      "block_position_data": "EMPTY_NO_BLOCK_ENTITY_NBT"
+    },
+    {
+      "id": "crystal_obelisk",
+      "size": [
+        13,
+        18,
+        13
+      ],
+      "volume": 3042,
+      "occupied_blocks": 554,
+      "palette": [
+        "aionbound:crystal_stone",
+        "aionbound:prism_brick",
+        "aionbound:prismglass_signal",
+        "minecraft:barrel",
+        "minecraft:lodestone"
+      ],
+      "rarity": "rare_network",
+      "scatter": {
+        "numerator": 1,
+        "denominator": 3072
+      },
+      "expected_attempts_per_256_chunk_cell_before_filters": 0.083333,
+      "terrain_role": "isolated marsh rise proxy",
+      "placement_implementation": "overworld non-ocean swamp-or-river surface proxy; actual shore, water-depth, and regional topology remain unproven",
+      "silhouette": "four-stage tapering crystal needle with a prism signal cap",
+      "anchors": [
+        {
+          "anchor_id": "crystal_obelisk_stamp",
+          "kind": "interaction",
+          "coordinate": [
+            6,
+            2,
+            10
+          ],
+          "expected_block": "minecraft:lodestone",
+          "purpose": "future obelisk stamp",
+          "binding": "RESERVED_INERT_RUNTIME_HANDOFF",
+          "block_entity_nbt": "OMITTED"
+        },
+        {
+          "anchor_id": "crystal_obelisk_cache",
+          "kind": "cache",
+          "coordinate": [
+            3,
+            2,
+            6
+          ],
+          "expected_block": "minecraft:barrel",
+          "purpose": "future obelisk cache",
+          "binding": "RESERVED_INERT_RUNTIME_HANDOFF",
+          "block_entity_nbt": "OMITTED"
+        }
+      ],
+      "structure_path": "behavior_pack/structures/aionbound/crystal_obelisk.mcstructure",
+      "feature_path": "behavior_pack/features/crystal_obelisk.structure_feature.json",
+      "feature_rule_path": "behavior_pack/feature_rules/crystal_obelisk.structure_feature_rule.json",
+      "structure_sha256": "a34e4ecd463b0bd4f6eb2de2b688465e44e86083abe4b5c68b2424ef21e0a8a6",
+      "block_position_data": "EMPTY_NO_BLOCK_ENTITY_NBT"
+    },
+    {
+      "id": "sunken_shrine",
+      "size": [
+        17,
+        11,
+        17
+      ],
+      "volume": 3179,
+      "occupied_blocks": 569,
+      "palette": [
+        "aionbound:crystal_stone",
+        "aionbound:glass_root_block",
+        "aionbound:prism_brick",
+        "aionbound:wet_clay_block",
+        "minecraft:lectern",
+        "minecraft:lodestone"
+      ],
+      "rarity": "rare_flooded",
+      "scatter": {
+        "numerator": 1,
+        "denominator": 3712
+      },
+      "expected_attempts_per_256_chunk_cell_before_filters": 0.068966,
+      "terrain_role": "low swamp basin proxy",
+      "placement_implementation": "overworld non-ocean swamp-or-river surface proxy; actual shore, water-depth, and regional topology remain unproven",
+      "silhouette": "four drowned prism columns around a raised rootglass altar",
+      "anchors": [
+        {
+          "anchor_id": "sunken_shrine_altar",
+          "kind": "interaction",
+          "coordinate": [
+            8,
+            5,
+            8
+          ],
+          "expected_block": "minecraft:lodestone",
+          "purpose": "future shrine handoff",
+          "binding": "RESERVED_INERT_RUNTIME_HANDOFF",
+          "block_entity_nbt": "OMITTED"
+        },
+        {
+          "anchor_id": "sunken_shrine_choir",
+          "kind": "journal",
+          "coordinate": [
+            13,
+            2,
+            8
+          ],
+          "expected_block": "minecraft:lectern",
+          "purpose": "future Drowned Choir record",
+          "binding": "RESERVED_INERT_RUNTIME_HANDOFF",
+          "block_entity_nbt": "OMITTED"
+        }
+      ],
+      "structure_path": "behavior_pack/structures/aionbound/sunken_shrine.mcstructure",
+      "feature_path": "behavior_pack/features/sunken_shrine.structure_feature.json",
+      "feature_rule_path": "behavior_pack/feature_rules/sunken_shrine.structure_feature_rule.json",
+      "structure_sha256": "4b91a18bc3a7694638b67ec34bb49957b7d7d0543fb670f4d7417bc60d6c5fd4",
+      "block_position_data": "EMPTY_NO_BLOCK_ENTITY_NBT"
+    },
+    {
+      "id": "ruined_observatory",
+      "size": [
+        23,
+        19,
+        21
+      ],
+      "volume": 9177,
+      "occupied_blocks": 790,
+      "palette": [
+        "aionbound:crystal_log",
+        "aionbound:crystal_stone",
+        "aionbound:glass_root_block",
+        "aionbound:prism_brick",
+        "aionbound:prismglass_signal",
+        "minecraft:barrel",
+        "minecraft:lectern"
+      ],
+      "rarity": "very_rare_height",
+      "scatter": {
+        "numerator": 1,
+        "denominator": 6656
+      },
+      "expected_attempts_per_256_chunk_cell_before_filters": 0.038462,
+      "terrain_role": "rare elevated wetland shelf proxy",
+      "placement_implementation": "overworld non-ocean swamp-or-river surface proxy; actual shore, water-depth, and regional topology remain unproven",
+      "silhouette": "four prism piers carrying broken concentric rootglass survey arms",
+      "anchors": [
+        {
+          "anchor_id": "ruined_observatory_chart",
+          "kind": "journal",
+          "coordinate": [
+            6,
+            2,
+            10
+          ],
+          "expected_block": "minecraft:lectern",
+          "purpose": "future survey record",
+          "binding": "RESERVED_INERT_RUNTIME_HANDOFF",
+          "block_entity_nbt": "OMITTED"
+        },
+        {
+          "anchor_id": "ruined_observatory_cache",
+          "kind": "cache",
+          "coordinate": [
+            16,
+            2,
+            10
+          ],
+          "expected_block": "minecraft:barrel",
+          "purpose": "future survey cache",
+          "binding": "RESERVED_INERT_RUNTIME_HANDOFF",
+          "block_entity_nbt": "OMITTED"
+        }
+      ],
+      "structure_path": "behavior_pack/structures/aionbound/ruined_observatory.mcstructure",
+      "feature_path": "behavior_pack/features/ruined_observatory.structure_feature.json",
+      "feature_rule_path": "behavior_pack/feature_rules/ruined_observatory.structure_feature_rule.json",
+      "structure_sha256": "2545b3678496c2d2130ca41eb5975949af126f19152f3b2fb74d05ff25da50b9",
+      "block_position_data": "EMPTY_NO_BLOCK_ENTITY_NBT"
+    },
+    {
+      "id": "deep_pool_entrance",
+      "size": [
+        19,
+        12,
+        19
+      ],
+      "volume": 4332,
+      "occupied_blocks": 1553,
+      "palette": [
+        "aionbound:algae_block",
+        "aionbound:crystal_stone",
+        "aionbound:glass_root_block",
+        "aionbound:marsh_soil",
+        "aionbound:prism_brick",
+        "minecraft:barrel",
+        "minecraft:lodestone"
+      ],
+      "rarity": "rare_dark_water",
+      "scatter": {
+        "numerator": 1,
+        "denominator": 4352
+      },
+      "expected_attempts_per_256_chunk_cell_before_filters": 0.058824,
+      "terrain_role": "swamp waterline cave-mouth proxy",
+      "placement_implementation": "overworld non-ocean swamp-or-river surface proxy; actual shore, water-depth, and regional topology remain unproven",
+      "silhouette": "wide recessed crystal mouth framed by vertical glass roots",
+      "anchors": [
+        {
+          "anchor_id": "deep_pool_depth",
+          "kind": "encounter",
+          "coordinate": [
+            9,
+            1,
+            13
+          ],
+          "expected_block": "minecraft:lodestone",
+          "purpose": "future deep-pool handoff",
+          "binding": "RESERVED_INERT_RUNTIME_HANDOFF",
+          "block_entity_nbt": "OMITTED"
+        },
+        {
+          "anchor_id": "deep_pool_cache",
+          "kind": "cache",
+          "coordinate": [
+            5,
+            2,
+            10
+          ],
+          "expected_block": "minecraft:barrel",
+          "purpose": "future pool cache",
+          "binding": "RESERVED_INERT_RUNTIME_HANDOFF",
+          "block_entity_nbt": "OMITTED"
+        }
+      ],
+      "structure_path": "behavior_pack/structures/aionbound/deep_pool_entrance.mcstructure",
+      "feature_path": "behavior_pack/features/deep_pool_entrance.structure_feature.json",
+      "feature_rule_path": "behavior_pack/feature_rules/deep_pool_entrance.structure_feature_rule.json",
+      "structure_sha256": "11881d5f9e75dd216925d9cf05b3e56d9f8092fd1c09c51e7d0e72681a5b7dfb",
+      "block_position_data": "EMPTY_NO_BLOCK_ENTITY_NBT"
+    }
+  ]
+}

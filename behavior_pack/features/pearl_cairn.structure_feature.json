@@ -1,0 +1,30 @@
+{
+  "format_version": "1.13.0",
+  "minecraft:structure_template_feature": {
+    "description": {
+      "identifier": "aionbound:pearl_cairn_structure_feature"
+    },
+    "structure_name": "aionbound:pearl_cairn",
+    "adjustment_radius": 3,
+    "facing_direction": "random",
+    "constraints": {
+      "grounded": {},
+      "unburied": {},
+      "block_intersection": {
+        "block_allowlist": [
+          "minecraft:air",
+          "minecraft:grass_block",
+          "minecraft:dirt",
+          "minecraft:mud",
+          "minecraft:clay",
+          "minecraft:water",
+          "minecraft:sand",
+          "minecraft:gravel",
+          "aionbound:marsh_soil",
+          "aionbound:wet_clay_block",
+          "aionbound:crystal_gravel"
+        ]
+      }
+    }
+  }
+}

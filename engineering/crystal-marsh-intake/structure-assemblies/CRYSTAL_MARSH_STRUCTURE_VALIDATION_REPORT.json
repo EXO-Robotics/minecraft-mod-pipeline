@@ -1,0 +1,188 @@
+{
+  "schema": "aionbound.wave1.crystal_marsh.structure_validation.v1",
+  "status": "PASS",
+  "integration_authority": {
+    "commit": "583279583cc27422c3d2ac6db52ad8a5310ec7dc",
+    "tree": "45e23d9303fae9a0b07ca23ee9bedea9bdb5b5bc"
+  },
+  "checks": [
+    "committed-output deterministic regeneration",
+    "little-endian NBT full decode without trailing bytes",
+    "ten exact Packet 003 landmark identifiers with distinct sizes and hashes",
+    "palette and block-index closure",
+    "empty entities and empty block_position_data",
+    "inert barrel lodestone lectern coordinate closure",
+    "custom block identifier closure",
+    "stable feature rule and structure-name reference closure",
+    "overworld non-ocean swamp-or-river wetland proxy filters",
+    "Crystal-specific distinct conservative denominators not copied from Whisperwood or Ashen",
+    "packet native visual models excluded from assembly-byte inputs"
+  ],
+  "commands": [
+    "python3 engineering/crystal-marsh-intake/structure-assemblies/author_crystal_marsh_structures.py --check",
+    "python3 -m unittest engineering/crystal-marsh-intake/structure-assemblies/test_crystal_marsh_structure_assemblies.py -v"
+  ],
+  "counts": {
+    "assemblies": 10,
+    "structure_files": 10,
+    "features": 10,
+    "feature_rules": 10,
+    "unit_tests": 7,
+    "inert_anchors": 17,
+    "loot_bindings": 0,
+    "encounter_bindings": 0
+  },
+  "outputs": [
+    {
+      "path": "behavior_pack/structures/aionbound/ancient_boat.mcstructure",
+      "bytes": 11376,
+      "sha256": "e17035dfd6169968706d4f8e5aa7238b53dcb917cf05129a10ea420cfa1941a0"
+    },
+    {
+      "path": "behavior_pack/structures/aionbound/crystal_arch.mcstructure",
+      "bytes": 13158,
+      "sha256": "0f600c7a7b74f634d6714982fe6059b588588b309e877d9d79a00272f71ef894"
+    },
+    {
+      "path": "behavior_pack/structures/aionbound/crystal_obelisk.mcstructure",
+      "bytes": 24829,
+      "sha256": "a34e4ecd463b0bd4f6eb2de2b688465e44e86083abe4b5c68b2424ef21e0a8a6"
+    },
+    {
+      "path": "behavior_pack/structures/aionbound/deep_pool_entrance.mcstructure",
+      "bytes": 35257,
+      "sha256": "11881d5f9e75dd216925d9cf05b3e56d9f8092fd1c09c51e7d0e72681a5b7dfb"
+    },
+    {
+      "path": "behavior_pack/structures/aionbound/flooded_dock.mcstructure",
+      "bytes": 11090,
+      "sha256": "a3738e798e182334b73f1dbd719d7322a64c536a8779190d8067f6a6ea6de5d2"
+    },
+    {
+      "path": "behavior_pack/structures/aionbound/marsh_broken_bridge.mcstructure",
+      "bytes": 8717,
+      "sha256": "c6f80ac5c7fc712e5e22952d042dce5fbc2b5ac1110401e4a4fe5ec657ca7199"
+    },
+    {
+      "path": "behavior_pack/structures/aionbound/marsh_totem.mcstructure",
+      "bytes": 10840,
+      "sha256": "59af7eb3dfe1bfff6e425be4ba0095909da781e1a2fbf42748ce17aa81101407"
+    },
+    {
+      "path": "behavior_pack/structures/aionbound/pearl_cairn.mcstructure",
+      "bytes": 5621,
+      "sha256": "5e1dc597d338492177791dfb2d2877762672e9a06d38bc89a988d3bff39db569"
+    },
+    {
+      "path": "behavior_pack/structures/aionbound/ruined_observatory.mcstructure",
+      "bytes": 74022,
+      "sha256": "2545b3678496c2d2130ca41eb5975949af126f19152f3b2fb74d05ff25da50b9"
+    },
+    {
+      "path": "behavior_pack/structures/aionbound/sunken_shrine.mcstructure",
+      "bytes": 25983,
+      "sha256": "4b91a18bc3a7694638b67ec34bb49957b7d7d0543fb670f4d7417bc60d6c5fd4"
+    },
+    {
+      "path": "behavior_pack/features/ancient_boat.structure_feature.json",
+      "bytes": 772,
+      "sha256": "0817d308bd84cbd9d0eab03652ddf2d87e54ebe3854ef49fb62acc7e3cdafe2a"
+    },
+    {
+      "path": "behavior_pack/features/crystal_arch.structure_feature.json",
+      "bytes": 772,
+      "sha256": "f7977d6bcf96f8c22f1e3ef0e1e0d59f4f79677bdd4c15f6931cb97eceadea8d"
+    },
+    {
+      "path": "behavior_pack/features/crystal_obelisk.structure_feature.json",
+      "bytes": 778,
+      "sha256": "8d4eb5590db07eb4d37d1e5f0f25560daef1f108250d1531d7b5658e573d4a77"
+    },
+    {
+      "path": "behavior_pack/features/deep_pool_entrance.structure_feature.json",
+      "bytes": 784,
+      "sha256": "281d4d2bd018534b0356f5378dbdeaa1ec15b3993eacfcee07d39ac11b967c5d"
+    },
+    {
+      "path": "behavior_pack/features/flooded_dock.structure_feature.json",
+      "bytes": 772,
+      "sha256": "2177de1d3d638b5cb84072b2fc811845c1e59d40f1b9e15e91c21d2ab1da6583"
+    },
+    {
+      "path": "behavior_pack/features/marsh_broken_bridge.structure_feature.json",
+      "bytes": 786,
+      "sha256": "a10d09148458433db07a79b8719785d3900c4d8fe1683b51090e5dd816b990ff"
+    },
+    {
+      "path": "behavior_pack/features/marsh_totem.structure_feature.json",
+      "bytes": 770,
+      "sha256": "947ccb996220ae9db1f38de3054f30b49f9a988979a9ebf24c0bedad0de5b677"
+    },
+    {
+      "path": "behavior_pack/features/pearl_cairn.structure_feature.json",
+      "bytes": 770,
+      "sha256": "0ff88d673dbbd1a34653a7673bdae41dd05c63989642260d48a91646b8679efc"
+    },
+    {
+      "path": "behavior_pack/features/ruined_observatory.structure_feature.json",
+      "bytes": 784,
+      "sha256": "305e7a4ee30e7ae0a3e1d57a4b444f6f3c4c3b65431d9100009aa63ba8ab6502"
+    },
+    {
+      "path": "behavior_pack/features/sunken_shrine.structure_feature.json",
+      "bytes": 774,
+      "sha256": "a4e17119b50e07df4743da8adc9f6b5c1b95ee8921ff3f5f0d85942eb3215e13"
+    },
+    {
+      "path": "behavior_pack/feature_rules/ancient_boat.structure_feature_rule.json",
+      "bytes": 1370,
+      "sha256": "cdd4c90d26af3032e6f89801e1b79e4c1a311481ba6c7f18543bf12df71fb992"
+    },
+    {
+      "path": "behavior_pack/feature_rules/crystal_arch.structure_feature_rule.json",
+      "bytes": 1370,
+      "sha256": "002511c32fc4e2fb19fe94c9eab9e17f6bbaaccbb40ef6a45d2b2a196d2c9ca4"
+    },
+    {
+      "path": "behavior_pack/feature_rules/crystal_obelisk.structure_feature_rule.json",
+      "bytes": 1376,
+      "sha256": "e8bc54783b8985be5e17087229e44b234b1aeabbc89003827535149828c06017"
+    },
+    {
+      "path": "behavior_pack/feature_rules/deep_pool_entrance.structure_feature_rule.json",
+      "bytes": 1382,
+      "sha256": "912564667d20b6fd63566e678d6b4665a91c524c090801c3320efe7e33255ce3"
+    },
+    {
+      "path": "behavior_pack/feature_rules/flooded_dock.structure_feature_rule.json",
+      "bytes": 1369,
+      "sha256": "cd8f8b3d419cf3b5574239f8a1daa5d1c129b7521fdce057cba8a8ced2bd7bcd"
+    },
+    {
+      "path": "behavior_pack/feature_rules/marsh_broken_bridge.structure_feature_rule.json",
+      "bytes": 1384,
+      "sha256": "514590a1597387e889d3366a93f83cc79724d60d2499250a7de9a14103316162"
+    },
+    {
+      "path": "behavior_pack/feature_rules/marsh_totem.structure_feature_rule.json",
+      "bytes": 1368,
+      "sha256": "5204f76f2fe64161954922be91c3f3a8148405b697230c69afb0c6c483d4b248"
+    },
+    {
+      "path": "behavior_pack/feature_rules/pearl_cairn.structure_feature_rule.json",
+      "bytes": 1367,
+      "sha256": "d41eecec3ed3b3ac242bcb827e6bb7e14b391c85190b76cece7e6ce703e30052"
+    },
+    {
+      "path": "behavior_pack/feature_rules/ruined_observatory.structure_feature_rule.json",
+      "bytes": 1382,
+      "sha256": "3991c2375b68ef3d6309c2d532afec9d612deeb88e5781d082a742de39d5cea5"
+    },
+    {
+      "path": "behavior_pack/feature_rules/sunken_shrine.structure_feature_rule.json",
+      "bytes": 1372,
+      "sha256": "a44ae01cf863babc59f719b714fd57b407b606c516ddbf7123dca6c78db5afc2"
+    }
+  ],
+  "proof_boundary": "STATIC_SOURCE_AND_AUTHORED_BYTES_ONLY; NOT MCSTRUCTURE CLIENT LOAD, BDS, TERRAIN AFFINITY, LOOT, ENCOUNTER, OR CANDIDATE PROOF"
+}
