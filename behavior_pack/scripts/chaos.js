@@ -10,7 +10,12 @@ const locationKey = location => `${location.x},${location.y},${location.z}`;
 
 export function createChaosService({ world, system, ItemStack, state, arbiter }) {
   function activeChaos(w) { return Object.values(w.journals).filter(j => j.kind === "chaos" && j.state !== "terminal"); }
-  function terminalize(w, id) { const journal = w.journals[id]; if (!journal) return; journal.state = "terminal"; journal.terminal = true; state.pruneJournals(w); state.saveWorld(w); arbiter.release("chaos"); }
+  function terminalize(w, id, completion = "completed_in_process") {
+    const journal = w.journals[id]; if (!journal) return;
+    journal.state = "terminal"; journal.terminal = true;
+    journal.deliverySemantics = "at_most_once"; journal.completion = completion;
+    state.pruneJournals(w); state.saveWorld(w); arbiter.release("chaos");
+  }
 
   function execute(id, player) {
     let w = state.worldState(), journal = w.journals[id];
@@ -38,7 +43,7 @@ export function createChaosService({ world, system, ItemStack, state, arbiter })
         entity.addTag(`aionbound_chaos_${id.replace(/[^A-Za-z0-9_]/g, "_").slice(-80)}`);
       }
     }
-    w = state.worldState(); terminalize(w, id);
+    w = state.worldState(); terminalize(w, id, "completed_in_process");
     return true;
   }
 
@@ -52,7 +57,12 @@ export function createChaosService({ world, system, ItemStack, state, arbiter })
     current.journalOrder.push(id);
     const nextPlayer = { ...p, opens: [...p.opens, now], cooldowns: { ...p.cooldowns, chaos: now + COMBINED_BUDGETS.chaosCooldown } };
     if (!state.savePlayer(player, nextPlayer) || !state.saveWorld(current)) { delete current.journals[id]; current.journalOrder = current.journalOrder.filter(x => x !== id); state.saveWorld(current); arbiter.release("chaos"); return; }
-    if (!arbiter.defer(system, () => execute(id, player))) { current.journals[id].state = "terminal"; current.journals[id].terminal = true; state.saveWorld(current); arbiter.release("chaos"); state.warn(player, "Scheduler capacity refused the chaos operation."); }
+    if (!arbiter.defer(system, () => execute(id, player))) {
+      current.journals[id].state = "terminal"; current.journals[id].terminal = true;
+      current.journals[id].deliverySemantics = "not_started";
+      current.journals[id].completion = "scheduler_refused_before_execution";
+      state.saveWorld(current); arbiter.release("chaos"); state.warn(player, "Scheduler capacity refused the chaos operation.");
+    }
   }
 
   function tick() {
@@ -69,7 +79,7 @@ export function createChaosService({ world, system, ItemStack, state, arbiter })
         if (!arbiter.spend("worldEditsTick")) return;
         dimension.getBlock(original)?.setType(original.type);
       }
-      terminalize(w, id); return;
+      terminalize(w, id, "temporary_cleanup_completed"); return;
     }
   }
 
@@ -77,9 +87,16 @@ export function createChaosService({ world, system, ItemStack, state, arbiter })
     const w = state.worldState();
     for (const journal of Object.values(w.journals)) {
       if (journal.kind !== "chaos" || journal.state === "terminal") continue;
-      // An executing non-temporary outcome is never replayed after restart.
-      // It never acquires live capacity during reconciliation.
-      if (journal.state === "executing") { journal.state = "terminal"; journal.terminal = true; }
+      // Bedrock cannot atomically commit persistent journal state together with
+      // an external item/effect/entity operation. An executing journal therefore
+      // has at-most-once semantics: suppress replay after restart and record the
+      // uncertain crash window instead of claiming exactly-once completion.
+      if (journal.state === "executing") {
+        journal.state = "terminal"; journal.terminal = true;
+        journal.deliverySemantics = "at_most_once";
+        journal.completion = "replay_suppressed_after_uncertain_execution";
+        journal.replaySuppressed = true;
+      }
       else arbiter.admit("chaos", "chaosActiveWorld");
     }
     state.pruneJournals(w); state.saveWorld(w);

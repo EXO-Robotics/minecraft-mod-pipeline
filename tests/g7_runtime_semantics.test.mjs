@@ -77,7 +77,7 @@ test("18 chaos outcomes cover six bounded classes exactly three times", () => {
   assert.equal(selectOutcomeIndex(17, -9, 12), selectOutcomeIndex(17, -9, 12));
 });
 
-test("chaos journal admits and resolves one logical operation only once", () => {
+test("chaos journal admits one operation and records at-most-once completion", () => {
   const queued = [], spawned = [], effects = [], messages = [];
   const playerData = { v: 3, stamps: [], credits: {}, cooldowns: {}, opens: [], cell: null, endpoint: false, codex: { topic: 0 }, goals: {} };
   let worldData = { v: 3, journals: {}, journalOrder: [], structures: {}, quarantine: [], cells: {}, devices: {}, sequence: 0, encounters: { active: {}, terminal: {} } };
@@ -97,7 +97,10 @@ test("chaos journal admits and resolves one logical operation only once", () => 
   const id = Object.keys(worldData.journals)[0]; queued.shift()();
   if (worldData.journals[id].state === "cleanup") { system.currentTick = worldData.journals[id].cleanupAt; service.tick(); }
   const effectsAfter = effects.length + spawned.length;
-  assert.equal(worldData.journals[id].state, "terminal"); assert.equal(service.execute(id, player), false); assert.equal(effects.length + spawned.length, effectsAfter);
+  assert.equal(worldData.journals[id].state, "terminal");
+  assert.equal(worldData.journals[id].deliverySemantics, "at_most_once");
+  assert.ok(["completed_in_process", "temporary_cleanup_completed"].includes(worldData.journals[id].completion));
+  assert.equal(service.execute(id, player), false); assert.equal(effects.length + spawned.length, effectsAfter);
 });
 
 test("15 real structure sites resolve signatures and claim once per player", () => {
@@ -131,7 +134,10 @@ test("chaos restart resumes accepted owner and releases executing capacity", () 
   class ItemStack { constructor(typeId, amount) { this.typeId = typeId; this.amount = amount; } }
   const system = { currentTick: 200, run() {} }, arbiter = new RuntimeArbiter();
   const service = createChaosService({ world: { getDimension: () => dimension, getAllPlayers: () => [player] }, system, ItemStack, state, arbiter });
-  service.reconcile(); assert.equal(data.journals.executing.state, "terminal"); assert.equal(arbiter.active.chaos, 1);
+  service.reconcile(); assert.equal(data.journals.executing.state, "terminal");
+  assert.equal(data.journals.executing.deliverySemantics, "at_most_once");
+  assert.equal(data.journals.executing.completion, "replay_suppressed_after_uncertain_execution");
+  assert.equal(data.journals.executing.replaySuppressed, true); assert.equal(arbiter.active.chaos, 1);
   service.tick(); assert.equal(data.journals.accepted.state, "terminal"); assert.equal(arbiter.active.chaos, 0);
 });
 

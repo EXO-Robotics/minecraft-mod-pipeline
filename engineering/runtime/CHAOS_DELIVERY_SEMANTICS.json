@@ -1,0 +1,18 @@
+{
+  "schema_version": "aionbound.wave1.chaos-delivery-semantics.v1",
+  "status": "AT_MOST_ONCE_TERMINOLOGY_AND_CRASH_WINDOW_RECORDED",
+  "guarantee": "AT_MOST_ONCE_EXTERNAL_EFFECT_WITH_ACCEPTED_STATE_RESUME",
+  "terminal_completions": {
+    "completed_in_process": "live non-temporary execution reached terminal state",
+    "temporary_cleanup_completed": "temporary block cleanup reached terminal state",
+    "replay_suppressed_after_uncertain_execution": "restart found executing state and suppressed replay",
+    "scheduler_refused_before_execution": "bounded scheduler refused before any effect execution"
+  },
+  "uncertain_crash_window": true,
+  "exactly_once_claim": false,
+  "targeted_test": {
+    "command": "node --test tests/g7_runtime_semantics.test.mjs",
+    "result": "PASS_14_OF_14"
+  },
+  "proof_boundary": "Source-level semantic harness only; no Stable BDS restart, Bedrock client, console, or multiplayer claim."
+}
