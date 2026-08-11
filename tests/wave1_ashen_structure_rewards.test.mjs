@@ -121,6 +121,12 @@ test("runtime composes the command-free guard and discovery hook without claimin
   assert.equal(runtime.includes("ashenStructureRewardHooks.guardArenaCacheInteraction?.(event)"), true);
   assert.ok(runtime.indexOf("ashenStructureRewardHooks.guardArenaCacheInteraction?.(event)") < runtime.indexOf("callback(() => {", runtime.indexOf("playerInteractWithBlock.subscribe")));
   assert.equal(runtime.includes("state.stamp(event.player, activation.stamp)"), true);
+  assert.equal(runtime.includes("codexEventsForStructureActivation(activation.structure)"), true);
+  assert.equal(runtime.includes('activation.structure === "burned_camp"'), true);
+  assert.equal(runtime.includes('codex:ah:progression:crystal_marsh_rumor:burned_camp_visited'), true);
+  assert.equal(runtime.includes('activation.structure === "char_wagon"'), true);
+  assert.equal(runtime.includes('codex:ah:progression:crystal_marsh_rumor:char_wagon_visited'), true);
+  assert.equal(runtime.includes("crystal_marsh_map"), false);
   for (const source of [runtime, bridge]) for (const forbidden of ["runCommand", "runCommandAsync", "aionbound:ash_drake_horn", "aionbound:ember_forge_core"]) assert.equal(source.includes(forbidden), false);
   assert.equal(bridge.includes("bossDeath"), false);
 });

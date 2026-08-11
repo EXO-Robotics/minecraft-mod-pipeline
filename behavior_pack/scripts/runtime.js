@@ -134,7 +134,12 @@ export function createRuntime(platform = { world, system, ItemStack, EquipmentSl
         const activation = ashenStructureRewardHooks.identifyStructureActivation?.(event.block);
         const context = { player: event.player, block: event.block, itemType: event.itemStack?.typeId };
         if (!arbiter.defer(platform.system, () => {
-          if (activation) state.stamp(event.player, activation.stamp);
+          if (activation) {
+            state.stamp(event.player, activation.stamp);
+            for (const eventId of codexEventsForStructureActivation(activation.structure)) codex.discover(event.player, eventId);
+            if (activation.structure === "burned_camp") codex.discover(event.player, "codex:ah:progression:crystal_marsh_rumor:burned_camp_visited");
+            if (activation.structure === "char_wagon") codex.discover(event.player, "codex:ah:progression:crystal_marsh_rumor:char_wagon_visited");
+          }
           router.dispatchBlock(context);
         })) state.warn(event.player, "Interaction scheduler capacity is full.");
       });
