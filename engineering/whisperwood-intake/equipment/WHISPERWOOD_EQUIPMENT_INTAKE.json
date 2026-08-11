@@ -1,0 +1,396 @@
+{
+  "schema": "aionbound.wave1.whisperwood-equipment-intake.v1",
+  "status": "DETERMINISTIC_INTAKE_COMPLETE_BASE_PREPARATION_AUTHORIZED_FINAL_DEPENDENCIES_BLOCKED",
+  "base": {
+    "integration_commit": "a9d64b2a999462a2c8e2f1f1779e06c8cf6ca702",
+    "g7_commit": "042018eac3bd32b76d135219b9f59502dd4f4692",
+    "g7_tree": "5542639f4c1a932ff1f354dee07dfe448b6491bd"
+  },
+  "scope": {
+    "packet": "006_equipment",
+    "ecosystem": "001_whisperwood",
+    "asset_count": 21,
+    "counts": {
+      "weapons": 5,
+      "armor": 4,
+      "tools": 3,
+      "accessories": 5,
+      "trophies": 4
+    },
+    "excludes": "All AH, CM, SR/pilgrim, cross-biome-only, and finale-only equipment."
+  },
+  "authority": [
+    {
+      "path": "engineering/normalization/PACKET_NORMALIZATION_INVENTORY.json",
+      "sha256": "4a65ccbc10f47a86e3aec649874916a9d4ad5cb9feef7817d75a527774a3a842"
+    },
+    {
+      "path": "engineering/authority/WAVE_1_ENGINEERING_DECISION_LEDGER.json",
+      "sha256": "ed71046df20a66440ac2cc73cc3c25f629c63f6ee8ade01449c43ea537de8c31"
+    },
+    {
+      "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-006-equipment-progression/MANIFEST_FULL.json",
+      "sha256": "71ab8dec6949ab4a1321fe4215d843cdb9c4279e8ca6a37adfb95c20149951ea"
+    },
+    {
+      "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-006-equipment-progression/ASSET_SPRINT_006_EQUIPMENT_PROGRESSION.md",
+      "sha256": "98399118553bca107edbd5a989165fd573714a8f0f0455c2589b0a787322e174"
+    },
+    {
+      "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-006-equipment-progression/SPRINT_006_COMPLETE.md",
+      "sha256": "f77a0e65fd477f36902d7b89c4f45733c7b29f70c44d698e999dac60a11eafcc"
+    },
+    {
+      "path": "program/crazycraft-pack-production-v1/studio-prep/creative/WAVE_1_LIVING_WORLD_IMPLEMENTATION_CONTRACT.json",
+      "sha256": "aa1f54df10d27d5c5675aae843ffe0d2946123d12a6509f7f021408bcdde9fb5"
+    },
+    {
+      "path": "program/crazycraft-pack-production-v1/studio-prep/creative/WAVE_1_LIVING_WORLD_IMPLEMENTATION_CONTRACT.md",
+      "sha256": "3116c217e06afe1fd0cd56ee742c537f948a4c91193ec831fd1b3ec362837bfc"
+    },
+    {
+      "path": "program/crazycraft-pack-production-v1/studio-prep/creative/03_crafting/CRAFTING_TREE.md",
+      "sha256": "1f3482ba3dd9f916e08aa544153cc841871a729a2e82d9e75601715f4b5ee807"
+    },
+    {
+      "path": "program/crazycraft-pack-production-v1/studio-prep/creative/04_equipment/EQUIPMENT_PROGRESSION.md",
+      "sha256": "7ecf57e6af099ae3cda8a7432228fb5ee996f20b02b76888a82c0c1a3e3c891d"
+    },
+    {
+      "path": "program/crazycraft-pack-production-v1/studio-prep/creative/02_loot/LOOT_WHISPERWOOD.md",
+      "sha256": "c6846ecfcf51c1bdbe62b3ef81f37e7e86e6466a62b46f72cb3685516a216f24"
+    }
+  ],
+  "canonical_source_contract": {
+    "packet_root": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-006-equipment-progression",
+    "source_of_truth": "assets/editable, assets/briefs, and assets/export; category directories are hash-matching mirrors only",
+    "files_for_each_source_id": [
+      "assets/editable/{source_id}.bbmodel",
+      "assets/editable/{source_id}.png",
+      "assets/briefs/{source_id}.json",
+      "assets/export/models/{source_id}.geo.json",
+      "assets/export/animations/{source_id}.animation.json"
+    ],
+    "byte_hash_authority": "engineering/normalization/PACKET_NORMALIZATION_INVENTORY.json canonical fields"
+  },
+  "native_gate": {
+    "required_for_all_21": [
+      "normalize geometry namespace from geometry.aionforge_eq.{id} to geometry.aionbound.{id}",
+      "replace absolute editable texture path with portable packet-relative binding",
+      "create a real native Blockbench locator named effect in the editable source",
+      "open/save/reopen in native Blockbench and export through native codecs",
+      "prove native geometry/animation export equivalence and decode the exact shipping PNG"
+    ],
+    "texture_contract": {
+      "actual_packet_png": [32, 32],
+      "declared_64_by_64_assets": 16,
+      "declared_range_accessories": 5,
+      "policy": "Preserve approved packet pixels. Resolve the 64x64 brief mismatch as an explicit normalization decision; do not upscale or redraw during intake."
+    },
+    "role_clip_authoring_required_assets": 10,
+    "claim_boundary": "Static packet inventory only. Native round-trip, native export equivalence, Bedrock client, BDS, and PS4 remain unrun for these 21 assets."
+  },
+  "target_profiles": {
+    "held_item": [
+      "behavior_pack/items/{id}.item.json",
+      "resource_pack/attachables/{id}.attachable.json",
+      "resource_pack/models/aionbound/equipment/{id}.geo.json",
+      "resource_pack/textures/aionbound/wave1/equipment/items/{id}.png",
+      "resource_pack/animations/aionbound/equipment/{id}.animation.json when declared clips exist",
+      "resource_pack/animation_controllers/aionbound/equipment/{id}.animation_controllers.json when runtime clip selection is authorized",
+      "resource_pack/textures/item_texture.json key {id}",
+      "resource_pack/texts/en_US.lang item.aionbound:{id}.name"
+    ],
+    "wearable_armor": [
+      "behavior_pack/items/{id}.item.json",
+      "resource_pack/attachables/{id}.attachable.json",
+      "resource_pack/models/aionbound/equipment/{id}.geo.json",
+      "resource_pack/textures/aionbound/wave1/equipment/armor/{id}.png",
+      "resource_pack/textures/item_texture.json key {id}",
+      "resource_pack/texts/en_US.lang item.aionbound:{id}.name"
+    ],
+    "accessory": [
+      "behavior_pack/items/{id}.item.json",
+      "resource_pack/attachables/{id}.attachable.json",
+      "resource_pack/models/aionbound/equipment/{id}.geo.json",
+      "resource_pack/textures/aionbound/wave1/equipment/accessories/{id}.png",
+      "resource_pack/animations/aionbound/equipment/{id}.animation.json when declared clips exist",
+      "resource_pack/textures/item_texture.json key {id}",
+      "resource_pack/texts/en_US.lang item.aionbound:{id}.name"
+    ],
+    "placeable_trophy": [
+      "behavior_pack/blocks/{id}.block.json",
+      "behavior_pack/loot_tables/blocks/{id}.json",
+      "resource_pack/models/blocks/{id}.geo.json",
+      "resource_pack/textures/aionbound/wave1/equipment/trophies/{id}.png",
+      "resource_pack/blocks.json entry aionbound:{id}",
+      "resource_pack/textures/terrain_texture.json key {id}",
+      "resource_pack/texts/en_US.lang tile.aionbound:{id}.name"
+    ]
+  },
+  "assets": [
+    {
+      "id": "mossfang_spear",
+      "runtime_id": "aionbound:mossfang_spear",
+      "category": "weapons",
+      "target_profile": "held_item",
+      "declared_clips": ["idle_hold", "thrust_pose", "sweep_pose"],
+      "native_repair": ["effect_locator", "role_clips", "portable_texture_path", "runtime_namespace", "64x64_brief_vs_32x32_packet"],
+      "safe_now": ["aionbound:pale_reed", "aionbound:moss_bind_glue"],
+      "blocked": {"W1-CREATIVE-001": ["Thorn Barb canonical item"], "W1-CREATIVE-004": ["drop quantities and rarity"]}
+    },
+    {
+      "id": "widow_fang_dagger",
+      "runtime_id": "aionbound:widow_fang_dagger",
+      "category": "weapons",
+      "target_profile": "held_item",
+      "declared_clips": ["idle_hold", "stab_pose"],
+      "native_repair": ["effect_locator", "role_clips", "portable_texture_path", "runtime_namespace", "64x64_brief_vs_32x32_packet"],
+      "safe_now": ["aionbound:widow_silk"],
+      "blocked": {"W1-CREATIVE-001": ["Rot Fang or Hollow Venom canonical item"], "W1-CREATIVE-004": ["drop quantities and rarity"]}
+    },
+    {
+      "id": "thorn_whip",
+      "runtime_id": "aionbound:thorn_whip",
+      "category": "weapons",
+      "target_profile": "held_item",
+      "declared_clips": ["idle_coil", "crack_pose", "extend_pose"],
+      "native_repair": ["effect_locator", "role_clips", "portable_texture_path", "runtime_namespace", "64x64_brief_vs_32x32_packet"],
+      "safe_now": ["aionbound:thorn_cord", "aionbound:widow_silk", "aionbound:briar_vine"],
+      "blocked": {"W1-CREATIVE-001": ["Thorn Barb canonical item"], "W1-CREATIVE-004": ["drop quantities and rarity"], "W1-CREATIVE-005": ["Skywidow sidegrade identity"]}
+    },
+    {
+      "id": "briar_cleaver",
+      "runtime_id": "aionbound:briar_cleaver",
+      "category": "weapons",
+      "target_profile": "held_item",
+      "declared_clips": ["idle_hold", "chop_pose"],
+      "native_repair": ["effect_locator", "role_clips", "portable_texture_path", "runtime_namespace", "64x64_brief_vs_32x32_packet"],
+      "safe_now": ["aionbound:briar_antler", "aionbound:moss_bind_glue", "aionbound:cleaver_blank"],
+      "blocked": {"W1-CREATIVE-001": ["Stalker Claw or Boar Tusk canonical item"], "W1-CREATIVE-004": ["drop quantities and rarity"]}
+    },
+    {
+      "id": "moon_sap_staff",
+      "runtime_id": "aionbound:moon_sap_staff",
+      "category": "weapons",
+      "target_profile": "held_item",
+      "declared_clips": ["idle_hold", "cast_raise", "pulse"],
+      "native_repair": ["effect_locator", "role_clips", "portable_texture_path", "runtime_namespace", "64x64_brief_vs_32x32_packet"],
+      "safe_now": ["aionbound:hollow_amber", "aionbound:moon_sap", "aionbound:root_heart", "aionbound:amber_core", "aionbound:living_root_focus"],
+      "blocked": {"W1-CREATIVE-004": ["drop quantities and rarity"]}
+    },
+    {
+      "id": "whisperwood_helmet",
+      "runtime_id": "aionbound:whisperwood_helmet",
+      "category": "armor",
+      "target_profile": "wearable_armor",
+      "declared_clips": [],
+      "native_repair": ["effect_locator", "portable_texture_path", "runtime_namespace", "64x64_brief_vs_32x32_packet"],
+      "safe_now": ["aionbound:widow_silk", "aionbound:moss_resin", "aionbound:moss_bind_glue", "aionbound:hollow_amber"],
+      "blocked": {"W1-CREATIVE-001": ["Thick Hide, Hardened Moss Plate, or Root Plate canonical item"], "W1-CREATIVE-004": ["drop quantities and rarity"]}
+    },
+    {
+      "id": "whisperwood_chest",
+      "runtime_id": "aionbound:whisperwood_chest",
+      "category": "armor",
+      "target_profile": "wearable_armor",
+      "declared_clips": [],
+      "native_repair": ["effect_locator", "portable_texture_path", "runtime_namespace", "64x64_brief_vs_32x32_packet"],
+      "safe_now": ["aionbound:widow_silk", "aionbound:moss_resin", "aionbound:moss_bind_glue", "aionbound:hollow_amber"],
+      "blocked": {"W1-CREATIVE-001": ["Thick Hide, Hardened Moss Plate, or Root Plate canonical item"], "W1-CREATIVE-004": ["drop quantities and rarity"]}
+    },
+    {
+      "id": "whisperwood_legs",
+      "runtime_id": "aionbound:whisperwood_legs",
+      "category": "armor",
+      "target_profile": "wearable_armor",
+      "declared_clips": [],
+      "native_repair": ["effect_locator", "portable_texture_path", "runtime_namespace", "64x64_brief_vs_32x32_packet"],
+      "safe_now": ["aionbound:widow_silk", "aionbound:moss_resin", "aionbound:moss_bind_glue", "aionbound:hollow_amber"],
+      "blocked": {"W1-CREATIVE-001": ["Thick Hide, Hardened Moss Plate, or Root Plate canonical item"], "W1-CREATIVE-004": ["drop quantities and rarity"]}
+    },
+    {
+      "id": "whisperwood_boots",
+      "runtime_id": "aionbound:whisperwood_boots",
+      "category": "armor",
+      "target_profile": "wearable_armor",
+      "declared_clips": [],
+      "native_repair": ["effect_locator", "portable_texture_path", "runtime_namespace", "64x64_brief_vs_32x32_packet"],
+      "safe_now": ["aionbound:widow_silk", "aionbound:moss_resin", "aionbound:moss_bind_glue", "aionbound:hollow_amber"],
+      "blocked": {"W1-CREATIVE-001": ["Thick Hide, Hardened Moss Plate, or Root Plate canonical item"], "W1-CREATIVE-004": ["drop quantities and rarity"]}
+    },
+    {
+      "id": "root_knife",
+      "runtime_id": "aionbound:root_knife",
+      "category": "tools",
+      "target_profile": "held_item",
+      "declared_clips": ["hold"],
+      "native_repair": ["effect_locator", "role_clips", "portable_texture_path", "runtime_namespace", "64x64_brief_vs_32x32_packet"],
+      "safe_now": ["aionbound:hollow_amber"],
+      "blocked": {"W1-CREATIVE-001": ["Scrap Wood and Stone scrap canonical inputs"], "W1-CREATIVE-005": ["same-ID amber upgrade semantics"]}
+    },
+    {
+      "id": "whisperwood_hatchet",
+      "runtime_id": "aionbound:whisperwood_hatchet",
+      "category": "tools",
+      "target_profile": "held_item",
+      "declared_clips": ["hold", "chop"],
+      "native_repair": ["effect_locator", "role_clips", "portable_texture_path", "runtime_namespace", "64x64_brief_vs_32x32_packet"],
+      "safe_now": ["aionbound:whisperwood_planks", "aionbound:moss_bind_glue"],
+      "blocked": {"W1-CREATIVE-001": ["stone input canonical identity"]}
+    },
+    {
+      "id": "lantern_hook",
+      "runtime_id": "aionbound:lantern_hook",
+      "category": "tools",
+      "target_profile": "held_item",
+      "declared_clips": ["hold", "hang"],
+      "native_repair": ["effect_locator", "role_clips", "portable_texture_path", "runtime_namespace", "64x64_brief_vs_32x32_packet"],
+      "safe_now": ["aionbound:whisperwood_planks", "aionbound:lantern_fur"],
+      "blocked": {"W1-CREATIVE-001": ["iron-analogue scrap canonical input"], "W1-CREATIVE-005": ["cliff grapnel sidegrade identity"]}
+    },
+    {
+      "id": "moss_charm",
+      "runtime_id": "aionbound:moss_charm",
+      "category": "accessories",
+      "target_profile": "accessory",
+      "declared_clips": ["idle_sway"],
+      "native_repair": ["effect_locator", "role_clips", "portable_texture_path", "runtime_namespace"],
+      "safe_now": ["aionbound:moss_resin", "aionbound:glow_moss"],
+      "blocked": {"W1-CREATIVE-004": ["resource quantities and rarity"]}
+    },
+    {
+      "id": "root_bracelet",
+      "runtime_id": "aionbound:root_bracelet",
+      "category": "accessories",
+      "target_profile": "accessory",
+      "declared_clips": [],
+      "native_repair": ["effect_locator", "portable_texture_path", "runtime_namespace"],
+      "safe_now": ["aionbound:root_flower"],
+      "blocked": {"W1-CREATIVE-001": ["root fiber and small amber canonical identities"]}
+    },
+    {
+      "id": "lantern_badge",
+      "runtime_id": "aionbound:lantern_badge",
+      "category": "accessories",
+      "target_profile": "accessory",
+      "declared_clips": [],
+      "native_repair": ["effect_locator", "portable_texture_path", "runtime_namespace"],
+      "safe_now": ["aionbound:lantern_fur"],
+      "blocked": {"W1-CREATIVE-001": ["brass scrap canonical input"], "W1-CREATIVE-004": ["structure/component reward rarity"]}
+    },
+    {
+      "id": "moon_sap_pendant",
+      "runtime_id": "aionbound:moon_sap_pendant",
+      "category": "accessories",
+      "target_profile": "accessory",
+      "declared_clips": ["pulse"],
+      "native_repair": ["effect_locator", "role_clips", "portable_texture_path", "runtime_namespace"],
+      "safe_now": ["aionbound:moon_sap"],
+      "blocked": {"W1-CREATIVE-001": ["silk thread canonical identity"], "W1-CREATIVE-004": ["resource and shrine rarity"]}
+    },
+    {
+      "id": "briar_ring",
+      "runtime_id": "aionbound:briar_ring",
+      "category": "accessories",
+      "target_profile": "accessory",
+      "declared_clips": [],
+      "native_repair": ["effect_locator", "portable_texture_path", "runtime_namespace"],
+      "safe_now": ["aionbound:briar_antler"],
+      "blocked": {"W1-CREATIVE-001": ["thorn and antler-chip canonical input semantics"], "W1-CREATIVE-005": ["AH heat-tempered sidegrade identity"]}
+    },
+    {
+      "id": "thorn_stalker_skull",
+      "runtime_id": "aionbound:thorn_stalker_skull",
+      "category": "trophies",
+      "target_profile": "placeable_trophy",
+      "declared_clips": [],
+      "native_repair": ["effect_locator", "portable_texture_path", "runtime_namespace", "64x64_brief_vs_32x32_packet"],
+      "safe_now": ["approved chapter-seal identity", "approved placeable display identity"],
+      "blocked": {"W1-CREATIVE-003": ["boss completion, ownership, persistence, reset and terminal reward semantics"], "W1-CREATIVE-004": ["guarded chapter-seal award semantics"]}
+    },
+    {
+      "id": "briar_elk_trophy",
+      "runtime_id": "aionbound:briar_elk_trophy",
+      "category": "trophies",
+      "target_profile": "placeable_trophy",
+      "declared_clips": [],
+      "native_repair": ["effect_locator", "portable_texture_path", "runtime_namespace", "64x64_brief_vs_32x32_packet"],
+      "safe_now": ["aionbound:whisperwood_planks", "approved placeable display identity"],
+      "blocked": {"W1-CREATIVE-001": ["Briar Crown canonical item"], "W1-CREATIVE-004": ["alternate/soft-seal semantics and rarity"]}
+    },
+    {
+      "id": "mosskip_trophy",
+      "runtime_id": "aionbound:mosskip_trophy",
+      "category": "trophies",
+      "target_profile": "placeable_trophy",
+      "declared_clips": [],
+      "native_repair": ["effect_locator", "portable_texture_path", "runtime_namespace", "64x64_brief_vs_32x32_packet"],
+      "safe_now": ["approved placeable display identity"],
+      "blocked": {"W1-CREATIVE-001": ["Mosskip Crown Fragment canonical item"], "W1-CREATIVE-004": ["soft-seal semantics and rarity"]}
+    },
+    {
+      "id": "ancient_acorn_display",
+      "runtime_id": "aionbound:ancient_acorn_display",
+      "category": "trophies",
+      "target_profile": "placeable_trophy",
+      "declared_clips": [],
+      "native_repair": ["effect_locator", "portable_texture_path", "runtime_namespace", "64x64_brief_vs_32x32_packet"],
+      "safe_now": ["aionbound:ancient_acorn", "approved placeable display identity"],
+      "blocked": {"W1-CREATIVE-001": ["pedestal wood canonical input"], "W1-CREATIVE-004": ["ancient acorn rarity"]}
+    }
+  ],
+  "g7_collision_map": {
+    "exact_runtime_id_collisions": [],
+    "exact_proposed_path_collisions_at_base": [],
+    "result": "21 new runtime IDs and target stems; no exact collision with immutable G7",
+    "semantic_reconciliation_only": [
+      {
+        "wave1": "aionbound:mossfang_spear",
+        "g7": "aionbound:brine_spear",
+        "reason": "both are reach-weapon roles; IDs and art are distinct"
+      },
+      {
+        "wave1": "aionbound:widow_fang_dagger",
+        "g7": "aionbound:brood_fang_daggers",
+        "reason": "both are fang-dagger roles; IDs and art are distinct"
+      },
+      {
+        "wave1": "Whisperwood armor set",
+        "g7": "Ferrowake and Concord armor sets",
+        "reason": "category-level progression overlap; no identifier collision"
+      },
+      {
+        "wave1": "four WW trophies and chapter-seal chain",
+        "g7": "aionbound:trophy_edge and legacy trophy_* inputs",
+        "reason": "progression reconciliation required; Wave 1 ledger already preserves/refines trophy_edge and supersedes old finale inputs"
+      }
+    ]
+  },
+  "safe_work_boundary": {
+    "base_id_priority": {
+      "status": "ALL_21_BASE_IDS_MAY_PROCEED_WITHIN_THE_ALLOWED_NOW_BOUNDARY",
+      "note": "W1-CREATIVE-005 does not block native repair, presentation, or base-ID behavior interfaces. It blocks only upgrade/sidegrade identity semantics."
+    },
+    "w1_creative_005_deferred_sidegrades": [
+      {"base_id": "aionbound:thorn_whip", "deferred_identity": "Skywidow Whip"},
+      {"base_id": "aionbound:lantern_hook", "deferred_identity": "Cliff grapnel"},
+      {"base_id": "aionbound:briar_ring", "deferred_identity": "Heat-tempered Briar Ring"},
+      {"base_id": "aionbound:root_knife", "deferred_identity": "same-ID amber-tip upgrade semantics"}
+    ],
+    "allowed_now": [
+      "native asset repair and namespace/path normalization",
+      "static BP/RP item, attachable, block, atlas and localization shells without invented stats or recipes",
+      "behavior interfaces for approved base IDs",
+      "placeable trophy presentation without reward grants"
+    ],
+    "forbidden_while_tickets_open": [
+      "publication of unresolved non-warehouse ingredient IDs",
+      "final recipes or loot tables using unresolved inputs or probabilities",
+      "boss completion/reward behavior",
+      "alternate/soft seal semantics",
+      "sidegrade sibling IDs or same-ID mutation semantics",
+      "new art, upscaling, redraw, or gameplay identity invention"
+    ]
+  }
+}
