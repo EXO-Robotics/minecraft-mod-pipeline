@@ -1,0 +1,44 @@
+{
+  "schema": "aionbound.wave1.ashen-resource-icons.v1",
+  "generation_mode": "built-in imagegen; one distinct call per icon; preserved chroma sources",
+  "prompt_record": {
+    "common_scaffold": "Stylized-concept Minecraft Bedrock inventory resource icon authored large for clean downsampling to 128x128 RGBA and readable at 16x16 and 32x32; handcrafted pixel art with chunky deliberate clusters, charcoal-dark regional outline, top-left soft light, Ashen palette charcoal #2a2420, ember orange #e07030, basalt gray #5a534c; centered single isolated object with generous padding on perfectly flat #ff00ff chroma; no magenta subject, shadow, background texture, secondary object, text, watermark, UI frame, box, pedestal, or scenery.",
+    "subjects": {
+      "ash_crystal": "Rare asymmetric charcoal and translucent ash-gray crystal with a visible ember-orange internal ash plume; mineral/glass hybrid distinct from volcanic glass.",
+      "basalt_core": "Rare dense faceted dark-basalt heart/core, squat and angular with a central ember-orange pressure seam; heavier and more refined than heatstone, not cube-shaped.",
+      "charbone": "One compact charred bone fragment with dark mineralized surface and a restrained ember-orange heat fissure.",
+      "ember_resin": "One compact viscous ember-resin glob with a dark cooled rind and bright orange molten center.",
+      "fire_bloom_seed": "One plump biological seed with burnt segmented shell, asymmetric oval shape, and small ember-orange germ or crown; seed, not flame or mineral.",
+      "furnace_chitin": "One curved layered furnace-chitin plate with dark segmented armor ridges and a restrained ember-orange seam.",
+      "heatstone": "One common dense dark heatstone chunk with a simple ember-orange thermal fissure; rough and less refined than basalt core.",
+      "smolder_bark": "One split strip of charcoal bark with layered wood grain and a narrow ember-orange smolder seam.",
+      "sulfur_cluster": "One bright yellow sulfur crystal cluster on a small dark basalt base, with restrained warm orange accents.",
+      "volcanic_glass_shard": "One long asymmetric black volcanic-glass shard with sharp silhouette and a thin ember-orange edge glow; distinct from ash crystal."
+    }
+  },
+  "shipping_transform": "Border-sampled magenta chroma removal with soft matte and despill, ImageMagick Lanczos resize to exact 128x128 RGBA; one alpha-only residual-key cleanup on volcanic_glass_shard.",
+  "validation": {
+    "full_png_decode": "PASS_10_OF_10",
+    "format": "RGBA_128x128",
+    "transparent_corners": "PASS_10_OF_10",
+    "visible_magenta_key_pixels": 0,
+    "visual_readability_at_32px": "PASS_10_OF_10",
+    "visual_review_contact_sheets": ["128px", "32px"]
+  },
+  "icons": [
+    {"id":"ash_crystal","source_sha256":"4b3e72594381bcd0b708a47eb43ba79c8ebf93307adc97420041a194c5c587eb","shipping_sha256":"0a71da4ca802feab3a731360e7b0f7283bc0330b171aed131ac099fe97ea293b"},
+    {"id":"basalt_core","source_sha256":"1bb0183248e8c22348e9736ec836f3d65793bb66ed4c7035fa7e1d35f366da3d","shipping_sha256":"4881c974f701fe5935d87e5102ce5de5256d17462e6594cfeba6cdf3709e2079"},
+    {"id":"charbone","source_sha256":"5a2b7f08c2f2b38a7c3ed22f36bcde1f9e819262e8bc97f6e73618b1de270d25","shipping_sha256":"d6efa03201302b15c1a37257be5dc43098587e423263e91cfd77f177c70cb4cb"},
+    {"id":"ember_resin","source_sha256":"8cda00f075327bddb2b1a32288061fb5dad9d2fe539b544a37045b869426af6d","shipping_sha256":"4bb151c2859dfaf5b09cf67ab4e74c626c687df77f6d554342a38b1246ac2b87"},
+    {"id":"fire_bloom_seed","source_sha256":"80b0b01b01e74bc0ac393b97e212fa45530d5aecdd6063802c1bebca4e543401","shipping_sha256":"321eb3af23d33e869e8a5d95ef66226332168f1e5ba92844d191cf248f4c7966"},
+    {"id":"furnace_chitin","source_sha256":"964640f17a17c7f156594d2d09b2c9e6994469061f557e902cd9e9076a8e75ad","shipping_sha256":"618534b516b7f97c6facfffb415261f98f6c5ed122e63dbb560af35ffd375286"},
+    {"id":"heatstone","source_sha256":"52f4dee5f1b364e6f6b33eeb5dd08d3111b39aa3acb101cee29a365b57428342","shipping_sha256":"3555a17ebc08d617a6141d5465eea30e2dae852360a20f0fbd06f7e1e5a05a61"},
+    {"id":"smolder_bark","source_sha256":"3ceac8b5b8b62e33f4f7e50200216f270d0435acd402b159e28601925aeb6892","shipping_sha256":"8338d77b99e27beed0c3b644752f1deb41c2ee18b24e0efa53ab69613fed5b9e"},
+    {"id":"sulfur_cluster","source_sha256":"54be5a6f1e466f5d9b67570d91ddf8c9452ac70003162f349135a8e76f1162be","shipping_sha256":"5f50afa38aff69ea6e88f6368b7f41fcab1b8c3a53e9368c9518902e1cd69cb1"},
+    {"id":"volcanic_glass_shard","source_sha256":"0ad9b67145e73168faff600976549808fe8c71b0fa4f6cd0be91917926f7063b","shipping_sha256":"179728a7314056e7946476e22ba6015f381471e8e40d21cb77df8271bec97708"}
+  ],
+  "proof_boundary": {
+    "proves": ["source and shipping byte identity", "full PNG decode", "RGBA dimensions", "transparent background", "local 128px and 32px visual review"],
+    "does_not_prove": ["Bedrock client rendering", "Stable BDS", "console UI", "gameplay acquisition", "shipping candidate qualification"]
+  }
+}
