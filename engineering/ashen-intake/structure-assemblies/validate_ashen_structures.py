@@ -47,7 +47,7 @@ def build_report() -> dict:
             "ten distinct assembly hashes, sizes, identifiers, and anchor identifiers",
             "palette/index closure and occupied-coordinate bounds",
             "inert barrel/lodestone/lectern anchor coordinate closure",
-            "empty block_position_data and no LootTable NBT",
+            "seven ordinary LootTable-path bindings and empty protected Ember Forge cache",
             "custom block identifier closure",
             "stable feature/rule/structure-name/filename reference closure",
             "overworld non-ocean mountain-or-mesa proxy filters",
@@ -59,7 +59,7 @@ def build_report() -> dict:
             "python3 engineering/ashen-intake/structure-assemblies/author_ashen_structures.py --check",
             "python3 -m unittest engineering/ashen-intake/structure-assemblies/test_ashen_structure_assemblies.py -v",
         ],
-        "counts": {"assemblies": 10, "structure_files": 10, "features": 10, "feature_rules": 10, "unit_tests": 8, "inert_anchor_blocks": 20, "block_entity_nbt_records": 0},
+        "counts": {"assemblies": 10, "structure_files": 10, "features": 10, "feature_rules": 10, "unit_tests": 8, "anchor_blocks": 20, "static_chest_bindings": 7, "protected_runtime_cache_bindings": 1},
         "outputs": outputs,
         "proof_boundary": "STATIC_SOURCE_AND_AUTHORED_BYTES_ONLY; NOT MCSTRUCTURE CLIENT LOAD, BDS, TERRAIN AFFINITY, LOOT, ENCOUNTER, OR CANDIDATE PROOF",
     }

@@ -2,7 +2,7 @@
 
 Status: **STATIC_AUTHORING_PASS_ONLY**
 
-Ten deterministic little-endian Bedrock structure templates are authored as distinct Ashen block-built silhouettes. All barrel, lodestone, and lectern anchors are inert coordinate reservations without block-entity NBT.
+Ten deterministic little-endian Bedrock structure templates are authored as distinct Ashen block-built silhouettes. Seven ordinary barrel anchors bind exact Ashen chest tables; the Ember Forge arena cache remains empty before a valid clear.
 
 | ID | Size | Occupied | Rarity / chance | Terrain role |
 |---|---:|---:|---|---|
@@ -21,6 +21,7 @@ Ten deterministic little-endian Bedrock structure templates are authored as dist
 
 - Feature rules use stable `minecraft:structure_template_feature` with overworld, non-ocean, and mountain-or-mesa surface proxies.
 - `ember_forge` uses an exceptionally rare `1:16384` proxy. Feature rules cannot enforce or prove exactly one per highlands realm; that obligation remains open in the machine manifest.
-- No structure contains LootTable NBT, reward identities, boss activation, entities, or scripts.
+- Ordinary barrel anchors contain only exact LootTable path metadata. No structure contains reward items, boss activation, entities, or scripts.
+- The Ember Forge barrel contains no LootTable NBT and remains guarded for command-free post-clear population owned by the Kiln Sky service.
 - Packet/native visual models are evidence only and are not the assembly bytes.
 - No BDS, client load, terrain affinity, encounter, or candidate claim is made.

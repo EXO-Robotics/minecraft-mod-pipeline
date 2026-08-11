@@ -6,8 +6,10 @@ feature rules. It follows the proven Whisperwood serializer and closure-test
 shape without copying Whisperwood layouts, palettes, biome filter, or rarity
 tuning.
 
-All barrel, lodestone, and lectern blocks are inert coordinate anchors. The
-structures contain no LootTable NBT, rewards, boss activation, entities, or
+Seven ordinary barrel anchors bind exact ratified Ashen chest-table paths.
+Lodestone and lectern blocks remain inert coordinate anchors, and the
+`ember_forge` arena barrel remains empty and protected before a valid clear.
+The structures contain no reward-item NBT, boss activation, entities, or
 scripts. `ember_forge` is exceptionally rare, but exact one-per-realm placement
 remains explicitly unproven and unenforced by feature rules.
 

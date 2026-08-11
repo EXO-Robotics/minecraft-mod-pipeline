@@ -1,0 +1,127 @@
+{
+  "schema": "aionbound.wave1.ashen.structure_economy_validation.v1",
+  "status": "PASS",
+  "integration_authority": {
+    "commit": "ae5838c08b445e57c30e92f99d90bed426fcaf91",
+    "tree": "b4bf5f1a2e39bb7477aedee68927a039a20f2e59"
+  },
+  "ratified_authority": [
+    "W1-001-AH",
+    "W1-004-AH"
+  ],
+  "checks": [
+    "deterministic structure and economy regeneration",
+    "seven exact static LootTable path bindings",
+    "distinct Ashen-purpose tables within ratified roll bands",
+    "item and block identifier closure",
+    "protected reward exclusion from every structure table and runtime bridge",
+    "empty and guarded Ember Forge cache before explicit valid clear",
+    "inventory-first ordinary delivery with owner-local overflow",
+    "exact assembly-derived cardinal activation signatures and discovery stamps",
+    "runtime composition without boss terminal ownership or commands"
+  ],
+  "captured_commands": [
+    {
+      "command": "python3 engineering/ashen-intake/structure-assemblies/author_ashen_structures.py --check",
+      "exit_code": 0,
+      "normalized_stdout_sha256": "d751dcda6994a0847a727464a5348b9d4278efbf1f860b9363dbd3e3446d232d",
+      "normalized_stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "command": "python3 engineering/ashen-intake/structure-economy/author_ashen_structure_economy.py --check",
+      "exit_code": 0,
+      "normalized_stdout_sha256": "aa88620ba47cd41903ad3c6dd0d22a1df62fbfd622b5871a02e9d20efbe6b582",
+      "normalized_stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "command": "python3 engineering/ashen-intake/structure-assemblies/test_ashen_structure_assemblies.py",
+      "exit_code": 0,
+      "normalized_stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "normalized_stderr_sha256": "97ebedebc3e6cb126ae60e6fffb735e2bcf933bfcc4bce092b85a204eefaf72e"
+    },
+    {
+      "command": "python3 engineering/ashen-intake/structure-economy/test_ashen_structure_economy.py",
+      "exit_code": 0,
+      "normalized_stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "normalized_stderr_sha256": "9211b891b943628fbd2b956102d2f17eb0a6825364beecd6500ef12cfd6c73fa"
+    },
+    {
+      "command": "node --test tests/wave1_ashen_structure_rewards.test.mjs",
+      "exit_code": 0,
+      "normalized_stdout_sha256": "65d365c9041777ce8ab5a379edbb9304a140b6544459e830c69ac6ab137a3b21",
+      "normalized_stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "command": "node --test tests/g7_runtime_semantics.test.mjs",
+      "exit_code": 0,
+      "normalized_stdout_sha256": "b10c5f0a290e3653b3c0eb2916060106c41e17dbf2cb3684f335c33c8c20e4ee",
+      "normalized_stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ],
+  "counts": {
+    "loot_tables": 8,
+    "static_bindings": 7,
+    "protected_runtime_cache": 1,
+    "activation_signatures": 20,
+    "python_tests": 13,
+    "node_tests": 22
+  },
+  "outputs": [
+    {
+      "path": "behavior_pack/loot_tables/chests/ashen/ancient_kiln.json",
+      "bytes": 2077,
+      "sha256": "c0463618005361dbc1f42a68a51346c8af5956a55f2250ef11f61d614c483f83"
+    },
+    {
+      "path": "behavior_pack/loot_tables/chests/ashen/ash_cave.json",
+      "bytes": 2061,
+      "sha256": "75bee87e8361c20fadd8ccbede342a6267788bf1899b4152d9e4bf68e24f7502"
+    },
+    {
+      "path": "behavior_pack/loot_tables/chests/ashen/ash_watchtower.json",
+      "bytes": 2282,
+      "sha256": "f840ae24af187c7ad0dc16211f6749606d07aeed011a6ebde16a93c2b9e5cab4"
+    },
+    {
+      "path": "behavior_pack/loot_tables/chests/ashen/basalt_arch.json",
+      "bytes": 2275,
+      "sha256": "5172550b7c64c4e222af71fd0e3e2edf3f7552e0e4fed9432997646d34a0d288"
+    },
+    {
+      "path": "behavior_pack/loot_tables/chests/ashen/broken_bridge.json",
+      "bytes": 2482,
+      "sha256": "fb862e22fd2feac5ddd3dd4c9c6a9c63126cd3e3b441085f46f547999e115c49"
+    },
+    {
+      "path": "behavior_pack/loot_tables/chests/ashen/burned_camp.json",
+      "bytes": 1481,
+      "sha256": "952231728bc23a2817b3e6e6516aaa6903b81a905de4c32c0e756e02e0465270"
+    },
+    {
+      "path": "behavior_pack/loot_tables/chests/ashen/char_wagon.json",
+      "bytes": 2083,
+      "sha256": "ff5d6125f3021230c4bc91755a3d59e7f8499ee33d4544110f325335dc64a5a4"
+    },
+    {
+      "path": "behavior_pack/loot_tables/chests/ashen/ember_forge.json",
+      "bytes": 2787,
+      "sha256": "f3b9f0bdfd09fbf0dc4436f853507a2b88778fa5af589db8250e6695024c2a06"
+    },
+    {
+      "path": "behavior_pack/scripts/ashen_structure_reward_data.js",
+      "bytes": 36578,
+      "sha256": "8594b6e0619cdd0eed8ad289207f8814121f9f54e9f50da10535c7718d2b823d"
+    },
+    {
+      "path": "behavior_pack/scripts/ashen_structure_rewards.js",
+      "bytes": 6122,
+      "sha256": "8ed409cd3355525da91afbe272d222c1be3caf2e6ef56ea33f91375890c88c11"
+    },
+    {
+      "path": "behavior_pack/scripts/runtime.js",
+      "bytes": 9145,
+      "sha256": "61604284383e3799e63bc6f2044dfd3bd1948277c4fcf113f69b045d455b8f1f"
+    }
+  ],
+  "proof_boundary": "STATIC_LOOT_NBT_SIGNATURE_AND_SEMANTIC_TEST_EVIDENCE_ONLY; NO BDS, BUILD, CLIENT, BOSS_TERMINAL, OR CANDIDATE CLAIM"
+}

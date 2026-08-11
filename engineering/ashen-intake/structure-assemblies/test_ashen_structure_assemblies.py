@@ -27,11 +27,13 @@ class Reader:
 
     def u8(self): return struct.unpack("<B", self.take(1))[0]
     def i32(self): return struct.unpack("<i", self.take(4))[0]
+    def i64(self): return struct.unpack("<q", self.take(8))[0]
     def string(self): return self.take(struct.unpack("<H", self.take(2))[0]).decode()
 
     def payload(self, tag):
         if tag == 1: return self.u8()
         if tag == 3: return self.i32()
+        if tag == 4: return self.i64()
         if tag == 8: return self.string()
         if tag == 9:
             subtype, count = self.u8(), self.i32()
@@ -62,7 +64,7 @@ class AshenStructureAssemblyTests(unittest.TestCase):
         anchor_ids = [anchor["anchor_id"] for item in author.ASSEMBLIES for anchor in item.anchors]
         self.assertEqual(len(anchor_ids), len(set(anchor_ids)))
 
-    def test_little_endian_nbt_palette_indices_bounds_and_empty_position_data(self):
+    def test_little_endian_nbt_palette_indices_bounds_and_chest_bindings(self):
         for assembly in author.ASSEMBLIES:
             data, expected_palette, expected_indices = author.encode_structure(assembly)
             self.assertEqual(b"\x0a\x00\x00", data[:3], assembly.identifier)
@@ -77,8 +79,20 @@ class AshenStructureAssemblyTests(unittest.TestCase):
             self.assertTrue(all(-1 <= index < len(palette) for index in primary))
             self.assertTrue(all(index == -1 for index in secondary))
             self.assertEqual([], structure["entities"])
-            self.assertEqual({}, structure["palette"]["default"]["block_position_data"])
-            self.assertNotIn(b"LootTable", data)
+            position_data = structure["palette"]["default"]["block_position_data"]
+            bound = [item for item in assembly.anchors if item.get("loot_table")]
+            self.assertEqual(len(bound), len(position_data))
+            for item in bound:
+                x, y, z = item["coordinate"]
+                flat = str(x + z * assembly.size[0] + y * assembly.size[0] * assembly.size[2])
+                block_entity = position_data[flat]["block_entity_data"]
+                self.assertEqual("Barrel", block_entity["id"])
+                self.assertEqual(item["loot_table"], block_entity["LootTable"])
+                self.assertEqual(0, block_entity["LootTableSeed"])
+                self.assertEqual([x, y, z], [block_entity["x"], block_entity["y"], block_entity["z"]])
+            if assembly.identifier == "ember_forge":
+                self.assertEqual({}, position_data)
+                self.assertNotIn(b"LootTable", data)
 
     def test_inert_anchor_coordinates_blocks_and_machine_manifest(self):
         outputs, manifest = author.expected_outputs()
@@ -90,13 +104,18 @@ class AshenStructureAssemblyTests(unittest.TestCase):
                 xyz = tuple(item["coordinate"])
                 self.assertIn(item["expected_block"], allowed_blocks)
                 self.assertEqual(item["expected_block"], assembly.blocks[xyz])
-                self.assertEqual("RESERVED_INERT_RUNTIME_HANDOFF", item["binding"])
-                self.assertEqual("OMITTED", item["block_entity_nbt"])
+                if item.get("loot_table"):
+                    self.assertEqual("RATIFIED_W1_004_AH_STATIC_CHEST_TABLE", item["binding"])
+                    self.assertEqual("LOOT_TABLE_PATH_ONLY", item["block_entity_nbt"])
+                else:
+                    self.assertEqual("RESERVED_INERT_RUNTIME_HANDOFF", item["binding"])
+                    self.assertEqual("OMITTED", item["block_entity_nbt"])
                 self.assertTrue(all(0 <= xyz[index] < assembly.size[index] for index in range(3)))
         encoded = json.dumps(manifest, sort_keys=True)
-        for forbidden in ("ash_drake_horn", "ember_forge_core", "boss_activation", "LootTableSeed"):
+        for forbidden in ("aionbound:ash_drake_horn", "aionbound:ember_forge_core", "boss_activation", "LootTableSeed"):
             self.assertNotIn(forbidden, encoded)
         self.assertEqual(32, len(outputs))
+        self.assertEqual(7, sum(bool(item.get("loot_table")) for assembly in author.ASSEMBLIES for item in assembly.anchors))
 
     def test_custom_palette_identifier_closure(self):
         defined = set()

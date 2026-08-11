@@ -31,6 +31,7 @@ class NbtWriter:
 
     def u8(self, value: int) -> None: self.parts.append(struct.pack("<B", value))
     def i32(self, value: int) -> None: self.parts.append(struct.pack("<i", value))
+    def i64(self, value: int) -> None: self.parts.append(struct.pack("<q", value))
 
     def string_payload(self, value: str) -> None:
         encoded = value.encode("utf-8")
@@ -44,6 +45,14 @@ class NbtWriter:
     def int_tag(self, name: str, value: int) -> None:
         self.head(3, name)
         self.i32(value)
+
+    def byte_tag(self, name: str, value: int) -> None:
+        self.head(1, name)
+        self.u8(value)
+
+    def long_tag(self, name: str, value: int) -> None:
+        self.head(4, name)
+        self.i64(value)
 
     def string_tag(self, name: str, value: str) -> None:
         self.head(8, name)
@@ -283,6 +292,13 @@ def ash_cave() -> Assembly:
 
 
 ASSEMBLIES = [fire_totem(), burned_camp(), char_wagon(), broken_bridge(), basalt_arch(), ash_watchtower(), ancient_kiln(), ember_forge(), lava_shrine(), ash_cave()]
+STATIC_CHEST_STRUCTURES = frozenset({"burned_camp", "char_wagon", "broken_bridge", "basalt_arch", "ash_watchtower", "ancient_kiln", "ash_cave"})
+for _assembly in ASSEMBLIES:
+    for _anchor in _assembly.anchors:
+        if _assembly.identifier in STATIC_CHEST_STRUCTURES and _anchor["expected_block"] == "minecraft:barrel":
+            _anchor["binding"] = "RATIFIED_W1_004_AH_STATIC_CHEST_TABLE"
+            _anchor["block_entity_nbt"] = "LOOT_TABLE_PATH_ONLY"
+            _anchor["loot_table"] = f"loot_tables/chests/ashen/{_assembly.identifier}.json"
 
 
 def encode_structure(assembly: Assembly) -> tuple[bytes, list[str], list[int]]:
@@ -297,25 +313,47 @@ def encode_structure(assembly: Assembly) -> tuple[bytes, list[str], list[int]]:
     n.int_tag("format_version", 1)
     n.list_tag("size", 3, list(assembly.size), n.i32)
     n.list_tag("structure_world_origin", 3, [0, 0, 0], n.i32)
-    n.compound("structure", lambda: _emit_structure_payload(n, indices, palette))
+    n.compound("structure", lambda: _emit_structure_payload(n, indices, palette, assembly))
     n.u8(0)
     return n.finish(), palette, indices
 
 
-def _emit_structure_payload(n: NbtWriter, indices: list[int], palette: list[str]) -> None:
+def _emit_structure_payload(n: NbtWriter, indices: list[int], palette: list[str], assembly: Assembly) -> None:
     n.list_tag("block_indices", 9, [indices, [-1] * len(indices)], lambda layer: n.list_payload(3, layer, n.i32))
     n.list_tag("entities", 10, [], lambda _value: None)
-    n.compound("palette", lambda: n.compound("default", lambda: _emit_palette(n, palette)))
+    n.compound("palette", lambda: n.compound("default", lambda: _emit_palette(n, palette, assembly)))
 
 
-def _emit_palette(n: NbtWriter, palette: list[str]) -> None:
+def _emit_palette(n: NbtWriter, palette: list[str], assembly: Assembly) -> None:
     def entry(name: str) -> None:
         n.string_tag("name", name)
         n.compound("states", lambda: None)
         n.int_tag("version", 18168865)
         n.u8(0)
     n.list_tag("block_palette", 10, palette, entry)
-    n.compound("block_position_data", lambda: None)
+    n.compound("block_position_data", lambda: _emit_block_position_data(n, assembly))
+
+
+def _emit_block_position_data(n: NbtWriter, assembly: Assembly) -> None:
+    sx, _sy, sz = assembly.size
+    for item in assembly.anchors:
+        table = item.get("loot_table")
+        if not table:
+            continue
+        x, y, z = item["coordinate"]
+        flat_index = x + z * sx + y * sx * sz
+
+        def block_entity() -> None:
+            n.byte_tag("Findable", 0)
+            n.string_tag("LootTable", table)
+            n.long_tag("LootTableSeed", 0)
+            n.string_tag("id", "Barrel")
+            n.byte_tag("isMovable", 1)
+            n.int_tag("x", x)
+            n.int_tag("y", y)
+            n.int_tag("z", z)
+
+        n.compound(str(flat_index), lambda: n.compound("block_entity_data", block_entity))
 
 
 def feature_document(assembly: Assembly) -> dict:
@@ -400,7 +438,7 @@ def expected_outputs() -> tuple[dict[Path, bytes], dict]:
             "feature_path": str(feature_path.relative_to(REPO)),
             "feature_rule_path": str(rule_path.relative_to(REPO)),
             "structure_sha256": hashlib.sha256(structure_bytes).hexdigest(),
-            "block_position_data": "EMPTY_NO_BLOCK_ENTITY_NBT",
+            "block_position_data": "STATIC_LOOT_TABLE_PATH_ONLY" if assembly.identifier in STATIC_CHEST_STRUCTURES else "EMPTY_NO_BLOCK_ENTITY_NBT",
         })
     manifest = {
         "schema": "aionbound.wave1.ashen.structure_assemblies.v1",
@@ -412,7 +450,7 @@ def expected_outputs() -> tuple[dict[Path, bytes], dict]:
         ],
         "proof_boundary": "STATIC_SOURCE_AND_AUTHORED_BYTES_ONLY; NO_MCSTRUCTURE_CLIENT_LOAD, BDS, TERRAIN_AFFINITY, LOOT, ENCOUNTER, OR CANDIDATE CLAIM",
         "visual_asset_boundary": "Packet and native Blockbench models are design evidence only and are not serialized into the block-built assembly bytes",
-        "anchor_policy": "barrel, lodestone, and lectern anchors are inert coordinate reservations with empty block_position_data and no LootTable or reward NBT",
+        "anchor_policy": "seven ordinary barrel anchors bind exact ratified Ashen chest-table paths; lodestone and lectern anchors remain inert; ember_forge arena cache remains empty and protected for valid-clear runtime population",
         "placement_policy": "one conservative attempt per selected chunk with overworld non-ocean mountain-or-mesa surface proxies; denominators are Ashen-specific and distinct from Whisperwood",
         "ember_forge_uniqueness": {
             "creative_obligation": "one_per_highlands_realm",
@@ -420,13 +458,13 @@ def expected_outputs() -> tuple[dict[Path, bytes], dict]:
             "status": "UNPROVEN_NOT_ENFORCED_BY_FEATURE_RULES",
             "required_future_proof": "realm-level placement ownership or deterministic discovery registry",
         },
-        "content_omissions": ["LootTable NBT", "reward IDs", "boss activation", "entities", "scripts"],
+        "content_omissions": ["reward item NBT", "boss activation", "entities", "scripts", "static ash_drake_horn", "static ember_forge_core"],
         "assemblies": records,
     }
     outputs[OUT / "ASHEN_STRUCTURE_ASSEMBLIES.json"] = json_bytes(manifest)
     lines = [
         "# Ashen Structure Assemblies", "", "Status: **STATIC_AUTHORING_PASS_ONLY**", "",
-        "Ten deterministic little-endian Bedrock structure templates are authored as distinct Ashen block-built silhouettes. All barrel, lodestone, and lectern anchors are inert coordinate reservations without block-entity NBT.", "",
+        "Ten deterministic little-endian Bedrock structure templates are authored as distinct Ashen block-built silhouettes. Seven ordinary barrel anchors bind exact Ashen chest tables; the Ember Forge arena cache remains empty before a valid clear.", "",
         "| ID | Size | Occupied | Rarity / chance | Terrain role |", "|---|---:|---:|---|---|",
     ]
     for record in records:
@@ -435,7 +473,8 @@ def expected_outputs() -> tuple[dict[Path, bytes], dict]:
         "", "## Boundaries", "",
         "- Feature rules use stable `minecraft:structure_template_feature` with overworld, non-ocean, and mountain-or-mesa surface proxies.",
         "- `ember_forge` uses an exceptionally rare `1:16384` proxy. Feature rules cannot enforce or prove exactly one per highlands realm; that obligation remains open in the machine manifest.",
-        "- No structure contains LootTable NBT, reward identities, boss activation, entities, or scripts.",
+        "- Ordinary barrel anchors contain only exact LootTable path metadata. No structure contains reward items, boss activation, entities, or scripts.",
+        "- The Ember Forge barrel contains no LootTable NBT and remains guarded for command-free post-clear population owned by the Kiln Sky service.",
         "- Packet/native visual models are evidence only and are not the assembly bytes.",
         "- No BDS, client load, terrain affinity, encounter, or candidate claim is made.", "",
     ]

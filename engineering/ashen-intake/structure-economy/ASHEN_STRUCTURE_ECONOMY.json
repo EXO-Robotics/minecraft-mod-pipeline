@@ -1,0 +1,222 @@
+{
+  "schema": "aionbound.wave1.ashen.structure_economy.v1",
+  "status": "STATIC_AND_COMMAND_FREE_BRIDGE_READY",
+  "integration_authority": {
+    "commit": "ae5838c08b445e57c30e92f99d90bed426fcaf91",
+    "tree": "b4bf5f1a2e39bb7477aedee68927a039a20f2e59"
+  },
+  "ratified_authority": [
+    "W1-001-AH",
+    "W1-004-AH"
+  ],
+  "tables": [
+    {
+      "structure": "burned_camp",
+      "band": "minor_cache",
+      "total_rolls": [
+        2,
+        3
+      ],
+      "approved_total_rolls": [
+        2,
+        3
+      ],
+      "guaranteed_regional_material_rolls": 1,
+      "loot_table": "loot_tables/chests/ashen/burned_camp.json",
+      "sha256": "952231728bc23a2817b3e6e6516aaa6903b81a905de4c32c0e756e02e0465270",
+      "identities": [
+        "aionbound:charbone",
+        "aionbound:ember_resin",
+        "aionbound:furnace_chitin",
+        "aionbound:sulfur_cluster"
+      ],
+      "static_structure_binding": true
+    },
+    {
+      "structure": "char_wagon",
+      "band": "minor_cache",
+      "total_rolls": [
+        2,
+        3
+      ],
+      "approved_total_rolls": [
+        2,
+        3
+      ],
+      "guaranteed_regional_material_rolls": 1,
+      "loot_table": "loot_tables/chests/ashen/char_wagon.json",
+      "sha256": "ff5d6125f3021230c4bc91755a3d59e7f8499ee33d4544110f325335dc64a5a4",
+      "identities": [
+        "aionbound:basalt_core",
+        "aionbound:charbone",
+        "aionbound:ember_resin",
+        "aionbound:sulfur_cluster",
+        "aionbound:volcanic_glass_shard"
+      ],
+      "static_structure_binding": true
+    },
+    {
+      "structure": "broken_bridge",
+      "band": "standard_structure",
+      "total_rolls": [
+        3,
+        5
+      ],
+      "approved_total_rolls": [
+        3,
+        5
+      ],
+      "guaranteed_regional_material_rolls": 1,
+      "loot_table": "loot_tables/chests/ashen/broken_bridge.json",
+      "sha256": "fb862e22fd2feac5ddd3dd4c9c6a9c63126cd3e3b441085f46f547999e115c49",
+      "identities": [
+        "aionbound:basalt_brick",
+        "aionbound:basalt_core",
+        "aionbound:char_planks",
+        "aionbound:furnace_chitin",
+        "aionbound:volcanic_glass_shard"
+      ],
+      "static_structure_binding": true
+    },
+    {
+      "structure": "basalt_arch",
+      "band": "landmark_structure",
+      "total_rolls": [
+        4,
+        6
+      ],
+      "approved_total_rolls": [
+        4,
+        6
+      ],
+      "guaranteed_regional_material_rolls": 2,
+      "loot_table": "loot_tables/chests/ashen/basalt_arch.json",
+      "sha256": "5172550b7c64c4e222af71fd0e3e2edf3f7552e0e4fed9432997646d34a0d288",
+      "identities": [
+        "aionbound:basalt_brick",
+        "aionbound:basalt_core",
+        "aionbound:cinder_gravel",
+        "aionbound:heatstone",
+        "aionbound:sulfur_cluster",
+        "aionbound:volcanic_glass_shard"
+      ],
+      "static_structure_binding": true
+    },
+    {
+      "structure": "ash_watchtower",
+      "band": "landmark_structure",
+      "total_rolls": [
+        4,
+        6
+      ],
+      "approved_total_rolls": [
+        4,
+        6
+      ],
+      "guaranteed_regional_material_rolls": 2,
+      "loot_table": "loot_tables/chests/ashen/ash_watchtower.json",
+      "sha256": "f840ae24af187c7ad0dc16211f6749606d07aeed011a6ebde16a93c2b9e5cab4",
+      "identities": [
+        "aionbound:ash_crystal",
+        "aionbound:basalt_core",
+        "aionbound:charbone",
+        "aionbound:heatstone",
+        "aionbound:sulfur_cluster",
+        "aionbound:volcanic_glass_shard"
+      ],
+      "static_structure_binding": true
+    },
+    {
+      "structure": "ancient_kiln",
+      "band": "landmark_structure",
+      "total_rolls": [
+        4,
+        6
+      ],
+      "approved_total_rolls": [
+        4,
+        6
+      ],
+      "guaranteed_regional_material_rolls": 2,
+      "loot_table": "loot_tables/chests/ashen/ancient_kiln.json",
+      "sha256": "c0463618005361dbc1f42a68a51346c8af5956a55f2250ef11f61d614c483f83",
+      "identities": [
+        "aionbound:basalt_core",
+        "aionbound:ember_resin",
+        "aionbound:furnace_chitin",
+        "aionbound:heatstone",
+        "aionbound:sulfur_cluster",
+        "aionbound:volcanic_glass_shard"
+      ],
+      "static_structure_binding": true
+    },
+    {
+      "structure": "ash_cave",
+      "band": "standard_structure",
+      "total_rolls": [
+        3,
+        5
+      ],
+      "approved_total_rolls": [
+        3,
+        5
+      ],
+      "guaranteed_regional_material_rolls": 1,
+      "loot_table": "loot_tables/chests/ashen/ash_cave.json",
+      "sha256": "75bee87e8361c20fadd8ccbede342a6267788bf1899b4152d9e4bf68e24f7502",
+      "identities": [
+        "aionbound:basalt_core",
+        "aionbound:charbone",
+        "aionbound:furnace_chitin",
+        "aionbound:heatstone",
+        "aionbound:magma_moss"
+      ],
+      "static_structure_binding": true
+    },
+    {
+      "structure": "ember_forge",
+      "band": "apex_arena_chest",
+      "total_rolls": [
+        4,
+        6
+      ],
+      "approved_total_rolls": [
+        4,
+        6
+      ],
+      "guaranteed_regional_material_rolls": 2,
+      "loot_table": "loot_tables/chests/ashen/ember_forge.json",
+      "sha256": "f3b9f0bdfd09fbf0dc4436f853507a2b88778fa5af589db8250e6695024c2a06",
+      "identities": [
+        "aionbound:ash_crystal",
+        "aionbound:basalt_core",
+        "aionbound:ember_resin",
+        "aionbound:furnace_chitin",
+        "aionbound:heatstone",
+        "aionbound:volcanic_glass_shard"
+      ],
+      "static_structure_binding": false
+    }
+  ],
+  "structures_without_chests": [
+    "fire_totem",
+    "lava_shrine"
+  ],
+  "protected_arena_cache": {
+    "structure": "ember_forge",
+    "static_loot_binding": false,
+    "pre_clear": "EMPTY_AND_INTERACTION_GUARDED",
+    "post_clear_population": "requires explicit validClear true from Kiln Sky service",
+    "boss_terminal_ownership": "KILN_SKY_SERVICE_ONLY",
+    "forbidden_static_rewards": [
+      "aionbound:ash_drake_horn",
+      "aionbound:ember_forge_core"
+    ]
+  },
+  "delivery": "inventory first; overflow spawns at the owning player; no commands",
+  "activation_signatures": {
+    "count": 20,
+    "machine_manifest": "engineering/ashen-intake/structure-economy/ASHEN_STRUCTURE_ACTIVATION_SIGNATURES.json"
+  },
+  "proof_boundary": "STATIC LOOT, NBT BINDING, SIGNATURE, AND SEMANTIC TEST EVIDENCE ONLY; NO BDS, BUILD, CLIENT, BOSS TERMINAL, OR CANDIDATE CLAIM"
+}

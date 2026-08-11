@@ -20,7 +20,7 @@
   ],
   "proof_boundary": "STATIC_SOURCE_AND_AUTHORED_BYTES_ONLY; NO_MCSTRUCTURE_CLIENT_LOAD, BDS, TERRAIN_AFFINITY, LOOT, ENCOUNTER, OR CANDIDATE CLAIM",
   "visual_asset_boundary": "Packet and native Blockbench models are design evidence only and are not serialized into the block-built assembly bytes",
-  "anchor_policy": "barrel, lodestone, and lectern anchors are inert coordinate reservations with empty block_position_data and no LootTable or reward NBT",
+  "anchor_policy": "seven ordinary barrel anchors bind exact ratified Ashen chest-table paths; lodestone and lectern anchors remain inert; ember_forge arena cache remains empty and protected for valid-clear runtime population",
   "placement_policy": "one conservative attempt per selected chunk with overworld non-ocean mountain-or-mesa surface proxies; denominators are Ashen-specific and distinct from Whisperwood",
   "ember_forge_uniqueness": {
     "creative_obligation": "one_per_highlands_realm",
@@ -29,11 +29,12 @@
     "required_future_proof": "realm-level placement ownership or deterministic discovery registry"
   },
   "content_omissions": [
-    "LootTable NBT",
-    "reward IDs",
+    "reward item NBT",
     "boss activation",
     "entities",
-    "scripts"
+    "scripts",
+    "static ash_drake_horn",
+    "static ember_forge_core"
   ],
   "assemblies": [
     {
@@ -123,8 +124,9 @@
           ],
           "expected_block": "minecraft:barrel",
           "purpose": "inert future camp cache",
-          "binding": "RESERVED_INERT_RUNTIME_HANDOFF",
-          "block_entity_nbt": "OMITTED"
+          "binding": "RATIFIED_W1_004_AH_STATIC_CHEST_TABLE",
+          "block_entity_nbt": "LOOT_TABLE_PATH_ONLY",
+          "loot_table": "loot_tables/chests/ashen/burned_camp.json"
         },
         {
           "anchor_id": "burned_camp_rumor",
@@ -143,8 +145,8 @@
       "structure_path": "behavior_pack/structures/aionbound/burned_camp.mcstructure",
       "feature_path": "behavior_pack/features/burned_camp.structure_feature.json",
       "feature_rule_path": "behavior_pack/feature_rules/burned_camp.structure_feature_rule.json",
-      "structure_sha256": "b35e8bfc8b2ea88839f69a469d8691578e3c7884037939353196ed72aa2270d5",
-      "block_position_data": "EMPTY_NO_BLOCK_ENTITY_NBT"
+      "structure_sha256": "7db9a7b0257654e37afc426643c7277890e52fe8a9d57dbc6d2a310a3fa11eb0",
+      "block_position_data": "STATIC_LOOT_TABLE_PATH_ONLY"
     },
     {
       "id": "char_wagon",
@@ -182,15 +184,16 @@
           ],
           "expected_block": "minecraft:barrel",
           "purpose": "inert future trade-slag cache",
-          "binding": "RESERVED_INERT_RUNTIME_HANDOFF",
-          "block_entity_nbt": "OMITTED"
+          "binding": "RATIFIED_W1_004_AH_STATIC_CHEST_TABLE",
+          "block_entity_nbt": "LOOT_TABLE_PATH_ONLY",
+          "loot_table": "loot_tables/chests/ashen/char_wagon.json"
         }
       ],
       "structure_path": "behavior_pack/structures/aionbound/char_wagon.mcstructure",
       "feature_path": "behavior_pack/features/char_wagon.structure_feature.json",
       "feature_rule_path": "behavior_pack/feature_rules/char_wagon.structure_feature_rule.json",
-      "structure_sha256": "816190147f3c8b512556ab7a29af31cfde3185c3c26e74d919b402a0dc2e271e",
-      "block_position_data": "EMPTY_NO_BLOCK_ENTITY_NBT"
+      "structure_sha256": "ba83175331d6e5119894ce194f9990d8c8adc7b07a7338914a381e4bfa512978",
+      "block_position_data": "STATIC_LOOT_TABLE_PATH_ONLY"
     },
     {
       "id": "broken_bridge",
@@ -243,15 +246,16 @@
           ],
           "expected_block": "minecraft:barrel",
           "purpose": "inert future materials cache",
-          "binding": "RESERVED_INERT_RUNTIME_HANDOFF",
-          "block_entity_nbt": "OMITTED"
+          "binding": "RATIFIED_W1_004_AH_STATIC_CHEST_TABLE",
+          "block_entity_nbt": "LOOT_TABLE_PATH_ONLY",
+          "loot_table": "loot_tables/chests/ashen/broken_bridge.json"
         }
       ],
       "structure_path": "behavior_pack/structures/aionbound/broken_bridge.mcstructure",
       "feature_path": "behavior_pack/features/broken_bridge.structure_feature.json",
       "feature_rule_path": "behavior_pack/feature_rules/broken_bridge.structure_feature_rule.json",
-      "structure_sha256": "f9fc6a0aff13a617aaa60fe7c080a1c6cdc10c58a7cacdc27af572870058ee45",
-      "block_position_data": "EMPTY_NO_BLOCK_ENTITY_NBT"
+      "structure_sha256": "9d81f77fdac9deea0645f54145e16abcdba7556373ef78e881536c58cd1c26f3",
+      "block_position_data": "STATIC_LOOT_TABLE_PATH_ONLY"
     },
     {
       "id": "basalt_arch",
@@ -291,15 +295,16 @@
           ],
           "expected_block": "minecraft:barrel",
           "purpose": "inert future basalt-core cache",
-          "binding": "RESERVED_INERT_RUNTIME_HANDOFF",
-          "block_entity_nbt": "OMITTED"
+          "binding": "RATIFIED_W1_004_AH_STATIC_CHEST_TABLE",
+          "block_entity_nbt": "LOOT_TABLE_PATH_ONLY",
+          "loot_table": "loot_tables/chests/ashen/basalt_arch.json"
         }
       ],
       "structure_path": "behavior_pack/structures/aionbound/basalt_arch.mcstructure",
       "feature_path": "behavior_pack/features/basalt_arch.structure_feature.json",
       "feature_rule_path": "behavior_pack/feature_rules/basalt_arch.structure_feature_rule.json",
-      "structure_sha256": "22d75d32d0b9440b00ba5c4636663fe851442b2bffb4c7c191395d2f823dcba8",
-      "block_position_data": "EMPTY_NO_BLOCK_ENTITY_NBT"
+      "structure_sha256": "b00bd0b3277fd18d0a11b771fcb5f8fc7d44552d9b35965e63c2287944029e7b",
+      "block_position_data": "STATIC_LOOT_TABLE_PATH_ONLY"
     },
     {
       "id": "ash_watchtower",
@@ -366,15 +371,16 @@
           ],
           "expected_block": "minecraft:barrel",
           "purpose": "inert future ash-crystal cache",
-          "binding": "RESERVED_INERT_RUNTIME_HANDOFF",
-          "block_entity_nbt": "OMITTED"
+          "binding": "RATIFIED_W1_004_AH_STATIC_CHEST_TABLE",
+          "block_entity_nbt": "LOOT_TABLE_PATH_ONLY",
+          "loot_table": "loot_tables/chests/ashen/ash_watchtower.json"
         }
       ],
       "structure_path": "behavior_pack/structures/aionbound/ash_watchtower.mcstructure",
       "feature_path": "behavior_pack/features/ash_watchtower.structure_feature.json",
       "feature_rule_path": "behavior_pack/feature_rules/ash_watchtower.structure_feature_rule.json",
-      "structure_sha256": "4217384d08e5c173781bfa6445b7c3d58a85b79831789afb695ceb385904a454",
-      "block_position_data": "EMPTY_NO_BLOCK_ENTITY_NBT"
+      "structure_sha256": "760b08cc86a56335be82fddd89e89bb55a0ecdf2ff92e8c16aab423bec790606",
+      "block_position_data": "STATIC_LOOT_TABLE_PATH_ONLY"
     },
     {
       "id": "ancient_kiln",
@@ -427,8 +433,9 @@
           ],
           "expected_block": "minecraft:barrel",
           "purpose": "inert future forge-material cache",
-          "binding": "RESERVED_INERT_RUNTIME_HANDOFF",
-          "block_entity_nbt": "OMITTED"
+          "binding": "RATIFIED_W1_004_AH_STATIC_CHEST_TABLE",
+          "block_entity_nbt": "LOOT_TABLE_PATH_ONLY",
+          "loot_table": "loot_tables/chests/ashen/ancient_kiln.json"
         },
         {
           "anchor_id": "ancient_kiln_record",
@@ -447,8 +454,8 @@
       "structure_path": "behavior_pack/structures/aionbound/ancient_kiln.mcstructure",
       "feature_path": "behavior_pack/features/ancient_kiln.structure_feature.json",
       "feature_rule_path": "behavior_pack/feature_rules/ancient_kiln.structure_feature_rule.json",
-      "structure_sha256": "0ca78b781495f6f29b44fc7371de296bf3a5fe02cf67858fc3645d7d735c73d6",
-      "block_position_data": "EMPTY_NO_BLOCK_ENTITY_NBT"
+      "structure_sha256": "8169dcb6bc593587b869935aa7aef85eb429d881c9809a3f610f97ee2e6b07fe",
+      "block_position_data": "STATIC_LOOT_TABLE_PATH_ONLY"
     },
     {
       "id": "ember_forge",
@@ -638,15 +645,16 @@
           ],
           "expected_block": "minecraft:barrel",
           "purpose": "inert future heatstone cache",
-          "binding": "RESERVED_INERT_RUNTIME_HANDOFF",
-          "block_entity_nbt": "OMITTED"
+          "binding": "RATIFIED_W1_004_AH_STATIC_CHEST_TABLE",
+          "block_entity_nbt": "LOOT_TABLE_PATH_ONLY",
+          "loot_table": "loot_tables/chests/ashen/ash_cave.json"
         }
       ],
       "structure_path": "behavior_pack/structures/aionbound/ash_cave.mcstructure",
       "feature_path": "behavior_pack/features/ash_cave.structure_feature.json",
       "feature_rule_path": "behavior_pack/feature_rules/ash_cave.structure_feature_rule.json",
-      "structure_sha256": "1f867cb8913bb97e09cf1e024635e43342abb4516508c10957decd8e27afd159",
-      "block_position_data": "EMPTY_NO_BLOCK_ENTITY_NBT"
+      "structure_sha256": "ffa95cb003a2bdd6009e57b3aaf184ec96e4690b9dd20f4a517f94d8c7a4f937",
+      "block_position_data": "STATIC_LOOT_TABLE_PATH_ONLY"
     }
   ]
 }
