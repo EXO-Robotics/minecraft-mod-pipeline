@@ -1,0 +1,33 @@
+{
+  "format_version": "1.10.0",
+  "minecraft:client_entity": {
+    "description": {
+      "animations": {
+        "claw_snap": "animation.aionbound.bloom_crab.claw_snap",
+        "death": "animation.aionbound.bloom_crab.death",
+        "hurt": "animation.aionbound.bloom_crab.hurt",
+        "idle": "animation.aionbound.bloom_crab.idle",
+        "runtime": "controller.animation.aionbound.crystal_marsh.bloom_crab.runtime",
+        "scuttle": "animation.aionbound.bloom_crab.scuttle"
+      },
+      "geometry": {
+        "default": "geometry.aionbound.bloom_crab"
+      },
+      "identifier": "aionbound:bloom_crab",
+      "materials": {
+        "default": "entity_alphatest"
+      },
+      "render_controllers": [
+        "controller.render.aionbound.crystal_marsh.bloom_crab"
+      ],
+      "scripts": {
+        "animate": [
+          "runtime"
+        ]
+      },
+      "textures": {
+        "default": "textures/aionbound/crystal_marsh/entity/bloom_crab"
+      }
+    }
+  }
+}

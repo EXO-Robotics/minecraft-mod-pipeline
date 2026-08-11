@@ -1,0 +1,33 @@
+{
+  "format_version": "1.10.0",
+  "minecraft:client_entity": {
+    "description": {
+      "animations": {
+        "dart": "animation.aionbound.crystal_dragonfly.dart",
+        "death": "animation.aionbound.crystal_dragonfly.death",
+        "fly": "animation.aionbound.crystal_dragonfly.fly",
+        "hurt": "animation.aionbound.crystal_dragonfly.hurt",
+        "idle_hover": "animation.aionbound.crystal_dragonfly.idle_hover",
+        "runtime": "controller.animation.aionbound.crystal_marsh.crystal_dragonfly.runtime"
+      },
+      "geometry": {
+        "default": "geometry.aionbound.crystal_dragonfly"
+      },
+      "identifier": "aionbound:crystal_dragonfly",
+      "materials": {
+        "default": "entity_alphatest"
+      },
+      "render_controllers": [
+        "controller.render.aionbound.crystal_marsh.crystal_dragonfly"
+      ],
+      "scripts": {
+        "animate": [
+          "runtime"
+        ]
+      },
+      "textures": {
+        "default": "textures/aionbound/crystal_marsh/entity/crystal_dragonfly"
+      }
+    }
+  }
+}

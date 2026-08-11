@@ -1,0 +1,80 @@
+{
+  "format_version": "1.21.80",
+  "minecraft:entity": {
+    "components": {
+      "minecraft:ambient_sound_interval": {
+        "event_name": "ambient",
+        "range": 12,
+        "value": 18
+      },
+      "minecraft:attack": {
+        "damage": 4
+      },
+      "minecraft:behavior.float": {
+        "priority": 0
+      },
+      "minecraft:behavior.hurt_by_target": {
+        "priority": 1
+      },
+      "minecraft:behavior.look_at_player": {
+        "look_distance": 8,
+        "priority": 7,
+        "probability": 0.05
+      },
+      "minecraft:behavior.melee_attack": {
+        "priority": 2,
+        "speed_multiplier": 1.12,
+        "track_target": true
+      },
+      "minecraft:behavior.random_look_around": {
+        "priority": 8
+      },
+      "minecraft:behavior.random_stroll": {
+        "interval": 110,
+        "priority": 6,
+        "speed_multiplier": 0.68
+      },
+      "minecraft:collision_box": {
+        "height": 2.1,
+        "width": 0.75
+      },
+      "minecraft:despawn": {
+        "despawn_from_distance": {
+          "max_distance": 96,
+          "min_distance": 44
+        }
+      },
+      "minecraft:health": {
+        "max": 24,
+        "value": 24
+      },
+      "minecraft:movement": {
+        "value": 0.18
+      },
+      "minecraft:movement.basic": {},
+      "minecraft:navigation.walk": {
+        "avoid_damage_blocks": true,
+        "can_path_over_water": false,
+        "can_sink": true,
+        "can_swim": true
+      },
+      "minecraft:physics": {
+        "has_gravity": true
+      },
+      "minecraft:type_family": {
+        "family": [
+          "aionbound",
+          "crystal_marsh",
+          "glass_heron",
+          "creature",
+          "neutral"
+        ]
+      }
+    },
+    "description": {
+      "identifier": "aionbound:glass_heron",
+      "is_spawnable": true,
+      "is_summonable": true
+    }
+  }
+}

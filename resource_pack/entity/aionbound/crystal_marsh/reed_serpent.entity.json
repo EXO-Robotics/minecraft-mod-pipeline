@@ -1,0 +1,33 @@
+{
+  "format_version": "1.10.0",
+  "minecraft:client_entity": {
+    "description": {
+      "animations": {
+        "death": "animation.aionbound.reed_serpent.death",
+        "hurt": "animation.aionbound.reed_serpent.hurt",
+        "idle_undulate": "animation.aionbound.reed_serpent.idle_undulate",
+        "lunge": "animation.aionbound.reed_serpent.lunge",
+        "runtime": "controller.animation.aionbound.crystal_marsh.reed_serpent.runtime",
+        "swim": "animation.aionbound.reed_serpent.swim"
+      },
+      "geometry": {
+        "default": "geometry.aionbound.reed_serpent"
+      },
+      "identifier": "aionbound:reed_serpent",
+      "materials": {
+        "default": "entity_alphatest"
+      },
+      "render_controllers": [
+        "controller.render.aionbound.crystal_marsh.reed_serpent"
+      ],
+      "scripts": {
+        "animate": [
+          "runtime"
+        ]
+      },
+      "textures": {
+        "default": "textures/aionbound/crystal_marsh/entity/reed_serpent"
+      }
+    }
+  }
+}

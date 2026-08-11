@@ -1,0 +1,93 @@
+{
+  "animation_controllers": {
+    "controller.animation.aionbound.crystal_marsh.mire_turtle.runtime": {
+      "initial_state": "idle",
+      "states": {
+        "action": {
+          "animations": [
+            "withdraw"
+          ],
+          "transitions": [
+            {
+              "death": "!query.is_alive"
+            },
+            {
+              "hurt": "query.hurt_time > 0.0"
+            },
+            {
+              "move": "query.any_animation_finished && query.is_moving"
+            },
+            {
+              "idle": "query.any_animation_finished && !query.is_moving"
+            }
+          ]
+        },
+        "death": {
+          "animations": [
+            "death"
+          ]
+        },
+        "hurt": {
+          "animations": [
+            "hurt"
+          ],
+          "transitions": [
+            {
+              "death": "!query.is_alive"
+            },
+            {
+              "move": "query.hurt_time <= 0.0 && query.is_moving"
+            },
+            {
+              "idle": "query.hurt_time <= 0.0 && !query.is_moving"
+            }
+          ]
+        },
+        "idle": {
+          "animations": [
+            "idle"
+          ],
+          "transitions": [
+            {
+              "death": "!query.is_alive"
+            },
+            {
+              "hurt": "query.hurt_time > 0.0"
+            },
+            {
+              "action": "query.has_target && !query.is_moving"
+            },
+            {
+              "move": "query.is_moving"
+            }
+          ]
+        },
+        "move": {
+          "animations": [
+            {
+              "walk": "!query.is_in_water"
+            },
+            {
+              "swim": "query.is_in_water"
+            }
+          ],
+          "transitions": [
+            {
+              "death": "!query.is_alive"
+            },
+            {
+              "hurt": "query.hurt_time > 0.0"
+            },
+            {
+              "action": "query.has_target && !query.is_moving"
+            },
+            {
+              "idle": "!query.is_moving"
+            }
+          ]
+        }
+      }
+    }
+  },
+  "format_version": "1.10.0"
+}

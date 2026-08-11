@@ -1,0 +1,33 @@
+{
+  "format_version": "1.10.0",
+  "minecraft:client_entity": {
+    "description": {
+      "animations": {
+        "death": "animation.aionbound.prism_frog.death",
+        "hop": "animation.aionbound.prism_frog.hop",
+        "hurt": "animation.aionbound.prism_frog.hurt",
+        "idle": "animation.aionbound.prism_frog.idle",
+        "runtime": "controller.animation.aionbound.crystal_marsh.prism_frog.runtime",
+        "swim_pose": "animation.aionbound.prism_frog.swim_pose"
+      },
+      "geometry": {
+        "default": "geometry.aionbound.prism_frog"
+      },
+      "identifier": "aionbound:prism_frog",
+      "materials": {
+        "default": "entity_alphatest"
+      },
+      "render_controllers": [
+        "controller.render.aionbound.crystal_marsh.prism_frog"
+      ],
+      "scripts": {
+        "animate": [
+          "runtime"
+        ]
+      },
+      "textures": {
+        "default": "textures/aionbound/crystal_marsh/entity/prism_frog"
+      }
+    }
+  }
+}

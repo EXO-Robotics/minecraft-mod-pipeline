@@ -1,0 +1,63 @@
+{
+  "animation_controllers": {
+    "controller.animation.aionbound.crystal_marsh.crystal_newt.runtime": {
+      "initial_state": "idle",
+      "states": {
+        "death": {
+          "animations": [
+            "death"
+          ]
+        },
+        "hurt": {
+          "animations": [
+            "hurt"
+          ],
+          "transitions": [
+            {
+              "death": "!query.is_alive"
+            },
+            {
+              "move": "query.hurt_time <= 0.0 && query.is_moving"
+            },
+            {
+              "idle": "query.hurt_time <= 0.0 && !query.is_moving"
+            }
+          ]
+        },
+        "idle": {
+          "animations": [
+            "idle"
+          ],
+          "transitions": [
+            {
+              "death": "!query.is_alive"
+            },
+            {
+              "hurt": "query.hurt_time > 0.0"
+            },
+            {
+              "move": "query.is_moving"
+            }
+          ]
+        },
+        "move": {
+          "animations": [
+            "walk"
+          ],
+          "transitions": [
+            {
+              "death": "!query.is_alive"
+            },
+            {
+              "hurt": "query.hurt_time > 0.0"
+            },
+            {
+              "idle": "!query.is_moving"
+            }
+          ]
+        }
+      }
+    }
+  },
+  "format_version": "1.10.0"
+}

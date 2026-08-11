@@ -1,0 +1,33 @@
+{
+  "format_version": "1.10.0",
+  "minecraft:client_entity": {
+    "description": {
+      "animations": {
+        "death_collapse": "animation.aionbound.marsh_wight.death_collapse",
+        "drift_walk": "animation.aionbound.marsh_wight.drift_walk",
+        "hurt": "animation.aionbound.marsh_wight.hurt",
+        "idle_sway": "animation.aionbound.marsh_wight.idle_sway",
+        "reach_attack": "animation.aionbound.marsh_wight.reach_attack",
+        "runtime": "controller.animation.aionbound.crystal_marsh.marsh_wight.runtime"
+      },
+      "geometry": {
+        "default": "geometry.aionbound.marsh_wight"
+      },
+      "identifier": "aionbound:marsh_wight",
+      "materials": {
+        "default": "entity_alphatest"
+      },
+      "render_controllers": [
+        "controller.render.aionbound.crystal_marsh.marsh_wight"
+      ],
+      "scripts": {
+        "animate": [
+          "runtime"
+        ]
+      },
+      "textures": {
+        "default": "textures/aionbound/crystal_marsh/entity/marsh_wight"
+      }
+    }
+  }
+}

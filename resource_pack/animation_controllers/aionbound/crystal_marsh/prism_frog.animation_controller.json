@@ -1,0 +1,68 @@
+{
+  "animation_controllers": {
+    "controller.animation.aionbound.crystal_marsh.prism_frog.runtime": {
+      "initial_state": "idle",
+      "states": {
+        "death": {
+          "animations": [
+            "death"
+          ]
+        },
+        "hurt": {
+          "animations": [
+            "hurt"
+          ],
+          "transitions": [
+            {
+              "death": "!query.is_alive"
+            },
+            {
+              "move": "query.hurt_time <= 0.0 && query.is_moving"
+            },
+            {
+              "idle": "query.hurt_time <= 0.0 && !query.is_moving"
+            }
+          ]
+        },
+        "idle": {
+          "animations": [
+            "idle"
+          ],
+          "transitions": [
+            {
+              "death": "!query.is_alive"
+            },
+            {
+              "hurt": "query.hurt_time > 0.0"
+            },
+            {
+              "move": "query.is_moving"
+            }
+          ]
+        },
+        "move": {
+          "animations": [
+            {
+              "hop": "!query.is_in_water"
+            },
+            {
+              "swim_pose": "query.is_in_water"
+            }
+          ],
+          "transitions": [
+            {
+              "death": "!query.is_alive"
+            },
+            {
+              "hurt": "query.hurt_time > 0.0"
+            },
+            {
+              "idle": "!query.is_moving"
+            }
+          ]
+        }
+      }
+    }
+  },
+  "format_version": "1.10.0"
+}
