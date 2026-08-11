@@ -1,0 +1,112 @@
+{
+  "schema_version": "aionbound.wave1.engineering-decision-ledger.v1.0.0",
+  "status": "RATIFIED_FOR_NONBLOCKED_ENGINEERING_WITH_EXPLICIT_SUPPORT_TICKETS",
+  "authority_scope": "PHASE_0_ENGINEERING_CLASSIFICATION_ONLY",
+  "creative_authority_preserved": true,
+  "runtime_identity": {
+    "namespace": "aionbound",
+    "warehouse_mapping": "aionbound:<immutable_warehouse_id>",
+    "packet_namespace_intents_are_provenance_labels": true,
+    "rename_g7_in_place": false,
+    "accessory_max_equipped": 2,
+    "sidegrade_sibling_ids": "BLOCKED_BY_W1-CREATIVE-005"
+  },
+  "non_warehouse_terms": {
+    "aliases": [
+      {"term": "Soft Moss Scrap", "id": "aionbound:moss_resin"},
+      {"term": "Star Seeds", "id": "aionbound:star_grass"},
+      {"term": "Briar Vine Length", "id": "aionbound:briar_vine"},
+      {"term": "mite_resin language", "id": "aionbound:ember_resin"},
+      {"term": "Glass Algae Film", "id": "aionbound:glass_algae"},
+      {"term": "Flood Crystal Shard", "id": "aionbound:flood_crystal"},
+      {"term": "Wind Silk strand/bundle", "id": "aionbound:wind_silk", "quantity_context_only": true},
+      {"term": "resource chip/dust/bundle", "rule": "base warehouse ID only when explicitly named by the source row"}
+    ],
+    "derived_components": [
+      {"term": "Moss Bind Glue", "id": "aionbound:moss_bind_glue"},
+      {"term": "Amber Core", "id": "aionbound:amber_core"},
+      {"term": "Thorn Cord", "id": "aionbound:thorn_cord"},
+      {"term": "Cleaver Blank", "id": "aionbound:cleaver_blank"},
+      {"term": "Living Root Focus", "id": "aionbound:living_root_focus"},
+      {"term": "Heat Core", "id": "aionbound:heat_core"},
+      {"term": "Heavy Head", "id": "aionbound:heavy_head"},
+      {"term": "Chitin Plate", "id": "aionbound:chitin_plate"},
+      {"term": "Ember Heart", "id": "aionbound:ember_heart"},
+      {"term": "Crystal Pole", "id": "aionbound:crystal_pole"},
+      {"term": "Living Crystal Core", "id": "aionbound:living_crystal_core"},
+      {"term": "Wet Plate", "id": "aionbound:wet_plate"},
+      {"term": "Twin Mineral Lens", "id": "aionbound:twin_mineral_lens"},
+      {"term": "Climbing Rope", "id": "aionbound:climbing_rope"},
+      {"term": "Climbing Hook Head", "id": "aionbound:climbing_hook_head"},
+      {"term": "Glider Panel", "id": "aionbound:glider_panel"},
+      {"term": "Glider Frame", "id": "aionbound:glider_frame"},
+      {"term": "Soft Landing Pad", "id": "aionbound:soft_landing_pad"},
+      {"term": "Lift Tonic", "id": "aionbound:lift_tonic"},
+      {"term": "Aether Bind", "id": "aionbound:aether_bind"},
+      {"term": "Edge Blank/Inert Edge", "id": "aionbound:trophy_edge_blank"},
+      {"term": "Trophy Edge", "id": "aionbound:trophy_edge", "geometry_identity": "trophy_edge_assembled", "source": "G7_KEEP_REFINE"},
+      {"term": "Memory of Four Lands", "id": "aionbound:memory_of_four_lands", "finale_dependency": true},
+      {"term": "Pathfinder Pair", "id": "aionbound:pathfinder_pair", "narrative_utility": true}
+    ],
+    "new_required_item_candidates": {
+      "status": "BLOCKED_BY_W1-CREATIVE-001",
+      "whisperwood": ["Boar Tusk Shard", "Boar Tusk", "Root Plate", "Thick Hide", "Briar Crown", "Rot Fang", "Tainted Pelt", "Marrow Scrap", "Thorn Barb", "Stalker Claw", "Hollow Venom Sac", "Chitin Shard", "Wraith Mask Fragment", "Mosskip Crown Fragment", "Hardened Moss Plate", "Glow Soft Pellet", "Lantern-adjacent hide scrap"],
+      "ashen": ["Ash Dust", "Ash Wool", "Beetle Core Fragment", "Char Feather", "Char Hide", "Char Pelt", "Cinder Beak", "Cinder Pelt", "Drake Scale", "Ember Fang", "Ember Sinew", "Heat Scale", "Lynx Claw", "Mite Mandible", "Pack Cinder Mark", "Ram Horn Curve", "Shell Plate", "Smolder Gland", "Soot Antler", "Stag Heart Cinder", "Swarm Queen Scale", "Warm Blood Vial"],
+      "crystal_marsh": ["Algae Scrap", "Bog Tendril", "Crab Pearl Grain", "Croc Eye Pearl", "Croc Hide", "Glass Feather", "Heron Nest Token", "Iridescent Dust", "Long Beak Shard", "Marsh Resin Blob", "Mire Shell Plate", "Newt Tail Crystal", "Prism Mucus", "Prism Wing", "Serpent Scale", "Shed Skin Ribbon", "Silt Fang", "Tiny Prism Chip", "Venom Crystal", "Watcher Lens", "Wight Shroud Cloth"],
+      "skyreach": ["Cliff Hoof Keratin", "Dense Muscle Strip", "Drake Membrane", "Fox Whisker Cord", "Gale Membrane", "Glide Scale", "Hawk Talon", "Navigation Oil", "Nest Crown Plume", "Nest Twig", "Ram Horn Spiral", "Roc Primary Feather", "Ropewing Membrane", "Ruin Talon", "Sky Ruin Key Fragment", "Soft Sky Fur", "Stone Beak", "Storm Salt", "Vulture Crop Stone", "Wing Bone Stay"],
+      "boss_finale": ["Concord Spark", "Drowned Choir Tablet", "Hunter's Final Page", "Perfect Prism Pearl", "Sky Ruin Master Key", "Surviving Smith's Notes", "Wight Shroud", "unbound mastery sigil"]
+    },
+    "curiosity_default": "NARRATIVE_CODEX_ONLY_UNLESS_W1-CREATIVE-001_PROMOTES",
+    "unknown_term_rule": "BLOCKED_UNTIL_LEDGER_REVISION"
+  },
+  "twinbond": {
+    "status": "DEFERRED_WITH_BLOCKING_SUPPORT_TICKET",
+    "ticket": "W1-CREATIVE-002",
+    "allowed_now": ["pilgrimage handoff", "inert Trophy Edge", "finale entry state", "twinbond_relic persistence hooks"],
+    "blocked": ["encounter entities", "dual aspect art", "arena art", "ignition reward", "terminal completion semantics"],
+    "assumed_required_for_wave1_exit": true
+  },
+  "boss_behavior": {
+    "creative_phase_kits_implementable": true,
+    "numeric_and_ownership_status": "BLOCKED_BY_W1-CREATIVE-003",
+    "required_ticket_fields": ["phase thresholds", "transition predicates", "telegraph/attack/recovery/cooldown ranges", "leash/timeout/wipe/reset/re-entry", "add caps", "multiplayer ownership/scaling", "late join/disconnect", "persistence domain", "reward authority", "idempotent terminal grant", "repeat-clear semantics"]
+  },
+  "loot": {
+    "identity_and_role_authority": "CREATIVE_MARKDOWN",
+    "structural_wiring_allowed": true,
+    "final_values_status": "BLOCKED_BY_W1-CREATIVE-004",
+    "required_ticket_fields": ["C/U/R/E/T/Q probability ranges", "quantity ranges", "chest rolls", "guaranteed boss semantics", "arena reward guards", "alternate seal semantics"],
+    "thorn_stalker_regular_ecology_seal": "FORBIDDEN_UNLESS_CREATIVE_OVERRIDES",
+    "chapter_seal_source": "CHAPTER_APEX_ENCOUNTER"
+  },
+  "blockbench": {
+    "canonical_source_roots": "studio-prep/sprints/asset-sprint-*/assets/editable",
+    "category_folders_are_mirrors": true,
+    "mandatory_every_asset_classes": ["boss_or_hero", "custom_locator", "role_specific_animation", "repaired_source"],
+    "representative_first_classes": ["four chapter apexes", "multipart spider", "aerial/glider", "ambient/neutral/hostile per ecosystem", "hero weapons", "representative armor", "chapter seal displays", "twinbond_relic", "complex prop per ecosystem"],
+    "template_failure_rule": "ROUNDTRIP_ALL_MEMBERS_FROM_FAILED_TEMPLATE",
+    "not_applicable_when_native": ["ordinary full cube block", "flat icon/resource", "cross-plane plant", "block-built mcstructure"],
+    "proof_boundary": "Native editor/export proof is separate from static validation, client rendering, and physical PS4 rendering"
+  },
+  "support_tickets": [
+    {"id": "W1-CREATIVE-001", "status": "OPEN_BLOCKING_FINAL", "scope": "non-warehouse glossary, IDs, inventory visibility, icons, craft homes", "owner": "CREATIVE_ASSET_SUPPORT"},
+    {"id": "W1-CREATIVE-002", "status": "OPEN_BLOCKING_FINALE", "scope": "Twinbond entities, art, arena, rewards, exit dependency", "owner": "CREATIVE_ASSET_SUPPORT"},
+    {"id": "W1-CREATIVE-003", "status": "OPEN_BLOCKING_BOSSES", "scope": "boss numeric, reset, multiplayer, persistence, reward envelopes", "owner": "CREATIVE_SUPPORT"},
+    {"id": "W1-CREATIVE-004", "status": "OPEN_BLOCKING_FINAL_LOOT", "scope": "loot ranges, chest rolls, reward guards, alternate seals", "owner": "CREATIVE_SUPPORT"},
+    {"id": "W1-CREATIVE-005", "status": "OPEN_BLOCKING_SIDEGRADES", "scope": "equipment sidegrade item identity", "owner": "CREATIVE_SUPPORT"}
+  ],
+  "construction_policy": {
+    "broad_nonblocked_engineering_may_proceed": true,
+    "final_freeze_blocked_until_all_tickets_resolved": true,
+    "engineering_may_not_invent_unresolved_content": true
+  },
+  "advisory": {
+    "grok_invoked_read_only": true,
+    "web_search_disabled": true,
+    "subagents_disabled": true,
+    "result": "PARTIAL_MAX_TURNS",
+    "accepted": ["per-term binding", "subordinate ledger authority", "explicit Twinbond exit dependency", "separate phase kits from boss numbers"],
+    "rejected": ["provisional loot values without approved ranges"],
+    "adjusted": ["representative and risk-class native Blockbench gates"]
+  }
+}
