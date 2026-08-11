@@ -1,0 +1,28 @@
+{
+  "schema": "aionbound.wave1.whisperwood-resource-icons.v1",
+  "generation_mode": "built-in imagegen; one distinct call per icon; preserved chroma sources",
+  "shipping_transform": "magenta chroma removal and resize to exact 128x128 RGBA",
+  "validation": {
+    "full_png_decode": "PASS_10_OF_10",
+    "format": "RGBA_128x128",
+    "transparent_corners": "PASS_10_OF_10",
+    "visible_magenta_key_pixels": 0,
+    "visual_readability_at_32px": "PASS_10_OF_10"
+  },
+  "icons": [
+    {"id":"ancient_acorn","source_sha256":"923e2a1f1606cc1738ac9bb459aa974a62e5312ed18656fc9784e56ddc3ac77e","shipping_sha256":"d87964cacaffa6620e72b4e2cd69ec1abee922cb7f1499960284c0f732380838"},
+    {"id":"briar_antler","source_sha256":"680dc79ea75c9d1905b830aeddf7eaebb881617b9879d33cbf6856cf175beb75","shipping_sha256":"4362b6e8a805ec5cddc0addfda8af1e8ab9e785bd79e3745a08076bcb49fd16d"},
+    {"id":"glow_spore","source_sha256":"14ead799dc8937aeabab968aa84e44e880e61eef750bd19984833a37da5b92d5","shipping_sha256":"d96e6bf98fae5749ef34b7c2827d405ecf651d16a4701a5e6dbafe90e081d8be"},
+    {"id":"hollow_amber","source_sha256":"3f16f4e8ee84f3efad10ca202c8d3af86fe2b7f04221b3791d0d3b01ce25bf40","shipping_sha256":"e3c7b2ca5b192cb552a8c7b8ab54bba7b5f0d9d6e80f26b46597c143a8e90c5b"},
+    {"id":"lantern_fur","source_sha256":"83cb63f9cdb54288d852dceefb996f895f8d0004dba539d339188d2c9d090dd4","shipping_sha256":"066f76352ff2c1e72f2b03cc3ef051d6e845df150e4ead9ddc88230f9caae448"},
+    {"id":"moon_sap","source_sha256":"fbbd8b7b4ab8f2b5f1f1c4eb65af127c151dbfb399d71e198bf05907a2a18fd9","shipping_sha256":"e07aa515495f48f35e737690c567eeb129ea4e4d2f293f5fe4495e97ad5f1aeb"},
+    {"id":"moss_resin","source_sha256":"851946263dafa5f8b8bbd5cee628a1b0410451aefbee4ecb48d01816d4f000d8","shipping_sha256":"e737ebf0b790e6d70359b48f2daf62473dbd17b369d1e1bc326faccc47df6ce8"},
+    {"id":"root_heart","source_sha256":"1e849e6d096ba1520b694d0980ef82c0a8489784f2d99488a5dd53450533e660","shipping_sha256":"ce7db935e931ae612d8ff9e091cce67bfdc6607d8cec90549f56cd8d57d6f4ea"},
+    {"id":"widow_silk","source_sha256":"9601a8247e86f203a76e38790b281459032cf58c050178fbb6e2536ee810d8fa","shipping_sha256":"c24e3cf5f7bd15d765911e9e8a9f3529981030bc28e824461a48626e5607cdae"},
+    {"id":"whisper_bark","source_sha256":"d99087964b3becfdef6517b510ae2fa9c3776f7f39280a378d3d2f6cb637d63a","shipping_sha256":"2afef0e569c5bb25b64f837c17d999e9ba4e1c0d9953fbc488844ebc32c8529a"}
+  ],
+  "proof_boundary": {
+    "proves": ["source and shipping byte identity", "full PNG decode", "RGBA dimensions", "transparent background", "local 32px visual review"],
+    "does_not_prove": ["Bedrock client rendering", "Stable BDS", "console UI", "gameplay acquisition", "shipping candidate qualification"]
+  }
+}
