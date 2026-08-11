@@ -1,0 +1,2425 @@
+{
+  "authority": [
+    {
+      "path": "program/crazycraft-pack-production-v1/studio-prep/creative/WAVE_1_LIVING_WORLD_IMPLEMENTATION_CONTRACT.json",
+      "sha256": "aa1f54df10d27d5c5675aae843ffe0d2946123d12a6509f7f021408bcdde9fb5"
+    },
+    {
+      "path": "program/crazycraft-pack-production-v1/studio-prep/creative/WAVE_1_LIVING_WORLD_IMPLEMENTATION_CONTRACT.md",
+      "sha256": "3116c217e06afe1fd0cd56ee742c537f948a4c91193ec831fd1b3ec362837bfc"
+    },
+    {
+      "path": "program/crazycraft-pack-production-v1/studio-prep/creative/08_codex/CODEX_DESIGN.md",
+      "sha256": "cc89b22d1dc548f2563c4b20d33faf8020eab9dafdbfab262321c35739a9b546"
+    },
+    {
+      "path": "program/crazycraft-pack-production-v1/studio-prep/creative/08_codex/CODEX_ENTRIES_CREATURES.md",
+      "sha256": "fd07694eee0c8d478b44363e822e0116f4ca09c92775661350ed8468342b01bf"
+    },
+    {
+      "path": "program/crazycraft-pack-production-v1/studio-prep/creative/02_loot/LOOT_WHISPERWOOD.md",
+      "sha256": "c6846ecfcf51c1bdbe62b3ef81f37e7e86e6466a62b46f72cb3685516a216f24"
+    },
+    {
+      "path": "program/crazycraft-pack-production-v1/studio-prep/creative/03_crafting/CRAFTING_TREE.md",
+      "sha256": "1f3482ba3dd9f916e08aa544153cc841871a729a2e82d9e75601715f4b5ee807"
+    },
+    {
+      "path": "program/crazycraft-pack-production-v1/studio-prep/creative/06_world_gen/WORLD_GENERATION.md",
+      "sha256": "bc18a1e1f73d6045ab7e583afe910ca13d4776d439c8f3dfb45dae5784372f4b"
+    }
+  ],
+  "base_commit": "c4d77b6ae11672d1a62f2be3b83153692cd5c5a9",
+  "block_category_compatibility": {
+    "decision": "MAP_AS_RESOURCE_CATEGORY_WITH_BLOCK_ENTRY_KIND",
+    "reason": "Creative's frozen page-category vocabulary does not include block; this preserves all ten block identities without inventing a new Creative category."
+  },
+  "creative_rules": {
+    "discovery_order": [
+      "observe_ambient",
+      "harvest_resource_plant",
+      "defeat_hostile",
+      "activate_structure",
+      "craft_equipment",
+      "defeat_boss",
+      "collect_curiosity"
+    ],
+    "importance_derivation": {
+      "craft_core": "explicit material-to-component or equipment relationship",
+      "critical_path": "explicit chapter, seal, transition, or progression-role relationship",
+      "exploration": "explicit ecology, curiosity, landmark, or optional-discovery relationship",
+      "finale": "reserved; no Whisperwood entry is promoted to finale solely from foreshadowing"
+    },
+    "importance_vocabulary": [
+      "critical_path",
+      "craft_core",
+      "exploration",
+      "finale"
+    ],
+    "no_lore_rewrite": true,
+    "page_questions": [
+      "what_did_i_find",
+      "what_can_i_make",
+      "what_should_i_investigate_next"
+    ],
+    "partial_then_complete": true
+  },
+  "entries": [
+    {
+      "codex_category": "resource",
+      "discovery_order_action": "harvest_resource_plant",
+      "discovery_stamps": [
+        {
+          "event": "harvested",
+          "id": "codex:ww:resource:whisper_bark:harvested",
+          "stage": "complete"
+        }
+      ],
+      "entry_kind": "resource",
+      "id": "whisper_bark",
+      "importance": "craft_core",
+      "importance_assignment": "ENGINEERING_INDEX_DERIVATION_FROM_APPROVED_RELATIONSHIP",
+      "integration": {
+        "data_target": "behavior_pack/scripts/catalog.js::CODEX_ENTRY_REGISTRY",
+        "persistence": "successor_v4_compact_codex_discovery",
+        "presentation_target": "non_chat_codex_surface",
+        "primary_chat_ux_allowed": false
+      },
+      "player_questions": {
+        "what_can_i_make": {
+          "blocked_by": [],
+          "data_status": "SAFE_AUTHORED_GUIDANCE_DATA",
+          "live_status": "SAFE_FOR_TARGET_INTEGRATION",
+          "text": "Whisperwood planks, handles, stocks, hatchet parts, and armor wrap."
+        },
+        "what_did_i_find": {
+          "blocked_by": [
+            "loot_probability:W1-CREATIVE-004",
+            "world_distribution:WORLDGEN_RUNTIME"
+          ],
+          "data_status": "SAFE_AUTHORED_GUIDANCE_DATA",
+          "live_status": "BLOCKED_RUNTIME_COMPLETION",
+          "text": "Bark gathered from Whisperwood logs; also carried by boars and bark wraiths."
+        },
+        "what_should_i_investigate_next": {
+          "blocked_by": [],
+          "data_status": "SAFE_AUTHORED_GUIDANCE_DATA",
+          "live_status": "SAFE_FOR_TARGET_INTEGRATION",
+          "text": "Use the first forest wood currency to establish the Whisperwood craft loop."
+        }
+      },
+      "rarity_feel": "common",
+      "readiness": {
+        "discovery_entry_and_stamp_contract": "SAFE_NOW",
+        "guidance_data": "SAFE_NOW",
+        "live_acquisition_progression_completion": "BLOCKED_BY_LISTED_DEPENDENCIES"
+      },
+      "region": "ww",
+      "runtime_completion_blocked_by": [
+        "loot_probability:W1-CREATIVE-004",
+        "world_distribution:WORLDGEN_RUNTIME"
+      ],
+      "runtime_id": "aionbound:whisper_bark",
+      "warehouse_id": "whisper_bark"
+    },
+    {
+      "codex_category": "resource",
+      "discovery_order_action": "harvest_resource_plant",
+      "discovery_stamps": [
+        {
+          "event": "harvested",
+          "id": "codex:ww:resource:moss_resin:harvested",
+          "stage": "complete"
+        }
+      ],
+      "entry_kind": "resource",
+      "id": "moss_resin",
+      "importance": "craft_core",
+      "importance_assignment": "ENGINEERING_INDEX_DERIVATION_FROM_APPROVED_RELATIONSHIP",
+      "integration": {
+        "data_target": "behavior_pack/scripts/catalog.js::CODEX_ENTRY_REGISTRY",
+        "persistence": "successor_v4_compact_codex_discovery",
+        "presentation_target": "non_chat_codex_surface",
+        "primary_chat_ux_allowed": false
+      },
+      "player_questions": {
+        "what_can_i_make": {
+          "blocked_by": [
+            "equipment_closure:PACKET-006"
+          ],
+          "data_status": "SAFE_AUTHORED_GUIDANCE_DATA",
+          "live_status": "BLOCKED_RUNTIME_COMPLETION",
+          "text": "Moss Bind Glue, moss charms, and repair kits."
+        },
+        "what_did_i_find": {
+          "blocked_by": [
+            "loot_probability:W1-CREATIVE-004"
+          ],
+          "data_status": "SAFE_AUTHORED_GUIDANCE_DATA",
+          "live_status": "BLOCKED_RUNTIME_COMPLETION",
+          "text": "Binder gathered from moss floors and the mosskip family."
+        },
+        "what_should_i_investigate_next": {
+          "blocked_by": [],
+          "data_status": "SAFE_AUTHORED_GUIDANCE_DATA",
+          "live_status": "SAFE_FOR_TARGET_INTEGRATION",
+          "text": "Pair it with glow spore for the forest binder path."
+        }
+      },
+      "rarity_feel": "common",
+      "readiness": {
+        "discovery_entry_and_stamp_contract": "SAFE_NOW",
+        "guidance_data": "SAFE_NOW",
+        "live_acquisition_progression_completion": "BLOCKED_BY_LISTED_DEPENDENCIES"
+      },
+      "region": "ww",
+      "runtime_completion_blocked_by": [
+        "loot_probability:W1-CREATIVE-004",
+        "equipment_closure:PACKET-006"
+      ],
+      "runtime_id": "aionbound:moss_resin",
+      "warehouse_id": "moss_resin"
+    },
+    {
+      "codex_category": "resource",
+      "discovery_order_action": "harvest_resource_plant",
+      "discovery_stamps": [
+        {
+          "event": "harvested",
+          "id": "codex:ww:resource:glow_spore:harvested",
+          "stage": "complete"
+        }
+      ],
+      "entry_kind": "resource",
+      "id": "glow_spore",
+      "importance": "craft_core",
+      "importance_assignment": "ENGINEERING_INDEX_DERIVATION_FROM_APPROVED_RELATIONSHIP",
+      "integration": {
+        "data_target": "behavior_pack/scripts/catalog.js::CODEX_ENTRY_REGISTRY",
+        "persistence": "successor_v4_compact_codex_discovery",
+        "presentation_target": "non_chat_codex_surface",
+        "primary_chat_ux_allowed": false
+      },
+      "player_questions": {
+        "what_can_i_make": {
+          "blocked_by": [
+            "equipment_closure:PACKET-006"
+          ],
+          "data_status": "SAFE_AUTHORED_GUIDANCE_DATA",
+          "live_status": "BLOCKED_RUNTIME_COMPLETION",
+          "text": "Light crafts, Moss Bind Glue, lantern badges, and lantern hooks."
+        },
+        "what_did_i_find": {
+          "blocked_by": [
+            "loot_probability:W1-CREATIVE-004"
+          ],
+          "data_status": "SAFE_AUTHORED_GUIDANCE_DATA",
+          "live_status": "BLOCKED_RUNTIME_COMPLETION",
+          "text": "A soft-light spore from mushrooms, caves, and lantern posts."
+        },
+        "what_should_i_investigate_next": {
+          "blocked_by": [],
+          "data_status": "SAFE_AUTHORED_GUIDANCE_DATA",
+          "live_status": "SAFE_FOR_TARGET_INTEGRATION",
+          "text": "Night paths and bloom patches lead toward the utility-light line."
+        }
+      },
+      "rarity_feel": "uncommon",
+      "readiness": {
+        "discovery_entry_and_stamp_contract": "SAFE_NOW",
+        "guidance_data": "SAFE_NOW",
+        "live_acquisition_progression_completion": "BLOCKED_BY_LISTED_DEPENDENCIES"
+      },
+      "region": "ww",
+      "runtime_completion_blocked_by": [
+        "loot_probability:W1-CREATIVE-004",
+        "equipment_closure:PACKET-006"
+      ],
+      "runtime_id": "aionbound:glow_spore",
+      "warehouse_id": "glow_spore"
+    },
+    {
+      "codex_category": "resource",
+      "discovery_order_action": "harvest_resource_plant",
+      "discovery_stamps": [
+        {
+          "event": "harvested",
+          "id": "codex:ww:resource:hollow_amber:harvested",
+          "stage": "complete"
+        }
+      ],
+      "entry_kind": "resource",
+      "id": "hollow_amber",
+      "importance": "craft_core",
+      "importance_assignment": "ENGINEERING_INDEX_DERIVATION_FROM_APPROVED_RELATIONSHIP",
+      "integration": {
+        "data_target": "behavior_pack/scripts/catalog.js::CODEX_ENTRY_REGISTRY",
+        "persistence": "successor_v4_compact_codex_discovery",
+        "presentation_target": "non_chat_codex_surface",
+        "primary_chat_ux_allowed": false
+      },
+      "player_questions": {
+        "what_can_i_make": {
+          "blocked_by": [
+            "component_presentation:W1-CREATIVE-001"
+          ],
+          "data_status": "SAFE_AUTHORED_GUIDANCE_DATA",
+          "live_status": "BLOCKED_RUNTIME_COMPLETION",
+          "text": "Amber Core, weapon cores, the moon-sap staff, and root-knife refinement."
+        },
+        "what_did_i_find": {
+          "blocked_by": [
+            "loot_probability:W1-CREATIVE-004"
+          ],
+          "data_status": "SAFE_AUTHORED_GUIDANCE_DATA",
+          "live_status": "BLOCKED_RUNTIME_COMPLETION",
+          "text": "Amber found in hollow wood, caves, and bark wraith encounters."
+        },
+        "what_should_i_investigate_next": {
+          "blocked_by": [],
+          "data_status": "SAFE_AUTHORED_GUIDANCE_DATA",
+          "live_status": "SAFE_FOR_TARGET_INTEGRATION",
+          "text": "Search hollow wood and root caves for the mid-forest catalyst."
+        }
+      },
+      "rarity_feel": "uncommon_rare",
+      "readiness": {
+        "discovery_entry_and_stamp_contract": "SAFE_NOW",
+        "guidance_data": "SAFE_NOW",
+        "live_acquisition_progression_completion": "BLOCKED_BY_LISTED_DEPENDENCIES"
+      },
+      "region": "ww",
+      "runtime_completion_blocked_by": [
+        "loot_probability:W1-CREATIVE-004",
+        "component_presentation:W1-CREATIVE-001"
+      ],
+      "runtime_id": "aionbound:hollow_amber",
+      "warehouse_id": "hollow_amber"
+    },
+    {
+      "codex_category": "resource",
+      "discovery_order_action": "harvest_resource_plant",
+      "discovery_stamps": [
+        {
+          "event": "harvested",
+          "id": "codex:ww:resource:lantern_fur:harvested",
+          "stage": "complete"
+        }
+      ],
+      "entry_kind": "resource",
+      "id": "lantern_fur",
+      "importance": "craft_core",
+      "importance_assignment": "ENGINEERING_INDEX_DERIVATION_FROM_APPROVED_RELATIONSHIP",
+      "integration": {
+        "data_target": "behavior_pack/scripts/catalog.js::CODEX_ENTRY_REGISTRY",
+        "persistence": "successor_v4_compact_codex_discovery",
+        "presentation_target": "non_chat_codex_surface",
+        "primary_chat_ux_allowed": false
+      },
+      "player_questions": {
+        "what_can_i_make": {
+          "blocked_by": [
+            "equipment_closure:PACKET-006"
+          ],
+          "data_status": "SAFE_AUTHORED_GUIDANCE_DATA",
+          "live_status": "BLOCKED_RUNTIME_COMPLETION",
+          "text": "Lantern badges, lantern-hook light heads, and utility trim."
+        },
+        "what_did_i_find": {
+          "blocked_by": [
+            "loot_probability:W1-CREATIVE-004"
+          ],
+          "data_status": "SAFE_AUTHORED_GUIDANCE_DATA",
+          "live_status": "BLOCKED_RUNTIME_COMPLETION",
+          "text": "Glow-bearing fur from lantern hares and bloom fields."
+        },
+        "what_should_i_investigate_next": {
+          "blocked_by": [],
+          "data_status": "SAFE_AUTHORED_GUIDANCE_DATA",
+          "live_status": "SAFE_FOR_TARGET_INTEGRATION",
+          "text": "Follow safe night trails and lantern blooms toward light utility."
+        }
+      },
+      "rarity_feel": "uncommon",
+      "readiness": {
+        "discovery_entry_and_stamp_contract": "SAFE_NOW",
+        "guidance_data": "SAFE_NOW",
+        "live_acquisition_progression_completion": "BLOCKED_BY_LISTED_DEPENDENCIES"
+      },
+      "region": "ww",
+      "runtime_completion_blocked_by": [
+        "loot_probability:W1-CREATIVE-004",
+        "equipment_closure:PACKET-006"
+      ],
+      "runtime_id": "aionbound:lantern_fur",
+      "warehouse_id": "lantern_fur"
+    },
+    {
+      "codex_category": "resource",
+      "discovery_order_action": "harvest_resource_plant",
+      "discovery_stamps": [
+        {
+          "event": "harvested",
+          "id": "codex:ww:resource:moon_sap:harvested",
+          "stage": "complete"
+        }
+      ],
+      "entry_kind": "resource",
+      "id": "moon_sap",
+      "importance": "critical_path",
+      "importance_assignment": "ENGINEERING_INDEX_DERIVATION_FROM_APPROVED_RELATIONSHIP",
+      "integration": {
+        "data_target": "behavior_pack/scripts/catalog.js::CODEX_ENTRY_REGISTRY",
+        "persistence": "successor_v4_compact_codex_discovery",
+        "presentation_target": "non_chat_codex_surface",
+        "primary_chat_ux_allowed": false
+      },
+      "player_questions": {
+        "what_can_i_make": {
+          "blocked_by": [
+            "equipment_closure:PACKET-006"
+          ],
+          "data_status": "SAFE_AUTHORED_GUIDANCE_DATA",
+          "live_status": "BLOCKED_RUNTIME_COMPLETION",
+          "text": "Moon-sap staff, moon-sap pendant, and Amber Core."
+        },
+        "what_did_i_find": {
+          "blocked_by": [
+            "loot_probability:W1-CREATIVE-004"
+          ],
+          "data_status": "SAFE_AUTHORED_GUIDANCE_DATA",
+          "live_status": "BLOCKED_RUNTIME_COMPLETION",
+          "text": "Night sap associated with trees, lily pools, and bark wraiths."
+        },
+        "what_should_i_investigate_next": {
+          "blocked_by": [],
+          "data_status": "SAFE_AUTHORED_GUIDANCE_DATA",
+          "live_status": "SAFE_FOR_TARGET_INTEGRATION",
+          "text": "Lily pools and deep-night forest open the soft-power path."
+        }
+      },
+      "rarity_feel": "rare",
+      "readiness": {
+        "discovery_entry_and_stamp_contract": "SAFE_NOW",
+        "guidance_data": "SAFE_NOW",
+        "live_acquisition_progression_completion": "BLOCKED_BY_LISTED_DEPENDENCIES"
+      },
+      "region": "ww",
+      "runtime_completion_blocked_by": [
+        "loot_probability:W1-CREATIVE-004",
+        "equipment_closure:PACKET-006"
+      ],
+      "runtime_id": "aionbound:moon_sap",
+      "warehouse_id": "moon_sap"
+    },
+    {
+      "codex_category": "resource",
+      "discovery_order_action": "harvest_resource_plant",
+      "discovery_stamps": [
+        {
+          "event": "harvested",
+          "id": "codex:ww:resource:root_heart:harvested",
+          "stage": "complete"
+        }
+      ],
+      "entry_kind": "resource",
+      "id": "root_heart",
+      "importance": "critical_path",
+      "importance_assignment": "ENGINEERING_INDEX_DERIVATION_FROM_APPROVED_RELATIONSHIP",
+      "integration": {
+        "data_target": "behavior_pack/scripts/catalog.js::CODEX_ENTRY_REGISTRY",
+        "persistence": "successor_v4_compact_codex_discovery",
+        "presentation_target": "non_chat_codex_surface",
+        "primary_chat_ux_allowed": false
+      },
+      "player_questions": {
+        "what_can_i_make": {
+          "blocked_by": [
+            "component_presentation:W1-CREATIVE-001"
+          ],
+          "data_status": "SAFE_AUTHORED_GUIDANCE_DATA",
+          "live_status": "BLOCKED_RUNTIME_COMPLETION",
+          "text": "Living Root Focus and late Whisperwood staff or bracelet refinement."
+        },
+        "what_did_i_find": {
+          "blocked_by": [
+            "loot_probability:W1-CREATIVE-004"
+          ],
+          "data_status": "SAFE_AUTHORED_GUIDANCE_DATA",
+          "live_status": "BLOCKED_RUNTIME_COMPLETION",
+          "text": "A deep-root catalyst, with a rare route through rootback boars."
+        },
+        "what_should_i_investigate_next": {
+          "blocked_by": [],
+          "data_status": "SAFE_AUTHORED_GUIDANCE_DATA",
+          "live_status": "SAFE_FOR_TARGET_INTEGRATION",
+          "text": "Investigate deep roots once the early binder loop is established."
+        }
+      },
+      "rarity_feel": "rare",
+      "readiness": {
+        "discovery_entry_and_stamp_contract": "SAFE_NOW",
+        "guidance_data": "SAFE_NOW",
+        "live_acquisition_progression_completion": "BLOCKED_BY_LISTED_DEPENDENCIES"
+      },
+      "region": "ww",
+      "runtime_completion_blocked_by": [
+        "loot_probability:W1-CREATIVE-004",
+        "component_presentation:W1-CREATIVE-001"
+      ],
+      "runtime_id": "aionbound:root_heart",
+      "warehouse_id": "root_heart"
+    },
+    {
+      "codex_category": "resource",
+      "discovery_order_action": "harvest_resource_plant",
+      "discovery_stamps": [
+        {
+          "event": "harvested",
+          "id": "codex:ww:resource:briar_antler:harvested",
+          "stage": "complete"
+        }
+      ],
+      "entry_kind": "resource",
+      "id": "briar_antler",
+      "importance": "craft_core",
+      "importance_assignment": "ENGINEERING_INDEX_DERIVATION_FROM_APPROVED_RELATIONSHIP",
+      "integration": {
+        "data_target": "behavior_pack/scripts/catalog.js::CODEX_ENTRY_REGISTRY",
+        "persistence": "successor_v4_compact_codex_discovery",
+        "presentation_target": "non_chat_codex_surface",
+        "primary_chat_ux_allowed": false
+      },
+      "player_questions": {
+        "what_can_i_make": {
+          "blocked_by": [
+            "equipment_closure:PACKET-006"
+          ],
+          "data_status": "SAFE_AUTHORED_GUIDANCE_DATA",
+          "live_status": "BLOCKED_RUNTIME_COMPLETION",
+          "text": "Cleaver blanks, briar cleavers, whips, and trophy displays."
+        },
+        "what_did_i_find": {
+          "blocked_by": [
+            "loot_probability:W1-CREATIVE-004"
+          ],
+          "data_status": "SAFE_AUTHORED_GUIDANCE_DATA",
+          "live_status": "BLOCKED_RUNTIME_COMPLETION",
+          "text": "Antler material from briar elk and briar thickets."
+        },
+        "what_should_i_investigate_next": {
+          "blocked_by": [],
+          "data_status": "SAFE_AUTHORED_GUIDANCE_DATA",
+          "live_status": "SAFE_FOR_TARGET_INTEGRATION",
+          "text": "Rare meadows lead into the elite equipment and trophy path."
+        }
+      },
+      "rarity_feel": "uncommon_rare",
+      "readiness": {
+        "discovery_entry_and_stamp_contract": "SAFE_NOW",
+        "guidance_data": "SAFE_NOW",
+        "live_acquisition_progression_completion": "BLOCKED_BY_LISTED_DEPENDENCIES"
+      },
+      "region": "ww",
+      "runtime_completion_blocked_by": [
+        "loot_probability:W1-CREATIVE-004",
+        "equipment_closure:PACKET-006"
+      ],
+      "runtime_id": "aionbound:briar_antler",
+      "warehouse_id": "briar_antler"
+    },
+    {
+      "codex_category": "resource",
+      "discovery_order_action": "harvest_resource_plant",
+      "discovery_stamps": [
+        {
+          "event": "harvested",
+          "id": "codex:ww:resource:widow_silk:harvested",
+          "stage": "complete"
+        }
+      ],
+      "entry_kind": "resource",
+      "id": "widow_silk",
+      "importance": "craft_core",
+      "importance_assignment": "ENGINEERING_INDEX_DERIVATION_FROM_APPROVED_RELATIONSHIP",
+      "integration": {
+        "data_target": "behavior_pack/scripts/catalog.js::CODEX_ENTRY_REGISTRY",
+        "persistence": "successor_v4_compact_codex_discovery",
+        "presentation_target": "non_chat_codex_surface",
+        "primary_chat_ux_allowed": false
+      },
+      "player_questions": {
+        "what_can_i_make": {
+          "blocked_by": [
+            "component_presentation:W1-CREATIVE-001"
+          ],
+          "data_status": "SAFE_AUTHORED_GUIDANCE_DATA",
+          "live_status": "BLOCKED_RUNTIME_COMPLETION",
+          "text": "Thorn Cord, armor stitching, thorn whips, and widow-fang daggers."
+        },
+        "what_did_i_find": {
+          "blocked_by": [
+            "loot_probability:W1-CREATIVE-004"
+          ],
+          "data_status": "SAFE_AUTHORED_GUIDANCE_DATA",
+          "live_status": "BLOCKED_RUNTIME_COMPLETION",
+          "text": "Light-drinking silk from widow dens beneath giant roots."
+        },
+        "what_should_i_investigate_next": {
+          "blocked_by": [],
+          "data_status": "SAFE_AUTHORED_GUIDANCE_DATA",
+          "live_status": "SAFE_FOR_TARGET_INTEGRATION",
+          "text": "Caves beneath roots connect silk to the elite craft line."
+        }
+      },
+      "rarity_feel": "uncommon_rare",
+      "readiness": {
+        "discovery_entry_and_stamp_contract": "SAFE_NOW",
+        "guidance_data": "SAFE_NOW",
+        "live_acquisition_progression_completion": "BLOCKED_BY_LISTED_DEPENDENCIES"
+      },
+      "region": "ww",
+      "runtime_completion_blocked_by": [
+        "loot_probability:W1-CREATIVE-004",
+        "component_presentation:W1-CREATIVE-001"
+      ],
+      "runtime_id": "aionbound:widow_silk",
+      "warehouse_id": "widow_silk"
+    },
+    {
+      "codex_category": "resource",
+      "discovery_order_action": "harvest_resource_plant",
+      "discovery_stamps": [
+        {
+          "event": "harvested",
+          "id": "codex:ww:resource:ancient_acorn:harvested",
+          "stage": "complete"
+        }
+      ],
+      "entry_kind": "resource",
+      "id": "ancient_acorn",
+      "importance": "exploration",
+      "importance_assignment": "ENGINEERING_INDEX_DERIVATION_FROM_APPROVED_RELATIONSHIP",
+      "integration": {
+        "data_target": "behavior_pack/scripts/catalog.js::CODEX_ENTRY_REGISTRY",
+        "persistence": "successor_v4_compact_codex_discovery",
+        "presentation_target": "non_chat_codex_surface",
+        "primary_chat_ux_allowed": false
+      },
+      "player_questions": {
+        "what_can_i_make": {
+          "blocked_by": [],
+          "data_status": "SAFE_AUTHORED_GUIDANCE_DATA",
+          "live_status": "SAFE_FOR_TARGET_INTEGRATION",
+          "text": "Ancient Acorn Display with pedestal wood."
+        },
+        "what_did_i_find": {
+          "blocked_by": [
+            "loot_probability:W1-CREATIVE-004"
+          ],
+          "data_status": "SAFE_AUTHORED_GUIDANCE_DATA",
+          "live_status": "BLOCKED_RUNTIME_COMPLETION",
+          "text": "A prestige curiosity found at giant trees or very rarely through briar elk."
+        },
+        "what_should_i_investigate_next": {
+          "blocked_by": [
+            "twinbond_presentation:W1-CREATIVE-002"
+          ],
+          "data_status": "SAFE_AUTHORED_GUIDANCE_DATA",
+          "live_status": "BLOCKED_RUNTIME_COMPLETION",
+          "text": "Its approved role is curiosity and Twinbond foreshadow, not a required finale key."
+        }
+      },
+      "rarity_feel": "epic_curiosity",
+      "readiness": {
+        "discovery_entry_and_stamp_contract": "SAFE_NOW",
+        "guidance_data": "SAFE_NOW",
+        "live_acquisition_progression_completion": "BLOCKED_BY_LISTED_DEPENDENCIES"
+      },
+      "region": "ww",
+      "runtime_completion_blocked_by": [
+        "loot_probability:W1-CREATIVE-004",
+        "twinbond_presentation:W1-CREATIVE-002"
+      ],
+      "runtime_id": "aionbound:ancient_acorn",
+      "warehouse_id": "ancient_acorn"
+    },
+    {
+      "codex_category": "resource",
+      "discovery_order_action": "harvest_resource_plant",
+      "discovery_stamps": [
+        {
+          "event": "harvested",
+          "id": "codex:ww:block:whisperwood_log:harvested",
+          "stage": "complete"
+        }
+      ],
+      "entry_kind": "block",
+      "id": "whisperwood_log",
+      "importance": "craft_core",
+      "importance_assignment": "ENGINEERING_INDEX_DERIVATION_FROM_APPROVED_RELATIONSHIP",
+      "integration": {
+        "data_target": "behavior_pack/scripts/catalog.js::CODEX_ENTRY_REGISTRY",
+        "persistence": "successor_v4_compact_codex_discovery",
+        "presentation_target": "non_chat_codex_surface",
+        "primary_chat_ux_allowed": false
+      },
+      "player_questions": {
+        "what_can_i_make": {
+          "blocked_by": [],
+          "data_status": "SAFE_AUTHORED_GUIDANCE_DATA",
+          "live_status": "SAFE_FOR_TARGET_INTEGRATION",
+          "text": "Whisperwood planks, bark harvest, handles, and stocks."
+        },
+        "what_did_i_find": {
+          "blocked_by": [
+            "world_distribution:WORLDGEN_RUNTIME"
+          ],
+          "data_status": "SAFE_AUTHORED_GUIDANCE_DATA",
+          "live_status": "BLOCKED_RUNTIME_COMPLETION",
+          "text": "Primary canopy trunk and common bark source."
+        },
+        "what_should_i_investigate_next": {
+          "blocked_by": [],
+          "data_status": "SAFE_AUTHORED_GUIDANCE_DATA",
+          "live_status": "SAFE_FOR_TARGET_INTEGRATION",
+          "text": "Turn the forest silhouette into the first building and crafting material."
+        }
+      },
+      "rarity_feel": "not_assigned_by_creative",
+      "readiness": {
+        "discovery_entry_and_stamp_contract": "SAFE_NOW",
+        "guidance_data": "SAFE_NOW",
+        "live_acquisition_progression_completion": "BLOCKED_BY_LISTED_DEPENDENCIES"
+      },
+      "region": "ww",
+      "runtime_completion_blocked_by": [
+        "world_distribution:WORLDGEN_RUNTIME"
+      ],
+      "runtime_id": "aionbound:whisperwood_log",
+      "warehouse_id": "whisperwood_log"
+    },
+    {
+      "codex_category": "resource",
+      "discovery_order_action": "harvest_resource_plant",
+      "discovery_stamps": [
+        {
+          "event": "crafted",
+          "id": "codex:ww:block:stripped_whisperwood_log:crafted",
+          "stage": "complete"
+        }
+      ],
+      "entry_kind": "block",
+      "id": "stripped_whisperwood_log",
+      "importance": "craft_core",
+      "importance_assignment": "ENGINEERING_INDEX_DERIVATION_FROM_APPROVED_RELATIONSHIP",
+      "integration": {
+        "data_target": "behavior_pack/scripts/catalog.js::CODEX_ENTRY_REGISTRY",
+        "persistence": "successor_v4_compact_codex_discovery",
+        "presentation_target": "non_chat_codex_surface",
+        "primary_chat_ux_allowed": false
+      },
+      "player_questions": {
+        "what_can_i_make": {
+          "blocked_by": [],
+          "data_status": "SAFE_AUTHORED_GUIDANCE_DATA",
+          "live_status": "SAFE_FOR_TARGET_INTEGRATION",
+          "text": "Intermediate timber for player builds."
+        },
+        "what_did_i_find": {
+          "blocked_by": [],
+          "data_status": "SAFE_AUTHORED_GUIDANCE_DATA",
+          "live_status": "SAFE_FOR_TARGET_INTEGRATION",
+          "text": "Worked Whisperwood timber."
+        },
+        "what_should_i_investigate_next": {
+          "blocked_by": [],
+          "data_status": "SAFE_AUTHORED_GUIDANCE_DATA",
+          "live_status": "SAFE_FOR_TARGET_INTEGRATION",
+          "text": "Use crafted forest wood to extend camps and bases."
+        }
+      },
+      "rarity_feel": "not_assigned_by_creative",
+      "readiness": {
+        "discovery_entry_and_stamp_contract": "SAFE_NOW",
+        "guidance_data": "SAFE_NOW",
+        "live_acquisition_progression_completion": "SAFE_NOW"
+      },
+      "region": "ww",
+      "runtime_completion_blocked_by": [],
+      "runtime_id": "aionbound:stripped_whisperwood_log",
+      "warehouse_id": "stripped_whisperwood_log"
+    },
+    {
+      "codex_category": "resource",
+      "discovery_order_action": "harvest_resource_plant",
+      "discovery_stamps": [
+        {
+          "event": "crafted",
+          "id": "codex:ww:block:whisperwood_wood:crafted",
+          "stage": "complete"
+        }
+      ],
+      "entry_kind": "block",
+      "id": "whisperwood_wood",
+      "importance": "exploration",
+      "importance_assignment": "ENGINEERING_INDEX_DERIVATION_FROM_APPROVED_RELATIONSHIP",
+      "integration": {
+        "data_target": "behavior_pack/scripts/catalog.js::CODEX_ENTRY_REGISTRY",
+        "persistence": "successor_v4_compact_codex_discovery",
+        "presentation_target": "non_chat_codex_surface",
+        "primary_chat_ux_allowed": false
+      },
+      "player_questions": {
+        "what_can_i_make": {
+          "blocked_by": [],
+          "data_status": "SAFE_AUTHORED_GUIDANCE_DATA",
+          "live_status": "SAFE_FOR_TARGET_INTEGRATION",
+          "text": "Structural builds and forest massing."
+        },
+        "what_did_i_find": {
+          "blocked_by": [],
+          "data_status": "SAFE_AUTHORED_GUIDANCE_DATA",
+          "live_status": "SAFE_FOR_TARGET_INTEGRATION",
+          "text": "Bark-on-all-sides timber used for deep-woods massing."
+        },
+        "what_should_i_investigate_next": {
+          "blocked_by": [],
+          "data_status": "SAFE_AUTHORED_GUIDANCE_DATA",
+          "live_status": "SAFE_FOR_TARGET_INTEGRATION",
+          "text": "Carry deep-forest identity into player construction."
+        }
+      },
+      "rarity_feel": "not_assigned_by_creative",
+      "readiness": {
+        "discovery_entry_and_stamp_contract": "SAFE_NOW",
+        "guidance_data": "SAFE_NOW",
+        "live_acquisition_progression_completion": "SAFE_NOW"
+      },
+      "region": "ww",
+      "runtime_completion_blocked_by": [],
+      "runtime_id": "aionbound:whisperwood_wood",
+      "warehouse_id": "whisperwood_wood"
+    },
+    {
+      "codex_category": "resource",
+      "discovery_order_action": "harvest_resource_plant",
+      "discovery_stamps": [
+        {
+          "event": "crafted",
+          "id": "codex:ww:block:whisperwood_planks:crafted",
+          "stage": "complete"
+        }
+      ],
+      "entry_kind": "block",
+      "id": "whisperwood_planks",
+      "importance": "craft_core",
+      "importance_assignment": "ENGINEERING_INDEX_DERIVATION_FROM_APPROVED_RELATIONSHIP",
+      "integration": {
+        "data_target": "behavior_pack/scripts/catalog.js::CODEX_ENTRY_REGISTRY",
+        "persistence": "successor_v4_compact_codex_discovery",
+        "presentation_target": "non_chat_codex_surface",
+        "primary_chat_ux_allowed": false
+      },
+      "player_questions": {
+        "what_can_i_make": {
+          "blocked_by": [],
+          "data_status": "SAFE_AUTHORED_GUIDANCE_DATA",
+          "live_status": "SAFE_FOR_TARGET_INTEGRATION",
+          "text": "Furniture, handles, camps, and trophy bases."
+        },
+        "what_did_i_find": {
+          "blocked_by": [],
+          "data_status": "SAFE_AUTHORED_GUIDANCE_DATA",
+          "live_status": "SAFE_FOR_TARGET_INTEGRATION",
+          "text": "Safe-forest building timber made from Whisperwood wood."
+        },
+        "what_should_i_investigate_next": {
+          "blocked_by": [],
+          "data_status": "SAFE_AUTHORED_GUIDANCE_DATA",
+          "live_status": "SAFE_FOR_TARGET_INTEGRATION",
+          "text": "Planks connect gathered bark and logs to tools and shelter."
+        }
+      },
+      "rarity_feel": "not_assigned_by_creative",
+      "readiness": {
+        "discovery_entry_and_stamp_contract": "SAFE_NOW",
+        "guidance_data": "SAFE_NOW",
+        "live_acquisition_progression_completion": "SAFE_NOW"
+      },
+      "region": "ww",
+      "runtime_completion_blocked_by": [],
+      "runtime_id": "aionbound:whisperwood_planks",
+      "warehouse_id": "whisperwood_planks"
+    },
+    {
+      "codex_category": "resource",
+      "discovery_order_action": "harvest_resource_plant",
+      "discovery_stamps": [
+        {
+          "event": "harvested",
+          "id": "codex:ww:block:whisperwood_leaves:harvested",
+          "stage": "complete"
+        }
+      ],
+      "entry_kind": "block",
+      "id": "whisperwood_leaves",
+      "importance": "exploration",
+      "importance_assignment": "ENGINEERING_INDEX_DERIVATION_FROM_APPROVED_RELATIONSHIP",
+      "integration": {
+        "data_target": "behavior_pack/scripts/catalog.js::CODEX_ENTRY_REGISTRY",
+        "persistence": "successor_v4_compact_codex_discovery",
+        "presentation_target": "non_chat_codex_surface",
+        "primary_chat_ux_allowed": false
+      },
+      "player_questions": {
+        "what_can_i_make": {
+          "blocked_by": [],
+          "data_status": "SAFE_AUTHORED_GUIDANCE_DATA",
+          "live_status": "SAFE_FOR_TARGET_INTEGRATION",
+          "text": "Compost or decay relationships where runtime rules support them."
+        },
+        "what_did_i_find": {
+          "blocked_by": [
+            "world_distribution:WORLDGEN_RUNTIME"
+          ],
+          "data_status": "SAFE_AUTHORED_GUIDANCE_DATA",
+          "live_status": "BLOCKED_RUNTIME_COMPLETION",
+          "text": "The green canopy cover of Whisperwood."
+        },
+        "what_should_i_investigate_next": {
+          "blocked_by": [],
+          "data_status": "SAFE_AUTHORED_GUIDANCE_DATA",
+          "live_status": "SAFE_FOR_TARGET_INTEGRATION",
+          "text": "Canopy density marks the living forest and its clearings."
+        }
+      },
+      "rarity_feel": "not_assigned_by_creative",
+      "readiness": {
+        "discovery_entry_and_stamp_contract": "SAFE_NOW",
+        "guidance_data": "SAFE_NOW",
+        "live_acquisition_progression_completion": "BLOCKED_BY_LISTED_DEPENDENCIES"
+      },
+      "region": "ww",
+      "runtime_completion_blocked_by": [
+        "world_distribution:WORLDGEN_RUNTIME"
+      ],
+      "runtime_id": "aionbound:whisperwood_leaves",
+      "warehouse_id": "whisperwood_leaves"
+    },
+    {
+      "codex_category": "resource",
+      "discovery_order_action": "harvest_resource_plant",
+      "discovery_stamps": [
+        {
+          "event": "harvested",
+          "id": "codex:ww:block:whisperwood_sapling:harvested",
+          "stage": "complete"
+        }
+      ],
+      "entry_kind": "block",
+      "id": "whisperwood_sapling",
+      "importance": "craft_core",
+      "importance_assignment": "ENGINEERING_INDEX_DERIVATION_FROM_APPROVED_RELATIONSHIP",
+      "integration": {
+        "data_target": "behavior_pack/scripts/catalog.js::CODEX_ENTRY_REGISTRY",
+        "persistence": "successor_v4_compact_codex_discovery",
+        "presentation_target": "non_chat_codex_surface",
+        "primary_chat_ux_allowed": false
+      },
+      "player_questions": {
+        "what_can_i_make": {
+          "blocked_by": [],
+          "data_status": "SAFE_AUTHORED_GUIDANCE_DATA",
+          "live_status": "SAFE_FOR_TARGET_INTEGRATION",
+          "text": "Renewable tree growth and future logs."
+        },
+        "what_did_i_find": {
+          "blocked_by": [
+            "world_distribution:WORLDGEN_RUNTIME"
+          ],
+          "data_status": "SAFE_AUTHORED_GUIDANCE_DATA",
+          "live_status": "BLOCKED_RUNTIME_COMPLETION",
+          "text": "The regrowth form of Whisperwood trees."
+        },
+        "what_should_i_investigate_next": {
+          "blocked_by": [],
+          "data_status": "SAFE_AUTHORED_GUIDANCE_DATA",
+          "live_status": "SAFE_FOR_TARGET_INTEGRATION",
+          "text": "Replanting closes the forest sustainability loop."
+        }
+      },
+      "rarity_feel": "not_assigned_by_creative",
+      "readiness": {
+        "discovery_entry_and_stamp_contract": "SAFE_NOW",
+        "guidance_data": "SAFE_NOW",
+        "live_acquisition_progression_completion": "BLOCKED_BY_LISTED_DEPENDENCIES"
+      },
+      "region": "ww",
+      "runtime_completion_blocked_by": [
+        "world_distribution:WORLDGEN_RUNTIME"
+      ],
+      "runtime_id": "aionbound:whisperwood_sapling",
+      "warehouse_id": "whisperwood_sapling"
+    },
+    {
+      "codex_category": "resource",
+      "discovery_order_action": "harvest_resource_plant",
+      "discovery_stamps": [
+        {
+          "event": "harvested",
+          "id": "codex:ww:block:whisperwood_roots:harvested",
+          "stage": "complete"
+        }
+      ],
+      "entry_kind": "block",
+      "id": "whisperwood_roots",
+      "importance": "exploration",
+      "importance_assignment": "ENGINEERING_INDEX_DERIVATION_FROM_APPROVED_RELATIONSHIP",
+      "integration": {
+        "data_target": "behavior_pack/scripts/catalog.js::CODEX_ENTRY_REGISTRY",
+        "persistence": "successor_v4_compact_codex_discovery",
+        "presentation_target": "non_chat_codex_surface",
+        "primary_chat_ux_allowed": false
+      },
+      "player_questions": {
+        "what_can_i_make": {
+          "blocked_by": [],
+          "data_status": "SAFE_AUTHORED_GUIDANCE_DATA",
+          "live_status": "SAFE_FOR_TARGET_INTEGRATION",
+          "text": "Harvest fantasy and traversal footing."
+        },
+        "what_did_i_find": {
+          "blocked_by": [
+            "world_distribution:WORLDGEN_RUNTIME"
+          ],
+          "data_status": "SAFE_AUTHORED_GUIDANCE_DATA",
+          "live_status": "BLOCKED_RUNTIME_COMPLETION",
+          "text": "Root flooring and ravine footing in the forest."
+        },
+        "what_should_i_investigate_next": {
+          "blocked_by": [],
+          "data_status": "SAFE_AUTHORED_GUIDANCE_DATA",
+          "live_status": "SAFE_FOR_TARGET_INTEGRATION",
+          "text": "Root paths lead toward ravines, caves, and deeper resources."
+        }
+      },
+      "rarity_feel": "not_assigned_by_creative",
+      "readiness": {
+        "discovery_entry_and_stamp_contract": "SAFE_NOW",
+        "guidance_data": "SAFE_NOW",
+        "live_acquisition_progression_completion": "BLOCKED_BY_LISTED_DEPENDENCIES"
+      },
+      "region": "ww",
+      "runtime_completion_blocked_by": [
+        "world_distribution:WORLDGEN_RUNTIME"
+      ],
+      "runtime_id": "aionbound:whisperwood_roots",
+      "warehouse_id": "whisperwood_roots"
+    },
+    {
+      "codex_category": "resource",
+      "discovery_order_action": "harvest_resource_plant",
+      "discovery_stamps": [
+        {
+          "event": "harvested",
+          "id": "codex:ww:block:moss_bark:harvested",
+          "stage": "complete"
+        }
+      ],
+      "entry_kind": "block",
+      "id": "moss_bark",
+      "importance": "craft_core",
+      "importance_assignment": "ENGINEERING_INDEX_DERIVATION_FROM_APPROVED_RELATIONSHIP",
+      "integration": {
+        "data_target": "behavior_pack/scripts/catalog.js::CODEX_ENTRY_REGISTRY",
+        "persistence": "successor_v4_compact_codex_discovery",
+        "presentation_target": "non_chat_codex_surface",
+        "primary_chat_ux_allowed": false
+      },
+      "player_questions": {
+        "what_can_i_make": {
+          "blocked_by": [],
+          "data_status": "SAFE_AUTHORED_GUIDANCE_DATA",
+          "live_status": "SAFE_FOR_TARGET_INTEGRATION",
+          "text": "Binding materials and build detail."
+        },
+        "what_did_i_find": {
+          "blocked_by": [
+            "world_distribution:WORLDGEN_RUNTIME"
+          ],
+          "data_status": "SAFE_AUTHORED_GUIDANCE_DATA",
+          "live_status": "BLOCKED_RUNTIME_COMPLETION",
+          "text": "Moss-covered accent bark from the forest floor language."
+        },
+        "what_should_i_investigate_next": {
+          "blocked_by": [],
+          "data_status": "SAFE_AUTHORED_GUIDANCE_DATA",
+          "live_status": "SAFE_FOR_TARGET_INTEGRATION",
+          "text": "Moss identity points back to resin and the early binder loop."
+        }
+      },
+      "rarity_feel": "not_assigned_by_creative",
+      "readiness": {
+        "discovery_entry_and_stamp_contract": "SAFE_NOW",
+        "guidance_data": "SAFE_NOW",
+        "live_acquisition_progression_completion": "BLOCKED_BY_LISTED_DEPENDENCIES"
+      },
+      "region": "ww",
+      "runtime_completion_blocked_by": [
+        "world_distribution:WORLDGEN_RUNTIME"
+      ],
+      "runtime_id": "aionbound:moss_bark",
+      "warehouse_id": "moss_bark"
+    },
+    {
+      "codex_category": "resource",
+      "discovery_order_action": "harvest_resource_plant",
+      "discovery_stamps": [
+        {
+          "event": "harvested",
+          "id": "codex:ww:block:hollow_wood:harvested",
+          "stage": "complete"
+        }
+      ],
+      "entry_kind": "block",
+      "id": "hollow_wood",
+      "importance": "exploration",
+      "importance_assignment": "ENGINEERING_INDEX_DERIVATION_FROM_APPROVED_RELATIONSHIP",
+      "integration": {
+        "data_target": "behavior_pack/scripts/catalog.js::CODEX_ENTRY_REGISTRY",
+        "persistence": "successor_v4_compact_codex_discovery",
+        "presentation_target": "non_chat_codex_surface",
+        "primary_chat_ux_allowed": false
+      },
+      "player_questions": {
+        "what_can_i_make": {
+          "blocked_by": [],
+          "data_status": "SAFE_AUTHORED_GUIDANCE_DATA",
+          "live_status": "SAFE_FOR_TARGET_INTEGRATION",
+          "text": "Mystery builds and hollow-amber source fantasy."
+        },
+        "what_did_i_find": {
+          "blocked_by": [
+            "world_distribution:WORLDGEN_RUNTIME"
+          ],
+          "data_status": "SAFE_AUTHORED_GUIDANCE_DATA",
+          "live_status": "BLOCKED_RUNTIME_COMPLETION",
+          "text": "Cave-adjacent timber associated with amber nodes."
+        },
+        "what_should_i_investigate_next": {
+          "blocked_by": [],
+          "data_status": "SAFE_AUTHORED_GUIDANCE_DATA",
+          "live_status": "SAFE_FOR_TARGET_INTEGRATION",
+          "text": "Search hollows and caves for the mid-forest catalyst."
+        }
+      },
+      "rarity_feel": "not_assigned_by_creative",
+      "readiness": {
+        "discovery_entry_and_stamp_contract": "SAFE_NOW",
+        "guidance_data": "SAFE_NOW",
+        "live_acquisition_progression_completion": "BLOCKED_BY_LISTED_DEPENDENCIES"
+      },
+      "region": "ww",
+      "runtime_completion_blocked_by": [
+        "world_distribution:WORLDGEN_RUNTIME"
+      ],
+      "runtime_id": "aionbound:hollow_wood",
+      "warehouse_id": "hollow_wood"
+    },
+    {
+      "codex_category": "resource",
+      "discovery_order_action": "harvest_resource_plant",
+      "discovery_stamps": [
+        {
+          "event": "crafted",
+          "id": "codex:ww:block:forest_brick:crafted",
+          "stage": "complete"
+        }
+      ],
+      "entry_kind": "block",
+      "id": "forest_brick",
+      "importance": "exploration",
+      "importance_assignment": "ENGINEERING_INDEX_DERIVATION_FROM_APPROVED_RELATIONSHIP",
+      "integration": {
+        "data_target": "behavior_pack/scripts/catalog.js::CODEX_ENTRY_REGISTRY",
+        "persistence": "successor_v4_compact_codex_discovery",
+        "presentation_target": "non_chat_codex_surface",
+        "primary_chat_ux_allowed": false
+      },
+      "player_questions": {
+        "what_can_i_make": {
+          "blocked_by": [],
+          "data_status": "SAFE_AUTHORED_GUIDANCE_DATA",
+          "live_status": "SAFE_FOR_TARGET_INTEGRATION",
+          "text": "Structure construction and shrine-language builds."
+        },
+        "what_did_i_find": {
+          "blocked_by": [
+            "structure_runtime:STRUCTURE_BYTES_NOT_PRESENT"
+          ],
+          "data_status": "SAFE_AUTHORED_GUIDANCE_DATA",
+          "live_status": "BLOCKED_RUNTIME_COMPLETION",
+          "text": "Built stone language used by ruins and waystone pads."
+        },
+        "what_should_i_investigate_next": {
+          "blocked_by": [
+            "structure_runtime:STRUCTURE_BYTES_NOT_PRESENT"
+          ],
+          "data_status": "SAFE_AUTHORED_GUIDANCE_DATA",
+          "live_status": "BLOCKED_RUNTIME_COMPLETION",
+          "text": "Civilization scars point toward shrines, waystones, and discovery."
+        }
+      },
+      "rarity_feel": "not_assigned_by_creative",
+      "readiness": {
+        "discovery_entry_and_stamp_contract": "SAFE_NOW",
+        "guidance_data": "SAFE_NOW",
+        "live_acquisition_progression_completion": "BLOCKED_BY_LISTED_DEPENDENCIES"
+      },
+      "region": "ww",
+      "runtime_completion_blocked_by": [
+        "structure_runtime:STRUCTURE_BYTES_NOT_PRESENT"
+      ],
+      "runtime_id": "aionbound:forest_brick",
+      "warehouse_id": "forest_brick"
+    },
+    {
+      "codex_category": "plant",
+      "discovery_order_action": "harvest_resource_plant",
+      "discovery_stamps": [
+        {
+          "event": "harvested",
+          "id": "codex:ww:plant:star_grass:harvested",
+          "stage": "complete"
+        }
+      ],
+      "entry_kind": "plant",
+      "id": "star_grass",
+      "importance": "craft_core",
+      "importance_assignment": "ENGINEERING_INDEX_DERIVATION_FROM_APPROVED_RELATIONSHIP",
+      "integration": {
+        "data_target": "behavior_pack/scripts/catalog.js::CODEX_ENTRY_REGISTRY",
+        "persistence": "successor_v4_compact_codex_discovery",
+        "presentation_target": "non_chat_codex_surface",
+        "primary_chat_ux_allowed": false
+      },
+      "player_questions": {
+        "what_can_i_make": {
+          "blocked_by": [],
+          "data_status": "SAFE_AUTHORED_GUIDANCE_DATA",
+          "live_status": "SAFE_FOR_TARGET_INTEGRATION",
+          "text": "Early fiber and fodder."
+        },
+        "what_did_i_find": {
+          "blocked_by": [
+            "world_distribution:WORLDGEN_RUNTIME"
+          ],
+          "data_status": "SAFE_AUTHORED_GUIDANCE_DATA",
+          "live_status": "BLOCKED_RUNTIME_COMPLETION",
+          "text": "Ground cover gathered in clearings."
+        },
+        "what_should_i_investigate_next": {
+          "blocked_by": [],
+          "data_status": "SAFE_AUTHORED_GUIDANCE_DATA",
+          "live_status": "SAFE_FOR_TARGET_INTEGRATION",
+          "text": "Use the common clearing plant to begin the fiber line."
+        }
+      },
+      "rarity_feel": "common",
+      "readiness": {
+        "discovery_entry_and_stamp_contract": "SAFE_NOW",
+        "guidance_data": "SAFE_NOW",
+        "live_acquisition_progression_completion": "BLOCKED_BY_LISTED_DEPENDENCIES"
+      },
+      "region": "ww",
+      "runtime_completion_blocked_by": [
+        "world_distribution:WORLDGEN_RUNTIME"
+      ],
+      "runtime_id": "aionbound:star_grass",
+      "warehouse_id": "star_grass"
+    },
+    {
+      "codex_category": "plant",
+      "discovery_order_action": "harvest_resource_plant",
+      "discovery_stamps": [
+        {
+          "event": "harvested",
+          "id": "codex:ww:plant:whisper_fern:harvested",
+          "stage": "complete"
+        }
+      ],
+      "entry_kind": "plant",
+      "id": "whisper_fern",
+      "importance": "craft_core",
+      "importance_assignment": "ENGINEERING_INDEX_DERIVATION_FROM_APPROVED_RELATIONSHIP",
+      "integration": {
+        "data_target": "behavior_pack/scripts/catalog.js::CODEX_ENTRY_REGISTRY",
+        "persistence": "successor_v4_compact_codex_discovery",
+        "presentation_target": "non_chat_codex_surface",
+        "primary_chat_ux_allowed": false
+      },
+      "player_questions": {
+        "what_can_i_make": {
+          "blocked_by": [],
+          "data_status": "SAFE_AUTHORED_GUIDANCE_DATA",
+          "live_status": "SAFE_FOR_TARGET_INTEGRATION",
+          "text": "Bandage analogue and soft materials."
+        },
+        "what_did_i_find": {
+          "blocked_by": [
+            "world_distribution:WORLDGEN_RUNTIME"
+          ],
+          "data_status": "SAFE_AUTHORED_GUIDANCE_DATA",
+          "live_status": "BLOCKED_RUNTIME_COMPLETION",
+          "text": "Understory fern gathered beneath the canopy."
+        },
+        "what_should_i_investigate_next": {
+          "blocked_by": [],
+          "data_status": "SAFE_AUTHORED_GUIDANCE_DATA",
+          "live_status": "SAFE_FOR_TARGET_INTEGRATION",
+          "text": "The understory supplies early recovery materials."
+        }
+      },
+      "rarity_feel": "common",
+      "readiness": {
+        "discovery_entry_and_stamp_contract": "SAFE_NOW",
+        "guidance_data": "SAFE_NOW",
+        "live_acquisition_progression_completion": "BLOCKED_BY_LISTED_DEPENDENCIES"
+      },
+      "region": "ww",
+      "runtime_completion_blocked_by": [
+        "world_distribution:WORLDGEN_RUNTIME"
+      ],
+      "runtime_id": "aionbound:whisper_fern",
+      "warehouse_id": "whisper_fern"
+    },
+    {
+      "codex_category": "plant",
+      "discovery_order_action": "harvest_resource_plant",
+      "discovery_stamps": [
+        {
+          "event": "harvested",
+          "id": "codex:ww:plant:pale_reed:harvested",
+          "stage": "complete"
+        }
+      ],
+      "entry_kind": "plant",
+      "id": "pale_reed",
+      "importance": "critical_path",
+      "importance_assignment": "ENGINEERING_INDEX_DERIVATION_FROM_APPROVED_RELATIONSHIP",
+      "integration": {
+        "data_target": "behavior_pack/scripts/catalog.js::CODEX_ENTRY_REGISTRY",
+        "persistence": "successor_v4_compact_codex_discovery",
+        "presentation_target": "non_chat_codex_surface",
+        "primary_chat_ux_allowed": false
+      },
+      "player_questions": {
+        "what_can_i_make": {
+          "blocked_by": [
+            "equipment_closure:PACKET-006"
+          ],
+          "data_status": "SAFE_AUTHORED_GUIDANCE_DATA",
+          "live_status": "BLOCKED_RUNTIME_COMPLETION",
+          "text": "Spear shafts, especially the mossfang spear."
+        },
+        "what_did_i_find": {
+          "blocked_by": [],
+          "data_status": "SAFE_AUTHORED_GUIDANCE_DATA",
+          "live_status": "SAFE_FOR_TARGET_INTEGRATION",
+          "text": "Reed gathered at wet forest edges."
+        },
+        "what_should_i_investigate_next": {
+          "blocked_by": [],
+          "data_status": "SAFE_AUTHORED_GUIDANCE_DATA",
+          "live_status": "SAFE_FOR_TARGET_INTEGRATION",
+          "text": "Wet edges connect early gathering to the first weapon path."
+        }
+      },
+      "rarity_feel": "common",
+      "readiness": {
+        "discovery_entry_and_stamp_contract": "SAFE_NOW",
+        "guidance_data": "SAFE_NOW",
+        "live_acquisition_progression_completion": "BLOCKED_BY_LISTED_DEPENDENCIES"
+      },
+      "region": "ww",
+      "runtime_completion_blocked_by": [
+        "equipment_closure:PACKET-006"
+      ],
+      "runtime_id": "aionbound:pale_reed",
+      "warehouse_id": "pale_reed"
+    },
+    {
+      "codex_category": "plant",
+      "discovery_order_action": "harvest_resource_plant",
+      "discovery_stamps": [
+        {
+          "event": "harvested",
+          "id": "codex:ww:plant:glow_moss:harvested",
+          "stage": "complete"
+        }
+      ],
+      "entry_kind": "plant",
+      "id": "glow_moss",
+      "importance": "craft_core",
+      "importance_assignment": "ENGINEERING_INDEX_DERIVATION_FROM_APPROVED_RELATIONSHIP",
+      "integration": {
+        "data_target": "behavior_pack/scripts/catalog.js::CODEX_ENTRY_REGISTRY",
+        "persistence": "successor_v4_compact_codex_discovery",
+        "presentation_target": "non_chat_codex_surface",
+        "primary_chat_ux_allowed": false
+      },
+      "player_questions": {
+        "what_can_i_make": {
+          "blocked_by": [
+            "equipment_closure:PACKET-006"
+          ],
+          "data_status": "SAFE_AUTHORED_GUIDANCE_DATA",
+          "live_status": "BLOCKED_RUNTIME_COMPLETION",
+          "text": "Light material, dye, and moss charm."
+        },
+        "what_did_i_find": {
+          "blocked_by": [],
+          "data_status": "SAFE_AUTHORED_GUIDANCE_DATA",
+          "live_status": "SAFE_FOR_TARGET_INTEGRATION",
+          "text": "Soft-glowing moss found in caves and at night."
+        },
+        "what_should_i_investigate_next": {
+          "blocked_by": [],
+          "data_status": "SAFE_AUTHORED_GUIDANCE_DATA",
+          "live_status": "SAFE_FOR_TARGET_INTEGRATION",
+          "text": "Caves turn night comfort into the charm path."
+        }
+      },
+      "rarity_feel": "uncommon",
+      "readiness": {
+        "discovery_entry_and_stamp_contract": "SAFE_NOW",
+        "guidance_data": "SAFE_NOW",
+        "live_acquisition_progression_completion": "BLOCKED_BY_LISTED_DEPENDENCIES"
+      },
+      "region": "ww",
+      "runtime_completion_blocked_by": [
+        "equipment_closure:PACKET-006"
+      ],
+      "runtime_id": "aionbound:glow_moss",
+      "warehouse_id": "glow_moss"
+    },
+    {
+      "codex_category": "plant",
+      "discovery_order_action": "harvest_resource_plant",
+      "discovery_stamps": [
+        {
+          "event": "harvested",
+          "id": "codex:ww:plant:mooncap_mushroom:harvested",
+          "stage": "complete"
+        }
+      ],
+      "entry_kind": "plant",
+      "id": "mooncap_mushroom",
+      "importance": "exploration",
+      "importance_assignment": "ENGINEERING_INDEX_DERIVATION_FROM_APPROVED_RELATIONSHIP",
+      "integration": {
+        "data_target": "behavior_pack/scripts/catalog.js::CODEX_ENTRY_REGISTRY",
+        "persistence": "successor_v4_compact_codex_discovery",
+        "presentation_target": "non_chat_codex_surface",
+        "primary_chat_ux_allowed": false
+      },
+      "player_questions": {
+        "what_can_i_make": {
+          "blocked_by": [],
+          "data_status": "SAFE_AUTHORED_GUIDANCE_DATA",
+          "live_status": "SAFE_FOR_TARGET_INTEGRATION",
+          "text": "Food and minor-buff consumables."
+        },
+        "what_did_i_find": {
+          "blocked_by": [
+            "loot_tuning:W1-CREATIVE-004"
+          ],
+          "data_status": "SAFE_AUTHORED_GUIDANCE_DATA",
+          "live_status": "BLOCKED_RUNTIME_COMPLETION",
+          "text": "A shade-and-night mushroom from Whisperwood patches."
+        },
+        "what_should_i_investigate_next": {
+          "blocked_by": [],
+          "data_status": "SAFE_AUTHORED_GUIDANCE_DATA",
+          "live_status": "SAFE_FOR_TARGET_INTEGRATION",
+          "text": "Night gathering supports longer forest expeditions."
+        }
+      },
+      "rarity_feel": "uncommon",
+      "readiness": {
+        "discovery_entry_and_stamp_contract": "SAFE_NOW",
+        "guidance_data": "SAFE_NOW",
+        "live_acquisition_progression_completion": "BLOCKED_BY_LISTED_DEPENDENCIES"
+      },
+      "region": "ww",
+      "runtime_completion_blocked_by": [
+        "loot_tuning:W1-CREATIVE-004"
+      ],
+      "runtime_id": "aionbound:mooncap_mushroom",
+      "warehouse_id": "mooncap_mushroom"
+    },
+    {
+      "codex_category": "plant",
+      "discovery_order_action": "harvest_resource_plant",
+      "discovery_stamps": [
+        {
+          "event": "harvested",
+          "id": "codex:ww:plant:lantern_bloom:harvested",
+          "stage": "complete"
+        }
+      ],
+      "entry_kind": "plant",
+      "id": "lantern_bloom",
+      "importance": "exploration",
+      "importance_assignment": "ENGINEERING_INDEX_DERIVATION_FROM_APPROVED_RELATIONSHIP",
+      "integration": {
+        "data_target": "behavior_pack/scripts/catalog.js::CODEX_ENTRY_REGISTRY",
+        "persistence": "successor_v4_compact_codex_discovery",
+        "presentation_target": "non_chat_codex_surface",
+        "primary_chat_ux_allowed": false
+      },
+      "player_questions": {
+        "what_can_i_make": {
+          "blocked_by": [
+            "equipment_closure:PACKET-006"
+          ],
+          "data_status": "SAFE_AUTHORED_GUIDANCE_DATA",
+          "live_status": "BLOCKED_RUNTIME_COMPLETION",
+          "text": "Light materials and the lantern equipment path."
+        },
+        "what_did_i_find": {
+          "blocked_by": [],
+          "data_status": "SAFE_AUTHORED_GUIDANCE_DATA",
+          "live_status": "SAFE_FOR_TARGET_INTEGRATION",
+          "text": "Path flower clustered near lantern posts and lantern hares."
+        },
+        "what_should_i_investigate_next": {
+          "blocked_by": [],
+          "data_status": "SAFE_AUTHORED_GUIDANCE_DATA",
+          "live_status": "SAFE_FOR_TARGET_INTEGRATION",
+          "text": "Bloom patches and hare trails identify safer night routes."
+        }
+      },
+      "rarity_feel": "uncommon",
+      "readiness": {
+        "discovery_entry_and_stamp_contract": "SAFE_NOW",
+        "guidance_data": "SAFE_NOW",
+        "live_acquisition_progression_completion": "BLOCKED_BY_LISTED_DEPENDENCIES"
+      },
+      "region": "ww",
+      "runtime_completion_blocked_by": [
+        "equipment_closure:PACKET-006"
+      ],
+      "runtime_id": "aionbound:lantern_bloom",
+      "warehouse_id": "lantern_bloom"
+    },
+    {
+      "codex_category": "plant",
+      "discovery_order_action": "harvest_resource_plant",
+      "discovery_stamps": [
+        {
+          "event": "harvested",
+          "id": "codex:ww:plant:hollow_lily:harvested",
+          "stage": "complete"
+        }
+      ],
+      "entry_kind": "plant",
+      "id": "hollow_lily",
+      "importance": "critical_path",
+      "importance_assignment": "ENGINEERING_INDEX_DERIVATION_FROM_APPROVED_RELATIONSHIP",
+      "integration": {
+        "data_target": "behavior_pack/scripts/catalog.js::CODEX_ENTRY_REGISTRY",
+        "persistence": "successor_v4_compact_codex_discovery",
+        "presentation_target": "non_chat_codex_surface",
+        "primary_chat_ux_allowed": false
+      },
+      "player_questions": {
+        "what_can_i_make": {
+          "blocked_by": [],
+          "data_status": "SAFE_AUTHORED_GUIDANCE_DATA",
+          "live_status": "SAFE_FOR_TARGET_INTEGRATION",
+          "text": "Moon-sap catalyst helper."
+        },
+        "what_did_i_find": {
+          "blocked_by": [
+            "loot_tuning:W1-CREATIVE-004"
+          ],
+          "data_status": "SAFE_AUTHORED_GUIDANCE_DATA",
+          "live_status": "BLOCKED_RUNTIME_COMPLETION",
+          "text": "Pool flower associated with moon sap."
+        },
+        "what_should_i_investigate_next": {
+          "blocked_by": [],
+          "data_status": "SAFE_AUTHORED_GUIDANCE_DATA",
+          "live_status": "SAFE_FOR_TARGET_INTEGRATION",
+          "text": "Lily pools point toward the forest soft-power line."
+        }
+      },
+      "rarity_feel": "rare",
+      "readiness": {
+        "discovery_entry_and_stamp_contract": "SAFE_NOW",
+        "guidance_data": "SAFE_NOW",
+        "live_acquisition_progression_completion": "BLOCKED_BY_LISTED_DEPENDENCIES"
+      },
+      "region": "ww",
+      "runtime_completion_blocked_by": [
+        "loot_tuning:W1-CREATIVE-004"
+      ],
+      "runtime_id": "aionbound:hollow_lily",
+      "warehouse_id": "hollow_lily"
+    },
+    {
+      "codex_category": "plant",
+      "discovery_order_action": "harvest_resource_plant",
+      "discovery_stamps": [
+        {
+          "event": "harvested",
+          "id": "codex:ww:plant:root_flower:harvested",
+          "stage": "complete"
+        }
+      ],
+      "entry_kind": "plant",
+      "id": "root_flower",
+      "importance": "craft_core",
+      "importance_assignment": "ENGINEERING_INDEX_DERIVATION_FROM_APPROVED_RELATIONSHIP",
+      "integration": {
+        "data_target": "behavior_pack/scripts/catalog.js::CODEX_ENTRY_REGISTRY",
+        "persistence": "successor_v4_compact_codex_discovery",
+        "presentation_target": "non_chat_codex_surface",
+        "primary_chat_ux_allowed": false
+      },
+      "player_questions": {
+        "what_can_i_make": {
+          "blocked_by": [
+            "equipment_closure:PACKET-006"
+          ],
+          "data_status": "SAFE_AUTHORED_GUIDANCE_DATA",
+          "live_status": "BLOCKED_RUNTIME_COMPLETION",
+          "text": "Dye and the root bracelet."
+        },
+        "what_did_i_find": {
+          "blocked_by": [],
+          "data_status": "SAFE_AUTHORED_GUIDANCE_DATA",
+          "live_status": "SAFE_FOR_TARGET_INTEGRATION",
+          "text": "Colored flower gathered in root zones."
+        },
+        "what_should_i_investigate_next": {
+          "blocked_by": [],
+          "data_status": "SAFE_AUTHORED_GUIDANCE_DATA",
+          "live_status": "SAFE_FOR_TARGET_INTEGRATION",
+          "text": "Root zones lead toward bracelet materials and deeper catalysts."
+        }
+      },
+      "rarity_feel": "uncommon",
+      "readiness": {
+        "discovery_entry_and_stamp_contract": "SAFE_NOW",
+        "guidance_data": "SAFE_NOW",
+        "live_acquisition_progression_completion": "BLOCKED_BY_LISTED_DEPENDENCIES"
+      },
+      "region": "ww",
+      "runtime_completion_blocked_by": [
+        "equipment_closure:PACKET-006"
+      ],
+      "runtime_id": "aionbound:root_flower",
+      "warehouse_id": "root_flower"
+    },
+    {
+      "codex_category": "plant",
+      "discovery_order_action": "harvest_resource_plant",
+      "discovery_stamps": [
+        {
+          "event": "harvested",
+          "id": "codex:ww:plant:briar_vine:harvested",
+          "stage": "complete"
+        }
+      ],
+      "entry_kind": "plant",
+      "id": "briar_vine",
+      "importance": "craft_core",
+      "importance_assignment": "ENGINEERING_INDEX_DERIVATION_FROM_APPROVED_RELATIONSHIP",
+      "integration": {
+        "data_target": "behavior_pack/scripts/catalog.js::CODEX_ENTRY_REGISTRY",
+        "persistence": "successor_v4_compact_codex_discovery",
+        "presentation_target": "non_chat_codex_surface",
+        "primary_chat_ux_allowed": false
+      },
+      "player_questions": {
+        "what_can_i_make": {
+          "blocked_by": [
+            "component_presentation:W1-CREATIVE-001",
+            "equipment_closure:PACKET-006"
+          ],
+          "data_status": "SAFE_AUTHORED_GUIDANCE_DATA",
+          "live_status": "BLOCKED_RUNTIME_COMPLETION",
+          "text": "Thorn Cord and thorn whips."
+        },
+        "what_did_i_find": {
+          "blocked_by": [],
+          "data_status": "SAFE_AUTHORED_GUIDANCE_DATA",
+          "live_status": "SAFE_FOR_TARGET_INTEGRATION",
+          "text": "Binding vine gathered in thorn thickets."
+        },
+        "what_should_i_investigate_next": {
+          "blocked_by": [],
+          "data_status": "SAFE_AUTHORED_GUIDANCE_DATA",
+          "live_status": "SAFE_FOR_TARGET_INTEGRATION",
+          "text": "Thickets connect binding material to the forest combat line."
+        }
+      },
+      "rarity_feel": "uncommon",
+      "readiness": {
+        "discovery_entry_and_stamp_contract": "SAFE_NOW",
+        "guidance_data": "SAFE_NOW",
+        "live_acquisition_progression_completion": "BLOCKED_BY_LISTED_DEPENDENCIES"
+      },
+      "region": "ww",
+      "runtime_completion_blocked_by": [
+        "component_presentation:W1-CREATIVE-001",
+        "equipment_closure:PACKET-006"
+      ],
+      "runtime_id": "aionbound:briar_vine",
+      "warehouse_id": "briar_vine"
+    },
+    {
+      "codex_category": "plant",
+      "discovery_order_action": "harvest_resource_plant",
+      "discovery_stamps": [
+        {
+          "event": "harvested",
+          "id": "codex:ww:plant:ember_thistle:harvested",
+          "stage": "complete"
+        }
+      ],
+      "entry_kind": "plant",
+      "id": "ember_thistle",
+      "importance": "critical_path",
+      "importance_assignment": "ENGINEERING_INDEX_DERIVATION_FROM_APPROVED_RELATIONSHIP",
+      "integration": {
+        "data_target": "behavior_pack/scripts/catalog.js::CODEX_ENTRY_REGISTRY",
+        "persistence": "successor_v4_compact_codex_discovery",
+        "presentation_target": "non_chat_codex_surface",
+        "primary_chat_ux_allowed": false
+      },
+      "player_questions": {
+        "what_can_i_make": {
+          "blocked_by": [],
+          "data_status": "SAFE_AUTHORED_GUIDANCE_DATA",
+          "live_status": "SAFE_FOR_TARGET_INTEGRATION",
+          "text": "Minor heat-resistance seed."
+        },
+        "what_did_i_find": {
+          "blocked_by": [
+            "loot_tuning:W1-CREATIVE-004",
+            "ashen_runtime:SLICE-B"
+          ],
+          "data_status": "SAFE_AUTHORED_GUIDANCE_DATA",
+          "live_status": "BLOCKED_RUNTIME_COMPLETION",
+          "text": "Transition plant at the forest edge toward ash."
+        },
+        "what_should_i_investigate_next": {
+          "blocked_by": [
+            "ashen_runtime:SLICE-B"
+          ],
+          "data_status": "SAFE_AUTHORED_GUIDANCE_DATA",
+          "live_status": "BLOCKED_RUNTIME_COMPLETION",
+          "text": "Heat waits beyond the forest edge; this plant is the approved Ashen foreshadow."
+        }
+      },
+      "rarity_feel": "uncommon",
+      "readiness": {
+        "discovery_entry_and_stamp_contract": "SAFE_NOW",
+        "guidance_data": "SAFE_NOW",
+        "live_acquisition_progression_completion": "BLOCKED_BY_LISTED_DEPENDENCIES"
+      },
+      "region": "ww",
+      "runtime_completion_blocked_by": [
+        "loot_tuning:W1-CREATIVE-004",
+        "ashen_runtime:SLICE-B"
+      ],
+      "runtime_id": "aionbound:ember_thistle",
+      "warehouse_id": "ember_thistle"
+    },
+    {
+      "codex_category": "creature",
+      "discovery_order_action": "observe_ambient",
+      "discovery_stamps": [
+        {
+          "event": "observe_nearby",
+          "id": "codex:ww:creature:mosskip_fawn:observed",
+          "stage": "partial"
+        }
+      ],
+      "entry_kind": "creature",
+      "id": "mosskip_fawn",
+      "importance": "exploration",
+      "importance_assignment": "ENGINEERING_INDEX_DERIVATION_FROM_APPROVED_RELATIONSHIP",
+      "integration": {
+        "data_target": "behavior_pack/scripts/catalog.js::CODEX_ENTRY_REGISTRY",
+        "persistence": "successor_v4_compact_codex_discovery",
+        "presentation_target": "non_chat_codex_surface",
+        "primary_chat_ux_allowed": false
+      },
+      "player_questions": {
+        "what_can_i_make": {
+          "blocked_by": [],
+          "data_status": "SAFE_AUTHORED_GUIDANCE_DATA",
+          "live_status": "SAFE_FOR_TARGET_INTEGRATION",
+          "text": "Its soft moss scraps feed early Moss Bind Glue."
+        },
+        "what_did_i_find": {
+          "blocked_by": [
+            "loot_probability:W1-CREATIVE-004"
+          ],
+          "data_status": "SAFE_AUTHORED_GUIDANCE_DATA",
+          "live_status": "BLOCKED_RUNTIME_COMPLETION",
+          "text": "A curious young mosskip seen in sun-flecked clearings."
+        },
+        "what_should_i_investigate_next": {
+          "blocked_by": [],
+          "data_status": "SAFE_AUTHORED_GUIDANCE_DATA",
+          "live_status": "SAFE_FOR_TARGET_INTEGRATION",
+          "text": "Fawns point toward does and crowned bucks."
+        }
+      },
+      "rarity_feel": "common",
+      "readiness": {
+        "discovery_entry_and_stamp_contract": "SAFE_NOW",
+        "guidance_data": "SAFE_NOW",
+        "live_acquisition_progression_completion": "BLOCKED_BY_LISTED_DEPENDENCIES"
+      },
+      "region": "ww",
+      "role": "ambient_young",
+      "runtime_completion_blocked_by": [
+        "loot_probability:W1-CREATIVE-004"
+      ],
+      "runtime_id": "aionbound:mosskip_fawn",
+      "warehouse_id": "mosskip_fawn"
+    },
+    {
+      "codex_category": "creature",
+      "discovery_order_action": "observe_ambient",
+      "discovery_stamps": [
+        {
+          "event": "observe_nearby",
+          "id": "codex:ww:creature:mosskip_doe:observed",
+          "stage": "partial"
+        }
+      ],
+      "entry_kind": "creature",
+      "id": "mosskip_doe",
+      "importance": "exploration",
+      "importance_assignment": "ENGINEERING_INDEX_DERIVATION_FROM_APPROVED_RELATIONSHIP",
+      "integration": {
+        "data_target": "behavior_pack/scripts/catalog.js::CODEX_ENTRY_REGISTRY",
+        "persistence": "successor_v4_compact_codex_discovery",
+        "presentation_target": "non_chat_codex_surface",
+        "primary_chat_ux_allowed": false
+      },
+      "player_questions": {
+        "what_can_i_make": {
+          "blocked_by": [],
+          "data_status": "SAFE_AUTHORED_GUIDANCE_DATA",
+          "live_status": "SAFE_FOR_TARGET_INTEGRATION",
+          "text": "Moss resin and soft hide support binding and early armor padding."
+        },
+        "what_did_i_find": {
+          "blocked_by": [
+            "loot_probability:W1-CREATIVE-004"
+          ],
+          "data_status": "SAFE_AUTHORED_GUIDANCE_DATA",
+          "live_status": "BLOCKED_RUNTIME_COMPLETION",
+          "text": "The quiet center of Whisperwood herds, observed along dusk paths."
+        },
+        "what_should_i_investigate_next": {
+          "blocked_by": [],
+          "data_status": "SAFE_AUTHORED_GUIDANCE_DATA",
+          "live_status": "SAFE_FOR_TARGET_INTEGRATION",
+          "text": "Dusk paths lead toward lantern blooms."
+        }
+      },
+      "rarity_feel": "common",
+      "readiness": {
+        "discovery_entry_and_stamp_contract": "SAFE_NOW",
+        "guidance_data": "SAFE_NOW",
+        "live_acquisition_progression_completion": "BLOCKED_BY_LISTED_DEPENDENCIES"
+      },
+      "region": "ww",
+      "role": "ambient_adult",
+      "runtime_completion_blocked_by": [
+        "loot_probability:W1-CREATIVE-004"
+      ],
+      "runtime_id": "aionbound:mosskip_doe",
+      "warehouse_id": "mosskip_doe"
+    },
+    {
+      "codex_category": "creature",
+      "detail_events": [
+        {
+          "event": "defeat",
+          "id": "codex_detail:ww:creature:mosskip_buck:defeated",
+          "stage": "complete"
+        }
+      ],
+      "discovery_order_action": "observe_ambient_then_defeat_hostile",
+      "discovery_stamps": [
+        {
+          "event": "observe_nearby",
+          "id": "codex:ww:creature:mosskip_buck:observed",
+          "stage": "partial"
+        }
+      ],
+      "entry_kind": "creature",
+      "id": "mosskip_buck",
+      "importance": "craft_core",
+      "importance_assignment": "ENGINEERING_INDEX_DERIVATION_FROM_APPROVED_RELATIONSHIP",
+      "integration": {
+        "data_target": "behavior_pack/scripts/catalog.js::CODEX_ENTRY_REGISTRY",
+        "persistence": "successor_v4_compact_codex_discovery",
+        "presentation_target": "non_chat_codex_surface",
+        "primary_chat_ux_allowed": false
+      },
+      "player_questions": {
+        "what_can_i_make": {
+          "blocked_by": [
+            "alternate_seal:W1-CREATIVE-004"
+          ],
+          "data_status": "SAFE_AUTHORED_GUIDANCE_DATA",
+          "live_status": "BLOCKED_RUNTIME_COMPLETION",
+          "text": "Crown fragments form the mosskip trophy; moss plates support armor."
+        },
+        "what_did_i_find": {
+          "blocked_by": [
+            "loot_probability:W1-CREATIVE-004"
+          ],
+          "data_status": "SAFE_AUTHORED_GUIDANCE_DATA",
+          "live_status": "BLOCKED_RUNTIME_COMPLETION",
+          "text": "A branch-antlered herd guardian near calves and clearings."
+        },
+        "what_should_i_investigate_next": {
+          "blocked_by": [
+            "alternate_seal:W1-CREATIVE-004"
+          ],
+          "data_status": "SAFE_AUTHORED_GUIDANCE_DATA",
+          "live_status": "BLOCKED_RUNTIME_COMPLETION",
+          "text": "Crowned bucks open the forest trophy path."
+        }
+      },
+      "rarity_feel": "uncommon",
+      "readiness": {
+        "discovery_entry_and_stamp_contract": "SAFE_NOW",
+        "guidance_data": "SAFE_NOW",
+        "live_acquisition_progression_completion": "BLOCKED_BY_LISTED_DEPENDENCIES"
+      },
+      "region": "ww",
+      "role": "neutral_territorial",
+      "runtime_completion_blocked_by": [
+        "loot_probability:W1-CREATIVE-004",
+        "alternate_seal:W1-CREATIVE-004"
+      ],
+      "runtime_id": "aionbound:mosskip_buck",
+      "warehouse_id": "mosskip_buck"
+    },
+    {
+      "codex_category": "creature",
+      "discovery_order_action": "observe_ambient",
+      "discovery_stamps": [
+        {
+          "event": "observe_nearby",
+          "id": "codex:ww:creature:lantern_hare:observed",
+          "stage": "partial"
+        }
+      ],
+      "entry_kind": "creature",
+      "id": "lantern_hare",
+      "importance": "exploration",
+      "importance_assignment": "ENGINEERING_INDEX_DERIVATION_FROM_APPROVED_RELATIONSHIP",
+      "integration": {
+        "data_target": "behavior_pack/scripts/catalog.js::CODEX_ENTRY_REGISTRY",
+        "persistence": "successor_v4_compact_codex_discovery",
+        "presentation_target": "non_chat_codex_surface",
+        "primary_chat_ux_allowed": false
+      },
+      "player_questions": {
+        "what_can_i_make": {
+          "blocked_by": [],
+          "data_status": "SAFE_AUTHORED_GUIDANCE_DATA",
+          "live_status": "SAFE_FOR_TARGET_INTEGRATION",
+          "text": "Lantern fur supports badges, hooks, and light trim."
+        },
+        "what_did_i_find": {
+          "blocked_by": [
+            "loot_probability:W1-CREATIVE-004"
+          ],
+          "data_status": "SAFE_AUTHORED_GUIDANCE_DATA",
+          "live_status": "BLOCKED_RUNTIME_COMPLETION",
+          "text": "A glow-furred hare seen at night near blooms."
+        },
+        "what_should_i_investigate_next": {
+          "blocked_by": [],
+          "data_status": "SAFE_AUTHORED_GUIDANCE_DATA",
+          "live_status": "SAFE_FOR_TARGET_INTEGRATION",
+          "text": "Its trails mark safer night ground."
+        }
+      },
+      "rarity_feel": "uncommon",
+      "readiness": {
+        "discovery_entry_and_stamp_contract": "SAFE_NOW",
+        "guidance_data": "SAFE_NOW",
+        "live_acquisition_progression_completion": "BLOCKED_BY_LISTED_DEPENDENCIES"
+      },
+      "region": "ww",
+      "role": "ambient_curiosity",
+      "runtime_completion_blocked_by": [
+        "loot_probability:W1-CREATIVE-004"
+      ],
+      "runtime_id": "aionbound:lantern_hare",
+      "warehouse_id": "lantern_hare"
+    },
+    {
+      "codex_category": "creature",
+      "detail_events": [
+        {
+          "event": "defeat",
+          "id": "codex_detail:ww:creature:rootback_boar:defeated",
+          "stage": "complete"
+        }
+      ],
+      "discovery_order_action": "observe_ambient_then_defeat_hostile",
+      "discovery_stamps": [
+        {
+          "event": "observe_nearby",
+          "id": "codex:ww:creature:rootback_boar:observed",
+          "stage": "partial"
+        }
+      ],
+      "entry_kind": "creature",
+      "id": "rootback_boar",
+      "importance": "craft_core",
+      "importance_assignment": "ENGINEERING_INDEX_DERIVATION_FROM_APPROVED_RELATIONSHIP",
+      "integration": {
+        "data_target": "behavior_pack/scripts/catalog.js::CODEX_ENTRY_REGISTRY",
+        "persistence": "successor_v4_compact_codex_discovery",
+        "presentation_target": "non_chat_codex_surface",
+        "primary_chat_ux_allowed": false
+      },
+      "player_questions": {
+        "what_can_i_make": {
+          "blocked_by": [
+            "ingredient_identity:W1-CREATIVE-001"
+          ],
+          "data_status": "SAFE_AUTHORED_GUIDANCE_DATA",
+          "live_status": "BLOCKED_RUNTIME_COMPLETION",
+          "text": "Tusks and root plates feed cleavers and armor; a rare root heart feeds staff cores."
+        },
+        "what_did_i_find": {
+          "blocked_by": [
+            "loot_probability:W1-CREATIVE-004"
+          ],
+          "data_status": "SAFE_AUTHORED_GUIDANCE_DATA",
+          "live_status": "BLOCKED_RUNTIME_COMPLETION",
+          "text": "A bark-plated understory animal that fights when provoked."
+        },
+        "what_should_i_investigate_next": {
+          "blocked_by": [],
+          "data_status": "SAFE_AUTHORED_GUIDANCE_DATA",
+          "live_status": "SAFE_FOR_TARGET_INTEGRATION",
+          "text": "Deep rooters reveal hollow amber and late forest catalysts."
+        }
+      },
+      "rarity_feel": "uncommon",
+      "readiness": {
+        "discovery_entry_and_stamp_contract": "SAFE_NOW",
+        "guidance_data": "SAFE_NOW",
+        "live_acquisition_progression_completion": "BLOCKED_BY_LISTED_DEPENDENCIES"
+      },
+      "region": "ww",
+      "role": "neutral_provoked",
+      "runtime_completion_blocked_by": [
+        "loot_probability:W1-CREATIVE-004",
+        "ingredient_identity:W1-CREATIVE-001"
+      ],
+      "runtime_id": "aionbound:rootback_boar",
+      "warehouse_id": "rootback_boar"
+    },
+    {
+      "codex_category": "creature",
+      "detail_events": [
+        {
+          "event": "defeat",
+          "id": "codex_detail:ww:creature:briar_elk:defeated",
+          "stage": "complete"
+        }
+      ],
+      "discovery_order_action": "observe_ambient_then_defeat_hostile",
+      "discovery_stamps": [
+        {
+          "event": "observe_nearby",
+          "id": "codex:ww:creature:briar_elk:observed",
+          "stage": "partial"
+        }
+      ],
+      "entry_kind": "creature",
+      "id": "briar_elk",
+      "importance": "craft_core",
+      "importance_assignment": "ENGINEERING_INDEX_DERIVATION_FROM_APPROVED_RELATIONSHIP",
+      "integration": {
+        "data_target": "behavior_pack/scripts/catalog.js::CODEX_ENTRY_REGISTRY",
+        "persistence": "successor_v4_compact_codex_discovery",
+        "presentation_target": "non_chat_codex_surface",
+        "primary_chat_ux_allowed": false
+      },
+      "player_questions": {
+        "what_can_i_make": {
+          "blocked_by": [
+            "alternate_seal:W1-CREATIVE-004"
+          ],
+          "data_status": "SAFE_AUTHORED_GUIDANCE_DATA",
+          "live_status": "BLOCKED_RUNTIME_COMPLETION",
+          "text": "Briar antler and crown materials support cleavers and the briar-elk trophy."
+        },
+        "what_did_i_find": {
+          "blocked_by": [
+            "loot_probability:W1-CREATIVE-004"
+          ],
+          "data_status": "SAFE_AUTHORED_GUIDANCE_DATA",
+          "live_status": "BLOCKED_RUNTIME_COMPLETION",
+          "text": "A rare meadow grazer with living thorn antlers."
+        },
+        "what_should_i_investigate_next": {
+          "blocked_by": [
+            "alternate_seal:W1-CREATIVE-004"
+          ],
+          "data_status": "SAFE_AUTHORED_GUIDANCE_DATA",
+          "live_status": "BLOCKED_RUNTIME_COMPLETION",
+          "text": "Rare meadows lead to the elite trophy path."
+        }
+      },
+      "rarity_feel": "rare",
+      "readiness": {
+        "discovery_entry_and_stamp_contract": "SAFE_NOW",
+        "guidance_data": "SAFE_NOW",
+        "live_acquisition_progression_completion": "BLOCKED_BY_LISTED_DEPENDENCIES"
+      },
+      "region": "ww",
+      "role": "elite_grazer_mini_apex",
+      "runtime_completion_blocked_by": [
+        "loot_probability:W1-CREATIVE-004",
+        "alternate_seal:W1-CREATIVE-004"
+      ],
+      "runtime_id": "aionbound:briar_elk",
+      "warehouse_id": "briar_elk"
+    },
+    {
+      "codex_category": "creature",
+      "discovery_order_action": "defeat_hostile",
+      "discovery_stamps": [
+        {
+          "event": "defeat",
+          "id": "codex:ww:creature:rot_wolf:defeated",
+          "stage": "complete"
+        }
+      ],
+      "entry_kind": "creature",
+      "id": "rot_wolf",
+      "importance": "exploration",
+      "importance_assignment": "ENGINEERING_INDEX_DERIVATION_FROM_APPROVED_RELATIONSHIP",
+      "integration": {
+        "data_target": "behavior_pack/scripts/catalog.js::CODEX_ENTRY_REGISTRY",
+        "persistence": "successor_v4_compact_codex_discovery",
+        "presentation_target": "non_chat_codex_surface",
+        "primary_chat_ux_allowed": false
+      },
+      "player_questions": {
+        "what_can_i_make": {
+          "blocked_by": [
+            "ingredient_identity:W1-CREATIVE-001"
+          ],
+          "data_status": "SAFE_AUTHORED_GUIDANCE_DATA",
+          "live_status": "BLOCKED_RUNTIME_COMPLETION",
+          "text": "Fangs and pelts support dagger and early armor relationships."
+        },
+        "what_did_i_find": {
+          "blocked_by": [
+            "loot_probability:W1-CREATIVE-004"
+          ],
+          "data_status": "SAFE_AUTHORED_GUIDANCE_DATA",
+          "live_status": "BLOCKED_RUNTIME_COMPLETION",
+          "text": "A hostile pack hunter on deep trails, especially at night."
+        },
+        "what_should_i_investigate_next": {
+          "blocked_by": [],
+          "data_status": "SAFE_AUTHORED_GUIDANCE_DATA",
+          "live_status": "SAFE_FOR_TARGET_INTEGRATION",
+          "text": "Pack howls warn that a thorn stalker may be near."
+        }
+      },
+      "rarity_feel": "uncommon",
+      "readiness": {
+        "discovery_entry_and_stamp_contract": "SAFE_NOW",
+        "guidance_data": "SAFE_NOW",
+        "live_acquisition_progression_completion": "BLOCKED_BY_LISTED_DEPENDENCIES"
+      },
+      "region": "ww",
+      "role": "hostile_pack",
+      "runtime_completion_blocked_by": [
+        "loot_probability:W1-CREATIVE-004",
+        "ingredient_identity:W1-CREATIVE-001"
+      ],
+      "runtime_id": "aionbound:rot_wolf",
+      "warehouse_id": "rot_wolf"
+    },
+    {
+      "codex_category": "creature",
+      "discovery_order_action": "defeat_hostile",
+      "discovery_stamps": [
+        {
+          "event": "defeat",
+          "id": "codex:ww:creature:thorn_stalker:defeated",
+          "stage": "complete"
+        }
+      ],
+      "entry_kind": "creature",
+      "id": "thorn_stalker",
+      "importance": "critical_path",
+      "importance_assignment": "ENGINEERING_INDEX_DERIVATION_FROM_APPROVED_RELATIONSHIP",
+      "integration": {
+        "data_target": "behavior_pack/scripts/catalog.js::CODEX_ENTRY_REGISTRY",
+        "persistence": "successor_v4_compact_codex_discovery",
+        "presentation_target": "non_chat_codex_surface",
+        "primary_chat_ux_allowed": false
+      },
+      "player_questions": {
+        "what_can_i_make": {
+          "blocked_by": [
+            "ingredient_identity:W1-CREATIVE-001"
+          ],
+          "data_status": "SAFE_AUTHORED_GUIDANCE_DATA",
+          "live_status": "BLOCKED_RUNTIME_COMPLETION",
+          "text": "Barbs and claws feed forest weapons; the thorn-stalker skull is the chapter seal and display trophy."
+        },
+        "what_did_i_find": {
+          "blocked_by": [
+            "loot_probability:W1-CREATIVE-004"
+          ],
+          "data_status": "SAFE_AUTHORED_GUIDANCE_DATA",
+          "live_status": "BLOCKED_RUNTIME_COMPLETION",
+          "text": "Whisperwood's chapter-one apex, encountered in deep briar and its approved arena path."
+        },
+        "what_should_i_investigate_next": {
+          "blocked_by": [
+            "boss_envelope:W1-CREATIVE-003"
+          ],
+          "data_status": "SAFE_AUTHORED_GUIDANCE_DATA",
+          "live_status": "BLOCKED_RUNTIME_COMPLETION",
+          "text": "Defeating the forest's first true trial supports the Ashen handoff and later pilgrimage."
+        }
+      },
+      "rarity_feel": "legendary",
+      "readiness": {
+        "discovery_entry_and_stamp_contract": "SAFE_NOW",
+        "guidance_data": "SAFE_NOW",
+        "live_acquisition_progression_completion": "BLOCKED_BY_LISTED_DEPENDENCIES"
+      },
+      "region": "ww",
+      "role": "hostile_elite_chapter_apex",
+      "runtime_completion_blocked_by": [
+        "boss_envelope:W1-CREATIVE-003",
+        "loot_probability:W1-CREATIVE-004",
+        "ingredient_identity:W1-CREATIVE-001"
+      ],
+      "runtime_id": "aionbound:thorn_stalker",
+      "warehouse_id": "thorn_stalker"
+    },
+    {
+      "codex_category": "creature",
+      "discovery_order_action": "defeat_hostile",
+      "discovery_stamps": [
+        {
+          "event": "defeat",
+          "id": "codex:ww:creature:hollow_widow_spider:defeated",
+          "stage": "complete"
+        }
+      ],
+      "entry_kind": "creature",
+      "id": "hollow_widow_spider",
+      "importance": "craft_core",
+      "importance_assignment": "ENGINEERING_INDEX_DERIVATION_FROM_APPROVED_RELATIONSHIP",
+      "integration": {
+        "data_target": "behavior_pack/scripts/catalog.js::CODEX_ENTRY_REGISTRY",
+        "persistence": "successor_v4_compact_codex_discovery",
+        "presentation_target": "non_chat_codex_surface",
+        "primary_chat_ux_allowed": false
+      },
+      "player_questions": {
+        "what_can_i_make": {
+          "blocked_by": [
+            "ingredient_identity:W1-CREATIVE-001"
+          ],
+          "data_status": "SAFE_AUTHORED_GUIDANCE_DATA",
+          "live_status": "BLOCKED_RUNTIME_COMPLETION",
+          "text": "Widow silk supports armor stitching, Thorn Cord, whips, and daggers."
+        },
+        "what_did_i_find": {
+          "blocked_by": [
+            "loot_probability:W1-CREATIVE-004"
+          ],
+          "data_status": "SAFE_AUTHORED_GUIDANCE_DATA",
+          "live_status": "BLOCKED_RUNTIME_COMPLETION",
+          "text": "A cave elite found in widow dens beneath giant roots."
+        },
+        "what_should_i_investigate_next": {
+          "blocked_by": [],
+          "data_status": "SAFE_AUTHORED_GUIDANCE_DATA",
+          "live_status": "SAFE_FOR_TARGET_INTEGRATION",
+          "text": "Root caves connect discovery to the forest's elite craft line."
+        }
+      },
+      "rarity_feel": "rare",
+      "readiness": {
+        "discovery_entry_and_stamp_contract": "SAFE_NOW",
+        "guidance_data": "SAFE_NOW",
+        "live_acquisition_progression_completion": "BLOCKED_BY_LISTED_DEPENDENCIES"
+      },
+      "region": "ww",
+      "role": "hostile_elite",
+      "runtime_completion_blocked_by": [
+        "loot_probability:W1-CREATIVE-004",
+        "ingredient_identity:W1-CREATIVE-001"
+      ],
+      "runtime_id": "aionbound:hollow_widow_spider",
+      "warehouse_id": "hollow_widow_spider"
+    },
+    {
+      "codex_category": "creature",
+      "discovery_order_action": "defeat_hostile",
+      "discovery_stamps": [
+        {
+          "event": "defeat",
+          "id": "codex:ww:creature:bark_wraith:defeated",
+          "stage": "complete"
+        }
+      ],
+      "entry_kind": "creature",
+      "id": "bark_wraith",
+      "importance": "exploration",
+      "importance_assignment": "ENGINEERING_INDEX_DERIVATION_FROM_APPROVED_RELATIONSHIP",
+      "integration": {
+        "data_target": "behavior_pack/scripts/catalog.js::CODEX_ENTRY_REGISTRY",
+        "persistence": "successor_v4_compact_codex_discovery",
+        "presentation_target": "non_chat_codex_surface",
+        "primary_chat_ux_allowed": false
+      },
+      "player_questions": {
+        "what_can_i_make": {
+          "blocked_by": [],
+          "data_status": "SAFE_AUTHORED_GUIDANCE_DATA",
+          "live_status": "SAFE_FOR_TARGET_INTEGRATION",
+          "text": "Hollow amber and moon sap support staff, pendant, and late forest crafting."
+        },
+        "what_did_i_find": {
+          "blocked_by": [
+            "loot_probability:W1-CREATIVE-004",
+            "structure_runtime:STRUCTURE_BYTES_NOT_PRESENT"
+          ],
+          "data_status": "SAFE_AUTHORED_GUIDANCE_DATA",
+          "live_status": "BLOCKED_RUNTIME_COMPLETION",
+          "text": "A deep-night spectral elite associated with ancient totems."
+        },
+        "what_should_i_investigate_next": {
+          "blocked_by": [
+            "structure_runtime:STRUCTURE_BYTES_NOT_PRESENT"
+          ],
+          "data_status": "SAFE_AUTHORED_GUIDANCE_DATA",
+          "live_status": "BLOCKED_RUNTIME_COMPLETION",
+          "text": "Totems and night deepen the soft-power and mystery paths."
+        }
+      },
+      "rarity_feel": "rare",
+      "readiness": {
+        "discovery_entry_and_stamp_contract": "SAFE_NOW",
+        "guidance_data": "SAFE_NOW",
+        "live_acquisition_progression_completion": "BLOCKED_BY_LISTED_DEPENDENCIES"
+      },
+      "region": "ww",
+      "role": "elite_spectral",
+      "runtime_completion_blocked_by": [
+        "loot_probability:W1-CREATIVE-004",
+        "structure_runtime:STRUCTURE_BYTES_NOT_PRESENT"
+      ],
+      "runtime_id": "aionbound:bark_wraith",
+      "warehouse_id": "bark_wraith"
+    }
+  ],
+  "g7_schema_evidence": [
+    {
+      "path": "behavior_pack/scripts/codex.js",
+      "sha256": "dff90e98c497fe7e1773e9f0be09a61cecd5098d1b4cf4955b43b78484467890"
+    },
+    {
+      "path": "behavior_pack/scripts/state.js",
+      "sha256": "3ab5e27385eed680cf5c4349e41cb19ddf61d00d7bde9b769ae3f68cf1ff37af"
+    },
+    {
+      "path": "behavior_pack/scripts/catalog.js",
+      "sha256": "5d1d4bccf60b21f439daee51b82b9418fd2356ab54459ee6a51849566d22c238"
+    }
+  ],
+  "minimal_successor_integration": {
+    "keep": [
+      "G7's idempotent migration pattern and all existing gameplay stamps",
+      "bounded deduplicated strings in player.stamps for legacy and non-Codex progression",
+      "composed discovery and action routing so a stamp never suppresses another action"
+    ],
+    "migration_required": true,
+    "presentation": {
+      "fallback": "bounded diagnostic message only",
+      "forbidden_primary": "chat-spam page navigation",
+      "primary": "Bedrock form/book-style Codex surface that renders locked, partial, and complete views"
+    },
+    "reason": "A compact additive successor migration preserves G7 semantics while avoiding the proven 128-stamp and 8192-byte Wave 1 capacity conflict.",
+    "replace_content_keep_patterns": [
+      "Replace G7 CODEX_TOPICS content with a registry/view-model fed by these entries.",
+      "Resolve entry visibility from compact discovery state; do not persist copied entry content.",
+      "Keep codex.topic as a backward-compatible navigation fallback; new UI selection may remain session-local until a separately authorized migration."
+    ],
+    "successor_schema_extension": {
+      "event_contract": "exact discovery stamp IDs in this map are canonical event keys translated by the Codex service; they are not appended indefinitely to legacy player.stamps",
+      "migration": "idempotently preserve v3 stamps/topic/goals and initialize empty compact discovery maps; translate any recognized Codex stamps if present",
+      "shape": "player.codex.discovery.<region>.<category> as registry-versioned compact two-bit states: locked, partial, complete",
+      "version": 4,
+      "why": "G7 caps stamps at 128 and player JSON at 8192 bytes; four regions already imply 160 pages before structures, equipment, and bosses, so raw per-page stamp persistence cannot be the final Wave 1 format."
+    }
+  },
+  "not_proven": [
+    "BP or RP integration",
+    "Codex UI",
+    "event wiring",
+    "loot or world generation",
+    "Stable BDS",
+    "client rendering",
+    "candidate readiness"
+  ],
+  "readiness_legend": {
+    "BLOCKED_BY_LISTED_DEPENDENCIES": "The live acquisition or progression claim cannot be completed until the entry's explicit runtime dependencies close.",
+    "SAFE_NOW": "Creative identity, stamp contract, and authored relationship data can be registered now."
+  },
+  "schema": "aionbound.wave1.whisperwood-codex-implementation-map.v1.0.0",
+  "scope": {
+    "categories": [
+      "resources",
+      "blocks",
+      "plants",
+      "creatures"
+    ],
+    "counts": {
+      "blocks": 10,
+      "creatures": 10,
+      "plants": 10,
+      "resources": 10,
+      "total": 40
+    },
+    "region": "ww"
+  },
+  "status": "EVIDENCE_BOUND_DATA_MAP_NO_RUNTIME_IMPLEMENTATION"
+}
