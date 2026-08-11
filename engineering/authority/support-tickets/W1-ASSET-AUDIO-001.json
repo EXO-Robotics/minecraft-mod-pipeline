@@ -1,0 +1,31 @@
+{
+  "schema": "aionbound.wave1.asset_support_ticket.v1",
+  "ticket_id": "W1-ASSET-AUDIO-001",
+  "status": "OPEN_BLOCKING_WAVE_1_EXIT_NOT_WHISPERWOOD_CHECKPOINT",
+  "owner_requested": "ASSET_DEPARTMENT_AUDIO_ONLY",
+  "finding": "The completed visual production packets contain no authored OGG, WAV, or FSB bytes, while the Wave 1 contract requires a sound identity pass before Living World exit.",
+  "authority": {
+    "contract_path": "program/crazycraft-pack-production-v1/studio-prep/creative/WAVE_1_LIVING_WORLD_IMPLEMENTATION_CONTRACT.md",
+    "placeholder_policy_line": 84,
+    "entity_done_line": 109,
+    "wave_h_identity_pass_lines": [727, 729]
+  },
+  "requested_resolution": [
+    "bind a reusable regional sound palette for Whisperwood, Ashen, Crystal Marsh, and Skyreach",
+    "provide or explicitly authorize original shipping audio for creature ambient, hurt, death, and signature action events",
+    "bind boss signature cues and environmental landmark cues",
+    "provide license/provenance and exact shipping filenames for every delivered byte"
+  ],
+  "engineering_boundary": {
+    "before_resolution": "Role-appropriate vanilla placeholder events may be used for early vertical integration because the contract explicitly permits placeholders early.",
+    "checkpoint_1": "NOT_BLOCKED_BY_IDENTITY_AUDIO",
+    "final_wave_1_exit": "BLOCKED_UNTIL_IDENTITY_PASS_OR_EXPLICIT_SCOPE_REDUCTION",
+    "claims_forbidden": [
+      "custom_audio_complete",
+      "sound_identity_pass",
+      "client_mix_verified",
+      "controller_console_audio_verified"
+    ]
+  },
+  "proof_boundary": "Static packet inventory and Creative contract audit only; no client audio playback, mix, BDS, console, or release proof."
+}
