@@ -1,0 +1,1983 @@
+{
+  "authorities": [
+    {
+      "path": "program/crazycraft-pack-production-v1/studio-prep/creative/WAVE_1_LIVING_WORLD_IMPLEMENTATION_CONTRACT.md",
+      "sha256": "3116c217e06afe1fd0cd56ee742c537f948a4c91193ec831fd1b3ec362837bfc"
+    },
+    {
+      "path": "program/crazycraft-pack-production-v1/studio-prep/creative/WAVE_1_LIVING_WORLD_IMPLEMENTATION_CONTRACT.json",
+      "sha256": "aa1f54df10d27d5c5675aae843ffe0d2946123d12a6509f7f021408bcdde9fb5"
+    },
+    {
+      "path": "program/crazycraft-pack-production-v1/studio-prep/creative/02_loot/LOOT_WHISPERWOOD.md",
+      "sha256": "c6846ecfcf51c1bdbe62b3ef81f37e7e86e6466a62b46f72cb3685516a216f24"
+    },
+    {
+      "path": "program/crazycraft-pack-production-v1/studio-prep/creative/06_world_gen/WORLD_GENERATION.md",
+      "sha256": "bc18a1e1f73d6045ab7e583afe910ca13d4776d439c8f3dfb45dae5784372f4b"
+    },
+    {
+      "path": "program/crazycraft-pack-production-v1/studio-prep/creative/07_bosses/BOSS_PROGRESSION.md",
+      "sha256": "5ef85e1e0b29973a617f7dca4a8b119443c01644ba33f0e11166ef8d417d5a6f"
+    },
+    {
+      "path": "program/crazycraft-pack-production-v1/studio-prep/creative/08_codex/CODEX_ENTRIES_CREATURES.md",
+      "sha256": "fd07694eee0c8d478b44363e822e0116f4ca09c92775661350ed8468342b01bf"
+    },
+    {
+      "path": "program/aionbound-wave-1-engineering-runs/subagent-worktrees/ww-entity-runtime-map/engineering/whisperwood-intake/WHISPERWOOD_VERTICAL_IMPLEMENTATION_MAP.json",
+      "sha256": "7dd75173bda2562fb2fa47c194794b3b224d32709ca1b59335676d33da399694"
+    }
+  ],
+  "base": {
+    "classification": "G7 successor integration worktree",
+    "commit": "17cd830a0df75bef7aca92dfc1dd3d0dd8b303ec"
+  },
+  "entities": [
+    {
+      "animations": {
+        "brief_declared": [
+          "death_collapse",
+          "drift_walk",
+          "hurt",
+          "idle_sway",
+          "reach_attack"
+        ],
+        "exported_actual": [
+          "animation.aionforge_ww.bark_wraith.action",
+          "animation.aionforge_ww.bark_wraith.idle"
+        ],
+        "generic_exports_not_accepted_as_aliases": [
+          "animation.aionforge_ww.bark_wraith.action",
+          "animation.aionforge_ww.bark_wraith.idle"
+        ],
+        "missing_declared": [
+          "death_collapse",
+          "drift_walk",
+          "hurt",
+          "idle_sway",
+          "reach_attack"
+        ],
+        "status": "BLOCKED_ROLE_CLIPS_ABSENT"
+      },
+      "apex": false,
+      "approved_ai_intent": [
+        "idle sway",
+        "night/totem presence",
+        "soft spectral combat"
+      ],
+      "approved_role": "elite_spectral",
+      "blockers": [
+        "SPECTRAL_MOTION_ARCHITECTURE",
+        "SPECTRAL_TARGET_POLICY",
+        "LOOT_IDENTITY_W1_CREATIVE_001",
+        "PERSISTENCE_SEMANTICS",
+        "ANIMATION_COVERAGE",
+        "NATIVE_ASSET_DISPOSITION"
+      ],
+      "codex_dependency": {
+        "status": "ENTRY_TEXT_APPROVED_TRIGGER_IMPLEMENTATION_NOT_PROVEN",
+        "targets": [
+          "behavior_pack/scripts/catalog.js",
+          "behavior_pack/scripts/codex.js",
+          "behavior_pack/scripts/state.js"
+        ],
+        "trigger_intent": "night deep-forest or totem encounter"
+      },
+      "construction_status": "SKELETON_FAMILIES_MAPPED_FULL_ENTITY_WITHHELD",
+      "creative_evidence": [
+        {
+          "excerpt": "**Alternate / duo path:** `briar_elk` crowned + `bark_wraith` support event optional",
+          "line": 23,
+          "path": "program/crazycraft-pack-production-v1/studio-prep/creative/02_loot/LOOT_BOSSES.md"
+        },
+        {
+          "excerpt": "### bark_wraith (elite spectral / mini-boss path)",
+          "line": 90,
+          "path": "program/crazycraft-pack-production-v1/studio-prep/creative/02_loot/LOOT_WHISPERWOOD.md"
+        },
+        {
+          "excerpt": "| bark_wraith | Very low | Night deep / totem |",
+          "line": 60,
+          "path": "program/crazycraft-pack-production-v1/studio-prep/creative/06_world_gen/WORLD_GENERATION.md"
+        },
+        {
+          "excerpt": "**Optional adds:** `hollow_widow_spider` silk phases; `bark_wraith` night modifier.",
+          "line": 45,
+          "path": "program/crazycraft-pack-production-v1/studio-prep/creative/07_bosses/BOSS_PROGRESSION.md"
+        },
+        {
+          "excerpt": "### bark_wraith",
+          "line": 100,
+          "path": "program/crazycraft-pack-production-v1/studio-prep/creative/08_codex/CODEX_DESIGN.md"
+        },
+        {
+          "excerpt": "### bark_wraith",
+          "line": 82,
+          "path": "program/crazycraft-pack-production-v1/studio-prep/creative/08_codex/CODEX_ENTRIES_CREATURES.md"
+        },
+        {
+          "excerpt": "4. `bark_wraith` night",
+          "line": 45,
+          "path": "program/crazycraft-pack-production-v1/studio-prep/creative/09_environment/ENVIRONMENTAL_STORYTELLING.md"
+        },
+        {
+          "excerpt": "| bark_wraith | Elite spectral | Night deep / totems | Drift | Phase drift | Soft spectral | amber / moon_sap |",
+          "line": 107,
+          "path": "program/crazycraft-pack-production-v1/studio-prep/creative/WAVE_1_LIVING_WORLD_IMPLEMENTATION_CONTRACT.md"
+        },
+        {
+          "excerpt": "- Creatures: bark_wraith, briar_elk, hollow_widow_spider, lantern_hare, mosskip_buck, mosskip_doe, mosskip_fawn, rootback_boar, rot_wolf, thorn_stalker",
+          "line": 843,
+          "path": "program/crazycraft-pack-production-v1/studio-prep/creative/WAVE_1_LIVING_WORLD_IMPLEMENTATION_CONTRACT.md"
+        }
+      ],
+      "drop_dependencies": {
+        "narrative_only_identities_withheld": [
+          "Wraith Mask Fragment"
+        ],
+        "probability_status": "WITHHELD_W1_CREATIVE_004",
+        "table_target": "behavior_pack/loot_tables/entities/bark_wraith.json",
+        "warehouse_identities_eligible_for_wiring": [
+          "whisper_bark",
+          "hollow_amber",
+          "moon_sap",
+          "ancient_acorn_display"
+        ]
+      },
+      "g7_pattern": "no_complete_g7_pattern",
+      "g7_proven_component_families": [
+        "minecraft:collision_box",
+        "minecraft:health",
+        "minecraft:loot",
+        "minecraft:movement",
+        "minecraft:movement.basic",
+        "minecraft:navigation.walk",
+        "minecraft:physics",
+        "minecraft:type_family"
+      ],
+      "movement_intent": "spectral phase-drift",
+      "persistence_dependency": {
+        "boss_encounter": "not_applicable",
+        "discovery": "G7_STATE_SCHEMA_REUSABLE_WITH_SUCCESSOR_MIGRATION",
+        "ordinary_entity": "UNRESOLVED_ENTITY_PERSISTENCE_AND_DESPAWN_POLICY"
+      },
+      "required_unproven_extensions": [
+        "movement/navigation family for phase drift",
+        "target policy",
+        "soft-spectral attack delivery"
+      ],
+      "runtime_class": "hostile",
+      "runtime_id": "aionbound:bark_wraith",
+      "source_assets": {
+        "animation": {
+          "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-001-whisperwood/assets/export/animations/bark_wraith.animation.json",
+          "sha256": "16166f748311c283279e831eb2b442b796a50146e0efa2377ecb7a2c21dc6297"
+        },
+        "bbmodel": {
+          "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-001-whisperwood/assets/editable/bark_wraith.bbmodel",
+          "sha256": "8268dfa1a4e9ebc29fbb6b67e8e75878985af3e090ec3bb8c4cab579b3e12dd5"
+        },
+        "brief": {
+          "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-001-whisperwood/assets/briefs/bark_wraith.json",
+          "sha256": "5ba6b674711f019d96af386cf0047319c2cab5f75f242da52eec1cd0a9a9d23d"
+        },
+        "export_texture": {
+          "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-001-whisperwood/assets/export/textures/bark_wraith.png",
+          "sha256": "4fbebf5dcd2ce411a66429ea18728da4d9066d2a6375174c6c2f5c6038f56868"
+        },
+        "geometry": {
+          "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-001-whisperwood/assets/export/models/bark_wraith.geo.json",
+          "sha256": "57b551989c554ff08559019855aab3e0b4e883839a8f0cfa5c43827ff9167344"
+        },
+        "png": {
+          "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-001-whisperwood/assets/editable/bark_wraith.png",
+          "sha256": "4fbebf5dcd2ce411a66429ea18728da4d9066d2a6375174c6c2f5c6038f56868"
+        }
+      },
+      "spawn_dependencies": [
+        "night",
+        "deep forest",
+        "totems",
+        "very low frequency"
+      ],
+      "target_files": {
+        "additional_runtime_targets": [
+          "resource_pack/sounds/sound_definitions.json"
+        ],
+        "create": [
+          "behavior_pack/entities/bark_wraith.entity.json",
+          "behavior_pack/spawn_rules/bark_wraith.spawn_rules.json",
+          "behavior_pack/loot_tables/entities/bark_wraith.json",
+          "resource_pack/entity/bark_wraith.entity.json",
+          "resource_pack/models/aionbound/whisperwood/bark_wraith.geo.json",
+          "resource_pack/animations/aionbound/whisperwood/bark_wraith.animation.json",
+          "resource_pack/textures/aionbound/whisperwood/bark_wraith.png"
+        ],
+        "shared_updates": [
+          "behavior_pack/scripts/catalog.js",
+          "behavior_pack/scripts/codex.js",
+          "resource_pack/texts/en_US.lang",
+          "behavior_pack/scripts/combat.js",
+          "behavior_pack/scripts/encounters.js",
+          "behavior_pack/scripts/state.js",
+          "behavior_pack/scripts/budgets.js",
+          "resource_pack/animation_controllers/aionbound.animation_controllers.json",
+          "resource_pack/render_controllers/aionbound.render_controllers.json"
+        ]
+      },
+      "warehouse_id": "bark_wraith"
+    },
+    {
+      "animations": {
+        "brief_declared": [
+          "antler_shake",
+          "death",
+          "hurt",
+          "idle",
+          "trot",
+          "walk"
+        ],
+        "exported_actual": [
+          "animation.aionforge_ww.briar_elk.action",
+          "animation.aionforge_ww.briar_elk.idle"
+        ],
+        "generic_exports_not_accepted_as_aliases": [
+          "animation.aionforge_ww.briar_elk.action",
+          "animation.aionforge_ww.briar_elk.idle"
+        ],
+        "missing_declared": [
+          "antler_shake",
+          "death",
+          "hurt",
+          "idle",
+          "trot",
+          "walk"
+        ],
+        "status": "BLOCKED_ROLE_CLIPS_ABSENT"
+      },
+      "apex": false,
+      "approved_ai_intent": [
+        "antler idle",
+        "rare meadow roam",
+        "heavy antler combat"
+      ],
+      "approved_role": "elite_grazer_mini_apex",
+      "blockers": [
+        "MINI_APEX_TARGET_POLICY",
+        "LOOT_IDENTITY_W1_CREATIVE_001",
+        "PERSISTENCE_SEMANTICS",
+        "ANIMATION_COVERAGE",
+        "NATIVE_ASSET_DISPOSITION"
+      ],
+      "codex_dependency": {
+        "status": "ENTRY_TEXT_APPROVED_TRIGGER_IMPLEMENTATION_NOT_PROVEN",
+        "targets": [
+          "behavior_pack/scripts/catalog.js",
+          "behavior_pack/scripts/codex.js",
+          "behavior_pack/scripts/state.js"
+        ],
+        "trigger_intent": "hunt or witness meadow rite"
+      },
+      "construction_status": "SKELETON_FAMILIES_MAPPED_FULL_ENTITY_WITHHELD",
+      "creative_evidence": [
+        {
+          "excerpt": "**Alternate / duo path:** `briar_elk` crowned + `bark_wraith` support event optional",
+          "line": 23,
+          "path": "program/crazycraft-pack-production-v1/studio-prep/creative/02_loot/LOOT_BOSSES.md"
+        },
+        {
+          "excerpt": "### briar_elk (elite grazer / mini-apex candidate)",
+          "line": 54,
+          "path": "program/crazycraft-pack-production-v1/studio-prep/creative/02_loot/LOOT_WHISPERWOOD.md"
+        },
+        {
+          "excerpt": "| briar_elk | Rare | Meadows |",
+          "line": 61,
+          "path": "program/crazycraft-pack-production-v1/studio-prep/creative/06_world_gen/WORLD_GENERATION.md"
+        },
+        {
+          "excerpt": "### briar_elk",
+          "line": 75,
+          "path": "program/crazycraft-pack-production-v1/studio-prep/creative/08_codex/CODEX_DESIGN.md"
+        },
+        {
+          "excerpt": "### briar_elk",
+          "line": 50,
+          "path": "program/crazycraft-pack-production-v1/studio-prep/creative/08_codex/CODEX_ENTRIES_CREATURES.md"
+        },
+        {
+          "excerpt": "| briar_elk | Elite grazer / mini-apex | Meadows rare | Antler idle | Stag gait | Heavy antler | same + briar_elk_trophy |",
+          "line": 103,
+          "path": "program/crazycraft-pack-production-v1/studio-prep/creative/WAVE_1_LIVING_WORLD_IMPLEMENTATION_CONTRACT.md"
+        },
+        {
+          "excerpt": "- Creatures: bark_wraith, briar_elk, hollow_widow_spider, lantern_hare, mosskip_buck, mosskip_doe, mosskip_fawn, rootback_boar, rot_wolf, thorn_stalker",
+          "line": 843,
+          "path": "program/crazycraft-pack-production-v1/studio-prep/creative/WAVE_1_LIVING_WORLD_IMPLEMENTATION_CONTRACT.md"
+        }
+      ],
+      "drop_dependencies": {
+        "narrative_only_identities_withheld": [
+          "Thick Hide",
+          "Briar Crown"
+        ],
+        "probability_status": "WITHHELD_W1_CREATIVE_004",
+        "table_target": "behavior_pack/loot_tables/entities/briar_elk.json",
+        "warehouse_identities_eligible_for_wiring": [
+          "briar_antler",
+          "briar_elk_trophy",
+          "ancient_acorn"
+        ]
+      },
+      "g7_pattern": "neutral_retaliatory_ground",
+      "g7_proven_component_families": [
+        "minecraft:collision_box",
+        "minecraft:health",
+        "minecraft:loot",
+        "minecraft:movement",
+        "minecraft:movement.basic",
+        "minecraft:navigation.walk",
+        "minecraft:physics",
+        "minecraft:type_family",
+        "minecraft:attack",
+        "minecraft:behavior.hurt_by_target",
+        "minecraft:behavior.melee_attack",
+        "minecraft:behavior.random_stroll",
+        "minecraft:behavior.look_at_player"
+      ],
+      "movement_intent": "ground stag gait",
+      "persistence_dependency": {
+        "boss_encounter": "not_applicable",
+        "discovery": "G7_STATE_SCHEMA_REUSABLE_WITH_SUCCESSOR_MIGRATION",
+        "ordinary_entity": "UNRESOLVED_ENTITY_PERSISTENCE_AND_DESPAWN_POLICY"
+      },
+      "required_unproven_extensions": [
+        "mini-apex initiation policy",
+        "heavy-antler presentation tuning"
+      ],
+      "runtime_class": "neutral",
+      "runtime_id": "aionbound:briar_elk",
+      "source_assets": {
+        "animation": {
+          "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-001-whisperwood/assets/export/animations/briar_elk.animation.json",
+          "sha256": "e1d672494f3fff38c1f8d61fcfd8fb0096caff0dea57e1d4050ac40c7c769217"
+        },
+        "bbmodel": {
+          "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-001-whisperwood/assets/editable/briar_elk.bbmodel",
+          "sha256": "7f319033e9908f785accae70260b871dc79b8d4b731fbb9e83c847670d145456"
+        },
+        "brief": {
+          "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-001-whisperwood/assets/briefs/briar_elk.json",
+          "sha256": "15c14d33a4ac2da81a19582d832f604a133adfbdff141b65d58fbc61190a6927"
+        },
+        "export_texture": {
+          "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-001-whisperwood/assets/export/textures/briar_elk.png",
+          "sha256": "ec1a88f26b80399040ed8cb8a89894ecbce308a8613fd671340d28f86aa4a196"
+        },
+        "geometry": {
+          "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-001-whisperwood/assets/export/models/briar_elk.geo.json",
+          "sha256": "4588f8d31b9bfbc7e3ab91285d825b970b2e97b2fa972ff92f70b7b7ecb9aef9"
+        },
+        "png": {
+          "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-001-whisperwood/assets/editable/briar_elk.png",
+          "sha256": "ec1a88f26b80399040ed8cb8a89894ecbce308a8613fd671340d28f86aa4a196"
+        }
+      },
+      "spawn_dependencies": [
+        "meadows",
+        "rare"
+      ],
+      "target_files": {
+        "additional_runtime_targets": [
+          "resource_pack/sounds/sound_definitions.json"
+        ],
+        "create": [
+          "behavior_pack/entities/briar_elk.entity.json",
+          "behavior_pack/spawn_rules/briar_elk.spawn_rules.json",
+          "behavior_pack/loot_tables/entities/briar_elk.json",
+          "resource_pack/entity/briar_elk.entity.json",
+          "resource_pack/models/aionbound/whisperwood/briar_elk.geo.json",
+          "resource_pack/animations/aionbound/whisperwood/briar_elk.animation.json",
+          "resource_pack/textures/aionbound/whisperwood/briar_elk.png"
+        ],
+        "shared_updates": [
+          "behavior_pack/scripts/catalog.js",
+          "behavior_pack/scripts/codex.js",
+          "resource_pack/texts/en_US.lang",
+          "behavior_pack/scripts/combat.js",
+          "behavior_pack/scripts/encounters.js",
+          "behavior_pack/scripts/state.js",
+          "behavior_pack/scripts/budgets.js",
+          "resource_pack/animation_controllers/aionbound.animation_controllers.json",
+          "resource_pack/render_controllers/aionbound.render_controllers.json"
+        ]
+      },
+      "warehouse_id": "briar_elk"
+    },
+    {
+      "animations": {
+        "brief_declared": [
+          "bite",
+          "death",
+          "hurt",
+          "idle",
+          "rear_threat",
+          "walk_skitter"
+        ],
+        "exported_actual": [
+          "animation.aionforge_ww.hollow_widow_spider.action",
+          "animation.aionforge_ww.hollow_widow_spider.idle"
+        ],
+        "generic_exports_not_accepted_as_aliases": [
+          "animation.aionforge_ww.hollow_widow_spider.action",
+          "animation.aionforge_ww.hollow_widow_spider.idle"
+        ],
+        "missing_declared": [
+          "bite",
+          "death",
+          "hurt",
+          "idle",
+          "rear_threat",
+          "walk_skitter"
+        ],
+        "status": "BLOCKED_ROLE_CLIPS_ABSENT"
+      },
+      "apex": false,
+      "approved_ai_intent": [
+        "web idle",
+        "player acquisition",
+        "pursue",
+        "silk/bite combat"
+      ],
+      "approved_role": "hostile_elite",
+      "blockers": [
+        "CLIMB_RUNTIME_PATTERN_NOT_IN_G7",
+        "SILK_COMBAT_BINDING",
+        "LOOT_IDENTITY_W1_CREATIVE_001",
+        "PERSISTENCE_SEMANTICS",
+        "ANIMATION_COVERAGE",
+        "NATIVE_ASSET_DISPOSITION"
+      ],
+      "codex_dependency": {
+        "status": "ENTRY_TEXT_APPROVED_TRIGGER_IMPLEMENTATION_NOT_PROVEN",
+        "targets": [
+          "behavior_pack/scripts/catalog.js",
+          "behavior_pack/scripts/codex.js",
+          "behavior_pack/scripts/state.js"
+        ],
+        "trigger_intent": "cave encounter"
+      },
+      "construction_status": "SKELETON_FAMILIES_MAPPED_FULL_ENTITY_WITHHELD",
+      "creative_evidence": [
+        {
+          "excerpt": "### hollow_widow_spider (hostile elite)",
+          "line": 81,
+          "path": "program/crazycraft-pack-production-v1/studio-prep/creative/02_loot/LOOT_WHISPERWOOD.md"
+        },
+        {
+          "excerpt": "**Optional adds:** `hollow_widow_spider` silk phases; `bark_wraith` night modifier.",
+          "line": 45,
+          "path": "program/crazycraft-pack-production-v1/studio-prep/creative/07_bosses/BOSS_PROGRESSION.md"
+        },
+        {
+          "excerpt": "### hollow_widow_spider",
+          "line": 94,
+          "path": "program/crazycraft-pack-production-v1/studio-prep/creative/08_codex/CODEX_DESIGN.md"
+        },
+        {
+          "excerpt": "### hollow_widow_spider",
+          "line": 74,
+          "path": "program/crazycraft-pack-production-v1/studio-prep/creative/08_codex/CODEX_ENTRIES_CREATURES.md"
+        },
+        {
+          "excerpt": "| hollow_widow_spider | Hostile elite | Caves, giant roots | Web idle | Climb + ground | Silk / bite | widow_silk path |",
+          "line": 106,
+          "path": "program/crazycraft-pack-production-v1/studio-prep/creative/WAVE_1_LIVING_WORLD_IMPLEMENTATION_CONTRACT.md"
+        },
+        {
+          "excerpt": "- Creatures: bark_wraith, briar_elk, hollow_widow_spider, lantern_hare, mosskip_buck, mosskip_doe, mosskip_fawn, rootback_boar, rot_wolf, thorn_stalker",
+          "line": 843,
+          "path": "program/crazycraft-pack-production-v1/studio-prep/creative/WAVE_1_LIVING_WORLD_IMPLEMENTATION_CONTRACT.md"
+        }
+      ],
+      "drop_dependencies": {
+        "narrative_only_identities_withheld": [
+          "Hollow Venom Sac",
+          "Chitin Shard",
+          "Widow Eye"
+        ],
+        "probability_status": "WITHHELD_W1_CREATIVE_004",
+        "table_target": "behavior_pack/loot_tables/entities/hollow_widow_spider.json",
+        "warehouse_identities_eligible_for_wiring": [
+          "widow_silk"
+        ]
+      },
+      "g7_pattern": "hostile_melee_ground",
+      "g7_proven_component_families": [
+        "minecraft:collision_box",
+        "minecraft:health",
+        "minecraft:loot",
+        "minecraft:movement",
+        "minecraft:movement.basic",
+        "minecraft:navigation.walk",
+        "minecraft:physics",
+        "minecraft:type_family",
+        "minecraft:attack",
+        "minecraft:behavior.hurt_by_target",
+        "minecraft:behavior.melee_attack",
+        "minecraft:behavior.random_stroll",
+        "minecraft:behavior.look_at_player",
+        "minecraft:behavior.nearest_attackable_target"
+      ],
+      "movement_intent": "ground plus climb",
+      "persistence_dependency": {
+        "boss_encounter": "not_applicable",
+        "discovery": "G7_STATE_SCHEMA_REUSABLE_WITH_SUCCESSOR_MIGRATION",
+        "ordinary_entity": "UNRESOLVED_ENTITY_PERSISTENCE_AND_DESPAWN_POLICY"
+      },
+      "required_unproven_extensions": [
+        "minecraft:can_climb",
+        "minecraft:navigation.climb",
+        "silk attack delivery and status semantics"
+      ],
+      "runtime_class": "hostile",
+      "runtime_id": "aionbound:hollow_widow_spider",
+      "source_assets": {
+        "animation": {
+          "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-001-whisperwood/assets/export/animations/hollow_widow_spider.animation.json",
+          "sha256": "a0a4290664296630e82a94622ff76ebe55be2886396369fb3f6725ca5ce8afa0"
+        },
+        "bbmodel": {
+          "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-001-whisperwood/assets/editable/hollow_widow_spider.bbmodel",
+          "sha256": "2f7e44b066dc89ded0838a1eea40a9a8b9c45bd02ffb964b9708732c01aa7e0d"
+        },
+        "brief": {
+          "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-001-whisperwood/assets/briefs/hollow_widow_spider.json",
+          "sha256": "382ab256b2c22fc06db7adfc40b60d06fc79c39b00acf094e593938db14f598b"
+        },
+        "export_texture": {
+          "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-001-whisperwood/assets/export/textures/hollow_widow_spider.png",
+          "sha256": "54becb1fac199b6dd30e27a529939bb47879539f19a462b20d8a7109836f727a"
+        },
+        "geometry": {
+          "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-001-whisperwood/assets/export/models/hollow_widow_spider.geo.json",
+          "sha256": "1131045fd8e73da11f25d466815dd0a495c04af752420e589274d33c0b08e134"
+        },
+        "png": {
+          "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-001-whisperwood/assets/editable/hollow_widow_spider.png",
+          "sha256": "54becb1fac199b6dd30e27a529939bb47879539f19a462b20d8a7109836f727a"
+        }
+      },
+      "spawn_dependencies": [
+        "caves",
+        "giant roots"
+      ],
+      "target_files": {
+        "additional_runtime_targets": [
+          "resource_pack/sounds/sound_definitions.json"
+        ],
+        "create": [
+          "behavior_pack/entities/hollow_widow_spider.entity.json",
+          "behavior_pack/spawn_rules/hollow_widow_spider.spawn_rules.json",
+          "behavior_pack/loot_tables/entities/hollow_widow_spider.json",
+          "resource_pack/entity/hollow_widow_spider.entity.json",
+          "resource_pack/models/aionbound/whisperwood/hollow_widow_spider.geo.json",
+          "resource_pack/animations/aionbound/whisperwood/hollow_widow_spider.animation.json",
+          "resource_pack/textures/aionbound/whisperwood/hollow_widow_spider.png"
+        ],
+        "shared_updates": [
+          "behavior_pack/scripts/catalog.js",
+          "behavior_pack/scripts/codex.js",
+          "resource_pack/texts/en_US.lang",
+          "behavior_pack/scripts/combat.js",
+          "behavior_pack/scripts/encounters.js",
+          "behavior_pack/scripts/state.js",
+          "behavior_pack/scripts/budgets.js",
+          "resource_pack/animation_controllers/aionbound.animation_controllers.json",
+          "resource_pack/render_controllers/aionbound.render_controllers.json"
+        ]
+      },
+      "warehouse_id": "hollow_widow_spider"
+    },
+    {
+      "animations": {
+        "brief_declared": [
+          "alert",
+          "death",
+          "hop",
+          "hurt",
+          "idle_ear_flick"
+        ],
+        "exported_actual": [
+          "animation.aionforge_ww.lantern_hare.action",
+          "animation.aionforge_ww.lantern_hare.idle"
+        ],
+        "generic_exports_not_accepted_as_aliases": [
+          "animation.aionforge_ww.lantern_hare.action",
+          "animation.aionforge_ww.lantern_hare.idle"
+        ],
+        "missing_declared": [
+          "alert",
+          "death",
+          "hop",
+          "hurt",
+          "idle_ear_flick"
+        ],
+        "status": "BLOCKED_ROLE_CLIPS_ABSENT"
+      },
+      "apex": false,
+      "approved_ai_intent": [
+        "glow idle",
+        "curious roam",
+        "flee"
+      ],
+      "approved_role": "ambient_curiosity",
+      "blockers": [
+        "FLEE_TARGET_POLICY",
+        "LOOT_IDENTITY_W1_CREATIVE_001",
+        "PERSISTENCE_SEMANTICS",
+        "ANIMATION_COVERAGE",
+        "NATIVE_ASSET_DISPOSITION"
+      ],
+      "codex_dependency": {
+        "status": "ENTRY_TEXT_APPROVED_TRIGGER_IMPLEMENTATION_NOT_PROVEN",
+        "targets": [
+          "behavior_pack/scripts/catalog.js",
+          "behavior_pack/scripts/codex.js",
+          "behavior_pack/scripts/state.js"
+        ],
+        "trigger_intent": "night observation near blooms"
+      },
+      "construction_status": "SKELETON_FAMILIES_MAPPED_FULL_ENTITY_WITHHELD",
+      "creative_evidence": [
+        {
+          "excerpt": "2. **5\u201315:** Enter WW edge; mosskip family ambient; lantern_hare curiosity; harvest whisper_bark, moss_resin.",
+          "line": 134,
+          "path": "program/crazycraft-pack-production-v1/studio-prep/creative/01_progression/PLAYER_JOURNEY.md"
+        },
+        {
+          "excerpt": "### lantern_hare (ambient curiosity)",
+          "line": 37,
+          "path": "program/crazycraft-pack-production-v1/studio-prep/creative/02_loot/LOOT_WHISPERWOOD.md"
+        },
+        {
+          "excerpt": "| lantern_hare | Medium-low | Night / bloom patches |",
+          "line": 55,
+          "path": "program/crazycraft-pack-production-v1/studio-prep/creative/06_world_gen/WORLD_GENERATION.md"
+        },
+        {
+          "excerpt": "### lantern_hare",
+          "line": 63,
+          "path": "program/crazycraft-pack-production-v1/studio-prep/creative/08_codex/CODEX_DESIGN.md"
+        },
+        {
+          "excerpt": "### lantern_hare",
+          "line": 34,
+          "path": "program/crazycraft-pack-production-v1/studio-prep/creative/08_codex/CODEX_ENTRIES_CREATURES.md"
+        },
+        {
+          "excerpt": "4. `lantern_hare` safe near posts",
+          "line": 37,
+          "path": "program/crazycraft-pack-production-v1/studio-prep/creative/09_environment/ENVIRONMENTAL_STORYTELLING.md"
+        },
+        {
+          "excerpt": "| lantern_hare | Ambient curiosity | Night, blooms, lantern posts | Glow idle | Quick hop | Flee | same |",
+          "line": 101,
+          "path": "program/crazycraft-pack-production-v1/studio-prep/creative/WAVE_1_LIVING_WORLD_IMPLEMENTATION_CONTRACT.md"
+        },
+        {
+          "excerpt": "- Creatures: bark_wraith, briar_elk, hollow_widow_spider, lantern_hare, mosskip_buck, mosskip_doe, mosskip_fawn, rootback_boar, rot_wolf, thorn_stalker",
+          "line": 843,
+          "path": "program/crazycraft-pack-production-v1/studio-prep/creative/WAVE_1_LIVING_WORLD_IMPLEMENTATION_CONTRACT.md"
+        }
+      ],
+      "drop_dependencies": {
+        "narrative_only_identities_withheld": [
+          "Glow Soft Pellet",
+          "Hare's Lucky Foot"
+        ],
+        "probability_status": "WITHHELD_W1_CREATIVE_004",
+        "table_target": "behavior_pack/loot_tables/entities/lantern_hare.json",
+        "warehouse_identities_eligible_for_wiring": [
+          "lantern_fur"
+        ]
+      },
+      "g7_pattern": "ambient_ground",
+      "g7_proven_component_families": [
+        "minecraft:collision_box",
+        "minecraft:health",
+        "minecraft:loot",
+        "minecraft:movement",
+        "minecraft:movement.basic",
+        "minecraft:navigation.walk",
+        "minecraft:physics",
+        "minecraft:type_family",
+        "minecraft:behavior.random_stroll",
+        "minecraft:behavior.look_at_player"
+      ],
+      "movement_intent": "ground quick-hop",
+      "persistence_dependency": {
+        "boss_encounter": "not_applicable",
+        "discovery": "G7_STATE_SCHEMA_REUSABLE_WITH_SUCCESSOR_MIGRATION",
+        "ordinary_entity": "UNRESOLVED_ENTITY_PERSISTENCE_AND_DESPAWN_POLICY"
+      },
+      "required_unproven_extensions": [
+        "flee behavior family and target filters",
+        "night glow presentation"
+      ],
+      "runtime_class": "ambient",
+      "runtime_id": "aionbound:lantern_hare",
+      "source_assets": {
+        "animation": {
+          "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-001-whisperwood/assets/export/animations/lantern_hare.animation.json",
+          "sha256": "fc6030acc36b5605dcf27a8219ceaa4cc01b40b2b3abb19c29629c61acc251d0"
+        },
+        "bbmodel": {
+          "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-001-whisperwood/assets/editable/lantern_hare.bbmodel",
+          "sha256": "5c2549c3d945de0dedd4d76ef13dce38c061ded4f41785964584014faedb8db7"
+        },
+        "brief": {
+          "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-001-whisperwood/assets/briefs/lantern_hare.json",
+          "sha256": "376f5d8a69fa0652eac5795041dcf5cc8e6dffbde09613dc3459a36998148c81"
+        },
+        "export_texture": {
+          "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-001-whisperwood/assets/export/textures/lantern_hare.png",
+          "sha256": "b607535ec54a1435eaa2797e997a4ff7c7db544155944626e405e639f76c4380"
+        },
+        "geometry": {
+          "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-001-whisperwood/assets/export/models/lantern_hare.geo.json",
+          "sha256": "fee79b5fd931302d6d0df404b8ae9dcf8d1ea5b47e8273fc8f9df5515f567769"
+        },
+        "png": {
+          "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-001-whisperwood/assets/editable/lantern_hare.png",
+          "sha256": "b607535ec54a1435eaa2797e997a4ff7c7db544155944626e405e639f76c4380"
+        }
+      },
+      "spawn_dependencies": [
+        "night",
+        "near lantern_bloom",
+        "near lantern_post"
+      ],
+      "target_files": {
+        "additional_runtime_targets": [
+          "resource_pack/sounds/sound_definitions.json"
+        ],
+        "create": [
+          "behavior_pack/entities/lantern_hare.entity.json",
+          "behavior_pack/spawn_rules/lantern_hare.spawn_rules.json",
+          "behavior_pack/loot_tables/entities/lantern_hare.json",
+          "resource_pack/entity/lantern_hare.entity.json",
+          "resource_pack/models/aionbound/whisperwood/lantern_hare.geo.json",
+          "resource_pack/animations/aionbound/whisperwood/lantern_hare.animation.json",
+          "resource_pack/textures/aionbound/whisperwood/lantern_hare.png"
+        ],
+        "shared_updates": [
+          "behavior_pack/scripts/catalog.js",
+          "behavior_pack/scripts/codex.js",
+          "resource_pack/texts/en_US.lang",
+          "behavior_pack/scripts/combat.js",
+          "behavior_pack/scripts/encounters.js",
+          "behavior_pack/scripts/state.js",
+          "behavior_pack/scripts/budgets.js",
+          "resource_pack/animation_controllers/aionbound.animation_controllers.json",
+          "resource_pack/render_controllers/aionbound.render_controllers.json"
+        ]
+      },
+      "warehouse_id": "lantern_hare"
+    },
+    {
+      "animations": {
+        "brief_declared": [
+          "death",
+          "hop_bound",
+          "hurt",
+          "idle_graze",
+          "look",
+          "walk"
+        ],
+        "exported_actual": [
+          "animation.aionforge_ww.mosskip_buck.action",
+          "animation.aionforge_ww.mosskip_buck.idle"
+        ],
+        "generic_exports_not_accepted_as_aliases": [
+          "animation.aionforge_ww.mosskip_buck.action",
+          "animation.aionforge_ww.mosskip_buck.idle"
+        ],
+        "missing_declared": [
+          "death",
+          "hop_bound",
+          "hurt",
+          "idle_graze",
+          "look",
+          "walk"
+        ],
+        "status": "BLOCKED_ROLE_CLIPS_ABSENT"
+      },
+      "apex": false,
+      "approved_ai_intent": [
+        "antler display",
+        "herd roam",
+        "retaliate",
+        "defend herd"
+      ],
+      "approved_role": "neutral_territorial",
+      "blockers": [
+        "HERD_DEFENSE_BINDING",
+        "LOOT_IDENTITY_W1_CREATIVE_001",
+        "PERSISTENCE_SEMANTICS",
+        "ANIMATION_COVERAGE",
+        "NATIVE_ASSET_DISPOSITION"
+      ],
+      "codex_dependency": {
+        "status": "ENTRY_TEXT_APPROVED_TRIGGER_IMPLEMENTATION_NOT_PROVEN",
+        "targets": [
+          "behavior_pack/scripts/catalog.js",
+          "behavior_pack/scripts/codex.js",
+          "behavior_pack/scripts/state.js"
+        ],
+        "trigger_intent": "defeat or rare peaceful study"
+      },
+      "construction_status": "SKELETON_FAMILIES_MAPPED_FULL_ENTITY_WITHHELD",
+      "creative_evidence": [
+        {
+          "excerpt": "### mosskip_buck (neutral / territorial)",
+          "line": 28,
+          "path": "program/crazycraft-pack-production-v1/studio-prep/creative/02_loot/LOOT_WHISPERWOOD.md"
+        },
+        {
+          "excerpt": "### mosskip_buck",
+          "line": 57,
+          "path": "program/crazycraft-pack-production-v1/studio-prep/creative/08_codex/CODEX_DESIGN.md"
+        },
+        {
+          "excerpt": "### mosskip_buck",
+          "line": 26,
+          "path": "program/crazycraft-pack-production-v1/studio-prep/creative/08_codex/CODEX_ENTRIES_CREATURES.md"
+        },
+        {
+          "excerpt": "| mosskip_buck | Neutral territorial | Near herd | Display antlers | Bound / charge | Defend herd | same + trophy path |",
+          "line": 100,
+          "path": "program/crazycraft-pack-production-v1/studio-prep/creative/WAVE_1_LIVING_WORLD_IMPLEMENTATION_CONTRACT.md"
+        },
+        {
+          "excerpt": "- Creatures: bark_wraith, briar_elk, hollow_widow_spider, lantern_hare, mosskip_buck, mosskip_doe, mosskip_fawn, rootback_boar, rot_wolf, thorn_stalker",
+          "line": 843,
+          "path": "program/crazycraft-pack-production-v1/studio-prep/creative/WAVE_1_LIVING_WORLD_IMPLEMENTATION_CONTRACT.md"
+        }
+      ],
+      "drop_dependencies": {
+        "narrative_only_identities_withheld": [
+          "Hardened Moss Plate",
+          "Mosskip Crown Fragment"
+        ],
+        "probability_status": "WITHHELD_W1_CREATIVE_004",
+        "table_target": "behavior_pack/loot_tables/entities/mosskip_buck.json",
+        "warehouse_identities_eligible_for_wiring": [
+          "moss_resin",
+          "whisper_bark",
+          "mosskip_trophy"
+        ]
+      },
+      "g7_pattern": "neutral_retaliatory_ground",
+      "g7_proven_component_families": [
+        "minecraft:collision_box",
+        "minecraft:health",
+        "minecraft:loot",
+        "minecraft:movement",
+        "minecraft:movement.basic",
+        "minecraft:navigation.walk",
+        "minecraft:physics",
+        "minecraft:type_family",
+        "minecraft:attack",
+        "minecraft:behavior.hurt_by_target",
+        "minecraft:behavior.melee_attack",
+        "minecraft:behavior.random_stroll",
+        "minecraft:behavior.look_at_player"
+      ],
+      "movement_intent": "ground bound-hop/charge",
+      "persistence_dependency": {
+        "boss_encounter": "not_applicable",
+        "discovery": "G7_STATE_SCHEMA_REUSABLE_WITH_SUCCESSOR_MIGRATION",
+        "ordinary_entity": "UNRESOLVED_ENTITY_PERSISTENCE_AND_DESPAWN_POLICY"
+      },
+      "required_unproven_extensions": [
+        "herd relationship and defense target acquisition",
+        "charge presentation tuning"
+      ],
+      "runtime_class": "neutral",
+      "runtime_id": "aionbound:mosskip_buck",
+      "source_assets": {
+        "animation": {
+          "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-001-whisperwood/assets/export/animations/mosskip_buck.animation.json",
+          "sha256": "a292f015d4b47535bc97b10645cf39813d8e6776a7b61bf5520476554110fd6d"
+        },
+        "bbmodel": {
+          "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-001-whisperwood/assets/editable/mosskip_buck.bbmodel",
+          "sha256": "a8442c16726d06b14f16c74731e744b9b3e163fc94adabbe729c26362852b69b"
+        },
+        "brief": {
+          "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-001-whisperwood/assets/briefs/mosskip_buck.json",
+          "sha256": "cd660285234491552fb513b009fa5533d2813b066261cc4a5082d1599d6908d6"
+        },
+        "export_texture": {
+          "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-001-whisperwood/assets/export/textures/mosskip_buck.png",
+          "sha256": "b36adbb242a0e3906fc39dbe1d9da3d61353bb12ff5a63afc88de73391471bd1"
+        },
+        "geometry": {
+          "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-001-whisperwood/assets/export/models/mosskip_buck.geo.json",
+          "sha256": "042161b4556006a34e7d609d6a4e7fab9d49cea91a3b0fd55adafc7e60870204"
+        },
+        "png": {
+          "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-001-whisperwood/assets/editable/mosskip_buck.png",
+          "sha256": "b36adbb242a0e3906fc39dbe1d9da3d61353bb12ff5a63afc88de73391471bd1"
+        }
+      },
+      "spawn_dependencies": [
+        "near mosskip herd"
+      ],
+      "target_files": {
+        "additional_runtime_targets": [
+          "resource_pack/sounds/sound_definitions.json"
+        ],
+        "create": [
+          "behavior_pack/entities/mosskip_buck.entity.json",
+          "behavior_pack/spawn_rules/mosskip_buck.spawn_rules.json",
+          "behavior_pack/loot_tables/entities/mosskip_buck.json",
+          "resource_pack/entity/mosskip_buck.entity.json",
+          "resource_pack/models/aionbound/whisperwood/mosskip_buck.geo.json",
+          "resource_pack/animations/aionbound/whisperwood/mosskip_buck.animation.json",
+          "resource_pack/textures/aionbound/whisperwood/mosskip_buck.png"
+        ],
+        "shared_updates": [
+          "behavior_pack/scripts/catalog.js",
+          "behavior_pack/scripts/codex.js",
+          "resource_pack/texts/en_US.lang",
+          "behavior_pack/scripts/combat.js",
+          "behavior_pack/scripts/encounters.js",
+          "behavior_pack/scripts/state.js",
+          "behavior_pack/scripts/budgets.js",
+          "resource_pack/animation_controllers/aionbound.animation_controllers.json",
+          "resource_pack/render_controllers/aionbound.render_controllers.json"
+        ]
+      },
+      "warehouse_id": "mosskip_buck"
+    },
+    {
+      "animations": {
+        "brief_declared": [
+          "death",
+          "hop_bound",
+          "hurt",
+          "idle_graze",
+          "look",
+          "walk"
+        ],
+        "exported_actual": [
+          "animation.aionforge_ww.mosskip_doe.action",
+          "animation.aionforge_ww.mosskip_doe.idle"
+        ],
+        "generic_exports_not_accepted_as_aliases": [
+          "animation.aionforge_ww.mosskip_doe.action",
+          "animation.aionforge_ww.mosskip_doe.idle"
+        ],
+        "missing_declared": [
+          "death",
+          "hop_bound",
+          "hurt",
+          "idle_graze",
+          "look",
+          "walk"
+        ],
+        "status": "BLOCKED_ROLE_CLIPS_ABSENT"
+      },
+      "apex": false,
+      "approved_ai_intent": [
+        "graze/watch",
+        "herd roam",
+        "flee",
+        "light defense of calves"
+      ],
+      "approved_role": "ambient_adult",
+      "blockers": [
+        "FLEE_TARGET_POLICY",
+        "HERD_DEFENSE_BINDING",
+        "PERSISTENCE_SEMANTICS",
+        "ANIMATION_COVERAGE",
+        "NATIVE_ASSET_DISPOSITION"
+      ],
+      "codex_dependency": {
+        "status": "ENTRY_TEXT_APPROVED_TRIGGER_IMPLEMENTATION_NOT_PROVEN",
+        "targets": [
+          "behavior_pack/scripts/catalog.js",
+          "behavior_pack/scripts/codex.js",
+          "behavior_pack/scripts/state.js"
+        ],
+        "trigger_intent": "observe or gentle approach"
+      },
+      "construction_status": "SKELETON_FAMILIES_MAPPED_FULL_ENTITY_WITHHELD",
+      "creative_evidence": [
+        {
+          "excerpt": "### mosskip_doe (ambient)",
+          "line": 20,
+          "path": "program/crazycraft-pack-production-v1/studio-prep/creative/02_loot/LOOT_WHISPERWOOD.md"
+        },
+        {
+          "excerpt": "### mosskip_doe",
+          "line": 51,
+          "path": "program/crazycraft-pack-production-v1/studio-prep/creative/08_codex/CODEX_DESIGN.md"
+        },
+        {
+          "excerpt": "### mosskip_doe",
+          "line": 18,
+          "path": "program/crazycraft-pack-production-v1/studio-prep/creative/08_codex/CODEX_ENTRIES_CREATURES.md"
+        },
+        {
+          "excerpt": "| mosskip_doe | Ambient adult | Herds, trails | Graze watch | Bound hop | Flee / light defend calves | same |",
+          "line": 99,
+          "path": "program/crazycraft-pack-production-v1/studio-prep/creative/WAVE_1_LIVING_WORLD_IMPLEMENTATION_CONTRACT.md"
+        },
+        {
+          "excerpt": "- Creatures: bark_wraith, briar_elk, hollow_widow_spider, lantern_hare, mosskip_buck, mosskip_doe, mosskip_fawn, rootback_boar, rot_wolf, thorn_stalker",
+          "line": 843,
+          "path": "program/crazycraft-pack-production-v1/studio-prep/creative/WAVE_1_LIVING_WORLD_IMPLEMENTATION_CONTRACT.md"
+        }
+      ],
+      "drop_dependencies": {
+        "narrative_only_identities_withheld": [
+          "Lantern-adjacent soft hide scrap",
+          "Mosskip Antler Bud"
+        ],
+        "probability_status": "WITHHELD_W1_CREATIVE_004",
+        "table_target": "behavior_pack/loot_tables/entities/mosskip_doe.json",
+        "warehouse_identities_eligible_for_wiring": [
+          "moss_resin"
+        ]
+      },
+      "g7_pattern": "ambient_ground",
+      "g7_proven_component_families": [
+        "minecraft:collision_box",
+        "minecraft:health",
+        "minecraft:loot",
+        "minecraft:movement",
+        "minecraft:movement.basic",
+        "minecraft:navigation.walk",
+        "minecraft:physics",
+        "minecraft:type_family",
+        "minecraft:behavior.random_stroll",
+        "minecraft:behavior.look_at_player"
+      ],
+      "movement_intent": "ground bound-hop",
+      "persistence_dependency": {
+        "boss_encounter": "not_applicable",
+        "discovery": "G7_STATE_SCHEMA_REUSABLE_WITH_SUCCESSOR_MIGRATION",
+        "ordinary_entity": "UNRESOLVED_ENTITY_PERSISTENCE_AND_DESPAWN_POLICY"
+      },
+      "required_unproven_extensions": [
+        "flee behavior family and target filters",
+        "calf relationship and conditional defense"
+      ],
+      "runtime_class": "ambient",
+      "runtime_id": "aionbound:mosskip_doe",
+      "source_assets": {
+        "animation": {
+          "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-001-whisperwood/assets/export/animations/mosskip_doe.animation.json",
+          "sha256": "728b54149691b1b8785d93c65e596711665502a1d444a9d0fccb64512de3dfd5"
+        },
+        "bbmodel": {
+          "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-001-whisperwood/assets/editable/mosskip_doe.bbmodel",
+          "sha256": "6466e9aa046bd2e1eaf812ba418027d6dbe0cb89e4d1a821e4dd302447ae104a"
+        },
+        "brief": {
+          "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-001-whisperwood/assets/briefs/mosskip_doe.json",
+          "sha256": "fe970d535af362e5f2bdb89b2a205d8ef2d4bf8df21f58b88094ceae34e257f4"
+        },
+        "export_texture": {
+          "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-001-whisperwood/assets/export/textures/mosskip_doe.png",
+          "sha256": "98b94579832a40f233f9ea3163b525a304cc8cd7443fa1876fcfca3c23c2705c"
+        },
+        "geometry": {
+          "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-001-whisperwood/assets/export/models/mosskip_doe.geo.json",
+          "sha256": "62536b5936cb31ad0a2249e9a3743d6a153a4e81b8a1dae9e7ced65f95615c85"
+        },
+        "png": {
+          "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-001-whisperwood/assets/editable/mosskip_doe.png",
+          "sha256": "98b94579832a40f233f9ea3163b525a304cc8cd7443fa1876fcfca3c23c2705c"
+        }
+      },
+      "spawn_dependencies": [
+        "herds",
+        "trails"
+      ],
+      "target_files": {
+        "additional_runtime_targets": [
+          "resource_pack/sounds/sound_definitions.json"
+        ],
+        "create": [
+          "behavior_pack/entities/mosskip_doe.entity.json",
+          "behavior_pack/spawn_rules/mosskip_doe.spawn_rules.json",
+          "behavior_pack/loot_tables/entities/mosskip_doe.json",
+          "resource_pack/entity/mosskip_doe.entity.json",
+          "resource_pack/models/aionbound/whisperwood/mosskip_doe.geo.json",
+          "resource_pack/animations/aionbound/whisperwood/mosskip_doe.animation.json",
+          "resource_pack/textures/aionbound/whisperwood/mosskip_doe.png"
+        ],
+        "shared_updates": [
+          "behavior_pack/scripts/catalog.js",
+          "behavior_pack/scripts/codex.js",
+          "resource_pack/texts/en_US.lang",
+          "behavior_pack/scripts/combat.js",
+          "behavior_pack/scripts/encounters.js",
+          "behavior_pack/scripts/state.js",
+          "behavior_pack/scripts/budgets.js",
+          "resource_pack/animation_controllers/aionbound.animation_controllers.json",
+          "resource_pack/render_controllers/aionbound.render_controllers.json"
+        ]
+      },
+      "warehouse_id": "mosskip_doe"
+    },
+    {
+      "animations": {
+        "brief_declared": [
+          "death",
+          "hop",
+          "hurt",
+          "idle",
+          "skitter"
+        ],
+        "exported_actual": [
+          "animation.aionforge_ww.mosskip_fawn.action",
+          "animation.aionforge_ww.mosskip_fawn.idle"
+        ],
+        "generic_exports_not_accepted_as_aliases": [
+          "animation.aionforge_ww.mosskip_fawn.action",
+          "animation.aionforge_ww.mosskip_fawn.idle"
+        ],
+        "missing_declared": [
+          "death",
+          "hop",
+          "hurt",
+          "idle",
+          "skitter"
+        ],
+        "status": "BLOCKED_ROLE_CLIPS_ABSENT"
+      },
+      "apex": false,
+      "approved_ai_intent": [
+        "graze/idle",
+        "roam",
+        "flee"
+      ],
+      "approved_role": "ambient_young",
+      "blockers": [
+        "FLEE_TARGET_POLICY",
+        "PERSISTENCE_SEMANTICS",
+        "ANIMATION_COVERAGE",
+        "NATIVE_ASSET_DISPOSITION"
+      ],
+      "codex_dependency": {
+        "status": "ENTRY_TEXT_APPROVED_TRIGGER_IMPLEMENTATION_NOT_PROVEN",
+        "targets": [
+          "behavior_pack/scripts/catalog.js",
+          "behavior_pack/scripts/codex.js",
+          "behavior_pack/scripts/state.js"
+        ],
+        "trigger_intent": "observe in sun-flecked clearings"
+      },
+      "construction_status": "SKELETON_FAMILIES_MAPPED_FULL_ENTITY_WITHHELD",
+      "creative_evidence": [
+        {
+          "excerpt": "### mosskip_fawn (ambient young)",
+          "line": 12,
+          "path": "program/crazycraft-pack-production-v1/studio-prep/creative/02_loot/LOOT_WHISPERWOOD.md"
+        },
+        {
+          "excerpt": "### mosskip_fawn",
+          "line": 43,
+          "path": "program/crazycraft-pack-production-v1/studio-prep/creative/08_codex/CODEX_DESIGN.md"
+        },
+        {
+          "excerpt": "### mosskip_fawn",
+          "line": 9,
+          "path": "program/crazycraft-pack-production-v1/studio-prep/creative/08_codex/CODEX_ENTRIES_CREATURES.md"
+        },
+        {
+          "excerpt": "| mosskip_fawn | Ambient young | Clearings, near does | Graze hop | Bound hop | Flee | LOOT_WHISPERWOOD |",
+          "line": 98,
+          "path": "program/crazycraft-pack-production-v1/studio-prep/creative/WAVE_1_LIVING_WORLD_IMPLEMENTATION_CONTRACT.md"
+        },
+        {
+          "excerpt": "- Creatures: bark_wraith, briar_elk, hollow_widow_spider, lantern_hare, mosskip_buck, mosskip_doe, mosskip_fawn, rootback_boar, rot_wolf, thorn_stalker",
+          "line": 843,
+          "path": "program/crazycraft-pack-production-v1/studio-prep/creative/WAVE_1_LIVING_WORLD_IMPLEMENTATION_CONTRACT.md"
+        }
+      ],
+      "drop_dependencies": {
+        "narrative_only_identities_withheld": [
+          "Mosskip Tuft"
+        ],
+        "probability_status": "WITHHELD_W1_CREATIVE_004",
+        "table_target": "behavior_pack/loot_tables/entities/mosskip_fawn.json",
+        "warehouse_identities_eligible_for_wiring": [
+          "moss_resin",
+          "star_grass"
+        ]
+      },
+      "g7_pattern": "ambient_ground",
+      "g7_proven_component_families": [
+        "minecraft:collision_box",
+        "minecraft:health",
+        "minecraft:loot",
+        "minecraft:movement",
+        "minecraft:movement.basic",
+        "minecraft:navigation.walk",
+        "minecraft:physics",
+        "minecraft:type_family",
+        "minecraft:behavior.random_stroll",
+        "minecraft:behavior.look_at_player"
+      ],
+      "movement_intent": "ground bound-hop",
+      "persistence_dependency": {
+        "boss_encounter": "not_applicable",
+        "discovery": "G7_STATE_SCHEMA_REUSABLE_WITH_SUCCESSOR_MIGRATION",
+        "ordinary_entity": "UNRESOLVED_ENTITY_PERSISTENCE_AND_DESPAWN_POLICY"
+      },
+      "required_unproven_extensions": [
+        "flee behavior family and target filters"
+      ],
+      "runtime_class": "ambient",
+      "runtime_id": "aionbound:mosskip_fawn",
+      "source_assets": {
+        "animation": {
+          "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-001-whisperwood/assets/export/animations/mosskip_fawn.animation.json",
+          "sha256": "5acc17e0ffe32db240aa004a6b8c76252b0faaca94aa8d93f24a417faf1d0440"
+        },
+        "bbmodel": {
+          "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-001-whisperwood/assets/editable/mosskip_fawn.bbmodel",
+          "sha256": "7f62aaba2b888180ca11bc68683cbc5157d97a9211bd313ba4c26eee1eec1ab1"
+        },
+        "brief": {
+          "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-001-whisperwood/assets/briefs/mosskip_fawn.json",
+          "sha256": "79021337ea2e9400fc2175aef82256da12e3510e626b8ef2d335aeb0e0cd6b15"
+        },
+        "export_texture": {
+          "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-001-whisperwood/assets/export/textures/mosskip_fawn.png",
+          "sha256": "bcf58948be4263960d058cdaa0380e6e97e94ed82edc6f362a29348bb1d731ba"
+        },
+        "geometry": {
+          "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-001-whisperwood/assets/export/models/mosskip_fawn.geo.json",
+          "sha256": "dbac785890a228e2ed39ed08afeee93babef424073ccfa87e178b7eb74e4a683"
+        },
+        "png": {
+          "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-001-whisperwood/assets/editable/mosskip_fawn.png",
+          "sha256": "bcf58948be4263960d058cdaa0380e6e97e94ed82edc6f362a29348bb1d731ba"
+        }
+      },
+      "spawn_dependencies": [
+        "clearings",
+        "near mosskip_doe"
+      ],
+      "target_files": {
+        "additional_runtime_targets": [
+          "resource_pack/sounds/sound_definitions.json"
+        ],
+        "create": [
+          "behavior_pack/entities/mosskip_fawn.entity.json",
+          "behavior_pack/spawn_rules/mosskip_fawn.spawn_rules.json",
+          "behavior_pack/loot_tables/entities/mosskip_fawn.json",
+          "resource_pack/entity/mosskip_fawn.entity.json",
+          "resource_pack/models/aionbound/whisperwood/mosskip_fawn.geo.json",
+          "resource_pack/animations/aionbound/whisperwood/mosskip_fawn.animation.json",
+          "resource_pack/textures/aionbound/whisperwood/mosskip_fawn.png"
+        ],
+        "shared_updates": [
+          "behavior_pack/scripts/catalog.js",
+          "behavior_pack/scripts/codex.js",
+          "resource_pack/texts/en_US.lang",
+          "behavior_pack/scripts/combat.js",
+          "behavior_pack/scripts/encounters.js",
+          "behavior_pack/scripts/state.js",
+          "behavior_pack/scripts/budgets.js",
+          "resource_pack/animation_controllers/aionbound.animation_controllers.json",
+          "resource_pack/render_controllers/aionbound.render_controllers.json"
+        ]
+      },
+      "warehouse_id": "mosskip_fawn"
+    },
+    {
+      "animations": {
+        "brief_declared": [
+          "charge_snort",
+          "death",
+          "hurt",
+          "idle",
+          "walk_trundle"
+        ],
+        "exported_actual": [
+          "animation.aionforge_ww.rootback_boar.action",
+          "animation.aionforge_ww.rootback_boar.idle"
+        ],
+        "generic_exports_not_accepted_as_aliases": [
+          "animation.aionforge_ww.rootback_boar.action",
+          "animation.aionforge_ww.rootback_boar.idle"
+        ],
+        "missing_declared": [
+          "charge_snort",
+          "death",
+          "hurt",
+          "idle",
+          "walk_trundle"
+        ],
+        "status": "BLOCKED_ROLE_CLIPS_ABSENT"
+      },
+      "apex": false,
+      "approved_ai_intent": [
+        "root dig",
+        "roam",
+        "retaliate with gore"
+      ],
+      "approved_role": "neutral_provoked",
+      "blockers": [
+        "LOOT_IDENTITY_W1_CREATIVE_001",
+        "PERSISTENCE_SEMANTICS",
+        "ANIMATION_COVERAGE",
+        "NATIVE_ASSET_DISPOSITION"
+      ],
+      "codex_dependency": {
+        "status": "ENTRY_TEXT_APPROVED_TRIGGER_IMPLEMENTATION_NOT_PROVEN",
+        "targets": [
+          "behavior_pack/scripts/catalog.js",
+          "behavior_pack/scripts/codex.js",
+          "behavior_pack/scripts/state.js"
+        ],
+        "trigger_intent": "defeat when provoked"
+      },
+      "construction_status": "SKELETON_FAMILIES_MAPPED_FULL_ENTITY_WITHHELD",
+      "creative_evidence": [
+        {
+          "excerpt": "### rootback_boar (neutral / hostile if provoked)",
+          "line": 45,
+          "path": "program/crazycraft-pack-production-v1/studio-prep/creative/02_loot/LOOT_WHISPERWOOD.md"
+        },
+        {
+          "excerpt": "| rootback_boar | Medium | Understory |",
+          "line": 56,
+          "path": "program/crazycraft-pack-production-v1/studio-prep/creative/06_world_gen/WORLD_GENERATION.md"
+        },
+        {
+          "excerpt": "### rootback_boar",
+          "line": 69,
+          "path": "program/crazycraft-pack-production-v1/studio-prep/creative/08_codex/CODEX_DESIGN.md"
+        },
+        {
+          "excerpt": "### rootback_boar",
+          "line": 42,
+          "path": "program/crazycraft-pack-production-v1/studio-prep/creative/08_codex/CODEX_ENTRIES_CREATURES.md"
+        },
+        {
+          "excerpt": "| rootback_boar | Neutral / provoked | Understory | Root dig | Charge | Gore if hit | same |",
+          "line": 102,
+          "path": "program/crazycraft-pack-production-v1/studio-prep/creative/WAVE_1_LIVING_WORLD_IMPLEMENTATION_CONTRACT.md"
+        },
+        {
+          "excerpt": "- Creatures: bark_wraith, briar_elk, hollow_widow_spider, lantern_hare, mosskip_buck, mosskip_doe, mosskip_fawn, rootback_boar, rot_wolf, thorn_stalker",
+          "line": 843,
+          "path": "program/crazycraft-pack-production-v1/studio-prep/creative/WAVE_1_LIVING_WORLD_IMPLEMENTATION_CONTRACT.md"
+        }
+      ],
+      "drop_dependencies": {
+        "narrative_only_identities_withheld": [
+          "Boar Tusk Shard",
+          "Root Plate"
+        ],
+        "probability_status": "WITHHELD_W1_CREATIVE_004",
+        "table_target": "behavior_pack/loot_tables/entities/rootback_boar.json",
+        "warehouse_identities_eligible_for_wiring": [
+          "whisper_bark",
+          "root_heart"
+        ]
+      },
+      "g7_pattern": "neutral_retaliatory_ground",
+      "g7_proven_component_families": [
+        "minecraft:collision_box",
+        "minecraft:health",
+        "minecraft:loot",
+        "minecraft:movement",
+        "minecraft:movement.basic",
+        "minecraft:navigation.walk",
+        "minecraft:physics",
+        "minecraft:type_family",
+        "minecraft:attack",
+        "minecraft:behavior.hurt_by_target",
+        "minecraft:behavior.melee_attack",
+        "minecraft:behavior.random_stroll",
+        "minecraft:behavior.look_at_player"
+      ],
+      "movement_intent": "ground trundle/charge",
+      "persistence_dependency": {
+        "boss_encounter": "not_applicable",
+        "discovery": "G7_STATE_SCHEMA_REUSABLE_WITH_SUCCESSOR_MIGRATION",
+        "ordinary_entity": "UNRESOLVED_ENTITY_PERSISTENCE_AND_DESPAWN_POLICY"
+      },
+      "required_unproven_extensions": [
+        "charge presentation tuning"
+      ],
+      "runtime_class": "neutral",
+      "runtime_id": "aionbound:rootback_boar",
+      "source_assets": {
+        "animation": {
+          "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-001-whisperwood/assets/export/animations/rootback_boar.animation.json",
+          "sha256": "6d03ef3080d9c26908d9b40f5eb604f4c4ce082d0d01e6ec466559cfbf5d7831"
+        },
+        "bbmodel": {
+          "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-001-whisperwood/assets/editable/rootback_boar.bbmodel",
+          "sha256": "0df696e3b20275f9f8c140c505fe32b924cbf1d66013f22104db3d3b0fed3a26"
+        },
+        "brief": {
+          "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-001-whisperwood/assets/briefs/rootback_boar.json",
+          "sha256": "47b299778ba7c4d6795586940b3ca5d80c59ead1d5f086018f772b06312bba9b"
+        },
+        "export_texture": {
+          "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-001-whisperwood/assets/export/textures/rootback_boar.png",
+          "sha256": "69b9ebd2b1d01df0b4025dfd0fab502d13508ffa6ee022ad5ec7a08bdd85c5a4"
+        },
+        "geometry": {
+          "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-001-whisperwood/assets/export/models/rootback_boar.geo.json",
+          "sha256": "16af3809eecd524b20172d5b455efd43819dd3aff186173abf4a17d77eeda4ef"
+        },
+        "png": {
+          "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-001-whisperwood/assets/editable/rootback_boar.png",
+          "sha256": "69b9ebd2b1d01df0b4025dfd0fab502d13508ffa6ee022ad5ec7a08bdd85c5a4"
+        }
+      },
+      "spawn_dependencies": [
+        "understory"
+      ],
+      "target_files": {
+        "additional_runtime_targets": [
+          "resource_pack/sounds/sound_definitions.json"
+        ],
+        "create": [
+          "behavior_pack/entities/rootback_boar.entity.json",
+          "behavior_pack/spawn_rules/rootback_boar.spawn_rules.json",
+          "behavior_pack/loot_tables/entities/rootback_boar.json",
+          "resource_pack/entity/rootback_boar.entity.json",
+          "resource_pack/models/aionbound/whisperwood/rootback_boar.geo.json",
+          "resource_pack/animations/aionbound/whisperwood/rootback_boar.animation.json",
+          "resource_pack/textures/aionbound/whisperwood/rootback_boar.png"
+        ],
+        "shared_updates": [
+          "behavior_pack/scripts/catalog.js",
+          "behavior_pack/scripts/codex.js",
+          "resource_pack/texts/en_US.lang",
+          "behavior_pack/scripts/combat.js",
+          "behavior_pack/scripts/encounters.js",
+          "behavior_pack/scripts/state.js",
+          "behavior_pack/scripts/budgets.js",
+          "resource_pack/animation_controllers/aionbound.animation_controllers.json",
+          "resource_pack/render_controllers/aionbound.render_controllers.json"
+        ]
+      },
+      "warehouse_id": "rootback_boar"
+    },
+    {
+      "animations": {
+        "brief_declared": [
+          "death",
+          "hurt",
+          "idle",
+          "run",
+          "snarl_attack",
+          "walk"
+        ],
+        "exported_actual": [
+          "animation.aionforge_ww.rot_wolf.action",
+          "animation.aionforge_ww.rot_wolf.idle"
+        ],
+        "generic_exports_not_accepted_as_aliases": [
+          "animation.aionforge_ww.rot_wolf.action",
+          "animation.aionforge_ww.rot_wolf.idle"
+        ],
+        "missing_declared": [
+          "death",
+          "hurt",
+          "idle",
+          "run",
+          "snarl_attack",
+          "walk"
+        ],
+        "status": "BLOCKED_ROLE_CLIPS_ABSENT"
+      },
+      "apex": false,
+      "approved_ai_intent": [
+        "pace",
+        "player acquisition",
+        "pursue",
+        "pack melee"
+      ],
+      "approved_role": "hostile_pack",
+      "blockers": [
+        "PACK_COORDINATION_BINDING",
+        "LOOT_IDENTITY_W1_CREATIVE_001",
+        "PERSISTENCE_SEMANTICS",
+        "ANIMATION_COVERAGE",
+        "NATIVE_ASSET_DISPOSITION"
+      ],
+      "codex_dependency": {
+        "status": "ENTRY_TEXT_APPROVED_TRIGGER_IMPLEMENTATION_NOT_PROVEN",
+        "targets": [
+          "behavior_pack/scripts/catalog.js",
+          "behavior_pack/scripts/codex.js",
+          "behavior_pack/scripts/state.js"
+        ],
+        "trigger_intent": "survive a pack"
+      },
+      "construction_status": "SKELETON_FAMILIES_MAPPED_FULL_ENTITY_WITHHELD",
+      "creative_evidence": [
+        {
+          "excerpt": "3. **15\u201330:** Hunter camp discovery; first hostile (rot_wolf / thorn_stalker fringe); craft mossfang_spear.",
+          "line": 135,
+          "path": "program/crazycraft-pack-production-v1/studio-prep/creative/01_progression/PLAYER_JOURNEY.md"
+        },
+        {
+          "excerpt": "### rot_wolf (hostile pack)",
+          "line": 63,
+          "path": "program/crazycraft-pack-production-v1/studio-prep/creative/02_loot/LOOT_WHISPERWOOD.md"
+        },
+        {
+          "excerpt": "| rot_wolf packs | Medium | Night spike |",
+          "line": 57,
+          "path": "program/crazycraft-pack-production-v1/studio-prep/creative/06_world_gen/WORLD_GENERATION.md"
+        },
+        {
+          "excerpt": "- **Howl Call** \u2014 summons rot_wolf pair (limited)",
+          "line": 62,
+          "path": "program/crazycraft-pack-production-v1/studio-prep/creative/07_bosses/BOSS_PROGRESSION.md"
+        },
+        {
+          "excerpt": "### rot_wolf",
+          "line": 81,
+          "path": "program/crazycraft-pack-production-v1/studio-prep/creative/08_codex/CODEX_DESIGN.md"
+        },
+        {
+          "excerpt": "### rot_wolf",
+          "line": 58,
+          "path": "program/crazycraft-pack-production-v1/studio-prep/creative/08_codex/CODEX_ENTRIES_CREATURES.md"
+        },
+        {
+          "excerpt": "| rot_wolf | Hostile pack | Night, deep trails | Pace | Pack run | Pack melee | same |",
+          "line": 104,
+          "path": "program/crazycraft-pack-production-v1/studio-prep/creative/WAVE_1_LIVING_WORLD_IMPLEMENTATION_CONTRACT.md"
+        },
+        {
+          "excerpt": "- Creatures: bark_wraith, briar_elk, hollow_widow_spider, lantern_hare, mosskip_buck, mosskip_doe, mosskip_fawn, rootback_boar, rot_wolf, thorn_stalker",
+          "line": 843,
+          "path": "program/crazycraft-pack-production-v1/studio-prep/creative/WAVE_1_LIVING_WORLD_IMPLEMENTATION_CONTRACT.md"
+        }
+      ],
+      "drop_dependencies": {
+        "narrative_only_identities_withheld": [
+          "Rot Fang",
+          "Tainted Pelt",
+          "Marrow Scrap",
+          "Pack Alpha Mark"
+        ],
+        "probability_status": "WITHHELD_W1_CREATIVE_004",
+        "table_target": "behavior_pack/loot_tables/entities/rot_wolf.json",
+        "warehouse_identities_eligible_for_wiring": []
+      },
+      "g7_pattern": "hostile_melee_ground",
+      "g7_proven_component_families": [
+        "minecraft:collision_box",
+        "minecraft:health",
+        "minecraft:loot",
+        "minecraft:movement",
+        "minecraft:movement.basic",
+        "minecraft:navigation.walk",
+        "minecraft:physics",
+        "minecraft:type_family",
+        "minecraft:attack",
+        "minecraft:behavior.hurt_by_target",
+        "minecraft:behavior.melee_attack",
+        "minecraft:behavior.random_stroll",
+        "minecraft:behavior.look_at_player",
+        "minecraft:behavior.nearest_attackable_target"
+      ],
+      "movement_intent": "ground pack-run",
+      "persistence_dependency": {
+        "boss_encounter": "not_applicable",
+        "discovery": "G7_STATE_SCHEMA_REUSABLE_WITH_SUCCESSOR_MIGRATION",
+        "ordinary_entity": "UNRESOLVED_ENTITY_PERSISTENCE_AND_DESPAWN_POLICY"
+      },
+      "required_unproven_extensions": [
+        "bounded pack coordination and pack cap"
+      ],
+      "runtime_class": "hostile",
+      "runtime_id": "aionbound:rot_wolf",
+      "source_assets": {
+        "animation": {
+          "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-001-whisperwood/assets/export/animations/rot_wolf.animation.json",
+          "sha256": "99cca15bd34fdb14573a694c64fd7f0831ab94e61531a6626e8204ee2949fc04"
+        },
+        "bbmodel": {
+          "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-001-whisperwood/assets/editable/rot_wolf.bbmodel",
+          "sha256": "1fc09e84592d68b1174fc2682c018e0f358faa1c6c3d2a1283445624f1d60d92"
+        },
+        "brief": {
+          "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-001-whisperwood/assets/briefs/rot_wolf.json",
+          "sha256": "f2a4d03a9de809bcdb81bf83a6b69aee59e9524bb30ee371536b2c2425c0acc2"
+        },
+        "export_texture": {
+          "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-001-whisperwood/assets/export/textures/rot_wolf.png",
+          "sha256": "f4564a9874314303668c8ea58da3f37d7686a373852cdad34f93f9e6bfd07d06"
+        },
+        "geometry": {
+          "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-001-whisperwood/assets/export/models/rot_wolf.geo.json",
+          "sha256": "ea52f58dd8883c8e1bbd7e4408544781aeb03eeb4660c804569f8670922a8e64"
+        },
+        "png": {
+          "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-001-whisperwood/assets/editable/rot_wolf.png",
+          "sha256": "f4564a9874314303668c8ea58da3f37d7686a373852cdad34f93f9e6bfd07d06"
+        }
+      },
+      "spawn_dependencies": [
+        "night",
+        "deep trails",
+        "pack grouping"
+      ],
+      "target_files": {
+        "additional_runtime_targets": [
+          "resource_pack/sounds/sound_definitions.json"
+        ],
+        "create": [
+          "behavior_pack/entities/rot_wolf.entity.json",
+          "behavior_pack/spawn_rules/rot_wolf.spawn_rules.json",
+          "behavior_pack/loot_tables/entities/rot_wolf.json",
+          "resource_pack/entity/rot_wolf.entity.json",
+          "resource_pack/models/aionbound/whisperwood/rot_wolf.geo.json",
+          "resource_pack/animations/aionbound/whisperwood/rot_wolf.animation.json",
+          "resource_pack/textures/aionbound/whisperwood/rot_wolf.png"
+        ],
+        "shared_updates": [
+          "behavior_pack/scripts/catalog.js",
+          "behavior_pack/scripts/codex.js",
+          "resource_pack/texts/en_US.lang",
+          "behavior_pack/scripts/combat.js",
+          "behavior_pack/scripts/encounters.js",
+          "behavior_pack/scripts/state.js",
+          "behavior_pack/scripts/budgets.js",
+          "resource_pack/animation_controllers/aionbound.animation_controllers.json",
+          "resource_pack/render_controllers/aionbound.render_controllers.json"
+        ]
+      },
+      "warehouse_id": "rot_wolf"
+    },
+    {
+      "animations": {
+        "brief_declared": [
+          "attack_slash",
+          "death",
+          "hurt",
+          "idle_crouch",
+          "pounce_pose",
+          "stalk_walk"
+        ],
+        "exported_actual": [
+          "animation.aionforge_ww.thorn_stalker.action",
+          "animation.aionforge_ww.thorn_stalker.idle"
+        ],
+        "generic_exports_not_accepted_as_aliases": [
+          "animation.aionforge_ww.thorn_stalker.action",
+          "animation.aionforge_ww.thorn_stalker.idle"
+        ],
+        "missing_declared": [
+          "attack_slash",
+          "death",
+          "hurt",
+          "idle_crouch",
+          "pounce_pose",
+          "stalk_walk"
+        ],
+        "status": "BLOCKED_ROLE_CLIPS_ABSENT"
+      },
+      "apex": true,
+      "approved_ai_intent": [
+        "camouflage idle",
+        "stalk",
+        "lunge",
+        "Thorn Court phase kit"
+      ],
+      "approved_role": "hostile_elite_chapter_apex",
+      "blockers": [
+        "BOSS_ENVELOPE_W1_CREATIVE_003",
+        "LOOT_IDENTITY_W1_CREATIVE_001",
+        "LOOT_RANGES_W1_CREATIVE_004",
+        "PERSISTENCE_SEMANTICS",
+        "ANIMATION_COVERAGE",
+        "NATIVE_ASSET_DISPOSITION"
+      ],
+      "codex_dependency": {
+        "status": "ENTRY_TEXT_APPROVED_TRIGGER_IMPLEMENTATION_NOT_PROVEN",
+        "targets": [
+          "behavior_pack/scripts/catalog.js",
+          "behavior_pack/scripts/codex.js",
+          "behavior_pack/scripts/state.js"
+        ],
+        "trigger_intent": "defeat elite or Thorn Court apex"
+      },
+      "construction_status": "SKELETON_FAMILIES_MAPPED_FULL_ENTITY_WITHHELD",
+      "creative_evidence": [
+        {
+          "excerpt": "3. **15\u201330:** Hunter camp discovery; first hostile (rot_wolf / thorn_stalker fringe); craft mossfang_spear.",
+          "line": 135,
+          "path": "program/crazycraft-pack-production-v1/studio-prep/creative/01_progression/PLAYER_JOURNEY.md"
+        },
+        {
+          "excerpt": "**Primary boss entity:** `thorn_stalker` (arena form)",
+          "line": 22,
+          "path": "program/crazycraft-pack-production-v1/studio-prep/creative/02_loot/LOOT_BOSSES.md"
+        },
+        {
+          "excerpt": "### thorn_stalker (hostile elite)",
+          "line": 72,
+          "path": "program/crazycraft-pack-production-v1/studio-prep/creative/02_loot/LOOT_WHISPERWOOD.md"
+        },
+        {
+          "excerpt": "| thorn_stalker | Low | Deep / briar |",
+          "line": 58,
+          "path": "program/crazycraft-pack-production-v1/studio-prep/creative/06_world_gen/WORLD_GENERATION.md"
+        },
+        {
+          "excerpt": "| Thorn Court (thorn_stalker) | late `ww` | WW weapon + armor pieces | Root circle / totem / briar |",
+          "line": 31,
+          "path": "program/crazycraft-pack-production-v1/studio-prep/creative/07_bosses/BOSS_PROGRESSION.md"
+        },
+        {
+          "excerpt": "**Boss:** `thorn_stalker` (apex form)",
+          "line": 43,
+          "path": "program/crazycraft-pack-production-v1/studio-prep/creative/07_bosses/BOSS_PROGRESSION.md"
+        },
+        {
+          "excerpt": "### thorn_stalker",
+          "line": 87,
+          "path": "program/crazycraft-pack-production-v1/studio-prep/creative/08_codex/CODEX_DESIGN.md"
+        },
+        {
+          "excerpt": "### thorn_stalker",
+          "line": 66,
+          "path": "program/crazycraft-pack-production-v1/studio-prep/creative/08_codex/CODEX_ENTRIES_CREATURES.md"
+        },
+        {
+          "excerpt": "3. `thorn_stalker` patrol",
+          "line": 28,
+          "path": "program/crazycraft-pack-production-v1/studio-prep/creative/09_environment/ENVIRONMENTAL_STORYTELLING.md"
+        },
+        {
+          "excerpt": "| thorn_stalker | Hostile elite / **Ch1 apex** | Deep briar, arena | Camouflage idle | Stalk / lunge | Full apex kit BOSS doc | skull seal |",
+          "line": 105,
+          "path": "program/crazycraft-pack-production-v1/studio-prep/creative/WAVE_1_LIVING_WORLD_IMPLEMENTATION_CONTRACT.md"
+        },
+        {
+          "excerpt": "**Apex:** Thorn Court \u2014 `thorn_stalker` phases in `07_bosses/BOSS_PROGRESSION.md`.",
+          "line": 111,
+          "path": "program/crazycraft-pack-production-v1/studio-prep/creative/WAVE_1_LIVING_WORLD_IMPLEMENTATION_CONTRACT.md"
+        },
+        {
+          "excerpt": "- Creatures: bark_wraith, briar_elk, hollow_widow_spider, lantern_hare, mosskip_buck, mosskip_doe, mosskip_fawn, rootback_boar, rot_wolf, thorn_stalker",
+          "line": 843,
+          "path": "program/crazycraft-pack-production-v1/studio-prep/creative/WAVE_1_LIVING_WORLD_IMPLEMENTATION_CONTRACT.md"
+        }
+      ],
+      "drop_dependencies": {
+        "narrative_only_identities_withheld": [
+          "Thorn Barb",
+          "Stalker Claw"
+        ],
+        "probability_status": "WITHHELD_W1_CREATIVE_004",
+        "table_target": "behavior_pack/loot_tables/entities/thorn_stalker.json",
+        "warehouse_identities_eligible_for_wiring": [
+          "briar_vine",
+          "thorn_stalker_skull"
+        ]
+      },
+      "g7_pattern": "hostile_melee_ground_plus_encounter_shell",
+      "g7_proven_component_families": [
+        "minecraft:collision_box",
+        "minecraft:health",
+        "minecraft:loot",
+        "minecraft:movement",
+        "minecraft:movement.basic",
+        "minecraft:navigation.walk",
+        "minecraft:physics",
+        "minecraft:type_family",
+        "minecraft:attack",
+        "minecraft:behavior.hurt_by_target",
+        "minecraft:behavior.melee_attack",
+        "minecraft:behavior.random_stroll",
+        "minecraft:behavior.look_at_player",
+        "minecraft:behavior.nearest_attackable_target"
+      ],
+      "movement_intent": "ground stalk/lunge",
+      "persistence_dependency": {
+        "boss_encounter": "G7_ENCOUNTER_JOURNAL_REUSABLE_BUT_THORN_SEMANTICS_BLOCKED",
+        "discovery": "G7_STATE_SCHEMA_REUSABLE_WITH_SUCCESSOR_MIGRATION",
+        "ordinary_entity": "UNRESOLVED_ENTITY_PERSISTENCE_AND_DESPAWN_POLICY"
+      },
+      "required_unproven_extensions": [
+        "phase state machine",
+        "telegraphed projectile and area attacks",
+        "bounded add summons",
+        "reset and terminal reward semantics"
+      ],
+      "runtime_class": "boss",
+      "runtime_id": "aionbound:thorn_stalker",
+      "source_assets": {
+        "animation": {
+          "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-001-whisperwood/assets/export/animations/thorn_stalker.animation.json",
+          "sha256": "875117411545f20bd5e8312dc67780277a767628a4df71e227f5752c7892379d"
+        },
+        "bbmodel": {
+          "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-001-whisperwood/assets/editable/thorn_stalker.bbmodel",
+          "sha256": "dbc640601555ffdadee49323d1844149928f0d7190c3865bd447d682fa6fb7a6"
+        },
+        "brief": {
+          "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-001-whisperwood/assets/briefs/thorn_stalker.json",
+          "sha256": "147278343d6412341195b1b16fe8b92d51f9cbdf01cf0ecd1795c0a5ca04663d"
+        },
+        "export_texture": {
+          "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-001-whisperwood/assets/export/textures/thorn_stalker.png",
+          "sha256": "9507b08d4b88229a82828988a894aad6dab678f63ca8edd678aa79e0cad9f802"
+        },
+        "geometry": {
+          "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-001-whisperwood/assets/export/models/thorn_stalker.geo.json",
+          "sha256": "26ba2144b3801406c1208bdf37f66e9fa8fc821635af77117c5395b1d7a56aea"
+        },
+        "png": {
+          "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-001-whisperwood/assets/editable/thorn_stalker.png",
+          "sha256": "9507b08d4b88229a82828988a894aad6dab678f63ca8edd678aa79e0cad9f802"
+        }
+      },
+      "spawn_dependencies": [
+        "deep briar elite ecology",
+        "Thorn Court arena encounter"
+      ],
+      "target_files": {
+        "additional_runtime_targets": [
+          "resource_pack/sounds/sound_definitions.json"
+        ],
+        "create": [
+          "behavior_pack/entities/thorn_stalker.entity.json",
+          "behavior_pack/spawn_rules/thorn_stalker.spawn_rules.json",
+          "behavior_pack/loot_tables/entities/thorn_stalker.json",
+          "resource_pack/entity/thorn_stalker.entity.json",
+          "resource_pack/models/aionbound/whisperwood/thorn_stalker.geo.json",
+          "resource_pack/animations/aionbound/whisperwood/thorn_stalker.animation.json",
+          "resource_pack/textures/aionbound/whisperwood/thorn_stalker.png"
+        ],
+        "shared_updates": [
+          "behavior_pack/scripts/catalog.js",
+          "behavior_pack/scripts/codex.js",
+          "resource_pack/texts/en_US.lang",
+          "behavior_pack/scripts/combat.js",
+          "behavior_pack/scripts/encounters.js",
+          "behavior_pack/scripts/state.js",
+          "behavior_pack/scripts/budgets.js",
+          "resource_pack/animation_controllers/aionbound.animation_controllers.json",
+          "resource_pack/render_controllers/aionbound.render_controllers.json"
+        ]
+      },
+      "warehouse_id": "thorn_stalker"
+    }
+  ],
+  "g7_patterns": {
+    "ambient_ground": [
+      {
+        "path": "behavior_pack/entities/mosskip.entity.json",
+        "sha256": "2692e88b6b9e73c67da50b1bcdc6d96620dea98e10b96b8f670ea6efee0c50a2"
+      },
+      {
+        "path": "behavior_pack/entities/lanternback.entity.json",
+        "sha256": "d3410654b8d3b1549e8f9c5432750ddd83877bd05b9fbaa07141489b5adfd119"
+      }
+    ],
+    "hostile_melee_ground": [
+      {
+        "path": "behavior_pack/entities/cinder_brood_hatchling.entity.json",
+        "sha256": "3c82a047a489a47d383313a17935bcb73075578487f4ee476640d274f33b2759"
+      },
+      {
+        "path": "behavior_pack/entities/basalt_behemoth.entity.json",
+        "sha256": "7418ca5bbcb03fcb027fbeea863392a18f5b3cdc4bb77de9b1b9be28db06b437"
+      }
+    ],
+    "hostile_melee_ground_plus_encounter_shell": [
+      {
+        "path": "behavior_pack/entities/ash_sovereign_wyrm.entity.json",
+        "sha256": "fd55521297173234fc4fde18a78e49b9f03216f721ec31a693ca9f2787cfdd4e"
+      },
+      {
+        "path": "behavior_pack/scripts/encounters.js",
+        "sha256": "4a0f9d384ca0db89496f8920495174012666ecc464dcf89e0bfc7cf0a2442559"
+      },
+      {
+        "path": "behavior_pack/scripts/state.js",
+        "sha256": "3ab5e27385eed680cf5c4349e41cb19ddf61d00d7bde9b769ae3f68cf1ff37af"
+      }
+    ],
+    "neutral_retaliatory_ground": [
+      {
+        "path": "behavior_pack/entities/pebblehorn.entity.json",
+        "sha256": "8c4302756ad2be49ab7d3a5668d99559469d1d01c141b3dd6eb62dd6b3caaa84"
+      },
+      {
+        "path": "behavior_pack/entities/galestrider.entity.json",
+        "sha256": "7f3709ef902186138c3470977d2a749bfd8cad561fa59b2e24e405ac898dbfff"
+      }
+    ],
+    "no_complete_g7_pattern": []
+  },
+  "global_blockers": [
+    "W1-CREATIVE-001 non-warehouse drop identities",
+    "W1-CREATIVE-003 Thorn Court numeric/reset/multiplayer/persistence/reward envelope",
+    "W1-CREATIVE-004 loot probability and quantity ranges",
+    "All ten assets lack brief-declared animation clips in current exports",
+    "All ten editable bbmodels require native locator/path round-trip disposition",
+    "Ordinary-creature restart persistence conflicts with unspecified despawn/cap semantics"
+  ],
+  "global_decisions": {
+    "animation_rule": "Generic exported idle/action clips do not satisfy differently named brief-declared role clips.",
+    "g7_reuse_rule": "Reuse only named component families and script responsibilities; G7 numeric values and cast identities do not transfer.",
+    "loot_rule": "Warehouse identities are eligible for wiring; narrative-only drop names remain withheld under W1-CREATIVE-001; probabilities remain withheld under W1-CREATIVE-004.",
+    "namespace": "aionbound",
+    "numeric_policy": "No health, damage, speed, priority, distance, spawn weight, group size, drop chance, or boss threshold is selected here.",
+    "persistence_rule": "G7 proves player/world encounter journals, not ordinary-creature restart persistence. Entity persistence/despawn semantics require an explicit successor decision.",
+    "sound_rule": "Placeholder sounds are allowed only during construction; identity sound assets remain required before Whisperwood Done."
+  },
+  "proof_boundary": {
+    "does_not_prove": [
+      "schema validity of future pack files",
+      "asset native round-trip",
+      "animation quality",
+      "entity movement",
+      "AI behavior",
+      "spawn ecology",
+      "loot economy",
+      "persistence",
+      "BDS",
+      "client",
+      "console",
+      "multiplayer",
+      "release"
+    ],
+    "proves": [
+      "authority-bound role map",
+      "target-file map",
+      "G7 component-family provenance",
+      "declared-versus-actual animation gap inventory",
+      "explicit implementation blockers"
+    ]
+  },
+  "schema": "aionbound.wave1.whisperwood.entity_runtime_map.v1",
+  "scope": "Packet 001 ten-creature BP/RP construction plan; no pack bytes are created or changed",
+  "status": "IMPLEMENTATION_MAP_NOT_RUNTIME_PROOF"
+}
