@@ -1,0 +1,106 @@
+{
+  "schema": "aionbound.wave1.whisperwood-resource-registry.v1",
+  "authority": "engineering/whisperwood-intake/WHISPERWOOD_VERTICAL_IMPLEMENTATION_MAP.json",
+  "scope": "Packet 001 resource registry only; no recipes, loot, gameplay effects, or icon manufacture",
+  "stack_policy": {
+    "bulk_common": 64,
+    "uncommon_refined": 32,
+    "rare_elite_prestige": 16
+  },
+  "resources": [
+    {
+      "id": "whisper_bark",
+      "display_name": "Whisper Bark",
+      "rarity": "C",
+      "progression_role": "early_craft_currency",
+      "stack_category": "bulk_common",
+      "expected_icon": "resource_pack/textures/aionbound/whisperwood/items/whisper_bark.png"
+    },
+    {
+      "id": "moss_resin",
+      "display_name": "Moss Resin",
+      "rarity": "C",
+      "progression_role": "ww_binder",
+      "stack_category": "bulk_common",
+      "expected_icon": "resource_pack/textures/aionbound/whisperwood/items/moss_resin.png"
+    },
+    {
+      "id": "glow_spore",
+      "display_name": "Glow Spore",
+      "rarity": "U",
+      "progression_role": "night_comfort",
+      "stack_category": "uncommon_refined",
+      "expected_icon": "resource_pack/textures/aionbound/whisperwood/items/glow_spore.png"
+    },
+    {
+      "id": "hollow_amber",
+      "display_name": "Hollow Amber",
+      "rarity": "U-R",
+      "progression_role": "mid_ww_catalyst",
+      "stack_category": "rare_elite_prestige",
+      "expected_icon": "resource_pack/textures/aionbound/whisperwood/items/hollow_amber.png"
+    },
+    {
+      "id": "lantern_fur",
+      "display_name": "Lantern Fur",
+      "rarity": "U",
+      "progression_role": "utility_light_path",
+      "stack_category": "uncommon_refined",
+      "expected_icon": "resource_pack/textures/aionbound/whisperwood/items/lantern_fur.png"
+    },
+    {
+      "id": "moon_sap",
+      "display_name": "Moon Sap",
+      "rarity": "R",
+      "progression_role": "soft_power_path",
+      "stack_category": "rare_elite_prestige",
+      "expected_icon": "resource_pack/textures/aionbound/whisperwood/items/moon_sap.png"
+    },
+    {
+      "id": "root_heart",
+      "display_name": "Root Heart",
+      "rarity": "R",
+      "progression_role": "late_ww_catalyst",
+      "stack_category": "rare_elite_prestige",
+      "expected_icon": "resource_pack/textures/aionbound/whisperwood/items/root_heart.png"
+    },
+    {
+      "id": "briar_antler",
+      "display_name": "Briar Antler",
+      "rarity": "U-R",
+      "progression_role": "elite_path",
+      "stack_category": "rare_elite_prestige",
+      "expected_icon": "resource_pack/textures/aionbound/whisperwood/items/briar_antler.png"
+    },
+    {
+      "id": "widow_silk",
+      "display_name": "Widow Silk",
+      "rarity": "U-R",
+      "progression_role": "elite_craft",
+      "stack_category": "rare_elite_prestige",
+      "expected_icon": "resource_pack/textures/aionbound/whisperwood/items/widow_silk.png"
+    },
+    {
+      "id": "ancient_acorn",
+      "display_name": "Ancient Acorn",
+      "rarity": "E/Q",
+      "progression_role": "curiosity_prestige",
+      "stack_category": "rare_elite_prestige",
+      "expected_icon": "resource_pack/textures/aionbound/whisperwood/items/ancient_acorn.png"
+    }
+  ],
+  "proof_boundary": {
+    "proves": [
+      "static item identifier closure",
+      "item icon-key to atlas closure",
+      "English localization closure",
+      "expected icon file presence and non-empty bytes"
+    ],
+    "does_not_prove": [
+      "PNG decode validity",
+      "Bedrock runtime loading",
+      "inventory readability",
+      "acquisition, loot, recipes, or progression behavior"
+    ]
+  }
+}
