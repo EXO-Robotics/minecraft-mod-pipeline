@@ -4,8 +4,8 @@ import { CODEX_EVENT_INDEX, CODEX_REGISTRY_VERSION, IDS } from "./catalog.js";
 export const STATE_VERSION = 4;
 export const CODEX_DISCOVERY_REGIONS = Object.freeze(["ww", "ah", "cm", "sr"]);
 export const CODEX_DISCOVERY_VERSION = CODEX_REGISTRY_VERSION;
-// Schema remains v4. Registry v3 appends Ashen using region-local category
-// addresses without reallocating any Whisperwood two-bit address.
+// Schema remains v4. Registry v4 appends Crystal Marsh using region-local
+// category addresses without reallocating any Whisperwood/Ashen address.
 export const CODEX_CATEGORY_CAPS = Object.freeze({
   resource: 20,
   plant: 10,
@@ -83,11 +83,13 @@ export function migrateWorld(source = {}) {
   const encounterActive = { ...objectOrEmpty(encounterSource.active) };
   const pendingThornCourt = objectOrEmpty(encounterSource.pendingThornCourt);
   const pendingKilnSky = objectOrEmpty(encounterSource.pendingKilnSky);
+  const pendingPearlDepths = objectOrEmpty(encounterSource.pendingPearlDepths);
   // Ratified arena sessions are live-memory only. Drop only legacy or
   // interrupted rows for those encounters while preserving all other encounters.
   for (const [key, value] of Object.entries(encounterActive)) {
     if (key.startsWith("thorn_court:") || value?.encounterId === "aionbound:thorn_court"
-      || key.startsWith("kiln_sky:") || value?.encounterId === "aionbound:kiln_sky") delete encounterActive[key];
+      || key.startsWith("kiln_sky:") || value?.encounterId === "aionbound:kiln_sky"
+      || key.startsWith("pearl_depths:") || value?.encounterId === "aionbound:pearl_depths") delete encounterActive[key];
   }
   return {
     ...objectOrEmpty(source),
@@ -100,6 +102,7 @@ export function migrateWorld(source = {}) {
       terminal: objectOrEmpty(encounterSource.terminal ?? source.terminal),
       ...(Object.keys(pendingThornCourt).length ? { pendingThornCourt } : {}),
       ...(Object.keys(pendingKilnSky).length ? { pendingKilnSky } : {}),
+      ...(Object.keys(pendingPearlDepths).length ? { pendingPearlDepths } : {}),
     },
   };
 }

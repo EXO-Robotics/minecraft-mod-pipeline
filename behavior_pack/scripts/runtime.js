@@ -13,6 +13,8 @@ import { createStructureService } from "./structures.js";
 import { createThornCourtService } from "./thorn_court.js";
 import { createWhisperwoodRewardHooks } from "./whisperwood_rewards.js";
 import { createAshenStructureRewardHooks } from "./ashen_structure_rewards.js";
+import { createCrystalRewardHooks } from "./crystal_rewards.js";
+import { createPearlDepthsService } from "./pearl_depths.js";
 
 export function createRuntime(platform = { world, system, ItemStack, EquipmentSlot, EntityComponentTypes, ActionFormData }) {
   const arbiter = new RuntimeArbiter();
@@ -39,6 +41,7 @@ export function createRuntime(platform = { world, system, ItemStack, EquipmentSl
   const structures = createStructureService({ ...platform, state, arbiter, consumeOne });
   const thornCourtRewardHooks = platform.thornCourtRewardHooks ?? createWhisperwoodRewardHooks({ ItemStack: platform.ItemStack, random: platform.random ?? Math.random });
   const ashenStructureRewardHooks = platform.ashenStructureRewardHooks ?? createAshenStructureRewardHooks({ ItemStack: platform.ItemStack, random: platform.random ?? Math.random });
+  const crystalRewardHooks = platform.crystalRewardHooks ?? createCrystalRewardHooks({ ItemStack: platform.ItemStack, state, random: platform.random ?? Math.random });
   const thornCourt = createThornCourtService({
     ...platform,
     state,
@@ -50,6 +53,24 @@ export function createRuntime(platform = { world, system, ItemStack, EquipmentSl
         codex.discover(player, "codex:ww:boss:thorn_court:defeated");
         codex.discover(player, "codex:ww:equipment:thorn_stalker_skull:earned");
         codex.discover(player, "codex:ww:progression:whisperwood_chapter:seal_credit");
+      },
+    },
+  });
+  const pearlDepths = createPearlDepthsService({
+    ...platform,
+    state,
+    boundedEntities,
+    rewardHooks: crystalRewardHooks,
+    codexHooks: {
+      onPull: player => {
+        codex.discover(player, "codex:cm:creature:marsh_wight:encountered");
+        codex.discover(player, "codex:cm:boss:pearl_depths:encountered");
+      },
+      onTerminalCredit: player => {
+        codex.discover(player, "codex:cm:creature:marsh_wight:defeated");
+        codex.discover(player, "codex:cm:boss:pearl_depths:defeated");
+        codex.discover(player, "codex:cm:equipment:marsh_wight_mask:obtained");
+        codex.discover(player, "codex:cm:progression:crystal_marsh_chapter:seal_credit");
       },
     },
   });
@@ -104,7 +125,7 @@ export function createRuntime(platform = { world, system, ItemStack, EquipmentSl
     run(); return true;
   }
   function reconcile() {
-    encounters.reconcile(); thornCourt.reconcile(); structures.reconcile(); chaos.reconcile();
+    encounters.reconcile(); thornCourt.reconcile(); pearlDepths.reconcile(); structures.reconcile(); chaos.reconcile();
     for (const player of platform.world.getAllPlayers()) state.playerState(player);
   }
   function tick() { callback(() => {
@@ -113,7 +134,7 @@ export function createRuntime(platform = { world, system, ItemStack, EquipmentSl
       for (const player of platform.world.getAllPlayers()) codex.reconcileOwnedItems(player);
     }
     if (platform.system.currentTick % 20 === 0) combat.tickPlayers();
-    thornCourt.tick(); structures.tick(); devices.tick(); chaos.tick();
+    thornCourt.tick(); pearlDepths.tick(); structures.tick(); devices.tick(); chaos.tick();
   }); }
 
   function start() {
@@ -129,9 +150,11 @@ export function createRuntime(platform = { world, system, ItemStack, EquipmentSl
       // is exhausted, or vanilla interaction could bypass the pre-clear cache.
       if (thornCourtRewardHooks.guardArenaCacheInteraction?.(event) === true) return;
       if (ashenStructureRewardHooks.guardArenaCacheInteraction?.(event) === true) return;
+      if (crystalRewardHooks.guardArenaCacheInteraction?.(event) === true) return;
       callback(() => {
         if (event.block.typeId === "aionbound:chaos_crate_t0") event.cancel = true;
         const activation = ashenStructureRewardHooks.identifyStructureActivation?.(event.block);
+        const crystalActivation = crystalRewardHooks.identifyStructureActivation?.(event.block);
         const context = { player: event.player, block: event.block, itemType: event.itemStack?.typeId };
         if (!arbiter.defer(platform.system, () => {
           if (activation) {
@@ -139,6 +162,13 @@ export function createRuntime(platform = { world, system, ItemStack, EquipmentSl
             for (const eventId of codexEventsForStructureActivation(activation.structure)) codex.discover(event.player, eventId);
             if (activation.structure === "burned_camp") codex.discover(event.player, "codex:ah:progression:crystal_marsh_rumor:burned_camp_visited");
             if (activation.structure === "char_wagon") codex.discover(event.player, "codex:ah:progression:crystal_marsh_rumor:char_wagon_visited");
+          }
+          if (crystalActivation) {
+            state.stamp(event.player, crystalActivation.stamp);
+            for (const eventId of codexEventsForStructureActivation(crystalActivation.structure)) codex.discover(event.player, eventId);
+            if (crystalActivation.structure === "ancient_boat") codex.discover(event.player, "codex:cm:progression:skyreach_rumor:ancient_boat_visited");
+            if (crystalActivation.structure === "ruined_observatory") codex.discover(event.player, "codex:cm:progression:skyreach_rumor:ruined_observatory_visited");
+            if (crystalActivation.structure === "sunken_shrine" || crystalActivation.structure === "deep_pool_entrance") pearlDepths.blockInteraction(event.player, event.block);
           }
           router.dispatchBlock(context);
         })) state.warn(event.player, "Interaction scheduler capacity is full.");
@@ -150,12 +180,13 @@ export function createRuntime(platform = { world, system, ItemStack, EquipmentSl
     platform.world.afterEvents.entityDie.subscribe(event => callback(() => {
       router.dispatchEntityDeathEvent(event);
       thornCourt.bossDeath(event);
+      pearlDepths.bossDeath(event);
       encounters.bossDeath(event);
       combat.glasswingDeath(event);
     }));
     platform.system.runInterval(tick, 1);
   }
-  return { start, reconcile, tick, state, arbiter, router, codex, combat, devices, encounters, thornCourt, ashenStructureRewardHooks, chaos, structures, budgets: COMBINED_BUDGETS };
+  return { start, reconcile, tick, state, arbiter, router, codex, combat, devices, encounters, thornCourt, pearlDepths, crystalRewardHooks, ashenStructureRewardHooks, chaos, structures, budgets: COMBINED_BUDGETS };
 }
 
 export function startRuntime() { return createRuntime().start(); }

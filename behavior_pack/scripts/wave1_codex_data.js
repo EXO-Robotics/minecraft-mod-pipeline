@@ -1,10 +1,11 @@
 import { WHISPERWOOD_CODEX_EXTENSION_ENTRIES } from "./wave1_codex_extension_data.js";
 import { ASHEN_CODEX_ENTRIES } from "./wave1_codex_ashen_data.js";
+import { CRYSTAL_CODEX_ENTRIES } from "./wave1_codex_crystal_data.js";
 
 // Machine-bound from the Whisperwood Codex implementation maps. This module
 // contains only SAFE_NOW identity and discovery-transition data. Acquisition
 // guidance whose live completion is blocked remains outside the runtime.
-export const WAVE1_CODEX_REGISTRY_VERSION = 3;
+export const WAVE1_CODEX_REGISTRY_VERSION = 4;
 const event = (id, state, kind) => Object.freeze({ id, state, event: kind });
 const entry = (id, kind, events) => Object.freeze({
   id,
@@ -70,6 +71,7 @@ export const WHISPERWOOD_CODEX_ENTRIES = Object.freeze([
 export const WAVE1_CODEX_ENTRIES = Object.freeze([
   ...WHISPERWOOD_CODEX_ENTRIES,
   ...ASHEN_CODEX_ENTRIES,
+  ...CRYSTAL_CODEX_ENTRIES,
 ]);
 
 const eventIndex = {};

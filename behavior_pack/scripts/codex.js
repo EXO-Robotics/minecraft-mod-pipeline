@@ -15,6 +15,7 @@ export const CODEX_UI_CATEGORIES = Object.freeze([
 export const CODEX_UI_REGIONS = Object.freeze([
   Object.freeze({ id: "ww", title: "Whisperwood" }),
   Object.freeze({ id: "ah", title: "Ashen Highlands" }),
+  Object.freeze({ id: "cm", title: "Crystal Marsh" }),
 ]);
 
 const unavailable = "Unavailable until its approved runtime dependency is complete.";
@@ -148,7 +149,8 @@ export function createCodexService({ state, ActionFormData = null }) {
     if (!event) return false;
     let chapterChanged = false;
     const chapterEventId = event.region === "ww" ? "codex:ww:progression:whisperwood_chapter:entered"
-      : event.region === "ah" ? "codex:ah:progression:ashen_chapter:entered" : null;
+      : event.region === "ah" ? "codex:ah:progression:ashen_chapter:entered"
+      : event.region === "cm" ? "codex:cm:progression:crystal_marsh_chapter:entered" : null;
     if (chapterEventId && eventId !== chapterEventId) {
       const chapter = CODEX_EVENT_INDEX[chapterEventId];
       chapterChanged = state.transitionCodex(player, chapter.region, chapter.category, chapter.index, chapter.state);
