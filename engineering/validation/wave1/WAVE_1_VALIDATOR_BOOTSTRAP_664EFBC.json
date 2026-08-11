@@ -1,0 +1,55 @@
+{
+  "authority": "engineering/validation/wave1/WAVE_1_VALIDATION_AUTHORITY.json",
+  "authority_sha256": "a67c6f01decdf1046d7fa375416fa49fa696e21ef37d81cd00ad4aac16a37d5f",
+  "findings": [
+    "attachable_missing_geometry:aionbound:burrowgate_key:geometry.aionbound.burrowgate_key",
+    "attachable_missing_geometry:aionbound:waykeeper_whistle:geometry.aionbound.waykeeper_whistle",
+    "block_missing_material_texture:aionbound:chaos_crate_t0:chaos_crate_prime",
+    "block_missing_material_texture:aionbound:creature_nest:spiral_moth_spire_nest",
+    "block_missing_material_texture:aionbound:loot_ruin:prismglass_chest_ruin",
+    "block_missing_material_texture:aionbound:waystone_arch:first_waystation_arch",
+    "client_entity_missing_animation:aionbound:mosskip:animation.aionbound.mosskip.idle",
+    "client_entity_missing_geometry:aionbound:mosskip:geometry.aionbound.mosskip",
+    "client_entity_missing_texture:aionbound:mosskip:textures/aionbound/mosskip",
+    "missing_entity_loot_table:aionbound:barkling_familiar:loot_tables/entities/barkling_familiar.json",
+    "missing_required_successor_id:recipes:aionbound:whisperwood_log_to_planks_recipe",
+    "missing_required_successor_id:recipes:aionbound:whisperwood_stripped_log_to_planks_recipe",
+    "missing_required_successor_id:recipes:aionbound:whisperwood_wood_from_logs_recipe",
+    "missing_required_successor_id:recipes:aionbound:whisperwood_wood_to_planks_recipe"
+  ],
+  "inventory": {
+    "animation_controllers": 1,
+    "animations": 118,
+    "attachables": 32,
+    "blocks": 59,
+    "client_entities": 24,
+    "entities": 24,
+    "feature_rules": 33,
+    "features": 33,
+    "geometries": 68,
+    "items": 66,
+    "json_files": 501,
+    "loot_tables": 32,
+    "png_files": 163,
+    "recipes": 55,
+    "render_controllers": 1,
+    "script_files": 12,
+    "spawn_rules": 10,
+    "structures": 15
+  },
+  "proof_boundaries": [
+    "source_tree_mechanical_only",
+    "not_immutable_package_proof",
+    "not_archive_extracted_entrypoint_proof",
+    "not_bedrock_schema_or_stable_bds_proof",
+    "not_client_rendering_or_gameplay_proof",
+    "not_multiplayer_console_marketplace_or_release_proof"
+  ],
+  "schema_version": 1,
+  "source_evidence": {
+    "pack_source_file_count": 693,
+    "pack_source_sha256": "fa91c529c80a0da69313116029f5cba73d1e91cae20e6600a34f2998e799e462"
+  },
+  "status": "FAIL",
+  "validator": "tools/validate_wave1.py"
+}

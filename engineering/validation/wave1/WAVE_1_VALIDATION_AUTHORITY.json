@@ -1,0 +1,52 @@
+{
+  "schema_version": 1,
+  "authority": {
+    "name": "Aionbound Wave 1 successor-native mechanical validation",
+    "g7_substrate_commit": "042018eac3bd32b76d135219b9f59502dd4f4692",
+    "policy": "minimum substrate inventory plus explicit successor additions"
+  },
+  "namespace": "aionbound",
+  "minimum_inventory": {
+    "blocks": 49,
+    "entities": 24,
+    "items": 56,
+    "loot_tables": 32,
+    "recipes": 55,
+    "spawn_rules": 10,
+    "structures": 15
+  },
+  "required_successor_ids": {
+    "blocks": [
+      "aionbound:forest_brick",
+      "aionbound:hollow_wood",
+      "aionbound:moss_bark",
+      "aionbound:stripped_whisperwood_log",
+      "aionbound:whisperwood_leaves",
+      "aionbound:whisperwood_log",
+      "aionbound:whisperwood_planks",
+      "aionbound:whisperwood_roots",
+      "aionbound:whisperwood_sapling",
+      "aionbound:whisperwood_wood"
+    ],
+    "items": [
+      "aionbound:ancient_acorn",
+      "aionbound:briar_antler",
+      "aionbound:glow_spore",
+      "aionbound:hollow_amber",
+      "aionbound:lantern_fur",
+      "aionbound:moon_sap",
+      "aionbound:moss_resin",
+      "aionbound:root_heart",
+      "aionbound:whisper_bark",
+      "aionbound:widow_silk"
+    ],
+    "recipes": [
+      "aionbound:whisperwood_log_to_planks_recipe",
+      "aionbound:whisperwood_stripped_log_to_planks_recipe",
+      "aionbound:whisperwood_wood_from_logs_recipe",
+      "aionbound:whisperwood_wood_to_planks_recipe"
+    ]
+  },
+  "minimum_engine_version": [1, 21, 80],
+  "allowed_script_modules": ["@minecraft/server"]
+}
