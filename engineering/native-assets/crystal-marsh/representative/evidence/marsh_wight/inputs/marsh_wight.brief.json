@@ -1,0 +1,48 @@
+{
+  "name": "marsh_wight",
+  "display_name": "Marsh Wight",
+  "sprint": "asset_sprint_003_crystal_marsh",
+  "tier": "CREATURE",
+  "role": "Hostile reed-silt spirit; crystal hollow ribs",
+  "profile": "biped",
+  "model_identifier": "geometry.aionforge_cm.marsh_wight",
+  "cube_count": 27,
+  "bone_count": 8,
+  "density_floor": 26,
+  "locators": [
+    "effect",
+    "gaze"
+  ],
+  "palette": {
+    "metal": [
+      92,
+      74,
+      58
+    ],
+    "accent": [
+      106,
+      90,
+      138
+    ],
+    "energy": [
+      184,
+      240,
+      232
+    ]
+  },
+  "animations": [
+    "idle_sway",
+    "drift_walk",
+    "reach_attack",
+    "hurt",
+    "death_collapse"
+  ],
+  "minecraft_scale": "2.0\u20132.2 tall",
+  "texture_resolution": "64\u00d764",
+  "production_priority": "P0",
+  "related_assets": "sunken_shrine, moon_pearl",
+  "originality": "Clean-room Crystal Marsh manufacture",
+  "forbidden": "No Whisperwood moss amber; no Ashen heat; no Gloamveil neon teal; no Brinecanopy cathedral",
+  "editable": "assets/editable/marsh_wight.bbmodel",
+  "claims_boundary": "Visual production only. No BP/JSON/AI/gameplay."
+}
