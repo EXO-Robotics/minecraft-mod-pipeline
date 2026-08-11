@@ -1,0 +1,42 @@
+{
+  "ticket": "W1-CREATIVE-006",
+  "status": "OPEN_SUPPORT_REQUIRED",
+  "scope": "Packet 001 authored encounter assemblies",
+  "evidence": "engineering/whisperwood-intake/structure-runtime/WHISPERWOOD_STRUCTURE_RUNTIME_MAP.json",
+  "required_targets": [
+    "hunter_camp",
+    "broken_wagon",
+    "root_bridge",
+    "owl_shrine",
+    "forest_waystone",
+    "hollow_cave_entrance",
+    "ancient_totem",
+    "fallen_giant_tree"
+  ],
+  "accepted_resolution": [
+    "exact approved mcstructure bytes",
+    "per-target assembly envelope authorizing Engineering construction"
+  ],
+  "assembly_envelope_fields": [
+    "maximum footprint and height",
+    "approved block and prop palette",
+    "required landmark silhouette",
+    "functional and loot anchor positions",
+    "terrain attachment rule",
+    "encounter trigger location if applicable"
+  ],
+  "excluded_decisions": [
+    "loot percentages",
+    "unratified item identities",
+    "boss behavior",
+    "world-generation frequency"
+  ],
+  "blocks": [
+    "Whisperwood vertical exit",
+    "Checkpoint 1 structure-registration claim"
+  ],
+  "prohibited_substitutions": [
+    "generic G7 layouts",
+    "individual bbmodel props presented as full structures"
+  ]
+}
