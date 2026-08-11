@@ -1,0 +1,34 @@
+{
+  "format_version": "1.10.0",
+  "minecraft:client_entity": {
+    "description": {
+      "animations": {
+        "death": "animation.aionbound.whisperwood.mosskip_doe.death",
+        "hop_bound": "animation.aionbound.whisperwood.mosskip_doe.hop_bound",
+        "hurt": "animation.aionbound.whisperwood.mosskip_doe.hurt",
+        "idle_graze": "animation.aionbound.whisperwood.mosskip_doe.idle_graze",
+        "look": "animation.aionbound.whisperwood.mosskip_doe.look",
+        "runtime": "controller.animation.aionbound.whisperwood.mosskip_doe.runtime",
+        "walk": "animation.aionbound.whisperwood.mosskip_doe.walk"
+      },
+      "geometry": {
+        "default": "geometry.aionbound.whisperwood.mosskip_doe"
+      },
+      "identifier": "aionbound:mosskip_doe",
+      "materials": {
+        "default": "entity_alphatest"
+      },
+      "render_controllers": [
+        "controller.render.aionbound.whisperwood.mosskip_doe"
+      ],
+      "scripts": {
+        "animate": [
+          "runtime"
+        ]
+      },
+      "textures": {
+        "default": "textures/aionbound/whisperwood/entity/mosskip_doe"
+      }
+    }
+  }
+}

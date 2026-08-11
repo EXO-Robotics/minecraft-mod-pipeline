@@ -1,0 +1,67 @@
+{
+  "format_version": "1.21.80",
+  "minecraft:entity": {
+    "components": {
+      "minecraft:behavior.look_at_player": {
+        "look_distance": 7,
+        "priority": 7,
+        "probability": 0.025
+      },
+      "minecraft:behavior.panic": {
+        "priority": 1,
+        "speed_multiplier": 1.35
+      },
+      "minecraft:behavior.random_look_around": {
+        "priority": 8
+      },
+      "minecraft:behavior.random_stroll": {
+        "interval": 140,
+        "priority": 6,
+        "speed_multiplier": 0.75
+      },
+      "minecraft:collision_box": {
+        "height": 1.2,
+        "width": 0.9
+      },
+      "minecraft:despawn": {
+        "despawn_from_chance": true,
+        "despawn_from_distance": {
+          "max_distance": 96,
+          "min_distance": 32
+        },
+        "despawn_from_inactivity": true,
+        "despawn_from_simulation_edge": true,
+        "min_range_inactivity_timer": 30,
+        "min_range_random_chance": 800
+      },
+      "minecraft:health": {
+        "max": 20,
+        "value": 20
+      },
+      "minecraft:movement": {
+        "value": 0.25
+      },
+      "minecraft:movement.basic": {},
+      "minecraft:navigation.walk": {
+        "avoid_damage_blocks": true,
+        "avoid_water": true,
+        "can_path_over_water": false,
+        "can_sink": true
+      },
+      "minecraft:physics": {},
+      "minecraft:type_family": {
+        "family": [
+          "aionbound",
+          "creature",
+          "ambient",
+          "whisperwood"
+        ]
+      }
+    },
+    "description": {
+      "identifier": "aionbound:mosskip_doe",
+      "is_spawnable": true,
+      "is_summonable": true
+    }
+  }
+}

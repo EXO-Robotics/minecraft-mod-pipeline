@@ -1,0 +1,66 @@
+{
+  "animation_controllers": {
+    "controller.animation.aionbound.whisperwood.mosskip_buck.runtime": {
+      "initial_state": "idle",
+      "states": {
+        "dead": {
+          "animations": [
+            "death"
+          ]
+        },
+        "hurt": {
+          "animations": [
+            "hurt"
+          ],
+          "blend_transition": 0.05,
+          "transitions": [
+            {
+              "dead": "query.health <= 0.0"
+            },
+            {
+              "moving": "query.hurt_time <= 0.0 && query.modified_move_speed > 0.05"
+            },
+            {
+              "idle": "query.hurt_time <= 0.0"
+            }
+          ]
+        },
+        "idle": {
+          "animations": [
+            "idle_graze"
+          ],
+          "blend_transition": 0.12,
+          "transitions": [
+            {
+              "dead": "query.health <= 0.0"
+            },
+            {
+              "hurt": "query.hurt_time > 0.0"
+            },
+            {
+              "moving": "query.modified_move_speed > 0.05"
+            }
+          ]
+        },
+        "moving": {
+          "animations": [
+            "hop_bound"
+          ],
+          "blend_transition": 0.08,
+          "transitions": [
+            {
+              "dead": "query.health <= 0.0"
+            },
+            {
+              "hurt": "query.hurt_time > 0.0"
+            },
+            {
+              "idle": "query.modified_move_speed <= 0.05"
+            }
+          ]
+        }
+      }
+    }
+  },
+  "format_version": "1.10.0"
+}

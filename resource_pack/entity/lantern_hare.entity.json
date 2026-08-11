@@ -1,0 +1,33 @@
+{
+  "format_version": "1.10.0",
+  "minecraft:client_entity": {
+    "description": {
+      "animations": {
+        "alert": "animation.aionbound.whisperwood.lantern_hare.alert",
+        "death": "animation.aionbound.whisperwood.lantern_hare.death",
+        "hop": "animation.aionbound.whisperwood.lantern_hare.hop",
+        "hurt": "animation.aionbound.whisperwood.lantern_hare.hurt",
+        "idle_ear_flick": "animation.aionbound.whisperwood.lantern_hare.idle_ear_flick",
+        "runtime": "controller.animation.aionbound.whisperwood.lantern_hare.runtime"
+      },
+      "geometry": {
+        "default": "geometry.aionbound.whisperwood.lantern_hare"
+      },
+      "identifier": "aionbound:lantern_hare",
+      "materials": {
+        "default": "entity_alphatest"
+      },
+      "render_controllers": [
+        "controller.render.aionbound.whisperwood.lantern_hare"
+      ],
+      "scripts": {
+        "animate": [
+          "runtime"
+        ]
+      },
+      "textures": {
+        "default": "textures/aionbound/whisperwood/entity/lantern_hare"
+      }
+    }
+  }
+}

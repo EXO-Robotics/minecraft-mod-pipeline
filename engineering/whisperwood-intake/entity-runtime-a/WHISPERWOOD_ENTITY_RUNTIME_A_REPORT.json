@@ -1,0 +1,214 @@
+{
+  "assets": [
+    "lantern_hare",
+    "mosskip_buck",
+    "mosskip_doe",
+    "mosskip_fawn",
+    "rootback_boar"
+  ],
+  "creative_gaps_preserved": [
+    "W1-CREATIVE-001 non-warehouse loot identity and component decisions",
+    "W1-CREATIVE-004 loot probability and rarity envelopes",
+    "near-lantern-bloom, near-lantern-post, trail, and cross-species herd proximity cannot be represented by the bounded vanilla spawn-rule documents used here",
+    "mosskip herd-defense binding remains unimplemented rather than invented",
+    "special alert, look, skitter, walk, and charge action triggers are registered but remain outside the base idle/move/hurt/death controller until gameplay triggers are approved and runtime-tested"
+  ],
+  "proof_boundary": [
+    "source-tree static validation only",
+    "native Blockbench evidence is inherited by exact source/output binding; it is not rerun by this receipt",
+    "not Creator Tools or schema-runtime proof",
+    "not packaged, Stable BDS, client rendering, animation playback, pathfinding, combat, persistence, multiplayer, console, Marketplace, or release proof"
+  ],
+  "runtime_files": {
+    "lantern_hare": [
+      {
+        "path": "behavior_pack/entities/lantern_hare.entity.json",
+        "sha256": "f855b86b91e7c2bc7241af2b223e53f8f447bc26fdb8079376e628ef1b2389b4"
+      },
+      {
+        "path": "behavior_pack/spawn_rules/lantern_hare.spawn_rules.json",
+        "sha256": "cf390b158d2624d6ade23b94849e5984e2bac3b1c2db4e9e3fa84e596f379401"
+      },
+      {
+        "path": "resource_pack/entity/lantern_hare.entity.json",
+        "sha256": "b2cd3bbea9b41921f670c398e2d85d809b1d4f4f3c393b5531995b6a43c601c0"
+      },
+      {
+        "path": "resource_pack/models/aionbound/whisperwood/lantern_hare.geo.json",
+        "sha256": "71c7ee484cf5ce2ce94ca83b432cb54e34876a45da539c7abcc9c05d87babe37"
+      },
+      {
+        "path": "resource_pack/animations/aionbound/whisperwood/lantern_hare.animation.json",
+        "sha256": "4d50790a6e55be7cad84375fa03a9833a87fccae7dce30521009eb988547ebed"
+      },
+      {
+        "path": "resource_pack/animation_controllers/aionbound/whisperwood/lantern_hare.animation_controllers.json",
+        "sha256": "9392b8fac898afd1d1de714bd7628200a7cb61e92f41542acc2df4d34f28e8f2"
+      },
+      {
+        "path": "resource_pack/render_controllers/aionbound/whisperwood/lantern_hare.render_controllers.json",
+        "sha256": "ef524f7fdf21c3e0682285e7c0f3a37f87e322f2ce966c37e3261335d09b88ee"
+      },
+      {
+        "path": "resource_pack/textures/aionbound/whisperwood/entity/lantern_hare.png",
+        "sha256": "b607535ec54a1435eaa2797e997a4ff7c7db544155944626e405e639f76c4380"
+      }
+    ],
+    "mosskip_buck": [
+      {
+        "path": "behavior_pack/entities/mosskip_buck.entity.json",
+        "sha256": "63efbbf1e3deb953bccacedf7b5051fb179b494c99e8ff5f8876cf8002dcb7d5"
+      },
+      {
+        "path": "behavior_pack/spawn_rules/mosskip_buck.spawn_rules.json",
+        "sha256": "ab8a0123b53883e522d331d60cd00d020a271cf025baf23d7011920b50b11044"
+      },
+      {
+        "path": "resource_pack/entity/mosskip_buck.entity.json",
+        "sha256": "077e7a6bad9e1ed6f4e306aa849ae0e0ef4be57ae1c10b97eefbac6d6f214cff"
+      },
+      {
+        "path": "resource_pack/models/aionbound/whisperwood/mosskip_buck.geo.json",
+        "sha256": "6dace6718ff72e80959c8341c512e7851f76bd9403a1bb90db9e456241fdb9bc"
+      },
+      {
+        "path": "resource_pack/animations/aionbound/whisperwood/mosskip_buck.animation.json",
+        "sha256": "4e2580bc1a7d37074abb7abbf0dee6856364b45d18156fbd0b469d26aacec155"
+      },
+      {
+        "path": "resource_pack/animation_controllers/aionbound/whisperwood/mosskip_buck.animation_controllers.json",
+        "sha256": "4a57f23f6158983390a8dd8d61db2035849e6577ee9f643e6c2cb586d03502d2"
+      },
+      {
+        "path": "resource_pack/render_controllers/aionbound/whisperwood/mosskip_buck.render_controllers.json",
+        "sha256": "98733d365c719ec59f732b7563e92e3658de74f46274c91e4c186f82aa234038"
+      },
+      {
+        "path": "resource_pack/textures/aionbound/whisperwood/entity/mosskip_buck.png",
+        "sha256": "b36adbb242a0e3906fc39dbe1d9da3d61353bb12ff5a63afc88de73391471bd1"
+      }
+    ],
+    "mosskip_doe": [
+      {
+        "path": "behavior_pack/entities/mosskip_doe.entity.json",
+        "sha256": "3f449151edd168902763be883c796e0cb8bded593ad7a10e7377ef496e15f3e3"
+      },
+      {
+        "path": "behavior_pack/spawn_rules/mosskip_doe.spawn_rules.json",
+        "sha256": "0ea7541da69a22bde725c95277da5248e85dd560441093f9bd8d075e2d218a20"
+      },
+      {
+        "path": "resource_pack/entity/mosskip_doe.entity.json",
+        "sha256": "046300816ad49b500873d267a8104449bd769b0aa355ec1918681eeda7da7c9d"
+      },
+      {
+        "path": "resource_pack/models/aionbound/whisperwood/mosskip_doe.geo.json",
+        "sha256": "c428a952223c17062e27b11411f4c8584322dae0dba189d22d9687cc75415355"
+      },
+      {
+        "path": "resource_pack/animations/aionbound/whisperwood/mosskip_doe.animation.json",
+        "sha256": "32ff2a4fc73343ab4b5798e172a38edca7a0b91c279a39e8f3bdd5545776b525"
+      },
+      {
+        "path": "resource_pack/animation_controllers/aionbound/whisperwood/mosskip_doe.animation_controllers.json",
+        "sha256": "c502cc6000bcdb5b73e8d20a068068082a1ab31e18397cdc24a4eaf48e6e8bb7"
+      },
+      {
+        "path": "resource_pack/render_controllers/aionbound/whisperwood/mosskip_doe.render_controllers.json",
+        "sha256": "9c6b33b961a4289f2b8abd30f66e60efd685ea390ed4cb7f54dcd52c3eb6526f"
+      },
+      {
+        "path": "resource_pack/textures/aionbound/whisperwood/entity/mosskip_doe.png",
+        "sha256": "98b94579832a40f233f9ea3163b525a304cc8cd7443fa1876fcfca3c23c2705c"
+      }
+    ],
+    "mosskip_fawn": [
+      {
+        "path": "behavior_pack/entities/mosskip_fawn.entity.json",
+        "sha256": "ca80ad903534f6d5837dd4f633a784a60bcfe321d671ca9d0a4aaeba8959495d"
+      },
+      {
+        "path": "behavior_pack/spawn_rules/mosskip_fawn.spawn_rules.json",
+        "sha256": "4ddd6224bf06877ca4e76d0a4e595bd65701a353f26ef0c3fa358725e48cd4bd"
+      },
+      {
+        "path": "resource_pack/entity/mosskip_fawn.entity.json",
+        "sha256": "71c770ef6f2a35517caaa10401f765b8b585daae247748a23d3ad5347e206ebb"
+      },
+      {
+        "path": "resource_pack/models/aionbound/whisperwood/mosskip_fawn.geo.json",
+        "sha256": "3ca3ade3683a597e09791184ddd76da3e943336a294a37cf33618db21dd200fc"
+      },
+      {
+        "path": "resource_pack/animations/aionbound/whisperwood/mosskip_fawn.animation.json",
+        "sha256": "8b682c913e1f8e2b7dac68c4742b8efd34284303aac2d7565c4f523768023c0e"
+      },
+      {
+        "path": "resource_pack/animation_controllers/aionbound/whisperwood/mosskip_fawn.animation_controllers.json",
+        "sha256": "f259b89f3e8ba7af420af213ecaf24bca3d15e96c656bd84a6db8ba206b0e29e"
+      },
+      {
+        "path": "resource_pack/render_controllers/aionbound/whisperwood/mosskip_fawn.render_controllers.json",
+        "sha256": "5f3f2c72794ca7ad1251c31cb3805c56e07b1f817fa7013aec2ed9b34fe5890e"
+      },
+      {
+        "path": "resource_pack/textures/aionbound/whisperwood/entity/mosskip_fawn.png",
+        "sha256": "bcf58948be4263960d058cdaa0380e6e97e94ed82edc6f362a29348bb1d731ba"
+      }
+    ],
+    "rootback_boar": [
+      {
+        "path": "behavior_pack/entities/rootback_boar.entity.json",
+        "sha256": "88540bdf9eb3e5c9d1047709bad762d93bab022aae05949c429f5a5aaf2fd347"
+      },
+      {
+        "path": "behavior_pack/spawn_rules/rootback_boar.spawn_rules.json",
+        "sha256": "84076c3ec8fb648c225476d2965a10fd4e280ce1187e90fc2127b5245016a917"
+      },
+      {
+        "path": "resource_pack/entity/rootback_boar.entity.json",
+        "sha256": "9ca685744841d608ea4312eae2c41fa12486b1456129ae4e86390fdfdb7a0f0f"
+      },
+      {
+        "path": "resource_pack/models/aionbound/whisperwood/rootback_boar.geo.json",
+        "sha256": "6167a8b4d49ff11e293bdfbe71567a29147713f7db7cb35db91a6e5aac9650b3"
+      },
+      {
+        "path": "resource_pack/animations/aionbound/whisperwood/rootback_boar.animation.json",
+        "sha256": "36e66d08ccc85bacac6d1031d8433d385179c29f5d2e6cb5f7737ee3bd585023"
+      },
+      {
+        "path": "resource_pack/animation_controllers/aionbound/whisperwood/rootback_boar.animation_controllers.json",
+        "sha256": "f7859bbedd7fa6a246a5158b9a8fc6719b4c27c9f734a97d2f31ea9cdbc355e3"
+      },
+      {
+        "path": "resource_pack/render_controllers/aionbound/whisperwood/rootback_boar.render_controllers.json",
+        "sha256": "2635c14b1e2f35e67f38d11a1b74245e9871efc8bb7d616ab50e689d66618960"
+      },
+      {
+        "path": "resource_pack/textures/aionbound/whisperwood/entity/rootback_boar.png",
+        "sha256": "69b9ebd2b1d01df0b4025dfd0fab502d13508ffa6ee022ad5ec7a08bdd85c5a4"
+      }
+    ]
+  },
+  "schema_version": 1,
+  "scope": "WHISPERWOOD_ENTITY_RUNTIME_A_STATIC",
+  "status": "PASS",
+  "test_evidence": {
+    "argv": [
+      "python3",
+      "engineering/whisperwood-intake/entity-runtime-a/test_entity_runtime_a.py"
+    ],
+    "asserted": [
+      "native-PASS input identity and byte binding",
+      "JSON identifier/model/animation/controller/render closure",
+      "static ambient/neutral non-statue AI bar",
+      "conservative forest-scoped natural spawn envelopes",
+      "full PNG CRC/IDAT/scanline decode and atlas dimension match",
+      "loot component and loot table absence"
+    ],
+    "captured_output_sha256": "53f091ce6b8683a791aa321864e05c235b88a702ea3404e981db954bd800559a",
+    "exit_code": 0,
+    "tests": 5
+  }
+}

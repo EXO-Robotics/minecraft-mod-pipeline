@@ -1,0 +1,33 @@
+{
+  "format_version": "1.10.0",
+  "minecraft:client_entity": {
+    "description": {
+      "animations": {
+        "death": "animation.aionbound.whisperwood.mosskip_fawn.death",
+        "hop": "animation.aionbound.whisperwood.mosskip_fawn.hop",
+        "hurt": "animation.aionbound.whisperwood.mosskip_fawn.hurt",
+        "idle": "animation.aionbound.whisperwood.mosskip_fawn.idle",
+        "runtime": "controller.animation.aionbound.whisperwood.mosskip_fawn.runtime",
+        "skitter": "animation.aionbound.whisperwood.mosskip_fawn.skitter"
+      },
+      "geometry": {
+        "default": "geometry.aionbound.whisperwood.mosskip_fawn"
+      },
+      "identifier": "aionbound:mosskip_fawn",
+      "materials": {
+        "default": "entity_alphatest"
+      },
+      "render_controllers": [
+        "controller.render.aionbound.whisperwood.mosskip_fawn"
+      ],
+      "scripts": {
+        "animate": [
+          "runtime"
+        ]
+      },
+      "textures": {
+        "default": "textures/aionbound/whisperwood/entity/mosskip_fawn"
+      }
+    }
+  }
+}

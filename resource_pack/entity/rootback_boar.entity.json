@@ -1,0 +1,33 @@
+{
+  "format_version": "1.10.0",
+  "minecraft:client_entity": {
+    "description": {
+      "animations": {
+        "charge_snort": "animation.aionbound.whisperwood.rootback_boar.charge_snort",
+        "death": "animation.aionbound.whisperwood.rootback_boar.death",
+        "hurt": "animation.aionbound.whisperwood.rootback_boar.hurt",
+        "idle": "animation.aionbound.whisperwood.rootback_boar.idle",
+        "runtime": "controller.animation.aionbound.whisperwood.rootback_boar.runtime",
+        "walk_trundle": "animation.aionbound.whisperwood.rootback_boar.walk_trundle"
+      },
+      "geometry": {
+        "default": "geometry.aionbound.whisperwood.rootback_boar"
+      },
+      "identifier": "aionbound:rootback_boar",
+      "materials": {
+        "default": "entity_alphatest"
+      },
+      "render_controllers": [
+        "controller.render.aionbound.whisperwood.rootback_boar"
+      ],
+      "scripts": {
+        "animate": [
+          "runtime"
+        ]
+      },
+      "textures": {
+        "default": "textures/aionbound/whisperwood/entity/rootback_boar"
+      }
+    }
+  }
+}

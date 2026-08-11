@@ -1,0 +1,305 @@
+{
+  "animations": {
+    "animation.aionbound.whisperwood.mosskip_doe.death": {
+      "animation_length": 1,
+      "bones": {
+        "body": {
+          "rotation": {
+            "0.0": [
+              0,
+              0,
+              0
+            ],
+            "1.0": [
+              0,
+              0,
+              86
+            ]
+          }
+        }
+      }
+    },
+    "animation.aionbound.whisperwood.mosskip_doe.hop_bound": {
+      "animation_length": 1,
+      "bones": {
+        "body": {
+          "position": {
+            "0.0": [
+              0,
+              0,
+              0
+            ],
+            "0.25": [
+              0,
+              0.8,
+              0
+            ],
+            "0.5": [
+              0,
+              1.7,
+              0
+            ],
+            "0.75": [
+              0,
+              0.65,
+              0
+            ],
+            "1.0": [
+              0,
+              0,
+              0
+            ]
+          }
+        },
+        "leg_bl": {
+          "rotation": {
+            "0.0": [
+              0,
+              0,
+              0
+            ],
+            "0.5": [
+              -28,
+              0,
+              0
+            ],
+            "1.0": [
+              0,
+              0,
+              0
+            ]
+          }
+        },
+        "leg_br": {
+          "rotation": {
+            "0.0": [
+              0,
+              0,
+              0
+            ],
+            "0.5": [
+              -28,
+              0,
+              0
+            ],
+            "1.0": [
+              0,
+              0,
+              0
+            ]
+          }
+        },
+        "leg_fl": {
+          "rotation": {
+            "0.0": [
+              0,
+              0,
+              0
+            ],
+            "0.5": [
+              26,
+              0,
+              0
+            ],
+            "1.0": [
+              0,
+              0,
+              0
+            ]
+          }
+        },
+        "leg_fr": {
+          "rotation": {
+            "0.0": [
+              0,
+              0,
+              0
+            ],
+            "0.5": [
+              26,
+              0,
+              0
+            ],
+            "1.0": [
+              0,
+              0,
+              0
+            ]
+          }
+        }
+      },
+      "loop": true
+    },
+    "animation.aionbound.whisperwood.mosskip_doe.hurt": {
+      "animation_length": 0.45,
+      "bones": {
+        "body": {
+          "rotation": {
+            "0.0": [
+              0,
+              0,
+              0
+            ],
+            "0.2": [
+              0,
+              0,
+              8
+            ],
+            "0.45": [
+              0,
+              0,
+              0
+            ]
+          }
+        }
+      }
+    },
+    "animation.aionbound.whisperwood.mosskip_doe.idle_graze": {
+      "animation_length": 4,
+      "bones": {
+        "head": {
+          "rotation": {
+            "0.0": [
+              0,
+              0,
+              0
+            ],
+            "1.0": [
+              -24,
+              0,
+              0
+            ],
+            "2.2": [
+              -30,
+              0,
+              0
+            ],
+            "3.2": [
+              -12,
+              0,
+              0
+            ],
+            "4.0": [
+              0,
+              0,
+              0
+            ]
+          }
+        }
+      },
+      "loop": true
+    },
+    "animation.aionbound.whisperwood.mosskip_doe.look": {
+      "animation_length": 1.2,
+      "bones": {
+        "head": {
+          "rotation": {
+            "0.0": [
+              0,
+              0,
+              0
+            ],
+            "0.4": [
+              0,
+              14,
+              0
+            ],
+            "0.8": [
+              0,
+              -14,
+              0
+            ],
+            "1.2": [
+              0,
+              0,
+              0
+            ]
+          }
+        }
+      }
+    },
+    "animation.aionbound.whisperwood.mosskip_doe.walk": {
+      "animation_length": 1,
+      "bones": {
+        "leg_bl": {
+          "rotation": {
+            "0.0": [
+              18,
+              0,
+              0
+            ],
+            "0.5": [
+              -18,
+              0,
+              0
+            ],
+            "1.0": [
+              18,
+              0,
+              0
+            ]
+          }
+        },
+        "leg_br": {
+          "rotation": {
+            "0.0": [
+              -18,
+              0,
+              0
+            ],
+            "0.5": [
+              18,
+              0,
+              0
+            ],
+            "1.0": [
+              -18,
+              0,
+              0
+            ]
+          }
+        },
+        "leg_fl": {
+          "rotation": {
+            "0.0": [
+              -20,
+              0,
+              0
+            ],
+            "0.5": [
+              20,
+              0,
+              0
+            ],
+            "1.0": [
+              -20,
+              0,
+              0
+            ]
+          }
+        },
+        "leg_fr": {
+          "rotation": {
+            "0.0": [
+              20,
+              0,
+              0
+            ],
+            "0.5": [
+              -20,
+              0,
+              0
+            ],
+            "1.0": [
+              20,
+              0,
+              0
+            ]
+          }
+        }
+      },
+      "loop": true
+    }
+  },
+  "format_version": "1.8.0"
+}
