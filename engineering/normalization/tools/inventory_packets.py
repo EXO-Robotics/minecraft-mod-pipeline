@@ -288,7 +288,8 @@ def audit_asset(
             "hash_match": path.is_file() and canonical.is_file() and sha256(path) == sha256(canonical),
         }
     brief_locators = sorted(brief.get("locators", []))
-    locator_gap = sorted(set(brief_locators) - set(bb.get("locator_names", [])))
+    native_locator_gap = sorted(set(brief_locators) - set(bb.get("locator_names", [])))
+    export_locator_gap = sorted(set(brief_locators) - set(geo.get("locator_names", [])))
     brief_clips = sorted(brief.get("animations", []))
     exported_suffixes = {name.rsplit(".", 1)[-1] for name in anim.get("animation_names", [])}
     animation_gap = sorted(set(brief_clips) - exported_suffixes)
@@ -321,8 +322,10 @@ def audit_asset(
         issues.append("PACKET_IDENTIFIER_INCONSISTENT")
     if packet_namespace != "aionbound":
         issues.append("RUNTIME_NAMESPACE_NORMALIZATION_REQUIRED")
-    if locator_gap:
-        issues.append("DECLARED_LOCATORS_ABSENT_FROM_EDITABLE_AND_EXPORT")
+    if native_locator_gap:
+        issues.append("DECLARED_LOCATORS_ABSENT_FROM_NATIVE_EDITABLE")
+    if export_locator_gap:
+        issues.append("DECLARED_LOCATORS_ABSENT_FROM_STATIC_EXPORT")
     if animation_gap:
         issues.append("DECLARED_ANIMATION_COVERAGE_ABSENT")
     if declared_resolution and declared_resolution != actual_resolution:
@@ -346,7 +349,7 @@ def audit_asset(
         issues.append("EDITABLE_EXPORT_CUBE_COUNT_MISMATCH")
     if any(d["classification"] == "NON_CANONICAL_PROSE_UNBOUND" for d in dependencies):
         issues.append("RELATED_ASSET_PROSE_REQUIRES_ENGINEERING_BINDING")
-    if locator_gap:
+    if native_locator_gap:
         native_risk = (
             "NATIVE_REPAIR_REQUIRED"
             if category in {"creatures", "weapons", "armor", "tools", "accessories", "trophies"}
@@ -375,7 +378,9 @@ def audit_asset(
         "normalization": {
             "source_namespace": packet_namespace, "shipping_namespace": "aionbound",
             "shipping_geometry_identifier": f"geometry.aionbound.{asset_id}",
-            "locator_gap": locator_gap, "animation_gap": animation_gap,
+            "native_locator_gap": native_locator_gap,
+            "static_export_locator_gap": export_locator_gap,
+            "animation_gap": animation_gap,
             "native_roundtrip_risk": native_risk,
         },
         "status": "STATIC_READY_FOR_NORMALIZATION" if not issues else "NORMALIZATION_OR_REPAIR_REQUIRED",
@@ -421,7 +426,7 @@ def render_markdown(report: dict[str, Any]) -> str:
         lines.append(f"- `{issue}`: {count}")
     lines += [
         "", "The two highest-risk findings are contractual rather than cosmetic:", "",
-        "- Briefs declare locator names that are absent as native locator elements in editable projects and absent from exported geometry. Locator-dependent or hero shipping use requires repair; ordinary native-JSON/block-assembly implementations may instead document Blockbench as `NOT_APPLICABLE` under the decision ledger.",
+        "- Briefs declare locator names that are absent as native locator elements in editable projects. The static geometry exports contain those locators, which means they were injected outside the native editable hierarchy; native reopen/export drops them. Locator-dependent or hero shipping use therefore requires native repair. Ordinary native-JSON/block-assembly implementations may instead document Blockbench as `NOT_APPLICABLE` under the decision ledger.",
         "- Briefs declare role-specific animation sets, while exported animation files expose only the actually inventoried clips. Missing declared clips must be implemented or explicitly removed from the implementation contract.",
         "", "## Complete warehouse binding", "",
         "| Packet | Category | Warehouse ID | Runtime ID | Static status | Native risk |",

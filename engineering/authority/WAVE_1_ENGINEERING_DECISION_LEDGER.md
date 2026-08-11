@@ -90,14 +90,17 @@ Curiosity terms are narrative/Codex discoveries by default and do not become inv
 
 ## Twinbond dependency decision
 
-Twinbond is `DEFERRED_WITH_BLOCKING_SUPPORT_TICKET` under `W1-CREATIVE-002`.
+Twinbond is `PARTIALLY_RATIFIED_WITH_NARROWED_BLOCKING_SUPPORT_TICKET` under `W1-CREATIVE-002`. The evidence binding is recorded in `engineering/authority/twinbond/TWINBOND_EXISTING_AUTHORITY_AUDIT.{md,json}`.
 
-Engineering may implement the pilgrimage handoff, inert Trophy Edge, finale entry state, and `twinbond_relic` persistence hooks. It may not implement the encounter, dual aspects, arena art, ignition reward, or final completion semantics until the ticket binds:
+The exact aspects are `aionbound:ash_sovereign_wyrm` and `aionbound:tide_empress_wyrm`. Engineering may reuse the prepared 128×48×128 `twinbond_slice_v1` massing and the existing `twin_thrones`, `twinbond_obelisk_site`, `ceremony_anvil_site`, `twinbond_obsidian_ring`, and `twinbond_approach_marker` inputs. The current primary reward identity is `twinbond_relic` followed by Trophy Edge ignition. The old `trophy_concord_scale`, finale-key, and concord-equipment reward path is superseded for Wave 1.
 
-- exact aspect entity IDs and existing mesh/texture/animation inputs, or an explicit no-new-mesh composition using named existing entities;
-- arena and approach asset IDs/locations;
-- Concord Spark, Memory of Four Lands, and mastery-sigil dispositions;
+Engineering may normalize and repair those exact assets, preserve the pilgrimage handoff, implement inert Trophy Edge/finale-entry state, and build nonnumeric encounter architecture. It may not choose the finale container or declare terminal completion until the narrowed ticket binds:
+
+- isolated logical container versus same-world placement;
+- Concord Spark, Memory of Four Lands presentation, and any unbound mastery-sigil disposition;
 - whether Twinbond completion is mandatory for Wave 1 machine exit (current ledger assumes yes).
+
+Boss numeric, multiplayer, persistence, and reward-guard semantics remain separately blocked by `W1-CREATIVE-003` and `W1-CREATIVE-004`. Existing wyrm/relic animations still require native repair and do not constitute phase-ready shipping art.
 
 ## Boss behavior envelope decision
 
@@ -140,7 +143,7 @@ This gate is a shipping-use requirement, not a reason to run BDS per asset.
 | ID | Blocking scope | Owner | Work allowed while open |
 |---|---|---|---|
 | `W1-CREATIVE-001` | Complete non-warehouse glossary, canonical IDs, inventory visibility, icon/craft homes | Creative + Asset support | Existing aliases and approved derived components; no unresolved new item publication |
-| `W1-CREATIVE-002` | Twinbond aspects, art, arena, finale rewards and exit dependency | Creative + Asset support | Pilgrimage handoff and inert finale hooks only |
+| `W1-CREATIVE-002` | Narrowed: finale container, secondary reward presentation, mastery-sigil disposition, and machine-exit dependency | Creative + Asset support | Exact dual-wyrm/arena asset repair, pilgrimage handoff, inert finale hooks, and nonnumeric encounter architecture |
 | `W1-CREATIVE-003` | Boss numeric, reset, multiplayer, persistence, terminal reward envelopes | Creative support | Phase kits and nonnumeric behavior architecture |
 | `W1-CREATIVE-004` | Loot numeric ranges, chest rolls, reward guards, alternate-seal semantics | Creative support | Structural loot wiring with no final values |
 | `W1-CREATIVE-005` | Equipment sidegrade identity: same base ID behavior versus approved sibling IDs | Creative support | Base packet IDs and behavior interface only |

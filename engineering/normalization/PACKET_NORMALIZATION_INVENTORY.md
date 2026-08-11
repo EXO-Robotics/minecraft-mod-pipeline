@@ -7,7 +7,7 @@ This is a deterministic static inventory. It does not prove a native Blockbench 
 ## Authority binding
 
 - Creative contract SHA-256: `aa1f54df10d27d5c5675aae843ffe0d2946123d12a6509f7f021408bcdde9fb5`
-- Engineering decision ledger SHA-256: `3bd4e790382b15133e76fdfc5d4ac77d176adcda5af2e0184d5a219907ffdb73`
+- Engineering decision ledger SHA-256: `ed71046df20a66440ac2cc73cc3c25f629c63f6ee8ade01449c43ea537de8c31`
 - Canonical editable source: each sprint's `assets/editable/<warehouse_id>.bbmodel` and sibling PNG.
 - Category copies are mirrors only and are compared byte-for-byte.
 - Shipping namespace decision: `aionbound:<warehouse_id>`; packet namespace identifiers require normalization in successor production files.
@@ -35,14 +35,14 @@ This is a deterministic static inventory. It does not prove a native Blockbench 
 
 - `BRIEF_TEXTURE_RESOLUTION_MISMATCH`: 154
 - `DECLARED_ANIMATION_COVERAGE_ABSENT`: 102
-- `DECLARED_LOCATORS_ABSENT_FROM_EDITABLE_AND_EXPORT`: 250
+- `DECLARED_LOCATORS_ABSENT_FROM_NATIVE_EDITABLE`: 250
 - `EDITABLE_ABSOLUTE_TEXTURE_PATH_REQUIRES_NORMALIZATION`: 250
 - `RELATED_ASSET_PROSE_REQUIRES_ENGINEERING_BINDING`: 60
 - `RUNTIME_NAMESPACE_NORMALIZATION_REQUIRED`: 250
 
 The two highest-risk findings are contractual rather than cosmetic:
 
-- Briefs declare locator names that are absent as native locator elements in editable projects and absent from exported geometry. Locator-dependent or hero shipping use requires repair; ordinary native-JSON/block-assembly implementations may instead document Blockbench as `NOT_APPLICABLE` under the decision ledger.
+- Briefs declare locator names that are absent as native locator elements in editable projects. The static geometry exports contain those locators, which means they were injected outside the native editable hierarchy; native reopen/export drops them. Locator-dependent or hero shipping use therefore requires native repair. Ordinary native-JSON/block-assembly implementations may instead document Blockbench as `NOT_APPLICABLE` under the decision ledger.
 - Briefs declare role-specific animation sets, while exported animation files expose only the actually inventoried clips. Missing declared clips must be implemented or explicitly removed from the implementation contract.
 
 ## Complete warehouse binding

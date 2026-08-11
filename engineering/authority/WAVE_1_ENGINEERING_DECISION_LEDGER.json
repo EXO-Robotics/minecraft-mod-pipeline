@@ -60,10 +60,18 @@
     "unknown_term_rule": "BLOCKED_UNTIL_LEDGER_REVISION"
   },
   "twinbond": {
-    "status": "DEFERRED_WITH_BLOCKING_SUPPORT_TICKET",
+    "status": "PARTIALLY_RATIFIED_WITH_NARROWED_BLOCKING_SUPPORT_TICKET",
     "ticket": "W1-CREATIVE-002",
-    "allowed_now": ["pilgrimage handoff", "inert Trophy Edge", "finale entry state", "twinbond_relic persistence hooks"],
-    "blocked": ["encounter entities", "dual aspect art", "arena art", "ignition reward", "terminal completion semantics"],
+    "evidence": "engineering/authority/twinbond/TWINBOND_EXISTING_AUTHORITY_AUDIT.json",
+    "aspect_entity_ids": ["aionbound:ash_sovereign_wyrm", "aionbound:tide_empress_wyrm"],
+    "arena_inputs": ["twinbond_slice_v1", "twin_thrones", "twinbond_obelisk_site", "ceremony_anvil_site", "twinbond_obsidian_ring", "twinbond_approach_marker"],
+    "primary_reward_identity": "aionbound:twinbond_relic",
+    "ignition_target": "aionbound:trophy_edge",
+    "superseded_wave1_inputs": ["aionbound:trophy_concord_scale", "old finale ignition key", "old concord equipment rewards"],
+    "allowed_now": ["pilgrimage handoff", "inert Trophy Edge", "finale entry state", "twinbond_relic persistence hooks", "exact dual-wyrm and arena asset normalization/repair", "nonnumeric encounter architecture"],
+    "blocked": ["isolated container versus same-world placement", "Concord Spark presentation", "Memory of Four Lands presentation", "unbound mastery sigil disposition", "terminal completion semantics"],
+    "numeric_multiplayer_persistence_semantics": "BLOCKED_BY_W1-CREATIVE-003_AND_W1-CREATIVE-004",
+    "native_asset_repair_required": true,
     "assumed_required_for_wave1_exit": true
   },
   "boss_behavior": {
@@ -90,7 +98,7 @@
   },
   "support_tickets": [
     {"id": "W1-CREATIVE-001", "status": "OPEN_BLOCKING_FINAL", "scope": "non-warehouse glossary, IDs, inventory visibility, icons, craft homes", "owner": "CREATIVE_ASSET_SUPPORT"},
-    {"id": "W1-CREATIVE-002", "status": "OPEN_BLOCKING_FINALE", "scope": "Twinbond entities, art, arena, rewards, exit dependency", "owner": "CREATIVE_ASSET_SUPPORT"},
+    {"id": "W1-CREATIVE-002", "status": "OPEN_NARROWED_BLOCKING_FINALE", "scope": "Twinbond container, secondary reward presentation, mastery-sigil disposition, exit dependency", "owner": "CREATIVE_ASSET_SUPPORT"},
     {"id": "W1-CREATIVE-003", "status": "OPEN_BLOCKING_BOSSES", "scope": "boss numeric, reset, multiplayer, persistence, reward envelopes", "owner": "CREATIVE_SUPPORT"},
     {"id": "W1-CREATIVE-004", "status": "OPEN_BLOCKING_FINAL_LOOT", "scope": "loot ranges, chest rolls, reward guards, alternate seals", "owner": "CREATIVE_SUPPORT"},
     {"id": "W1-CREATIVE-005", "status": "OPEN_BLOCKING_SIDEGRADES", "scope": "equipment sidegrade item identity", "owner": "CREATIVE_SUPPORT"}

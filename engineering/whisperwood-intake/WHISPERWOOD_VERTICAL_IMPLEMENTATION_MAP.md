@@ -10,8 +10,8 @@ This is an engineering intake map, not implementation or qualification. It binds
 - Immutable G7 parent: `042018eac3bd32b76d135219b9f59502dd4f4692`
 - Contract JSON SHA-256: `aa1f54df10d27d5c5675aae843ffe0d2946123d12a6509f7f021408bcdde9fb5`
 - Contract Markdown SHA-256: `3116c217e06afe1fd0cd56ee742c537f948a4c91193ec831fd1b3ec362837bfc`
-- Decision ledger SHA-256: `3bd4e790382b15133e76fdfc5d4ac77d176adcda5af2e0184d5a219907ffdb73`
-- Normalization inventory SHA-256: `c827e49626900d7218a77885a38c9b3eda6b98be3347fb491ebde6bdd5052629`
+- Decision ledger SHA-256: `ed71046df20a66440ac2cc73cc3c25f629c63f6ee8ade01449c43ea537de8c31`
+- Normalization inventory SHA-256: `4a65ccbc10f47a86e3aec649874916a9d4ad5cb9feef7817d75a527774a3a842`
 - Inventory: 10 creatures, 10 resources, 10 blocks, 10 plants, 10 structures; 50 total.
 - Linked Packet 006 equipment dependencies: 21. Ratified WW derived components: 5.
 - Exact G7 ID collisions: 0. Semantic predecessor mappings: 8.
