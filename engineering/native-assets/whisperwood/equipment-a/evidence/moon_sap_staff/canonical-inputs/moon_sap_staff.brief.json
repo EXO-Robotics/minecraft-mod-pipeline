@@ -1,0 +1,45 @@
+{
+  "name": "moon_sap_staff",
+  "display_name": "Moon Sap Staff",
+  "sprint": "asset_sprint_006_equipment_progression",
+  "tier": "WEAPON",
+  "role": "Whisperwood cast staff with moon-sap orb",
+  "profile": "item",
+  "model_identifier": "geometry.aionforge_eq.moon_sap_staff",
+  "cube_count": 15,
+  "bone_count": 4,
+  "density_floor": 14,
+  "locators": [
+    "effect"
+  ],
+  "palette": {
+    "metal": [
+      61,
+      46,
+      31
+    ],
+    "accent": [
+      216,
+      201,
+      168
+    ],
+    "energy": [
+      196,
+      138,
+      46
+    ]
+  },
+  "animations": [
+    "idle_hold",
+    "cast_raise",
+    "pulse"
+  ],
+  "minecraft_scale": "1.5\u20131.7",
+  "texture_resolution": "64\u00d764",
+  "production_priority": "P0",
+  "related_assets": "moon_sap_pendant",
+  "originality": "Clean-room Equipment & Progression manufacture; biome-linked visual language",
+  "forbidden": "No diamond clones; no simple recolors; no WW/AH/CM creature paste; no Gloamveil neon teal",
+  "editable": "assets/editable/moon_sap_staff.bbmodel",
+  "claims_boundary": "Visual production only. No BP/JSON/AI/gameplay/recipes/balance."
+}

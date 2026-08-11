@@ -1,0 +1,45 @@
+{
+  "name": "thorn_whip",
+  "display_name": "Thorn Whip",
+  "sprint": "asset_sprint_006_equipment_progression",
+  "tier": "WEAPON",
+  "role": "Living briar lash whip",
+  "profile": "item",
+  "model_identifier": "geometry.aionforge_eq.thorn_whip",
+  "cube_count": 14,
+  "bone_count": 4,
+  "density_floor": 14,
+  "locators": [
+    "effect"
+  ],
+  "palette": {
+    "metal": [
+      42,
+      34,
+      24
+    ],
+    "accent": [
+      74,
+      122,
+      72
+    ],
+    "energy": [
+      196,
+      138,
+      46
+    ]
+  },
+  "animations": [
+    "idle_coil",
+    "crack_pose",
+    "extend_pose"
+  ],
+  "minecraft_scale": "handle 0.4 \u00b7 coil ~0.7",
+  "texture_resolution": "64\u00d764",
+  "production_priority": "P1",
+  "related_assets": "briar_cleaver",
+  "originality": "Clean-room Equipment & Progression manufacture; biome-linked visual language",
+  "forbidden": "No diamond clones; no simple recolors; no WW/AH/CM creature paste; no Gloamveil neon teal",
+  "editable": "assets/editable/thorn_whip.bbmodel",
+  "claims_boundary": "Visual production only. No BP/JSON/AI/gameplay/recipes/balance."
+}

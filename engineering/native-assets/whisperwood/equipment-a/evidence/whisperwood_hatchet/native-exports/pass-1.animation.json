@@ -1,0 +1,69 @@
+{
+  "format_version": "1.8.0",
+  "animations": {
+    "animation.aionbound.whisperwood_hatchet.hold": {
+      "loop": true,
+      "animation_length": 2.8,
+      "bones": {
+        "grip": {
+          "rotation": {
+            "0.0": [
+              0,
+              0,
+              0
+            ],
+            "0.7": [
+              -0.7,
+              0,
+              1.2
+            ],
+            "1.4": [
+              0,
+              0,
+              0
+            ],
+            "2.1": [
+              0.5,
+              0,
+              -1
+            ],
+            "2.8": [
+              0,
+              0,
+              0
+            ]
+          }
+        }
+      }
+    },
+    "animation.aionbound.whisperwood_hatchet.chop": {
+      "animation_length": 0.7,
+      "bones": {
+        "grip": {
+          "rotation": {
+            "0.0": [
+              16,
+              0,
+              0
+            ],
+            "0.2": [
+              30,
+              0,
+              0
+            ],
+            "0.45": [
+              -28,
+              0,
+              0
+            ],
+            "0.7": [
+              -8,
+              0,
+              0
+            ]
+          }
+        }
+      }
+    }
+  }
+}

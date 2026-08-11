@@ -1,0 +1,44 @@
+{
+  "name": "lantern_hook",
+  "display_name": "Lantern Hook",
+  "sprint": "asset_sprint_006_equipment_progression",
+  "tier": "TOOL",
+  "role": "Hook pole with lantern cage",
+  "profile": "item",
+  "model_identifier": "geometry.aionforge_eq.lantern_hook",
+  "cube_count": 14,
+  "bone_count": 4,
+  "density_floor": 12,
+  "locators": [
+    "effect"
+  ],
+  "palette": {
+    "metal": [
+      61,
+      46,
+      31
+    ],
+    "accent": [
+      216,
+      201,
+      168
+    ],
+    "energy": [
+      196,
+      138,
+      46
+    ]
+  },
+  "animations": [
+    "hold",
+    "hang"
+  ],
+  "minecraft_scale": "1.0",
+  "texture_resolution": "64\u00d764",
+  "production_priority": "P1",
+  "related_assets": "lantern_badge",
+  "originality": "Clean-room Equipment & Progression manufacture; biome-linked visual language",
+  "forbidden": "No diamond clones; no simple recolors; no WW/AH/CM creature paste; no Gloamveil neon teal",
+  "editable": "assets/editable/lantern_hook.bbmodel",
+  "claims_boundary": "Visual production only. No BP/JSON/AI/gameplay/recipes/balance."
+}

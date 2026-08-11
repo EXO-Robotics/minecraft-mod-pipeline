@@ -1,0 +1,122 @@
+{
+  "format_version": "1.8.0",
+  "animations": {
+    "animation.aionbound.thorn_whip.idle_coil": {
+      "loop": true,
+      "animation_length": 3.2,
+      "bones": {
+        "head": {
+          "rotation": {
+            "0.0": [
+              0,
+              0,
+              0
+            ],
+            "0.8": [
+              0,
+              -3,
+              1.8
+            ],
+            "1.6": [
+              0,
+              0,
+              0
+            ],
+            "2.4": [
+              0,
+              2.5,
+              -1.5
+            ],
+            "3.2": [
+              0,
+              0,
+              0
+            ]
+          }
+        }
+      }
+    },
+    "animation.aionbound.thorn_whip.crack_pose": {
+      "animation_length": 0.65,
+      "bones": {
+        "grip": {
+          "rotation": {
+            "0.0": [
+              0,
+              12,
+              -4
+            ],
+            "0.2": [
+              0,
+              -18,
+              8
+            ],
+            "0.4": [
+              0,
+              -28,
+              -10
+            ],
+            "0.65": [
+              0,
+              -8,
+              -2
+            ]
+          }
+        },
+        "head": {
+          "rotation": {
+            "0.0": [
+              0,
+              0,
+              0
+            ],
+            "0.2": [
+              0,
+              8,
+              4
+            ],
+            "0.4": [
+              0,
+              -16,
+              -7
+            ],
+            "0.65": [
+              0,
+              -4,
+              -2
+            ]
+          }
+        }
+      }
+    },
+    "animation.aionbound.thorn_whip.extend_pose": {
+      "animation_length": 0.8,
+      "bones": {
+        "head": {
+          "position": {
+            "0.0": [
+              0,
+              0,
+              0
+            ],
+            "0.25": [
+              0,
+              0,
+              -0.7
+            ],
+            "0.55": [
+              0,
+              0,
+              -2.4
+            ],
+            "0.8": [
+              0,
+              0,
+              -1.1
+            ]
+          }
+        }
+      }
+    }
+  }
+}

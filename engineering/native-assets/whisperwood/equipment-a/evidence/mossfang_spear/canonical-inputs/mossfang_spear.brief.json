@@ -1,0 +1,45 @@
+{
+  "name": "mossfang_spear",
+  "display_name": "Mossfang Spear",
+  "sprint": "asset_sprint_006_equipment_progression",
+  "tier": "WEAPON",
+  "role": "Whisperwood reach spear; moss fang tip",
+  "profile": "item",
+  "model_identifier": "geometry.aionforge_eq.mossfang_spear",
+  "cube_count": 15,
+  "bone_count": 4,
+  "density_floor": 14,
+  "locators": [
+    "effect"
+  ],
+  "palette": {
+    "metal": [
+      61,
+      46,
+      31
+    ],
+    "accent": [
+      74,
+      122,
+      72
+    ],
+    "energy": [
+      196,
+      138,
+      46
+    ]
+  },
+  "animations": [
+    "idle_hold",
+    "thrust_pose",
+    "sweep_pose"
+  ],
+  "minecraft_scale": "1.6\u20131.8 long",
+  "texture_resolution": "64\u00d764",
+  "production_priority": "P0",
+  "related_assets": "whisperwood_hatchet, moss_charm",
+  "originality": "Clean-room Equipment & Progression manufacture; biome-linked visual language",
+  "forbidden": "No diamond clones; no simple recolors; no WW/AH/CM creature paste; no Gloamveil neon teal",
+  "editable": "assets/editable/mossfang_spear.bbmodel",
+  "claims_boundary": "Visual production only. No BP/JSON/AI/gameplay/recipes/balance."
+}

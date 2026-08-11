@@ -1,0 +1,44 @@
+{
+  "name": "briar_cleaver",
+  "display_name": "Briar Cleaver",
+  "sprint": "asset_sprint_006_equipment_progression",
+  "tier": "WEAPON",
+  "role": "Heavy briar short cleaver",
+  "profile": "item",
+  "model_identifier": "geometry.aionforge_eq.briar_cleaver",
+  "cube_count": 14,
+  "bone_count": 4,
+  "density_floor": 14,
+  "locators": [
+    "effect"
+  ],
+  "palette": {
+    "metal": [
+      42,
+      34,
+      24
+    ],
+    "accent": [
+      74,
+      122,
+      72
+    ],
+    "energy": [
+      196,
+      138,
+      46
+    ]
+  },
+  "animations": [
+    "idle_hold",
+    "chop_pose"
+  ],
+  "minecraft_scale": "0.9\u20131.1",
+  "texture_resolution": "64\u00d764",
+  "production_priority": "P0",
+  "related_assets": "thorn_whip, briar_ring",
+  "originality": "Clean-room Equipment & Progression manufacture; biome-linked visual language",
+  "forbidden": "No diamond clones; no simple recolors; no WW/AH/CM creature paste; no Gloamveil neon teal",
+  "editable": "assets/editable/briar_cleaver.bbmodel",
+  "claims_boundary": "Visual production only. No BP/JSON/AI/gameplay/recipes/balance."
+}
