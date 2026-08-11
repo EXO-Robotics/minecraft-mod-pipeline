@@ -1,3 +1,4 @@
+# QUARANTINED: immutable G6-era regression fixture; not successor test authority.
 import hashlib,json,subprocess,sys,unittest,zipfile
 from pathlib import Path
 ROOT=Path(__file__).resolve().parents[1]

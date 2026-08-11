@@ -184,7 +184,7 @@ test("shipping scripts use stable server API only and one central arbiter", asyn
   assert.equal(runtime.includes("useProgressBlock"), false); assert.equal(runtime.includes("platform.world.beforeEvents.playerInteractWithBlock.subscribe"), true);
 });
 
-test("literal packaged entrypoint starts one stable subscription per routed event", async () => {
+test("transformed source harness starts one stable subscription per routed event", async () => {
   const minecraft = await import(pathToFileURL(resolve(MODULE_DIR, "minecraft-server.mjs")).href);
   await load("main");
   assert.equal(minecraft.world.afterEvents.itemUse.callbacks.length, 1);

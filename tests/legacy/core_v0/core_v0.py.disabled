@@ -1,3 +1,4 @@
+# QUARANTINED: pre-G6 fixture whose build assertion mutates legacy dist outputs.
 import hashlib, json, os, subprocess, sys, unittest, zipfile
 from pathlib import Path, PurePosixPath
 ROOT=Path(__file__).resolve().parents[1]; MARKER="[Aionbound Core v0] runtime-ready-v1"; PACKAGES=["dist/aionbound-core-v0-g4-behavior.mcpack","dist/aionbound-core-v0-g4-resources.mcpack","dist/aionbound-core-v0-g4.mcaddon"]
