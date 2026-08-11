@@ -1,0 +1,17 @@
+{
+  "format_version": "1.21.80",
+  "minecraft:block": {
+    "description": {
+      "identifier": "aionbound:moss_bark",
+      "menu_category": { "category": "construction" }
+    },
+    "components": {
+      "minecraft:display_name": "Moss Bark",
+      "minecraft:destructible_by_mining": { "seconds_to_destroy": 1.5 },
+      "minecraft:geometry": "geometry.aionbound.moss_bark",
+      "minecraft:material_instances": {
+        "*": { "texture": "moss_bark", "render_method": "opaque" }
+      }
+    }
+  }
+}

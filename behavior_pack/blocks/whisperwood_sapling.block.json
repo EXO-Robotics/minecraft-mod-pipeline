@@ -1,0 +1,18 @@
+{
+  "format_version": "1.21.80",
+  "minecraft:block": {
+    "description": {
+      "identifier": "aionbound:whisperwood_sapling",
+      "menu_category": { "category": "nature" }
+    },
+    "components": {
+      "minecraft:display_name": "Whisperwood Sapling",
+      "minecraft:collision_box": false,
+      "minecraft:destructible_by_mining": { "seconds_to_destroy": 0.2 },
+      "minecraft:geometry": "geometry.aionbound.whisperwood_sapling",
+      "minecraft:material_instances": {
+        "*": { "texture": "whisperwood_sapling", "render_method": "opaque" }
+      }
+    }
+  }
+}
