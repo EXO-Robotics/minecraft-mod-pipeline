@@ -240,6 +240,7 @@ def validate(root: Path) -> dict[str, Any]:
             features[identifier] = path
 
     recipes: dict[str, Path] = {}
+    recipe_signatures: dict[tuple, tuple[str, Path]] = {}
     recipe_refs: set[str] = set()
     recipe_results: list[str] = []
     for path in json_files(bp / "recipes"):
@@ -256,6 +257,38 @@ def validate(root: Path) -> dict[str, Any]:
             errors.append(f"duplicate_recipe_identifier:{identifier}:{recipes[identifier]}:{path}")
         else:
             recipes[identifier] = path
+        tags = tuple(sorted(value for value in body.get("tags", []) if isinstance(value, str)))
+        signature = None
+        if keys[0] == "minecraft:recipe_shapeless":
+            ingredients = []
+            for row in body.get("ingredients", []):
+                if isinstance(row, dict):
+                    ingredients.append(tuple(sorted(
+                        (key, value) for key, value in row.items()
+                        if key in {"item", "tag", "data"} and isinstance(value, (str, int))
+                    )))
+            if ingredients:
+                signature = (keys[0], tags, tuple(sorted(ingredients)))
+        elif keys[0] == "minecraft:recipe_shaped":
+            pattern = tuple(body.get("pattern", []))
+            key_rows = []
+            for symbol, row in sorted(body.get("key", {}).items()):
+                if isinstance(row, dict):
+                    key_rows.append((symbol, tuple(sorted(
+                        (key, value) for key, value in row.items()
+                        if key in {"item", "tag", "data"} and isinstance(value, (str, int))
+                    ))))
+            if pattern and key_rows:
+                signature = (keys[0], tags, pattern, tuple(key_rows))
+        if signature is not None and isinstance(identifier, str):
+            if signature in recipe_signatures:
+                prior_identifier, prior_path = recipe_signatures[signature]
+                errors.append(
+                    f"duplicate_recipe_ingredients:{prior_identifier}:{prior_path}:"
+                    f"{identifier}:{path}"
+                )
+            else:
+                recipe_signatures[signature] = (identifier, path)
         rows = list(body.get("ingredients", [])) + list(body.get("key", {}).values()) + list(body.get("unlock", []))
         for row in rows:
             if isinstance(row, dict) and isinstance(row.get("item"), str):

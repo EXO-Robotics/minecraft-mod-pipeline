@@ -1,0 +1,34 @@
+{
+  "schema_version": "1.0.0",
+  "status": "SOURCE_REPAIR_COMPLETE_RUNTIME_REQUALIFICATION_REQUIRED",
+  "finding": "Stable BDS emitted four duplicate crafting-table recipe warnings because five inherited G7 recipe files had converged on the same stick plus amethyst ingredients.",
+  "authority": {
+    "path": "tooling/build.py",
+    "classification": "INHERITED_G7_AUTHORED_RECIPE_RELATIONS",
+    "policy": "Restore the exact authored ingredient relations; do not invent new recipes or identities."
+  },
+  "restored_recipes": {
+    "aionbound:barkling_token_recipe": ["minecraft:stick", "minecraft:apple"],
+    "aionbound:prismglass_chest_recipe": ["minecraft:glass", "minecraft:amethyst_shard"],
+    "aionbound:starter_codex_bookmark_recipe": ["minecraft:paper", "minecraft:string"],
+    "aionbound:stripvein_charge_recipe": ["minecraft:paper", "minecraft:gunpowder", "minecraft:amethyst_shard"],
+    "aionbound:trophy_codex_recipe": ["minecraft:book", "minecraft:amethyst_shard"]
+  },
+  "scope": {
+    "new_item_identities": 0,
+    "new_recipe_identities": 0,
+    "g7_modified": false,
+    "w1_creative_005_reopened": false,
+    "thorn_stalker_skull_added_to_ecology_or_recipe": false
+  },
+  "validator_refinement": {
+    "path": "tools/validate_wave1.py",
+    "finding": "duplicate_recipe_ingredients",
+    "coverage": ["shapeless ingredient multisets", "shaped pattern and key identity"]
+  },
+  "required_next_gate": "Build a replacement Checkpoint 1 package and rerun only the bounded two-cycle Stable BDS smoke; require the four duplicate-recipe warnings to be absent.",
+  "proof_boundary": [
+    "Source and semantic repair only until replacement package qualification passes.",
+    "No client, multiplayer, controller, console, or release claim."
+  ]
+}

@@ -178,6 +178,25 @@ class Wave1ValidatorTests(unittest.TestCase):
         })
         self.assertIn("unresolved_custom_item_reference:aionbound:missing", self.findings())
 
+    def test_duplicate_shapeless_ingredient_multiset_fails(self):
+        for name, identifier, ingredients in (
+            ("first.json", "aionbound:first_recipe", ["minecraft:stick", "minecraft:apple"]),
+            ("second.json", "aionbound:second_recipe", ["minecraft:apple", "minecraft:stick"]),
+        ):
+            write_json(self.root / "behavior_pack/recipes" / name, {
+                "format_version": "1.20.10",
+                "minecraft:recipe_shapeless": {
+                    "description": {"identifier": identifier},
+                    "tags": ["crafting_table"],
+                    "ingredients": [{"item": item} for item in ingredients],
+                    "result": {"item": "aionbound:new_item"},
+                },
+            })
+        self.assertTrue(any(
+            value.startswith("duplicate_recipe_ingredients:")
+            for value in self.findings()
+        ))
+
     def test_missing_texture_and_forbidden_runtime_fail(self):
         (self.root / "resource_pack/textures/items/new_item.png").unlink()
         (self.root / "behavior_pack/scripts/main.js").write_text(
