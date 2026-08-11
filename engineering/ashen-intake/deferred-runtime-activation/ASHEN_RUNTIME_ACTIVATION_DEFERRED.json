@@ -1,0 +1,345 @@
+{
+  "blocker": "MANAGED_REVIEWER_ACTIVATION_BLOCKED",
+  "classification": "TOOLING_GOVERNANCE_BLOCKER_NOT_DEMONSTRATED_PRODUCT_DEFECT",
+  "deferred_integration_ticket": {
+    "acceptance_criteria": [
+      "Import and instantiate exactly one Ashen equipment service and one Kiln Sky service using existing dependencies.",
+      "Use only existing completed-item, hurt, 20-tick, reconcile, tick, block-interaction, and death paths; add no subscription or interval class.",
+      "Preserve current balance, persistence schema, ownership, encounter, reward, duplicate, replay, and recovery semantics.",
+      "Make durable Kiln completion authoritative for overlapping Ember Forge cache guards while retaining synchronous pre-clear locking.",
+      "When a horn-entitled player has full inventory, remain in recovery and do not fall through into a new encounter.",
+      "Pass targeted shared-handler semantic tests, prove no duplicate subscription/double dispatch, and prove bounded/idempotent persistent mutations where designed.",
+      "Run no BDS solely for activation; final integrated qualification remains separately gated."
+    ],
+    "design_decisions_required": false,
+    "final_candidate_rule": "MUST_RECONCILE_BEFORE_IMMUTABLE_WAVE_1_CANDIDATE; ACTIVATE_NORMALLY_OR_EXPLICITLY_REVISE_PRODUCT_CONTRACT; DO_NOT_SHIP_DORMANT_SILENTLY",
+    "id": "W1-G8-ASHEN-SHARED-RUNTIME-ACTIVATION-DEFERRED",
+    "scope": "ONLY_THE_TWO_DORMANT_COMPOSITIONS_LISTED_IN_THIS_RECEIPT"
+  },
+  "dormant_connections": [
+    {
+      "intended": "route aionbound:ash_repeater to ashen_ranged",
+      "observed": "ABSENT",
+      "target": "behavior_pack/scripts/catalog.js::COMPLETED_ITEM_ROUTES"
+    },
+    {
+      "intended": "ashen_ranged calls only ashenEquipment.useRanged",
+      "observed": "ABSENT",
+      "target": "behavior_pack/scripts/runtime.js::itemActions"
+    },
+    {
+      "intended": "compose routeMeleeHurt and handlePlayerHurt without early return",
+      "observed": "ABSENT",
+      "target": "behavior_pack/scripts/runtime.js::existing entityHurt subscriber"
+    },
+    {
+      "intended": "compose ashenEquipment.tickPlayers beside combat.tickPlayers",
+      "observed": "ABSENT",
+      "target": "behavior_pack/scripts/runtime.js::existing 20-tick player cadence"
+    },
+    {
+      "intended": "compose kilnSky.reconcile and kilnSky.tick",
+      "observed": "ABSENT",
+      "target": "behavior_pack/scripts/runtime.js::reconcile and existing tick callback"
+    },
+    {
+      "intended": "make durable Kiln completion authoritative for overlapping Ember Forge cache guards, retain synchronous pre-clear lock, recover pending horn entitlement before any begin path",
+      "observed": "ABSENT",
+      "target": "behavior_pack/scripts/runtime.js::existing synchronous/deferred block-interaction paths"
+    },
+    {
+      "intended": "compose kilnSky.bossDeath beside thornCourt.bossDeath",
+      "observed": "ABSENT",
+      "target": "behavior_pack/scripts/runtime.js::existing entityDie subscriber"
+    },
+    {
+      "intended": "expose ashenEquipment and kilnSky for semantic testing",
+      "observed": "ABSENT",
+      "target": "behavior_pack/scripts/runtime.js::return object"
+    }
+  ],
+  "evidence": [
+    {
+      "bytes": 32592,
+      "path": "engineering/validation/wave1/WAVE_1_ASHEN_SOURCE_VALIDATION_PASS.json",
+      "sha256": "dc5027431a8bb8e9c7cef1304a5de3ad85129aa491e216b8df0cc09e2c2b6049"
+    },
+    {
+      "bytes": 58094,
+      "path": "engineering/validation/wave1/WAVE_1_ASHEN_IMPLEMENTED_CLOSURE.json",
+      "sha256": "ac7b5c1c932d20359e4a3ad0b7a152daacfe2e5a380f995bbcfa5868d050dac9"
+    },
+    {
+      "bytes": 6695,
+      "path": "engineering/ashen-intake/equipment-functional/ASHEN_EQUIPMENT_FUNCTIONAL_EVIDENCE.json",
+      "sha256": "aa191f645cd234dd4cf5fdf0a5876b85d335c219577b1debe2942212c6b257ef"
+    },
+    {
+      "bytes": 1598,
+      "path": "engineering/ashen-intake/equipment-functional/ACTIVATION_WITHHELD.md",
+      "sha256": "54d7e5aa451c8dc23820e9600f64b0a521700fa8974f0a721eaa2ba8d6c744c8"
+    },
+    {
+      "bytes": 2162,
+      "path": "engineering/ashen-intake/kiln-sky-runtime/KILN_SKY_RUNTIME_EVIDENCE.json",
+      "sha256": "2484be4a73d096216ec4e71a596d8de6e36e81dfebf2674b0c2002354e14ad2a"
+    },
+    {
+      "bytes": 2329,
+      "path": "engineering/ashen-intake/kiln-sky-runtime/ACTIVATION_WITHHELD.md",
+      "sha256": "2589e70e8433a44d36d8c708fd4c07dd6254b3832afa001860bde275ee613cef"
+    },
+    {
+      "bytes": 5542,
+      "path": "behavior_pack/scripts/ashen_equipment.js",
+      "sha256": "85ac9b2e9919c32fc4e72a1b4332b6614d59a573229f727a45be043990e0f953"
+    },
+    {
+      "bytes": 1468,
+      "path": "behavior_pack/scripts/ashen_equipment_roles.js",
+      "sha256": "b5106d7630469a0b11346a372288815ddaeaa24329ca5035270469d0970e0412"
+    },
+    {
+      "bytes": 23741,
+      "path": "behavior_pack/scripts/kiln_sky.js",
+      "sha256": "f2afa703c4023e4f300c266a0da1e6ab9732e85c30e21ccf1c0baa71b369bc3f"
+    },
+    {
+      "bytes": 4788,
+      "path": "behavior_pack/scripts/ashen_rewards.js",
+      "sha256": "3e78870a418eee57e19ce0b77c4a34cf23da1ec2102648cfe7f37d61fe3c7df3"
+    },
+    {
+      "bytes": 9913,
+      "path": "behavior_pack/scripts/runtime.js",
+      "sha256": "b346488f6e34d45eba0baf95051eaec7ef96a239cd5aaed4874ed7b651259ccd"
+    },
+    {
+      "bytes": 20655,
+      "path": "behavior_pack/scripts/catalog.js",
+      "sha256": "159f00cbfad5fbb8316d9daebdd3943205d1294082e4467027b4a42f3e4b695c"
+    },
+    {
+      "bytes": 9675,
+      "path": "behavior_pack/scripts/state.js",
+      "sha256": "69eb00df9ce2f16dcca9794a61c4fcaf9403512f8057ecd4907b6a8f8375b7cd"
+    },
+    {
+      "bytes": 7494,
+      "path": "tests/wave1_ashen_equipment_functional.test.mjs",
+      "sha256": "1319ae70d0f427ebc0710ae2b07d83190fca074ef83ea8171faa58e95482e173"
+    },
+    {
+      "bytes": 15551,
+      "path": "tests/wave1_kiln_sky.test.mjs",
+      "sha256": "dc766c4c7cf5dedc25afa0805fedb48ecb05629cf781a413544d9c7f47f8a334"
+    },
+    {
+      "bytes": 3038,
+      "path": "tests/wave1_ashen_rewards.test.mjs",
+      "sha256": "5a09b2707db8f0bc9c47c7372281b9f2fff068d720008220d3a4d1bec4edfa45"
+    },
+    {
+      "bytes": 8265,
+      "path": "tests/wave1_ashen_structure_rewards.test.mjs",
+      "sha256": "622cb96ba738f59b5deb6cf33c13a68716b2334ab53335dc199a7d86a13fcc59"
+    }
+  ],
+  "implemented_services": [
+    {
+      "evidence_status": "DEDICATED_SERVICE_AND_DECLARATIVE_COMPONENTS_PASS_ACTIVATION_WITHHELD",
+      "exported_service_functions": [
+        "routeMeleeHurt",
+        "useRanged",
+        "armorSet",
+        "handlePlayerHurt",
+        "tickPlayers"
+      ],
+      "factory": "createAshenEquipmentService",
+      "module": "behavior_pack/scripts/ashen_equipment.js",
+      "role_data": "behavior_pack/scripts/ashen_equipment_roles.js",
+      "semantics": [
+        "bounded cooldown state in existing player cooldowns map",
+        "Ash Repeater volcanic-glass ammunition consumption and selected-item durability",
+        "bounded damage, fire, weakness, slowness, and particle effects",
+        "Ashen armor-set and Ember Totem fire-resistance roles"
+      ]
+    },
+    {
+      "evidence_status": "DEDICATED_SERVICE_COMPLETE_ACTIVATION_WITHHELD",
+      "exported_service_functions": [
+        "begin",
+        "tick",
+        "bossDeath",
+        "reconcile",
+        "claimHorn",
+        "recoverHorn",
+        "flushPending",
+        "resolveArena"
+      ],
+      "factory": "createKilnSkyService",
+      "module": "behavior_pack/scripts/kiln_sky.js",
+      "reward_factory": "createAshenRewardHooks",
+      "reward_module": "behavior_pack/scripts/ashen_rewards.js",
+      "semantics": [
+        "bounded encounter sessions, phases, attacks, participants, resets, and cleanup",
+        "durable terminal completion and once-per-player seal/horn entitlement",
+        "offline/restart pending-credit and horn recovery",
+        "post-clear participant materials and guarded Ember Forge cache population"
+      ]
+    }
+  ],
+  "mutation_surfaces_if_later_activated": {
+    "existing_player_state": [
+      "cooldowns: ashen:weapon:<itemType> and ashen:accessory:ember_totem",
+      "credits: aionbound.player.kiln_sky.seal_credit.v1",
+      "credits: aionbound.player.kiln_sky.reward_entitled.v1",
+      "credits: aionbound.player.kiln_sky.trophy_claimed.v1"
+    ],
+    "existing_world_state": [
+      "encounters.terminal[aionbound.encounter.kiln_sky.completed.v1]",
+      "encounters.pendingKilnSky[playerId]"
+    ],
+    "inventory_and_item": [
+      "consume one aionbound:volcanic_glass_shard per successful Ash Repeater shot",
+      "damage selected Ash Repeater durability by one",
+      "deliver aionbound:ash_drake_horn only after durable entitlement and available inventory capacity",
+      "populate exact Ember Forge cache only after authoritative completion"
+    ],
+    "new_persistence_domain_or_schema": false,
+    "runtime_only": [
+      "Kiln Sky in-memory sessions",
+      "Ashen reward-hook opened-cache guard set"
+    ]
+  },
+  "passed_evidence": {
+    "equipment_proof": {
+      "bds": false,
+      "build": false,
+      "client": false,
+      "declarative_components": true,
+      "dedicated_service_semantics": true,
+      "package": false,
+      "shared_runtime_activation": false
+    },
+    "focused_tests_to_replay_for_ticket_validation": [
+      "node --test tests/wave1_ashen_equipment_functional.test.mjs",
+      "node --test tests/wave1_kiln_sky.test.mjs tests/wave1_ashen_rewards.test.mjs tests/wave1_ashen_structure_rewards.test.mjs",
+      "python3 engineering/ashen-intake/equipment-functional/test_ashen_equipment_evidence.py"
+    ],
+    "focused_validation_observed_2026_08_11": [
+      {
+        "command": "node --test tests/wave1_ashen_equipment_functional.test.mjs tests/wave1_kiln_sky.test.mjs tests/wave1_ashen_rewards.test.mjs tests/wave1_ashen_structure_rewards.test.mjs",
+        "failed": 0,
+        "passed": 30,
+        "scope": "equipment, Kiln Sky, Ashen rewards, and Ashen structure-reward semantics"
+      },
+      {
+        "command": "python3 engineering/ashen-intake/equipment-functional/test_ashen_equipment_evidence.py",
+        "failed": 0,
+        "passed": 2,
+        "scope": "existing functional-equipment evidence closure"
+      },
+      {
+        "command": "python3 engineering/ashen-intake/deferred-runtime-activation/test_deferred_activation.py",
+        "failed": 0,
+        "passed": 6,
+        "scope": "new deferred-ticket exactness, hash closure, dormancy, determinism, and final reconciliation"
+      }
+    ],
+    "kiln_sky_proof": {
+      "bds": false,
+      "build": false,
+      "client": false,
+      "dedicated_service": true,
+      "package": false,
+      "shared_runtime_activation": false,
+      "source_semantic_tests": true,
+      "state_migration": true
+    },
+    "source_validation_checks": [
+      "json_and_png_structure",
+      "manifest_and_dependency_closure",
+      "identifier_closure",
+      "texture_and_model_closure",
+      "recipe_and_loot_closure",
+      "script_import_and_runtime_policy",
+      "minimum_substrate_inventory",
+      "explicit_successor_additions",
+      "required_atlas_lang_png_closure",
+      "required_evidence_artifact_hash_and_shape",
+      "required_artifact_manifest_exact_path_and_hash_closure"
+    ],
+    "source_validation_status": "PASS"
+  },
+  "proof_boundary": {
+    "bds": false,
+    "client": false,
+    "package": false,
+    "product_defect_demonstrated": false,
+    "runtime_complete": false,
+    "shared_runtime_activation": false,
+    "tooling_governance_blocker_recorded": true
+  },
+  "reviewer_rejection_history": {
+    "decision_source_attribution": "PARTIAL_NOT_DECISIVELY_OBSERVABLE",
+    "external_diagnostics": [
+      {
+        "path": "/Users/blakegrove/Desktop/bedrock-server/REVIEWER_POLICY_AUDIT.md",
+        "sha256": "8b3cdcc88e2097e6bd93822a459563466005a31104d0b333264fe180258294ab"
+      },
+      {
+        "path": "/Users/blakegrove/Desktop/bedrock-server/REVIEWER_DECISION_SOURCE_AUDIT.md",
+        "sha256": "b773003424b2f018517244110b946aa7b2466b4630f8ce6a04918b87fccd2166"
+      }
+    ],
+    "historical_activation_attempt_refs": [
+      {
+        "commit": "bcd65076900a3688dd797d54719263d88afd501c",
+        "ref": "codex/ashen-shared-activation"
+      },
+      {
+        "commit": "bcd65076900a3688dd797d54719263d88afd501c",
+        "ref": "codex/ashen-shared-activation-r2"
+      },
+      {
+        "commit": "bcd65076900a3688dd797d54719263d88afd501c",
+        "ref": "codex/ashen-shared-activation-r3"
+      }
+    ],
+    "observed_result": "NO_ACTIVATION_OR_AUTHORITY_COMMIT_LANDED; ALL_REFS_REMAIN_AT_SOURCE_AUTHORITY",
+    "reported_reasons": [
+      "broad persistent shared-runtime mutation",
+      "governance-scope expansion",
+      "trusted direct user approval absent or conveyed only through subagent payload"
+    ],
+    "standing_authority_attempt_refs": [
+      {
+        "commit": "bcd65076900a3688dd797d54719263d88afd501c",
+        "ref": "codex/wave1-runtime-activation-authority"
+      },
+      {
+        "commit": "bcd65076900a3688dd797d54719263d88afd501c",
+        "ref": "codex/wave1-review-and-proceed-authority"
+      }
+    ]
+  },
+  "schema": "aionforge.wave1.ashen_deferred_runtime_activation.v1",
+  "source_authority": {
+    "commit": "bcd65076900a3688dd797d54719263d88afd501c",
+    "immutable_prior_generation_modified": false,
+    "subject": "Bind functional Ashen equipment validation",
+    "tree": "4d876b233e6b510687d238f1d7f6611c7c0c4ab9"
+  },
+  "status": "ASHEN_VERTICAL_SOURCE_COMPLETE_RUNTIME_ACTIVATION_DEFERRED",
+  "vertical_disposition": {
+    "crystal_marsh_or_skyreach_blocked": false,
+    "deferred_only": [
+      "Ashen equipment-role composition into existing completed-item, hurt, and 20-tick handlers",
+      "Kiln Sky composition into existing reconcile, tick, block-interaction, and death handlers"
+    ],
+    "other_implemented_and_validated_ashen_work_preserved": true,
+    "runtime_complete": false,
+    "source_complete": true
+  }
+}
