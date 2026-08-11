@@ -1,0 +1,243 @@
+{
+  "approval_required": [
+    {
+      "decision_id": "W1-004-AH",
+      "question": "Ratify the existing global envelope and guard model for Ashen with ash_drake_horn as the sole critical seal and ember_forge_core optional only?"
+    }
+  ],
+  "authority_effect": "NONE_UNTIL_RATIFIED_IN_REPLACEMENT_DECISION_LEDGER",
+  "proposal": {
+    "arena_reward_guard": {
+      "crash_semantics": "progression_credit_is_idempotent_physical_item_delivery_is_at_most_once_best_effort_with_recovery_claim",
+      "critical_progression_representation": "durable_virtual_seal_credit_not_physical_item_presence",
+      "entitlement_created_before_item_fulfillment": true,
+      "per_player_keys": {
+        "entitled": "aionbound.player.<encounter>.reward_entitled.v1",
+        "physical_trophy_claimed": "aionbound.player.<encounter>.trophy_claimed.v1",
+        "progression_credit": "aionbound.player.<encounter>.seal_credit.v1"
+      },
+      "regular_entity_or_command_kill_can_grant_trophy": false,
+      "repeat_clear": "material_package_and_arena_chest_allowed_trophy_and_seal_entitlement_not_reissued",
+      "retry_policy": "unfulfilled_entitlement_may_reopen_claim_UI_or_museum_claim",
+      "valid_source": "active_arena_session_plus_apex_entity_tag_plus_valid_death_event",
+      "world_key": "aionbound.encounter.<encounter>.completed.v1"
+    },
+    "ashen_resolution": {
+      "chapter_critical_seal": "aionbound:ash_drake_horn",
+      "chapter_critical_seal_count": 1,
+      "critical_progression_representation": "durable_virtual_seal_credit_not_physical_item_presence",
+      "ecology_or_natural_ash_drake_can_drop_chapter_seal": false,
+      "ember_forge_core": {
+        "allowed_sources": [
+          "ember_forge_or_ancient_kiln_structure_reward",
+          "kiln_sky_optional_reward_roll"
+        ],
+        "may_fill_pilgrim_seal_slot": false,
+        "progression_substitute_for_ash_drake_horn": false,
+        "role": "optional_mastery_and_forge_reward"
+      },
+      "physical_horn_fulfillment": "at_most_once_best_effort_with_recovery_claim",
+      "repeat_clear": {
+        "ash_drake_horn_entitlement": "not_reissued",
+        "ember_forge_core_optional_roll": "allowed",
+        "material_package_and_arena_chest": "allowed",
+        "virtual_seal_credit": "not_reissued"
+      },
+      "valid_seal_source": "active_kiln_sky_arena_session_plus_apex_entity_tag_plus_valid_death_event"
+    },
+    "boss_package": {
+      "arena_chest_is_separate": true,
+      "catalyst_quantity_per_roll": [
+        1,
+        2
+      ],
+      "catalyst_rolls": [
+        1,
+        2
+      ],
+      "curiosity_rolls": [
+        0,
+        1
+      ],
+      "signature_material_quantity_per_roll": [
+        1,
+        3
+      ],
+      "signature_material_rolls": [
+        2,
+        4
+      ],
+      "trophy": "one durable entitlement per eligible player on first arena clear"
+    },
+    "probability_and_quantity_envelopes": {
+      "C": {
+        "chance": [
+          0.75,
+          1.0
+        ],
+        "quantity": [
+          1,
+          4
+        ],
+        "rolls": [
+          1,
+          2
+        ]
+      },
+      "E": {
+        "chance_elite": [
+          0.08,
+          0.2
+        ],
+        "chance_normal": [
+          0.02,
+          0.06
+        ],
+        "quantity": [
+          1,
+          1
+        ],
+        "rolls": [
+          1,
+          1
+        ]
+      },
+      "Q": {
+        "chance_creature": [
+          0.03,
+          0.1
+        ],
+        "chance_structure": [
+          0.1,
+          0.25
+        ],
+        "quantity": [
+          1,
+          1
+        ],
+        "rolls": [
+          1,
+          1
+        ]
+      },
+      "R": {
+        "chance_elite": [
+          0.35,
+          0.65
+        ],
+        "chance_normal": [
+          0.08,
+          0.2
+        ],
+        "quantity": [
+          1,
+          2
+        ],
+        "rolls": [
+          1,
+          1
+        ]
+      },
+      "T": {
+        "chance_arena_first_eligible_clear": [
+          1.0,
+          1.0
+        ],
+        "chance_ecology_form": [
+          0.0,
+          0.0
+        ],
+        "quantity": [
+          1,
+          1
+        ],
+        "rolls": [
+          1,
+          1
+        ]
+      },
+      "U": {
+        "chance": [
+          0.25,
+          0.55
+        ],
+        "quantity": [
+          1,
+          2
+        ],
+        "rolls": [
+          1,
+          2
+        ]
+      }
+    },
+    "selection_rule": "Adopt the existing W1-CREATIVE-004 global envelopes and guard semantics verbatim for Ashen, then resolve only Ashen seal roles.",
+    "structure_chest_bands": {
+      "apex_arena_chest": {
+        "contains_chapter_trophy": false,
+        "guaranteed_regional_material_rolls": 2,
+        "rolls": [
+          4,
+          6
+        ]
+      },
+      "landmark_structure": {
+        "guaranteed_regional_material_rolls": 2,
+        "rolls": [
+          4,
+          6
+        ]
+      },
+      "minor_cache": {
+        "guaranteed_regional_material_rolls": 1,
+        "rolls": [
+          2,
+          3
+        ]
+      },
+      "standard_structure": {
+        "guaranteed_regional_material_rolls": 1,
+        "rolls": [
+          3,
+          5
+        ]
+      }
+    },
+    "tuning_rule": "Engineering_may_choose_values_inside_each_ratified_closed_interval_without_new_loot_identity"
+  },
+  "schema_version": 1,
+  "scope_guard": {
+    "creative_source_mutation": false,
+    "decision_ledger_mutation": false,
+    "existing_proposal_mutation": false,
+    "pack_implementation_authorized": false,
+    "region": "Ashen Highlands only",
+    "scope_broadening": false
+  },
+  "source_bindings": [
+    {
+      "path": "engineering/authority/support-proposals/W1-CREATIVE-004/loot_envelope_proposal.json",
+      "sha256": "4412b24ad680a30e5548c731f8acba94e8fd858e4bb94f701a16eb17141f5ab7"
+    },
+    {
+      "path": "engineering/authority/WAVE_1_ENGINEERING_DECISION_LEDGER.json",
+      "sha256": "3e2b64785da9310b098e06981ebc95777ddc7e5d2666f803b79ce374470a9561"
+    },
+    {
+      "path": "program/crazycraft-pack-production-v1/studio-prep/creative/02_loot/LOOT_SYSTEM.md",
+      "sha256": "6655eae0a65ed103a212f4b61d0f5c9352ddde871165b7bab9dbe014cfaaa8db"
+    },
+    {
+      "path": "program/crazycraft-pack-production-v1/studio-prep/creative/02_loot/LOOT_ASHEN.md",
+      "sha256": "f5b2ff909a6e7b7669da561cc2659439819227f99d15d221dbea0147750d3727"
+    },
+    {
+      "path": "program/crazycraft-pack-production-v1/studio-prep/creative/02_loot/LOOT_BOSSES.md",
+      "sha256": "4d80925a113bb0cca67e2405047cd228a2df2ccd2c680e1e51ccd04b6f2d63d8"
+    }
+  ],
+  "source_commit": "faf8bab1785b3b847a70268c37ef813afd0495b4",
+  "source_tree": "3162be09bb1cb1b4ca10f1bf8132fbbf5e595282",
+  "status": "PROPOSED_NOT_RATIFIED",
+  "ticket_id": "W1-004-AH"
+}

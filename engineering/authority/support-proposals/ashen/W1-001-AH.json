@@ -1,0 +1,124 @@
+{
+  "approval_required": [
+    {
+      "decision_id": "W1-001-AH",
+      "question": "Ratify only these already-written Ashen dispositions and the existing aionbound:drake_scale requirement?"
+    }
+  ],
+  "authority_effect": "NONE_UNTIL_RATIFIED_IN_REPLACEMENT_DECISION_LEDGER",
+  "proposal": {
+    "aliases": [
+      {
+        "canonical_id": "aionbound:charbone",
+        "terms": [
+          "Ash Dust",
+          "Mite Mandible",
+          "Cinder Beak",
+          "Ram Horn Curve",
+          "Soot Antler",
+          "Lynx Claw"
+        ]
+      },
+      {
+        "canonical_id": "aionbound:furnace_chitin",
+        "terms": [
+          "Ash Wool",
+          "Char Hide",
+          "Char Pelt",
+          "Cinder Pelt",
+          "Shell Plate",
+          "Swarm Queen Scale"
+        ]
+      },
+      {
+        "canonical_id": "aionbound:ember_resin",
+        "terms": [
+          "Heat Scale",
+          "Warm Blood Vial",
+          "Smolder Gland",
+          "Ember Fang",
+          "Ember Sinew",
+          "Stag Heart Cinder"
+        ]
+      },
+      {
+        "canonical_id": "aionbound:basalt_core",
+        "terms": [
+          "Beetle Core Fragment"
+        ]
+      },
+      {
+        "canonical_id": "aionbound:volcanic_glass_shard",
+        "terms": [
+          "Char Feather"
+        ]
+      }
+    ],
+    "identity_count_after_ratification": {
+      "additional": 0,
+      "selected_existing_new_required": 1
+    },
+    "narrative_codex_only": [
+      "Scorched Message Tube",
+      "Pack Cinder Mark",
+      "Lynx Eye Gem",
+      "Slow Stone",
+      "Surviving Smith's Notes"
+    ],
+    "new_inventory_identities_created_by_this_selection": [],
+    "new_required_items": [
+      {
+        "craft_home": "ashen_set_upgrade",
+        "icon": "new_required",
+        "id": "aionbound:drake_scale",
+        "term": "Drake Scale",
+        "visibility": "inventory"
+      }
+    ],
+    "policy": {
+      "container_and_quantity_words": "REMOVED_AS_IDENTITIES",
+      "curiosity_default": "NARRATIVE_CODEX_STATE",
+      "new_inventory_identity_bar": "RECIPE_OR_TROPHY_CRITICAL_AND_NOT_SAFELY_REPRESENTED_BY_WAREHOUSE_RESOURCE",
+      "prose_alias_has_no_inventory_id": true,
+      "warehouse_first": true
+    },
+    "removed_or_context_only": [
+      "Drake Scale bundle",
+      "resource bundle",
+      "pattern scrap",
+      "map scrap",
+      "crate",
+      "bulk",
+      "chips",
+      "dust"
+    ],
+    "selection_rule": "Exact Ashen subset of W1-CREATIVE-001 as written; no new identity or disposition."
+  },
+  "schema_version": 1,
+  "scope_guard": {
+    "creative_source_mutation": false,
+    "decision_ledger_mutation": false,
+    "existing_proposal_mutation": false,
+    "pack_implementation_authorized": false,
+    "region": "Ashen Highlands only",
+    "scope_broadening": false
+  },
+  "source_bindings": [
+    {
+      "path": "engineering/authority/support-proposals/W1-CREATIVE-001/nonwarehouse_identity_proposal.json",
+      "sha256": "a9bc8133f8a0aacf7db258ffe76fc04dd9fcc6d07713bef630e074bd48588786"
+    },
+    {
+      "path": "engineering/authority/WAVE_1_ENGINEERING_DECISION_LEDGER.json",
+      "sha256": "3e2b64785da9310b098e06981ebc95777ddc7e5d2666f803b79ce374470a9561"
+    },
+    {
+      "path": "program/crazycraft-pack-production-v1/studio-prep/creative/02_loot/LOOT_ASHEN.md",
+      "sha256": "f5b2ff909a6e7b7669da561cc2659439819227f99d15d221dbea0147750d3727"
+    }
+  ],
+  "source_commit": "faf8bab1785b3b847a70268c37ef813afd0495b4",
+  "source_tree": "3162be09bb1cb1b4ca10f1bf8132fbbf5e595282",
+  "status": "PROPOSED_NOT_RATIFIED",
+  "ticket_id": "W1-001-AH"
+}

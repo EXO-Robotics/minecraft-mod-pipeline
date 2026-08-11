@@ -1,0 +1,282 @@
+{
+  "approval_required": [
+    {
+      "decision_id": "W1-003-KILN-SKY",
+      "question": "Ratify this minimal Kiln Sky state, timing, reset, ownership, persistence, and terminal envelope without approving any damage or radius values?"
+    }
+  ],
+  "authority_effect": "NONE_UNTIL_RATIFIED_IN_REPLACEMENT_DECISION_LEDGER",
+  "proposal": {
+    "all_numeric_values_status": "PROPOSED_NOT_RATIFIED",
+    "arena_form_predicate": "encounter_session_active_and_entity_tag_aionbound.kiln_sky_apex",
+    "arena_link": "aionbound:ember_forge",
+    "boss_entity_id": "aionbound:ash_drake",
+    "ecology_or_natural_form_can_complete_chapter": false,
+    "encounter_id": "aionbound:kiln_sky",
+    "explicit_nondecisions": {
+      "arena_radius_blocks": "NOT_CREATED_USE_AUTHORED_STRUCTURE_VOLUME",
+      "attack_effect_radii": "NOT_CREATED_BY_THIS_PROPOSAL_ENGINEERING_TUNES_ONLY_INSIDE_A_SEPARATELY_APPROVED_OR_MEASURED_ENVELOPE_AND_AUTHORED_ARENA",
+      "damage_values": "NOT_CREATED_BY_THIS_PROPOSAL_ENGINEERING_TUNES_ONLY_INSIDE_A_SEPARATELY_APPROVED_OR_MEASURED_ENVELOPE",
+      "new_attacks": "FORBIDDEN_ONLY_THE_SIX_APPROVED_ATTACK_IDENTITIES",
+      "new_phases": "FORBIDDEN_ONLY_THE_FOUR_APPROVED_PHASE_IDENTITIES"
+    },
+    "health": {
+      "participant_cap": 4,
+      "per_additional_locked_participant_multiplier": 0.3,
+      "rationale": "A longer second-chapter apex than Thorn Court while capping console-first multiplayer growth at four locked participants.",
+      "solo": 480
+    },
+    "multiplayer": {
+      "disconnect_grace_seconds": 60,
+      "eligible_at_pull": "player_inside_authored_arena_volume_for_at_least_5_seconds",
+      "global_session_ash_mite_cap": 4,
+      "late_join": "eligible_only_before_glass_wing_and_after_15_seconds_inside_authored_arena_volume",
+      "ownership": "per_player_terminal_entitlement_for_locked_or_approved_late_join_participants",
+      "participant_snapshot": "lock_at_pull",
+      "rationale": "Pull locking prevents health-scale manipulation; a bounded late-join window preserves co-op access before the third phase; disconnect grace avoids punishing brief network loss.",
+      "scaling_does_not_decrease_midfight": true,
+      "targeting": "never_requires_damage_to_one_specific_player"
+    },
+    "persistence": {
+      "active_fight": "not_persisted",
+      "migration": "idempotent_false_default",
+      "physical_horn_claimed_key": "aionbound.player.kiln_sky.trophy_claimed.v1",
+      "player_completion_key": "aionbound.player.kiln_sky.completed.v1",
+      "reward_entitlement_key": "aionbound.player.kiln_sky.reward_entitled.v1",
+      "seal_credit_key": "aionbound.player.kiln_sky.seal_credit.v1",
+      "world_completion_key": "aionbound.encounter.kiln_sky.completed.v1"
+    },
+    "phase_rationale": "70/40/15 creates three readable teaching bands and a short commit-burst enrage without adding a fifth Creative phase.",
+    "phases": [
+      {
+        "active_ash_mite_cap": 0,
+        "available_attacks": [
+          "cinder_breath",
+          "tail_slag"
+        ],
+        "enter_at_health_fraction": 1.0,
+        "exit_at_health_fraction": 0.7,
+        "id": "ash_landing"
+      },
+      {
+        "active_ash_mite_cap": 4,
+        "available_attacks": [
+          "cinder_breath",
+          "tail_slag",
+          "thermal_dive",
+          "mite_shake"
+        ],
+        "enter_at_health_fraction": 0.7,
+        "exit_at_health_fraction": 0.4,
+        "id": "vent_choir"
+      },
+      {
+        "active_ash_mite_cap": 4,
+        "available_attacks": [
+          "cinder_breath",
+          "thermal_dive",
+          "basalt_quake",
+          "glass_feather_storm",
+          "mite_shake"
+        ],
+        "enter_at_health_fraction": 0.4,
+        "exit_at_health_fraction": 0.15,
+        "id": "glass_wing"
+      },
+      {
+        "active_ash_mite_cap": 2,
+        "available_attacks": [
+          "cinder_breath",
+          "tail_slag",
+          "thermal_dive",
+          "basalt_quake",
+          "glass_feather_storm"
+        ],
+        "enter_at_health_fraction": 0.15,
+        "exit_at_health_fraction": 0.0,
+        "id": "kiln_heart"
+      }
+    ],
+    "reset": {
+      "all_players_dead_or_outside_grace_seconds": 15,
+      "completion_is_not_cleared": true,
+      "leash_boundary": "authored_kiln_sky_arena_volume_no_new_radius_number",
+      "no_eligible_player_grace_seconds": 30,
+      "on_reset": [
+        "despawn_session_ash_mites",
+        "clear_session_hazards",
+        "restore_boss_health",
+        "clear_active_session"
+      ],
+      "outside_leash_grace_seconds": 10,
+      "rationale": "Short boundary grace avoids transient flight-path resets, while dead/absent-player windows terminate abandoned sessions and reload always clears nonpersistent fight state.",
+      "world_reload_behavior": "reset_to_unpulled_full_health_and_clear_session_transients"
+    },
+    "terminal_semantics": {
+      "complete_on": "arena_form_valid_death_event_with_active_session",
+      "eligible_players": "locked_or_approved_late_join_participants_present_or_in_disconnect_grace",
+      "progression_credit": "per_player_durable_once",
+      "repeat_clear": "encounter_repeatable_but_no_duplicate_chapter_progression_or_horn_entitlement",
+      "reward_identity_and_fulfillment_source": "W1-004-AH_only",
+      "world_stamp": "durable_once"
+    },
+    "timing_rationale": "All six authored attacks expose telegraph, active, recovery, and cooldown windows; add creation is slower than ordinary attacks and bounded by the active cap.",
+    "timing_seconds": {
+      "basalt_quake": {
+        "active": [
+          0.35,
+          0.55
+        ],
+        "cooldown": [
+          10.0,
+          14.0
+        ],
+        "recovery": [
+          1.0,
+          1.4
+        ],
+        "telegraph": [
+          1.3,
+          1.7
+        ]
+      },
+      "cinder_breath": {
+        "active": [
+          1.2,
+          1.8
+        ],
+        "cooldown": [
+          7.0,
+          10.0
+        ],
+        "recovery": [
+          0.9,
+          1.2
+        ],
+        "telegraph": [
+          1.0,
+          1.3
+        ]
+      },
+      "glass_feather_storm": {
+        "active": [
+          4.0,
+          6.0
+        ],
+        "cooldown": [
+          14.0,
+          20.0
+        ],
+        "recovery": [
+          1.3,
+          1.8
+        ],
+        "telegraph": [
+          1.6,
+          2.0
+        ]
+      },
+      "global_attack_cooldown": [
+        2.75,
+        4.5
+      ],
+      "mite_shake": {
+        "active": [
+          0.3,
+          0.5
+        ],
+        "cooldown": [
+          18.0,
+          24.0
+        ],
+        "recovery": [
+          1.0,
+          1.4
+        ],
+        "spawn_count": [
+          2,
+          3
+        ],
+        "telegraph": [
+          1.3,
+          1.7
+        ]
+      },
+      "tail_slag": {
+        "active": [
+          0.25,
+          0.45
+        ],
+        "cooldown": [
+          5.0,
+          8.0
+        ],
+        "recovery": [
+          0.8,
+          1.1
+        ],
+        "telegraph": [
+          0.7,
+          1.0
+        ]
+      },
+      "thermal_dive": {
+        "active": [
+          0.6,
+          1.0
+        ],
+        "cooldown": [
+          10.0,
+          14.0
+        ],
+        "recovery": [
+          1.3,
+          1.8
+        ],
+        "telegraph": [
+          1.4,
+          1.8
+        ]
+      }
+    }
+  },
+  "schema_version": 1,
+  "scope_guard": {
+    "creative_source_mutation": false,
+    "decision_ledger_mutation": false,
+    "existing_proposal_mutation": false,
+    "pack_implementation_authorized": false,
+    "region": "Ashen Highlands only",
+    "scope_broadening": false
+  },
+  "source_bindings": [
+    {
+      "path": "engineering/authority/support-proposals/W1-CREATIVE-003/thorn_court_behavior_proposal.json",
+      "sha256": "04f7b9a75be6ac542d3488bd7563a601dcb94603905479b7c3e766c94b9d48c1"
+    },
+    {
+      "path": "engineering/authority/WAVE_1_ENGINEERING_DECISION_LEDGER.json",
+      "sha256": "3e2b64785da9310b098e06981ebc95777ddc7e5d2666f803b79ce374470a9561"
+    },
+    {
+      "path": "program/crazycraft-pack-production-v1/studio-prep/creative/07_bosses/BOSS_PROGRESSION.md",
+      "sha256": "5ef85e1e0b29973a617f7dca4a8b119443c01644ba33f0e11166ef8d417d5a6f"
+    },
+    {
+      "path": "program/crazycraft-pack-production-v1/studio-prep/creative/02_loot/LOOT_BOSSES.md",
+      "sha256": "4d80925a113bb0cca67e2405047cd228a2df2ccd2c680e1e51ccd04b6f2d63d8"
+    },
+    {
+      "path": "program/crazycraft-pack-production-v1/studio-prep/creative/WAVE_1_LIVING_WORLD_IMPLEMENTATION_CONTRACT.json",
+      "sha256": "aa1f54df10d27d5c5675aae843ffe0d2946123d12a6509f7f021408bcdde9fb5"
+    },
+    {
+      "path": "program/crazycraft-pack-production-v1/studio-prep/creative/WAVE_1_LIVING_WORLD_IMPLEMENTATION_CONTRACT.md",
+      "sha256": "3116c217e06afe1fd0cd56ee742c537f948a4c91193ec831fd1b3ec362837bfc"
+    }
+  ],
+  "source_commit": "faf8bab1785b3b847a70268c37ef813afd0495b4",
+  "source_tree": "3162be09bb1cb1b4ca10f1bf8132fbbf5e595282",
+  "status": "PROPOSED_NOT_RATIFIED",
+  "ticket_id": "W1-003-KILN-SKY"
+}
