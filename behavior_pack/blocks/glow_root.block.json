@@ -1,0 +1,55 @@
+{
+  "format_version": "1.21.80",
+  "minecraft:block": {
+    "description": {
+      "identifier": "aionbound:glow_root",
+      "menu_category": {
+        "category": "nature"
+      }
+    },
+    "components": {
+      "minecraft:display_name": "Glow Root",
+      "minecraft:collision_box": false,
+      "minecraft:selection_box": {
+        "origin": [
+          -5,
+          0,
+          -5
+        ],
+        "size": [
+          10,
+          16,
+          10
+        ]
+      },
+      "minecraft:destructible_by_mining": {
+        "seconds_to_destroy": 0.1
+      },
+      "minecraft:geometry": "geometry.aionbound.glow_root",
+      "minecraft:material_instances": {
+        "*": {
+          "texture": "glow_root",
+          "render_method": "alpha_test",
+          "ambient_occlusion": false,
+          "face_dimming": false
+        }
+      },
+      "minecraft:placement_filter": {
+        "conditions": [
+          {
+            "allowed_faces": [
+              "down",
+              "side"
+            ],
+            "block_filter": [
+              "aionbound:smolder_stone",
+              "aionbound:basalt_brick",
+              "minecraft:stone",
+              "minecraft:deepslate"
+            ]
+          }
+        ]
+      }
+    }
+  }
+}

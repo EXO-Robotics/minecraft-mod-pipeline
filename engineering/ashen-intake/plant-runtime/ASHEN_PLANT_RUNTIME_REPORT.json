@@ -1,0 +1,50 @@
+{
+  "schema": "aionbound.wave1.ashen-plant-runtime.v1",
+  "status": "PASS_SOURCE_STATIC_PLANT_BINDING",
+  "assets": [
+    "cinder_grass",
+    "ash_fern",
+    "smoke_reed",
+    "char_shrub",
+    "soot_mushroom",
+    "magma_moss",
+    "glow_root",
+    "basalt_flower",
+    "ember_vine",
+    "fire_bloom"
+  ],
+  "native_authorities": [
+    {
+      "path": "engineering/native-assets/ashen/representative/ASHEN_REPRESENTATIVE_NATIVE_REPORT.json",
+      "sha256": "ea4bc1c78f1dd532076b73c5620103c9043da170a519fbf3d531585d12481131",
+      "used_assets": ["smoke_reed", "fire_bloom"]
+    },
+    {
+      "path": "engineering/native-assets/ashen/plants/ASHEN_PLANT_NATIVE_REPORT.json",
+      "sha256": "c02b9de6081a1c5322ffad0987c03297d61be651d068524adcf59eeb785fb75b",
+      "used_assets": ["cinder_grass", "ash_fern", "char_shrub", "soot_mushroom", "magma_moss", "glow_root", "basalt_flower", "ember_vine"]
+    }
+  ],
+  "implementation": {
+    "format_version": "1.21.80",
+    "runtime_form": "custom_block_with_native_geometry_and_alpha_test_material",
+    "collision": false,
+    "placement": "Ashen-specific ash-soil, hot-stone, cave-face, and cliff-attachment filters",
+    "native_texture_bytes_preserved": true,
+    "native_animation_playback": "WITHHELD_NO_STABLE_CUSTOM_BLOCK_SKELETAL_BINDING",
+    "entity_surrogate": false,
+    "script_component": false
+  },
+  "verification": [
+    "4 focused Python source tests PASS",
+    "tools/validate_wave1.py PASS after binding",
+    "JSON and PNG reference closure PASS"
+  ],
+  "proof_boundary": [
+    "source_tree_static_only",
+    "not_live_placement_or_harvest_proof",
+    "not_client_geometry_or_alpha_render_proof",
+    "not_worldgen_density_proof",
+    "not_bds_console_marketplace_or_release_proof"
+  ]
+}

@@ -1,0 +1,55 @@
+{
+  "format_version": "1.21.80",
+  "minecraft:block": {
+    "description": {
+      "identifier": "aionbound:ember_vine",
+      "menu_category": {
+        "category": "nature"
+      }
+    },
+    "components": {
+      "minecraft:display_name": "Ember Vine",
+      "minecraft:collision_box": false,
+      "minecraft:selection_box": {
+        "origin": [
+          -4,
+          0,
+          -4
+        ],
+        "size": [
+          8,
+          16,
+          8
+        ]
+      },
+      "minecraft:destructible_by_mining": {
+        "seconds_to_destroy": 0.1
+      },
+      "minecraft:geometry": "geometry.aionbound.ember_vine",
+      "minecraft:material_instances": {
+        "*": {
+          "texture": "ember_vine",
+          "render_method": "alpha_test",
+          "ambient_occlusion": false,
+          "face_dimming": false
+        }
+      },
+      "minecraft:placement_filter": {
+        "conditions": [
+          {
+            "allowed_faces": [
+              "down",
+              "side"
+            ],
+            "block_filter": [
+              "aionbound:ash_log",
+              "aionbound:heat_bark",
+              "aionbound:smolder_stone",
+              "aionbound:basalt_pillar"
+            ]
+          }
+        ]
+      }
+    }
+  }
+}
