@@ -1,0 +1,215 @@
+{
+  "schema": "aionbound.wave1.crystal-marsh-resource-runtime.v1",
+  "status": "CRYSTAL_RESOURCE_RUNTIME_STATIC_PASS",
+  "base": {
+    "commit": "466a061cbe22a01a4e561169df31e4f351edea71",
+    "tree": "1aadcfab635991f6d0fb4647f6ed2a3bb615a7af"
+  },
+  "scope": "ten Packet 003 warehouse resource items only",
+  "resources": [
+    {
+      "warehouse_id": "prism_pearl",
+      "runtime_id": "aionbound:prism_pearl",
+      "display_name": "Prism Pearl",
+      "item_path": "behavior_pack/items/prism_pearl.item.json",
+      "item_sha256": "6ba81e86630ec12a75fd8e9c8a8a317a4ab66a2cdf5ff1b964d2ace981b9f416",
+      "atlas_key": "prism_pearl",
+      "texture_path": "textures/aionbound/crystal_marsh/items/prism_pearl",
+      "icon_path": "resource_pack/textures/aionbound/crystal_marsh/items/prism_pearl.png",
+      "icon_sha256": "e3611c68de4d763e382fd930a22f61ccb189d706bc97c09f96dfc9566d73a5f0",
+      "source_icon_sha256": "e3611c68de4d763e382fd930a22f61ccb189d706bc97c09f96dfc9566d73a5f0",
+      "icon_byte_equality": true,
+      "blockbench": {
+        "status": "NOT_APPLICABLE",
+        "reason": "flat inventory icon; no custom geometry or animation"
+      }
+    },
+    {
+      "warehouse_id": "crystal_reed_item",
+      "runtime_id": "aionbound:crystal_reed_item",
+      "display_name": "Crystal Reed",
+      "item_path": "behavior_pack/items/crystal_reed_item.item.json",
+      "item_sha256": "565b6b22f07fce7fd2102254ba88f66f4ceef46c37265cd966b89a45330a805a",
+      "atlas_key": "crystal_reed_item",
+      "texture_path": "textures/aionbound/crystal_marsh/items/crystal_reed_item",
+      "icon_path": "resource_pack/textures/aionbound/crystal_marsh/items/crystal_reed_item.png",
+      "icon_sha256": "3f522dbd158226e2aa2f94e138e849e4392e6aa6b160c46dfacf3286ec6ddadf",
+      "source_icon_sha256": "3f522dbd158226e2aa2f94e138e849e4392e6aa6b160c46dfacf3286ec6ddadf",
+      "icon_byte_equality": true,
+      "blockbench": {
+        "status": "NOT_APPLICABLE",
+        "reason": "flat inventory icon; no custom geometry or animation"
+      }
+    },
+    {
+      "warehouse_id": "marsh_resin",
+      "runtime_id": "aionbound:marsh_resin",
+      "display_name": "Marsh Resin",
+      "item_path": "behavior_pack/items/marsh_resin.item.json",
+      "item_sha256": "0d2c3e88e513ffe12900f365d4123bc4abc5b939a93dbb0e892ec43d90cda8f4",
+      "atlas_key": "marsh_resin",
+      "texture_path": "textures/aionbound/crystal_marsh/items/marsh_resin",
+      "icon_path": "resource_pack/textures/aionbound/crystal_marsh/items/marsh_resin.png",
+      "icon_sha256": "74cbfcec382b0930088cda117b1d2dd66d5a8b005d8a25cbbf6a08b2983d8d36",
+      "source_icon_sha256": "74cbfcec382b0930088cda117b1d2dd66d5a8b005d8a25cbbf6a08b2983d8d36",
+      "icon_byte_equality": true,
+      "blockbench": {
+        "status": "NOT_APPLICABLE",
+        "reason": "flat inventory icon; no custom geometry or animation"
+      }
+    },
+    {
+      "warehouse_id": "glass_algae",
+      "runtime_id": "aionbound:glass_algae",
+      "display_name": "Glass Algae",
+      "item_path": "behavior_pack/items/glass_algae.item.json",
+      "item_sha256": "356e6f9e629247938ff0fe8828d0bd30f558ca37f92b41fe2133756fd91a3846",
+      "atlas_key": "glass_algae",
+      "texture_path": "textures/aionbound/crystal_marsh/items/glass_algae",
+      "icon_path": "resource_pack/textures/aionbound/crystal_marsh/items/glass_algae.png",
+      "icon_sha256": "9f2ad102faedad8f5f563078fb048ee8a5e00515db3f77a0c3069096e54560bd",
+      "source_icon_sha256": "9f2ad102faedad8f5f563078fb048ee8a5e00515db3f77a0c3069096e54560bd",
+      "icon_byte_equality": true,
+      "blockbench": {
+        "status": "NOT_APPLICABLE",
+        "reason": "flat inventory icon; no custom geometry or animation"
+      }
+    },
+    {
+      "warehouse_id": "silt_core",
+      "runtime_id": "aionbound:silt_core",
+      "display_name": "Silt Core",
+      "item_path": "behavior_pack/items/silt_core.item.json",
+      "item_sha256": "6d2e6370478890f25e2a0e327c46db9ca845f2143210cb10f303cdbf3ffab9b1",
+      "atlas_key": "silt_core",
+      "texture_path": "textures/aionbound/crystal_marsh/items/silt_core",
+      "icon_path": "resource_pack/textures/aionbound/crystal_marsh/items/silt_core.png",
+      "icon_sha256": "7ed935326e3f620b4afcb26d6b63a677d6fd0d8dfbd2d4e23a9966da12eaf227",
+      "source_icon_sha256": "7ed935326e3f620b4afcb26d6b63a677d6fd0d8dfbd2d4e23a9966da12eaf227",
+      "icon_byte_equality": true,
+      "blockbench": {
+        "status": "NOT_APPLICABLE",
+        "reason": "flat inventory icon; no custom geometry or animation"
+      }
+    },
+    {
+      "warehouse_id": "flood_crystal",
+      "runtime_id": "aionbound:flood_crystal",
+      "display_name": "Flood Crystal",
+      "item_path": "behavior_pack/items/flood_crystal.item.json",
+      "item_sha256": "92534f8e7470ff56ca1ad545414725376f617b86c24ad0871d6c013674b6ae15",
+      "atlas_key": "flood_crystal",
+      "texture_path": "textures/aionbound/crystal_marsh/items/flood_crystal",
+      "icon_path": "resource_pack/textures/aionbound/crystal_marsh/items/flood_crystal.png",
+      "icon_sha256": "4417598dc5c29bb982bbc1c338612b954202b978c89dde591c4882f032896969",
+      "source_icon_sha256": "4417598dc5c29bb982bbc1c338612b954202b978c89dde591c4882f032896969",
+      "icon_byte_equality": true,
+      "blockbench": {
+        "status": "NOT_APPLICABLE",
+        "reason": "flat inventory icon; no custom geometry or animation"
+      }
+    },
+    {
+      "warehouse_id": "moon_pearl",
+      "runtime_id": "aionbound:moon_pearl",
+      "display_name": "Moon Pearl",
+      "item_path": "behavior_pack/items/moon_pearl.item.json",
+      "item_sha256": "71ef6e12a5ff56b07a020f8938d9c8b43ed98f37c336780d504d52849d573859",
+      "atlas_key": "moon_pearl",
+      "texture_path": "textures/aionbound/crystal_marsh/items/moon_pearl",
+      "icon_path": "resource_pack/textures/aionbound/crystal_marsh/items/moon_pearl.png",
+      "icon_sha256": "586155f76e9003b5fa85508a1335d002ffec5a871d68905212a38cfaf6d662b0",
+      "source_icon_sha256": "586155f76e9003b5fa85508a1335d002ffec5a871d68905212a38cfaf6d662b0",
+      "icon_byte_equality": true,
+      "blockbench": {
+        "status": "NOT_APPLICABLE",
+        "reason": "flat inventory icon; no custom geometry or animation"
+      }
+    },
+    {
+      "warehouse_id": "wet_chitin",
+      "runtime_id": "aionbound:wet_chitin",
+      "display_name": "Wet Chitin",
+      "item_path": "behavior_pack/items/wet_chitin.item.json",
+      "item_sha256": "a732760ae2d95b56e94a4e28a46d1fbfa4be2b7f6d92b23978f42a061350962e",
+      "atlas_key": "wet_chitin",
+      "texture_path": "textures/aionbound/crystal_marsh/items/wet_chitin",
+      "icon_path": "resource_pack/textures/aionbound/crystal_marsh/items/wet_chitin.png",
+      "icon_sha256": "6d9c8eb9e20c4e3abba6ddcceea19fd48c207a3aa3257fcdebb89d945a69e8f6",
+      "source_icon_sha256": "6d9c8eb9e20c4e3abba6ddcceea19fd48c207a3aa3257fcdebb89d945a69e8f6",
+      "icon_byte_equality": true,
+      "blockbench": {
+        "status": "NOT_APPLICABLE",
+        "reason": "flat inventory icon; no custom geometry or animation"
+      }
+    },
+    {
+      "warehouse_id": "mire_bloom_item",
+      "runtime_id": "aionbound:mire_bloom_item",
+      "display_name": "Mire Bloom",
+      "item_path": "behavior_pack/items/mire_bloom_item.item.json",
+      "item_sha256": "a92addc8ae4c7c34204bb09ac2e9fda298010e7f580a36d0cd4386dfc8869f06",
+      "atlas_key": "mire_bloom_item",
+      "texture_path": "textures/aionbound/crystal_marsh/items/mire_bloom_item",
+      "icon_path": "resource_pack/textures/aionbound/crystal_marsh/items/mire_bloom_item.png",
+      "icon_sha256": "7a8e28ae896267cdcf8ca9c90d6651bdc7d2518ce07dc57fa2ec6b7aed732c50",
+      "source_icon_sha256": "7a8e28ae896267cdcf8ca9c90d6651bdc7d2518ce07dc57fa2ec6b7aed732c50",
+      "icon_byte_equality": true,
+      "blockbench": {
+        "status": "NOT_APPLICABLE",
+        "reason": "flat inventory icon; no custom geometry or animation"
+      }
+    },
+    {
+      "warehouse_id": "crystal_root_item",
+      "runtime_id": "aionbound:crystal_root_item",
+      "display_name": "Crystal Root",
+      "item_path": "behavior_pack/items/crystal_root_item.item.json",
+      "item_sha256": "c3fe8731135758bdb4b3c5c2776bd7e764980d427fd0c4e1660a1caa26ed0bab",
+      "atlas_key": "crystal_root_item",
+      "texture_path": "textures/aionbound/crystal_marsh/items/crystal_root_item",
+      "icon_path": "resource_pack/textures/aionbound/crystal_marsh/items/crystal_root_item.png",
+      "icon_sha256": "a8131e875e11bca157bea8228099e25448d207ddee5b9dd1799ef9b268e484a5",
+      "source_icon_sha256": "a8131e875e11bca157bea8228099e25448d207ddee5b9dd1799ef9b268e484a5",
+      "icon_byte_equality": true,
+      "blockbench": {
+        "status": "NOT_APPLICABLE",
+        "reason": "flat inventory icon; no custom geometry or animation"
+      }
+    }
+  ],
+  "shared_files": [
+    {
+      "path": "resource_pack/textures/item_texture.json",
+      "change": "ten aionbound item-atlas bindings",
+      "binding_count": 10,
+      "hash_policy": "MUTABLE_SHARED_REGISTRY_VALIDATE_OWNED_ENTRIES"
+    },
+    {
+      "path": "resource_pack/texts/en_US.lang",
+      "change": "ten English item localization bindings",
+      "binding_count": 10,
+      "hash_policy": "MUTABLE_SHARED_REGISTRY_VALIDATE_OWNED_ENTRIES"
+    }
+  ],
+  "checks": {
+    "packet_inventory_exact": "PASS_10_OF_10",
+    "item_definition_closure": "PASS_10_OF_10",
+    "icon_byte_equality": "PASS_10_OF_10",
+    "atlas_language_closure": "PASS_10_OF_10",
+    "blockbench": "NOT_APPLICABLE_FLAT_INVENTORY_ICONS"
+  },
+  "proof_scope": "STATIC_BP_RP_SOURCE_AND_EXACT_PACKET_ICON_CLOSURE_ONLY",
+  "not_proven": [
+    "ACQUISITION",
+    "LOOT",
+    "RECIPES",
+    "WORLD_GENERATION",
+    "SCRIPT_OR_PERSISTENCE",
+    "BEDROCK_CLIENT_RENDERING_OR_UI_READABILITY",
+    "STABLE_BDS",
+    "PACKAGE",
+    "PHYSICAL_PS4",
+    "MARKETPLACE"
+  ]
+}
