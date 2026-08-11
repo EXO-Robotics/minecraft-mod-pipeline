@@ -1,0 +1,17 @@
+{
+  "schema": "aionbound.wave1.whisperwood.plant_placement_closure.v1",
+  "status": "STATIC_SOURCE_REGISTRATION_PASS",
+  "registrations": [
+    { "block": "aionbound:star_grass", "feature": "aionbound:ww_ecology_star_grass", "qualitative_locality": "clearings", "proxy_limit": "forest-surface placement does not prove a clearing" },
+    { "block": "aionbound:pale_reed", "feature": "aionbound:ww_ecology_pale_reed_wet_edge", "qualitative_locality": "wet edges", "proxy_limit": "wet-compatible ground does not prove water adjacency" },
+    { "block": "aionbound:ember_thistle", "feature": "aionbound:ww_ecology_ember_thistle_transition", "qualitative_locality": "edge toward Ashen", "proxy_limit": "forest-surface placement does not prove a regional transition edge" }
+  ],
+  "density": {
+    "prior_attempts_per_chunk_before_filters": 1.229167,
+    "added_attempts_per_chunk_before_filters": 0.011719,
+    "combined_attempts_per_chunk_before_filters": 1.240886,
+    "ceiling": 1.25,
+    "cap_change": "NONE"
+  },
+  "proof_boundary": "STATIC SOURCE ONLY; NOT BDS, CLIENT, EXACT TERRAIN LOCALITY, NATURAL DISCOVERY, OR CANDIDATE PROOF"
+}
