@@ -25,6 +25,7 @@
     "ashen_resolution": {
       "chapter_critical_seal": "aionbound:ash_drake_horn",
       "chapter_critical_seal_count": 1,
+      "chapter_critical_seal_identity_source": "pre_existing_Packet006_trophy_identity_not_created_by_W1-001-AH_or_W1-004-AH",
       "critical_progression_representation": "durable_virtual_seal_credit_not_physical_item_presence",
       "ecology_or_natural_ash_drake_can_drop_chapter_seal": false,
       "ember_forge_core": {
@@ -32,17 +33,49 @@
           "ember_forge_or_ancient_kiln_structure_reward",
           "kiln_sky_optional_reward_roll"
         ],
+        "identity_source": "pre_existing_Packet006_trophy_identity_not_created_by_W1-001-AH_or_W1-004-AH",
+        "kiln_sky_optional_reward_roll": {
+          "chance": [
+            0.08,
+            0.2
+          ],
+          "classification": "E_elite",
+          "quantity": [
+            1,
+            1
+          ],
+          "rolls": [
+            1,
+            1
+          ],
+          "source": "existing_W1-CREATIVE-004_probability_and_quantity_envelopes.E"
+        },
         "may_fill_pilgrim_seal_slot": false,
         "progression_substitute_for_ash_drake_horn": false,
         "role": "optional_mastery_and_forge_reward"
       },
       "physical_horn_fulfillment": "at_most_once_best_effort_with_recovery_claim",
+      "recovery_claim": {
+        "available_only_when": "reward_entitlement_true_and_physical_horn_claimed_false",
+        "claim_order": [
+          "confirm_seal_credit_true",
+          "confirm_reward_entitlement_true",
+          "confirm_inventory_capacity",
+          "write_physical_horn_claimed_true_once",
+          "attempt_one_physical_horn_delivery"
+        ],
+        "crash_boundary": "after_claimed_write_before_delivery_may_lose_physical_horn_but_never_progression_credit_or_entitlement_and_does_not_auto_reissue",
+        "interaction_hook": "reuse_one_existing_arena_claim_interaction_hook_no_new_identifier",
+        "museum_claim": false,
+        "new_UI": false
+      },
       "repeat_clear": {
         "ash_drake_horn_entitlement": "not_reissued",
         "ember_forge_core_optional_roll": "allowed",
         "material_package_and_arena_chest": "allowed",
         "virtual_seal_credit": "not_reissued"
       },
+      "resolution_precedence": "For Ashen only, recovery_claim supersedes the inherited generic arena_reward_guard.retry_policy; no claim UI or museum path is authorized.",
       "valid_seal_source": "active_kiln_sky_arena_session_plus_apex_entity_tag_plus_valid_death_event"
     },
     "boss_package": {
@@ -171,7 +204,7 @@
         ]
       }
     },
-    "selection_rule": "Adopt the existing W1-CREATIVE-004 global envelopes and guard semantics verbatim for Ashen, then resolve only Ashen seal roles.",
+    "selection_rule": "Copy the existing W1-CREATIVE-004 global envelopes and guard semantics verbatim as inherited source evidence, then apply the explicit Ashen-only resolution below.",
     "structure_chest_bands": {
       "apex_arena_chest": {
         "contains_chapter_trophy": false,
@@ -234,6 +267,10 @@
     {
       "path": "program/crazycraft-pack-production-v1/studio-prep/creative/02_loot/LOOT_BOSSES.md",
       "sha256": "4d80925a113bb0cca67e2405047cd228a2df2ccd2c680e1e51ccd04b6f2d63d8"
+    },
+    {
+      "path": "program/crazycraft-pack-production-v1/studio-prep/creative/WAVE_1_LIVING_WORLD_IMPLEMENTATION_CONTRACT.json",
+      "sha256": "aa1f54df10d27d5c5675aae843ffe0d2946123d12a6509f7f021408bcdde9fb5"
     }
   ],
   "source_commit": "faf8bab1785b3b847a70268c37ef813afd0495b4",

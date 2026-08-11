@@ -62,6 +62,10 @@ class AshenSupportProposalTests(unittest.TestCase):
         drake = next(row for row in original["new_required_items"] if row["id"] == "aionbound:drake_scale")
         self.assertEqual(selected["new_required_items"], [drake])
         self.assertEqual(selected["new_inventory_identities_created_by_this_selection"], [])
+        semantics = selected["drake_scale_selection_semantics"]
+        self.assertEqual(semantics["row_copy"], "verbatim")
+        self.assertEqual(semantics["authority_granted"], "identity_only")
+        self.assertIn("NONE_WHILE_W1-CREATIVE-005_IS_DEFERRED", semantics["upgrade_or_sidegrade_authority"])
 
     def test_w1_004_ah_copies_global_envelopes_and_protects_seal_semantics(self) -> None:
         original = load(REPO / "engineering/authority/support-proposals/W1-CREATIVE-004/loot_envelope_proposal.json")["proposal"]
@@ -76,6 +80,22 @@ class AshenSupportProposalTests(unittest.TestCase):
         self.assertFalse(resolution["ember_forge_core"]["may_fill_pilgrim_seal_slot"])
         self.assertEqual(resolution["repeat_clear"]["ash_drake_horn_entitlement"], "not_reissued")
         self.assertEqual(resolution["repeat_clear"]["virtual_seal_credit"], "not_reissued")
+        self.assertIn("pre_existing_Packet006", resolution["chapter_critical_seal_identity_source"])
+        core = resolution["ember_forge_core"]
+        self.assertIn("pre_existing_Packet006", core["identity_source"])
+        roll = core["kiln_sky_optional_reward_roll"]
+        self.assertEqual(roll["classification"], "E_elite")
+        self.assertEqual(roll["chance"], original["probability_and_quantity_envelopes"]["E"]["chance_elite"])
+        self.assertEqual(roll["quantity"], original["probability_and_quantity_envelopes"]["E"]["quantity"])
+        self.assertEqual(roll["rolls"], original["probability_and_quantity_envelopes"]["E"]["rolls"])
+        recovery = resolution["recovery_claim"]
+        self.assertFalse(recovery["new_UI"])
+        self.assertFalse(recovery["museum_claim"])
+        self.assertIn("reuse_one_existing_arena_claim_interaction_hook", recovery["interaction_hook"])
+        self.assertIn("supersedes", resolution["resolution_precedence"])
+        self.assertIn("no claim UI or museum", resolution["resolution_precedence"])
+        self.assertLess(recovery["claim_order"].index("confirm_seal_credit_true"), recovery["claim_order"].index("write_physical_horn_claimed_true_once"))
+        self.assertLess(recovery["claim_order"].index("confirm_reward_entitlement_true"), recovery["claim_order"].index("write_physical_horn_claimed_true_once"))
 
     def test_kiln_sky_has_exact_creative_phases_and_attacks(self) -> None:
         proposal = self.proposals["W1-003-KILN-SKY"]["proposal"]
@@ -91,6 +111,87 @@ class AshenSupportProposalTests(unittest.TestCase):
         self.assertIn("NOT_CREATED", proposal["explicit_nondecisions"]["damage_values"])
         self.assertIn("NOT_CREATED", proposal["explicit_nondecisions"]["attack_effect_radii"])
         self.assertFalse(proposal["ecology_or_natural_form_can_complete_chapter"])
+
+    def test_health_snapshot_is_immutable_separate_and_uniquely_capped(self) -> None:
+        proposal = self.proposals["W1-003-KILN-SKY"]["proposal"]
+        health = proposal["health"]
+        multiplayer = proposal["multiplayer"]
+        self.assertEqual(health["participant_cap"], 4)
+        self.assertEqual(multiplayer["hard_unique_player_cap_for_each_set"], 4)
+        self.assertTrue(health["reward_participant_set_is_separate"])
+        self.assertEqual(health["unique_count_definition"], "clamp(count(unique scaling_participant_snapshot player ids),1,4)")
+        self.assertEqual(health["max_health_formula"], "480 * (1 + 0.30 * (N_pull - 1))")
+        self.assertFalse(health["late_join_changes_max_health"])
+        self.assertFalse(health["departure_or_disconnect_changes_max_health"])
+        self.assertIn("immutable_at_pull", multiplayer["health_scaling_snapshot"])
+
+    def test_pull_and_late_join_use_automatic_continuous_predicates(self) -> None:
+        multiplayer = self.proposals["W1-003-KILN-SKY"]["proposal"]["multiplayer"]
+        self.assertIn("same_5_second_continuous_residency", multiplayer["pull_initiator"])
+        self.assertIn("initiator_then_longest_continuous_residency", multiplayer["pull_selection_when_more_than_four_qualify"])
+        late = multiplayer["late_join_predicate"]
+        self.assertEqual(late["workflow"], "automatic_predicate_not_manual_approval")
+        self.assertEqual(late["continuous_residency_seconds"], 15)
+        self.assertEqual(late["must_complete_during_phase"], ["ash_landing", "vent_choir"])
+        self.assertEqual(late["timer_resets_on"], ["arena_exit", "death", "disconnect"])
+        self.assertIn("cancel_all_pending_timers", late["glass_wing_entry"])
+        self.assertFalse(late["health_rescale"])
+        self.assertNotIn("approved_late_join", json.dumps(multiplayer, sort_keys=True))
+
+    def test_phase_boundaries_and_cooldown_composition_are_exact(self) -> None:
+        proposal = self.proposals["W1-003-KILN-SKY"]["proposal"]
+        self.assertEqual(
+            [row["health_fraction_interval_while_alive"] for row in proposal["phases"]],
+            ["0.70 < h <= 1.00", "0.40 < h <= 0.70", "0.15 < h <= 0.40", "0.00 < h <= 0.15"],
+        )
+        self.assertIn("exact 0.70, 0.40, or 0.15", proposal["phase_boundary_rule"])
+        cooldown = proposal["cooldown_composition"]
+        self.assertIn("both_global_and_that_attack_specific", cooldown["next_attack_gate"])
+        self.assertEqual(cooldown["effective_ready_time"], "max(global_cooldown_ready_time,selected_attack_cooldown_ready_time)")
+
+    def test_mite_cap_clamps_without_queue_and_phases_down_oldest(self) -> None:
+        semantics = self.proposals["W1-003-KILN-SKY"]["proposal"]["ash_mite_cap_semantics"]
+        self.assertEqual(semantics["effective_cap"], "min(current_phase.active_ash_mite_cap,multiplayer.global_session_ash_mite_cap)")
+        self.assertIn("min(rolled_spawn_count", semantics["spawn_accept_count"])
+        self.assertIn("FORBIDDEN", semantics["overflow_queue"])
+        self.assertIn("oldest_excess", semantics["phase_cap_reduction"])
+        self.assertEqual(semantics["phase_down_effects"], "no_loot_no_kill_credit_no_reward_event")
+
+    def test_terminal_eligibility_abandon_disconnect_and_reset_precedence(self) -> None:
+        proposal = self.proposals["W1-003-KILN-SKY"]["proposal"]
+        terminal = proposal["terminal_semantics"]
+        self.assertEqual(terminal["eligible_set_source"], "reward_participant_set_only")
+        self.assertEqual(len(terminal["eligible_at_terminal_if"]), 3)
+        self.assertTrue(any("recorded_dead_during_current_active_session" in row for row in terminal["eligible_at_terminal_if"]))
+        self.assertTrue(any("60_seconds" in row for row in terminal["eligible_at_terminal_if"]))
+        self.assertIn("removed permanently", terminal["voluntary_abandon_loss_rule"])
+        reset = proposal["reset"]
+        self.assertIn("does not pause reset clocks", reset["disconnect_semantics"])
+        self.assertEqual([row["order"] for row in reset["precedence"]], [1, 2, 3, 4, 5])
+        self.assertEqual(reset["precedence"][0]["event"], "valid_arena_form_death")
+
+    def test_completion_alias_and_ordered_claim_are_not_duplicate_semantics(self) -> None:
+        proposal = self.proposals["W1-003-KILN-SKY"]["proposal"]
+        persistence = proposal["persistence"]
+        self.assertNotIn("player_completion_key", persistence)
+        self.assertEqual(persistence["player_completion_semantic"], "alias_of_seal_credit_key_no_separate_player_completion_key")
+        order = proposal["terminal_semantics"]["ordered_idempotent_player_transition"]
+        claimed_index = next(i for i, row in enumerate(order) if "physical_horn_claimed" in row)
+        self.assertLess(next(i for i, row in enumerate(order) if "seal_credit" in row), claimed_index)
+        self.assertLess(next(i for i, row in enumerate(order) if "reward_entitlement" in row), claimed_index)
+        self.assertIn("reuse_one_existing_arena_claim_interaction_hook", proposal["terminal_semantics"]["recovery_surface"])
+        self.assertIn("no_new_UI_or_museum", proposal["terminal_semantics"]["recovery_surface"])
+
+    def test_natural_drake_cannot_enter_arena_reward_or_key_paths(self) -> None:
+        separation = self.proposals["W1-003-KILN-SKY"]["proposal"]["arena_vs_ecology_separation"]
+        forbidden = set(separation["natural_or_ecology_ash_drake_must_not"])
+        self.assertEqual(separation["tag_writer"], "active_kiln_sky_arena_session_spawn_path_only")
+        self.assertIn("receive_arena_apex_tag", forbidden)
+        self.assertIn("join_or_create_kiln_sky_session", forbidden)
+        self.assertIn("write_world_completion_key", forbidden)
+        self.assertIn("write_player_seal_credit_or_reward_entitlement", forbidden)
+        self.assertIn("write_physical_horn_claimed_key", forbidden)
+        self.assertIn("drop_or_deliver_ash_drake_horn", forbidden)
 
     def test_generated_outputs_are_byte_deterministic(self) -> None:
         with tempfile.TemporaryDirectory() as tmp:

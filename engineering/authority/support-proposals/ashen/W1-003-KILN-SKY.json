@@ -10,7 +10,33 @@
     "all_numeric_values_status": "PROPOSED_NOT_RATIFIED",
     "arena_form_predicate": "encounter_session_active_and_entity_tag_aionbound.kiln_sky_apex",
     "arena_link": "aionbound:ember_forge",
+    "arena_vs_ecology_separation": {
+      "arena_apex_tag": "aionbound.kiln_sky_apex",
+      "natural_or_ecology_ash_drake_must_not": [
+        "receive_arena_apex_tag",
+        "join_or_create_kiln_sky_session",
+        "satisfy_terminal_death_predicate",
+        "write_world_completion_key",
+        "write_player_seal_credit_or_reward_entitlement",
+        "write_physical_horn_claimed_key",
+        "drop_or_deliver_ash_drake_horn"
+      ],
+      "tag_writer": "active_kiln_sky_arena_session_spawn_path_only"
+    },
+    "ash_mite_cap_semantics": {
+      "effective_cap": "min(current_phase.active_ash_mite_cap,multiplayer.global_session_ash_mite_cap)",
+      "overflow_queue": "FORBIDDEN_no_deferred_or_queued_spawns",
+      "phase_cap_reduction": "phase_down_oldest_excess_session_mites_by_spawn_sequence_until_effective_cap",
+      "phase_down_effects": "no_loot_no_kill_credit_no_reward_event",
+      "spawn_accept_count": "min(rolled_spawn_count,max(0,effective_cap-current_active_session_mites))"
+    },
     "boss_entity_id": "aionbound:ash_drake",
+    "cooldown_composition": {
+      "attack_serialization": "only_one_attack_telegraph_active_recovery_sequence_at_a_time",
+      "clock_start": "global_and_selected_attack_cooldown_clocks_start_when_that_attack_recovery_finishes",
+      "effective_ready_time": "max(global_cooldown_ready_time,selected_attack_cooldown_ready_time)",
+      "next_attack_gate": "selected_attack_may_start_only_when_both_global_and_that_attack_specific_cooldown_have_expired"
+    },
     "ecology_or_natural_form_can_complete_chapter": false,
     "encounter_id": "aionbound:kiln_sky",
     "explicit_nondecisions": {
@@ -21,31 +47,59 @@
       "new_phases": "FORBIDDEN_ONLY_THE_FOUR_APPROVED_PHASE_IDENTITIES"
     },
     "health": {
+      "departure_or_disconnect_changes_max_health": false,
+      "late_join_changes_max_health": false,
+      "max_health_formula": "480 * (1 + 0.30 * (N_pull - 1))",
       "participant_cap": 4,
       "per_additional_locked_participant_multiplier": 0.3,
-      "rationale": "A longer second-chapter apex than Thorn Court while capping console-first multiplayer growth at four locked participants.",
-      "solo": 480
+      "rationale": "A longer second-chapter apex than Thorn Court with one immutable pull-time health snapshot; the separate terminal reward set never rescales health and both sets have a hard cap of four unique players.",
+      "reward_participant_set_is_separate": true,
+      "scaling_participant_snapshot": "immutable_unique_eligible_pull_participants_selected_at_pull",
+      "solo": 480,
+      "unique_count_definition": "clamp(count(unique scaling_participant_snapshot player ids),1,4)",
+      "unique_count_symbol": "N_pull"
     },
     "multiplayer": {
       "disconnect_grace_seconds": 60,
-      "eligible_at_pull": "player_inside_authored_arena_volume_for_at_least_5_seconds",
+      "eligible_at_pull": "player_inside_authored_arena_volume_continuously_for_at_least_5_seconds",
       "global_session_ash_mite_cap": 4,
-      "late_join": "eligible_only_before_glass_wing_and_after_15_seconds_inside_authored_arena_volume",
-      "ownership": "per_player_terminal_entitlement_for_locked_or_approved_late_join_participants",
-      "participant_snapshot": "lock_at_pull",
-      "rationale": "Pull locking prevents health-scale manipulation; a bounded late-join window preserves co-op access before the third phase; disconnect grace avoids punishing brief network loss.",
-      "scaling_does_not_decrease_midfight": true,
+      "hard_unique_player_cap_for_each_set": 4,
+      "health_scaling_snapshot": "immutable_at_pull_never_mutated",
+      "late_join_predicate": {
+        "continuous_residency_seconds": 15,
+        "glass_wing_entry": "cancel_all_pending_timers_and_permanently_close_late_join_for_this_session",
+        "health_rescale": false,
+        "must_complete_during_phase": [
+          "ash_landing",
+          "vent_choir"
+        ],
+        "residency_volume": "authored_kiln_sky_arena_volume",
+        "slot_rule": "add_automatically_only_if_reward_participant_set_has_fewer_than_four_unique_players; simultaneous_qualifiers_use_stable_player_id_order",
+        "timer_resets_on": [
+          "arena_exit",
+          "death",
+          "disconnect"
+        ],
+        "timer_starts": "after_active_session_pull_for_a_player_not_already_in_reward_participant_set",
+        "workflow": "automatic_predicate_not_manual_approval"
+      },
+      "ownership": "per_player_terminal_entitlement_for_terminally_eligible_reward_participant_set_members",
+      "pull_initiator": "must_satisfy_the_same_5_second_continuous_residency_predicate_or_pull_does_not_start",
+      "pull_selection_when_more_than_four_qualify": "initiator_then_longest_continuous_residency_then_stable_player_id_tiebreak_until_four_unique_players",
+      "rationale": "Pull-time scaling is immutable. A separate capped reward set uses automatic, continuous-residency late join before Glass Wing; transient disconnect grace never changes health.",
+      "reward_participant_set": "separate_set_initialized_from_health_scaling_snapshot_then_automatic_late_join_predicate_may_fill_open_slots",
       "targeting": "never_requires_damage_to_one_specific_player"
     },
     "persistence": {
       "active_fight": "not_persisted",
       "migration": "idempotent_false_default",
       "physical_horn_claimed_key": "aionbound.player.kiln_sky.trophy_claimed.v1",
-      "player_completion_key": "aionbound.player.kiln_sky.completed.v1",
+      "player_completion_semantic": "alias_of_seal_credit_key_no_separate_player_completion_key",
       "reward_entitlement_key": "aionbound.player.kiln_sky.reward_entitled.v1",
       "seal_credit_key": "aionbound.player.kiln_sky.seal_credit.v1",
       "world_completion_key": "aionbound.encounter.kiln_sky.completed.v1"
     },
+    "phase_boundary_rule": "At an exact 0.70, 0.40, or 0.15 threshold enter the lower-health phase; h=0 is handled by terminal death semantics, not a live phase.",
     "phase_rationale": "70/40/15 creates three readable teaching bands and a short commit-burst enrage without adding a fifth Creative phase.",
     "phases": [
       {
@@ -56,6 +110,7 @@
         ],
         "enter_at_health_fraction": 1.0,
         "exit_at_health_fraction": 0.7,
+        "health_fraction_interval_while_alive": "0.70 < h <= 1.00",
         "id": "ash_landing"
       },
       {
@@ -68,6 +123,7 @@
         ],
         "enter_at_health_fraction": 0.7,
         "exit_at_health_fraction": 0.4,
+        "health_fraction_interval_while_alive": "0.40 < h <= 0.70",
         "id": "vent_choir"
       },
       {
@@ -81,6 +137,7 @@
         ],
         "enter_at_health_fraction": 0.4,
         "exit_at_health_fraction": 0.15,
+        "health_fraction_interval_while_alive": "0.15 < h <= 0.40",
         "id": "glass_wing"
       },
       {
@@ -94,12 +151,14 @@
         ],
         "enter_at_health_fraction": 0.15,
         "exit_at_health_fraction": 0.0,
+        "health_fraction_interval_while_alive": "0.00 < h <= 0.15",
         "id": "kiln_heart"
       }
     ],
     "reset": {
       "all_players_dead_or_outside_grace_seconds": 15,
       "completion_is_not_cleared": true,
+      "disconnect_semantics": "disconnect_grace_preserves_terminal_reward_eligibility_only; a disconnected player is not active combat presence and does not pause reset clocks",
       "leash_boundary": "authored_kiln_sky_arena_volume_no_new_radius_number",
       "no_eligible_player_grace_seconds": 30,
       "on_reset": [
@@ -109,15 +168,56 @@
         "clear_active_session"
       ],
       "outside_leash_grace_seconds": 10,
+      "precedence": [
+        {
+          "effect": "terminal_completion_wins_cancel_all_pending_reset_clocks",
+          "event": "valid_arena_form_death",
+          "order": 1
+        },
+        {
+          "effect": "reset_without_completion_or_reward_then_reopen_unpulled_at_full_health",
+          "event": "world_unload_or_reload",
+          "order": 2
+        },
+        {
+          "effect": "reset",
+          "event": "boss_outside_authored_arena_continuously_10_seconds",
+          "order": 3
+        },
+        {
+          "effect": "reset",
+          "event": "at_least_one_connected_session_participant_exists_and_all_connected_session_participants_are_dead_or_outside_continuously_15_seconds",
+          "order": 4
+        },
+        {
+          "effect": "reset",
+          "event": "no_connected_alive_session_participant_inside_authored_arena_continuously_30_seconds",
+          "order": 5
+        }
+      ],
       "rationale": "Short boundary grace avoids transient flight-path resets, while dead/absent-player windows terminate abandoned sessions and reload always clears nonpersistent fight state.",
       "world_reload_behavior": "reset_to_unpulled_full_health_and_clear_session_transients"
     },
     "terminal_semantics": {
       "complete_on": "arena_form_valid_death_event_with_active_session",
-      "eligible_players": "locked_or_approved_late_join_participants_present_or_in_disconnect_grace",
+      "eligible_at_terminal_if": [
+        "connected_alive_and_inside_authored_arena_volume",
+        "recorded_dead_during_current_active_session_after_reward_set_admission",
+        "disconnected_for_no_more_than_60_seconds_at_terminal"
+      ],
+      "eligible_set_source": "reward_participant_set_only",
+      "ordered_idempotent_player_transition": [
+        "write_or_confirm_seal_credit_true_as_player_completion_alias",
+        "write_or_confirm_reward_entitlement_true",
+        "only_then_offer_initial_or_recovery_physical_claim_by_reusing_one_existing_arena_claim_interaction_hook",
+        "after_inventory_capacity_precheck_write_physical_horn_claimed_true_once_before_one_delivery_attempt"
+      ],
+      "physical_claim_semantics": "at_most_once_best_effort; claimed true is never cleared and a crash after claimed write cannot revoke progression or entitlement and does not auto_reissue the horn",
       "progression_credit": "per_player_durable_once",
+      "recovery_surface": "reuse_one_existing_arena_claim_interaction_hook_no_new_identifier_no_new_UI_or_museum",
       "repeat_clear": "encounter_repeatable_but_no_duplicate_chapter_progression_or_horn_entitlement",
       "reward_identity_and_fulfillment_source": "W1-004-AH_only",
+      "voluntary_abandon_loss_rule": "a connected alive reward-set member continuously outside the authored arena for 10 seconds is removed permanently for this session; death and disconnect are not voluntary abandonment",
       "world_stamp": "durable_once"
     },
     "timing_rationale": "All six authored attacks expose telegraph, active, recovery, and cooldown windows; add creation is slower than ordinary attacks and bounded by the active cap.",

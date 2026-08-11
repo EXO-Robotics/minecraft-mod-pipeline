@@ -9,6 +9,10 @@ This proposal is Ashen-only. It does not edit Creative sources, prior proposals,
 
 The proposal binds only the approved four phase identities and six attack identities to proposed thresholds, timing ranges, reset/leash behavior, bounded adds, multiplayer ownership, persistence, and terminal/repeat semantics.
 
+Pull-time health scaling and the terminal reward set are separate, hard-capped at four unique players, and late join never rescales health. Late join is an automatic 15-second continuous-residency predicate available only before Glass Wing; all pending timers are cancelled on Glass Wing entry.
+
+Terminal eligibility, voluntary abandonment, disconnect/reset precedence, exact phase inclusivity, cooldown composition, bounded no-queue Ash Mites, ecology-form prohibitions, and ordered idempotent seal-credit/entitlement/physical-claim semantics are explicit in the canonical JSON.
+
 Every new number remains `PROPOSED_NOT_RATIFIED`. Damage values, attack radii, and an arena-radius number are deliberately not invented; implementation uses the authored arena volume and requires separately approved/measured Engineering constraints for mechanical tuning.
 
 ## Source binding
