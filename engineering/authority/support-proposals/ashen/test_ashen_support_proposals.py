@@ -42,6 +42,16 @@ class AshenSupportProposalTests(unittest.TestCase):
 
     def test_repository_sources_retain_bound_hashes(self) -> None:
         for path, expected in BUILDER.SOURCE_HASHES.items():
+            if path == "engineering/authority/WAVE_1_ENGINEERING_DECISION_LEDGER.json":
+                # The proposals are immutable historical inputs. After explicit
+                # ratification, the replacement ledger must change while the
+                # proposal's bound pre-ratification source hash remains fixed.
+                ledger = load(REPO / path)
+                approved = {row["tranche"]: row for row in ledger["ratifications"]["approved"]}
+                for tranche in ("W1-001-AH", "W1-003-KILN-SKY", "W1-004-AH"):
+                    proposal = REPO / approved[tranche]["proposal"]
+                    self.assertEqual(hashlib.sha256(proposal.read_bytes()).hexdigest(), approved[tranche]["proposal_sha256"])
+                continue
             candidate = REPO / path
             if not candidate.is_file():
                 continue

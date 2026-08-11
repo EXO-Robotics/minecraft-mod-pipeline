@@ -1,11 +1,11 @@
 {
-  "schema_version": "aionbound.wave1.engineering-decision-ledger.v2.0.0",
-  "status": "RATIFIED_WHISPERWOOD_IMPLEMENTATION_AUTHORITY_WITH_DEFERRED_LATER_TICKETS",
-  "authority_scope": "PHASE_0_CLASSIFICATION_AND_APPROVED_WHISPERWOOD_IMPLEMENTATION",
+  "schema_version": "aionbound.wave1.engineering-decision-ledger.v3.0.0",
+  "status": "RATIFIED_WHISPERWOOD_AND_ASHEN_IMPLEMENTATION_AUTHORITY_WITH_DEFERRED_LATER_TICKETS",
+  "authority_scope": "PHASE_0_CLASSIFICATION_AND_APPROVED_WHISPERWOOD_AND_ASHEN_IMPLEMENTATION",
   "creative_authority_preserved": true,
   "ratifications": {
     "authority_event": "USER_APPROVAL_IN_PRIMARY_CODEX_THREAD",
-    "approval_text": "Approved: W1-001-WW, W1-003-THORN-COURT, W1-004-WW-CH1, and W1-006-WW-SAPLING. Defer W1-CREATIVE-005.",
+    "approval_text": "Approved: W1-001-WW, W1-003-THORN-COURT, W1-004-WW-CH1, and W1-006-WW-SAPLING. After Whisperwood Checkpoint 1 PASS, approve W1-001-AH, W1-003-KILN-SKY, and W1-004-AH exactly as refined. Preserve W1-CREATIVE-005 as deferred.",
     "preserve_proposals_as_written": true,
     "approved": [
       {
@@ -31,12 +31,31 @@
         "proposal": "engineering/authority/support-proposals/W1-CREATIVE-006/whisperwood_sapling_regrowth_proposal.json",
         "proposal_sha256": "b09c2da08a453445e51543fcedf6887869f134df312931f7376287f4b5193a94",
         "scope": "One bounded Whisperwood sapling regrowth assembly exactly as proposed"
+      },
+      {
+        "tranche": "W1-001-AH",
+        "proposal": "engineering/authority/support-proposals/ashen/W1-001-AH.json",
+        "proposal_sha256": "dd26a683f7f3e5301b66d7f2861454b5bf6b79818d12e0e8e1b22b6f07217774",
+        "scope": "Refined Ashen identity dispositions and drake_scale only; no W1-CREATIVE-005 authority"
+      },
+      {
+        "tranche": "W1-003-KILN-SKY",
+        "proposal": "engineering/authority/support-proposals/ashen/W1-003-KILN-SKY.json",
+        "proposal_sha256": "1b2d5f77185a1461040d7559d0d8ecdaf803d7727e419ceac32636865be85d7c",
+        "scope": "Kiln Sky encounter envelope exactly as refined"
+      },
+      {
+        "tranche": "W1-004-AH",
+        "proposal": "engineering/authority/support-proposals/ashen/W1-004-AH.json",
+        "proposal_sha256": "93736ff800b1c90c8a6547d84336a6650f8ae32750f262de8e460385a7a26889",
+        "scope": "Ashen loot, chest, seal, ecology, recovery, and optional mastery semantics exactly as refined"
       }
     ],
     "deferred": [
       "W1-CREATIVE-005",
-      "W1-001-LATER-REGIONS",
-      "W1-004-LATER-REGIONS"
+      "W1-001-LATER-REGIONS_EXCLUDING_ASHEN",
+      "W1-003-LATER_BOSSES_EXCLUDING_KILN_SKY",
+      "W1-004-LATER-REGIONS_EXCLUDING_ASHEN"
     ],
     "implementation_rule": "Approved proposal bytes are binding and may not be broadened, rewritten, or reinterpreted."
   },
@@ -86,9 +105,10 @@
       {"term": "Pathfinder Pair", "id": "aionbound:pathfinder_pair", "narrative_utility": true}
     ],
     "new_required_item_candidates": {
-      "status": "PARTIALLY_RATIFIED_W1_001_WW_ONLY",
+      "status": "PARTIALLY_RATIFIED_W1_001_WW_AND_W1_001_AH_ONLY",
       "whisperwood_authority": "W1-001-WW_APPROVED_AS_WRITTEN",
-      "later_region_authority": "DEFERRED_UNTIL_SEPARATE_RATIFICATION",
+      "ashen_authority": "W1-001-AH_APPROVED_AS_REFINED",
+      "later_region_authority": "CRYSTAL_MARSH_AND_SKYREACH_DEFERRED_UNTIL_SEPARATE_RATIFICATION",
       "whisperwood": ["Boar Tusk Shard", "Boar Tusk", "Root Plate", "Thick Hide", "Briar Crown", "Rot Fang", "Tainted Pelt", "Marrow Scrap", "Thorn Barb", "Stalker Claw", "Hollow Venom Sac", "Chitin Shard", "Wraith Mask Fragment", "Mosskip Crown Fragment", "Hardened Moss Plate", "Glow Soft Pellet", "Lantern-adjacent hide scrap"],
       "ashen": ["Ash Dust", "Ash Wool", "Beetle Core Fragment", "Char Feather", "Char Hide", "Char Pelt", "Cinder Beak", "Cinder Pelt", "Drake Scale", "Ember Fang", "Ember Sinew", "Heat Scale", "Lynx Claw", "Mite Mandible", "Pack Cinder Mark", "Ram Horn Curve", "Shell Plate", "Smolder Gland", "Soot Antler", "Stag Heart Cinder", "Swarm Queen Scale", "Warm Blood Vial"],
       "crystal_marsh": ["Algae Scrap", "Bog Tendril", "Crab Pearl Grain", "Croc Eye Pearl", "Croc Hide", "Glass Feather", "Heron Nest Token", "Iridescent Dust", "Long Beak Shard", "Marsh Resin Blob", "Mire Shell Plate", "Newt Tail Crystal", "Prism Mucus", "Prism Wing", "Serpent Scale", "Shed Skin Ribbon", "Silt Fang", "Tiny Prism Chip", "Venom Crystal", "Watcher Lens", "Wight Shroud Cloth"],
@@ -115,15 +135,17 @@
   },
   "boss_behavior": {
     "creative_phase_kits_implementable": true,
-    "numeric_and_ownership_status": "THORN_COURT_RATIFIED_OTHER_APEXES_DEFERRED",
+    "numeric_and_ownership_status": "THORN_COURT_AND_KILN_SKY_RATIFIED_OTHER_APEXES_DEFERRED",
     "thorn_court_authority": "W1-003-THORN-COURT_APPROVED_AS_WRITTEN",
+    "kiln_sky_authority": "W1-003-KILN-SKY_APPROVED_AS_REFINED",
     "required_ticket_fields": ["phase thresholds", "transition predicates", "telegraph/attack/recovery/cooldown ranges", "leash/timeout/wipe/reset/re-entry", "add caps", "multiplayer ownership/scaling", "late join/disconnect", "persistence domain", "reward authority", "idempotent terminal grant", "repeat-clear semantics"]
   },
   "loot": {
     "identity_and_role_authority": "CREATIVE_MARKDOWN",
     "structural_wiring_allowed": true,
-    "final_values_status": "WHISPERWOOD_CHAPTER_1_RATIFIED_LATER_REGIONS_DEFERRED",
+    "final_values_status": "WHISPERWOOD_CHAPTER_1_AND_ASHEN_RATIFIED_CRYSTAL_SKY_DEFERRED",
     "whisperwood_chapter_1_authority": "W1-004-WW-CH1_APPROVED_AS_WRITTEN",
+    "ashen_authority": "W1-004-AH_APPROVED_AS_REFINED",
     "required_ticket_fields": ["C/U/R/E/T/Q probability ranges", "quantity ranges", "chest rolls", "guaranteed boss semantics", "arena reward guards", "alternate seal semantics"],
     "thorn_stalker_regular_ecology_seal": "FORBIDDEN_UNLESS_CREATIVE_OVERRIDES",
     "chapter_seal_source": "CHAPTER_APEX_ENCOUNTER"
@@ -138,10 +160,10 @@
     "proof_boundary": "Native editor/export proof is separate from static validation, client rendering, and physical PS4 rendering"
   },
   "support_tickets": [
-    {"id": "W1-CREATIVE-001", "status": "PARTIALLY_RATIFIED_WW_LATER_REGIONS_DEFERRED", "scope": "W1-001-WW approved; later-region non-warehouse terms deferred", "owner": "CREATIVE_ASSET_SUPPORT"},
+    {"id": "W1-CREATIVE-001", "status": "WW_AND_AH_RATIFIED_CRYSTAL_SKY_DEFERRED", "scope": "W1-001-WW and W1-001-AH approved; Crystal Marsh and Skyreach terms deferred", "owner": "CREATIVE_ASSET_SUPPORT"},
     {"id": "W1-CREATIVE-002", "status": "OPEN_NARROWED_BLOCKING_FINALE", "scope": "Twinbond container, secondary reward presentation, mastery-sigil disposition, exit dependency", "owner": "CREATIVE_ASSET_SUPPORT"},
-    {"id": "W1-CREATIVE-003", "status": "THORN_COURT_RATIFIED_OTHER_BOSSES_DEFERRED", "scope": "Thorn Court approved as written; other boss envelopes remain outside this ratification", "owner": "CREATIVE_SUPPORT"},
-    {"id": "W1-CREATIVE-004", "status": "WHISPERWOOD_CHAPTER_1_RATIFIED_LATER_REGIONS_DEFERRED", "scope": "Whisperwood and Thorn Court loot/reward guards approved as written", "owner": "CREATIVE_SUPPORT"},
+    {"id": "W1-CREATIVE-003", "status": "THORN_COURT_AND_KILN_SKY_RATIFIED_OTHER_BOSSES_DEFERRED", "scope": "Thorn Court and Kiln Sky approved; Crystal Marsh, Skyreach, and finale boss envelopes remain outside this ratification", "owner": "CREATIVE_SUPPORT"},
+    {"id": "W1-CREATIVE-004", "status": "WHISPERWOOD_CHAPTER_1_AND_ASHEN_RATIFIED_CRYSTAL_SKY_DEFERRED", "scope": "Whisperwood/Thorn Court and Ashen/Kiln Sky loot and reward guards approved", "owner": "CREATIVE_SUPPORT"},
     {"id": "W1-CREATIVE-005", "status": "DEFERRED_BY_USER", "scope": "equipment sidegrade item identity", "owner": "CREATIVE_SUPPORT"},
     {"id": "W1-CREATIVE-006", "status": "WHISPERWOOD_SAPLING_RATIFIED", "scope": "bounded existing-palette sapling regrowth assembly and timing", "owner": "CREATIVE_SUPPORT"}
   ],
@@ -149,7 +171,10 @@
     "broad_nonblocked_engineering_may_proceed": true,
     "whisperwood_vertical_implementation_authorized": true,
     "whisperwood_checkpoint_1_authorized_only_after_exit_criteria": true,
-    "ashen_start_authorized_only_after_checkpoint_1_pass": true,
+    "whisperwood_checkpoint_1_status": "PASS_BOUNDED_REPLACEMENT_SMOKE_LINEAGE_IMMUTABLE",
+    "ashen_vertical_implementation_authorized": true,
+    "crystal_marsh_start_authorized_only_after_ashen_vertical_exit": true,
+    "new_bds_checkpoint_authorized": false,
     "final_freeze_blocked_until_remaining_later_region_and_finale_tickets_resolved": true,
     "engineering_may_not_invent_unresolved_content": true
   },
