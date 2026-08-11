@@ -1,0 +1,79 @@
+{
+  "schema_version": 1,
+  "scope": "packet_001_foundation_crafting",
+  "status": "STATIC_CLOSURE_PASS",
+  "authority": [
+    {
+      "path": "program/crazycraft-pack-production-v1/studio-prep/creative/WAVE_1_LIVING_WORLD_IMPLEMENTATION_CONTRACT.md",
+      "section": "1.A.3 Blocks (10)",
+      "evidence": "whisperwood_log -> planks / bark harvest; stripped_whisperwood_log is worked wood; whisperwood_wood is bark-on-all-sides building mass; whisperwood_planks are the base-building material"
+    },
+    {
+      "path": "program/crazycraft-pack-production-v1/studio-prep/creative/03_crafting/CRAFTING_TREE.md",
+      "section": "3.1 Material refine",
+      "evidence": "whisperwood_log / whisper_bark [C] -> whisperwood_planks"
+    },
+    {
+      "path": "engineering/whisperwood-intake/WHISPERWOOD_VERTICAL_IMPLEMENTATION_MAP.json",
+      "section": "Packet 001 block inventory",
+      "evidence": "canonical runtime identifiers for whisperwood_log, stripped_whisperwood_log, whisperwood_wood, and whisperwood_planks"
+    }
+  ],
+  "quantity_policy": {
+    "classification": "ordinary_reversible_construction_defaults",
+    "description": "Custom timber follows the vanilla-equivalent wood economy: one log-class block yields four planks, and four bark-on-end logs yield three bark-on-all-sides wood blocks. This policy does not authorize special materials or progression recipes."
+  },
+  "implemented": [
+    {
+      "recipe": "aionbound:whisperwood_log_to_planks_recipe",
+      "input": {"item": "aionbound:whisperwood_log", "count": 1},
+      "result": {"item": "aionbound:whisperwood_planks", "count": 4},
+      "authority": ["contract_1.A.3", "crafting_tree_3.1", "ordinary_reversible_construction_defaults"]
+    },
+    {
+      "recipe": "aionbound:whisperwood_stripped_log_to_planks_recipe",
+      "input": {"item": "aionbound:stripped_whisperwood_log", "count": 1},
+      "result": {"item": "aionbound:whisperwood_planks", "count": 4},
+      "authority": ["contract_1.A.3", "ordinary_reversible_construction_defaults"]
+    },
+    {
+      "recipe": "aionbound:whisperwood_wood_to_planks_recipe",
+      "input": {"item": "aionbound:whisperwood_wood", "count": 1},
+      "result": {"item": "aionbound:whisperwood_planks", "count": 4},
+      "authority": ["contract_1.A.3", "ordinary_reversible_construction_defaults"]
+    },
+    {
+      "recipe": "aionbound:whisperwood_wood_from_logs_recipe",
+      "input": {"item": "aionbound:whisperwood_log", "count": 4},
+      "result": {"item": "aionbound:whisperwood_wood", "count": 3},
+      "authority": ["contract_1.A.3", "ordinary_reversible_construction_defaults"]
+    }
+  ],
+  "withheld": [
+    {
+      "identity": "whisper_bark_to_whisperwood_planks",
+      "reason": "Creative authorizes the relationship but does not bind a quantity; this is not a vanilla-equivalent construction conversion."
+    },
+    {
+      "identity": "stripped_whisperwood_log_production",
+      "reason": "Tool interaction and stripping semantics are not bound by this crafting slice."
+    },
+    {
+      "identity": "forest_brick_moss_bark_hollow_wood_and_other_accent_blocks",
+      "reason": "Creative provides roles but not complete ingredient and quantity formulas."
+    },
+    {
+      "identity": "derived_components",
+      "members": ["Moss Bind Glue", "Amber Core", "Thorn Cord", "Cleaver Blank", "Living Root Focus"],
+      "reason": "Decision-ledger craft homes and/or ingredient identities remain unresolved."
+    },
+    {
+      "identity": "equipment_loot_boss_and_progression_recipes",
+      "reason": "Outside the unblocked foundation scope and subject to unresolved creative decisions."
+    }
+  ],
+  "proof_boundary": {
+    "proves": ["JSON parses", "canonical identifier closure", "recipe identifier uniqueness", "no exact input/result signature collision", "withheld-scope enforcement"],
+    "does_not_prove": ["Bedrock recipe acceptance", "BDS load", "client crafting UI", "gameplay balance", "progression completion", "candidate qualification"]
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "format_version": "1.20.10",
+  "minecraft:recipe_shaped": {
+    "description": {
+      "identifier": "aionbound:whisperwood_wood_from_logs_recipe"
+    },
+    "tags": [
+      "crafting_table"
+    ],
+    "pattern": [
+      "LL",
+      "LL"
+    ],
+    "key": {
+      "L": {
+        "item": "aionbound:whisperwood_log"
+      }
+    },
+    "result": {
+      "item": "aionbound:whisperwood_wood",
+      "count": 3
+    },
+    "unlock": [
+      {
+        "item": "aionbound:whisperwood_log"
+      }
+    ]
+  }
+}
