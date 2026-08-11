@@ -1,0 +1,21 @@
+{
+  "schema_version": "1.0.0",
+  "status": "PASS",
+  "classification": "WHISPERWOOD_NORMALIZATION_IMPLEMENTATION_PATTERN_SOUND_FOR_SERVER_SIDE_REUSE",
+  "source_commit": "32991302f2aaafefd34a292caacde89275b70ee7",
+  "source_tree": "6117ed5454997394bca96545041910df186729c9",
+  "mcaddon_sha256": "b05d0d17d379c2ef2667400360ec7a01d017e99db0c410dd6c226705a2a05096",
+  "qualification_run": "program/aionbound-wave-1-qualification-runs/CHECKPOINT_1_G000008-R2",
+  "qualification_result_sha256": "8e13dbaf269c37c13efe0f7a803a3cd4ed8bdb8539051055867aadce47f70194",
+  "qualifier_receipt_sha256": "8f58f0fa3e7f1f26a170c3ea09b96f1a5a964fc43c2858707ceea16dbf0f4804",
+  "stable_bds_cycles": 2,
+  "same_world_reused": true,
+  "shipped_entrypoint_marker_each_cycle": true,
+  "clean_shutdown_each_cycle": true,
+  "candidate_scoped_warnings_or_errors": [],
+  "next_authorized_phase": "ASHEN_HIGHLANDS_VERTICAL_IMPLEMENTATION",
+  "proof_boundary": [
+    "Server-side definition load and registration are proven; live spawn, worldgen placement, AI motion, client rendering, and audio are not.",
+    "This is a bounded pattern smoke, not final Wave 1 qualification or release proof."
+  ]
+}
