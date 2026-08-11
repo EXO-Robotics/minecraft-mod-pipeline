@@ -1,0 +1,76 @@
+{
+  "schema_version": 2,
+  "audit_id": "WAVE1_WHISPERWOOD_READINESS_V2_1D424AE",
+  "audited_head": "1d424aed1182e910eb82a143bd3c2c947ac226ed",
+  "audited_tree": "6c237b3148fd1fa94ab70477bcb3e72cced7acdb",
+  "overall_classification": "VERTICAL_IMPLEMENTATION_PARTIAL_CHECKPOINT_1_NOT_AUTHORIZED",
+  "checkpoint_1_authorized": false,
+  "authorities": {
+    "creative_contract_md_sha256": "3116c217e06afe1fd0cd56ee742c537f948a4c91193ec831fd1b3ec362837bfc",
+    "creative_contract_json_sha256": "aa1f54df10d27d5c5675aae843ffe0d2946123d12a6509f7f021408bcdde9fb5",
+    "engineering_decision_ledger_json_sha256": "ed71046df20a66440ac2cc73cc3c25f629c63f6ee8ade01449c43ea537de8c31",
+    "support_proposal_index_sha256": "b12a9401970f66b3528193478b9c6581aa1e9b9d9dbd940c15423ef039580772",
+    "audio_ticket_sha256": "cc8c3179964c61c495fb25d4c0f891bdb237433edb847b1e73e54018387a667f"
+  },
+  "closed_since_v1": [
+    "star_grass_pale_reed_ember_thistle_natural_placement",
+    "twenty_one_whisperwood_packet006_base_ids_runtime_and_icons",
+    "ten_entity_placeholder_audio_bindings",
+    "forest_waystone_persistent_duplicate_safe_activation_stamp",
+    "broken_wagon_persistent_duplicate_safe_transition_hook"
+  ],
+  "criteria": [
+    {"id": "first_living_biome_fully_playable_offline", "classification": "MISSING_IMPLEMENTATION"},
+    {"id": "all_001_ids_in_world", "classification": "PASS_SOURCE_REGISTRATION"},
+    {"id": "ww_craft_loop", "classification": "MISSING_IMPLEMENTATION"},
+    {"id": "hunter_camp_waystone_cave", "classification": "PARTIAL_SOURCE"},
+    {"id": "thorn_apex_runnable", "classification": "WITHHELD_UNRATIFIED_AUTHORITY"},
+    {"id": "drops_feed_ww_crafts", "classification": "WITHHELD_UNRATIFIED_AUTHORITY"},
+    {"id": "non_statue_ambient", "classification": "PASS_SOURCE"},
+    {"id": "spawn_to_ww_explore_without_commands", "classification": "UNPROVEN_CLIENT_OR_BDS"},
+    {"id": "craft_spear_or_armor_piece", "classification": "MISSING_ACQUISITION"},
+    {"id": "find_structure", "classification": "UNPROVEN_CLIENT_OR_BDS"},
+    {"id": "defeat_stalker_or_shrine_path", "classification": "WITHHELD_UNRATIFIED_AUTHORITY"},
+    {"id": "activate_waystone", "classification": "PARTIAL_SOURCE"},
+    {"id": "obtain_ah_rumor", "classification": "MISSING_PRESENTATION"}
+  ],
+  "minimum_ratification_path": [
+    "W1-001-WW",
+    "W1-003-THORN-COURT",
+    "W1-004-WW-CH1"
+  ],
+  "deferrable_for_checkpoint_1": [
+    "W1-CREATIVE-005",
+    "W1-ASSET-AUDIO-001"
+  ],
+  "source_evidence": {
+    "wave1_source_validator": "PASS",
+    "wave1_pack_source_file_count": 979,
+    "wave1_pack_source_sha256": "6bd6c983118187eb7533a3a9be4257d3351ac37e09644aaae71eb319f75108a5",
+    "combined_node_semantics": "47_PASS_0_FAIL",
+    "bounded_python_static_commands": "24_PASS_1_FAIL",
+    "failing_command": "python3 engineering/whisperwood-intake/entity-runtime/test_entity_runtime_map.py",
+    "failing_test_error_count": 6,
+    "failing_mapper": "engineering/whisperwood-intake/entity-runtime/build_entity_runtime_map.py",
+    "failure_classification": "ISOLATED_WORKTREE_EXTERNAL_AUTHORITY_PATH_RESOLUTION_DEFECT"
+  },
+  "remaining_blockers": [
+    "ratify_and_bind_W1_001_WW_W1_003_THORN_COURT_W1_004_WW_CH1",
+    "resource_and_equipment_legal_acquisition_recipe_repair_closure",
+    "creature_and_structure_loot_rarity_reward_guard_closure",
+    "thorn_court_and_owl_shrine_alternative_completion",
+    "forest_waystone_return_and_AH_rumor_presentation",
+    "whisperwood_sapling_regrowth",
+    "entity_runtime_evidence_mapper_relocation_repair",
+    "targeted_source_reclosure"
+  ],
+  "checkpoint_1_questions": {
+    "normalized_assets_load": "UNPROVEN_CLIENT_OR_BDS",
+    "natural_entities_initialize": "UNPROVEN_CLIENT_OR_BDS",
+    "structures_resources_register": "UNPROVEN_CLIENT_OR_BDS",
+    "runtime_starts_cleanly": "UNPROVEN_CLIENT_OR_BDS",
+    "same_world_reopens": "UNPROVEN_CLIENT_OR_BDS",
+    "no_candidate_scoped_content_runtime_errors": "UNPROVEN_CLIENT_OR_BDS"
+  },
+  "proof_boundary": "No build, package, freeze, BDS, client, console, multiplayer, or release evidence was produced by this audit."
+}
