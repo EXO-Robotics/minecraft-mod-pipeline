@@ -1,0 +1,64 @@
+{
+  "schema": "aionbound.wave1.gate0-remediation.v1",
+  "status": "STATIC_REMEDIATION_PASS",
+  "source_gate": {
+    "classification": "G7_STABLE_BDS_SUBSTRATE_FAIL_CONTENT_SCHEMA",
+    "g7_commit": "042018eac3bd32b76d135219b9f59502dd4f4692",
+    "gate_report_sha256": "2bbec5004b39507c50dbbf894f5007d809cba4c9e3627bdfbaf4e96cbe78f41c",
+    "stable_cycle_1_log_sha256": "0f997e2bca628a0295a525e1a139a2b71e771f12898520e4d3d1f08a8cf46a47"
+  },
+  "repairs": {
+    "block_geometry_material_pairs": {
+      "count": 32,
+      "disposition": "Added minecraft:geometry.full_block to definitions that already declared material_instances, preserving their prior full-cube presentation."
+    },
+    "feature_rule_identifier_filename_matches": {
+      "count": 19,
+      "disposition": "Changed each rule identifier to aionbound:<exact filename stem>; places_feature identifiers were preserved."
+    },
+    "downstream_recipes": {
+      "count": 12,
+      "disposition": "No recipe identities or formulas changed; static closure confirms the diagnostics were downstream of the rejected custom-block registrations."
+    }
+  },
+  "tests": [
+    {
+      "command": "python3 -m unittest tests/wave1_substrate_gate0_regression.py",
+      "result": "PASS",
+      "tests_run": 4
+    },
+    {
+      "command": "python3 tools/validate_g7.py",
+      "result": "PASS",
+      "counts": {
+        "armor": 8,
+        "blocks": 49,
+        "entities": 24,
+        "items": 56,
+        "loot_tables": 32,
+        "recipes": 55,
+        "spawn_rules": 10,
+        "structures": 15
+      }
+    },
+    {
+      "command": "git diff --check",
+      "result": "PASS"
+    }
+  ],
+  "proof_boundary": {
+    "established": [
+      "targeted static regression closure for the three Gate 0 debt families",
+      "JSON parseability of affected content families",
+      "preservation of G7 semantic identifiers and recipe formulas"
+    ],
+    "not_established": [
+      "Stable BDS remediation PASS",
+      "client rendering",
+      "gameplay",
+      "controller or console",
+      "candidate or release readiness"
+    ],
+    "next_gate": "Rebuild the successor package and rerun candidate-scoped Stable BDS outside this implementation lane."
+  }
+}
