@@ -1,0 +1,457 @@
+{
+  "schema": "aionbound.wave1.ashen-equipment-intake.v1",
+  "status": "DETERMINISTIC_INTAKE_COMPLETE_NATIVE_REPAIR_IDENTIFIED_ACQUISITION_REWARD_BLOCKED",
+  "base": {
+    "integration_commit": "c7497dece77571f55de4f2b42219420b451627f3",
+    "integration_tree": "1be5fb0093da6279f6267718bb7b03a88e9eea9d",
+    "g7_commit": "042018eac3bd32b76d135219b9f59502dd4f4692",
+    "g7_tree": "5542639f4c1a932ff1f354dee07dfe448b6491bd"
+  },
+  "scope": {
+    "packet": "006_equipment_progression",
+    "ecosystem": "002_ashen_highlands",
+    "asset_count": 14,
+    "counts": {
+      "weapons": 3,
+      "armor": 4,
+      "tools": 3,
+      "accessories": 2,
+      "trophies": 2
+    },
+    "ordered_ids": [
+      "basalt_hammer",
+      "ember_great_axe",
+      "ash_repeater",
+      "ashen_helmet",
+      "ashen_chest",
+      "ashen_legs",
+      "ashen_boots",
+      "basalt_pick",
+      "ember_hammer",
+      "ore_chisel",
+      "ember_totem",
+      "briar_ring",
+      "ash_drake_horn",
+      "ember_forge_core"
+    ]
+  },
+  "authority": [
+    {
+      "path": "engineering/normalization/PACKET_NORMALIZATION_INVENTORY.json",
+      "sha256": "4a65ccbc10f47a86e3aec649874916a9d4ad5cb9feef7817d75a527774a3a842"
+    },
+    {
+      "path": "engineering/authority/WAVE_1_ENGINEERING_DECISION_LEDGER.json",
+      "sha256": "3e2b64785da9310b098e06981ebc95777ddc7e5d2666f803b79ce374470a9561"
+    },
+    {
+      "path": "engineering/authority/support-proposals/ashen/W1-001-AH.json",
+      "sha256": "9d8a7f6ccfbe7e5e89cf223fcc6b3596b8f812ee34cffed784d22d4d73b3d82b",
+      "status": "PROPOSED_NOT_RATIFIED"
+    },
+    {
+      "path": "engineering/authority/support-proposals/ashen/W1-003-KILN-SKY.json",
+      "sha256": "5f2d67794731d0d120a87b3f609309cf9d8776b9161419486aa4cfac25dfc919",
+      "status": "PROPOSED_NOT_RATIFIED"
+    },
+    {
+      "path": "engineering/authority/support-proposals/ashen/W1-004-AH.json",
+      "sha256": "154ad471d2ac860ec5415d858db408056a873a13fa7b3e85605326d7cdf12bb9",
+      "status": "PROPOSED_NOT_RATIFIED"
+    },
+    {
+      "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-006-equipment-progression/MANIFEST_FULL.json",
+      "sha256": "71ab8dec6949ab4a1321fe4215d843cdb9c4279e8ca6a37adfb95c20149951ea"
+    },
+    {
+      "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-006-equipment-progression/ASSET_SPRINT_006_EQUIPMENT_PROGRESSION.md",
+      "sha256": "98399118553bca107edbd5a989165fd573714a8f0f0455c2589b0a787322e174"
+    }
+  ],
+  "canonical_source_contract": {
+    "packet_root": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-006-equipment-progression",
+    "source_of_truth": "assets/briefs, assets/editable, and assets/export; category directories are mirrors only",
+    "artifact_keys": {
+      "brief": "assets/briefs/{id}.json",
+      "bbmodel": "assets/editable/{id}.bbmodel",
+      "editable_texture": "assets/editable/{id}.png",
+      "geometry": "assets/export/models/{id}.geo.json",
+      "animation": "assets/export/animations/{id}.animation.json",
+      "export_texture": "assets/export/textures/{id}.png"
+    },
+    "hash_algorithm": "sha256"
+  },
+  "native_readiness": {
+    "summary": "STATIC_PACKET_INVENTORY_VALID_NATIVE_BLOCKBENCH_ROUNDTRIP_REQUIRED",
+    "common_gaps": [
+      "editable source contains no real native locator element even though each brief declares effect and each static geometry export contains effect",
+      "editable texture binding is absolute and requires portable packet-relative normalization",
+      "source geometry and animation identifiers use aionforge_eq and require aionbound runtime namespace normalization",
+      "brief role clip names are not represented by the generic source idle/action clip names",
+      "brief texture declarations are 64x64 or 32-64 while exact packet PNG and geometry atlas are 32x32"
+    ],
+    "required_gate": [
+      "create a real native effect locator element in each editable source",
+      "reopen/save/reopen in native Blockbench",
+      "export geometry and animations through native codecs",
+      "prove expected and native-exported bones, cubes, locators, and role clips",
+      "decode and bind exact shipping PNG",
+      "capture fixed proof views and zero-warning native session"
+    ],
+    "texture_policy": "Preserve exact approved 32x32 packet pixels during intake. Do not silently upscale or redraw to cure the brief mismatch.",
+    "blockbench_run": "NOT_RUN"
+  },
+  "runtime_target_profiles": {
+    "held_item": [
+      "behavior_pack/items/{id}.item.json",
+      "resource_pack/attachables/{id}.attachable.json",
+      "resource_pack/models/aionbound/ashen/equipment/{id}.geo.json",
+      "resource_pack/animations/aionbound/ashen/equipment/{id}.animation.json",
+      "resource_pack/textures/aionbound/wave1/equipment/items/{id}.png",
+      "resource_pack/textures/item_texture.json key {id}",
+      "resource_pack/texts/en_US.lang item.aionbound:{id}.name"
+    ],
+    "wearable_armor": [
+      "behavior_pack/items/{id}.item.json",
+      "resource_pack/attachables/{id}.attachable.json",
+      "resource_pack/models/aionbound/ashen/equipment/{id}.geo.json",
+      "resource_pack/animations/aionbound/ashen/equipment/{id}.animation.json",
+      "resource_pack/textures/aionbound/wave1/equipment/armor/{id}.png",
+      "resource_pack/textures/item_texture.json key {id}",
+      "resource_pack/texts/en_US.lang item.aionbound:{id}.name"
+    ],
+    "accessory": [
+      "behavior_pack/items/{id}.item.json",
+      "resource_pack/attachables/{id}.attachable.json",
+      "resource_pack/models/aionbound/ashen/equipment/{id}.geo.json",
+      "resource_pack/animations/aionbound/ashen/equipment/{id}.animation.json",
+      "resource_pack/textures/aionbound/wave1/equipment/accessories/{id}.png",
+      "resource_pack/textures/item_texture.json key {id}",
+      "resource_pack/texts/en_US.lang item.aionbound:{id}.name"
+    ],
+    "placeable_trophy": [
+      "behavior_pack/blocks/{id}.block.json",
+      "behavior_pack/loot_tables/blocks/{id}.json",
+      "resource_pack/models/aionbound/ashen/equipment/{id}.geo.json",
+      "resource_pack/animations/aionbound/ashen/equipment/{id}.animation.json",
+      "resource_pack/textures/aionbound/wave1/equipment/trophies/{id}.png",
+      "resource_pack/blocks.json entry aionbound:{id}",
+      "resource_pack/textures/terrain_texture.json key {id}",
+      "resource_pack/texts/en_US.lang tile.aionbound:{id}.name"
+    ]
+  },
+  "safe_work": {
+    "base_shell": "Safe for the 13 absent identities: namespace-safe item/block definition shells, registry entries, localization, and target-path preparation without recipes, acquisition, boss grant, or tuning. Briar Ring is KEEP and must not receive a duplicate shell.",
+    "native": "Safe for all 14: native locator repair, portable texture binding, namespace normalization, role-clip authoring, native round-trip, native export-equivalence, and fixed proof capture.",
+    "presentation": "Safe for the 13 absent identities: preserve and normalize approved packet art, create shipping bindings, and test UI readability. Briar Ring presentation is existing Whisperwood authority and is reuse-only unless a later explicit replacement is approved.",
+    "forbidden_until_ratified": "Do not author acquisition recipes, encounter grants, loot odds, first-clear rewards, recovery semantics, or Ashen temper sidegrades from these intake records."
+  },
+  "blocking_authority": {
+    "W1-001-AH": "Blocks non-warehouse aliases, drake_scale identity, and acquisition ingredient closure for Ashen equipment.",
+    "W1-003-KILN-SKY": "Blocks Ash Drake arena phase/ownership/reset/persistence implementation and therefore boss-source fulfillment of Ash Drake Horn.",
+    "W1-004-AH": "Blocks numeric loot bands, trophy/reward sources, first-clear entitlements, repeat-clear rules, and recovery semantics.",
+    "W1-CREATIVE-005": "Remains deferred; blocks only the proposed Ashen-tempered Briar Ring sidegrade. It does not authorize a second briar_ring identity or mutation of the existing Whisperwood base."
+  },
+  "collision_and_reuse": {
+    "exact_runtime_id_scan": {
+      "new_identities_absent": [
+        "basalt_hammer",
+        "ember_great_axe",
+        "ash_repeater",
+        "ashen_helmet",
+        "ashen_chest",
+        "ashen_legs",
+        "ashen_boots",
+        "basalt_pick",
+        "ember_hammer",
+        "ore_chisel",
+        "ember_totem",
+        "ash_drake_horn",
+        "ember_forge_core"
+      ],
+      "existing_identity": "briar_ring"
+    },
+    "g7_framework_reuse": [
+      "Reuse stable item, durability, attachable, armor, accessory-state, placeable-trophy, localization, and registry patterns; do not reuse legacy content identity by implication.",
+      "basalt_maul functionally overlaps basalt_hammer and gale_repeater overlaps ash_repeater; both legacy identities remain separate until reconciliation explicitly supersedes or defers them.",
+      "Ferrowake and Concord armor are framework evidence, not names, recipes, stats, or presentation authority for the Ashen set."
+    ],
+    "whisperwood_briar_ring": {
+      "classification": "KEEP_EXISTING_BASE_REUSE_ONLY",
+      "runtime_id": "aionbound:briar_ring",
+      "existing_files": [
+        {
+          "path": "behavior_pack/items/briar_ring.item.json",
+          "sha256": "052dde829b4b96fb01f3c060062e14e2f5f5d27c48ac841d56ae54eb34bc4748"
+        },
+        {
+          "path": "behavior_pack/recipes/briar_ring.recipe.json",
+          "sha256": "f5265747e830624bc38b74644bb59c74924adb56d178f3486e602af6066610ee"
+        },
+        {
+          "path": "resource_pack/attachables/briar_ring.attachable.json",
+          "sha256": "af751b1473b19b36ca84c1787de4cf5e523d00ca0a9240fe0595a95054c8d4b3"
+        },
+        {
+          "path": "resource_pack/models/aionbound/equipment/briar_ring.geo.json",
+          "sha256": "fe624190389b6082c3195fdf57c5faf2b96bfaf879073aa396ecb19ddb7e7222"
+        }
+      ],
+      "guard": "Do not duplicate the item, recipe, attachable, geometry, atlas key, catalog row, or runtime ID. W1-CREATIVE-005 is deferred and cannot mutate or clone this base."
+    }
+  },
+  "assets": [
+    {
+      "id": "basalt_hammer",
+      "category": "weapons",
+      "target_profile": "held_item",
+      "brief_clips": ["idle_hold", "smash_pose"],
+      "source_clips": ["idle", "action"],
+      "native_locator_gap": ["effect"],
+      "artifact_sha256": {
+        "brief": "84dbee6cf4fb05f51139aceb4a5b1260f933dab6dfa49f666d7541dee1fb7f39",
+        "bbmodel": "dd4045c03d66f1f98fe51a9ad60d7bc42432b54ee186ceb93d0745985240943a",
+        "editable_texture": "17071eccbe68e6d46077fcda14388c0195ffece21491028d53bb78e33146782b",
+        "geometry": "a9113fb1929ff78a867e4bba2f9e2a43229f750a8aca3fa3a1d28f9adb93f6f0",
+        "animation": "7c2402fddc432d3d9c2f83136e44152f220be5c13229144fa720f8f84b348093",
+        "export_texture": "17071eccbe68e6d46077fcda14388c0195ffece21491028d53bb78e33146782b"
+      },
+      "blocked_by": ["W1-001-AH", "W1-004-AH"]
+    },
+    {
+      "id": "ember_great_axe",
+      "category": "weapons",
+      "target_profile": "held_item",
+      "brief_clips": ["idle_hold", "overhead_pose", "slam_pose"],
+      "source_clips": ["idle", "action"],
+      "native_locator_gap": ["effect"],
+      "artifact_sha256": {
+        "brief": "5687b2d98aa8e89538e838565c1b6f9bf94528f3584aa3aaad230b1ecd258fed",
+        "bbmodel": "d6ec8dee9f5c1551fe23ce51fb684dbe9760a0bc8d01ac88a6e1a663b71d1e76",
+        "editable_texture": "ce1535c17100db951dd29b587ed1288654a08c9b0ebd153ed98ecacd889bc348",
+        "geometry": "6e55710986addd58d9b9f55032eab029021a3e8790bca814fde72eb914b2717e",
+        "animation": "f1162265c5bda704b94a84ed31f6779dbb8fc048462f9cb195c8e97dc409c652",
+        "export_texture": "ce1535c17100db951dd29b587ed1288654a08c9b0ebd153ed98ecacd889bc348"
+      },
+      "blocked_by": ["W1-001-AH", "W1-004-AH"]
+    },
+    {
+      "id": "ash_repeater",
+      "category": "weapons",
+      "target_profile": "held_item",
+      "brief_clips": ["idle_hold", "crank_pose", "fire_pose"],
+      "source_clips": ["idle", "action"],
+      "native_locator_gap": ["effect"],
+      "artifact_sha256": {
+        "brief": "3e945a28e3a8fa02bab1df21fcba9f2f315531a805391d2acbe436ac33b0d642",
+        "bbmodel": "de512659b3ef801d69229910467c5c2b33efd94e86c2c74df5e06defc4f10148",
+        "editable_texture": "1ed90365d32818bc889b7799ccb6cfa6f2aa275bb4a8d4a55ed7ea198455818f",
+        "geometry": "1275c29447f1e7af8ac2469767f03ced6732333166da6106120c9ea8ccb677a8",
+        "animation": "c2ecb8684d5e713699d015ca31f95995814c44a92819bb4a4b1cbc54b2913c4f",
+        "export_texture": "1ed90365d32818bc889b7799ccb6cfa6f2aa275bb4a8d4a55ed7ea198455818f"
+      },
+      "blocked_by": ["W1-001-AH", "W1-004-AH"]
+    },
+    {
+      "id": "ashen_helmet",
+      "category": "armor",
+      "target_profile": "wearable_armor",
+      "brief_clips": ["vent_pulse_showcase"],
+      "source_clips": ["idle", "action"],
+      "native_locator_gap": ["effect"],
+      "artifact_sha256": {
+        "brief": "a88416bf510e8e41c33a9d72220586287f4cb1dd02539680ea1896c195210a19",
+        "bbmodel": "22a45262fbf7b0a36464c7d0474a1f7fc0744c368c2fc8dd52d7b20448658803",
+        "editable_texture": "4b94754556e855eb7f20151565af6fd611b8648926b90f957b400784eb8d0afe",
+        "geometry": "9900ce1bfe0657bfc6c1fbb93f252e9ea07ccea9322e4fadc823a8869bfb61c6",
+        "animation": "c621b81a5d231e8408c3a30fe14e9a2680e680b34e511d54e03297ea0bb875dd",
+        "export_texture": "4b94754556e855eb7f20151565af6fd611b8648926b90f957b400784eb8d0afe"
+      },
+      "blocked_by": ["W1-001-AH", "W1-004-AH"]
+    },
+    {
+      "id": "ashen_chest",
+      "category": "armor",
+      "target_profile": "wearable_armor",
+      "brief_clips": [],
+      "source_clips": ["idle", "action"],
+      "native_locator_gap": ["effect"],
+      "artifact_sha256": {
+        "brief": "aa902e1d3f1e4de2bda3a5976033cb1f538919704a34f453d6d08a64ad09f9a8",
+        "bbmodel": "426da24119d268f2fb7f3667483ec2ca6cbadba0c8b167966eeb4a0003c66880",
+        "editable_texture": "0f5ffeeb8b10c4093ff19b456fcf75e87f7af593c70cfb22ec104e4b09ef0ea2",
+        "geometry": "4c45c5fdb7a390e69d9e1cf7e809cbe7cce6bc7169c4bb0434b0aeb5ffbaa776",
+        "animation": "d3594a3c1c4a5e99a37821bb0240057491ca24b49c4893ce35dac56c27ffe867",
+        "export_texture": "0f5ffeeb8b10c4093ff19b456fcf75e87f7af593c70cfb22ec104e4b09ef0ea2"
+      },
+      "blocked_by": ["W1-001-AH", "W1-004-AH"]
+    },
+    {
+      "id": "ashen_legs",
+      "category": "armor",
+      "target_profile": "wearable_armor",
+      "brief_clips": [],
+      "source_clips": ["idle", "action"],
+      "native_locator_gap": ["effect"],
+      "artifact_sha256": {
+        "brief": "82e106599e8ad71202009a9b5573bff0439f8d07666348cb0a5cdcc64eb16aa1",
+        "bbmodel": "5a49dc5ea8872b505f464e06a8fb0ecbe3b4cbefa3ecc71f6fc055ed0906eb0f",
+        "editable_texture": "66494e778ed43a06eaa701262796aa3993a1835c8209db277a9ff56b92ccebc0",
+        "geometry": "a94ca5bd4a1de2030bbced57a9bb611430aadddea36ebe7b749c5e3368ca651e",
+        "animation": "6c7c515b451cc1044879591de835b1efe4cf716f85749b9113e1c5df66722f6e",
+        "export_texture": "66494e778ed43a06eaa701262796aa3993a1835c8209db277a9ff56b92ccebc0"
+      },
+      "blocked_by": ["W1-001-AH", "W1-004-AH"]
+    },
+    {
+      "id": "ashen_boots",
+      "category": "armor",
+      "target_profile": "wearable_armor",
+      "brief_clips": [],
+      "source_clips": ["idle", "action"],
+      "native_locator_gap": ["effect"],
+      "artifact_sha256": {
+        "brief": "6e6a85e13a13a813878d8fc525e67a80c8f7a943d1c6534d2d7a4c6c545084fa",
+        "bbmodel": "245d42e540f298160e2cee0d61a222dbfcf45f4e9d7ac66efcd5fcb1a65e068a",
+        "editable_texture": "0eeef068ae7933ec48f9e019deb059ea1204e0f63e1ad4dfa082ecfdd787ccc5",
+        "geometry": "67b5b91e40d54d3936635d2206b70cf675880e0d8b63bdea27de804544e471bc",
+        "animation": "8bdd4a8e6dc2a328dfad2d966bb2652911c2c9efdd582b8f687c50794ec8a98f",
+        "export_texture": "0eeef068ae7933ec48f9e019deb059ea1204e0f63e1ad4dfa082ecfdd787ccc5"
+      },
+      "blocked_by": ["W1-001-AH", "W1-004-AH"]
+    },
+    {
+      "id": "basalt_pick",
+      "category": "tools",
+      "target_profile": "held_item",
+      "brief_clips": ["hold", "swing"],
+      "source_clips": ["idle", "action"],
+      "native_locator_gap": ["effect"],
+      "artifact_sha256": {
+        "brief": "13d37fa790e31e3f8bb23f26603bea6edc6842fce1e379fd56e9773c2da6572a",
+        "bbmodel": "af1c0d6fd1d9091817ba9a63ad00ba6a7cf6bebe429d22598aeda58d31d0d009",
+        "editable_texture": "2dc27866a3c4023f766ded1a1d13cae060c77b3d03e2d2d95537c8ace82f53be",
+        "geometry": "9d577c295858baa366fb5d32ac24b989414c640c4ecef838764485302f835936",
+        "animation": "bbfaa9b83c2faecb5f3028f4b70cfc0f8d80609ce7479d7558b91a0a8858a23a",
+        "export_texture": "2dc27866a3c4023f766ded1a1d13cae060c77b3d03e2d2d95537c8ace82f53be"
+      },
+      "blocked_by": ["W1-001-AH", "W1-004-AH"]
+    },
+    {
+      "id": "ember_hammer",
+      "category": "tools",
+      "target_profile": "held_item",
+      "brief_clips": ["hold", "tap"],
+      "source_clips": ["idle", "action"],
+      "native_locator_gap": ["effect"],
+      "artifact_sha256": {
+        "brief": "10b40ba7e3af1e9de59a6f47285e642a96e2692de80212b136a04c0ef08db490",
+        "bbmodel": "67a44b90ac8f71a18c2a4f1ea1d2dfe2ec760b912e58897305f5091f0f4e61b9",
+        "editable_texture": "79b1e89785d8980e9dc8670f9dde2290c8c0bf637d026b027450a0509462bfa6",
+        "geometry": "41b00b32bd2fb72c9bd798fbe67a947380941deaf42fff3034f1e17bef1bbaf4",
+        "animation": "5189f7f85b73b68c73567767779f3ad038d9e852368a6935259ec83708c445ae",
+        "export_texture": "79b1e89785d8980e9dc8670f9dde2290c8c0bf637d026b027450a0509462bfa6"
+      },
+      "blocked_by": ["W1-001-AH", "W1-004-AH"]
+    },
+    {
+      "id": "ore_chisel",
+      "category": "tools",
+      "target_profile": "held_item",
+      "brief_clips": ["hold", "tap"],
+      "source_clips": ["idle", "action"],
+      "native_locator_gap": ["effect"],
+      "artifact_sha256": {
+        "brief": "d8b064662e35d4f09ddea59ebaa217e93b89a528c152fa6fa22f23eff1934ca9",
+        "bbmodel": "3b7a7ebd352af1b5c8636079019ca766d97445ebc2b5c8646ff684b265fef8c3",
+        "editable_texture": "6406c4ad3efca83518c3b541d4bb940615268166f5344a85333b6049b4ce3ec1",
+        "geometry": "fc9edd97cd42c7a21e7e24b088060ecf2a64d86a910f267b230b231c9dbc6293",
+        "animation": "d1fa90a4786b791ce79b14d2d137498722ba3e41e1a679774ec8588a96db91dc",
+        "export_texture": "6406c4ad3efca83518c3b541d4bb940615268166f5344a85333b6049b4ce3ec1"
+      },
+      "blocked_by": ["W1-001-AH", "W1-004-AH"]
+    },
+    {
+      "id": "ember_totem",
+      "category": "accessories",
+      "target_profile": "accessory",
+      "brief_clips": ["vent_pulse"],
+      "source_clips": ["idle", "action"],
+      "native_locator_gap": ["effect"],
+      "artifact_sha256": {
+        "brief": "0ab86941dc3474f75df7b82d88b1ffb6407ed34a88f13aba7bb477a0d23e71fb",
+        "bbmodel": "7cdcebeff5446c738bf8da58f2f9e90f57815c0d0f525e56627b7a653dfe0300",
+        "editable_texture": "a1ff81d1bb7fc4e0431bd002667f7737f24305850d12a19461b579bcd0cc051e",
+        "geometry": "e80b33473fea94e295e058e1d45e73e1a425573bb85d45ba6b911c662e31f1f3",
+        "animation": "58e80facd20f2254c99d6e1efa0a295419aeccee2e5cee9c05cd3e050b170c29",
+        "export_texture": "a1ff81d1bb7fc4e0431bd002667f7737f24305850d12a19461b579bcd0cc051e"
+      },
+      "blocked_by": ["W1-001-AH", "W1-004-AH"]
+    },
+    {
+      "id": "briar_ring",
+      "category": "accessories",
+      "target_profile": "accessory",
+      "brief_clips": [],
+      "source_clips": ["idle", "action"],
+      "native_locator_gap": ["effect"],
+      "artifact_sha256": {
+        "brief": "afa3ce62db5f10fbbd46156010d82bea68eef0a4fe2c8279f8682bf96da3a16c",
+        "bbmodel": "294a4c5a5ce955ab56862f1b0c38b4941f125f1787686385f07914448fd00a88",
+        "editable_texture": "30d387ee6c8ed90909453f612c1e86bbc84391f4c186881428deef198991be16",
+        "geometry": "b9a3cc6deebe643947177df09ad93ee4bcac7f74a97fc657d5b26124ecb8cf76",
+        "animation": "ddc9c8a3c1f5a55b9ed2e9e261828f8d06f26a4048972773bc192aa3f069d8ff",
+        "export_texture": "30d387ee6c8ed90909453f612c1e86bbc84391f4c186881428deef198991be16"
+      },
+      "classification": "KEEP_EXISTING_WHISPERWOOD_BASE",
+      "blocked_by": ["W1-CREATIVE-005"]
+    },
+    {
+      "id": "ash_drake_horn",
+      "category": "trophies",
+      "target_profile": "placeable_trophy",
+      "brief_clips": ["pulse_base"],
+      "source_clips": ["idle", "action"],
+      "native_locator_gap": ["effect"],
+      "artifact_sha256": {
+        "brief": "b5d016d201c5ce8e3ef18932ca0272323b6dfc0535eb8639ad6c30265d18d6c7",
+        "bbmodel": "4beee2d8f400f9e2bf6d447ca576b41f013f54644413d54cd43fb6bdb6d3cbec",
+        "editable_texture": "883adaee01c575d79139514dd9c257aa08debcd6a2fcf212f5f85ecc405b929a",
+        "geometry": "8abfcd63aeeb7fb1188d6834e8103fafc41b8e6e7520432e60b9c7f8fc4119c3",
+        "animation": "194fdeacef078c6bdf89deb00c061405d3d25a400e488f895cd24db1eb17d5e0",
+        "export_texture": "883adaee01c575d79139514dd9c257aa08debcd6a2fcf212f5f85ecc405b929a"
+      },
+      "blocked_by": ["W1-003-KILN-SKY", "W1-004-AH"]
+    },
+    {
+      "id": "ember_forge_core",
+      "category": "trophies",
+      "target_profile": "placeable_trophy",
+      "brief_clips": ["idle_pulse"],
+      "source_clips": ["idle", "action"],
+      "native_locator_gap": ["effect"],
+      "artifact_sha256": {
+        "brief": "05b361674cd0ff1df492ac2708c810f661b02d7509de9ed46f5a51f44decb863",
+        "bbmodel": "8f85858cd66a43a49c9abcff87e606b1cb0d23e16785f93a3226e887c6f379cf",
+        "editable_texture": "003dd595b177140d4df97daa64c9cf4c4c5121cb8649039c12e05b9e33e527f8",
+        "geometry": "021a58ddbbcde204bab185304a521db1b7db8d885c6b9db54f2cd337f6fcb926",
+        "animation": "b241262ba7778963df702722f81bd417f895e7d0167e7ebddeea3653c3839989",
+        "export_texture": "003dd595b177140d4df97daa64c9cf4c4c5121cb8649039c12e05b9e33e527f8"
+      },
+      "blocked_by": ["W1-004-AH"]
+    }
+  ],
+  "proof_boundary": {
+    "static_packet_parse_and_hash_inventory": "PASS",
+    "native_blockbench_roundtrip": "NOT_RUN",
+    "native_export_equivalence": "NOT_RUN",
+    "runtime_pack_binding": "NOT_IMPLEMENTED",
+    "recipe_or_acquisition": "BLOCKED_PENDING_RATIFICATION",
+    "boss_or_reward_fulfillment": "BLOCKED_PENDING_RATIFICATION",
+    "bedrock_client": "NOT_RUN",
+    "stable_bds": "NOT_RUN",
+    "multiplayer": "NOT_RUN",
+    "physical_ps4": "NOT_RUN",
+    "marketplace": "NOT_RUN"
+  }
+}
