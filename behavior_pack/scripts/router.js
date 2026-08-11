@@ -20,6 +20,12 @@ export function createInteractionRouter({ discover, codexDiscover = () => false,
     }
     return true;
   }
+  function dispatchBlockDiscovery(context) {
+    const codexEvents = codexRouteForBlockInteraction(context.typeId) ?? [];
+    if (!codexEvents.length) return false;
+    for (const eventId of codexEvents) codexDiscover(context.player, eventId);
+    return true;
+  }
   function dispatchItem(context) {
     const route = routeForItem(context.itemStack.typeId);
     const action = route && itemActions[route];
@@ -50,5 +56,5 @@ export function createInteractionRouter({ discover, codexDiscover = () => false,
     if (player?.typeId !== "minecraft:player") return false;
     return dispatchEntityDeath({ player, entity: event.deadEntity });
   }
-  return { dispatchBlock, dispatchItem, dispatchCompletedItem, dispatchEntityInteraction, dispatchEntityDeath, dispatchEntityDeathEvent };
+  return { dispatchBlock, dispatchBlockDiscovery, dispatchItem, dispatchCompletedItem, dispatchEntityInteraction, dispatchEntityDeath, dispatchEntityDeathEvent };
 }

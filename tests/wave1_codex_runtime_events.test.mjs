@@ -26,17 +26,17 @@ const expectedRoutes = (kinds, eventName) => Object.fromEntries(map.entries
     .filter(event => event.event === eventName)
     .map(event => [entry.runtime_id, event.id])));
 
-test("catalog binds exactly 20 integrated block and plant interactions", () => {
+test("catalog preserves exact Whisperwood routes and appends Ashen harvest routes", () => {
   const expected = {
     ...expectedRoutes(["block"], "harvested"),
     ...expectedRoutes(["block"], "crafted"),
     ...expectedRoutes(["plant"], "harvested"),
   };
-  assert.equal(Object.keys(catalog.CODEX_BLOCK_INTERACTION_ROUTES).length, 20);
-  assert.deepEqual(Object.fromEntries(Object.entries(catalog.CODEX_BLOCK_INTERACTION_ROUTES).map(([id, events]) => [id, events[0]])), expected);
+  assert.equal(Object.keys(catalog.CODEX_BLOCK_INTERACTION_ROUTES).length, 40);
+  assert.deepEqual(Object.fromEntries(Object.entries(catalog.CODEX_BLOCK_INTERACTION_ROUTES).filter(([id]) => id in expected).map(([id, events]) => [id, events[0]])), expected);
 });
 
-test("all 20 interaction routes resolve to integrated behavior-pack blocks", async () => {
+test("all 40 interaction routes resolve to integrated behavior-pack blocks", async () => {
   for (const runtimeId of Object.keys(catalog.CODEX_BLOCK_INTERACTION_ROUTES)) {
     const id = runtimeId.slice("aionbound:".length);
     const document = JSON.parse(await readFile(resolve(ROOT, `behavior_pack/blocks/${id}.block.json`), "utf8"));

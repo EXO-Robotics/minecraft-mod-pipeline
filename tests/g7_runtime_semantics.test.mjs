@@ -19,7 +19,7 @@ for (const name of MODULE_NAMES) {
 await writeFile(resolve(MODULE_DIR, "minecraft-server.mjs"), `
 const signal=()=>({callbacks:[],subscribe(callback){this.callbacks.push(callback);return callback;}});
 export const world={
-  afterEvents:{itemUse:signal(),itemCompleteUse:signal(),playerInteractWithEntity:signal(),entityHitEntity:signal(),entityHurt:signal(),entityDie:signal()},
+  afterEvents:{itemUse:signal(),itemCompleteUse:signal(),playerBreakBlock:signal(),playerInteractWithEntity:signal(),entityHitEntity:signal(),entityHurt:signal(),entityDie:signal()},
   beforeEvents:{playerInteractWithBlock:signal()},
   getDynamicProperty(){return undefined;},setDynamicProperty(){},getAllPlayers(){return[];},
   getDimension(){return{getEntities(){return[];}};}
@@ -239,6 +239,7 @@ test("transformed source harness starts one stable subscription per routed event
   await load("main");
   assert.equal(minecraft.world.afterEvents.itemUse.callbacks.length, 1);
   assert.equal(minecraft.world.afterEvents.itemCompleteUse.callbacks.length, 1);
+  assert.equal(minecraft.world.afterEvents.playerBreakBlock.callbacks.length, 1);
   assert.equal(minecraft.world.beforeEvents.playerInteractWithBlock.callbacks.length, 1);
   assert.equal(minecraft.world.afterEvents.playerInteractWithEntity.callbacks.length, 1);
   assert.equal(minecraft.world.afterEvents.entityHitEntity.callbacks.length, 1);

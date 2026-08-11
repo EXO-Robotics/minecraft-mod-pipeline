@@ -106,7 +106,10 @@ export function createRuntime(platform = { world, system, ItemStack, EquipmentSl
     for (const player of platform.world.getAllPlayers()) state.playerState(player);
   }
   function tick() { callback(() => {
-    if (platform.system.currentTick % 100 === 0) combat.reconcileNaturalEntities();
+    if (platform.system.currentTick % 100 === 0) {
+      combat.reconcileNaturalEntities();
+      for (const player of platform.world.getAllPlayers()) codex.reconcileOwnedItems(player);
+    }
     if (platform.system.currentTick % 20 === 0) combat.tickPlayers();
     thornCourt.tick(); structures.tick(); devices.tick(); chaos.tick();
   }); }
@@ -115,6 +118,10 @@ export function createRuntime(platform = { world, system, ItemStack, EquipmentSl
     arbiter.defer(platform.system, reconcile);
     platform.world.afterEvents.itemUse.subscribe(event => callback(() => router.dispatchItem({ player: event.source, itemStack: event.itemStack })));
     platform.world.afterEvents.itemCompleteUse.subscribe(event => callback(() => router.dispatchCompletedItem({ player: event.source, itemStack: event.itemStack })));
+    platform.world.afterEvents.playerBreakBlock.subscribe(event => callback(() => router.dispatchBlockDiscovery({
+      player: event.player,
+      typeId: event.brokenBlockPermutation?.type?.id,
+    })));
     platform.world.beforeEvents.playerInteractWithBlock.subscribe(event => {
       // This lock must execute synchronously even when ordinary callback budget
       // is exhausted, or vanilla interaction could bypass the pre-clear cache.

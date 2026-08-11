@@ -55,6 +55,10 @@ export function codexEntryBody(entry, stateValue) {
 }
 
 export function createCodexService({ state, ActionFormData = null }) {
+  const ownedItemEvents = new Map(CODEX_ENTRY_REGISTRY.flatMap(entry => {
+    const events = entry.events.filter(event => event.event === "first_obtain" || event.event === "first_owned").map(event => event.id);
+    return events.length ? [[entry.runtimeId, events]] : [];
+  }));
   const deriveGoals = stamps => ({
     arsenal: stamps.includes("edge:assembled") || stamps.includes("chrono:first_defeat"),
     naturalist: stamps.includes("glasswing:first_defeat") && stamps.some(x => x.startsWith("landmark:")),
@@ -151,5 +155,16 @@ export function createCodexService({ state, ActionFormData = null }) {
     }
     return state.transitionCodex(player, event.region, event.category, event.index, event.state) || chapterChanged;
   }
-  return { guidance, use, openRoot, openRegion, openCategory, openEntry, discover, deriveGoals };
+  function reconcileOwnedItems(player) {
+    const container = player.getComponent?.("minecraft:inventory")?.container;
+    if (!container) return 0;
+    let transitions = 0;
+    for (let slot = 0; slot < container.size && transitions < 8; slot++) {
+      const item = container.getItem(slot), events = item && ownedItemEvents.get(item.typeId);
+      if (!events) continue;
+      for (const eventId of events) if (discover(player, eventId)) transitions++;
+    }
+    return transitions;
+  }
+  return { guidance, use, openRoot, openRegion, openCategory, openEntry, discover, reconcileOwnedItems, deriveGoals };
 }

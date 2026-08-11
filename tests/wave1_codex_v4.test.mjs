@@ -129,6 +129,27 @@ test("Codex service translates known events silently and rejects duplicates and 
   assert.deepEqual(calls.map(call => call[3]), [1, 1, 1, 1, 1, 2]);
 });
 
+test("bounded inventory reconciliation completes exact Ashen first-owned entries", () => {
+  let playerRecord = stateModule.migratePlayer({ v: 4, stamps: [], codex: { topic: 0 }, goals: {} });
+  const state = {
+    playerState: () => structuredClone(playerRecord),
+    transitionCodex: (_player, region, category, index, value) => {
+      const result = stateModule.transitionCodexDiscovery(playerRecord.codex.discovery, region, category, index, value);
+      if (result.changed) playerRecord.codex.discovery = result.discovery;
+      return result.changed;
+    },
+    stamp: () => true, savePlayer: () => true,
+  };
+  const items = [{ typeId: "aionbound:smolder_bark" }, { typeId: "aionbound:basalt_hammer" }];
+  const player = { getComponent: () => ({ container: { size: 2, getItem: slot => items[slot] } }) };
+  const codex = createCodexService({ state });
+  assert.equal(codex.reconcileOwnedItems(player), 2);
+  assert.equal(stateModule.codexDiscoveryState(playerRecord.codex.discovery, "ah", "resource", 0), 2);
+  assert.equal(stateModule.codexDiscoveryState(playerRecord.codex.discovery, "ah", "equipment", 0), 2);
+  assert.equal(stateModule.codexDiscoveryState(playerRecord.codex.discovery, "ah", "progression", 0), 1);
+  assert.equal(codex.reconcileOwnedItems(player), 0);
+});
+
 test("state service reads v3 once, writes v4, and reopens the v4 value", () => {
   const properties = new Map([[catalog.IDS.oldPlayerV3, JSON.stringify({ v: 3, stamps: ["legacy"], codex: { topic: 4 }, goals: { arsenal: true } })]]);
   const writes = [];

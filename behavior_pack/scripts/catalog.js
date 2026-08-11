@@ -24,9 +24,11 @@ const codexRoutes = (entries, accepts) => Object.freeze(Object.fromEntries(entri
 
 // These routes translate live event surfaces to the exact canonical keys in
 // the frozen implementation map. They carry no guidance or reward content.
-export const CODEX_BLOCK_INTERACTION_ROUTES = codexRoutes(CODEX_ENTRY_REGISTRY.filter(entry => entry.kind === "block" || entry.kind === "plant"), event => event.event === "harvested" || event.event === "crafted");
-export const CODEX_ENTITY_INTERACTION_ROUTES = codexRoutes(CODEX_ENTRY_REGISTRY.filter(entry => entry.kind === "creature"), event => event.event === "observe_nearby");
-export const CODEX_ENTITY_DEATH_ROUTES = codexRoutes(CODEX_ENTRY_REGISTRY.filter(entry => entry.kind === "creature"), event => event.event === "defeat");
+const blockDiscoveryEvents = new Set(["harvested", "crafted", "first_harvest", "first_obtain_or_recognized_harvest"]);
+const bossOwnedCreatureEvents = new Set(["valid_kiln_sky_pull", "valid_kiln_sky_terminal"]);
+export const CODEX_BLOCK_INTERACTION_ROUTES = codexRoutes(CODEX_ENTRY_REGISTRY.filter(entry => entry.kind === "block" || entry.kind === "plant"), event => blockDiscoveryEvents.has(event.event));
+export const CODEX_ENTITY_INTERACTION_ROUTES = codexRoutes(CODEX_ENTRY_REGISTRY.filter(entry => entry.kind === "creature"), event => event.state === 1 && !bossOwnedCreatureEvents.has(event.event));
+export const CODEX_ENTITY_DEATH_ROUTES = codexRoutes(CODEX_ENTRY_REGISTRY.filter(entry => entry.kind === "creature"), event => event.state === 2 && !bossOwnedCreatureEvents.has(event.event));
 
 export const CODEX_STRUCTURE_ACTIVATION_EVENTS = Object.freeze(Object.fromEntries(
   CODEX_ENTRY_REGISTRY
