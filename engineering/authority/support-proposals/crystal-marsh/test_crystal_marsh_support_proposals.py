@@ -46,6 +46,16 @@ class CrystalMarshSupportProposalTests(unittest.TestCase):
 
     def test_bound_sources_match_current_bytes(self) -> None:
         for relative, expected in BUILDER.SOURCE_HASHES.items():
+            if relative == "engineering/authority/WAVE_1_ENGINEERING_DECISION_LEDGER.json":
+                # The immutable proposals bind the pre-ratification ledger.
+                # After explicit approval, the replacement ledger changes and
+                # must instead hash-bind the three preserved proposal bytes.
+                ledger = load(REPO / relative)
+                approved = {row["tranche"]: row for row in ledger["ratifications"]["approved"]}
+                for tranche in ("W1-001-CM", "W1-003-PEARL-DEPTHS", "W1-004-CM"):
+                    proposal = REPO / approved[tranche]["proposal"]
+                    self.assertEqual(hashlib.sha256(proposal.read_bytes()).hexdigest(), approved[tranche]["proposal_sha256"])
+                continue
             candidate = REPO / relative
             if not candidate.is_file():
                 candidate = BEDROCK / relative

@@ -13,7 +13,7 @@ class Wave1RatifiedLedgerTests(unittest.TestCase):
     def setUpClass(cls):
         cls.ledger = json.loads(LEDGER.read_text(encoding="utf-8"))
 
-    def test_exact_whisperwood_and_ashen_tranches_are_ratified_and_preserved(self):
+    def test_exact_whisperwood_ashen_and_crystal_tranches_are_ratified_and_preserved(self):
         rows = self.ledger["ratifications"]["approved"]
         self.assertEqual(
             [row["tranche"] for row in rows],
@@ -25,6 +25,9 @@ class Wave1RatifiedLedgerTests(unittest.TestCase):
                 "W1-001-AH",
                 "W1-003-KILN-SKY",
                 "W1-004-AH",
+                "W1-001-CM",
+                "W1-003-PEARL-DEPTHS",
+                "W1-004-CM",
             ],
         )
         self.assertTrue(self.ledger["ratifications"]["preserve_proposals_as_written"])
@@ -38,15 +41,16 @@ class Wave1RatifiedLedgerTests(unittest.TestCase):
             self.ledger["ratifications"]["deferred"],
             [
                 "W1-CREATIVE-005",
-                "W1-001-LATER-REGIONS_EXCLUDING_ASHEN",
-                "W1-003-LATER_BOSSES_EXCLUDING_KILN_SKY",
-                "W1-004-LATER-REGIONS_EXCLUDING_ASHEN",
+                "W1-001-SKYREACH_AND_FINALE",
+                "W1-003-SKYREACH_AND_FINALE",
+                "W1-004-SKYREACH_AND_FINALE",
             ],
         )
         policy = self.ledger["construction_policy"]
         self.assertTrue(policy["whisperwood_vertical_implementation_authorized"])
         self.assertTrue(policy["ashen_vertical_implementation_authorized"])
-        self.assertTrue(policy["crystal_marsh_start_authorized_only_after_ashen_vertical_exit"])
+        self.assertTrue(policy["crystal_marsh_vertical_implementation_authorized"])
+        self.assertEqual(policy["ashen_vertical_status"], "ASHEN_VERTICAL_SOURCE_COMPLETE_RUNTIME_ACTIVATION_DEFERRED")
         self.assertFalse(policy["new_bds_checkpoint_authorized"])
 
     def test_ashen_approval_preserves_sidegrade_deferral_and_exact_seal(self):
@@ -71,6 +75,20 @@ class Wave1RatifiedLedgerTests(unittest.TestCase):
         self.assertFalse(seals["briar_elk_trophy_replaces_thorn_stalker_skull"])
         self.assertFalse(seals["mosskip_trophy_replaces_thorn_stalker_skull"])
         self.assertEqual(seals["chapter_1_critical_seal"], "aionbound:thorn_stalker_skull")
+
+    def test_crystal_approval_preserves_sidegrade_deferral_and_exact_seal(self):
+        rows = {row["tranche"]: row for row in self.ledger["ratifications"]["approved"]}
+        identity = json.loads((ROOT / rows["W1-001-CM"]["proposal"]).read_text(encoding="utf-8"))["proposal"]
+        boss = json.loads((ROOT / rows["W1-003-PEARL-DEPTHS"]["proposal"]).read_text(encoding="utf-8"))["proposal"]
+        loot = json.loads((ROOT / rows["W1-004-CM"]["proposal"]).read_text(encoding="utf-8"))["proposal"]
+        self.assertEqual(identity["w1_creative_005_effect"], "NONE_DEFERRED_NO_SIDEGRADE_OR_UPGRADE_BEHAVIOR_GRANTED")
+        self.assertEqual(identity["new_inventory_identities_selected"], [
+            "aionbound:prism_wing", "aionbound:watcher_lens", "aionbound:wight_shroud"
+        ])
+        self.assertEqual(boss["terminal_semantics"]["progression_credit"], "per_player_durable_once")
+        self.assertEqual(loot["crystal_marsh_resolution"]["chapter_critical_seal"], "aionbound:marsh_wight_mask")
+        self.assertFalse(loot["crystal_marsh_resolution"]["ecology_or_natural_marsh_wight_can_drop_chapter_seal"])
+        self.assertFalse(loot["crystal_marsh_resolution"]["mastery_only_trophies"]["aionbound:crystal_obelisk_fragment"]["progression_substitute"])
 
 
 if __name__ == "__main__":
