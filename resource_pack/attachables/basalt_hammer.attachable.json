@@ -1,0 +1,29 @@
+{
+  "format_version": "1.10.0",
+  "minecraft:attachable": {
+    "description": {
+      "identifier": "aionbound:basalt_hammer",
+      "materials": {
+        "default": "entity_alphatest"
+      },
+      "textures": {
+        "default": "textures/aionbound/ashen/equipment/models/basalt_hammer"
+      },
+      "geometry": {
+        "default": "geometry.aionbound.basalt_hammer"
+      },
+      "render_controllers": [
+        "controller.render.aionbound.default"
+      ],
+      "animations": {
+        "idle_hold": "animation.aionbound.basalt_hammer.idle_hold",
+        "smash_pose": "animation.aionbound.basalt_hammer.smash_pose"
+      },
+      "scripts": {
+        "animate": [
+          "idle_hold"
+        ]
+      }
+    }
+  }
+}

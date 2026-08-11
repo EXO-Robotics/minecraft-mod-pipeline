@@ -1,0 +1,30 @@
+{
+  "format_version": "1.10.0",
+  "minecraft:attachable": {
+    "description": {
+      "identifier": "aionbound:ash_repeater",
+      "materials": {
+        "default": "entity_alphatest"
+      },
+      "textures": {
+        "default": "textures/aionbound/ashen/equipment/models/ash_repeater"
+      },
+      "geometry": {
+        "default": "geometry.aionbound.ash_repeater"
+      },
+      "render_controllers": [
+        "controller.render.aionbound.default"
+      ],
+      "animations": {
+        "crank_pose": "animation.aionbound.ash_repeater.crank_pose",
+        "fire_pose": "animation.aionbound.ash_repeater.fire_pose",
+        "idle_hold": "animation.aionbound.ash_repeater.idle_hold"
+      },
+      "scripts": {
+        "animate": [
+          "idle_hold"
+        ]
+      }
+    }
+  }
+}

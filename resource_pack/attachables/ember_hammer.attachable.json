@@ -1,0 +1,29 @@
+{
+  "format_version": "1.10.0",
+  "minecraft:attachable": {
+    "description": {
+      "identifier": "aionbound:ember_hammer",
+      "materials": {
+        "default": "entity_alphatest"
+      },
+      "textures": {
+        "default": "textures/aionbound/ashen/equipment/models/ember_hammer"
+      },
+      "geometry": {
+        "default": "geometry.aionbound.ember_hammer"
+      },
+      "render_controllers": [
+        "controller.render.aionbound.default"
+      ],
+      "animations": {
+        "hold": "animation.aionbound.ember_hammer.hold",
+        "tap": "animation.aionbound.ember_hammer.tap"
+      },
+      "scripts": {
+        "animate": [
+          "hold"
+        ]
+      }
+    }
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "format_version": "1.10.0",
+  "minecraft:attachable": {
+    "description": {
+      "identifier": "aionbound:ore_chisel",
+      "materials": {
+        "default": "entity_alphatest"
+      },
+      "textures": {
+        "default": "textures/aionbound/ashen/equipment/models/ore_chisel"
+      },
+      "geometry": {
+        "default": "geometry.aionbound.ore_chisel"
+      },
+      "render_controllers": [
+        "controller.render.aionbound.default"
+      ],
+      "animations": {
+        "hold": "animation.aionbound.ore_chisel.hold",
+        "tap": "animation.aionbound.ore_chisel.tap"
+      },
+      "scripts": {
+        "animate": [
+          "hold"
+        ]
+      }
+    }
+  }
+}

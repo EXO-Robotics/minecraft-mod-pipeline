@@ -1,0 +1,30 @@
+{
+  "format_version": "1.10.0",
+  "minecraft:attachable": {
+    "description": {
+      "identifier": "aionbound:ember_great_axe",
+      "materials": {
+        "default": "entity_alphatest"
+      },
+      "textures": {
+        "default": "textures/aionbound/ashen/equipment/models/ember_great_axe"
+      },
+      "geometry": {
+        "default": "geometry.aionbound.ember_great_axe"
+      },
+      "render_controllers": [
+        "controller.render.aionbound.default"
+      ],
+      "animations": {
+        "idle_hold": "animation.aionbound.ember_great_axe.idle_hold",
+        "overhead_pose": "animation.aionbound.ember_great_axe.overhead_pose",
+        "slam_pose": "animation.aionbound.ember_great_axe.slam_pose"
+      },
+      "scripts": {
+        "animate": [
+          "idle_hold"
+        ]
+      }
+    }
+  }
+}

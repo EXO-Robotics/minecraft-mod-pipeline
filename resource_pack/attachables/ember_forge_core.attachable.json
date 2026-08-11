@@ -1,0 +1,28 @@
+{
+  "format_version": "1.10.0",
+  "minecraft:attachable": {
+    "description": {
+      "identifier": "aionbound:ember_forge_core",
+      "materials": {
+        "default": "entity_alphatest"
+      },
+      "textures": {
+        "default": "textures/aionbound/ashen/equipment/models/ember_forge_core"
+      },
+      "geometry": {
+        "default": "geometry.aionbound.ember_forge_core"
+      },
+      "render_controllers": [
+        "controller.render.aionbound.default"
+      ],
+      "animations": {
+        "idle_pulse": "animation.aionbound.ember_forge_core.idle_pulse"
+      },
+      "scripts": {
+        "animate": [
+          "idle_pulse"
+        ]
+      }
+    }
+  }
+}

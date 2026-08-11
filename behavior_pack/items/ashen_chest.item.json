@@ -1,0 +1,25 @@
+{
+  "format_version": "1.21.80",
+  "minecraft:item": {
+    "description": {
+      "identifier": "aionbound:ashen_chest",
+      "menu_category": {
+        "category": "equipment"
+      }
+    },
+    "components": {
+      "minecraft:display_name": {
+        "value": "Ashen Chest"
+      },
+      "minecraft:icon": {
+        "textures": {
+          "default": "ashen_chest"
+        }
+      },
+      "minecraft:max_stack_size": 1,
+      "minecraft:wearable": {
+        "slot": "slot.armor.chest"
+      }
+    }
+  }
+}

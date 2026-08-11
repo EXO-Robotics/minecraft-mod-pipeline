@@ -1,0 +1,25 @@
+{
+  "format_version": "1.21.80",
+  "minecraft:item": {
+    "description": {
+      "identifier": "aionbound:ember_totem",
+      "menu_category": {
+        "category": "equipment"
+      }
+    },
+    "components": {
+      "minecraft:display_name": {
+        "value": "Ember Totem"
+      },
+      "minecraft:icon": {
+        "textures": {
+          "default": "ember_totem"
+        }
+      },
+      "minecraft:max_stack_size": 1,
+      "minecraft:wearable": {
+        "slot": "slot.weapon.offhand"
+      }
+    }
+  }
+}

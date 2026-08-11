@@ -1,0 +1,867 @@
+{
+  "schema_version": 1,
+  "authority_commit": "7505ac2223f362d9b4e59a82cab5486cab304fc5",
+  "status": "TARGETED_STATIC_PASS",
+  "scope": {
+    "native_equipment_base_ids": [
+      "basalt_hammer",
+      "ember_great_axe",
+      "ash_repeater",
+      "ashen_helmet",
+      "ashen_chest",
+      "ashen_legs",
+      "ashen_boots",
+      "basalt_pick",
+      "ember_hammer",
+      "ore_chisel",
+      "ember_totem",
+      "ash_drake_horn",
+      "ember_forge_core"
+    ],
+    "ratified_derived_components": [
+      "heat_core",
+      "heavy_head",
+      "chitin_plate",
+      "ember_heart"
+    ],
+    "preserved_existing_base": "aionbound:briar_ring",
+    "deferred": "W1-CREATIVE-005"
+  },
+  "icon_pipeline": {
+    "generator": "OpenAI built-in imagegen",
+    "calls": 17,
+    "call_rule": "one call per distinct icon",
+    "chroma_key": "#00ff00",
+    "transparent_threshold": 18,
+    "opaque_threshold": 90,
+    "edge_feather": 0.8,
+    "spill_cleanup": true,
+    "shipping_size": [
+      32,
+      32
+    ],
+    "shipping_transform": "Lanczos downscale from generated alpha master; no upscale"
+  },
+  "equipment": [
+    {
+      "id": "basalt_hammer",
+      "role": "weapon",
+      "brief_clips": [
+        "idle_hold",
+        "smash_pose"
+      ],
+      "prompt": "Use case: stylized-concept\nAsset type: Minecraft Bedrock inventory icon source for basalt_hammer\nPrimary request: a massive basalt war hammer with squared dark stone head, ember seams, and wrapped wooden haft\nScene/backdrop: perfectly flat solid #00ff00 chroma-key background for local removal\nStyle/medium: original hand-painted low-poly voxel game UI icon, chunky Minecraft-readable forms, crisp pixel-art-like edges, no photorealism\nComposition/framing: one centered object, square canvas, 15 percent padding, strong silhouette readable at 16x16\nColor palette: charcoal black, basalt gray, ember orange, restrained ash beige\nConstraints: background is one uniform #00ff00 with no shadows, gradients, floor, reflections, or texture; do not use #00ff00 in subject; no text; no logo; no watermark; exactly one object",
+      "files": {
+        "native_geometry": {
+          "path": "engineering/native-assets/ashen/equipment/evidence/basalt_hammer/native-exports/pass-2.geo.json",
+          "sha256": "e2c4d06b4c8da3ebaa86b2c3620ad0da13d4c0236758659d3a518a9451e477a3"
+        },
+        "runtime_geometry": {
+          "path": "resource_pack/models/aionbound/ashen/equipment/basalt_hammer.geo.json",
+          "sha256": "e2c4d06b4c8da3ebaa86b2c3620ad0da13d4c0236758659d3a518a9451e477a3"
+        },
+        "native_animation": {
+          "path": "engineering/native-assets/ashen/equipment/evidence/basalt_hammer/native-exports/pass-2.animation.json",
+          "sha256": "ce3e6da8782feaf28bbd35460789b06f254f89eadad16c012c3245f01dd32271"
+        },
+        "runtime_animation": {
+          "path": "resource_pack/animations/aionbound/ashen/equipment/basalt_hammer.animation.json",
+          "sha256": "ce3e6da8782feaf28bbd35460789b06f254f89eadad16c012c3245f01dd32271"
+        },
+        "native_model_uv": {
+          "path": "engineering/native-assets/ashen/equipment/evidence/basalt_hammer/native-project/textures/basalt_hammer.png",
+          "sha256": "17071eccbe68e6d46077fcda14388c0195ffece21491028d53bb78e33146782b"
+        },
+        "runtime_model_uv": {
+          "path": "resource_pack/textures/aionbound/ashen/equipment/models/basalt_hammer.png",
+          "sha256": "17071eccbe68e6d46077fcda14388c0195ffece21491028d53bb78e33146782b"
+        },
+        "icon_source": {
+          "path": "engineering/ashen-intake/equipment-runtime-ashen/icons/chroma-sources/basalt_hammer.png",
+          "sha256": "4c7cc2cd15133edd0451ceb1b11ba4ec6a03bb6605121991221f4e51b9b9999d"
+        },
+        "icon_alpha_master": {
+          "path": "engineering/ashen-intake/equipment-runtime-ashen/icons/alpha-master/basalt_hammer.png",
+          "sha256": "f53fcb7f53dbcbb16dd71583028dcd6903e77c072135245e71be4b9175112990"
+        },
+        "shipping_icon": {
+          "path": "resource_pack/textures/aionbound/ashen/equipment/basalt_hammer.png",
+          "sha256": "fe179131ac368cd52f74ebe22c51564b498f01530315d4ee9a7a0980503b36d2"
+        },
+        "attachable": {
+          "path": "resource_pack/attachables/basalt_hammer.attachable.json",
+          "sha256": "432c2460fd00e20348aac6c1217cd544e434ad68911352b0f6105f37b6e5aa1e"
+        },
+        "behavior_item": {
+          "path": "behavior_pack/items/basalt_hammer.item.json",
+          "sha256": "8d5a39855cb836037de16aeb982efea7e3b1adfe3a4a3471e0c504658c1a9c5d"
+        }
+      }
+    },
+    {
+      "id": "ember_great_axe",
+      "role": "weapon",
+      "brief_clips": [
+        "idle_hold",
+        "overhead_pose",
+        "slam_pose"
+      ],
+      "prompt": "Use case: stylized-concept\nAsset type: Minecraft Bedrock inventory icon source for ember_great_axe\nPrimary request: a two-handed great axe with broad black basalt blade, glowing ember edge, and long wrapped haft\nScene/backdrop: perfectly flat solid #00ff00 chroma-key background for local removal\nStyle/medium: original hand-painted low-poly voxel game UI icon, chunky Minecraft-readable forms, crisp pixel-art-like edges, no photorealism\nComposition/framing: one centered object, square canvas, 15 percent padding, strong silhouette readable at 16x16\nColor palette: charcoal black, basalt gray, ember orange, restrained ash beige\nConstraints: background is one uniform #00ff00 with no shadows, gradients, floor, reflections, or texture; do not use #00ff00 in subject; no text; no logo; no watermark; exactly one object",
+      "files": {
+        "native_geometry": {
+          "path": "engineering/native-assets/ashen/equipment/evidence/ember_great_axe/native-exports/pass-2.geo.json",
+          "sha256": "7cb33b12d85a060806de4d103adee0339cfdd869f1b05c1f541409441082d1e3"
+        },
+        "runtime_geometry": {
+          "path": "resource_pack/models/aionbound/ashen/equipment/ember_great_axe.geo.json",
+          "sha256": "7cb33b12d85a060806de4d103adee0339cfdd869f1b05c1f541409441082d1e3"
+        },
+        "native_animation": {
+          "path": "engineering/native-assets/ashen/equipment/evidence/ember_great_axe/native-exports/pass-2.animation.json",
+          "sha256": "4eab72cf4b725e15411399d5705726e67f66a9b90795564fba9df2d819fcff63"
+        },
+        "runtime_animation": {
+          "path": "resource_pack/animations/aionbound/ashen/equipment/ember_great_axe.animation.json",
+          "sha256": "4eab72cf4b725e15411399d5705726e67f66a9b90795564fba9df2d819fcff63"
+        },
+        "native_model_uv": {
+          "path": "engineering/native-assets/ashen/equipment/evidence/ember_great_axe/native-project/textures/ember_great_axe.png",
+          "sha256": "ce1535c17100db951dd29b587ed1288654a08c9b0ebd153ed98ecacd889bc348"
+        },
+        "runtime_model_uv": {
+          "path": "resource_pack/textures/aionbound/ashen/equipment/models/ember_great_axe.png",
+          "sha256": "ce1535c17100db951dd29b587ed1288654a08c9b0ebd153ed98ecacd889bc348"
+        },
+        "icon_source": {
+          "path": "engineering/ashen-intake/equipment-runtime-ashen/icons/chroma-sources/ember_great_axe.png",
+          "sha256": "ddd60c484b6b25a9501d1cf579b7be186e9791e604cb7fb19c4a38ade3873bc0"
+        },
+        "icon_alpha_master": {
+          "path": "engineering/ashen-intake/equipment-runtime-ashen/icons/alpha-master/ember_great_axe.png",
+          "sha256": "f393711d8b55735737057174b3c8b2d19d2e517f627f8955d52acd6e6aa455a0"
+        },
+        "shipping_icon": {
+          "path": "resource_pack/textures/aionbound/ashen/equipment/ember_great_axe.png",
+          "sha256": "419e50a1c8e32f892b31e453cbc0ef5fabcf243b20c4704265e549c0d3683beb"
+        },
+        "attachable": {
+          "path": "resource_pack/attachables/ember_great_axe.attachable.json",
+          "sha256": "162b616e8327e5ad79da21bfe8aa546b0fba06acabc66e0e6ff0da3e74452944"
+        },
+        "behavior_item": {
+          "path": "behavior_pack/items/ember_great_axe.item.json",
+          "sha256": "1f91b573f9802ce205231b23db5f9ee3922010269548b89051bec51d45f55b11"
+        }
+      }
+    },
+    {
+      "id": "ash_repeater",
+      "role": "weapon",
+      "brief_clips": [
+        "crank_pose",
+        "fire_pose",
+        "idle_hold"
+      ],
+      "prompt": "Use case: stylized-concept\nAsset type: Minecraft Bedrock inventory icon source for ash_repeater\nPrimary request: a compact ash-wood mechanical repeater crossbow with basalt arms, crank, and restrained ember accents\nScene/backdrop: perfectly flat solid #00ff00 chroma-key background for local removal\nStyle/medium: original hand-painted low-poly voxel game UI icon, chunky Minecraft-readable forms, crisp pixel-art-like edges, no photorealism\nComposition/framing: one centered object, square canvas, 15 percent padding, strong silhouette readable at 16x16\nColor palette: charcoal black, basalt gray, ember orange, restrained ash beige\nConstraints: background is one uniform #00ff00 with no shadows, gradients, floor, reflections, or texture; do not use #00ff00 in subject; no text; no logo; no watermark; exactly one object",
+      "files": {
+        "native_geometry": {
+          "path": "engineering/native-assets/ashen/equipment/evidence/ash_repeater/native-exports/pass-2.geo.json",
+          "sha256": "f0823c75687c3edcbe133260cd7aaa04cb9ea9d5a1497fce5a787694bb38564c"
+        },
+        "runtime_geometry": {
+          "path": "resource_pack/models/aionbound/ashen/equipment/ash_repeater.geo.json",
+          "sha256": "f0823c75687c3edcbe133260cd7aaa04cb9ea9d5a1497fce5a787694bb38564c"
+        },
+        "native_animation": {
+          "path": "engineering/native-assets/ashen/equipment/evidence/ash_repeater/native-exports/pass-2.animation.json",
+          "sha256": "e804d4301992915e461919bcd9bbbf081a8004191ef54ac8ba6dee71744db280"
+        },
+        "runtime_animation": {
+          "path": "resource_pack/animations/aionbound/ashen/equipment/ash_repeater.animation.json",
+          "sha256": "e804d4301992915e461919bcd9bbbf081a8004191ef54ac8ba6dee71744db280"
+        },
+        "native_model_uv": {
+          "path": "engineering/native-assets/ashen/equipment/evidence/ash_repeater/native-project/textures/ash_repeater.png",
+          "sha256": "1ed90365d32818bc889b7799ccb6cfa6f2aa275bb4a8d4a55ed7ea198455818f"
+        },
+        "runtime_model_uv": {
+          "path": "resource_pack/textures/aionbound/ashen/equipment/models/ash_repeater.png",
+          "sha256": "1ed90365d32818bc889b7799ccb6cfa6f2aa275bb4a8d4a55ed7ea198455818f"
+        },
+        "icon_source": {
+          "path": "engineering/ashen-intake/equipment-runtime-ashen/icons/chroma-sources/ash_repeater.png",
+          "sha256": "130e84446961a0531b326477feb1a676cad5f839841b4ab74306065ea663a64e"
+        },
+        "icon_alpha_master": {
+          "path": "engineering/ashen-intake/equipment-runtime-ashen/icons/alpha-master/ash_repeater.png",
+          "sha256": "350f13e4ec2975b5602606a619c0496f4814def41d9cc933337a9d1549c66fc8"
+        },
+        "shipping_icon": {
+          "path": "resource_pack/textures/aionbound/ashen/equipment/ash_repeater.png",
+          "sha256": "1bd19228348e775f75221f7296e206dc488842a2721b244794e9ef591b7e273b"
+        },
+        "attachable": {
+          "path": "resource_pack/attachables/ash_repeater.attachable.json",
+          "sha256": "bd4b6a401805ee1684f12c425167bc1a09db6a82c3f0e33807ac48c55ce8f5a9"
+        },
+        "behavior_item": {
+          "path": "behavior_pack/items/ash_repeater.item.json",
+          "sha256": "646586d680dc5e7af76129df2d95a006a020dc302fa3f17d855fe0aed9a49b3b"
+        }
+      }
+    },
+    {
+      "id": "ashen_helmet",
+      "role": "armor_head",
+      "brief_clips": [
+        "vent_pulse_showcase"
+      ],
+      "prompt": "Use case: stylized-concept\nAsset type: Minecraft Bedrock inventory icon source for ashen_helmet\nPrimary request: a full dark basalt armor helmet with angular brow, narrow glowing orange visor, and small vent ridges\nScene/backdrop: perfectly flat solid #00ff00 chroma-key background for local removal\nStyle/medium: original hand-painted low-poly voxel game UI icon, chunky Minecraft-readable forms, crisp pixel-art-like edges, no photorealism\nComposition/framing: one centered object, square canvas, 15 percent padding, strong silhouette readable at 16x16\nColor palette: charcoal black, basalt gray, ember orange, restrained ash beige\nConstraints: background is one uniform #00ff00 with no shadows, gradients, floor, reflections, or texture; do not use #00ff00 in subject; no text; no logo; no watermark; exactly one object",
+      "files": {
+        "native_geometry": {
+          "path": "engineering/native-assets/ashen/equipment/evidence/ashen_helmet/native-exports/pass-2.geo.json",
+          "sha256": "0b48231cd6a6dfc685453f5181dd1bfe4e5a4f1e6e50badd7548e6e1686802bb"
+        },
+        "runtime_geometry": {
+          "path": "resource_pack/models/aionbound/ashen/equipment/ashen_helmet.geo.json",
+          "sha256": "0b48231cd6a6dfc685453f5181dd1bfe4e5a4f1e6e50badd7548e6e1686802bb"
+        },
+        "native_animation": {
+          "path": "engineering/native-assets/ashen/equipment/evidence/ashen_helmet/native-exports/pass-2.animation.json",
+          "sha256": "7f21f62e8ed243abc683b4bb82278bd9c236030773d433314464e7af1783f2fc"
+        },
+        "runtime_animation": {
+          "path": "resource_pack/animations/aionbound/ashen/equipment/ashen_helmet.animation.json",
+          "sha256": "7f21f62e8ed243abc683b4bb82278bd9c236030773d433314464e7af1783f2fc"
+        },
+        "native_model_uv": {
+          "path": "engineering/native-assets/ashen/equipment/evidence/ashen_helmet/native-project/textures/ashen_helmet.png",
+          "sha256": "4b94754556e855eb7f20151565af6fd611b8648926b90f957b400784eb8d0afe"
+        },
+        "runtime_model_uv": {
+          "path": "resource_pack/textures/aionbound/ashen/equipment/models/ashen_helmet.png",
+          "sha256": "4b94754556e855eb7f20151565af6fd611b8648926b90f957b400784eb8d0afe"
+        },
+        "icon_source": {
+          "path": "engineering/ashen-intake/equipment-runtime-ashen/icons/chroma-sources/ashen_helmet.png",
+          "sha256": "041e042766d5ce07316b9cf7ffd92b8035974d504a58c86a4d6638377c979c49"
+        },
+        "icon_alpha_master": {
+          "path": "engineering/ashen-intake/equipment-runtime-ashen/icons/alpha-master/ashen_helmet.png",
+          "sha256": "56b7371a25a6031d852c84949b2820e51c9be815bcd16f20c603d26d5cc4e1eb"
+        },
+        "shipping_icon": {
+          "path": "resource_pack/textures/aionbound/ashen/equipment/ashen_helmet.png",
+          "sha256": "b1c0463a9c9ecaa49ad98ae0a5f15b5a6c9313e9b899e1403a9f2188666866b9"
+        },
+        "attachable": {
+          "path": "resource_pack/attachables/ashen_helmet.attachable.json",
+          "sha256": "ca266170ea176f5fd0f434341864df75b286328b4757dc92e99286db683db8a1"
+        },
+        "behavior_item": {
+          "path": "behavior_pack/items/ashen_helmet.item.json",
+          "sha256": "dc64ee5c0ab9850efda05826af0e8e49d8f7e10aee32c04444e2a7699ca8b3d1"
+        }
+      }
+    },
+    {
+      "id": "ashen_chest",
+      "role": "armor_chest",
+      "brief_clips": [],
+      "prompt": "Use case: stylized-concept\nAsset type: Minecraft Bedrock inventory icon source for ashen_chest\nPrimary request: a heavy dark basalt chestplate with layered angular plates and restrained glowing ember seams\nScene/backdrop: perfectly flat solid #00ff00 chroma-key background for local removal\nStyle/medium: original hand-painted low-poly voxel game UI icon, chunky Minecraft-readable forms, crisp pixel-art-like edges, no photorealism\nComposition/framing: one centered object, square canvas, 15 percent padding, strong silhouette readable at 16x16\nColor palette: charcoal black, basalt gray, ember orange, restrained ash beige\nConstraints: background is one uniform #00ff00 with no shadows, gradients, floor, reflections, or texture; do not use #00ff00 in subject; no text; no logo; no watermark; exactly one object",
+      "files": {
+        "native_geometry": {
+          "path": "engineering/native-assets/ashen/equipment/evidence/ashen_chest/native-exports/pass-2.geo.json",
+          "sha256": "25f9a2311090ff231053d9804db0542ca7bc15a72bc26e8662b99e14970d986b"
+        },
+        "runtime_geometry": {
+          "path": "resource_pack/models/aionbound/ashen/equipment/ashen_chest.geo.json",
+          "sha256": "25f9a2311090ff231053d9804db0542ca7bc15a72bc26e8662b99e14970d986b"
+        },
+        "native_animation": {
+          "path": "engineering/native-assets/ashen/equipment/evidence/ashen_chest/native-exports/pass-2.animation.json",
+          "sha256": "7882082857fdb11e02f158ebc3a6d3f970e2ac60d54813f0e903ee97b2293749"
+        },
+        "runtime_animation": {
+          "path": "resource_pack/animations/aionbound/ashen/equipment/ashen_chest.animation.json",
+          "sha256": "7882082857fdb11e02f158ebc3a6d3f970e2ac60d54813f0e903ee97b2293749"
+        },
+        "native_model_uv": {
+          "path": "engineering/native-assets/ashen/equipment/evidence/ashen_chest/native-project/textures/ashen_chest.png",
+          "sha256": "0f5ffeeb8b10c4093ff19b456fcf75e87f7af593c70cfb22ec104e4b09ef0ea2"
+        },
+        "runtime_model_uv": {
+          "path": "resource_pack/textures/aionbound/ashen/equipment/models/ashen_chest.png",
+          "sha256": "0f5ffeeb8b10c4093ff19b456fcf75e87f7af593c70cfb22ec104e4b09ef0ea2"
+        },
+        "icon_source": {
+          "path": "engineering/ashen-intake/equipment-runtime-ashen/icons/chroma-sources/ashen_chest.png",
+          "sha256": "d465f3f2632f9bd7b561a15682ac175cb8ee8b91753692df30803f8d242c44f4"
+        },
+        "icon_alpha_master": {
+          "path": "engineering/ashen-intake/equipment-runtime-ashen/icons/alpha-master/ashen_chest.png",
+          "sha256": "17b71ea6140ebbe4a1b9f2eccce78cf0abb529c042c74e546a193e32747d99de"
+        },
+        "shipping_icon": {
+          "path": "resource_pack/textures/aionbound/ashen/equipment/ashen_chest.png",
+          "sha256": "9494e9e534fedc2175f4eee7e51abc9751f3177527773051b5b91696f803d436"
+        },
+        "attachable": {
+          "path": "resource_pack/attachables/ashen_chest.attachable.json",
+          "sha256": "61b0296514796b183f58f9903089ae4c9c9a416a4e090bcfca41b5f148afa452"
+        },
+        "behavior_item": {
+          "path": "behavior_pack/items/ashen_chest.item.json",
+          "sha256": "7dc7c342528f2577fce7aaaeca70bfeaf91cb34f9736872e4a7de68cc44e9c1c"
+        }
+      }
+    },
+    {
+      "id": "ashen_legs",
+      "role": "armor_legs",
+      "brief_clips": [],
+      "prompt": "Use case: stylized-concept\nAsset type: Minecraft Bedrock inventory icon source for ashen_legs\nPrimary request: a matched pair of dark basalt armored leggings with segmented plates and restrained ember seams\nScene/backdrop: perfectly flat solid #00ff00 chroma-key background for local removal\nStyle/medium: original hand-painted low-poly voxel game UI icon, chunky Minecraft-readable forms, crisp pixel-art-like edges, no photorealism\nComposition/framing: one centered object, square canvas, 15 percent padding, strong silhouette readable at 16x16\nColor palette: charcoal black, basalt gray, ember orange, restrained ash beige\nConstraints: background is one uniform #00ff00 with no shadows, gradients, floor, reflections, or texture; do not use #00ff00 in subject; no text; no logo; no watermark; exactly one object",
+      "files": {
+        "native_geometry": {
+          "path": "engineering/native-assets/ashen/equipment/evidence/ashen_legs/native-exports/pass-2.geo.json",
+          "sha256": "f8224cce032b88fb0e009252a227b24ee662a521c1574e09eb6287bcd75a60c0"
+        },
+        "runtime_geometry": {
+          "path": "resource_pack/models/aionbound/ashen/equipment/ashen_legs.geo.json",
+          "sha256": "f8224cce032b88fb0e009252a227b24ee662a521c1574e09eb6287bcd75a60c0"
+        },
+        "native_animation": {
+          "path": "engineering/native-assets/ashen/equipment/evidence/ashen_legs/native-exports/pass-2.animation.json",
+          "sha256": "7882082857fdb11e02f158ebc3a6d3f970e2ac60d54813f0e903ee97b2293749"
+        },
+        "runtime_animation": {
+          "path": "resource_pack/animations/aionbound/ashen/equipment/ashen_legs.animation.json",
+          "sha256": "7882082857fdb11e02f158ebc3a6d3f970e2ac60d54813f0e903ee97b2293749"
+        },
+        "native_model_uv": {
+          "path": "engineering/native-assets/ashen/equipment/evidence/ashen_legs/native-project/textures/ashen_legs.png",
+          "sha256": "66494e778ed43a06eaa701262796aa3993a1835c8209db277a9ff56b92ccebc0"
+        },
+        "runtime_model_uv": {
+          "path": "resource_pack/textures/aionbound/ashen/equipment/models/ashen_legs.png",
+          "sha256": "66494e778ed43a06eaa701262796aa3993a1835c8209db277a9ff56b92ccebc0"
+        },
+        "icon_source": {
+          "path": "engineering/ashen-intake/equipment-runtime-ashen/icons/chroma-sources/ashen_legs.png",
+          "sha256": "565b54faa86e6ebc7fe0ce87d3fcf8c5b20361ca8c86421870b703f003075c1a"
+        },
+        "icon_alpha_master": {
+          "path": "engineering/ashen-intake/equipment-runtime-ashen/icons/alpha-master/ashen_legs.png",
+          "sha256": "344e99d9893d059418d6803f873f968aca39eaaf2d5809e66e49eebe897af562"
+        },
+        "shipping_icon": {
+          "path": "resource_pack/textures/aionbound/ashen/equipment/ashen_legs.png",
+          "sha256": "303b90183f093ad3af5435b413d438f9629f9955cd13816aaa0d6e9f116c7644"
+        },
+        "attachable": {
+          "path": "resource_pack/attachables/ashen_legs.attachable.json",
+          "sha256": "d56c09a6e9ac62fc0ddd61cbb52ad2c1c9aeccbdd95bc7db4c5ae3ebca8eaa21"
+        },
+        "behavior_item": {
+          "path": "behavior_pack/items/ashen_legs.item.json",
+          "sha256": "b9aca977c7ca721cf8548ee75ade1c501357c7729edbc7a6b266aac553f8f2ba"
+        }
+      }
+    },
+    {
+      "id": "ashen_boots",
+      "role": "armor_feet",
+      "brief_clips": [],
+      "prompt": "Use case: stylized-concept\nAsset type: Minecraft Bedrock inventory icon source for ashen_boots\nPrimary request: a matched pair of chunky dark basalt armored boots with reinforced toes and restrained ember seams\nScene/backdrop: perfectly flat solid #00ff00 chroma-key background for local removal\nStyle/medium: original hand-painted low-poly voxel game UI icon, chunky Minecraft-readable forms, crisp pixel-art-like edges, no photorealism\nComposition/framing: one centered object, square canvas, 15 percent padding, strong silhouette readable at 16x16\nColor palette: charcoal black, basalt gray, ember orange, restrained ash beige\nConstraints: background is one uniform #00ff00 with no shadows, gradients, floor, reflections, or texture; do not use #00ff00 in subject; no text; no logo; no watermark; exactly one object",
+      "files": {
+        "native_geometry": {
+          "path": "engineering/native-assets/ashen/equipment/evidence/ashen_boots/native-exports/pass-2.geo.json",
+          "sha256": "2a7bdb4ce1f31d5b2a6535db2da0495fe5055613f31f05c3a4df73b0a44e4e7f"
+        },
+        "runtime_geometry": {
+          "path": "resource_pack/models/aionbound/ashen/equipment/ashen_boots.geo.json",
+          "sha256": "2a7bdb4ce1f31d5b2a6535db2da0495fe5055613f31f05c3a4df73b0a44e4e7f"
+        },
+        "native_animation": {
+          "path": "engineering/native-assets/ashen/equipment/evidence/ashen_boots/native-exports/pass-2.animation.json",
+          "sha256": "7882082857fdb11e02f158ebc3a6d3f970e2ac60d54813f0e903ee97b2293749"
+        },
+        "runtime_animation": {
+          "path": "resource_pack/animations/aionbound/ashen/equipment/ashen_boots.animation.json",
+          "sha256": "7882082857fdb11e02f158ebc3a6d3f970e2ac60d54813f0e903ee97b2293749"
+        },
+        "native_model_uv": {
+          "path": "engineering/native-assets/ashen/equipment/evidence/ashen_boots/native-project/textures/ashen_boots.png",
+          "sha256": "0eeef068ae7933ec48f9e019deb059ea1204e0f63e1ad4dfa082ecfdd787ccc5"
+        },
+        "runtime_model_uv": {
+          "path": "resource_pack/textures/aionbound/ashen/equipment/models/ashen_boots.png",
+          "sha256": "0eeef068ae7933ec48f9e019deb059ea1204e0f63e1ad4dfa082ecfdd787ccc5"
+        },
+        "icon_source": {
+          "path": "engineering/ashen-intake/equipment-runtime-ashen/icons/chroma-sources/ashen_boots.png",
+          "sha256": "c6338806f2ccf949193bf0234b20b54e51d8c20f48c1a95e2beef115b1eed546"
+        },
+        "icon_alpha_master": {
+          "path": "engineering/ashen-intake/equipment-runtime-ashen/icons/alpha-master/ashen_boots.png",
+          "sha256": "04811e7f9a6f9801cb90251dfc80d8b867be4fb67afb6888db5c10ffd8d74ce6"
+        },
+        "shipping_icon": {
+          "path": "resource_pack/textures/aionbound/ashen/equipment/ashen_boots.png",
+          "sha256": "5de1200f22cac19e45e48550cb2b36af301be2873d7a82971519c077420b0029"
+        },
+        "attachable": {
+          "path": "resource_pack/attachables/ashen_boots.attachable.json",
+          "sha256": "790a916f4187495ad6f234cc5665befbb4740a5408f1b3fd75ad1fbb4ffd3dff"
+        },
+        "behavior_item": {
+          "path": "behavior_pack/items/ashen_boots.item.json",
+          "sha256": "24e9b6218f33aa039952f73b36bca8da62dcee75a4e140ba2b76ed4c77c04b73"
+        }
+      }
+    },
+    {
+      "id": "basalt_pick",
+      "role": "tool",
+      "brief_clips": [
+        "hold",
+        "swing"
+      ],
+      "prompt": "Use case: stylized-concept\nAsset type: Minecraft Bedrock inventory icon source for basalt_pick\nPrimary request: a rugged basalt mining pickaxe with black stone head, ember inlay, and wrapped wooden handle\nScene/backdrop: perfectly flat solid #00ff00 chroma-key background for local removal\nStyle/medium: original hand-painted low-poly voxel game UI icon, chunky Minecraft-readable forms, crisp pixel-art-like edges, no photorealism\nComposition/framing: one centered object, square canvas, 15 percent padding, strong silhouette readable at 16x16\nColor palette: charcoal black, basalt gray, ember orange, restrained ash beige\nConstraints: background is one uniform #00ff00 with no shadows, gradients, floor, reflections, or texture; do not use #00ff00 in subject; no text; no logo; no watermark; exactly one object",
+      "files": {
+        "native_geometry": {
+          "path": "engineering/native-assets/ashen/equipment/evidence/basalt_pick/native-exports/pass-2.geo.json",
+          "sha256": "e4b0395d1d7f81be83ed099be472f66337266a455ad8e78205b2943601935add"
+        },
+        "runtime_geometry": {
+          "path": "resource_pack/models/aionbound/ashen/equipment/basalt_pick.geo.json",
+          "sha256": "e4b0395d1d7f81be83ed099be472f66337266a455ad8e78205b2943601935add"
+        },
+        "native_animation": {
+          "path": "engineering/native-assets/ashen/equipment/evidence/basalt_pick/native-exports/pass-2.animation.json",
+          "sha256": "14f3931ef5072aece57586289098e3198b05fd6bf51c980bbb8659c8696e2ae0"
+        },
+        "runtime_animation": {
+          "path": "resource_pack/animations/aionbound/ashen/equipment/basalt_pick.animation.json",
+          "sha256": "14f3931ef5072aece57586289098e3198b05fd6bf51c980bbb8659c8696e2ae0"
+        },
+        "native_model_uv": {
+          "path": "engineering/native-assets/ashen/equipment/evidence/basalt_pick/native-project/textures/basalt_pick.png",
+          "sha256": "2dc27866a3c4023f766ded1a1d13cae060c77b3d03e2d2d95537c8ace82f53be"
+        },
+        "runtime_model_uv": {
+          "path": "resource_pack/textures/aionbound/ashen/equipment/models/basalt_pick.png",
+          "sha256": "2dc27866a3c4023f766ded1a1d13cae060c77b3d03e2d2d95537c8ace82f53be"
+        },
+        "icon_source": {
+          "path": "engineering/ashen-intake/equipment-runtime-ashen/icons/chroma-sources/basalt_pick.png",
+          "sha256": "e144bc3d4332fd5db646aa3394f240e3d7e555584cb84c5c05a3f7030746399c"
+        },
+        "icon_alpha_master": {
+          "path": "engineering/ashen-intake/equipment-runtime-ashen/icons/alpha-master/basalt_pick.png",
+          "sha256": "c916452efe224d607bec9e08c06f928adedf0af8f0e458a9beb7436c2d795585"
+        },
+        "shipping_icon": {
+          "path": "resource_pack/textures/aionbound/ashen/equipment/basalt_pick.png",
+          "sha256": "d857741faabb6edfeeb4ff3db599e6487be05310e42ea6179ffd7733bdb713de"
+        },
+        "attachable": {
+          "path": "resource_pack/attachables/basalt_pick.attachable.json",
+          "sha256": "ee13a60a33fabba7c94bc1017d25c37a617e2b7ff811060a82801951611b8527"
+        },
+        "behavior_item": {
+          "path": "behavior_pack/items/basalt_pick.item.json",
+          "sha256": "dad51bd05bfbb69003970a009b0d17946f967c2897abdcfbbe01cd5075a8b48c"
+        }
+      }
+    },
+    {
+      "id": "ember_hammer",
+      "role": "tool",
+      "brief_clips": [
+        "hold",
+        "tap"
+      ],
+      "prompt": "Use case: stylized-concept\nAsset type: Minecraft Bedrock inventory icon source for ember_hammer\nPrimary request: a compact forge hammer with dark basalt head, bright ember core, and short wrapped handle\nScene/backdrop: perfectly flat solid #00ff00 chroma-key background for local removal\nStyle/medium: original hand-painted low-poly voxel game UI icon, chunky Minecraft-readable forms, crisp pixel-art-like edges, no photorealism\nComposition/framing: one centered object, square canvas, 15 percent padding, strong silhouette readable at 16x16\nColor palette: charcoal black, basalt gray, ember orange, restrained ash beige\nConstraints: background is one uniform #00ff00 with no shadows, gradients, floor, reflections, or texture; do not use #00ff00 in subject; no text; no logo; no watermark; exactly one object",
+      "files": {
+        "native_geometry": {
+          "path": "engineering/native-assets/ashen/equipment/evidence/ember_hammer/native-exports/pass-2.geo.json",
+          "sha256": "a3cf5eabcd265a5ae0c46459ffe856a587113aedb7cfce5e6af868144e7a1530"
+        },
+        "runtime_geometry": {
+          "path": "resource_pack/models/aionbound/ashen/equipment/ember_hammer.geo.json",
+          "sha256": "a3cf5eabcd265a5ae0c46459ffe856a587113aedb7cfce5e6af868144e7a1530"
+        },
+        "native_animation": {
+          "path": "engineering/native-assets/ashen/equipment/evidence/ember_hammer/native-exports/pass-2.animation.json",
+          "sha256": "f3710e3b8eb3a23bf18c0fe927b3c86bab06f5df401e4d5a2a89968049fea83b"
+        },
+        "runtime_animation": {
+          "path": "resource_pack/animations/aionbound/ashen/equipment/ember_hammer.animation.json",
+          "sha256": "f3710e3b8eb3a23bf18c0fe927b3c86bab06f5df401e4d5a2a89968049fea83b"
+        },
+        "native_model_uv": {
+          "path": "engineering/native-assets/ashen/equipment/evidence/ember_hammer/native-project/textures/ember_hammer.png",
+          "sha256": "79b1e89785d8980e9dc8670f9dde2290c8c0bf637d026b027450a0509462bfa6"
+        },
+        "runtime_model_uv": {
+          "path": "resource_pack/textures/aionbound/ashen/equipment/models/ember_hammer.png",
+          "sha256": "79b1e89785d8980e9dc8670f9dde2290c8c0bf637d026b027450a0509462bfa6"
+        },
+        "icon_source": {
+          "path": "engineering/ashen-intake/equipment-runtime-ashen/icons/chroma-sources/ember_hammer.png",
+          "sha256": "255ebfa23e582b678d160a8b30e846f6dcd0336d75507625263cd7c4fedb6410"
+        },
+        "icon_alpha_master": {
+          "path": "engineering/ashen-intake/equipment-runtime-ashen/icons/alpha-master/ember_hammer.png",
+          "sha256": "3d6253e09ec9d32c4368b3fbb9a30e95e1e39793f29e41110d0d284b54d5816e"
+        },
+        "shipping_icon": {
+          "path": "resource_pack/textures/aionbound/ashen/equipment/ember_hammer.png",
+          "sha256": "f156bc4466b09b4d8f88ca965946d07499ed52b5dcbada5d53d63c122684c1d3"
+        },
+        "attachable": {
+          "path": "resource_pack/attachables/ember_hammer.attachable.json",
+          "sha256": "20b5984ef89c6d848e7138e3ba7c6f9ca862983ba8d018f1382febc99b179561"
+        },
+        "behavior_item": {
+          "path": "behavior_pack/items/ember_hammer.item.json",
+          "sha256": "45ee8294ff95269b57834ca730d02e7afc785cfe0cc07daf0dc38f3ea1cda1e8"
+        }
+      }
+    },
+    {
+      "id": "ore_chisel",
+      "role": "tool",
+      "brief_clips": [
+        "hold",
+        "tap"
+      ],
+      "prompt": "Use case: stylized-concept\nAsset type: Minecraft Bedrock inventory icon source for ore_chisel\nPrimary request: a slim dark basalt ore chisel with faceted point, copper-orange collar, and wrapped grip\nScene/backdrop: perfectly flat solid #00ff00 chroma-key background for local removal\nStyle/medium: original hand-painted low-poly voxel game UI icon, chunky Minecraft-readable forms, crisp pixel-art-like edges, no photorealism\nComposition/framing: one centered object, square canvas, 15 percent padding, strong silhouette readable at 16x16\nColor palette: charcoal black, basalt gray, ember orange, restrained ash beige\nConstraints: background is one uniform #00ff00 with no shadows, gradients, floor, reflections, or texture; do not use #00ff00 in subject; no text; no logo; no watermark; exactly one object",
+      "files": {
+        "native_geometry": {
+          "path": "engineering/native-assets/ashen/equipment/evidence/ore_chisel/native-exports/pass-2.geo.json",
+          "sha256": "94640fabbfcfd8dd52292b21135cf4405845bb44b99a3395bd83cc4990681fec"
+        },
+        "runtime_geometry": {
+          "path": "resource_pack/models/aionbound/ashen/equipment/ore_chisel.geo.json",
+          "sha256": "94640fabbfcfd8dd52292b21135cf4405845bb44b99a3395bd83cc4990681fec"
+        },
+        "native_animation": {
+          "path": "engineering/native-assets/ashen/equipment/evidence/ore_chisel/native-exports/pass-2.animation.json",
+          "sha256": "dedff2d394ad85d989c4d76914262b2de1ab894f6cb4bd59d5c5489a6d5f028a"
+        },
+        "runtime_animation": {
+          "path": "resource_pack/animations/aionbound/ashen/equipment/ore_chisel.animation.json",
+          "sha256": "dedff2d394ad85d989c4d76914262b2de1ab894f6cb4bd59d5c5489a6d5f028a"
+        },
+        "native_model_uv": {
+          "path": "engineering/native-assets/ashen/equipment/evidence/ore_chisel/native-project/textures/ore_chisel.png",
+          "sha256": "6406c4ad3efca83518c3b541d4bb940615268166f5344a85333b6049b4ce3ec1"
+        },
+        "runtime_model_uv": {
+          "path": "resource_pack/textures/aionbound/ashen/equipment/models/ore_chisel.png",
+          "sha256": "6406c4ad3efca83518c3b541d4bb940615268166f5344a85333b6049b4ce3ec1"
+        },
+        "icon_source": {
+          "path": "engineering/ashen-intake/equipment-runtime-ashen/icons/chroma-sources/ore_chisel.png",
+          "sha256": "303c918c90f4a70eaa98d526bff364935a2193dbabf7de55195c63be464701f1"
+        },
+        "icon_alpha_master": {
+          "path": "engineering/ashen-intake/equipment-runtime-ashen/icons/alpha-master/ore_chisel.png",
+          "sha256": "6febbcfe35ddef5d481032bfc8108697b497e25d64d3710d61a93ea5c0823977"
+        },
+        "shipping_icon": {
+          "path": "resource_pack/textures/aionbound/ashen/equipment/ore_chisel.png",
+          "sha256": "b94ce6b11bf91492bcee905ec3a60453a263da85615a177a8b841abaa3609136"
+        },
+        "attachable": {
+          "path": "resource_pack/attachables/ore_chisel.attachable.json",
+          "sha256": "1ca69959fd01f50382582c52cb40a2718eecb7af51825e6ec8b91513ae16abad"
+        },
+        "behavior_item": {
+          "path": "behavior_pack/items/ore_chisel.item.json",
+          "sha256": "16b18fbd13481695bc58dc68bf86cd09e7bafed862aa67ec41283ad74ee15810"
+        }
+      }
+    },
+    {
+      "id": "ember_totem",
+      "role": "accessory",
+      "brief_clips": [
+        "vent_pulse"
+      ],
+      "prompt": "Use case: stylized-concept\nAsset type: Minecraft Bedrock inventory icon source for ember_totem\nPrimary request: a small upright basalt totem with carved vents and a contained orange ember glow\nScene/backdrop: perfectly flat solid #00ff00 chroma-key background for local removal\nStyle/medium: original hand-painted low-poly voxel game UI icon, chunky Minecraft-readable forms, crisp pixel-art-like edges, no photorealism\nComposition/framing: one centered object, square canvas, 15 percent padding, strong silhouette readable at 16x16\nColor palette: charcoal black, basalt gray, ember orange, restrained ash beige\nConstraints: background is one uniform #00ff00 with no shadows, gradients, floor, reflections, or texture; do not use #00ff00 in subject; no text; no logo; no watermark; exactly one object",
+      "files": {
+        "native_geometry": {
+          "path": "engineering/native-assets/ashen/equipment/evidence/ember_totem/native-exports/pass-2.geo.json",
+          "sha256": "7707e83a08c4558a3689eb22f99261bb5e9e554d95abcb7aa7f51684560b7106"
+        },
+        "runtime_geometry": {
+          "path": "resource_pack/models/aionbound/ashen/equipment/ember_totem.geo.json",
+          "sha256": "7707e83a08c4558a3689eb22f99261bb5e9e554d95abcb7aa7f51684560b7106"
+        },
+        "native_animation": {
+          "path": "engineering/native-assets/ashen/equipment/evidence/ember_totem/native-exports/pass-2.animation.json",
+          "sha256": "07f766d281ad3963ae533eb67a0f3174f6fec52de1b9349f8881405350831a85"
+        },
+        "runtime_animation": {
+          "path": "resource_pack/animations/aionbound/ashen/equipment/ember_totem.animation.json",
+          "sha256": "07f766d281ad3963ae533eb67a0f3174f6fec52de1b9349f8881405350831a85"
+        },
+        "native_model_uv": {
+          "path": "engineering/native-assets/ashen/equipment/evidence/ember_totem/native-project/textures/ember_totem.png",
+          "sha256": "a1ff81d1bb7fc4e0431bd002667f7737f24305850d12a19461b579bcd0cc051e"
+        },
+        "runtime_model_uv": {
+          "path": "resource_pack/textures/aionbound/ashen/equipment/models/ember_totem.png",
+          "sha256": "a1ff81d1bb7fc4e0431bd002667f7737f24305850d12a19461b579bcd0cc051e"
+        },
+        "icon_source": {
+          "path": "engineering/ashen-intake/equipment-runtime-ashen/icons/chroma-sources/ember_totem.png",
+          "sha256": "d9358772bd3ca323628fc611563b612d8f6213e327245652404b3dac28f505b3"
+        },
+        "icon_alpha_master": {
+          "path": "engineering/ashen-intake/equipment-runtime-ashen/icons/alpha-master/ember_totem.png",
+          "sha256": "dfe5589d3219dd0a490f06606866d87780237181d13dde060fbe31dcfc688cde"
+        },
+        "shipping_icon": {
+          "path": "resource_pack/textures/aionbound/ashen/equipment/ember_totem.png",
+          "sha256": "6b020002024152af67970feef0edabd2fd8bacb9c05ad52b72722a8d89f051f7"
+        },
+        "attachable": {
+          "path": "resource_pack/attachables/ember_totem.attachable.json",
+          "sha256": "8f06b5f73c74a51f0cdc816909c4b5a8d872a0f5e5c1e64981a863c79b97d476"
+        },
+        "behavior_item": {
+          "path": "behavior_pack/items/ember_totem.item.json",
+          "sha256": "dbb45cf7a1ede10850edfd1b1533bd278c02de75d9b38f97f1b442a0787f0569"
+        }
+      }
+    },
+    {
+      "id": "ash_drake_horn",
+      "role": "trophy",
+      "brief_clips": [
+        "pulse_base"
+      ],
+      "prompt": "Use case: stylized-concept\nAsset type: Minecraft Bedrock inventory icon source for ash_drake_horn\nPrimary request: a curved ash drake horn trophy on a small dark basalt display base, ivory-to-char gradient with ember glow\nScene/backdrop: perfectly flat solid #00ff00 chroma-key background for local removal\nStyle/medium: original hand-painted low-poly voxel game UI icon, chunky Minecraft-readable forms, crisp pixel-art-like edges, no photorealism\nComposition/framing: one centered object, square canvas, 15 percent padding, strong silhouette readable at 16x16\nColor palette: charcoal black, basalt gray, ember orange, restrained ash beige\nConstraints: background is one uniform #00ff00 with no shadows, gradients, floor, reflections, or texture; do not use #00ff00 in subject; no text; no logo; no watermark; exactly one object",
+      "files": {
+        "native_geometry": {
+          "path": "engineering/native-assets/ashen/equipment/evidence/ash_drake_horn/native-exports/pass-2.geo.json",
+          "sha256": "501226d54210138ca96958e439d0116ade375f4265a3137434159835e66db6fe"
+        },
+        "runtime_geometry": {
+          "path": "resource_pack/models/aionbound/ashen/equipment/ash_drake_horn.geo.json",
+          "sha256": "501226d54210138ca96958e439d0116ade375f4265a3137434159835e66db6fe"
+        },
+        "native_animation": {
+          "path": "engineering/native-assets/ashen/equipment/evidence/ash_drake_horn/native-exports/pass-2.animation.json",
+          "sha256": "5a60c1a3be8ab7e08818265b554a3072221df4e055c8fd2609161c010af2d262"
+        },
+        "runtime_animation": {
+          "path": "resource_pack/animations/aionbound/ashen/equipment/ash_drake_horn.animation.json",
+          "sha256": "5a60c1a3be8ab7e08818265b554a3072221df4e055c8fd2609161c010af2d262"
+        },
+        "native_model_uv": {
+          "path": "engineering/native-assets/ashen/equipment/evidence/ash_drake_horn/native-project/textures/ash_drake_horn.png",
+          "sha256": "883adaee01c575d79139514dd9c257aa08debcd6a2fcf212f5f85ecc405b929a"
+        },
+        "runtime_model_uv": {
+          "path": "resource_pack/textures/aionbound/ashen/equipment/models/ash_drake_horn.png",
+          "sha256": "883adaee01c575d79139514dd9c257aa08debcd6a2fcf212f5f85ecc405b929a"
+        },
+        "icon_source": {
+          "path": "engineering/ashen-intake/equipment-runtime-ashen/icons/chroma-sources/ash_drake_horn.png",
+          "sha256": "6423858f83b510a1e07a475c49ac5340035fcdc0f17daf9b0e421e9002baac84"
+        },
+        "icon_alpha_master": {
+          "path": "engineering/ashen-intake/equipment-runtime-ashen/icons/alpha-master/ash_drake_horn.png",
+          "sha256": "cdae98e6cb8cbfeae0feabeeb058c4d43f8c5ac9a1ea02be3db15b54bb5e6d82"
+        },
+        "shipping_icon": {
+          "path": "resource_pack/textures/aionbound/ashen/equipment/ash_drake_horn.png",
+          "sha256": "b7cbd46b8ecce6ac3240f453c9c70fb7daecf582d1519ad65b1f3f961221b73b"
+        },
+        "attachable": {
+          "path": "resource_pack/attachables/ash_drake_horn.attachable.json",
+          "sha256": "f1e09c7e63002083f7844db1d788c32ebe9a8fb358a32a9bcc11396256eb8b6d"
+        },
+        "behavior_block": {
+          "path": "behavior_pack/blocks/ash_drake_horn.block.json",
+          "sha256": "99a43c6cef28854df71d269bf687aeb63ed9a6401cf7878879befdd9a8d02236"
+        }
+      }
+    },
+    {
+      "id": "ember_forge_core",
+      "role": "trophy",
+      "brief_clips": [
+        "idle_pulse"
+      ],
+      "prompt": "Use case: stylized-concept\nAsset type: Minecraft Bedrock inventory icon source for ember_forge_core\nPrimary request: a compact cubic basalt forge core with black metal cage and bright contained orange furnace center\nScene/backdrop: perfectly flat solid #00ff00 chroma-key background for local removal\nStyle/medium: original hand-painted low-poly voxel game UI icon, chunky Minecraft-readable forms, crisp pixel-art-like edges, no photorealism\nComposition/framing: one centered object, square canvas, 15 percent padding, strong silhouette readable at 16x16\nColor palette: charcoal black, basalt gray, ember orange, restrained ash beige\nConstraints: background is one uniform #00ff00 with no shadows, gradients, floor, reflections, or texture; do not use #00ff00 in subject; no text; no logo; no watermark; exactly one object",
+      "files": {
+        "native_geometry": {
+          "path": "engineering/native-assets/ashen/equipment/evidence/ember_forge_core/native-exports/pass-2.geo.json",
+          "sha256": "198e53f408597b485d849170771d54d63ab350a6f961d72bc587d64e3c09e9be"
+        },
+        "runtime_geometry": {
+          "path": "resource_pack/models/aionbound/ashen/equipment/ember_forge_core.geo.json",
+          "sha256": "198e53f408597b485d849170771d54d63ab350a6f961d72bc587d64e3c09e9be"
+        },
+        "native_animation": {
+          "path": "engineering/native-assets/ashen/equipment/evidence/ember_forge_core/native-exports/pass-2.animation.json",
+          "sha256": "804b14ccbeba800ebffcb1604b2b630fb1302b923ecb6271db77d86e6d7a57f3"
+        },
+        "runtime_animation": {
+          "path": "resource_pack/animations/aionbound/ashen/equipment/ember_forge_core.animation.json",
+          "sha256": "804b14ccbeba800ebffcb1604b2b630fb1302b923ecb6271db77d86e6d7a57f3"
+        },
+        "native_model_uv": {
+          "path": "engineering/native-assets/ashen/equipment/evidence/ember_forge_core/native-project/textures/ember_forge_core.png",
+          "sha256": "003dd595b177140d4df97daa64c9cf4c4c5121cb8649039c12e05b9e33e527f8"
+        },
+        "runtime_model_uv": {
+          "path": "resource_pack/textures/aionbound/ashen/equipment/models/ember_forge_core.png",
+          "sha256": "003dd595b177140d4df97daa64c9cf4c4c5121cb8649039c12e05b9e33e527f8"
+        },
+        "icon_source": {
+          "path": "engineering/ashen-intake/equipment-runtime-ashen/icons/chroma-sources/ember_forge_core.png",
+          "sha256": "e44ac7a373a85b1ae810eb7da1ae4ee50c36022b0ca1ced071706c99600a7060"
+        },
+        "icon_alpha_master": {
+          "path": "engineering/ashen-intake/equipment-runtime-ashen/icons/alpha-master/ember_forge_core.png",
+          "sha256": "01df226196ba98cb3ab9432b1f5776d7de732cfb2e5d36e55fa66a853feb1b3b"
+        },
+        "shipping_icon": {
+          "path": "resource_pack/textures/aionbound/ashen/equipment/ember_forge_core.png",
+          "sha256": "621b845908af5dcaa51b842cbbebb87eeafd493fdd1c67e1a9aaabe604a8a5f8"
+        },
+        "attachable": {
+          "path": "resource_pack/attachables/ember_forge_core.attachable.json",
+          "sha256": "c7b099e26b03c10648ba2682b0744a1e442426abefee0cc97bf7469a365e2fe8"
+        },
+        "behavior_block": {
+          "path": "behavior_pack/blocks/ember_forge_core.block.json",
+          "sha256": "8dbe805a3b9b135c8d66a99db318b910d65ea0418a68336b781ece849289fe18"
+        }
+      }
+    }
+  ],
+  "components": [
+    {
+      "id": "heat_core",
+      "prompt": "Use case: stylized-concept\nAsset type: Minecraft Bedrock crafting component source for heat_core\nPrimary request: a palm-sized circular basalt heat core with a bright orange center held by four dark stone clamps\nScene/backdrop: perfectly flat solid #00ff00 chroma-key background for local removal\nStyle/medium: original hand-painted low-poly voxel game UI icon, chunky Minecraft-readable forms, crisp pixel-art-like edges, no photorealism\nComposition/framing: one centered object, square canvas, 18 percent padding, strong silhouette readable at 16x16\nColor palette: charcoal black, basalt gray, ember orange, restrained ash beige\nConstraints: background is one uniform #00ff00 with no shadows, gradients, floor, reflections, or texture; do not use #00ff00 in subject; no text; no logo; no watermark; exactly one component",
+      "files": {
+        "icon_source": {
+          "path": "engineering/ashen-intake/equipment-runtime-ashen/icons/chroma-sources/heat_core.png",
+          "sha256": "c4318cb6070e0b2d712d7d52606e89af746bcb3c2537956973725be959a32cbd"
+        },
+        "icon_alpha_master": {
+          "path": "engineering/ashen-intake/equipment-runtime-ashen/icons/alpha-master/heat_core.png",
+          "sha256": "20ee95ecd78ec93ab428104242d56469f982acdbbbc13ebe26e6728f437f3364"
+        },
+        "shipping_icon": {
+          "path": "resource_pack/textures/aionbound/ashen/components/heat_core.png",
+          "sha256": "0cfea293306c3389ad08a304065f89a2ca115f86ef850b7ffd0628714bb0cf0e"
+        },
+        "behavior_item": {
+          "path": "behavior_pack/items/heat_core.item.json",
+          "sha256": "6c7110d61e63a5ce282609d4bd9ccde35f2e49382e85e920b3cadaa51d81ba31"
+        }
+      }
+    },
+    {
+      "id": "heavy_head",
+      "prompt": "Use case: stylized-concept\nAsset type: Minecraft Bedrock crafting component source for heavy_head\nPrimary request: a dense unfinished squared basalt hammer head component with a small ember socket and no handle\nScene/backdrop: perfectly flat solid #00ff00 chroma-key background for local removal\nStyle/medium: original hand-painted low-poly voxel game UI icon, chunky Minecraft-readable forms, crisp pixel-art-like edges, no photorealism\nComposition/framing: one centered object, square canvas, 18 percent padding, strong silhouette readable at 16x16\nColor palette: charcoal black, basalt gray, ember orange, restrained ash beige\nConstraints: background is one uniform #00ff00 with no shadows, gradients, floor, reflections, or texture; do not use #00ff00 in subject; no text; no logo; no watermark; exactly one component",
+      "files": {
+        "icon_source": {
+          "path": "engineering/ashen-intake/equipment-runtime-ashen/icons/chroma-sources/heavy_head.png",
+          "sha256": "30b17cbc2eafab8ae1e2fb0a84f3ad118bafb3e3d75dbd16a9cad42c4aab350a"
+        },
+        "icon_alpha_master": {
+          "path": "engineering/ashen-intake/equipment-runtime-ashen/icons/alpha-master/heavy_head.png",
+          "sha256": "a9cd960cb46ded4824ef206a7a2b15a5d32adfd3710664883181113f6ad44278"
+        },
+        "shipping_icon": {
+          "path": "resource_pack/textures/aionbound/ashen/components/heavy_head.png",
+          "sha256": "f90c3583dd34c1c12e656ebd708fcb4221294335497e6859bf307d2fdbd4c4fd"
+        },
+        "behavior_item": {
+          "path": "behavior_pack/items/heavy_head.item.json",
+          "sha256": "b53a0d704c0c62ae2558ef19eb3c1ee3f3a901167b860a63a261751d20fa86ad"
+        }
+      }
+    },
+    {
+      "id": "chitin_plate",
+      "prompt": "Use case: stylized-concept\nAsset type: Minecraft Bedrock crafting component source for chitin_plate\nPrimary request: one layered furnace-beetle chitin armor plate, charcoal black with ridged ember-orange underside\nScene/backdrop: perfectly flat solid #00ff00 chroma-key background for local removal\nStyle/medium: original hand-painted low-poly voxel game UI icon, chunky Minecraft-readable forms, crisp pixel-art-like edges, no photorealism\nComposition/framing: one centered object, square canvas, 18 percent padding, strong silhouette readable at 16x16\nColor palette: charcoal black, basalt gray, ember orange, restrained ash beige\nConstraints: background is one uniform #00ff00 with no shadows, gradients, floor, reflections, or texture; do not use #00ff00 in subject; no text; no logo; no watermark; exactly one component",
+      "files": {
+        "icon_source": {
+          "path": "engineering/ashen-intake/equipment-runtime-ashen/icons/chroma-sources/chitin_plate.png",
+          "sha256": "4255650091722957fc013f995005cb9cfcff8ac1c096e4e9b56003692119d308"
+        },
+        "icon_alpha_master": {
+          "path": "engineering/ashen-intake/equipment-runtime-ashen/icons/alpha-master/chitin_plate.png",
+          "sha256": "6b81f1cbf2da8e9cd65d094d12bea53dfbcd95d4daa0934b7b149d7891c9def8"
+        },
+        "shipping_icon": {
+          "path": "resource_pack/textures/aionbound/ashen/components/chitin_plate.png",
+          "sha256": "044a76696f19687a1e1c559617acbf5a60ced33cee5017e53d79625b4cdde4a3"
+        },
+        "behavior_item": {
+          "path": "behavior_pack/items/chitin_plate.item.json",
+          "sha256": "2fa8024c323b13fe0736da879ef92cdf44e0cc89dc95b74d78661ddde3d4ecbd"
+        }
+      }
+    },
+    {
+      "id": "ember_heart",
+      "prompt": "Use case: stylized-concept\nAsset type: Minecraft Bedrock crafting component source for ember_heart\nPrimary request: one faceted heart-shaped ember crystal, bright molten orange center inside a dark basalt shell\nScene/backdrop: perfectly flat solid #00ff00 chroma-key background for local removal\nStyle/medium: original hand-painted low-poly voxel game UI icon, chunky Minecraft-readable forms, crisp pixel-art-like edges, no photorealism\nComposition/framing: one centered object, square canvas, 18 percent padding, strong silhouette readable at 16x16\nColor palette: charcoal black, basalt gray, ember orange, restrained ash beige\nConstraints: background is one uniform #00ff00 with no shadows, gradients, floor, reflections, or texture; do not use #00ff00 in subject; no text; no logo; no watermark; exactly one component",
+      "files": {
+        "icon_source": {
+          "path": "engineering/ashen-intake/equipment-runtime-ashen/icons/chroma-sources/ember_heart.png",
+          "sha256": "5561553a7ca137b422b1379f6e248da9b3c32d8929060b1ce274abdfa3cd5edb"
+        },
+        "icon_alpha_master": {
+          "path": "engineering/ashen-intake/equipment-runtime-ashen/icons/alpha-master/ember_heart.png",
+          "sha256": "e48b087659b254c7a73b8942de74fd9b695465a03c289602fa1e6c010f853fae"
+        },
+        "shipping_icon": {
+          "path": "resource_pack/textures/aionbound/ashen/components/ember_heart.png",
+          "sha256": "958f55f5bbfb571c0fc72ba03b05820202dffdd52d3f605a9313e564e64017fa"
+        },
+        "behavior_item": {
+          "path": "behavior_pack/items/ember_heart.item.json",
+          "sha256": "1b41d9264741964a1e78a614a011e07a1c3fdb3f074d9f9a41da3998c4cac8bb"
+        }
+      }
+    }
+  ],
+  "semantic_boundary": {
+    "stable_base_roles_only": true,
+    "numeric_damage_durability_repair_protection_or_mining_speed": "OMITTED_NO_EXACT_APPROVED_VALUES",
+    "recipes_or_acquisition": "NOT_IN_THIS_LANE",
+    "loot_or_reward_delivery": "NOT_IN_THIS_LANE",
+    "sidegrades": "DEFERRED_NOT_CREATED",
+    "bds_build_or_candidate": "NOT_RUN"
+  },
+  "validation": {
+    "targeted_runtime_suite": {
+      "command": "python3 -m unittest engineering/ashen-intake/equipment-runtime-ashen/test_runtime.py",
+      "tests": 9,
+      "result": "PASS"
+    },
+    "native_authoring_regression": {
+      "command": "cd engineering/native-assets/ashen/equipment && python3 -m unittest test_author_equipment.py",
+      "tests": 6,
+      "result": "PASS"
+    },
+    "deterministic_author_rerun": {
+      "method": "compare git diff --binary SHA-256 before and after an author rerun",
+      "equal": true,
+      "result": "PASS"
+    },
+    "git_diff_check": "PASS"
+  }
+}

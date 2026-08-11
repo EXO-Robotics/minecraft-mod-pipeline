@@ -1,0 +1,28 @@
+{
+  "format_version": "1.10.0",
+  "minecraft:attachable": {
+    "description": {
+      "identifier": "aionbound:ashen_helmet",
+      "materials": {
+        "default": "entity_alphatest"
+      },
+      "textures": {
+        "default": "textures/aionbound/ashen/equipment/models/ashen_helmet"
+      },
+      "geometry": {
+        "default": "geometry.aionbound.ashen_helmet"
+      },
+      "render_controllers": [
+        "controller.render.aionbound.default"
+      ],
+      "animations": {
+        "vent_pulse_showcase": "animation.aionbound.ashen_helmet.vent_pulse_showcase"
+      },
+      "scripts": {
+        "animate": [
+          "vent_pulse_showcase"
+        ]
+      }
+    }
+  }
+}

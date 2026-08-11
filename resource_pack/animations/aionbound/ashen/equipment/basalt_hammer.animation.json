@@ -1,0 +1,64 @@
+{
+  "format_version": "1.8.0",
+  "animations": {
+    "animation.aionbound.basalt_hammer.idle_hold": {
+      "loop": true,
+      "animation_length": 3,
+      "bones": {
+        "grip": {
+          "rotation": {
+            "0.0": [
+              0,
+              0,
+              0
+            ],
+            "0.75": [
+              0,
+              0,
+              2
+            ],
+            "1.5": [
+              0,
+              0,
+              0
+            ],
+            "2.25": [
+              0,
+              0,
+              -2
+            ],
+            "3.0": [
+              0,
+              0,
+              0
+            ]
+          }
+        }
+      }
+    },
+    "animation.aionbound.basalt_hammer.smash_pose": {
+      "animation_length": 0.8,
+      "bones": {
+        "chassis": {
+          "rotation": {
+            "0.0": [
+              0,
+              0,
+              0
+            ],
+            "0.4": [
+              32,
+              0,
+              0
+            ],
+            "0.8": [
+              0,
+              0,
+              0
+            ]
+          }
+        }
+      }
+    }
+  }
+}

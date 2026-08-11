@@ -1,0 +1,61 @@
+{
+  "format_version": "1.21.80",
+  "minecraft:block": {
+    "description": {
+      "identifier": "aionbound:ember_forge_core",
+      "menu_category": {
+        "category": "construction"
+      }
+    },
+    "components": {
+      "minecraft:display_name": "Ember Forge Core",
+      "minecraft:collision_box": {
+        "origin": [
+          -6,
+          0,
+          -6
+        ],
+        "size": [
+          12,
+          12,
+          12
+        ]
+      },
+      "minecraft:selection_box": {
+        "origin": [
+          -7,
+          0,
+          -7
+        ],
+        "size": [
+          14,
+          14,
+          14
+        ]
+      },
+      "minecraft:geometry": "geometry.aionbound.ember_forge_core",
+      "minecraft:material_instances": {
+        "*": {
+          "texture": "ember_forge_core",
+          "render_method": "alpha_test"
+        }
+      },
+      "minecraft:placement_filter": {
+        "conditions": [
+          {
+            "allowed_faces": [
+              "up"
+            ],
+            "block_filter": [
+              "minecraft:stone",
+              "minecraft:blackstone",
+              "minecraft:basalt",
+              "aionbound:basalt_brick",
+              "aionbound:smolder_stone"
+            ]
+          }
+        ]
+      }
+    }
+  }
+}

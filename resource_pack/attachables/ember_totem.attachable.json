@@ -1,0 +1,28 @@
+{
+  "format_version": "1.10.0",
+  "minecraft:attachable": {
+    "description": {
+      "identifier": "aionbound:ember_totem",
+      "materials": {
+        "default": "entity_alphatest"
+      },
+      "textures": {
+        "default": "textures/aionbound/ashen/equipment/models/ember_totem"
+      },
+      "geometry": {
+        "default": "geometry.aionbound.ember_totem"
+      },
+      "render_controllers": [
+        "controller.render.aionbound.default"
+      ],
+      "animations": {
+        "vent_pulse": "animation.aionbound.ember_totem.vent_pulse"
+      },
+      "scripts": {
+        "animate": [
+          "vent_pulse"
+        ]
+      }
+    }
+  }
+}
