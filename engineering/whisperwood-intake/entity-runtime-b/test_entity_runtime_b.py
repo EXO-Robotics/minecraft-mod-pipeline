@@ -9,6 +9,18 @@ import unittest
 ROOT = Path(__file__).resolve().parents[3]
 IDS = ("bark_wraith", "briar_elk", "hollow_widow_spider", "rot_wolf", "thorn_stalker")
 EVIDENCE = ROOT / "engineering/native-assets/whisperwood/evidence"
+EXPECTED_LOOT = {
+    "bark_wraith": {
+        "aionbound:whisper_bark", "aionbound:hollow_amber",
+        "aionbound:moon_sap", "aionbound:ancient_acorn",
+    },
+    "briar_elk": {
+        "aionbound:whisper_bark", "aionbound:briar_antler", "aionbound:ancient_acorn",
+    },
+    "hollow_widow_spider": {"aionbound:widow_silk", "aionbound:hollow_venom_sac"},
+    "rot_wolf": {"aionbound:whisper_bark", "aionbound:widow_silk"},
+    "thorn_stalker": {"aionbound:briar_vine", "aionbound:thorn_barb", "aionbound:stalker_claw"},
+}
 
 
 def load(path: Path):
@@ -149,11 +161,19 @@ class EntityRuntimeBTest(unittest.TestCase):
             self.assertTrue(used)
             self.assertTrue(used.issubset(approved), f"{entity_id}: unsupported query set {sorted(used - approved)}")
 
-    def test_loot_is_omitted(self):
+    def test_ratified_natural_loot_is_bound_and_seal_free(self):
         for entity_id in IDS:
             components = load(ROOT / f"behavior_pack/entities/{entity_id}.entity.json")["minecraft:entity"]["components"]
-            self.assertNotIn("minecraft:loot", components)
-            self.assertFalse((ROOT / f"behavior_pack/loot_tables/entities/{entity_id}.json").exists())
+            expected_table = f"loot_tables/entities/{entity_id}.json"
+            self.assertEqual({"table": expected_table}, components["minecraft:loot"])
+            loot_path = ROOT / "behavior_pack" / expected_table
+            self.assertTrue(loot_path.is_file())
+            loot = load(loot_path)
+            self.assertEqual(
+                EXPECTED_LOOT[entity_id],
+                {entry["name"] for pool in loot["pools"] for entry in pool["entries"]},
+            )
+            self.assertNotIn("aionbound:thorn_stalker_skull", json.dumps(loot))
 
     def test_thorn_stalker_is_machine_readable_base_shell_only(self):
         status = load(ROOT / "engineering/whisperwood-intake/entity-runtime-b/WHISPERWOOD_ENTITY_RUNTIME_B_STATUS.json")

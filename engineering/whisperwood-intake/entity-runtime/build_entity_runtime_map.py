@@ -6,6 +6,7 @@ from __future__ import annotations
 import hashlib
 import json
 from pathlib import Path
+import subprocess
 
 
 REPO = Path(__file__).resolve().parents[3]
@@ -13,7 +14,22 @@ REPO = Path(__file__).resolve().parents[3]
 
 def resolve_program(repo: Path) -> Path:
     """Locate the shared program root without assuming worktree nesting depth."""
-    for ancestor in (repo, *repo.parents):
+    search_roots = [repo, *repo.parents]
+    # An isolated worktree may live outside the workspace hierarchy.  Its
+    # common Git directory still belongs to the authoritative repository, so
+    # use that location only as an additional discovery root.
+    try:
+        common_dir = Path(subprocess.run(
+            ["git", "rev-parse", "--path-format=absolute", "--git-common-dir"],
+            cwd=repo,
+            check=True,
+            capture_output=True,
+            text=True,
+        ).stdout.strip())
+        search_roots.extend((common_dir, *common_dir.parents))
+    except (OSError, subprocess.CalledProcessError):
+        pass
+    for ancestor in dict.fromkeys(search_roots):
         candidate = ancestor / "program"
         if (candidate / "crazycraft-pack-production-v1/studio-prep/creative").is_dir():
             return candidate

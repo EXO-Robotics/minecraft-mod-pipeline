@@ -29,6 +29,10 @@ SPECS = {
             "animation.aionforge_ww.lantern_post.idle_sway",
             "animation.aionforge_ww.lantern_post.glow",
         },
+        "loot": {
+            "path": "loot_tables/blocks/lantern_post.json",
+            "items": {"aionbound:glow_spore", "aionbound:lantern_fur"},
+        },
     },
     "moss_cairn": {
         "sound": "stone",
@@ -38,6 +42,10 @@ SPECS = {
         "light": 4,
         "locator": [0, 10, 0],
         "native_clips": set(),
+        "loot": {
+            "path": "loot_tables/blocks/moss_cairn.json",
+            "items": {"minecraft:bone", "aionbound:hollow_amber"},
+        },
     },
 }
 
@@ -150,17 +158,26 @@ class DirectPropRuntimeTest(unittest.TestCase):
                 display = asset.replace("_", " ").title()
                 self.assertEqual(language.count(f"tile.aionbound:{asset}.name={display}"), 1)
 
-    def test_animation_loot_and_assembly_are_withheld(self):
+    def test_animation_and_assembly_are_withheld_and_ratified_loot_is_bound(self):
         shipping_animation_dirs = [
             RP / "animations/aionbound/whisperwood/blocks",
             RP / "animation_controllers/aionbound/whisperwood/blocks",
         ]
         self.assertTrue(all(not path.exists() for path in shipping_animation_dirs))
-        for asset in SPECS:
+        for asset, spec in SPECS.items():
             text = (BP / f"blocks/{asset}.block.json").read_text(encoding="utf-8")
-            self.assertNotIn("loot", text.lower())
             self.assertNotIn("reward", text.lower())
             self.assertNotIn("animation", text.lower())
+            components = load(BP / f"blocks/{asset}.block.json")["minecraft:block"]["components"]
+            self.assertEqual(spec["loot"]["path"], components["minecraft:loot"])
+            loot_path = BP / spec["loot"]["path"]
+            self.assertTrue(loot_path.is_file())
+            loot = load(loot_path)
+            self.assertEqual(
+                spec["loot"]["items"],
+                {entry["name"] for pool in loot["pools"] for entry in pool["entries"]},
+            )
+            self.assertNotIn("aionbound:thorn_stalker_skull", json.dumps(loot))
         runtime_dir = Path(__file__).resolve().parent
         self.assertFalse(any(path.suffix == ".mcstructure" for path in runtime_dir.rglob("*")))
 

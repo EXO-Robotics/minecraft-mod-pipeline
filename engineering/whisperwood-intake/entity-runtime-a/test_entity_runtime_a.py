@@ -12,6 +12,23 @@ from pathlib import Path
 from build_entity_runtime_a import ASSETS, EVIDENCE, ROOT, normalize_ids
 
 
+EXPECTED_LOOT = {
+    "lantern_hare": {"aionbound:glow_spore", "aionbound:lantern_fur"},
+    "mosskip_fawn": {"aionbound:moss_resin", "aionbound:star_grass"},
+    "mosskip_doe": {"aionbound:moss_resin", "aionbound:whisper_bark"},
+    "mosskip_buck": {
+        "aionbound:moss_resin",
+        "aionbound:whisper_bark",
+        "aionbound:mosskip_crown_fragment",
+    },
+    "rootback_boar": {
+        "aionbound:whisper_bark",
+        "aionbound:briar_antler",
+        "aionbound:root_heart",
+    },
+}
+
+
 def load(path: Path) -> dict:
     return json.loads(path.read_text(encoding="utf-8"))
 
@@ -113,7 +130,7 @@ class WhisperwoodEntityRuntimeATest(unittest.TestCase):
                 played_aliases = {name for state in states.values() for name in state.get("animations", [])}
                 self.assertTrue({spec["idle"], spec["move"], "hurt", "death"}.issubset(played_aliases))
 
-    def test_server_ai_meets_static_non_statue_bar_without_loot_invention(self) -> None:
+    def test_server_ai_and_ratified_natural_loot_close(self) -> None:
         for asset, spec in ASSETS.items():
             with self.subTest(asset=asset):
                 components = load(self.paths(asset)["behavior"])["minecraft:entity"]["components"]
@@ -127,7 +144,16 @@ class WhisperwoodEntityRuntimeATest(unittest.TestCase):
                     "minecraft:behavior.random_look_around",
                 }
                 self.assertTrue(required.issubset(components))
-                self.assertNotIn("minecraft:loot", components)
+                expected_table = f"loot_tables/entities/{asset}.json"
+                self.assertEqual({"table": expected_table}, components["minecraft:loot"])
+                loot_path = ROOT / "behavior_pack" / expected_table
+                self.assertTrue(loot_path.is_file())
+                loot = load(loot_path)
+                self.assertEqual(
+                    EXPECTED_LOOT[asset],
+                    {entry["name"] for pool in loot["pools"] for entry in pool["entries"]},
+                )
+                self.assertNotIn("aionbound:thorn_stalker_skull", json.dumps(loot))
                 self.assertLessEqual(components["minecraft:behavior.random_stroll"]["speed_multiplier"], 0.8)
                 self.assertGreaterEqual(components["minecraft:behavior.random_stroll"]["interval"], 100)
                 if spec["class"] == "ambient":

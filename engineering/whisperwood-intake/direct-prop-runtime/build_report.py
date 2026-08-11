@@ -25,6 +25,7 @@ for asset in ASSETS:
     receipt = json.loads(receipt_path.read_text(encoding="utf-8"))
     files = {
         "behavior_block": ROOT / f"behavior_pack/blocks/{asset}.block.json",
+        "loot_table": ROOT / f"behavior_pack/loot_tables/blocks/{asset}.json",
         "shipping_geometry": ROOT / f"resource_pack/models/blocks/{asset}.geo.json",
         "shipping_texture": ROOT / f"resource_pack/textures/aionbound/whisperwood/blocks/{asset}.png",
     }
@@ -72,7 +73,8 @@ report = {
         "png_crc_and_inflate": "PASS",
         "bp_rp_registry_reference_closure": "PASS",
         "unsupported_block_animation_playback_withheld": "PASS",
-        "loot_reward_and_assembly_behavior_withheld": "PASS",
+        "ratified_loot_binding": "PASS",
+        "reward_and_assembly_behavior_withheld": "PASS",
     },
     "proof_scope": "STATIC_DIRECT_PROP_BP_RP_AND_NATIVE_EVIDENCE_CLOSURE_ONLY",
     "not_proven": [

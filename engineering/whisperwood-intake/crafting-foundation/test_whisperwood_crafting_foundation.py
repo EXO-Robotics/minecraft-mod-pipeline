@@ -61,12 +61,24 @@ def signature(document: dict) -> tuple:
 
 
 class WhisperwoodCraftingFoundationTests(unittest.TestCase):
-    def test_exact_scoped_recipe_set_and_report(self) -> None:
-        actual = {path.name for path in RECIPES.glob("whisperwood_*.recipe.json")}
-        self.assertEqual(SCOPED_FILES, actual)
+    def test_exact_foundation_recipe_set_and_report(self) -> None:
+        # The ratified equipment tranche legitimately adds recipes whose names
+        # also begin with ``whisperwood_``.  Keep this lane bounded to its four
+        # foundation artifacts instead of treating a filename prefix as global
+        # ownership of every later Whisperwood recipe.
+        self.assertTrue(all((RECIPES / name).is_file() for name in SCOPED_FILES))
         report = load(REPORT)
         self.assertEqual("STATIC_CLOSURE_PASS", report["status"])
         self.assertEqual(4, len(report["implemented"]))
+        self.assertEqual(
+            {
+                "aionbound:whisperwood_log_to_planks_recipe",
+                "aionbound:whisperwood_stripped_log_to_planks_recipe",
+                "aionbound:whisperwood_wood_to_planks_recipe",
+                "aionbound:whisperwood_wood_from_logs_recipe",
+            },
+            {row["recipe"] for row in report["implemented"]},
+        )
         self.assertTrue(any(row["identity"] == "derived_components" for row in report["withheld"]))
 
     def test_schema_and_exact_quantities(self) -> None:

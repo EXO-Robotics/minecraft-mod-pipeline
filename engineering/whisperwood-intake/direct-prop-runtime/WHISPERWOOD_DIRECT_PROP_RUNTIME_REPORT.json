@@ -5,7 +5,11 @@
       "files": {
         "behavior_block": {
           "path": "behavior_pack/blocks/lantern_post.block.json",
-          "sha256": "8fe5cf9d383d0d1b0fdfaf9160cd68a457706d1e5bf90817bdd3b5d960abe027"
+          "sha256": "29985d34d272c6c93ea2c827ee4519e913abb16af315440158dca06a49b4a036"
+        },
+        "loot_table": {
+          "path": "behavior_pack/loot_tables/blocks/lantern_post.json",
+          "sha256": "f589225452df8e5842ec39f1bb5af3fccd94275ab1b11205db1841c1ddb78851"
         },
         "shipping_geometry": {
           "path": "resource_pack/models/blocks/lantern_post.geo.json",
@@ -35,7 +39,11 @@
       "files": {
         "behavior_block": {
           "path": "behavior_pack/blocks/moss_cairn.block.json",
-          "sha256": "3a9239b846511ab38be02bcd6ffdbe13ee5da4722be46de752a338fa595b77f0"
+          "sha256": "befb893fac31d0b9577d48dea2a0fa82a30cf83a8e8d3123bc2dbd343202a122"
+        },
+        "loot_table": {
+          "path": "behavior_pack/loot_tables/blocks/moss_cairn.json",
+          "sha256": "fceb8210f28c599b06cccdaefb102ccfefffd87ab5f9e18c7c5c2de86246482d"
         },
         "shipping_geometry": {
           "path": "resource_pack/models/blocks/moss_cairn.geo.json",
@@ -67,10 +75,11 @@
     "bp_rp_registry_reference_closure": "PASS",
     "dedicated_closure_tests": "PASS_6_OF_6",
     "identifier_only_geometry_normalization": "PASS",
-    "loot_reward_and_assembly_behavior_withheld": "PASS",
     "native_locator_transform_preservation": "PASS",
     "native_receipt_status_and_blockbench_version": "PASS",
     "png_crc_and_inflate": "PASS",
+    "ratified_loot_binding": "PASS",
+    "reward_and_assembly_behavior_withheld": "PASS",
     "source_texture_hash_equality": "PASS",
     "unsupported_block_animation_playback_withheld": "PASS"
   },
@@ -94,11 +103,11 @@
     },
     "language": {
       "path": "resource_pack/texts/en_US.lang",
-      "sha256": "358df22f8acb99e85408a831b602e6679dd2f9177586d05687536828fc84a64e"
+      "sha256": "a49b7d9a4380a4adfd936d99f6fac908c6333e889d1509c9173525e5bda837a0"
     },
     "terrain_texture": {
       "path": "resource_pack/textures/terrain_texture.json",
-      "sha256": "c7afcebba247fb8372008698b6450eac8a864da88106209fc1c25aa0c5f8d593"
+      "sha256": "7a076b82bda137f0f00ec3d1764abe74f66f09f559b63510ed23e4b7848d94f2"
     }
   },
   "status": "WHISPERWOOD_DIRECT_PROP_RUNTIME_STATIC_PASS"
