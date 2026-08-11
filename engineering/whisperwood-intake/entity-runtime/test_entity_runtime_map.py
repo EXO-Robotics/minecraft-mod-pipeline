@@ -21,6 +21,15 @@ class EntityRuntimeMapTests(unittest.TestCase):
         self.assertEqual(ids, sorted(MODULE.SPEC))
         self.assertEqual(len(ids), 10)
 
+    def test_program_authority_resolution_is_independent_of_worktree_depth(self):
+        with tempfile.TemporaryDirectory() as temp:
+            workspace = Path(temp)
+            authority = workspace / "program/crazycraft-pack-production-v1/studio-prep/creative"
+            authority.mkdir(parents=True)
+            shallow = workspace / "isolated-worktree"
+            shallow.mkdir()
+            self.assertEqual(MODULE.resolve_program(shallow), workspace / "program")
+
     def test_all_declared_role_clips_remain_explicitly_missing(self):
         for entity in self.data["entities"]:
             self.assertTrue(entity["animations"]["brief_declared"])

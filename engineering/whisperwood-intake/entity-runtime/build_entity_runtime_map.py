@@ -9,7 +9,18 @@ from pathlib import Path
 
 
 REPO = Path(__file__).resolve().parents[3]
-PROGRAM = REPO.parents[2]
+
+
+def resolve_program(repo: Path) -> Path:
+    """Locate the shared program root without assuming worktree nesting depth."""
+    for ancestor in (repo, *repo.parents):
+        candidate = ancestor / "program"
+        if (candidate / "crazycraft-pack-production-v1/studio-prep/creative").is_dir():
+            return candidate
+    raise FileNotFoundError("could not locate program/crazycraft-pack-production-v1 Creative authority")
+
+
+PROGRAM = resolve_program(REPO)
 CREATIVE = PROGRAM / "crazycraft-pack-production-v1/studio-prep/creative"
 SOURCE_MAP = REPO / "engineering/whisperwood-intake/WHISPERWOOD_VERTICAL_IMPLEMENTATION_MAP.json"
 OUT_DIR = Path(__file__).resolve().parent
