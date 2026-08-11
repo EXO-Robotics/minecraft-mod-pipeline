@@ -16,6 +16,7 @@ import base64
 import hashlib
 import http.client
 import json
+import math
 import secrets
 import shutil
 import socket
@@ -125,30 +126,124 @@ def extract_group_names(model: dict[str, Any]) -> list[str]:
     return names
 
 
-def choose_locator_bones(
+def _vector3(value: Any, *, diagnostic: str) -> list[float | int]:
+    if not isinstance(value, list) or len(value) != 3:
+        raise NativeToolError(f"{diagnostic}:EXPECTED_VECTOR3")
+    result: list[float | int] = []
+    for component in value:
+        if isinstance(component, bool) or not isinstance(component, (int, float)) or not math.isfinite(component):
+            raise NativeToolError(f"{diagnostic}:NONFINITE_VECTOR3")
+        result.append(component)
+    return result
+
+
+def exported_locator_specs(geometry: dict[str, Any], required: Iterable[str]) -> dict[str, dict[str, Any]]:
+    entries = geometry.get("minecraft:geometry")
+    if not isinstance(entries, list) or not entries:
+        raise NativeToolError("CANONICAL_GEOMETRY_ENTRIES_MISSING")
+    matches: dict[str, list[dict[str, Any]]] = {name: [] for name in required}
+    for geometry_index, entry in enumerate(entries):
+        if not isinstance(entry, dict):
+            raise NativeToolError(f"CANONICAL_GEOMETRY_ENTRY_INVALID:{geometry_index}")
+        bones = entry.get("bones", [])
+        if not isinstance(bones, list):
+            raise NativeToolError(f"CANONICAL_GEOMETRY_BONES_NOT_ARRAY:{geometry_index}")
+        for bone_index, bone in enumerate(bones):
+            if not isinstance(bone, dict) or not isinstance(bone.get("name"), str):
+                raise NativeToolError(f"CANONICAL_GEOMETRY_BONE_INVALID:{geometry_index}:{bone_index}")
+            locators = bone.get("locators", {})
+            if not isinstance(locators, dict):
+                raise NativeToolError(f"CANONICAL_GEOMETRY_LOCATORS_NOT_OBJECT:{bone['name']}")
+            for name in matches:
+                if name not in locators:
+                    continue
+                raw = locators[name]
+                if isinstance(raw, list):
+                    position = _vector3(raw, diagnostic=f"EXPORTED_LOCATOR_TRANSFORM_INVALID:{name}")
+                    rotation: list[float | int] = [0, 0, 0]
+                    representation = "VECTOR"
+                elif isinstance(raw, dict):
+                    position = _vector3(raw.get("offset"), diagnostic=f"EXPORTED_LOCATOR_OFFSET_INVALID:{name}")
+                    rotation = _vector3(raw.get("rotation", [0, 0, 0]), diagnostic=f"EXPORTED_LOCATOR_ROTATION_INVALID:{name}")
+                    representation = "OBJECT"
+                else:
+                    raise NativeToolError(f"EXPORTED_LOCATOR_TRANSFORM_INVALID:{name}:EXPECTED_VECTOR_OR_OBJECT")
+                matches[name].append({
+                    "source_parent": bone["name"],
+                    "position": position,
+                    "rotation": rotation,
+                    "source_representation": representation,
+                })
+    result: dict[str, dict[str, Any]] = {}
+    for name, found in matches.items():
+        if not found:
+            raise NativeToolError(f"EXPORTED_LOCATOR_MISSING:{name}")
+        if len(found) != 1:
+            parents = ",".join(sorted(item["source_parent"] for item in found))
+            raise NativeToolError(f"EXPORTED_LOCATOR_AMBIGUOUS:{name}:{parents}")
+        result[name] = found[0]
+    return result
+
+
+def build_locator_plan(
     required: Iterable[str],
     group_names: Iterable[str],
+    exported: dict[str, dict[str, Any]],
     explicit: dict[str, str] | None = None,
-) -> dict[str, str]:
+) -> dict[str, dict[str, Any]]:
     explicit = explicit or {}
     groups = set(group_names)
-    plan: dict[str, str] = {}
+    plan: dict[str, dict[str, Any]] = {}
     for locator in required:
+        if locator not in exported:
+            raise NativeToolError(f"EXPORTED_LOCATOR_MISSING:{locator}")
+        source = exported[locator]
         if locator in explicit:
             target = explicit[locator]
             if target not in groups:
                 raise NativeToolError(f"EXPLICIT_LOCATOR_BONE_MISSING:{locator}:{target}")
-            plan[locator] = target
-            continue
-        candidates = DEFAULT_LOCATOR_BONES.get(locator, ("root",))
-        target = next((candidate for candidate in candidates if candidate in groups), None)
-        if target is None:
-            raise NativeToolError(f"NO_SENSIBLE_EXISTING_BONE:{locator}:{','.join(candidates)}")
-        plan[locator] = target
+            override = True
+        else:
+            candidates = DEFAULT_LOCATOR_BONES.get(locator, ("root",))
+            target = next((candidate for candidate in candidates if candidate in groups), None)
+            if target is None:
+                raise NativeToolError(f"NO_SENSIBLE_EXISTING_BONE:{locator}:{','.join(candidates)}")
+            if source["source_parent"] != target:
+                raise NativeToolError(
+                    f"EXPORTED_LOCATOR_PARENT_MISMATCH:{locator}:expected={target}:actual={source['source_parent']}"
+                )
+            override = False
+        plan[locator] = {
+            "parent": target,
+            "source_parent": source["source_parent"],
+            "position": list(source["position"]),
+            "rotation": list(source["rotation"]),
+            "source_representation": source["source_representation"],
+            "explicit_parent_override": override,
+        }
     unknown_explicit = sorted(set(explicit) - set(required))
     if unknown_explicit:
         raise NativeToolError(f"LOCATOR_MAP_NOT_REQUIRED:{','.join(unknown_explicit)}")
     return plan
+
+
+def locator_export_diagnostics(
+    plan: dict[str, dict[str, Any]],
+    native_specs: dict[str, dict[str, Any]],
+) -> list[str]:
+    diagnostics: list[str] = []
+    for name, expected in plan.items():
+        actual = native_specs.get(name)
+        if actual is None:
+            diagnostics.append(f"LOCATOR_MISSING_FROM_NATIVE_EXPORT:{name}")
+            continue
+        if actual["source_parent"] != expected["parent"]:
+            diagnostics.append(
+                f"LOCATOR_PARENT_MISMATCH_IN_NATIVE_EXPORT:{name}:expected={expected['parent']}:actual={actual['source_parent']}"
+            )
+        if actual["position"] != expected["position"] or actual["rotation"] != expected["rotation"]:
+            diagnostics.append(f"LOCATOR_TRANSFORM_MISMATCH_IN_NATIVE_EXPORT:{name}")
+    return diagnostics
 
 
 def normalize_texture_records(model: dict[str, Any], texture_name: str) -> int:
@@ -347,7 +442,7 @@ def javascript_literal(value: Any) -> str:
 def native_session_script(
     project_path: Path,
     texture_path: Path,
-    locator_plan: dict[str, str],
+    locator_plan: dict[str, dict[str, Any]],
     pass_one_geometry: Path,
     pass_one_animation: Path,
     pass_two_geometry: Path,
@@ -405,20 +500,30 @@ def native_session_script(
 
   await readProject();
   const groups = new Map((Group.all || []).map(group => [group.name, group]));
-  const existingLocators = new Set((Locator.all || []).map(locator => locator.name));
   const repairs = [];
-  for (const [name, boneName] of Object.entries(locatorPlan)) {{
+  for (const [name, locatorSpec] of Object.entries(locatorPlan)) {{
+    const boneName = locatorSpec.parent;
     const parent = groups.get(boneName);
     if (!parent) fail('NATIVE_TARGET_BONE_MISSING:' + name + ':' + boneName);
     let locator = (Locator.all || []).find(candidate => candidate.name === name);
     const created = !locator;
     if (!locator) {{
-      const position = Array.isArray(parent.origin) ? parent.origin.slice() : [0, 0, 0];
-      locator = new Locator({{name, position, rotation: [0, 0, 0]}}).addTo(parent).init();
+      locator = new Locator({{name, position: locatorSpec.position.slice(), rotation: locatorSpec.rotation.slice()}}).addTo(parent).init();
     }} else if (!locator.parent || locator.parent.name !== boneName) {{
       locator.addTo(parent);
     }}
-    repairs.push({{name: locator.name, parent: boneName, uuid: locator.uuid, created}});
+    locator.position = locatorSpec.position.slice();
+    locator.rotation = locatorSpec.rotation.slice();
+    repairs.push({{
+      name: locator.name,
+      parent: boneName,
+      source_parent: locatorSpec.source_parent,
+      position: locator.position.slice(),
+      rotation: locator.rotation.slice(),
+      explicit_parent_override: locatorSpec.explicit_parent_override,
+      uuid: locator.uuid,
+      created
+    }});
   }}
   if (Texture.all && Texture.all[0]) {{
     Texture.all[0].path = paths.texture;
@@ -479,6 +584,7 @@ def capture_screenshots(client: CdpConnection, output_dir: Path, views: Iterable
 class Inputs:
     bbmodel: Path
     texture: Path
+    geometry: Path
     brief: Path
     output: Path
     cdp_endpoint: str
@@ -487,7 +593,7 @@ class Inputs:
 
 
 def execute(inputs: Inputs) -> tuple[int, dict[str, Any]]:
-    for label, path in (("BBMODEL", inputs.bbmodel), ("TEXTURE", inputs.texture), ("BRIEF", inputs.brief)):
+    for label, path in (("BBMODEL", inputs.bbmodel), ("TEXTURE", inputs.texture), ("GEOMETRY", inputs.geometry), ("BRIEF", inputs.brief)):
         if not path.is_file():
             raise NativeToolError(f"{label}_NOT_FILE:{path}")
     assert_loopback_endpoint(inputs.cdp_endpoint)
@@ -496,6 +602,7 @@ def execute(inputs: Inputs) -> tuple[int, dict[str, Any]]:
         raise NativeToolError(f"TEXTURE_NOT_PNG:{inputs.texture}")
     brief = load_json(inputs.brief)
     model = load_json(inputs.bbmodel)
+    geometry_authority = load_json(inputs.geometry)
     required_clips = required_names(brief.get("animations"), field="animations")
     required_locators = required_names(brief.get("locators"), field="locators")
     actual_clips = animation_names(model)
@@ -508,6 +615,7 @@ def execute(inputs: Inputs) -> tuple[int, dict[str, Any]]:
         "inputs": {
             "bbmodel": {"path": str(inputs.bbmodel), "sha256": sha256_file(inputs.bbmodel)},
             "texture": {"path": str(inputs.texture), "sha256": sha256_file(inputs.texture)},
+            "canonical_geometry": {"path": str(inputs.geometry), "sha256": sha256_file(inputs.geometry)},
             "brief": {"path": str(inputs.brief), "sha256": sha256_file(inputs.brief)},
         },
         "required_role_animations": required_clips,
@@ -515,6 +623,18 @@ def execute(inputs: Inputs) -> tuple[int, dict[str, Any]]:
         "missing_role_animations": missing,
         "required_locators": required_locators,
     }
+    try:
+        exported_specs = exported_locator_specs(geometry_authority, required_locators)
+    except NativeToolError as exc:
+        base_receipt.update({
+            "status": "WITHHELD_CANONICAL_GEOMETRY_LOCATOR_INVALID",
+            "diagnostics": [str(exc)],
+            "canonical_geometry_locator_transforms": {},
+            "native_session_started": False,
+        })
+        write_receipt(inputs.output, base_receipt)
+        return 3, base_receipt
+    base_receipt["canonical_geometry_locator_transforms"] = exported_specs
     if missing:
         base_receipt.update({
             "status": "WITHHELD_MISSING_ROLE_ANIMATIONS",
@@ -530,7 +650,16 @@ def execute(inputs: Inputs) -> tuple[int, dict[str, Any]]:
         if not isinstance(raw_map, dict) or not all(isinstance(key, str) and isinstance(value, str) for key, value in raw_map.items()):
             raise NativeToolError("LOCATOR_MAP_MUST_BE_STRING_OBJECT")
         explicit = raw_map
-    plan = choose_locator_bones(required_locators, extract_group_names(model), explicit)
+    try:
+        plan = build_locator_plan(required_locators, extract_group_names(model), exported_specs, explicit)
+    except NativeToolError as exc:
+        base_receipt.update({
+            "status": "WITHHELD_LOCATOR_PARENT_AUTHORITY_INVALID",
+            "diagnostics": [str(exc)],
+            "native_session_started": False,
+        })
+        write_receipt(inputs.output, base_receipt)
+        return 3, base_receipt
     staged_model, staged_texture = stage_inputs(inputs.bbmodel, inputs.texture, inputs.output)
     staged_json = load_json(staged_model)
     path_changes = normalize_texture_records(staged_json, staged_texture.name)
@@ -575,22 +704,21 @@ def execute(inputs: Inputs) -> tuple[int, dict[str, Any]]:
             "pass_2": {"path": str(second.relative_to(inputs.output)), "sha256": sha256_file(second), "canonical_sha256": second_canonical},
             "canonical_equivalent": equivalent,
         }
-    required_exported = set(required_locators)
     geometry = load_json(geo2)
-    exported_locators: set[str] = set()
-    for geometry_entry in geometry.get("minecraft:geometry", []):
-        for bone in geometry_entry.get("bones", []):
-            if isinstance(bone.get("locators"), dict):
-                exported_locators.update(bone["locators"])
-    missing_exported = sorted(required_exported - exported_locators)
+    try:
+        native_locator_specs = exported_locator_specs(geometry, required_locators)
+        locator_diagnostics = locator_export_diagnostics(plan, native_locator_specs)
+    except NativeToolError as exc:
+        native_locator_specs = {}
+        locator_diagnostics = [str(exc)]
     native_actual_clips = native_result.get("animation_names", []) if isinstance(native_result, dict) else []
     missing_native_clips = missing_role_clips(required_clips, native_actual_clips)
     warning_count = native_result.get("warning_count", 0) if isinstance(native_result, dict) else 0
-    status = "PASS" if equality and not missing_exported and not missing_native_clips and warning_count == 0 else "FAIL"
+    status = "PASS" if equality and not locator_diagnostics and not missing_native_clips and warning_count == 0 else "FAIL"
     diagnostics: list[str] = []
     if not equality:
         diagnostics.append("TWO_PASS_NATIVE_EXPORT_MISMATCH")
-    diagnostics.extend(f"LOCATOR_MISSING_FROM_NATIVE_EXPORT:{name}" for name in missing_exported)
+    diagnostics.extend(locator_diagnostics)
     diagnostics.extend(f"ROLE_CLIP_MISSING_AFTER_NATIVE_REOPEN:{name}" for name in missing_native_clips)
     if warning_count:
         diagnostics.append(f"BLOCKBENCH_WARNING_COUNT:{warning_count}")
@@ -604,7 +732,7 @@ def execute(inputs: Inputs) -> tuple[int, dict[str, Any]]:
         "native_result": native_result,
         "staged_project": {"path": str(staged_model.relative_to(inputs.output)), "sha256": sha256_file(staged_model)},
         "exports": exports,
-        "exported_locator_names": sorted(exported_locators),
+        "native_export_locator_transforms": native_locator_specs,
         "screenshots": screenshots,
         "screenshots_excluded_from_export_determinism": True,
     })
@@ -616,6 +744,7 @@ def parser() -> argparse.ArgumentParser:
     result = argparse.ArgumentParser(description=__doc__)
     result.add_argument("--bbmodel", required=True, type=Path, help="Caller-supplied copied editable source")
     result.add_argument("--texture", required=True, type=Path, help="Caller-supplied copied PNG source")
+    result.add_argument("--geometry", required=True, type=Path, help="Caller-supplied canonical static Bedrock geometry export")
     result.add_argument("--brief", required=True, type=Path, help="Approved per-asset brief")
     result.add_argument("--output-dir", required=True, type=Path, help="New or empty isolated evidence directory")
     result.add_argument("--cdp-endpoint", required=True, help="Isolated loopback Blockbench CDP endpoint")
@@ -641,6 +770,7 @@ def main(argv: list[str] | None = None) -> int:
     inputs = Inputs(
         bbmodel=args.bbmodel.resolve(),
         texture=args.texture.resolve(),
+        geometry=args.geometry.resolve(),
         brief=args.brief.resolve(),
         output=args.output_dir.resolve(),
         cdp_endpoint=args.cdp_endpoint,

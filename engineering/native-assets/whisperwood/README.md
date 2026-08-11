@@ -1,8 +1,9 @@
 # Whisperwood native Blockbench repair gate
 
-This tool operates only on caller-supplied copied `.bbmodel`, PNG, and brief
-inputs. It stages another isolated copy under a new/empty output directory; it
-does not edit packet sources or shipping BP/RP files.
+This tool operates only on caller-supplied copied `.bbmodel`, PNG, canonical
+static `.geo.json`, and brief inputs. It stages another isolated copy under a
+new/empty output directory; it does not edit packet sources or shipping BP/RP
+files.
 
 It is intentionally fail-closed:
 
@@ -10,9 +11,13 @@ It is intentionally fail-closed:
   missing clips produce `WITHHELD_MISSING_ROLE_ANIMATIONS` and exact
   `MISSING_REQUIRED_ROLE_CLIP:<name>` diagnostics before a native session starts;
 - it never creates or renames animations;
+- every required locator must occur exactly once in the canonical static
+  geometry export; its exact coordinate, rotation, and parent bone are bound as
+  the locator transform authority;
 - required locators are real Blockbench `Locator` elements, attached to the
   required existing bone (`effect` to `root`, `gaze` and `projectile` to
-  `head`) or an explicit caller mapping;
+  `head`); the exported parent must agree unless an explicit approved mapping
+  overrides it;
 - texture paths in the staged editable are normalized to its staged `textures/`
   folder;
 - the editor must save/reopen twice, and the Bedrock geometry and animation
@@ -29,6 +34,7 @@ Example (illustrative only; not executed by this change):
 python3 engineering/native-assets/whisperwood/repair_whisperwood_native.py \
   --bbmodel /tmp/copied-asset/model.bbmodel \
   --texture /tmp/copied-asset/model.png \
+  --geometry /tmp/copied-asset/model.geo.json \
   --brief /tmp/copied-asset/brief.json \
   --output-dir /tmp/native-proof/model \
   --cdp-endpoint http://127.0.0.1:9333 \
@@ -40,8 +46,9 @@ existing parent bone. The map is a JSON object such as
 `{"projectile":"muzzle"}`. A missing target bone or a mapping for a locator not
 required by the brief is an error.
 
-The evidence receipt binds input hashes, the staged project hash, Blockbench
-version/format, locator additions, native export hashes, canonical two-pass
+The evidence receipt binds all input hashes (including canonical geometry), the
+staged project hash, exact locator transforms and parent decisions, Blockbench
+version/format, locator repairs, native export hashes, canonical two-pass
 equivalence, exported locator coverage, and optional PNG screenshot hashes.
 Screenshots are deliberately excluded from deterministic export equality.
 
