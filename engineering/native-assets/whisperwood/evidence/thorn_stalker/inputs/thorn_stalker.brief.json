@@ -1,0 +1,49 @@
+{
+  "name": "thorn_stalker",
+  "display_name": "Thorn Stalker",
+  "sprint": "asset_sprint_001_whisperwood_p0",
+  "tier": "CREATURE",
+  "role": "Hero hostile; briar ambusher defining dusk threat",
+  "profile": "quad",
+  "model_identifier": "geometry.aionforge_ww.thorn_stalker",
+  "cube_count": 30,
+  "bone_count": 9,
+  "density_floor": 30,
+  "locators": [
+    "effect",
+    "gaze",
+    "projectile"
+  ],
+  "palette": {
+    "metal": [
+      42,
+      36,
+      32
+    ],
+    "accent": [
+      107,
+      58,
+      58
+    ],
+    "energy": [
+      196,
+      122,
+      40
+    ]
+  },
+  "animations": [
+    "idle_crouch",
+    "stalk_walk",
+    "pounce_pose",
+    "attack_slash",
+    "hurt",
+    "death"
+  ],
+  "minecraft_scale": "0.9 tall \u00b7 ~1.8 long",
+  "texture_resolution": "64\u00d764\u2013128\u00d764",
+  "production_priority": "P0",
+  "related_assets": "briar materials; contrast to mosskip soft moss",
+  "originality": "Clean-room Whisperwood P0 manufacture; no third-party ports",
+  "editable": "assets/editable/thorn_stalker.bbmodel",
+  "claims_boundary": "Visual production only. No BP/JSON/AI/gameplay."
+}

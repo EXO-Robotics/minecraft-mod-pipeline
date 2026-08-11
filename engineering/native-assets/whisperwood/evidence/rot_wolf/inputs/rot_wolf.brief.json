@@ -1,0 +1,48 @@
+{
+  "name": "rot_wolf",
+  "display_name": "Rot Wolf",
+  "sprint": "asset_sprint_001_whisperwood_p1",
+  "tier": "CREATURE",
+  "role": "Hostile pack wolf with moss-rot flanks",
+  "profile": "quad",
+  "model_identifier": "geometry.aionforge_ww.rot_wolf",
+  "cube_count": 29,
+  "bone_count": 9,
+  "density_floor": 28,
+  "locators": [
+    "effect",
+    "gaze"
+  ],
+  "palette": {
+    "metal": [
+      74,
+      52,
+      40
+    ],
+    "accent": [
+      61,
+      107,
+      79
+    ],
+    "energy": [
+      74,
+      58,
+      82
+    ]
+  },
+  "animations": [
+    "idle",
+    "walk",
+    "run",
+    "snarl_attack",
+    "hurt",
+    "death"
+  ],
+  "minecraft_scale": "0.85\u20131.0 tall \u00b7 1.4 long",
+  "texture_resolution": "64\u00d764",
+  "production_priority": "P1",
+  "related_assets": "thorn_stalker pack ecology; not Char Wolf",
+  "originality": "Clean-room Whisperwood P1 manufacture",
+  "editable": "assets/editable/rot_wolf.bbmodel",
+  "claims_boundary": "Visual production only. No BP/JSON/AI/gameplay."
+}

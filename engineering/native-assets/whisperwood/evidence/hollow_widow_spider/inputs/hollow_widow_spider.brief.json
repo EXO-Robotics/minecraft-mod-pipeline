@@ -1,0 +1,48 @@
+{
+  "name": "hollow_widow_spider",
+  "display_name": "Hollow Widow Spider",
+  "sprint": "asset_sprint_001_whisperwood_p1",
+  "tier": "CREATURE",
+  "role": "Hostile bark-plate spider with moon-sap abdomen",
+  "profile": "quad",
+  "model_identifier": "geometry.aionforge_ww.hollow_widow_spider",
+  "cube_count": 29,
+  "bone_count": 11,
+  "density_floor": 28,
+  "locators": [
+    "effect",
+    "gaze"
+  ],
+  "palette": {
+    "metal": [
+      42,
+      36,
+      32
+    ],
+    "accent": [
+      74,
+      52,
+      40
+    ],
+    "energy": [
+      232,
+      217,
+      160
+    ]
+  },
+  "animations": [
+    "idle",
+    "walk_skitter",
+    "rear_threat",
+    "bite",
+    "hurt",
+    "death"
+  ],
+  "minecraft_scale": "0.8\u20131.0 body \u00b7 span ~2.2",
+  "texture_resolution": "128\u00d764",
+  "production_priority": "P1",
+  "related_assets": "widow_silk, hollow_amber",
+  "originality": "Clean-room Whisperwood P1 manufacture",
+  "editable": "assets/editable/hollow_widow_spider.bbmodel",
+  "claims_boundary": "Visual production only. No BP/JSON/AI/gameplay."
+}

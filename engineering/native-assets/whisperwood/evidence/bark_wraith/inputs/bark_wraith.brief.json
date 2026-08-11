@@ -1,0 +1,47 @@
+{
+  "name": "bark_wraith",
+  "display_name": "Bark Wraith",
+  "sprint": "asset_sprint_001_whisperwood_p1",
+  "tier": "CREATURE",
+  "role": "Hostile hollow tree spirit biped",
+  "profile": "biped",
+  "model_identifier": "geometry.aionforge_ww.bark_wraith",
+  "cube_count": 28,
+  "bone_count": 8,
+  "density_floor": 28,
+  "locators": [
+    "effect",
+    "gaze"
+  ],
+  "palette": {
+    "metal": [
+      42,
+      36,
+      32
+    ],
+    "accent": [
+      122,
+      92,
+      69
+    ],
+    "energy": [
+      232,
+      217,
+      160
+    ]
+  },
+  "animations": [
+    "idle_sway",
+    "drift_walk",
+    "reach_attack",
+    "hurt",
+    "death_collapse"
+  ],
+  "minecraft_scale": "2.0\u20132.3 tall",
+  "texture_resolution": "64\u00d764",
+  "production_priority": "P1",
+  "related_assets": "hollow_wood, moon_sap, hollow_cave",
+  "originality": "Clean-room Whisperwood P1 manufacture",
+  "editable": "assets/editable/bark_wraith.bbmodel",
+  "claims_boundary": "Visual production only. No BP/JSON/AI/gameplay."
+}

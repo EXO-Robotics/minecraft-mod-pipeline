@@ -1,0 +1,48 @@
+{
+  "name": "briar_elk",
+  "display_name": "Briar Elk",
+  "sprint": "asset_sprint_001_whisperwood_p1",
+  "tier": "CREATURE",
+  "role": "Tall neutral grazer with briar cage antlers",
+  "profile": "quad",
+  "model_identifier": "geometry.aionforge_ww.briar_elk",
+  "cube_count": 31,
+  "bone_count": 11,
+  "density_floor": 30,
+  "locators": [
+    "effect",
+    "gaze"
+  ],
+  "palette": {
+    "metal": [
+      122,
+      92,
+      69
+    ],
+    "accent": [
+      61,
+      107,
+      79
+    ],
+    "energy": [
+      107,
+      58,
+      58
+    ]
+  },
+  "animations": [
+    "idle",
+    "walk",
+    "trot",
+    "antler_shake",
+    "hurt",
+    "death"
+  ],
+  "minecraft_scale": "1.7\u20132.0 shoulder",
+  "texture_resolution": "128\u00d764",
+  "production_priority": "P1",
+  "related_assets": "briar_antler, briar_vine, thorn_stalker language",
+  "originality": "Clean-room Whisperwood P1 manufacture",
+  "editable": "assets/editable/briar_elk.bbmodel",
+  "claims_boundary": "Visual production only. No BP/JSON/AI/gameplay."
+}
