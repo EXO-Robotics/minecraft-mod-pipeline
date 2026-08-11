@@ -1,0 +1,39 @@
+{
+  "asset_id": "drake_scale",
+  "authority": {
+    "decision": "W1-001-AH_APPROVED_EXACT_REFINED_BYTES",
+    "identity": "aionbound:drake_scale",
+    "scope": "one ratified Ashen inventory identity only"
+  },
+  "generation": {
+    "mode": "built_in_imagegen",
+    "calls": 1,
+    "use_case": "stylized-concept",
+    "prompt": "Minecraft Bedrock inventory icon of one original asymmetric charcoal basalt-like volcanic drake scale with an ember-orange inner seam, handcrafted chunky pixel-art concept, strong 32x32 silhouette, centered on perfectly flat #ff00ff chroma, no shadow, creature, secondary object, text, UI, logo, or watermark."
+  },
+  "source": {
+    "path": "assets/wave1/ashen/economy-icons/source/drake_scale-chroma.png",
+    "sha256": "eab1d0eeba1f45d7b1c2c5c56efc3682f6d216013406f89841df0a8ad97f053d"
+  },
+  "postprocess": {
+    "helper": "/Users/blakegrove/.codex/skills/.system/imagegen/scripts/remove_chroma_key.py",
+    "key_sample": "#fb04f9",
+    "method": "auto-key border, soft matte, transparent threshold 12, opaque threshold 220, despill; ImageMagick Lanczos resize"
+  },
+  "shipping": {
+    "path": "resource_pack/textures/aionbound/ashen/items/drake_scale.png",
+    "sha256": "f75137e4653abc02281078595629e815d21f99ef0f7ac043e57ae530b52019ca",
+    "width": 128,
+    "height": 128,
+    "bit_depth": 8,
+    "color_type": 6,
+    "transparent_corners_required": true,
+    "visual_review": "PASS_DISTINCT_READABLE_SCALE_SILHOUETTE_AT_128"
+  },
+  "proof_boundary": [
+    "generated_icon_and_static_png_only",
+    "not_client_inventory_render_proof",
+    "not_acquisition_loot_recipe_or_gameplay_proof",
+    "not_bds_console_marketplace_or_release_proof"
+  ]
+}
