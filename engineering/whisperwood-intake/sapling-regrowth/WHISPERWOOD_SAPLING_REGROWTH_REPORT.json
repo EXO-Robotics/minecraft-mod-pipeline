@@ -1,0 +1,92 @@
+{
+  "schema": "aionbound.wave1.whisperwood.sapling_regrowth.v1",
+  "status": "STATIC_ASSEMBLY_AND_INTERFACE_READY",
+  "authority": {
+    "tranche": "W1-006-WW-SAPLING",
+    "proposal_preserved": "engineering/authority/support-proposals/W1-CREATIVE-006/whisperwood_sapling_regrowth_proposal.json",
+    "decision_ledger": "engineering/authority/WAVE_1_ENGINEERING_DECISION_LEDGER.json"
+  },
+  "assembly": {
+    "structure_id": "aionbound:ww_sapling_growth_tree",
+    "feature_id": "aionbound:ww_sapling_growth_tree_structure_feature",
+    "variant_count": 1,
+    "size": [
+      7,
+      9,
+      7
+    ],
+    "trunk_height": 6,
+    "palette": [
+      "aionbound:moss_bark",
+      "aionbound:whisperwood_leaves",
+      "aionbound:whisperwood_log",
+      "aionbound:whisperwood_roots"
+    ],
+    "occupied_blocks": 77,
+    "origin_binding": "structure origin equals sapling location minus [3,0,3]; the sapling becomes the trunk base at local [3,0,3]",
+    "sha256": "7f595bfa6a0f4ef2fba841388c2befe7450976c4c0bb4b3ae85929b3ea206b5a"
+  },
+  "sapling_soil_filter": [
+    "minecraft:grass_block",
+    "minecraft:dirt",
+    "minecraft:coarse_dirt",
+    "minecraft:podzol",
+    "minecraft:moss_block"
+  ],
+  "growth_contract": {
+    "natural_loaded_tick_interval": [
+      14400,
+      36000
+    ],
+    "loaded_minutes_at_20_tps": [
+      12,
+      30
+    ],
+    "retry": "loop after every failed obstruction or soil check; leave sapling unchanged",
+    "bone_meal": "one interaction may enqueue at most one early attempt; apply a 1-in-3 success gate before clearance; consume at most one bone meal in Survival; never guarantee growth",
+    "preconditions": {
+      "center": "aionbound:whisperwood_sapling",
+      "soil_below_center": [
+        "minecraft:grass_block",
+        "minecraft:dirt",
+        "minecraft:coarse_dirt",
+        "minecraft:podzol",
+        "minecraft:moss_block"
+      ],
+      "all_other_occupied_structure_coordinates": [
+        "minecraft:air"
+      ],
+      "all_referenced_chunks": "loaded"
+    },
+    "placement": "after all preconditions pass atomically, place aionbound:ww_sapling_growth_tree at sapling-[3,0,3] with no rotation or mirroring",
+    "persistence": "world block state only; no player, entity, scoreboard, or dynamic-property stamp",
+    "required_block_wiring": {
+      "minecraft:tick": {
+        "interval_range": [
+          14400,
+          36000
+        ],
+        "looping": true
+      },
+      "custom_component": "aionbound:whisperwood_sapling_regrowth",
+      "handlers": [
+        "onTick",
+        "onPlayerInteract"
+      ]
+    }
+  },
+  "ecology_density_audit": {
+    "scope": "12 ww_ecology rules plus two ww_prop rules; landmark structure rules excluded as a separately budgeted surface",
+    "attempts_per_chunk_before_filters": 1.2408854166666665,
+    "ceiling": 1.25,
+    "regrowth_rule_delta": 0,
+    "cap_change": "NONE"
+  },
+  "blockbench": "NOT_APPLICABLE: assembly uses only ordinary existing block states in a native .mcstructure; no new geometry, UV, rig, animation, or texture",
+  "proof_boundary": "STATIC_AUTHORED_BYTES_SOIL_FILTER_AND_SCRIPT_INTERFACE_ONLY; REGROWTH_RUNTIME_NOT_YET_WIRED; NOT BDS, CLIENT, LOADED-TIME, BONE-MEAL, RESTART, OR CANDIDATE PROOF",
+  "official_stable_basis": [
+    "https://learn.microsoft.com/en-us/minecraft/creator/reference/content/blockreference/examples/blockcomponents/minecraftblock_tick?view=minecraft-bedrock-stable",
+    "https://learn.microsoft.com/en-us/minecraft/creator/scriptapi/minecraft/server/blockcomponentregistry?view=minecraft-bedrock-stable",
+    "https://learn.microsoft.com/en-us/minecraft/creator/scriptapi/minecraft/server/structure?view=minecraft-bedrock-stable"
+  ]
+}
