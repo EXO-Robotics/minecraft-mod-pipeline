@@ -14,7 +14,8 @@ python3 -m unittest discover -s tests -p 'test_*.py'
 
 Result: 13 tests passed, including five importer-specific tests for deterministic
 output, namespace/path rewriting, missing locator and role-clip rejection,
-ambiguous dependency rejection, simple texture-only staging, and preservation
+ambiguous dependency rejection, explicitly bound texture-only staging, UV-atlas
+rejection, and preservation
 of a nonempty caller directory.
 
 ## Canonical Packet 001 smoke
@@ -25,15 +26,15 @@ directories. `diff -qr` reported byte-for-byte equality.
 
 The second manifest SHA-256 was:
 
-`52593615e8dcc92cbde527c248eb1d9b10c11f98d02a6aed1598f8829a21678f`
+`c571d979d9d8f70b7ee41c63181147d99936523b5f2163a35f616d4e1e58f874`
 
 Observed result:
 
 - 50 canonical assets inventoried.
-- 3 promotable simple texture items: `briar_antler`, `lantern_fur`, and
-  `widow_silk`.
-- 47 assets withheld.
-- 40 custom-geometry assets lacked required native locator elements in their
+- 0 promotable assets. The three initially suspected simple items are nine-cube
+  modeled resources whose PNGs are UV atlases, not brief-bound inventory icons.
+- 50 assets withheld.
+- 50 custom-geometry assets lacked required native locator elements in their
   editable `.bbmodel` projects.
 - 18 assets lacked one or more brief-required role clips.
 - 38 assets contained at least one non-exact `related_assets` token; these

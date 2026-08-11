@@ -203,7 +203,13 @@ def _is_plain_full_cube(brief: dict[str, Any], geometry: dict[str, Any]) -> bool
 
 
 def _simple_disposition(brief: dict[str, Any], geometry: dict[str, Any]) -> str | None:
-    if brief.get("profile") == "item" and brief.get("animations") in (None, []):
+    # A model's UV atlas is not an inventory icon.  Texture-only promotion is
+    # legal only when the brief explicitly binds that PNG as the shipping icon.
+    if (
+        brief.get("profile") == "item"
+        and brief.get("animations") in (None, [])
+        and brief.get("shipping_representation") == "flat_inventory_icon"
+    ):
         return "PROMOTABLE_SIMPLE_TEXTURE_ITEM_BLOCKBENCH_NOT_APPLICABLE"
     if _is_plain_full_cube(brief, geometry):
         return "PROMOTABLE_SIMPLE_FULL_CUBE_BLOCKBENCH_NOT_APPLICABLE"

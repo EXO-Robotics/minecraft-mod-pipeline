@@ -32,6 +32,7 @@ def make_asset(
     exported_locators: list[str] | None = None,
     exported_clips: list[str] | None = None,
     full_cube: bool = False,
+    flat_icon: bool = False,
 ) -> None:
     locators = locators or []
     clips = clips or []
@@ -49,6 +50,8 @@ def make_asset(
         "related_assets": related_assets,
         "editable": f"assets/editable/{asset_id}.bbmodel",
     }
+    if flat_icon:
+        brief["shipping_representation"] = "flat_inventory_icon"
     bbmodel = {
         "model_identifier": source_geometry,
         "elements": [
@@ -130,7 +133,7 @@ class WhisperwoodImporterTests(unittest.TestCase):
     def test_withholds_ambiguous_related_asset_even_for_simple_item(self) -> None:
         with tempfile.TemporaryDirectory() as tmp:
             root = Path(tmp) / "packet"
-            make_asset(root, "safe_item", profile="item", related_assets="forest flavor text")
+            make_asset(root, "safe_item", profile="item", related_assets="forest flavor text", flat_icon=True)
             stage = Path(tmp) / "stage"
             manifest = IMPORTER.import_packet(root, stage)
             record = manifest["assets"][0]
@@ -141,7 +144,7 @@ class WhisperwoodImporterTests(unittest.TestCase):
     def test_stages_simple_item_without_custom_geometry_claim(self) -> None:
         with tempfile.TemporaryDirectory() as tmp:
             root = Path(tmp) / "packet"
-            make_asset(root, "drop_item", profile="item")
+            make_asset(root, "drop_item", profile="item", flat_icon=True)
             stage = Path(tmp) / "stage"
             manifest = IMPORTER.import_packet(root, stage)
             record = manifest["assets"][0]
@@ -150,10 +153,21 @@ class WhisperwoodImporterTests(unittest.TestCase):
             self.assertTrue((stage / "promotable/resources/drop_item/textures/drop_item.png").is_file())
             self.assertFalse((stage / "promotable/resources/drop_item/geometry").exists())
 
+    def test_item_uv_atlas_is_not_assumed_to_be_an_inventory_icon(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp) / "packet"
+            make_asset(root, "modeled_drop", profile="item", locators=["effect"])
+            stage = Path(tmp) / "stage"
+            manifest = IMPORTER.import_packet(root, stage)
+            record = manifest["assets"][0]
+            self.assertEqual(record["disposition"], "NATIVE_REPAIR_REQUIRED_CUSTOM_GEOMETRY")
+            self.assertIn("MISSING_NATIVE_BBMODEL_LOCATORS:effect", record["blockers"])
+            self.assertFalse((stage / "promotable").exists())
+
     def test_rejects_nonempty_destination(self) -> None:
         with tempfile.TemporaryDirectory() as tmp:
             root = Path(tmp) / "packet"
-            make_asset(root, "drop_item", profile="item")
+            make_asset(root, "drop_item", profile="item", flat_icon=True)
             stage = Path(tmp) / "stage"
             stage.mkdir()
             (stage / "owned.txt").write_text("user data", encoding="utf-8")

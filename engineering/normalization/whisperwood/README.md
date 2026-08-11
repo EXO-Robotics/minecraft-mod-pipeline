@@ -12,9 +12,10 @@ withheld; exit `1` means the canonical input or destination was invalid.
 
 Two promotion classes are deliberately separate:
 
-- Simple flat item textures and provable one-cube blocks are staged without
-  their generated custom model. Blockbench is `NOT_APPLICABLE` for that staged
-  representation.
+- Explicitly brief-bound flat inventory icons and provable one-cube blocks are
+  staged without their generated custom model. A model UV atlas is never
+  inferred to be an inventory icon. Blockbench is `NOT_APPLICABLE` only for an
+  explicitly bound flat representation.
 - Custom geometry is staged only when the editable project contains real
   native locator elements, the exported geometry contains the same required
   locators, every brief-required role clip exists, and every related asset is
