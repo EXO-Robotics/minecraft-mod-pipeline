@@ -41,7 +41,7 @@ def fixture(root: Path) -> None:
             "recipes": 0, "spawn_rules": 0, "structures": 0,
         },
         "required_successor_ids": {
-            "blocks": ["aionbound:new_block"], "items": ["aionbound:new_item"], "recipes": [],
+            "blocks": ["aionbound:new_block"], "items": ["aionbound:new_item"], "recipes": [], "structures": [],
         },
         "minimum_engine_version": [1, 21, 80],
         "allowed_script_modules": ["@minecraft/server"],
@@ -142,6 +142,16 @@ class Wave1ValidatorTests(unittest.TestCase):
         write_json(authority_path, authority)
         self.assertIn(
             "missing_required_successor_id:recipes:aionbound:foundation_recipe",
+            self.findings(),
+        )
+
+    def test_required_successor_structure_is_named_not_counted(self):
+        authority_path = self.root / VALIDATOR.AUTHORITY_REL
+        authority = json.loads(authority_path.read_text())
+        authority["required_successor_ids"]["structures"] = ["aionbound:hunter_camp"]
+        write_json(authority_path, authority)
+        self.assertIn(
+            "missing_required_successor_id:structures:aionbound:hunter_camp",
             self.findings(),
         )
 

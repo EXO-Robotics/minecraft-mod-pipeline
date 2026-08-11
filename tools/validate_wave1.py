@@ -302,6 +302,13 @@ def validate(root: Path) -> dict[str, Any]:
             errors.append(f"feature_rule_missing_feature:{identifier}:{feature}")
 
     structures = sorted((bp / "structures").rglob("*.mcstructure"))
+    structure_ids: set[str] = set()
+    for path in structures:
+        relative = path.relative_to(bp / "structures")
+        if len(relative.parts) >= 2:
+            namespace = relative.parts[0]
+            name = Path(*relative.parts[1:]).with_suffix("").as_posix()
+            structure_ids.add(f"{namespace}:{name}")
     structure_ids = {
         f"{path.parent.name}:{path.stem}" if path.parent != bp / "structures" else path.stem
         for path in structures
@@ -526,7 +533,7 @@ def validate(root: Path) -> dict[str, Any]:
             errors.append(f"inventory_below_minimum:{category}:{actual}<{minimum}")
     id_sets = {
         "blocks": set(blocks), "entities": set(entities), "items": set(items),
-        "recipes": set(recipes),
+        "recipes": set(recipes), "structures": structure_ids,
     }
     for category, required in authority["required_successor_ids"].items():
         missing = sorted(set(required) - id_sets.get(category, set()))
