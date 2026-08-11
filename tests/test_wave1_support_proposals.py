@@ -11,6 +11,7 @@ TICKET_FILES = {
     "W1-CREATIVE-003": PROPOSALS / "W1-CREATIVE-003" / "thorn_court_behavior_proposal.json",
     "W1-CREATIVE-004": PROPOSALS / "W1-CREATIVE-004" / "loot_envelope_proposal.json",
     "W1-CREATIVE-005": PROPOSALS / "W1-CREATIVE-005" / "sidegrade_identity_proposal.json",
+    "W1-CREATIVE-006": PROPOSALS / "W1-CREATIVE-006" / "whisperwood_sapling_regrowth_proposal.json",
 }
 
 
@@ -140,6 +141,21 @@ class SupportProposalTests(unittest.TestCase):
         self.assertFalse(resolution["briar_elk_trophy_replaces_thorn_stalker_skull"])
         self.assertFalse(resolution["mosskip_trophy_replaces_thorn_stalker_skull"])
         self.assertEqual(resolution["chapter_1_critical_seal"], "aionbound:thorn_stalker_skull")
+
+    def test_sapling_regrowth_uses_only_existing_whisperwood_blocks(self):
+        proposal = load(TICKET_FILES["W1-CREATIVE-006"])["proposal"]
+        self.assertEqual(proposal["new_inventory_identities"], [])
+        self.assertEqual(
+            set(proposal["assembly_palette"]),
+            {
+                "aionbound:whisperwood_log",
+                "aionbound:whisperwood_leaves",
+                "aionbound:whisperwood_roots",
+                "aionbound:moss_bark",
+            },
+        )
+        self.assertLessEqual(proposal["growth_envelope"]["maximum_loaded_minutes"], 30)
+        self.assertEqual(proposal["blocked_growth_behavior"], "retain_sapling_and_retry_later")
 
 
 if __name__ == "__main__":

@@ -12,5 +12,6 @@ Proposal set:
 - `W1-CREATIVE-003`: Thorn Court numeric and ownership envelope
 - `W1-CREATIVE-004`: loot ranges, chest rolls, guards, alternate-seal resolution
 - `W1-CREATIVE-005`: sidegrade identity policy
+- `W1-CREATIVE-006`: Whisperwood sapling regrowth outcome and timing envelope
 
 Approval is atomic per ticket unless an approver explicitly records accepted and rejected decision IDs.

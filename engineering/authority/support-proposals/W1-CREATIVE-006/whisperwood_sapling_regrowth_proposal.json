@@ -1,0 +1,64 @@
+{
+  "ticket_id": "W1-CREATIVE-006",
+  "status": "PROPOSED_NOT_RATIFIED",
+  "schema_version": 1,
+  "authority_effect": "NONE_UNTIL_RATIFIED",
+  "source_authorities": [
+    "creative/WAVE_1_LIVING_WORLD_IMPLEMENTATION_CONTRACT.md#whisperwood-blocks",
+    "creative/05_structures/STRUCTURE_DESIGN.md",
+    "engineering/whisperwood-intake/WHISPERWOOD_VERTICAL_IMPLEMENTATION_MAP.json#whisperwood_sapling",
+    "engineering/whisperwood-intake/readiness-v2/WHISPERWOOD_READINESS_V2.json"
+  ],
+  "proposal": {
+    "tranche_id": "W1-006-WW-SAPLING",
+    "sapling_id": "aionbound:whisperwood_sapling",
+    "internal_structure_id": "aionbound:ww_sapling_growth_tree",
+    "new_inventory_identities": [],
+    "assembly_palette": [
+      "aionbound:whisperwood_log",
+      "aionbound:whisperwood_leaves",
+      "aionbound:whisperwood_roots",
+      "aionbound:moss_bark"
+    ],
+    "assembly_envelope": {
+      "variant_count": 1,
+      "maximum_footprint_blocks": [
+        7,
+        10,
+        7
+      ],
+      "trunk_height_blocks": [
+        5,
+        7
+      ],
+      "identity": "upright_asymmetric_whisperwood_tree_with_exposed_roots_and_moss_accents",
+      "forbidden": [
+        "new_block_or_item_identity",
+        "new_resource_drop",
+        "landmark_scale_silhouette",
+        "entity_or_loot_container",
+        "cross_ecosystem_material"
+      ]
+    },
+    "growth_envelope": {
+      "minimum_loaded_minutes": 12,
+      "maximum_loaded_minutes": 30,
+      "bone_meal_behavior": "accelerate_one_bounded_growth_attempt_without_guaranteeing_success",
+      "requires_sufficient_clearance": true,
+      "requires_supported_soil": true
+    },
+    "blocked_growth_behavior": "retain_sapling_and_retry_later",
+    "persistence": "world_block_state_only_no_player_progression_stamp",
+    "implementation_boundary": "Engineering may choose a stable Bedrock implementation mechanism but may not alter the approved palette, silhouette envelope, timing envelope, or drops."
+  },
+  "approval_required": [
+    {
+      "decision_id": "W1-006-A",
+      "question": "Approve one conservative standing Whisperwood tree assembly using only the four existing regional blocks and no new inventory identity?"
+    },
+    {
+      "decision_id": "W1-006-B",
+      "question": "Approve natural growth after 12 to 30 loaded minutes, bounded bone-meal acceleration, and fail-safe retry when obstructed?"
+    }
+  ]
+}
