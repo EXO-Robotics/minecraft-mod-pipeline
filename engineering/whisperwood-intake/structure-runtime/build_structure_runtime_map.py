@@ -1,8 +1,9 @@
 #!/usr/bin/env python3
 """Build the deterministic Packet 001 structure/prop engineering map.
 
-This writes planning authority only. It deliberately does not create pack files,
-invent structure layouts, or choose unresolved loot probabilities.
+This preserves the original planning disposition and reconciles it against the
+current source tree. It deliberately does not create pack files, invent
+structure layouts, or claim runtime qualification.
 """
 
 from __future__ import annotations
@@ -103,7 +104,7 @@ G7_PATTERNS = {
 ASSEMBLY_IDS = {asset_id for asset_id, kind in CLASS.items() if kind != "CUSTOM_GEOMETRY_BLOCK_PROP"}
 
 
-def targets(asset_id: str, kind: str) -> dict:
+def historical_targets(asset_id: str, kind: str) -> dict:
     rp = {
         "geometry": f"resource_pack/models/aionbound/whisperwood/{asset_id}.geo.json",
         "texture": f"resource_pack/textures/aionbound/whisperwood/structures/{asset_id}.png",
@@ -136,7 +137,7 @@ def targets(asset_id: str, kind: str) -> dict:
     }
 
 
-def disposition(asset_id: str, kind: str, brief: dict) -> dict:
+def historical_disposition(asset_id: str, kind: str, brief: dict) -> dict:
     blockers = ["NATIVE_ASSET_DISPOSITION"]
     if kind != "CUSTOM_GEOMETRY_BLOCK_PROP":
         blockers.append("AUTHORED_STRUCTURE_BYTES_ABSENT")
@@ -148,18 +149,53 @@ def disposition(asset_id: str, kind: str, brief: dict) -> dict:
     if asset_id in {"forest_waystone", "hollow_cave_entrance", "ancient_totem", "fallen_giant_tree"}:
         blockers.append("RUNTIME_INTERACTION_OR_ENCOUNTER_SEMANTICS_NOT_YET_IMPLEMENTED")
     return {
-        "status": "WITHHELD_FROM_PACK_UNTIL_DEPENDENCIES_CLOSE",
+        "status_at_base_commit": "WITHHELD_FROM_PACK_UNTIL_DEPENDENCIES_CLOSE",
         "blockers": blockers,
         "creative_support_required_now": False,
         "note": "Identity and qualitative role are approved; Engineering must author the implementation without treating the prop model as an encounter assembly.",
     }
 
 
+def evidence(path: Path) -> dict:
+    return {"path": rel(path), "sha256": sha256(path)}
+
+
+def current_source_files(asset_id: str, kind: str) -> list[Path]:
+    files = [REPO / "behavior_pack/scripts/catalog.js"]
+    if kind == "CUSTOM_GEOMETRY_BLOCK_PROP":
+        files += [
+            REPO / f"behavior_pack/blocks/{asset_id}.block.json",
+            REPO / f"behavior_pack/features/ww_prop_{asset_id}.feature.json",
+            REPO / f"behavior_pack/feature_rules/ww_prop_{asset_id}.feature_rule.json",
+            REPO / f"behavior_pack/loot_tables/blocks/{asset_id}.json",
+            REPO / f"resource_pack/models/blocks/{asset_id}.geo.json",
+            REPO / f"resource_pack/textures/aionbound/whisperwood/blocks/{asset_id}.png",
+            REPO / f"engineering/native-assets/whisperwood/evidence/{asset_id}/direct-prop-native-receipt.json",
+        ]
+    else:
+        files += [
+            REPO / f"behavior_pack/structures/aionbound/{asset_id}.mcstructure",
+            REPO / f"behavior_pack/features/{asset_id}.structure_feature.json",
+            REPO / f"behavior_pack/feature_rules/{asset_id}.structure_feature_rule.json",
+        ]
+        if asset_id == "forest_waystone":
+            files += [
+                REPO / "behavior_pack/scripts/structures.js",
+                REPO / "behavior_pack/scripts/state.js",
+                REPO / "behavior_pack/scripts/codex.js",
+            ]
+        else:
+            files.append(REPO / f"behavior_pack/loot_tables/chests/whisperwood/{asset_id}.json")
+    return sorted(set(files))
+
+
 def build() -> dict:
     contract = json.loads(CONTRACT_JSON.read_text())
     ledger = json.loads(LEDGER.read_text())
     rows = contract["packets"]["001_whisperwood"]["structures"]
-    loot_ticket = next(ticket for ticket in ledger["support_tickets"] if ticket["id"] == "W1-CREATIVE-004")
+    tickets = {ticket["id"]: ticket for ticket in ledger["support_tickets"]}
+    identity_ticket = tickets["W1-CREATIVE-001"]
+    loot_ticket = tickets["W1-CREATIVE-004"]
     assets = []
     for row in rows:
         asset_id = row["id"]
@@ -192,23 +228,35 @@ def build() -> dict:
                 },
                 "claims_boundary": brief["claims_boundary"],
             },
-            "targets": targets(asset_id, kind),
-            "dependencies": {
+            "historical_targets": historical_targets(asset_id, kind),
+            "historical_dependencies": {
                 "qualitative_loot_authority": rel(LOOT_MD),
                 "final_loot_values": loot_ticket["id"],
                 "unresolved_identity_ticket": UNRESOLVED_IDENTITY_TICKET.get(asset_id),
                 "g7_reusable_patterns": G7_PATTERNS[asset_id],
             },
-            "missing_authored_structure_bytes": (
+            "historical_missing_authored_structure_target": (
                 f"behavior_pack/structures/aionbound/{asset_id}.mcstructure"
                 if asset_id in ASSEMBLY_IDS else None
             ),
-            "disposition": disposition(asset_id, kind, brief),
+            "historical_planning_disposition": historical_disposition(asset_id, kind, brief),
+            "current_integration": {
+                "status": "INTEGRATED_SOURCE_BYTES_PRESENT_STATIC_ONLY",
+                "source_files": [evidence(path) for path in current_source_files(asset_id, kind)],
+                "ratified_dependencies": {
+                    "W1-CREATIVE-001": identity_ticket["status"] if asset_id in UNRESOLVED_IDENTITY_TICKET else "NOT_REQUIRED_FOR_THIS_ID",
+                    "W1-CREATIVE-004": loot_ticket["status"],
+                },
+                "remaining_proof_limits": [
+                    "NO_BDS_OR_CLIENT_PROOF_FROM_THIS_MAP",
+                    "CUSTOM_PROP_ANIMATION_PLAYBACK_NOT_PROVEN" if brief.get("animations") else "NO_CUSTOM_PROP_ANIMATION_CLAIM",
+                ],
+            },
         })
 
     return {
         "document_id": "AIONBOUND_WAVE1_WHISPERWOOD_STRUCTURE_RUNTIME_MAP_V1",
-        "document_type": "IMPLEMENTATION_MAP_NOT_PACK_CONTENT",
+        "document_type": "HISTORICAL_IMPLEMENTATION_MAP_WITH_CURRENT_STATIC_RECONCILIATION",
         "base_commit": "c4d77b6",
         "namespace": "aionbound",
         "scope": "Packet 001 ten structure and prop IDs",
@@ -216,6 +264,8 @@ def build() -> dict:
             "No pack files, structure bytes, layouts, loot probabilities, boss values, Blockbench evidence, BDS evidence, or candidate claims are produced by this map.",
             "Packet geometry is an approved visual input, not proof of an authored Minecraft encounter assembly.",
             "G7 structure code and templates are reusable engineering patterns, not approved Whisperwood layouts or reward identities.",
+            "Current reconciliation proves only committed source-file presence and hash closure; it does not prove Bedrock load, generation, interaction, loot delivery, client presentation, or Checkpoint 1.",
+            "Historical planning blockers remain recorded as base-commit evidence and are not current withholding claims.",
         ],
         "authority": [
             {"path": rel(path), "sha256": sha256(path)}
@@ -224,9 +274,12 @@ def build() -> dict:
         "summary": {
             "asset_count": len(assets),
             "class_counts": {kind: sum(asset["implementation_class"] == kind for asset in assets) for kind in sorted(set(CLASS.values()))},
-            "missing_authored_structure_byte_count": len(ASSEMBLY_IDS),
+            "historical_missing_authored_structure_byte_count": len(ASSEMBLY_IDS),
+            "current_integrated_structure_byte_count": len(ASSEMBLY_IDS),
+            "current_integrated_asset_count": len(assets),
             "direct_prop_count": len(assets) - len(ASSEMBLY_IDS),
-            "open_final_loot_ticket": loot_ticket["id"],
+            "ratified_identity_ticket": {"id": identity_ticket["id"], "status": identity_ticket["status"]},
+            "ratified_loot_ticket": {"id": loot_ticket["id"], "status": loot_ticket["status"]},
         },
         "reusable_g7_framework": {
             "keep": [
@@ -250,7 +303,7 @@ def render_md(document: dict) -> str:
     lines = [
         "# Whisperwood Structure Runtime Implementation Map",
         "",
-        f"Base: `{document['base_commit']}` · Scope: {document['scope']} · Status: planning authority only.",
+        f"Base: `{document['base_commit']}` · Scope: {document['scope']} · Status: historical planning authority with current static reconciliation.",
         "",
         "## Boundary",
         "",
@@ -263,21 +316,24 @@ def render_md(document: dict) -> str:
         f"- 2 direct custom-geometry prop placements: `lantern_post`, `moss_cairn`.",
         f"- 3 authored assembly POIs: `hunter_camp`, `broken_wagon`, `root_bridge`.",
         f"- 5 landmark encounters: `owl_shrine`, `forest_waystone`, `hollow_cave_entrance`, `ancient_totem`, `fallen_giant_tree`.",
-        f"- 8 actual `.mcstructure` files are missing. The two direct props intentionally do not require an encounter assembly.",
-        f"- All ten remain withheld from pack promotion until their listed dependencies close; final loot values remain blocked by `{document['summary']['open_final_loot_ticket']}`.",
+        "- At the historical base, 8 `.mcstructure` targets were absent; the two direct props intentionally did not require encounter assemblies.",
+        f"- Current source reconciliation: {document['summary']['current_integrated_asset_count']} of 10 IDs have hash-bound source footprints, including {document['summary']['current_integrated_structure_byte_count']} of 8 structure assemblies.",
+        f"- Whisperwood identity authority is `{document['summary']['ratified_identity_ticket']['status']}`; chapter-one loot authority is `{document['summary']['ratified_loot_ticket']['status']}`.",
+        "- These current facts supersede withholding language as an implementation status, but do not establish BDS or client proof.",
         "",
         "## Per-ID map",
         "",
-        "| ID | Class | Generation / encounter target | Loot or activation target | Missing authored bytes | Current blockers |",
-        "|---|---|---|---|---|---|",
+        "| ID | Class | Historical generation / encounter target | Historical loot or activation target | Historical missing target | Current source status | Historical blockers |",
+        "|---|---|---|---|---|---|---|",
     ]
     for asset in document["assets"]:
-        bp = asset["targets"]["behavior_pack"]
+        bp = asset["historical_targets"]["behavior_pack"]
         reward = bp.get("loot", bp.get("activation_reward"))
-        missing = asset["missing_authored_structure_bytes"] or "N/A — direct prop"
+        missing = asset["historical_missing_authored_structure_target"] or "N/A — direct prop"
         lines.append(
             f"| `{asset['id']}` | {asset['implementation_class']} | `{bp['feature']}` + `{bp['feature_rule']}` | `{reward}` | `{missing}` | "
-            + ", ".join(f"`{item}`" for item in asset["disposition"]["blockers"])
+            + f"`{asset['current_integration']['status']}` | "
+            + ", ".join(f"`{item}`" for item in asset["historical_planning_disposition"]["blockers"])
             + " |"
         )
     lines += [
@@ -289,7 +345,7 @@ def render_md(document: dict) -> str:
     lines += [f"- REFINE: {item}" for item in document["reusable_g7_framework"]["refine"]]
     lines += [
         "",
-        "## Implementation sequence",
+        "## Historical implementation sequence (retained)",
         "",
         "1. Promote each packet prop only after its native/static geometry disposition, texture path, animation declarations, and locator bindings close.",
         "2. Implement `lantern_post` and `moss_cairn` as individually placeable custom-geometry blocks with direct feature rules; do not invent surrounding layouts.",
