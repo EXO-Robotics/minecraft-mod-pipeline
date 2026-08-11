@@ -1,0 +1,28 @@
+{
+  "format_version": "1.13.0",
+  "minecraft:structure_template_feature": {
+    "description": {
+      "identifier": "aionbound:char_wagon_structure_feature"
+    },
+    "structure_name": "aionbound:char_wagon",
+    "adjustment_radius": 4,
+    "facing_direction": "random",
+    "constraints": {
+      "grounded": {},
+      "unburied": {},
+      "block_intersection": {
+        "block_allowlist": [
+          "minecraft:air",
+          "minecraft:grass_block",
+          "minecraft:dirt",
+          "minecraft:stone",
+          "minecraft:terracotta",
+          "minecraft:red_sand",
+          "minecraft:coarse_dirt",
+          "aionbound:ash_soil",
+          "aionbound:cinder_gravel"
+        ]
+      }
+    }
+  }
+}

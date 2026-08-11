@@ -1,0 +1,188 @@
+{
+  "schema": "aionbound.wave1.ashen.structure_validation.v1",
+  "status": "PASS",
+  "integration_authority": {
+    "commit": "fce314f2251f9e9eb0cb9a1c2b8310d90a8a7c6c",
+    "tree": "c059ca23dadb7d19ac471848e910bfd28a55caa5"
+  },
+  "checks": [
+    "committed-output deterministic regeneration",
+    "little-endian NBT full decode without trailing bytes",
+    "ten distinct assembly hashes, sizes, identifiers, and anchor identifiers",
+    "palette/index closure and occupied-coordinate bounds",
+    "inert barrel/lodestone/lectern anchor coordinate closure",
+    "empty block_position_data and no LootTable NBT",
+    "custom block identifier closure",
+    "stable feature/rule/structure-name/filename reference closure",
+    "overworld non-ocean mountain-or-mesa proxy filters",
+    "Ashen-specific distinct rarity denominators not copied from Whisperwood",
+    "ember_forge exact realm uniqueness explicitly unproven",
+    "visual models excluded from assembly-byte inputs"
+  ],
+  "commands": [
+    "python3 engineering/ashen-intake/structure-assemblies/author_ashen_structures.py --check",
+    "python3 -m unittest engineering/ashen-intake/structure-assemblies/test_ashen_structure_assemblies.py -v"
+  ],
+  "counts": {
+    "assemblies": 10,
+    "structure_files": 10,
+    "features": 10,
+    "feature_rules": 10,
+    "unit_tests": 8,
+    "inert_anchor_blocks": 20,
+    "block_entity_nbt_records": 0
+  },
+  "outputs": [
+    {
+      "path": "behavior_pack/structures/aionbound/ancient_kiln.mcstructure",
+      "bytes": 20394,
+      "sha256": "0ca78b781495f6f29b44fc7371de296bf3a5fe02cf67858fc3645d7d735c73d6"
+    },
+    {
+      "path": "behavior_pack/structures/aionbound/ash_cave.mcstructure",
+      "bytes": 21046,
+      "sha256": "1f867cb8913bb97e09cf1e024635e43342abb4516508c10957decd8e27afd159"
+    },
+    {
+      "path": "behavior_pack/structures/aionbound/ash_watchtower.mcstructure",
+      "bytes": 18074,
+      "sha256": "4217384d08e5c173781bfa6445b7c3d58a85b79831789afb695ceb385904a454"
+    },
+    {
+      "path": "behavior_pack/structures/aionbound/basalt_arch.mcstructure",
+      "bytes": 10085,
+      "sha256": "22d75d32d0b9440b00ba5c4636663fe851442b2bffb4c7c191395d2f823dcba8"
+    },
+    {
+      "path": "behavior_pack/structures/aionbound/broken_bridge.mcstructure",
+      "bytes": 11537,
+      "sha256": "f9fc6a0aff13a617aaa60fe7c080a1c6cdc10c58a7cacdc27af572870058ee45"
+    },
+    {
+      "path": "behavior_pack/structures/aionbound/burned_camp.mcstructure",
+      "bytes": 7505,
+      "sha256": "b35e8bfc8b2ea88839f69a469d8691578e3c7884037939353196ed72aa2270d5"
+    },
+    {
+      "path": "behavior_pack/structures/aionbound/char_wagon.mcstructure",
+      "bytes": 6973,
+      "sha256": "816190147f3c8b512556ab7a29af31cfde3185c3c26e74d919b402a0dc2e271e"
+    },
+    {
+      "path": "behavior_pack/structures/aionbound/ember_forge.mcstructure",
+      "bytes": 59898,
+      "sha256": "7d3afe8adaeb95e083fe7948c805f2377411939ac101682295af3b936a1c41a1"
+    },
+    {
+      "path": "behavior_pack/structures/aionbound/fire_totem.mcstructure",
+      "bytes": 8378,
+      "sha256": "910478c460ae9505ba8a13210368539f6b07272fcb774d233065d7e635bd398a"
+    },
+    {
+      "path": "behavior_pack/structures/aionbound/lava_shrine.mcstructure",
+      "bytes": 12040,
+      "sha256": "817a06baa3d251e44f096bbbeee97bc8982af2366f34274b7910d04fa6c82c80"
+    },
+    {
+      "path": "behavior_pack/features/ancient_kiln.structure_feature.json",
+      "bytes": 719,
+      "sha256": "011b076bbff573a8086c5f27aa8e1c85e28d17f7f7f5d59bb66afce0ff34d067"
+    },
+    {
+      "path": "behavior_pack/features/ash_cave.structure_feature.json",
+      "bytes": 711,
+      "sha256": "63c7cbd2ad05bdf418d3f6214282981afcba7708e26e62e0586d495bbe37c579"
+    },
+    {
+      "path": "behavior_pack/features/ash_watchtower.structure_feature.json",
+      "bytes": 723,
+      "sha256": "9d1920e384cc92cfcbd889fb7a12505460491214aa299c0d7517cd14de6e2142"
+    },
+    {
+      "path": "behavior_pack/features/basalt_arch.structure_feature.json",
+      "bytes": 717,
+      "sha256": "06327a79ab90f2841ed7f5154744c5bf7da0b121b2adcfe61d754d4192a260fa"
+    },
+    {
+      "path": "behavior_pack/features/broken_bridge.structure_feature.json",
+      "bytes": 721,
+      "sha256": "a4cc4168ca20ffad05871270fd9369639e852320a205ff6a6f3948e8ba4e2d14"
+    },
+    {
+      "path": "behavior_pack/features/burned_camp.structure_feature.json",
+      "bytes": 717,
+      "sha256": "a6bf6723ea551d05589d78c39fdb4a9ffd32128af4cfee97c230241b00abbe6c"
+    },
+    {
+      "path": "behavior_pack/features/char_wagon.structure_feature.json",
+      "bytes": 715,
+      "sha256": "88218c5d04eeb96c615ddbe03d3543f27aecb932acc5f368d79ebc909e6a0c70"
+    },
+    {
+      "path": "behavior_pack/features/ember_forge.structure_feature.json",
+      "bytes": 717,
+      "sha256": "29da988caa0a18435ea55830644d84db984f7a0530cfcf2c866085a515e17b3a"
+    },
+    {
+      "path": "behavior_pack/features/fire_totem.structure_feature.json",
+      "bytes": 715,
+      "sha256": "19f5d011cdbe7ae785334e1e2c7681e80be594b4ef672deb516df834492af8f3"
+    },
+    {
+      "path": "behavior_pack/features/lava_shrine.structure_feature.json",
+      "bytes": 717,
+      "sha256": "c4baabd7cebaab18ca303785fd6e3704abe9cb04047b6de3af510cd070c43d85"
+    },
+    {
+      "path": "behavior_pack/feature_rules/ancient_kiln.structure_feature_rule.json",
+      "bytes": 1372,
+      "sha256": "8e7685d41ffb36bfefe4edd79449f19b9100181c5814cccb498c5281d1252d9a"
+    },
+    {
+      "path": "behavior_pack/feature_rules/ash_cave.structure_feature_rule.json",
+      "bytes": 1364,
+      "sha256": "e94c4dea2921d5ec6476f9d4261bc1146e8e551baebb438cbc89588aa062ae64"
+    },
+    {
+      "path": "behavior_pack/feature_rules/ash_watchtower.structure_feature_rule.json",
+      "bytes": 1376,
+      "sha256": "68ddde1af0c4d335935688469c58267f325defeeddc438d4338573db878da392"
+    },
+    {
+      "path": "behavior_pack/feature_rules/basalt_arch.structure_feature_rule.json",
+      "bytes": 1370,
+      "sha256": "f3f5bc22797dee44deef02d9bc4ecad8b97887cb1a884b137efac7650a1932ca"
+    },
+    {
+      "path": "behavior_pack/feature_rules/broken_bridge.structure_feature_rule.json",
+      "bytes": 1374,
+      "sha256": "60b1bc4140745a340e48acc83209f216a5498672b11525ef4cd882d001b2a2ff"
+    },
+    {
+      "path": "behavior_pack/feature_rules/burned_camp.structure_feature_rule.json",
+      "bytes": 1369,
+      "sha256": "639bb0c0a1936617766b4ae64a7def6c7459f8107f8490b88f76f0e03db07497"
+    },
+    {
+      "path": "behavior_pack/feature_rules/char_wagon.structure_feature_rule.json",
+      "bytes": 1368,
+      "sha256": "1f9015a9ca1d70e06f19a1bbe23846cf21b33ee4e841195da9dab85ae9c97fc6"
+    },
+    {
+      "path": "behavior_pack/feature_rules/ember_forge.structure_feature_rule.json",
+      "bytes": 1371,
+      "sha256": "2d925ab8fe4c937360a2880ae5429cef8635adaa1e70f501608ff0a950be323f"
+    },
+    {
+      "path": "behavior_pack/feature_rules/fire_totem.structure_feature_rule.json",
+      "bytes": 1367,
+      "sha256": "c2a61f2dd54b9a1637888a64b61e5c1b7a99037509c5cf2dbde06db2faf93284"
+    },
+    {
+      "path": "behavior_pack/feature_rules/lava_shrine.structure_feature_rule.json",
+      "bytes": 1370,
+      "sha256": "c14ef9908d1f06d3323d2b39e9efb649f35df2478b3b92a99d391b866bd3eef8"
+    }
+  ],
+  "proof_boundary": "STATIC_SOURCE_AND_AUTHORED_BYTES_ONLY; NOT MCSTRUCTURE CLIENT LOAD, BDS, TERRAIN AFFINITY, LOOT, ENCOUNTER, OR CANDIDATE PROOF"
+}
