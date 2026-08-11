@@ -82,10 +82,12 @@ export function migrateWorld(source = {}) {
   const encounterSource = objectOrEmpty(source.encounters);
   const encounterActive = { ...objectOrEmpty(encounterSource.active) };
   const pendingThornCourt = objectOrEmpty(encounterSource.pendingThornCourt);
-  // Thorn Court active sessions are live-memory only. Drop only legacy or
-  // interrupted Thorn Court active rows while preserving all other encounters.
+  const pendingKilnSky = objectOrEmpty(encounterSource.pendingKilnSky);
+  // Ratified arena sessions are live-memory only. Drop only legacy or
+  // interrupted rows for those encounters while preserving all other encounters.
   for (const [key, value] of Object.entries(encounterActive)) {
-    if (key.startsWith("thorn_court:") || value?.encounterId === "aionbound:thorn_court") delete encounterActive[key];
+    if (key.startsWith("thorn_court:") || value?.encounterId === "aionbound:thorn_court"
+      || key.startsWith("kiln_sky:") || value?.encounterId === "aionbound:kiln_sky") delete encounterActive[key];
   }
   return {
     ...objectOrEmpty(source),
@@ -97,6 +99,7 @@ export function migrateWorld(source = {}) {
       active: encounterActive,
       terminal: objectOrEmpty(encounterSource.terminal ?? source.terminal),
       ...(Object.keys(pendingThornCourt).length ? { pendingThornCourt } : {}),
+      ...(Object.keys(pendingKilnSky).length ? { pendingKilnSky } : {}),
     },
   };
 }
