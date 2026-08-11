@@ -1,0 +1,48 @@
+{
+  "name": "reed_serpent",
+  "display_name": "Reed Serpent",
+  "sprint": "asset_sprint_003_crystal_marsh",
+  "tier": "CREATURE",
+  "role": "Hostile long serpent; reed fins + crystal nodes",
+  "profile": "quad",
+  "model_identifier": "geometry.aionforge_cm.reed_serpent",
+  "cube_count": 22,
+  "bone_count": 6,
+  "density_floor": 22,
+  "locators": [
+    "effect",
+    "gaze"
+  ],
+  "palette": {
+    "metal": [
+      26,
+      46,
+      42
+    ],
+    "accent": [
+      106,
+      90,
+      138
+    ],
+    "energy": [
+      126,
+      207,
+      191
+    ]
+  },
+  "animations": [
+    "idle_undulate",
+    "swim",
+    "lunge",
+    "hurt",
+    "death"
+  ],
+  "minecraft_scale": "0.4 thick \u00b7 2.0 long",
+  "texture_resolution": "64\u00d764",
+  "production_priority": "P0",
+  "related_assets": "flood_reed",
+  "originality": "Clean-room Crystal Marsh manufacture",
+  "forbidden": "No Whisperwood moss amber; no Ashen heat; no Gloamveil neon teal; no Brinecanopy cathedral",
+  "editable": "assets/editable/reed_serpent.bbmodel",
+  "claims_boundary": "Visual production only. No BP/JSON/AI/gameplay."
+}

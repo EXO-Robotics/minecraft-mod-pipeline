@@ -1,0 +1,49 @@
+{
+  "name": "mire_turtle",
+  "display_name": "Mire Turtle",
+  "sprint": "asset_sprint_003_crystal_marsh",
+  "tier": "CREATURE",
+  "role": "Passive pad-shell turtle; crystal rim",
+  "profile": "quad",
+  "model_identifier": "geometry.aionforge_cm.mire_turtle",
+  "cube_count": 22,
+  "bone_count": 8,
+  "density_floor": 22,
+  "locators": [
+    "effect",
+    "gaze"
+  ],
+  "palette": {
+    "metal": [
+      26,
+      46,
+      42
+    ],
+    "accent": [
+      61,
+      122,
+      92
+    ],
+    "energy": [
+      126,
+      207,
+      191
+    ]
+  },
+  "animations": [
+    "idle",
+    "walk",
+    "swim",
+    "withdraw",
+    "hurt",
+    "death"
+  ],
+  "minecraft_scale": "0.55 tall",
+  "texture_resolution": "64\u00d764",
+  "production_priority": "P0",
+  "related_assets": "crystal_lily",
+  "originality": "Clean-room Crystal Marsh manufacture",
+  "forbidden": "No Whisperwood moss amber; no Ashen heat; no Gloamveil neon teal; no Brinecanopy cathedral",
+  "editable": "assets/editable/mire_turtle.bbmodel",
+  "claims_boundary": "Visual production only. No BP/JSON/AI/gameplay."
+}

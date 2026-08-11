@@ -1,0 +1,268 @@
+{
+  "format_version": "1.8.0",
+  "animations": {
+    "animation.aionbound.glass_heron.idle": {
+      "loop": true,
+      "animation_length": 3.6,
+      "bones": {
+        "head": {
+          "rotation": {
+            "0.0": [
+              0,
+              0,
+              0
+            ],
+            "0.9": [
+              -4,
+              8,
+              0
+            ],
+            "1.8": [
+              0,
+              0,
+              0
+            ],
+            "2.7": [
+              -3,
+              -7,
+              0
+            ],
+            "3.6": [
+              0,
+              0,
+              0
+            ]
+          }
+        }
+      }
+    },
+    "animation.aionbound.glass_heron.walk_wade": {
+      "loop": true,
+      "animation_length": 1.3,
+      "bones": {
+        "leg_l": {
+          "rotation": {
+            "0.0": [
+              -20,
+              0,
+              0
+            ],
+            "0.65": [
+              20,
+              0,
+              0
+            ],
+            "1.3": [
+              -20,
+              0,
+              0
+            ]
+          }
+        },
+        "leg_r": {
+          "rotation": {
+            "0.0": [
+              20,
+              0,
+              0
+            ],
+            "0.65": [
+              -20,
+              0,
+              0
+            ],
+            "1.3": [
+              20,
+              0,
+              0
+            ]
+          }
+        },
+        "body": {
+          "position": {
+            "0.0": [
+              0,
+              0,
+              0
+            ],
+            "0.35": [
+              0,
+              0.22,
+              0
+            ],
+            "0.65": [
+              0,
+              0,
+              0
+            ],
+            "1.0": [
+              0,
+              0.16,
+              0
+            ],
+            "1.3": [
+              0,
+              0,
+              0
+            ]
+          }
+        }
+      }
+    },
+    "animation.aionbound.glass_heron.spear_strike": {
+      "animation_length": 0.78,
+      "bones": {
+        "head": {
+          "rotation": {
+            "0.0": [
+              0,
+              0,
+              0
+            ],
+            "0.2": [
+              18,
+              0,
+              0
+            ],
+            "0.4": [
+              -33,
+              0,
+              0
+            ],
+            "0.8": [
+              0,
+              0,
+              0
+            ]
+          }
+        },
+        "body": {
+          "position": {
+            "0.0": [
+              0,
+              0,
+              0
+            ],
+            "0.4": [
+              0,
+              0,
+              -0.75
+            ],
+            "0.8": [
+              0,
+              0,
+              0
+            ]
+          }
+        }
+      }
+    },
+    "animation.aionbound.glass_heron.flap": {
+      "loop": true,
+      "animation_length": 0.75,
+      "bones": {
+        "wing_l": {
+          "rotation": {
+            "0.0": [
+              0,
+              0,
+              -20
+            ],
+            "0.2": [
+              0,
+              0,
+              42
+            ],
+            "0.4": [
+              0,
+              0,
+              20
+            ],
+            "0.55": [
+              0,
+              0,
+              -42
+            ],
+            "0.75": [
+              0,
+              0,
+              -20
+            ]
+          }
+        },
+        "wing_r": {
+          "rotation": {
+            "0.0": [
+              0,
+              0,
+              20
+            ],
+            "0.2": [
+              0,
+              0,
+              -42
+            ],
+            "0.4": [
+              0,
+              0,
+              -20
+            ],
+            "0.55": [
+              0,
+              0,
+              42
+            ],
+            "0.75": [
+              0,
+              0,
+              20
+            ]
+          }
+        }
+      }
+    },
+    "animation.aionbound.glass_heron.hurt": {
+      "animation_length": 0.45,
+      "bones": {
+        "body": {
+          "rotation": {
+            "0.0": [
+              0,
+              0,
+              0
+            ],
+            "0.2": [
+              0,
+              0,
+              -8
+            ],
+            "0.45": [
+              0,
+              0,
+              0
+            ]
+          }
+        }
+      }
+    },
+    "animation.aionbound.glass_heron.death": {
+      "animation_length": 1.15,
+      "bones": {
+        "body": {
+          "rotation": {
+            "0.0": [
+              0,
+              0,
+              0
+            ],
+            "1.15": [
+              0,
+              0,
+              -87
+            ]
+          }
+        }
+      }
+    }
+  }
+}

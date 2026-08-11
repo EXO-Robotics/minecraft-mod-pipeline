@@ -1,0 +1,49 @@
+{
+  "name": "bog_watcher",
+  "display_name": "Bog Watcher",
+  "sprint": "asset_sprint_003_crystal_marsh",
+  "tier": "CREATURE",
+  "role": "Hostile single-eye stalked bog creature",
+  "profile": "quad",
+  "model_identifier": "geometry.aionforge_cm.bog_watcher",
+  "cube_count": 23,
+  "bone_count": 9,
+  "density_floor": 22,
+  "locators": [
+    "effect",
+    "gaze"
+  ],
+  "palette": {
+    "metal": [
+      14,
+      24,
+      22
+    ],
+    "accent": [
+      61,
+      122,
+      92
+    ],
+    "energy": [
+      184,
+      240,
+      232
+    ]
+  },
+  "animations": [
+    "idle",
+    "crawl",
+    "eye_focus",
+    "lunge",
+    "hurt",
+    "death"
+  ],
+  "minecraft_scale": "1.0 body \u00b7 stalk +0.8",
+  "texture_resolution": "64\u2013128",
+  "production_priority": "P0",
+  "related_assets": "deep_pool, bog threat",
+  "originality": "Clean-room Crystal Marsh manufacture",
+  "forbidden": "No Whisperwood moss amber; no Ashen heat; no Gloamveil neon teal; no Brinecanopy cathedral",
+  "editable": "assets/editable/bog_watcher.bbmodel",
+  "claims_boundary": "Visual production only. No BP/JSON/AI/gameplay."
+}

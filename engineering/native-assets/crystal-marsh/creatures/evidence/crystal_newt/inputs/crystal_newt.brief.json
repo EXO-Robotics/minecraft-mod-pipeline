@@ -1,0 +1,49 @@
+{
+  "name": "crystal_newt",
+  "display_name": "Crystal Newt",
+  "sprint": "asset_sprint_003_crystal_marsh",
+  "tier": "CREATURE",
+  "role": "Neutral amphibian with crystal dorsal comb",
+  "profile": "quad",
+  "model_identifier": "geometry.aionforge_cm.crystal_newt",
+  "cube_count": 24,
+  "bone_count": 9,
+  "density_floor": 22,
+  "locators": [
+    "effect",
+    "gaze"
+  ],
+  "palette": {
+    "metal": [
+      26,
+      46,
+      42
+    ],
+    "accent": [
+      61,
+      122,
+      92
+    ],
+    "energy": [
+      126,
+      207,
+      191
+    ]
+  },
+  "animations": [
+    "idle",
+    "walk",
+    "frill_raise",
+    "bite",
+    "hurt",
+    "death"
+  ],
+  "minecraft_scale": "0.5 tall \u00b7 1.4 long",
+  "texture_resolution": "64\u00d764",
+  "production_priority": "P0",
+  "related_assets": "flood_crystal, crystal_root",
+  "originality": "Clean-room Crystal Marsh manufacture",
+  "forbidden": "No Whisperwood moss amber; no Ashen heat; no Gloamveil neon teal; no Brinecanopy cathedral",
+  "editable": "assets/editable/crystal_newt.bbmodel",
+  "claims_boundary": "Visual production only. No BP/JSON/AI/gameplay."
+}
