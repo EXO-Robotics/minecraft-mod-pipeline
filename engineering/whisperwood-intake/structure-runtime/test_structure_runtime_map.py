@@ -26,12 +26,18 @@ class StructureRuntimeMapTests(unittest.TestCase):
 
     def test_prop_models_do_not_masquerade_as_structure_bytes(self):
         direct = {"lantern_post", "moss_cairn"}
-        missing = {asset_id for asset_id, asset in self.assets.items() if asset["missing_authored_structure_bytes"]}
-        self.assertEqual(set(self.assets) - direct, missing)
+        assembly_targets = {
+            asset_id: asset["missing_authored_structure_bytes"]
+            for asset_id, asset in self.assets.items()
+            if asset["missing_authored_structure_bytes"]
+        }
+        self.assertEqual(set(self.assets) - direct, set(assembly_targets))
         self.assertEqual(self.document["summary"]["missing_authored_structure_byte_count"], 8)
-        for asset_id in missing:
-            target = self.assets[asset_id]["targets"]["behavior_pack"]["structure_bytes"]
-            self.assertFalse((REPO / target).exists(), target)
+        for asset_id, target in assembly_targets.items():
+            self.assertEqual(target, self.assets[asset_id]["targets"]["behavior_pack"]["structure_bytes"])
+            self.assertEqual(Path(target).suffix, ".mcstructure")
+            self.assertTrue((REPO / target).is_file(), target)
+            self.assertGreater((REPO / target).stat().st_size, 0, target)
 
     def test_exact_targets_and_withheld_state(self):
         for asset_id, asset in self.assets.items():

@@ -56,7 +56,8 @@ class EntityRuntimeMapTests(unittest.TestCase):
     def test_all_bound_file_hashes_match_current_bytes(self):
         root = MODULE.PROGRAM.parent
         for entry in self.data["authorities"]:
-            self.assertEqual(MODULE.sha256(root / entry["path"]), entry["sha256"])
+            path = root / entry["path"] if entry["path"].startswith("program/") else MODULE.REPO / entry["path"]
+            self.assertEqual(MODULE.sha256(path), entry["sha256"])
         for entries in self.data["g7_patterns"].values():
             for entry in entries:
                 self.assertEqual(MODULE.sha256(MODULE.REPO / entry["path"]), entry["sha256"])

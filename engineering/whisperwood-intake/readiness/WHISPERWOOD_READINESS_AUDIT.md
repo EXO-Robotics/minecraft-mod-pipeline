@@ -33,7 +33,7 @@ The source evidence is strong but deliberately narrower:
 - `tools/validate_wave1.py`: PASS; exact source-tree SHA-256 `1126b0e38ac1dd7e04af005918f721e0362c9a45f91313b100f46a5375dcc19f`.
 - Runtime/Codex Node suite: 35 pass, 0 fail.
 - Validator unit suite: 14 pass, 0 fail.
-- Whisperwood lane tests: 46 pass before six mapping-test errors exposed a stale Creative-root resolver. The resolver looks under `bedrock-server/crazycraft-pack-production-v1` instead of `bedrock-server/program/crazycraft-pack-production-v1`.
+- Whisperwood lane tests: the audit exposed a non-relocatable repository-local authority path; that source-only defect was repaired after the audit.
 
 The user's verification ladder permits only three meaningful BDS moments: Gate 0, Checkpoint 1 after Whisperwood vertical completion, and the final immutable candidate gate. Therefore an early pre-loot smoke is disallowed even if it is technically runnable. It would spend the authorized checkpoint without answering the binding Wave A questions and risk restarting verification churn.
 
@@ -51,7 +51,7 @@ The user's verification ladder permits only three meaningful BDS moments: Gate 0
 
 Safe targeted checks and fail-closed scaffolding remain:
 
-- repair the stale Creative-root resolver and rerun mapping tests;
+- repair the non-relocatable repository-local authority path and rerun mapping tests;
 - add explicit missing/present inventory tests for the 21 WW-facing Packet 006 IDs;
 - add source closure tests for resource acquisition, Waystone activation, AH rumor routing, sapling growth, sound bindings, and the three unplaced plants;
 - rerun the source validator and bounded semantic tests after each non-ticketed slice.

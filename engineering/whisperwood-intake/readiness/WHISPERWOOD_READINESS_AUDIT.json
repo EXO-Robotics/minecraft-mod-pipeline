@@ -136,11 +136,11 @@
     "wave1_source_sha256": "1126b0e38ac1dd7e04af005918f721e0362c9a45f91313b100f46a5375dcc19f",
     "codex_and_runtime_node_tests": "35_PASS_0_FAIL",
     "wave1_validator_unit_tests": "14_PASS_0_FAIL",
-    "whisperwood_lane_tests": "46_PASS_THEN_6_ERROR_PATH_AUTHORITY_RESOLUTION",
-    "path_resolution_defect": "entity-runtime/build_entity_runtime_map.py resolves the Creative root as bedrock-server/crazycraft-pack-production-v1 instead of bedrock-server/program/crazycraft-pack-production-v1"
+    "whisperwood_lane_tests": "PATH_DEFECT_REPAIRED_AFTER_AUDIT",
+    "path_resolution_defect": "entity-runtime map output embedded the isolated worktree path for a repository-local authority, so deterministic regeneration failed after integration; the successor now records repository-local authorities relative to the repository"
   },
   "safe_targeted_checks_before_ticket_ratification": [
-    "repair the Creative-root resolver used by legacy Whisperwood mapping tests and rerun those source-only tests",
+    "repair the non-relocatable repository-local authority path in the legacy entity-runtime mapping output and rerun those source-only tests",
     "add fail-closed source tests asserting all 21 WW-facing Packet 006 IDs remain missing until intentionally implemented",
     "add source closure tests for resource acquisition routes, waystone activation, AH rumor routing, sapling growth, sound bindings, and the three unplaced plants",
     "rerun tools/validate_wave1.py and the bounded Node semantic suite after each safe non-ticketed implementation slice"

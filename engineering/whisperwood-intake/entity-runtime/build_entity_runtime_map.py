@@ -20,7 +20,10 @@ def sha256(path: Path) -> str:
 
 
 def rel_program(path: Path) -> str:
-    return path.relative_to(PROGRAM.parent).as_posix()
+    try:
+        return path.relative_to(REPO).as_posix()
+    except ValueError:
+        return path.relative_to(PROGRAM.parent).as_posix()
 
 
 BASE = [
