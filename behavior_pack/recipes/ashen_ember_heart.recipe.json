@@ -1,0 +1,25 @@
+{
+  "format_version": "1.20.10",
+  "minecraft:recipe_shaped": {
+    "description": {
+      "identifier": "aionbound:ashen_ember_heart_recipe"
+    },
+    "tags": [
+      "crafting_table"
+    ],
+    "pattern": [
+      " E ",
+      "EEE",
+      " E "
+    ],
+    "key": {
+      "E": {
+        "item": "aionbound:ember_resin"
+      }
+    },
+    "result": {
+      "item": "aionbound:ember_heart",
+      "count": 1
+    }
+  }
+}

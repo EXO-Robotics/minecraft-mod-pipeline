@@ -1,0 +1,31 @@
+{
+  "format_version": "1.20.10",
+  "minecraft:recipe_shaped": {
+    "description": {
+      "identifier": "aionbound:ashen_ember_totem_recipe"
+    },
+    "tags": [
+      "crafting_table"
+    ],
+    "pattern": [
+      " E ",
+      "HCH",
+      " C "
+    ],
+    "key": {
+      "E": {
+        "item": "aionbound:ember_heart"
+      },
+      "H": {
+        "item": "aionbound:ember_resin"
+      },
+      "C": {
+        "item": "aionbound:charbone"
+      }
+    },
+    "result": {
+      "item": "aionbound:ember_totem",
+      "count": 1
+    }
+  }
+}

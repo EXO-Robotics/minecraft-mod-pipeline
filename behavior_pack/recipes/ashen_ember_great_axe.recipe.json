@@ -1,0 +1,30 @@
+{
+  "format_version": "1.20.10",
+  "minecraft:recipe_shaped": {
+    "description": {
+      "identifier": "aionbound:ashen_ember_great_axe_recipe"
+    },
+    "tags": [
+      "crafting_table"
+    ],
+    "pattern": [
+      "HE",
+      " B"
+    ],
+    "key": {
+      "H": {
+        "item": "aionbound:ember_heart"
+      },
+      "E": {
+        "item": "aionbound:ember_resin"
+      },
+      "B": {
+        "item": "aionbound:smolder_bark"
+      }
+    },
+    "result": {
+      "item": "aionbound:ember_great_axe",
+      "count": 1
+    }
+  }
+}

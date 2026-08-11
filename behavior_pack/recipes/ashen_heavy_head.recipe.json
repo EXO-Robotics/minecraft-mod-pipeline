@@ -1,0 +1,28 @@
+{
+  "format_version": "1.20.10",
+  "minecraft:recipe_shaped": {
+    "description": {
+      "identifier": "aionbound:ashen_heavy_head_recipe"
+    },
+    "tags": [
+      "crafting_table"
+    ],
+    "pattern": [
+      "V",
+      "B",
+      "V"
+    ],
+    "key": {
+      "V": {
+        "item": "aionbound:volcanic_glass_shard"
+      },
+      "B": {
+        "item": "aionbound:basalt_core"
+      }
+    },
+    "result": {
+      "item": "aionbound:heavy_head",
+      "count": 1
+    }
+  }
+}

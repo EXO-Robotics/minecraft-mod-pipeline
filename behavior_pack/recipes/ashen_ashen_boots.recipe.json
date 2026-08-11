@@ -1,0 +1,27 @@
+{
+  "format_version": "1.20.10",
+  "minecraft:recipe_shaped": {
+    "description": {
+      "identifier": "aionbound:ashen_ashen_boots_recipe"
+    },
+    "tags": [
+      "crafting_table"
+    ],
+    "pattern": [
+      "C C",
+      "B B"
+    ],
+    "key": {
+      "C": {
+        "item": "aionbound:chitin_plate"
+      },
+      "B": {
+        "item": "aionbound:basalt_core"
+      }
+    },
+    "result": {
+      "item": "aionbound:ashen_boots",
+      "count": 1
+    }
+  }
+}

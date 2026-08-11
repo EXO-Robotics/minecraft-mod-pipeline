@@ -1,0 +1,26 @@
+{
+  "format_version": "1.20.10",
+  "minecraft:recipe_shaped": {
+    "description": {
+      "identifier": "aionbound:ashen_heat_core_recipe"
+    },
+    "tags": [
+      "crafting_table"
+    ],
+    "pattern": [
+      "HS"
+    ],
+    "key": {
+      "H": {
+        "item": "aionbound:heatstone"
+      },
+      "S": {
+        "item": "aionbound:sulfur_cluster"
+      }
+    },
+    "result": {
+      "item": "aionbound:heat_core",
+      "count": 1
+    }
+  }
+}

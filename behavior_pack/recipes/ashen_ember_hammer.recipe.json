@@ -1,0 +1,28 @@
+{
+  "format_version": "1.20.10",
+  "minecraft:recipe_shaped": {
+    "description": {
+      "identifier": "aionbound:ashen_ember_hammer_recipe"
+    },
+    "tags": [
+      "crafting_table"
+    ],
+    "pattern": [
+      " H ",
+      " C ",
+      " C "
+    ],
+    "key": {
+      "H": {
+        "item": "aionbound:heat_core"
+      },
+      "C": {
+        "item": "aionbound:charbone"
+      }
+    },
+    "result": {
+      "item": "aionbound:ember_hammer",
+      "count": 1
+    }
+  }
+}

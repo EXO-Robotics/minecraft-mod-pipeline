@@ -1,0 +1,37 @@
+{
+  "format_version": "1.20.10",
+  "minecraft:recipe_shaped": {
+    "description": {
+      "identifier": "aionbound:ashen_ash_repeater_recipe"
+    },
+    "tags": [
+      "crafting_table"
+    ],
+    "pattern": [
+      "CVG",
+      " SR",
+      "C  "
+    ],
+    "key": {
+      "C": {
+        "item": "aionbound:char_planks"
+      },
+      "V": {
+        "item": "aionbound:volcanic_glass_shard"
+      },
+      "G": {
+        "item": "aionbound:charbone"
+      },
+      "S": {
+        "item": "aionbound:smoke_reed"
+      },
+      "R": {
+        "item": "aionbound:smolder_bark"
+      }
+    },
+    "result": {
+      "item": "aionbound:ash_repeater",
+      "count": 1
+    }
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "format_version": "1.20.10",
+  "minecraft:recipe_shaped": {
+    "description": {
+      "identifier": "aionbound:ashen_basalt_pick_recipe"
+    },
+    "tags": [
+      "crafting_table"
+    ],
+    "pattern": [
+      "HHH",
+      " B ",
+      " B "
+    ],
+    "key": {
+      "H": {
+        "item": "aionbound:heavy_head"
+      },
+      "B": {
+        "item": "aionbound:smolder_bark"
+      }
+    },
+    "result": {
+      "item": "aionbound:basalt_pick",
+      "count": 1
+    }
+  }
+}

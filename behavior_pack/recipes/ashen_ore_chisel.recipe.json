@@ -1,0 +1,28 @@
+{
+  "format_version": "1.20.10",
+  "minecraft:recipe_shaped": {
+    "description": {
+      "identifier": "aionbound:ashen_ore_chisel_recipe"
+    },
+    "tags": [
+      "crafting_table"
+    ],
+    "pattern": [
+      " C ",
+      " B ",
+      " B "
+    ],
+    "key": {
+      "C": {
+        "item": "aionbound:furnace_chitin"
+      },
+      "B": {
+        "item": "aionbound:charbone"
+      }
+    },
+    "result": {
+      "item": "aionbound:ore_chisel",
+      "count": 1
+    }
+  }
+}
