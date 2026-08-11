@@ -1,0 +1,232 @@
+{
+  "ticket_id": "W1-CREATIVE-004",
+  "status": "PROPOSED_NOT_RATIFIED",
+  "schema_version": 1,
+  "authority_effect": "NONE_UNTIL_RATIFIED",
+  "source_authorities": [
+    "creative/02_loot/LOOT_SYSTEM.md",
+    "creative/02_loot/LOOT_BOSSES.md",
+    "creative/07_bosses/BOSS_PROGRESSION.md",
+    "engineering/authority/WAVE_1_ENGINEERING_DECISION_LEDGER.json"
+  ],
+  "proposal": {
+    "ratification_tranches": {
+      "W1-004-WW-CH1": {
+        "applies_to": "Whisperwood_creatures_structures_and_Thorn_Court",
+        "uses_all_numeric_envelopes_below": true,
+        "blocks": "Whisperwood_loot_tables_Thorn_Court_reward_and_Checkpoint_1"
+      },
+      "W1-004-LATER-REGIONS": {
+        "applies_to": "Ashen_Crystal_Marsh_Skyreach_and_Twinbond",
+        "may_defer_until": "before_each_corresponding_vertical_slice_final_loot_values"
+      }
+    },
+    "probability_and_quantity_envelopes": {
+      "C": {
+        "chance": [
+          0.75,
+          1.0
+        ],
+        "quantity": [
+          1,
+          4
+        ],
+        "rolls": [
+          1,
+          2
+        ]
+      },
+      "U": {
+        "chance": [
+          0.25,
+          0.55
+        ],
+        "quantity": [
+          1,
+          2
+        ],
+        "rolls": [
+          1,
+          2
+        ]
+      },
+      "R": {
+        "chance_normal": [
+          0.08,
+          0.2
+        ],
+        "chance_elite": [
+          0.35,
+          0.65
+        ],
+        "quantity": [
+          1,
+          2
+        ],
+        "rolls": [
+          1,
+          1
+        ]
+      },
+      "E": {
+        "chance_normal": [
+          0.02,
+          0.06
+        ],
+        "chance_elite": [
+          0.08,
+          0.2
+        ],
+        "quantity": [
+          1,
+          1
+        ],
+        "rolls": [
+          1,
+          1
+        ]
+      },
+      "T": {
+        "chance_arena_first_eligible_clear": [
+          1.0,
+          1.0
+        ],
+        "chance_ecology_form": [
+          0.0,
+          0.0
+        ],
+        "quantity": [
+          1,
+          1
+        ],
+        "rolls": [
+          1,
+          1
+        ]
+      },
+      "Q": {
+        "chance_creature": [
+          0.03,
+          0.1
+        ],
+        "chance_structure": [
+          0.1,
+          0.25
+        ],
+        "quantity": [
+          1,
+          1
+        ],
+        "rolls": [
+          1,
+          1
+        ]
+      }
+    },
+    "boss_package": {
+      "trophy": "one durable entitlement per eligible player on first arena clear",
+      "signature_material_rolls": [
+        2,
+        4
+      ],
+      "signature_material_quantity_per_roll": [
+        1,
+        3
+      ],
+      "catalyst_rolls": [
+        1,
+        2
+      ],
+      "catalyst_quantity_per_roll": [
+        1,
+        2
+      ],
+      "curiosity_rolls": [
+        0,
+        1
+      ],
+      "arena_chest_is_separate": true
+    },
+    "structure_chest_bands": {
+      "minor_cache": {
+        "rolls": [
+          2,
+          3
+        ],
+        "guaranteed_regional_material_rolls": 1
+      },
+      "standard_structure": {
+        "rolls": [
+          3,
+          5
+        ],
+        "guaranteed_regional_material_rolls": 1
+      },
+      "landmark_structure": {
+        "rolls": [
+          4,
+          6
+        ],
+        "guaranteed_regional_material_rolls": 2
+      },
+      "apex_arena_chest": {
+        "rolls": [
+          4,
+          6
+        ],
+        "guaranteed_regional_material_rolls": 2,
+        "contains_chapter_trophy": false
+      }
+    },
+    "arena_reward_guard": {
+      "valid_source": "active_arena_session_plus_apex_entity_tag_plus_valid_death_event",
+      "critical_progression_representation": "durable_virtual_seal_credit_not_physical_item_presence",
+      "entitlement_created_before_item_fulfillment": true,
+      "per_player_keys": {
+        "entitled": "aionbound.player.<encounter>.reward_entitled.v1",
+        "progression_credit": "aionbound.player.<encounter>.seal_credit.v1",
+        "physical_trophy_claimed": "aionbound.player.<encounter>.trophy_claimed.v1"
+      },
+      "world_key": "aionbound.encounter.<encounter>.completed.v1",
+      "retry_policy": "unfulfilled_entitlement_may_reopen_claim_UI_or_museum_claim",
+      "crash_semantics": "progression_credit_is_idempotent_physical_item_delivery_is_at_most_once_best_effort_with_recovery_claim",
+      "regular_entity_or_command_kill_can_grant_trophy": false,
+      "repeat_clear": "material_package_and_arena_chest_allowed_trophy_and_seal_entitlement_not_reissued"
+    },
+    "alternate_seal_resolution": {
+      "briar_elk_trophy_replaces_thorn_stalker_skull": false,
+      "mosskip_trophy_replaces_thorn_stalker_skull": false,
+      "briar_elk_trophy_role": "optional_whisperwood_mastery_and_codex_credit",
+      "mosskip_trophy_role": "optional_whisperwood_mastery_vanity_and_codex_credit",
+      "chapter_1_critical_seal": "aionbound:thorn_stalker_skull",
+      "soft_gate_effect": "optional_trophies_may_strengthen_Ashen_rumor_or_readiness_hint_but_never_unlock_pilgrim_seal_slot"
+    },
+    "tuning_rule": "Engineering_may_choose_values_inside_each_ratified_closed_interval_without_new_loot_identity"
+  },
+  "approval_required": [
+    {
+      "decision_id": "W1-004-WW-CH1",
+      "question": "Approve the complete envelope and guard model for Whisperwood and Thorn Court first, without yet binding later regions?"
+    },
+    {
+      "decision_id": "W1-004-A",
+      "question": "Approve all C/U/R/E/T/Q chance, quantity, and roll intervals?"
+    },
+    {
+      "decision_id": "W1-004-B",
+      "question": "Approve boss package and four structure chest-roll bands?"
+    },
+    {
+      "decision_id": "W1-004-C",
+      "question": "Approve virtual critical seal credit plus recoverable at-most-once physical trophy fulfillment?"
+    },
+    {
+      "decision_id": "W1-004-D",
+      "question": "Approve repeat-clear materials but no repeated trophy or seal entitlement?"
+    },
+    {
+      "decision_id": "W1-004-E",
+      "question": "Confirm briar_elk_trophy and mosskip_trophy are optional mastery credits, never alternate chapter seals?"
+    }
+  ]
+}

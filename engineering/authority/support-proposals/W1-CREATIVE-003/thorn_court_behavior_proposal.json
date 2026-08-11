@@ -1,0 +1,171 @@
+{
+  "ticket_id": "W1-CREATIVE-003",
+  "status": "PROPOSED_NOT_RATIFIED",
+  "schema_version": 1,
+  "authority_effect": "NONE_UNTIL_RATIFIED",
+  "source_authorities": [
+    "creative/07_bosses/BOSS_PROGRESSION.md#chapter-1-thorn-court",
+    "creative/02_loot/LOOT_BOSSES.md#chapter-1-thorn-court-apex",
+    "creative/WAVE_1_LIVING_WORLD_IMPLEMENTATION_CONTRACT.md",
+    "engineering/authority/WAVE_1_ENGINEERING_DECISION_LEDGER.json"
+  ],
+  "proposal": {
+    "encounter_id": "aionbound:thorn_court",
+    "boss_entity_id": "aionbound:thorn_stalker",
+    "arena_form_predicate": "encounter_session_active_and_entity_tag_aionbound.thorn_court_apex",
+    "ecology_form_can_complete_chapter": false,
+    "health": {
+      "solo": 360,
+      "per_additional_locked_participant_multiplier": 0.35,
+      "participant_cap": 4
+    },
+    "phases": [
+      {
+        "id": "briar_rise",
+        "enter_at_health_fraction": 1.0,
+        "exit_at_health_fraction": 0.7,
+        "add_cap": 0
+      },
+      {
+        "id": "widow_wire",
+        "enter_at_health_fraction": 0.7,
+        "exit_at_health_fraction": 0.35,
+        "add_cap": 2
+      },
+      {
+        "id": "crown_of_thorns",
+        "enter_at_health_fraction": 0.35,
+        "exit_at_health_fraction": 0.1,
+        "add_cap": 2
+      },
+      {
+        "id": "forest_scream",
+        "enter_at_health_fraction": 0.1,
+        "exit_at_health_fraction": 0.0,
+        "add_cap": 2
+      }
+    ],
+    "timing_seconds": {
+      "global_attack_cooldown": [
+        2.5,
+        4.5
+      ],
+      "lunge_barb": {
+        "telegraph": 0.8,
+        "active": 0.35,
+        "recovery": 1.0,
+        "cooldown": [
+          4.0,
+          6.0
+        ]
+      },
+      "thorn_fan": {
+        "telegraph": 1.1,
+        "active": 0.2,
+        "recovery": 0.8,
+        "cooldown": [
+          5.0,
+          8.0
+        ]
+      },
+      "root_snare": {
+        "telegraph": 1.5,
+        "active": 4.0,
+        "recovery": 0.7,
+        "cooldown": [
+          8.0,
+          12.0
+        ]
+      },
+      "silk_spit": {
+        "telegraph": 1.0,
+        "active": 0.2,
+        "recovery": 0.8,
+        "cooldown": [
+          7.0,
+          10.0
+        ]
+      },
+      "howl_call": {
+        "telegraph": 1.6,
+        "active": 0.4,
+        "recovery": 1.2,
+        "cooldown": [
+          18.0,
+          24.0
+        ]
+      },
+      "death_bloom_transition": {
+        "telegraph": 1.8,
+        "active": 0.5,
+        "recovery": 1.5,
+        "cooldown": "once_per_transition"
+      }
+    },
+    "enrage": {
+      "health_fraction": 0.1,
+      "hard_time_seconds": 360,
+      "hard_time_action": "enter_forest_scream_not_instant_kill"
+    },
+    "reset": {
+      "arena_radius_blocks": 48,
+      "outside_leash_grace_seconds": 10,
+      "no_eligible_player_grace_seconds": 30,
+      "all_players_dead_or_outside_grace_seconds": 15,
+      "world_reload_behavior": "reset_to_unpulled_full_health_and_clear_session_transients",
+      "on_reset": [
+        "despawn_session_adds",
+        "clear_hazards",
+        "restore_boss_health",
+        "clear_active_session"
+      ],
+      "completion_is_not_cleared": true
+    },
+    "multiplayer": {
+      "participant_snapshot": "lock_at_pull",
+      "eligible_at_pull": "player_inside_arena_for_at_least_5_seconds",
+      "late_join": "eligible_only_before_crown_of_thorns_and_after_15_seconds_inside_arena",
+      "disconnect_grace_seconds": 60,
+      "scaling_does_not_decrease_midfight": true,
+      "targeting": "never_requires_damage_to_one_specific_player",
+      "global_session_add_cap": 4
+    },
+    "persistence": {
+      "active_fight": "not_persisted",
+      "world_completion_key": "aionbound.encounter.thorn_court.completed.v1",
+      "player_completion_key": "aionbound.player.thorn_court.completed.v1",
+      "reward_entitlement_key": "aionbound.player.thorn_court.reward_entitled.v1",
+      "migration": "idempotent_false_default"
+    },
+    "terminal_semantics": {
+      "complete_on": "arena_form_valid_death_event_with_active_session",
+      "eligible_players": "locked_or_approved_late_join_participants_present_or_in_disconnect_grace",
+      "progression_credit": "per_player_durable_once",
+      "world_stamp": "durable_once",
+      "reward_identity_source": "W1-CREATIVE-004_only",
+      "repeat_clear": "encounter_repeatable_but_no_duplicate_chapter_progression_or_seal_entitlement"
+    }
+  },
+  "approval_required": [
+    {
+      "decision_id": "W1-003-A",
+      "question": "Approve 360 solo health, 35 percent additive scaling, and four-player scaling cap?"
+    },
+    {
+      "decision_id": "W1-003-B",
+      "question": "Approve phase thresholds at 70, 35, and 10 percent and the listed timing envelope?"
+    },
+    {
+      "decision_id": "W1-003-C",
+      "question": "Approve the 48-block reset envelope, grace windows, and reset-on-world-reload behavior?"
+    },
+    {
+      "decision_id": "W1-003-D",
+      "question": "Approve participant lock, late-join cutoff, disconnect grace, and add caps?"
+    },
+    {
+      "decision_id": "W1-003-E",
+      "question": "Approve per-player and world persistence keys plus repeat-clear semantics?"
+    }
+  ]
+}

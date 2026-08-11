@@ -1,0 +1,161 @@
+{
+  "ticket_id": "W1-CREATIVE-005",
+  "status": "PROPOSED_NOT_RATIFIED",
+  "schema_version": 1,
+  "authority_effect": "NONE_UNTIL_RATIFIED",
+  "source_authorities": [
+    "creative/04_equipment/EQUIPMENT_PROGRESSION.md",
+    "creative/03_crafting/CRAFTING_TREE.md",
+    "creative/WAVE_1_LIVING_WORLD_IMPLEMENTATION_CONTRACT.md",
+    "engineering/authority/WAVE_1_ENGINEERING_DECISION_LEDGER.json"
+  ],
+  "proposal": {
+    "implementation_priority": {
+      "blocks_base_packet_006_items": false,
+      "blocks_whisperwood_checkpoint": false,
+      "defer_until": "before_named_cross_region_sidegrades_or_unique_finishes_are_registered",
+      "allowed_while_open": "implement_approved_base_equipment_IDs_only"
+    },
+    "policy": {
+      "minor_material_finish": "same_base_item_id_no_persistent_variant_state",
+      "named_distinct_sidegrade": "sibling_item_id_reusing_base_mesh",
+      "named_unique_finish": "sibling_item_id_reusing_base_mesh",
+      "set_pair_or_link": "relationship_state_no_container_item",
+      "reason": "avoid_hidden_NBT_or_dynamic_property_identity_and_keep_inventory_recipe_repair_and_migration_closure_declarative"
+    },
+    "same_id_finishes": [
+      {
+        "base_id": "aionbound:root_knife",
+        "finish": "amber_tip"
+      },
+      {
+        "base_id": "aionbound:mossfang_spear",
+        "finish": "volcanic_glass_or_crystal_tip"
+      },
+      {
+        "base_id": "aionbound:briar_ring",
+        "finish": "heat_tempered"
+      },
+      {
+        "base_id": "aionbound:basalt_pick",
+        "finish": "summit_tip"
+      },
+      {
+        "base_id": "aionbound:lantern_hook",
+        "finish": "cliff_grapnel_head"
+      },
+      {
+        "base_id": "aionbound:surveyor_staff",
+        "finish": "aether_lens"
+      },
+      {
+        "base_id": "aionbound:trail_compass",
+        "finish": "full_calibration"
+      }
+    ],
+    "sibling_sidegrades": [
+      {
+        "id": "aionbound:summit_hammer",
+        "base_id": "aionbound:basalt_hammer",
+        "base_mesh": "basalt_hammer",
+        "unlock": "cliff_crystal_face"
+      },
+      {
+        "id": "aionbound:skywidow_whip",
+        "base_id": "aionbound:thorn_whip",
+        "base_mesh": "thorn_whip",
+        "unlock": "wind_silk_plus_widow_silk"
+      },
+      {
+        "id": "aionbound:gale_prism_bow",
+        "base_id": "aionbound:prism_bow",
+        "base_mesh": "prism_bow",
+        "unlock": "storm_feathers"
+      },
+      {
+        "id": "aionbound:nest_talon_dagger",
+        "base_id": "aionbound:widow_fang_dagger",
+        "base_mesh": "widow_fang_dagger",
+        "unlock": "ruin_harpy_talon"
+      }
+    ],
+    "sibling_unique_finishes": [
+      {
+        "id": "aionbound:owl_blessed_staff",
+        "base_id": "aionbound:moon_sap_staff",
+        "base_mesh": "moon_sap_staff",
+        "unlock": "owl_shrine_rite"
+      },
+      {
+        "id": "aionbound:kilnheart_axe",
+        "base_id": "aionbound:ember_great_axe",
+        "base_mesh": "ember_great_axe",
+        "unlock": "ember_forge_core_socket"
+      },
+      {
+        "id": "aionbound:drowned_crown",
+        "base_id": "aionbound:crystal_circlet",
+        "base_mesh": "crystal_circlet",
+        "unlock": "marsh_wight_finish"
+      },
+      {
+        "id": "aionbound:stormcloak",
+        "base_id": "aionbound:explorer_cloak",
+        "base_mesh": "explorer_cloak",
+        "unlock": "storm_pinion_trim"
+      }
+    ],
+    "relationship_only": [
+      {
+        "name": "Warden's Pair",
+        "members": [
+          "aionbound:surveyor_medallion",
+          "aionbound:warden_sigil"
+        ],
+        "new_item_id": false
+      },
+      {
+        "name": "Dual Idol",
+        "members": [
+          "aionbound:ember_totem",
+          "aionbound:marsh_idol"
+        ],
+        "new_item_id": false
+      }
+    ],
+    "stage_items": {
+      "inert": "aionbound:trophy_edge_blank",
+      "ignited": "aionbound:trophy_edge",
+      "separate_ids_required": true
+    },
+    "implementation_constraints": [
+      "sibling_items_reuse_existing_mesh_and_may_add_material_overlay_or_icon_only_after_asset_approval",
+      "recipes_consume_or_transform_base_item_without_hidden_persistent_variant_state",
+      "same_id_finishes_are_codex_and_recipe_progress_markers_not_parallel_inventory_variants",
+      "all_sibling_ids_require_distinct_lang_icon_recipe_repair_and_codex_closure",
+      "no_additional_sibling_id_without_reopened_creative_support"
+    ]
+  },
+  "approval_required": [
+    {
+      "decision_id": "W1-005-A",
+      "question": "Approve same-ID treatment for seven minor finishes with no hidden persistent variant state?"
+    },
+    {
+      "decision_id": "W1-005-B",
+      "question": "Approve four exact sibling IDs for the named cross-region sidegrades?"
+    },
+    {
+      "decision_id": "W1-005-C",
+      "question": "Approve four exact sibling IDs for named unique finishes?"
+    },
+    {
+      "decision_id": "W1-005-D",
+      "question": "Approve Warden's Pair and Dual Idol as relationships rather than new container items?"
+    },
+    {
+      "decision_id": "W1-005-E",
+      "question": "Approve separate existing IDs for inert and ignited Trophy Edge stages?"
+    }
+  ]
+}

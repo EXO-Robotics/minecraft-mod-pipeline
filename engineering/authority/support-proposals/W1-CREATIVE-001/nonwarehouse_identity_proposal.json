@@ -1,0 +1,341 @@
+{
+  "ticket_id": "W1-CREATIVE-001",
+  "status": "PROPOSED_NOT_RATIFIED",
+  "schema_version": 1,
+  "authority_effect": "NONE_UNTIL_RATIFIED",
+  "source_authorities": [
+    "engineering/authority/WAVE_1_ENGINEERING_DECISION_LEDGER.json",
+    "creative/02_loot/LOOT_WHISPERWOOD.md",
+    "creative/02_loot/LOOT_ASHEN.md",
+    "creative/02_loot/LOOT_CRYSTAL_MARSH.md",
+    "creative/02_loot/LOOT_SKYREACH.md",
+    "creative/02_loot/LOOT_BOSSES.md",
+    "creative/03_crafting/CRAFTING_TREE.md",
+    "creative/10_icons/ITEM_ICON_DESIGN.md"
+  ],
+  "proposal": {
+    "ratification_tranches": {
+      "W1-001-WW": {
+        "blocks": "Whisperwood_creature_loot_and_crafts",
+        "new_item_ids": [
+          "aionbound:mosskip_crown_fragment",
+          "aionbound:thorn_barb",
+          "aionbound:stalker_claw",
+          "aionbound:hollow_venom_sac"
+        ],
+        "approval_scope": "Whisperwood_rows_only_in_new_items_aliases_narrative_and_removed_lists"
+      },
+      "W1-001-LATER-REGIONS": {
+        "blocks": "Ashen_Crystal_Marsh_Skyreach_and_finale_item_publication",
+        "may_defer_until": "before_each_corresponding_vertical_slice_loot_or_equipment_implementation"
+      }
+    },
+    "policy": {
+      "warehouse_first": true,
+      "prose_alias_has_no_inventory_id": true,
+      "curiosity_default": "NARRATIVE_CODEX_STATE",
+      "container_and_quantity_words": "REMOVED_AS_IDENTITIES",
+      "new_inventory_identity_bar": "RECIPE_OR_TROPHY_CRITICAL_AND_NOT_SAFELY_REPRESENTED_BY_WAREHOUSE_RESOURCE"
+    },
+    "new_required_items": [
+      {
+        "term": "Mosskip Crown Fragment",
+        "id": "aionbound:mosskip_crown_fragment",
+        "visibility": "inventory",
+        "icon": "new_required",
+        "craft_home": "three_to_mosskip_trophy"
+      },
+      {
+        "term": "Thorn Barb",
+        "id": "aionbound:thorn_barb",
+        "visibility": "inventory",
+        "icon": "new_required",
+        "craft_home": "mossfang_spear_and_thorn_whip"
+      },
+      {
+        "term": "Stalker Claw",
+        "id": "aionbound:stalker_claw",
+        "visibility": "inventory",
+        "icon": "new_required",
+        "craft_home": "briar_cleaver"
+      },
+      {
+        "term": "Hollow Venom Sac",
+        "id": "aionbound:hollow_venom_sac",
+        "visibility": "inventory",
+        "icon": "new_required",
+        "craft_home": "widow_fang_dagger_finish_and_consumable"
+      },
+      {
+        "term": "Drake Scale",
+        "id": "aionbound:drake_scale",
+        "visibility": "inventory",
+        "icon": "new_required",
+        "craft_home": "ashen_set_upgrade"
+      },
+      {
+        "term": "Prism Wing",
+        "id": "aionbound:prism_wing",
+        "visibility": "inventory",
+        "icon": "new_required",
+        "craft_home": "prism_bow"
+      },
+      {
+        "term": "Watcher Lens",
+        "id": "aionbound:watcher_lens",
+        "visibility": "inventory",
+        "icon": "new_required",
+        "craft_home": "crystal_circlet"
+      },
+      {
+        "term": "Wight Shroud",
+        "id": "aionbound:wight_shroud",
+        "visibility": "inventory",
+        "icon": "new_required",
+        "craft_home": "late_marsh_cloak_or_circlet_finish"
+      },
+      {
+        "term": "Wing Bone Stay",
+        "id": "aionbound:wing_bone_stay",
+        "visibility": "inventory",
+        "icon": "new_required",
+        "craft_home": "glider_panel"
+      }
+    ],
+    "aliases": [
+      {
+        "terms": [
+          "Boar Tusk",
+          "Boar Tusk Shard",
+          "Briar Crown"
+        ],
+        "canonical_id": "aionbound:briar_antler"
+      },
+      {
+        "terms": [
+          "Root Plate",
+          "Hardened Moss Plate",
+          "Thick Hide",
+          "Lantern-adjacent hide scrap",
+          "Tainted Pelt"
+        ],
+        "canonical_id": "aionbound:whisper_bark"
+      },
+      {
+        "terms": [
+          "Glow Soft Pellet"
+        ],
+        "canonical_id": "aionbound:glow_spore"
+      },
+      {
+        "terms": [
+          "Rot Fang",
+          "Chitin Shard"
+        ],
+        "canonical_id": "aionbound:widow_silk"
+      },
+      {
+        "terms": [
+          "Ash Dust",
+          "Mite Mandible",
+          "Cinder Beak",
+          "Ram Horn Curve",
+          "Soot Antler",
+          "Lynx Claw"
+        ],
+        "canonical_id": "aionbound:charbone"
+      },
+      {
+        "terms": [
+          "Ash Wool",
+          "Char Hide",
+          "Char Pelt",
+          "Cinder Pelt",
+          "Shell Plate",
+          "Swarm Queen Scale"
+        ],
+        "canonical_id": "aionbound:furnace_chitin"
+      },
+      {
+        "terms": [
+          "Heat Scale",
+          "Warm Blood Vial",
+          "Smolder Gland",
+          "Ember Fang",
+          "Ember Sinew",
+          "Stag Heart Cinder"
+        ],
+        "canonical_id": "aionbound:ember_resin"
+      },
+      {
+        "terms": [
+          "Beetle Core Fragment"
+        ],
+        "canonical_id": "aionbound:basalt_core"
+      },
+      {
+        "terms": [
+          "Char Feather"
+        ],
+        "canonical_id": "aionbound:volcanic_glass_shard"
+      },
+      {
+        "terms": [
+          "Algae Scrap"
+        ],
+        "canonical_id": "aionbound:glass_algae"
+      },
+      {
+        "terms": [
+          "Bog Tendril",
+          "Marsh Resin Blob",
+          "Prism Mucus"
+        ],
+        "canonical_id": "aionbound:marsh_resin"
+      },
+      {
+        "terms": [
+          "Crab Pearl Grain",
+          "Croc Eye Pearl",
+          "Perfect Prism Pearl"
+        ],
+        "canonical_id": "aionbound:prism_pearl"
+      },
+      {
+        "terms": [
+          "Croc Hide",
+          "Mire Shell Plate",
+          "Serpent Scale",
+          "Shed Skin Ribbon",
+          "Silt Fang",
+          "Newt Tail Crystal"
+        ],
+        "canonical_id": "aionbound:wet_chitin"
+      },
+      {
+        "terms": [
+          "Glass Feather",
+          "Iridescent Dust",
+          "Long Beak Shard",
+          "Tiny Prism Chip",
+          "Venom Crystal"
+        ],
+        "canonical_id": "aionbound:flood_crystal"
+      },
+      {
+        "terms": [
+          "Cliff Hoof Keratin",
+          "Hawk Talon",
+          "Ram Horn Spiral",
+          "Ruin Talon",
+          "Stone Beak"
+        ],
+        "canonical_id": "aionbound:cliff_crystal"
+      },
+      {
+        "terms": [
+          "Dense Muscle Strip",
+          "Soft Sky Fur"
+        ],
+        "canonical_id": "aionbound:cloud_wool"
+      },
+      {
+        "terms": [
+          "Drake Membrane",
+          "Gale Membrane",
+          "Ropewing Membrane",
+          "Fox Whisker Cord"
+        ],
+        "canonical_id": "aionbound:wind_silk"
+      },
+      {
+        "terms": [
+          "Glide Scale",
+          "Navigation Oil",
+          "Storm Salt",
+          "Vulture Crop Stone"
+        ],
+        "canonical_id": "aionbound:float_resin"
+      },
+      {
+        "terms": [
+          "Nest Crown Plume",
+          "Roc Primary Feather"
+        ],
+        "canonical_id": "aionbound:storm_pinion"
+      },
+      {
+        "terms": [
+          "Nest Twig"
+        ],
+        "canonical_id": "aionbound:sky_vine_item"
+      }
+    ],
+    "narrative_codex_only": [
+      "Mosskip Tuft",
+      "Hare's Lucky Foot",
+      "Pack Alpha Mark",
+      "Widow Eye",
+      "Wraith Mask Fragment",
+      "Scorched Message Tube",
+      "Pack Cinder Mark",
+      "Lynx Eye Gem",
+      "Slow Stone",
+      "Heron Nest Token",
+      "Drowned Choir Tablet",
+      "Hunter's Final Page",
+      "Surviving Smith's Notes",
+      "Twinbond-scented down",
+      "Memory of Four Lands pieces",
+      "Concord Spark",
+      "Sky Ruin Key Fragment",
+      "Sky Ruin Master Key"
+    ],
+    "removed_or_context_only": [
+      "Marrow Scrap",
+      "Wight Shroud Cloth",
+      "WW armor component crate",
+      "Drake Scale bundle",
+      "Thorn Barb bundle",
+      "resource bundle",
+      "pattern scrap",
+      "map scrap",
+      "crate",
+      "bulk",
+      "chips",
+      "dust"
+    ],
+    "existing_derived_components_unchanged": true,
+    "finale_presentation": {
+      "memory_of_four_lands": "existing_approved_derived_id_aionbound:memory_of_four_lands_inventory_visibility_deferred_to_W1-CREATIVE-002",
+      "concord_spark": "narrative_encounter_state_not_inventory_item",
+      "mastery_sigil": "use_existing_aionbound:warden_sigil_or_codex_stamp_no_new_generic_item"
+    }
+  },
+  "approval_required": [
+    {
+      "decision_id": "W1-001-WW-A",
+      "question": "Approve the four Whisperwood new IDs and all Whisperwood term dispositions as the minimum immediate tranche?"
+    },
+    {
+      "decision_id": "W1-001-LATER-A",
+      "question": "Approve or defer the five later-region new IDs and their exact canonical IDs?"
+    },
+    {
+      "decision_id": "W1-001-B",
+      "question": "Approve all listed prose aliases to existing warehouse resources?"
+    },
+    {
+      "decision_id": "W1-001-C",
+      "question": "Approve curiosities as Codex state and keys as structure state instead of inventory items?"
+    },
+    {
+      "decision_id": "W1-001-D",
+      "question": "Approve the removed/context-only list as non-identities?"
+    },
+    {
+      "decision_id": "W1-001-E",
+      "question": "Authorize Asset support to produce nine readable icons after identity ratification?"
+    }
+  ]
+}
