@@ -1,0 +1,54 @@
+{
+  "format_version": "1.21.40",
+  "minecraft:feature_rules": {
+    "description": {
+      "identifier": "aionbound:ww_ecology_whisper_fern.feature_rule",
+      "places_feature": "aionbound:ww_ecology_whisper_fern"
+    },
+    "conditions": {
+      "placement_pass": "surface_pass",
+      "minecraft:biome_filter": {
+        "all_of": [
+          {
+            "test": "has_biome_tag",
+            "operator": "==",
+            "value": "overworld"
+          },
+          {
+            "test": "has_biome_tag",
+            "operator": "==",
+            "value": "forest"
+          },
+          {
+            "test": "has_biome_tag",
+            "operator": "!=",
+            "value": "ocean"
+          }
+        ]
+      }
+    },
+    "distribution": {
+      "coordinate_eval_order": "xzy",
+      "iterations": 4,
+      "scatter_chance": {
+        "numerator": 1,
+        "denominator": 8
+      },
+      "x": {
+        "distribution": "uniform",
+        "extent": [
+          0,
+          15
+        ]
+      },
+      "y": "q.heightmap(v.worldx, v.worldz)",
+      "z": {
+        "distribution": "uniform",
+        "extent": [
+          0,
+          15
+        ]
+      }
+    }
+  }
+}

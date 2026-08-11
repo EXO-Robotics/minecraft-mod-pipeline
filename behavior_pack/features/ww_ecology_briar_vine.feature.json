@@ -1,0 +1,26 @@
+{
+  "format_version": "1.21.40",
+  "minecraft:single_block_feature": {
+    "description": {
+      "identifier": "aionbound:ww_ecology_briar_vine"
+    },
+    "places_block": "aionbound:briar_vine",
+    "enforce_placement_rules": true,
+    "enforce_survivability_rules": true,
+    "may_replace": [
+      "minecraft:air"
+    ],
+    "may_attach_to": {
+      "min_sides_must_attach": 1,
+      "auto_rotate": true,
+      "all": [
+        "minecraft:oak_log",
+        "minecraft:dark_oak_log",
+        "minecraft:mangrove_log",
+        "aionbound:whisperwood_log",
+        "aionbound:whisperwood_wood",
+        "aionbound:moss_bark"
+      ]
+    }
+  }
+}

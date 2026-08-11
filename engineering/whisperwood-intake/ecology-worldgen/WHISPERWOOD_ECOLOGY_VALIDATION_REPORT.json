@@ -1,0 +1,111 @@
+{
+  "schema": "aionbound.wave1.whisperwood.ecology_validation.v1",
+  "status": "PASS",
+  "checks": [
+    "deterministic regeneration",
+    "feature and rule identifier/filename closure",
+    "custom block closure",
+    "forest and placement filters",
+    "density and iteration bounds",
+    "forbidden content omission",
+    "proxy proof-boundary declaration"
+  ],
+  "counts": {
+    "features": 9,
+    "feature_rules": 9,
+    "unit_tests": 7
+  },
+  "outputs": [
+    {
+      "path": "behavior_pack/features/ww_ecology_briar_vine.feature.json",
+      "bytes": 646,
+      "sha256": "d30b67d3d2336e92942ed2095cc1d170423151e706d681a34c7b8b88ce720be0"
+    },
+    {
+      "path": "behavior_pack/features/ww_ecology_glow_moss_floor.feature.json",
+      "bytes": 630,
+      "sha256": "e752e5f4166f61f12c54ce1cda45e8f75cf3e7158a87905ed24d4d561b1a1176"
+    },
+    {
+      "path": "behavior_pack/features/ww_ecology_hollow_lily_margin.feature.json",
+      "bytes": 566,
+      "sha256": "5891f8e946823e6ed39dfe29a6bac1a340c7f813333bfb066533eeb8fcad4d10"
+    },
+    {
+      "path": "behavior_pack/features/ww_ecology_hollow_wood_cave.feature.json",
+      "bytes": 575,
+      "sha256": "aa87eaa07b3fa7e8a66967aef24d73f2c2bbcdbf8d9905b03ab2f59e797896d4"
+    },
+    {
+      "path": "behavior_pack/features/ww_ecology_lantern_bloom.feature.json",
+      "bytes": 573,
+      "sha256": "59ec6078263c18a900e1122b4303e66d1484c48f4f1b9806a7d5bcffd2881746"
+    },
+    {
+      "path": "behavior_pack/features/ww_ecology_mooncap.feature.json",
+      "bytes": 632,
+      "sha256": "289e56311b1812c970fc608a3378f5817fc12e22a2325068b4a4bb7b89051007"
+    },
+    {
+      "path": "behavior_pack/features/ww_ecology_root_bark_cluster.feature.json",
+      "bytes": 837,
+      "sha256": "648918c824bede98d7ab6ff9792dad64baaf009e972214534b93509a21213555"
+    },
+    {
+      "path": "behavior_pack/features/ww_ecology_root_flower.feature.json",
+      "bytes": 569,
+      "sha256": "cd0045627c485c252c58f31d60f28ad7e6186c90c52201bfe7bc6cd6596d1bbe"
+    },
+    {
+      "path": "behavior_pack/features/ww_ecology_whisper_fern.feature.json",
+      "bytes": 603,
+      "sha256": "ef7caa0ac3eeee0bb396e1ac590626c80a849a75b411459f9a8815b542afae2c"
+    },
+    {
+      "path": "behavior_pack/feature_rules/ww_ecology_briar_vine.feature_rule.json",
+      "bytes": 1175,
+      "sha256": "38cda883e8a4aed749833f90207f64f0cdee054cbc798b5d3391af11bf9d0517"
+    },
+    {
+      "path": "behavior_pack/feature_rules/ww_ecology_glow_moss_floor.feature_rule.json",
+      "bytes": 1185,
+      "sha256": "8864a1dab9ed073e6edf5bb4b76d003b8d4b00ac1b455353e033de9965ea5985"
+    },
+    {
+      "path": "behavior_pack/feature_rules/ww_ecology_hollow_lily_margin.feature_rule.json",
+      "bytes": 1191,
+      "sha256": "3f6f7840866f1d70c3187334c2b3cb8f4c1c216737713ca6fc031a1402837098"
+    },
+    {
+      "path": "behavior_pack/feature_rules/ww_ecology_hollow_wood_cave.feature_rule.json",
+      "bytes": 1258,
+      "sha256": "cb54fd916884989eb4dd6a9e74120266e5608bd570b82e3cafc02744934f7002"
+    },
+    {
+      "path": "behavior_pack/feature_rules/ww_ecology_lantern_bloom.feature_rule.json",
+      "bytes": 1181,
+      "sha256": "0f1ea6e28f16b69252124bca02147bf5351684296ade5b77857b3aa4d44f784d"
+    },
+    {
+      "path": "behavior_pack/feature_rules/ww_ecology_mooncap.feature_rule.json",
+      "bytes": 1169,
+      "sha256": "7273942130d555430e23cdd2be226f6221f5dbe2644e84b24d598d6008b7e79e"
+    },
+    {
+      "path": "behavior_pack/feature_rules/ww_ecology_root_bark_cluster.feature_rule.json",
+      "bytes": 1190,
+      "sha256": "f2b3f0afbd52a66038f5763b6c407549f4c70ed4145264c6e512b05c745010e1"
+    },
+    {
+      "path": "behavior_pack/feature_rules/ww_ecology_root_flower.feature_rule.json",
+      "bytes": 1177,
+      "sha256": "6a105dbb84c211198e4846410f1393168ec44dc8dceb0f5a42256ce12a149bd8"
+    },
+    {
+      "path": "behavior_pack/feature_rules/ww_ecology_whisper_fern.feature_rule.json",
+      "bytes": 1178,
+      "sha256": "08a3875399274a8b0970fb3db6d10794b59161b606ebd5cc4af99913f87a38da"
+    }
+  ],
+  "proof_boundary": "STATIC_SOURCE_REGISTRATION_ONLY; NOT BDS, CLIENT, NATURAL DISTRIBUTION, EXACT TERRAIN LOCALITY, OR CANDIDATE PROOF"
+}
