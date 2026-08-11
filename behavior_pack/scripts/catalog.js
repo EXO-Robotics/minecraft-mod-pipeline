@@ -1,4 +1,4 @@
-import { WHISPERWOOD_CODEX_ENTRIES, WAVE1_CODEX_EVENT_INDEX, WAVE1_CODEX_REGISTRY_VERSION } from "./wave1_codex_data.js";
+import { WAVE1_CODEX_ENTRIES, WAVE1_CODEX_EVENT_INDEX, WAVE1_CODEX_REGISTRY_VERSION } from "./wave1_codex_data.js";
 
 export const IDS = Object.freeze({
   world: "aionbound:core/world/v4",
@@ -13,7 +13,7 @@ export const IDS = Object.freeze({
 
 // The registry is data-only. Presentation remains a separately authorized
 // non-chat surface; the existing Codex chat page is retained as a fallback.
-export const CODEX_ENTRY_REGISTRY = WHISPERWOOD_CODEX_ENTRIES;
+export const CODEX_ENTRY_REGISTRY = WAVE1_CODEX_ENTRIES;
 export const CODEX_EVENT_INDEX = WAVE1_CODEX_EVENT_INDEX;
 export const CODEX_REGISTRY_VERSION = WAVE1_CODEX_REGISTRY_VERSION;
 

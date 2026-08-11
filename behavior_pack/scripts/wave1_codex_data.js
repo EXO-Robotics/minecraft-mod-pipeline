@@ -1,9 +1,10 @@
 import { WHISPERWOOD_CODEX_EXTENSION_ENTRIES } from "./wave1_codex_extension_data.js";
+import { ASHEN_CODEX_ENTRIES } from "./wave1_codex_ashen_data.js";
 
 // Machine-bound from the Whisperwood Codex implementation maps. This module
 // contains only SAFE_NOW identity and discovery-transition data. Acquisition
 // guidance whose live completion is blocked remains outside the runtime.
-export const WAVE1_CODEX_REGISTRY_VERSION = 2;
+export const WAVE1_CODEX_REGISTRY_VERSION = 3;
 const event = (id, state, kind) => Object.freeze({ id, state, event: kind });
 const entry = (id, kind, events) => Object.freeze({
   id,
@@ -66,15 +67,21 @@ export const WHISPERWOOD_CODEX_ENTRIES = Object.freeze([
   ...WHISPERWOOD_CODEX_EXTENSION_ENTRIES,
 ]);
 
+export const WAVE1_CODEX_ENTRIES = Object.freeze([
+  ...WHISPERWOOD_CODEX_ENTRIES,
+  ...ASHEN_CODEX_ENTRIES,
+]);
+
 const eventIndex = {};
 const categoryCounts = Object.create(null);
-for (let index = 0; index < WHISPERWOOD_CODEX_ENTRIES.length; index++) {
-  const entryData = WHISPERWOOD_CODEX_ENTRIES[index];
-  const categoryIndex = categoryCounts[entryData.category] ?? 0;
+for (let index = 0; index < WAVE1_CODEX_ENTRIES.length; index++) {
+  const entryData = WAVE1_CODEX_ENTRIES[index];
+  const categoryKey = `${entryData.region}:${entryData.category}`;
+  const categoryIndex = categoryCounts[categoryKey] ?? 0;
   if (Number.isInteger(entryData.categoryIndex) && entryData.categoryIndex !== categoryIndex) {
     throw new Error(`Codex category index mismatch: ${entryData.category}:${entryData.id}`);
   }
-  categoryCounts[entryData.category] = categoryIndex + 1;
+  categoryCounts[categoryKey] = categoryIndex + 1;
   for (const transition of entryData.events) {
     if (Object.prototype.hasOwnProperty.call(eventIndex, transition.id)) throw new Error(`Duplicate Codex event: ${transition.id}`);
     eventIndex[transition.id] = Object.freeze({ region: entryData.region, category: entryData.category, index: categoryIndex, state: transition.state, event: transition.event ?? transition.action });

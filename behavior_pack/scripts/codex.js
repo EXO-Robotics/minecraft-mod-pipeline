@@ -12,6 +12,10 @@ export const CODEX_UI_CATEGORIES = Object.freeze([
   Object.freeze({ id: "boss", title: "Bosses" }),
   Object.freeze({ id: "progression", title: "Journey" }),
 ]);
+export const CODEX_UI_REGIONS = Object.freeze([
+  Object.freeze({ id: "ww", title: "Whisperwood" }),
+  Object.freeze({ id: "ah", title: "Ashen Highlands" }),
+]);
 
 const unavailable = "Unavailable until its approved runtime dependency is complete.";
 const incomplete = "Complete this entry to reveal this answer.";
@@ -82,41 +86,52 @@ export function createCodexService({ state, ActionFormData = null }) {
     }).catch(() => fallback(player));
   }
 
-  function entriesFor(category) { return CODEX_ENTRY_REGISTRY.filter(entry => entry.category === category); }
+  function entriesFor(region, category) { return CODEX_ENTRY_REGISTRY.filter(entry => entry.region === region && entry.category === category); }
 
-  function openEntry(player, categoryIndex, entryIndex) {
-    const category = CODEX_UI_CATEGORIES[categoryIndex], entry = entriesFor(category.id)[entryIndex];
+  function openEntry(player, regionIndex, categoryIndex, entryIndex) {
+    const region = CODEX_UI_REGIONS[regionIndex], category = CODEX_UI_CATEGORIES[categoryIndex];
+    const entry = entriesFor(region.id, category.id)[entryIndex];
     if (!entry) return Promise.resolve(false);
     const stateValue = codexStateForEntry(state.playerState(player), entry);
     const form = new ActionFormData()
       .title(`Aionbound Codex — ${codexEntryTitle(entry, stateValue)}`)
       .body(codexEntryBody(entry, stateValue))
       .button("Back");
-    return show(player, form, selection => selection === 0 ? openCategory(player, categoryIndex) : false);
+    return show(player, form, selection => selection === 0 ? openCategory(player, regionIndex, categoryIndex) : false);
   }
 
-  function openCategory(player, categoryIndex) {
-    const category = CODEX_UI_CATEGORIES[categoryIndex];
-    if (!category) return Promise.resolve(false);
-    const playerState = state.playerState(player), entries = entriesFor(category.id);
-    const form = new ActionFormData().title(`Whisperwood — ${category.title}`).body("Choose an entry.");
+  function openCategory(player, regionIndex, categoryIndex) {
+    const region = CODEX_UI_REGIONS[regionIndex], category = CODEX_UI_CATEGORIES[categoryIndex];
+    if (!region || !category) return Promise.resolve(false);
+    const playerState = state.playerState(player), entries = entriesFor(region.id, category.id);
+    const form = new ActionFormData().title(`${region.title} — ${category.title}`).body("Choose an entry.");
     for (const entry of entries) {
       const stateValue = codexStateForEntry(playerState, entry);
       form.button(`[${codexStatus(stateValue)}] ${codexEntryTitle(entry, stateValue)}`);
     }
     form.button("Back");
-    return show(player, form, selection => selection === entries.length ? openRoot(player) : openEntry(player, categoryIndex, selection));
+    return show(player, form, selection => selection === entries.length ? openRegion(player, regionIndex) : openEntry(player, regionIndex, categoryIndex, selection));
+  }
+
+  function openRegion(player, regionIndex) {
+    const region = CODEX_UI_REGIONS[regionIndex];
+    if (!region) return Promise.resolve(false);
+    const playerState = state.playerState(player);
+    const form = new ActionFormData().title(`Aionbound Codex — ${region.title}`).body("Choose a category.");
+    for (const category of CODEX_UI_CATEGORIES) {
+      const entries = entriesFor(region.id, category.id);
+      const complete = entries.filter(entry => codexStateForEntry(playerState, entry) === 2).length;
+      form.button(`${category.title} — ${complete}/${entries.length}`);
+    }
+    form.button("Back");
+    return show(player, form, selection => selection === CODEX_UI_CATEGORIES.length ? openRoot(player) : openCategory(player, regionIndex, selection));
   }
 
   function openRoot(player) {
     if (typeof ActionFormData !== "function") return Promise.resolve(fallback(player));
-    const playerState = state.playerState(player);
-    const form = new ActionFormData().title("Aionbound Codex — Whisperwood").body("Choose a category.");
-    for (const category of CODEX_UI_CATEGORIES) {
-      const entries = entriesFor(category.id), complete = entries.filter(entry => codexStateForEntry(playerState, entry) === 2).length;
-      form.button(`${category.title} — ${complete}/${entries.length}`);
-    }
-    return show(player, form, selection => openCategory(player, selection));
+    const form = new ActionFormData().title("Aionbound Codex — Living World").body("Choose a region.");
+    for (const region of CODEX_UI_REGIONS) form.button(region.title);
+    return show(player, form, selection => openRegion(player, selection));
   }
 
   function use(player, itemType) {
@@ -128,11 +143,13 @@ export function createCodexService({ state, ActionFormData = null }) {
     const event = CODEX_EVENT_INDEX[eventId];
     if (!event) return false;
     let chapterChanged = false;
-    if (event.region === "ww" && eventId !== "codex:ww:progression:whisperwood_chapter:entered") {
-      const chapter = CODEX_EVENT_INDEX["codex:ww:progression:whisperwood_chapter:entered"];
+    const chapterEventId = event.region === "ww" ? "codex:ww:progression:whisperwood_chapter:entered"
+      : event.region === "ah" ? "codex:ah:progression:ashen_chapter:entered" : null;
+    if (chapterEventId && eventId !== chapterEventId) {
+      const chapter = CODEX_EVENT_INDEX[chapterEventId];
       chapterChanged = state.transitionCodex(player, chapter.region, chapter.category, chapter.index, chapter.state);
     }
     return state.transitionCodex(player, event.region, event.category, event.index, event.state) || chapterChanged;
   }
-  return { guidance, use, openRoot, openCategory, openEntry, discover, deriveGoals };
+  return { guidance, use, openRoot, openRegion, openCategory, openEntry, discover, deriveGoals };
 }

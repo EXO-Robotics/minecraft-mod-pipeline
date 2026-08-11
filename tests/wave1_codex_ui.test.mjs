@@ -8,7 +8,7 @@ import { fileURLToPath, pathToFileURL } from "node:url";
 const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), "..");
 const SOURCE = resolve(ROOT, "behavior_pack/scripts");
 const MODULE_DIR = await mkdtemp(resolve(tmpdir(), "aionbound-codex-ui-"));
-for (const name of ["wave1_codex_extension_data", "wave1_codex_data", "wave1_codex_ui_data", "catalog", "budgets", "state", "codex"]) {
+for (const name of ["wave1_codex_extension_data", "wave1_codex_ashen_data", "wave1_codex_data", "wave1_codex_ui_data", "catalog", "budgets", "state", "codex"]) {
   const source = (await readFile(resolve(SOURCE, `${name}.js`), "utf8"))
     .replaceAll(/from "\.\/([a-z0-9_]+)\.js"/g, 'from "./$1.mjs"');
   await writeFile(resolve(MODULE_DIR, `${name}.mjs`), source);
@@ -82,13 +82,15 @@ function formHarness(responses) {
 
 test("existing Codex routes open category and entry ActionForms without chat", async () => {
   const { player, messages, state } = createPlayerState();
-  const { ActionFormData, forms } = formHarness([{ canceled: false, selection: 1 }, { canceled: false, selection: 0 }, { canceled: true }]);
+  const { ActionFormData, forms } = formHarness([{ canceled: false, selection: 0 }, { canceled: false, selection: 1 }, { canceled: false, selection: 0 }, { canceled: true }]);
   const codex = codexModule.createCodexService({ state, ActionFormData });
   assert.equal(codex.discover(player, "codex:ww:plant:star_grass:harvested"), true);
   assert.equal(await codex.use(player, "aionbound:trophy_codex"), false);
-  assert.equal(forms.length, 3);
-  assert.equal(forms[0].title, "Aionbound Codex — Whisperwood");
-  assert.deepEqual(forms[0].buttons, [
+  assert.equal(forms.length, 4);
+  assert.equal(forms[0].title, "Aionbound Codex — Living World");
+  assert.deepEqual(forms[0].buttons, ["Whisperwood", "Ashen Highlands"]);
+  assert.equal(forms[1].title, "Aionbound Codex — Whisperwood");
+  assert.deepEqual(forms[1].buttons, [
     "Resources & Blocks — 0/20",
     "Plants — 1/10",
     "Creatures — 0/10",
@@ -96,13 +98,14 @@ test("existing Codex routes open category and entry ActionForms without chat", a
     "Equipment & Trophies — 0/21",
     "Bosses — 0/1",
     "Journey — 0/2",
+    "Back",
   ]);
-  assert.equal(forms[1].title, "Whisperwood — Plants");
-  assert.equal(forms[1].buttons[0], "[Complete] Star Grass");
-  assert.equal(forms[1].buttons[1], "[Locked] Unknown entry");
-  assert.ok(forms[2].body.includes("What did I find?"));
-  assert.ok(forms[2].body.includes("Unavailable until its approved runtime dependency is complete."));
-  assert.ok(forms[2].body.includes("Early fiber and fodder."));
+  assert.equal(forms[2].title, "Whisperwood — Plants");
+  assert.equal(forms[2].buttons[0], "[Complete] Star Grass");
+  assert.equal(forms[2].buttons[1], "[Locked] Unknown entry");
+  assert.ok(forms[3].body.includes("What did I find?"));
+  assert.ok(forms[3].body.includes("Unavailable until its approved runtime dependency is complete."));
+  assert.ok(forms[3].body.includes("Early fiber and fodder."));
   assert.deepEqual(messages, []);
 });
 

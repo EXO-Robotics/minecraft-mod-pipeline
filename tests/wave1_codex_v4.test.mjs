@@ -8,7 +8,7 @@ import { fileURLToPath, pathToFileURL } from "node:url";
 const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), "..");
 const SOURCE = resolve(ROOT, "behavior_pack/scripts");
 const MODULE_DIR = await mkdtemp(resolve(tmpdir(), "aionbound-codex-v4-"));
-for (const name of ["wave1_codex_extension_data", "wave1_codex_data", "wave1_codex_ui_data", "catalog", "budgets", "state", "codex"]) {
+for (const name of ["wave1_codex_extension_data", "wave1_codex_ashen_data", "wave1_codex_data", "wave1_codex_ui_data", "catalog", "budgets", "state", "codex"]) {
   const source = (await readFile(resolve(SOURCE, `${name}.js`), "utf8"))
     .replaceAll(/from "\.\/([a-z0-9_]+)\.js"/g, 'from "./$1.mjs"');
   await writeFile(resolve(MODULE_DIR, `${name}.mjs`), source);
@@ -27,15 +27,17 @@ const mappedEvents = map.entries.flatMap(entry => [
   ...(entry.detail_events ?? []),
 ].map(discovery => ({ id: discovery.id, state: discovery.stage === "partial" ? 1 : 2, event: discovery.event, warehouseId: entry.warehouse_id })));
 
-test("runtime registry preserves the 40-entry foundation and appends the 34-entry extension", () => {
+test("runtime registry preserves all Whisperwood addresses and appends Ashen", () => {
   const extensionEntries = ["structures", "equipment", "bosses", "progression"].flatMap(category => extensionMap.entries[category]);
-  assert.equal(data.WAVE1_CODEX_REGISTRY_VERSION, 2);
+  assert.equal(data.WAVE1_CODEX_REGISTRY_VERSION, 3);
   assert.equal(data.WHISPERWOOD_CODEX_FOUNDATION_ENTRIES.length, 40);
   assert.equal(data.WHISPERWOOD_CODEX_ENTRIES.length, 74);
   assert.deepEqual(data.WHISPERWOOD_CODEX_ENTRIES.slice(0, 40).map(entry => entry.id), map.entries.map(entry => entry.id));
   assert.deepEqual(data.WHISPERWOOD_CODEX_ENTRIES.slice(0, 40).map(entry => entry.warehouseId), map.entries.map(entry => entry.warehouse_id));
   assert.deepEqual(data.WHISPERWOOD_CODEX_ENTRIES.slice(40).map(entry => entry.id), extensionEntries.map(entry => entry.id));
-  assert.equal(Object.keys(data.WAVE1_CODEX_EVENT_INDEX).length, mappedEvents.length + extensionEntries.reduce((count, entry) => count + entry.discovery_events.length, 0));
+  assert.equal(data.WAVE1_CODEX_ENTRIES.length, 140);
+  assert.deepEqual(data.WAVE1_CODEX_ENTRIES.slice(0, 74), data.WHISPERWOOD_CODEX_ENTRIES);
+  assert.ok(Object.keys(data.WAVE1_CODEX_EVENT_INDEX).length > mappedEvents.length + extensionEntries.reduce((count, entry) => count + entry.discovery_events.length, 0));
   for (const expected of mappedEvents) {
     const actual = data.WAVE1_CODEX_EVENT_INDEX[expected.id];
     assert.ok(actual, expected.id);
@@ -43,7 +45,7 @@ test("runtime registry preserves the 40-entry foundation and appends the 34-entr
     assert.equal(actual.event, expected.event, expected.id);
     assert.equal(data.WHISPERWOOD_CODEX_ENTRIES.find(entry => entry.warehouseId === expected.warehouseId).events.some(event => event.id === expected.id), true);
   }
-  assert.strictEqual(catalog.CODEX_ENTRY_REGISTRY, data.WHISPERWOOD_CODEX_ENTRIES);
+  assert.strictEqual(catalog.CODEX_ENTRY_REGISTRY, data.WAVE1_CODEX_ENTRIES);
 });
 
 test("v3 to v4 migration is idempotent and preserves stamps topic goals and other domains", () => {
@@ -71,7 +73,7 @@ test("v4 reopen is canonical and malformed or unknown discovery data is bounded 
   const source = stateModule.migratePlayer({ v: 4, stamps: ["x", "x"], codex: { topic: 2, discovery: { rv: 99, ww: { resource: "A".repeat(10), plant: "bad!", unknown: "ff" }, zz: { resource: "ff" } } }, goals: {} });
   assert.deepEqual(stateModule.migratePlayer(source), source);
   assert.deepEqual(source.stamps, ["x"]);
-  assert.deepEqual(source.codex.discovery, { rv: 2, ww: { resource: "aaaaaaaaaa" } });
+  assert.deepEqual(source.codex.discovery, { rv: 3, ww: { resource: "aaaaaaaaaa" } });
 });
 
 test("two-bit transitions are monotonic, duplicate-safe, and reject unknown coordinates", () => {
