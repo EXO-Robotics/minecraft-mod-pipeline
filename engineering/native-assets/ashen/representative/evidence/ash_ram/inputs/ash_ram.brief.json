@@ -1,0 +1,49 @@
+{
+  "name": "ash_ram",
+  "display_name": "Ash Ram",
+  "sprint": "asset_sprint_002_ashen_highlands",
+  "phase": "P0",
+  "tier": "CREATURE",
+  "role": "Passive highland ram; spiral bone-char horns",
+  "profile": "quad",
+  "model_identifier": "geometry.aionforge_ah.ash_ram",
+  "cube_count": 26,
+  "bone_count": 9,
+  "density_floor": 22,
+  "locators": [
+    "effect",
+    "gaze"
+  ],
+  "palette": {
+    "metal": [
+      26,
+      22,
+      20
+    ],
+    "accent": [
+      74,
+      69,
+      64
+    ],
+    "energy": [
+      255,
+      106,
+      26
+    ]
+  },
+  "animations": [
+    "idle",
+    "walk",
+    "headbutt_pose",
+    "hurt",
+    "death"
+  ],
+  "minecraft_scale": "1.1 shoulder",
+  "texture_resolution": "64\u00d764",
+  "production_priority": "P0",
+  "related_assets": "charbone",
+  "originality": "Clean-room Ashen Highlands manufacture",
+  "editable": "assets/editable/ash_ram.bbmodel",
+  "claims_boundary": "Visual production only. No BP/JSON/AI/gameplay.",
+  "forbidden": "No Whisperwood moss green; no Gloamveil teal; not Ventmarch rename"
+}

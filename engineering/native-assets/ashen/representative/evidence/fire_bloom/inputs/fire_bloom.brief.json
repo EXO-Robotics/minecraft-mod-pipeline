@@ -1,0 +1,44 @@
+{
+  "name": "fire_bloom",
+  "display_name": "Fire Bloom",
+  "sprint": "asset_sprint_002_ashen_highlands",
+  "phase": "P0",
+  "tier": "PLANT",
+  "role": "Charcoal petals; heat core",
+  "profile": "plant",
+  "model_identifier": "geometry.aionforge_ah.fire_bloom",
+  "cube_count": 12,
+  "bone_count": 4,
+  "density_floor": 12,
+  "locators": [
+    "effect"
+  ],
+  "palette": {
+    "metal": [
+      26,
+      22,
+      20
+    ],
+    "accent": [
+      74,
+      69,
+      64
+    ],
+    "energy": [
+      255,
+      106,
+      26
+    ]
+  },
+  "animations": [
+    "glow_idle"
+  ],
+  "minecraft_scale": "0.6\u20130.8",
+  "texture_resolution": "16\u201332",
+  "production_priority": "P0",
+  "related_assets": "ember_resin",
+  "originality": "Clean-room Ashen Highlands manufacture",
+  "editable": "assets/editable/fire_bloom.bbmodel",
+  "claims_boundary": "Visual production only. No BP/JSON/AI/gameplay.",
+  "forbidden": "No Whisperwood moss green; no Gloamveil teal; not Ventmarch rename"
+}

@@ -1,0 +1,50 @@
+{
+  "name": "ember_crow",
+  "display_name": "Ember Crow",
+  "sprint": "asset_sprint_002_ashen_highlands",
+  "phase": "P0",
+  "tier": "CREATURE",
+  "role": "Ambient corvid; ember underwing",
+  "profile": "flyer",
+  "model_identifier": "geometry.aionforge_ah.ember_crow",
+  "cube_count": 20,
+  "bone_count": 8,
+  "density_floor": 20,
+  "locators": [
+    "effect",
+    "gaze"
+  ],
+  "palette": {
+    "metal": [
+      26,
+      22,
+      20
+    ],
+    "accent": [
+      74,
+      69,
+      64
+    ],
+    "energy": [
+      255,
+      106,
+      26
+    ]
+  },
+  "animations": [
+    "idle_perch",
+    "fly",
+    "glide",
+    "peck",
+    "hurt",
+    "death"
+  ],
+  "minecraft_scale": "0.45 body",
+  "texture_resolution": "64\u00d764",
+  "production_priority": "P0",
+  "related_assets": "watchtower perch",
+  "originality": "Clean-room Ashen Highlands manufacture",
+  "editable": "assets/editable/ember_crow.bbmodel",
+  "claims_boundary": "Visual production only. No BP/JSON/AI/gameplay.",
+  "forbidden": "No Whisperwood moss green; no Gloamveil teal; not Ventmarch rename"
+}

@@ -1,0 +1,51 @@
+{
+  "name": "ash_drake",
+  "display_name": "Ash Drake",
+  "sprint": "asset_sprint_002_ashen_highlands",
+  "phase": "P0",
+  "tier": "CREATURE",
+  "role": "Elite compact drake; not boss wyrm",
+  "profile": "quad",
+  "model_identifier": "geometry.aionforge_ah.ash_drake",
+  "cube_count": 34,
+  "bone_count": 11,
+  "density_floor": 34,
+  "locators": [
+    "effect",
+    "gaze",
+    "projectile"
+  ],
+  "palette": {
+    "metal": [
+      26,
+      22,
+      20
+    ],
+    "accent": [
+      42,
+      46,
+      52
+    ],
+    "energy": [
+      255,
+      106,
+      26
+    ]
+  },
+  "animations": [
+    "idle",
+    "walk",
+    "wing_flap_hop",
+    "bite",
+    "hurt",
+    "death"
+  ],
+  "minecraft_scale": "1.4\u20131.6 tall",
+  "texture_resolution": "128\u00d7128",
+  "production_priority": "P0",
+  "related_assets": "hero elite",
+  "originality": "Clean-room Ashen Highlands manufacture",
+  "editable": "assets/editable/ash_drake.bbmodel",
+  "claims_boundary": "Visual production only. No BP/JSON/AI/gameplay.",
+  "forbidden": "No Whisperwood moss green; no Gloamveil teal; not Ventmarch rename"
+}
