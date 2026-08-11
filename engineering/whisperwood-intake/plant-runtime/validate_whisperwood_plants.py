@@ -115,7 +115,9 @@ def validate(repo: Path) -> dict:
         assert components["minecraft:collision_box"] is False
         assert components["minecraft:selection_box"] == spec["selection"]
         assert components["minecraft:destructible_by_mining"]["seconds_to_destroy"] > 0
-        assert "minecraft:loot" not in components, f"{asset}: loot identity invented in plant lane"
+        loot_path = f"loot_tables/blocks/{asset}.json"
+        assert components["minecraft:loot"] == loot_path, f"{asset}: ratified harvest table is not bound"
+        assert (repo / "behavior_pack" / loot_path).is_file(), f"{asset}: missing ratified harvest table"
         assert components["minecraft:geometry"] == expected_geometry
         material = components["minecraft:material_instances"]
         assert set(material) == {"*"}
@@ -150,7 +152,7 @@ def validate(repo: Path) -> dict:
                 "support_blocks": spec["supports"],
                 "collision": "NONE",
                 "selection_box": spec["selection"],
-                "harvest_semantics": "BREAKABLE_SELF_DROP_DEFAULT_NOT_RUNTIME_PROVEN",
+                "harvest_semantics": "RATIFIED_LOOT_TABLE_BOUND_NOT_RUNTIME_PROVEN",
                 "native_evidence_status": receipt["status"],
                 "source_animation": ANIMATED_SOURCE_ASSETS.get(asset),
                 "runtime_animation": "WITHHELD_UNSUPPORTED_CUSTOM_BLOCK_SKELETAL_PLAYBACK" if asset in ANIMATED_SOURCE_ASSETS else "NOT_REQUIRED",
@@ -185,7 +187,7 @@ def validate(repo: Path) -> dict:
             "blocks.json, terrain_texture.json, and en_US.lang closure",
             "uniform alpha_test material pipeline",
             "role-grounded selection and placement filters",
-            "no invented loot table or runtime animation binding",
+            "ratified harvest-table closure and no runtime animation binding",
         ],
         "assets": assets,
         "proof_boundary": {

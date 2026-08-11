@@ -195,6 +195,7 @@ class ArchiveExtractedShippedEntrypointProof(unittest.TestCase):
             if expected_marker:
                 self.assertEqual(completed.stderr.count(expected_marker), 1, completed.stderr)
             output = json.loads(completed.stdout.strip().splitlines()[-1])
+            expected_startup = 1 if b"registerWhisperwoodRegrowth" in archived[entry_name] else 0
             self.assertEqual(output, {
                 "itemUse": 1,
                 "itemCompleteUse": 1,
@@ -205,7 +206,7 @@ class ArchiveExtractedShippedEntrypointProof(unittest.TestCase):
                 "entityDie": 1,
                 "intervals": 1,
                 "deferred": 1,
-                "startup": 1,
+                "startup": expected_startup,
             })
 
             script_bytes_after = {
