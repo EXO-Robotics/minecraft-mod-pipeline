@@ -69,6 +69,11 @@ class CrystalPlantRuntimeTests(unittest.TestCase):
         self.assertEqual(report["status"], "PASS_SOURCE_STATIC_PLANT_BINDING")
         for path, expected in files.items():
             self.assertTrue(path.is_file(), path)
+            if path == REPO / "resource_pack/texts/en_US.lang":
+                # Shared language rows are append-only and may be composed by
+                # later Crystal equipment lanes in a different stable order.
+                # Exact plant-row closure is asserted separately above.
+                continue
             self.assertEqual(path.read_bytes(), expected, path)
 
 

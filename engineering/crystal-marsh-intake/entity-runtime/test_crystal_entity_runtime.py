@@ -122,7 +122,10 @@ class CrystalEntityRuntimeTests(unittest.TestCase):
             components = entity["components"]
             self.assertEqual(entity["description"]["identifier"], f"aionbound:{asset}")
             self.assertIn("minecraft:movement", components)
-            self.assertNotIn("minecraft:loot", components)
+            self.assertEqual(
+                components.get("minecraft:loot"),
+                {"table": f"loot_tables/entities/crystal/{asset}.json"},
+            )
             if cfg["locomotion"] == "flying":
                 self.assertIn("minecraft:navigation.fly", components)
                 self.assertIn("minecraft:behavior.random_fly", components)
@@ -149,14 +152,16 @@ class CrystalEntityRuntimeTests(unittest.TestCase):
             else:
                 self.assertIn("minecraft:behavior.panic", components)
 
-    def test_loot_is_a_recorded_nondangling_integration_dependency(self):
+    def test_ratified_loot_is_bound_without_dangling_references(self):
         binding = self.report["loot_binding"]
-        self.assertEqual(binding["minecraft_loot_components_authored"], 0)
+        self.assertEqual(binding["status"], "RATIFIED_ECONOMY_TABLES_BOUND")
+        self.assertEqual(binding["minecraft_loot_components_authored"], 10)
         self.assertEqual(set(binding["dependencies"]), set(self.builder.ASSETS))
         self.assertEqual(binding["expected_table_paths"], {asset: f"behavior_pack/loot_tables/entities/crystal/{asset}.json" for asset in sorted(self.builder.ASSETS)})
         for asset in self.builder.ASSETS:
             components = read_json(ROOT / f"behavior_pack/entities/aionbound/crystal_marsh/{asset}.entity.json")["minecraft:entity"]["components"]
-            self.assertNotIn("minecraft:loot", components)
+            self.assertEqual(components["minecraft:loot"], {"table": f"loot_tables/entities/crystal/{asset}.json"})
+            self.assertTrue((ROOT / binding["expected_table_paths"][asset]).is_file())
 
     def test_marsh_wight_is_arena_only_shell_without_seal_or_terminal_semantics(self):
         path = ROOT / "behavior_pack/entities/aionbound/crystal_marsh/marsh_wight.entity.json"
@@ -164,10 +169,13 @@ class CrystalEntityRuntimeTests(unittest.TestCase):
         self.assertFalse(entity["description"]["is_spawnable"])
         self.assertFalse((ROOT / "behavior_pack/spawn_rules/aionbound/crystal_marsh/marsh_wight.spawn_rules.json").exists())
         self.assertIn("arena_only_shell", entity["components"]["minecraft:type_family"]["family"])
-        self.assertNotIn("minecraft:loot", entity["components"])
+        self.assertEqual(entity["components"]["minecraft:loot"], {"table": "loot_tables/entities/crystal/marsh_wight.json"})
         raw = path.read_text(encoding="utf-8")
         for forbidden in ("pearl_depths", "marsh_wight_mask", "seal_credit", "reward_entitled", "trophy_claimed", "encounter_session", "completed"):
             self.assertNotIn(forbidden, raw)
+        ecology_loot = (ROOT / "behavior_pack/loot_tables/entities/crystal/marsh_wight.json").read_text(encoding="utf-8")
+        self.assertNotIn("marsh_wight_mask", ecology_loot)
+        self.assertNotIn("seal_credit", ecology_loot)
 
     def test_nine_distinct_console_bounded_wetland_spawn_rules(self):
         spawn_root = ROOT / "behavior_pack/spawn_rules/aionbound/crystal_marsh"

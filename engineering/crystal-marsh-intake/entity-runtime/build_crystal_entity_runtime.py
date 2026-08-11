@@ -224,8 +224,14 @@ def build() -> dict:
             destination.parent.mkdir(parents=True, exist_ok=True)
             shutil.copyfile(source, destination)
         clips = list(json.loads(animation_src.read_text(encoding="utf-8"))["animations"])
+        behavior = behavior_entity(asset, cfg)
+        loot_table = ROOT / f"behavior_pack/loot_tables/entities/crystal/{asset}.json"
+        if loot_table.is_file():
+            behavior["minecraft:entity"]["components"]["minecraft:loot"] = {
+                "table": f"loot_tables/entities/crystal/{asset}.json"
+            }
         authored = {
-            ROOT / f"behavior_pack/entities/aionbound/crystal_marsh/{asset}.entity.json": behavior_entity(asset, cfg),
+            ROOT / f"behavior_pack/entities/aionbound/crystal_marsh/{asset}.entity.json": behavior,
             ROOT / f"resource_pack/entity/aionbound/crystal_marsh/{asset}.entity.json": client_entity(asset, clips),
             ROOT / f"resource_pack/animation_controllers/aionbound/crystal_marsh/{asset}.animation_controller.json": animation_controller(asset, cfg),
             ROOT / f"resource_pack/render_controllers/aionbound/crystal_marsh/{asset}.render_controller.json": render_controller(asset),
@@ -251,7 +257,7 @@ def build() -> dict:
     outputs.append({"path": str(sound_path.relative_to(ROOT)), "sha256": sha(sound_path)})
     return {
         "schema": "aionbound.wave1.crystal_marsh_entity_runtime_report.v1",
-        "status": "STATIC_CREATURE_RUNTIME_COMPLETE_LOOT_BINDING_PENDING_UNQUALIFIED",
+        "status": "STATIC_CREATURE_RUNTIME_COMPLETE_WITH_RATIFIED_LOOT_BINDING",
         "base": {"commit": BASE_COMMIT, "tree": BASE_TREE},
         "authority": {"W1-001-CM": "DIRECT_USER_APPROVAL_2026-08-11", "W1-004-CM": "DIRECT_USER_APPROVAL_2026-08-11", "W1-CREATIVE-005": "DEFERRED_UNCHANGED"},
         "scope": {
@@ -265,8 +271,8 @@ def build() -> dict:
         },
         "native_binding": source_evidence,
         "loot_binding": {
-            "status": "PENDING_SEPARATE_RATIFIED_ECONOMY_TABLES",
-            "minecraft_loot_components_authored": 0,
+            "status": "RATIFIED_ECONOMY_TABLES_BOUND",
+            "minecraft_loot_components_authored": len(ASSETS),
             "expected_table_paths": {asset: f"behavior_pack/loot_tables/entities/crystal/{asset}.json" for asset in sorted(ASSETS)},
             "dependencies": LOOT_DEPENDENCIES,
         },
@@ -286,7 +292,7 @@ def build() -> dict:
             "json_and_reference_validation": "RUN_BY_TARGETED_TEST_LANE",
             "native_source_evidence": "PREEXISTING_PASS_NATIVE_REPAIR_GATE",
             "bp_rp_integration": "STATIC_FILES_ONLY",
-            "loot_tables": "PENDING_SEPARATE_OWNER",
+            "loot_tables": "RATIFIED_TABLES_BOUND_STATIC_ONLY",
             "boss_terminal_semantics": "NOT_IMPLEMENTED",
             "build": "NOT_RUN", "bds": "NOT_RUN", "bedrock_client": "NOT_RUN", "multiplayer": "NOT_RUN", "console_ps4": "NOT_RUN", "marketplace_release": "NOT_RUN",
         },

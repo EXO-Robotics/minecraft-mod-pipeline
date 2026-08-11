@@ -109,8 +109,8 @@
       "reed_serpent": "behavior_pack/loot_tables/entities/crystal/reed_serpent.json",
       "silt_crocodile": "behavior_pack/loot_tables/entities/crystal/silt_crocodile.json"
     },
-    "minecraft_loot_components_authored": 0,
-    "status": "PENDING_SEPARATE_RATIFIED_ECONOMY_TABLES"
+    "minecraft_loot_components_authored": 10,
+    "status": "RATIFIED_ECONOMY_TABLES_BOUND"
   },
   "native_binding": [
     {
@@ -312,43 +312,43 @@
   "outputs": [
     {
       "path": "behavior_pack/entities/aionbound/crystal_marsh/bloom_crab.entity.json",
-      "sha256": "f06a5a06c027d5c46ba62912f2470d50a13fad58c9073b4b356d33926e501dd2"
+      "sha256": "74d05ce7772b401f1d9b98ba21b1ae1f924917fbc6dce7b5875f7f36ad908468"
     },
     {
       "path": "behavior_pack/entities/aionbound/crystal_marsh/bog_watcher.entity.json",
-      "sha256": "bf365012a0ec74ed3b4bc7842b6ab20d92c2bf8ca0fcbbb13b35c7c35ef4bc4f"
+      "sha256": "c0165181a0ad3de480719d48ca2017347a2e4c3de1f0e6c42d4b8a6906e502a4"
     },
     {
       "path": "behavior_pack/entities/aionbound/crystal_marsh/crystal_dragonfly.entity.json",
-      "sha256": "0a28c1e2345883c00227c59cf9b9c05645a81095111151f66f6cd5733b6bc15a"
+      "sha256": "4f11992051ca491c206864023fdd1a2bee11942d220dd0c025c04b5d3c839252"
     },
     {
       "path": "behavior_pack/entities/aionbound/crystal_marsh/crystal_newt.entity.json",
-      "sha256": "2648cd2e65a87f8f0a4d4857d88d3df6211b9dec978fb7640bfc6daf17f0ce1a"
+      "sha256": "38f70c7d26669997aa7366237b0e5823b9650941571d35c246456d21c81fcbf7"
     },
     {
       "path": "behavior_pack/entities/aionbound/crystal_marsh/glass_heron.entity.json",
-      "sha256": "202b828ae44b0e5fd4813e9e80cf6df29c87e8c4af2af2acaaa136e88833a804"
+      "sha256": "3ab64e108138ce69edcfcd76984cdf9707975d26eaf16c8399be9e34652222ec"
     },
     {
       "path": "behavior_pack/entities/aionbound/crystal_marsh/marsh_wight.entity.json",
-      "sha256": "9ae862557049386756318b481067f16aef9850cba3a35ea4411f9836c4eef841"
+      "sha256": "82d4b6eff962d45b45ae8bebf4eb679dd8c15e4fdd47d512a1529c93496cf1e2"
     },
     {
       "path": "behavior_pack/entities/aionbound/crystal_marsh/mire_turtle.entity.json",
-      "sha256": "ada94155089bb6767060e9590f3f01eb41882d8345b5257910c8e0d3dcf6eb77"
+      "sha256": "409d39b7d132f9b5a1431560c9dbf468dae55d178019718cbe99584876b7cd2a"
     },
     {
       "path": "behavior_pack/entities/aionbound/crystal_marsh/prism_frog.entity.json",
-      "sha256": "8bd34c5d3d8dc513e0e735ce15c920bb461bd0eb62e4b26f53fd20f0b6fa8184"
+      "sha256": "6269512c96d787d735e3077d240fa8b8cf9ee01103d1f9eef0453a9732d560d1"
     },
     {
       "path": "behavior_pack/entities/aionbound/crystal_marsh/reed_serpent.entity.json",
-      "sha256": "d82353324166834d9e667a09830a8f9cc0cc5c16e7e071f34d3a8913010f96b0"
+      "sha256": "26518a71bc106ab3365a43dedb4e35457d8e57915d5b2ae2e08b91d111b74f55"
     },
     {
       "path": "behavior_pack/entities/aionbound/crystal_marsh/silt_crocodile.entity.json",
-      "sha256": "0762209f9bfb4efc353c98d11008c164357aaf5bf9505af52684c47bc2c96583"
+      "sha256": "d9d1d35cbd413d40f5b97093a39574880f5f72032e7ef99400001c1bd17c174b"
     },
     {
       "path": "behavior_pack/spawn_rules/aionbound/crystal_marsh/bloom_crab.spawn_rules.json",
@@ -639,7 +639,7 @@
     "build": "NOT_RUN",
     "console_ps4": "NOT_RUN",
     "json_and_reference_validation": "RUN_BY_TARGETED_TEST_LANE",
-    "loot_tables": "PENDING_SEPARATE_OWNER",
+    "loot_tables": "RATIFIED_TABLES_BOUND_STATIC_ONLY",
     "marketplace_release": "NOT_RUN",
     "multiplayer": "NOT_RUN",
     "native_source_evidence": "PREEXISTING_PASS_NATIVE_REPAIR_GATE"
@@ -675,5 +675,5 @@
     "pearl_depths_session_completion_rewards": "OUT_OF_SCOPE",
     "shared_runtime_scripts": "NOT_TOUCHED"
   },
-  "status": "STATIC_CREATURE_RUNTIME_COMPLETE_LOOT_BINDING_PENDING_UNQUALIFIED"
+  "status": "STATIC_CREATURE_RUNTIME_COMPLETE_WITH_RATIFIED_LOOT_BINDING"
 }

@@ -31,7 +31,7 @@ def encoded(value: object) -> bytes:
 
 def expected() -> list[tuple[Path, str, str]]:
     return [
-        *((ROOT / "behavior_pack/entities" / f"{asset}.entity.json", "minecraft:entity", f"loot_tables/entities/crystal/{asset}.json") for asset in CREATURES),
+        *((ROOT / "behavior_pack/entities/aionbound/crystal_marsh" / f"{asset}.entity.json", "minecraft:entity", f"loot_tables/entities/crystal/{asset}.json") for asset in CREATURES),
         *((ROOT / "behavior_pack/blocks" / f"{asset}.block.json", "minecraft:block", f"loot_tables/blocks/{asset}.json") for asset in PLANTS),
     ]
 
