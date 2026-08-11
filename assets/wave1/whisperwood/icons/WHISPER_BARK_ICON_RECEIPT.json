@@ -1,0 +1,30 @@
+{
+  "schema_version": "aionbound.wave1.generated-icon-receipt.v1",
+  "asset_id": "whisper_bark",
+  "runtime_id": "aionbound:whisper_bark",
+  "status": "ICON_ART_AUTHORED_ALPHA_VALIDATED_NOT_CLIENT_PROVEN",
+  "generation": {
+    "mode": "built_in_image_generation",
+    "source_path": "assets/wave1/whisperwood/icons/source/whisper_bark-chroma.png",
+    "source_sha256": "d99087964b3becfdef6517b510ae2fa9c3776f7f39280a378d3d2f6cb637d63a",
+    "prompt": "Create one handcrafted pixel-art Minecraft Bedrock inventory icon for Whisperwood resource whisper_bark: a rough curved strip of ancient dark-brown bark with moss-green crevices and one tiny amber fleck; centered asymmetric silhouette, readable at 32x32, no box, pedestal, text, border, watermark, shadow, or reflection; flat #ff00ff chroma-key background."
+  },
+  "post_processing": {
+    "method": "imagegen remove_chroma_key helper, then nearest-neighbor resize",
+    "key_color_detected": "#f504f1",
+    "output_path": "resource_pack/textures/aionbound/whisperwood/items/whisper_bark.png",
+    "output_sha256": "2afef0e569c5bb25b64f837c17d999e9ba4e1c0d9953fbc488844ebc32c8529a",
+    "width": 128,
+    "height": 128,
+    "mode": "RGBA",
+    "corner_pixel": [0, 0, 0, 0],
+    "alpha_mean": 0.199701
+  },
+  "checks": {
+    "transparent_corner": "PASS",
+    "subject_coverage": "PASS",
+    "visual_32px_readability": "PASS",
+    "warehouse_identity_preserved": true
+  },
+  "proof_boundary": "Authored icon source, alpha removal, dimensions, and local visual readability only. Not yet bound into item_texture.json or a behavior-pack item; no Bedrock client, Stable BDS, controller, console, or candidate proof."
+}
