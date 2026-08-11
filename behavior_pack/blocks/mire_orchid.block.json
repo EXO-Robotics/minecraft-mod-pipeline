@@ -1,0 +1,56 @@
+{
+  "format_version": "1.21.80",
+  "minecraft:block": {
+    "description": {
+      "identifier": "aionbound:mire_orchid",
+      "menu_category": {
+        "category": "nature"
+      }
+    },
+    "components": {
+      "minecraft:display_name": "Mire Orchid",
+      "minecraft:collision_box": false,
+      "minecraft:selection_box": {
+        "origin": [
+          -5,
+          0,
+          -5
+        ],
+        "size": [
+          10,
+          12,
+          10
+        ]
+      },
+      "minecraft:destructible_by_mining": {
+        "seconds_to_destroy": 0.1
+      },
+      "minecraft:geometry": "geometry.aionbound.mire_orchid",
+      "minecraft:material_instances": {
+        "*": {
+          "texture": "mire_orchid",
+          "render_method": "alpha_test",
+          "ambient_occlusion": false,
+          "face_dimming": false
+        }
+      },
+      "minecraft:placement_filter": {
+        "conditions": [
+          {
+            "allowed_faces": [
+              "up"
+            ],
+            "block_filter": [
+              "aionbound:marsh_soil",
+              "aionbound:wet_clay_block",
+              "aionbound:crystal_gravel",
+              "minecraft:mud",
+              "minecraft:clay"
+            ]
+          }
+        ]
+      },
+      "minecraft:loot": "loot_tables/blocks/mire_orchid.json"
+    }
+  }
+}

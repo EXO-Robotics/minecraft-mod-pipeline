@@ -1,0 +1,25 @@
+{
+  "format_version": "1.21.40",
+  "minecraft:single_block_feature": {
+    "description": {
+      "identifier": "aionbound:cm_ecology_crystal_vine"
+    },
+    "places_block": "aionbound:crystal_vine",
+    "enforce_placement_rules": true,
+    "enforce_survivability_rules": true,
+    "may_replace": [
+      "minecraft:water"
+    ],
+    "may_attach_to": {
+      "min_sides_must_attach": 1,
+      "auto_rotate": true,
+      "all": [
+        "aionbound:crystal_log",
+        "aionbound:marsh_wood",
+        "aionbound:glass_root_block",
+        "aionbound:crystal_stone",
+        "aionbound:prism_brick"
+      ]
+    }
+  }
+}

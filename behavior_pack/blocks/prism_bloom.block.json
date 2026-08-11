@@ -1,0 +1,56 @@
+{
+  "format_version": "1.21.80",
+  "minecraft:block": {
+    "description": {
+      "identifier": "aionbound:prism_bloom",
+      "menu_category": {
+        "category": "nature"
+      }
+    },
+    "components": {
+      "minecraft:display_name": "Prism Bloom",
+      "minecraft:collision_box": false,
+      "minecraft:selection_box": {
+        "origin": [
+          -6,
+          0,
+          -6
+        ],
+        "size": [
+          12,
+          12,
+          12
+        ]
+      },
+      "minecraft:destructible_by_mining": {
+        "seconds_to_destroy": 0.1
+      },
+      "minecraft:geometry": "geometry.aionbound.prism_bloom",
+      "minecraft:material_instances": {
+        "*": {
+          "texture": "prism_bloom",
+          "render_method": "alpha_test",
+          "ambient_occlusion": false,
+          "face_dimming": false
+        }
+      },
+      "minecraft:placement_filter": {
+        "conditions": [
+          {
+            "allowed_faces": [
+              "up"
+            ],
+            "block_filter": [
+              "aionbound:marsh_soil",
+              "aionbound:glass_root_block",
+              "aionbound:crystal_stone",
+              "aionbound:crystal_gravel"
+            ]
+          }
+        ]
+      },
+      "minecraft:loot": "loot_tables/blocks/prism_bloom.json",
+      "minecraft:light_emission": 3
+    }
+  }
+}

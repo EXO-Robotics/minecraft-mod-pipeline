@@ -1,0 +1,25 @@
+{
+  "format_version": "1.21.40",
+  "minecraft:single_block_feature": {
+    "description": {
+      "identifier": "aionbound:cm_ecology_flood_reed"
+    },
+    "places_block": "aionbound:flood_reed",
+    "enforce_placement_rules": true,
+    "enforce_survivability_rules": true,
+    "may_replace": [
+      "minecraft:water"
+    ],
+    "may_attach_to": {
+      "min_sides_must_attach": 1,
+      "auto_rotate": false,
+      "bottom": [
+        "aionbound:marsh_soil",
+        "aionbound:wet_clay_block",
+        "aionbound:crystal_gravel",
+        "minecraft:mud",
+        "minecraft:clay"
+      ]
+    }
+  }
+}

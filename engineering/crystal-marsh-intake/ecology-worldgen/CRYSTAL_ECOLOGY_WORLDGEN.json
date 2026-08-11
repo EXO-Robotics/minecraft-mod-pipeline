@@ -1,0 +1,141 @@
+{
+  "schema": "aionbound.wave1.crystal-marsh-ecology-worldgen.v1",
+  "status": "PASS_STATIC_SOURCE_REGISTRATION",
+  "authority": "Creative Crystal Marsh low-basin, reed-sea, pool, channel, and crystal-clearing language",
+  "density": {
+    "aggregate_attempts_per_chunk_before_filters": 0.929687,
+    "maximum": 1.0,
+    "cap_change": "NONE"
+  },
+  "regional_filter": "overworld and non-ocean and swamp-or-river proxy",
+  "water_ecology": {
+    "shallow": [
+      "bubble_pod",
+      "crystal_lily",
+      "flood_reed"
+    ],
+    "submerged": [
+      "crystal_vine",
+      "glow_kelp"
+    ],
+    "water_replace_requires_water_containment_component": true
+  },
+  "registrations": [
+    {
+      "asset": "pearl_grass",
+      "qualitative_locality": "low islets",
+      "habitat": "wetland_surface",
+      "may_replace": "air",
+      "iterations": 3,
+      "scatter_denominator": 12,
+      "expected_attempts_per_chunk_before_filters": 0.25,
+      "feature_sha256": "10dc0e3aeef7fe25e8ce8b7a0137e3229aa6ad7e767c785fadf79d9603dcfbde",
+      "feature_rule_sha256": "376373f0c5cf5e4acdaf17f29daec55bee9650d423c3ea8b66a89dfbba8b1775"
+    },
+    {
+      "asset": "marsh_fern",
+      "qualitative_locality": "sheltered banks",
+      "habitat": "wetland_surface",
+      "may_replace": "air",
+      "iterations": 2,
+      "scatter_denominator": 16,
+      "expected_attempts_per_chunk_before_filters": 0.125,
+      "feature_sha256": "5577501f621741d8c0c45941eef4a5a95d9c0242c593fd076237f65cb81619e4",
+      "feature_rule_sha256": "cfba9c9d3118b66cbbf68c859f36b9ef7236f7109b92d27e43df122ff48fd63c"
+    },
+    {
+      "asset": "flood_reed",
+      "qualitative_locality": "shallow reed seas",
+      "habitat": "shallow_water",
+      "may_replace": "water",
+      "iterations": 4,
+      "scatter_denominator": 16,
+      "expected_attempts_per_chunk_before_filters": 0.25,
+      "feature_sha256": "1f43d6d4ffaaf69ac302ecb55f2920292a8a7c9bab1c60fc1dbdc6fb50c5a24c",
+      "feature_rule_sha256": "ee92a488f4dc4130e571ef71771f085e2eee065250b1f33a23c587f80b030a2e"
+    },
+    {
+      "asset": "glass_moss",
+      "qualitative_locality": "crystal shade",
+      "habitat": "wetland_surface",
+      "may_replace": "air",
+      "iterations": 2,
+      "scatter_denominator": 24,
+      "expected_attempts_per_chunk_before_filters": 0.083333,
+      "feature_sha256": "a35d532bf16c88e9d6ee1dceb09aeb42f1620c90e57795e9f2d0329f0b5143ce",
+      "feature_rule_sha256": "f431450945fa662536997456b8e1f6c2180e331e0a033cdf511aec9acf3d1d51"
+    },
+    {
+      "asset": "glow_kelp",
+      "qualitative_locality": "deep basin water",
+      "habitat": "submerged",
+      "may_replace": "water",
+      "iterations": 2,
+      "scatter_denominator": 32,
+      "expected_attempts_per_chunk_before_filters": 0.0625,
+      "feature_sha256": "769c24930aa1efc045271529fcb8206c27f4a9387b9f2ceaf32aa4633e79dc1c",
+      "feature_rule_sha256": "1f7a05b65a0edeaca9c36a9fd0a6e4b53acad8dfad4f9072fc16f4bdd86dd216"
+    },
+    {
+      "asset": "bubble_pod",
+      "qualitative_locality": "quiet shallows",
+      "habitat": "shallow_water",
+      "may_replace": "water",
+      "iterations": 1,
+      "scatter_denominator": 24,
+      "expected_attempts_per_chunk_before_filters": 0.041667,
+      "feature_sha256": "3e21e04950ca3c00de957e8b742e4e9a641a16fbe816b6b9fb2238b1123137a6",
+      "feature_rule_sha256": "b73dcf10c3d4df639f4b78bd8aae2dcd3ff866533ef340e6e915cc0fdad1d3cf"
+    },
+    {
+      "asset": "crystal_lily",
+      "qualitative_locality": "still pools",
+      "habitat": "shallow_water",
+      "may_replace": "water",
+      "iterations": 1,
+      "scatter_denominator": 32,
+      "expected_attempts_per_chunk_before_filters": 0.03125,
+      "feature_sha256": "48e44c9533f68bc011db43a035ed54b221413f7b6800644282419e23e47c158c",
+      "feature_rule_sha256": "59e73a5470cd0648fbd0711860a345be12df4778b95147a92aab2be09ca525d7"
+    },
+    {
+      "asset": "crystal_vine",
+      "qualitative_locality": "flooded channels",
+      "habitat": "submerged_attachment",
+      "may_replace": "water",
+      "iterations": 2,
+      "scatter_denominator": 32,
+      "expected_attempts_per_chunk_before_filters": 0.0625,
+      "feature_sha256": "8396af49728c0a0976be6de7ca14f70811ab8c86425d9aace208877e646540a1",
+      "feature_rule_sha256": "bff0c00a229879f4164a6c6358198ec5456e2477b468a62dbe6e5892a05ced4e"
+    },
+    {
+      "asset": "mire_orchid",
+      "qualitative_locality": "rare mire pocket",
+      "habitat": "wetland_surface",
+      "may_replace": "air",
+      "iterations": 1,
+      "scatter_denominator": 128,
+      "expected_attempts_per_chunk_before_filters": 0.007812,
+      "feature_sha256": "65d833eb32ef1f08408d53f09520fc19009fd31318636ccfe0ac13e4cfd06e4a",
+      "feature_rule_sha256": "eabd6441d860e855ffba9f01d7eaa7215ea4673f3c978b13c05dee7216c420cd"
+    },
+    {
+      "asset": "prism_bloom",
+      "qualitative_locality": "crystal clearing",
+      "habitat": "wetland_surface",
+      "may_replace": "air",
+      "iterations": 1,
+      "scatter_denominator": 64,
+      "expected_attempts_per_chunk_before_filters": 0.015625,
+      "feature_sha256": "8a7153d0d8e65ee3c9720901bd9f8fd0689dab3d9dbc5dca07834497ef963c36",
+      "feature_rule_sha256": "35ec02be3745b9f4ab819d9378166b286f2f19cb3645e71bbfb25c17f4ef690d"
+    }
+  ],
+  "proof_boundary": [
+    "static source only",
+    "swamp and river tags are regional proxies",
+    "not live water adjacency or survivability proof",
+    "not client BDS console distribution performance or release proof"
+  ]
+}

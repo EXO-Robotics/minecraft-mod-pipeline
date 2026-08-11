@@ -1,0 +1,65 @@
+{
+  "format_version": "1.21.80",
+  "minecraft:block": {
+    "description": {
+      "identifier": "aionbound:bubble_pod",
+      "menu_category": {
+        "category": "nature"
+      }
+    },
+    "components": {
+      "minecraft:display_name": "Bubble Pod",
+      "minecraft:collision_box": false,
+      "minecraft:selection_box": {
+        "origin": [
+          -6,
+          0,
+          -6
+        ],
+        "size": [
+          12,
+          14,
+          12
+        ]
+      },
+      "minecraft:destructible_by_mining": {
+        "seconds_to_destroy": 0.1
+      },
+      "minecraft:geometry": "geometry.aionbound.bubble_pod",
+      "minecraft:material_instances": {
+        "*": {
+          "texture": "bubble_pod",
+          "render_method": "alpha_test",
+          "ambient_occlusion": false,
+          "face_dimming": false
+        }
+      },
+      "minecraft:placement_filter": {
+        "conditions": [
+          {
+            "allowed_faces": [
+              "up"
+            ],
+            "block_filter": [
+              "aionbound:marsh_soil",
+              "aionbound:wet_clay_block",
+              "aionbound:crystal_gravel",
+              "minecraft:mud",
+              "minecraft:clay"
+            ]
+          }
+        ]
+      },
+      "minecraft:loot": "loot_tables/blocks/bubble_pod.json",
+      "minecraft:liquid_detection": {
+        "detection_rules": [
+          {
+            "liquid_type": "water",
+            "can_contain_liquid": true,
+            "on_liquid_touches": "blocking"
+          }
+        ]
+      }
+    }
+  }
+}

@@ -1,0 +1,66 @@
+{
+  "format_version": "1.21.80",
+  "minecraft:block": {
+    "description": {
+      "identifier": "aionbound:crystal_vine",
+      "menu_category": {
+        "category": "nature"
+      }
+    },
+    "components": {
+      "minecraft:display_name": "Crystal Vine",
+      "minecraft:collision_box": false,
+      "minecraft:selection_box": {
+        "origin": [
+          -4,
+          0,
+          -4
+        ],
+        "size": [
+          8,
+          16,
+          8
+        ]
+      },
+      "minecraft:destructible_by_mining": {
+        "seconds_to_destroy": 0.1
+      },
+      "minecraft:geometry": "geometry.aionbound.crystal_vine",
+      "minecraft:material_instances": {
+        "*": {
+          "texture": "crystal_vine",
+          "render_method": "alpha_test",
+          "ambient_occlusion": false,
+          "face_dimming": false
+        }
+      },
+      "minecraft:placement_filter": {
+        "conditions": [
+          {
+            "allowed_faces": [
+              "down",
+              "side"
+            ],
+            "block_filter": [
+              "aionbound:crystal_log",
+              "aionbound:marsh_wood",
+              "aionbound:glass_root_block",
+              "aionbound:crystal_stone",
+              "aionbound:prism_brick"
+            ]
+          }
+        ]
+      },
+      "minecraft:loot": "loot_tables/blocks/crystal_vine.json",
+      "minecraft:liquid_detection": {
+        "detection_rules": [
+          {
+            "liquid_type": "water",
+            "can_contain_liquid": true,
+            "on_liquid_touches": "blocking"
+          }
+        ]
+      }
+    }
+  }
+}

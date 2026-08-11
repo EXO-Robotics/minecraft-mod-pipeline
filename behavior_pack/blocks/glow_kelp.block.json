@@ -1,0 +1,66 @@
+{
+  "format_version": "1.21.80",
+  "minecraft:block": {
+    "description": {
+      "identifier": "aionbound:glow_kelp",
+      "menu_category": {
+        "category": "nature"
+      }
+    },
+    "components": {
+      "minecraft:display_name": "Glow Kelp",
+      "minecraft:collision_box": false,
+      "minecraft:selection_box": {
+        "origin": [
+          -5,
+          0,
+          -5
+        ],
+        "size": [
+          10,
+          16,
+          10
+        ]
+      },
+      "minecraft:destructible_by_mining": {
+        "seconds_to_destroy": 0.1
+      },
+      "minecraft:geometry": "geometry.aionbound.glow_kelp",
+      "minecraft:material_instances": {
+        "*": {
+          "texture": "glow_kelp",
+          "render_method": "alpha_test",
+          "ambient_occlusion": false,
+          "face_dimming": false
+        }
+      },
+      "minecraft:placement_filter": {
+        "conditions": [
+          {
+            "allowed_faces": [
+              "up"
+            ],
+            "block_filter": [
+              "aionbound:marsh_soil",
+              "aionbound:wet_clay_block",
+              "aionbound:crystal_gravel",
+              "minecraft:mud",
+              "minecraft:clay"
+            ]
+          }
+        ]
+      },
+      "minecraft:loot": "loot_tables/blocks/glow_kelp.json",
+      "minecraft:liquid_detection": {
+        "detection_rules": [
+          {
+            "liquid_type": "water",
+            "can_contain_liquid": true,
+            "on_liquid_touches": "blocking"
+          }
+        ]
+      },
+      "minecraft:light_emission": 6
+    }
+  }
+}

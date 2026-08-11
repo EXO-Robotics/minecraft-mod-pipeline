@@ -1,0 +1,146 @@
+{
+  "schema": "aionbound.wave1.crystal-marsh-plant-runtime.v1",
+  "status": "PASS_SOURCE_STATIC_PLANT_BINDING",
+  "base_commit": "6a10cd8a82635299ae62ab8f6b9095c9b793c7a3",
+  "base_tree": "689fa214ae21ab9739a8b6710fdbb5bb00ebeaeb",
+  "assets": [
+    {
+      "asset": "crystal_lily",
+      "native_lane": "plants",
+      "geometry_source_sha256": "f38e1ea57960c75b6e9846ec0735f174bb6258aa7c1ae61b9d826ddc7dd58d44",
+      "runtime_geometry_sha256": "2b3d62333bd7c481eff83758c9e01140e53f5338e2cb26a508a97bb93c42f024",
+      "texture_sha256": "701a25d933f46f0637d46294de3ba4312435677d73a6e8e9da7486a845b23906",
+      "waterloggable": true,
+      "light_emission": 3,
+      "loot_binding": "loot_tables/blocks/crystal_lily.json"
+    },
+    {
+      "asset": "flood_reed",
+      "native_lane": "representative",
+      "geometry_source_sha256": "bd441acb297880639d447f57bd7a4d50dd4c004995f39b8828456deb7fb0b53d",
+      "runtime_geometry_sha256": "f564ef01deabf823ffe22bd22a5bb782af1cef635b5520227bfd40caae177aaa",
+      "texture_sha256": "cfd7ce90b242e3aa115bb2f9d4e6fc2fc6e9de49c27f64327b710da6c92573e1",
+      "waterloggable": true,
+      "light_emission": 0,
+      "loot_binding": "loot_tables/blocks/flood_reed.json"
+    },
+    {
+      "asset": "prism_bloom",
+      "native_lane": "plants",
+      "geometry_source_sha256": "896fb395be0d8af3d96f4cc775f1e18221c73557fb8d7b5d09192160fb1602b5",
+      "runtime_geometry_sha256": "f7f5ab5c6f9be6b7952680abecbd64d1077f4e54ebe08c4eed979c511ae234b0",
+      "texture_sha256": "094e9cdee2bc8f0862ff5686e7043d8938b1d92fb2a936431a9b3814b4b4035b",
+      "waterloggable": false,
+      "light_emission": 3,
+      "loot_binding": "loot_tables/blocks/prism_bloom.json"
+    },
+    {
+      "asset": "glass_moss",
+      "native_lane": "plants",
+      "geometry_source_sha256": "782d7a36ae7cfb9e7a3fbf5da9fa1a4b894b71b1afb37dea335c5f153cb2f210",
+      "runtime_geometry_sha256": "fb6087eea28bfa6dcc23a966a45439b3dab1c30f5e3dbad9bd716574d570c4c9",
+      "texture_sha256": "b31cd4bfbed71ab61ecc6bd25edaf98e77e72af5405d489879248ff24541fa74",
+      "waterloggable": false,
+      "light_emission": 2,
+      "loot_binding": "loot_tables/blocks/glass_moss.json"
+    },
+    {
+      "asset": "marsh_fern",
+      "native_lane": "plants",
+      "geometry_source_sha256": "d47900dfc064ade0b868ac7f3b50a2dbd7789c1467ff61e3bfd23a519bab5956",
+      "runtime_geometry_sha256": "2dc91994d1f9e47ba9d8fd05d46082d515a16a39612e6709807ed26a87d08dd4",
+      "texture_sha256": "e76d45fc298c8951ed037c868ce3d653f6e74d5a6fd79f7a37c15c5d064a4ef8",
+      "waterloggable": false,
+      "light_emission": 0,
+      "loot_binding": "loot_tables/blocks/marsh_fern.json"
+    },
+    {
+      "asset": "glow_kelp",
+      "native_lane": "plants",
+      "geometry_source_sha256": "8a1520e9409be22a367d5ad206a907f2f68af54e9e07ff12b60531138e117d53",
+      "runtime_geometry_sha256": "8b5dc9efab2a941bbc4aacf848612f7ae3f1c05461085602000ce306d760fbe1",
+      "texture_sha256": "4b6a4cb4ed9e8195171fdb9029b65132f4f4e9c09bcba2c2ce59fbed2fb768d0",
+      "waterloggable": true,
+      "light_emission": 6,
+      "loot_binding": "loot_tables/blocks/glow_kelp.json"
+    },
+    {
+      "asset": "mire_orchid",
+      "native_lane": "plants",
+      "geometry_source_sha256": "7a570d14da6c70945dbcfa4e06a230542c47e3c120c49f3a03b0cdb67b4b4ebf",
+      "runtime_geometry_sha256": "49f42787d96ce2724e2688aac0a84b45b04775f6bd9db6f0962e58c08b7e83f4",
+      "texture_sha256": "a793c69250715c9cdb6b7267596114f00bd6fd5ac73b1a0a07a13023f56c0eed",
+      "waterloggable": false,
+      "light_emission": 0,
+      "loot_binding": "loot_tables/blocks/mire_orchid.json"
+    },
+    {
+      "asset": "bubble_pod",
+      "native_lane": "representative",
+      "geometry_source_sha256": "3e95ac6eed7fb1a2f42a37255896419a0bd9e45104cc66a268772877c201c6cb",
+      "runtime_geometry_sha256": "8d14fbf37dafb4b3dca36f05a2ffdc46f6382ba36cd182159022ded1fc790fb8",
+      "texture_sha256": "dfe10383a5cfe91b10075d4d0c9024aa789f9e1e9b0157619b63a1f4fe6787d2",
+      "waterloggable": true,
+      "light_emission": 0,
+      "loot_binding": "loot_tables/blocks/bubble_pod.json"
+    },
+    {
+      "asset": "pearl_grass",
+      "native_lane": "plants",
+      "geometry_source_sha256": "3f81413b93ed3a59d66d81d78c348b9049ec7f371b34d17aab293791dc07f384",
+      "runtime_geometry_sha256": "d405433ba8384e5e326c1eede21ef416621fe2f9670e69b1ff2dfab4774b9d62",
+      "texture_sha256": "b5f32f5edec8f1b2ccfb04f56fe993b9438927a3154d424a285f0cdeb9dde3da",
+      "waterloggable": false,
+      "light_emission": 0,
+      "loot_binding": "loot_tables/blocks/pearl_grass.json"
+    },
+    {
+      "asset": "crystal_vine",
+      "native_lane": "plants",
+      "geometry_source_sha256": "fc31897b5daf592cce267d4958bdfa48688fd80e12000d507eafb92e1d5d9820",
+      "runtime_geometry_sha256": "deb8329e1d090bcf83584f45d9ea54a54dc2804a52a0512653e954bbfc7e4d4f",
+      "texture_sha256": "a4b6e7c99690758dfb0b71a833f80b8280889289c24642aee9058084621905c3",
+      "waterloggable": true,
+      "light_emission": 0,
+      "loot_binding": "loot_tables/blocks/crystal_vine.json"
+    }
+  ],
+  "implementation": {
+    "format_version": "1.21.80",
+    "runtime_form": "custom_block_with_native_geometry_and_alpha_test_material",
+    "collision": false,
+    "waterloggable_assets": [
+      "bubble_pod",
+      "crystal_lily",
+      "crystal_vine",
+      "flood_reed",
+      "glow_kelp"
+    ],
+    "native_texture_bytes_preserved": true,
+    "native_animation_playback": "WITHHELD_NO_CLEAN_STABLE_CUSTOM_BLOCK_SKELETAL_BINDING",
+    "entity_surrogate": false,
+    "script_component": false
+  },
+  "economy_dependency": {
+    "owner": "crystal_economy_equipment",
+    "state": "BOUND_PATHS_TABLE_BYTES_OWNED_BY_ECONOMY_LANE",
+    "paths": [
+      "behavior_pack/loot_tables/blocks/crystal_lily.json",
+      "behavior_pack/loot_tables/blocks/flood_reed.json",
+      "behavior_pack/loot_tables/blocks/prism_bloom.json",
+      "behavior_pack/loot_tables/blocks/glass_moss.json",
+      "behavior_pack/loot_tables/blocks/marsh_fern.json",
+      "behavior_pack/loot_tables/blocks/glow_kelp.json",
+      "behavior_pack/loot_tables/blocks/mire_orchid.json",
+      "behavior_pack/loot_tables/blocks/bubble_pod.json",
+      "behavior_pack/loot_tables/blocks/pearl_grass.json",
+      "behavior_pack/loot_tables/blocks/crystal_vine.json"
+    ]
+  },
+  "proof_boundary": [
+    "source_tree_static_only",
+    "not_live_placement_harvest_waterlogging_or_light_proof",
+    "not_client_geometry_alpha_or_water_render_proof",
+    "not_creator_tools_bds_console_marketplace_or_release_proof"
+  ]
+}

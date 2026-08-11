@@ -1,0 +1,24 @@
+{
+  "format_version": "1.21.40",
+  "minecraft:single_block_feature": {
+    "description": {
+      "identifier": "aionbound:cm_ecology_prism_bloom"
+    },
+    "places_block": "aionbound:prism_bloom",
+    "enforce_placement_rules": true,
+    "enforce_survivability_rules": true,
+    "may_replace": [
+      "minecraft:air"
+    ],
+    "may_attach_to": {
+      "min_sides_must_attach": 1,
+      "auto_rotate": false,
+      "bottom": [
+        "aionbound:marsh_soil",
+        "aionbound:glass_root_block",
+        "aionbound:crystal_stone",
+        "aionbound:crystal_gravel"
+      ]
+    }
+  }
+}

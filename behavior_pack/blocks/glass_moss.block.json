@@ -1,0 +1,56 @@
+{
+  "format_version": "1.21.80",
+  "minecraft:block": {
+    "description": {
+      "identifier": "aionbound:glass_moss",
+      "menu_category": {
+        "category": "nature"
+      }
+    },
+    "components": {
+      "minecraft:display_name": "Glass Moss",
+      "minecraft:collision_box": false,
+      "minecraft:selection_box": {
+        "origin": [
+          -8,
+          0,
+          -8
+        ],
+        "size": [
+          16,
+          3,
+          16
+        ]
+      },
+      "minecraft:destructible_by_mining": {
+        "seconds_to_destroy": 0.1
+      },
+      "minecraft:geometry": "geometry.aionbound.glass_moss",
+      "minecraft:material_instances": {
+        "*": {
+          "texture": "glass_moss",
+          "render_method": "alpha_test",
+          "ambient_occlusion": false,
+          "face_dimming": false
+        }
+      },
+      "minecraft:placement_filter": {
+        "conditions": [
+          {
+            "allowed_faces": [
+              "up"
+            ],
+            "block_filter": [
+              "aionbound:marsh_soil",
+              "aionbound:glass_root_block",
+              "aionbound:crystal_stone",
+              "aionbound:crystal_gravel"
+            ]
+          }
+        ]
+      },
+      "minecraft:loot": "loot_tables/blocks/glass_moss.json",
+      "minecraft:light_emission": 2
+    }
+  }
+}
