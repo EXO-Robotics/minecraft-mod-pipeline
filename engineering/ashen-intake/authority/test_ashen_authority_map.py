@@ -27,7 +27,10 @@ EXPECTED_AUTHORITY_HASHES = {
     "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-002-ashen-highlands/MANIFEST_FULL.json": "6cb3bd25a1ef473e60e5ed0ebf78288bcc4d53db1ff4ec74db4d22ddb036c738",
     "program/crazycraft-pack-production-v1/studio-prep/creative/WAVE_1_LIVING_WORLD_IMPLEMENTATION_CONTRACT.json": "aa1f54df10d27d5c5675aae843ffe0d2946123d12a6509f7f021408bcdde9fb5",
     "program/crazycraft-pack-production-v1/studio-prep/creative/WAVE_1_LIVING_WORLD_IMPLEMENTATION_CONTRACT.md": "3116c217e06afe1fd0cd56ee742c537f948a4c91193ec831fd1b3ec362837bfc",
-    "engineering/authority/WAVE_1_ENGINEERING_DECISION_LEDGER.json": "3e2b64785da9310b098e06981ebc95777ddc7e5d2666f803b79ce374470a9561",
+    "engineering/authority/WAVE_1_ENGINEERING_DECISION_LEDGER.json": "b554db9fab3fe16e59e2e3b36dfc310ff462078b170f14e1f9fe8a46999bbd0c",
+    "engineering/authority/support-proposals/ashen/W1-001-AH.json": "dd26a683f7f3e5301b66d7f2861454b5bf6b79818d12e0e8e1b22b6f07217774",
+    "engineering/authority/support-proposals/ashen/W1-003-KILN-SKY.json": "1b2d5f77185a1461040d7559d0d8ecdaf803d7727e419ceac32636865be85d7c",
+    "engineering/authority/support-proposals/ashen/W1-004-AH.json": "93736ff800b1c90c8a6547d84336a6650f8ae32750f262de8e460385a7a26889",
 }
 
 
@@ -67,15 +70,14 @@ class AshenAuthorityMapTest(unittest.TestCase):
     def test_deferred_boundaries_are_fail_closed(self) -> None:
         unresolved = self.data["unresolved_terms"]
         self.assertEqual("DEFERRED_BY_USER", unresolved["W1-CREATIVE-005"]["status"])
-        self.assertEqual("DEFERRED_UNTIL_SEPARATE_RATIFICATION", unresolved["W1-CREATIVE-001_LATER_REGIONS"]["status"])
-        self.assertEqual(22, len(unresolved["W1-CREATIVE-001_LATER_REGIONS"]["terms"]))
-        self.assertEqual("DEFERRED", unresolved["W1-CREATIVE-003_OTHER_BOSSES"]["status"])
-        self.assertEqual("DEFERRED", unresolved["W1-CREATIVE-004_LATER_REGIONS"]["status"])
+        self.assertEqual("DEFERRED_UNTIL_SEPARATE_RATIFICATION", unresolved["W1-CREATIVE-001_CRYSTAL_SKY"]["status"])
+        self.assertEqual("DEFERRED_EXCLUDING_RATIFIED_THORN_COURT_AND_KILN_SKY", unresolved["W1-CREATIVE-003_OTHER_BOSSES"]["status"])
+        self.assertEqual("DEFERRED", unresolved["W1-CREATIVE-004_CRYSTAL_SKY"]["status"])
         withheld = " ".join(self.data["safe_now_withheld"]["withheld"])
-        self.assertIn("loot values", withheld)
+        self.assertIn("outside the exact refined Ashen proposals", withheld)
         self.assertIn("sidegrade", withheld)
-        self.assertIn("multiplayer", withheld)
-        self.assertIn("terminal", withheld)
+        self.assertIn("damage values", withheld)
+        self.assertIn("arena-radius", withheld)
 
     def test_apex_has_no_natural_spawn_target(self) -> None:
         by_id = {a["warehouse_id"]: a for a in self.data["assets"]}
@@ -89,6 +91,9 @@ class AshenAuthorityMapTest(unittest.TestCase):
             "Chitin Plate": "aionbound:chitin_plate", "Ember Heart": "aionbound:ember_heart",
         }, self.data["ratified_terms"]["derived_components"])
         self.assertEqual({"mite_resin language": "aionbound:ember_resin"}, self.data["ratified_terms"]["aliases"])
+        self.assertEqual("W1-001-AH_APPROVED_EXACT_REFINED_BYTES", self.data["ratified_terms"]["ashen_identity_authority"])
+        self.assertEqual("W1-003-KILN-SKY_APPROVED_EXACT_REFINED_BYTES", self.data["ratified_terms"]["kiln_sky_authority"])
+        self.assertEqual("W1-004-AH_APPROVED_EXACT_REFINED_BYTES", self.data["ratified_terms"]["ashen_loot_reward_authority"])
 
     def test_builder_is_byte_deterministic(self) -> None:
         if not BEDROCK_ROOT.is_dir():

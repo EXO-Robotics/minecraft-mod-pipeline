@@ -12,6 +12,7 @@ from pathlib import Path
 BASE_COMMIT = "9acf1b0f62ade90b59ba65e0a9e0618852ff3159"
 PACKET_REL = Path("program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-002-ashen-highlands")
 CREATIVE_REL = Path("program/crazycraft-pack-production-v1/studio-prep/creative")
+ASHEN_PROPOSAL_REL = Path("engineering/authority/support-proposals/ashen")
 
 SOURCE_AUTHORITIES = [
     (PACKET_REL / "MANIFEST_FULL.json", "exact Packet 002 visual roster and visual-only claim boundary"),
@@ -19,13 +20,16 @@ SOURCE_AUTHORITIES = [
     (CREATIVE_REL / "WAVE_1_LIVING_WORLD_IMPLEMENTATION_CONTRACT.json", "machine-readable Packet 002 inventory and completion contract"),
     (CREATIVE_REL / "WAVE_1_LIVING_WORLD_IMPLEMENTATION_CONTRACT.md", "human implementation authority and per-asset relationships"),
     (CREATIVE_REL / "01_progression/PLAYER_JOURNEY.md", "chapter order and soft-gate progression"),
-    (CREATIVE_REL / "02_loot/LOOT_ASHEN.md", "loot identities and purposes, but not ratified final values"),
+    (CREATIVE_REL / "02_loot/LOOT_ASHEN.md", "loot identities and purposes, with values bounded by ratified W1-004-AH"),
     (CREATIVE_REL / "03_crafting/CRAFTING_TREE.md", "material-to-component-to-equipment graph"),
     (CREATIVE_REL / "04_equipment/EQUIPMENT_PROGRESSION.md", "equipment roles and sidegrade philosophy"),
     (CREATIVE_REL / "05_structures/STRUCTURES_DESIGN.md", "structure purpose, visit, loot identity, story, and progression"),
     (CREATIVE_REL / "06_world_gen/WORLD_GENERATION.md", "ecology, placement, and rarity intent"),
     (CREATIVE_REL / "07_bosses/BOSS_PROGRESSION.md", "Kiln Sky identity, phase kit, attacks, and reward identities"),
     (CREATIVE_REL / "08_codex/CODEX_ENTRIES_CREATURES.md", "ten creature discovery/crafting/hint entries"),
+    (ASHEN_PROPOSAL_REL / "W1-001-AH.json", "ratified refined Ashen identity dispositions"),
+    (ASHEN_PROPOSAL_REL / "W1-003-KILN-SKY.json", "ratified refined Kiln Sky encounter envelope"),
+    (ASHEN_PROPOSAL_REL / "W1-004-AH.json", "ratified refined Ashen loot and reward envelope"),
 ]
 
 CREATURES = {
@@ -269,6 +273,14 @@ def build(root: Path, ledger_path: Path) -> dict:
     manifest = json.loads((packet_root / "MANIFEST_FULL.json").read_text())
     contract = json.loads((root / CREATIVE_REL / "WAVE_1_LIVING_WORLD_IMPLEMENTATION_CONTRACT.json").read_text())
     ledger = json.loads(ledger_path.read_text())
+    approved = {row["tranche"]: row for row in ledger["ratifications"]["approved"]}
+    required_ashen = {"W1-001-AH", "W1-003-KILN-SKY", "W1-004-AH"}
+    if not required_ashen <= approved.keys():
+        raise AssertionError("Ashen ratification missing from replacement ledger")
+    for tranche in required_ashen:
+        proposal_path = ledger_path.parents[2] / approved[tranche]["proposal"]
+        if sha256(proposal_path) != approved[tranche]["proposal_sha256"]:
+            raise AssertionError(f"ratified proposal drift: {tranche}")
 
     expected = {
         "creatures": list(CREATURES), "resources": list(RESOURCES), "blocks": list(BLOCKS),
@@ -329,19 +341,19 @@ def build(root: Path, ledger_path: Path) -> dict:
                     "identity": "RATIFIED_WAREHOUSE_ID",
                     "visual": "HASH_BOUND_PACKET_002_VISUAL_SOURCE",
                     "gameplay_relationships": "BINDING_CREATIVE_IDENTITY_AND_ROLE",
-                    "numeric_loot_values": "WITHHELD_W1_CREATIVE_004_LATER_REGIONS",
-                    "new_nonwarehouse_item_dependencies": "WITHHELD_W1_CREATIVE_001_LATER_REGIONS",
+                    "numeric_loot_values": "RATIFIED_W1_004_AH_EXACT_REFINED_ENVELOPES",
+                    "new_nonwarehouse_item_dependencies": "RATIFIED_W1_001_AH_EXACT_DISPOSITIONS",
                     "sidegrade_identity": "WITHHELD_W1_CREATIVE_005" if asset_id in {"basalt_core", "volcanic_glass_shard", "ember_resin", "ash_crystal"} else "NOT_APPLICABLE_OR_NO_SIDEGRADE_DECISION_HERE",
                 },
             })
 
     result = {
-        "schema": "aionbound.wave1.ashen-authority-intake.v1.0.0",
-        "status": "PACKET_002_AUTHORITY_MAPPED_IMPLEMENTATION_GATED",
+        "schema": "aionbound.wave1.ashen-authority-intake.v2.0.0",
+        "status": "PACKET_002_AUTHORITY_RATIFIED_IMPLEMENTATION_AUTHORIZED",
         "base_commit": BASE_COMMIT,
         "scope": "Packet 002 authority intake only; no BP/RP implementation or qualification claim",
         "source_authorities": [
-            {"path": rel.as_posix(), "sha256": sha256(root / rel), "role": role}
+            {"path": rel.as_posix(), "sha256": sha256((ledger_path.parents[2] if rel.parts[0] == "engineering" else root) / rel), "role": role}
             for rel, role in SOURCE_AUTHORITIES
         ] + [{"path": "engineering/authority/WAVE_1_ENGINEERING_DECISION_LEDGER.json", "sha256": sha256(ledger_path), "role": "ratified and deferred engineering decision state"}],
         "packet": {
@@ -356,19 +368,22 @@ def build(root: Path, ledger_path: Path) -> dict:
             "aliases": RATIFIED_ALIASES,
             "derived_components": RATIFIED_DERIVED,
             "equipment_links": EQUIPMENT_LINKS,
-            "loot_identity_and_purpose_only": "Creative LOOT_ASHEN identities and purposes are binding; values are not ratified.",
+            "loot_identity_and_purpose": "Creative LOOT_ASHEN identities and purposes are binding; implementation values must remain inside W1-004-AH.",
             "kiln_sky_nonnumeric_kit": {
                 "boss": "aionbound:ash_drake", "arena_link": "aionbound:ember_forge",
                 "phases": ["Ash Landing", "Vent Choir", "Glass Wing", "Kiln Heart"],
                 "attacks": ["Cinder Breath", "Tail Slag", "Thermal Dive", "Mite Shake", "Basalt Quake", "Glass Feather Storm"],
                 "reward_identities": ["aionbound:ash_drake_horn", "forge materials", "aionbound:ember_forge_core chance"],
             },
+            "ashen_identity_authority": "W1-001-AH_APPROVED_EXACT_REFINED_BYTES",
+            "kiln_sky_authority": "W1-003-KILN-SKY_APPROVED_EXACT_REFINED_BYTES",
+            "ashen_loot_reward_authority": "W1-004-AH_APPROVED_EXACT_REFINED_BYTES",
         },
         "unresolved_terms": {
-            "W1-CREATIVE-001_LATER_REGIONS": {"status": "DEFERRED_UNTIL_SEPARATE_RATIFICATION", "terms": ASHEN_UNRESOLVED_TERMS},
+            "W1-CREATIVE-001_CRYSTAL_SKY": {"status": "DEFERRED_UNTIL_SEPARATE_RATIFICATION"},
             "curiosities_default": {"status": "NARRATIVE_CODEX_ONLY_UNLESS_PROMOTED", "terms": ["Scorched Message Tube", "Lynx Eye Gem", "Slow Stone", "First Fire prayer strip", "survey notes", "ritual curios", "CM teaser map", "ashen_boots pattern scraps", "unfinished basalt tool heads"]},
-            "W1-CREATIVE-003_OTHER_BOSSES": {"status": "DEFERRED", "missing": ledger["boss_behavior"]["required_ticket_fields"]},
-            "W1-CREATIVE-004_LATER_REGIONS": {"status": "DEFERRED", "missing": ledger["loot"]["required_ticket_fields"]},
+            "W1-CREATIVE-003_OTHER_BOSSES": {"status": "DEFERRED_EXCLUDING_RATIFIED_THORN_COURT_AND_KILN_SKY", "missing": ledger["boss_behavior"]["required_ticket_fields"]},
+            "W1-CREATIVE-004_CRYSTAL_SKY": {"status": "DEFERRED", "missing": ledger["loot"]["required_ticket_fields"]},
             "W1-CREATIVE-005": {"status": "DEFERRED_BY_USER", "scope": "equipment sidegrade item identity", "rule": "No sibling ID, NBT/lore identity, or sidegrade implementation may be selected here."},
             "additional_unbound_recipe_language": ["fire_totem ash", "glass tip", "heat wrap", "char handle", "char stock", "chitin tip", "basalt studs", "ember_resin vents", "Firestitched Cord", "heatstone dust"],
         },
@@ -378,15 +393,14 @@ def build(root: Path, ledger_path: Path) -> dict:
                 "Copy hash-bound source/export bytes into the canonical shipping target families.",
                 "Author schema and reference-closure scaffolding for the 50 ratified warehouse IDs.",
                 "Bind Creative-approved acquisition sources, roles, Codex relationships, progression relationships, and equipment dependency edges without inventing values or identities.",
-                "Implement nonnumeric Kiln Sky phase and attack architecture tags while keeping terminal effects disabled.",
-                "Author structural loot and recipe graphs that remain non-shipping until their unresolved inputs and numeric envelopes are ratified.",
+                "Implement Kiln Sky exactly inside the ratified W1-003-KILN-SKY behavior, ownership, persistence, reset, and terminal envelope.",
+                "Implement Ashen loot, recipes, reward guards, and recovery exactly inside W1-001-AH and W1-004-AH.",
                 "Use Packet 006 equipment IDs as dependency targets without choosing sidegrade representation.",
             ],
             "withheld": [
-                "Any shipping creature/chest/boss loot values or quantities for Ashen Highlands.",
-                "Any registry item for the 22 deferred Ashen non-warehouse terms.",
+                "Any identity or numeric value outside the exact refined Ashen proposals.",
                 "Any gameplay item for curiosity prose unless separately promoted.",
-                "Kiln Sky thresholds, timings, leash, timeout, wipe/reset/re-entry, add caps, multiplayer ownership/scaling, late-join/disconnect, persistence, reward authority, idempotent terminal grants, or repeat-clear semantics.",
+                "Kiln Sky damage values, attack-effect radii, or arena-radius numbers not created by the refined proposal.",
                 "Any claim that ash_drake naturally spawns; Creative binds it to an arena or nest-sky apex path.",
                 "Any sidegrade identity or representation covered by deferred W1-CREATIVE-005.",
                 "Checkpoint, candidate, BDS, client, console, or gameplay proof from this intake map.",
@@ -413,8 +427,8 @@ def render_markdown(data: dict) -> str:
         "",
         "- All 50 Packet 002 warehouse identities normalize to `aionbound:<warehouse_id>`.",
         "- Packet 002 art is visual-production evidence only.",
-        "- Ashen non-warehouse drop identities and later-region loot values remain deferred.",
-        "- Kiln Sky's named phases and attacks are usable; its numeric, multiplayer, reset, persistence, and terminal-reward envelope is withheld.",
+        "- Exact refined Ashen identity, loot/reward, and Kiln Sky envelopes are ratified and hash-bound.",
+        "- Kiln Sky damage values, attack-effect radii, and a new arena-radius number remain outside the ratified proposal.",
         "- `W1-CREATIVE-005` remains `DEFERRED_BY_USER`; no sidegrade representation is selected.",
         "",
         "## Exact roster and dependency summary",
@@ -434,7 +448,7 @@ def render_markdown(data: dict) -> str:
         "", "## Authority notes", "",
         "- Ratified derived components: `heat_core`, `heavy_head`, `chitin_plate`, `ember_heart`.",
         "- Ratified alias: mite-resin language resolves to `aionbound:ember_resin`.",
-        "- The 22 named Ashen non-warehouse drop terms remain candidates, not registry authority.",
+        "- Ashen non-warehouse terms follow the exact W1-001-AH alias, narrative, context-only, and `drake_scale` dispositions.",
         "- Curiosity prose remains narrative/Codex-only unless Creative separately promotes it.",
         "- Canonical file targets are planning destinations. Their presence or validation is not claimed by this document.",
         "", "## Source bindings", "",

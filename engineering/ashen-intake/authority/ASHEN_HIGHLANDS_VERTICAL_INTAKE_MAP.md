@@ -1,16 +1,16 @@
 # Packet 002 Ashen Highlands — Engineering Authority Intake
 
-**Status:** `PACKET_002_AUTHORITY_MAPPED_IMPLEMENTATION_GATED`
+**Status:** `PACKET_002_AUTHORITY_RATIFIED_IMPLEMENTATION_AUTHORIZED`
 **Base:** `9acf1b0f62ade90b59ba65e0a9e0618852ff3159`
-**Authority digest:** `4819b1f5282bc6e9430c4a724cedf465549937bbeacc408698208252072aee7a`
+**Authority digest:** `a5e5014da948f32b93134d89f40fd9811f6cb1dba3e294e66b606ab0e3bec052`
 **Scope:** Authority intake only. This does not implement BP/RP content or prove runtime behavior.
 
 ## Locked boundaries
 
 - All 50 Packet 002 warehouse identities normalize to `aionbound:<warehouse_id>`.
 - Packet 002 art is visual-production evidence only.
-- Ashen non-warehouse drop identities and later-region loot values remain deferred.
-- Kiln Sky's named phases and attacks are usable; its numeric, multiplayer, reset, persistence, and terminal-reward envelope is withheld.
+- Exact refined Ashen identity, loot/reward, and Kiln Sky envelopes are ratified and hash-bound.
+- Kiln Sky damage values, attack-effect radii, and a new arena-radius number remain outside the ratified proposal.
 - `W1-CREATIVE-005` remains `DEFERRED_BY_USER`; no sidegrade representation is selected.
 
 ## Exact roster and dependency summary
@@ -74,16 +74,15 @@
 - Copy hash-bound source/export bytes into the canonical shipping target families.
 - Author schema and reference-closure scaffolding for the 50 ratified warehouse IDs.
 - Bind Creative-approved acquisition sources, roles, Codex relationships, progression relationships, and equipment dependency edges without inventing values or identities.
-- Implement nonnumeric Kiln Sky phase and attack architecture tags while keeping terminal effects disabled.
-- Author structural loot and recipe graphs that remain non-shipping until their unresolved inputs and numeric envelopes are ratified.
+- Implement Kiln Sky exactly inside the ratified W1-003-KILN-SKY behavior, ownership, persistence, reset, and terminal envelope.
+- Implement Ashen loot, recipes, reward guards, and recovery exactly inside W1-001-AH and W1-004-AH.
 - Use Packet 006 equipment IDs as dependency targets without choosing sidegrade representation.
 
 ## Withheld
 
-- Any shipping creature/chest/boss loot values or quantities for Ashen Highlands.
-- Any registry item for the 22 deferred Ashen non-warehouse terms.
+- Any identity or numeric value outside the exact refined Ashen proposals.
 - Any gameplay item for curiosity prose unless separately promoted.
-- Kiln Sky thresholds, timings, leash, timeout, wipe/reset/re-entry, add caps, multiplayer ownership/scaling, late-join/disconnect, persistence, reward authority, idempotent terminal grants, or repeat-clear semantics.
+- Kiln Sky damage values, attack-effect radii, or arena-radius numbers not created by the refined proposal.
 - Any claim that ash_drake naturally spawns; Creative binds it to an arena or nest-sky apex path.
 - Any sidegrade identity or representation covered by deferred W1-CREATIVE-005.
 - Checkpoint, candidate, BDS, client, console, or gameplay proof from this intake map.
@@ -92,7 +91,7 @@
 
 - Ratified derived components: `heat_core`, `heavy_head`, `chitin_plate`, `ember_heart`.
 - Ratified alias: mite-resin language resolves to `aionbound:ember_resin`.
-- The 22 named Ashen non-warehouse drop terms remain candidates, not registry authority.
+- Ashen non-warehouse terms follow the exact W1-001-AH alias, narrative, context-only, and `drake_scale` dispositions.
 - Curiosity prose remains narrative/Codex-only unless Creative separately promotes it.
 - Canonical file targets are planning destinations. Their presence or validation is not claimed by this document.
 
@@ -105,11 +104,14 @@
 | `program/crazycraft-pack-production-v1/studio-prep/creative/WAVE_1_LIVING_WORLD_IMPLEMENTATION_CONTRACT.json` | `aa1f54df10d27d5c5675aae843ffe0d2946123d12a6509f7f021408bcdde9fb5` | machine-readable Packet 002 inventory and completion contract |
 | `program/crazycraft-pack-production-v1/studio-prep/creative/WAVE_1_LIVING_WORLD_IMPLEMENTATION_CONTRACT.md` | `3116c217e06afe1fd0cd56ee742c537f948a4c91193ec831fd1b3ec362837bfc` | human implementation authority and per-asset relationships |
 | `program/crazycraft-pack-production-v1/studio-prep/creative/01_progression/PLAYER_JOURNEY.md` | `42ba75d9518977c71397826aa9f4daa3864df942019c809b04830fef654a1fa7` | chapter order and soft-gate progression |
-| `program/crazycraft-pack-production-v1/studio-prep/creative/02_loot/LOOT_ASHEN.md` | `f5b2ff909a6e7b7669da561cc2659439819227f99d15d221dbea0147750d3727` | loot identities and purposes, but not ratified final values |
+| `program/crazycraft-pack-production-v1/studio-prep/creative/02_loot/LOOT_ASHEN.md` | `f5b2ff909a6e7b7669da561cc2659439819227f99d15d221dbea0147750d3727` | loot identities and purposes, with values bounded by ratified W1-004-AH |
 | `program/crazycraft-pack-production-v1/studio-prep/creative/03_crafting/CRAFTING_TREE.md` | `1f3482ba3dd9f916e08aa544153cc841871a729a2e82d9e75601715f4b5ee807` | material-to-component-to-equipment graph |
 | `program/crazycraft-pack-production-v1/studio-prep/creative/04_equipment/EQUIPMENT_PROGRESSION.md` | `7ecf57e6af099ae3cda8a7432228fb5ee996f20b02b76888a82c0c1a3e3c891d` | equipment roles and sidegrade philosophy |
 | `program/crazycraft-pack-production-v1/studio-prep/creative/05_structures/STRUCTURES_DESIGN.md` | `9e62ae9ba6c1da33b64ff0bfa4ac4799b083c6de995585424864d5cf2b0cb076` | structure purpose, visit, loot identity, story, and progression |
 | `program/crazycraft-pack-production-v1/studio-prep/creative/06_world_gen/WORLD_GENERATION.md` | `bc18a1e1f73d6045ab7e583afe910ca13d4776d439c8f3dfb45dae5784372f4b` | ecology, placement, and rarity intent |
 | `program/crazycraft-pack-production-v1/studio-prep/creative/07_bosses/BOSS_PROGRESSION.md` | `5ef85e1e0b29973a617f7dca4a8b119443c01644ba33f0e11166ef8d417d5a6f` | Kiln Sky identity, phase kit, attacks, and reward identities |
 | `program/crazycraft-pack-production-v1/studio-prep/creative/08_codex/CODEX_ENTRIES_CREATURES.md` | `fd07694eee0c8d478b44363e822e0116f4ca09c92775661350ed8468342b01bf` | ten creature discovery/crafting/hint entries |
-| `engineering/authority/WAVE_1_ENGINEERING_DECISION_LEDGER.json` | `3e2b64785da9310b098e06981ebc95777ddc7e5d2666f803b79ce374470a9561` | ratified and deferred engineering decision state |
+| `engineering/authority/support-proposals/ashen/W1-001-AH.json` | `dd26a683f7f3e5301b66d7f2861454b5bf6b79818d12e0e8e1b22b6f07217774` | ratified refined Ashen identity dispositions |
+| `engineering/authority/support-proposals/ashen/W1-003-KILN-SKY.json` | `1b2d5f77185a1461040d7559d0d8ecdaf803d7727e419ceac32636865be85d7c` | ratified refined Kiln Sky encounter envelope |
+| `engineering/authority/support-proposals/ashen/W1-004-AH.json` | `93736ff800b1c90c8a6547d84336a6650f8ae32750f262de8e460385a7a26889` | ratified refined Ashen loot and reward envelope |
+| `engineering/authority/WAVE_1_ENGINEERING_DECISION_LEDGER.json` | `b554db9fab3fe16e59e2e3b36dfc310ff462078b170f14e1f9fe8a46999bbd0c` | ratified and deferred engineering decision state |

@@ -1,6 +1,6 @@
 {
-  "schema": "aionbound.wave1.ashen-authority-intake.v1.0.0",
-  "status": "PACKET_002_AUTHORITY_MAPPED_IMPLEMENTATION_GATED",
+  "schema": "aionbound.wave1.ashen-authority-intake.v2.0.0",
+  "status": "PACKET_002_AUTHORITY_RATIFIED_IMPLEMENTATION_AUTHORIZED",
   "base_commit": "9acf1b0f62ade90b59ba65e0a9e0618852ff3159",
   "scope": "Packet 002 authority intake only; no BP/RP implementation or qualification claim",
   "source_authorities": [
@@ -32,7 +32,7 @@
     {
       "path": "program/crazycraft-pack-production-v1/studio-prep/creative/02_loot/LOOT_ASHEN.md",
       "sha256": "f5b2ff909a6e7b7669da561cc2659439819227f99d15d221dbea0147750d3727",
-      "role": "loot identities and purposes, but not ratified final values"
+      "role": "loot identities and purposes, with values bounded by ratified W1-004-AH"
     },
     {
       "path": "program/crazycraft-pack-production-v1/studio-prep/creative/03_crafting/CRAFTING_TREE.md",
@@ -65,8 +65,23 @@
       "role": "ten creature discovery/crafting/hint entries"
     },
     {
+      "path": "engineering/authority/support-proposals/ashen/W1-001-AH.json",
+      "sha256": "dd26a683f7f3e5301b66d7f2861454b5bf6b79818d12e0e8e1b22b6f07217774",
+      "role": "ratified refined Ashen identity dispositions"
+    },
+    {
+      "path": "engineering/authority/support-proposals/ashen/W1-003-KILN-SKY.json",
+      "sha256": "1b2d5f77185a1461040d7559d0d8ecdaf803d7727e419ceac32636865be85d7c",
+      "role": "ratified refined Kiln Sky encounter envelope"
+    },
+    {
+      "path": "engineering/authority/support-proposals/ashen/W1-004-AH.json",
+      "sha256": "93736ff800b1c90c8a6547d84336a6650f8ae32750f262de8e460385a7a26889",
+      "role": "ratified refined Ashen loot and reward envelope"
+    },
+    {
       "path": "engineering/authority/WAVE_1_ENGINEERING_DECISION_LEDGER.json",
-      "sha256": "3e2b64785da9310b098e06981ebc95777ddc7e5d2666f803b79ce374470a9561",
+      "sha256": "b554db9fab3fe16e59e2e3b36dfc310ff462078b170f14e1f9fe8a46999bbd0c",
       "role": "ratified and deferred engineering decision state"
     }
   ],
@@ -128,7 +143,7 @@
         "ember_forge_core"
       ]
     },
-    "loot_identity_and_purpose_only": "Creative LOOT_ASHEN identities and purposes are binding; values are not ratified.",
+    "loot_identity_and_purpose": "Creative LOOT_ASHEN identities and purposes are binding; implementation values must remain inside W1-004-AH.",
     "kiln_sky_nonnumeric_kit": {
       "boss": "aionbound:ash_drake",
       "arena_link": "aionbound:ember_forge",
@@ -151,35 +166,14 @@
         "forge materials",
         "aionbound:ember_forge_core chance"
       ]
-    }
+    },
+    "ashen_identity_authority": "W1-001-AH_APPROVED_EXACT_REFINED_BYTES",
+    "kiln_sky_authority": "W1-003-KILN-SKY_APPROVED_EXACT_REFINED_BYTES",
+    "ashen_loot_reward_authority": "W1-004-AH_APPROVED_EXACT_REFINED_BYTES"
   },
   "unresolved_terms": {
-    "W1-CREATIVE-001_LATER_REGIONS": {
-      "status": "DEFERRED_UNTIL_SEPARATE_RATIFICATION",
-      "terms": [
-        "Ash Dust",
-        "Ash Wool",
-        "Beetle Core Fragment",
-        "Char Feather",
-        "Char Hide",
-        "Char Pelt",
-        "Cinder Beak",
-        "Cinder Pelt",
-        "Drake Scale",
-        "Ember Fang",
-        "Ember Sinew",
-        "Heat Scale",
-        "Lynx Claw",
-        "Mite Mandible",
-        "Pack Cinder Mark",
-        "Ram Horn Curve",
-        "Shell Plate",
-        "Smolder Gland",
-        "Soot Antler",
-        "Stag Heart Cinder",
-        "Swarm Queen Scale",
-        "Warm Blood Vial"
-      ]
+    "W1-CREATIVE-001_CRYSTAL_SKY": {
+      "status": "DEFERRED_UNTIL_SEPARATE_RATIFICATION"
     },
     "curiosities_default": {
       "status": "NARRATIVE_CODEX_ONLY_UNLESS_PROMOTED",
@@ -196,7 +190,7 @@
       ]
     },
     "W1-CREATIVE-003_OTHER_BOSSES": {
-      "status": "DEFERRED",
+      "status": "DEFERRED_EXCLUDING_RATIFIED_THORN_COURT_AND_KILN_SKY",
       "missing": [
         "phase thresholds",
         "transition predicates",
@@ -211,7 +205,7 @@
         "repeat-clear semantics"
       ]
     },
-    "W1-CREATIVE-004_LATER_REGIONS": {
+    "W1-CREATIVE-004_CRYSTAL_SKY": {
       "status": "DEFERRED",
       "missing": [
         "C/U/R/E/T/Q probability ranges",
@@ -246,15 +240,14 @@
       "Copy hash-bound source/export bytes into the canonical shipping target families.",
       "Author schema and reference-closure scaffolding for the 50 ratified warehouse IDs.",
       "Bind Creative-approved acquisition sources, roles, Codex relationships, progression relationships, and equipment dependency edges without inventing values or identities.",
-      "Implement nonnumeric Kiln Sky phase and attack architecture tags while keeping terminal effects disabled.",
-      "Author structural loot and recipe graphs that remain non-shipping until their unresolved inputs and numeric envelopes are ratified.",
+      "Implement Kiln Sky exactly inside the ratified W1-003-KILN-SKY behavior, ownership, persistence, reset, and terminal envelope.",
+      "Implement Ashen loot, recipes, reward guards, and recovery exactly inside W1-001-AH and W1-004-AH.",
       "Use Packet 006 equipment IDs as dependency targets without choosing sidegrade representation."
     ],
     "withheld": [
-      "Any shipping creature/chest/boss loot values or quantities for Ashen Highlands.",
-      "Any registry item for the 22 deferred Ashen non-warehouse terms.",
+      "Any identity or numeric value outside the exact refined Ashen proposals.",
       "Any gameplay item for curiosity prose unless separately promoted.",
-      "Kiln Sky thresholds, timings, leash, timeout, wipe/reset/re-entry, add caps, multiplayer ownership/scaling, late-join/disconnect, persistence, reward authority, idempotent terminal grants, or repeat-clear semantics.",
+      "Kiln Sky damage values, attack-effect radii, or arena-radius numbers not created by the refined proposal.",
       "Any claim that ash_drake naturally spawns; Creative binds it to an arena or nest-sky apex path.",
       "Any sidegrade identity or representation covered by deferred W1-CREATIVE-005.",
       "Checkpoint, candidate, BDS, client, console, or gameplay proof from this intake map."
@@ -350,8 +343,8 @@
         "identity": "RATIFIED_WAREHOUSE_ID",
         "visual": "HASH_BOUND_PACKET_002_VISUAL_SOURCE",
         "gameplay_relationships": "BINDING_CREATIVE_IDENTITY_AND_ROLE",
-        "numeric_loot_values": "WITHHELD_W1_CREATIVE_004_LATER_REGIONS",
-        "new_nonwarehouse_item_dependencies": "WITHHELD_W1_CREATIVE_001_LATER_REGIONS",
+        "numeric_loot_values": "RATIFIED_W1_004_AH_EXACT_REFINED_ENVELOPES",
+        "new_nonwarehouse_item_dependencies": "RATIFIED_W1_001_AH_EXACT_DISPOSITIONS",
         "sidegrade_identity": "NOT_APPLICABLE_OR_NO_SIDEGRADE_DECISION_HERE"
       }
     },
@@ -441,8 +434,8 @@
         "identity": "RATIFIED_WAREHOUSE_ID",
         "visual": "HASH_BOUND_PACKET_002_VISUAL_SOURCE",
         "gameplay_relationships": "BINDING_CREATIVE_IDENTITY_AND_ROLE",
-        "numeric_loot_values": "WITHHELD_W1_CREATIVE_004_LATER_REGIONS",
-        "new_nonwarehouse_item_dependencies": "WITHHELD_W1_CREATIVE_001_LATER_REGIONS",
+        "numeric_loot_values": "RATIFIED_W1_004_AH_EXACT_REFINED_ENVELOPES",
+        "new_nonwarehouse_item_dependencies": "RATIFIED_W1_001_AH_EXACT_DISPOSITIONS",
         "sidegrade_identity": "NOT_APPLICABLE_OR_NO_SIDEGRADE_DECISION_HERE"
       }
     },
@@ -533,8 +526,8 @@
         "identity": "RATIFIED_WAREHOUSE_ID",
         "visual": "HASH_BOUND_PACKET_002_VISUAL_SOURCE",
         "gameplay_relationships": "BINDING_CREATIVE_IDENTITY_AND_ROLE",
-        "numeric_loot_values": "WITHHELD_W1_CREATIVE_004_LATER_REGIONS",
-        "new_nonwarehouse_item_dependencies": "WITHHELD_W1_CREATIVE_001_LATER_REGIONS",
+        "numeric_loot_values": "RATIFIED_W1_004_AH_EXACT_REFINED_ENVELOPES",
+        "new_nonwarehouse_item_dependencies": "RATIFIED_W1_001_AH_EXACT_DISPOSITIONS",
         "sidegrade_identity": "NOT_APPLICABLE_OR_NO_SIDEGRADE_DECISION_HERE"
       }
     },
@@ -629,8 +622,8 @@
         "identity": "RATIFIED_WAREHOUSE_ID",
         "visual": "HASH_BOUND_PACKET_002_VISUAL_SOURCE",
         "gameplay_relationships": "BINDING_CREATIVE_IDENTITY_AND_ROLE",
-        "numeric_loot_values": "WITHHELD_W1_CREATIVE_004_LATER_REGIONS",
-        "new_nonwarehouse_item_dependencies": "WITHHELD_W1_CREATIVE_001_LATER_REGIONS",
+        "numeric_loot_values": "RATIFIED_W1_004_AH_EXACT_REFINED_ENVELOPES",
+        "new_nonwarehouse_item_dependencies": "RATIFIED_W1_001_AH_EXACT_DISPOSITIONS",
         "sidegrade_identity": "NOT_APPLICABLE_OR_NO_SIDEGRADE_DECISION_HERE"
       }
     },
@@ -725,8 +718,8 @@
         "identity": "RATIFIED_WAREHOUSE_ID",
         "visual": "HASH_BOUND_PACKET_002_VISUAL_SOURCE",
         "gameplay_relationships": "BINDING_CREATIVE_IDENTITY_AND_ROLE",
-        "numeric_loot_values": "WITHHELD_W1_CREATIVE_004_LATER_REGIONS",
-        "new_nonwarehouse_item_dependencies": "WITHHELD_W1_CREATIVE_001_LATER_REGIONS",
+        "numeric_loot_values": "RATIFIED_W1_004_AH_EXACT_REFINED_ENVELOPES",
+        "new_nonwarehouse_item_dependencies": "RATIFIED_W1_001_AH_EXACT_DISPOSITIONS",
         "sidegrade_identity": "NOT_APPLICABLE_OR_NO_SIDEGRADE_DECISION_HERE"
       }
     },
@@ -820,8 +813,8 @@
         "identity": "RATIFIED_WAREHOUSE_ID",
         "visual": "HASH_BOUND_PACKET_002_VISUAL_SOURCE",
         "gameplay_relationships": "BINDING_CREATIVE_IDENTITY_AND_ROLE",
-        "numeric_loot_values": "WITHHELD_W1_CREATIVE_004_LATER_REGIONS",
-        "new_nonwarehouse_item_dependencies": "WITHHELD_W1_CREATIVE_001_LATER_REGIONS",
+        "numeric_loot_values": "RATIFIED_W1_004_AH_EXACT_REFINED_ENVELOPES",
+        "new_nonwarehouse_item_dependencies": "RATIFIED_W1_001_AH_EXACT_DISPOSITIONS",
         "sidegrade_identity": "NOT_APPLICABLE_OR_NO_SIDEGRADE_DECISION_HERE"
       }
     },
@@ -908,8 +901,8 @@
         "identity": "RATIFIED_WAREHOUSE_ID",
         "visual": "HASH_BOUND_PACKET_002_VISUAL_SOURCE",
         "gameplay_relationships": "BINDING_CREATIVE_IDENTITY_AND_ROLE",
-        "numeric_loot_values": "WITHHELD_W1_CREATIVE_004_LATER_REGIONS",
-        "new_nonwarehouse_item_dependencies": "WITHHELD_W1_CREATIVE_001_LATER_REGIONS",
+        "numeric_loot_values": "RATIFIED_W1_004_AH_EXACT_REFINED_ENVELOPES",
+        "new_nonwarehouse_item_dependencies": "RATIFIED_W1_001_AH_EXACT_DISPOSITIONS",
         "sidegrade_identity": "NOT_APPLICABLE_OR_NO_SIDEGRADE_DECISION_HERE"
       }
     },
@@ -1001,8 +994,8 @@
         "identity": "RATIFIED_WAREHOUSE_ID",
         "visual": "HASH_BOUND_PACKET_002_VISUAL_SOURCE",
         "gameplay_relationships": "BINDING_CREATIVE_IDENTITY_AND_ROLE",
-        "numeric_loot_values": "WITHHELD_W1_CREATIVE_004_LATER_REGIONS",
-        "new_nonwarehouse_item_dependencies": "WITHHELD_W1_CREATIVE_001_LATER_REGIONS",
+        "numeric_loot_values": "RATIFIED_W1_004_AH_EXACT_REFINED_ENVELOPES",
+        "new_nonwarehouse_item_dependencies": "RATIFIED_W1_001_AH_EXACT_DISPOSITIONS",
         "sidegrade_identity": "NOT_APPLICABLE_OR_NO_SIDEGRADE_DECISION_HERE"
       }
     },
@@ -1095,8 +1088,8 @@
         "identity": "RATIFIED_WAREHOUSE_ID",
         "visual": "HASH_BOUND_PACKET_002_VISUAL_SOURCE",
         "gameplay_relationships": "BINDING_CREATIVE_IDENTITY_AND_ROLE",
-        "numeric_loot_values": "WITHHELD_W1_CREATIVE_004_LATER_REGIONS",
-        "new_nonwarehouse_item_dependencies": "WITHHELD_W1_CREATIVE_001_LATER_REGIONS",
+        "numeric_loot_values": "RATIFIED_W1_004_AH_EXACT_REFINED_ENVELOPES",
+        "new_nonwarehouse_item_dependencies": "RATIFIED_W1_001_AH_EXACT_DISPOSITIONS",
         "sidegrade_identity": "NOT_APPLICABLE_OR_NO_SIDEGRADE_DECISION_HERE"
       }
     },
@@ -1205,8 +1198,8 @@
         "identity": "RATIFIED_WAREHOUSE_ID",
         "visual": "HASH_BOUND_PACKET_002_VISUAL_SOURCE",
         "gameplay_relationships": "BINDING_CREATIVE_IDENTITY_AND_ROLE",
-        "numeric_loot_values": "WITHHELD_W1_CREATIVE_004_LATER_REGIONS",
-        "new_nonwarehouse_item_dependencies": "WITHHELD_W1_CREATIVE_001_LATER_REGIONS",
+        "numeric_loot_values": "RATIFIED_W1_004_AH_EXACT_REFINED_ENVELOPES",
+        "new_nonwarehouse_item_dependencies": "RATIFIED_W1_001_AH_EXACT_DISPOSITIONS",
         "sidegrade_identity": "NOT_APPLICABLE_OR_NO_SIDEGRADE_DECISION_HERE"
       }
     },
@@ -1287,8 +1280,8 @@
         "identity": "RATIFIED_WAREHOUSE_ID",
         "visual": "HASH_BOUND_PACKET_002_VISUAL_SOURCE",
         "gameplay_relationships": "BINDING_CREATIVE_IDENTITY_AND_ROLE",
-        "numeric_loot_values": "WITHHELD_W1_CREATIVE_004_LATER_REGIONS",
-        "new_nonwarehouse_item_dependencies": "WITHHELD_W1_CREATIVE_001_LATER_REGIONS",
+        "numeric_loot_values": "RATIFIED_W1_004_AH_EXACT_REFINED_ENVELOPES",
+        "new_nonwarehouse_item_dependencies": "RATIFIED_W1_001_AH_EXACT_DISPOSITIONS",
         "sidegrade_identity": "NOT_APPLICABLE_OR_NO_SIDEGRADE_DECISION_HERE"
       }
     },
@@ -1368,8 +1361,8 @@
         "identity": "RATIFIED_WAREHOUSE_ID",
         "visual": "HASH_BOUND_PACKET_002_VISUAL_SOURCE",
         "gameplay_relationships": "BINDING_CREATIVE_IDENTITY_AND_ROLE",
-        "numeric_loot_values": "WITHHELD_W1_CREATIVE_004_LATER_REGIONS",
-        "new_nonwarehouse_item_dependencies": "WITHHELD_W1_CREATIVE_001_LATER_REGIONS",
+        "numeric_loot_values": "RATIFIED_W1_004_AH_EXACT_REFINED_ENVELOPES",
+        "new_nonwarehouse_item_dependencies": "RATIFIED_W1_001_AH_EXACT_DISPOSITIONS",
         "sidegrade_identity": "NOT_APPLICABLE_OR_NO_SIDEGRADE_DECISION_HERE"
       }
     },
@@ -1443,8 +1436,8 @@
         "identity": "RATIFIED_WAREHOUSE_ID",
         "visual": "HASH_BOUND_PACKET_002_VISUAL_SOURCE",
         "gameplay_relationships": "BINDING_CREATIVE_IDENTITY_AND_ROLE",
-        "numeric_loot_values": "WITHHELD_W1_CREATIVE_004_LATER_REGIONS",
-        "new_nonwarehouse_item_dependencies": "WITHHELD_W1_CREATIVE_001_LATER_REGIONS",
+        "numeric_loot_values": "RATIFIED_W1_004_AH_EXACT_REFINED_ENVELOPES",
+        "new_nonwarehouse_item_dependencies": "RATIFIED_W1_001_AH_EXACT_DISPOSITIONS",
         "sidegrade_identity": "NOT_APPLICABLE_OR_NO_SIDEGRADE_DECISION_HERE"
       }
     },
@@ -1526,8 +1519,8 @@
         "identity": "RATIFIED_WAREHOUSE_ID",
         "visual": "HASH_BOUND_PACKET_002_VISUAL_SOURCE",
         "gameplay_relationships": "BINDING_CREATIVE_IDENTITY_AND_ROLE",
-        "numeric_loot_values": "WITHHELD_W1_CREATIVE_004_LATER_REGIONS",
-        "new_nonwarehouse_item_dependencies": "WITHHELD_W1_CREATIVE_001_LATER_REGIONS",
+        "numeric_loot_values": "RATIFIED_W1_004_AH_EXACT_REFINED_ENVELOPES",
+        "new_nonwarehouse_item_dependencies": "RATIFIED_W1_001_AH_EXACT_DISPOSITIONS",
         "sidegrade_identity": "WITHHELD_W1_CREATIVE_005"
       }
     },
@@ -1618,8 +1611,8 @@
         "identity": "RATIFIED_WAREHOUSE_ID",
         "visual": "HASH_BOUND_PACKET_002_VISUAL_SOURCE",
         "gameplay_relationships": "BINDING_CREATIVE_IDENTITY_AND_ROLE",
-        "numeric_loot_values": "WITHHELD_W1_CREATIVE_004_LATER_REGIONS",
-        "new_nonwarehouse_item_dependencies": "WITHHELD_W1_CREATIVE_001_LATER_REGIONS",
+        "numeric_loot_values": "RATIFIED_W1_004_AH_EXACT_REFINED_ENVELOPES",
+        "new_nonwarehouse_item_dependencies": "RATIFIED_W1_001_AH_EXACT_DISPOSITIONS",
         "sidegrade_identity": "WITHHELD_W1_CREATIVE_005"
       }
     },
@@ -1698,8 +1691,8 @@
         "identity": "RATIFIED_WAREHOUSE_ID",
         "visual": "HASH_BOUND_PACKET_002_VISUAL_SOURCE",
         "gameplay_relationships": "BINDING_CREATIVE_IDENTITY_AND_ROLE",
-        "numeric_loot_values": "WITHHELD_W1_CREATIVE_004_LATER_REGIONS",
-        "new_nonwarehouse_item_dependencies": "WITHHELD_W1_CREATIVE_001_LATER_REGIONS",
+        "numeric_loot_values": "RATIFIED_W1_004_AH_EXACT_REFINED_ENVELOPES",
+        "new_nonwarehouse_item_dependencies": "RATIFIED_W1_001_AH_EXACT_DISPOSITIONS",
         "sidegrade_identity": "NOT_APPLICABLE_OR_NO_SIDEGRADE_DECISION_HERE"
       }
     },
@@ -1786,8 +1779,8 @@
         "identity": "RATIFIED_WAREHOUSE_ID",
         "visual": "HASH_BOUND_PACKET_002_VISUAL_SOURCE",
         "gameplay_relationships": "BINDING_CREATIVE_IDENTITY_AND_ROLE",
-        "numeric_loot_values": "WITHHELD_W1_CREATIVE_004_LATER_REGIONS",
-        "new_nonwarehouse_item_dependencies": "WITHHELD_W1_CREATIVE_001_LATER_REGIONS",
+        "numeric_loot_values": "RATIFIED_W1_004_AH_EXACT_REFINED_ENVELOPES",
+        "new_nonwarehouse_item_dependencies": "RATIFIED_W1_001_AH_EXACT_DISPOSITIONS",
         "sidegrade_identity": "NOT_APPLICABLE_OR_NO_SIDEGRADE_DECISION_HERE"
       }
     },
@@ -1876,8 +1869,8 @@
         "identity": "RATIFIED_WAREHOUSE_ID",
         "visual": "HASH_BOUND_PACKET_002_VISUAL_SOURCE",
         "gameplay_relationships": "BINDING_CREATIVE_IDENTITY_AND_ROLE",
-        "numeric_loot_values": "WITHHELD_W1_CREATIVE_004_LATER_REGIONS",
-        "new_nonwarehouse_item_dependencies": "WITHHELD_W1_CREATIVE_001_LATER_REGIONS",
+        "numeric_loot_values": "RATIFIED_W1_004_AH_EXACT_REFINED_ENVELOPES",
+        "new_nonwarehouse_item_dependencies": "RATIFIED_W1_001_AH_EXACT_DISPOSITIONS",
         "sidegrade_identity": "WITHHELD_W1_CREATIVE_005"
       }
     },
@@ -1949,8 +1942,8 @@
         "identity": "RATIFIED_WAREHOUSE_ID",
         "visual": "HASH_BOUND_PACKET_002_VISUAL_SOURCE",
         "gameplay_relationships": "BINDING_CREATIVE_IDENTITY_AND_ROLE",
-        "numeric_loot_values": "WITHHELD_W1_CREATIVE_004_LATER_REGIONS",
-        "new_nonwarehouse_item_dependencies": "WITHHELD_W1_CREATIVE_001_LATER_REGIONS",
+        "numeric_loot_values": "RATIFIED_W1_004_AH_EXACT_REFINED_ENVELOPES",
+        "new_nonwarehouse_item_dependencies": "RATIFIED_W1_001_AH_EXACT_DISPOSITIONS",
         "sidegrade_identity": "WITHHELD_W1_CREATIVE_005"
       }
     },
@@ -2026,8 +2019,8 @@
         "identity": "RATIFIED_WAREHOUSE_ID",
         "visual": "HASH_BOUND_PACKET_002_VISUAL_SOURCE",
         "gameplay_relationships": "BINDING_CREATIVE_IDENTITY_AND_ROLE",
-        "numeric_loot_values": "WITHHELD_W1_CREATIVE_004_LATER_REGIONS",
-        "new_nonwarehouse_item_dependencies": "WITHHELD_W1_CREATIVE_001_LATER_REGIONS",
+        "numeric_loot_values": "RATIFIED_W1_004_AH_EXACT_REFINED_ENVELOPES",
+        "new_nonwarehouse_item_dependencies": "RATIFIED_W1_001_AH_EXACT_DISPOSITIONS",
         "sidegrade_identity": "NOT_APPLICABLE_OR_NO_SIDEGRADE_DECISION_HERE"
       }
     },
@@ -2102,8 +2095,8 @@
         "identity": "RATIFIED_WAREHOUSE_ID",
         "visual": "HASH_BOUND_PACKET_002_VISUAL_SOURCE",
         "gameplay_relationships": "BINDING_CREATIVE_IDENTITY_AND_ROLE",
-        "numeric_loot_values": "WITHHELD_W1_CREATIVE_004_LATER_REGIONS",
-        "new_nonwarehouse_item_dependencies": "WITHHELD_W1_CREATIVE_001_LATER_REGIONS",
+        "numeric_loot_values": "RATIFIED_W1_004_AH_EXACT_REFINED_ENVELOPES",
+        "new_nonwarehouse_item_dependencies": "RATIFIED_W1_001_AH_EXACT_DISPOSITIONS",
         "sidegrade_identity": "NOT_APPLICABLE_OR_NO_SIDEGRADE_DECISION_HERE"
       }
     },
@@ -2191,8 +2184,8 @@
         "identity": "RATIFIED_WAREHOUSE_ID",
         "visual": "HASH_BOUND_PACKET_002_VISUAL_SOURCE",
         "gameplay_relationships": "BINDING_CREATIVE_IDENTITY_AND_ROLE",
-        "numeric_loot_values": "WITHHELD_W1_CREATIVE_004_LATER_REGIONS",
-        "new_nonwarehouse_item_dependencies": "WITHHELD_W1_CREATIVE_001_LATER_REGIONS",
+        "numeric_loot_values": "RATIFIED_W1_004_AH_EXACT_REFINED_ENVELOPES",
+        "new_nonwarehouse_item_dependencies": "RATIFIED_W1_001_AH_EXACT_DISPOSITIONS",
         "sidegrade_identity": "NOT_APPLICABLE_OR_NO_SIDEGRADE_DECISION_HERE"
       }
     },
@@ -2267,8 +2260,8 @@
         "identity": "RATIFIED_WAREHOUSE_ID",
         "visual": "HASH_BOUND_PACKET_002_VISUAL_SOURCE",
         "gameplay_relationships": "BINDING_CREATIVE_IDENTITY_AND_ROLE",
-        "numeric_loot_values": "WITHHELD_W1_CREATIVE_004_LATER_REGIONS",
-        "new_nonwarehouse_item_dependencies": "WITHHELD_W1_CREATIVE_001_LATER_REGIONS",
+        "numeric_loot_values": "RATIFIED_W1_004_AH_EXACT_REFINED_ENVELOPES",
+        "new_nonwarehouse_item_dependencies": "RATIFIED_W1_001_AH_EXACT_DISPOSITIONS",
         "sidegrade_identity": "NOT_APPLICABLE_OR_NO_SIDEGRADE_DECISION_HERE"
       }
     },
@@ -2343,8 +2336,8 @@
         "identity": "RATIFIED_WAREHOUSE_ID",
         "visual": "HASH_BOUND_PACKET_002_VISUAL_SOURCE",
         "gameplay_relationships": "BINDING_CREATIVE_IDENTITY_AND_ROLE",
-        "numeric_loot_values": "WITHHELD_W1_CREATIVE_004_LATER_REGIONS",
-        "new_nonwarehouse_item_dependencies": "WITHHELD_W1_CREATIVE_001_LATER_REGIONS",
+        "numeric_loot_values": "RATIFIED_W1_004_AH_EXACT_REFINED_ENVELOPES",
+        "new_nonwarehouse_item_dependencies": "RATIFIED_W1_001_AH_EXACT_DISPOSITIONS",
         "sidegrade_identity": "NOT_APPLICABLE_OR_NO_SIDEGRADE_DECISION_HERE"
       }
     },
@@ -2419,8 +2412,8 @@
         "identity": "RATIFIED_WAREHOUSE_ID",
         "visual": "HASH_BOUND_PACKET_002_VISUAL_SOURCE",
         "gameplay_relationships": "BINDING_CREATIVE_IDENTITY_AND_ROLE",
-        "numeric_loot_values": "WITHHELD_W1_CREATIVE_004_LATER_REGIONS",
-        "new_nonwarehouse_item_dependencies": "WITHHELD_W1_CREATIVE_001_LATER_REGIONS",
+        "numeric_loot_values": "RATIFIED_W1_004_AH_EXACT_REFINED_ENVELOPES",
+        "new_nonwarehouse_item_dependencies": "RATIFIED_W1_001_AH_EXACT_DISPOSITIONS",
         "sidegrade_identity": "NOT_APPLICABLE_OR_NO_SIDEGRADE_DECISION_HERE"
       }
     },
@@ -2499,8 +2492,8 @@
         "identity": "RATIFIED_WAREHOUSE_ID",
         "visual": "HASH_BOUND_PACKET_002_VISUAL_SOURCE",
         "gameplay_relationships": "BINDING_CREATIVE_IDENTITY_AND_ROLE",
-        "numeric_loot_values": "WITHHELD_W1_CREATIVE_004_LATER_REGIONS",
-        "new_nonwarehouse_item_dependencies": "WITHHELD_W1_CREATIVE_001_LATER_REGIONS",
+        "numeric_loot_values": "RATIFIED_W1_004_AH_EXACT_REFINED_ENVELOPES",
+        "new_nonwarehouse_item_dependencies": "RATIFIED_W1_001_AH_EXACT_DISPOSITIONS",
         "sidegrade_identity": "NOT_APPLICABLE_OR_NO_SIDEGRADE_DECISION_HERE"
       }
     },
@@ -2575,8 +2568,8 @@
         "identity": "RATIFIED_WAREHOUSE_ID",
         "visual": "HASH_BOUND_PACKET_002_VISUAL_SOURCE",
         "gameplay_relationships": "BINDING_CREATIVE_IDENTITY_AND_ROLE",
-        "numeric_loot_values": "WITHHELD_W1_CREATIVE_004_LATER_REGIONS",
-        "new_nonwarehouse_item_dependencies": "WITHHELD_W1_CREATIVE_001_LATER_REGIONS",
+        "numeric_loot_values": "RATIFIED_W1_004_AH_EXACT_REFINED_ENVELOPES",
+        "new_nonwarehouse_item_dependencies": "RATIFIED_W1_001_AH_EXACT_DISPOSITIONS",
         "sidegrade_identity": "NOT_APPLICABLE_OR_NO_SIDEGRADE_DECISION_HERE"
       }
     },
@@ -2651,8 +2644,8 @@
         "identity": "RATIFIED_WAREHOUSE_ID",
         "visual": "HASH_BOUND_PACKET_002_VISUAL_SOURCE",
         "gameplay_relationships": "BINDING_CREATIVE_IDENTITY_AND_ROLE",
-        "numeric_loot_values": "WITHHELD_W1_CREATIVE_004_LATER_REGIONS",
-        "new_nonwarehouse_item_dependencies": "WITHHELD_W1_CREATIVE_001_LATER_REGIONS",
+        "numeric_loot_values": "RATIFIED_W1_004_AH_EXACT_REFINED_ENVELOPES",
+        "new_nonwarehouse_item_dependencies": "RATIFIED_W1_001_AH_EXACT_DISPOSITIONS",
         "sidegrade_identity": "NOT_APPLICABLE_OR_NO_SIDEGRADE_DECISION_HERE"
       }
     },
@@ -2727,8 +2720,8 @@
         "identity": "RATIFIED_WAREHOUSE_ID",
         "visual": "HASH_BOUND_PACKET_002_VISUAL_SOURCE",
         "gameplay_relationships": "BINDING_CREATIVE_IDENTITY_AND_ROLE",
-        "numeric_loot_values": "WITHHELD_W1_CREATIVE_004_LATER_REGIONS",
-        "new_nonwarehouse_item_dependencies": "WITHHELD_W1_CREATIVE_001_LATER_REGIONS",
+        "numeric_loot_values": "RATIFIED_W1_004_AH_EXACT_REFINED_ENVELOPES",
+        "new_nonwarehouse_item_dependencies": "RATIFIED_W1_001_AH_EXACT_DISPOSITIONS",
         "sidegrade_identity": "NOT_APPLICABLE_OR_NO_SIDEGRADE_DECISION_HERE"
       }
     },
@@ -2803,8 +2796,8 @@
         "identity": "RATIFIED_WAREHOUSE_ID",
         "visual": "HASH_BOUND_PACKET_002_VISUAL_SOURCE",
         "gameplay_relationships": "BINDING_CREATIVE_IDENTITY_AND_ROLE",
-        "numeric_loot_values": "WITHHELD_W1_CREATIVE_004_LATER_REGIONS",
-        "new_nonwarehouse_item_dependencies": "WITHHELD_W1_CREATIVE_001_LATER_REGIONS",
+        "numeric_loot_values": "RATIFIED_W1_004_AH_EXACT_REFINED_ENVELOPES",
+        "new_nonwarehouse_item_dependencies": "RATIFIED_W1_001_AH_EXACT_DISPOSITIONS",
         "sidegrade_identity": "NOT_APPLICABLE_OR_NO_SIDEGRADE_DECISION_HERE"
       }
     },
@@ -2879,8 +2872,8 @@
         "identity": "RATIFIED_WAREHOUSE_ID",
         "visual": "HASH_BOUND_PACKET_002_VISUAL_SOURCE",
         "gameplay_relationships": "BINDING_CREATIVE_IDENTITY_AND_ROLE",
-        "numeric_loot_values": "WITHHELD_W1_CREATIVE_004_LATER_REGIONS",
-        "new_nonwarehouse_item_dependencies": "WITHHELD_W1_CREATIVE_001_LATER_REGIONS",
+        "numeric_loot_values": "RATIFIED_W1_004_AH_EXACT_REFINED_ENVELOPES",
+        "new_nonwarehouse_item_dependencies": "RATIFIED_W1_001_AH_EXACT_DISPOSITIONS",
         "sidegrade_identity": "NOT_APPLICABLE_OR_NO_SIDEGRADE_DECISION_HERE"
       }
     },
@@ -2955,8 +2948,8 @@
         "identity": "RATIFIED_WAREHOUSE_ID",
         "visual": "HASH_BOUND_PACKET_002_VISUAL_SOURCE",
         "gameplay_relationships": "BINDING_CREATIVE_IDENTITY_AND_ROLE",
-        "numeric_loot_values": "WITHHELD_W1_CREATIVE_004_LATER_REGIONS",
-        "new_nonwarehouse_item_dependencies": "WITHHELD_W1_CREATIVE_001_LATER_REGIONS",
+        "numeric_loot_values": "RATIFIED_W1_004_AH_EXACT_REFINED_ENVELOPES",
+        "new_nonwarehouse_item_dependencies": "RATIFIED_W1_001_AH_EXACT_DISPOSITIONS",
         "sidegrade_identity": "NOT_APPLICABLE_OR_NO_SIDEGRADE_DECISION_HERE"
       }
     },
@@ -3033,8 +3026,8 @@
         "identity": "RATIFIED_WAREHOUSE_ID",
         "visual": "HASH_BOUND_PACKET_002_VISUAL_SOURCE",
         "gameplay_relationships": "BINDING_CREATIVE_IDENTITY_AND_ROLE",
-        "numeric_loot_values": "WITHHELD_W1_CREATIVE_004_LATER_REGIONS",
-        "new_nonwarehouse_item_dependencies": "WITHHELD_W1_CREATIVE_001_LATER_REGIONS",
+        "numeric_loot_values": "RATIFIED_W1_004_AH_EXACT_REFINED_ENVELOPES",
+        "new_nonwarehouse_item_dependencies": "RATIFIED_W1_001_AH_EXACT_DISPOSITIONS",
         "sidegrade_identity": "NOT_APPLICABLE_OR_NO_SIDEGRADE_DECISION_HERE"
       }
     },
@@ -3109,8 +3102,8 @@
         "identity": "RATIFIED_WAREHOUSE_ID",
         "visual": "HASH_BOUND_PACKET_002_VISUAL_SOURCE",
         "gameplay_relationships": "BINDING_CREATIVE_IDENTITY_AND_ROLE",
-        "numeric_loot_values": "WITHHELD_W1_CREATIVE_004_LATER_REGIONS",
-        "new_nonwarehouse_item_dependencies": "WITHHELD_W1_CREATIVE_001_LATER_REGIONS",
+        "numeric_loot_values": "RATIFIED_W1_004_AH_EXACT_REFINED_ENVELOPES",
+        "new_nonwarehouse_item_dependencies": "RATIFIED_W1_001_AH_EXACT_DISPOSITIONS",
         "sidegrade_identity": "NOT_APPLICABLE_OR_NO_SIDEGRADE_DECISION_HERE"
       }
     },
@@ -3185,8 +3178,8 @@
         "identity": "RATIFIED_WAREHOUSE_ID",
         "visual": "HASH_BOUND_PACKET_002_VISUAL_SOURCE",
         "gameplay_relationships": "BINDING_CREATIVE_IDENTITY_AND_ROLE",
-        "numeric_loot_values": "WITHHELD_W1_CREATIVE_004_LATER_REGIONS",
-        "new_nonwarehouse_item_dependencies": "WITHHELD_W1_CREATIVE_001_LATER_REGIONS",
+        "numeric_loot_values": "RATIFIED_W1_004_AH_EXACT_REFINED_ENVELOPES",
+        "new_nonwarehouse_item_dependencies": "RATIFIED_W1_001_AH_EXACT_DISPOSITIONS",
         "sidegrade_identity": "NOT_APPLICABLE_OR_NO_SIDEGRADE_DECISION_HERE"
       }
     },
@@ -3261,8 +3254,8 @@
         "identity": "RATIFIED_WAREHOUSE_ID",
         "visual": "HASH_BOUND_PACKET_002_VISUAL_SOURCE",
         "gameplay_relationships": "BINDING_CREATIVE_IDENTITY_AND_ROLE",
-        "numeric_loot_values": "WITHHELD_W1_CREATIVE_004_LATER_REGIONS",
-        "new_nonwarehouse_item_dependencies": "WITHHELD_W1_CREATIVE_001_LATER_REGIONS",
+        "numeric_loot_values": "RATIFIED_W1_004_AH_EXACT_REFINED_ENVELOPES",
+        "new_nonwarehouse_item_dependencies": "RATIFIED_W1_001_AH_EXACT_DISPOSITIONS",
         "sidegrade_identity": "NOT_APPLICABLE_OR_NO_SIDEGRADE_DECISION_HERE"
       }
     },
@@ -3337,8 +3330,8 @@
         "identity": "RATIFIED_WAREHOUSE_ID",
         "visual": "HASH_BOUND_PACKET_002_VISUAL_SOURCE",
         "gameplay_relationships": "BINDING_CREATIVE_IDENTITY_AND_ROLE",
-        "numeric_loot_values": "WITHHELD_W1_CREATIVE_004_LATER_REGIONS",
-        "new_nonwarehouse_item_dependencies": "WITHHELD_W1_CREATIVE_001_LATER_REGIONS",
+        "numeric_loot_values": "RATIFIED_W1_004_AH_EXACT_REFINED_ENVELOPES",
+        "new_nonwarehouse_item_dependencies": "RATIFIED_W1_001_AH_EXACT_DISPOSITIONS",
         "sidegrade_identity": "NOT_APPLICABLE_OR_NO_SIDEGRADE_DECISION_HERE"
       }
     },
@@ -3413,8 +3406,8 @@
         "identity": "RATIFIED_WAREHOUSE_ID",
         "visual": "HASH_BOUND_PACKET_002_VISUAL_SOURCE",
         "gameplay_relationships": "BINDING_CREATIVE_IDENTITY_AND_ROLE",
-        "numeric_loot_values": "WITHHELD_W1_CREATIVE_004_LATER_REGIONS",
-        "new_nonwarehouse_item_dependencies": "WITHHELD_W1_CREATIVE_001_LATER_REGIONS",
+        "numeric_loot_values": "RATIFIED_W1_004_AH_EXACT_REFINED_ENVELOPES",
+        "new_nonwarehouse_item_dependencies": "RATIFIED_W1_001_AH_EXACT_DISPOSITIONS",
         "sidegrade_identity": "NOT_APPLICABLE_OR_NO_SIDEGRADE_DECISION_HERE"
       }
     },
@@ -3489,8 +3482,8 @@
         "identity": "RATIFIED_WAREHOUSE_ID",
         "visual": "HASH_BOUND_PACKET_002_VISUAL_SOURCE",
         "gameplay_relationships": "BINDING_CREATIVE_IDENTITY_AND_ROLE",
-        "numeric_loot_values": "WITHHELD_W1_CREATIVE_004_LATER_REGIONS",
-        "new_nonwarehouse_item_dependencies": "WITHHELD_W1_CREATIVE_001_LATER_REGIONS",
+        "numeric_loot_values": "RATIFIED_W1_004_AH_EXACT_REFINED_ENVELOPES",
+        "new_nonwarehouse_item_dependencies": "RATIFIED_W1_001_AH_EXACT_DISPOSITIONS",
         "sidegrade_identity": "NOT_APPLICABLE_OR_NO_SIDEGRADE_DECISION_HERE"
       }
     },
@@ -3565,8 +3558,8 @@
         "identity": "RATIFIED_WAREHOUSE_ID",
         "visual": "HASH_BOUND_PACKET_002_VISUAL_SOURCE",
         "gameplay_relationships": "BINDING_CREATIVE_IDENTITY_AND_ROLE",
-        "numeric_loot_values": "WITHHELD_W1_CREATIVE_004_LATER_REGIONS",
-        "new_nonwarehouse_item_dependencies": "WITHHELD_W1_CREATIVE_001_LATER_REGIONS",
+        "numeric_loot_values": "RATIFIED_W1_004_AH_EXACT_REFINED_ENVELOPES",
+        "new_nonwarehouse_item_dependencies": "RATIFIED_W1_001_AH_EXACT_DISPOSITIONS",
         "sidegrade_identity": "NOT_APPLICABLE_OR_NO_SIDEGRADE_DECISION_HERE"
       }
     },
@@ -3649,8 +3642,8 @@
         "identity": "RATIFIED_WAREHOUSE_ID",
         "visual": "HASH_BOUND_PACKET_002_VISUAL_SOURCE",
         "gameplay_relationships": "BINDING_CREATIVE_IDENTITY_AND_ROLE",
-        "numeric_loot_values": "WITHHELD_W1_CREATIVE_004_LATER_REGIONS",
-        "new_nonwarehouse_item_dependencies": "WITHHELD_W1_CREATIVE_001_LATER_REGIONS",
+        "numeric_loot_values": "RATIFIED_W1_004_AH_EXACT_REFINED_ENVELOPES",
+        "new_nonwarehouse_item_dependencies": "RATIFIED_W1_001_AH_EXACT_DISPOSITIONS",
         "sidegrade_identity": "NOT_APPLICABLE_OR_NO_SIDEGRADE_DECISION_HERE"
       }
     },
@@ -3734,8 +3727,8 @@
         "identity": "RATIFIED_WAREHOUSE_ID",
         "visual": "HASH_BOUND_PACKET_002_VISUAL_SOURCE",
         "gameplay_relationships": "BINDING_CREATIVE_IDENTITY_AND_ROLE",
-        "numeric_loot_values": "WITHHELD_W1_CREATIVE_004_LATER_REGIONS",
-        "new_nonwarehouse_item_dependencies": "WITHHELD_W1_CREATIVE_001_LATER_REGIONS",
+        "numeric_loot_values": "RATIFIED_W1_004_AH_EXACT_REFINED_ENVELOPES",
+        "new_nonwarehouse_item_dependencies": "RATIFIED_W1_001_AH_EXACT_DISPOSITIONS",
         "sidegrade_identity": "NOT_APPLICABLE_OR_NO_SIDEGRADE_DECISION_HERE"
       }
     },
@@ -3819,8 +3812,8 @@
         "identity": "RATIFIED_WAREHOUSE_ID",
         "visual": "HASH_BOUND_PACKET_002_VISUAL_SOURCE",
         "gameplay_relationships": "BINDING_CREATIVE_IDENTITY_AND_ROLE",
-        "numeric_loot_values": "WITHHELD_W1_CREATIVE_004_LATER_REGIONS",
-        "new_nonwarehouse_item_dependencies": "WITHHELD_W1_CREATIVE_001_LATER_REGIONS",
+        "numeric_loot_values": "RATIFIED_W1_004_AH_EXACT_REFINED_ENVELOPES",
+        "new_nonwarehouse_item_dependencies": "RATIFIED_W1_001_AH_EXACT_DISPOSITIONS",
         "sidegrade_identity": "NOT_APPLICABLE_OR_NO_SIDEGRADE_DECISION_HERE"
       }
     },
@@ -3899,8 +3892,8 @@
         "identity": "RATIFIED_WAREHOUSE_ID",
         "visual": "HASH_BOUND_PACKET_002_VISUAL_SOURCE",
         "gameplay_relationships": "BINDING_CREATIVE_IDENTITY_AND_ROLE",
-        "numeric_loot_values": "WITHHELD_W1_CREATIVE_004_LATER_REGIONS",
-        "new_nonwarehouse_item_dependencies": "WITHHELD_W1_CREATIVE_001_LATER_REGIONS",
+        "numeric_loot_values": "RATIFIED_W1_004_AH_EXACT_REFINED_ENVELOPES",
+        "new_nonwarehouse_item_dependencies": "RATIFIED_W1_001_AH_EXACT_DISPOSITIONS",
         "sidegrade_identity": "NOT_APPLICABLE_OR_NO_SIDEGRADE_DECISION_HERE"
       }
     },
@@ -3976,8 +3969,8 @@
         "identity": "RATIFIED_WAREHOUSE_ID",
         "visual": "HASH_BOUND_PACKET_002_VISUAL_SOURCE",
         "gameplay_relationships": "BINDING_CREATIVE_IDENTITY_AND_ROLE",
-        "numeric_loot_values": "WITHHELD_W1_CREATIVE_004_LATER_REGIONS",
-        "new_nonwarehouse_item_dependencies": "WITHHELD_W1_CREATIVE_001_LATER_REGIONS",
+        "numeric_loot_values": "RATIFIED_W1_004_AH_EXACT_REFINED_ENVELOPES",
+        "new_nonwarehouse_item_dependencies": "RATIFIED_W1_001_AH_EXACT_DISPOSITIONS",
         "sidegrade_identity": "NOT_APPLICABLE_OR_NO_SIDEGRADE_DECISION_HERE"
       }
     },
@@ -4060,8 +4053,8 @@
         "identity": "RATIFIED_WAREHOUSE_ID",
         "visual": "HASH_BOUND_PACKET_002_VISUAL_SOURCE",
         "gameplay_relationships": "BINDING_CREATIVE_IDENTITY_AND_ROLE",
-        "numeric_loot_values": "WITHHELD_W1_CREATIVE_004_LATER_REGIONS",
-        "new_nonwarehouse_item_dependencies": "WITHHELD_W1_CREATIVE_001_LATER_REGIONS",
+        "numeric_loot_values": "RATIFIED_W1_004_AH_EXACT_REFINED_ENVELOPES",
+        "new_nonwarehouse_item_dependencies": "RATIFIED_W1_001_AH_EXACT_DISPOSITIONS",
         "sidegrade_identity": "NOT_APPLICABLE_OR_NO_SIDEGRADE_DECISION_HERE"
       }
     },
@@ -4147,8 +4140,8 @@
         "identity": "RATIFIED_WAREHOUSE_ID",
         "visual": "HASH_BOUND_PACKET_002_VISUAL_SOURCE",
         "gameplay_relationships": "BINDING_CREATIVE_IDENTITY_AND_ROLE",
-        "numeric_loot_values": "WITHHELD_W1_CREATIVE_004_LATER_REGIONS",
-        "new_nonwarehouse_item_dependencies": "WITHHELD_W1_CREATIVE_001_LATER_REGIONS",
+        "numeric_loot_values": "RATIFIED_W1_004_AH_EXACT_REFINED_ENVELOPES",
+        "new_nonwarehouse_item_dependencies": "RATIFIED_W1_001_AH_EXACT_DISPOSITIONS",
         "sidegrade_identity": "NOT_APPLICABLE_OR_NO_SIDEGRADE_DECISION_HERE"
       }
     },
@@ -4240,8 +4233,8 @@
         "identity": "RATIFIED_WAREHOUSE_ID",
         "visual": "HASH_BOUND_PACKET_002_VISUAL_SOURCE",
         "gameplay_relationships": "BINDING_CREATIVE_IDENTITY_AND_ROLE",
-        "numeric_loot_values": "WITHHELD_W1_CREATIVE_004_LATER_REGIONS",
-        "new_nonwarehouse_item_dependencies": "WITHHELD_W1_CREATIVE_001_LATER_REGIONS",
+        "numeric_loot_values": "RATIFIED_W1_004_AH_EXACT_REFINED_ENVELOPES",
+        "new_nonwarehouse_item_dependencies": "RATIFIED_W1_001_AH_EXACT_DISPOSITIONS",
         "sidegrade_identity": "NOT_APPLICABLE_OR_NO_SIDEGRADE_DECISION_HERE"
       }
     },
@@ -4321,8 +4314,8 @@
         "identity": "RATIFIED_WAREHOUSE_ID",
         "visual": "HASH_BOUND_PACKET_002_VISUAL_SOURCE",
         "gameplay_relationships": "BINDING_CREATIVE_IDENTITY_AND_ROLE",
-        "numeric_loot_values": "WITHHELD_W1_CREATIVE_004_LATER_REGIONS",
-        "new_nonwarehouse_item_dependencies": "WITHHELD_W1_CREATIVE_001_LATER_REGIONS",
+        "numeric_loot_values": "RATIFIED_W1_004_AH_EXACT_REFINED_ENVELOPES",
+        "new_nonwarehouse_item_dependencies": "RATIFIED_W1_001_AH_EXACT_DISPOSITIONS",
         "sidegrade_identity": "NOT_APPLICABLE_OR_NO_SIDEGRADE_DECISION_HERE"
       }
     },
@@ -4402,8 +4395,8 @@
         "identity": "RATIFIED_WAREHOUSE_ID",
         "visual": "HASH_BOUND_PACKET_002_VISUAL_SOURCE",
         "gameplay_relationships": "BINDING_CREATIVE_IDENTITY_AND_ROLE",
-        "numeric_loot_values": "WITHHELD_W1_CREATIVE_004_LATER_REGIONS",
-        "new_nonwarehouse_item_dependencies": "WITHHELD_W1_CREATIVE_001_LATER_REGIONS",
+        "numeric_loot_values": "RATIFIED_W1_004_AH_EXACT_REFINED_ENVELOPES",
+        "new_nonwarehouse_item_dependencies": "RATIFIED_W1_001_AH_EXACT_DISPOSITIONS",
         "sidegrade_identity": "NOT_APPLICABLE_OR_NO_SIDEGRADE_DECISION_HERE"
       }
     }
@@ -4418,5 +4411,5 @@
       "structures": 10
     }
   },
-  "authority_digest_sha256": "4819b1f5282bc6e9430c4a724cedf465549937bbeacc408698208252072aee7a"
+  "authority_digest_sha256": "a5e5014da948f32b93134d89f40fd9811f6cb1dba3e294e66b606ab0e3bec052"
 }
