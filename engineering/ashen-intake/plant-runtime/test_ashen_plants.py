@@ -50,6 +50,17 @@ class AshenPlantRuntimeTests(unittest.TestCase):
             block = (ROOT / f"behavior_pack/blocks/{asset}.block.json").read_text()
             self.assertNotIn("custom_component", block)
 
+    def test_exact_self_harvest_and_bounded_fire_bloom_seed(self):
+        for asset in PLANTS:
+            block = json.loads((ROOT / f"behavior_pack/blocks/{asset}.block.json").read_text())["minecraft:block"]
+            self.assertEqual(block["components"]["minecraft:loot"], f"loot_tables/blocks/ashen/{asset}.json")
+            table = json.loads((ROOT / f"behavior_pack/loot_tables/blocks/ashen/{asset}.json").read_text())
+            names = [entry["name"] for pool in table["pools"] for entry in pool["entries"]]
+            expected = [f"aionbound:{asset}"] + (["aionbound:fire_bloom_seed"] if asset == "fire_bloom" else [])
+            self.assertEqual(names, expected)
+            if asset == "fire_bloom":
+                self.assertEqual(table["pools"][1]["entries"][0]["conditions"][0]["chance"], 0.35)
+
 
 if __name__ == "__main__":
     unittest.main()
