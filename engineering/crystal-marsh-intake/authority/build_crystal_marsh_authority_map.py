@@ -336,9 +336,9 @@ def build(root: Path, repo_root: Path) -> dict:
 
     support_by_id = {ticket["id"]: ticket for ticket in ledger["support_tickets"]}
     expected_deferred = {
-        "W1-CREATIVE-001": "WW_AND_AH_RATIFIED_CRYSTAL_SKY_DEFERRED",
-        "W1-CREATIVE-003": "THORN_COURT_AND_KILN_SKY_RATIFIED_OTHER_BOSSES_DEFERRED",
-        "W1-CREATIVE-004": "WHISPERWOOD_CHAPTER_1_AND_ASHEN_RATIFIED_CRYSTAL_SKY_DEFERRED",
+        "W1-CREATIVE-001": "WW_AH_AND_CM_RATIFIED_SKY_AND_FINALE_DEFERRED",
+        "W1-CREATIVE-003": "THORN_COURT_KILN_SKY_AND_PEARL_DEPTHS_RATIFIED_SKY_AND_FINALE_DEFERRED",
+        "W1-CREATIVE-004": "WHISPERWOOD_ASHEN_AND_CRYSTAL_RATIFIED_SKY_AND_FINALE_DEFERRED",
         "W1-CREATIVE-005": "DEFERRED_BY_USER",
     }
     for ticket_id, state in expected_deferred.items():
@@ -406,7 +406,7 @@ def build(root: Path, repo_root: Path) -> dict:
 
     result = {
         "schema": "aionbound.wave1.crystal-marsh-authority-intake.v1.0.0",
-        "status": "PACKET_003_STRUCTURAL_AUTHORITY_READY_SOURCE_COMPLETE_RATIFICATION_REQUIRED",
+        "status": "PACKET_003_RATIFIED_VERTICAL_IMPLEMENTATION_AUTHORITY",
         "base_commit": BASE_COMMIT,
         "scope": "Packet 003 authority intake only; no BP/RP mutation, runtime activation, qualification, or BDS claim",
         "source_authorities": source_authorities,
@@ -418,6 +418,12 @@ def build(root: Path, repo_root: Path) -> dict:
             "definition_of_done": contract_packet["definition_of_done"],
         },
         "minimum_source_complete_ratifications": MINIMUM_TICKETS,
+        "current_ratification_reconciliation": {
+            "W1-001-CM": "APPROVED_AS_PROPOSED",
+            "W1-003-PEARL-DEPTHS": "APPROVED_AS_PROPOSED",
+            "W1-004-CM": "APPROVED_AS_PROPOSED",
+            "effect": "The historical intake blockers recorded below are resolved for the exact Crystal tranche; implementation remains bounded by the ratified proposals and W1-CREATIVE-005 remains deferred.",
+        },
         "unresolved_terms": {
             "disposition_required_by": "W1-001-CM",
             "terms": UNRESOLVED_TERMS,
@@ -476,14 +482,14 @@ def render_markdown(data: dict) -> str:
     lines = [
         "# Packet 003 Crystal Marsh — Engineering Authority Intake",
         "",
-        f"**Status:** `{data['status']}`  ",
-        f"**Base:** `{data['base_commit']}`  ",
-        f"**Authority digest:** `{data['authority_digest_sha256']}`  ",
+        f"**Status:** `{data['status']}`",
+        f"**Base:** `{data['base_commit']}`",
+        f"**Authority digest:** `{data['authority_digest_sha256']}`",
         "**Scope:** Authority intake only. No product-pack mutation or runtime proof is claimed.",
         "",
         "## Ratification boundary",
         "",
-        "The exact 50-ID roster, visuals, roles, nonnumeric relationships, Packet 006 links, Codex coverage, and progression shape are available. Crystal cannot become source-complete until these minimum tranches are ratified:",
+        "The exact 50-ID roster, visuals, roles, nonnumeric relationships, Packet 006 links, Codex coverage, and progression shape are available. The following historical minimum tranches are now ratified exactly as proposed:",
         "",
         "| Ticket | Blocks |",
         "|---|---|",

@@ -1,13 +1,13 @@
 # Packet 003 Crystal Marsh — Engineering Authority Intake
 
-**Status:** `PACKET_003_STRUCTURAL_AUTHORITY_READY_SOURCE_COMPLETE_RATIFICATION_REQUIRED`  
-**Base:** `bcd65076900a3688dd797d54719263d88afd501c`  
-**Authority digest:** `6ad1d0854ed0b0e97d01557e6ac8cd0f531f9a25b64adc1c1871a1a942106ce5`  
+**Status:** `PACKET_003_RATIFIED_VERTICAL_IMPLEMENTATION_AUTHORITY`
+**Base:** `bcd65076900a3688dd797d54719263d88afd501c`
+**Authority digest:** `effcd7579d2da8008b8397297e8d5da4d7b665080e2c8d8c6497ec98e80acd6c`
 **Scope:** Authority intake only. No product-pack mutation or runtime proof is claimed.
 
 ## Ratification boundary
 
-The exact 50-ID roster, visuals, roles, nonnumeric relationships, Packet 006 links, Codex coverage, and progression shape are available. Crystal cannot become source-complete until these minimum tranches are ratified:
+The exact 50-ID roster, visuals, roles, nonnumeric relationships, Packet 006 links, Codex coverage, and progression shape are available. The following historical minimum tranches are now ratified exactly as proposed:
 
 | Ticket | Blocks |
 |---|---|
@@ -175,4 +175,4 @@ Every Packet 003 asset and direct Packet 006 link records six canonical source/e
 | `program/crazycraft-pack-production-v1/studio-prep/creative/07_bosses/BOSS_PROGRESSION.md` | `5ef85e1e0b29973a617f7dca4a8b119443c01644ba33f0e11166ef8d417d5a6f` | Pearl Depths identity, phase names, attacks, and reward identities only |
 | `program/crazycraft-pack-production-v1/studio-prep/creative/08_codex/CODEX_ENTRIES_CREATURES.md` | `fd07694eee0c8d478b44363e822e0116f4ca09c92775661350ed8468342b01bf` | ten Crystal creature discovery, crafting, and hint entries |
 | `program/crazycraft-pack-production-v1/studio-prep/creative/08_codex/CODEX_DESIGN.md` | `cc89b22d1dc548f2563c4b20d33faf8020eab9dafdbfab262321c35739a9b546` | Codex schema, unlock rules, full-category coverage, and system links |
-| `engineering/authority/WAVE_1_ENGINEERING_DECISION_LEDGER.json` | `b554db9fab3fe16e59e2e3b36dfc310ff462078b170f14e1f9fe8a46999bbd0c` | current ratified/deferred engineering decision state |
+| `engineering/authority/WAVE_1_ENGINEERING_DECISION_LEDGER.json` | `b791c4b63d6ef09c2ac437fdc67065735a2363becad92b359cecb0a4e25c5172` | current ratified/deferred engineering decision state |

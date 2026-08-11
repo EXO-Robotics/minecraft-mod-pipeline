@@ -33,7 +33,7 @@ EXPECTED_AUTHORITY_HASHES = {
     "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-006-equipment-progression/MANIFEST_FULL.json": "71ab8dec6949ab4a1321fe4215d843cdb9c4279e8ca6a37adfb95c20149951ea",
     "program/crazycraft-pack-production-v1/studio-prep/creative/WAVE_1_LIVING_WORLD_IMPLEMENTATION_CONTRACT.json": "aa1f54df10d27d5c5675aae843ffe0d2946123d12a6509f7f021408bcdde9fb5",
     "program/crazycraft-pack-production-v1/studio-prep/creative/WAVE_1_LIVING_WORLD_IMPLEMENTATION_CONTRACT.md": "3116c217e06afe1fd0cd56ee742c537f948a4c91193ec831fd1b3ec362837bfc",
-    "engineering/authority/WAVE_1_ENGINEERING_DECISION_LEDGER.json": "b554db9fab3fe16e59e2e3b36dfc310ff462078b170f14e1f9fe8a46999bbd0c",
+    "engineering/authority/WAVE_1_ENGINEERING_DECISION_LEDGER.json": "b791c4b63d6ef09c2ac437fdc67065735a2363becad92b359cecb0a4e25c5172",
 }
 
 
@@ -73,6 +73,14 @@ class CrystalMarshAuthorityMapTest(unittest.TestCase):
     def test_minimum_ratification_tranches_are_exact(self) -> None:
         tickets = {ticket["id"] for ticket in self.data["minimum_source_complete_ratifications"]}
         self.assertEqual({"W1-001-CM", "W1-003-PEARL-DEPTHS", "W1-004-CM"}, tickets)
+        self.assertEqual(
+            {
+                "W1-001-CM": "APPROVED_AS_PROPOSED",
+                "W1-003-PEARL-DEPTHS": "APPROVED_AS_PROPOSED",
+                "W1-004-CM": "APPROVED_AS_PROPOSED",
+            },
+            {key: value for key, value in self.data["current_ratification_reconciliation"].items() if key != "effect"},
+        )
         self.assertEqual("DEFERRED_BY_USER", self.data["ratification_boundaries"]["W1-CREATIVE-005"]["status"])
         self.assertTrue(self.data["ratification_boundaries"]["W1-CREATIVE-005"]["not_minimum_for_base_crystal_vertical"])
 
