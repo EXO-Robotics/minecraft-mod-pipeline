@@ -2,7 +2,7 @@
 
 Status: **STATIC_AUTHORING_PASS_ONLY**
 
-Eight deterministic little-endian Bedrock structure templates are authored with distinct block-built silhouettes. Anchors are inert and empty; loot, rewards, interaction behavior, BDS load, and exact terrain-affinity remain outside this receipt.
+Eight deterministic little-endian Bedrock structure templates are authored with distinct block-built silhouettes. Seven barrel anchors bind the ratified Whisperwood chest tables; chapter-trophy fulfillment, interactions, BDS load, and exact terrain affinity remain outside this receipt.
 
 Authority is hash-bound in `WHISPERWOOD_STRUCTURE_ASSEMBLIES.json`.
 
@@ -22,5 +22,6 @@ Authority is hash-bound in `WHISPERWOOD_STRUCTURE_ASSEMBLIES.json`.
 - The feature rules use stable `minecraft:structure_template_feature` plus `overworld` + `forest` surface filters.
 - Roads, ravines, high ground, cliff faces, deep core, and expanse spacing cannot be proven by these rules alone; the manifest records them as later terrain-integration obligations.
 - `lantern_post` and `moss_cairn` are not placed or substituted.
-- Empty barrels/lodestones/lecterns are reserved anchor blocks only. No loot identities or contents are authored.
+- Seven barrel block entities bind exact `loot_tables/chests/whisperwood/<structure>.json` paths. The waystone has no loot anchor; no structure chest contains the chapter trophy.
+- Lodestones and lecterns remain non-loot runtime handoffs.
 - Deterministic regeneration, NBT decoding, palette/index closure, bounds, IDs/filenames, and anchor coordinates are covered by the lane tests.

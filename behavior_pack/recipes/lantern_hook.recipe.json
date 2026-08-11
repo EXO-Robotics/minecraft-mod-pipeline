@@ -1,0 +1,31 @@
+{
+  "format_version": "1.20.10",
+  "minecraft:recipe_shapeless": {
+    "description": {
+      "identifier": "aionbound:lantern_hook_recipe"
+    },
+    "tags": [
+      "crafting_table"
+    ],
+    "ingredients": [
+      {
+        "item": "aionbound:whisperwood_planks"
+      },
+      {
+        "item": "aionbound:lantern_fur"
+      },
+      {
+        "item": "minecraft:iron_nugget"
+      }
+    ],
+    "result": {
+      "item": "aionbound:lantern_hook",
+      "count": 1
+    },
+    "unlock": [
+      {
+        "item": "aionbound:whisperwood_planks"
+      }
+    ]
+  }
+}

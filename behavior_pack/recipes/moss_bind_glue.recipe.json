@@ -1,0 +1,28 @@
+{
+  "format_version": "1.20.10",
+  "minecraft:recipe_shapeless": {
+    "description": {
+      "identifier": "aionbound:moss_bind_glue_recipe"
+    },
+    "tags": [
+      "crafting_table"
+    ],
+    "ingredients": [
+      {
+        "item": "aionbound:moss_resin"
+      },
+      {
+        "item": "aionbound:glow_spore"
+      }
+    ],
+    "result": {
+      "item": "aionbound:moss_bind_glue",
+      "count": 1
+    },
+    "unlock": [
+      {
+        "item": "aionbound:moss_resin"
+      }
+    ]
+  }
+}

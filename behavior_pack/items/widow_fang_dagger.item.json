@@ -15,7 +15,17 @@
           "default": "widow_fang_dagger"
         }
       },
-      "minecraft:max_stack_size": 1
+      "minecraft:max_stack_size": 1,
+      "minecraft:repairable": {
+        "repair_items": [
+          {
+            "items": [
+              "aionbound:widow_silk"
+            ],
+            "repair_amount": 64
+          }
+        ]
+      }
     },
     "description": {
       "identifier": "aionbound:widow_fang_dagger",

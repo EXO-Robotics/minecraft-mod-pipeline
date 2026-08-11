@@ -3,15 +3,23 @@
   "minecraft:block": {
     "description": {
       "identifier": "aionbound:hollow_wood",
-      "menu_category": { "category": "construction" }
+      "menu_category": {
+        "category": "construction"
+      }
     },
     "components": {
       "minecraft:display_name": "Hollow Wood",
-      "minecraft:destructible_by_mining": { "seconds_to_destroy": 2.0 },
+      "minecraft:destructible_by_mining": {
+        "seconds_to_destroy": 2.0
+      },
       "minecraft:geometry": "geometry.aionbound.hollow_wood",
       "minecraft:material_instances": {
-        "*": { "texture": "hollow_wood", "render_method": "opaque" }
-      }
+        "*": {
+          "texture": "hollow_wood",
+          "render_method": "opaque"
+        }
+      },
+      "minecraft:loot": "loot_tables/blocks/hollow_wood.json"
     }
   }
 }

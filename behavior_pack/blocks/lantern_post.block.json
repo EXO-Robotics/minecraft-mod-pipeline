@@ -3,28 +3,53 @@
   "minecraft:block": {
     "description": {
       "identifier": "aionbound:lantern_post",
-      "menu_category": { "category": "construction" }
+      "menu_category": {
+        "category": "construction"
+      }
     },
     "components": {
       "minecraft:display_name": "Lantern Post",
       "minecraft:collision_box": {
-        "origin": [ -2, 0, -2 ],
-        "size": [ 4, 16, 4 ]
+        "origin": [
+          -2,
+          0,
+          -2
+        ],
+        "size": [
+          4,
+          16,
+          4
+        ]
       },
       "minecraft:selection_box": {
-        "origin": [ -4, 0, -4 ],
-        "size": [ 8, 16, 8 ]
+        "origin": [
+          -4,
+          0,
+          -4
+        ],
+        "size": [
+          8,
+          16,
+          8
+        ]
       },
-      "minecraft:destructible_by_mining": { "seconds_to_destroy": 1.5 },
+      "minecraft:destructible_by_mining": {
+        "seconds_to_destroy": 1.5
+      },
       "minecraft:geometry": "geometry.aionbound.lantern_post",
       "minecraft:material_instances": {
-        "*": { "texture": "lantern_post", "render_method": "opaque" }
+        "*": {
+          "texture": "lantern_post",
+          "render_method": "opaque"
+        }
       },
       "minecraft:light_emission": 10,
       "minecraft:placement_filter": {
         "conditions": [
           {
-            "allowed_faces": [ "up" ],
+            "allowed_faces": [
+              "up"
+            ],
             "block_filter": [
               "minecraft:grass_block",
               "minecraft:dirt",
@@ -35,7 +60,8 @@
             ]
           }
         ]
-      }
+      },
+      "minecraft:loot": "loot_tables/blocks/lantern_post.json"
     }
   }
 }

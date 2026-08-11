@@ -1,0 +1,28 @@
+{
+  "format_version": "1.20.10",
+  "minecraft:recipe_shapeless": {
+    "description": {
+      "identifier": "aionbound:thorn_cord_recipe"
+    },
+    "tags": [
+      "crafting_table"
+    ],
+    "ingredients": [
+      {
+        "item": "aionbound:widow_silk"
+      },
+      {
+        "item": "aionbound:briar_vine"
+      }
+    ],
+    "result": {
+      "item": "aionbound:thorn_cord",
+      "count": 1
+    },
+    "unlock": [
+      {
+        "item": "aionbound:widow_silk"
+      }
+    ]
+  }
+}

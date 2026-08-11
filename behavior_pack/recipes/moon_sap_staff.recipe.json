@@ -1,0 +1,31 @@
+{
+  "format_version": "1.20.10",
+  "minecraft:recipe_shapeless": {
+    "description": {
+      "identifier": "aionbound:moon_sap_staff_recipe"
+    },
+    "tags": [
+      "crafting_table"
+    ],
+    "ingredients": [
+      {
+        "item": "aionbound:stripped_whisperwood_log"
+      },
+      {
+        "item": "aionbound:living_root_focus"
+      },
+      {
+        "item": "aionbound:moon_sap"
+      }
+    ],
+    "result": {
+      "item": "aionbound:moon_sap_staff",
+      "count": 1
+    },
+    "unlock": [
+      {
+        "item": "aionbound:stripped_whisperwood_log"
+      }
+    ]
+  }
+}

@@ -101,12 +101,21 @@ def check() -> dict:
             "shipping_icon_status": "PASS_STATIC_PRESENTATION",
         }
 
-    recipes_and_loot = [*sorted((ROOT / "behavior_pack/recipes").rglob("*.json")), *sorted((ROOT / "behavior_pack/loot_tables").rglob("*.json"))]
-    for path in recipes_and_loot:
-        text = path.read_text(encoding="utf-8")
-        for asset_id in SPECS:
-            if f"aionbound:{asset_id}" in text:
-                errors.append(f"forbidden_recipe_or_loot_binding:{asset_id}:{path.relative_to(ROOT)}")
+    ledger = read_json(ROOT / "engineering/authority/WAVE_1_ENGINEERING_DECISION_LEDGER.json")
+    approved = {entry["tranche"] for entry in ledger.get("ratifications", {}).get("approved", [])}
+    if "W1-001-WW" not in approved or "W1-004-WW-CH1" not in approved:
+        errors.append("ratified_economy_authority_missing")
+    for asset_id in SPECS:
+        recipe_path = ROOT / f"behavior_pack/recipes/{asset_id}.recipe.json"
+        if not recipe_path.is_file():
+            errors.append(f"approved_recipe_missing:{asset_id}")
+        else:
+            body = read_json(recipe_path).get("minecraft:recipe_shapeless", {})
+            if body.get("result", {}).get("item") != f"aionbound:{asset_id}":
+                errors.append(f"approved_recipe_result:{asset_id}")
+        for loot_path in sorted((ROOT / "behavior_pack/loot_tables").rglob("*.json")):
+            if f"aionbound:{asset_id}" in loot_path.read_text(encoding="utf-8"):
+                errors.append(f"finished_equipment_in_loot:{asset_id}:{loot_path.relative_to(ROOT)}")
 
     if errors:
         raise AssertionError("\n".join(sorted(set(errors))))
@@ -120,7 +129,7 @@ def check() -> dict:
             "item_attachable_geometry_animation_model_texture_closure",
             "exact_item_components_and_validator_authority",
             "shipping_icon_atlas_and_receipt_hash_closure",
-            "no_recipe_or_loot_binding",
+            "ratified_recipe_acquisition_and_no_finished_equipment_loot",
         ],
         "global_validator_after_icon_handoff": {
             "status": "PASS_OBSERVED",

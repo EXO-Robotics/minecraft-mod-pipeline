@@ -1,0 +1,28 @@
+{
+  "format_version": "1.20.10",
+  "minecraft:recipe_shapeless": {
+    "description": {
+      "identifier": "aionbound:amber_core_recipe"
+    },
+    "tags": [
+      "crafting_table"
+    ],
+    "ingredients": [
+      {
+        "item": "aionbound:hollow_amber"
+      },
+      {
+        "item": "aionbound:moon_sap"
+      }
+    ],
+    "result": {
+      "item": "aionbound:amber_core",
+      "count": 1
+    },
+    "unlock": [
+      {
+        "item": "aionbound:hollow_amber"
+      }
+    ]
+  }
+}

@@ -15,7 +15,17 @@
           "default": "thorn_whip"
         }
       },
-      "minecraft:max_stack_size": 1
+      "minecraft:max_stack_size": 1,
+      "minecraft:repairable": {
+        "repair_items": [
+          {
+            "items": [
+              "aionbound:thorn_cord"
+            ],
+            "repair_amount": 72
+          }
+        ]
+      }
     },
     "description": {
       "identifier": "aionbound:thorn_whip",

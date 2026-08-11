@@ -29,10 +29,13 @@ class Reader:
 
     def u8(self): return struct.unpack("<B", self.take(1))[0]
     def i32(self): return struct.unpack("<i", self.take(4))[0]
+    def i64(self): return struct.unpack("<q", self.take(8))[0]
     def string(self): return self.take(struct.unpack("<H", self.take(2))[0]).decode()
 
     def payload(self, tag):
+        if tag == 1: return self.u8()
         if tag == 3: return self.i32()
+        if tag == 4: return self.i64()
         if tag == 8: return self.string()
         if tag == 9:
             subtype, count = self.u8(), self.i32()
@@ -76,13 +79,24 @@ class StructureAssemblyTests(unittest.TestCase):
             self.assertEqual(len(primary), assembly.size[0] * assembly.size[1] * assembly.size[2])
             self.assertTrue(all(-1 <= index < len(palette) for index in primary))
             self.assertTrue(all(index == -1 for index in secondary))
-            self.assertFalse(structure["palette"]["default"]["block_position_data"])
+            position_data = structure["palette"]["default"]["block_position_data"]
+            loot_anchors = [item for item in assembly.anchors if item["kind"] == "loot"]
+            self.assertEqual(len(loot_anchors), len(position_data))
+            for item in loot_anchors:
+                x, y, z = item["coordinate"]
+                flat = str(x + z * assembly.size[0] + y * assembly.size[0] * assembly.size[2])
+                block_entity = position_data[flat]["block_entity_data"]
+                self.assertEqual("Barrel", block_entity["id"])
+                self.assertEqual(f"loot_tables/chests/whisperwood/{assembly.identifier}.json", block_entity["LootTable"])
+                self.assertEqual(0, block_entity["LootTableSeed"])
+                self.assertEqual([x, y, z], [block_entity["x"], block_entity["y"], block_entity["z"]])
 
     def test_anchor_coordinates_are_inert_present_and_in_bounds(self):
         for assembly in author.ASSEMBLIES:
             for item in assembly.anchors:
                 xyz = tuple(item["coordinate"])
-                self.assertEqual("RESERVED_INERT_NO_CONTENT_OR_RUNTIME_BINDING", item["binding"])
+                expected_binding = "RATIFIED_W1_004_WW_CH1_CHEST_TABLE" if item["kind"] == "loot" else "RESERVED_NON_LOOT_RUNTIME_HANDOFF"
+                self.assertEqual(expected_binding, item["binding"])
                 self.assertEqual(item["expected_block"], assembly.blocks[xyz])
                 self.assertTrue(all(0 <= xyz[i] < assembly.size[i] for i in range(3)))
 
@@ -92,10 +106,19 @@ class StructureAssemblyTests(unittest.TestCase):
             self.assertTrue(forbidden_blocks.isdisjoint(assembly.blocks.values()))
         outputs, manifest = author.expected_outputs()
         encoded = json.dumps(manifest)
-        self.assertNotIn("loot_tables/", encoded)
+        self.assertNotIn("thorn_stalker_skull", encoded)
         self.assertNotIn("warden_sigil", encoded)
         self.assertNotIn("owl_token", encoded.lower())
         self.assertEqual(26, len(outputs))
+
+    def test_exact_seven_chest_bindings_and_waystone_is_not_loot(self):
+        anchors = [(assembly.identifier, item) for assembly in author.ASSEMBLIES for item in assembly.anchors if item["kind"] == "loot"]
+        self.assertEqual(7, len(anchors))
+        self.assertNotIn("forest_waystone", {identifier for identifier, _item in anchors})
+        for identifier, _item in anchors:
+            table = author.BP / "loot_tables" / "chests" / "whisperwood" / f"{identifier}.json"
+            self.assertTrue(table.is_file(), table)
+            self.assertNotIn("thorn_stalker_skull", table.read_text())
 
     def test_custom_palette_identifier_closure(self):
         defined = set()

@@ -1,0 +1,31 @@
+{
+  "format_version": "1.20.10",
+  "minecraft:recipe_shapeless": {
+    "description": {
+      "identifier": "aionbound:root_bracelet_recipe"
+    },
+    "tags": [
+      "crafting_table"
+    ],
+    "ingredients": [
+      {
+        "item": "aionbound:root_flower"
+      },
+      {
+        "item": "aionbound:whisperwood_roots"
+      },
+      {
+        "item": "aionbound:hollow_amber"
+      }
+    ],
+    "result": {
+      "item": "aionbound:root_bracelet",
+      "count": 1
+    },
+    "unlock": [
+      {
+        "item": "aionbound:root_flower"
+      }
+    ]
+  }
+}

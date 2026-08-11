@@ -1,0 +1,28 @@
+{
+  "format_version": "1.20.10",
+  "minecraft:recipe_shapeless": {
+    "description": {
+      "identifier": "aionbound:thorn_whip_recipe"
+    },
+    "tags": [
+      "crafting_table"
+    ],
+    "ingredients": [
+      {
+        "item": "aionbound:thorn_cord"
+      },
+      {
+        "item": "aionbound:thorn_barb"
+      }
+    ],
+    "result": {
+      "item": "aionbound:thorn_whip",
+      "count": 1
+    },
+    "unlock": [
+      {
+        "item": "aionbound:thorn_cord"
+      }
+    ]
+  }
+}

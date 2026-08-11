@@ -1,0 +1,43 @@
+{
+  "format_version": "1.20.10",
+  "minecraft:recipe_shapeless": {
+    "description": {
+      "identifier": "aionbound:whisperwood_legs_recipe"
+    },
+    "tags": [
+      "crafting_table"
+    ],
+    "ingredients": [
+      {
+        "item": "aionbound:whisper_bark"
+      },
+      {
+        "item": "aionbound:whisper_bark"
+      },
+      {
+        "item": "aionbound:whisper_bark"
+      },
+      {
+        "item": "aionbound:whisper_bark"
+      },
+      {
+        "item": "aionbound:widow_silk"
+      },
+      {
+        "item": "aionbound:widow_silk"
+      },
+      {
+        "item": "aionbound:moss_bind_glue"
+      }
+    ],
+    "result": {
+      "item": "aionbound:whisperwood_legs",
+      "count": 1
+    },
+    "unlock": [
+      {
+        "item": "aionbound:whisper_bark"
+      }
+    ]
+  }
+}

@@ -3,15 +3,23 @@
   "minecraft:block": {
     "description": {
       "identifier": "aionbound:whisperwood_wood",
-      "menu_category": { "category": "construction" }
+      "menu_category": {
+        "category": "construction"
+      }
     },
     "components": {
       "minecraft:display_name": "Whisperwood Wood",
-      "minecraft:destructible_by_mining": { "seconds_to_destroy": 2.0 },
+      "minecraft:destructible_by_mining": {
+        "seconds_to_destroy": 2.0
+      },
       "minecraft:geometry": "geometry.aionbound.whisperwood_wood",
       "minecraft:material_instances": {
-        "*": { "texture": "whisperwood_wood", "render_method": "opaque" }
-      }
+        "*": {
+          "texture": "whisperwood_wood",
+          "render_method": "opaque"
+        }
+      },
+      "minecraft:loot": "loot_tables/blocks/whisperwood_wood.json"
     }
   }
 }

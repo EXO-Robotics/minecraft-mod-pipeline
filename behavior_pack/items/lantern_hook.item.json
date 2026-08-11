@@ -23,6 +23,16 @@
       "minecraft:use_modifiers": {
         "movement_modifier": 0.8,
         "use_duration": 0.2
+      },
+      "minecraft:repairable": {
+        "repair_items": [
+          {
+            "items": [
+              "aionbound:lantern_fur"
+            ],
+            "repair_amount": 48
+          }
+        ]
       }
     },
     "description": {

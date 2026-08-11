@@ -1,5 +1,5 @@
 {
-  "schema": "aionbound.wave1.whisperwood.structure_assemblies.v1",
+  "schema": "aionbound.wave1.whisperwood.structure_assemblies.v2",
   "authority": [
     {
       "path": "studio-prep/creative/05_structures/STRUCTURES_DESIGN.md",
@@ -14,9 +14,9 @@
       "sha256": "55a3996d5ae247d85a1543205e55a845ba910a971d485b8cd5bb13912aa85b13"
     }
   ],
-  "proof_boundary": "STATIC_AUTHORING_PASS_ONLY; NO_BDS, CLIENT, LOOT, RUNTIME_INTERACTION, TERRAIN_TOPOLOGY, OR CANDIDATE CLAIM",
+  "proof_boundary": "STATIC_AUTHORING_AND_RATIFIED_CHEST_BINDING_PASS_ONLY; NO_BDS, CLIENT, RUNTIME_ENTITLEMENT, TERRAIN_TOPOLOGY, OR CANDIDATE CLAIM",
   "direct_prop_dependency": "lantern_post and moss_cairn omitted from all eight assemblies",
-  "loot_policy": "anchors are inert and empty; no loot tables, reward identities, percentages, or quantities are bound",
+  "loot_policy": "seven barrel anchors bind W1-004-WW-CH1 chest tables; forest_waystone remains non-loot; no chapter trophy is stored in any structure chest",
   "placement_policy": "one attempt per selected chunk with forest-surface filters and conservative denominators; qualitative road/ravine/high-ground/face/deep-core affinity remains unproven",
   "concurrency_policy": "templates contain no entities, processors, or scheduled runtime; registry density does not authorize loaded-area concurrency growth",
   "assemblies": [
@@ -60,7 +60,7 @@
           ],
           "expected_block": "minecraft:barrel",
           "purpose": "empty structure-loot handoff",
-          "binding": "RESERVED_INERT_NO_CONTENT_OR_RUNTIME_BINDING"
+          "binding": "RATIFIED_W1_004_WW_CH1_CHEST_TABLE"
         },
         {
           "kind": "journal",
@@ -71,13 +71,13 @@
           ],
           "expected_block": "minecraft:lectern",
           "purpose": "future authored journal handoff",
-          "binding": "RESERVED_INERT_NO_CONTENT_OR_RUNTIME_BINDING"
+          "binding": "RESERVED_NON_LOOT_RUNTIME_HANDOFF"
         }
       ],
       "structure_path": "behavior_pack/structures/aionbound/hunter_camp.mcstructure",
       "feature_path": "behavior_pack/features/hunter_camp.structure_feature.json",
       "feature_rule_path": "behavior_pack/feature_rules/hunter_camp.structure_feature_rule.json",
-      "sha256": "502cae7cfb783c9d4924f07c41017bd94406356d66b6733fa17e8723add877d7"
+      "sha256": "acdec1096009abd5f693e1b10bb9845dc15b36e018632b4d3772c62d392535c7"
     },
     {
       "id": "broken_wagon",
@@ -116,13 +116,13 @@
           ],
           "expected_block": "minecraft:barrel",
           "purpose": "empty structure-loot handoff",
-          "binding": "RESERVED_INERT_NO_CONTENT_OR_RUNTIME_BINDING"
+          "binding": "RATIFIED_W1_004_WW_CH1_CHEST_TABLE"
         }
       ],
       "structure_path": "behavior_pack/structures/aionbound/broken_wagon.mcstructure",
       "feature_path": "behavior_pack/features/broken_wagon.structure_feature.json",
       "feature_rule_path": "behavior_pack/feature_rules/broken_wagon.structure_feature_rule.json",
-      "sha256": "96a532127e460af3248a409b14dd02f18daa5d9805b21ba0d1ca8dd8e488bced"
+      "sha256": "e4f36edb14ee70f941b9676062d02b7d79677b1eec486fef799ef883482990f8"
     },
     {
       "id": "root_bridge",
@@ -160,13 +160,13 @@
           ],
           "expected_block": "minecraft:barrel",
           "purpose": "empty structure-loot handoff",
-          "binding": "RESERVED_INERT_NO_CONTENT_OR_RUNTIME_BINDING"
+          "binding": "RATIFIED_W1_004_WW_CH1_CHEST_TABLE"
         }
       ],
       "structure_path": "behavior_pack/structures/aionbound/root_bridge.mcstructure",
       "feature_path": "behavior_pack/features/root_bridge.structure_feature.json",
       "feature_rule_path": "behavior_pack/feature_rules/root_bridge.structure_feature_rule.json",
-      "sha256": "4617ad5739a037a45e3b3321bc28042d2d34f3892edaf8565bcdadfcce350615"
+      "sha256": "30f0c024bf10201ce2cc8f0e5bd3d5ef1238ccb43c13f4d552072b4649fe13d9"
     },
     {
       "id": "owl_shrine",
@@ -206,7 +206,7 @@
           ],
           "expected_block": "minecraft:lodestone",
           "purpose": "future authored interaction handoff",
-          "binding": "RESERVED_INERT_NO_CONTENT_OR_RUNTIME_BINDING"
+          "binding": "RESERVED_NON_LOOT_RUNTIME_HANDOFF"
         },
         {
           "kind": "loot",
@@ -217,13 +217,13 @@
           ],
           "expected_block": "minecraft:barrel",
           "purpose": "empty structure-loot handoff",
-          "binding": "RESERVED_INERT_NO_CONTENT_OR_RUNTIME_BINDING"
+          "binding": "RATIFIED_W1_004_WW_CH1_CHEST_TABLE"
         }
       ],
       "structure_path": "behavior_pack/structures/aionbound/owl_shrine.mcstructure",
       "feature_path": "behavior_pack/features/owl_shrine.structure_feature.json",
       "feature_rule_path": "behavior_pack/feature_rules/owl_shrine.structure_feature_rule.json",
-      "sha256": "7c11b47e9ee29e6ab86b083e4210da392d4c24849ab0c91041561f91b1761c04"
+      "sha256": "2497102ea220f8c0c6047a93cca370d58d70df8e9d6fbee65acb8497b2e73097"
     },
     {
       "id": "forest_waystone",
@@ -261,7 +261,7 @@
           ],
           "expected_block": "minecraft:lodestone",
           "purpose": "future network-stamp and multiplayer meeting handoff",
-          "binding": "RESERVED_INERT_NO_CONTENT_OR_RUNTIME_BINDING"
+          "binding": "RESERVED_NON_LOOT_RUNTIME_HANDOFF"
         }
       ],
       "structure_path": "behavior_pack/structures/aionbound/forest_waystone.mcstructure",
@@ -306,7 +306,7 @@
           ],
           "expected_block": "minecraft:barrel",
           "purpose": "empty structure-loot handoff",
-          "binding": "RESERVED_INERT_NO_CONTENT_OR_RUNTIME_BINDING"
+          "binding": "RATIFIED_W1_004_WW_CH1_CHEST_TABLE"
         },
         {
           "kind": "encounter",
@@ -317,13 +317,13 @@
           ],
           "expected_block": "minecraft:lodestone",
           "purpose": "future authored encounter handoff",
-          "binding": "RESERVED_INERT_NO_CONTENT_OR_RUNTIME_BINDING"
+          "binding": "RESERVED_NON_LOOT_RUNTIME_HANDOFF"
         }
       ],
       "structure_path": "behavior_pack/structures/aionbound/hollow_cave_entrance.mcstructure",
       "feature_path": "behavior_pack/features/hollow_cave_entrance.structure_feature.json",
       "feature_rule_path": "behavior_pack/feature_rules/hollow_cave_entrance.structure_feature_rule.json",
-      "sha256": "54f3d1ed78a18a71cd4b17baeab74b6c1871f5fae37089293f8dd1bc0f4754f4"
+      "sha256": "8b57f696e16b3bf3974bd40c39493340f8aa00068aa140a6102d90d1e46cb2eb"
     },
     {
       "id": "ancient_totem",
@@ -362,7 +362,7 @@
           ],
           "expected_block": "minecraft:lodestone",
           "purpose": "future authored interaction handoff",
-          "binding": "RESERVED_INERT_NO_CONTENT_OR_RUNTIME_BINDING"
+          "binding": "RESERVED_NON_LOOT_RUNTIME_HANDOFF"
         },
         {
           "kind": "loot",
@@ -373,13 +373,13 @@
           ],
           "expected_block": "minecraft:barrel",
           "purpose": "empty structure-loot handoff",
-          "binding": "RESERVED_INERT_NO_CONTENT_OR_RUNTIME_BINDING"
+          "binding": "RATIFIED_W1_004_WW_CH1_CHEST_TABLE"
         }
       ],
       "structure_path": "behavior_pack/structures/aionbound/ancient_totem.mcstructure",
       "feature_path": "behavior_pack/features/ancient_totem.structure_feature.json",
       "feature_rule_path": "behavior_pack/feature_rules/ancient_totem.structure_feature_rule.json",
-      "sha256": "c2e95e591c78bfa56a20638e1af709a42aa925dccaa9ad867c84ee46f487f22c"
+      "sha256": "4b959ef6eae3ab262883aa7afd4c7c97555e2b07b54d2e21e261869318cc3aaa"
     },
     {
       "id": "fallen_giant_tree",
@@ -418,13 +418,13 @@
           ],
           "expected_block": "minecraft:barrel",
           "purpose": "empty structure-loot handoff",
-          "binding": "RESERVED_INERT_NO_CONTENT_OR_RUNTIME_BINDING"
+          "binding": "RATIFIED_W1_004_WW_CH1_CHEST_TABLE"
         }
       ],
       "structure_path": "behavior_pack/structures/aionbound/fallen_giant_tree.mcstructure",
       "feature_path": "behavior_pack/features/fallen_giant_tree.structure_feature.json",
       "feature_rule_path": "behavior_pack/feature_rules/fallen_giant_tree.structure_feature_rule.json",
-      "sha256": "7a42a59c5141a841594fbc064d685989752e6f149f1bfee530187b93caeac1ec"
+      "sha256": "6bb368dca3d237c39a247c178ca0fa48ea4f411cafeef347dec66211392d6b3a"
     }
   ]
 }

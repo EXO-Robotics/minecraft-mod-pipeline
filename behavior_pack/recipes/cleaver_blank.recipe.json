@@ -1,0 +1,28 @@
+{
+  "format_version": "1.20.10",
+  "minecraft:recipe_shapeless": {
+    "description": {
+      "identifier": "aionbound:cleaver_blank_recipe"
+    },
+    "tags": [
+      "crafting_table"
+    ],
+    "ingredients": [
+      {
+        "item": "aionbound:briar_antler"
+      },
+      {
+        "item": "aionbound:stalker_claw"
+      }
+    ],
+    "result": {
+      "item": "aionbound:cleaver_blank",
+      "count": 1
+    },
+    "unlock": [
+      {
+        "item": "aionbound:briar_antler"
+      }
+    ]
+  }
+}

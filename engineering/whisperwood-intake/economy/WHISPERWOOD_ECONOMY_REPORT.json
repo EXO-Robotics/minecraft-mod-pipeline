@@ -1,0 +1,156 @@
+{
+  "schema": "aionbound.wave1.whisperwood.economy.v1",
+  "status": "STATIC_CLOSURE_PASS",
+  "base_commit": "00840aaae36a0cfb83955ca7b416c1d2886a6261",
+  "authority": [
+    "W1-001-WW_APPROVED_AS_WRITTEN",
+    "W1-004-WW-CH1_APPROVED_AS_WRITTEN",
+    "Creative LOOT_WHISPERWOOD / LOOT_SYSTEM / LOOT_BOSSES / CRAFTING_TREE"
+  ],
+  "ratified_proposals": [
+    {
+      "tranche": "W1-001-WW",
+      "path": "engineering/authority/support-proposals/W1-CREATIVE-001/nonwarehouse_identity_proposal.json",
+      "sha256": "a9bc8133f8a0aacf7db258ffe76fc04dd9fcc6d07713bef630e074bd48588786"
+    },
+    {
+      "tranche": "W1-004-WW-CH1",
+      "path": "engineering/authority/support-proposals/W1-CREATIVE-004/loot_envelope_proposal.json",
+      "sha256": "4412b24ad680a30e5548c731f8acba94e8fd858e4bb94f701a16eb17141f5ab7"
+    }
+  ],
+  "counts": {
+    "new_items": 9,
+    "recipes": 26,
+    "entity_tables": 10,
+    "structure_chests": 7,
+    "encounter_material_tables": 1,
+    "apex_chests": 1,
+    "block_and_plant_tables": 20,
+    "repair_bindings": 8
+  },
+  "tuning": {
+    "C": 1.0,
+    "U": [
+      0.4,
+      0.5,
+      0.55
+    ],
+    "R_normal": 0.12,
+    "R_elite": 0.5,
+    "E_elite": 0.12,
+    "structure_rolls": {
+      "hunter_camp": 4,
+      "broken_wagon": 2,
+      "root_bridge": 2,
+      "owl_shrine": 5,
+      "hollow_cave_entrance": 4,
+      "ancient_totem": 5,
+      "fallen_giant_tree": 6
+    },
+    "thorn_court_chest_rolls": 5
+  },
+  "guards": {
+    "natural_thorn_stalker_skull": "FORBIDDEN_AND_ABSENT",
+    "thorn_court_material_table_contains_seal": false,
+    "thorn_court_chest_contains_seal": false,
+    "seal_and_physical_trophy_fulfillment": "RUNTIME_PERSISTENCE_LANE_ONLY",
+    "mastery_trophies": [
+      "aionbound:briar_elk_trophy",
+      "aionbound:mosskip_trophy"
+    ],
+    "mastery_trophies_progression_required": false,
+    "sidegrades": "W1-CREATIVE-005_DEFERRED_NO_SIBLING_IDS"
+  },
+  "output_sha256": {
+    "behavior_pack/items/amber_core.item.json": "6a56ab9a94d7a3a40cd09749aaf8cc76343dd73de4bc4786f87cf35cf5d184fa",
+    "behavior_pack/items/cleaver_blank.item.json": "a57a8226a67a317b3e75af2bc0a5b1022b323bbc9950bd34ad4dee16fae660a9",
+    "behavior_pack/items/hollow_venom_sac.item.json": "c1cf871a646f4825ac2e4191dcd1a84bff9426d696c46adbbc850a9cd6eea170",
+    "behavior_pack/items/living_root_focus.item.json": "9cfb5d3207312e811364bb023012667e5ea83a8116f8b30eba7e1f02905cf250",
+    "behavior_pack/items/moss_bind_glue.item.json": "41334e2cf45aaf4d54c11d8921038d667eee15c57813708f728e47af0f720f8f",
+    "behavior_pack/items/mosskip_crown_fragment.item.json": "3e198248fc2e2f0f44aee0f9d60867b0350de69f7f3566364adb1b293802d1d2",
+    "behavior_pack/items/stalker_claw.item.json": "d25b9480de118edc4034cf27a2a4ee8fa1cbe91a697311467b6d9b6868d9e36a",
+    "behavior_pack/items/thorn_barb.item.json": "57143a0412d3345bba6929c14afc7d71b288c128968a73c4facaf278d4459e4e",
+    "behavior_pack/items/thorn_cord.item.json": "c44113f767c6f7e3233c88118804518e86febb4f8a0280524c0eede1825fea65",
+    "behavior_pack/loot_tables/blocks/briar_vine.json": "b6dcda5286bb9941c6a0abdac496a7923b2b64a3c318f154b8e1cb1dc54b5fd7",
+    "behavior_pack/loot_tables/blocks/ember_thistle.json": "c8750cde12eb8bb7cbbfe9882aa8f1f2b7e50f0b92a9359f84e233e0e9ed1bc1",
+    "behavior_pack/loot_tables/blocks/forest_brick.json": "89d4c11af5ab005f92505d10fda6151eabbe718b82a45edac9d3b830fad01881",
+    "behavior_pack/loot_tables/blocks/glow_moss.json": "952fd62db81d64e9220b2d65ece8c055aede2f7c21cbf178a6f083104d759f82",
+    "behavior_pack/loot_tables/blocks/hollow_lily.json": "e17ae68281a82b69f344445d7fe9864022be846736b1e949641e4b8819f2000d",
+    "behavior_pack/loot_tables/blocks/hollow_wood.json": "458add065b4f253acc5d87426c5141f18478e5210ba742926c3ef27c6794d97a",
+    "behavior_pack/loot_tables/blocks/lantern_bloom.json": "516fbdee7ff35ef7207e368ae5e4dc5020149a613263afa1d6292d35d5532b06",
+    "behavior_pack/loot_tables/blocks/lantern_post.json": "f589225452df8e5842ec39f1bb5af3fccd94275ab1b11205db1841c1ddb78851",
+    "behavior_pack/loot_tables/blocks/mooncap_mushroom.json": "b063512279d30cff2dd8e8ba0313d0ffbb505b00790b9fb52f25513ee85e22fb",
+    "behavior_pack/loot_tables/blocks/moss_bark.json": "dff3e5ad25fcfe569838b1ecba5fe8eae4037b002c9bbab8c5c323a2ed2ee612",
+    "behavior_pack/loot_tables/blocks/moss_cairn.json": "fceb8210f28c599b06cccdaefb102ccfefffd87ab5f9e18c7c5c2de86246482d",
+    "behavior_pack/loot_tables/blocks/pale_reed.json": "1ff1430283604e25ab2049e42f39a1771933d7db5f9965b6b534ad0c07a6fc2e",
+    "behavior_pack/loot_tables/blocks/root_flower.json": "307c40fd9232d8debdc36c3ba3873fa39ada88ee132e61b724c4360756ac1cfd",
+    "behavior_pack/loot_tables/blocks/star_grass.json": "0f1827c2c541a2baa1c2297621a8c36d4f00fe4ad8c518882c6c736457155095",
+    "behavior_pack/loot_tables/blocks/stripped_whisperwood_log.json": "fd5678d00506d09061759ee6c51dc03db9f5f2766f54288305f9841d804d5e95",
+    "behavior_pack/loot_tables/blocks/whisper_fern.json": "2d8641fc329b6f13dfe7c8dfaa66275a748f6771d3ca50f5e9a0fa8327c79da4",
+    "behavior_pack/loot_tables/blocks/whisperwood_log.json": "9d9f30b5650ef9bbbee4e188e7441ef4d8ac15b1d76588e430789b09f7095920",
+    "behavior_pack/loot_tables/blocks/whisperwood_planks.json": "cde498da6bb04c905bf7dda8546e866959bba002be47a8ed2068c4cceedbd4f8",
+    "behavior_pack/loot_tables/blocks/whisperwood_roots.json": "19739c4d28c4f027e80ed520321fa4e8f163bbac94dbb3b598c9f1cdfbf31842",
+    "behavior_pack/loot_tables/blocks/whisperwood_wood.json": "2454600d76b736cc184be309c9d43ef57f8dedf159ae1a4913e367876cc915d5",
+    "behavior_pack/loot_tables/chests/whisperwood/ancient_totem.json": "022df43ea62975ba90522d3511cb6b91ea3c62ab00f40500d0dc9fee377c4640",
+    "behavior_pack/loot_tables/chests/whisperwood/broken_wagon.json": "6d29dff4dbc194413503cedc30d312a5a1931362743b0e1c9d539867d90f0b4c",
+    "behavior_pack/loot_tables/chests/whisperwood/fallen_giant_tree.json": "df538b4e996d3d9ad40e341fe4c98ab63c0c5cac8a074783ef6cbd7f1637b06e",
+    "behavior_pack/loot_tables/chests/whisperwood/hollow_cave_entrance.json": "7474dc91ccaced5a0ab27a7f985efc7090986bd7b7cd9b0bef062344b072f1a6",
+    "behavior_pack/loot_tables/chests/whisperwood/hunter_camp.json": "a3fc991fb53019c6479870376ee9d29a054c4e9f0a0a07cb48ee28854cea48bc",
+    "behavior_pack/loot_tables/chests/whisperwood/owl_shrine.json": "b2c7a63454c659963f4e28faa0451e3dfb8a567a0decab82670da4161971e523",
+    "behavior_pack/loot_tables/chests/whisperwood/root_bridge.json": "b5dae6a919df485768ee2970106086f6bfd9dfdbc3a4a18dbebd8fd411c3c085",
+    "behavior_pack/loot_tables/chests/whisperwood/thorn_court.json": "a83177400afff6cc913a0e4460cf7cae62dcfb47bd94011900912ad0965a4bc1",
+    "behavior_pack/loot_tables/encounters/whisperwood/thorn_court_materials.json": "4a0acd417950dd45b249681295320876528d8e1ccc3d38f7544517cce8de3f1a",
+    "behavior_pack/loot_tables/entities/bark_wraith.json": "8157a583eb51ff67f0ad4a9b85b78a996cbcf69137ad3813a4a4111eb8050aab",
+    "behavior_pack/loot_tables/entities/briar_elk.json": "6db1ea7b651e7195dd76f9bbb6a50846601a001d847ecc7322520c454397c6fb",
+    "behavior_pack/loot_tables/entities/hollow_widow_spider.json": "30f575ba9009998182a09b138e2c52165433d6fc190faf2ee05a55e4eb2b0df3",
+    "behavior_pack/loot_tables/entities/lantern_hare.json": "c7ab6da46e9c1dde0d4b923c30a9bde32d3fc4fef567c729964386888ea3ac9e",
+    "behavior_pack/loot_tables/entities/mosskip_buck.json": "8f151bfdf50319ca4398d2b95d5846f000923eb4c58042f30c7cbaa0840f3f0a",
+    "behavior_pack/loot_tables/entities/mosskip_doe.json": "5022e1189c903e01def04e3f0e616049384fe65bae21ee7bdf612d3979dcb041",
+    "behavior_pack/loot_tables/entities/mosskip_fawn.json": "7b795db7b8109d1750598d1123c7373ee59a9d7b7890b525fd235bc9bebeae03",
+    "behavior_pack/loot_tables/entities/rootback_boar.json": "c62f0f8a5e567f19998e103297be0570f31a92176c4ce74bfbf9aa1a5f5317c5",
+    "behavior_pack/loot_tables/entities/rot_wolf.json": "2092d6425254be1229e2d13db33bd3142b1c1615b07ffa484b8404f8ed8105c2",
+    "behavior_pack/loot_tables/entities/thorn_stalker.json": "27d399ae25b45800eab3aa8d5d7663d9bbc1ddb36990b63d61ecba3f06656385",
+    "behavior_pack/recipes/amber_core.recipe.json": "cbf499800373304996953eb39d488071a0d5651a2fd7df204794446362e1591c",
+    "behavior_pack/recipes/ancient_acorn_display.recipe.json": "74f3650209ddcbaab9c53819556068418923db3ba57b7f946373a75f5383c439",
+    "behavior_pack/recipes/briar_cleaver.recipe.json": "af9b96cf801d26c1b1a326c288be6c8e9507c05b75891a6587c674878b7b44c7",
+    "behavior_pack/recipes/briar_elk_trophy.recipe.json": "e153dd5c04b4ca51439d15da0ee974afc2861b77abc617544436786768e6c90c",
+    "behavior_pack/recipes/briar_ring.recipe.json": "f5265747e830624bc38b74644bb59c74924adb56d178f3486e602af6066610ee",
+    "behavior_pack/recipes/cleaver_blank.recipe.json": "9abaf72763a09fe5d68e7907c45a7222ee8d897ee7cf2a7c5138f596e63fa734",
+    "behavior_pack/recipes/lantern_badge.recipe.json": "2ef37599dce980ca4d744ea358424052abe6ba222a9159b7fa1bcee3aebfc3d4",
+    "behavior_pack/recipes/lantern_hook.recipe.json": "6b7cdc7baf45b1ece4b3c2c7efe8f1b3319b6f10a73a1e0bb81d9240c2c4cff8",
+    "behavior_pack/recipes/living_root_focus.recipe.json": "d86e5735ae22a96d7b4208ea3d11241116b4ff4b06ed78191e25bdf8aca07ad2",
+    "behavior_pack/recipes/moon_sap_pendant.recipe.json": "f26bbaa897c44026726df2bf7b2c8ac856a694d1b95ef382455431bc238dfa24",
+    "behavior_pack/recipes/moon_sap_staff.recipe.json": "de57e4420fb1d577fc12ea85858918d3dbd49af35f0ca9b40e7b309bb63b770c",
+    "behavior_pack/recipes/moss_bind_glue.recipe.json": "05a64e73bfb22b712fdc0830238d48eb737851831a9164ea022aa62a3d0f4e91",
+    "behavior_pack/recipes/moss_charm.recipe.json": "7d74b00a90f460d3c318f1bcf17bd9baca0b7dbda70371db7a67856bc6c5c11a",
+    "behavior_pack/recipes/mossfang_spear.recipe.json": "94153e7893efc9c35ff495f6fff615c4729d1ed8e487280770fb366a00e52333",
+    "behavior_pack/recipes/mosskip_trophy.recipe.json": "ac81876206ed7e2bf889ba57f5a34b4686be151eaf3e33764910ae5cb22239f2",
+    "behavior_pack/recipes/root_bracelet.recipe.json": "c34c47d21945ded66e8285ac43a441e6dd5d2e76b31481a9709c572657c341fb",
+    "behavior_pack/recipes/root_knife.recipe.json": "cbe0024518dc6118262ce2918d790b46664e2c069463c1222cfa436e77201be6",
+    "behavior_pack/recipes/thorn_cord.recipe.json": "1c5836f324c15f47e290edf18f903e384ef0cf8ecfd45a7a8178a31e5f936b12",
+    "behavior_pack/recipes/thorn_whip.recipe.json": "db4741808328f55679afb1bec7fd85e2a23031af3f4efcf47277db5874402a97",
+    "behavior_pack/recipes/waystone_ration.recipe.json": "26b1ecfb8309cd0fc5bb5d114298abe73d8a23d914f7924bfa265e837109e9da",
+    "behavior_pack/recipes/whisperwood_boots.recipe.json": "2c57a29dd099e700f3b1e11727f463f4b0fad71508798b8b304024de28703283",
+    "behavior_pack/recipes/whisperwood_chest.recipe.json": "bc3d9470cd0b8844a14fb0b64d347f47ca6b0bd83185f049b7f13d1fda6f4973",
+    "behavior_pack/recipes/whisperwood_hatchet.recipe.json": "083d6921ab6902a74bf7465c30d5e7535f141905cf1af92d22b4777972b2679b",
+    "behavior_pack/recipes/whisperwood_helmet.recipe.json": "9d7fa69f28e746fe7ed91837bb13b95caf8fc42a6e9a99282a3a21b8f3e7bb75",
+    "behavior_pack/recipes/whisperwood_legs.recipe.json": "fe825d2127b5d7322282d13db6270761f1e5cba700a44406744982f4060a5437",
+    "behavior_pack/recipes/widow_fang_dagger.recipe.json": "c7931467a12ca1f6a14e7021c25550de6b9831675cca5b06a7a412b0a34a5068"
+  },
+  "proof_boundary": {
+    "proves": [
+      "deterministic authored JSON",
+      "ratified ID and recipe relation closure",
+      "bounded loot values",
+      "natural stalker seal exclusion"
+    ],
+    "does_not_prove": [
+      "BDS acceptance",
+      "client chest population",
+      "runtime entitlement or recovery",
+      "balance",
+      "Checkpoint 1"
+    ]
+  }
+}

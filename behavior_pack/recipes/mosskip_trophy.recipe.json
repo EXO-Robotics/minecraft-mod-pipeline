@@ -1,0 +1,31 @@
+{
+  "format_version": "1.20.10",
+  "minecraft:recipe_shapeless": {
+    "description": {
+      "identifier": "aionbound:mosskip_trophy_recipe"
+    },
+    "tags": [
+      "crafting_table"
+    ],
+    "ingredients": [
+      {
+        "item": "aionbound:mosskip_crown_fragment"
+      },
+      {
+        "item": "aionbound:mosskip_crown_fragment"
+      },
+      {
+        "item": "aionbound:mosskip_crown_fragment"
+      }
+    ],
+    "result": {
+      "item": "aionbound:mosskip_trophy",
+      "count": 1
+    },
+    "unlock": [
+      {
+        "item": "aionbound:mosskip_crown_fragment"
+      }
+    ]
+  }
+}

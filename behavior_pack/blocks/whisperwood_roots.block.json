@@ -3,15 +3,23 @@
   "minecraft:block": {
     "description": {
       "identifier": "aionbound:whisperwood_roots",
-      "menu_category": { "category": "nature" }
+      "menu_category": {
+        "category": "nature"
+      }
     },
     "components": {
       "minecraft:display_name": "Whisperwood Roots",
-      "minecraft:destructible_by_mining": { "seconds_to_destroy": 0.8 },
+      "minecraft:destructible_by_mining": {
+        "seconds_to_destroy": 0.8
+      },
       "minecraft:geometry": "geometry.aionbound.whisperwood_roots",
       "minecraft:material_instances": {
-        "*": { "texture": "whisperwood_roots", "render_method": "opaque" }
-      }
+        "*": {
+          "texture": "whisperwood_roots",
+          "render_method": "opaque"
+        }
+      },
+      "minecraft:loot": "loot_tables/blocks/whisperwood_roots.json"
     }
   }
 }

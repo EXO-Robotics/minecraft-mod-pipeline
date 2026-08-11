@@ -1,8 +1,9 @@
 #!/usr/bin/env python3
 """Deterministically author the eight block-built Whisperwood assemblies.
 
-The layouts carry inert, empty anchor blocks only. Loot contents, reward odds,
-interaction behavior, and encounter runtime semantics remain out of scope.
+Seven approved barrel anchors carry ratified Whisperwood chest-table paths.
+Interaction, encounter, progression, and reward-entitlement behavior remains
+outside this structure authoring lane.
 """
 
 from __future__ import annotations
@@ -31,6 +32,9 @@ class NbtWriter:
     def i32(self, value: int) -> None:
         self.parts.append(struct.pack("<i", value))
 
+    def i64(self, value: int) -> None:
+        self.parts.append(struct.pack("<q", value))
+
     def string_payload(self, value: str) -> None:
         encoded = value.encode("utf-8")
         self.parts.append(struct.pack("<H", len(encoded)))
@@ -43,6 +47,14 @@ class NbtWriter:
     def int_tag(self, name: str, value: int) -> None:
         self.head(3, name)
         self.i32(value)
+
+    def byte_tag(self, name: str, value: int) -> None:
+        self.head(1, name)
+        self.u8(value)
+
+    def long_tag(self, name: str, value: int) -> None:
+        self.head(4, name)
+        self.i64(value)
 
     def string_tag(self, name: str, value: str) -> None:
         self.head(8, name)
@@ -108,13 +120,16 @@ class Layout:
 
 
 def anchor(kind: str, xyz: tuple[int, int, int], block: str, purpose: str) -> dict:
-    return {
+    value = {
         "kind": kind,
         "coordinate": list(xyz),
         "expected_block": block,
         "purpose": purpose,
-        "binding": "RESERVED_INERT_NO_CONTENT_OR_RUNTIME_BINDING",
+        "binding": "RESERVED_NON_LOOT_RUNTIME_HANDOFF",
     }
+    if kind == "loot":
+        value["binding"] = "RATIFIED_W1_004_WW_CH1_CHEST_TABLE"
+    return value
 
 
 def hunter_camp() -> Assembly:
@@ -267,18 +282,18 @@ def encode_structure(assembly: Assembly) -> tuple[bytes, list[str], list[int]]:
     n.int_tag("format_version", 1)
     n.list_tag("size", 3, list(assembly.size), n.i32)
     n.list_tag("structure_world_origin", 3, [0, 0, 0], n.i32)
-    n.compound("structure", lambda: _emit_structure_payload(n, indices, palette))
+    n.compound("structure", lambda: _emit_structure_payload(n, indices, palette, assembly))
     n.u8(0)
     return n.finish(), palette, indices
 
 
-def _emit_structure_payload(n: NbtWriter, indices: list[int], palette: list[str]) -> None:
+def _emit_structure_payload(n: NbtWriter, indices: list[int], palette: list[str], assembly: Assembly) -> None:
     n.list_tag("block_indices", 9, [indices, [-1] * len(indices)], lambda layer: n.list_payload(3, layer, n.i32))
     n.list_tag("entities", 10, [], lambda _value: None)
-    n.compound("palette", lambda: n.compound("default", lambda: _emit_palette(n, palette)))
+    n.compound("palette", lambda: n.compound("default", lambda: _emit_palette(n, palette, assembly)))
 
 
-def _emit_palette(n: NbtWriter, palette: list[str]) -> None:
+def _emit_palette(n: NbtWriter, palette: list[str], assembly: Assembly) -> None:
     def entry(name: str) -> None:
         n.string_tag("name", name)
         n.compound("states", lambda: None)
@@ -286,7 +301,28 @@ def _emit_palette(n: NbtWriter, palette: list[str]) -> None:
         n.u8(0)
 
     n.list_tag("block_palette", 10, palette, entry)
-    n.compound("block_position_data", lambda: None)
+    n.compound("block_position_data", lambda: _emit_block_position_data(n, assembly))
+
+
+def _emit_block_position_data(n: NbtWriter, assembly: Assembly) -> None:
+    sx, _sy, sz = assembly.size
+    for item in assembly.anchors:
+        if item["kind"] != "loot":
+            continue
+        x, y, z = item["coordinate"]
+        flat_index = x + z * sx + y * sx * sz
+
+        def block_entity() -> None:
+            n.byte_tag("Findable", 0)
+            n.string_tag("LootTable", f"loot_tables/chests/whisperwood/{assembly.identifier}.json")
+            n.long_tag("LootTableSeed", 0)
+            n.string_tag("id", "Barrel")
+            n.byte_tag("isMovable", 1)
+            n.int_tag("x", x)
+            n.int_tag("y", y)
+            n.int_tag("z", z)
+
+        n.compound(str(flat_index), lambda: n.compound("block_entity_data", block_entity))
 
 
 def feature_document(assembly: Assembly) -> dict:
@@ -372,15 +408,15 @@ def expected_outputs() -> tuple[dict[Path, bytes], dict]:
             "sha256": hashlib.sha256(structure_bytes).hexdigest(),
         })
     manifest = {
-        "schema": "aionbound.wave1.whisperwood.structure_assemblies.v1",
+        "schema": "aionbound.wave1.whisperwood.structure_assemblies.v2",
         "authority": [
             {"path": "studio-prep/creative/05_structures/STRUCTURES_DESIGN.md", "sha256": "9e62ae9ba6c1da33b64ff0bfa4ac4799b083c6de995585424864d5cf2b0cb076"},
             {"path": "studio-prep/creative/06_world_gen/WORLD_GENERATION.md", "sha256": "bc18a1e1f73d6045ab7e583afe910ca13d4776d439c8f3dfb45dae5784372f4b"},
             {"path": "engineering/whisperwood-intake/structure-runtime/WHISPERWOOD_STRUCTURE_RUNTIME_MAP.json", "sha256": "55a3996d5ae247d85a1543205e55a845ba910a971d485b8cd5bb13912aa85b13"},
         ],
-        "proof_boundary": "STATIC_AUTHORING_PASS_ONLY; NO_BDS, CLIENT, LOOT, RUNTIME_INTERACTION, TERRAIN_TOPOLOGY, OR CANDIDATE CLAIM",
+        "proof_boundary": "STATIC_AUTHORING_AND_RATIFIED_CHEST_BINDING_PASS_ONLY; NO_BDS, CLIENT, RUNTIME_ENTITLEMENT, TERRAIN_TOPOLOGY, OR CANDIDATE CLAIM",
         "direct_prop_dependency": "lantern_post and moss_cairn omitted from all eight assemblies",
-        "loot_policy": "anchors are inert and empty; no loot tables, reward identities, percentages, or quantities are bound",
+        "loot_policy": "seven barrel anchors bind W1-004-WW-CH1 chest tables; forest_waystone remains non-loot; no chapter trophy is stored in any structure chest",
         "placement_policy": "one attempt per selected chunk with forest-surface filters and conservative denominators; qualitative road/ravine/high-ground/face/deep-core affinity remains unproven",
         "concurrency_policy": "templates contain no entities, processors, or scheduled runtime; registry density does not authorize loaded-area concurrency growth",
         "assemblies": records,
@@ -389,13 +425,13 @@ def expected_outputs() -> tuple[dict[Path, bytes], dict]:
     lines = [
         "# Whisperwood Structure Assemblies", "",
         "Status: **STATIC_AUTHORING_PASS_ONLY**", "",
-        "Eight deterministic little-endian Bedrock structure templates are authored with distinct block-built silhouettes. Anchors are inert and empty; loot, rewards, interaction behavior, BDS load, and exact terrain-affinity remain outside this receipt.", "",
+        "Eight deterministic little-endian Bedrock structure templates are authored with distinct block-built silhouettes. Seven barrel anchors bind the ratified Whisperwood chest tables; chapter-trophy fulfillment, interactions, BDS load, and exact terrain affinity remain outside this receipt.", "",
         "Authority is hash-bound in \u0060WHISPERWOOD_STRUCTURE_ASSEMBLIES.json\u0060.", "",
         "| ID | Size | Occupied | Rarity / chance | Terrain role |", "|---|---:|---:|---|---|",
     ]
     for record in records:
         lines.append(f"| `{record['id']}` | `{'x'.join(map(str, record['size']))}` | {record['occupied_blocks']} | `{record['rarity']}` / `1:{record['scatter']['denominator']}` | {record['terrain_role']} |")
-    lines += ["", "## Boundaries", "", "- The feature rules use stable `minecraft:structure_template_feature` plus `overworld` + `forest` surface filters.", "- Roads, ravines, high ground, cliff faces, deep core, and expanse spacing cannot be proven by these rules alone; the manifest records them as later terrain-integration obligations.", "- `lantern_post` and `moss_cairn` are not placed or substituted.", "- Empty barrels/lodestones/lecterns are reserved anchor blocks only. No loot identities or contents are authored.", "- Deterministic regeneration, NBT decoding, palette/index closure, bounds, IDs/filenames, and anchor coordinates are covered by the lane tests.", ""]
+    lines += ["", "## Boundaries", "", "- The feature rules use stable `minecraft:structure_template_feature` plus `overworld` + `forest` surface filters.", "- Roads, ravines, high ground, cliff faces, deep core, and expanse spacing cannot be proven by these rules alone; the manifest records them as later terrain-integration obligations.", "- `lantern_post` and `moss_cairn` are not placed or substituted.", "- Seven barrel block entities bind exact `loot_tables/chests/whisperwood/<structure>.json` paths. The waystone has no loot anchor; no structure chest contains the chapter trophy.", "- Lodestones and lecterns remain non-loot runtime handoffs.", "- Deterministic regeneration, NBT decoding, palette/index closure, bounds, IDs/filenames, and anchor coordinates are covered by the lane tests.", ""]
     outputs[OUT / "WHISPERWOOD_STRUCTURE_ASSEMBLIES.md"] = ("\n".join(lines)).encode()
     return outputs, manifest
 

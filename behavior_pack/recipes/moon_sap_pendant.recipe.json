@@ -1,0 +1,28 @@
+{
+  "format_version": "1.20.10",
+  "minecraft:recipe_shapeless": {
+    "description": {
+      "identifier": "aionbound:moon_sap_pendant_recipe"
+    },
+    "tags": [
+      "crafting_table"
+    ],
+    "ingredients": [
+      {
+        "item": "aionbound:moon_sap"
+      },
+      {
+        "item": "aionbound:widow_silk"
+      }
+    ],
+    "result": {
+      "item": "aionbound:moon_sap_pendant",
+      "count": 1
+    },
+    "unlock": [
+      {
+        "item": "aionbound:moon_sap"
+      }
+    ]
+  }
+}

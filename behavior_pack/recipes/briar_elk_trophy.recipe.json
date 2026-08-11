@@ -1,0 +1,37 @@
+{
+  "format_version": "1.20.10",
+  "minecraft:recipe_shapeless": {
+    "description": {
+      "identifier": "aionbound:briar_elk_trophy_recipe"
+    },
+    "tags": [
+      "crafting_table"
+    ],
+    "ingredients": [
+      {
+        "item": "aionbound:briar_antler"
+      },
+      {
+        "item": "aionbound:briar_antler"
+      },
+      {
+        "item": "aionbound:whisperwood_planks"
+      },
+      {
+        "item": "aionbound:whisperwood_planks"
+      },
+      {
+        "item": "aionbound:whisperwood_planks"
+      }
+    ],
+    "result": {
+      "item": "aionbound:briar_elk_trophy",
+      "count": 1
+    },
+    "unlock": [
+      {
+        "item": "aionbound:briar_antler"
+      }
+    ]
+  }
+}

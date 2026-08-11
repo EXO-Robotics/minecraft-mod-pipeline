@@ -15,7 +15,17 @@
           "default": "briar_cleaver"
         }
       },
-      "minecraft:max_stack_size": 1
+      "minecraft:max_stack_size": 1,
+      "minecraft:repairable": {
+        "repair_items": [
+          {
+            "items": [
+              "aionbound:briar_antler"
+            ],
+            "repair_amount": 80
+          }
+        ]
+      }
     },
     "description": {
       "identifier": "aionbound:briar_cleaver",

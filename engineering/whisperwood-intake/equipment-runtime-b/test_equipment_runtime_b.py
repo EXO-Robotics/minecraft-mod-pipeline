@@ -88,10 +88,15 @@ class EquipmentRuntimeBTest(unittest.TestCase):
         for asset in ("moss_charm", "moon_sap_pendant"):
             self.assertEqual(sha(NATIVE / f"evidence/{asset}/native-exports/pass-2.animation.json"), sha(ROOT / f"resource_pack/animations/aionbound/equipment/{asset}.animation.json"))
 
-    def test_no_recipe_loot_or_acquisition_files_were_added(self):
+    def test_ratified_recipe_acquisition_and_no_finished_equipment_loot(self):
+        for asset in ARMOR + ACCESSORIES + ("briar_elk_trophy", "mosskip_trophy", "ancient_acorn_display"):
+            recipe = json.loads((ROOT / f"behavior_pack/recipes/{asset}.recipe.json").read_text())["minecraft:recipe_shapeless"]
+            self.assertEqual(recipe["result"]["item"], f"aionbound:{asset}")
+        self.assertFalse((ROOT / "behavior_pack/recipes/thorn_stalker_skull.recipe.json").exists())
         for asset in ARMOR + ACCESSORIES + TROPHIES:
-            self.assertFalse((ROOT / f"behavior_pack/recipes/{asset}.recipe.json").exists())
             self.assertFalse((ROOT / f"behavior_pack/loot_tables/equipment/{asset}.loot.json").exists())
+            for loot_path in (ROOT / "behavior_pack/loot_tables").rglob("*.json"):
+                self.assertNotIn(f"aionbound:{asset}", loot_path.read_text(), loot_path)
 
     def test_inventory_icons_are_reserved_separately_from_model_uv_sheets(self):
         atlas = json.loads((ROOT / "resource_pack/textures/item_texture.json").read_text())["texture_data"]

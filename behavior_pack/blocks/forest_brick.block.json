@@ -3,15 +3,23 @@
   "minecraft:block": {
     "description": {
       "identifier": "aionbound:forest_brick",
-      "menu_category": { "category": "construction" }
+      "menu_category": {
+        "category": "construction"
+      }
     },
     "components": {
       "minecraft:display_name": "Forest Brick",
-      "minecraft:destructible_by_mining": { "seconds_to_destroy": 2.0 },
+      "minecraft:destructible_by_mining": {
+        "seconds_to_destroy": 2.0
+      },
       "minecraft:geometry": "geometry.aionbound.forest_brick",
       "minecraft:material_instances": {
-        "*": { "texture": "forest_brick", "render_method": "opaque" }
-      }
+        "*": {
+          "texture": "forest_brick",
+          "render_method": "opaque"
+        }
+      },
+      "minecraft:loot": "loot_tables/blocks/forest_brick.json"
     }
   }
 }
