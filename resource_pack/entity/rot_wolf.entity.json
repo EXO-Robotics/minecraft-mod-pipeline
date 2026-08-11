@@ -1,0 +1,22 @@
+{
+  "format_version": "1.10.0",
+  "minecraft:client_entity": {
+    "description": {
+      "identifier": "aionbound:rot_wolf",
+      "materials": { "default": "entity_alphatest" },
+      "textures": { "default": "textures/aionbound/whisperwood/rot_wolf" },
+      "geometry": { "default": "geometry.aionbound.rot_wolf" },
+      "animations": {
+        "idle": "animation.aionbound.rot_wolf.idle",
+        "move": "animation.aionbound.rot_wolf.walk",
+        "run": "animation.aionbound.rot_wolf.run",
+        "attack": "animation.aionbound.rot_wolf.snarl_attack",
+        "hurt": "animation.aionbound.rot_wolf.hurt",
+        "death": "animation.aionbound.rot_wolf.death",
+        "runtime": "controller.animation.aionbound.rot_wolf.runtime"
+      },
+      "scripts": { "animate": ["runtime"] },
+      "render_controllers": ["controller.render.aionbound.rot_wolf"]
+    }
+  }
+}

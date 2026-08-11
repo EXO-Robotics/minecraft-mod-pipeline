@@ -1,0 +1,15 @@
+{
+  "format_version": "1.10.0",
+  "animation_controllers": {
+    "controller.animation.aionbound.thorn_stalker.runtime": {
+      "initial_state": "idle",
+      "states": {
+        "idle": { "animations": ["idle"], "transitions": [{ "death": "!query.is_alive" }, { "hurt": "query.hurt_time > 0.0" }, { "attack": "(query.has_target && !query.is_moving)" }, { "move": "query.is_moving" }] },
+        "move": { "animations": ["move"], "transitions": [{ "death": "!query.is_alive" }, { "hurt": "query.hurt_time > 0.0" }, { "attack": "(query.has_target && !query.is_moving)" }, { "idle": "!query.is_moving" }] },
+        "attack": { "animations": ["attack"], "transitions": [{ "death": "!query.is_alive" }, { "hurt": "query.hurt_time > 0.0" }, { "move": "query.any_animation_finished && query.is_moving" }, { "idle": "query.any_animation_finished && !query.is_moving" }] },
+        "hurt": { "animations": ["hurt"], "transitions": [{ "death": "!query.is_alive" }, { "move": "query.hurt_time <= 0.0 && query.is_moving" }, { "idle": "query.hurt_time <= 0.0 && !query.is_moving" }] },
+        "death": { "animations": ["death"] }
+      }
+    }
+  }
+}

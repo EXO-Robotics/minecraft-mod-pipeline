@@ -1,0 +1,22 @@
+{
+  "format_version": "1.10.0",
+  "minecraft:client_entity": {
+    "description": {
+      "identifier": "aionbound:thorn_stalker",
+      "materials": { "default": "entity_alphatest" },
+      "textures": { "default": "textures/aionbound/whisperwood/thorn_stalker" },
+      "geometry": { "default": "geometry.aionbound.thorn_stalker" },
+      "animations": {
+        "idle": "animation.aionbound.thorn_stalker.idle_crouch",
+        "move": "animation.aionbound.thorn_stalker.stalk_walk",
+        "attack": "animation.aionbound.thorn_stalker.attack_slash",
+        "pounce_pose": "animation.aionbound.thorn_stalker.pounce_pose",
+        "hurt": "animation.aionbound.thorn_stalker.hurt",
+        "death": "animation.aionbound.thorn_stalker.death",
+        "runtime": "controller.animation.aionbound.thorn_stalker.runtime"
+      },
+      "scripts": { "animate": ["runtime"] },
+      "render_controllers": ["controller.render.aionbound.thorn_stalker"]
+    }
+  }
+}

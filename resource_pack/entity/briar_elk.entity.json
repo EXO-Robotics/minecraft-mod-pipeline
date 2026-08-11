@@ -1,0 +1,22 @@
+{
+  "format_version": "1.10.0",
+  "minecraft:client_entity": {
+    "description": {
+      "identifier": "aionbound:briar_elk",
+      "materials": { "default": "entity_alphatest" },
+      "textures": { "default": "textures/aionbound/whisperwood/briar_elk" },
+      "geometry": { "default": "geometry.aionbound.briar_elk" },
+      "animations": {
+        "idle": "animation.aionbound.briar_elk.idle",
+        "move": "animation.aionbound.briar_elk.walk",
+        "trot": "animation.aionbound.briar_elk.trot",
+        "attack": "animation.aionbound.briar_elk.antler_shake",
+        "hurt": "animation.aionbound.briar_elk.hurt",
+        "death": "animation.aionbound.briar_elk.death",
+        "runtime": "controller.animation.aionbound.briar_elk.runtime"
+      },
+      "scripts": { "animate": ["runtime"] },
+      "render_controllers": ["controller.render.aionbound.briar_elk"]
+    }
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "format_version": "1.10.0",
+  "minecraft:client_entity": {
+    "description": {
+      "identifier": "aionbound:bark_wraith",
+      "materials": { "default": "entity_alphablend" },
+      "textures": { "default": "textures/aionbound/whisperwood/bark_wraith" },
+      "geometry": { "default": "geometry.aionbound.bark_wraith" },
+      "animations": {
+        "idle": "animation.aionbound.bark_wraith.idle_sway",
+        "move": "animation.aionbound.bark_wraith.drift_walk",
+        "attack": "animation.aionbound.bark_wraith.reach_attack",
+        "hurt": "animation.aionbound.bark_wraith.hurt",
+        "death": "animation.aionbound.bark_wraith.death_collapse",
+        "runtime": "controller.animation.aionbound.bark_wraith.runtime"
+      },
+      "scripts": { "animate": ["runtime"] },
+      "render_controllers": ["controller.render.aionbound.bark_wraith"]
+    }
+  }
+}

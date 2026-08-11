@@ -1,0 +1,22 @@
+{
+  "format_version": "1.10.0",
+  "minecraft:client_entity": {
+    "description": {
+      "identifier": "aionbound:hollow_widow_spider",
+      "materials": { "default": "entity_alphatest" },
+      "textures": { "default": "textures/aionbound/whisperwood/hollow_widow_spider" },
+      "geometry": { "default": "geometry.aionbound.hollow_widow_spider" },
+      "animations": {
+        "idle": "animation.aionbound.hollow_widow_spider.idle",
+        "move": "animation.aionbound.hollow_widow_spider.walk_skitter",
+        "attack": "animation.aionbound.hollow_widow_spider.bite",
+        "threat": "animation.aionbound.hollow_widow_spider.rear_threat",
+        "hurt": "animation.aionbound.hollow_widow_spider.hurt",
+        "death": "animation.aionbound.hollow_widow_spider.death",
+        "runtime": "controller.animation.aionbound.hollow_widow_spider.runtime"
+      },
+      "scripts": { "animate": ["runtime"] },
+      "render_controllers": ["controller.render.aionbound.hollow_widow_spider"]
+    }
+  }
+}

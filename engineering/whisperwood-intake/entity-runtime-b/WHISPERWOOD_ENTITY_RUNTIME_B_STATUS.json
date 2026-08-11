@@ -1,0 +1,75 @@
+{
+  "schema_version": 1,
+  "status": "STATIC_INTEGRATION_PASS_RUNTIME_UNPROVEN",
+  "base_commit": "0667d65",
+  "namespace": "aionbound",
+  "loot_policy": "OMITTED_PENDING_W1_CREATIVE_001_AND_W1_CREATIVE_004",
+  "ordinary_persistence_policy": "NATURAL_INSTANCE_DISTANCE_DESPAWN_NO_RESTART_PROMISE",
+  "entities": {
+    "bark_wraith": {
+      "classification": "ELITE_SPECTRAL_HOSTILE",
+      "implementation": "FLYING_MELEE_DRIFT_BASE",
+      "natural_spawn": "VERY_LOW_NIGHT_FOREST_SURFACE",
+      "unimplemented": ["totem_proximity_filter", "soft_spectral_attack_identity"]
+    },
+    "briar_elk": {
+      "classification": "NEUTRAL_ELITE_GRAZER_MINI_APEX",
+      "implementation": "RETALIATORY_GROUND_MELEE",
+      "natural_spawn": "RARE_DAY_FOREST_OR_PLAINS_SURFACE",
+      "unimplemented": ["meadow_rite", "alternate_seal_semantics"]
+    },
+    "hollow_widow_spider": {
+      "classification": "HOSTILE_ELITE_ARTHROPOD",
+      "implementation": "CLIMBING_MELEE",
+      "natural_spawn": "RARE_DARK_FOREST_UNDERGROUND",
+      "unimplemented": ["giant_root_proximity_filter", "silk_attack_status_semantics"]
+    },
+    "rot_wolf": {
+      "classification": "HOSTILE_PACK_HUNTER",
+      "implementation": "PACK_SPAWN_AND_SAME_TYPE_ALERT_MELEE",
+      "natural_spawn": "LOW_NIGHT_FOREST_SURFACE_PACK_2_TO_3",
+      "unimplemented": ["cross_instance_pack_coordination", "howl_identity"]
+    },
+    "thorn_stalker": {
+      "classification": "BASE_HOSTILE_SHELL_ONLY",
+      "boss_complete": false,
+      "chapter_apex_complete": false,
+      "implementation": "RARE_FOREST_HOSTILE_MELEE_SHELL",
+      "natural_spawn": "VERY_LOW_NIGHT_FOREST_SURFACE_REGULAR_ECOLOGY_ONLY",
+      "forbidden_loot": ["aionbound:thorn_stalker_skull"],
+      "withheld": [
+        "boss_phase_state_machine",
+        "boss_phase_thresholds",
+        "boss_attack_timing",
+        "telegraphed_projectile_and_area_attacks",
+        "bounded_add_summons",
+        "arena_reset_rules",
+        "multiplayer_ownership",
+        "boss_persistence",
+        "terminal_reward_semantics",
+        "chapter_seal_reward"
+      ],
+      "support_tickets": ["W1-CREATIVE-003", "W1-CREATIVE-004"]
+    }
+  },
+  "proof_scope": [
+    "JSON_PARSE",
+    "IDENTIFIER_AND_REFERENCE_CLOSURE",
+    "NON_STATUE_COMPONENT_PRESENCE",
+    "NATIVE_EXPORT_DERIVATION",
+    "PNG_BYTE_IDENTITY",
+    "THORN_STALKER_BOSS_WITHHOLD_ASSERTION"
+  ],
+  "non_claims": [
+    "STABLE_BDS",
+    "BEDROCK_CLIENT",
+    "BEHAVIOR_OBSERVED",
+    "SPAWN_DISTRIBUTION_OBSERVED",
+    "BOSS_COMPLETE",
+    "LOOT_COMPLETE",
+    "PERSISTENCE_PROVEN",
+    "MULTIPLAYER",
+    "PHYSICAL_PS4",
+    "RELEASE"
+  ]
+}
