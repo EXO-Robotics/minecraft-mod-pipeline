@@ -1,0 +1,44 @@
+{
+  "name": "ore_chisel",
+  "display_name": "Ore Chisel",
+  "sprint": "asset_sprint_006_equipment_progression",
+  "tier": "TOOL",
+  "role": "Precision basalt-tip chisel",
+  "profile": "item",
+  "model_identifier": "geometry.aionforge_eq.ore_chisel",
+  "cube_count": 10,
+  "bone_count": 4,
+  "density_floor": 10,
+  "locators": [
+    "effect"
+  ],
+  "palette": {
+    "metal": [
+      42,
+      36,
+      32
+    ],
+    "accent": [
+      106,
+      90,
+      80
+    ],
+    "energy": [
+      224,
+      112,
+      48
+    ]
+  },
+  "animations": [
+    "hold",
+    "tap"
+  ],
+  "minecraft_scale": "0.5",
+  "texture_resolution": "64\u00d764",
+  "production_priority": "P1",
+  "related_assets": "basalt_pick",
+  "originality": "Clean-room Equipment & Progression manufacture; biome-linked visual language",
+  "forbidden": "No diamond clones; no simple recolors; no WW/AH/CM creature paste; no Gloamveil neon teal",
+  "editable": "assets/editable/ore_chisel.bbmodel",
+  "claims_boundary": "Visual production only. No BP/JSON/AI/gameplay/recipes/balance."
+}

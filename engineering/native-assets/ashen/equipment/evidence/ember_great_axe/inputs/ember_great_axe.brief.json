@@ -1,0 +1,45 @@
+{
+  "name": "ember_great_axe",
+  "display_name": "Ember Great Axe",
+  "sprint": "asset_sprint_006_equipment_progression",
+  "tier": "WEAPON",
+  "role": "Ashen dual-lobe basalt great axe",
+  "profile": "item",
+  "model_identifier": "geometry.aionforge_eq.ember_great_axe",
+  "cube_count": 16,
+  "bone_count": 4,
+  "density_floor": 16,
+  "locators": [
+    "effect"
+  ],
+  "palette": {
+    "metal": [
+      42,
+      36,
+      32
+    ],
+    "accent": [
+      90,
+      83,
+      76
+    ],
+    "energy": [
+      224,
+      112,
+      48
+    ]
+  },
+  "animations": [
+    "idle_hold",
+    "overhead_pose",
+    "slam_pose"
+  ],
+  "minecraft_scale": "1.4\u20131.6",
+  "texture_resolution": "64\u00d764",
+  "production_priority": "P0",
+  "related_assets": "ashen_chest, basalt_hammer",
+  "originality": "Clean-room Equipment & Progression manufacture; biome-linked visual language",
+  "forbidden": "No diamond clones; no simple recolors; no WW/AH/CM creature paste; no Gloamveil neon teal",
+  "editable": "assets/editable/ember_great_axe.bbmodel",
+  "claims_boundary": "Visual production only. No BP/JSON/AI/gameplay/recipes/balance."
+}

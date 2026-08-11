@@ -1,0 +1,64 @@
+{
+  "format_version": "1.8.0",
+  "animations": {
+    "animation.aionbound.ember_hammer.hold": {
+      "loop": true,
+      "animation_length": 3.1,
+      "bones": {
+        "grip": {
+          "rotation": {
+            "0.0": [
+              0,
+              0,
+              0
+            ],
+            "0.8": [
+              0,
+              0,
+              1.7
+            ],
+            "1.55": [
+              0,
+              0,
+              0
+            ],
+            "2.35": [
+              0,
+              0,
+              -1.7
+            ],
+            "3.1": [
+              0,
+              0,
+              0
+            ]
+          }
+        }
+      }
+    },
+    "animation.aionbound.ember_hammer.tap": {
+      "animation_length": 0.55,
+      "bones": {
+        "chassis": {
+          "rotation": {
+            "0.0": [
+              0,
+              0,
+              0
+            ],
+            "0.3": [
+              -24,
+              0,
+              0
+            ],
+            "0.55": [
+              0,
+              0,
+              0
+            ]
+          }
+        }
+      }
+    }
+  }
+}

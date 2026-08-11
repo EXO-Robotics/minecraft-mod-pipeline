@@ -1,0 +1,44 @@
+{
+  "name": "basalt_hammer",
+  "display_name": "Basalt Hammer",
+  "sprint": "asset_sprint_006_equipment_progression",
+  "tier": "WEAPON",
+  "role": "Ashen stone maul",
+  "profile": "item",
+  "model_identifier": "geometry.aionforge_eq.basalt_hammer",
+  "cube_count": 13,
+  "bone_count": 4,
+  "density_floor": 12,
+  "locators": [
+    "effect"
+  ],
+  "palette": {
+    "metal": [
+      42,
+      36,
+      32
+    ],
+    "accent": [
+      90,
+      83,
+      76
+    ],
+    "energy": [
+      224,
+      112,
+      48
+    ]
+  },
+  "animations": [
+    "idle_hold",
+    "smash_pose"
+  ],
+  "minecraft_scale": "0.9\u20131.1",
+  "texture_resolution": "64\u00d764",
+  "production_priority": "P0",
+  "related_assets": "ember_hammer, ember_great_axe",
+  "originality": "Clean-room Equipment & Progression manufacture; biome-linked visual language",
+  "forbidden": "No diamond clones; no simple recolors; no WW/AH/CM creature paste; no Gloamveil neon teal",
+  "editable": "assets/editable/basalt_hammer.bbmodel",
+  "claims_boundary": "Visual production only. No BP/JSON/AI/gameplay/recipes/balance."
+}

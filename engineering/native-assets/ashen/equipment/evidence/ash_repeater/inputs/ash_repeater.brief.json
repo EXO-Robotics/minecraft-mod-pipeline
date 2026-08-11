@@ -1,0 +1,45 @@
+{
+  "name": "ash_repeater",
+  "display_name": "Ash Repeater",
+  "sprint": "asset_sprint_006_equipment_progression",
+  "tier": "WEAPON",
+  "role": "Ashen mechanical repeater crossbow",
+  "profile": "item",
+  "model_identifier": "geometry.aionforge_eq.ash_repeater",
+  "cube_count": 16,
+  "bone_count": 4,
+  "density_floor": 16,
+  "locators": [
+    "effect"
+  ],
+  "palette": {
+    "metal": [
+      42,
+      36,
+      32
+    ],
+    "accent": [
+      106,
+      90,
+      80
+    ],
+    "energy": [
+      224,
+      112,
+      48
+    ]
+  },
+  "animations": [
+    "idle_hold",
+    "crank_pose",
+    "fire_pose"
+  ],
+  "minecraft_scale": "0.9\u20131.1",
+  "texture_resolution": "64\u00d764",
+  "production_priority": "P1",
+  "related_assets": "ore_chisel, ashen_set",
+  "originality": "Clean-room Equipment & Progression manufacture; biome-linked visual language",
+  "forbidden": "No diamond clones; no simple recolors; no WW/AH/CM creature paste; no Gloamveil neon teal",
+  "editable": "assets/editable/ash_repeater.bbmodel",
+  "claims_boundary": "Visual production only. No BP/JSON/AI/gameplay/recipes/balance."
+}
