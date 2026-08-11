@@ -1,0 +1,75 @@
+{
+  "format_version": "1.8.0",
+  "animations": {
+    "animation.aionforge_ww.lantern_post.idle_sway": {
+      "loop": true,
+      "animation_length": 4,
+      "bones": {
+        "lantern": {
+          "rotation": {
+            "0.0": [
+              0,
+              0,
+              0
+            ],
+            "1.0": [
+              -0.8,
+              0,
+              2.2
+            ],
+            "2.0": [
+              0,
+              0,
+              0
+            ],
+            "3.0": [
+              0.6,
+              0,
+              -1.8
+            ],
+            "4.0": [
+              0,
+              0,
+              0
+            ]
+          }
+        }
+      }
+    },
+    "animation.aionforge_ww.lantern_post.glow": {
+      "loop": true,
+      "animation_length": 3.2,
+      "bones": {
+        "chassis": {
+          "scale": {
+            "0.0": [
+              1,
+              1,
+              1
+            ],
+            "0.8": [
+              1.015,
+              1.025,
+              1.015
+            ],
+            "1.6": [
+              1.03,
+              1.04,
+              1.03
+            ],
+            "2.4": [
+              1.015,
+              1.025,
+              1.015
+            ],
+            "3.2": [
+              1,
+              1,
+              1
+            ]
+          }
+        }
+      }
+    }
+  }
+}
