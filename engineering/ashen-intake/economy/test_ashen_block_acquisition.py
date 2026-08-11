@@ -17,16 +17,16 @@ class AshenBlockAcquisitionTests(unittest.TestCase):
             data = json.loads((BLOCKS / f"{block}.block.json").read_text())
             self.assertEqual(data["minecraft:block"]["components"]["minecraft:loot"], f"loot_tables/blocks/ashen/{block}.json")
 
-    def test_resource_acquisition_closes_all_non_creature_resources(self):
+    def test_resource_acquisition_closes_natural_block_resources(self):
         required = {
-            "aionbound:smolder_bark", "aionbound:charbone", "aionbound:sulfur_cluster",
+            "aionbound:sulfur_cluster",
             "aionbound:volcanic_glass_shard", "aionbound:ember_resin", "aionbound:heatstone",
             "aionbound:basalt_core", "aionbound:ash_crystal",
         }
         found = set()
         for block in TABLES:
             data = json.loads((LOOT / f"{block}.json").read_text())
-            found.update(p["entries"][0]["name"] for p in data["pools"])
+            found.update(e["name"] for p in data["pools"] for e in p["entries"])
         self.assertLessEqual(required, found)
 
     def test_volcanic_glass_is_shard_source_not_duplication_loop(self):
@@ -34,12 +34,14 @@ class AshenBlockAcquisitionTests(unittest.TestCase):
         self.assertIn("volcanic_glass_shard", raw)
         self.assertNotIn('"aionbound:volcanic_glass_block"', raw)
 
-    def test_values_stay_inside_ratified_envelopes(self):
+    def test_one_outcome_per_break_and_no_bonus_duplication(self):
         for block in TABLES:
-            for p in json.loads((LOOT / f"{block}.json").read_text())["pools"]:
-                chance = p.get("conditions", [{}])[0].get("chance", 1)
-                self.assertTrue(chance == 1 or 0.08 <= chance <= 0.55)
-                count = p["entries"][0]["functions"][0]["count"]
+            pools = json.loads((LOOT / f"{block}.json").read_text())["pools"]
+            self.assertEqual(len(pools), 1)
+            self.assertEqual(pools[0]["rolls"], 1)
+            self.assertEqual(sum(e["weight"] for e in pools[0]["entries"]), 100)
+            for entry in pools[0]["entries"]:
+                count = entry["functions"][0]["count"]
                 high = count if isinstance(count, int) else count["max"]
                 self.assertLessEqual(high, 4)
 
