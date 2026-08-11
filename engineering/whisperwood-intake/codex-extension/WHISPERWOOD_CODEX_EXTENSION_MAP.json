@@ -1,0 +1,1216 @@
+{
+  "authority": [
+    {
+      "path": "program/crazycraft-pack-production-v1/studio-prep/creative/WAVE_1_LIVING_WORLD_IMPLEMENTATION_CONTRACT.json",
+      "sha256": "aa1f54df10d27d5c5675aae843ffe0d2946123d12a6509f7f021408bcdde9fb5"
+    },
+    {
+      "path": "program/crazycraft-pack-production-v1/studio-prep/creative/WAVE_1_LIVING_WORLD_IMPLEMENTATION_CONTRACT.md",
+      "sha256": "3116c217e06afe1fd0cd56ee742c537f948a4c91193ec831fd1b3ec362837bfc"
+    },
+    {
+      "path": "program/crazycraft-pack-production-v1/studio-prep/creative/08_codex/CODEX_DESIGN.md",
+      "sha256": "cc89b22d1dc548f2563c4b20d33faf8020eab9dafdbfab262321c35739a9b546"
+    },
+    {
+      "path": "program/crazycraft-pack-production-v1/studio-prep/creative/05_structures/STRUCTURES_DESIGN.md",
+      "sha256": "9e62ae9ba6c1da33b64ff0bfa4ac4799b083c6de995585424864d5cf2b0cb076"
+    },
+    {
+      "path": "program/crazycraft-pack-production-v1/studio-prep/creative/04_equipment/EQUIPMENT_PROGRESSION.md",
+      "sha256": "7ecf57e6af099ae3cda8a7432228fb5ee996f20b02b76888a82c0c1a3e3c891d"
+    },
+    {
+      "path": "program/crazycraft-pack-production-v1/studio-prep/creative/03_crafting/CRAFTING_TREE.md",
+      "sha256": "1f3482ba3dd9f916e08aa544153cc841871a729a2e82d9e75601715f4b5ee807"
+    },
+    {
+      "path": "program/crazycraft-pack-production-v1/studio-prep/creative/07_bosses/BOSS_PROGRESSION.md",
+      "sha256": "5ef85e1e0b29973a617f7dca4a8b119443c01644ba33f0e11166ef8d417d5a6f"
+    },
+    {
+      "path": "program/crazycraft-pack-production-v1/studio-prep/creative/02_loot/LOOT_BOSSES.md",
+      "sha256": "4d80925a113bb0cca67e2405047cd228a2df2ccd2c680e1e51ccd04b6f2d63d8"
+    },
+    {
+      "path": "program/crazycraft-pack-production-v1/studio-prep/creative/01_progression/PLAYER_JOURNEY.md",
+      "sha256": "42ba75d9518977c71397826aa9f4daa3864df942019c809b04830fef654a1fa7"
+    },
+    {
+      "path": "engineering/authority/WAVE_1_ENGINEERING_DECISION_LEDGER.json",
+      "sha256": "3e2b64785da9310b098e06981ebc95777ddc7e5d2666f803b79ce374470a9561"
+    },
+    {
+      "path": "engineering/authority/support-proposals/W1-CREATIVE-003/thorn_court_behavior_proposal.json",
+      "sha256": "04f7b9a75be6ac542d3488bd7563a601dcb94603905479b7c3e766c94b9d48c1"
+    },
+    {
+      "path": "engineering/authority/support-proposals/W1-CREATIVE-004/loot_envelope_proposal.json",
+      "sha256": "4412b24ad680a30e5548c731f8acba94e8fd858e4bb94f701a16eb17141f5ab7"
+    }
+  ],
+  "base_commit": "00840aaae36a0cfb83955ca7b416c1d2886a6261",
+  "compact_v4_extension": {
+    "additional_encoded_bytes_per_populated_region": 11,
+    "category_caps_after": {
+      "boss": 1,
+      "creature": 10,
+      "equipment": 21,
+      "plant": 10,
+      "progression": 2,
+      "resource": 20,
+      "structure": 10
+    },
+    "category_caps_before": {
+      "creature": 10,
+      "plant": 10,
+      "resource": 20
+    },
+    "fully_populated_four_region_discovery_json_bytes": 596,
+    "future_boundary": "multi and twinbond region allocation remains outside this Whisperwood-only extension and requires a later reviewed registry migration",
+    "index_rule": "append categories; within each category retain the exact array order in this map",
+    "migration": "idempotently normalize absent new categories to zero-state; preserve all existing category bytes and stamps; never downgrade a state",
+    "player_budget_bytes": 8192,
+    "registry_version": {
+      "after": 2,
+      "before": 1
+    },
+    "state_schema_version": {
+      "after": 4,
+      "before": 4
+    }
+  },
+  "coverage": {
+    "bosses": 1,
+    "equipment": 21,
+    "equipment_breakdown": {
+      "accessories": 5,
+      "armor": 4,
+      "tools": 3,
+      "trophies": 4,
+      "weapons": 5
+    },
+    "progression": 2,
+    "structures": 10
+  },
+  "cross_page_semantics": {
+    "ecology_stalker_seal_prohibition": "ordinary thorn_stalker death may update the creature page only; it cannot complete boss/trophy/progression pages or grant seal credit/trophy",
+    "mastery_trophies": {
+      "briar_elk_trophy": "optional mastery and Codex credit",
+      "mosskip_trophy": "optional mastery, vanity, and Codex credit",
+      "progression_blockers": false
+    },
+    "recovery": "Codex completion follows durable seal credit, not physical item presence; an unfulfilled trophy entitlement may reopen recovery without duplicating progression",
+    "repeat_clear": "may award the approved material package and arena chest; never reissue seal credit, trophy entitlement, or first-clear Codex transitions",
+    "thorn_court_terminal_order": [
+      "validate active arena terminal",
+      "persist world completion",
+      "persist per-player completion",
+      "persist durable seal credit",
+      "persist reward entitlement",
+      "transition Thorn Court boss page complete",
+      "transition Thorn Stalker Skull trophy page complete",
+      "attempt recoverable physical trophy fulfillment"
+    ]
+  },
+  "entries": {
+    "bosses": [
+      {
+        "authority_text": {
+          "arena_language": "Root circle / totem / briar",
+          "attack_names": [
+            "Lunge Barb",
+            "Thorn Fan",
+            "Root Snare",
+            "Silk Spit",
+            "Howl Call",
+            "Death Bloom"
+          ],
+          "phase_field_notes": [
+            "Briar Rise",
+            "Widow Wire",
+            "Crown of Thorns",
+            "Forest Scream"
+          ],
+          "placement": "late `ww`",
+          "progression_role": "Opens AH soft gate; pilgrim seal 1; WW codex boss stamp.",
+          "soft_requirement": "WW weapon + armor pieces",
+          "thesis": "The forest fights back with patience and thorns.",
+          "trophy_identity": "Skull on plaque; thorns still living; amber eyesockets."
+        },
+        "category_index": 0,
+        "codex_category": "boss",
+        "discovery_events": [
+          {
+            "action": "valid_arena_pull",
+            "id": "codex:ww:boss:thorn_court:encountered",
+            "predicate": "encounter session active and entity tagged aionbound.thorn_court_apex",
+            "stage": "partial"
+          },
+          {
+            "action": "valid_arena_terminal",
+            "id": "codex:ww:boss:thorn_court:defeated",
+            "predicate": "active arena session + apex tag + valid death event",
+            "stage": "complete"
+          }
+        ],
+        "ecology_form_can_unlock_complete": false,
+        "entity_runtime_id": "aionbound:thorn_stalker",
+        "field_note_rule": "phase names are hidden at partial state and revealed only after valid victory",
+        "id": "thorn_court",
+        "importance": "critical_path",
+        "kind": "boss",
+        "region": "ww",
+        "runtime_id": "aionbound:thorn_court",
+        "text_sources": [
+          "creative/07_bosses/BOSS_PROGRESSION.md#chapter-1-thorn-court",
+          "creative/02_loot/LOOT_BOSSES.md#chapter-1-thorn-court-apex"
+        ]
+      }
+    ],
+    "equipment": [
+      {
+        "authority_text": {
+          "branch_role": "Starter reliable",
+          "how_it_feels": "Reach, safe poke",
+          "what_it_wants_next": "Glass tip (AH), crystal tip (CM)",
+          "where_born": "ww"
+        },
+        "category_index": 0,
+        "chapter_seal_identity": false,
+        "codex_category": "equipment",
+        "crafting_relationship": "reed + barb + bind",
+        "discovery_events": [
+          {
+            "action": "successful_craft_output",
+            "id": "codex:ww:equipment:mossfang_spear:crafted",
+            "stage": "complete"
+          }
+        ],
+        "equipment_subtype": "weapon",
+        "id": "mossfang_spear",
+        "importance": "craft_core",
+        "kind": "equipment",
+        "mastery_progression_blocker": false,
+        "optional_mastery": false,
+        "physical_item_progression_blocker": false,
+        "region": "ww",
+        "runtime_id": "aionbound:mossfang_spear"
+      },
+      {
+        "authority_text": {
+          "branch_role": "Ambush / caves",
+          "how_it_feels": "Speed, venom narrative",
+          "what_it_wants_next": "Harpy talon hybrid (SR)",
+          "where_born": "ww"
+        },
+        "category_index": 1,
+        "chapter_seal_identity": false,
+        "codex_category": "equipment",
+        "crafting_relationship": "silk + fang",
+        "discovery_events": [
+          {
+            "action": "successful_craft_output",
+            "id": "codex:ww:equipment:widow_fang_dagger:crafted",
+            "stage": "complete"
+          }
+        ],
+        "equipment_subtype": "weapon",
+        "id": "widow_fang_dagger",
+        "importance": "craft_core",
+        "kind": "equipment",
+        "mastery_progression_blocker": false,
+        "optional_mastery": false,
+        "physical_item_progression_blocker": false,
+        "region": "ww",
+        "runtime_id": "aionbound:widow_fang_dagger"
+      },
+      {
+        "authority_text": {
+          "branch_role": "Anti-pack",
+          "how_it_feels": "Control, pull fantasy",
+          "what_it_wants_next": "Skywidow cord longer reach",
+          "where_born": "ww"
+        },
+        "category_index": 2,
+        "chapter_seal_identity": false,
+        "codex_category": "equipment",
+        "crafting_relationship": "cord + barb",
+        "discovery_events": [
+          {
+            "action": "successful_craft_output",
+            "id": "codex:ww:equipment:thorn_whip:crafted",
+            "stage": "complete"
+          }
+        ],
+        "equipment_subtype": "weapon",
+        "id": "thorn_whip",
+        "importance": "craft_core",
+        "kind": "equipment",
+        "mastery_progression_blocker": false,
+        "optional_mastery": false,
+        "physical_item_progression_blocker": false,
+        "region": "ww",
+        "runtime_id": "aionbound:thorn_whip"
+      },
+      {
+        "authority_text": {
+          "branch_role": "Elite killer",
+          "how_it_feels": "Heavy forest finisher",
+          "what_it_wants_next": "Summit face (cliff_crystal)",
+          "where_born": "ww"
+        },
+        "category_index": 3,
+        "chapter_seal_identity": false,
+        "codex_category": "equipment",
+        "crafting_relationship": "antler + claw + bind",
+        "discovery_events": [
+          {
+            "action": "successful_craft_output",
+            "id": "codex:ww:equipment:briar_cleaver:crafted",
+            "stage": "complete"
+          }
+        ],
+        "equipment_subtype": "weapon",
+        "id": "briar_cleaver",
+        "importance": "craft_core",
+        "kind": "equipment",
+        "mastery_progression_blocker": false,
+        "optional_mastery": false,
+        "physical_item_progression_blocker": false,
+        "region": "ww",
+        "runtime_id": "aionbound:briar_cleaver"
+      },
+      {
+        "authority_text": {
+          "branch_role": "Non-brute path",
+          "how_it_feels": "Soft power, light, support",
+          "what_it_wants_next": "Pearl / aether focuses",
+          "where_born": "ww"
+        },
+        "category_index": 4,
+        "chapter_seal_identity": false,
+        "codex_category": "equipment",
+        "crafting_relationship": "root shaft + amber core + moon_sap",
+        "discovery_events": [
+          {
+            "action": "successful_craft_output",
+            "id": "codex:ww:equipment:moon_sap_staff:crafted",
+            "stage": "complete"
+          }
+        ],
+        "equipment_subtype": "weapon",
+        "id": "moon_sap_staff",
+        "importance": "craft_core",
+        "kind": "equipment",
+        "mastery_progression_blocker": false,
+        "optional_mastery": false,
+        "physical_item_progression_blocker": false,
+        "region": "ww",
+        "runtime_id": "aionbound:moon_sap_staff"
+      },
+      {
+        "authority_text": {
+          "how_it_reads": "Leaf/moss crown",
+          "set_theme": "Quiet, grow, blend",
+          "what_it_wants_next": "Each piece: optional hollow_amber stud (R) for set identity glow.",
+          "where_born": "Whisperwood set (full 4)"
+        },
+        "category_index": 5,
+        "chapter_seal_identity": false,
+        "codex_category": "equipment",
+        "crafting_relationship": "Thick Hide / moss plates + widow_silk + Moss Bind",
+        "discovery_events": [
+          {
+            "action": "successful_craft_output",
+            "id": "codex:ww:equipment:whisperwood_helmet:crafted",
+            "stage": "complete"
+          }
+        ],
+        "equipment_subtype": "armor",
+        "id": "whisperwood_helmet",
+        "importance": "craft_core",
+        "kind": "equipment",
+        "mastery_progression_blocker": false,
+        "optional_mastery": false,
+        "physical_item_progression_blocker": false,
+        "region": "ww",
+        "runtime_id": "aionbound:whisperwood_helmet"
+      },
+      {
+        "authority_text": {
+          "how_it_reads": "Bark + silk",
+          "set_theme": "Survival forest",
+          "what_it_wants_next": "Each piece: optional hollow_amber stud (R) for set identity glow.",
+          "where_born": "Whisperwood set (full 4)"
+        },
+        "category_index": 6,
+        "chapter_seal_identity": false,
+        "codex_category": "equipment",
+        "crafting_relationship": "Thick Hide / moss plates + widow_silk + Moss Bind",
+        "discovery_events": [
+          {
+            "action": "successful_craft_output",
+            "id": "codex:ww:equipment:whisperwood_chest:crafted",
+            "stage": "complete"
+          }
+        ],
+        "equipment_subtype": "armor",
+        "id": "whisperwood_chest",
+        "importance": "craft_core",
+        "kind": "equipment",
+        "mastery_progression_blocker": false,
+        "optional_mastery": false,
+        "physical_item_progression_blocker": false,
+        "region": "ww",
+        "runtime_id": "aionbound:whisperwood_chest"
+      },
+      {
+        "authority_text": {
+          "how_it_reads": "Vine wrap",
+          "set_theme": "Mobility underbrush",
+          "what_it_wants_next": "Each piece: optional hollow_amber stud (R) for set identity glow.",
+          "where_born": "Whisperwood set (full 4)"
+        },
+        "category_index": 7,
+        "chapter_seal_identity": false,
+        "codex_category": "equipment",
+        "crafting_relationship": "Thick Hide / moss plates + widow_silk + Moss Bind",
+        "discovery_events": [
+          {
+            "action": "successful_craft_output",
+            "id": "codex:ww:equipment:whisperwood_legs:crafted",
+            "stage": "complete"
+          }
+        ],
+        "equipment_subtype": "armor",
+        "id": "whisperwood_legs",
+        "importance": "craft_core",
+        "kind": "equipment",
+        "mastery_progression_blocker": false,
+        "optional_mastery": false,
+        "physical_item_progression_blocker": false,
+        "region": "ww",
+        "runtime_id": "aionbound:whisperwood_legs"
+      },
+      {
+        "authority_text": {
+          "how_it_reads": "Root grip",
+          "set_theme": "Soft terrain",
+          "what_it_wants_next": "Each piece: optional hollow_amber stud (R) for set identity glow.",
+          "where_born": "Whisperwood set (full 4)"
+        },
+        "category_index": 8,
+        "chapter_seal_identity": false,
+        "codex_category": "equipment",
+        "crafting_relationship": "Thick Hide / moss plates + widow_silk + Moss Bind",
+        "discovery_events": [
+          {
+            "action": "successful_craft_output",
+            "id": "codex:ww:equipment:whisperwood_boots:crafted",
+            "stage": "complete"
+          }
+        ],
+        "equipment_subtype": "armor",
+        "id": "whisperwood_boots",
+        "importance": "craft_core",
+        "kind": "equipment",
+        "mastery_progression_blocker": false,
+        "optional_mastery": false,
+        "physical_item_progression_blocker": false,
+        "region": "ww",
+        "runtime_id": "aionbound:whisperwood_boots"
+      },
+      {
+        "authority_text": {
+          "job": "Multi-tool early",
+          "stage": "spawn",
+          "what_it_wants_next": "Amber tip",
+          "where_born": "spawn"
+        },
+        "category_index": 9,
+        "chapter_seal_identity": false,
+        "codex_category": "equipment",
+        "crafting_relationship": "root_knife + hollow_amber tip ⇒ root_knife+ (same ID fantasy upgrade narrative)",
+        "discovery_events": [
+          {
+            "action": "successful_craft_output",
+            "id": "codex:ww:equipment:root_knife:crafted",
+            "stage": "complete"
+          }
+        ],
+        "equipment_subtype": "tool",
+        "id": "root_knife",
+        "importance": "craft_core",
+        "kind": "equipment",
+        "mastery_progression_blocker": false,
+        "optional_mastery": false,
+        "physical_item_progression_blocker": false,
+        "region": "ww",
+        "runtime_id": "aionbound:root_knife"
+      },
+      {
+        "authority_text": {
+          "job": "Wood / vine clear",
+          "stage": "ww",
+          "what_it_wants_next": "Firestitched edge",
+          "where_born": "ww"
+        },
+        "category_index": 10,
+        "chapter_seal_identity": false,
+        "codex_category": "equipment",
+        "crafting_relationship": "whisperwood_planks + Moss Bind + stone",
+        "discovery_events": [
+          {
+            "action": "successful_craft_output",
+            "id": "codex:ww:equipment:whisperwood_hatchet:crafted",
+            "stage": "complete"
+          }
+        ],
+        "equipment_subtype": "tool",
+        "id": "whisperwood_hatchet",
+        "importance": "craft_core",
+        "kind": "equipment",
+        "mastery_progression_blocker": false,
+        "optional_mastery": false,
+        "physical_item_progression_blocker": false,
+        "region": "ww",
+        "runtime_id": "aionbound:whisperwood_hatchet"
+      },
+      {
+        "authority_text": {
+          "job": "Light + pull / climb seed",
+          "stage": "ww",
+          "what_it_wants_next": "Cliff grapnel (SR)",
+          "where_born": "ww"
+        },
+        "category_index": 11,
+        "chapter_seal_identity": false,
+        "codex_category": "equipment",
+        "crafting_relationship": "planks + lantern_fur + iron-analogue scrap",
+        "discovery_events": [
+          {
+            "action": "successful_craft_output",
+            "id": "codex:ww:equipment:lantern_hook:crafted",
+            "stage": "complete"
+          }
+        ],
+        "equipment_subtype": "tool",
+        "id": "lantern_hook",
+        "importance": "craft_core",
+        "kind": "equipment",
+        "mastery_progression_blocker": false,
+        "optional_mastery": false,
+        "physical_item_progression_blocker": false,
+        "region": "ww",
+        "runtime_id": "aionbound:lantern_hook"
+      },
+      {
+        "authority_text": {
+          "fantasy_slot": "Early sustain / forest luck",
+          "progression": "WW",
+          "what_it_wants_next": "WW",
+          "where_born": "ww"
+        },
+        "category_index": 12,
+        "chapter_seal_identity": false,
+        "codex_category": "equipment",
+        "crafting_relationship": "resin + glow_moss",
+        "discovery_events": [
+          {
+            "action": "successful_craft_output",
+            "id": "codex:ww:equipment:moss_charm:crafted",
+            "stage": "complete"
+          }
+        ],
+        "equipment_subtype": "accessory",
+        "id": "moss_charm",
+        "importance": "craft_core",
+        "kind": "equipment",
+        "mastery_progression_blocker": false,
+        "optional_mastery": false,
+        "physical_item_progression_blocker": false,
+        "region": "ww",
+        "runtime_id": "aionbound:moss_charm"
+      },
+      {
+        "authority_text": {
+          "fantasy_slot": "Gather bonus narrative",
+          "progression": "WW",
+          "what_it_wants_next": "WW",
+          "where_born": "ww"
+        },
+        "category_index": 13,
+        "chapter_seal_identity": false,
+        "codex_category": "equipment",
+        "crafting_relationship": "root_flower + root fiber + small amber",
+        "discovery_events": [
+          {
+            "action": "successful_craft_output",
+            "id": "codex:ww:equipment:root_bracelet:crafted",
+            "stage": "complete"
+          }
+        ],
+        "equipment_subtype": "accessory",
+        "id": "root_bracelet",
+        "importance": "craft_core",
+        "kind": "equipment",
+        "mastery_progression_blocker": false,
+        "optional_mastery": false,
+        "physical_item_progression_blocker": false,
+        "region": "ww",
+        "runtime_id": "aionbound:root_bracelet"
+      },
+      {
+        "authority_text": {
+          "fantasy_slot": "Light radius / fear soft",
+          "progression": "WW",
+          "what_it_wants_next": "WW",
+          "where_born": "ww"
+        },
+        "category_index": 14,
+        "chapter_seal_identity": false,
+        "codex_category": "equipment",
+        "crafting_relationship": "lantern_fur + brass scrap",
+        "discovery_events": [
+          {
+            "action": "successful_craft_output",
+            "id": "codex:ww:equipment:lantern_badge:crafted",
+            "stage": "complete"
+          }
+        ],
+        "equipment_subtype": "accessory",
+        "id": "lantern_badge",
+        "importance": "craft_core",
+        "kind": "equipment",
+        "mastery_progression_blocker": false,
+        "optional_mastery": false,
+        "physical_item_progression_blocker": false,
+        "region": "ww",
+        "runtime_id": "aionbound:lantern_badge"
+      },
+      {
+        "authority_text": {
+          "fantasy_slot": "Night comfort / staff synergy",
+          "progression": "Late WW",
+          "what_it_wants_next": "Late WW",
+          "where_born": "ww"
+        },
+        "category_index": 15,
+        "chapter_seal_identity": false,
+        "codex_category": "equipment",
+        "crafting_relationship": "moon_sap + silk thread",
+        "discovery_events": [
+          {
+            "action": "successful_craft_output",
+            "id": "codex:ww:equipment:moon_sap_pendant:crafted",
+            "stage": "complete"
+          }
+        ],
+        "equipment_subtype": "accessory",
+        "id": "moon_sap_pendant",
+        "importance": "craft_core",
+        "kind": "equipment",
+        "mastery_progression_blocker": false,
+        "optional_mastery": false,
+        "physical_item_progression_blocker": false,
+        "region": "ww",
+        "runtime_id": "aionbound:moon_sap_pendant"
+      },
+      {
+        "authority_text": {
+          "fantasy_slot": "Thorn offense chip; temper in AH",
+          "progression": "WW→AH",
+          "what_it_wants_next": "WW→AH",
+          "where_born": "ww"
+        },
+        "category_index": 16,
+        "chapter_seal_identity": false,
+        "codex_category": "equipment",
+        "crafting_relationship": "thorn + antler chip (can finish in AH heat)",
+        "discovery_events": [
+          {
+            "action": "successful_craft_output",
+            "id": "codex:ww:equipment:briar_ring:crafted",
+            "stage": "complete"
+          }
+        ],
+        "equipment_subtype": "accessory",
+        "id": "briar_ring",
+        "importance": "craft_core",
+        "kind": "equipment",
+        "mastery_progression_blocker": false,
+        "optional_mastery": false,
+        "physical_item_progression_blocker": false,
+        "region": "ww",
+        "runtime_id": "aionbound:briar_ring"
+      },
+      {
+        "authority_text": {
+          "trophy_identity": "Skull on plaque; thorns still living; amber eyesockets.",
+          "type": "chapter_seal",
+          "what_it_wants_next": "chapter seal / display / Edge part",
+          "where_born": "ww"
+        },
+        "category_index": 17,
+        "chapter_seal_identity": true,
+        "codex_category": "equipment",
+        "crafting_relationship": "thorn_stalker_skull → display mount (already trophy mesh)",
+        "discovery_events": [
+          {
+            "action": "valid_thorn_court_terminal_credit",
+            "id": "codex:ww:equipment:thorn_stalker_skull:earned",
+            "predicate": "active arena session + apex tag + valid death; durable seal credit and entitlement exist before page transition",
+            "stage": "complete"
+          }
+        ],
+        "equipment_subtype": "trophy",
+        "id": "thorn_stalker_skull",
+        "importance": "critical_path",
+        "kind": "equipment",
+        "mastery_progression_blocker": false,
+        "optional_mastery": false,
+        "physical_item_progression_blocker": false,
+        "region": "ww",
+        "runtime_id": "aionbound:thorn_stalker_skull"
+      },
+      {
+        "authority_text": {
+          "type": "ww_alternate",
+          "what_it_wants_next": "display / mastery",
+          "where_born": "ww"
+        },
+        "category_index": 18,
+        "chapter_seal_identity": false,
+        "codex_category": "equipment",
+        "crafting_relationship": "Briar Crown + planks → briar_elk_trophy",
+        "discovery_events": [
+          {
+            "action": "successful_craft_output",
+            "id": "codex:ww:equipment:briar_elk_trophy:crafted",
+            "stage": "complete"
+          }
+        ],
+        "equipment_subtype": "trophy",
+        "id": "briar_elk_trophy",
+        "importance": "exploration",
+        "kind": "equipment",
+        "mastery_progression_blocker": false,
+        "optional_mastery": true,
+        "physical_item_progression_blocker": false,
+        "region": "ww",
+        "runtime_id": "aionbound:briar_elk_trophy"
+      },
+      {
+        "authority_text": {
+          "type": "ww_soft_seal",
+          "what_it_wants_next": "display / mastery",
+          "where_born": "ww"
+        },
+        "category_index": 19,
+        "chapter_seal_identity": false,
+        "codex_category": "equipment",
+        "crafting_relationship": "Mosskip Crown Fragment ×3 → mosskip_trophy",
+        "discovery_events": [
+          {
+            "action": "successful_craft_output",
+            "id": "codex:ww:equipment:mosskip_trophy:crafted",
+            "stage": "complete"
+          }
+        ],
+        "equipment_subtype": "trophy",
+        "id": "mosskip_trophy",
+        "importance": "exploration",
+        "kind": "equipment",
+        "mastery_progression_blocker": false,
+        "optional_mastery": true,
+        "physical_item_progression_blocker": false,
+        "region": "ww",
+        "runtime_id": "aionbound:mosskip_trophy"
+      },
+      {
+        "authority_text": {
+          "type": "prestige",
+          "what_it_wants_next": "display / mastery",
+          "where_born": "ww"
+        },
+        "category_index": 20,
+        "chapter_seal_identity": false,
+        "codex_category": "equipment",
+        "crafting_relationship": "ancient_acorn + pedestal wood → ancient_acorn_display",
+        "discovery_events": [
+          {
+            "action": "successful_craft_output",
+            "id": "codex:ww:equipment:ancient_acorn_display:crafted",
+            "stage": "complete"
+          }
+        ],
+        "equipment_subtype": "trophy",
+        "id": "ancient_acorn_display",
+        "importance": "exploration",
+        "kind": "equipment",
+        "mastery_progression_blocker": false,
+        "optional_mastery": true,
+        "physical_item_progression_blocker": false,
+        "region": "ww",
+        "runtime_id": "aionbound:ancient_acorn_display"
+      }
+    ],
+    "progression": [
+      {
+        "authority_text": {
+          "chase": "Ashen rumors at kiln-burned wagons",
+          "must_do": "Kill apex or complete shrine trial",
+          "primary_fantasy": "Living forest",
+          "should_do": "Full WW armor"
+        },
+        "category_index": 0,
+        "codex_category": "progression",
+        "discovery_events": [
+          {
+            "action": "first_whisperwood_discovery",
+            "id": "codex:ww:progression:whisperwood_chapter:entered",
+            "stage": "partial"
+          },
+          {
+            "action": "durable_chapter_one_seal_credit",
+            "id": "codex:ww:progression:whisperwood_chapter:seal_credit",
+            "predicate": "aionbound.player.thorn_court.seal_credit.v1 is true",
+            "stage": "complete"
+          }
+        ],
+        "id": "whisperwood_chapter",
+        "importance": "critical_path",
+        "kind": "progression",
+        "region": "ww",
+        "runtime_id": "aionbound:codex_progression_whisperwood_chapter",
+        "shrine_trial_note": "Creative permits shrine-trial completion, but no exact shrine terminal state is ratified; do not invent one in this slice.",
+        "text_source": "creative/01_progression/PLAYER_JOURNEY.md#chapter-goals-player-facing-intent"
+      },
+      {
+        "authority_text": {
+          "progression_role": "Soft pointer WW→AH",
+          "safe_spoiler": "Heat waits east of the burned wagons.",
+          "structure_story": "Merchants fled heat rumors east; one wheel burned already"
+        },
+        "category_index": 1,
+        "codex_category": "progression",
+        "discovery_events": [
+          {
+            "action": "broken_wagon_structure_state",
+            "id": "codex:ww:progression:ashen_rumor:broken_wagon_activated",
+            "predicate": "recognized broken_wagon activation records landmark:broken_wagon",
+            "stage": "complete"
+          }
+        ],
+        "forbidden_representation": [
+          "map-scrap item",
+          "inventory grant",
+          "Ashen unlock item"
+        ],
+        "id": "ashen_rumor",
+        "importance": "critical_path",
+        "kind": "progression",
+        "presentation": "Codex/structure-state page only",
+        "region": "ww",
+        "runtime_id": "aionbound:codex_progression_ashen_rumor",
+        "text_sources": [
+          "creative/08_codex/CODEX_DESIGN.md#progression-hints-language-safe-spoilers",
+          "creative/05_structures/STRUCTURES_DESIGN.md#broken_wagon"
+        ]
+      }
+    ],
+    "structures": [
+      {
+        "authority_text": {
+          "environmental_story": "Old path network of the Owl faithful",
+          "loot_identity": "glow_spore, oil, badge scrap",
+          "progression_role": "Supports lantern_badge / hook fantasy",
+          "purpose": "Path lighting language; harvest node",
+          "reason_to_visit": "Light mats; navigation at night"
+        },
+        "category_index": 0,
+        "codex_category": "structure",
+        "discovery_events": [
+          {
+            "action": "first_successful_activation",
+            "id": "codex:ww:structure:lantern_post:activated",
+            "stage": "complete"
+          },
+          {
+            "action": "recognized_structure_proximity",
+            "id": "codex:ww:structure:lantern_post:proximity_10s",
+            "predicate": "same player remains within the bounded recognized structure site for 200 accumulated consecutive ticks",
+            "stage": "complete"
+          }
+        ],
+        "id": "lantern_post",
+        "importance": "craft_core",
+        "kind": "structure",
+        "region": "ww",
+        "runtime_dependency": "canonical authored structure recognizer plus bounded per-player proximity accumulator",
+        "runtime_id": "aionbound:lantern_post",
+        "text_source": "creative/05_structures/STRUCTURES_DESIGN.md#whisperwood-sprint-001-props",
+        "unlock_semantics": "either event completes the page; no reward or loot claim is implied"
+      },
+      {
+        "authority_text": {
+          "environmental_story": "Travelers stack moss for those lost to bark wraiths",
+          "loot_identity": "Q heavy, small amber",
+          "progression_role": "Emotional texture; optional stamp",
+          "purpose": "Quiet memorial / rest",
+          "reason_to_visit": "Curiosities; codex; low combat"
+        },
+        "category_index": 1,
+        "codex_category": "structure",
+        "discovery_events": [
+          {
+            "action": "first_successful_activation",
+            "id": "codex:ww:structure:moss_cairn:activated",
+            "stage": "complete"
+          },
+          {
+            "action": "recognized_structure_proximity",
+            "id": "codex:ww:structure:moss_cairn:proximity_10s",
+            "predicate": "same player remains within the bounded recognized structure site for 200 accumulated consecutive ticks",
+            "stage": "complete"
+          }
+        ],
+        "id": "moss_cairn",
+        "importance": "exploration",
+        "kind": "structure",
+        "region": "ww",
+        "runtime_dependency": "canonical authored structure recognizer plus bounded per-player proximity accumulator",
+        "runtime_id": "aionbound:moss_cairn",
+        "text_source": "creative/05_structures/STRUCTURES_DESIGN.md#whisperwood-sprint-001-props",
+        "unlock_semantics": "either event completes the page; no reward or loot claim is implied"
+      },
+      {
+        "authority_text": {
+          "environmental_story": "Rangers tracked rot wolves; left in a hurry when thorn stalkers came",
+          "loot_identity": "Camp mid mats, knife components, journal Q",
+          "progression_role": "`ww` early; teaches base-return via leftover trophies on racks",
+          "purpose": "Safe-ish tutorial structure; craft teaching",
+          "reason_to_visit": "Early gear, food, journal"
+        },
+        "category_index": 2,
+        "codex_category": "structure",
+        "discovery_events": [
+          {
+            "action": "first_successful_activation",
+            "id": "codex:ww:structure:hunter_camp:activated",
+            "stage": "complete"
+          },
+          {
+            "action": "recognized_structure_proximity",
+            "id": "codex:ww:structure:hunter_camp:proximity_10s",
+            "predicate": "same player remains within the bounded recognized structure site for 200 accumulated consecutive ticks",
+            "stage": "complete"
+          }
+        ],
+        "id": "hunter_camp",
+        "importance": "exploration",
+        "kind": "structure",
+        "region": "ww",
+        "runtime_dependency": "canonical authored structure recognizer plus bounded per-player proximity accumulator",
+        "runtime_id": "aionbound:hunter_camp",
+        "text_source": "creative/05_structures/STRUCTURES_DESIGN.md#whisperwood-sprint-001-props",
+        "unlock_semantics": "either event completes the page; no reward or loot claim is implied"
+      },
+      {
+        "authority_text": {
+          "environmental_story": "Merchants fled heat rumors east; one wheel burned already",
+          "loot_identity": "Planks, resin jars, map scrap",
+          "progression_role": "Soft pointer WW→AH",
+          "purpose": "Linear trail breadcrumbs",
+          "reason_to_visit": "Free mats + **Ashen rumor map**"
+        },
+        "category_index": 3,
+        "codex_category": "structure",
+        "discovery_events": [
+          {
+            "action": "first_successful_activation",
+            "id": "codex:ww:structure:broken_wagon:activated",
+            "stage": "complete"
+          },
+          {
+            "action": "recognized_structure_proximity",
+            "id": "codex:ww:structure:broken_wagon:proximity_10s",
+            "predicate": "same player remains within the bounded recognized structure site for 200 accumulated consecutive ticks",
+            "stage": "complete"
+          }
+        ],
+        "id": "broken_wagon",
+        "importance": "critical_path",
+        "kind": "structure",
+        "region": "ww",
+        "runtime_dependency": "canonical authored structure recognizer plus bounded per-player proximity accumulator",
+        "runtime_id": "aionbound:broken_wagon",
+        "text_source": "creative/05_structures/STRUCTURES_DESIGN.md#whisperwood-sprint-001-props",
+        "unlock_semantics": "either event completes the page; no reward or loot claim is implied"
+      },
+      {
+        "authority_text": {
+          "environmental_story": "Roots grew where a wooden bridge failed",
+          "loot_identity": "Repair / under cache",
+          "progression_role": "Teaches vertical thinking pre-Skyreach",
+          "purpose": "Traversal landmark; photo",
+          "reason_to_visit": "Cross ravines; under-bridge silk"
+        },
+        "category_index": 4,
+        "codex_category": "structure",
+        "discovery_events": [
+          {
+            "action": "first_successful_activation",
+            "id": "codex:ww:structure:root_bridge:activated",
+            "stage": "complete"
+          },
+          {
+            "action": "recognized_structure_proximity",
+            "id": "codex:ww:structure:root_bridge:proximity_10s",
+            "predicate": "same player remains within the bounded recognized structure site for 200 accumulated consecutive ticks",
+            "stage": "complete"
+          }
+        ],
+        "id": "root_bridge",
+        "importance": "exploration",
+        "kind": "structure",
+        "region": "ww",
+        "runtime_dependency": "canonical authored structure recognizer plus bounded per-player proximity accumulator",
+        "runtime_id": "aionbound:root_bridge",
+        "text_source": "creative/05_structures/STRUCTURES_DESIGN.md#whisperwood-sprint-001-props",
+        "unlock_semantics": "either event completes the page; no reward or loot claim is implied"
+      },
+      {
+        "authority_text": {
+          "environmental_story": "Pre-human forest worship; eyes still watch",
+          "loot_identity": "Catalysts, Owl Token",
+          "progression_role": "Unique staff finish; moon path",
+          "purpose": "Soft power structure; staff path",
+          "reason_to_visit": "moon_sap, pendant rite"
+        },
+        "category_index": 5,
+        "codex_category": "structure",
+        "discovery_events": [
+          {
+            "action": "first_successful_activation",
+            "id": "codex:ww:structure:owl_shrine:activated",
+            "stage": "complete"
+          },
+          {
+            "action": "recognized_structure_proximity",
+            "id": "codex:ww:structure:owl_shrine:proximity_10s",
+            "predicate": "same player remains within the bounded recognized structure site for 200 accumulated consecutive ticks",
+            "stage": "complete"
+          }
+        ],
+        "id": "owl_shrine",
+        "importance": "craft_core",
+        "kind": "structure",
+        "region": "ww",
+        "runtime_dependency": "canonical authored structure recognizer plus bounded per-player proximity accumulator",
+        "runtime_id": "aionbound:owl_shrine",
+        "text_source": "creative/05_structures/STRUCTURES_DESIGN.md#whisperwood-sprint-001-props",
+        "unlock_semantics": "either event completes the page; no reward or loot claim is implied"
+      },
+      {
+        "authority_text": {
+          "environmental_story": "Stones older than hunters; moss grows in circuit patterns",
+          "loot_identity": "Activation reward only (compass needle)",
+          "progression_role": "Hub return; multiplayer meet",
+          "purpose": "Chapter travel / return",
+          "reason_to_visit": "Unlock network stamp"
+        },
+        "category_index": 6,
+        "codex_category": "structure",
+        "discovery_events": [
+          {
+            "action": "first_successful_activation",
+            "id": "codex:ww:structure:forest_waystone:activated",
+            "stage": "complete"
+          },
+          {
+            "action": "recognized_structure_proximity",
+            "id": "codex:ww:structure:forest_waystone:proximity_10s",
+            "predicate": "same player remains within the bounded recognized structure site for 200 accumulated consecutive ticks",
+            "stage": "complete"
+          }
+        ],
+        "id": "forest_waystone",
+        "importance": "critical_path",
+        "kind": "structure",
+        "region": "ww",
+        "runtime_dependency": "canonical authored structure recognizer plus bounded per-player proximity accumulator",
+        "runtime_id": "aionbound:forest_waystone",
+        "text_source": "creative/05_structures/STRUCTURES_DESIGN.md#whisperwood-sprint-001-props",
+        "unlock_semantics": "either event completes the page; no reward or loot claim is implied"
+      },
+      {
+        "authority_text": {
+          "environmental_story": "Widow dens under giant roots",
+          "loot_identity": "Cave table",
+          "progression_role": "Mid WW skill check",
+          "purpose": "Vertical danger pocket",
+          "reason_to_visit": "Amber, silk, elites"
+        },
+        "category_index": 7,
+        "codex_category": "structure",
+        "discovery_events": [
+          {
+            "action": "first_successful_activation",
+            "id": "codex:ww:structure:hollow_cave_entrance:activated",
+            "stage": "complete"
+          },
+          {
+            "action": "recognized_structure_proximity",
+            "id": "codex:ww:structure:hollow_cave_entrance:proximity_10s",
+            "predicate": "same player remains within the bounded recognized structure site for 200 accumulated consecutive ticks",
+            "stage": "complete"
+          }
+        ],
+        "id": "hollow_cave_entrance",
+        "importance": "craft_core",
+        "kind": "structure",
+        "region": "ww",
+        "runtime_dependency": "canonical authored structure recognizer plus bounded per-player proximity accumulator",
+        "runtime_id": "aionbound:hollow_cave_entrance",
+        "text_source": "creative/05_structures/STRUCTURES_DESIGN.md#whisperwood-sprint-001-props",
+        "unlock_semantics": "either event completes the page; no reward or loot claim is implied"
+      },
+      {
+        "authority_text": {
+          "environmental_story": "Bound something under roots; cracks show amber light",
+          "loot_identity": "R catalysts, warden_sigil seed",
+          "progression_role": "Late WW; pilgrim seed",
+          "purpose": "Deep forest mystery; warden foreshadow",
+          "reason_to_visit": "root_heart, glyphs"
+        },
+        "category_index": 8,
+        "codex_category": "structure",
+        "discovery_events": [
+          {
+            "action": "first_successful_activation",
+            "id": "codex:ww:structure:ancient_totem:activated",
+            "stage": "complete"
+          },
+          {
+            "action": "recognized_structure_proximity",
+            "id": "codex:ww:structure:ancient_totem:proximity_10s",
+            "predicate": "same player remains within the bounded recognized structure site for 200 accumulated consecutive ticks",
+            "stage": "complete"
+          }
+        ],
+        "id": "ancient_totem",
+        "importance": "critical_path",
+        "kind": "structure",
+        "region": "ww",
+        "runtime_dependency": "canonical authored structure recognizer plus bounded per-player proximity accumulator",
+        "runtime_id": "aionbound:ancient_totem",
+        "text_source": "creative/05_structures/STRUCTURES_DESIGN.md#whisperwood-sprint-001-props",
+        "unlock_semantics": "either event completes the page; no reward or loot claim is implied"
+      },
+      {
+        "authority_text": {
+          "environmental_story": "Something large pushed it — not weather",
+          "loot_identity": "Resource + explorer leather",
+          "progression_role": "Late WW wonder; Twinbond distant echo",
+          "purpose": "Massive identity prop; acorn chase",
+          "reason_to_visit": "Bulk bark, rare acorn, hollow chest"
+        },
+        "category_index": 9,
+        "codex_category": "structure",
+        "discovery_events": [
+          {
+            "action": "first_successful_activation",
+            "id": "codex:ww:structure:fallen_giant_tree:activated",
+            "stage": "complete"
+          },
+          {
+            "action": "recognized_structure_proximity",
+            "id": "codex:ww:structure:fallen_giant_tree:proximity_10s",
+            "predicate": "same player remains within the bounded recognized structure site for 200 accumulated consecutive ticks",
+            "stage": "complete"
+          }
+        ],
+        "id": "fallen_giant_tree",
+        "importance": "exploration",
+        "kind": "structure",
+        "region": "ww",
+        "runtime_dependency": "canonical authored structure recognizer plus bounded per-player proximity accumulator",
+        "runtime_id": "aionbound:fallen_giant_tree",
+        "text_source": "creative/05_structures/STRUCTURES_DESIGN.md#whisperwood-sprint-001-props",
+        "unlock_semantics": "either event completes the page; no reward or loot claim is implied"
+      }
+    ]
+  },
+  "not_proven": [
+    "runtime event delivery",
+    "structure recognition",
+    "craft event support",
+    "UI rendering",
+    "boss behavior",
+    "physical trophy fulfillment",
+    "loot",
+    "BDS",
+    "client",
+    "console",
+    "Checkpoint 1 readiness"
+  ],
+  "proof_boundary": [
+    "map coverage and deterministic bytes",
+    "exact authority text binding",
+    "trigger and persistence contract",
+    "state budget arithmetic"
+  ],
+  "ratification_rule": "W1-003-THORN-COURT and W1-004-WW-CH1 proposal bytes remain unchanged; the ratified ledger makes their exact hashes binding.",
+  "runtime_integration_conflicts": [
+    {
+      "conflict": "registry contains only 40 entries and registry version 1",
+      "file": "behavior_pack/scripts/wave1_codex_data.js",
+      "needed": "append this map's 34 entries and bump registry version to 2 without reordering the original 40"
+    },
+    {
+      "conflict": "category caps omit structure/equipment/boss/progression",
+      "file": "behavior_pack/scripts/state.js",
+      "needed": "add exact caps from compact_v4_extension; retain STATE_VERSION 4 and idempotent normalization"
+    },
+    {
+      "conflict": "UI exposes only resource/plant/creature and has no boss field-note gating",
+      "file": "behavior_pack/scripts/codex.js",
+      "needed": "add four categories and state-gated exact authority fields without making chat the primary UX"
+    },
+    {
+      "conflict": "question rows cover only the original 40 entries",
+      "file": "behavior_pack/scripts/wave1_codex_ui_data.js",
+      "needed": "bind exact authority_text fields from this map; do not synthesize missing lore"
+    },
+    {
+      "conflict": "Codex routes only block/plant/creature events; structure registry recognizes only two Whisperwood progression sites",
+      "file": "behavior_pack/scripts/catalog.js",
+      "needed": "add compositional routes for all 10 recognized structures, 21 equipment outputs, Thorn Court terminal events, and two progression pages"
+    },
+    {
+      "conflict": "only forest_waystone and broken_wagon have progression activation hooks; no 10-second proximity service exists",
+      "file": "behavior_pack/scripts/structures.js",
+      "needed": "reuse canonical site recognizers and a bounded per-player 200-tick accumulator; activation/proximity must not claim loot implicitly"
+    },
+    {
+      "conflict": "no exact successful-craft output event is currently routed",
+      "file": "behavior_pack/scripts/runtime.js",
+      "needed": "select and Stable-API-audit an exact craft-completion signal before implementation; first possession is not silently equivalent to craft"
+    },
+    {
+      "conflict": "boss, trophy, seal-credit, and progression transitions share one terminal event",
+      "file": "Thorn Court runtime integration lane",
+      "needed": "one compositional terminal transaction in the exact cross_page_semantics order; no early-return suppression"
+    }
+  ],
+  "schema": "aionbound.wave1.whisperwood-codex-extension-map.v1.0.0",
+  "scope": {
+    "adds_pages": 34,
+    "edits_shipping_runtime": false,
+    "existing_pages_unchanged": 40,
+    "whisperwood_total_after_integration": 74
+  },
+  "status": "DETERMINISTIC_IMPLEMENTATION_MAP_ONLY"
+}
