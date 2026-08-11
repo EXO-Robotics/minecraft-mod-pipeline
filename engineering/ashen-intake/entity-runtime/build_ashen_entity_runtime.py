@@ -53,6 +53,7 @@ def behavior_entity(asset: str, cfg: dict) -> dict:
     components = {
         "minecraft:type_family": {"family": family},
         "minecraft:health": {"value": cfg["health"], "max": cfg["health"]},
+        "minecraft:loot": {"table": f"loot_tables/entities/ashen/{asset if asset != 'ash_drake' else 'ash_drake_ecology'}.json"},
         "minecraft:collision_box": {"width": cfg["width"], "height": cfg["height"]},
         "minecraft:movement": {"value": cfg["speed"]},
         "minecraft:physics": {},
@@ -164,7 +165,7 @@ def build() -> dict:
     return {
         "schema": "aionbound.wave1.ashen_entity_runtime_report.v1", "status": "STATIC_RUNTIME_SHELLS_COMPLETE_UNQUALIFIED",
         "base": {"commit": BASE_COMMIT, "tree": BASE_TREE},
-        "scope": {"entities": sorted(ASSETS), "natural_spawn_entities": sorted(a for a in ASSETS if a != "ash_drake"), "arena_only_shell": "aionbound:ash_drake", "loot_binding": "OMITTED_FOR_SEPARATE_ECONOMY_LANE", "boss_session_completion_rewards": "OUT_OF_SCOPE"},
+        "scope": {"entities": sorted(ASSETS), "natural_spawn_entities": sorted(a for a in ASSETS if a != "ash_drake"), "arena_only_shell": "aionbound:ash_drake", "loot_binding": "RATIFIED_ECOLOGY_TABLES_BOUND", "boss_session_completion_rewards": "OUT_OF_SCOPE"},
         "native_binding": source_evidence,
         "ecology": {"rule_count": 9, "biome_tags": ["overworld", "mountain", "mesa"], "max_group_size": 2, "max_per_type_surface_density": 2, "max_weight": 6, "whisperwood_numbers_copied": False, "ash_drake_natural_spawn": False},
         "outputs": sorted(outputs, key=lambda x: x["path"]),

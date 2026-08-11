@@ -106,12 +106,14 @@ class AshenEntityRuntimeTests(unittest.TestCase):
             render = read_json(ROOT / f"resource_pack/render_controllers/aionbound/ashen/{asset}.render_controller.json")["render_controllers"]
             self.assertIn(client["render_controllers"][0], render)
 
-    def test_behavior_entities_are_non_statue_and_loot_unbound(self):
+    def test_behavior_entities_are_non_statue_and_bind_exact_ecology_loot(self):
         for asset, cfg in self.builder.ASSETS.items():
             entity = read_json(ROOT / f"behavior_pack/entities/aionbound/ashen/{asset}.entity.json")["minecraft:entity"]
             components = entity["components"]
             self.assertEqual(entity["description"]["identifier"], f"aionbound:{asset}")
-            self.assertNotIn("minecraft:loot", components)
+            table = asset if asset != "ash_drake" else "ash_drake_ecology"
+            self.assertEqual(components["minecraft:loot"]["table"], f"loot_tables/entities/ashen/{table}.json")
+            self.assertTrue((ROOT / f"behavior_pack/loot_tables/entities/ashen/{table}.json").is_file())
             self.assertIn("minecraft:movement", components)
             if cfg["flying"]:
                 self.assertIn("minecraft:navigation.fly", components)
