@@ -1,0 +1,118 @@
+{
+  "schema": "aionbound.wave1.ashen-ecology-worldgen.v1",
+  "status": "PASS_STATIC_SOURCE_REGISTRATION",
+  "authority": "Creative Ashen plateau/caldera language plus ratified G8 plant identities",
+  "density": {
+    "aggregate_attempts_per_chunk_before_filters": 1.033854,
+    "maximum": 1.1,
+    "cap_change": "NONE"
+  },
+  "regional_filter": "overworld and non-ocean and mountain-or-mesa proxy",
+  "registrations": [
+    {
+      "asset": "cinder_grass",
+      "qualitative_locality": "ash fields",
+      "placement_pass": "surface_pass",
+      "iterations": 4,
+      "scatter_denominator": 8,
+      "expected_attempts_per_chunk_before_filters": 0.5,
+      "feature_sha256": "7bfc0257e5b2dcc14da6acfabac42d4422f256d2344c66b401bdf56adb3128cd",
+      "feature_rule_sha256": "af04d2e2282dbb917409225277a120540041e1e986c8398cc868f24003e52c85"
+    },
+    {
+      "asset": "ash_fern",
+      "qualitative_locality": "ash-dune shelter",
+      "placement_pass": "surface_pass",
+      "iterations": 2,
+      "scatter_denominator": 16,
+      "expected_attempts_per_chunk_before_filters": 0.125,
+      "feature_sha256": "7d163eb88ce6c1dfb8baa174507e7b87dd23bf42bee1f36109cdf1c82a12270d",
+      "feature_rule_sha256": "74d14574d188a6ea61460368fd7841c2db3306a7a1eec840ec32366654cab49b"
+    },
+    {
+      "asset": "smoke_reed",
+      "qualitative_locality": "vent margins",
+      "placement_pass": "surface_pass",
+      "iterations": 2,
+      "scatter_denominator": 32,
+      "expected_attempts_per_chunk_before_filters": 0.0625,
+      "feature_sha256": "d4a6f83114314df5de5d619d925c8644bf150a21eb3eb0241c0bc93c8ffd8e22",
+      "feature_rule_sha256": "128a928187b3e3a515587ce0599bb0f15c3bd1d3005345019308a2d6062dea17"
+    },
+    {
+      "asset": "char_shrub",
+      "qualitative_locality": "dry plateau scrub",
+      "placement_pass": "surface_pass",
+      "iterations": 2,
+      "scatter_denominator": 24,
+      "expected_attempts_per_chunk_before_filters": 0.083333,
+      "feature_sha256": "fd19e1039fde7c7132e38ed030d45f3eb8b72dd825fd3daca826c8ac10425f3a",
+      "feature_rule_sha256": "2df2d140c20bd967d3ac8b9be54ed35abb6f8af2a3fb6122bc610fc706b56d8b"
+    },
+    {
+      "asset": "soot_mushroom",
+      "qualitative_locality": "shaded ash and kiln stone",
+      "placement_pass": "surface_pass",
+      "iterations": 2,
+      "scatter_denominator": 48,
+      "expected_attempts_per_chunk_before_filters": 0.041667,
+      "feature_sha256": "1b73fa1d909fff067554805211160947c380ea7926dfc5ec4ac1ab7029a79f30",
+      "feature_rule_sha256": "2cc1ba552a35d64ecc55bc0b8323c17fc99d69c6bc90a88d5cc0e38ebb12c324"
+    },
+    {
+      "asset": "magma_moss",
+      "qualitative_locality": "hot basalt plates",
+      "placement_pass": "surface_pass",
+      "iterations": 3,
+      "scatter_denominator": 24,
+      "expected_attempts_per_chunk_before_filters": 0.125,
+      "feature_sha256": "ee54e2475bb8399bd464d3df94b808db0d1dae2cf30f591c0ff8254d619fd7cb",
+      "feature_rule_sha256": "132218cf24225850044c2fd4827bbdeeff741476721d361aba1aa430fc93831b"
+    },
+    {
+      "asset": "glow_root",
+      "qualitative_locality": "cave ceiling and wall faces",
+      "placement_pass": "underground_pass",
+      "iterations": 2,
+      "scatter_denominator": 64,
+      "expected_attempts_per_chunk_before_filters": 0.03125,
+      "feature_sha256": "b03fd5e72a3f60a1f92860cba0a5c9aee79fef96fb9a483ea813b9cbc34b846a",
+      "feature_rule_sha256": "220a45abee218d8ccad8b363592a8c5527e515f15cf6518e8b50b2219bd3b24e"
+    },
+    {
+      "asset": "basalt_flower",
+      "qualitative_locality": "rare stone seam",
+      "placement_pass": "surface_pass",
+      "iterations": 1,
+      "scatter_denominator": 128,
+      "expected_attempts_per_chunk_before_filters": 0.007812,
+      "feature_sha256": "d55e55389e614e40621a78bc896007592abd1e4a205bd2e22575a578e1057544",
+      "feature_rule_sha256": "ae85e54cfddd4be355d0c4b1f9ece3a21d4a93cbc0cc01689867d5c04f297fac"
+    },
+    {
+      "asset": "ember_vine",
+      "qualitative_locality": "heated cliffs and char trunks",
+      "placement_pass": "surface_pass",
+      "iterations": 2,
+      "scatter_denominator": 48,
+      "expected_attempts_per_chunk_before_filters": 0.041667,
+      "feature_sha256": "13962e10ca148c0fb2abcf4c6f039e8fffab852190c46998a7a7c617191a6e1a",
+      "feature_rule_sha256": "f6ea5c10c8f8ba8c292f5a1eb071e72984cfe6f182b1ec3f7942fad55cc106d9"
+    },
+    {
+      "asset": "fire_bloom",
+      "qualitative_locality": "rare ember-moss patches",
+      "placement_pass": "surface_pass",
+      "iterations": 1,
+      "scatter_denominator": 64,
+      "expected_attempts_per_chunk_before_filters": 0.015625,
+      "feature_sha256": "24d66533655307e4f535a51975e7b5d5dd06e7e6b673eb19683bfc5ff5230f84",
+      "feature_rule_sha256": "beabf29570029cec9ab5980bd1993f5c79302bd8a2468c8678ca80b9f6fccb05"
+    }
+  ],
+  "proof_boundary": [
+    "static source only",
+    "terrain tags are regional proxies",
+    "not adjacency, client, BDS, console, or distribution proof"
+  ]
+}

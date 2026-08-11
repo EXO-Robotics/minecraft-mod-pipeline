@@ -1,0 +1,69 @@
+{
+  "format_version": "1.21.40",
+  "minecraft:feature_rules": {
+    "description": {
+      "identifier": "aionbound:ah_ecology_glow_root.feature_rule",
+      "places_feature": "aionbound:ah_ecology_glow_root"
+    },
+    "conditions": {
+      "placement_pass": "underground_pass",
+      "minecraft:biome_filter": {
+        "all_of": [
+          {
+            "test": "has_biome_tag",
+            "operator": "==",
+            "value": "overworld"
+          },
+          {
+            "test": "has_biome_tag",
+            "operator": "!=",
+            "value": "ocean"
+          },
+          {
+            "any_of": [
+              {
+                "test": "has_biome_tag",
+                "operator": "==",
+                "value": "mountain"
+              },
+              {
+                "test": "has_biome_tag",
+                "operator": "==",
+                "value": "mesa"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    "distribution": {
+      "coordinate_eval_order": "xzy",
+      "iterations": 2,
+      "scatter_chance": {
+        "numerator": 1,
+        "denominator": 64
+      },
+      "x": {
+        "distribution": "uniform",
+        "extent": [
+          0,
+          15
+        ]
+      },
+      "y": {
+        "distribution": "uniform",
+        "extent": [
+          8,
+          56
+        ]
+      },
+      "z": {
+        "distribution": "uniform",
+        "extent": [
+          0,
+          15
+        ]
+      }
+    }
+  }
+}
