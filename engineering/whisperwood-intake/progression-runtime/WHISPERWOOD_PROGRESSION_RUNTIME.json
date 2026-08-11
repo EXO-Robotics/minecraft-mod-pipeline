@@ -1,7 +1,6 @@
 {
-  "schema": "aionbound.wave1.whisperwood.progression_runtime.v1",
+  "schema": "aionbound.wave1.whisperwood.progression_runtime.v2",
   "status": "IMPLEMENTED_RATIFIED_PROGRESSION_AND_THORN_COURT_ANCHOR",
-  "source_commit": "668993d1b5fc7a676181063eef1b9dd721d5b2a4",
   "authority": [
     "engineering/whisperwood-intake/structure-runtime/WHISPERWOOD_STRUCTURE_RUNTIME_MAP.json",
     "engineering/whisperwood-intake/structure-assemblies/WHISPERWOOD_STRUCTURE_ASSEMBLIES.json",
@@ -10,10 +9,11 @@
   ],
   "sites": [
     {
-      "id": "thorn_court",
+      "id": "ancient_totem",
       "interaction_anchor": "minecraft:lodestone",
       "assembly_signatures": [
-        "aionbound:hollow_wood"
+        "aionbound:hollow_wood",
+        "minecraft:barrel"
       ],
       "persistent_player_stamp": "landmark:ancient_totem",
       "implemented": [
@@ -29,6 +29,7 @@
       "id": "forest_waystone",
       "interaction_anchor": "minecraft:lodestone",
       "assembly_signatures": [
+        "minecraft:chiseled_stone_bricks",
         "aionbound:glow_moss"
       ],
       "persistent_player_stamp": "landmark:forest_waystone",
@@ -50,23 +51,22 @@
       "interaction_anchor": "minecraft:barrel",
       "assembly_signatures": [
         "aionbound:whisperwood_roots",
-        "aionbound:whisperwood_planks"
+        "minecraft:blackstone"
       ],
       "persistent_player_stamp": "landmark:broken_wagon",
       "transition": "ww_to_ah",
       "implemented": [
         "authored_assembly_resolution",
         "duplicate_safe_player_landmark_stamp",
-        "silent_transition_hook"
+        "codex_state_transition_hook",
+        "approved_ashen_rumor_presentation"
       ],
       "withheld": [
         "ah_map_scrap_item",
-        "rumor_item_or_new_stamp_identity",
-        "rumor_presentation_copy",
-        "loot_table_or_quantities",
+        "rumor_item_identity",
         "Ashen_unlock_effect"
       ],
-      "withhold_reason": "No exact approved Ashen-rumor stamp or presentation identity exists beyond the exact landmark stamp and qualitative ww_to_ah transition."
+      "rumor_text": "East wind smells like a fireplace that never goes out."
     }
   ],
   "handler_composition": "BLOCK_ROUTES invokes ww_progression_site after any route discoveries and does not cancel vanilla lodestone or barrel interaction.",

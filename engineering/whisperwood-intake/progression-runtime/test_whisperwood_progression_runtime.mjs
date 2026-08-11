@@ -8,7 +8,7 @@ import { fileURLToPath, pathToFileURL } from "node:url";
 const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), "../../..");
 const SOURCE = resolve(ROOT, "behavior_pack/scripts");
 const MODULE_DIR = await mkdtemp(resolve(tmpdir(), "aionbound-ww-progression-"));
-for (const name of ["wave1_codex_data", "catalog", "budgets", "state", "structures", "router"]) {
+for (const name of ["wave1_codex_extension_data", "wave1_codex_data", "catalog", "budgets", "state", "structures", "router"]) {
   const source = (await readFile(resolve(SOURCE, `${name}.js`), "utf8"))
     .replaceAll(/from "\.\/([a-z0-9_]+)\.js"/g, 'from "./$1.mjs"');
   await writeFile(resolve(MODULE_DIR, `${name}.mjs`), source);
@@ -53,22 +53,15 @@ function harness() {
   return { blocks, key, player, messages, spawned, makeState, makeStructures };
 }
 
-test("catalog binds only the exact existing progression stamps and no reward identity", () => {
-  assert.deepEqual(catalog.WHISPERWOOD_PROGRESSION_SITES, [
-    {
-      id: "thorn_court", center: "minecraft:lodestone", signatures: ["aionbound:hollow_wood"],
-      stamp: "landmark:ancient_totem", role: "boss_anchor", action: "boss:thorn_court",
-    },
-    {
-      id: "forest_waystone", center: "minecraft:lodestone", signatures: ["aionbound:glow_moss"],
-      stamp: "landmark:forest_waystone", role: "activation",
-    },
-    {
-      id: "broken_wagon", center: "minecraft:barrel", signatures: ["aionbound:whisperwood_roots", "aionbound:whisperwood_planks"],
-      stamp: "landmark:broken_wagon", role: "transition_hook", transition: "ww_to_ah",
-      presentation: "WITHHELD_PENDING_CREATIVE_AUTHORITY",
-    },
+test("catalog binds all ten authored progression sites without reward identities", () => {
+  assert.deepEqual(catalog.WHISPERWOOD_PROGRESSION_SITES.map(site => site.id), [
+    "lantern_post", "moss_cairn", "hunter_camp", "root_bridge", "owl_shrine",
+    "forest_waystone", "hollow_cave_entrance", "ancient_totem", "broken_wagon", "fallen_giant_tree",
   ]);
+  const ancient = catalog.WHISPERWOOD_PROGRESSION_SITES.find(site => site.id === "ancient_totem");
+  assert.equal(ancient.action, "boss:thorn_court");
+  assert.equal(ancient.role, "boss_anchor");
+  assert.equal(catalog.WHISPERWOOD_PROGRESSION_SITES.find(site => site.id === "broken_wagon").presentation, "CODEX_STRUCTURE_STATE_ONLY");
   assert.deepEqual(catalog.BLOCK_ROUTES["minecraft:lodestone"], { discoveries: [], actions: ["ww_progression_site"] });
   assert.deepEqual(catalog.BLOCK_ROUTES["minecraft:barrel"], { discoveries: [], actions: ["ww_progression_site"] });
   assert.equal(JSON.stringify(catalog.WHISPERWOOD_PROGRESSION_SITES).includes("reward"), false);
@@ -79,7 +72,8 @@ test("forest waystone activation is signature-scoped duplicate-safe and persiste
   const h = harness(), anchor = { typeId: "minecraft:lodestone", location: { x: 0, y: 64, z: 0 } };
   let state = h.makeState(), structures = h.makeStructures(state);
   assert.equal(structures.activateProgressionSite({ player: h.player, block: anchor }), false);
-  h.blocks.set(h.key({ x: 1, y: 65, z: 0 }), "aionbound:glow_moss");
+  h.blocks.set(h.key({ x: 0, y: 65, z: 0 }), "minecraft:chiseled_stone_bricks");
+  h.blocks.set(h.key({ x: -1, y: 65, z: 0 }), "aionbound:glow_moss");
   assert.deepEqual(structures.activateProgressionSite({ player: h.player, block: anchor }), {
     site: "forest_waystone", stamp: "landmark:forest_waystone", role: "activation", transition: null, action: null, changed: true,
   });
@@ -91,12 +85,12 @@ test("forest waystone activation is signature-scoped duplicate-safe and persiste
   assert.deepEqual(h.spawned, []);
 });
 
-test("broken wagon records only the exact landmark transition hook and withholds rumor presentation", () => {
+test("broken wagon records the exact landmark transition used by Codex-state rumor presentation", () => {
   const h = harness(), anchor = { typeId: "minecraft:barrel", location: { x: 8, y: 66, z: 3 } };
-  h.blocks.set(h.key({ x: 8, y: 65, z: 3 }), "aionbound:whisperwood_roots");
+  h.blocks.set(h.key({ x: 9, y: 66, z: 2 }), "aionbound:whisperwood_roots");
   const state = h.makeState(), structures = h.makeStructures(state);
   assert.equal(structures.activateProgressionSite({ player: h.player, block: anchor }), false);
-  h.blocks.set(h.key({ x: 7, y: 66, z: 3 }), "aionbound:whisperwood_planks");
+  h.blocks.set(h.key({ x: 7, y: 66, z: 1 }), "minecraft:blackstone");
   assert.deepEqual(structures.activateProgressionSite({ player: h.player, block: anchor }), {
     site: "broken_wagon", stamp: "landmark:broken_wagon", role: "transition_hook", transition: "ww_to_ah", action: null, changed: true,
   });
@@ -122,10 +116,11 @@ test("router keeps progression actions compositional and ordinary anchors are ha
 
 test("ancient totem signature alone exposes the ratified Thorn Court action", () => {
   const h = harness(), anchor = { typeId: "minecraft:lodestone", location: { x: 0, y: 64, z: 0 } };
-  h.blocks.set(h.key({ x: 1, y: 64, z: 1 }), "aionbound:hollow_wood");
+  h.blocks.set(h.key({ x: 0, y: 65, z: 0 }), "aionbound:hollow_wood");
+  h.blocks.set(h.key({ x: -2, y: 64, z: 2 }), "minecraft:barrel");
   const structures = h.makeStructures(h.makeState());
   assert.deepEqual(structures.activateProgressionSite({ player: h.player, block: anchor }), {
-    site: "thorn_court", stamp: "landmark:ancient_totem", role: "boss_anchor", transition: null,
+    site: "ancient_totem", stamp: "landmark:ancient_totem", role: "boss_anchor", transition: null,
     action: "boss:thorn_court", changed: true,
   });
 });
@@ -133,7 +128,7 @@ test("ancient totem signature alone exposes the ratified Thorn Court action", ()
 test("runtime binds the progression action without loot or cancellation", async () => {
   const runtime = await readFile(resolve(SOURCE, "runtime.js"), "utf8");
   const structures = await readFile(resolve(SOURCE, "structures.js"), "utf8");
-  assert.equal(runtime.includes('if (site?.action === "boss:thorn_court") thornCourt.begin'), true);
+  assert.equal(runtime.includes('if (activation.action === "boss:thorn_court") thornCourt.begin'), true);
   assert.equal(structures.includes("spawnItem(new ItemStack(reward[0]"), true);
   const activationStart = structures.indexOf("function activateProgressionSite");
   const activationEnd = structures.indexOf("function claimSite", activationStart);
