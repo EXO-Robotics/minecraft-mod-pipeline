@@ -1,0 +1,42 @@
+{
+  "name": "lantern_bloom",
+  "display_name": "Lantern Bloom",
+  "sprint": "asset_sprint_001_whisperwood_p0",
+  "tier": "PLANT",
+  "role": "Ground flower cup with amber glow core",
+  "profile": "plant",
+  "model_identifier": "geometry.aionforge_ww.lantern_bloom",
+  "cube_count": 13,
+  "bone_count": 4,
+  "density_floor": 12,
+  "locators": [
+    "effect"
+  ],
+  "palette": {
+    "metal": [
+      74,
+      52,
+      40
+    ],
+    "accent": [
+      61,
+      107,
+      79
+    ],
+    "energy": [
+      196,
+      122,
+      40
+    ]
+  },
+  "animations": [
+    "glow_idle"
+  ],
+  "minecraft_scale": "0.6\u20130.8",
+  "texture_resolution": "16\u201332",
+  "production_priority": "P0",
+  "related_assets": "lantern post amber; moss resin",
+  "originality": "Clean-room Whisperwood P0 manufacture; no third-party ports",
+  "editable": "assets/editable/lantern_bloom.bbmodel",
+  "claims_boundary": "Visual production only. No BP/JSON/AI/gameplay."
+}

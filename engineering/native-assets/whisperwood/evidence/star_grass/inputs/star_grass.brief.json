@@ -1,0 +1,42 @@
+{
+  "name": "star_grass",
+  "display_name": "Star Grass",
+  "sprint": "asset_sprint_001_whisperwood_p1",
+  "tier": "PLANT",
+  "role": "Tall grass with moon-sap star tips",
+  "profile": "plant",
+  "model_identifier": "geometry.aionforge_ww.star_grass",
+  "cube_count": 11,
+  "bone_count": 3,
+  "density_floor": 11,
+  "locators": [
+    "effect"
+  ],
+  "palette": {
+    "metal": [
+      74,
+      52,
+      40
+    ],
+    "accent": [
+      111,
+      168,
+      122
+    ],
+    "energy": [
+      232,
+      217,
+      160
+    ]
+  },
+  "animations": [
+    "wind_sway"
+  ],
+  "minecraft_scale": "0.8\u20131.2",
+  "texture_resolution": "16",
+  "production_priority": "P1",
+  "related_assets": "moon_sap",
+  "originality": "Clean-room Whisperwood P1 manufacture",
+  "editable": "assets/editable/star_grass.bbmodel",
+  "claims_boundary": "Visual production only. No BP/JSON/AI/gameplay."
+}
