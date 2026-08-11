@@ -1,0 +1,34 @@
+{
+  "format_version": "1.20.10",
+  "minecraft:recipe_shapeless": {
+    "description": {
+      "identifier": "aionbound:explorer_cloak_recipe"
+    },
+    "tags": [
+      "crafting_table"
+    ],
+    "ingredients": [
+      {
+        "item": "aionbound:wet_chitin"
+      },
+      {
+        "item": "aionbound:wet_chitin"
+      },
+      {
+        "item": "aionbound:whisper_bark"
+      },
+      {
+        "item": "aionbound:glass_algae"
+      }
+    ],
+    "result": {
+      "item": "aionbound:explorer_cloak",
+      "count": 1
+    },
+    "unlock": [
+      {
+        "item": "aionbound:wet_chitin"
+      }
+    ]
+  }
+}

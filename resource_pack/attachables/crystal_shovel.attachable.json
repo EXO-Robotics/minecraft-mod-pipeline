@@ -1,0 +1,29 @@
+{
+  "format_version": "1.10.0",
+  "minecraft:attachable": {
+    "description": {
+      "identifier": "aionbound:crystal_shovel",
+      "materials": {
+        "default": "entity_alphatest"
+      },
+      "textures": {
+        "default": "textures/aionbound/crystal_marsh/equipment/models/crystal_shovel"
+      },
+      "geometry": {
+        "default": "geometry.aionbound.crystal_shovel"
+      },
+      "render_controllers": [
+        "controller.render.aionbound.default"
+      ],
+      "animations": {
+        "dig": "animation.aionbound.crystal_shovel.dig",
+        "hold": "animation.aionbound.crystal_shovel.hold"
+      },
+      "scripts": {
+        "animate": [
+          "hold"
+        ]
+      }
+    }
+  }
+}

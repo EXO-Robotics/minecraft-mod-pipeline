@@ -1,0 +1,46 @@
+{
+  "pools": [
+    {
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "item",
+          "name": "aionbound:prism_bloom",
+          "weight": 1
+        }
+      ]
+    },
+    {
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "item",
+          "name": "aionbound:flood_crystal",
+          "weight": 1
+        }
+      ],
+      "conditions": [
+        {
+          "condition": "random_chance",
+          "chance": 0.4
+        }
+      ]
+    },
+    {
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "item",
+          "name": "aionbound:prism_pearl",
+          "weight": 1
+        }
+      ],
+      "conditions": [
+        {
+          "condition": "random_chance",
+          "chance": 0.08
+        }
+      ]
+    }
+  ]
+}

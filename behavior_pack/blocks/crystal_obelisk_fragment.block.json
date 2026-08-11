@@ -1,0 +1,63 @@
+{
+  "format_version": "1.21.80",
+  "minecraft:block": {
+    "description": {
+      "identifier": "aionbound:crystal_obelisk_fragment",
+      "menu_category": {
+        "category": "construction"
+      }
+    },
+    "components": {
+      "minecraft:display_name": "Crystal Obelisk Fragment",
+      "minecraft:collision_box": {
+        "origin": [
+          -6,
+          0,
+          -6
+        ],
+        "size": [
+          12,
+          12,
+          12
+        ]
+      },
+      "minecraft:selection_box": {
+        "origin": [
+          -7,
+          0,
+          -7
+        ],
+        "size": [
+          14,
+          14,
+          14
+        ]
+      },
+      "minecraft:geometry": "geometry.aionbound.crystal_obelisk_fragment",
+      "minecraft:material_instances": {
+        "*": {
+          "texture": "crystal_obelisk_fragment",
+          "render_method": "alpha_test"
+        }
+      },
+      "minecraft:placement_filter": {
+        "conditions": [
+          {
+            "allowed_faces": [
+              "up"
+            ],
+            "block_filter": [
+              "minecraft:stone",
+              "minecraft:mud",
+              "minecraft:clay",
+              "aionbound:crystal_stone",
+              "aionbound:prism_brick",
+              "aionbound:marsh_soil"
+            ]
+          }
+        ]
+      },
+      "minecraft:loot": "loot_tables/blocks/crystal_obelisk_fragment.json"
+    }
+  }
+}

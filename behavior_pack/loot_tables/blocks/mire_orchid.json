@@ -1,0 +1,30 @@
+{
+  "pools": [
+    {
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "item",
+          "name": "aionbound:mire_orchid",
+          "weight": 1
+        }
+      ]
+    },
+    {
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "item",
+          "name": "aionbound:mire_bloom_item",
+          "weight": 1
+        }
+      ],
+      "conditions": [
+        {
+          "condition": "random_chance",
+          "chance": 0.75
+        }
+      ]
+    }
+  ]
+}

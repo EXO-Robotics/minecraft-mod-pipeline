@@ -1,0 +1,28 @@
+{
+  "format_version": "1.10.0",
+  "minecraft:attachable": {
+    "description": {
+      "identifier": "aionbound:explorer_cloak",
+      "materials": {
+        "default": "entity_alphatest"
+      },
+      "textures": {
+        "default": "textures/aionbound/crystal_marsh/equipment/models/explorer_cloak"
+      },
+      "geometry": {
+        "default": "geometry.aionbound.explorer_cloak"
+      },
+      "render_controllers": [
+        "controller.render.aionbound.default"
+      ],
+      "animations": {
+        "idle_sway": "animation.aionbound.explorer_cloak.idle_sway"
+      },
+      "scripts": {
+        "animate": [
+          "idle_sway"
+        ]
+      }
+    }
+  }
+}

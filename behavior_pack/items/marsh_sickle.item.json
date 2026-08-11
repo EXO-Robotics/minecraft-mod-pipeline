@@ -1,0 +1,88 @@
+{
+  "format_version": "1.21.80",
+  "minecraft:item": {
+    "description": {
+      "identifier": "aionbound:marsh_sickle",
+      "menu_category": {
+        "category": "equipment"
+      }
+    },
+    "components": {
+      "minecraft:display_name": {
+        "value": "Marsh Sickle"
+      },
+      "minecraft:icon": {
+        "textures": {
+          "default": "marsh_sickle"
+        }
+      },
+      "minecraft:max_stack_size": 1,
+      "minecraft:hand_equipped": true,
+      "minecraft:damage": 4,
+      "minecraft:durability": {
+        "max_durability": 320
+      },
+      "minecraft:digger": {
+        "destroy_speeds": [
+          {
+            "block": {
+              "tags": "query.any_tag('plant', 'leaves')"
+            },
+            "speed": 6
+          },
+          {
+            "block": "aionbound:pearl_grass",
+            "speed": 8
+          },
+          {
+            "block": "aionbound:marsh_fern",
+            "speed": 8
+          },
+          {
+            "block": "aionbound:flood_reed",
+            "speed": 8
+          },
+          {
+            "block": "aionbound:glass_moss",
+            "speed": 8
+          },
+          {
+            "block": "aionbound:glow_kelp",
+            "speed": 8
+          },
+          {
+            "block": "aionbound:bubble_pod",
+            "speed": 8
+          },
+          {
+            "block": "aionbound:crystal_lily",
+            "speed": 8
+          },
+          {
+            "block": "aionbound:crystal_vine",
+            "speed": 8
+          },
+          {
+            "block": "aionbound:mire_orchid",
+            "speed": 8
+          },
+          {
+            "block": "aionbound:prism_bloom",
+            "speed": 8
+          }
+        ],
+        "use_efficiency": true
+      },
+      "minecraft:repairable": {
+        "repair_items": [
+          {
+            "items": [
+              "aionbound:wet_plate"
+            ],
+            "repair_amount": 64
+          }
+        ]
+      }
+    }
+  }
+}

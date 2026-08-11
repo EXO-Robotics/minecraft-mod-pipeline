@@ -1,0 +1,29 @@
+{
+  "format_version": "1.10.0",
+  "minecraft:attachable": {
+    "description": {
+      "identifier": "aionbound:crystal_pike",
+      "materials": {
+        "default": "entity_alphatest"
+      },
+      "textures": {
+        "default": "textures/aionbound/crystal_marsh/equipment/models/crystal_pike"
+      },
+      "geometry": {
+        "default": "geometry.aionbound.crystal_pike"
+      },
+      "render_controllers": [
+        "controller.render.aionbound.default"
+      ],
+      "animations": {
+        "idle_hold": "animation.aionbound.crystal_pike.idle_hold",
+        "thrust_pose": "animation.aionbound.crystal_pike.thrust_pose"
+      },
+      "scripts": {
+        "animate": [
+          "idle_hold"
+        ]
+      }
+    }
+  }
+}

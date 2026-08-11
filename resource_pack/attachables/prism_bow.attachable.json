@@ -1,0 +1,30 @@
+{
+  "format_version": "1.10.0",
+  "minecraft:attachable": {
+    "description": {
+      "identifier": "aionbound:prism_bow",
+      "materials": {
+        "default": "entity_alphatest"
+      },
+      "textures": {
+        "default": "textures/aionbound/crystal_marsh/equipment/models/prism_bow"
+      },
+      "geometry": {
+        "default": "geometry.aionbound.prism_bow"
+      },
+      "render_controllers": [
+        "controller.render.aionbound.default"
+      ],
+      "animations": {
+        "draw_pose": "animation.aionbound.prism_bow.draw_pose",
+        "fire_pose": "animation.aionbound.prism_bow.fire_pose",
+        "idle_hold": "animation.aionbound.prism_bow.idle_hold"
+      },
+      "scripts": {
+        "animate": [
+          "idle_hold"
+        ]
+      }
+    }
+  }
+}

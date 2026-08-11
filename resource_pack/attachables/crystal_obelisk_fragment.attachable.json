@@ -1,0 +1,28 @@
+{
+  "format_version": "1.10.0",
+  "minecraft:attachable": {
+    "description": {
+      "identifier": "aionbound:crystal_obelisk_fragment",
+      "materials": {
+        "default": "entity_alphatest"
+      },
+      "textures": {
+        "default": "textures/aionbound/crystal_marsh/equipment/models/crystal_obelisk_fragment"
+      },
+      "geometry": {
+        "default": "geometry.aionbound.crystal_obelisk_fragment"
+      },
+      "render_controllers": [
+        "controller.render.aionbound.default"
+      ],
+      "animations": {
+        "pulse": "animation.aionbound.crystal_obelisk_fragment.pulse"
+      },
+      "scripts": {
+        "animate": [
+          "pulse"
+        ]
+      }
+    }
+  }
+}

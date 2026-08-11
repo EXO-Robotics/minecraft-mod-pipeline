@@ -1,0 +1,36 @@
+{
+  "pools": [
+    {
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "item",
+          "name": "aionbound:flood_crystal",
+          "weight": 1
+        }
+      ],
+      "conditions": [
+        {
+          "condition": "random_chance",
+          "chance": 0.75
+        }
+      ]
+    },
+    {
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "item",
+          "name": "aionbound:prism_wing",
+          "weight": 1
+        }
+      ],
+      "conditions": [
+        {
+          "condition": "random_chance",
+          "chance": 0.35
+        }
+      ]
+    }
+  ]
+}

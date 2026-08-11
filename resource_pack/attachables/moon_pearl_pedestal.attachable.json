@@ -1,0 +1,28 @@
+{
+  "format_version": "1.10.0",
+  "minecraft:attachable": {
+    "description": {
+      "identifier": "aionbound:moon_pearl_pedestal",
+      "materials": {
+        "default": "entity_alphatest"
+      },
+      "textures": {
+        "default": "textures/aionbound/crystal_marsh/equipment/models/moon_pearl_pedestal"
+      },
+      "geometry": {
+        "default": "geometry.aionbound.moon_pearl_pedestal"
+      },
+      "render_controllers": [
+        "controller.render.aionbound.default"
+      ],
+      "animations": {
+        "soft_pulse": "animation.aionbound.moon_pearl_pedestal.soft_pulse"
+      },
+      "scripts": {
+        "animate": [
+          "soft_pulse"
+        ]
+      }
+    }
+  }
+}

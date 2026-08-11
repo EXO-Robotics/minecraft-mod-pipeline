@@ -1,0 +1,242 @@
+{
+  "schema": "aionforge.wave1.crystal_marsh.economy_equipment.v1",
+  "status": "SOURCE_COMPLETE_TARGETED_STATIC_PASS",
+  "base": {
+    "commit": "6a10cd8a82635299ae62ab8f6b9095c9b793c7a3",
+    "tree": "689fa214ae21ab9739a8b6710fdbb5bb00ebeaeb"
+  },
+  "authority": [
+    "W1-001-CM",
+    "W1-004-CM"
+  ],
+  "w1_creative_005": "DEFERRED_UNCHANGED_NO_SIDEGRADES",
+  "counts": {
+    "equipment": 11,
+    "components_and_new_drops": 6,
+    "recipes": 12,
+    "entity_tables": 10,
+    "plant_tables": 10,
+    "resource_block_tables": 10,
+    "structure_tables": 8
+  },
+  "ecology_guard": {
+    "natural_marsh_wight_table": "loot_tables/entities/crystal/marsh_wight.json",
+    "forbidden": [
+      "aionbound:marsh_wight_mask",
+      "Pearl Depths completion",
+      "seal credit",
+      "reward entitlement"
+    ]
+  },
+  "protected_pearl_depths": {
+    "material_table": "loot_tables/encounters/crystal/pearl_depths_materials.json",
+    "apex_chest": "loot_tables/chests/crystal/pearl_depths.json",
+    "contains_mask": false,
+    "static_structure_binding": false,
+    "terminal_owner": "PEARL_DEPTHS_SERVICE_ONLY"
+  },
+  "mastery": {
+    "optional_only": [
+      "aionbound:moon_pearl_pedestal",
+      "aionbound:crystal_obelisk_fragment",
+      "aionbound:marsh_idol"
+    ],
+    "pilgrim_seal_substitute": false
+  },
+  "post_merge_bindings": {
+    "entities": "add minecraft:loot to the ten creature BP definitions after creature-lane merge",
+    "plants": "plant lane owns minecraft:loot components pointing to these ten committed tables",
+    "ordinary_structure_nbt": "bind only seven ordinary barrel anchors; keep deep_pool_entrance protected cache empty"
+  },
+  "artifacts": [
+    {
+      "path": "behavior_pack/blocks/crystal_obelisk_fragment.block.json",
+      "sha256": "4d060d159487bfe559d87490fc8601a41e02e96cac574ca8795034afe6c3adfc"
+    },
+    {
+      "path": "behavior_pack/blocks/marsh_wight_mask.block.json",
+      "sha256": "05476ee511cbb6f5d039ff4b9fbd25de68a7ab53ad9834cadd2ae3a14684cf7c"
+    },
+    {
+      "path": "behavior_pack/blocks/moon_pearl_pedestal.block.json",
+      "sha256": "ff07aee54f049168670f73e5f0b335e9a5ed83e7636c2dc353f12211db8965ad"
+    },
+    {
+      "path": "behavior_pack/items/crystal_circlet.item.json",
+      "sha256": "637c333d158c629c323da93b9217388080ae87a571ff5a162113280030a5d344"
+    },
+    {
+      "path": "behavior_pack/items/crystal_pike.item.json",
+      "sha256": "40db09090145b1f95457685596e9348572a6ea3c83040fb771bf50e69597db06"
+    },
+    {
+      "path": "behavior_pack/items/crystal_pole.item.json",
+      "sha256": "a817f19a65ed0e9a3e49e3b998570b8a0234b18df483ccc6597631967816a6c0"
+    },
+    {
+      "path": "behavior_pack/items/crystal_shovel.item.json",
+      "sha256": "b3c1c6991c0c14c15ec0d18d6a3d0d8c62b9dc928ba55c1ce6011e1241bc2304"
+    },
+    {
+      "path": "behavior_pack/items/crystal_talisman.item.json",
+      "sha256": "a892f726eb6ef4de8c35ec86d473a6b4b0e62c143489fe8fcf4a6df29edf7383"
+    },
+    {
+      "path": "behavior_pack/items/explorer_cloak.item.json",
+      "sha256": "febdf87e106f1da0dbcc305f07540e0042768d6983645b95232a04a1cc94aa03"
+    },
+    {
+      "path": "behavior_pack/items/living_crystal_core.item.json",
+      "sha256": "72771562d4e4426397f67ca08cfdc9578d1ee2ce400cb0b4a9881c490d8c592e"
+    },
+    {
+      "path": "behavior_pack/items/marsh_idol.item.json",
+      "sha256": "f0ca37aa8f3109c87c5b1e8e7ce4fae5b312ab6200da847bb139f92171271895"
+    },
+    {
+      "path": "behavior_pack/items/marsh_sickle.item.json",
+      "sha256": "2acc51f6d9d86db9f87d5aef6439ca6cd357275f7adf7bd4333b361207b195b8"
+    },
+    {
+      "path": "behavior_pack/items/prism_bow.item.json",
+      "sha256": "804e86f78521c8cdad63ff1a7c22f9eb243ef3866a4685c670a38098a8120919"
+    },
+    {
+      "path": "behavior_pack/items/prism_wing.item.json",
+      "sha256": "655252f96b3727c3ad7ffcfc1eb4d4a0ecab21738dbed69b09cfb55403d21c35"
+    },
+    {
+      "path": "behavior_pack/items/watcher_lens.item.json",
+      "sha256": "5808e82d96cdd9b7ddf7a5fa565711bf2410f0a9bf0537732db37cbcde2a620e"
+    },
+    {
+      "path": "behavior_pack/items/wet_plate.item.json",
+      "sha256": "d31a70faf762e97028659b318a097ebdaf7f351635be73c5731ee95465f14fd2"
+    },
+    {
+      "path": "behavior_pack/items/wight_shroud.item.json",
+      "sha256": "72668ad1fb2324852a083e28bb9834cdd4e66e28d8504bd6b4124beba52b2e78"
+    },
+    {
+      "path": "behavior_pack/loot_tables/chests/crystal/ancient_boat.json",
+      "sha256": "c256d590588bbbd5ccb920f5aea038304d7160fe86331b475d12fdb10b7d6523"
+    },
+    {
+      "path": "behavior_pack/loot_tables/chests/crystal/crystal_arch.json",
+      "sha256": "a001e4a92f4c203c4e4e60ffe0314adfc9d851ffcef9255c3eb301c7cbd9e826"
+    },
+    {
+      "path": "behavior_pack/loot_tables/chests/crystal/crystal_obelisk.json",
+      "sha256": "2a8c5514e56530da6508e1f53c7168c8bfb21d9eab283c6b71c3a0392fa1f82f"
+    },
+    {
+      "path": "behavior_pack/loot_tables/chests/crystal/flooded_dock.json",
+      "sha256": "bc92b8028131c14f0b45c5a5a934da3f4bf2d13418cc4c55993385cce30683c2"
+    },
+    {
+      "path": "behavior_pack/loot_tables/chests/crystal/marsh_broken_bridge.json",
+      "sha256": "76ba12192f22c22eb951097bf0b42aff4c86df28ed8fffb6381a2c3c285a175b"
+    },
+    {
+      "path": "behavior_pack/loot_tables/chests/crystal/pearl_cairn.json",
+      "sha256": "085517c2fa2b0cde73977e27fb725849814efd87e104e4ffabed9392a1e669c0"
+    },
+    {
+      "path": "behavior_pack/loot_tables/chests/crystal/pearl_depths.json",
+      "sha256": "bf2f71e1f59604e9e000d121f025b3e79584aa09d597f994c55e19416d4e9d4d"
+    },
+    {
+      "path": "behavior_pack/loot_tables/chests/crystal/ruined_observatory.json",
+      "sha256": "389855ee1c84135302c2afc30c536a2464b0c2103e892a8843c40d59547f58b6"
+    },
+    {
+      "path": "behavior_pack/loot_tables/entities/crystal/bloom_crab.json",
+      "sha256": "0cc531ebfb356648de789cf8b0349487cf6425d1c5b69b61374d1250bf84d259"
+    },
+    {
+      "path": "behavior_pack/loot_tables/entities/crystal/bog_watcher.json",
+      "sha256": "8ae4fdd0d58c1f96892fb6f56a5898a9b13eb4653b90f34bf106c58b03b3958c"
+    },
+    {
+      "path": "behavior_pack/loot_tables/entities/crystal/crystal_dragonfly.json",
+      "sha256": "28b539b8371030ac14f4614841b40a89d9366cc5ab3ec4667e2d36849478fedb"
+    },
+    {
+      "path": "behavior_pack/loot_tables/entities/crystal/crystal_newt.json",
+      "sha256": "3e07a4ce7e084b93afff2b16b355c9181ca4d954f987ab84d18573f1f074f268"
+    },
+    {
+      "path": "behavior_pack/loot_tables/entities/crystal/glass_heron.json",
+      "sha256": "d61f93c89c23012884dffa3db2f3004c6d43bbd9caca0f7311a9a13dabc0dd63"
+    },
+    {
+      "path": "behavior_pack/loot_tables/entities/crystal/marsh_wight.json",
+      "sha256": "d1d7125ca5db987f5d54a22bc32fe3d75b75967c8c033d1199cd3a6d7bd9ac1e"
+    },
+    {
+      "path": "behavior_pack/loot_tables/entities/crystal/mire_turtle.json",
+      "sha256": "0fe3d55c1084e1485cdbac4bdef2adc8725494d04a47651d7a588ffa72ad4d21"
+    },
+    {
+      "path": "behavior_pack/loot_tables/entities/crystal/prism_frog.json",
+      "sha256": "658f80182a05f2d1f1f75465917a2d47f108430acc398f70a96d1e9fb554aace"
+    },
+    {
+      "path": "behavior_pack/loot_tables/entities/crystal/reed_serpent.json",
+      "sha256": "e7f4f81e9553af2eac3cc7cb98f06cd5cd47256f3fc0ff6b40ad4fe3da041b4d"
+    },
+    {
+      "path": "behavior_pack/loot_tables/entities/crystal/silt_crocodile.json",
+      "sha256": "bfe55cb63b1865b287b8cbe3889cb532210c92429c5a197e0fbd54e5271ab8ae"
+    },
+    {
+      "path": "behavior_pack/recipes/crystal_circlet.recipe.json",
+      "sha256": "2cc04a623ce78d982c0fdbc65cb4150537f70f2876d192b8c1d91372269f9108"
+    },
+    {
+      "path": "behavior_pack/recipes/crystal_pike.recipe.json",
+      "sha256": "d93f35cdb3ec39a068893bc3f65a3279eb2d52901ab40fd1b8d77623d2377680"
+    },
+    {
+      "path": "behavior_pack/recipes/crystal_pole.recipe.json",
+      "sha256": "ef2354ef5edd739722ffba4338a51c631ab5a89a841437151c632406c8731313"
+    },
+    {
+      "path": "behavior_pack/recipes/crystal_shovel.recipe.json",
+      "sha256": "43cb43b1724f98827bbd5df69cfcb745463c0d45d1bb457630b9d6211a614c78"
+    },
+    {
+      "path": "behavior_pack/recipes/crystal_talisman.recipe.json",
+      "sha256": "80517beeca0a0c9efea59e343288da6a2f0a000e11e2354478515264efe0839f"
+    },
+    {
+      "path": "behavior_pack/recipes/explorer_cloak.recipe.json",
+      "sha256": "81937e72d943d910b811369a4bae8924209debac7b4c3b55b65a5705b2b47de8"
+    },
+    {
+      "path": "behavior_pack/recipes/living_crystal_core.recipe.json",
+      "sha256": "f1e86728c4458252abe2b20ef282b79660e7c4554b36ae2ad5ff0b8f31e06f06"
+    },
+    {
+      "path": "behavior_pack/recipes/marsh_idol.recipe.json",
+      "sha256": "2c79ae390153a2bbc440dc74fcf5ad7df7969d065d76c21d3f22726444dad5bc"
+    },
+    {
+      "path": "behavior_pack/recipes/marsh_sickle.recipe.json",
+      "sha256": "eb9fd52c2127c6f0106f1851e568c5250cf8c67c79975f43671da353abe2814b"
+    },
+    {
+      "path": "behavior_pack/recipes/moon_pearl_pedestal.recipe.json",
+      "sha256": "bf7c5826f2251026605b80bad22623effe1d004a273aab9a8b6cd66a036151dd"
+    },
+    {
+      "path": "behavior_pack/recipes/prism_bow.recipe.json",
+      "sha256": "2250bb19bb44ed3634c641f337ebb2248e424d94f701a6aaeac8431d27bc0bf1"
+    },
+    {
+      "path": "behavior_pack/recipes/wet_plate.recipe.json",
+      "sha256": "22d763a297c5a6c53eaeda5f512b12319be8665882237667a56d2c5bbda145f4"
+    }
+  ],
+  "proof_boundary": "STATIC JSON, NATIVE PASS-2 BYTE BINDING, PNG DECODE, ECONOMY ENVELOPE, AND SEMANTIC TESTS ONLY; NO SHARED RUNTIME, BDS, CLIENT, MULTIPLAYER, CONSOLE, CANDIDATE, OR TERMINAL REWARD PROOF"
+}

@@ -1,0 +1,31 @@
+{
+  "format_version": "1.20.10",
+  "minecraft:recipe_shapeless": {
+    "description": {
+      "identifier": "aionbound:marsh_sickle_recipe"
+    },
+    "tags": [
+      "crafting_table"
+    ],
+    "ingredients": [
+      {
+        "item": "aionbound:wet_plate"
+      },
+      {
+        "item": "aionbound:flood_crystal"
+      },
+      {
+        "item": "aionbound:crystal_reed_item"
+      }
+    ],
+    "result": {
+      "item": "aionbound:marsh_sickle",
+      "count": 1
+    },
+    "unlock": [
+      {
+        "item": "aionbound:wet_plate"
+      }
+    ]
+  }
+}

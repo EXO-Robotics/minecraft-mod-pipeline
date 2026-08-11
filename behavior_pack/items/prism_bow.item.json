@@ -1,0 +1,45 @@
+{
+  "format_version": "1.21.80",
+  "minecraft:item": {
+    "description": {
+      "identifier": "aionbound:prism_bow",
+      "menu_category": {
+        "category": "equipment"
+      }
+    },
+    "components": {
+      "minecraft:display_name": {
+        "value": "Prism Bow"
+      },
+      "minecraft:icon": {
+        "textures": {
+          "default": "prism_bow"
+        }
+      },
+      "minecraft:max_stack_size": 1,
+      "minecraft:hand_equipped": true,
+      "minecraft:damage": 4,
+      "minecraft:durability": {
+        "max_durability": 420
+      },
+      "minecraft:cooldown": {
+        "category": "aionbound_prism_bow",
+        "duration": 1.0
+      },
+      "minecraft:use_modifiers": {
+        "use_duration": 0.5,
+        "movement_modifier": 0.65
+      },
+      "minecraft:repairable": {
+        "repair_items": [
+          {
+            "items": [
+              "aionbound:prism_wing"
+            ],
+            "repair_amount": 70
+          }
+        ]
+      }
+    }
+  }
+}

@@ -1,0 +1,60 @@
+{
+  "format_version": "1.21.80",
+  "minecraft:item": {
+    "description": {
+      "identifier": "aionbound:crystal_shovel",
+      "menu_category": {
+        "category": "equipment"
+      }
+    },
+    "components": {
+      "minecraft:display_name": {
+        "value": "Crystal Shovel"
+      },
+      "minecraft:icon": {
+        "textures": {
+          "default": "crystal_shovel"
+        }
+      },
+      "minecraft:max_stack_size": 1,
+      "minecraft:hand_equipped": true,
+      "minecraft:damage": 4,
+      "minecraft:durability": {
+        "max_durability": 360
+      },
+      "minecraft:digger": {
+        "destroy_speeds": [
+          {
+            "block": {
+              "tags": "query.any_tag('dirt', 'sand', 'gravel')"
+            },
+            "speed": 6
+          },
+          {
+            "block": "aionbound:marsh_soil",
+            "speed": 8
+          },
+          {
+            "block": "aionbound:wet_clay_block",
+            "speed": 8
+          },
+          {
+            "block": "aionbound:crystal_gravel",
+            "speed": 8
+          }
+        ],
+        "use_efficiency": true
+      },
+      "minecraft:repairable": {
+        "repair_items": [
+          {
+            "items": [
+              "aionbound:silt_core"
+            ],
+            "repair_amount": 72
+          }
+        ]
+      }
+    }
+  }
+}

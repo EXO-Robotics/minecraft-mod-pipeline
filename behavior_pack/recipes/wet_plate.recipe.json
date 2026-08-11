@@ -1,0 +1,31 @@
+{
+  "format_version": "1.20.10",
+  "minecraft:recipe_shapeless": {
+    "description": {
+      "identifier": "aionbound:wet_plate_recipe"
+    },
+    "tags": [
+      "crafting_table"
+    ],
+    "ingredients": [
+      {
+        "item": "aionbound:wet_chitin"
+      },
+      {
+        "item": "aionbound:wet_chitin"
+      },
+      {
+        "item": "aionbound:marsh_resin"
+      }
+    ],
+    "result": {
+      "item": "aionbound:wet_plate",
+      "count": 1
+    },
+    "unlock": [
+      {
+        "item": "aionbound:wet_chitin"
+      }
+    ]
+  }
+}

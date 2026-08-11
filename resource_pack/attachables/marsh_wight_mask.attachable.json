@@ -1,0 +1,28 @@
+{
+  "format_version": "1.10.0",
+  "minecraft:attachable": {
+    "description": {
+      "identifier": "aionbound:marsh_wight_mask",
+      "materials": {
+        "default": "entity_alphatest"
+      },
+      "textures": {
+        "default": "textures/aionbound/crystal_marsh/equipment/models/marsh_wight_mask"
+      },
+      "geometry": {
+        "default": "geometry.aionbound.marsh_wight_mask"
+      },
+      "render_controllers": [
+        "controller.render.aionbound.default"
+      ],
+      "animations": {
+        "eye_glow": "animation.aionbound.marsh_wight_mask.eye_glow"
+      },
+      "scripts": {
+        "animate": [
+          "eye_glow"
+        ]
+      }
+    }
+  }
+}

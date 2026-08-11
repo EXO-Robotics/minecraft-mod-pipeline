@@ -1,0 +1,31 @@
+{
+  "format_version": "1.20.10",
+  "minecraft:recipe_shapeless": {
+    "description": {
+      "identifier": "aionbound:marsh_idol_recipe"
+    },
+    "tags": [
+      "crafting_table"
+    ],
+    "ingredients": [
+      {
+        "item": "aionbound:marsh_wood"
+      },
+      {
+        "item": "aionbound:mire_orchid"
+      },
+      {
+        "item": "aionbound:marsh_resin"
+      }
+    ],
+    "result": {
+      "item": "aionbound:marsh_idol",
+      "count": 1
+    },
+    "unlock": [
+      {
+        "item": "aionbound:marsh_wood"
+      }
+    ]
+  }
+}

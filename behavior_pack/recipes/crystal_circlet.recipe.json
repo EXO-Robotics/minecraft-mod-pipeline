@@ -1,0 +1,31 @@
+{
+  "format_version": "1.20.10",
+  "minecraft:recipe_shapeless": {
+    "description": {
+      "identifier": "aionbound:crystal_circlet_recipe"
+    },
+    "tags": [
+      "crafting_table"
+    ],
+    "ingredients": [
+      {
+        "item": "aionbound:living_crystal_core"
+      },
+      {
+        "item": "aionbound:watcher_lens"
+      },
+      {
+        "item": "aionbound:widow_silk"
+      }
+    ],
+    "result": {
+      "item": "aionbound:crystal_circlet",
+      "count": 1
+    },
+    "unlock": [
+      {
+        "item": "aionbound:living_crystal_core"
+      }
+    ]
+  }
+}

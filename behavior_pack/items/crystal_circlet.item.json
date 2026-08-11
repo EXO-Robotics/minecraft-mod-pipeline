@@ -1,0 +1,39 @@
+{
+  "format_version": "1.21.80",
+  "minecraft:item": {
+    "description": {
+      "identifier": "aionbound:crystal_circlet",
+      "menu_category": {
+        "category": "equipment"
+      }
+    },
+    "components": {
+      "minecraft:display_name": {
+        "value": "Crystal Circlet"
+      },
+      "minecraft:icon": {
+        "textures": {
+          "default": "crystal_circlet"
+        }
+      },
+      "minecraft:max_stack_size": 1,
+      "minecraft:durability": {
+        "max_durability": 210
+      },
+      "minecraft:repairable": {
+        "repair_items": [
+          {
+            "items": [
+              "aionbound:living_crystal_core"
+            ],
+            "repair_amount": 42
+          }
+        ]
+      },
+      "minecraft:wearable": {
+        "slot": "slot.armor.head",
+        "protection": 2
+      }
+    }
+  }
+}

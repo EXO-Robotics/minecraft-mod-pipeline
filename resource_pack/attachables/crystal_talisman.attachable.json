@@ -1,0 +1,28 @@
+{
+  "format_version": "1.10.0",
+  "minecraft:attachable": {
+    "description": {
+      "identifier": "aionbound:crystal_talisman",
+      "materials": {
+        "default": "entity_alphatest"
+      },
+      "textures": {
+        "default": "textures/aionbound/crystal_marsh/equipment/models/crystal_talisman"
+      },
+      "geometry": {
+        "default": "geometry.aionbound.crystal_talisman"
+      },
+      "render_controllers": [
+        "controller.render.aionbound.default"
+      ],
+      "animations": {
+        "pulse": "animation.aionbound.crystal_talisman.pulse"
+      },
+      "scripts": {
+        "animate": [
+          "pulse"
+        ]
+      }
+    }
+  }
+}

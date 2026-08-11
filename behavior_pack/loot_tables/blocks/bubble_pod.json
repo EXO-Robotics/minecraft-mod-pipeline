@@ -1,0 +1,30 @@
+{
+  "pools": [
+    {
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "item",
+          "name": "aionbound:bubble_pod",
+          "weight": 1
+        }
+      ]
+    },
+    {
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "item",
+          "name": "aionbound:marsh_resin",
+          "weight": 1
+        }
+      ],
+      "conditions": [
+        {
+          "condition": "random_chance",
+          "chance": 0.25
+        }
+      ]
+    }
+  ]
+}

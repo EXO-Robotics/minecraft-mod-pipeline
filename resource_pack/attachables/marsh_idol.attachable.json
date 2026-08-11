@@ -1,0 +1,28 @@
+{
+  "format_version": "1.10.0",
+  "minecraft:attachable": {
+    "description": {
+      "identifier": "aionbound:marsh_idol",
+      "materials": {
+        "default": "entity_alphatest"
+      },
+      "textures": {
+        "default": "textures/aionbound/crystal_marsh/equipment/models/marsh_idol"
+      },
+      "geometry": {
+        "default": "geometry.aionbound.marsh_idol"
+      },
+      "render_controllers": [
+        "controller.render.aionbound.default"
+      ],
+      "animations": {
+        "idle": "animation.aionbound.marsh_idol.idle"
+      },
+      "scripts": {
+        "animate": [
+          "idle"
+        ]
+      }
+    }
+  }
+}

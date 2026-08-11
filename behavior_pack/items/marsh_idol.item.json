@@ -1,0 +1,25 @@
+{
+  "format_version": "1.21.80",
+  "minecraft:item": {
+    "description": {
+      "identifier": "aionbound:marsh_idol",
+      "menu_category": {
+        "category": "equipment"
+      }
+    },
+    "components": {
+      "minecraft:display_name": {
+        "value": "Marsh Idol"
+      },
+      "minecraft:icon": {
+        "textures": {
+          "default": "marsh_idol"
+        }
+      },
+      "minecraft:max_stack_size": 1,
+      "minecraft:wearable": {
+        "slot": "slot.weapon.offhand"
+      }
+    }
+  }
+}
