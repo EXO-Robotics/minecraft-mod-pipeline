@@ -17,6 +17,19 @@
         }
       },
       "minecraft:max_stack_size": 1,
+      "minecraft:damage": 3,
+      "minecraft:durability": { "max_durability": 300 },
+      "minecraft:digger": {
+        "destroy_speeds": [
+          { "block": "aionbound:basalt_brick", "speed": 7 },
+          { "block": "aionbound:basalt_pillar", "speed": 7 },
+          { "block": "aionbound:smolder_stone", "speed": 7 },
+          { "block": "aionbound:ember_vent_stone", "speed": 8 },
+          { "block": "aionbound:volcanic_glass_block", "speed": 7 }
+        ],
+        "use_efficiency": true
+      },
+      "minecraft:repairable": { "repair_items": [{ "items": ["aionbound:ember_resin"], "repair_amount": 60 }] },
       "minecraft:hand_equipped": true
     }
   }

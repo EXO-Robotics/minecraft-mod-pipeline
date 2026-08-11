@@ -17,6 +17,9 @@
         }
       },
       "minecraft:max_stack_size": 1,
+      "minecraft:damage": 9,
+      "minecraft:durability": { "max_durability": 420 },
+      "minecraft:repairable": { "repair_items": [{ "items": ["aionbound:ember_resin"], "repair_amount": 84 }] },
       "minecraft:hand_equipped": true
     }
   }

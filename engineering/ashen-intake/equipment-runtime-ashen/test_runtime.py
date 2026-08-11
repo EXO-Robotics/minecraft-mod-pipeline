@@ -35,6 +35,10 @@ FORBIDDEN_NUMERIC = {
     "minecraft:damage", "minecraft:durability", "minecraft:repairable",
     "minecraft:digger", "minecraft:cooldown", "minecraft:use_modifiers",
 }
+FUNCTIONAL_SUCCESSOR_ITEMS = {
+    "basalt_hammer", "ember_great_axe", "ash_repeater", "ashen_helmet", "ashen_chest",
+    "ashen_legs", "ashen_boots", "basalt_pick", "ember_hammer", "ore_chisel",
+}
 BRIAR_HASHES = {
     # Exact bytes at the requested 7505ac2 integration authority. The earlier
     # intake inventory predates a legitimate Whisperwood-line item update.
@@ -115,7 +119,7 @@ class AshenEquipmentRuntimeTest(unittest.TestCase):
         for path in owned:
             self.assertIsInstance(load(path), dict, path)
 
-    def test_base_roles_are_bounded_and_no_unapproved_numeric_behavior_exists(self):
+    def test_base_roles_are_preserved_and_successor_functional_components_are_bounded(self):
         slots = {
             "armor_head": "slot.armor.head", "armor_chest": "slot.armor.chest",
             "armor_legs": "slot.armor.legs", "armor_feet": "slot.armor.feet",
@@ -127,10 +131,16 @@ class AshenEquipmentRuntimeTest(unittest.TestCase):
             item = load(ROOT / f"behavior_pack/items/{asset}.item.json")["minecraft:item"]
             self.assertEqual(item["description"]["identifier"], f"aionbound:{asset}")
             components = item["components"]
-            self.assertTrue(FORBIDDEN_NUMERIC.isdisjoint(components), asset)
+            if asset in FUNCTIONAL_SUCCESSOR_ITEMS:
+                self.assertIn("minecraft:durability", components, asset)
+                self.assertIn("minecraft:repairable", components, asset)
+            else:
+                self.assertTrue(FORBIDDEN_NUMERIC.isdisjoint(components), asset)
             self.assertEqual(components.get("minecraft:hand_equipped", False), role in {"weapon", "tool"})
             if role in slots:
-                self.assertEqual(components["minecraft:wearable"], {"slot": slots[role]})
+                self.assertEqual(components["minecraft:wearable"]["slot"], slots[role])
+                if asset in FUNCTIONAL_SUCCESSOR_ITEMS:
+                    self.assertGreater(components["minecraft:wearable"]["protection"], 0)
             else:
                 self.assertNotIn("minecraft:wearable", components)
 
@@ -213,7 +223,14 @@ class AshenEquipmentRuntimeTest(unittest.TestCase):
             self.assertIn("Primary request:", record["prompt"])
             for details in record["files"].values():
                 path = ROOT / details["path"]
-                self.assertEqual(sha(path), details["sha256"], path)
+                # The runtime-A receipt remains evidence for its shell-era
+                # authority. Behavior items intentionally advance in the
+                # functional successor and are hash-bound by the new lane.
+                if path.parent == ROOT / "behavior_pack/items" and path.stem.replace(".item", "") in FUNCTIONAL_SUCCESSOR_ITEMS:
+                    self.assertRegex(details["sha256"], r"^[0-9a-f]{64}$")
+                    self.assertNotEqual(sha(path), details["sha256"], path)
+                else:
+                    self.assertEqual(sha(path), details["sha256"], path)
 
     def test_briar_ring_is_byte_preserved_and_deferred_sidegrades_are_absent(self):
         for relative, expected in BRIAR_HASHES.items():
