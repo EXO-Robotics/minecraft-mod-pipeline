@@ -1,0 +1,29 @@
+{
+  "format_version": "1.10.0",
+  "minecraft:attachable": {
+    "description": {
+      "animations": {
+        "hold": "animation.aionbound.whisperwood_hatchet.hold",
+        "chop": "animation.aionbound.whisperwood_hatchet.chop"
+      },
+      "geometry": {
+        "default": "geometry.aionbound.whisperwood_hatchet"
+      },
+      "identifier": "aionbound:whisperwood_hatchet",
+      "materials": {
+        "default": "entity_alphatest"
+      },
+      "render_controllers": [
+        "controller.render.aionbound.default"
+      ],
+      "scripts": {
+        "animate": [
+          "hold"
+        ]
+      },
+      "textures": {
+        "default": "textures/aionbound/whisperwood/equipment/models/whisperwood_hatchet"
+      }
+    }
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "format_version": "1.10.0",
+  "minecraft:attachable": {
+    "description": {
+      "animations": {
+        "idle_hold": "animation.aionbound.briar_cleaver.idle_hold",
+        "chop_pose": "animation.aionbound.briar_cleaver.chop_pose"
+      },
+      "geometry": {
+        "default": "geometry.aionbound.briar_cleaver"
+      },
+      "identifier": "aionbound:briar_cleaver",
+      "materials": {
+        "default": "entity_alphatest"
+      },
+      "render_controllers": [
+        "controller.render.aionbound.default"
+      ],
+      "scripts": {
+        "animate": [
+          "idle_hold"
+        ]
+      },
+      "textures": {
+        "default": "textures/aionbound/whisperwood/equipment/models/briar_cleaver"
+      }
+    }
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "format_version": "1.10.0",
+  "minecraft:attachable": {
+    "description": {
+      "animations": {
+        "hold": "animation.aionbound.lantern_hook.hold",
+        "hang": "animation.aionbound.lantern_hook.hang"
+      },
+      "geometry": {
+        "default": "geometry.aionbound.lantern_hook"
+      },
+      "identifier": "aionbound:lantern_hook",
+      "materials": {
+        "default": "entity_alphatest"
+      },
+      "render_controllers": [
+        "controller.render.aionbound.default"
+      ],
+      "scripts": {
+        "animate": [
+          "hold"
+        ]
+      },
+      "textures": {
+        "default": "textures/aionbound/whisperwood/equipment/models/lantern_hook"
+      }
+    }
+  }
+}

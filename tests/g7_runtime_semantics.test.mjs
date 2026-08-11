@@ -7,7 +7,7 @@ import { tmpdir } from "node:os";
 
 const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), "..");
 const SOURCE_DIR = resolve(ROOT, "behavior_pack/scripts");
-const MODULE_NAMES = ["wave1_codex_data", "wave1_codex_ui_data", "catalog", "budgets", "state", "router", "codex", "combat", "devices", "encounters", "chaos", "structures", "runtime", "main"];
+const MODULE_NAMES = ["wave1_codex_data", "wave1_codex_ui_data", "wave1_equipment_roles", "catalog", "budgets", "state", "router", "codex", "combat", "devices", "encounters", "chaos", "structures", "runtime", "main"];
 const MODULE_DIR = await mkdtemp(resolve(tmpdir(), "aionbound-g7-modules-"));
 for (const name of MODULE_NAMES) {
   const source = (await readFile(resolve(SOURCE_DIR, `${name}.js`), "utf8"))
@@ -34,6 +34,7 @@ export class ActionFormData{title(){return this;}body(){return this;}button(){re
 `);
 const load = name => import(pathToFileURL(resolve(MODULE_DIR, `${name}.mjs`)).href);
 const { ACCESSORY_ROLES, ARMOR_SETS, BLOCK_ROUTES, CHAOS_OUTCOMES, CONSUMABLE_EFFECTS, MELEE_WEAPON_ROLES, NATURAL_ENTITY_IDS, RANGED_WEAPON_ROLES, STRUCTURE_REWARDS, STRUCTURE_SITES, TECH_LOOPS } = await load("catalog");
+const { WHISPERWOOD_MELEE_ROLES, WHISPERWOOD_UTILITY_ROLES } = await load("wave1_equipment_roles");
 const { COMBINED_BUDGETS, RuntimeArbiter } = await load("budgets");
 const { migratePlayer, migrateWorld } = await load("state");
 const { createInteractionRouter } = await load("router");
@@ -169,6 +170,42 @@ test("ranged cooldown and maul splash cap are enforced semantically", () => {
   selected = "aionbound:basalt_maul"; assert.equal(service.routeMeleeHurt({ hurtEntity: target, damageSource: { damagingEntity: player } }), true); assert.equal(splash.length, 4);
 });
 
+test("Whisperwood equipment-A roles are exact, bounded, and composed through combat", () => {
+  assert.deepEqual(Object.keys(WHISPERWOOD_MELEE_ROLES), ["aionbound:mossfang_spear", "aionbound:widow_fang_dagger", "aionbound:thorn_whip"]);
+  assert.deepEqual(Object.keys(WHISPERWOOD_UTILITY_ROLES), ["aionbound:moon_sap_staff", "aionbound:lantern_hook"]);
+  for (const spec of [...Object.values(WHISPERWOOD_MELEE_ROLES), ...Object.values(WHISPERWOOD_UTILITY_ROLES)]) assert.ok(spec.cooldown > 0);
+
+  const record = { v: 4, stamps: [], credits: {}, cooldowns: {}, opens: [], codex: { topic: 0 }, goals: {} };
+  let selected = "aionbound:mossfang_spear", tick = 10;
+  const impulses = [], effects = [];
+  const target = { location: { x: 4, y: 0, z: 0 }, applyImpulse: value => impulses.push(value), addEffect: (...args) => effects.push(args) };
+  const player = {
+    id: "p", typeId: "minecraft:player", selectedSlotIndex: 0, location: { x: 0, y: 0, z: 0 },
+    getComponent: id => id === "minecraft:inventory" ? { container: { getItem: () => ({ typeId: selected }) } } : null,
+    getViewDirection: () => ({ x: 1, y: 0, z: 0 }), addEffect: (...args) => effects.push(args),
+  };
+  const state = { playerState: () => structuredClone(record), savePlayer: (_p, value) => (Object.assign(record, value), true) };
+  const system = { get currentTick() { return tick; } };
+  const service = createCombatService({ world: { getAllPlayers: () => [] }, system, ItemStack: class {}, state, arbiter: new RuntimeArbiter(), boundedEntities: () => [], consumeOne: () => true });
+
+  assert.equal(service.routeMeleeHurt({ hurtEntity: target, damageSource: { damagingEntity: player } }), true);
+  assert.deepEqual(impulses.pop(), { x: 0.45, y: 0.08, z: 0 });
+  selected = "aionbound:widow_fang_dagger"; tick += 20;
+  assert.equal(service.routeMeleeHurt({ hurtEntity: target, damageSource: { damagingEntity: player } }), true);
+  assert.equal(effects.at(-1)[0], "poison");
+  selected = "aionbound:thorn_whip"; tick += 20;
+  assert.equal(service.routeMeleeHurt({ hurtEntity: target, damageSource: { damagingEntity: player } }), true);
+  assert.deepEqual(impulses.pop(), { x: -0.5, y: 0.08, z: 0 });
+
+  tick += 20;
+  assert.equal(service.useWhisperwoodUtility(player, "aionbound:moon_sap_staff"), true);
+  assert.deepEqual(effects.slice(-2).map(value => value[0]), ["night_vision", "regeneration"]);
+  assert.equal(service.useWhisperwoodUtility(player, "aionbound:moon_sap_staff"), false);
+  tick += 220;
+  assert.equal(service.useWhisperwoodUtility(player, "aionbound:lantern_hook"), true);
+  assert.equal(effects.at(-1)[0], "night_vision");
+});
+
 test("natural custom entity reconciliation enforces 40 without touching excluded roles", () => {
   const entities = Array.from({ length: 50 }, (_, index) => ({ id: String(index).padStart(2, "0"), typeId: NATURAL_ENTITY_IDS[0], removed: false, remove() { this.removed = true; } }));
   const boss = { id: "boss", typeId: "aionbound:basalt_behemoth", removed: false, remove() { this.removed = true; } };
@@ -185,7 +222,7 @@ test("Pilgrim Clasp proactively refreshes bounded fall mitigation", () => {
 });
 
 test("shipping scripts use approved stable APIs only and one central arbiter", async () => {
-  const scripts = ["main.js", "runtime.js", "catalog.js", "wave1_codex_data.js", "wave1_codex_ui_data.js", "budgets.js", "state.js", "router.js", "codex.js", "combat.js", "devices.js", "encounters.js", "chaos.js", "structures.js"];
+  const scripts = ["main.js", "runtime.js", "catalog.js", "wave1_codex_data.js", "wave1_codex_ui_data.js", "wave1_equipment_roles.js", "budgets.js", "state.js", "router.js", "codex.js", "combat.js", "devices.js", "encounters.js", "chaos.js", "structures.js"];
   const source = (await Promise.all(scripts.map(name => readFile(resolve(ROOT, "behavior_pack/scripts", name), "utf8")))).join("\n");
   for (const forbidden of ["@minecraft/server-net", "@minecraft/server-admin", "@minecraft/server-gametest", "process.", "require(", "fetch(", "node:"]) assert.equal(source.includes(forbidden), false, forbidden);
   const runtime = await readFile(resolve(ROOT, "behavior_pack/scripts/runtime.js"), "utf8"), main = await readFile(resolve(ROOT, "behavior_pack/scripts/main.js"), "utf8");

@@ -1,0 +1,30 @@
+{
+  "format_version": "1.10.0",
+  "minecraft:attachable": {
+    "description": {
+      "animations": {
+        "idle_coil": "animation.aionbound.thorn_whip.idle_coil",
+        "crack_pose": "animation.aionbound.thorn_whip.crack_pose",
+        "extend_pose": "animation.aionbound.thorn_whip.extend_pose"
+      },
+      "geometry": {
+        "default": "geometry.aionbound.thorn_whip"
+      },
+      "identifier": "aionbound:thorn_whip",
+      "materials": {
+        "default": "entity_alphatest"
+      },
+      "render_controllers": [
+        "controller.render.aionbound.default"
+      ],
+      "scripts": {
+        "animate": [
+          "idle_coil"
+        ]
+      },
+      "textures": {
+        "default": "textures/aionbound/whisperwood/equipment/models/thorn_whip"
+      }
+    }
+  }
+}

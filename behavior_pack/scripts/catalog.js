@@ -152,6 +152,8 @@ export const COMPLETED_ITEM_ROUTES = Object.freeze({
   "aionbound:waystone_ration": "consumable",
   "aionbound:mote_lantern": "accessory_pulse",
   "aionbound:wayfinder_spool": "accessory_pulse",
+  "aionbound:moon_sap_staff": "whisperwood_utility",
+  "aionbound:lantern_hook": "whisperwood_utility",
 });
 
 export const MELEE_WEAPON_ROLES = Object.freeze({

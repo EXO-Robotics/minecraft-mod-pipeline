@@ -1,5 +1,6 @@
 import { COMBINED_BUDGETS } from "./budgets.js";
 import { ACCESSORY_ROLES, ARMOR_SETS, CONSUMABLE_EFFECTS, MELEE_WEAPON_ROLES, NATURAL_ENTITY_IDS, RANGED_WEAPON_ROLES } from "./catalog.js";
+import { WHISPERWOOD_MELEE_ROLES, WHISPERWOOD_UTILITY_ROLES } from "./wave1_equipment_roles.js";
 
 export function createCombatService({ world, system, ItemStack, EquipmentSlot = {}, EntityComponentTypes = {}, state, arbiter, boundedEntities, consumeOne }) {
   const slot = {
@@ -59,12 +60,18 @@ export function createCombatService({ world, system, ItemStack, EquipmentSlot = 
   function routeMeleeHurt(event) {
     const target = event.hurtEntity, player = event.damageSource?.damagingEntity;
     if (player?.typeId !== "minecraft:player") return false;
-    const itemType = selectedType(player), spec = MELEE_WEAPON_ROLES[itemType];
+    const itemType = selectedType(player), spec = MELEE_WEAPON_ROLES[itemType] ?? WHISPERWOOD_MELEE_ROLES[itemType];
     if (!spec || !ready(player, `weapon:${itemType}`, spec.cooldown)) return false;
     if (spec.role === "ignite") target.setOnFire?.(3, true);
     if (spec.role === "reposition") { const vector = player.getViewDirection(); target.applyImpulse?.({ x: vector.x * 0.65, y: 0.12, z: vector.z * 0.65 }); }
     if (spec.role === "venom") target.addEffect?.("poison", 60, { amplifier: 0, showParticles: true });
     if (spec.role === "lift") target.applyImpulse?.({ x: 0, y: 0.42, z: 0 });
+    if (spec.role === "safe_poke") { const vector = player.getViewDirection(); target.applyImpulse?.({ x: vector.x * 0.45, y: 0.08, z: vector.z * 0.45 }); }
+    if (spec.role === "pull") {
+      const dx = player.location.x - target.location.x, dz = player.location.z - target.location.z;
+      const length = Math.max(0.001, Math.hypot(dx, dz));
+      target.applyImpulse?.({ x: (dx / length) * 0.5, y: 0.08, z: (dz / length) * 0.5 });
+    }
     if (spec.role === "bounded_shockwave") {
       let applied = 0;
       for (const entity of target.dimension.getEntities({ location: target.location, maxDistance: 4 })) {
@@ -77,6 +84,13 @@ export function createCombatService({ world, system, ItemStack, EquipmentSlot = 
   function useConsumable(player, itemType) {
     const effects = CONSUMABLE_EFFECTS[itemType]; if (!effects) return false;
     for (const [name, duration, amplifier] of effects) player.addEffect(name, duration, { amplifier, showParticles: true });
+    return true;
+  }
+  function useWhisperwoodUtility(player, itemType) {
+    const spec = WHISPERWOOD_UTILITY_ROLES[itemType];
+    if (!spec || !ready(player, `equipment:${itemType}`, spec.cooldown)) return false;
+    player.addEffect("night_vision", 600, { amplifier: 0, showParticles: false });
+    if (spec.role === "light_support") player.addEffect("regeneration", 80, { amplifier: 0, showParticles: false });
     return true;
   }
   function accessoryPulse(player, itemType) {
@@ -146,5 +160,5 @@ export function createCombatService({ world, system, ItemStack, EquipmentSlot = 
     for (const entity of natural.slice(COMBINED_BUDGETS.naturalEntitiesTarget)) entity.remove();
     return { observed: natural.length, removed: Math.max(0, natural.length - COMBINED_BUDGETS.naturalEntitiesTarget) };
   }
-  return { useBarkling, useRay, useWhistle, mountStep, glasswingDeath, reconcileNaturalEntities, useRanged, routeMeleeHurt, useConsumable, accessoryPulse, handlePlayerHurt, armorSet, tickPlayers };
+  return { useBarkling, useRay, useWhistle, mountStep, glasswingDeath, reconcileNaturalEntities, useRanged, routeMeleeHurt, useConsumable, useWhisperwoodUtility, accessoryPulse, handlePlayerHurt, armorSet, tickPlayers };
 }

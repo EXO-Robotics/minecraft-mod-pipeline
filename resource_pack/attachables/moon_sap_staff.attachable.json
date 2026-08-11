@@ -1,0 +1,30 @@
+{
+  "format_version": "1.10.0",
+  "minecraft:attachable": {
+    "description": {
+      "animations": {
+        "idle_hold": "animation.aionbound.moon_sap_staff.idle_hold",
+        "cast_raise": "animation.aionbound.moon_sap_staff.cast_raise",
+        "pulse": "animation.aionbound.moon_sap_staff.pulse"
+      },
+      "geometry": {
+        "default": "geometry.aionbound.moon_sap_staff"
+      },
+      "identifier": "aionbound:moon_sap_staff",
+      "materials": {
+        "default": "entity_alphatest"
+      },
+      "render_controllers": [
+        "controller.render.aionbound.default"
+      ],
+      "scripts": {
+        "animate": [
+          "idle_hold"
+        ]
+      },
+      "textures": {
+        "default": "textures/aionbound/whisperwood/equipment/models/moon_sap_staff"
+      }
+    }
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "format_version": "1.10.0",
+  "minecraft:attachable": {
+    "description": {
+      "animations": {
+        "idle_hold": "animation.aionbound.mossfang_spear.idle_hold",
+        "thrust_pose": "animation.aionbound.mossfang_spear.thrust_pose",
+        "sweep_pose": "animation.aionbound.mossfang_spear.sweep_pose"
+      },
+      "geometry": {
+        "default": "geometry.aionbound.mossfang_spear"
+      },
+      "identifier": "aionbound:mossfang_spear",
+      "materials": {
+        "default": "entity_alphatest"
+      },
+      "render_controllers": [
+        "controller.render.aionbound.default"
+      ],
+      "scripts": {
+        "animate": [
+          "idle_hold"
+        ]
+      },
+      "textures": {
+        "default": "textures/aionbound/whisperwood/equipment/models/mossfang_spear"
+      }
+    }
+  }
+}

@@ -1,0 +1,35 @@
+{
+  "format_version": "1.21.80",
+  "minecraft:item": {
+    "components": {
+      "minecraft:damage": 3,
+      "minecraft:display_name": {
+        "value": "Moon Sap Staff"
+      },
+      "minecraft:durability": {
+        "max_durability": 340
+      },
+      "minecraft:hand_equipped": true,
+      "minecraft:icon": {
+        "textures": {
+          "default": "moon_sap_staff"
+        }
+      },
+      "minecraft:max_stack_size": 1,
+      "minecraft:cooldown": {
+        "category": "aionbound_moon_sap_staff",
+        "duration": 10.0
+      },
+      "minecraft:use_modifiers": {
+        "movement_modifier": 0.8,
+        "use_duration": 0.2
+      }
+    },
+    "description": {
+      "identifier": "aionbound:moon_sap_staff",
+      "menu_category": {
+        "category": "equipment"
+      }
+    }
+  }
+}

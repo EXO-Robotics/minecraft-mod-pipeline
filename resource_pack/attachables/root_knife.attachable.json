@@ -1,0 +1,28 @@
+{
+  "format_version": "1.10.0",
+  "minecraft:attachable": {
+    "description": {
+      "animations": {
+        "hold": "animation.aionbound.root_knife.hold"
+      },
+      "geometry": {
+        "default": "geometry.aionbound.root_knife"
+      },
+      "identifier": "aionbound:root_knife",
+      "materials": {
+        "default": "entity_alphatest"
+      },
+      "render_controllers": [
+        "controller.render.aionbound.default"
+      ],
+      "scripts": {
+        "animate": [
+          "hold"
+        ]
+      },
+      "textures": {
+        "default": "textures/aionbound/whisperwood/equipment/models/root_knife"
+      }
+    }
+  }
+}

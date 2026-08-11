@@ -62,6 +62,7 @@ export function createRuntime(platform = { world, system, ItemStack, EquipmentSl
     codex: ({ player, itemStack }) => codex.use(player, itemStack.typeId), edge_stamp: ({ player }) => state.stamp(player, "edge:assembled"),
     ranged: ({ player, itemStack }) => combat.useRanged(player, itemStack.typeId),
     consumable: ({ player, itemStack }) => combat.useConsumable(player, itemStack.typeId),
+    whisperwood_utility: ({ player, itemStack }) => combat.useWhisperwoodUtility(player, itemStack.typeId),
     accessory_pulse: ({ player, itemStack }) => combat.accessoryPulse(player, itemStack.typeId),
   };
   const entityActions = {
