@@ -1,0 +1,28 @@
+{
+  "format_version": "1.10.0",
+  "minecraft:attachable": {
+    "description": {
+      "identifier": "aionbound:moon_sap_pendant",
+      "materials": {
+        "default": "entity_alphatest"
+      },
+      "textures": {
+        "default": "textures/aionbound/whisperwood/equipment/models/moon_sap_pendant"
+      },
+      "geometry": {
+        "default": "geometry.aionbound.moon_sap_pendant"
+      },
+      "render_controllers": [
+        "controller.render.aionbound.default"
+      ],
+      "animations": {
+        "pulse": "animation.aionbound.moon_sap_pendant.pulse"
+      },
+      "scripts": {
+        "animate": [
+          "pulse"
+        ]
+      }
+    }
+  }
+}

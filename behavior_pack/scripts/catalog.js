@@ -169,6 +169,11 @@ export const RANGED_WEAPON_ROLES = Object.freeze({
 });
 
 export const ACCESSORY_ROLES = Object.freeze({
+  "aionbound:moss_charm": "forest_sustain",
+  "aionbound:root_bracelet": "gather_focus",
+  "aionbound:lantern_badge": "soft_light",
+  "aionbound:moon_sap_pendant": "night_comfort",
+  "aionbound:briar_ring": "thorn_chip",
   "aionbound:quarry_lens": "resource_hint",
   "aionbound:pilgrim_clasp": "fall_mitigation",
   "aionbound:mote_lantern": "landmark_pulse",

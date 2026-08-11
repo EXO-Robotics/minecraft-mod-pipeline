@@ -147,7 +147,7 @@ test("chaos restart resumes accepted owner and releases executing capacity", () 
 
 test("all combat, accessory, armor, and consumable roles are non-inert and bounded", () => {
   assert.equal(Object.keys(MELEE_WEAPON_ROLES).length, 5); assert.equal(Object.keys(RANGED_WEAPON_ROLES).length, 3);
-  assert.equal(Object.keys(ACCESSORY_ROLES).length, 6); assert.equal(Object.keys(CONSUMABLE_EFFECTS).length, 4);
+  assert.equal(Object.keys(ACCESSORY_ROLES).length, 11); assert.equal(Object.keys(CONSUMABLE_EFFECTS).length, 4);
   assert.deepEqual(Object.values(ARMOR_SETS).map(ids => ids.length), [4, 4]);
   for (const role of Object.values(MELEE_WEAPON_ROLES)) { assert.ok(role.cooldown > 0); assert.ok((role.targets ?? 0) <= 4); }
   for (const role of Object.values(RANGED_WEAPON_ROLES)) { assert.ok(role.cooldown > 0); assert.ok(role.range <= COMBINED_BUDGETS.rayRange); assert.ok(role.particles <= COMBINED_BUDGETS.particlesAction); }

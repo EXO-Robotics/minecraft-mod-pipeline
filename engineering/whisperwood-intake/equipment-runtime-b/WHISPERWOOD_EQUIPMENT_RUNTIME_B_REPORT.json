@@ -1,0 +1,61 @@
+{
+  "schema_version": 1,
+  "status": "SOURCE_INTEGRATION_PASS",
+  "integration_base": "ec53b962b8f9f20e9fbe9ee4ed5b346964ef30fb",
+  "native_evidence_commit": "ec53b962b8f9f20e9fbe9ee4ed5b346964ef30fb",
+  "icon_evidence_commits": [
+    "1178be2",
+    "569e21e"
+  ],
+  "scope": {
+    "armor": ["whisperwood_helmet", "whisperwood_chest", "whisperwood_legs", "whisperwood_boots"],
+    "accessories": ["moss_charm", "root_bracelet", "lantern_badge", "moon_sap_pendant", "briar_ring"],
+    "trophies": ["thorn_stalker_skull", "briar_elk_trophy", "mosskip_trophy", "ancient_acorn_display"]
+  },
+  "implemented_identity": {
+    "armor": "functional light wearable protection with bounded durability and explicit moss_resin regional-binder repair",
+    "moss_charm": "bounded sustain",
+    "root_bracelet": "bounded gathering haste without extra item creation",
+    "lantern_badge": "soft light plus four-target fear-soft cap",
+    "moon_sap_pendant": "night-only comfort; staff synergy withheld",
+    "briar_ring": "one-damage thorn chip with forty-tick cooldown; heat sidegrade withheld",
+    "trophies": "placeable display blocks only; no reward or progression credit"
+  },
+  "visual_authority": {
+    "geometry": "exact native pass-2 bytes",
+    "declared_animations": "exact native pass-2 bytes",
+    "model_textures": "exact byte-identical Packet006 32x32 RGBA PNGs under separate models path",
+    "inventory_icons": "reserved handcrafted icon paths; never substituted with model UV sheets"
+  },
+  "withheld": [
+    "recipes",
+    "loot",
+    "acquisition_paths",
+    "sidegrades",
+    "boss_reward_grants",
+    "chapter_or_soft_seal_credit",
+    "trophy_reward_guards",
+    "forest_luck_item_rolls",
+    "moon_sap_staff_synergy",
+    "full_set_shade_bonus"
+  ],
+  "targeted_tests": {
+    "python_static_closure": "6_PASS_0_FAIL",
+    "node_accessory_semantics": "6_PASS_0_FAIL",
+    "combined_runtime_regression": "20_PASS_0_FAIL",
+    "wave1_validator_units": "14_PASS_0_FAIL",
+    "shipping_icon_units": "2_PASS_0_FAIL",
+    "global_wave1_validator": "PASS",
+    "global_pack_source_sha256": "2ab74d6e410173a71e08d97c37caed00730dfff84eff0725c3da60c75dfd6d68",
+    "validation_authority_sha256": "c8f8eec962723e83259eb38101379ddc284e976fd92422f502f3a8fe9c5f0bbb"
+  },
+  "proof_boundary": [
+    "NOT_BUILD",
+    "NOT_IMMUTABLE_PACKAGE",
+    "NOT_STABLE_BDS",
+    "NOT_CLIENT_RENDERING_OR_GAMEPLAY",
+    "NOT_MULTIPLAYER",
+    "NOT_PHYSICAL_CONSOLE",
+    "NOT_RELEASE"
+  ]
+}

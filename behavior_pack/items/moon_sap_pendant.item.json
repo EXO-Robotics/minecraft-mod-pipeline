@@ -1,0 +1,25 @@
+{
+  "format_version": "1.21.80",
+  "minecraft:item": {
+    "description": {
+      "identifier": "aionbound:moon_sap_pendant",
+      "menu_category": {
+        "category": "equipment"
+      }
+    },
+    "components": {
+      "minecraft:display_name": {
+        "value": "Moon Sap Pendant"
+      },
+      "minecraft:icon": {
+        "textures": {
+          "default": "moon_sap_pendant"
+        }
+      },
+      "minecraft:max_stack_size": 1,
+      "minecraft:wearable": {
+        "slot": "slot.weapon.offhand"
+      }
+    }
+  }
+}

@@ -1,0 +1,39 @@
+{
+  "format_version": "1.21.80",
+  "minecraft:item": {
+    "description": {
+      "identifier": "aionbound:whisperwood_chest",
+      "menu_category": {
+        "category": "equipment"
+      }
+    },
+    "components": {
+      "minecraft:display_name": {
+        "value": "Whisperwood Chest"
+      },
+      "minecraft:icon": {
+        "textures": {
+          "default": "whisperwood_chest"
+        }
+      },
+      "minecraft:max_stack_size": 1,
+      "minecraft:durability": {
+        "max_durability": 240
+      },
+      "minecraft:repairable": {
+        "repair_items": [
+          {
+            "items": [
+              "aionbound:moss_resin"
+            ],
+            "repair_amount": 60
+          }
+        ]
+      },
+      "minecraft:wearable": {
+        "slot": "slot.armor.chest",
+        "protection": 3
+      }
+    }
+  }
+}

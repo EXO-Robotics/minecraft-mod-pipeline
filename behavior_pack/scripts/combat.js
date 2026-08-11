@@ -89,6 +89,8 @@ export function createCombatService({ world, system, ItemStack, EquipmentSlot = 
     const accessory = offhandType(player), role = ACCESSORY_ROLES[accessory];
     if (role === "fall_mitigation" && event.damageSource?.cause === "fall") { player.addEffect("slow_falling", 100, { amplifier: 0, showParticles: false }); player.addEffect("regeneration", 60, { amplifier: 0, showParticles: false }); return true; }
     if (role === "ward_cooldown" && ready(player, "accessory:ward", 240)) { player.addEffect("resistance", 80, { amplifier: 0, showParticles: true }); return true; }
+    const attacker = event.damageSource?.damagingEntity;
+    if (role === "thorn_chip" && attacker && attacker.id !== player.id && ready(player, "accessory:briar_ring", 40)) { attacker.applyDamage?.(1, { damagingEntity: player }); return true; }
     return false;
   }
   function armorSet(player) {
@@ -101,6 +103,23 @@ export function createCombatService({ world, system, ItemStack, EquipmentSlot = 
   function tickPlayers() {
     for (const player of world.getAllPlayers()) {
       const accessory = offhandType(player), role = ACCESSORY_ROLES[accessory];
+      if (role === "forest_sustain") player.addEffect("regeneration", 40, { amplifier: 0, showParticles: false });
+      if (role === "gather_focus") {
+        const block = player.getBlockFromViewDirection?.({ maxDistance: 6 })?.block;
+        if (block?.typeId?.startsWith("aionbound:") && /(log|wood|roots|bark|vine|fern|grass|flower|reed|moss|lily|bloom|mushroom|thistle)/.test(block.typeId)) player.addEffect("haste", 60, { amplifier: 0, showParticles: false });
+      }
+      if (role === "soft_light") {
+        player.addEffect("night_vision", 60, { amplifier: 0, showParticles: false });
+        let softened = 0;
+        for (const entity of player.dimension.getEntities({ location: player.location, maxDistance: 6, families: ["monster"] })) {
+          if (softened >= 4 || !arbiter.spend("entityQuery")) break;
+          entity.addEffect?.("weakness", 40, { amplifier: 0, showParticles: false }); softened++;
+        }
+      }
+      if (role === "night_comfort") {
+        const time = world.getTimeOfDay?.() ?? 0;
+        if (time >= 13000 && time <= 23000) player.addEffect("night_vision", 60, { amplifier: 0, showParticles: false });
+      }
       if (role === "landmark_pulse") player.addEffect("night_vision", 60, { amplifier: 0, showParticles: false });
       if (role === "fall_mitigation") player.addEffect("slow_falling", 60, { amplifier: 0, showParticles: false });
       if (role === "resource_hint" && system.currentTick % 100 === 0) {

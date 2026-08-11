@@ -1,0 +1,39 @@
+{
+  "format_version": "1.21.80",
+  "minecraft:item": {
+    "description": {
+      "identifier": "aionbound:whisperwood_helmet",
+      "menu_category": {
+        "category": "equipment"
+      }
+    },
+    "components": {
+      "minecraft:display_name": {
+        "value": "Whisperwood Helmet"
+      },
+      "minecraft:icon": {
+        "textures": {
+          "default": "whisperwood_helmet"
+        }
+      },
+      "minecraft:max_stack_size": 1,
+      "minecraft:durability": {
+        "max_durability": 165
+      },
+      "minecraft:repairable": {
+        "repair_items": [
+          {
+            "items": [
+              "aionbound:moss_resin"
+            ],
+            "repair_amount": 40
+          }
+        ]
+      },
+      "minecraft:wearable": {
+        "slot": "slot.armor.head",
+        "protection": 1
+      }
+    }
+  }
+}
