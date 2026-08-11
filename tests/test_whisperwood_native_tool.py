@@ -176,6 +176,11 @@ class WhisperwoodNativeToolTests(unittest.TestCase):
         self.assertIn("Codecs.bedrock", script)
         self.assertIn("AnimationCodec.codecs.bedrock", script)
         self.assertIn("locatorSpec.position.slice()", script)
+        self.assertIn("Blockbench.read", script)
+        self.assertIn("Blockbench.writeFile", script)
+        self.assertNotIn("require('fs')", script)
+        self.assertNotIn("fs.readFileSync", script)
+        self.assertNotIn("fs.writeFileSync", script)
         self.assertNotIn("parent.origin", script)
         self.assertNotIn("new Animation", script)
 

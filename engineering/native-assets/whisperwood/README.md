@@ -26,7 +26,9 @@ It is intentionally fail-closed:
 
 The Blockbench instance must be launched separately with an isolated remote
 debugging port. The tool accepts only a loopback CDP endpoint and never launches
-or terminates Blockbench itself.
+or terminates Blockbench itself. Renderer file access uses Blockbench's public
+`Blockbench.read` and `Blockbench.writeFile` APIs; it does not depend on Electron
+renderer exposure of Node `require` or `fs`.
 
 Example (illustrative only; not executed by this change):
 

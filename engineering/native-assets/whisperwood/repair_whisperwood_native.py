@@ -464,15 +464,32 @@ def native_session_script(
   const fail = (code) => {{ throw new Error(code); }};
   if (typeof Blockbench === 'undefined' || typeof Codecs === 'undefined') fail('BLOCKBENCH_API_UNAVAILABLE');
   if (!Codecs.project || !Codecs.bedrock) fail('REQUIRED_NATIVE_CODEC_UNAVAILABLE');
-  const fs = (typeof require === 'function') ? require('fs') : null;
-  if (!fs) fail('BLOCKBENCH_NODE_FILESYSTEM_UNAVAILABLE');
+  if (typeof Blockbench.read !== 'function' || typeof Blockbench.writeFile !== 'function') fail('BLOCKBENCH_FILE_API_UNAVAILABLE');
 
   let warningCount = 0;
   const originalWarn = console.warn.bind(console);
   console.warn = (...args) => {{ warningCount += 1; return originalWarn(...args); }};
   const wait = milliseconds => new Promise(resolve => setTimeout(resolve, milliseconds));
+  const withTimeout = (promise, code) => Promise.race([
+    promise,
+    new Promise((_, reject) => setTimeout(() => reject(new Error(code)), 10000))
+  ]);
+  const readText = path => withTimeout(new Promise((resolve, reject) => {{
+    try {{
+      Blockbench.read([path], {{readtype: 'text'}}, files => {{
+        const file = files && files[0];
+        if (!file || typeof file.content !== 'string') {{ reject(new Error('BLOCKBENCH_READ_EMPTY:' + path)); return; }}
+        resolve(file.content);
+      }});
+    }} catch (error) {{ reject(error); }}
+  }}), 'BLOCKBENCH_READ_TIMEOUT:' + path);
+  const writeText = (path, content) => withTimeout(new Promise((resolve, reject) => {{
+    try {{
+      Blockbench.writeFile(path, {{content}}, () => resolve());
+    }} catch (error) {{ reject(error); }}
+  }}), 'BLOCKBENCH_WRITE_TIMEOUT:' + path);
   const readProject = async () => {{
-    const parsed = JSON.parse(fs.readFileSync(paths.project, 'utf8'));
+    const parsed = JSON.parse(await readText(paths.project));
     Codecs.project.load(parsed, {{path: paths.project}});
     await wait(100);
     if (!Project || !Format) fail('NATIVE_PROJECT_REOPEN_FAILED');
@@ -481,7 +498,7 @@ def native_session_script(
     Project.save_path = paths.project;
     Project.saved = true;
     const source = Codecs.project.compile({{bitmaps: true, absolute_paths: false}});
-    fs.writeFileSync(paths.project, source, 'utf8');
+    await writeText(paths.project, source);
     const closed = await Project.close(true);
     if (!closed) fail('NATIVE_PROJECT_CLOSE_FAILED');
     await readProject();
@@ -491,11 +508,11 @@ def native_session_script(
     const result = codec.compile({{raw: true}});
     return typeof result === 'string' ? result : JSON.stringify(result, null, 2);
   }};
-  const exportPass = (geoPath, animPath) => {{
-    fs.writeFileSync(geoPath, compileText(Codecs.bedrock, 'BEDROCK_GEOMETRY'), 'utf8');
+  const exportPass = async (geoPath, animPath) => {{
+    await writeText(geoPath, compileText(Codecs.bedrock, 'BEDROCK_GEOMETRY'));
     if (typeof AnimationCodec === 'undefined' || !AnimationCodec.codecs || !AnimationCodec.codecs.bedrock) fail('BEDROCK_ANIMATION_CODEC_UNAVAILABLE');
     const animation = AnimationCodec.codecs.bedrock.compileFile(Animation.all || []);
-    fs.writeFileSync(animPath, JSON.stringify(animation, null, 2) + '\\n', 'utf8');
+    await writeText(animPath, JSON.stringify(animation, null, 2) + '\\n');
   }};
 
   await readProject();
@@ -532,11 +549,11 @@ def native_session_script(
   await saveAndReopenProject();
   const afterFirstReopen = new Set((Locator.all || []).map(locator => locator.name));
   for (const name of Object.keys(locatorPlan)) if (!afterFirstReopen.has(name)) fail('LOCATOR_LOST_AFTER_SAVE_REOPEN:' + name);
-  exportPass(paths.geo1, paths.anim1);
+  await exportPass(paths.geo1, paths.anim1);
   await saveAndReopenProject();
   const afterSecondReopen = new Set((Locator.all || []).map(locator => locator.name));
   for (const name of Object.keys(locatorPlan)) if (!afterSecondReopen.has(name)) fail('LOCATOR_LOST_AFTER_SECOND_REOPEN:' + name);
-  exportPass(paths.geo2, paths.anim2);
+  await exportPass(paths.geo2, paths.anim2);
   console.warn = originalWarn;
   return {{
     blockbench_version: Blockbench.version || null,
