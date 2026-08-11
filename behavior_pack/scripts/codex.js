@@ -7,11 +7,23 @@ export const CODEX_UI_CATEGORIES = Object.freeze([
   Object.freeze({ id: "resource", title: "Resources & Blocks" }),
   Object.freeze({ id: "plant", title: "Plants" }),
   Object.freeze({ id: "creature", title: "Creatures" }),
+  Object.freeze({ id: "structure", title: "Structures" }),
+  Object.freeze({ id: "equipment", title: "Equipment & Trophies" }),
+  Object.freeze({ id: "boss", title: "Bosses" }),
+  Object.freeze({ id: "progression", title: "Journey" }),
 ]);
 
 const unavailable = "Unavailable until its approved runtime dependency is complete.";
 const incomplete = "Complete this entry to reveal this answer.";
 const humanize = value => value.split("_").map(word => word ? word[0].toUpperCase() + word.slice(1) : word).join(" ");
+const displayAuthorityValue = value => Array.isArray(value) ? value.join(", ") : String(value);
+
+function extensionBody(entry, stateValue) {
+  const fields = Object.entries(entry.authorityText ?? {}).filter(([key]) => !(
+    entry.kind === "boss" && stateValue === 1 && key === "phase_field_notes"
+  ));
+  return fields.map(([key, value]) => `${humanize(key)}\n${displayAuthorityValue(value)}`).join("\n\n");
+}
 
 export function codexStateForEntry(playerState, entry) {
   const address = CODEX_EVENT_INDEX[entry.events[0]?.id];
@@ -30,6 +42,7 @@ export function codexEntryTitle(entry, stateValue) {
 
 export function codexEntryBody(entry, stateValue) {
   if (stateValue === 0) return "This entry has not been discovered.";
+  if (entry.authorityText) return extensionBody(entry, stateValue);
   const approved = WHISPERWOOD_CODEX_UI_BY_ID[entry.id]?.answers ?? [null, null, null];
   return CODEX_QUESTION_LABELS.map((question, index) => {
     const answer = stateValue === 1 && index > 0 ? incomplete : (approved[index] ?? unavailable);
@@ -114,7 +127,12 @@ export function createCodexService({ state, ActionFormData = null }) {
   function discover(player, eventId) {
     const event = CODEX_EVENT_INDEX[eventId];
     if (!event) return false;
-    return state.transitionCodex(player, event.region, event.category, event.index, event.state);
+    let chapterChanged = false;
+    if (event.region === "ww" && eventId !== "codex:ww:progression:whisperwood_chapter:entered") {
+      const chapter = CODEX_EVENT_INDEX["codex:ww:progression:whisperwood_chapter:entered"];
+      chapterChanged = state.transitionCodex(player, chapter.region, chapter.category, chapter.index, chapter.state);
+    }
+    return state.transitionCodex(player, event.region, event.category, event.index, event.state) || chapterChanged;
   }
   return { guidance, use, openRoot, openCategory, openEntry, discover, deriveGoals };
 }

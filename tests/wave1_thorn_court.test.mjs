@@ -30,7 +30,7 @@ function makePlayer(id, dimension, location = { x: 0, y: 64, z: 0 }) {
 }
 
 function harness(playerCount = 1) {
-  const spawned = [], items = [], warnings = [], material = [], chests = [];
+  const spawned = [], items = [], warnings = [], material = [], chests = [], codexPulls = [], codexTerminals = [];
   const dimension = {
     id: "minecraft:overworld",
     spawnEntity(typeId, location) { const entity = makeEntity(typeId, location); spawned.push(entity); return entity; },
@@ -56,12 +56,19 @@ function harness(playerCount = 1) {
       grantMaterialPackage(player, context) { material.push([player.id, context]); return true; },
       openArenaChest(context) { chests.push(context); return true; },
     },
+    codexHooks: {
+      onPull(player) { codexPulls.push(player.id); return true; },
+      onTerminalCredit(player) {
+        codexTerminals.push({ player: player.id, credits: structuredClone(playerRecords.get(player.id).credits) });
+        return true;
+      },
+    },
   });
   const advance = tick => { system.currentTick = tick; service.tick(); };
   const pull = () => { const start = system.currentTick; service.begin(players[0], { x: 0, y: 64, z: 0 }); advance(start + THORN_COURT.armTicks); return [...service.sessions.values()][0]; };
   const kill = (session, killer = players[0], cause = "entityAttack") => service.bossDeath({ deadEntity: session.boss, damageSource: { cause, damagingEntity: killer } });
   return {
-    service, state, system, world, dimension, players, spawned, items, warnings, material, chests, advance, pull, kill,
+    service, state, system, world, dimension, players, spawned, items, warnings, material, chests, codexPulls, codexTerminals, advance, pull, kill,
     playerRecords, getWorld: () => structuredClone(worldRecord), setFailWorldSave: value => { failWorldSave = value; },
   };
 }
@@ -155,6 +162,11 @@ test("only a tagged active arena death by a participant can create seal and trop
   assert.equal(credits[THORN_COURT.playerCompletionKey], true); assert.equal(credits[THORN_COURT.entitlementKey], true);
   assert.equal(credits[THORN_COURT.sealCreditKey], true); assert.equal(credits[THORN_COURT.trophyClaimedKey], true);
   assert.equal(arena.items[0].item.typeId, THORN_COURT.trophyItem);
+  assert.deepEqual(arena.codexPulls, ["p1"]);
+  assert.equal(arena.codexTerminals.length, 1);
+  assert.equal(arena.codexTerminals[0].credits[THORN_COURT.sealCreditKey], true);
+  assert.equal(arena.codexTerminals[0].credits[THORN_COURT.entitlementKey], true);
+  assert.equal(ecology.codexPulls.length, 0); assert.equal(ecology.codexTerminals.length, 0);
 });
 
 test("repeat clear reopens materials and arena chest but never duplicates progression or trophy", () => {

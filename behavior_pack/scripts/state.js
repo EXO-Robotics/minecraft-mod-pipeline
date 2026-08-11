@@ -4,7 +4,17 @@ import { CODEX_EVENT_INDEX, CODEX_REGISTRY_VERSION, IDS } from "./catalog.js";
 export const STATE_VERSION = 4;
 export const CODEX_DISCOVERY_REGIONS = Object.freeze(["ww", "ah", "cm", "sr"]);
 export const CODEX_DISCOVERY_VERSION = CODEX_REGISTRY_VERSION;
-export const CODEX_CATEGORY_CAPS = Object.freeze({ resource: 20, plant: 10, creature: 10 });
+// Schema remains v4. Registry v2 appends the four Whisperwood-only categories
+// without reallocating any existing two-bit address.
+export const CODEX_CATEGORY_CAPS = Object.freeze({
+  resource: 20,
+  plant: 10,
+  creature: 10,
+  structure: 10,
+  equipment: 21,
+  boss: 1,
+  progression: 2,
+});
 
 export function parseObject(raw, fallback = null) {
   try { const value = JSON.parse(raw || ""); return value && typeof value === "object" && !Array.isArray(value) ? value : fallback; }

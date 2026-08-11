@@ -2,15 +2,12 @@ import { COMBINED_BUDGETS } from "./budgets.js";
 import { STRUCTURE_REWARDS, STRUCTURE_SITES, WHISPERWOOD_PROGRESSION_SITES } from "./catalog.js";
 
 const SOFT = new Set(["minecraft:dirt", "minecraft:grass_block", "minecraft:sand", "minecraft:gravel", "minecraft:clay", "minecraft:mud", "minecraft:netherrack", "minecraft:soul_sand", "minecraft:soul_soil", "minecraft:snow", "minecraft:snow_layer", "minecraft:moss_block"]);
-const NEARBY_SIGNATURE_OFFSETS = Object.freeze((() => {
-  const offsets = [];
-  for (let y = -2; y <= 2; y++) for (let x = -2; x <= 2; x++) for (let z = -2; z <= 2; z++) {
-    const distance = Math.abs(x) + Math.abs(y) + Math.abs(z);
-    if (distance > 0 && distance <= 2) offsets.push(Object.freeze({ x, y, z, distance }));
-  }
-  offsets.sort((a, b) => a.distance - b.distance || a.y - b.y || a.x - b.x || a.z - b.z);
-  return offsets;
-})());
+const ROTATIONS = Object.freeze([
+  Object.freeze(({ x, z }) => ({ x, z })),
+  Object.freeze(({ x, z }) => ({ x: -z, z: x })),
+  Object.freeze(({ x, z }) => ({ x: -x, z: -z })),
+  Object.freeze(({ x, z }) => ({ x: z, z: -x })),
+]);
 
 export function cellEdits(base) {
   const edits = [];
@@ -103,17 +100,22 @@ export function createStructureService({ world, system, ItemStack, state, arbite
   function resolveSite(block, dimension) {
     return STRUCTURE_SITES.filter(site => site.center === block.typeId).find(site => hasSignature(dimension, block.location, site.signature)) ?? null;
   }
-  function hasNearbyProgressionSignature(dimension, location, typeId) {
-    return NEARBY_SIGNATURE_OFFSETS.some(offset => dimension.getBlock({
-      x: location.x + offset.x,
-      y: location.y + offset.y,
-      z: location.z + offset.z,
-    })?.typeId === typeId);
+  function matchesProgressionSite(site, dimension, location) {
+    const signatures = site.relativeSignatures ?? [];
+    if (!signatures.length) return true;
+    return ROTATIONS.some(rotate => signatures.every(signature => {
+      const offset = rotate(signature);
+      return dimension.getBlock({
+        x: location.x + offset.x,
+        y: location.y + signature.y,
+        z: location.z + offset.z,
+      })?.typeId === signature.typeId;
+    }));
   }
   function resolveProgressionSite(block, dimension) {
     return WHISPERWOOD_PROGRESSION_SITES
       .filter(site => site.center === block.typeId)
-      .find(site => site.signatures.every(signature => hasNearbyProgressionSignature(dimension, block.location, signature))) ?? null;
+      .find(site => matchesProgressionSite(site, dimension, block.location)) ?? null;
   }
   function activateProgressionSite({ player, block }) {
     const site = resolveProgressionSite(block, player.dimension);

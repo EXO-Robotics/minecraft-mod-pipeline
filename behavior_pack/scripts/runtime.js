@@ -3,6 +3,7 @@ import { ActionFormData } from "@minecraft/server-ui";
 import { COMBINED_BUDGETS, RuntimeArbiter } from "./budgets.js";
 import { createStateService } from "./state.js";
 import { createInteractionRouter } from "./router.js";
+import { codexEventsForStructureActivation } from "./catalog.js";
 import { createCodexService } from "./codex.js";
 import { createCombatService } from "./combat.js";
 import { createDeviceService } from "./devices.js";
@@ -36,7 +37,20 @@ export function createRuntime(platform = { world, system, ItemStack, EquipmentSl
   const codex = createCodexService({ state, ActionFormData: platform.ActionFormData });
   const structures = createStructureService({ ...platform, state, arbiter, consumeOne });
   const thornCourtRewardHooks = platform.thornCourtRewardHooks ?? createWhisperwoodRewardHooks({ ItemStack: platform.ItemStack, random: platform.random ?? Math.random });
-  const thornCourt = createThornCourtService({ ...platform, state, boundedEntities, rewardHooks: thornCourtRewardHooks });
+  const thornCourt = createThornCourtService({
+    ...platform,
+    state,
+    boundedEntities,
+    rewardHooks: thornCourtRewardHooks,
+    codexHooks: {
+      onPull: player => codex.discover(player, "codex:ww:boss:thorn_court:encountered"),
+      onTerminalCredit: player => {
+        codex.discover(player, "codex:ww:boss:thorn_court:defeated");
+        codex.discover(player, "codex:ww:equipment:thorn_stalker_skull:earned");
+        codex.discover(player, "codex:ww:progression:whisperwood_chapter:seal_credit");
+      },
+    },
+  });
   const combat = createCombatService({ ...platform, state, arbiter, boundedEntities, consumeOne });
   const encounters = createEncounterService({ ...platform, state, boundedEntities, consumeOne });
   const devices = createDeviceService({ ...platform, state, arbiter, consumeOne });
@@ -51,9 +65,12 @@ export function createRuntime(platform = { world, system, ItemStack, EquipmentSl
     safe_storage_notice: ({ player }) => state.warn(player, "Use the crafted vanilla chest for authoritative safe storage."),
     site_reward: context => structures.claimSite(context),
     ww_progression_site: context => {
-      const site = structures.activateProgressionSite(context);
-      if (site?.action === "boss:thorn_court") thornCourt.begin(context.player, context.block.location);
-      return site;
+      const activation = structures.activateProgressionSite(context);
+      if (!activation) return false;
+      for (const eventId of codexEventsForStructureActivation(activation.site)) codex.discover(context.player, eventId);
+      if (activation.site === "broken_wagon") codex.discover(context.player, "codex:ww:progression:ashen_rumor:broken_wagon_activated");
+      if (activation.action === "boss:thorn_court") thornCourt.begin(context.player, context.block.location);
+      return true;
     },
     "device:salvage": context => devices.useSalvage(context),
     "device:press": context => devices.usePress(context),

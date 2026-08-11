@@ -75,7 +75,7 @@ export function thornCourtPhase(healthFraction, elapsedTicks = 0) {
   return 0;
 }
 
-export function createThornCourtService({ world, system, ItemStack, state, boundedEntities, rewardHooks = {} }) {
+export function createThornCourtService({ world, system, ItemStack, state, boundedEntities, rewardHooks = {}, codexHooks = {} }) {
   const sessions = new Map();
   let sequence = 0;
   const hooks = Object.freeze({
@@ -85,6 +85,10 @@ export function createThornCourtService({ world, system, ItemStack, state, bound
     }),
     grantMaterialPackage: rewardHooks.grantMaterialPackage ?? (() => false),
     openArenaChest: rewardHooks.openArenaChest ?? (() => false),
+  });
+  const codex = Object.freeze({
+    onPull: codexHooks.onPull ?? (() => false),
+    onTerminalCredit: codexHooks.onTerminalCredit ?? (() => false),
   });
 
   const sessionPlayers = session => world.getAllPlayers().filter(player => dimensionId(player.dimension) === session.dimensionId);
@@ -162,6 +166,7 @@ export function createThornCourtService({ world, system, ItemStack, state, bound
     for (const player of world.getAllPlayers()) {
       if (!pending[player.id]) continue;
       const result = writeFirstCompletion(player); if (!result.saved) continue;
+      codex.onTerminalCredit(player);
       hooks.grantMaterialPackage(player, { encounterId: THORN_COURT.id, repeatClear: !result.first });
       delete pending[player.id]; changed = true;
       if (result.first) claimTrophy(player);
@@ -214,6 +219,7 @@ export function createThornCourtService({ world, system, ItemStack, state, bound
       boss?.remove?.(); sessions.delete(session.id); return false;
     }
     session.boss = boss; session.status = "active"; session.pulledAt = now; session.nextAttackAt = now + THORN_COURT.globalAttackCooldownTicks;
+    for (const player of eligible) codex.onPull(player);
     return true;
   }
 
@@ -232,6 +238,7 @@ export function createThornCourtService({ world, system, ItemStack, state, bound
       if (now - entered >= THORN_COURT.lateJoinTicks && session.participants.size < THORN_COURT.participantCap) {
         session.participants.set(player.id, { kind: "approved_late_join", disconnectedAt: null, lastInsideAt: now });
         session.lateDwell.delete(player.id);
+        codex.onPull(player);
       }
     }
   }
@@ -376,6 +383,7 @@ export function createThornCourtService({ world, system, ItemStack, state, bound
       if (!player) { queueOfflineEntitlement(playerId); continue; }
       const result = writeFirstCompletion(player);
       if (!result.saved) continue;
+      codex.onTerminalCredit(player);
       hooks.grantMaterialPackage(player, { encounterId: THORN_COURT.id, repeatClear: !result.first });
       if (result.first) claimTrophy(player);
     }

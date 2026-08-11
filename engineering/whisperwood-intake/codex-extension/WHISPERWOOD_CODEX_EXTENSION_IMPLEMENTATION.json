@@ -1,0 +1,60 @@
+{
+  "schema_version": 1,
+  "status": "STATIC_IMPLEMENTATION_PASS_WITH_EXPLICIT_WITHHOLDS",
+  "base_commit": "34fab77a5212232120b437ab24b55e2eab4ffb98",
+  "authority": [
+    {
+      "path": "engineering/whisperwood-intake/codex-extension/WHISPERWOOD_CODEX_EXTENSION_MAP.json",
+      "sha256": "41a153de2bebf8660af61ebf0bc7d3a5eaf47fd355109990e67369f882cf0a53"
+    },
+    {
+      "path": "engineering/authority/WAVE_1_ENGINEERING_DECISION_LEDGER.json",
+      "sha256": "3e2b64785da9310b098e06981ebc95777ddc7e5d2666f803b79ce374470a9561"
+    }
+  ],
+  "coverage": {
+    "foundation_pages_preserved": 40,
+    "structure_pages_added": 10,
+    "equipment_and_trophy_pages_added": 21,
+    "boss_pages_added": 1,
+    "progression_pages_added": 2,
+    "total_pages": 74,
+    "registry_version": 2,
+    "state_schema_version": 4,
+    "fully_populated_four_region_discovery_json_bytes": 596
+  },
+  "integrated_triggers": {
+    "structure_first_successful_activation": "ALL_10_AUTHORED_ANCHORS_ROTATION_AWARE",
+    "whisperwood_chapter_entry": "FIRST_RECOGNIZED_WHISPERWOOD_CODEX_DISCOVERY",
+    "ashen_rumor": "BROKEN_WAGON_CODEX_AND_STRUCTURE_STATE_ONLY",
+    "thorn_court_encounter": "VALID_ARENA_PULL_ONLY",
+    "thorn_court_terminal": "DURABLE_ARENA_SEAL_CREDIT_BEFORE_CODEX_AND_PHYSICAL_DELIVERY",
+    "thorn_stalker_skull": "DURABLE_ARENA_CREDIT_ONLY"
+  },
+  "explicit_withholds": {
+    "successful_craft_output": "WITHHELD_NO_STABLE_EXACT_CRAFT_COMPLETION_SIGNAL_IN_CURRENT_RUNTIME; NO_POSSESSION_SUBSTITUTION",
+    "recognized_structure_proximity_200_ticks": "WITHHELD_NO_CANONICAL_BOUNDED_SITE_LOCATOR; ACTIVATION_PATH_COMPLETES_ALL_10_STRUCTURE_PAGES"
+  },
+  "semantic_guards": {
+    "physical_trophy_possession_drives_progression": false,
+    "ecology_thorn_stalker_unlocks_boss_trophy_or_progression": false,
+    "mastery_trophies_are_progression_blockers": false,
+    "ashen_rumor_is_an_item": false,
+    "activation_claims_loot": false
+  },
+  "checks": {
+    "node_source_semantics": "PASS_67_OF_67",
+    "generated_data_current": "PASS_1_OF_1",
+    "wave1_source_validator": "PASS",
+    "python_full_suite": "PASS_71_OF_72_WITH_ONE_OUT_OF_SCOPE_STALE_DEFAULT_PACKAGE_FAILURE",
+    "out_of_scope_failure": "test_archive_extracted_entrypoint targets the pre-existing default working-package artifact; startup=0 there while current source main.js registers startup=1; no package was built or mutated in this no-build lane"
+  },
+  "proof_boundary": [
+    "SOURCE_AND_SEMANTIC_TESTS_ONLY",
+    "NOT_IMMUTABLE_PACKAGE_PROOF",
+    "NOT_ARCHIVE_EXTRACTED_ENTRYPOINT_PROOF",
+    "NOT_STABLE_BDS_PROOF",
+    "NOT_CLIENT_UI_OR_RENDER_PROOF",
+    "NOT_CHECKPOINT_1"
+  ]
+}

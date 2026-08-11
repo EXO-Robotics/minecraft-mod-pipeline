@@ -1,7 +1,9 @@
-// Machine-bound from WHISPERWOOD_CODEX_IMPLEMENTATION_MAP.json. This module
+import { WHISPERWOOD_CODEX_EXTENSION_ENTRIES } from "./wave1_codex_extension_data.js";
+
+// Machine-bound from the Whisperwood Codex implementation maps. This module
 // contains only SAFE_NOW identity and discovery-transition data. Acquisition
 // guidance whose live completion is blocked remains outside the runtime.
-export const WAVE1_CODEX_REGISTRY_VERSION = 1;
+export const WAVE1_CODEX_REGISTRY_VERSION = 2;
 const event = (id, state, kind) => Object.freeze({ id, state, event: kind });
 const entry = (id, kind, events) => Object.freeze({
   id,
@@ -13,7 +15,7 @@ const entry = (id, kind, events) => Object.freeze({
   events: Object.freeze(events),
 });
 
-export const WHISPERWOOD_CODEX_ENTRIES = Object.freeze([
+export const WHISPERWOOD_CODEX_FOUNDATION_ENTRIES = Object.freeze([
   entry("whisper_bark", "resource", [event("codex:ww:resource:whisper_bark:harvested", 2, "harvested")]),
   entry("moss_resin", "resource", [event("codex:ww:resource:moss_resin:harvested", 2, "harvested")]),
   entry("glow_spore", "resource", [event("codex:ww:resource:glow_spore:harvested", 2, "harvested")]),
@@ -56,15 +58,26 @@ export const WHISPERWOOD_CODEX_ENTRIES = Object.freeze([
   entry("bark_wraith", "creature", [event("codex:ww:creature:bark_wraith:defeated", 2, "defeat")]),
 ]);
 
+// Append-only migration rule: never reorder the original forty entries or the
+// mapped extension categories. Category-local indices are independently bound
+// by the maps and checked below.
+export const WHISPERWOOD_CODEX_ENTRIES = Object.freeze([
+  ...WHISPERWOOD_CODEX_FOUNDATION_ENTRIES,
+  ...WHISPERWOOD_CODEX_EXTENSION_ENTRIES,
+]);
+
 const eventIndex = {};
 const categoryCounts = Object.create(null);
 for (let index = 0; index < WHISPERWOOD_CODEX_ENTRIES.length; index++) {
   const entryData = WHISPERWOOD_CODEX_ENTRIES[index];
   const categoryIndex = categoryCounts[entryData.category] ?? 0;
+  if (Number.isInteger(entryData.categoryIndex) && entryData.categoryIndex !== categoryIndex) {
+    throw new Error(`Codex category index mismatch: ${entryData.category}:${entryData.id}`);
+  }
   categoryCounts[entryData.category] = categoryIndex + 1;
   for (const transition of entryData.events) {
     if (Object.prototype.hasOwnProperty.call(eventIndex, transition.id)) throw new Error(`Duplicate Codex event: ${transition.id}`);
-    eventIndex[transition.id] = Object.freeze({ region: entryData.region, category: entryData.category, index: categoryIndex, state: transition.state, event: transition.event });
+    eventIndex[transition.id] = Object.freeze({ region: entryData.region, category: entryData.category, index: categoryIndex, state: transition.state, event: transition.event ?? transition.action });
   }
 }
 export const WAVE1_CODEX_EVENT_INDEX = Object.freeze(eventIndex);

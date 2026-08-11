@@ -28,6 +28,16 @@ export const CODEX_BLOCK_INTERACTION_ROUTES = codexRoutes(CODEX_ENTRY_REGISTRY.f
 export const CODEX_ENTITY_INTERACTION_ROUTES = codexRoutes(CODEX_ENTRY_REGISTRY.filter(entry => entry.kind === "creature"), event => event.event === "observe_nearby");
 export const CODEX_ENTITY_DEATH_ROUTES = codexRoutes(CODEX_ENTRY_REGISTRY.filter(entry => entry.kind === "creature"), event => event.event === "defeat");
 
+export const CODEX_STRUCTURE_ACTIVATION_EVENTS = Object.freeze(Object.fromEntries(
+  CODEX_ENTRY_REGISTRY
+    .filter(entry => entry.kind === "structure")
+    .map(entry => [entry.id, Object.freeze(entry.events.filter(event => event.action === "first_successful_activation").map(event => event.id))]),
+));
+
+export function codexEventsForStructureActivation(siteId) {
+  return CODEX_STRUCTURE_ACTIVATION_EVENTS[siteId] ?? Object.freeze([]);
+}
+
 export const ENTITY_INTERACTION_ACTIONS = Object.freeze({
   "aionbound:waykeeper_courser": Object.freeze(["waykeeper_notice"]),
 });
@@ -75,6 +85,8 @@ export const BLOCK_ROUTES = Object.freeze({
   "aionbound:brinewood_beam": { discoveries: [], actions: ["site_reward"] },
   "aionbound:rootglass_lantern": { discoveries: [], actions: ["site_reward"] },
   "aionbound:ferrowake_lamp": { discoveries: [], actions: ["site_reward"] },
+  "aionbound:lantern_post": { discoveries: [], actions: ["ww_progression_site"] },
+  "aionbound:moss_cairn": { discoveries: [], actions: ["ww_progression_site"] },
   "minecraft:lodestone": { discoveries: [], actions: ["ww_progression_site"] },
   "minecraft:barrel": { discoveries: [], actions: ["ww_progression_site"] },
 });
@@ -104,28 +116,100 @@ export const STRUCTURE_SITES = Object.freeze([
 // deliberately outside this table.
 export const WHISPERWOOD_PROGRESSION_SITES = Object.freeze([
   Object.freeze({
-    id: "thorn_court",
+    id: "lantern_post",
+    center: "aionbound:lantern_post",
+    relativeSignatures: Object.freeze([]),
+    stamp: "landmark:lantern_post",
+    role: "codex_activation",
+  }),
+  Object.freeze({
+    id: "moss_cairn",
+    center: "aionbound:moss_cairn",
+    relativeSignatures: Object.freeze([]),
+    stamp: "landmark:moss_cairn",
+    role: "codex_activation",
+  }),
+  Object.freeze({
+    id: "hunter_camp",
+    center: "minecraft:barrel",
+    relativeSignatures: Object.freeze([
+      Object.freeze({ x: 1, y: 0, z: 0, typeId: "minecraft:lantern" }),
+    ]),
+    stamp: "landmark:hunter_camp",
+    role: "codex_activation",
+  }),
+  Object.freeze({
+    id: "root_bridge",
+    center: "minecraft:barrel",
+    relativeSignatures: Object.freeze([
+      Object.freeze({ x: -1, y: 1, z: 0, typeId: "aionbound:glow_moss" }),
+      Object.freeze({ x: 0, y: 3, z: 0, typeId: "aionbound:whisperwood_wood" }),
+    ]),
+    stamp: "landmark:root_bridge",
+    role: "codex_activation",
+  }),
+  Object.freeze({
+    id: "owl_shrine",
     center: "minecraft:lodestone",
-    signatures: Object.freeze(["aionbound:hollow_wood"]),
+    relativeSignatures: Object.freeze([
+      Object.freeze({ x: -2, y: 1, z: 0, typeId: "aionbound:whisperwood_log" }),
+      Object.freeze({ x: -2, y: 3, z: 0, typeId: "aionbound:glow_moss" }),
+    ]),
+    stamp: "landmark:owl_shrine",
+    role: "codex_activation",
+  }),
+  Object.freeze({
+    id: "forest_waystone",
+    center: "minecraft:lodestone",
+    relativeSignatures: Object.freeze([
+      Object.freeze({ x: 0, y: 1, z: 0, typeId: "minecraft:chiseled_stone_bricks" }),
+      Object.freeze({ x: -1, y: 1, z: 0, typeId: "aionbound:glow_moss" }),
+    ]),
+    stamp: "landmark:forest_waystone",
+    role: "activation",
+  }),
+  Object.freeze({
+    id: "hollow_cave_entrance",
+    center: "minecraft:lodestone",
+    relativeSignatures: Object.freeze([
+      Object.freeze({ x: -3, y: 1, z: -1, typeId: "minecraft:barrel" }),
+      Object.freeze({ x: 3, y: 1, z: -1, typeId: "aionbound:glow_moss" }),
+    ]),
+    stamp: "landmark:hollow_cave_entrance",
+    role: "codex_activation",
+  }),
+  Object.freeze({
+    id: "ancient_totem",
+    center: "minecraft:lodestone",
+    relativeSignatures: Object.freeze([
+      Object.freeze({ x: 0, y: 1, z: 0, typeId: "aionbound:hollow_wood" }),
+      Object.freeze({ x: -2, y: 0, z: 2, typeId: "minecraft:barrel" }),
+    ]),
     stamp: "landmark:ancient_totem",
     role: "boss_anchor",
     action: "boss:thorn_court",
   }),
   Object.freeze({
-    id: "forest_waystone",
-    center: "minecraft:lodestone",
-    signatures: Object.freeze(["aionbound:glow_moss"]),
-    stamp: "landmark:forest_waystone",
-    role: "activation",
-  }),
-  Object.freeze({
     id: "broken_wagon",
     center: "minecraft:barrel",
-    signatures: Object.freeze(["aionbound:whisperwood_roots", "aionbound:whisperwood_planks"]),
+    relativeSignatures: Object.freeze([
+      Object.freeze({ x: 1, y: 0, z: -1, typeId: "aionbound:whisperwood_roots" }),
+      Object.freeze({ x: -1, y: 0, z: -2, typeId: "minecraft:blackstone" }),
+    ]),
     stamp: "landmark:broken_wagon",
     role: "transition_hook",
     transition: "ww_to_ah",
-    presentation: "WITHHELD_PENDING_CREATIVE_AUTHORITY",
+    presentation: "CODEX_STRUCTURE_STATE_ONLY",
+  }),
+  Object.freeze({
+    id: "fallen_giant_tree",
+    center: "minecraft:barrel",
+    relativeSignatures: Object.freeze([
+      Object.freeze({ x: 3, y: 0, z: 0, typeId: "aionbound:glow_moss" }),
+      Object.freeze({ x: 0, y: 0, z: -1, typeId: "aionbound:hollow_wood" }),
+    ]),
+    stamp: "landmark:fallen_giant_tree",
+    role: "codex_activation",
   }),
 ]);
 
