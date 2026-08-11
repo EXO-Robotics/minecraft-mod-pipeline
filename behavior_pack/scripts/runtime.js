@@ -46,6 +46,7 @@ export function createRuntime(platform = { world, system, ItemStack, EquipmentSl
     chaos: context => chaos.use(context),
     safe_storage_notice: ({ player }) => state.warn(player, "Use the crafted vanilla chest for authoritative safe storage."),
     site_reward: context => structures.claimSite(context),
+    ww_progression_site: context => structures.activateProgressionSite(context),
     "device:salvage": context => devices.useSalvage(context),
     "device:press": context => devices.usePress(context),
     "device:survey": context => devices.useSurvey(context),

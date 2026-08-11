@@ -1,7 +1,16 @@
 import { COMBINED_BUDGETS } from "./budgets.js";
-import { STRUCTURE_REWARDS, STRUCTURE_SITES } from "./catalog.js";
+import { STRUCTURE_REWARDS, STRUCTURE_SITES, WHISPERWOOD_PROGRESSION_SITES } from "./catalog.js";
 
 const SOFT = new Set(["minecraft:dirt", "minecraft:grass_block", "minecraft:sand", "minecraft:gravel", "minecraft:clay", "minecraft:mud", "minecraft:netherrack", "minecraft:soul_sand", "minecraft:soul_soil", "minecraft:snow", "minecraft:snow_layer", "minecraft:moss_block"]);
+const NEARBY_SIGNATURE_OFFSETS = Object.freeze((() => {
+  const offsets = [];
+  for (let y = -2; y <= 2; y++) for (let x = -2; x <= 2; x++) for (let z = -2; z <= 2; z++) {
+    const distance = Math.abs(x) + Math.abs(y) + Math.abs(z);
+    if (distance > 0 && distance <= 2) offsets.push(Object.freeze({ x, y, z, distance }));
+  }
+  offsets.sort((a, b) => a.distance - b.distance || a.y - b.y || a.x - b.x || a.z - b.z);
+  return offsets;
+})());
 
 export function cellEdits(base) {
   const edits = [];
@@ -94,6 +103,29 @@ export function createStructureService({ world, system, ItemStack, state, arbite
   function resolveSite(block, dimension) {
     return STRUCTURE_SITES.filter(site => site.center === block.typeId).find(site => hasSignature(dimension, block.location, site.signature)) ?? null;
   }
+  function hasNearbyProgressionSignature(dimension, location, typeId) {
+    return NEARBY_SIGNATURE_OFFSETS.some(offset => dimension.getBlock({
+      x: location.x + offset.x,
+      y: location.y + offset.y,
+      z: location.z + offset.z,
+    })?.typeId === typeId);
+  }
+  function resolveProgressionSite(block, dimension) {
+    return WHISPERWOOD_PROGRESSION_SITES
+      .filter(site => site.center === block.typeId)
+      .find(site => site.signatures.every(signature => hasNearbyProgressionSignature(dimension, block.location, signature))) ?? null;
+  }
+  function activateProgressionSite({ player, block }) {
+    const site = resolveProgressionSite(block, player.dimension);
+    if (!site) return false;
+    return Object.freeze({
+      site: site.id,
+      stamp: site.stamp,
+      role: site.role,
+      transition: site.transition ?? null,
+      changed: state.stamp(player, site.stamp),
+    });
+  }
   function claimSite({ player, block }) {
     const site = resolveSite(block, player.dimension); if (!site) return;
     state.stamp(player, `landmark:${site.id}`);
@@ -107,5 +139,5 @@ export function createStructureService({ world, system, ItemStack, state, arbite
     if (reward) player.dimension.spawnItem(new ItemStack(reward[0], reward[1]), player.location);
     player.sendMessage(`§a[Discovery]§r ${site.id.replaceAll("_", " ")} · ${site.pool.replaceAll("_", " ")}`);
   }
-  return { useStrip, useCell, tick, reconcile, claimSite, resolveSite, live };
+  return { useStrip, useCell, tick, reconcile, claimSite, resolveSite, activateProgressionSite, resolveProgressionSite, live };
 }

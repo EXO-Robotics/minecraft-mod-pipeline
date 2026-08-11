@@ -75,6 +75,8 @@ export const BLOCK_ROUTES = Object.freeze({
   "aionbound:brinewood_beam": { discoveries: [], actions: ["site_reward"] },
   "aionbound:rootglass_lantern": { discoveries: [], actions: ["site_reward"] },
   "aionbound:ferrowake_lamp": { discoveries: [], actions: ["site_reward"] },
+  "minecraft:lodestone": { discoveries: [], actions: ["ww_progression_site"] },
+  "minecraft:barrel": { discoveries: [], actions: ["ww_progression_site"] },
 });
 
 export const STRUCTURE_SITES = Object.freeze([
@@ -93,6 +95,30 @@ export const STRUCTURE_SITES = Object.freeze([
   { id: "glassroot_grotto", center: "aionbound:rootglass_lantern", signature: "aionbound:rootglass_mosaic", pool: "burrow" },
   { id: "silent_foundry", center: "aionbound:resonance_press", signature: "aionbound:ferrowake_bricks", pool: "foundry" },
   { id: "lantern_causeway", center: "aionbound:ferrowake_lamp", signature: "aionbound:storm_slate_tiles", pool: "pilgrimage" },
+]);
+
+// These are non-loot progression anchors from the Wave 1 Whisperwood
+// structure authority. Signatures distinguish authored assemblies from
+// ordinary vanilla lodestones and barrels without intercepting their normal
+// interaction. Presentation, teleport networking, map items, and rewards are
+// deliberately outside this table.
+export const WHISPERWOOD_PROGRESSION_SITES = Object.freeze([
+  Object.freeze({
+    id: "forest_waystone",
+    center: "minecraft:lodestone",
+    signatures: Object.freeze(["aionbound:glow_moss"]),
+    stamp: "landmark:forest_waystone",
+    role: "activation",
+  }),
+  Object.freeze({
+    id: "broken_wagon",
+    center: "minecraft:barrel",
+    signatures: Object.freeze(["aionbound:whisperwood_roots", "aionbound:whisperwood_planks"]),
+    stamp: "landmark:broken_wagon",
+    role: "transition_hook",
+    transition: "ww_to_ah",
+    presentation: "WITHHELD_PENDING_CREATIVE_AUTHORITY",
+  }),
 ]);
 
 export const STRUCTURE_REWARDS = Object.freeze({

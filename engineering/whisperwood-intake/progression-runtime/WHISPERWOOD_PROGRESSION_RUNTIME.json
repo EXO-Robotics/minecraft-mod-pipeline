@@ -1,0 +1,58 @@
+{
+  "schema": "aionbound.wave1.whisperwood.progression_runtime.v1",
+  "status": "IMPLEMENTED_AUTHORITY_COMPLETE_NON_LOOT_SCAFFOLD",
+  "source_commit": "668993d1b5fc7a676181063eef1b9dd721d5b2a4",
+  "authority": [
+    "engineering/whisperwood-intake/structure-runtime/WHISPERWOOD_STRUCTURE_RUNTIME_MAP.json",
+    "engineering/whisperwood-intake/structure-assemblies/WHISPERWOOD_STRUCTURE_ASSEMBLIES.json",
+    "studio-prep/creative/02_loot/LOOT_WHISPERWOOD.md",
+    "studio-prep/creative/WAVE_1_LIVING_WORLD_IMPLEMENTATION_CONTRACT.md"
+  ],
+  "sites": [
+    {
+      "id": "forest_waystone",
+      "interaction_anchor": "minecraft:lodestone",
+      "assembly_signatures": [
+        "aionbound:glow_moss"
+      ],
+      "persistent_player_stamp": "landmark:forest_waystone",
+      "implemented": [
+        "authored_assembly_resolution",
+        "duplicate_safe_player_activation_stamp",
+        "v4_player_state_persistence"
+      ],
+      "withheld": [
+        "teleport_network",
+        "fast_travel_destination_semantics",
+        "activation_item_reward",
+        "activation_presentation_copy",
+        "world_shared_activation_state"
+      ]
+    },
+    {
+      "id": "broken_wagon",
+      "interaction_anchor": "minecraft:barrel",
+      "assembly_signatures": [
+        "aionbound:whisperwood_roots",
+        "aionbound:whisperwood_planks"
+      ],
+      "persistent_player_stamp": "landmark:broken_wagon",
+      "transition": "ww_to_ah",
+      "implemented": [
+        "authored_assembly_resolution",
+        "duplicate_safe_player_landmark_stamp",
+        "silent_transition_hook"
+      ],
+      "withheld": [
+        "ah_map_scrap_item",
+        "rumor_item_or_new_stamp_identity",
+        "rumor_presentation_copy",
+        "loot_table_or_quantities",
+        "Ashen_unlock_effect"
+      ],
+      "withhold_reason": "No exact approved Ashen-rumor stamp or presentation identity exists beyond the exact landmark stamp and qualitative ww_to_ah transition."
+    }
+  ],
+  "handler_composition": "BLOCK_ROUTES invokes ww_progression_site after any route discoveries and does not cancel vanilla lodestone or barrel interaction.",
+  "proof_boundary": "SOURCE_RUNTIME_SEMANTIC_TEST_ONLY; NO_BDS, PACKAGE, CLIENT, LOOT, BOSS, BUILD, CANDIDATE, CONSOLE, OR RELEASE CLAIM"
+}
