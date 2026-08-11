@@ -1,0 +1,54 @@
+{
+  "schema": "aionbound.wave1.whisperwood.direct_prop_worldgen.v1",
+  "integration_base": "7d7e2e6",
+  "authority": [
+    {
+      "path": "studio-prep/creative/06_world_gen/WORLD_GENERATION.md",
+      "sha256": "bc18a1e1f73d6045ab7e583afe910ca13d4776d439c8f3dfb45dae5784372f4b"
+    }
+  ],
+  "density_accounting": {
+    "existing_ecology_attempts_per_chunk": 1.151042,
+    "added_direct_prop_attempts_per_chunk": 0.078125,
+    "combined_attempts_per_chunk": 1.229167,
+    "ceiling": 1.25,
+    "cap_change": "NONE"
+  },
+  "placement_boundary": "overworld forest surface proxies only; no real trail or quiet-hollow detection claim",
+  "content_boundary": "NO LOOT, SCRIPTS, STRUCTURES, ENTITIES, ITEMS, DROPS, OR CAP CHANGES",
+  "proof_boundary": "STATIC_SOURCE_REGISTRATION_ONLY; NOT BDS, CLIENT, NATURAL DISTRIBUTION, TERRAIN LOCALITY, OR CANDIDATE PROOF",
+  "registrations": [
+    {
+      "id": "ww_prop_lantern_post",
+      "block": "aionbound:lantern_post",
+      "role": "common path-language prop",
+      "qualitative_locality": "forest surface proxy; trail detection unproven",
+      "iterations": 1,
+      "scatter": {
+        "numerator": 1,
+        "denominator": 16
+      },
+      "expected_attempts_per_chunk_before_filters": 0.0625,
+      "feature_path": "behavior_pack/features/ww_prop_lantern_post.feature.json",
+      "feature_rule_path": "behavior_pack/feature_rules/ww_prop_lantern_post.feature_rule.json",
+      "feature_sha256": "a2a08d1677858d803f227d5deebf6f98219b6b5c2a4df140577be8ab7da7fbb3",
+      "feature_rule_sha256": "226f097ad9cd0925db2be3c3fe21f71a4f61f9a075dd881435958b7436c8c4c1"
+    },
+    {
+      "id": "ww_prop_moss_cairn",
+      "block": "aionbound:moss_cairn",
+      "role": "uncommon quiet-hollow prop",
+      "qualitative_locality": "forest surface proxy; hollow detection unproven",
+      "iterations": 1,
+      "scatter": {
+        "numerator": 1,
+        "denominator": 64
+      },
+      "expected_attempts_per_chunk_before_filters": 0.015625,
+      "feature_path": "behavior_pack/features/ww_prop_moss_cairn.feature.json",
+      "feature_rule_path": "behavior_pack/feature_rules/ww_prop_moss_cairn.feature_rule.json",
+      "feature_sha256": "e097c2437851d0bad747cec6e8a6d8c894634efcaf45a98bbd573a566fc6319a",
+      "feature_rule_sha256": "2abe9d4588d4fcdabc5e154679f81613af0cae9f9fc2328ef6b9f81c55075842"
+    }
+  ]
+}

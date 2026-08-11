@@ -1,0 +1,40 @@
+{
+  "schema": "aionbound.wave1.whisperwood.direct_prop_validation.v1",
+  "status": "PASS",
+  "checks": [
+    "deterministic regeneration",
+    "direct-prop block closure",
+    "feature/rule identifier and target closure",
+    "forest surface filters",
+    "combined ecology density ceiling",
+    "forbidden scope omission"
+  ],
+  "counts": {
+    "features": 2,
+    "feature_rules": 2,
+    "unit_tests": 7
+  },
+  "outputs": [
+    {
+      "path": "behavior_pack/features/ww_prop_lantern_post.feature.json",
+      "bytes": 627,
+      "sha256": "a2a08d1677858d803f227d5deebf6f98219b6b5c2a4df140577be8ab7da7fbb3"
+    },
+    {
+      "path": "behavior_pack/feature_rules/ww_prop_lantern_post.feature_rule.json",
+      "bytes": 1173,
+      "sha256": "226f097ad9cd0925db2be3c3fe21f71a4f61f9a075dd881435958b7436c8c4c1"
+    },
+    {
+      "path": "behavior_pack/features/ww_prop_moss_cairn.feature.json",
+      "bytes": 623,
+      "sha256": "e097c2437851d0bad747cec6e8a6d8c894634efcaf45a98bbd573a566fc6319a"
+    },
+    {
+      "path": "behavior_pack/feature_rules/ww_prop_moss_cairn.feature_rule.json",
+      "bytes": 1169,
+      "sha256": "2abe9d4588d4fcdabc5e154679f81613af0cae9f9fc2328ef6b9f81c55075842"
+    }
+  ],
+  "proof_boundary": "STATIC SOURCE REGISTRATION ONLY; NOT TRAIL OR HOLLOW DETECTION, BDS, CLIENT, NATURAL DISTRIBUTION, BUILD, OR CANDIDATE PROOF"
+}
