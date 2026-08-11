@@ -29,8 +29,10 @@ from pathlib import Path
 from typing import Any, Iterable
 
 
-TOOL_VERSION = "1.0.0"
+TOOL_VERSION = "1.0.1"
 RECEIPT_NAME = "whisperwood-native-blockbench-receipt.json"
+CANONICAL_FLOAT_DECIMAL_PLACES = 12
+CANONICAL_FLOAT_MAX_ROUNDING_DELTA = 0.5 * (10 ** -CANONICAL_FLOAT_DECIMAL_PLACES)
 DEFAULT_LOCATOR_BONES: dict[str, tuple[str, ...]] = {
     "effect": ("root",),
     "gaze": ("head",),
@@ -262,12 +264,30 @@ def normalize_texture_records(model: dict[str, Any], texture_name: str) -> int:
     return changed
 
 
+def normalize_export_numbers(value: Any) -> Any:
+    """Remove IEEE-754 serialization noise without masking material drift."""
+    if isinstance(value, dict):
+        return {key: normalize_export_numbers(child) for key, child in value.items()}
+    if isinstance(value, list):
+        return [normalize_export_numbers(child) for child in value]
+    if isinstance(value, float):
+        if not math.isfinite(value):
+            raise NativeToolError("NATIVE_EXPORT_NONFINITE_NUMBER")
+        rounded = round(value, CANONICAL_FLOAT_DECIMAL_PLACES)
+        if rounded == 0:
+            return 0
+        if rounded.is_integer():
+            return int(rounded)
+        return rounded
+    return value
+
+
 def canonical_export_hash(text: str) -> str:
     try:
         parsed = json.loads(text)
     except json.JSONDecodeError as exc:
         raise NativeToolError(f"NATIVE_EXPORT_INVALID_JSON:{exc}") from exc
-    return sha256_bytes(canonical_json_bytes(parsed))
+    return sha256_bytes(canonical_json_bytes(normalize_export_numbers(parsed)))
 
 
 def write_receipt(output_dir: Path, receipt: dict[str, Any]) -> Path:
@@ -749,6 +769,12 @@ def execute(inputs: Inputs) -> tuple[int, dict[str, Any]]:
         "native_result": native_result,
         "staged_project": {"path": str(staged_model.relative_to(inputs.output)), "sha256": sha256_file(staged_model)},
         "exports": exports,
+        "canonical_numeric_equivalence": {
+            "finite_numbers_only": True,
+            "decimal_places": CANONICAL_FLOAT_DECIMAL_PLACES,
+            "maximum_rounding_delta": CANONICAL_FLOAT_MAX_ROUNDING_DELTA,
+            "raw_export_hashes_retained": True,
+        },
         "native_export_locator_transforms": native_locator_specs,
         "screenshots": screenshots,
         "screenshots_excluded_from_export_determinism": True,

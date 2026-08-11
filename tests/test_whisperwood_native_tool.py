@@ -165,6 +165,34 @@ class WhisperwoodNativeToolTests(unittest.TestCase):
         self.assertEqual(TOOL.canonical_export_hash(compact), TOOL.canonical_export_hash(pretty))
         self.assertNotEqual(TOOL.canonical_export_hash(compact), TOOL.canonical_export_hash(changed))
 
+    def test_two_pass_export_hash_accepts_only_tight_float_noise(self):
+        first = json.dumps({"description": {"visible_bounds_offset": [0, 0.6, 0]}})
+        epsilon = json.dumps({"description": {"visible_bounds_offset": [0.0, 0.6000000000000001, -0.0]}})
+        meaningful_bounds_drift = json.dumps({"description": {"visible_bounds_offset": [0, 0.600001, 0]}})
+        self.assertEqual(TOOL.canonical_export_hash(first), TOOL.canonical_export_hash(epsilon))
+        self.assertNotEqual(TOOL.canonical_export_hash(first), TOOL.canonical_export_hash(meaningful_bounds_drift))
+
+    def test_meaningful_locator_transform_drift_remains_rejected(self):
+        authority = {
+            "effect": {
+                "source_parent": "root",
+                "position": [1, 2, 3],
+                "rotation": [0, 0, 0],
+                "source_representation": "VECTOR",
+            }
+        }
+        plan = TOOL.build_locator_plan(["effect"], ["root"], authority)
+        drifted = json.loads(json.dumps(authority))
+        drifted["effect"]["position"][2] = 3.000001
+        self.assertEqual(
+            TOOL.locator_export_diagnostics(plan, drifted),
+            ["LOCATOR_TRANSFORM_MISMATCH_IN_NATIVE_EXPORT:effect"],
+        )
+
+    def test_nonfinite_export_number_is_rejected(self):
+        with self.assertRaisesRegex(TOOL.NativeToolError, "NATIVE_EXPORT_NONFINITE_NUMBER"):
+            TOOL.canonical_export_hash('{"value": NaN}')
+
     def test_native_script_creates_locator_and_uses_both_codecs(self):
         script = TOOL.native_session_script(
             Path("/tmp/project.bbmodel"), Path("/tmp/textures/model.png"),

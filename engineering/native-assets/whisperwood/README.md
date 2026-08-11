@@ -54,6 +54,15 @@ version/format, locator repairs, native export hashes, canonical two-pass
 equivalence, exported locator coverage, and optional PNG screenshot hashes.
 Screenshots are deliberately excluded from deterministic export equality.
 
+Native exports retain their raw byte hashes. Canonical equivalence normalizes
+finite JSON floating-point values to 12 decimal places (at most `5e-13` of
+rounding at that precision) so codec noise such as `0.6` versus
+`0.6000000000000001` does not fail a round trip. Non-finite values fail. Drift
+outside that precision remains visible in the canonical hashes. Locator parent,
+position, and rotation are additionally compared against their canonical static
+geometry authority without this numeric normalization, so transform drift is
+never excused as export formatting noise.
+
 Proof scope is limited to native Blockbench editable round-trip and codec
 export. It does not establish Bedrock client rendering, Stable BDS behavior,
 physical PS4 behavior, or Marketplace acceptance.
