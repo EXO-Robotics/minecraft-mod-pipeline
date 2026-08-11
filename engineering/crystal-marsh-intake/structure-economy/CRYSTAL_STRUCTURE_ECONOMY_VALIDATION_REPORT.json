@@ -1,0 +1,108 @@
+{
+  "schema": "aionbound.wave1.crystal_marsh.structure_economy_validation.v1",
+  "status": "PASS",
+  "integration_authority": {
+    "commit": "d8974fee959f0f15a8a212364a38d285e38078a5",
+    "tree": "35a07b3a82e161e43bc03f8bdbf6929902fc2297"
+  },
+  "ratified_authority": [
+    "W1-001-CM",
+    "W1-004-CM"
+  ],
+  "checks": [
+    "deterministic post-ratification structure regeneration",
+    "exact predecessor anchor-manifest closure",
+    "ten unchanged assembly sizes palettes and block-index layers",
+    "seven exact ordinary barrel LootTable bindings",
+    "four-cardinal rotation and anchor bounds closure",
+    "two no-chest-identity structures remain inert",
+    "Pearl Depths protected cache remains empty and synchronously guardable",
+    "ordinary loot identity closure and marsh_wight_mask prohibition",
+    "feature and feature-rule files excluded from the mutation surface"
+  ],
+  "captured_commands": [
+    {
+      "command": "python3 engineering/crystal-marsh-intake/structure-economy/author_crystal_structure_economy.py --check",
+      "exit_code": 0,
+      "normalized_stdout_sha256": "aa88620ba47cd41903ad3c6dd0d22a1df62fbfd622b5871a02e9d20efbe6b582",
+      "normalized_stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "command": "python3 -m unittest engineering/crystal-marsh-intake/structure-economy/test_crystal_structure_economy.py -v",
+      "exit_code": 0,
+      "normalized_stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "normalized_stderr_sha256": "ba7743fddd4d6805177f288677b742ee75ac86d9cbd7a83483dc4b91a40e4960"
+    }
+  ],
+  "counts": {
+    "assemblies": 10,
+    "ordinary_static_bindings": 7,
+    "inert_no_chest_identity": 2,
+    "protected_empty_encounter_cache": 1,
+    "cardinal_rotation_cases": 28,
+    "python_tests": 6
+  },
+  "outputs": [
+    {
+      "path": "behavior_pack/structures/aionbound/flooded_dock.mcstructure",
+      "bytes": 11262,
+      "sha256": "6ec28f1a6c6594af1c4c3b2b8db69558fc58e6ef1e0a6bde1063227c542fb2b9"
+    },
+    {
+      "path": "behavior_pack/structures/aionbound/ancient_boat.mcstructure",
+      "bytes": 11548,
+      "sha256": "c76134a2d6a0efef99261a72b0cf254371ed82cf3339f4fb90fe09a300961b32"
+    },
+    {
+      "path": "behavior_pack/structures/aionbound/marsh_broken_bridge.mcstructure",
+      "bytes": 8896,
+      "sha256": "bd9b6d0fe114ccdd2a21baaafa87d238e765778e6f44ee7ac089d88ebc18aac3"
+    },
+    {
+      "path": "behavior_pack/structures/aionbound/pearl_cairn.mcstructure",
+      "bytes": 5792,
+      "sha256": "9479204efe3a12e0adfc8acf4a947a451c39703d798a72d46cd359a939d0bf23"
+    },
+    {
+      "path": "behavior_pack/structures/aionbound/marsh_totem.mcstructure",
+      "bytes": 10840,
+      "sha256": "59af7eb3dfe1bfff6e425be4ba0095909da781e1a2fbf42748ce17aa81101407"
+    },
+    {
+      "path": "behavior_pack/structures/aionbound/crystal_arch.mcstructure",
+      "bytes": 13330,
+      "sha256": "0de548adac44887ca0a18b55295b9f464ac78201f9ef151361f5663bad882779"
+    },
+    {
+      "path": "behavior_pack/structures/aionbound/crystal_obelisk.mcstructure",
+      "bytes": 25004,
+      "sha256": "207d6ddac516d15f2c7256b8cad560abe9c76ffd4034d58533560c318706751a"
+    },
+    {
+      "path": "behavior_pack/structures/aionbound/sunken_shrine.mcstructure",
+      "bytes": 25983,
+      "sha256": "4b91a18bc3a7694638b67ec34bb49957b7d7d0543fb670f4d7417bc60d6c5fd4"
+    },
+    {
+      "path": "behavior_pack/structures/aionbound/ruined_observatory.mcstructure",
+      "bytes": 74201,
+      "sha256": "c3157c0e3cedc056009250ad43fb6237e41b31add60b2678eb2cc172056d9984"
+    },
+    {
+      "path": "behavior_pack/structures/aionbound/deep_pool_entrance.mcstructure",
+      "bytes": 35257,
+      "sha256": "11881d5f9e75dd216925d9cf05b3e56d9f8092fd1c09c51e7d0e72681a5b7dfb"
+    },
+    {
+      "path": "engineering/crystal-marsh-intake/structure-economy/CRYSTAL_STRUCTURE_ECONOMY_BINDING.json",
+      "bytes": 20243,
+      "sha256": "469dc787aadec9caf560483d3f07f7c666dde0b2f68107ceaf3178b20e81f612"
+    },
+    {
+      "path": "engineering/crystal-marsh-intake/structure-economy/README.md",
+      "bytes": 1966,
+      "sha256": "ccb0817dbb5fff5137d014b47cf0fa4bdae6203ee90d34f65f60983f99bcbae7"
+    }
+  ],
+  "proof_boundary": "STATIC_EXACT_NBT_BINDING_AND_TARGETED_SEMANTIC_TEST_EVIDENCE_ONLY; NO BDS, BUILD, CLIENT, ENCOUNTER_RUNTIME, REWARD, OR CANDIDATE CLAIM"
+}

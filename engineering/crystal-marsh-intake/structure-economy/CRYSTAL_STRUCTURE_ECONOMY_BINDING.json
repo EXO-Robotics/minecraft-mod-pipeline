@@ -1,0 +1,674 @@
+{
+  "schema": "aionbound.wave1.crystal_marsh.structure_economy_binding.v1",
+  "status": "STATIC_STRUCTURE_LOOT_BINDING_PASS",
+  "integration_authority": {
+    "commit": "d8974fee959f0f15a8a212364a38d285e38078a5",
+    "tree": "35a07b3a82e161e43bc03f8bdbf6929902fc2297"
+  },
+  "ratified_authority": [
+    "W1-001-CM",
+    "W1-004-CM"
+  ],
+  "predecessor_anchor_manifest": {
+    "path": "engineering/crystal-marsh-intake/structure-assemblies/CRYSTAL_MARSH_STRUCTURE_ASSEMBLIES.json",
+    "sha256": "3d75ff3ca6b01c5068b5ce83682b8b289b58713650e1bacfb15d2f84738a03cf"
+  },
+  "ordinary_static_bindings": 7,
+  "structures_without_approved_chest_identity": [
+    "marsh_totem",
+    "sunken_shrine"
+  ],
+  "protected_pearl_depths_cache": {
+    "structure": "deep_pool_entrance",
+    "anchor": "deep_pool_cache",
+    "static_loot_binding": false,
+    "pre_clear": "EMPTY_AND_SYNCHRONOUSLY_GUARDABLE",
+    "terminal_owner": "PEARL_DEPTHS_SERVICE_ONLY",
+    "marsh_wight_mask_static_grant": false
+  },
+  "forbidden_static_identities": [
+    "aionbound:marsh_wight_mask"
+  ],
+  "assemblies": [
+    {
+      "structure": "flooded_dock",
+      "structure_path": "behavior_pack/structures/aionbound/flooded_dock.mcstructure",
+      "feature_path": "behavior_pack/features/flooded_dock.structure_feature.json",
+      "feature_sha256_unchanged": "2177de1d3d638b5cb84072b2fc811845c1e59d40f1b9e15e91c21d2ab1da6583",
+      "feature_rule_path": "behavior_pack/feature_rules/flooded_dock.structure_feature_rule.json",
+      "feature_rule_sha256_unchanged": "cd8f8b3d419cf3b5574239f8a1daa5d1c129b7521fdce057cba8a8ced2bd7bcd",
+      "predecessor_structure_sha256": "a3738e798e182334b73f1dbd719d7322a64c536a8779190d8067f6a6ea6de5d2",
+      "bound_structure_sha256": "6ec28f1a6c6594af1c4c3b2b8db69558fc58e6ef1e0a6bde1063227c542fb2b9",
+      "geometry_equal": true,
+      "approved_anchor": "flooded_dock_cache",
+      "anchor_coordinate": [
+        12,
+        2,
+        3
+      ],
+      "loot_table": "loot_tables/chests/crystal/flooded_dock.json",
+      "loot_table_sha256": "bc92b8028131c14f0b45c5a5a934da3f4bf2d13418cc4c55993385cce30683c2",
+      "loot_identities": [
+        "aionbound:crystal_reed_item",
+        "aionbound:flood_crystal",
+        "aionbound:glass_algae",
+        "aionbound:marsh_resin",
+        "aionbound:marsh_sickle",
+        "aionbound:wet_chitin"
+      ],
+      "cardinal_rotation_closure": [
+        {
+          "quarter_turns": 0,
+          "size": [
+            17,
+            6,
+            13
+          ],
+          "anchor": [
+            12,
+            2,
+            3
+          ]
+        },
+        {
+          "quarter_turns": 1,
+          "size": [
+            13,
+            6,
+            17
+          ],
+          "anchor": [
+            9,
+            2,
+            12
+          ]
+        },
+        {
+          "quarter_turns": 2,
+          "size": [
+            17,
+            6,
+            13
+          ],
+          "anchor": [
+            4,
+            2,
+            9
+          ]
+        },
+        {
+          "quarter_turns": 3,
+          "size": [
+            13,
+            6,
+            17
+          ],
+          "anchor": [
+            3,
+            2,
+            4
+          ]
+        }
+      ],
+      "binding": "STATIC_ORDINARY_LOOT_TABLE_NBT"
+    },
+    {
+      "structure": "ancient_boat",
+      "structure_path": "behavior_pack/structures/aionbound/ancient_boat.mcstructure",
+      "feature_path": "behavior_pack/features/ancient_boat.structure_feature.json",
+      "feature_sha256_unchanged": "0817d308bd84cbd9d0eab03652ddf2d87e54ebe3854ef49fb62acc7e3cdafe2a",
+      "feature_rule_path": "behavior_pack/feature_rules/ancient_boat.structure_feature_rule.json",
+      "feature_rule_sha256_unchanged": "cdd4c90d26af3032e6f89801e1b79e4c1a311481ba6c7f18543bf12df71fb992",
+      "predecessor_structure_sha256": "e17035dfd6169968706d4f8e5aa7238b53dcb917cf05129a10ea420cfa1941a0",
+      "bound_structure_sha256": "c76134a2d6a0efef99261a72b0cf254371ed82cf3339f4fb90fe09a300961b32",
+      "geometry_equal": true,
+      "approved_anchor": "ancient_boat_locker",
+      "anchor_coordinate": [
+        14,
+        2,
+        4
+      ],
+      "loot_table": "loot_tables/chests/crystal/ancient_boat.json",
+      "loot_table_sha256": "c256d590588bbbd5ccb920f5aea038304d7160fe86331b475d12fdb10b7d6523",
+      "loot_identities": [
+        "aionbound:crystal_reed_item",
+        "aionbound:flood_crystal",
+        "aionbound:flood_planks",
+        "aionbound:glass_algae",
+        "aionbound:marsh_resin",
+        "aionbound:marsh_sickle",
+        "aionbound:moon_pearl",
+        "aionbound:wet_chitin"
+      ],
+      "cardinal_rotation_closure": [
+        {
+          "quarter_turns": 0,
+          "size": [
+            19,
+            8,
+            9
+          ],
+          "anchor": [
+            14,
+            2,
+            4
+          ]
+        },
+        {
+          "quarter_turns": 1,
+          "size": [
+            9,
+            8,
+            19
+          ],
+          "anchor": [
+            4,
+            2,
+            14
+          ]
+        },
+        {
+          "quarter_turns": 2,
+          "size": [
+            19,
+            8,
+            9
+          ],
+          "anchor": [
+            4,
+            2,
+            4
+          ]
+        },
+        {
+          "quarter_turns": 3,
+          "size": [
+            9,
+            8,
+            19
+          ],
+          "anchor": [
+            4,
+            2,
+            4
+          ]
+        }
+      ],
+      "binding": "STATIC_ORDINARY_LOOT_TABLE_NBT"
+    },
+    {
+      "structure": "marsh_broken_bridge",
+      "structure_path": "behavior_pack/structures/aionbound/marsh_broken_bridge.mcstructure",
+      "feature_path": "behavior_pack/features/marsh_broken_bridge.structure_feature.json",
+      "feature_sha256_unchanged": "a10d09148458433db07a79b8719785d3900c4d8fe1683b51090e5dd816b990ff",
+      "feature_rule_path": "behavior_pack/feature_rules/marsh_broken_bridge.structure_feature_rule.json",
+      "feature_rule_sha256_unchanged": "514590a1597387e889d3366a93f83cc79724d60d2499250a7de9a14103316162",
+      "predecessor_structure_sha256": "c6f80ac5c7fc712e5e22952d042dce5fbc2b5ac1110401e4a4fe5ec657ca7199",
+      "bound_structure_sha256": "bd9b6d0fe114ccdd2a21baaafa87d238e765778e6f44ee7ac089d88ebc18aac3",
+      "geometry_equal": true,
+      "approved_anchor": "marsh_bridge_cache",
+      "anchor_coordinate": [
+        16,
+        3,
+        3
+      ],
+      "loot_table": "loot_tables/chests/crystal/marsh_broken_bridge.json",
+      "loot_table_sha256": "76ba12192f22c22eb951097bf0b42aff4c86df28ed8fffb6381a2c3c285a175b",
+      "loot_identities": [
+        "aionbound:crystal_reed_item",
+        "aionbound:flood_planks",
+        "aionbound:glass_algae",
+        "aionbound:marsh_resin",
+        "aionbound:moon_pearl",
+        "aionbound:silt_core",
+        "aionbound:wet_chitin"
+      ],
+      "cardinal_rotation_closure": [
+        {
+          "quarter_turns": 0,
+          "size": [
+            21,
+            7,
+            7
+          ],
+          "anchor": [
+            16,
+            3,
+            3
+          ]
+        },
+        {
+          "quarter_turns": 1,
+          "size": [
+            7,
+            7,
+            21
+          ],
+          "anchor": [
+            3,
+            3,
+            16
+          ]
+        },
+        {
+          "quarter_turns": 2,
+          "size": [
+            21,
+            7,
+            7
+          ],
+          "anchor": [
+            4,
+            3,
+            3
+          ]
+        },
+        {
+          "quarter_turns": 3,
+          "size": [
+            7,
+            7,
+            21
+          ],
+          "anchor": [
+            3,
+            3,
+            4
+          ]
+        }
+      ],
+      "binding": "STATIC_ORDINARY_LOOT_TABLE_NBT"
+    },
+    {
+      "structure": "pearl_cairn",
+      "structure_path": "behavior_pack/structures/aionbound/pearl_cairn.mcstructure",
+      "feature_path": "behavior_pack/features/pearl_cairn.structure_feature.json",
+      "feature_sha256_unchanged": "0ff88d673dbbd1a34653a7673bdae41dd05c63989642260d48a91646b8679efc",
+      "feature_rule_path": "behavior_pack/feature_rules/pearl_cairn.structure_feature_rule.json",
+      "feature_rule_sha256_unchanged": "d41eecec3ed3b3ac242bcb827e6bb7e14b391c85190b76cece7e6ce703e30052",
+      "predecessor_structure_sha256": "5e1dc597d338492177791dfb2d2877762672e9a06d38bc89a988d3bff39db569",
+      "bound_structure_sha256": "9479204efe3a12e0adfc8acf4a947a451c39703d798a72d46cd359a939d0bf23",
+      "geometry_equal": true,
+      "approved_anchor": "pearl_cairn_cache",
+      "anchor_coordinate": [
+        4,
+        1,
+        7
+      ],
+      "loot_table": "loot_tables/chests/crystal/pearl_cairn.json",
+      "loot_table_sha256": "085517c2fa2b0cde73977e27fb725849814efd87e104e4ffabed9392a1e669c0",
+      "loot_identities": [
+        "aionbound:flood_crystal",
+        "aionbound:glass_algae",
+        "aionbound:marsh_resin",
+        "aionbound:moon_pearl",
+        "aionbound:prism_pearl"
+      ],
+      "cardinal_rotation_closure": [
+        {
+          "quarter_turns": 0,
+          "size": [
+            9,
+            8,
+            9
+          ],
+          "anchor": [
+            4,
+            1,
+            7
+          ]
+        },
+        {
+          "quarter_turns": 1,
+          "size": [
+            9,
+            8,
+            9
+          ],
+          "anchor": [
+            1,
+            1,
+            4
+          ]
+        },
+        {
+          "quarter_turns": 2,
+          "size": [
+            9,
+            8,
+            9
+          ],
+          "anchor": [
+            4,
+            1,
+            1
+          ]
+        },
+        {
+          "quarter_turns": 3,
+          "size": [
+            9,
+            8,
+            9
+          ],
+          "anchor": [
+            7,
+            1,
+            4
+          ]
+        }
+      ],
+      "binding": "STATIC_ORDINARY_LOOT_TABLE_NBT"
+    },
+    {
+      "structure": "marsh_totem",
+      "structure_path": "behavior_pack/structures/aionbound/marsh_totem.mcstructure",
+      "feature_path": "behavior_pack/features/marsh_totem.structure_feature.json",
+      "feature_sha256_unchanged": "947ccb996220ae9db1f38de3054f30b49f9a988979a9ebf24c0bedad0de5b677",
+      "feature_rule_path": "behavior_pack/feature_rules/marsh_totem.structure_feature_rule.json",
+      "feature_rule_sha256_unchanged": "5204f76f2fe64161954922be91c3f3a8148405b697230c69afb0c6c483d4b248",
+      "predecessor_structure_sha256": "59af7eb3dfe1bfff6e425be4ba0095909da781e1a2fbf42748ce17aa81101407",
+      "bound_structure_sha256": "59af7eb3dfe1bfff6e425be4ba0095909da781e1a2fbf42748ce17aa81101407",
+      "geometry_equal": true,
+      "approved_anchor": null,
+      "anchor_coordinate": null,
+      "loot_table": null,
+      "loot_table_sha256": null,
+      "loot_identities": [],
+      "cardinal_rotation_closure": [],
+      "binding": "INERT_NO_APPROVED_CHEST_IDENTITY"
+    },
+    {
+      "structure": "crystal_arch",
+      "structure_path": "behavior_pack/structures/aionbound/crystal_arch.mcstructure",
+      "feature_path": "behavior_pack/features/crystal_arch.structure_feature.json",
+      "feature_sha256_unchanged": "f7977d6bcf96f8c22f1e3ef0e1e0d59f4f79677bdd4c15f6931cb97eceadea8d",
+      "feature_rule_path": "behavior_pack/feature_rules/crystal_arch.structure_feature_rule.json",
+      "feature_rule_sha256_unchanged": "002511c32fc4e2fb19fe94c9eab9e17f6bbaaccbb40ef6a45d2b2a196d2c9ca4",
+      "predecessor_structure_sha256": "0f600c7a7b74f634d6714982fe6059b588588b309e877d9d79a00272f71ef894",
+      "bound_structure_sha256": "0de548adac44887ca0a18b55295b9f464ac78201f9ef151361f5663bad882779",
+      "geometry_equal": true,
+      "approved_anchor": "crystal_arch_cache",
+      "anchor_coordinate": [
+        7,
+        1,
+        5
+      ],
+      "loot_table": "loot_tables/chests/crystal/crystal_arch.json",
+      "loot_table_sha256": "a001e4a92f4c203c4e4e60ffe0314adfc9d851ffcef9255c3eb301c7cbd9e826",
+      "loot_identities": [
+        "aionbound:crystal_root_item",
+        "aionbound:crystal_stone",
+        "aionbound:flood_crystal",
+        "aionbound:moon_pearl",
+        "aionbound:prism_brick",
+        "aionbound:prism_pearl",
+        "aionbound:silt_core"
+      ],
+      "cardinal_rotation_closure": [
+        {
+          "quarter_turns": 0,
+          "size": [
+            15,
+            15,
+            7
+          ],
+          "anchor": [
+            7,
+            1,
+            5
+          ]
+        },
+        {
+          "quarter_turns": 1,
+          "size": [
+            7,
+            15,
+            15
+          ],
+          "anchor": [
+            1,
+            1,
+            7
+          ]
+        },
+        {
+          "quarter_turns": 2,
+          "size": [
+            15,
+            15,
+            7
+          ],
+          "anchor": [
+            7,
+            1,
+            1
+          ]
+        },
+        {
+          "quarter_turns": 3,
+          "size": [
+            7,
+            15,
+            15
+          ],
+          "anchor": [
+            5,
+            1,
+            7
+          ]
+        }
+      ],
+      "binding": "STATIC_ORDINARY_LOOT_TABLE_NBT"
+    },
+    {
+      "structure": "crystal_obelisk",
+      "structure_path": "behavior_pack/structures/aionbound/crystal_obelisk.mcstructure",
+      "feature_path": "behavior_pack/features/crystal_obelisk.structure_feature.json",
+      "feature_sha256_unchanged": "8d4eb5590db07eb4d37d1e5f0f25560daef1f108250d1531d7b5658e573d4a77",
+      "feature_rule_path": "behavior_pack/feature_rules/crystal_obelisk.structure_feature_rule.json",
+      "feature_rule_sha256_unchanged": "e8bc54783b8985be5e17087229e44b234b1aeabbc89003827535149828c06017",
+      "predecessor_structure_sha256": "a34e4ecd463b0bd4f6eb2de2b688465e44e86083abe4b5c68b2424ef21e0a8a6",
+      "bound_structure_sha256": "207d6ddac516d15f2c7256b8cad560abe9c76ffd4034d58533560c318706751a",
+      "geometry_equal": true,
+      "approved_anchor": "crystal_obelisk_cache",
+      "anchor_coordinate": [
+        3,
+        2,
+        6
+      ],
+      "loot_table": "loot_tables/chests/crystal/crystal_obelisk.json",
+      "loot_table_sha256": "2a8c5514e56530da6508e1f53c7168c8bfb21d9eab283c6b71c3a0392fa1f82f",
+      "loot_identities": [
+        "aionbound:crystal_obelisk_fragment",
+        "aionbound:crystal_root_item",
+        "aionbound:flood_crystal",
+        "aionbound:moon_pearl",
+        "aionbound:prism_brick",
+        "aionbound:prism_pearl"
+      ],
+      "cardinal_rotation_closure": [
+        {
+          "quarter_turns": 0,
+          "size": [
+            13,
+            18,
+            13
+          ],
+          "anchor": [
+            3,
+            2,
+            6
+          ]
+        },
+        {
+          "quarter_turns": 1,
+          "size": [
+            13,
+            18,
+            13
+          ],
+          "anchor": [
+            6,
+            2,
+            3
+          ]
+        },
+        {
+          "quarter_turns": 2,
+          "size": [
+            13,
+            18,
+            13
+          ],
+          "anchor": [
+            9,
+            2,
+            6
+          ]
+        },
+        {
+          "quarter_turns": 3,
+          "size": [
+            13,
+            18,
+            13
+          ],
+          "anchor": [
+            6,
+            2,
+            9
+          ]
+        }
+      ],
+      "binding": "STATIC_ORDINARY_LOOT_TABLE_NBT"
+    },
+    {
+      "structure": "sunken_shrine",
+      "structure_path": "behavior_pack/structures/aionbound/sunken_shrine.mcstructure",
+      "feature_path": "behavior_pack/features/sunken_shrine.structure_feature.json",
+      "feature_sha256_unchanged": "a4e17119b50e07df4743da8adc9f6b5c1b95ee8921ff3f5f0d85942eb3215e13",
+      "feature_rule_path": "behavior_pack/feature_rules/sunken_shrine.structure_feature_rule.json",
+      "feature_rule_sha256_unchanged": "a44ae01cf863babc59f719b714fd57b407b606c516ddbf7123dca6c78db5afc2",
+      "predecessor_structure_sha256": "4b91a18bc3a7694638b67ec34bb49957b7d7d0543fb670f4d7417bc60d6c5fd4",
+      "bound_structure_sha256": "4b91a18bc3a7694638b67ec34bb49957b7d7d0543fb670f4d7417bc60d6c5fd4",
+      "geometry_equal": true,
+      "approved_anchor": null,
+      "anchor_coordinate": null,
+      "loot_table": null,
+      "loot_table_sha256": null,
+      "loot_identities": [],
+      "cardinal_rotation_closure": [],
+      "binding": "INERT_NO_APPROVED_CHEST_IDENTITY"
+    },
+    {
+      "structure": "ruined_observatory",
+      "structure_path": "behavior_pack/structures/aionbound/ruined_observatory.mcstructure",
+      "feature_path": "behavior_pack/features/ruined_observatory.structure_feature.json",
+      "feature_sha256_unchanged": "305e7a4ee30e7ae0a3e1d57a4b444f6f3c4c3b65431d9100009aa63ba8ab6502",
+      "feature_rule_path": "behavior_pack/feature_rules/ruined_observatory.structure_feature_rule.json",
+      "feature_rule_sha256_unchanged": "3991c2375b68ef3d6309c2d532afec9d612deeb88e5781d082a742de39d5cea5",
+      "predecessor_structure_sha256": "2545b3678496c2d2130ca41eb5975949af126f19152f3b2fb74d05ff25da50b9",
+      "bound_structure_sha256": "c3157c0e3cedc056009250ad43fb6237e41b31add60b2678eb2cc172056d9984",
+      "geometry_equal": true,
+      "approved_anchor": "ruined_observatory_cache",
+      "anchor_coordinate": [
+        16,
+        2,
+        10
+      ],
+      "loot_table": "loot_tables/chests/crystal/ruined_observatory.json",
+      "loot_table_sha256": "389855ee1c84135302c2afc30c536a2464b0c2103e892a8843c40d59547f58b6",
+      "loot_identities": [
+        "aionbound:crystal_obelisk_fragment",
+        "aionbound:crystal_root_item",
+        "aionbound:flood_crystal",
+        "aionbound:moon_pearl",
+        "aionbound:prism_brick",
+        "aionbound:prism_pearl",
+        "aionbound:silt_core",
+        "aionbound:watcher_lens"
+      ],
+      "cardinal_rotation_closure": [
+        {
+          "quarter_turns": 0,
+          "size": [
+            23,
+            19,
+            21
+          ],
+          "anchor": [
+            16,
+            2,
+            10
+          ]
+        },
+        {
+          "quarter_turns": 1,
+          "size": [
+            21,
+            19,
+            23
+          ],
+          "anchor": [
+            10,
+            2,
+            16
+          ]
+        },
+        {
+          "quarter_turns": 2,
+          "size": [
+            23,
+            19,
+            21
+          ],
+          "anchor": [
+            6,
+            2,
+            10
+          ]
+        },
+        {
+          "quarter_turns": 3,
+          "size": [
+            21,
+            19,
+            23
+          ],
+          "anchor": [
+            10,
+            2,
+            6
+          ]
+        }
+      ],
+      "binding": "STATIC_ORDINARY_LOOT_TABLE_NBT"
+    },
+    {
+      "structure": "deep_pool_entrance",
+      "structure_path": "behavior_pack/structures/aionbound/deep_pool_entrance.mcstructure",
+      "feature_path": "behavior_pack/features/deep_pool_entrance.structure_feature.json",
+      "feature_sha256_unchanged": "281d4d2bd018534b0356f5378dbdeaa1ec15b3993eacfcee07d39ac11b967c5d",
+      "feature_rule_path": "behavior_pack/feature_rules/deep_pool_entrance.structure_feature_rule.json",
+      "feature_rule_sha256_unchanged": "912564667d20b6fd63566e678d6b4665a91c524c090801c3320efe7e33255ce3",
+      "predecessor_structure_sha256": "11881d5f9e75dd216925d9cf05b3e56d9f8092fd1c09c51e7d0e72681a5b7dfb",
+      "bound_structure_sha256": "11881d5f9e75dd216925d9cf05b3e56d9f8092fd1c09c51e7d0e72681a5b7dfb",
+      "geometry_equal": true,
+      "approved_anchor": null,
+      "anchor_coordinate": null,
+      "loot_table": null,
+      "loot_table_sha256": null,
+      "loot_identities": [],
+      "cardinal_rotation_closure": [],
+      "binding": "PROTECTED_EMPTY_SYNCHRONOUS_ENCOUNTER_CACHE"
+    }
+  ],
+  "unchanged_surfaces": [
+    "assembly sizes, palettes, primary and secondary block-index layers",
+    "feature JSON bytes",
+    "feature-rule JSON bytes",
+    "placement denominators and biome filters"
+  ],
+  "proof_boundary": "STATIC_EXACT_NBT_BINDING_AND_TARGETED_SEMANTIC_TESTS_ONLY; NO BDS, BUILD, CLIENT, ENCOUNTER_RUNTIME, REWARD, OR CANDIDATE CLAIM"
+}
