@@ -60,6 +60,10 @@ class DeferredActivationReceiptTest(unittest.TestCase):
         self.assertTrue(any("full inventory" in item for item in ticket["acceptance_criteria"]))
         self.assertEqual([30, 2, 6], [row["passed"] for row in self.data["passed_evidence"]["focused_validation_observed_2026_08_11"]])
         self.assertTrue(all(row["failed"] == 0 for row in self.data["passed_evidence"]["focused_validation_observed_2026_08_11"]))
+        debt = self.data["reconciliation_debt"]
+        self.assertEqual("W1-G8-KILN-SKY-CHECKED-IN-EVIDENCE-STALE", debt["id"])
+        self.assertEqual({"tests": 2, "passed": 1, "failed": 1}, debt["observed_2026_08_11"])
+        self.assertFalse(debt["product_defect_demonstrated"])
 
 
 if __name__ == "__main__":

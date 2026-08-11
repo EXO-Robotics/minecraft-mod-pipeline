@@ -281,6 +281,25 @@
     "shared_runtime_activation": false,
     "tooling_governance_blocker_recorded": true
   },
+  "reconciliation_debt": {
+    "classification": "STALE_DETERMINISTIC_RECEIPT_AFTER_LATER_INTEGRATION_MOVEMENT_NOT_SERVICE_SEMANTIC_FAILURE",
+    "command": "python3 engineering/ashen-intake/kiln-sky-runtime/test_kiln_sky_runtime_evidence.py",
+    "disposition": "RECONCILE_RECEIPT_IN_LATER_INTEGRATION_PASS; DO_NOT_EDIT_PRIOR_EVIDENCE_IN_THIS_TICKET",
+    "exact_mismatch": {
+      "checked_in_receipt_sha256": "b6d5691adf70396effdb48bce08dbaa4a4ec7b63a3cdffe04b83d5108457827f",
+      "current_source_sha256": "69eb00df9ce2f16dcca9794a61c4fcaf9403512f8057ecd4907b6a8f8375b7cd",
+      "path": "behavior_pack/scripts/state.js"
+    },
+    "failing_surface": "checked-in evidence equals deterministic rebuild",
+    "id": "W1-G8-KILN-SKY-CHECKED-IN-EVIDENCE-STALE",
+    "observed_2026_08_11": {
+      "failed": 1,
+      "passed": 1,
+      "tests": 2
+    },
+    "passing_surface": "activation-absent/source-boundary test",
+    "product_defect_demonstrated": false
+  },
   "reviewer_rejection_history": {
     "decision_source_attribution": "PARTIAL_NOT_DECISIVELY_OBSERVABLE",
     "external_diagnostics": [

@@ -55,6 +55,10 @@ Focused tests bound to this ticket:
 
 No BDS, package, client, or live shared-runtime proof is claimed for the dormant compositions.
 
+## Known receipt reconciliation debt
+
+`engineering/ashen-intake/kiln-sky-runtime/test_kiln_sky_runtime_evidence.py` currently runs two checks: the activation-absent/source-boundary check passes, while the checked-in deterministic evidence comparison fails because the receipt binds the earlier `state.js` hash `b6d569...` and the integrated source now hashes to `69eb00...`. The dedicated service semantics remain 30/30 PASS in the focused Node run. This is recorded as stale receipt debt after later integration movement, not as a Kiln Sky semantic failure or a demonstrated product defect. The prior evidence is intentionally untouched here.
+
 ## Reviewer rejection history
 
 The exact refs `codex/ashen-shared-activation`, `-r2`, and `-r3`, plus the two standing-authority refs, all remained at `bcd65076900a3688dd797d54719263d88afd501c`. No activation or authority commit landed. Historical reviewer reports described the requested work as a broad persistent shared-runtime mutation or governance-scope expansion and did not accept delegated authority as trusted direct approval. The separate decision-source audit classified decisive attribution as partial; this receipt therefore records the blocker without claiming which hidden component authored the denial.

@@ -63,8 +63,10 @@ def receipt() -> dict[str, object]:
     runtime = (ROOT / "behavior_pack/scripts/runtime.js").read_text()
     catalog = (ROOT / "behavior_pack/scripts/catalog.js").read_text()
 
-    assert git("rev-parse", "HEAD") == SOURCE_COMMIT
-    assert git("rev-parse", "HEAD^{tree}") == SOURCE_TREE
+    subprocess.run(["git", "merge-base", "--is-ancestor", SOURCE_COMMIT, "HEAD"], cwd=ROOT, check=True)
+    assert git("rev-parse", f"{SOURCE_COMMIT}^{{tree}}") == SOURCE_TREE
+    changed_since_authority = git("diff", "--name-only", f"{SOURCE_COMMIT}..HEAD").splitlines()
+    assert all(path.startswith("engineering/ashen-intake/deferred-runtime-activation/") for path in changed_since_authority)
     assert source_validation["status"] == "PASS"
     assert equipment["proof"]["shared_runtime_activation"] is False
     assert kiln["proof"]["shared_runtime_activation"] is False
@@ -245,6 +247,21 @@ def receipt() -> dict[str, object]:
                 },
             ],
         },
+        "reconciliation_debt": {
+            "id": "W1-G8-KILN-SKY-CHECKED-IN-EVIDENCE-STALE",
+            "classification": "STALE_DETERMINISTIC_RECEIPT_AFTER_LATER_INTEGRATION_MOVEMENT_NOT_SERVICE_SEMANTIC_FAILURE",
+            "command": "python3 engineering/ashen-intake/kiln-sky-runtime/test_kiln_sky_runtime_evidence.py",
+            "observed_2026_08_11": {"tests": 2, "passed": 1, "failed": 1},
+            "passing_surface": "activation-absent/source-boundary test",
+            "failing_surface": "checked-in evidence equals deterministic rebuild",
+            "exact_mismatch": {
+                "path": "behavior_pack/scripts/state.js",
+                "checked_in_receipt_sha256": "b6d5691adf70396effdb48bce08dbaa4a4ec7b63a3cdffe04b83d5108457827f",
+                "current_source_sha256": "69eb00df9ce2f16dcca9794a61c4fcaf9403512f8057ecd4907b6a8f8375b7cd",
+            },
+            "disposition": "RECONCILE_RECEIPT_IN_LATER_INTEGRATION_PASS; DO_NOT_EDIT_PRIOR_EVIDENCE_IN_THIS_TICKET",
+            "product_defect_demonstrated": False,
+        },
         "deferred_integration_ticket": {
             "id": "W1-G8-ASHEN-SHARED-RUNTIME-ACTIVATION-DEFERRED",
             "design_decisions_required": False,
@@ -324,6 +341,10 @@ Focused tests bound to this ticket:
 {tests}
 
 No BDS, package, client, or live shared-runtime proof is claimed for the dormant compositions.
+
+## Known receipt reconciliation debt
+
+`engineering/ashen-intake/kiln-sky-runtime/test_kiln_sky_runtime_evidence.py` currently runs two checks: the activation-absent/source-boundary check passes, while the checked-in deterministic evidence comparison fails because the receipt binds the earlier `state.js` hash `b6d569...` and the integrated source now hashes to `69eb00...`. The dedicated service semantics remain 30/30 PASS in the focused Node run. This is recorded as stale receipt debt after later integration movement, not as a Kiln Sky semantic failure or a demonstrated product defect. The prior evidence is intentionally untouched here.
 
 ## Reviewer rejection history
 
