@@ -1,4 +1,4 @@
-import { CODEX_TOPICS } from "./catalog.js";
+import { CODEX_EVENT_INDEX, CODEX_TOPICS } from "./catalog.js";
 import { COMBINED_BUDGETS } from "./budgets.js";
 
 export function createCodexService({ state }) {
@@ -22,5 +22,10 @@ export function createCodexService({ state }) {
     p.goals = deriveGoals(p.stamps);
     state.savePlayer(player, p); guidance(player);
   }
-  return { guidance, use, deriveGoals };
+  function discover(player, eventId) {
+    const event = CODEX_EVENT_INDEX[eventId];
+    if (!event) return false;
+    return state.transitionCodex(player, event.region, event.category, event.index, event.state);
+  }
+  return { guidance, use, discover, deriveGoals };
 }

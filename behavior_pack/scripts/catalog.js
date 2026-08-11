@@ -1,11 +1,21 @@
+import { WHISPERWOOD_CODEX_ENTRIES, WAVE1_CODEX_EVENT_INDEX, WAVE1_CODEX_REGISTRY_VERSION } from "./wave1_codex_data.js";
+
 export const IDS = Object.freeze({
-  world: "aionbound:core/world/v3",
-  player: "aionbound:core/player/v3",
+  world: "aionbound:core/world/v4",
+  player: "aionbound:core/player/v4",
+  oldWorldV3: "aionbound:core/world/v3",
+  oldPlayerV3: "aionbound:core/player/v3",
   oldWorldV2: "aionbound:core/world/v2",
   oldPlayerV2: "aionbound:core/player/v2",
   oldWorldV1: "aionbound:core/world/v1",
   oldPlayerV1: "aionbound:core/player/v1",
 });
+
+// The registry is data-only. Presentation remains a separately authorized
+// non-chat surface; the existing Codex chat page is retained as a fallback.
+export const CODEX_ENTRY_REGISTRY = WHISPERWOOD_CODEX_ENTRIES;
+export const CODEX_EVENT_INDEX = WAVE1_CODEX_EVENT_INDEX;
+export const CODEX_REGISTRY_VERSION = WAVE1_CODEX_REGISTRY_VERSION;
 
 export const PILGRIMAGE = Object.freeze({
   "aionbound:gloam_moss_block": "pilgrimage:gloam",

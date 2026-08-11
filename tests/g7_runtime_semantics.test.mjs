@@ -7,11 +7,11 @@ import { tmpdir } from "node:os";
 
 const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), "..");
 const SOURCE_DIR = resolve(ROOT, "behavior_pack/scripts");
-const MODULE_NAMES = ["catalog", "budgets", "state", "router", "codex", "combat", "devices", "encounters", "chaos", "structures", "runtime", "main"];
+const MODULE_NAMES = ["wave1_codex_data", "catalog", "budgets", "state", "router", "codex", "combat", "devices", "encounters", "chaos", "structures", "runtime", "main"];
 const MODULE_DIR = await mkdtemp(resolve(tmpdir(), "aionbound-g7-modules-"));
 for (const name of MODULE_NAMES) {
   const source = (await readFile(resolve(SOURCE_DIR, `${name}.js`), "utf8"))
-    .replaceAll(/from "\.\/([a-z_]+)\.js"/g, 'from "./$1.mjs"')
+    .replaceAll(/from "\.\/([a-z0-9_]+)\.js"/g, 'from "./$1.mjs"')
     .replace('from "@minecraft/server"', 'from "./minecraft-server.mjs"');
   await writeFile(resolve(MODULE_DIR, `${name}.mjs`), source);
 }
@@ -47,10 +47,10 @@ test("G6 collision blocks compose discovery and boss action", () => {
   assert.deepEqual(calls, ["discover:pilgrimage:vent", "action:basalt"]);
 });
 
-test("schema v3 migrations preserve G6 authority and are idempotent", () => {
+test("schema v4 migrations preserve prior authority and are idempotent", () => {
   const v2w = { v: 2, journals: { a: { terminal: true } }, structures: { s: 1 }, cells: { p: { state: "ready" } }, encounters: { active: { e: 1 }, terminal: { t: 1 } }, quarantine: ["q"] };
   const once = migrateWorld(v2w), twice = migrateWorld(once);
-  assert.equal(once.v, 3); assert.deepEqual(twice, once); assert.deepEqual(once.cells, v2w.cells); assert.deepEqual(once.encounters.active, v2w.encounters.active);
+  assert.equal(once.v, 4); assert.deepEqual(twice, once); assert.deepEqual(once.cells, v2w.cells); assert.deepEqual(once.encounters.active, v2w.encounters.active);
   const v2p = { v: 2, stamps: ["glasswing:first_defeat", "pilgrimage:vent"], credits: { old: 1 }, cooldowns: { ray: 12 }, opens: [1], cell: { owner: "p" }, endpoint: true };
   const player = migratePlayer(v2p); assert.deepEqual(migratePlayer(player), player); assert.deepEqual(player.stamps, v2p.stamps); assert.equal(player.endpoint, true);
 });
@@ -181,7 +181,7 @@ test("Pilgrim Clasp proactively refreshes bounded fall mitigation", () => {
 });
 
 test("shipping scripts use stable server API only and one central arbiter", async () => {
-  const scripts = ["main.js", "runtime.js", "catalog.js", "budgets.js", "state.js", "router.js", "codex.js", "combat.js", "devices.js", "encounters.js", "chaos.js", "structures.js"];
+  const scripts = ["main.js", "runtime.js", "catalog.js", "wave1_codex_data.js", "budgets.js", "state.js", "router.js", "codex.js", "combat.js", "devices.js", "encounters.js", "chaos.js", "structures.js"];
   const source = (await Promise.all(scripts.map(name => readFile(resolve(ROOT, "behavior_pack/scripts", name), "utf8")))).join("\n");
   for (const forbidden of ["@minecraft/server-ui", "@minecraft/server-net", "@minecraft/server-admin", "@minecraft/server-gametest", "process.", "require(", "fetch(", "node:"]) assert.equal(source.includes(forbidden), false, forbidden);
   const runtime = await readFile(resolve(ROOT, "behavior_pack/scripts/runtime.js"), "utf8"), main = await readFile(resolve(ROOT, "behavior_pack/scripts/main.js"), "utf8");

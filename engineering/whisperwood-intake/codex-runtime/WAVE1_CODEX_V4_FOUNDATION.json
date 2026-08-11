@@ -1,0 +1,60 @@
+{
+  "schema": "aionbound.wave1.codex-v4-foundation-receipt.v1.0.0",
+  "status": "TARGETED_LOCAL_SEMANTIC_PASS",
+  "base_commit": "1c4e0feae68c9d2bd93044d581edca53fcf2be53",
+  "authority": {
+    "path": "engineering/whisperwood-intake/codex/WHISPERWOOD_CODEX_IMPLEMENTATION_MAP.json",
+    "sha256": "d9c1f4c5ad4fbc66afa284da4d2bcc03424b22d6f43c49c5ec76d99198cbc9bf"
+  },
+  "schema_migration": {
+    "from": 3,
+    "to": 4,
+    "idempotent": true,
+    "preserves": [
+      "legacy stamps",
+      "codex.topic",
+      "goal booleans",
+      "other normalized player and world domains"
+    ],
+    "deletes_old_dynamic_properties": false
+  },
+  "compact_discovery": {
+    "registry_version": 1,
+    "states": { "locked": 0, "partial": 1, "complete": 2 },
+    "regions": ["ww", "ah", "cm", "sr"],
+    "entries_per_region": 40,
+    "fully_populated_four_region_json_bytes": 280,
+    "player_budget_bytes": 8192
+  },
+  "whisperwood_binding": {
+    "entries": 40,
+    "canonical_events": 43,
+    "unknown_event_policy": "reject_without_write",
+    "duplicate_event_policy": "no_op",
+    "downgrade_policy": "no_op"
+  },
+  "tests": [
+    {
+      "command": "node --test tests/wave1_codex_v4.test.mjs tests/g7_runtime_semantics.test.mjs",
+      "passed": 21,
+      "failed": 0
+    },
+    {
+      "command": "python3 -m unittest engineering/whisperwood-intake/codex/test_whisperwood_codex_map.py -v",
+      "passed": 6,
+      "failed": 0
+    }
+  ],
+  "not_proven": [
+    "event wiring",
+    "Codex UI",
+    "live acquisition",
+    "BP or RP packaging",
+    "deterministic build",
+    "Stable BDS",
+    "Bedrock client behavior",
+    "multiplayer",
+    "console",
+    "candidate readiness"
+  ]
+}
