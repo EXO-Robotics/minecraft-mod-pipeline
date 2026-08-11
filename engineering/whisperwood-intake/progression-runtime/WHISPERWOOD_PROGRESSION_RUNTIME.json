@@ -1,6 +1,6 @@
 {
   "schema": "aionbound.wave1.whisperwood.progression_runtime.v1",
-  "status": "IMPLEMENTED_AUTHORITY_COMPLETE_NON_LOOT_SCAFFOLD",
+  "status": "IMPLEMENTED_RATIFIED_PROGRESSION_AND_THORN_COURT_ANCHOR",
   "source_commit": "668993d1b5fc7a676181063eef1b9dd721d5b2a4",
   "authority": [
     "engineering/whisperwood-intake/structure-runtime/WHISPERWOOD_STRUCTURE_RUNTIME_MAP.json",
@@ -9,6 +9,22 @@
     "studio-prep/creative/WAVE_1_LIVING_WORLD_IMPLEMENTATION_CONTRACT.md"
   ],
   "sites": [
+    {
+      "id": "thorn_court",
+      "interaction_anchor": "minecraft:lodestone",
+      "assembly_signatures": [
+        "aionbound:hollow_wood"
+      ],
+      "persistent_player_stamp": "landmark:ancient_totem",
+      "implemented": [
+        "authored_assembly_resolution",
+        "duplicate_safe_player_landmark_stamp",
+        "ratified_boss_arming_action"
+      ],
+      "withheld": [
+        "unratified_special_attack_damage_or_radius"
+      ]
+    },
     {
       "id": "forest_waystone",
       "interaction_anchor": "minecraft:lodestone",
@@ -54,5 +70,5 @@
     }
   ],
   "handler_composition": "BLOCK_ROUTES invokes ww_progression_site after any route discoveries and does not cancel vanilla lodestone or barrel interaction.",
-  "proof_boundary": "SOURCE_RUNTIME_SEMANTIC_TEST_ONLY; NO_BDS, PACKAGE, CLIENT, LOOT, BOSS, BUILD, CANDIDATE, CONSOLE, OR RELEASE CLAIM"
+  "proof_boundary": "SOURCE_RUNTIME_SEMANTIC_TEST_ONLY; NO_BDS, PACKAGE, CLIENT, LIVE_ENCOUNTER, BUILD, CANDIDATE, CONSOLE, OR RELEASE CLAIM"
 }

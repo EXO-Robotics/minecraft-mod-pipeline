@@ -123,6 +123,7 @@ export function createStructureService({ world, system, ItemStack, state, arbite
       stamp: site.stamp,
       role: site.role,
       transition: site.transition ?? null,
+      action: site.action ?? null,
       changed: state.stamp(player, site.stamp),
     });
   }

@@ -104,6 +104,14 @@ export const STRUCTURE_SITES = Object.freeze([
 // deliberately outside this table.
 export const WHISPERWOOD_PROGRESSION_SITES = Object.freeze([
   Object.freeze({
+    id: "thorn_court",
+    center: "minecraft:lodestone",
+    signatures: Object.freeze(["aionbound:hollow_wood"]),
+    stamp: "landmark:ancient_totem",
+    role: "boss_anchor",
+    action: "boss:thorn_court",
+  }),
+  Object.freeze({
     id: "forest_waystone",
     center: "minecraft:lodestone",
     signatures: Object.freeze(["aionbound:glow_moss"]),
