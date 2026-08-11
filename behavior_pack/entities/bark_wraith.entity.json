@@ -7,6 +7,7 @@
       "is_summonable": true
     },
     "components": {
+      "minecraft:ambient_sound_interval": { "event_name": "ambient", "range": 8, "value": 12 },
       "minecraft:type_family": { "family": ["aionbound", "monster", "whisperwood", "spectral", "elite"] },
       "minecraft:health": { "value": 44, "max": 44 },
       "minecraft:collision_box": { "width": 0.8, "height": 2.1 },

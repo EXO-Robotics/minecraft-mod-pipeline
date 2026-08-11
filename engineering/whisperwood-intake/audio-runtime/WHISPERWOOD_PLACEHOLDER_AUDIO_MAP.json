@@ -1,0 +1,173 @@
+{
+  "$schema": "./WHISPERWOOD_PLACEHOLDER_AUDIO_MAP.schema.json",
+  "schema": "aionbound.wave1.whisperwood.placeholder_audio.v1",
+  "status": "EARLY_PLACEHOLDER_STATIC_BINDING_ONLY",
+  "scope": {
+    "ecosystem": "WHISPERWOOD",
+    "entity_count": 10,
+    "events_bound": ["ambient", "hurt", "death"],
+    "signature_action_policy": "WITHHELD_UNTIL_ROLE_SPECIFIC_EVENT_ROUTE_AND_FINAL_IDENTITY_EXIST"
+  },
+  "authority": {
+    "creative_contract": "program/crazycraft-pack-production-v1/studio-prep/creative/WAVE_1_LIVING_WORLD_IMPLEMENTATION_CONTRACT.md",
+    "support_ticket": "engineering/authority/support-tickets/W1-ASSET-AUDIO-001.json",
+    "support_ticket_status": "OPEN_BLOCKING_WAVE_1_EXIT_NOT_WHISPERWOOD_CHECKPOINT",
+    "microsoft_stable_docs": [
+      {
+        "purpose": "ambient event emitter component",
+        "url": "https://learn.microsoft.com/en-us/minecraft/creator/reference/content/entityreference/examples/entitycomponents/minecraftcomponent_ambient_sound_interval?view=minecraft-bedrock-stable",
+        "observed_last_updated": "2026-04-21"
+      },
+      {
+        "purpose": "client entity sound_effects field exists, but aliases require a separate consumer such as an animation timeline",
+        "url": "https://learn.microsoft.com/en-us/minecraft/creator/reference/content/visualreference/actor_resource_definition.v1.8.0?view=minecraft-bedrock-stable",
+        "observed_last_updated": "2026-04-30"
+      }
+    ],
+    "official_vanilla_sample": {
+      "repository": "https://github.com/Mojang/bedrock-samples",
+      "path": "resource_pack/sounds.json",
+      "raw_url": "https://raw.githubusercontent.com/Mojang/bedrock-samples/main/resource_pack/sounds.json",
+      "observed_date": "2026-08-11",
+      "authority_use": "entity_sounds shape and exact vanilla event identifiers",
+      "mutable_reference_warning": "main is a current official reference, not immutable local runtime evidence"
+    },
+    "exact_local_stable_evidence": {
+      "request": "program/aionbound-core-content-beta-qualification-runs/G000007-R1/control/request.json",
+      "result": "program/aionbound-core-content-beta-qualification-runs/G000007-R1/output/qualification-result.json",
+      "bds_channel": "STABLE",
+      "bds_version": "1.26.33.2",
+      "bds_binary_sha256": "978ea655c418f112a33b80043d676712ad080724382fafda9509825910fa4043",
+      "limitation": "Exact local Stable BDS evidence anchors the target channel/version but does not execute or prove resource-pack client audio playback."
+    }
+  },
+  "implementation": {
+    "resource_binding": "resource_pack/sounds.json > entity_sounds > entities > custom identifier > events",
+    "ambient_emitter": "behavior_pack entity components > minecraft:ambient_sound_interval",
+    "hurt_death_route": "standard entity level sound events resolved by resource_pack/sounds.json",
+    "client_entity_sound_effect_aliases_added": false,
+    "animation_sound_timelines_added": false,
+    "audio_bytes_added": false,
+    "sound_definitions_added": false
+  },
+  "entities": [
+    {
+      "entity_id": "aionbound:bark_wraith",
+      "role": "elite_spectral",
+      "vanilla_profile": "vex",
+      "events": {"ambient": "mob.vex.ambient", "hurt": "mob.vex.hurt", "death": "mob.vex.death"},
+      "pitch": [0.7, 0.9],
+      "volume": 0.8,
+      "ambient_interval": {"event_name": "ambient", "range": 8, "value": 12},
+      "signature_action": {"status": "WITHHELD", "reason": "No verified role-specific spectral action event/timeline is bound."}
+    },
+    {
+      "entity_id": "aionbound:briar_elk",
+      "role": "elite_neutral_ungulate",
+      "vanilla_profile": "goat",
+      "events": {"ambient": "mob.goat.ambient", "hurt": "mob.goat.hurt", "death": "mob.goat.death"},
+      "pitch": [0.75, 0.9],
+      "volume": 0.9,
+      "ambient_interval": {"event_name": "ambient", "range": 10, "value": 14},
+      "signature_action": {"status": "WITHHELD", "reason": "No verified antler/charge sound event route is bound."}
+    },
+    {
+      "entity_id": "aionbound:hollow_widow_spider",
+      "role": "hostile_arthropod",
+      "vanilla_profile": "spider",
+      "events": {"ambient": "mob.spider.say", "hurt": "mob.spider.say", "death": "mob.spider.death"},
+      "pitch": [0.8, 1.0],
+      "volume": 0.8,
+      "ambient_interval": {"event_name": "ambient", "range": 10, "value": 10},
+      "signature_action": {"status": "WITHHELD", "reason": "No verified web/attack sound event route is bound."}
+    },
+    {
+      "entity_id": "aionbound:lantern_hare",
+      "role": "ambient_small_prey",
+      "vanilla_profile": "rabbit",
+      "events": {"ambient": "mob.rabbit.idle", "hurt": "mob.rabbit.hurt", "death": "mob.rabbit.death"},
+      "pitch": [0.95, 1.15],
+      "volume": 0.7,
+      "ambient_interval": {"event_name": "ambient", "range": 12, "value": 10},
+      "signature_action": {"status": "WITHHELD", "reason": "No verified lantern/jump sound event route is bound."}
+    },
+    {
+      "entity_id": "aionbound:mosskip_buck",
+      "role": "neutral_adult_ungulate",
+      "vanilla_profile": "goat",
+      "events": {"ambient": "mob.goat.ambient", "hurt": "mob.goat.hurt", "death": "mob.goat.death"},
+      "pitch": [0.85, 0.95],
+      "volume": 0.8,
+      "ambient_interval": {"event_name": "ambient", "range": 10, "value": 12},
+      "signature_action": {"status": "WITHHELD", "reason": "No verified antler/defense sound event route is bound."}
+    },
+    {
+      "entity_id": "aionbound:mosskip_doe",
+      "role": "ambient_adult_ungulate",
+      "vanilla_profile": "goat",
+      "events": {"ambient": "mob.goat.ambient", "hurt": "mob.goat.hurt", "death": "mob.goat.death"},
+      "pitch": [0.95, 1.05],
+      "volume": 0.7,
+      "ambient_interval": {"event_name": "ambient", "range": 12, "value": 14},
+      "signature_action": {"status": "WITHHELD", "reason": "No verified role-specific action sound event route is bound."}
+    },
+    {
+      "entity_id": "aionbound:mosskip_fawn",
+      "role": "ambient_young_ungulate",
+      "vanilla_profile": "goat_high_pitch",
+      "events": {"ambient": "mob.goat.ambient", "hurt": "mob.goat.hurt", "death": "mob.goat.death"},
+      "pitch": [1.15, 1.3],
+      "volume": 0.6,
+      "ambient_interval": {"event_name": "ambient", "range": 12, "value": 14},
+      "signature_action": {"status": "WITHHELD", "reason": "No verified role-specific action sound event route is bound."}
+    },
+    {
+      "entity_id": "aionbound:rootback_boar",
+      "role": "neutral_heavy_forager",
+      "vanilla_profile": "pig",
+      "events": {"ambient": "mob.pig.say", "hurt": "mob.pig.say", "death": "mob.pig.death"},
+      "pitch": [0.8, 0.95],
+      "volume": 0.8,
+      "ambient_interval": {"event_name": "ambient", "range": 10, "value": 12},
+      "signature_action": {"status": "WITHHELD", "reason": "No verified root-charge sound event route is bound."}
+    },
+    {
+      "entity_id": "aionbound:rot_wolf",
+      "role": "hostile_pack_hunter",
+      "vanilla_profile": "wolf",
+      "events": {"ambient": "mob.wolf.bark", "hurt": "mob.wolf.hurt", "death": "mob.wolf.death"},
+      "pitch": [0.85, 1.0],
+      "volume": 0.8,
+      "ambient_interval": {"event_name": "ambient", "range": 8, "value": 9},
+      "signature_action": {"status": "WITHHELD", "reason": "Growl/attack timing is not yet driven by a verified state transition."}
+    },
+    {
+      "entity_id": "aionbound:thorn_stalker",
+      "role": "chapter_apex_shell",
+      "vanilla_profile": "ravager",
+      "events": {"ambient": "mob.ravager.ambient", "hurt": "mob.ravager.hurt", "death": "mob.ravager.death"},
+      "pitch": [0.95, 1.1],
+      "volume": 0.75,
+      "ambient_interval": {"event_name": "ambient", "range": 10, "value": 12},
+      "signature_action": {"status": "WITHHELD", "reason": "Boss phase/action cues require W1-ASSET-AUDIO-001 and a verified boss state route."}
+    }
+  ],
+  "proof_boundary": {
+    "proven": [
+      "JSON parses",
+      "exactly ten Whisperwood identifiers have ambient/hurt/death vanilla mappings",
+      "each matching behavior entity emits the ambient level event on a bounded interval",
+      "all selected vanilla identifiers occur in the reviewed official Mojang sounds.json sample",
+      "no audio bytes or custom sound definitions are introduced by this pass"
+    ],
+    "not_proven": [
+      "resource-pack client playback",
+      "audibility or spatial mix",
+      "signature action timing",
+      "custom/final sound identity",
+      "BDS package load",
+      "controller, console, multiplayer, or release suitability"
+    ],
+    "final_exit_blocker": "W1-ASSET-AUDIO-001"
+  }
+}

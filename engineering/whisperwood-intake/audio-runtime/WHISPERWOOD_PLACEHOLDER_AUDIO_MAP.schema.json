@@ -1,0 +1,46 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "aionbound.wave1.whisperwood.placeholder_audio.v1",
+  "type": "object",
+  "required": ["schema", "status", "scope", "authority", "implementation", "entities", "proof_boundary"],
+  "properties": {
+    "schema": {"const": "aionbound.wave1.whisperwood.placeholder_audio.v1"},
+    "status": {"const": "EARLY_PLACEHOLDER_STATIC_BINDING_ONLY"},
+    "scope": {
+      "type": "object",
+      "required": ["ecosystem", "entity_count", "events_bound", "signature_action_policy"],
+      "properties": {
+        "ecosystem": {"const": "WHISPERWOOD"},
+        "entity_count": {"const": 10},
+        "events_bound": {"const": ["ambient", "hurt", "death"]}
+      }
+    },
+    "entities": {
+      "type": "array",
+      "minItems": 10,
+      "maxItems": 10,
+      "items": {
+        "type": "object",
+        "required": ["entity_id", "role", "vanilla_profile", "events", "pitch", "volume", "ambient_interval", "signature_action"],
+        "properties": {
+          "entity_id": {"pattern": "^aionbound:[a-z0-9_]+$"},
+          "events": {
+            "type": "object",
+            "required": ["ambient", "hurt", "death"],
+            "additionalProperties": false
+          },
+          "signature_action": {
+            "type": "object",
+            "required": ["status", "reason"],
+            "properties": {"status": {"const": "WITHHELD"}}
+          }
+        }
+      }
+    },
+    "proof_boundary": {
+      "type": "object",
+      "required": ["proven", "not_proven", "final_exit_blocker"],
+      "properties": {"final_exit_blocker": {"const": "W1-ASSET-AUDIO-001"}}
+    }
+  }
+}
