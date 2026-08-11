@@ -5,9 +5,17 @@ reuse G7's frozen exact-count assertions. Instead it inventories the checked-out
 packs, requires the proven G7 inventory as a minimum floor, and requires named
 Wave 1 additions from `WAVE_1_VALIDATION_AUTHORITY.json`, including the ten
 Whisperwood blocks, ten Whisperwood resource items, four foundation recipes,
-the exact ten Ashen resource items, and the exact ten Ashen full-cube blocks.
+and the exact implemented Ashen vertical through integration `c115574`.
 The G7 inventory numbers remain minimum floors: later growth is accepted, but
 none of the named successor additions may disappear.
+
+`WAVE_1_ASHEN_IMPLEMENTED_CLOSURE.json` binds 307 exact paths and byte hashes
+across resources, blocks, plants, entity/client/spawn runtime, ecology,
+structures/features/rules, loot/acquisition economy, decision-ledger v3 and
+Codex runtime, thirteen native equipment identities plus four ratified derived
+components and their crafting graph, the dedicated Kiln Sky service, and all
+five Ashen native aggregate reports. Regenerate it deterministically with
+`build_ashen_implemented_closure.py` after an explicitly integrated follow-up.
 
 Run it with:
 
@@ -24,9 +32,15 @@ The Ashen additions also carry explicit definition, item/terrain atlas,
 `en_US.lang`, and PNG closure requirements. Passing reports emit per-ID hashes
 for the definition, atlas, language file, and resolved PNG, plus the exact atlas
 and language bindings.
-The hash-bound seven-asset Blockbench aggregate is required as native editable
-asset evidence only. Its presence and declared shape do not count as BP/RP,
-client, gameplay, BDS, or release proof.
+All five hash-bound Blockbench aggregate reports are required as native editable
+asset evidence only. Their presence and declared shape do not count as BP/RP,
+client, gameplay, BDS, or release proof. Kiln Sky is bound only as a dedicated
+service with shared-runtime activation explicitly withheld by its own evidence.
+
+Attachables may close against either a behavior item or a placeable inventory
+block. This supports the ratified Ash Drake Horn and Ember Forge Core without
+inventing duplicate item definitions; an attachable backed by neither still
+fails closed.
 
 The validator fails closed for malformed JSON or PNG files, duplicate or invalid
 custom identifiers, broken BP/RP manifest dependencies, missing script entry or

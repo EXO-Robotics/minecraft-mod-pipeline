@@ -1,0 +1,1259 @@
+{
+  "schema": "aionbound.wave1.ashen.implemented_source_closure.v1",
+  "status": "EXACT_IMPLEMENTED_ASHEN_SOURCE_CLOSURE",
+  "base": {
+    "commit": "c115574",
+    "authority": "G8 successor integration line"
+  },
+  "groups": {
+    "resources_blocks_plants": [
+      {
+        "path": "engineering/ashen-intake/resource-runtime/ASHEN_RESOURCE_RUNTIME_REPORT.json",
+        "sha256": "24c442a676951a59049be21aeceff6e8bcee0444f4fcd3cfe8b5f03dc28597a6"
+      },
+      {
+        "path": "engineering/ashen-intake/block-runtime/ASHEN_BLOCK_RUNTIME_REPORT.json",
+        "sha256": "9952fa1bc10cc7ebfd4beed0c7ce6e8ef481d56ecbd55d1105a77e56ce37ca8c"
+      },
+      {
+        "path": "engineering/ashen-intake/plant-runtime/ASHEN_PLANT_RUNTIME_REPORT.json",
+        "sha256": "0780372a59cc048d7889145603133943565b5e08cbba69a39edf03a92382a610"
+      },
+      {
+        "path": "behavior_pack/items/smolder_bark.item.json",
+        "sha256": "a134e1dca396c683855056f625ae8686fd491e4b8d14a739b1fc8b668e5f2516"
+      },
+      {
+        "path": "behavior_pack/items/charbone.item.json",
+        "sha256": "f5482fa310f30e7620d34b49d6493a6d50cfe3c03745423f5dfb74ad803b2a92"
+      },
+      {
+        "path": "behavior_pack/items/sulfur_cluster.item.json",
+        "sha256": "3b9a9fb2f7f69c684f54f4a0d22cdbcaee16948eeb3109d5eab2c4e253bf1b68"
+      },
+      {
+        "path": "behavior_pack/items/volcanic_glass_shard.item.json",
+        "sha256": "6f30585364d2d0ffe28ba41d02d4e7f704ba6dfbad889f3aa33338367b01e995"
+      },
+      {
+        "path": "behavior_pack/items/ember_resin.item.json",
+        "sha256": "24f21a0e0a07aae9d41b1ba0391ff6641575dec0964e7e2acde26d092f971a1e"
+      },
+      {
+        "path": "behavior_pack/items/heatstone.item.json",
+        "sha256": "71edca7a075049c8c253c465ab174e27296c1fe8f54cc6a00e4ab8aa5618f1cf"
+      },
+      {
+        "path": "behavior_pack/items/furnace_chitin.item.json",
+        "sha256": "917bd640c8e62ddc7eb592be976dc818dc6284bf78c1f8227dacd57289216288"
+      },
+      {
+        "path": "behavior_pack/items/basalt_core.item.json",
+        "sha256": "03be39ecf21e64097f445144929d20f9623b5911175c975449c7ad89d8a64a5b"
+      },
+      {
+        "path": "behavior_pack/items/ash_crystal.item.json",
+        "sha256": "d545e23f7654c4e384da5a811725f5160441241e4002614a449d96350a76e268"
+      },
+      {
+        "path": "behavior_pack/items/fire_bloom_seed.item.json",
+        "sha256": "64f4c66a4559f2970c82e9eda1c45ff061d00357cc3085cd6f514f1ca775ccb8"
+      },
+      {
+        "path": "behavior_pack/blocks/ash_log.block.json",
+        "sha256": "6229b204e7e7c77a8edad08974984e89ef6f570933c86df33c92bb3b6c87dd6e"
+      },
+      {
+        "path": "behavior_pack/blocks/char_planks.block.json",
+        "sha256": "4b09e3dce1fad09f34622259403f40d7a0f23dbbd168de42044a9f2466b572da"
+      },
+      {
+        "path": "behavior_pack/blocks/basalt_brick.block.json",
+        "sha256": "6eed6a4ec5d93a322a1dda811f26b3580c2a4823f67ef5e8eaed2a225d9159be"
+      },
+      {
+        "path": "behavior_pack/blocks/smolder_stone.block.json",
+        "sha256": "dab60326d6c9b2b081a2401e8ee6f9c69a81f21fc5faf3116fe2708ead2778db"
+      },
+      {
+        "path": "behavior_pack/blocks/ash_soil.block.json",
+        "sha256": "251aa6636c912adf9dcae758ff13d81657cc55f71c80ff32bce36bdbd2c69073"
+      },
+      {
+        "path": "behavior_pack/blocks/ember_moss.block.json",
+        "sha256": "f9e0fb322bd17176e83aaa15447db90ed7878fff2cf746034cfe8976b12f2f2e"
+      },
+      {
+        "path": "behavior_pack/blocks/volcanic_glass_block.block.json",
+        "sha256": "8ef6dd8f253aba9b11de2a7fbb79a3d9d8155ee8ebae612e6d38e71073570028"
+      },
+      {
+        "path": "behavior_pack/blocks/heat_bark.block.json",
+        "sha256": "b61a96de3d0bcb9e0106b2b8e669923d209f4e55a269df3fbd57e9ea43082da6"
+      },
+      {
+        "path": "behavior_pack/blocks/basalt_pillar.block.json",
+        "sha256": "a0aaca0754d0004ddefd5a36d07a3b7d39d3e52b9710a9f247d99769181c6cd9"
+      },
+      {
+        "path": "behavior_pack/blocks/cinder_gravel.block.json",
+        "sha256": "a711c795754bdfb976ad5f4343d97dcd12863e609d501f4630f48a7925800f50"
+      },
+      {
+        "path": "behavior_pack/blocks/cinder_grass.block.json",
+        "sha256": "8857cc46d5499ab5bf50123af4ccb1731fb0dfe4a5ef82b80bd1c5c95c76e847"
+      },
+      {
+        "path": "behavior_pack/blocks/ash_fern.block.json",
+        "sha256": "b70af08a60ee1d3f9597f7bf42088d84d3690c5d941d41c9fcc52e1fa7565732"
+      },
+      {
+        "path": "behavior_pack/blocks/smoke_reed.block.json",
+        "sha256": "c1d6310b2f7efa36452bc6f35f065da8d8230b77269dbefa1850a9ca55ff1aa4"
+      },
+      {
+        "path": "behavior_pack/blocks/char_shrub.block.json",
+        "sha256": "bcde68c46789d0765064d8784c65e743760cf0e887192e76f40cd93ce3efc1b4"
+      },
+      {
+        "path": "behavior_pack/blocks/soot_mushroom.block.json",
+        "sha256": "aaf8cec2cc3186fd91e04f0d79b19a37af055f3f02526780cbda920576778fbf"
+      },
+      {
+        "path": "behavior_pack/blocks/magma_moss.block.json",
+        "sha256": "222f79499841cc80075c35ca4109528f1ef673b64347232c9bfc890af808bec2"
+      },
+      {
+        "path": "behavior_pack/blocks/glow_root.block.json",
+        "sha256": "3e5355e7953a392b61691b70c5d7a53e3a5ce907ca550e21b9dd3b86bfb7550c"
+      },
+      {
+        "path": "behavior_pack/blocks/basalt_flower.block.json",
+        "sha256": "7e98dd7054d93211ec1f089f2150ea21bfa2d0d771c2a633a0b7f5afa7767c51"
+      },
+      {
+        "path": "behavior_pack/blocks/ember_vine.block.json",
+        "sha256": "173bbaaaa1f5d5fee996129adf8c9ac898f1e148f460cc11787192f2574b1b97"
+      },
+      {
+        "path": "behavior_pack/blocks/fire_bloom.block.json",
+        "sha256": "ad7d467d4c0347092deda3512f1c328cd84e0875c7f96ecdc1004485c615e8f7"
+      },
+      {
+        "path": "resource_pack/models/aionbound/ashen/cinder_grass.geo.json",
+        "sha256": "653be15c6d4a140dd1d09a7b49c65b104907ada9e7c9bbad80686ac5df3c9138"
+      },
+      {
+        "path": "resource_pack/models/aionbound/ashen/ash_fern.geo.json",
+        "sha256": "4218372b0b18f3b4d24256ba4ff3049e5cd647fe3d9b26ca0b70c7a285bbac02"
+      },
+      {
+        "path": "resource_pack/models/aionbound/ashen/smoke_reed.geo.json",
+        "sha256": "ef9b2cfe5049f660596c2270d2726bd2b01825c684f5766f44b9ab0dbc9c6d9c"
+      },
+      {
+        "path": "resource_pack/models/aionbound/ashen/char_shrub.geo.json",
+        "sha256": "a60dcc876224b059c2e865c44727f643a19e9bc0bbdbf62974c8dd55ab87d30f"
+      },
+      {
+        "path": "resource_pack/models/aionbound/ashen/soot_mushroom.geo.json",
+        "sha256": "9e68bf323b1a5568e41e6d09206dc24560c68544f10b013ed4c732a35401cf5c"
+      },
+      {
+        "path": "resource_pack/models/aionbound/ashen/magma_moss.geo.json",
+        "sha256": "f14e53a652f6b13a0b6180bf1ff35cfea5d51b38da82efce8cf88e7ccf32a8e0"
+      },
+      {
+        "path": "resource_pack/models/aionbound/ashen/glow_root.geo.json",
+        "sha256": "3fd74533c4ec3c68f9036ce8dd7b2a5a738005c230008a3a8876cd259484a3ec"
+      },
+      {
+        "path": "resource_pack/models/aionbound/ashen/basalt_flower.geo.json",
+        "sha256": "76a3bcaf255a5ff350da962fb3ced04db0f3649817cfdf898a528647f0b20ad9"
+      },
+      {
+        "path": "resource_pack/models/aionbound/ashen/ember_vine.geo.json",
+        "sha256": "0dd895867766cc30c56728f31465779363857ff4c05ab87b107493a028d35064"
+      },
+      {
+        "path": "resource_pack/models/aionbound/ashen/fire_bloom.geo.json",
+        "sha256": "5079830519da4e9d34cbc4ade4ed385f57a3f53d65a33272ca3e21c872bcd4ea"
+      },
+      {
+        "path": "resource_pack/textures/aionbound/ashen/plants/cinder_grass.png",
+        "sha256": "141c4604cbda14033a5c90d3c3ce3289e88673839b99bc10d16b5897c29992ee"
+      },
+      {
+        "path": "resource_pack/textures/aionbound/ashen/plants/ash_fern.png",
+        "sha256": "6f1d71b0078a9b80d9198e51aba89c7dff2626b969d13a49d95f6ffaa738fe78"
+      },
+      {
+        "path": "resource_pack/textures/aionbound/ashen/plants/smoke_reed.png",
+        "sha256": "e7d12aee6ce373bacb2094ad52de72c24ec43a4a0bb10c27c58af2bac94f2b11"
+      },
+      {
+        "path": "resource_pack/textures/aionbound/ashen/plants/char_shrub.png",
+        "sha256": "66bb1880ab68a170a42f6f063eb504459c92749ad7a75d9d7582e6cc8f602df7"
+      },
+      {
+        "path": "resource_pack/textures/aionbound/ashen/plants/soot_mushroom.png",
+        "sha256": "bd54bfb7c386747977aa4c19a2925b54b6a46ebb70a1c29bbecc3a0e67ba5de4"
+      },
+      {
+        "path": "resource_pack/textures/aionbound/ashen/plants/magma_moss.png",
+        "sha256": "fc4f6513617646b42cf1b5c44d0dbb0b43c8ffd9b109fad3e17e542fa51deb25"
+      },
+      {
+        "path": "resource_pack/textures/aionbound/ashen/plants/glow_root.png",
+        "sha256": "959c6f3be1582a6c3d2332d757ae3bf3b4dc3af180df377b1d2188cfc450d4e6"
+      },
+      {
+        "path": "resource_pack/textures/aionbound/ashen/plants/basalt_flower.png",
+        "sha256": "44777a8c64671169e159b125bea9045d6e13db309202416bccd2dfb94dc88ccc"
+      },
+      {
+        "path": "resource_pack/textures/aionbound/ashen/plants/ember_vine.png",
+        "sha256": "cacaf0631bd1dae29b3127d4c87fe10b543846105768d13dc38d78f911b68d21"
+      },
+      {
+        "path": "resource_pack/textures/aionbound/ashen/plants/fire_bloom.png",
+        "sha256": "39ad3a610a96375730ae6d284a45cea12d3180abfa91dd16844eaaf674513b96"
+      }
+    ],
+    "entity_client_spawn_runtime": [
+      {
+        "path": "engineering/ashen-intake/entity-runtime/ASHEN_ENTITY_RUNTIME_REPORT.json",
+        "sha256": "db710f7687d22f6a1d11106cf20cca475eaeb5a1e8a5d882b0d8a8c55daaa2cb"
+      },
+      {
+        "path": "behavior_pack/entities/aionbound/ashen/ash_drake.entity.json",
+        "sha256": "69c7d389502a4524a6b887264fe286a2eb303e5a2ba8c8523289f8c94890a72f"
+      },
+      {
+        "path": "behavior_pack/entities/aionbound/ashen/ash_mite.entity.json",
+        "sha256": "0cf96d88ed659808e2893d3ddceabd74f70876b8a31995af7b5555a173c2dea9"
+      },
+      {
+        "path": "behavior_pack/entities/aionbound/ashen/ash_ram.entity.json",
+        "sha256": "284bb6ebc27813693ca97b9fa527c5f1027a5d701086e1e7efc35f0033b26100"
+      },
+      {
+        "path": "behavior_pack/entities/aionbound/ashen/basalt_tortoise.entity.json",
+        "sha256": "8425a9798358b83cdf2c54736f516955fcf97bf8cf63071196e1bcdbaf6df7c4"
+      },
+      {
+        "path": "behavior_pack/entities/aionbound/ashen/char_wolf.entity.json",
+        "sha256": "ee14f31b379f3b182b0cccc98b56e8f422e6de9127a345cb2960c73b8a8a2708"
+      },
+      {
+        "path": "behavior_pack/entities/aionbound/ashen/cinder_lynx.entity.json",
+        "sha256": "fd7c53c55995ba8adbc5bdfe56f26c7eb529703c2423ae41cd03e8b92e0bf5e9"
+      },
+      {
+        "path": "behavior_pack/entities/aionbound/ashen/ember_crow.entity.json",
+        "sha256": "7d4d7101fe97c51584a54953be999088f43b60179e2fc5cd1c925aebee032e0a"
+      },
+      {
+        "path": "behavior_pack/entities/aionbound/ashen/furnace_beetle.entity.json",
+        "sha256": "35007059a7163da7214f9b5807813a8e1b7a58719fb7b6b7a61ea9509a2668ab"
+      },
+      {
+        "path": "behavior_pack/entities/aionbound/ashen/magma_lizard.entity.json",
+        "sha256": "3d52e8db9eee8766236d093439c6e63540fee572814667c2f80a1a166b0421b1"
+      },
+      {
+        "path": "behavior_pack/entities/aionbound/ashen/soot_stag.entity.json",
+        "sha256": "0ee92a6d890f00a4cf066f21bf819b7fe6387accb2430801d2c9a5428db0c9ea"
+      },
+      {
+        "path": "resource_pack/entity/aionbound/ashen/ash_drake.entity.json",
+        "sha256": "9fd625b2f756464f39dccc209fd5320127fada865d6b0f4904bf3d31c8429502"
+      },
+      {
+        "path": "resource_pack/entity/aionbound/ashen/ash_mite.entity.json",
+        "sha256": "844c1e23a6842a97c9b255c304c3819944bfbd308476c26c812e39aa2bc3e7eb"
+      },
+      {
+        "path": "resource_pack/entity/aionbound/ashen/ash_ram.entity.json",
+        "sha256": "08bc3a2ef1cb14b6998686217a800720382701e54275b828f55901272f0a2908"
+      },
+      {
+        "path": "resource_pack/entity/aionbound/ashen/basalt_tortoise.entity.json",
+        "sha256": "a2d1546df466413a8b347520e8dd5bdecbab3068cd8e88cf6ed3350627421138"
+      },
+      {
+        "path": "resource_pack/entity/aionbound/ashen/char_wolf.entity.json",
+        "sha256": "c7daf0da1d5991f783031d81a72583c746a17b052984644fecaab8dfb6e57784"
+      },
+      {
+        "path": "resource_pack/entity/aionbound/ashen/cinder_lynx.entity.json",
+        "sha256": "42e0d3b7ac40904e765d536cc5c73bd4260e8cb14dd976a4702b1ab8ccdda20d"
+      },
+      {
+        "path": "resource_pack/entity/aionbound/ashen/ember_crow.entity.json",
+        "sha256": "9c1f5725ff1915054a618598d924a73fea5ccbbb00e34538237ee5624f9d704a"
+      },
+      {
+        "path": "resource_pack/entity/aionbound/ashen/furnace_beetle.entity.json",
+        "sha256": "59962316fc7d18cd0bcc78f0ab5b91baef3e80353f979e2423c56edae94b3190"
+      },
+      {
+        "path": "resource_pack/entity/aionbound/ashen/magma_lizard.entity.json",
+        "sha256": "b8ae3f1892f69cf48a5b1396d6ee6a0ca44302f2e39d130da77db2c07ad72d0e"
+      },
+      {
+        "path": "resource_pack/entity/aionbound/ashen/soot_stag.entity.json",
+        "sha256": "dd25ec786a1fb85bfb3e812d24f5f594ec826f6bfbf2f80f6c20ad0e6f5bfa15"
+      },
+      {
+        "path": "behavior_pack/spawn_rules/aionbound/ashen/ash_mite.spawn_rules.json",
+        "sha256": "ab28f7d567d21f0f3edd82656bc05ef1c6b0e589118d1cd0df51ad7d042cb0aa"
+      },
+      {
+        "path": "behavior_pack/spawn_rules/aionbound/ashen/ash_ram.spawn_rules.json",
+        "sha256": "befeed53c2ff64ea9cbf6b560a22f9436dfe1600babb6a2b62ab200651d064f4"
+      },
+      {
+        "path": "behavior_pack/spawn_rules/aionbound/ashen/basalt_tortoise.spawn_rules.json",
+        "sha256": "488ba524c107292983dda55f14a5ca4282a847b583021c1450b70be5c9bbb692"
+      },
+      {
+        "path": "behavior_pack/spawn_rules/aionbound/ashen/char_wolf.spawn_rules.json",
+        "sha256": "f993fbad93df95ca62742fec73c1cf199a0f7604f71d3760d1f9b015f7b451d9"
+      },
+      {
+        "path": "behavior_pack/spawn_rules/aionbound/ashen/cinder_lynx.spawn_rules.json",
+        "sha256": "7bea08d71944f7c03b23d705ac487d72cb91ad9c1b6424b67e340d9e63e722a6"
+      },
+      {
+        "path": "behavior_pack/spawn_rules/aionbound/ashen/ember_crow.spawn_rules.json",
+        "sha256": "c7a142f84e0202214e442b2e516c8642dccd68e52d85bc5e990ea5afa12a73bd"
+      },
+      {
+        "path": "behavior_pack/spawn_rules/aionbound/ashen/furnace_beetle.spawn_rules.json",
+        "sha256": "7cd9bc30d2609b4f6c7ecf4422b0e4938232733f6ef3bfa3a6083970f393ab9d"
+      },
+      {
+        "path": "behavior_pack/spawn_rules/aionbound/ashen/magma_lizard.spawn_rules.json",
+        "sha256": "5795a585dccdcb967a4d343c86a00f91cae8911d5419f4899985acb73d803830"
+      },
+      {
+        "path": "behavior_pack/spawn_rules/aionbound/ashen/soot_stag.spawn_rules.json",
+        "sha256": "dc2046a023a59a0b4d554fa6ae941063af0fc9f11d02c1588e928677aad7d697"
+      }
+    ],
+    "ecology_structures_features_rules": [
+      {
+        "path": "engineering/ashen-intake/ecology-worldgen/ASHEN_ECOLOGY_WORLDGEN.json",
+        "sha256": "945c48709e5fdd16dd58093c4fe38ec67c1d3893acea621326d6d1526f20ca8e"
+      },
+      {
+        "path": "engineering/ashen-intake/structure-assemblies/ASHEN_STRUCTURE_ASSEMBLIES.json",
+        "sha256": "325c3ab735f7daa452117ab760f027d6014e0d024a38ac9bed1b16daa9f5f103"
+      },
+      {
+        "path": "engineering/ashen-intake/structure-assemblies/ASHEN_STRUCTURE_VALIDATION_REPORT.json",
+        "sha256": "dd050125cc5693feb64d6b70c74684b0efce8c8ecd0241e0529358818e9fad59"
+      },
+      {
+        "path": "behavior_pack/features/ah_ecology_cinder_grass.feature.json",
+        "sha256": "7bfc0257e5b2dcc14da6acfabac42d4422f256d2344c66b401bdf56adb3128cd"
+      },
+      {
+        "path": "behavior_pack/features/ah_ecology_ash_fern.feature.json",
+        "sha256": "7d163eb88ce6c1dfb8baa174507e7b87dd23bf42bee1f36109cdf1c82a12270d"
+      },
+      {
+        "path": "behavior_pack/features/ah_ecology_smoke_reed.feature.json",
+        "sha256": "d4a6f83114314df5de5d619d925c8644bf150a21eb3eb0241c0bc93c8ffd8e22"
+      },
+      {
+        "path": "behavior_pack/features/ah_ecology_char_shrub.feature.json",
+        "sha256": "fd19e1039fde7c7132e38ed030d45f3eb8b72dd825fd3daca826c8ac10425f3a"
+      },
+      {
+        "path": "behavior_pack/features/ah_ecology_soot_mushroom.feature.json",
+        "sha256": "1b73fa1d909fff067554805211160947c380ea7926dfc5ec4ac1ab7029a79f30"
+      },
+      {
+        "path": "behavior_pack/features/ah_ecology_magma_moss.feature.json",
+        "sha256": "ee54e2475bb8399bd464d3df94b808db0d1dae2cf30f591c0ff8254d619fd7cb"
+      },
+      {
+        "path": "behavior_pack/features/ah_ecology_glow_root.feature.json",
+        "sha256": "b03fd5e72a3f60a1f92860cba0a5c9aee79fef96fb9a483ea813b9cbc34b846a"
+      },
+      {
+        "path": "behavior_pack/features/ah_ecology_basalt_flower.feature.json",
+        "sha256": "d55e55389e614e40621a78bc896007592abd1e4a205bd2e22575a578e1057544"
+      },
+      {
+        "path": "behavior_pack/features/ah_ecology_ember_vine.feature.json",
+        "sha256": "13962e10ca148c0fb2abcf4c6f039e8fffab852190c46998a7a7c617191a6e1a"
+      },
+      {
+        "path": "behavior_pack/features/ah_ecology_fire_bloom.feature.json",
+        "sha256": "24d66533655307e4f535a51975e7b5d5dd06e7e6b673eb19683bfc5ff5230f84"
+      },
+      {
+        "path": "behavior_pack/feature_rules/ah_ecology_cinder_grass.feature_rule.json",
+        "sha256": "af04d2e2282dbb917409225277a120540041e1e986c8398cc868f24003e52c85"
+      },
+      {
+        "path": "behavior_pack/feature_rules/ah_ecology_ash_fern.feature_rule.json",
+        "sha256": "74d14574d188a6ea61460368fd7841c2db3306a7a1eec840ec32366654cab49b"
+      },
+      {
+        "path": "behavior_pack/feature_rules/ah_ecology_smoke_reed.feature_rule.json",
+        "sha256": "128a928187b3e3a515587ce0599bb0f15c3bd1d3005345019308a2d6062dea17"
+      },
+      {
+        "path": "behavior_pack/feature_rules/ah_ecology_char_shrub.feature_rule.json",
+        "sha256": "2df2d140c20bd967d3ac8b9be54ed35abb6f8af2a3fb6122bc610fc706b56d8b"
+      },
+      {
+        "path": "behavior_pack/feature_rules/ah_ecology_soot_mushroom.feature_rule.json",
+        "sha256": "2cc1ba552a35d64ecc55bc0b8323c17fc99d69c6bc90a88d5cc0e38ebb12c324"
+      },
+      {
+        "path": "behavior_pack/feature_rules/ah_ecology_magma_moss.feature_rule.json",
+        "sha256": "132218cf24225850044c2fd4827bbdeeff741476721d361aba1aa430fc93831b"
+      },
+      {
+        "path": "behavior_pack/feature_rules/ah_ecology_glow_root.feature_rule.json",
+        "sha256": "220a45abee218d8ccad8b363592a8c5527e515f15cf6518e8b50b2219bd3b24e"
+      },
+      {
+        "path": "behavior_pack/feature_rules/ah_ecology_basalt_flower.feature_rule.json",
+        "sha256": "ae85e54cfddd4be355d0c4b1f9ece3a21d4a93cbc0cc01689867d5c04f297fac"
+      },
+      {
+        "path": "behavior_pack/feature_rules/ah_ecology_ember_vine.feature_rule.json",
+        "sha256": "f6ea5c10c8f8ba8c292f5a1eb071e72984cfe6f182b1ec3f7942fad55cc106d9"
+      },
+      {
+        "path": "behavior_pack/feature_rules/ah_ecology_fire_bloom.feature_rule.json",
+        "sha256": "beabf29570029cec9ab5980bd1993f5c79302bd8a2468c8678ca80b9f6fccb05"
+      },
+      {
+        "path": "behavior_pack/structures/aionbound/fire_totem.mcstructure",
+        "sha256": "910478c460ae9505ba8a13210368539f6b07272fcb774d233065d7e635bd398a"
+      },
+      {
+        "path": "behavior_pack/structures/aionbound/burned_camp.mcstructure",
+        "sha256": "7db9a7b0257654e37afc426643c7277890e52fe8a9d57dbc6d2a310a3fa11eb0"
+      },
+      {
+        "path": "behavior_pack/structures/aionbound/char_wagon.mcstructure",
+        "sha256": "ba83175331d6e5119894ce194f9990d8c8adc7b07a7338914a381e4bfa512978"
+      },
+      {
+        "path": "behavior_pack/structures/aionbound/broken_bridge.mcstructure",
+        "sha256": "9d81f77fdac9deea0645f54145e16abcdba7556373ef78e881536c58cd1c26f3"
+      },
+      {
+        "path": "behavior_pack/structures/aionbound/basalt_arch.mcstructure",
+        "sha256": "b00bd0b3277fd18d0a11b771fcb5f8fc7d44552d9b35965e63c2287944029e7b"
+      },
+      {
+        "path": "behavior_pack/structures/aionbound/ash_watchtower.mcstructure",
+        "sha256": "760b08cc86a56335be82fddd89e89bb55a0ecdf2ff92e8c16aab423bec790606"
+      },
+      {
+        "path": "behavior_pack/structures/aionbound/ancient_kiln.mcstructure",
+        "sha256": "8169dcb6bc593587b869935aa7aef85eb429d881c9809a3f610f97ee2e6b07fe"
+      },
+      {
+        "path": "behavior_pack/structures/aionbound/ember_forge.mcstructure",
+        "sha256": "7d3afe8adaeb95e083fe7948c805f2377411939ac101682295af3b936a1c41a1"
+      },
+      {
+        "path": "behavior_pack/structures/aionbound/lava_shrine.mcstructure",
+        "sha256": "817a06baa3d251e44f096bbbeee97bc8982af2366f34274b7910d04fa6c82c80"
+      },
+      {
+        "path": "behavior_pack/structures/aionbound/ash_cave.mcstructure",
+        "sha256": "ffa95cb003a2bdd6009e57b3aaf184ec96e4690b9dd20f4a517f94d8c7a4f937"
+      },
+      {
+        "path": "behavior_pack/features/fire_totem.structure_feature.json",
+        "sha256": "19f5d011cdbe7ae785334e1e2c7681e80be594b4ef672deb516df834492af8f3"
+      },
+      {
+        "path": "behavior_pack/features/burned_camp.structure_feature.json",
+        "sha256": "a6bf6723ea551d05589d78c39fdb4a9ffd32128af4cfee97c230241b00abbe6c"
+      },
+      {
+        "path": "behavior_pack/features/char_wagon.structure_feature.json",
+        "sha256": "88218c5d04eeb96c615ddbe03d3543f27aecb932acc5f368d79ebc909e6a0c70"
+      },
+      {
+        "path": "behavior_pack/features/broken_bridge.structure_feature.json",
+        "sha256": "a4cc4168ca20ffad05871270fd9369639e852320a205ff6a6f3948e8ba4e2d14"
+      },
+      {
+        "path": "behavior_pack/features/basalt_arch.structure_feature.json",
+        "sha256": "06327a79ab90f2841ed7f5154744c5bf7da0b121b2adcfe61d754d4192a260fa"
+      },
+      {
+        "path": "behavior_pack/features/ash_watchtower.structure_feature.json",
+        "sha256": "9d1920e384cc92cfcbd889fb7a12505460491214aa299c0d7517cd14de6e2142"
+      },
+      {
+        "path": "behavior_pack/features/ancient_kiln.structure_feature.json",
+        "sha256": "011b076bbff573a8086c5f27aa8e1c85e28d17f7f7f5d59bb66afce0ff34d067"
+      },
+      {
+        "path": "behavior_pack/features/ember_forge.structure_feature.json",
+        "sha256": "29da988caa0a18435ea55830644d84db984f7a0530cfcf2c866085a515e17b3a"
+      },
+      {
+        "path": "behavior_pack/features/lava_shrine.structure_feature.json",
+        "sha256": "c4baabd7cebaab18ca303785fd6e3704abe9cb04047b6de3af510cd070c43d85"
+      },
+      {
+        "path": "behavior_pack/features/ash_cave.structure_feature.json",
+        "sha256": "63c7cbd2ad05bdf418d3f6214282981afcba7708e26e62e0586d495bbe37c579"
+      },
+      {
+        "path": "behavior_pack/feature_rules/fire_totem.structure_feature_rule.json",
+        "sha256": "c2a61f2dd54b9a1637888a64b61e5c1b7a99037509c5cf2dbde06db2faf93284"
+      },
+      {
+        "path": "behavior_pack/feature_rules/burned_camp.structure_feature_rule.json",
+        "sha256": "639bb0c0a1936617766b4ae64a7def6c7459f8107f8490b88f76f0e03db07497"
+      },
+      {
+        "path": "behavior_pack/feature_rules/char_wagon.structure_feature_rule.json",
+        "sha256": "1f9015a9ca1d70e06f19a1bbe23846cf21b33ee4e841195da9dab85ae9c97fc6"
+      },
+      {
+        "path": "behavior_pack/feature_rules/broken_bridge.structure_feature_rule.json",
+        "sha256": "60b1bc4140745a340e48acc83209f216a5498672b11525ef4cd882d001b2a2ff"
+      },
+      {
+        "path": "behavior_pack/feature_rules/basalt_arch.structure_feature_rule.json",
+        "sha256": "f3f5bc22797dee44deef02d9bc4ecad8b97887cb1a884b137efac7650a1932ca"
+      },
+      {
+        "path": "behavior_pack/feature_rules/ash_watchtower.structure_feature_rule.json",
+        "sha256": "68ddde1af0c4d335935688469c58267f325defeeddc438d4338573db878da392"
+      },
+      {
+        "path": "behavior_pack/feature_rules/ancient_kiln.structure_feature_rule.json",
+        "sha256": "8e7685d41ffb36bfefe4edd79449f19b9100181c5814cccb498c5281d1252d9a"
+      },
+      {
+        "path": "behavior_pack/feature_rules/ember_forge.structure_feature_rule.json",
+        "sha256": "2d925ab8fe4c937360a2880ae5429cef8635adaa1e70f501608ff0a950be323f"
+      },
+      {
+        "path": "behavior_pack/feature_rules/lava_shrine.structure_feature_rule.json",
+        "sha256": "c14ef9908d1f06d3323d2b39e9efb649f35df2478b3b92a99d391b866bd3eef8"
+      },
+      {
+        "path": "behavior_pack/feature_rules/ash_cave.structure_feature_rule.json",
+        "sha256": "e94c4dea2921d5ec6476f9d4261bc1146e8e551baebb438cbc89588aa062ae64"
+      }
+    ],
+    "loot_and_acquisition_economy": [
+      {
+        "path": "engineering/ashen-intake/structure-economy/ASHEN_STRUCTURE_ECONOMY.json",
+        "sha256": "b53f81dbf3b2df89f1e9ce6d20e24eb3dcb297d22dc7a82137dc52bb38ef019a"
+      },
+      {
+        "path": "engineering/ashen-intake/structure-economy/ASHEN_STRUCTURE_ECONOMY_VALIDATION_REPORT.json",
+        "sha256": "aa3ae8126495747fef5fa2720dd16842af304dfae7ca35a9284f6dc0d7fd3d65"
+      },
+      {
+        "path": "behavior_pack/scripts/ashen_structure_reward_data.js",
+        "sha256": "8594b6e0619cdd0eed8ad289207f8814121f9f54e9f50da10535c7718d2b823d"
+      },
+      {
+        "path": "behavior_pack/scripts/ashen_structure_rewards.js",
+        "sha256": "8ed409cd3355525da91afbe272d222c1be3caf2e6ef56ea33f91375890c88c11"
+      },
+      {
+        "path": "behavior_pack/loot_tables/blocks/ashen/ash_log.json",
+        "sha256": "7d9fa778a1cc6346a70d1d955939ded908c86e5f79b2553d7a174cf4622a12b4"
+      },
+      {
+        "path": "behavior_pack/loot_tables/blocks/ashen/char_planks.json",
+        "sha256": "2597c0060fa04dbdbe2e3416e5d46a3495499e09f079908b2b00a6f8642b230b"
+      },
+      {
+        "path": "behavior_pack/loot_tables/blocks/ashen/basalt_brick.json",
+        "sha256": "d726941d3162c27a42a0a5dc4dc97efbdc9f25234eca807689d75a32321f6c22"
+      },
+      {
+        "path": "behavior_pack/loot_tables/blocks/ashen/smolder_stone.json",
+        "sha256": "bad415b1cf985c6e918b293ba5be49ac3b4372cdcee19a9ac9d57309fb19e13c"
+      },
+      {
+        "path": "behavior_pack/loot_tables/blocks/ashen/ash_soil.json",
+        "sha256": "0280496a44f989272803ad86344d394266089aea2e46b80e3977c67b8946b797"
+      },
+      {
+        "path": "behavior_pack/loot_tables/blocks/ashen/ember_moss.json",
+        "sha256": "5d9588aeab61a7f7734b7b79deeaced84e25643ef30a9ad08e89736e820c9043"
+      },
+      {
+        "path": "behavior_pack/loot_tables/blocks/ashen/volcanic_glass_block.json",
+        "sha256": "28f626032a1e631b451c0775c92c1330acf90d6e047173d63d900f62ddae6d79"
+      },
+      {
+        "path": "behavior_pack/loot_tables/blocks/ashen/heat_bark.json",
+        "sha256": "ae00f90f6979e4edd3032d60ce5383db11feba86807d4a1135b19ff6e274bd0d"
+      },
+      {
+        "path": "behavior_pack/loot_tables/blocks/ashen/basalt_pillar.json",
+        "sha256": "26a8c63d67c797b3c602d5befa2d3fbe7a0fb6b6ed475cb9274674ccc25e49ab"
+      },
+      {
+        "path": "behavior_pack/loot_tables/blocks/ashen/cinder_gravel.json",
+        "sha256": "3a65705b312ddc74c2ab04f0b63528871f0dbbb1ec92fc224d4b34cbd3edfad0"
+      },
+      {
+        "path": "behavior_pack/loot_tables/blocks/ashen/cinder_grass.json",
+        "sha256": "24ea3b77f7d31117e0dc39a39eb2275faed841b9cd8e57a0b2ef38a3d65ca5da"
+      },
+      {
+        "path": "behavior_pack/loot_tables/blocks/ashen/ash_fern.json",
+        "sha256": "751853170464146764330f1451ec45ffa077d90b1029e1288c386fcd8eb7efa9"
+      },
+      {
+        "path": "behavior_pack/loot_tables/blocks/ashen/smoke_reed.json",
+        "sha256": "47ee736366b67298cc37ae004a86f273a0079d700815cd25c58667b7b653b3c7"
+      },
+      {
+        "path": "behavior_pack/loot_tables/blocks/ashen/char_shrub.json",
+        "sha256": "3eaab6e881aef8aed30d4c47c8737b246e79212dad52020674ba6629c9878aac"
+      },
+      {
+        "path": "behavior_pack/loot_tables/blocks/ashen/soot_mushroom.json",
+        "sha256": "578519317cf8f5324c46fb2e49002b58dd478fa4d3e2fb408c1e013807bb78ce"
+      },
+      {
+        "path": "behavior_pack/loot_tables/blocks/ashen/magma_moss.json",
+        "sha256": "9200dcd5b04303af74cc745c69c2e455d29c37752380f95f8320651738d0504a"
+      },
+      {
+        "path": "behavior_pack/loot_tables/blocks/ashen/glow_root.json",
+        "sha256": "f7909cc14d9bf0b6f8995497a633c198daa79c31fc4a0460eee56082a707f2a0"
+      },
+      {
+        "path": "behavior_pack/loot_tables/blocks/ashen/basalt_flower.json",
+        "sha256": "3f386010dcfbabf9ce7e4163a76c19e286812c8dacebf03890fe875ebd93b208"
+      },
+      {
+        "path": "behavior_pack/loot_tables/blocks/ashen/ember_vine.json",
+        "sha256": "489e879a28244144bb98d9bc589f6b813e13e8e9dd80fe8b516c480b6edec540"
+      },
+      {
+        "path": "behavior_pack/loot_tables/blocks/ashen/fire_bloom.json",
+        "sha256": "bb96f0af73a9ea5dbf7cad15afe87aca4dee518babb4eca011f1a9f1b3f985de"
+      },
+      {
+        "path": "behavior_pack/loot_tables/entities/ashen/ash_drake_ecology.json",
+        "sha256": "aae73be86b6440c4962f295472b24587ac909e65bd4a7653f35f8df8a7cb5e10"
+      },
+      {
+        "path": "behavior_pack/loot_tables/entities/ashen/ash_mite.json",
+        "sha256": "ff38014a32eee2c994f29c69de3b3ae689d4812f95c5ea115cd41122fde8277b"
+      },
+      {
+        "path": "behavior_pack/loot_tables/entities/ashen/ash_ram.json",
+        "sha256": "1a7d6caaa68a1fc5fa6409880355109c384f44b559f87bd6a9e24bba1f51edad"
+      },
+      {
+        "path": "behavior_pack/loot_tables/entities/ashen/basalt_tortoise.json",
+        "sha256": "7edae3e1d6517a84e271db984796bcbd4d883cc1047117831ee265c6dcfe290f"
+      },
+      {
+        "path": "behavior_pack/loot_tables/entities/ashen/char_wolf.json",
+        "sha256": "c2a41899b72212ea98e81f4edcd76adb1bfbe896167cd61d19404430410367b9"
+      },
+      {
+        "path": "behavior_pack/loot_tables/entities/ashen/cinder_lynx.json",
+        "sha256": "1b6acd70e57bbd4d1dd3ed025c480296949e54e2b40f02884013f014569d275d"
+      },
+      {
+        "path": "behavior_pack/loot_tables/entities/ashen/ember_crow.json",
+        "sha256": "48a3340d54d37795c62c4e3bb9947b4c7674ba24fbd8eb654b812f17e3bd3e0a"
+      },
+      {
+        "path": "behavior_pack/loot_tables/entities/ashen/furnace_beetle.json",
+        "sha256": "2848501b597d61267702867636d56ae9a33751331db2c774385678dbcfcdf65b"
+      },
+      {
+        "path": "behavior_pack/loot_tables/entities/ashen/magma_lizard.json",
+        "sha256": "5a7838d3b8f148ec686260b4099fc6e73f6af66fdd93d5a32d335d24e3dcd866"
+      },
+      {
+        "path": "behavior_pack/loot_tables/entities/ashen/soot_stag.json",
+        "sha256": "a5bd47c6161eaf1a0c5361a2fabecba595fd15973539938526c012840c855557"
+      },
+      {
+        "path": "behavior_pack/loot_tables/chests/ashen/burned_camp.json",
+        "sha256": "952231728bc23a2817b3e6e6516aaa6903b81a905de4c32c0e756e02e0465270"
+      },
+      {
+        "path": "behavior_pack/loot_tables/chests/ashen/char_wagon.json",
+        "sha256": "ff5d6125f3021230c4bc91755a3d59e7f8499ee33d4544110f325335dc64a5a4"
+      },
+      {
+        "path": "behavior_pack/loot_tables/chests/ashen/broken_bridge.json",
+        "sha256": "fb862e22fd2feac5ddd3dd4c9c6a9c63126cd3e3b441085f46f547999e115c49"
+      },
+      {
+        "path": "behavior_pack/loot_tables/chests/ashen/basalt_arch.json",
+        "sha256": "5172550b7c64c4e222af71fd0e3e2edf3f7552e0e4fed9432997646d34a0d288"
+      },
+      {
+        "path": "behavior_pack/loot_tables/chests/ashen/ash_watchtower.json",
+        "sha256": "f840ae24af187c7ad0dc16211f6749606d07aeed011a6ebde16a93c2b9e5cab4"
+      },
+      {
+        "path": "behavior_pack/loot_tables/chests/ashen/ancient_kiln.json",
+        "sha256": "c0463618005361dbc1f42a68a51346c8af5956a55f2250ef11f61d614c483f83"
+      },
+      {
+        "path": "behavior_pack/loot_tables/chests/ashen/ash_cave.json",
+        "sha256": "75bee87e8361c20fadd8ccbede342a6267788bf1899b4152d9e4bf68e24f7502"
+      },
+      {
+        "path": "behavior_pack/loot_tables/chests/ashen/ember_forge.json",
+        "sha256": "f3b9f0bdfd09fbf0dc4436f853507a2b88778fa5af589db8250e6695024c2a06"
+      },
+      {
+        "path": "behavior_pack/recipes/ashen_ash_log_to_char_planks.recipe.json",
+        "sha256": "658266b6b198544d3a3bc7d879d92ca5370f7be63cc912ba1af0d5c5c98c30d3"
+      },
+      {
+        "path": "behavior_pack/recipes/ashen_smolder_bark_to_char_planks.recipe.json",
+        "sha256": "8b48c0be6a4f75b0742af150a0c4a10e1ce83fa9a339b8d574fa4a3b2c24b27c"
+      }
+    ],
+    "decision_ledger_v3_and_codex_runtime": [
+      {
+        "path": "engineering/authority/WAVE_1_ENGINEERING_DECISION_LEDGER.json",
+        "sha256": "b554db9fab3fe16e59e2e3b36dfc310ff462078b170f14e1f9fe8a46999bbd0c"
+      },
+      {
+        "path": "engineering/ashen-intake/codex/ASHEN_CODEX_PROGRESSION_INTAKE_MAP.json",
+        "sha256": "0658083cf21b2a831c25ebcb1b7f24c89b96ac41f7694d313acda7cf1578eb5c"
+      },
+      {
+        "path": "behavior_pack/scripts/wave1_codex_ashen_data.js",
+        "sha256": "d6fbda3a15cd332b24752c8ee647b9c52c210fc48b137991bc0c33c54d3fb004"
+      },
+      {
+        "path": "behavior_pack/scripts/wave1_codex_data.js",
+        "sha256": "6208bc269b315b6e526b6ffef86a0fdc065763cf7f6c898e9d4a2f6da633c819"
+      },
+      {
+        "path": "behavior_pack/scripts/catalog.js",
+        "sha256": "159f00cbfad5fbb8316d9daebdd3943205d1294082e4467027b4a42f3e4b695c"
+      },
+      {
+        "path": "behavior_pack/scripts/codex.js",
+        "sha256": "7d19873aa3eb51f728299d76cbecbb4d58cc19708eed937a26fe31a5c0c60d05"
+      },
+      {
+        "path": "behavior_pack/scripts/state.js",
+        "sha256": "69eb00df9ce2f16dcca9794a61c4fcaf9403512f8057ecd4907b6a8f8375b7cd"
+      },
+      {
+        "path": "behavior_pack/scripts/router.js",
+        "sha256": "6597e3c31299cd8987cd9c01addbab1660a2ecf2cc3789bfc79d69a8f7d31fef"
+      },
+      {
+        "path": "behavior_pack/scripts/runtime.js",
+        "sha256": "b346488f6e34d45eba0baf95051eaec7ef96a239cd5aaed4874ed7b651259ccd"
+      },
+      {
+        "path": "engineering/ashen-intake/codex-runtime/test_ashen_codex_runtime.py",
+        "sha256": "df8e3284686b9ad88395fb05c6faa0848a0f5f227d149cfc07302bc5c7881969"
+      },
+      {
+        "path": "tests/wave1_codex_runtime_events.test.mjs",
+        "sha256": "617f1b8ca9177740167840c85bcc3d87b83a8c7b55cdd380988451c62804740a"
+      },
+      {
+        "path": "tests/wave1_codex_v4.test.mjs",
+        "sha256": "d0e8002305049494e14387c92296c5b19a92096c97d6b53bf255144cc6aafd94"
+      }
+    ],
+    "equipment_13_plus_derived_4_and_crafting": [
+      {
+        "path": "engineering/ashen-intake/equipment-runtime-ashen/ASHEN_EQUIPMENT_RUNTIME_REPORT.json",
+        "sha256": "2bdf8986797c59322ed8347ebacfd3267051a54d2739fb0cb6d7fe81a25ab15a"
+      },
+      {
+        "path": "engineering/ashen-intake/economy/author_ashen_equipment_recipes.py",
+        "sha256": "fc5396b44dc6710c4deeba484db517e3295b87d8f70bb0aba3dc636469e78ca2"
+      },
+      {
+        "path": "engineering/ashen-intake/economy/test_ashen_equipment_recipes.py",
+        "sha256": "815ec03a182afb9148eb7f06e8ab1bcb3a7104a24ffbab37996a8d5569789172"
+      },
+      {
+        "path": "resource_pack/attachables/basalt_hammer.attachable.json",
+        "sha256": "432c2460fd00e20348aac6c1217cd544e434ad68911352b0f6105f37b6e5aa1e"
+      },
+      {
+        "path": "resource_pack/models/aionbound/ashen/equipment/basalt_hammer.geo.json",
+        "sha256": "e2c4d06b4c8da3ebaa86b2c3620ad0da13d4c0236758659d3a518a9451e477a3"
+      },
+      {
+        "path": "resource_pack/animations/aionbound/ashen/equipment/basalt_hammer.animation.json",
+        "sha256": "ce3e6da8782feaf28bbd35460789b06f254f89eadad16c012c3245f01dd32271"
+      },
+      {
+        "path": "resource_pack/textures/aionbound/ashen/equipment/basalt_hammer.png",
+        "sha256": "fe179131ac368cd52f74ebe22c51564b498f01530315d4ee9a7a0980503b36d2"
+      },
+      {
+        "path": "resource_pack/textures/aionbound/ashen/equipment/models/basalt_hammer.png",
+        "sha256": "17071eccbe68e6d46077fcda14388c0195ffece21491028d53bb78e33146782b"
+      },
+      {
+        "path": "behavior_pack/items/basalt_hammer.item.json",
+        "sha256": "8d5a39855cb836037de16aeb982efea7e3b1adfe3a4a3471e0c504658c1a9c5d"
+      },
+      {
+        "path": "resource_pack/attachables/ember_great_axe.attachable.json",
+        "sha256": "162b616e8327e5ad79da21bfe8aa546b0fba06acabc66e0e6ff0da3e74452944"
+      },
+      {
+        "path": "resource_pack/models/aionbound/ashen/equipment/ember_great_axe.geo.json",
+        "sha256": "7cb33b12d85a060806de4d103adee0339cfdd869f1b05c1f541409441082d1e3"
+      },
+      {
+        "path": "resource_pack/animations/aionbound/ashen/equipment/ember_great_axe.animation.json",
+        "sha256": "4eab72cf4b725e15411399d5705726e67f66a9b90795564fba9df2d819fcff63"
+      },
+      {
+        "path": "resource_pack/textures/aionbound/ashen/equipment/ember_great_axe.png",
+        "sha256": "419e50a1c8e32f892b31e453cbc0ef5fabcf243b20c4704265e549c0d3683beb"
+      },
+      {
+        "path": "resource_pack/textures/aionbound/ashen/equipment/models/ember_great_axe.png",
+        "sha256": "ce1535c17100db951dd29b587ed1288654a08c9b0ebd153ed98ecacd889bc348"
+      },
+      {
+        "path": "behavior_pack/items/ember_great_axe.item.json",
+        "sha256": "1f91b573f9802ce205231b23db5f9ee3922010269548b89051bec51d45f55b11"
+      },
+      {
+        "path": "resource_pack/attachables/ash_repeater.attachable.json",
+        "sha256": "bd4b6a401805ee1684f12c425167bc1a09db6a82c3f0e33807ac48c55ce8f5a9"
+      },
+      {
+        "path": "resource_pack/models/aionbound/ashen/equipment/ash_repeater.geo.json",
+        "sha256": "f0823c75687c3edcbe133260cd7aaa04cb9ea9d5a1497fce5a787694bb38564c"
+      },
+      {
+        "path": "resource_pack/animations/aionbound/ashen/equipment/ash_repeater.animation.json",
+        "sha256": "e804d4301992915e461919bcd9bbbf081a8004191ef54ac8ba6dee71744db280"
+      },
+      {
+        "path": "resource_pack/textures/aionbound/ashen/equipment/ash_repeater.png",
+        "sha256": "1bd19228348e775f75221f7296e206dc488842a2721b244794e9ef591b7e273b"
+      },
+      {
+        "path": "resource_pack/textures/aionbound/ashen/equipment/models/ash_repeater.png",
+        "sha256": "1ed90365d32818bc889b7799ccb6cfa6f2aa275bb4a8d4a55ed7ea198455818f"
+      },
+      {
+        "path": "behavior_pack/items/ash_repeater.item.json",
+        "sha256": "646586d680dc5e7af76129df2d95a006a020dc302fa3f17d855fe0aed9a49b3b"
+      },
+      {
+        "path": "resource_pack/attachables/ashen_helmet.attachable.json",
+        "sha256": "ca266170ea176f5fd0f434341864df75b286328b4757dc92e99286db683db8a1"
+      },
+      {
+        "path": "resource_pack/models/aionbound/ashen/equipment/ashen_helmet.geo.json",
+        "sha256": "0b48231cd6a6dfc685453f5181dd1bfe4e5a4f1e6e50badd7548e6e1686802bb"
+      },
+      {
+        "path": "resource_pack/animations/aionbound/ashen/equipment/ashen_helmet.animation.json",
+        "sha256": "7f21f62e8ed243abc683b4bb82278bd9c236030773d433314464e7af1783f2fc"
+      },
+      {
+        "path": "resource_pack/textures/aionbound/ashen/equipment/ashen_helmet.png",
+        "sha256": "b1c0463a9c9ecaa49ad98ae0a5f15b5a6c9313e9b899e1403a9f2188666866b9"
+      },
+      {
+        "path": "resource_pack/textures/aionbound/ashen/equipment/models/ashen_helmet.png",
+        "sha256": "4b94754556e855eb7f20151565af6fd611b8648926b90f957b400784eb8d0afe"
+      },
+      {
+        "path": "behavior_pack/items/ashen_helmet.item.json",
+        "sha256": "dc64ee5c0ab9850efda05826af0e8e49d8f7e10aee32c04444e2a7699ca8b3d1"
+      },
+      {
+        "path": "resource_pack/attachables/ashen_chest.attachable.json",
+        "sha256": "61b0296514796b183f58f9903089ae4c9c9a416a4e090bcfca41b5f148afa452"
+      },
+      {
+        "path": "resource_pack/models/aionbound/ashen/equipment/ashen_chest.geo.json",
+        "sha256": "25f9a2311090ff231053d9804db0542ca7bc15a72bc26e8662b99e14970d986b"
+      },
+      {
+        "path": "resource_pack/animations/aionbound/ashen/equipment/ashen_chest.animation.json",
+        "sha256": "7882082857fdb11e02f158ebc3a6d3f970e2ac60d54813f0e903ee97b2293749"
+      },
+      {
+        "path": "resource_pack/textures/aionbound/ashen/equipment/ashen_chest.png",
+        "sha256": "9494e9e534fedc2175f4eee7e51abc9751f3177527773051b5b91696f803d436"
+      },
+      {
+        "path": "resource_pack/textures/aionbound/ashen/equipment/models/ashen_chest.png",
+        "sha256": "0f5ffeeb8b10c4093ff19b456fcf75e87f7af593c70cfb22ec104e4b09ef0ea2"
+      },
+      {
+        "path": "behavior_pack/items/ashen_chest.item.json",
+        "sha256": "7dc7c342528f2577fce7aaaeca70bfeaf91cb34f9736872e4a7de68cc44e9c1c"
+      },
+      {
+        "path": "resource_pack/attachables/ashen_legs.attachable.json",
+        "sha256": "d56c09a6e9ac62fc0ddd61cbb52ad2c1c9aeccbdd95bc7db4c5ae3ebca8eaa21"
+      },
+      {
+        "path": "resource_pack/models/aionbound/ashen/equipment/ashen_legs.geo.json",
+        "sha256": "f8224cce032b88fb0e009252a227b24ee662a521c1574e09eb6287bcd75a60c0"
+      },
+      {
+        "path": "resource_pack/animations/aionbound/ashen/equipment/ashen_legs.animation.json",
+        "sha256": "7882082857fdb11e02f158ebc3a6d3f970e2ac60d54813f0e903ee97b2293749"
+      },
+      {
+        "path": "resource_pack/textures/aionbound/ashen/equipment/ashen_legs.png",
+        "sha256": "303b90183f093ad3af5435b413d438f9629f9955cd13816aaa0d6e9f116c7644"
+      },
+      {
+        "path": "resource_pack/textures/aionbound/ashen/equipment/models/ashen_legs.png",
+        "sha256": "66494e778ed43a06eaa701262796aa3993a1835c8209db277a9ff56b92ccebc0"
+      },
+      {
+        "path": "behavior_pack/items/ashen_legs.item.json",
+        "sha256": "b9aca977c7ca721cf8548ee75ade1c501357c7729edbc7a6b266aac553f8f2ba"
+      },
+      {
+        "path": "resource_pack/attachables/ashen_boots.attachable.json",
+        "sha256": "790a916f4187495ad6f234cc5665befbb4740a5408f1b3fd75ad1fbb4ffd3dff"
+      },
+      {
+        "path": "resource_pack/models/aionbound/ashen/equipment/ashen_boots.geo.json",
+        "sha256": "2a7bdb4ce1f31d5b2a6535db2da0495fe5055613f31f05c3a4df73b0a44e4e7f"
+      },
+      {
+        "path": "resource_pack/animations/aionbound/ashen/equipment/ashen_boots.animation.json",
+        "sha256": "7882082857fdb11e02f158ebc3a6d3f970e2ac60d54813f0e903ee97b2293749"
+      },
+      {
+        "path": "resource_pack/textures/aionbound/ashen/equipment/ashen_boots.png",
+        "sha256": "5de1200f22cac19e45e48550cb2b36af301be2873d7a82971519c077420b0029"
+      },
+      {
+        "path": "resource_pack/textures/aionbound/ashen/equipment/models/ashen_boots.png",
+        "sha256": "0eeef068ae7933ec48f9e019deb059ea1204e0f63e1ad4dfa082ecfdd787ccc5"
+      },
+      {
+        "path": "behavior_pack/items/ashen_boots.item.json",
+        "sha256": "24e9b6218f33aa039952f73b36bca8da62dcee75a4e140ba2b76ed4c77c04b73"
+      },
+      {
+        "path": "resource_pack/attachables/basalt_pick.attachable.json",
+        "sha256": "ee13a60a33fabba7c94bc1017d25c37a617e2b7ff811060a82801951611b8527"
+      },
+      {
+        "path": "resource_pack/models/aionbound/ashen/equipment/basalt_pick.geo.json",
+        "sha256": "e4b0395d1d7f81be83ed099be472f66337266a455ad8e78205b2943601935add"
+      },
+      {
+        "path": "resource_pack/animations/aionbound/ashen/equipment/basalt_pick.animation.json",
+        "sha256": "14f3931ef5072aece57586289098e3198b05fd6bf51c980bbb8659c8696e2ae0"
+      },
+      {
+        "path": "resource_pack/textures/aionbound/ashen/equipment/basalt_pick.png",
+        "sha256": "d857741faabb6edfeeb4ff3db599e6487be05310e42ea6179ffd7733bdb713de"
+      },
+      {
+        "path": "resource_pack/textures/aionbound/ashen/equipment/models/basalt_pick.png",
+        "sha256": "2dc27866a3c4023f766ded1a1d13cae060c77b3d03e2d2d95537c8ace82f53be"
+      },
+      {
+        "path": "behavior_pack/items/basalt_pick.item.json",
+        "sha256": "dad51bd05bfbb69003970a009b0d17946f967c2897abdcfbbe01cd5075a8b48c"
+      },
+      {
+        "path": "resource_pack/attachables/ember_hammer.attachable.json",
+        "sha256": "20b5984ef89c6d848e7138e3ba7c6f9ca862983ba8d018f1382febc99b179561"
+      },
+      {
+        "path": "resource_pack/models/aionbound/ashen/equipment/ember_hammer.geo.json",
+        "sha256": "a3cf5eabcd265a5ae0c46459ffe856a587113aedb7cfce5e6af868144e7a1530"
+      },
+      {
+        "path": "resource_pack/animations/aionbound/ashen/equipment/ember_hammer.animation.json",
+        "sha256": "f3710e3b8eb3a23bf18c0fe927b3c86bab06f5df401e4d5a2a89968049fea83b"
+      },
+      {
+        "path": "resource_pack/textures/aionbound/ashen/equipment/ember_hammer.png",
+        "sha256": "f156bc4466b09b4d8f88ca965946d07499ed52b5dcbada5d53d63c122684c1d3"
+      },
+      {
+        "path": "resource_pack/textures/aionbound/ashen/equipment/models/ember_hammer.png",
+        "sha256": "79b1e89785d8980e9dc8670f9dde2290c8c0bf637d026b027450a0509462bfa6"
+      },
+      {
+        "path": "behavior_pack/items/ember_hammer.item.json",
+        "sha256": "45ee8294ff95269b57834ca730d02e7afc785cfe0cc07daf0dc38f3ea1cda1e8"
+      },
+      {
+        "path": "resource_pack/attachables/ore_chisel.attachable.json",
+        "sha256": "1ca69959fd01f50382582c52cb40a2718eecb7af51825e6ec8b91513ae16abad"
+      },
+      {
+        "path": "resource_pack/models/aionbound/ashen/equipment/ore_chisel.geo.json",
+        "sha256": "94640fabbfcfd8dd52292b21135cf4405845bb44b99a3395bd83cc4990681fec"
+      },
+      {
+        "path": "resource_pack/animations/aionbound/ashen/equipment/ore_chisel.animation.json",
+        "sha256": "dedff2d394ad85d989c4d76914262b2de1ab894f6cb4bd59d5c5489a6d5f028a"
+      },
+      {
+        "path": "resource_pack/textures/aionbound/ashen/equipment/ore_chisel.png",
+        "sha256": "b94ce6b11bf91492bcee905ec3a60453a263da85615a177a8b841abaa3609136"
+      },
+      {
+        "path": "resource_pack/textures/aionbound/ashen/equipment/models/ore_chisel.png",
+        "sha256": "6406c4ad3efca83518c3b541d4bb940615268166f5344a85333b6049b4ce3ec1"
+      },
+      {
+        "path": "behavior_pack/items/ore_chisel.item.json",
+        "sha256": "16b18fbd13481695bc58dc68bf86cd09e7bafed862aa67ec41283ad74ee15810"
+      },
+      {
+        "path": "resource_pack/attachables/ember_totem.attachable.json",
+        "sha256": "8f06b5f73c74a51f0cdc816909c4b5a8d872a0f5e5c1e64981a863c79b97d476"
+      },
+      {
+        "path": "resource_pack/models/aionbound/ashen/equipment/ember_totem.geo.json",
+        "sha256": "7707e83a08c4558a3689eb22f99261bb5e9e554d95abcb7aa7f51684560b7106"
+      },
+      {
+        "path": "resource_pack/animations/aionbound/ashen/equipment/ember_totem.animation.json",
+        "sha256": "07f766d281ad3963ae533eb67a0f3174f6fec52de1b9349f8881405350831a85"
+      },
+      {
+        "path": "resource_pack/textures/aionbound/ashen/equipment/ember_totem.png",
+        "sha256": "6b020002024152af67970feef0edabd2fd8bacb9c05ad52b72722a8d89f051f7"
+      },
+      {
+        "path": "resource_pack/textures/aionbound/ashen/equipment/models/ember_totem.png",
+        "sha256": "a1ff81d1bb7fc4e0431bd002667f7737f24305850d12a19461b579bcd0cc051e"
+      },
+      {
+        "path": "behavior_pack/items/ember_totem.item.json",
+        "sha256": "dbb45cf7a1ede10850edfd1b1533bd278c02de75d9b38f97f1b442a0787f0569"
+      },
+      {
+        "path": "resource_pack/attachables/ash_drake_horn.attachable.json",
+        "sha256": "f1e09c7e63002083f7844db1d788c32ebe9a8fb358a32a9bcc11396256eb8b6d"
+      },
+      {
+        "path": "resource_pack/models/aionbound/ashen/equipment/ash_drake_horn.geo.json",
+        "sha256": "501226d54210138ca96958e439d0116ade375f4265a3137434159835e66db6fe"
+      },
+      {
+        "path": "resource_pack/animations/aionbound/ashen/equipment/ash_drake_horn.animation.json",
+        "sha256": "5a60c1a3be8ab7e08818265b554a3072221df4e055c8fd2609161c010af2d262"
+      },
+      {
+        "path": "resource_pack/textures/aionbound/ashen/equipment/ash_drake_horn.png",
+        "sha256": "b7cbd46b8ecce6ac3240f453c9c70fb7daecf582d1519ad65b1f3f961221b73b"
+      },
+      {
+        "path": "resource_pack/textures/aionbound/ashen/equipment/models/ash_drake_horn.png",
+        "sha256": "883adaee01c575d79139514dd9c257aa08debcd6a2fcf212f5f85ecc405b929a"
+      },
+      {
+        "path": "behavior_pack/blocks/ash_drake_horn.block.json",
+        "sha256": "99a43c6cef28854df71d269bf687aeb63ed9a6401cf7878879befdd9a8d02236"
+      },
+      {
+        "path": "resource_pack/attachables/ember_forge_core.attachable.json",
+        "sha256": "c7b099e26b03c10648ba2682b0744a1e442426abefee0cc97bf7469a365e2fe8"
+      },
+      {
+        "path": "resource_pack/models/aionbound/ashen/equipment/ember_forge_core.geo.json",
+        "sha256": "198e53f408597b485d849170771d54d63ab350a6f961d72bc587d64e3c09e9be"
+      },
+      {
+        "path": "resource_pack/animations/aionbound/ashen/equipment/ember_forge_core.animation.json",
+        "sha256": "804b14ccbeba800ebffcb1604b2b630fb1302b923ecb6271db77d86e6d7a57f3"
+      },
+      {
+        "path": "resource_pack/textures/aionbound/ashen/equipment/ember_forge_core.png",
+        "sha256": "621b845908af5dcaa51b842cbbebb87eeafd493fdd1c67e1a9aaabe604a8a5f8"
+      },
+      {
+        "path": "resource_pack/textures/aionbound/ashen/equipment/models/ember_forge_core.png",
+        "sha256": "003dd595b177140d4df97daa64c9cf4c4c5121cb8649039c12e05b9e33e527f8"
+      },
+      {
+        "path": "behavior_pack/blocks/ember_forge_core.block.json",
+        "sha256": "8dbe805a3b9b135c8d66a99db318b910d65ea0418a68336b781ece849289fe18"
+      },
+      {
+        "path": "behavior_pack/items/heat_core.item.json",
+        "sha256": "6c7110d61e63a5ce282609d4bd9ccde35f2e49382e85e920b3cadaa51d81ba31"
+      },
+      {
+        "path": "behavior_pack/items/heavy_head.item.json",
+        "sha256": "b53a0d704c0c62ae2558ef19eb3c1ee3f3a901167b860a63a261751d20fa86ad"
+      },
+      {
+        "path": "behavior_pack/items/chitin_plate.item.json",
+        "sha256": "2fa8024c323b13fe0736da879ef92cdf44e0cc89dc95b74d78661ddde3d4ecbd"
+      },
+      {
+        "path": "behavior_pack/items/ember_heart.item.json",
+        "sha256": "1b41d9264741964a1e78a614a011e07a1c3fdb3f074d9f9a41da3998c4cac8bb"
+      },
+      {
+        "path": "resource_pack/textures/aionbound/ashen/components/heat_core.png",
+        "sha256": "0cfea293306c3389ad08a304065f89a2ca115f86ef850b7ffd0628714bb0cf0e"
+      },
+      {
+        "path": "resource_pack/textures/aionbound/ashen/components/heavy_head.png",
+        "sha256": "f90c3583dd34c1c12e656ebd708fcb4221294335497e6859bf307d2fdbd4c4fd"
+      },
+      {
+        "path": "resource_pack/textures/aionbound/ashen/components/chitin_plate.png",
+        "sha256": "044a76696f19687a1e1c559617acbf5a60ced33cee5017e53d79625b4cdde4a3"
+      },
+      {
+        "path": "resource_pack/textures/aionbound/ashen/components/ember_heart.png",
+        "sha256": "958f55f5bbfb571c0fc72ba03b05820202dffdd52d3f605a9313e564e64017fa"
+      },
+      {
+        "path": "behavior_pack/recipes/ashen_basalt_hammer.recipe.json",
+        "sha256": "3903b96de5f29053c962f818bfc43c4e95fc805db5d3fc2c1557875ab73db898"
+      },
+      {
+        "path": "behavior_pack/recipes/ashen_ember_great_axe.recipe.json",
+        "sha256": "522a1cc8036c7d17652877a9419ff9ea5082b4789b7333ea6311b3000b8516ab"
+      },
+      {
+        "path": "behavior_pack/recipes/ashen_ash_repeater.recipe.json",
+        "sha256": "4d340201e4e4e73591589d6ef36c3ea767b678c310087040feabbbfc9a43e470"
+      },
+      {
+        "path": "behavior_pack/recipes/ashen_ashen_helmet.recipe.json",
+        "sha256": "39a72e5e0c83bba8f202c219c017cac25029e3249e16895132fb51130a835428"
+      },
+      {
+        "path": "behavior_pack/recipes/ashen_ashen_chest.recipe.json",
+        "sha256": "17cd7f57c48e5cfd2d5aaa7d94d31e37cdea28af338ca28734e7f687306db118"
+      },
+      {
+        "path": "behavior_pack/recipes/ashen_ashen_legs.recipe.json",
+        "sha256": "7f20d7620adf8e426734e5e7058b0a989271d1e7de13ac9b1a45d0ce1c7976ed"
+      },
+      {
+        "path": "behavior_pack/recipes/ashen_ashen_boots.recipe.json",
+        "sha256": "bc43950529239cdfa37f82b5fd0920d74365e914476c5311658db21c331117be"
+      },
+      {
+        "path": "behavior_pack/recipes/ashen_basalt_pick.recipe.json",
+        "sha256": "66f72a7732a1740d0ba376151cfd6fdc89290a6696fe5840c577dc269131c20f"
+      },
+      {
+        "path": "behavior_pack/recipes/ashen_ember_hammer.recipe.json",
+        "sha256": "7b61897d39cbcb2f055bea1a308d6920e8c971acb9fa5d0713f4ae104adcbed2"
+      },
+      {
+        "path": "behavior_pack/recipes/ashen_ore_chisel.recipe.json",
+        "sha256": "eb31658a637b11100231ced8af002a3d7c0d391fb0ebab4ca72503721032d9ea"
+      },
+      {
+        "path": "behavior_pack/recipes/ashen_ember_totem.recipe.json",
+        "sha256": "12a5ab7523431da5d406b1d5c9ccbf6c5086a1dd1bedc655422e1b6fdaa76815"
+      },
+      {
+        "path": "behavior_pack/recipes/ashen_heat_core.recipe.json",
+        "sha256": "20dea97a505384624a6f2aadeaf7b18194eb2bf50b4a7e45fb2cee69cca01097"
+      },
+      {
+        "path": "behavior_pack/recipes/ashen_heavy_head.recipe.json",
+        "sha256": "8edc9340a882145bd582aab29824a7d87e2ace4e45e1a143e16569bfac56a6d9"
+      },
+      {
+        "path": "behavior_pack/recipes/ashen_chitin_plate.recipe.json",
+        "sha256": "6937b74e19bf91092c80da1c5df7d58e3814e909bdfee0a4a5ea6186315946f7"
+      },
+      {
+        "path": "behavior_pack/recipes/ashen_ember_heart.recipe.json",
+        "sha256": "31e01ae5aaf45a0d27bf1d4e7c6e3835fc15beedb22afe02669e87b44eba70a9"
+      }
+    ],
+    "kiln_sky_dedicated_service_activation_withheld": [
+      {
+        "path": "engineering/ashen-intake/kiln-sky-runtime/KILN_SKY_RUNTIME_EVIDENCE.json",
+        "sha256": "2484be4a73d096216ec4e71a596d8de6e36e81dfebf2674b0c2002354e14ad2a"
+      },
+      {
+        "path": "engineering/ashen-intake/kiln-sky-runtime/ACTIVATION_WITHHELD.md",
+        "sha256": "2589e70e8433a44d36d8c708fd4c07dd6254b3832afa001860bde275ee613cef"
+      },
+      {
+        "path": "behavior_pack/scripts/kiln_sky.js",
+        "sha256": "f2afa703c4023e4f300c266a0da1e6ab9732e85c30e21ccf1c0baa71b369bc3f"
+      },
+      {
+        "path": "behavior_pack/scripts/ashen_rewards.js",
+        "sha256": "3e78870a418eee57e19ce0b77c4a34cf23da1ec2102648cfe7f37d61fe3c7df3"
+      },
+      {
+        "path": "tests/wave1_kiln_sky.test.mjs",
+        "sha256": "dc766c4c7cf5dedc25afa0805fedb48ecb05629cf781a413544d9c7f47f8a334"
+      },
+      {
+        "path": "tests/wave1_ashen_rewards.test.mjs",
+        "sha256": "5a09b2707db8f0bc9c47c7372281b9f2fff068d720008220d3a4d1bec4edfa45"
+      }
+    ],
+    "native_aggregate_receipts": [
+      {
+        "path": "engineering/native-assets/ashen/representative/ASHEN_REPRESENTATIVE_NATIVE_REPORT.json",
+        "sha256": "ea4bc1c78f1dd532076b73c5620103c9043da170a519fbf3d531585d12481131"
+      },
+      {
+        "path": "engineering/native-assets/ashen/plants/ASHEN_PLANT_NATIVE_REPORT.json",
+        "sha256": "c02b9de6081a1c5322ffad0987c03297d61be651d068524adcf59eeb785fb75b"
+      },
+      {
+        "path": "engineering/native-assets/ashen/creatures/ASHEN_CREATURE_NATIVE_REPORT.json",
+        "sha256": "72ba7ec78056dbc6900febc06e8f3c941d23f6e70a6ae274ee6ef5a5a96b27ca"
+      },
+      {
+        "path": "engineering/native-assets/ashen/landmarks/ASHEN_LANDMARK_NATIVE_REPORT.json",
+        "sha256": "6c89f3384a22d71a6c9cf9cba6330bbfecc8736879425efe43a9eaf3c0eb3414"
+      },
+      {
+        "path": "engineering/native-assets/ashen/equipment/ASHEN_EQUIPMENT_NATIVE_REPORT.json",
+        "sha256": "7cb114cbd67d042ab1fdfd9ce64f771fd5c978a3641e690142729bd3623b1f8b"
+      }
+    ]
+  },
+  "pending_follow_up": {
+    "kiln_sky_shared_runtime_activation": "WITHHELD_BY_DEDICATED_EVIDENCE",
+    "creative": "W1-CREATIVE-005_DEFERRED"
+  },
+  "proof_boundary": "SOURCE PATH, BYTE HASH, IDENTIFIER, AND STATIC EVIDENCE CLOSURE ONLY; NO BUILD, PACKAGE, BDS, CLIENT, MULTIPLAYER, CONSOLE, OR RELEASE PROOF"
+}

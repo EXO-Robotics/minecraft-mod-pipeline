@@ -57,6 +57,21 @@ def sha256(path: Path) -> str:
     return digest.hexdigest()
 
 
+def safe_relative_artifact(root: Path, relative: Any) -> Path | None:
+    """Resolve a repository artifact without permitting absolute or parent traversal."""
+    if not isinstance(relative, str) or not relative:
+        return None
+    candidate = Path(relative)
+    if candidate.is_absolute() or ".." in candidate.parts:
+        return None
+    resolved = (root / candidate).resolve()
+    try:
+        resolved.relative_to(root)
+    except ValueError:
+        return None
+    return resolved
+
+
 def lang_entries(path: Path) -> dict[str, str]:
     """Parse Bedrock's simple key=value language format without normalizing bytes."""
     entries: dict[str, str] = {}
@@ -601,6 +616,63 @@ def validate(root: Path) -> dict[str, Any]:
             "classification": requirement.get("classification"),
         })
 
+    required_artifact_manifest_receipt: dict[str, Any] | None = None
+    artifact_manifest_authority = authority.get("required_artifact_manifest")
+    if artifact_manifest_authority is not None:
+        relative = artifact_manifest_authority.get("path") if isinstance(artifact_manifest_authority, dict) else None
+        manifest_path = safe_relative_artifact(root, relative)
+        if manifest_path is None:
+            errors.append(f"unsafe_required_artifact_manifest_path:{relative}")
+        elif not manifest_path.is_file():
+            errors.append(f"missing_required_artifact_manifest:{relative}")
+        else:
+            actual_manifest_sha = sha256(manifest_path)
+            expected_manifest_sha = artifact_manifest_authority.get("sha256")
+            if actual_manifest_sha != expected_manifest_sha:
+                errors.append(f"required_artifact_manifest_sha256:{relative}:{actual_manifest_sha}!={expected_manifest_sha}")
+            manifest = read_json(manifest_path)
+            expected_schema = artifact_manifest_authority.get("schema")
+            if manifest.get("schema") != expected_schema:
+                errors.append(f"required_artifact_manifest_schema:{relative}:{manifest.get('schema')!r}!={expected_schema!r}")
+            groups = manifest.get("groups")
+            verified_groups: dict[str, int] = {}
+            seen_paths: set[str] = set()
+            if not isinstance(groups, dict) or not groups:
+                errors.append(f"required_artifact_manifest_groups:{relative}")
+            else:
+                for group, artifacts in groups.items():
+                    if not isinstance(group, str) or not isinstance(artifacts, list) or not artifacts:
+                        errors.append(f"required_artifact_manifest_group_shape:{relative}:{group!r}")
+                        continue
+                    verified = 0
+                    for row in artifacts:
+                        artifact_relative = row.get("path") if isinstance(row, dict) else None
+                        expected_sha = row.get("sha256") if isinstance(row, dict) else None
+                        artifact = safe_relative_artifact(root, artifact_relative)
+                        if artifact_relative in seen_paths:
+                            errors.append(f"required_artifact_manifest_duplicate_path:{artifact_relative}")
+                            continue
+                        if isinstance(artifact_relative, str):
+                            seen_paths.add(artifact_relative)
+                        if artifact is None:
+                            errors.append(f"unsafe_required_source_artifact_path:{group}:{artifact_relative}")
+                        elif not artifact.is_file():
+                            errors.append(f"missing_required_source_artifact:{group}:{artifact_relative}")
+                        else:
+                            actual_sha = sha256(artifact)
+                            if actual_sha != expected_sha:
+                                errors.append(f"required_source_artifact_sha256:{group}:{artifact_relative}:{actual_sha}!={expected_sha}")
+                            else:
+                                verified += 1
+                    verified_groups[group] = verified
+            required_artifact_manifest_receipt = {
+                "path": relative,
+                "sha256": actual_manifest_sha,
+                "groups": verified_groups,
+                "pending_follow_up": manifest.get("pending_follow_up", {}),
+                "classification": artifact_manifest_authority.get("classification"),
+            }
+
     geometries: set[str] = set()
     for path in sorted((rp / "models").rglob("*.json")):
         document = parsed.get(path, {})
@@ -643,8 +715,11 @@ def validate(root: Path) -> dict[str, Any]:
                 errors.append(f"client_entity_missing_texture:{identifier}:{texture}")
 
     for identifier, path in attachables.items():
-        if identifier not in items:
-            errors.append(f"attachable_without_item:{identifier}")
+        # Trophy/reward identities may intentionally be placeable inventory
+        # blocks. Their attachables are closed by either an item or block
+        # definition; an identifier backed by neither remains invalid.
+        if identifier not in items and identifier not in blocks:
+            errors.append(f"attachable_without_item_or_block:{identifier}")
         desc = parsed[path]["minecraft:attachable"]["description"]
         for geometry in desc.get("geometry", {}).values():
             if isinstance(geometry, str) and geometry.startswith("geometry.aionbound.") and geometry not in geometries:
@@ -725,6 +800,7 @@ def validate(root: Path) -> dict[str, Any]:
         "blocks": set(blocks), "entities": set(entities), "items": set(items),
         "recipes": set(recipes), "structures": structure_ids,
         "features": set(features), "feature_rules": set(feature_rules),
+        "client_entities": set(client_entities), "spawn_rules": set(spawn_rules),
     }
     for category, required in authority["required_successor_ids"].items():
         missing = sorted(set(required) - id_sets.get(category, set()))
@@ -739,6 +815,7 @@ def validate(root: Path) -> dict[str, Any]:
             "source_evidence": source_evidence,
             "required_content_closure_receipts": content_closure_receipts,
             "required_evidence_artifacts_verified": required_evidence_receipts,
+            "required_artifact_manifest_verified": required_artifact_manifest_receipt,
         })
     return {
         "schema_version": 1,
@@ -751,11 +828,13 @@ def validate(root: Path) -> dict[str, Any]:
         "required_successor_ids_verified": authority["required_successor_ids"],
         "required_content_closure_receipts": content_closure_receipts,
         "required_evidence_artifacts_verified": required_evidence_receipts,
+        "required_artifact_manifest_verified": required_artifact_manifest_receipt,
         "checks": [
             "json_and_png_structure", "manifest_and_dependency_closure", "identifier_closure",
             "texture_and_model_closure", "recipe_and_loot_closure", "script_import_and_runtime_policy",
             "minimum_substrate_inventory", "explicit_successor_additions",
             "required_atlas_lang_png_closure", "required_evidence_artifact_hash_and_shape",
+            "required_artifact_manifest_exact_path_and_hash_closure",
         ],
         "proof_boundaries": PROOF_BOUNDARIES,
     }

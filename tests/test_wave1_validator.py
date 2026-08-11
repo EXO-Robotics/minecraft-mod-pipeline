@@ -2,6 +2,7 @@ import importlib.util
 import json
 from pathlib import Path
 import struct
+import subprocess
 import tempfile
 import unittest
 import zlib
@@ -236,6 +237,46 @@ class Wave1ValidatorTests(unittest.TestCase):
             "required_evidence_artifact_sha256:engineering/native/report.json:"
         ) for value in self.findings()))
 
+    def test_required_artifact_manifest_is_exact_hash_bound_and_reports_groups(self):
+        source = self.root / "behavior_pack/items/new_item.item.json"
+        manifest_path = self.root / "engineering/validation/wave1/exact.json"
+        write_json(manifest_path, {
+            "schema": "test.exact.v1",
+            "groups": {"implemented": [{"path": "behavior_pack/items/new_item.item.json", "sha256": VALIDATOR.sha256(source)}]},
+            "pending_follow_up": {"equipment": []},
+        })
+        authority_path = self.root / VALIDATOR.AUTHORITY_REL
+        authority = json.loads(authority_path.read_text())
+        authority["required_artifact_manifest"] = {
+            "path": "engineering/validation/wave1/exact.json",
+            "sha256": VALIDATOR.sha256(manifest_path),
+            "schema": "test.exact.v1",
+            "classification": "source_tree_hash_closure_only",
+        }
+        write_json(authority_path, authority)
+        receipt = VALIDATOR.validate(self.root)["required_artifact_manifest_verified"]
+        self.assertEqual(receipt["groups"], {"implemented": 1})
+        source.write_text(source.read_text() + "\n", encoding="utf-8")
+        self.assertTrue(any(value.startswith(
+            "required_source_artifact_sha256:implemented:behavior_pack/items/new_item.item.json:"
+        ) for value in self.findings()))
+
+    def test_required_artifact_manifest_rejects_parent_traversal(self):
+        manifest_path = self.root / "engineering/validation/wave1/exact.json"
+        write_json(manifest_path, {
+            "schema": "test.exact.v1",
+            "groups": {"implemented": [{"path": "../outside", "sha256": "0" * 64}]},
+        })
+        authority_path = self.root / VALIDATOR.AUTHORITY_REL
+        authority = json.loads(authority_path.read_text())
+        authority["required_artifact_manifest"] = {
+            "path": "engineering/validation/wave1/exact.json",
+            "sha256": VALIDATOR.sha256(manifest_path),
+            "schema": "test.exact.v1",
+        }
+        write_json(authority_path, authority)
+        self.assertIn("unsafe_required_source_artifact_path:implemented:../outside", self.findings())
+
     def test_repository_authority_names_exact_ashen_resource_and_full_cube_block_sets(self):
         authority = json.loads((REPO / VALIDATOR.AUTHORITY_REL).read_text())
         expected_items = {
@@ -260,8 +301,61 @@ class Wave1ValidatorTests(unittest.TestCase):
             {row["identifier"] for row in authority["required_content_closure"]["blocks"]},
             expected_blocks,
         )
-        self.assertEqual(authority["minimum_inventory"]["items"], 56)
-        self.assertEqual(authority["minimum_inventory"]["blocks"], 49)
+        self.assertGreaterEqual(authority["minimum_inventory"]["items"], 56)
+        self.assertGreaterEqual(authority["minimum_inventory"]["blocks"], 49)
+
+    def test_repository_ashen_closure_manifest_is_deterministic_complete_and_narrow(self):
+        authority = json.loads((REPO / VALIDATOR.AUTHORITY_REL).read_text())
+        manifest_path = REPO / authority["required_artifact_manifest"]["path"]
+        before = manifest_path.read_bytes()
+        subprocess.run(
+            ["python3", "engineering/validation/wave1/build_ashen_implemented_closure.py"],
+            cwd=REPO, check=True,
+        )
+        self.assertEqual(manifest_path.read_bytes(), before)
+        self.assertEqual(VALIDATOR.sha256(manifest_path), authority["required_artifact_manifest"]["sha256"])
+        manifest = json.loads(before)
+        self.assertEqual({name: len(rows) for name, rows in manifest["groups"].items()}, {
+            "resources_blocks_plants": 53,
+            "entity_client_spawn_runtime": 30,
+            "ecology_structures_features_rules": 53,
+            "loot_and_acquisition_economy": 44,
+            "decision_ledger_v3_and_codex_runtime": 12,
+            "equipment_13_plus_derived_4_and_crafting": 104,
+            "kiln_sky_dedicated_service_activation_withheld": 6,
+            "native_aggregate_receipts": 5,
+        })
+        paths = [row["path"] for rows in manifest["groups"].values() for row in rows]
+        self.assertEqual(307, len(paths))
+        self.assertEqual(len(paths), len(set(paths)))
+        self.assertEqual("WITHHELD_BY_DEDICATED_EVIDENCE", manifest["pending_follow_up"]["kiln_sky_shared_runtime_activation"])
+        self.assertEqual("W1-CREATIVE-005_DEFERRED", manifest["pending_follow_up"]["creative"])
+        self.assertIn("NO BUILD, PACKAGE, BDS, CLIENT", manifest["proof_boundary"])
+
+    def test_repository_ashen_ids_and_growth_floors_cover_current_implementation(self):
+        authority = json.loads((REPO / VALIDATOR.AUTHORITY_REL).read_text())
+        required = {key: set(value) for key, value in authority["required_successor_ids"].items()}
+        creatures = {f"aionbound:{value}" for value in (
+            "ash_drake", "ash_mite", "ash_ram", "basalt_tortoise", "char_wolf",
+            "cinder_lynx", "ember_crow", "furnace_beetle", "magma_lizard", "soot_stag",
+        )}
+        self.assertTrue(creatures.issubset(required["entities"]))
+        self.assertEqual(creatures, required["client_entities"])
+        self.assertEqual(creatures - {"aionbound:ash_drake"}, required["spawn_rules"])
+        self.assertTrue({"aionbound:ash_drake_horn", "aionbound:ember_forge_core"}.issubset(required["blocks"]))
+        equipment_and_derived_items = {f"aionbound:{value}" for value in (
+            "basalt_hammer", "ember_great_axe", "ash_repeater", "ashen_helmet",
+            "ashen_chest", "ashen_legs", "ashen_boots", "basalt_pick", "ember_hammer",
+            "ore_chisel", "ember_totem", "heat_core", "heavy_head", "chitin_plate", "ember_heart",
+        )}
+        self.assertTrue(equipment_and_derived_items.issubset(required["items"]))
+        self.assertEqual(authority["minimum_inventory"], {
+            "blocks": 97, "entities": 44, "client_entities": 44, "items": 118,
+            "loot_tables": 110, "recipes": 101, "spawn_rules": 29, "structures": 34,
+            "features": 76, "feature_rules": 75, "attachables": 60, "geometries": 144,
+            "animations": 266, "animation_controllers": 21, "render_controllers": 21,
+            "png_files": 307, "script_files": 24,
+        })
 
     def test_malformed_json_fails_closed(self):
         (self.root / "behavior_pack/items/new_item.item.json").write_text("{", encoding="utf-8")
@@ -302,6 +396,16 @@ class Wave1ValidatorTests(unittest.TestCase):
         findings = self.findings()
         self.assertIn("missing_required_successor_id:features:aionbound:forest_node", findings)
         self.assertIn("missing_required_successor_id:feature_rules:aionbound:forest_node.feature_rule", findings)
+
+    def test_required_successor_client_entity_and_spawn_rule_are_named(self):
+        authority_path = self.root / VALIDATOR.AUTHORITY_REL
+        authority = json.loads(authority_path.read_text())
+        authority["required_successor_ids"]["client_entities"] = ["aionbound:missing_client"]
+        authority["required_successor_ids"]["spawn_rules"] = ["aionbound:missing_spawn"]
+        write_json(authority_path, authority)
+        findings = self.findings()
+        self.assertIn("missing_required_successor_id:client_entities:aionbound:missing_client", findings)
+        self.assertIn("missing_required_successor_id:spawn_rules:aionbound:missing_spawn", findings)
 
     def test_unresolved_recipe_reference_fails(self):
         write_json(self.root / "behavior_pack/recipes/bad.json", {
@@ -399,6 +503,20 @@ class Wave1ValidatorTests(unittest.TestCase):
             "attachable_missing_geometry:aionbound:new_item:geometry.aionbound.missing",
             self.findings(),
         )
+
+    def test_attachable_may_be_backed_by_a_placeable_inventory_block(self):
+        write_json(self.root / "resource_pack/attachables/new_block.attachable.json", {
+            "format_version": "1.10.0",
+            "minecraft:attachable": {"description": {"identifier": "aionbound:new_block"}},
+        })
+        self.assertEqual(VALIDATOR.validate(self.root)["status"], "PASS")
+
+    def test_attachable_without_item_or_block_still_fails(self):
+        write_json(self.root / "resource_pack/attachables/orphan.attachable.json", {
+            "format_version": "1.10.0",
+            "minecraft:attachable": {"description": {"identifier": "aionbound:orphan"}},
+        })
+        self.assertIn("attachable_without_item_or_block:aionbound:orphan", self.findings())
 
 
 if __name__ == "__main__":
