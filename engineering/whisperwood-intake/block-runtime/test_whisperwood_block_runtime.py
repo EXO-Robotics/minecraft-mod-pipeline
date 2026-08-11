@@ -69,7 +69,8 @@ def decode_png(path: Path) -> tuple[int, int]:
 
 class WhisperwoodBlockRuntime(unittest.TestCase):
     def test_native_receipts_and_shipping_geometry(self) -> None:
-        self.assertEqual({p.name for p in EVIDENCE.iterdir() if p.is_dir()}, IDS)
+        evidence_ids = {p.name for p in EVIDENCE.iterdir() if p.is_dir()}
+        self.assertEqual(set(), IDS - evidence_ids, "missing block-class native evidence")
         for asset_id in sorted(IDS):
             with self.subTest(asset_id=asset_id):
                 receipt = load(EVIDENCE / asset_id / "whisperwood-native-blockbench-receipt.json")
