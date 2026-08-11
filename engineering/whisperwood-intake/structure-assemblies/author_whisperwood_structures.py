@@ -1,7 +1,8 @@
 #!/usr/bin/env python3
 """Deterministically author the eight block-built Whisperwood assemblies.
 
-Seven approved barrel anchors carry ratified Whisperwood chest-table paths.
+Six approved barrel anchors carry ratified Whisperwood chest-table paths. The
+Ancient Totem barrel is emitted empty for the runtime-gated Thorn Court cache.
 Interaction, encounter, progression, and reward-entitlement behavior remains
 outside this structure authoring lane.
 """
@@ -129,6 +130,8 @@ def anchor(kind: str, xyz: tuple[int, int, int], block: str, purpose: str) -> di
     }
     if kind == "loot":
         value["binding"] = "RATIFIED_W1_004_WW_CH1_CHEST_TABLE"
+    if kind == "arena_cache":
+        value["binding"] = "RUNTIME_GATED_POST_CLEAR_CACHE_EMPTY_AT_STRUCTURE_LOAD"
     return value
 
 
@@ -244,7 +247,7 @@ def ancient_totem() -> Assembly:
     l.put(4, 11, 4, "aionbound:root_flower")
     l.put(4, 1, 4, "minecraft:lodestone")
     l.put(2, 1, 6, "minecraft:barrel")
-    return Assembly("ancient_totem", l.size, "rare_deep", 2048, "deep Whisperwood core", "tall split-root idol with amber-like moss eyes and asymmetric binding arms", [anchor("interaction", (4, 1, 4), "minecraft:lodestone", "future authored interaction handoff"), anchor("loot", (2, 1, 6), "minecraft:barrel", "empty structure-loot handoff")], l.blocks)
+    return Assembly("ancient_totem", l.size, "rare_deep", 2048, "deep Whisperwood core", "tall split-root idol with amber-like moss eyes and asymmetric binding arms", [anchor("interaction", (4, 1, 4), "minecraft:lodestone", "Thorn Court interaction handoff"), anchor("arena_cache", (2, 1, 6), "minecraft:barrel", "post-clear Thorn Court cache; empty and locked before valid clear")], l.blocks)
 
 
 def fallen_giant_tree() -> Assembly:
@@ -414,9 +417,9 @@ def expected_outputs() -> tuple[dict[Path, bytes], dict]:
             {"path": "studio-prep/creative/06_world_gen/WORLD_GENERATION.md", "sha256": "bc18a1e1f73d6045ab7e583afe910ca13d4776d439c8f3dfb45dae5784372f4b"},
             {"path": "engineering/whisperwood-intake/structure-runtime/WHISPERWOOD_STRUCTURE_RUNTIME_MAP.json", "sha256": "55a3996d5ae247d85a1543205e55a845ba910a971d485b8cd5bb13912aa85b13"},
         ],
-        "proof_boundary": "STATIC_AUTHORING_AND_RATIFIED_CHEST_BINDING_PASS_ONLY; NO_BDS, CLIENT, RUNTIME_ENTITLEMENT, TERRAIN_TOPOLOGY, OR CANDIDATE CLAIM",
+        "proof_boundary": "STATIC_AUTHORING_AND_PRE_CLEAR_CACHE_GATING_BYTES_ONLY; NO_BDS, CLIENT, LOADED_RUNTIME, TERRAIN_TOPOLOGY, OR CANDIDATE CLAIM",
         "direct_prop_dependency": "lantern_post and moss_cairn omitted from all eight assemblies",
-        "loot_policy": "seven barrel anchors bind W1-004-WW-CH1 chest tables; forest_waystone remains non-loot; no chapter trophy is stored in any structure chest",
+        "loot_policy": "six ordinary barrel anchors bind W1-004-WW-CH1 chest tables; Ancient Totem barrel has no LootTable NBT and is runtime-gated for post-clear Thorn Court cache population; no chapter trophy is stored in any structure chest",
         "placement_policy": "one attempt per selected chunk with forest-surface filters and conservative denominators; qualitative road/ravine/high-ground/face/deep-core affinity remains unproven",
         "concurrency_policy": "templates contain no entities, processors, or scheduled runtime; registry density does not authorize loaded-area concurrency growth",
         "assemblies": records,
@@ -425,13 +428,13 @@ def expected_outputs() -> tuple[dict[Path, bytes], dict]:
     lines = [
         "# Whisperwood Structure Assemblies", "",
         "Status: **STATIC_AUTHORING_PASS_ONLY**", "",
-        "Eight deterministic little-endian Bedrock structure templates are authored with distinct block-built silhouettes. Seven barrel anchors bind the ratified Whisperwood chest tables; chapter-trophy fulfillment, interactions, BDS load, and exact terrain affinity remain outside this receipt.", "",
+        "Eight deterministic little-endian Bedrock structure templates are authored with distinct block-built silhouettes. Six ordinary barrel anchors bind ratified Whisperwood chest tables; the Ancient Totem barrel is empty at structure load for runtime-gated post-clear use. Chapter-trophy fulfillment, BDS load, and exact terrain affinity remain outside this receipt.", "",
         "Authority is hash-bound in \u0060WHISPERWOOD_STRUCTURE_ASSEMBLIES.json\u0060.", "",
         "| ID | Size | Occupied | Rarity / chance | Terrain role |", "|---|---:|---:|---|---|",
     ]
     for record in records:
         lines.append(f"| `{record['id']}` | `{'x'.join(map(str, record['size']))}` | {record['occupied_blocks']} | `{record['rarity']}` / `1:{record['scatter']['denominator']}` | {record['terrain_role']} |")
-    lines += ["", "## Boundaries", "", "- The feature rules use stable `minecraft:structure_template_feature` plus `overworld` + `forest` surface filters.", "- Roads, ravines, high ground, cliff faces, deep core, and expanse spacing cannot be proven by these rules alone; the manifest records them as later terrain-integration obligations.", "- `lantern_post` and `moss_cairn` are not placed or substituted.", "- Seven barrel block entities bind exact `loot_tables/chests/whisperwood/<structure>.json` paths. The waystone has no loot anchor; no structure chest contains the chapter trophy.", "- Lodestones and lecterns remain non-loot runtime handoffs.", "- Deterministic regeneration, NBT decoding, palette/index closure, bounds, IDs/filenames, and anchor coordinates are covered by the lane tests.", ""]
+    lines += ["", "## Boundaries", "", "- The feature rules use stable `minecraft:structure_template_feature` plus `overworld` + `forest` surface filters.", "- Roads, ravines, high ground, cliff faces, deep core, and expanse spacing cannot be proven by these rules alone; the manifest records them as later terrain-integration obligations.", "- `lantern_post` and `moss_cairn` are not placed or substituted.", "- Six ordinary barrel block entities bind exact `loot_tables/chests/whisperwood/<structure>.json` paths. The Ancient Totem barrel at offset `(-2, 0, +2)` from its lodestone has no LootTable NBT and is reserved for runtime-gated post-clear Thorn Court cache population.", "- No structure chest contains the chapter trophy; trophy ownership remains in `thorn_court.js`.", "- Deterministic regeneration, NBT decoding, palette/index closure, bounds, IDs/filenames, and anchor coordinates are covered by the lane tests.", ""]
     outputs[OUT / "WHISPERWOOD_STRUCTURE_ASSEMBLIES.md"] = ("\n".join(lines)).encode()
     return outputs, manifest
 

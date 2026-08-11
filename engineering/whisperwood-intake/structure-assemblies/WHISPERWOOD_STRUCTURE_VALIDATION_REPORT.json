@@ -11,7 +11,8 @@
     "feature, feature-rule, structure-name, and filename closure",
     "one-iteration conservative scatter policy",
     "direct custom prop omission",
-    "unratified loot and reward binding omission"
+    "unratified loot and reward binding omission",
+    "Ancient Totem cache barrel has no pre-clear LootTable NBT"
   ],
   "commands": [
     "python3 engineering/whisperwood-intake/structure-assemblies/author_whisperwood_structures.py --check",
@@ -22,7 +23,9 @@
     "structure_files": 8,
     "features": 8,
     "feature_rules": 8,
-    "unit_tests": 7
+    "unit_tests": 8,
+    "static_chest_bindings": 6,
+    "runtime_gated_cache_anchors": 1
   },
   "outputs": [
     {
@@ -32,13 +35,13 @@
     },
     {
       "path": "behavior_pack/structures/aionbound/broken_wagon.mcstructure",
-      "bytes": 3702,
-      "sha256": "96a532127e460af3248a409b14dd02f18daa5d9805b21ba0d1ca8dd8e488bced"
+      "bytes": 3878,
+      "sha256": "e4f36edb14ee70f941b9676062d02b7d79677b1eec486fef799ef883482990f8"
     },
     {
       "path": "behavior_pack/structures/aionbound/fallen_giant_tree.mcstructure",
-      "bytes": 15401,
-      "sha256": "7a42a59c5141a841594fbc064d685989752e6f149f1bfee530187b93caeac1ec"
+      "bytes": 15582,
+      "sha256": "6bb368dca3d237c39a247c178ca0fa48ea4f411cafeef347dec66211392d6b3a"
     },
     {
       "path": "behavior_pack/structures/aionbound/forest_waystone.mcstructure",
@@ -47,23 +50,23 @@
     },
     {
       "path": "behavior_pack/structures/aionbound/hollow_cave_entrance.mcstructure",
-      "bytes": 9750,
-      "sha256": "54f3d1ed78a18a71cd4b17baeab74b6c1871f5fae37089293f8dd1bc0f4754f4"
+      "bytes": 9934,
+      "sha256": "8b57f696e16b3bf3974bd40c39493340f8aa00068aa140a6102d90d1e46cb2eb"
     },
     {
       "path": "behavior_pack/structures/aionbound/hunter_camp.mcstructure",
-      "bytes": 8786,
-      "sha256": "502cae7cfb783c9d4924f07c41017bd94406356d66b6733fa17e8723add877d7"
+      "bytes": 8961,
+      "sha256": "acdec1096009abd5f693e1b10bb9845dc15b36e018632b4d3772c62d392535c7"
     },
     {
       "path": "behavior_pack/structures/aionbound/owl_shrine.mcstructure",
-      "bytes": 10358,
-      "sha256": "7c11b47e9ee29e6ab86b083e4210da392d4c24849ab0c91041561f91b1761c04"
+      "bytes": 10532,
+      "sha256": "2497102ea220f8c0c6047a93cca370d58d70df8e9d6fbee65acb8497b2e73097"
     },
     {
       "path": "behavior_pack/structures/aionbound/root_bridge.mcstructure",
-      "bytes": 7218,
-      "sha256": "4617ad5739a037a45e3b3321bc28042d2d34f3892edaf8565bcdadfcce350615"
+      "bytes": 7393,
+      "sha256": "30f0c024bf10201ce2cc8f0e5bd3d5ef1238ccb43c13f4d552072b4649fe13d9"
     },
     {
       "path": "behavior_pack/features/ancient_totem.structure_feature.json",

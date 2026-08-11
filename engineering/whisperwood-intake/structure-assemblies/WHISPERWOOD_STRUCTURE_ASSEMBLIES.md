@@ -2,7 +2,7 @@
 
 Status: **STATIC_AUTHORING_PASS_ONLY**
 
-Eight deterministic little-endian Bedrock structure templates are authored with distinct block-built silhouettes. Seven barrel anchors bind the ratified Whisperwood chest tables; chapter-trophy fulfillment, interactions, BDS load, and exact terrain affinity remain outside this receipt.
+Eight deterministic little-endian Bedrock structure templates are authored with distinct block-built silhouettes. Six ordinary barrel anchors bind ratified Whisperwood chest tables; the Ancient Totem barrel is empty at structure load for runtime-gated post-clear use. Chapter-trophy fulfillment, BDS load, and exact terrain affinity remain outside this receipt.
 
 Authority is hash-bound in `WHISPERWOOD_STRUCTURE_ASSEMBLIES.json`.
 
@@ -22,6 +22,6 @@ Authority is hash-bound in `WHISPERWOOD_STRUCTURE_ASSEMBLIES.json`.
 - The feature rules use stable `minecraft:structure_template_feature` plus `overworld` + `forest` surface filters.
 - Roads, ravines, high ground, cliff faces, deep core, and expanse spacing cannot be proven by these rules alone; the manifest records them as later terrain-integration obligations.
 - `lantern_post` and `moss_cairn` are not placed or substituted.
-- Seven barrel block entities bind exact `loot_tables/chests/whisperwood/<structure>.json` paths. The waystone has no loot anchor; no structure chest contains the chapter trophy.
-- Lodestones and lecterns remain non-loot runtime handoffs.
+- Six ordinary barrel block entities bind exact `loot_tables/chests/whisperwood/<structure>.json` paths. The Ancient Totem barrel at offset `(-2, 0, +2)` from its lodestone has no LootTable NBT and is reserved for runtime-gated post-clear Thorn Court cache population.
+- No structure chest contains the chapter trophy; trophy ownership remains in `thorn_court.js`.
 - Deterministic regeneration, NBT decoding, palette/index closure, bounds, IDs/filenames, and anchor coordinates are covered by the lane tests.

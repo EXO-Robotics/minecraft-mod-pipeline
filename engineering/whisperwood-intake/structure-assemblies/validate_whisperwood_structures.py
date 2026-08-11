@@ -54,12 +54,13 @@ def build_report() -> dict:
             "one-iteration conservative scatter policy",
             "direct custom prop omission",
             "unratified loot and reward binding omission",
+            "Ancient Totem cache barrel has no pre-clear LootTable NBT",
         ],
         "commands": [
             "python3 engineering/whisperwood-intake/structure-assemblies/author_whisperwood_structures.py --check",
             "python3 -m unittest engineering/whisperwood-intake/structure-assemblies/test_whisperwood_structure_assemblies.py -v",
         ],
-        "counts": {"assemblies": 8, "structure_files": 8, "features": 8, "feature_rules": 8, "unit_tests": 7},
+        "counts": {"assemblies": 8, "structure_files": 8, "features": 8, "feature_rules": 8, "unit_tests": 8, "static_chest_bindings": 6, "runtime_gated_cache_anchors": 1},
         "outputs": outputs,
         "proof_boundary": "STATIC_SOURCE_AND_AUTHORED_BYTES_ONLY; NOT BDS, CLIENT, TERRAIN-AFFINITY, LOOT, RUNTIME, OR CANDIDATE PROOF",
     }

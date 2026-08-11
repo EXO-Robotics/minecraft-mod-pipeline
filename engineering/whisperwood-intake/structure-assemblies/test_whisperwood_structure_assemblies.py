@@ -95,7 +95,7 @@ class StructureAssemblyTests(unittest.TestCase):
         for assembly in author.ASSEMBLIES:
             for item in assembly.anchors:
                 xyz = tuple(item["coordinate"])
-                expected_binding = "RATIFIED_W1_004_WW_CH1_CHEST_TABLE" if item["kind"] == "loot" else "RESERVED_NON_LOOT_RUNTIME_HANDOFF"
+                expected_binding = {"loot": "RATIFIED_W1_004_WW_CH1_CHEST_TABLE", "arena_cache": "RUNTIME_GATED_POST_CLEAR_CACHE_EMPTY_AT_STRUCTURE_LOAD"}.get(item["kind"], "RESERVED_NON_LOOT_RUNTIME_HANDOFF")
                 self.assertEqual(expected_binding, item["binding"])
                 self.assertEqual(item["expected_block"], assembly.blocks[xyz])
                 self.assertTrue(all(0 <= xyz[i] < assembly.size[i] for i in range(3)))
@@ -111,14 +111,20 @@ class StructureAssemblyTests(unittest.TestCase):
         self.assertNotIn("owl_token", encoded.lower())
         self.assertEqual(26, len(outputs))
 
-    def test_exact_seven_chest_bindings_and_waystone_is_not_loot(self):
+    def test_exact_six_static_chest_bindings_and_runtime_gated_totem_cache(self):
         anchors = [(assembly.identifier, item) for assembly in author.ASSEMBLIES for item in assembly.anchors if item["kind"] == "loot"]
-        self.assertEqual(7, len(anchors))
+        self.assertEqual(6, len(anchors))
         self.assertNotIn("forest_waystone", {identifier for identifier, _item in anchors})
+        self.assertNotIn("ancient_totem", {identifier for identifier, _item in anchors})
         for identifier, _item in anchors:
             table = author.BP / "loot_tables" / "chests" / "whisperwood" / f"{identifier}.json"
             self.assertTrue(table.is_file(), table)
             self.assertNotIn("thorn_stalker_skull", table.read_text())
+        totem = next(value for value in author.ASSEMBLIES if value.identifier == "ancient_totem")
+        cache = next(item for item in totem.anchors if item["kind"] == "arena_cache")
+        self.assertEqual([-2, 0, 2], [cache["coordinate"][i] - [4, 1, 4][i] for i in range(3)])
+        root = Reader(author.encode_structure(totem)[0]).root()
+        self.assertEqual({}, root["structure"]["palette"]["default"]["block_position_data"])
 
     def test_custom_palette_identifier_closure(self):
         defined = set()

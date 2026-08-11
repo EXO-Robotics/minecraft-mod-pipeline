@@ -10,6 +10,7 @@ import { createEncounterService } from "./encounters.js";
 import { createChaosService } from "./chaos.js";
 import { createStructureService } from "./structures.js";
 import { createThornCourtService } from "./thorn_court.js";
+import { createWhisperwoodRewardHooks } from "./whisperwood_rewards.js";
 
 export function createRuntime(platform = { world, system, ItemStack, EquipmentSlot, EntityComponentTypes, ActionFormData }) {
   const arbiter = new RuntimeArbiter();
@@ -34,7 +35,8 @@ export function createRuntime(platform = { world, system, ItemStack, EquipmentSl
 
   const codex = createCodexService({ state, ActionFormData: platform.ActionFormData });
   const structures = createStructureService({ ...platform, state, arbiter, consumeOne });
-  const thornCourt = createThornCourtService({ ...platform, state, boundedEntities, rewardHooks: platform.thornCourtRewardHooks });
+  const thornCourtRewardHooks = platform.thornCourtRewardHooks ?? createWhisperwoodRewardHooks({ ItemStack: platform.ItemStack, random: platform.random ?? Math.random });
+  const thornCourt = createThornCourtService({ ...platform, state, boundedEntities, rewardHooks: thornCourtRewardHooks });
   const combat = createCombatService({ ...platform, state, arbiter, boundedEntities, consumeOne });
   const encounters = createEncounterService({ ...platform, state, boundedEntities, consumeOne });
   const devices = createDeviceService({ ...platform, state, arbiter, consumeOne });
@@ -96,11 +98,16 @@ export function createRuntime(platform = { world, system, ItemStack, EquipmentSl
     arbiter.defer(platform.system, reconcile);
     platform.world.afterEvents.itemUse.subscribe(event => callback(() => router.dispatchItem({ player: event.source, itemStack: event.itemStack })));
     platform.world.afterEvents.itemCompleteUse.subscribe(event => callback(() => router.dispatchCompletedItem({ player: event.source, itemStack: event.itemStack })));
-    platform.world.beforeEvents.playerInteractWithBlock.subscribe(event => callback(() => {
-      if (event.block.typeId === "aionbound:chaos_crate_t0") event.cancel = true;
-      const context = { player: event.player, block: event.block, itemType: event.itemStack?.typeId };
-      if (!arbiter.defer(platform.system, () => router.dispatchBlock(context))) state.warn(event.player, "Interaction scheduler capacity is full.");
-    }));
+    platform.world.beforeEvents.playerInteractWithBlock.subscribe(event => {
+      // This lock must execute synchronously even when ordinary callback budget
+      // is exhausted, or vanilla interaction could bypass the pre-clear cache.
+      if (thornCourtRewardHooks.guardArenaCacheInteraction?.(event) === true) return;
+      callback(() => {
+        if (event.block.typeId === "aionbound:chaos_crate_t0") event.cancel = true;
+        const context = { player: event.player, block: event.block, itemType: event.itemStack?.typeId };
+        if (!arbiter.defer(platform.system, () => router.dispatchBlock(context))) state.warn(event.player, "Interaction scheduler capacity is full.");
+      });
+    });
     platform.world.afterEvents.playerInteractWithEntity.subscribe(event => callback(() => router.dispatchEntityInteraction({ player: event.player, target: event.target, itemStack: event.itemStack })));
     platform.world.afterEvents.entityHitEntity.subscribe(event => callback(() => combat.mountStep(event)));
     platform.world.afterEvents.entityHurt.subscribe(event => callback(() => { combat.routeMeleeHurt(event); combat.handlePlayerHurt(event); }));

@@ -1,0 +1,31 @@
+{
+  "schema": "aionbound.wave1.whisperwood.reward_bridge.v1",
+  "status": "TARGETED_SOURCE_SEMANTICS_PASS",
+  "scope": {
+    "per_player_material_table": "behavior_pack/loot_tables/encounters/whisperwood/thorn_court_materials.json",
+    "arena_cache_table": "behavior_pack/loot_tables/chests/whisperwood/thorn_court.json",
+    "cache_structure": "aionbound:ancient_totem",
+    "cache_offset_from_lodestone": [-2, 0, 2],
+    "rotation_support": "four horizontal structure rotations",
+    "static_structure_chest_bindings": 6,
+    "runtime_gated_cache_anchors": 1
+  },
+  "guards": [
+    "Ancient Totem barrel carries no LootTable NBT at structure load",
+    "pre-clear barrel interaction is synchronously cancelled before callback budgeting",
+    "valid clear populates through stable inventory container methods without commands",
+    "unknown player storage is never erased by a cache refill",
+    "repeat clear may replace prior allowlisted arena-cache materials",
+    "natural Thorn Stalker loot remains skull-free",
+    "physical Thorn Stalker Skull delivery and recovery remain owned by thorn_court.js"
+  ],
+  "commands": [
+    "node --test tests/wave1_whisperwood_rewards.test.mjs tests/wave1_thorn_court.test.mjs tests/g7_runtime_semantics.test.mjs",
+    "python3 engineering/whisperwood-intake/structure-assemblies/author_whisperwood_structures.py --check",
+    "python3 -m unittest engineering/whisperwood-intake/structure-assemblies/test_whisperwood_structure_assemblies.py -v",
+    "python3 engineering/whisperwood-intake/structure-assemblies/validate_whisperwood_structures.py --check",
+    "python3 engineering/whisperwood-intake/economy/author_whisperwood_economy.py --check",
+    "python3 -m unittest engineering/whisperwood-intake/economy/test_whisperwood_economy.py -v"
+  ],
+  "proof_boundary": "SOURCE_AND_DETERMINISTIC_STRUCTURE_BYTES_ONLY; NO_BDS, CLIENT_UI, PACKAGE, RESTART, OR CANDIDATE CLAIM"
+}
