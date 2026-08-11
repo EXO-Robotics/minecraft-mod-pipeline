@@ -1,0 +1,84 @@
+{
+  "schema_version": 1,
+  "audit_id": "WAVE1_WHISPERWOOD_CHECKPOINT1_AUTHORIZATION_817A829",
+  "audited_head": "817a829b1e3ad627cc38f29de928a38f67446449",
+  "audited_tree": "9694f4d06d327a866bf61a24a6c56f737b065f2e",
+  "classification": "SOURCE_VERTICAL_EXIT_BAR_PASS_CHECKPOINT_1_AUTHORIZED",
+  "checkpoint_1_authorized": true,
+  "checkpoint_1_pass": false,
+  "authorities": {
+    "creative_contract_md_sha256": "3116c217e06afe1fd0cd56ee742c537f948a4c91193ec831fd1b3ec362837bfc",
+    "creative_contract_json_sha256": "aa1f54df10d27d5c5675aae843ffe0d2946123d12a6509f7f021408bcdde9fb5",
+    "ratified_engineering_ledger_sha256": "3e2b64785da9310b098e06981ebc95777ddc7e5d2666f803b79ce374470a9561",
+    "W1_001_WW_proposal_sha256": "a9bc8133f8a0aacf7db258ffe76fc04dd9fcc6d07713bef630e074bd48588786",
+    "W1_003_THORN_COURT_proposal_sha256": "04f7b9a75be6ac542d3488bd7563a601dcb94603905479b7c3e766c94b9d48c1",
+    "W1_004_WW_CH1_proposal_sha256": "4412b24ad680a30e5548c731f8acba94e8fd858e4bb94f701a16eb17141f5ab7",
+    "W1_006_WW_SAPLING_proposal_sha256": "b09c2da08a453445e51543fcedf6887869f134df312931f7376287f4b5193a94"
+  },
+  "source_validator": {
+    "status": "PASS_TWICE_BYTE_IDENTICAL",
+    "authority_sha256": "617e6d1820c3e430fa796cc60878b763b3fc9f00f41cf57eea6f15f26cd26943",
+    "receipt_sha256": "74e89f2c8f0af353cfa415fbb421b49ddbb9002753c46cb7c26fb5a0624fe14f",
+    "pack_source_file_count": 1067,
+    "pack_source_sha256": "cd7d5509e01ea9e18c82395dd4c1cc4bfd66e6d8e94464ad7c5c575bbc31ba96"
+  },
+  "double_run": {
+    "rounds": 2,
+    "deterministic_author_validator_commands_each_round": "11_PASS_0_FAIL",
+    "node_tests_each_round": "79_PASS_0_FAIL",
+    "top_level_python_tests_each_round": "74_PASS_0_FAIL",
+    "engineering_test_commands_each_round": "20_PASS_0_FAIL",
+    "tracked_diff_after_each_round": "EMPTY",
+    "untracked_files_after_each_round": "EMPTY"
+  },
+  "source_exit_criteria": {
+    "ratified_authority": "PASS_SOURCE",
+    "ten_creatures_non_statue_ai_loot_spawn_animation_audio": "PASS_SOURCE",
+    "ten_resources_acquisition_and_use": "PASS_SOURCE",
+    "ten_blocks_and_ten_plants_harvest_and_placement": "PASS_SOURCE",
+    "sapling_regrowth_component_startup_and_assembly": "PASS_SOURCE",
+    "ten_structures_props_generation_and_rotated_signatures": "PASS_SOURCE",
+    "loot_recipe_crafting_acquisition_and_repair": "PASS_SOURCE",
+    "twenty_one_equipment_ids": "PASS_SOURCE",
+    "thorn_court_arena_only_seal_entitlement_recovery_cache": "PASS_SOURCE",
+    "optional_mastery_not_progression_required": "PASS_SOURCE",
+    "seventy_four_page_codex_and_ashen_rumor": "PASS_SOURCE",
+    "command_free_journey_encoding": "PASS_SOURCE"
+  },
+  "economy_counts": {
+    "new_items": 9,
+    "recipes": 26,
+    "entity_loot_tables": 10,
+    "ordinary_structure_chests": 7,
+    "encounter_material_tables": 1,
+    "protected_apex_caches": 1,
+    "block_and_plant_loot_tables": 20,
+    "repair_bindings": 8
+  },
+  "codex_pages": {
+    "foundation": 40,
+    "structures": 10,
+    "equipment_and_trophies": 21,
+    "bosses": 1,
+    "progression": 2,
+    "total": 74
+  },
+  "ashen_implementation": {
+    "status": "NOT_STARTED",
+    "allowed_delta": "WHISPERWOOD_BROKEN_WAGON_ASHEN_RUMOR_CODEX_AND_TRANSITION_STATE_ONLY",
+    "phase_b_authorized": false
+  },
+  "checkpoint_1_questions": {
+    "normalized_assets_load": "UNRUN",
+    "natural_entities_initialize": "UNRUN",
+    "structures_resources_register": "UNRUN",
+    "runtime_starts_cleanly": "UNRUN",
+    "same_world_reopens": "UNRUN",
+    "no_candidate_scoped_content_runtime_errors": "UNRUN"
+  },
+  "authorization_scope": "ONE_BOUNDED_EXACT_PACKAGE_STABLE_BDS_CHECKPOINT_1_SMOKE_ONLY",
+  "residual_blockers": [
+    "W1_ASSET_AUDIO_001_BLOCKS_FINAL_WAVE1_EXIT_NOT_CHECKPOINT1"
+  ],
+  "proof_boundary": "SOURCE_AUTHORIZATION_ONLY; NO_WAVE1_BUILD_PACKAGE_FREEZE_BDS_CLIENT_CONSOLE_MULTIPLAYER_PERFORMANCE_MARKETPLACE_OR_RELEASE_PROOF"
+}
