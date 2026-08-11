@@ -1,0 +1,47 @@
+{
+  "name": "mosskip_fawn",
+  "display_name": "Mosskip Fawn",
+  "sprint": "asset_sprint_001_whisperwood_p1",
+  "tier": "CREATURE",
+  "role": "Juvenile mosskip; hop-blob with moon sap spots",
+  "profile": "quad",
+  "model_identifier": "geometry.aionforge_ww.mosskip_fawn",
+  "cube_count": 23,
+  "bone_count": 9,
+  "density_floor": 18,
+  "locators": [
+    "effect",
+    "gaze"
+  ],
+  "palette": {
+    "metal": [
+      74,
+      52,
+      40
+    ],
+    "accent": [
+      111,
+      168,
+      122
+    ],
+    "energy": [
+      232,
+      217,
+      160
+    ]
+  },
+  "animations": [
+    "idle",
+    "hop",
+    "skitter",
+    "hurt",
+    "death"
+  ],
+  "minecraft_scale": "0.6\u20130.75 shoulder",
+  "texture_resolution": "64\u00d764",
+  "production_priority": "P1",
+  "related_assets": "mosskip_buck, mosskip_doe",
+  "originality": "Clean-room Whisperwood P1 manufacture",
+  "editable": "assets/editable/mosskip_fawn.bbmodel",
+  "claims_boundary": "Visual production only. No BP/JSON/AI/gameplay."
+}

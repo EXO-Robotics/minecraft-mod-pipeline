@@ -1,0 +1,47 @@
+{
+  "name": "rootback_boar",
+  "display_name": "Rootback Boar",
+  "sprint": "asset_sprint_001_whisperwood_p1",
+  "tier": "CREATURE",
+  "role": "Neutral heavy boar with root plate spine",
+  "profile": "quad",
+  "model_identifier": "geometry.aionforge_ww.rootback_boar",
+  "cube_count": 29,
+  "bone_count": 9,
+  "density_floor": 28,
+  "locators": [
+    "effect",
+    "gaze"
+  ],
+  "palette": {
+    "metal": [
+      74,
+      52,
+      40
+    ],
+    "accent": [
+      61,
+      107,
+      79
+    ],
+    "energy": [
+      196,
+      122,
+      40
+    ]
+  },
+  "animations": [
+    "idle",
+    "walk_trundle",
+    "charge_snort",
+    "hurt",
+    "death"
+  ],
+  "minecraft_scale": "1.0 tall \u00b7 1.6\u20131.8 long",
+  "texture_resolution": "64\u00d764\u2013128\u00d764",
+  "production_priority": "P1",
+  "related_assets": "whisperwood_roots, root_heart",
+  "originality": "Clean-room Whisperwood P1 manufacture",
+  "editable": "assets/editable/rootback_boar.bbmodel",
+  "claims_boundary": "Visual production only. No BP/JSON/AI/gameplay."
+}

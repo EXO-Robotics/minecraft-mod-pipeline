@@ -1,0 +1,48 @@
+{
+  "name": "mosskip_buck",
+  "display_name": "Mosskip Buck",
+  "sprint": "asset_sprint_001_whisperwood_p0",
+  "tier": "CREATURE",
+  "role": "Hero ambient spring-cervid buck; establishes Mosskip family language",
+  "profile": "quad",
+  "model_identifier": "geometry.aionforge_ww.mosskip_buck",
+  "cube_count": 37,
+  "bone_count": 11,
+  "density_floor": 30,
+  "locators": [
+    "effect",
+    "gaze"
+  ],
+  "palette": {
+    "metal": [
+      74,
+      52,
+      40
+    ],
+    "accent": [
+      61,
+      107,
+      79
+    ],
+    "energy": [
+      196,
+      122,
+      40
+    ]
+  },
+  "animations": [
+    "idle_graze",
+    "walk",
+    "hop_bound",
+    "look",
+    "hurt",
+    "death"
+  ],
+  "minecraft_scale": "1.2\u20131.4 shoulder \u00b7 ~1.6 long",
+  "texture_resolution": "64\u00d764 (atlas 32 author \u2192 upscale ok)",
+  "production_priority": "P0",
+  "related_assets": "mosskip_doe, mosskip_trail lineage, leaf-fan shared with doe",
+  "originality": "Clean-room Whisperwood P0 manufacture; no third-party ports",
+  "editable": "assets/editable/mosskip_buck.bbmodel",
+  "claims_boundary": "Visual production only. No BP/JSON/AI/gameplay."
+}

@@ -1,0 +1,48 @@
+{
+  "name": "mosskip_doe",
+  "display_name": "Mosskip Doe",
+  "sprint": "asset_sprint_001_whisperwood_p0",
+  "tier": "CREATURE",
+  "role": "Pair ambient doe; same species without antlers",
+  "profile": "quad",
+  "model_identifier": "geometry.aionforge_ww.mosskip_doe",
+  "cube_count": 30,
+  "bone_count": 9,
+  "density_floor": 26,
+  "locators": [
+    "effect",
+    "gaze"
+  ],
+  "palette": {
+    "metal": [
+      74,
+      52,
+      40
+    ],
+    "accent": [
+      61,
+      107,
+      79
+    ],
+    "energy": [
+      196,
+      122,
+      40
+    ]
+  },
+  "animations": [
+    "idle_graze",
+    "walk",
+    "hop_bound",
+    "look",
+    "hurt",
+    "death"
+  ],
+  "minecraft_scale": "1.1\u20131.25 shoulder",
+  "texture_resolution": "64\u00d764 shared UV with buck preferred",
+  "production_priority": "P0",
+  "related_assets": "mosskip_buck (shared rig language)",
+  "originality": "Clean-room Whisperwood P0 manufacture; no third-party ports",
+  "editable": "assets/editable/mosskip_doe.bbmodel",
+  "claims_boundary": "Visual production only. No BP/JSON/AI/gameplay."
+}

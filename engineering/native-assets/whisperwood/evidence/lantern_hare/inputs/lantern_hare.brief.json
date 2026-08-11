@@ -1,0 +1,47 @@
+{
+  "name": "lantern_hare",
+  "display_name": "Lantern Hare",
+  "sprint": "asset_sprint_001_whisperwood_p1",
+  "tier": "CREATURE",
+  "role": "Passive hare with ear lantern pods",
+  "profile": "quad",
+  "model_identifier": "geometry.aionforge_ww.lantern_hare",
+  "cube_count": 22,
+  "bone_count": 11,
+  "density_floor": 22,
+  "locators": [
+    "effect",
+    "gaze"
+  ],
+  "palette": {
+    "metal": [
+      30,
+      58,
+      47
+    ],
+    "accent": [
+      197,
+      212,
+      184
+    ],
+    "energy": [
+      196,
+      122,
+      40
+    ]
+  },
+  "animations": [
+    "idle_ear_flick",
+    "hop",
+    "alert",
+    "hurt",
+    "death"
+  ],
+  "minecraft_scale": "0.5\u20130.65 tall",
+  "texture_resolution": "64\u00d764",
+  "production_priority": "P1",
+  "related_assets": "lantern_fur, lantern_post, lantern_bloom",
+  "originality": "Clean-room Whisperwood P1 manufacture",
+  "editable": "assets/editable/lantern_hare.bbmodel",
+  "claims_boundary": "Visual production only. No BP/JSON/AI/gameplay."
+}
