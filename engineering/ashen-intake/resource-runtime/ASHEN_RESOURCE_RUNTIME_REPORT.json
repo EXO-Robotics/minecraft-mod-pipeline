@@ -1,0 +1,212 @@
+{
+  "schema": "aionbound.wave1.ashen-resource-runtime.v1",
+  "status": "STATIC_RESOURCE_REGISTRY_COMPLETE",
+  "base": {
+    "commit": "e9eeb3dd9bfbd8b50fdd29babd09247552bfbe7b",
+    "tree": "20fa2c37e1ed3e6efcd5a74edbbbb54aafcc86c4"
+  },
+  "authority": {
+    "path": "engineering/ashen-intake/authority/ASHEN_HIGHLANDS_VERTICAL_INTAKE_MAP.json",
+    "sha256": "2fafe932da68e27f5ad3a67d081ff991f6b7675d57148b83fe9f6c4489db8bab",
+    "icon_receipt_path": "assets/wave1/ashen/icons/ASHEN_RESOURCE_ICON_RECEIPT.json",
+    "icon_receipt_sha256": "2bbe1c3bc059ad01a049f2d9a8f0981fdaaf2b9f94072c80e3720008d0deb465"
+  },
+  "scope": "ten Packet 002 warehouse resource items only",
+  "resources": [
+    {
+      "warehouse_id": "smolder_bark",
+      "runtime_id": "aionbound:smolder_bark",
+      "display_name": "Smolder Bark",
+      "authority_rarity": "C",
+      "item_path": "behavior_pack/items/smolder_bark.item.json",
+      "item_sha256": "a134e1dca396c683855056f625ae8686fd491e4b8d14a739b1fc8b668e5f2516",
+      "atlas_key": "smolder_bark",
+      "texture_path": "textures/aionbound/ashen/items/smolder_bark",
+      "icon_path": "resource_pack/textures/aionbound/ashen/items/smolder_bark.png",
+      "icon_sha256": "8338d77b99e27beed0c3b644752f1deb41c2ee18b24e0efa53ab69613fed5b9e",
+      "blockbench": {
+        "status": "NOT_APPLICABLE",
+        "reason": "flat inventory icon; no custom geometry, rig, locator, UV layout, or animation"
+      }
+    },
+    {
+      "warehouse_id": "charbone",
+      "runtime_id": "aionbound:charbone",
+      "display_name": "Charbone",
+      "authority_rarity": "C-U",
+      "item_path": "behavior_pack/items/charbone.item.json",
+      "item_sha256": "f5482fa310f30e7620d34b49d6493a6d50cfe3c03745423f5dfb74ad803b2a92",
+      "atlas_key": "charbone",
+      "texture_path": "textures/aionbound/ashen/items/charbone",
+      "icon_path": "resource_pack/textures/aionbound/ashen/items/charbone.png",
+      "icon_sha256": "d6efa03201302b15c1a37257be5dc43098587e423263e91cfd77f177c70cb4cb",
+      "blockbench": {
+        "status": "NOT_APPLICABLE",
+        "reason": "flat inventory icon; no custom geometry, rig, locator, UV layout, or animation"
+      }
+    },
+    {
+      "warehouse_id": "sulfur_cluster",
+      "runtime_id": "aionbound:sulfur_cluster",
+      "display_name": "Sulfur Cluster",
+      "authority_rarity": "U",
+      "item_path": "behavior_pack/items/sulfur_cluster.item.json",
+      "item_sha256": "3b9a9fb2f7f69c684f54f4a0d22cdbcaee16948eeb3109d5eab2c4e253bf1b68",
+      "atlas_key": "sulfur_cluster",
+      "texture_path": "textures/aionbound/ashen/items/sulfur_cluster",
+      "icon_path": "resource_pack/textures/aionbound/ashen/items/sulfur_cluster.png",
+      "icon_sha256": "5f50afa38aff69ea6e88f6368b7f41fcab1b8c3a53e9368c9518902e1cd69cb1",
+      "blockbench": {
+        "status": "NOT_APPLICABLE",
+        "reason": "flat inventory icon; no custom geometry, rig, locator, UV layout, or animation"
+      }
+    },
+    {
+      "warehouse_id": "volcanic_glass_shard",
+      "runtime_id": "aionbound:volcanic_glass_shard",
+      "display_name": "Volcanic Glass Shard",
+      "authority_rarity": "U",
+      "item_path": "behavior_pack/items/volcanic_glass_shard.item.json",
+      "item_sha256": "6f30585364d2d0ffe28ba41d02d4e7f704ba6dfbad889f3aa33338367b01e995",
+      "atlas_key": "volcanic_glass_shard",
+      "texture_path": "textures/aionbound/ashen/items/volcanic_glass_shard",
+      "icon_path": "resource_pack/textures/aionbound/ashen/items/volcanic_glass_shard.png",
+      "icon_sha256": "179728a7314056e7946476e22ba6015f381471e8e40d21cb77df8271bec97708",
+      "blockbench": {
+        "status": "NOT_APPLICABLE",
+        "reason": "flat inventory icon; no custom geometry, rig, locator, UV layout, or animation"
+      }
+    },
+    {
+      "warehouse_id": "ember_resin",
+      "runtime_id": "aionbound:ember_resin",
+      "display_name": "Ember Resin",
+      "authority_rarity": "U-R",
+      "item_path": "behavior_pack/items/ember_resin.item.json",
+      "item_sha256": "24f21a0e0a07aae9d41b1ba0391ff6641575dec0964e7e2acde26d092f971a1e",
+      "atlas_key": "ember_resin",
+      "texture_path": "textures/aionbound/ashen/items/ember_resin",
+      "icon_path": "resource_pack/textures/aionbound/ashen/items/ember_resin.png",
+      "icon_sha256": "4bb151c2859dfaf5b09cf67ab4e74c626c687df77f6d554342a38b1246ac2b87",
+      "blockbench": {
+        "status": "NOT_APPLICABLE",
+        "reason": "flat inventory icon; no custom geometry, rig, locator, UV layout, or animation"
+      }
+    },
+    {
+      "warehouse_id": "heatstone",
+      "runtime_id": "aionbound:heatstone",
+      "display_name": "Heatstone",
+      "authority_rarity": "U-R",
+      "item_path": "behavior_pack/items/heatstone.item.json",
+      "item_sha256": "71edca7a075049c8c253c465ab174e27296c1fe8f54cc6a00e4ab8aa5618f1cf",
+      "atlas_key": "heatstone",
+      "texture_path": "textures/aionbound/ashen/items/heatstone",
+      "icon_path": "resource_pack/textures/aionbound/ashen/items/heatstone.png",
+      "icon_sha256": "3555a17ebc08d617a6141d5465eea30e2dae852360a20f0fbd06f7e1e5a05a61",
+      "blockbench": {
+        "status": "NOT_APPLICABLE",
+        "reason": "flat inventory icon; no custom geometry, rig, locator, UV layout, or animation"
+      }
+    },
+    {
+      "warehouse_id": "furnace_chitin",
+      "runtime_id": "aionbound:furnace_chitin",
+      "display_name": "Furnace Chitin",
+      "authority_rarity": "U-R",
+      "item_path": "behavior_pack/items/furnace_chitin.item.json",
+      "item_sha256": "917bd640c8e62ddc7eb592be976dc818dc6284bf78c1f8227dacd57289216288",
+      "atlas_key": "furnace_chitin",
+      "texture_path": "textures/aionbound/ashen/items/furnace_chitin",
+      "icon_path": "resource_pack/textures/aionbound/ashen/items/furnace_chitin.png",
+      "icon_sha256": "618534b516b7f97c6facfffb415261f98f6c5ed122e63dbb560af35ffd375286",
+      "blockbench": {
+        "status": "NOT_APPLICABLE",
+        "reason": "flat inventory icon; no custom geometry, rig, locator, UV layout, or animation"
+      }
+    },
+    {
+      "warehouse_id": "basalt_core",
+      "runtime_id": "aionbound:basalt_core",
+      "display_name": "Basalt Core",
+      "authority_rarity": "R",
+      "item_path": "behavior_pack/items/basalt_core.item.json",
+      "item_sha256": "03be39ecf21e64097f445144929d20f9623b5911175c975449c7ad89d8a64a5b",
+      "atlas_key": "basalt_core",
+      "texture_path": "textures/aionbound/ashen/items/basalt_core",
+      "icon_path": "resource_pack/textures/aionbound/ashen/items/basalt_core.png",
+      "icon_sha256": "4881c974f701fe5935d87e5102ce5de5256d17462e6594cfeba6cdf3709e2079",
+      "blockbench": {
+        "status": "NOT_APPLICABLE",
+        "reason": "flat inventory icon; no custom geometry, rig, locator, UV layout, or animation"
+      }
+    },
+    {
+      "warehouse_id": "ash_crystal",
+      "runtime_id": "aionbound:ash_crystal",
+      "display_name": "Ash Crystal",
+      "authority_rarity": "R",
+      "item_path": "behavior_pack/items/ash_crystal.item.json",
+      "item_sha256": "d545e23f7654c4e384da5a811725f5160441241e4002614a449d96350a76e268",
+      "atlas_key": "ash_crystal",
+      "texture_path": "textures/aionbound/ashen/items/ash_crystal",
+      "icon_path": "resource_pack/textures/aionbound/ashen/items/ash_crystal.png",
+      "icon_sha256": "0a71da4ca802feab3a731360e7b0f7283bc0330b171aed131ac099fe97ea293b",
+      "blockbench": {
+        "status": "NOT_APPLICABLE",
+        "reason": "flat inventory icon; no custom geometry, rig, locator, UV layout, or animation"
+      }
+    },
+    {
+      "warehouse_id": "fire_bloom_seed",
+      "runtime_id": "aionbound:fire_bloom_seed",
+      "display_name": "Fire Bloom Seed",
+      "authority_rarity": "U",
+      "item_path": "behavior_pack/items/fire_bloom_seed.item.json",
+      "item_sha256": "64f4c66a4559f2970c82e9eda1c45ff061d00357cc3085cd6f514f1ca775ccb8",
+      "atlas_key": "fire_bloom_seed",
+      "texture_path": "textures/aionbound/ashen/items/fire_bloom_seed",
+      "icon_path": "resource_pack/textures/aionbound/ashen/items/fire_bloom_seed.png",
+      "icon_sha256": "321eb3af23d33e869e8a5d95ef66226332168f1e5ba92844d191cf248f4c7966",
+      "blockbench": {
+        "status": "NOT_APPLICABLE",
+        "reason": "flat inventory icon; no custom geometry, rig, locator, UV layout, or animation"
+      }
+    }
+  ],
+  "shared_files": [
+    {
+      "path": "resource_pack/textures/item_texture.json",
+      "sha256": "4ae76d4f8aa5e478966682e2a964a928b781170e9caa7ed0cf774c2b00150e68",
+      "change": "ten aionbound item-atlas bindings"
+    },
+    {
+      "path": "resource_pack/texts/en_US.lang",
+      "sha256": "2ceaf22fbd79da57fd0863699ad1573cd4900c41a5be32f072e2977b0df25cb2",
+      "change": "ten English item localization bindings"
+    }
+  ],
+  "withheld": [
+    "acquisition and harvesting",
+    "recipes and crafting relations",
+    "loot tables and numeric rarity behavior",
+    "derived or nonwarehouse identities",
+    "equipment and progression behavior",
+    "scripts and persistence"
+  ],
+  "proof_boundary": {
+    "proves": [
+      "static Behavior Pack item-definition closure",
+      "exact aionbound warehouse identifiers",
+      "item icon-key to Resource Pack atlas closure",
+      "English localization closure",
+      "exact shipping-icon byte binding"
+    ],
+    "does_not_prove": [
+      "Bedrock schema acceptance or pack loading",
+      "acquisition, loot, recipes, progression, equipment, scripts, or persistence",
+      "client rendering or inventory readability",
+      "Stable BDS, multiplayer, controller, console, Marketplace, candidate, or release qualification"
+    ]
+  }
+}
