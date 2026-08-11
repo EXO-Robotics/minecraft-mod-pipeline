@@ -1,0 +1,445 @@
+{
+  "schema_version": 1,
+  "status": "PASS_STATIC_REFERENCE_CLOSURE",
+  "asset_count": 10,
+  "runtime_form": "STATIC_CUSTOM_BLOCK_GEOMETRY",
+  "render_method": "alpha_test",
+  "animation_policy": {
+    "native_source_clips_preserved": [
+      "animation.aionforge_ww.lantern_bloom.glow_idle",
+      "animation.aionforge_ww.pale_reed.sway",
+      "animation.aionforge_ww.star_grass.wind_sway",
+      "animation.aionforge_ww.whisper_fern.gentle_sway"
+    ],
+    "runtime_playback": "WITHHELD",
+    "reason": "Stable custom-block geometry has no clean entity-style skeletal animation-controller binding; no Script API or entity surrogate was authorized."
+  },
+  "checks": [
+    "BP block JSON and stable format",
+    "aionbound identifier and geometry namespace closure",
+    "native-evidence geometry equivalence excluding intended identifier normalization",
+    "exact native-evidence texture-byte equality",
+    "complete PNG CRC, IDAT, scanline, dimension, and RGBA8 decode",
+    "blocks.json, terrain_texture.json, and en_US.lang closure",
+    "uniform alpha_test material pipeline",
+    "role-grounded selection and placement filters",
+    "no invented loot table or runtime animation binding"
+  ],
+  "assets": [
+    {
+      "asset": "briar_vine",
+      "runtime_id": "aionbound:briar_vine",
+      "geometry_identifier": "geometry.aionbound.briar_vine",
+      "geometry_sha256": "074d9d76c534256149215ce70089eb1e43ea0fa3f60c07ded74e478a8eba5991",
+      "texture_sha256": "8e39a792b3661a8df637bf67a1d6cd60449aa5459ce001bd5726b4231d7a0fdc",
+      "png": {
+        "width": 32,
+        "height": 32,
+        "mode": "RGBA8",
+        "decoded_bytes": 4128
+      },
+      "placement_faces": [
+        "side"
+      ],
+      "support_blocks": [
+        "minecraft:oak_log",
+        "minecraft:dark_oak_log",
+        "minecraft:mangrove_log",
+        "aionbound:whisperwood_log",
+        "aionbound:whisperwood_wood",
+        "aionbound:moss_bark"
+      ],
+      "collision": "NONE",
+      "selection_box": {
+        "origin": [
+          -4,
+          0,
+          -4
+        ],
+        "size": [
+          8,
+          16,
+          8
+        ]
+      },
+      "harvest_semantics": "BREAKABLE_SELF_DROP_DEFAULT_NOT_RUNTIME_PROVEN",
+      "native_evidence_status": "PASS",
+      "source_animation": null,
+      "runtime_animation": "NOT_REQUIRED"
+    },
+    {
+      "asset": "ember_thistle",
+      "runtime_id": "aionbound:ember_thistle",
+      "geometry_identifier": "geometry.aionbound.ember_thistle",
+      "geometry_sha256": "39b645fc0637e54cb9a3f7a8bd42bcf344ec3dd6a99a242b12136bfebb4acbb6",
+      "texture_sha256": "1dd4eb1f7b2b177bf28ddc3eb9d201bd14d35f1fd58ed5c5426d9efad67728d2",
+      "png": {
+        "width": 32,
+        "height": 32,
+        "mode": "RGBA8",
+        "decoded_bytes": 4128
+      },
+      "placement_faces": [
+        "up"
+      ],
+      "support_blocks": [
+        "minecraft:grass_block",
+        "minecraft:dirt",
+        "minecraft:coarse_dirt",
+        "minecraft:podzol"
+      ],
+      "collision": "NONE",
+      "selection_box": {
+        "origin": [
+          -4,
+          0,
+          -4
+        ],
+        "size": [
+          8,
+          14,
+          8
+        ]
+      },
+      "harvest_semantics": "BREAKABLE_SELF_DROP_DEFAULT_NOT_RUNTIME_PROVEN",
+      "native_evidence_status": "PASS",
+      "source_animation": null,
+      "runtime_animation": "NOT_REQUIRED"
+    },
+    {
+      "asset": "glow_moss",
+      "runtime_id": "aionbound:glow_moss",
+      "geometry_identifier": "geometry.aionbound.glow_moss",
+      "geometry_sha256": "2669c9906c399be3a18d1794a7100be46b1081e2333014bb6c06a7ef439ab52c",
+      "texture_sha256": "427f02a0cb68f221bb190e3ebbe5f2c8575cb96c7d0c0bd68a5af9ef57a588c5",
+      "png": {
+        "width": 32,
+        "height": 32,
+        "mode": "RGBA8",
+        "decoded_bytes": 4128
+      },
+      "placement_faces": [
+        "up"
+      ],
+      "support_blocks": [
+        "minecraft:stone",
+        "minecraft:moss_block",
+        "minecraft:grass_block",
+        "minecraft:dirt"
+      ],
+      "collision": "NONE",
+      "selection_box": {
+        "origin": [
+          -8,
+          0,
+          -8
+        ],
+        "size": [
+          16,
+          5,
+          16
+        ]
+      },
+      "harvest_semantics": "BREAKABLE_SELF_DROP_DEFAULT_NOT_RUNTIME_PROVEN",
+      "native_evidence_status": "PASS",
+      "source_animation": null,
+      "runtime_animation": "NOT_REQUIRED"
+    },
+    {
+      "asset": "hollow_lily",
+      "runtime_id": "aionbound:hollow_lily",
+      "geometry_identifier": "geometry.aionbound.hollow_lily",
+      "geometry_sha256": "e4557eb58aede2bcf4b6097c30531ee5d6ac0ff5c338f0f0878d46b28ae1524e",
+      "texture_sha256": "34301c63c99d6ef3847300627160f511ee5cee70fe3657fa85608cba28b00302",
+      "png": {
+        "width": 32,
+        "height": 32,
+        "mode": "RGBA8",
+        "decoded_bytes": 4128
+      },
+      "placement_faces": [
+        "up"
+      ],
+      "support_blocks": [
+        "minecraft:mud",
+        "minecraft:clay",
+        "minecraft:dirt",
+        "minecraft:grass_block"
+      ],
+      "collision": "NONE",
+      "selection_box": {
+        "origin": [
+          -5,
+          0,
+          -5
+        ],
+        "size": [
+          10,
+          7,
+          10
+        ]
+      },
+      "harvest_semantics": "BREAKABLE_SELF_DROP_DEFAULT_NOT_RUNTIME_PROVEN",
+      "native_evidence_status": "PASS",
+      "source_animation": null,
+      "runtime_animation": "NOT_REQUIRED"
+    },
+    {
+      "asset": "lantern_bloom",
+      "runtime_id": "aionbound:lantern_bloom",
+      "geometry_identifier": "geometry.aionbound.lantern_bloom",
+      "geometry_sha256": "518831ff061c784d7a2efce4f6a0eb33d5bc19917e2cd2c62aae877af7fb65ef",
+      "texture_sha256": "b4fcf506afe22dc8c89eef0cacfcbc4fd9356701b1678aeee6b4044119fc6132",
+      "png": {
+        "width": 32,
+        "height": 32,
+        "mode": "RGBA8",
+        "decoded_bytes": 4128
+      },
+      "placement_faces": [
+        "up"
+      ],
+      "support_blocks": [
+        "minecraft:grass_block",
+        "minecraft:dirt",
+        "minecraft:coarse_dirt",
+        "minecraft:podzol"
+      ],
+      "collision": "NONE",
+      "selection_box": {
+        "origin": [
+          -4,
+          0,
+          -4
+        ],
+        "size": [
+          8,
+          8,
+          8
+        ]
+      },
+      "harvest_semantics": "BREAKABLE_SELF_DROP_DEFAULT_NOT_RUNTIME_PROVEN",
+      "native_evidence_status": "PASS",
+      "source_animation": "animation.aionforge_ww.lantern_bloom.glow_idle",
+      "runtime_animation": "WITHHELD_UNSUPPORTED_CUSTOM_BLOCK_SKELETAL_PLAYBACK"
+    },
+    {
+      "asset": "mooncap_mushroom",
+      "runtime_id": "aionbound:mooncap_mushroom",
+      "geometry_identifier": "geometry.aionbound.mooncap_mushroom",
+      "geometry_sha256": "01c243f1518a2940ef6201be644db2302a9dc68fc102129985dd66f48e52fbda",
+      "texture_sha256": "419ea8ee95deced69ada53a11f70cd27f040bcb3f356003d95a4d78669cdae38",
+      "png": {
+        "width": 32,
+        "height": 32,
+        "mode": "RGBA8",
+        "decoded_bytes": 4128
+      },
+      "placement_faces": [
+        "up"
+      ],
+      "support_blocks": [
+        "minecraft:grass_block",
+        "minecraft:dirt",
+        "minecraft:podzol",
+        "minecraft:moss_block",
+        "minecraft:mycelium"
+      ],
+      "collision": "NONE",
+      "selection_box": {
+        "origin": [
+          -5,
+          0,
+          -5
+        ],
+        "size": [
+          10,
+          11,
+          10
+        ]
+      },
+      "harvest_semantics": "BREAKABLE_SELF_DROP_DEFAULT_NOT_RUNTIME_PROVEN",
+      "native_evidence_status": "PASS",
+      "source_animation": null,
+      "runtime_animation": "NOT_REQUIRED"
+    },
+    {
+      "asset": "pale_reed",
+      "runtime_id": "aionbound:pale_reed",
+      "geometry_identifier": "geometry.aionbound.pale_reed",
+      "geometry_sha256": "a1b238fcc77861550780db1b8466677089d7c88ffd6c9fdc6d96bdf538895a55",
+      "texture_sha256": "d646aa8ec84db7011f1ae2d7ecc6c423dc02320ff63a9b7bcf16d31e86b0abd4",
+      "png": {
+        "width": 32,
+        "height": 32,
+        "mode": "RGBA8",
+        "decoded_bytes": 4128
+      },
+      "placement_faces": [
+        "up"
+      ],
+      "support_blocks": [
+        "minecraft:mud",
+        "minecraft:clay",
+        "minecraft:sand",
+        "minecraft:dirt",
+        "minecraft:grass_block"
+      ],
+      "collision": "NONE",
+      "selection_box": {
+        "origin": [
+          -4,
+          0,
+          -4
+        ],
+        "size": [
+          8,
+          16,
+          8
+        ]
+      },
+      "harvest_semantics": "BREAKABLE_SELF_DROP_DEFAULT_NOT_RUNTIME_PROVEN",
+      "native_evidence_status": "PASS",
+      "source_animation": "animation.aionforge_ww.pale_reed.sway",
+      "runtime_animation": "WITHHELD_UNSUPPORTED_CUSTOM_BLOCK_SKELETAL_PLAYBACK"
+    },
+    {
+      "asset": "root_flower",
+      "runtime_id": "aionbound:root_flower",
+      "geometry_identifier": "geometry.aionbound.root_flower",
+      "geometry_sha256": "723ded982cbb4bebd3c894c04db1db079a9e6a52daaf982bce1e4c0141bc2c29",
+      "texture_sha256": "eab322db9a0fa696ebef9f88592c18caa710a8ede2806eaebbeca8b683bb8ec2",
+      "png": {
+        "width": 32,
+        "height": 32,
+        "mode": "RGBA8",
+        "decoded_bytes": 4128
+      },
+      "placement_faces": [
+        "up"
+      ],
+      "support_blocks": [
+        "minecraft:grass_block",
+        "minecraft:dirt",
+        "minecraft:coarse_dirt",
+        "minecraft:podzol"
+      ],
+      "collision": "NONE",
+      "selection_box": {
+        "origin": [
+          -5,
+          0,
+          -4
+        ],
+        "size": [
+          10,
+          9,
+          9
+        ]
+      },
+      "harvest_semantics": "BREAKABLE_SELF_DROP_DEFAULT_NOT_RUNTIME_PROVEN",
+      "native_evidence_status": "PASS",
+      "source_animation": null,
+      "runtime_animation": "NOT_REQUIRED"
+    },
+    {
+      "asset": "star_grass",
+      "runtime_id": "aionbound:star_grass",
+      "geometry_identifier": "geometry.aionbound.star_grass",
+      "geometry_sha256": "8c1781a8f67fe49dc34eeb6e268406f3cd299fcf9fc078f34fed7abdc771ec38",
+      "texture_sha256": "ef8b53ab80d9be4dae46ac718936d4559c48a48ca828314fb9515e09bbc00e89",
+      "png": {
+        "width": 32,
+        "height": 32,
+        "mode": "RGBA8",
+        "decoded_bytes": 4128
+      },
+      "placement_faces": [
+        "up"
+      ],
+      "support_blocks": [
+        "minecraft:grass_block",
+        "minecraft:dirt",
+        "minecraft:coarse_dirt",
+        "minecraft:podzol",
+        "minecraft:moss_block"
+      ],
+      "collision": "NONE",
+      "selection_box": {
+        "origin": [
+          -3,
+          0,
+          -3
+        ],
+        "size": [
+          6,
+          11,
+          6
+        ]
+      },
+      "harvest_semantics": "BREAKABLE_SELF_DROP_DEFAULT_NOT_RUNTIME_PROVEN",
+      "native_evidence_status": "PASS",
+      "source_animation": "animation.aionforge_ww.star_grass.wind_sway",
+      "runtime_animation": "WITHHELD_UNSUPPORTED_CUSTOM_BLOCK_SKELETAL_PLAYBACK"
+    },
+    {
+      "asset": "whisper_fern",
+      "runtime_id": "aionbound:whisper_fern",
+      "geometry_identifier": "geometry.aionbound.whisper_fern",
+      "geometry_sha256": "1dce1ff1858484d180a28ba51c6f0e623557647583f535fad3b2ee8bc97d5d1f",
+      "texture_sha256": "eca665b5a722371569a4dd13b06ade00b0c8b226b4844ce45531cf0ad83c9577",
+      "png": {
+        "width": 32,
+        "height": 32,
+        "mode": "RGBA8",
+        "decoded_bytes": 4128
+      },
+      "placement_faces": [
+        "up"
+      ],
+      "support_blocks": [
+        "minecraft:grass_block",
+        "minecraft:dirt",
+        "minecraft:coarse_dirt",
+        "minecraft:podzol",
+        "minecraft:moss_block"
+      ],
+      "collision": "NONE",
+      "selection_box": {
+        "origin": [
+          -7,
+          0,
+          -7
+        ],
+        "size": [
+          14,
+          8,
+          14
+        ]
+      },
+      "harvest_semantics": "BREAKABLE_SELF_DROP_DEFAULT_NOT_RUNTIME_PROVEN",
+      "native_evidence_status": "PASS",
+      "source_animation": "animation.aionforge_ww.whisper_fern.gentle_sway",
+      "runtime_animation": "WITHHELD_UNSUPPORTED_CUSTOM_BLOCK_SKELETAL_PLAYBACK"
+    }
+  ],
+  "proof_boundary": {
+    "proven": [
+      "STATIC_JSON",
+      "STATIC_REFERENCE_CLOSURE",
+      "PNG_DECODE",
+      "NATIVE_EVIDENCE_REUSE"
+    ],
+    "not_proven": [
+      "CREATOR_TOOLS",
+      "STABLE_BDS",
+      "BEDROCK_CLIENT_RENDER",
+      "PLACEMENT_RUNTIME",
+      "HARVEST_RUNTIME",
+      "ANIMATION_PLAYBACK",
+      "WORLD_GENERATION",
+      "PHYSICAL_PS4",
+      "MARKETPLACE"
+    ]
+  }
+}

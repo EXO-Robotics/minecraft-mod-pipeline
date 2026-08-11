@@ -1,0 +1,55 @@
+{
+  "format_version": "1.21.80",
+  "minecraft:block": {
+    "description": {
+      "identifier": "aionbound:whisper_fern",
+      "menu_category": {
+        "category": "nature"
+      }
+    },
+    "components": {
+      "minecraft:display_name": "Whisper Fern",
+      "minecraft:collision_box": false,
+      "minecraft:selection_box": {
+        "origin": [
+          -7,
+          0,
+          -7
+        ],
+        "size": [
+          14,
+          8,
+          14
+        ]
+      },
+      "minecraft:destructible_by_mining": {
+        "seconds_to_destroy": 0.1
+      },
+      "minecraft:geometry": "geometry.aionbound.whisper_fern",
+      "minecraft:material_instances": {
+        "*": {
+          "texture": "whisper_fern",
+          "render_method": "alpha_test",
+          "ambient_occlusion": false,
+          "face_dimming": false
+        }
+      },
+      "minecraft:placement_filter": {
+        "conditions": [
+          {
+            "allowed_faces": [
+              "up"
+            ],
+            "block_filter": [
+              "minecraft:grass_block",
+              "minecraft:dirt",
+              "minecraft:coarse_dirt",
+              "minecraft:podzol",
+              "minecraft:moss_block"
+            ]
+          }
+        ]
+      }
+    }
+  }
+}

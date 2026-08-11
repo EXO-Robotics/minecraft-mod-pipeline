@@ -1,0 +1,55 @@
+{
+  "format_version": "1.21.80",
+  "minecraft:block": {
+    "description": {
+      "identifier": "aionbound:mooncap_mushroom",
+      "menu_category": {
+        "category": "nature"
+      }
+    },
+    "components": {
+      "minecraft:display_name": "Mooncap Mushroom",
+      "minecraft:collision_box": false,
+      "minecraft:selection_box": {
+        "origin": [
+          -5,
+          0,
+          -5
+        ],
+        "size": [
+          10,
+          11,
+          10
+        ]
+      },
+      "minecraft:destructible_by_mining": {
+        "seconds_to_destroy": 0.1
+      },
+      "minecraft:geometry": "geometry.aionbound.mooncap_mushroom",
+      "minecraft:material_instances": {
+        "*": {
+          "texture": "mooncap_mushroom",
+          "render_method": "alpha_test",
+          "ambient_occlusion": false,
+          "face_dimming": false
+        }
+      },
+      "minecraft:placement_filter": {
+        "conditions": [
+          {
+            "allowed_faces": [
+              "up"
+            ],
+            "block_filter": [
+              "minecraft:grass_block",
+              "minecraft:dirt",
+              "minecraft:podzol",
+              "minecraft:moss_block",
+              "minecraft:mycelium"
+            ]
+          }
+        ]
+      }
+    }
+  }
+}

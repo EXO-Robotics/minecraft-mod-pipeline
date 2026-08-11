@@ -1,0 +1,56 @@
+{
+  "format_version": "1.21.80",
+  "minecraft:block": {
+    "description": {
+      "identifier": "aionbound:briar_vine",
+      "menu_category": {
+        "category": "nature"
+      }
+    },
+    "components": {
+      "minecraft:display_name": "Briar Vine",
+      "minecraft:collision_box": false,
+      "minecraft:selection_box": {
+        "origin": [
+          -4,
+          0,
+          -4
+        ],
+        "size": [
+          8,
+          16,
+          8
+        ]
+      },
+      "minecraft:destructible_by_mining": {
+        "seconds_to_destroy": 0.1
+      },
+      "minecraft:geometry": "geometry.aionbound.briar_vine",
+      "minecraft:material_instances": {
+        "*": {
+          "texture": "briar_vine",
+          "render_method": "alpha_test",
+          "ambient_occlusion": false,
+          "face_dimming": false
+        }
+      },
+      "minecraft:placement_filter": {
+        "conditions": [
+          {
+            "allowed_faces": [
+              "side"
+            ],
+            "block_filter": [
+              "minecraft:oak_log",
+              "minecraft:dark_oak_log",
+              "minecraft:mangrove_log",
+              "aionbound:whisperwood_log",
+              "aionbound:whisperwood_wood",
+              "aionbound:moss_bark"
+            ]
+          }
+        ]
+      }
+    }
+  }
+}

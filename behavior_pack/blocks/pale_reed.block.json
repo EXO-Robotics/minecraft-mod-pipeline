@@ -1,0 +1,55 @@
+{
+  "format_version": "1.21.80",
+  "minecraft:block": {
+    "description": {
+      "identifier": "aionbound:pale_reed",
+      "menu_category": {
+        "category": "nature"
+      }
+    },
+    "components": {
+      "minecraft:display_name": "Pale Reed",
+      "minecraft:collision_box": false,
+      "minecraft:selection_box": {
+        "origin": [
+          -4,
+          0,
+          -4
+        ],
+        "size": [
+          8,
+          16,
+          8
+        ]
+      },
+      "minecraft:destructible_by_mining": {
+        "seconds_to_destroy": 0.1
+      },
+      "minecraft:geometry": "geometry.aionbound.pale_reed",
+      "minecraft:material_instances": {
+        "*": {
+          "texture": "pale_reed",
+          "render_method": "alpha_test",
+          "ambient_occlusion": false,
+          "face_dimming": false
+        }
+      },
+      "minecraft:placement_filter": {
+        "conditions": [
+          {
+            "allowed_faces": [
+              "up"
+            ],
+            "block_filter": [
+              "minecraft:mud",
+              "minecraft:clay",
+              "minecraft:sand",
+              "minecraft:dirt",
+              "minecraft:grass_block"
+            ]
+          }
+        ]
+      }
+    }
+  }
+}
