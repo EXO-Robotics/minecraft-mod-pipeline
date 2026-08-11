@@ -1,0 +1,105 @@
+{
+  "asset_count": 2,
+  "assets": [
+    {
+      "files": {
+        "behavior_block": {
+          "path": "behavior_pack/blocks/lantern_post.block.json",
+          "sha256": "8fe5cf9d383d0d1b0fdfaf9160cd68a457706d1e5bf90817bdd3b5d960abe027"
+        },
+        "shipping_geometry": {
+          "path": "resource_pack/models/blocks/lantern_post.geo.json",
+          "sha256": "a0441f91595436955061c5042e175ded072de43ba9cd7c3318cf42ac8ae98957"
+        },
+        "shipping_texture": {
+          "path": "resource_pack/textures/aionbound/whisperwood/blocks/lantern_post.png",
+          "sha256": "0f3c6e9c5da8ff47991455e6186427cb7a061d356d5f496e9bd5f32f0e412cb1"
+        }
+      },
+      "geometry_id": "geometry.aionbound.lantern_post",
+      "id": "lantern_post",
+      "native_geometry": {
+        "path": "engineering/native-assets/whisperwood/evidence/lantern_post/native-exports/pass-2.geo.json",
+        "sha256": "b260b168b9f58799eae23a14d1ac2d03377e2f959b753d60978af00f51cd2e05"
+      },
+      "native_receipt": {
+        "blockbench_version": "5.1.6",
+        "path": "engineering/native-assets/whisperwood/evidence/lantern_post/direct-prop-native-receipt.json",
+        "sha256": "ef5e18d5d8db47cf6462e1af8733513eb1a4e6e89ab9781dcf866ca137bbdd3d",
+        "status": "PASS"
+      },
+      "runtime_id": "aionbound:lantern_post",
+      "source_texture_sha256": "0f3c6e9c5da8ff47991455e6186427cb7a061d356d5f496e9bd5f32f0e412cb1"
+    },
+    {
+      "files": {
+        "behavior_block": {
+          "path": "behavior_pack/blocks/moss_cairn.block.json",
+          "sha256": "3a9239b846511ab38be02bcd6ffdbe13ee5da4722be46de752a338fa595b77f0"
+        },
+        "shipping_geometry": {
+          "path": "resource_pack/models/blocks/moss_cairn.geo.json",
+          "sha256": "56746011b6cab9ec673a360eac07771982d32fe0aad81df7c59d05898a4597f4"
+        },
+        "shipping_texture": {
+          "path": "resource_pack/textures/aionbound/whisperwood/blocks/moss_cairn.png",
+          "sha256": "dde2e374a189ae3e664f2c67469f4751e45057a1ac769faa544cda9df338eb7b"
+        }
+      },
+      "geometry_id": "geometry.aionbound.moss_cairn",
+      "id": "moss_cairn",
+      "native_geometry": {
+        "path": "engineering/native-assets/whisperwood/evidence/moss_cairn/native-exports/pass-2.geo.json",
+        "sha256": "62007e16ddf57f1c4dbc54cd6325050282b375ea420f775059ce437e3eb7abd5"
+      },
+      "native_receipt": {
+        "blockbench_version": "5.1.6",
+        "path": "engineering/native-assets/whisperwood/evidence/moss_cairn/direct-prop-native-receipt.json",
+        "sha256": "f00076974b8195040fbbf056a031267b64fe8d34c516878270cf45b3de4235b6",
+        "status": "PASS"
+      },
+      "runtime_id": "aionbound:moss_cairn",
+      "source_texture_sha256": "dde2e374a189ae3e664f2c67469f4751e45057a1ac769faa544cda9df338eb7b"
+    }
+  ],
+  "base_commit": "80e53a446931256bfd43c9d583b0ca7853845690",
+  "checks": {
+    "bp_rp_registry_reference_closure": "PASS",
+    "dedicated_closure_tests": "PASS_6_OF_6",
+    "identifier_only_geometry_normalization": "PASS",
+    "loot_reward_and_assembly_behavior_withheld": "PASS",
+    "native_locator_transform_preservation": "PASS",
+    "native_receipt_status_and_blockbench_version": "PASS",
+    "png_crc_and_inflate": "PASS",
+    "source_texture_hash_equality": "PASS",
+    "unsupported_block_animation_playback_withheld": "PASS"
+  },
+  "not_proven": [
+    "CUSTOM_BLOCK_ANIMATION_PLAYBACK",
+    "PACKAGE",
+    "BEDROCK_CLIENT",
+    "STABLE_BDS",
+    "CONTROLLER",
+    "MULTIPLAYER",
+    "PHYSICAL_PS4",
+    "MARKETPLACE",
+    "CANDIDATE_QUALIFICATION"
+  ],
+  "proof_scope": "STATIC_DIRECT_PROP_BP_RP_AND_NATIVE_EVIDENCE_CLOSURE_ONLY",
+  "schema_version": 1,
+  "shared_registries": {
+    "blocks": {
+      "path": "resource_pack/blocks.json",
+      "sha256": "e568781039c55bee01a31856be1411e9512875f4c68f3215ab5022e7527a39f7"
+    },
+    "language": {
+      "path": "resource_pack/texts/en_US.lang",
+      "sha256": "358df22f8acb99e85408a831b602e6679dd2f9177586d05687536828fc84a64e"
+    },
+    "terrain_texture": {
+      "path": "resource_pack/textures/terrain_texture.json",
+      "sha256": "c7afcebba247fb8372008698b6450eac8a864da88106209fc1c25aa0c5f8d593"
+    }
+  },
+  "status": "WHISPERWOOD_DIRECT_PROP_RUNTIME_STATIC_PASS"
+}
