@@ -1,0 +1,554 @@
+{
+  "base": {
+    "commit": "d3f162db41b06ce502dd8fc6995288d2fe546fa0",
+    "tree": "4843a3ad877cec4ecdd238d01867218ef9687741"
+  },
+  "ecology": {
+    "ash_drake_natural_spawn": false,
+    "biome_tags": [
+      "overworld",
+      "mountain",
+      "mesa"
+    ],
+    "max_group_size": 2,
+    "max_per_type_surface_density": 2,
+    "max_weight": 6,
+    "rule_count": 9,
+    "whisperwood_numbers_copied": false
+  },
+  "native_binding": [
+    {
+      "animation_path": "engineering/native-assets/ashen/creatures/evidence/ash_mite/native-exports/pass-2.animation.json",
+      "animation_sha256": "70a7b054a56c24b228c5e02095ab63ca4749d32848e2934a9ca1d743de1797e5",
+      "asset": "ash_mite",
+      "clip_ids": [
+        "animation.aionbound.ash_mite.idle",
+        "animation.aionbound.ash_mite.skitter",
+        "animation.aionbound.ash_mite.hurt",
+        "animation.aionbound.ash_mite.death"
+      ],
+      "geometry_path": "engineering/native-assets/ashen/creatures/evidence/ash_mite/native-exports/pass-2.geo.json",
+      "geometry_sha256": "4079f580cfbf1b4f96fcd8222e58c0db4dd24963168be3329d18714984c4f221",
+      "source_class": "creatures",
+      "texture_path": "engineering/native-assets/ashen/creatures/evidence/ash_mite/native-project/textures/ash_mite.png",
+      "texture_sha256": "41b855b3ee5c4f85a00479f81e86c2518d3c8561ec43aa5021b8bbc142616ec1"
+    },
+    {
+      "animation_path": "engineering/native-assets/ashen/representative/evidence/ember_crow/native-exports/pass-2.animation.json",
+      "animation_sha256": "9c62f1dfebbf8c5dedcfb4d6f798f9cf08139574297b760e2a4af3cbeab88ea2",
+      "asset": "ember_crow",
+      "clip_ids": [
+        "animation.aionbound.ember_crow.idle_perch",
+        "animation.aionbound.ember_crow.fly",
+        "animation.aionbound.ember_crow.glide",
+        "animation.aionbound.ember_crow.peck",
+        "animation.aionbound.ember_crow.hurt",
+        "animation.aionbound.ember_crow.death"
+      ],
+      "geometry_path": "engineering/native-assets/ashen/representative/evidence/ember_crow/native-exports/pass-2.geo.json",
+      "geometry_sha256": "081a2c2f11c451fa39e565acc34a7f8b0019f6111d83ba6d1a54d93ffdd23255",
+      "source_class": "representative",
+      "texture_path": "engineering/native-assets/ashen/representative/evidence/ember_crow/native-project/textures/ember_crow.png",
+      "texture_sha256": "a30e1130df04ceb6162528b1d111843738c8313c242b12ab5a711eca3bffd89c"
+    },
+    {
+      "animation_path": "engineering/native-assets/ashen/creatures/evidence/magma_lizard/native-exports/pass-2.animation.json",
+      "animation_sha256": "c45545565a76c7011e06c0aa49390ca1c4c46ea444b524d39f57c201f76ddd74",
+      "asset": "magma_lizard",
+      "clip_ids": [
+        "animation.aionbound.magma_lizard.idle",
+        "animation.aionbound.magma_lizard.walk",
+        "animation.aionbound.magma_lizard.lunge_bite",
+        "animation.aionbound.magma_lizard.hurt",
+        "animation.aionbound.magma_lizard.death"
+      ],
+      "geometry_path": "engineering/native-assets/ashen/creatures/evidence/magma_lizard/native-exports/pass-2.geo.json",
+      "geometry_sha256": "3dda6e18d7e74e382ee0084645777315edef958b7898fbc915ff8a5dccb02c28",
+      "source_class": "creatures",
+      "texture_path": "engineering/native-assets/ashen/creatures/evidence/magma_lizard/native-project/textures/magma_lizard.png",
+      "texture_sha256": "e87a215b33454ac1c77d62737d660cca7eb535072201723dcb29bb5d79618b70"
+    },
+    {
+      "animation_path": "engineering/native-assets/ashen/creatures/evidence/furnace_beetle/native-exports/pass-2.animation.json",
+      "animation_sha256": "401808b6870d4314f9cc101ead87c371120bea13571ce110c747d80693b30818",
+      "asset": "furnace_beetle",
+      "clip_ids": [
+        "animation.aionbound.furnace_beetle.idle",
+        "animation.aionbound.furnace_beetle.walk",
+        "animation.aionbound.furnace_beetle.charge",
+        "animation.aionbound.furnace_beetle.mandible_clamp",
+        "animation.aionbound.furnace_beetle.hurt",
+        "animation.aionbound.furnace_beetle.death"
+      ],
+      "geometry_path": "engineering/native-assets/ashen/creatures/evidence/furnace_beetle/native-exports/pass-2.geo.json",
+      "geometry_sha256": "a4c9a3d9eb96f94a309a5755db6df98a43078bfe0e5bacd870d83854cedd9820",
+      "source_class": "creatures",
+      "texture_path": "engineering/native-assets/ashen/creatures/evidence/furnace_beetle/native-project/textures/furnace_beetle.png",
+      "texture_sha256": "adddba620c28044b7ca051de74c8c403054b432d62114c6c04e6837fb68eae16"
+    },
+    {
+      "animation_path": "engineering/native-assets/ashen/creatures/evidence/char_wolf/native-exports/pass-2.animation.json",
+      "animation_sha256": "d48801b2cbde4a0d94beb13e7a4fb8b4dcc05aa8a5ef0310d138a165c7e32c1a",
+      "asset": "char_wolf",
+      "clip_ids": [
+        "animation.aionbound.char_wolf.idle",
+        "animation.aionbound.char_wolf.walk",
+        "animation.aionbound.char_wolf.run",
+        "animation.aionbound.char_wolf.snarl_attack",
+        "animation.aionbound.char_wolf.hurt",
+        "animation.aionbound.char_wolf.death"
+      ],
+      "geometry_path": "engineering/native-assets/ashen/creatures/evidence/char_wolf/native-exports/pass-2.geo.json",
+      "geometry_sha256": "30073a3ab274f4e30d0ecf083015c47fe763b7e842dce2c5c53b565e124387bb",
+      "source_class": "creatures",
+      "texture_path": "engineering/native-assets/ashen/creatures/evidence/char_wolf/native-project/textures/char_wolf.png",
+      "texture_sha256": "a2c12337a510e761a1fb37124b5c3147a56f8e42e4d0588343df16180c9ece0e"
+    },
+    {
+      "animation_path": "engineering/native-assets/ashen/creatures/evidence/cinder_lynx/native-exports/pass-2.animation.json",
+      "animation_sha256": "fc911fb6cb2ca70f3730b98a7cec8ab22151a8b10b937cf2fd8ad0e8163f990a",
+      "asset": "cinder_lynx",
+      "clip_ids": [
+        "animation.aionbound.cinder_lynx.idle",
+        "animation.aionbound.cinder_lynx.stalk",
+        "animation.aionbound.cinder_lynx.pounce_pose",
+        "animation.aionbound.cinder_lynx.hurt",
+        "animation.aionbound.cinder_lynx.death"
+      ],
+      "geometry_path": "engineering/native-assets/ashen/creatures/evidence/cinder_lynx/native-exports/pass-2.geo.json",
+      "geometry_sha256": "f3d950131c7e32986ba707b93a4593c72dc45668a2d7e387480eb7e96df0e9cc",
+      "source_class": "creatures",
+      "texture_path": "engineering/native-assets/ashen/creatures/evidence/cinder_lynx/native-project/textures/cinder_lynx.png",
+      "texture_sha256": "3e3bfddc2d37fd165e2b5343f9ff1e1d2cba59ec5a383540a1092446ce6450b8"
+    },
+    {
+      "animation_path": "engineering/native-assets/ashen/representative/evidence/ash_ram/native-exports/pass-2.animation.json",
+      "animation_sha256": "0c7c292a54a9e7b9897b83568b5d6c2b2b2e852db48a54fcdb50bf7c34d6efa5",
+      "asset": "ash_ram",
+      "clip_ids": [
+        "animation.aionbound.ash_ram.idle",
+        "animation.aionbound.ash_ram.walk",
+        "animation.aionbound.ash_ram.headbutt_pose",
+        "animation.aionbound.ash_ram.hurt",
+        "animation.aionbound.ash_ram.death"
+      ],
+      "geometry_path": "engineering/native-assets/ashen/representative/evidence/ash_ram/native-exports/pass-2.geo.json",
+      "geometry_sha256": "006368754d822b840b7ca2eaac6d710b5ee396e3bfc00354c28567f26588fe8b",
+      "source_class": "representative",
+      "texture_path": "engineering/native-assets/ashen/representative/evidence/ash_ram/native-project/textures/ash_ram.png",
+      "texture_sha256": "e9ff27a1b43688bae42e091137f9077fe171a917d7e67e95483832eb9763c684"
+    },
+    {
+      "animation_path": "engineering/native-assets/ashen/creatures/evidence/soot_stag/native-exports/pass-2.animation.json",
+      "animation_sha256": "a4df107348f7c70198f535f8d0a67618a43a034abaef3d1015b6bf427d5c0b5e",
+      "asset": "soot_stag",
+      "clip_ids": [
+        "animation.aionbound.soot_stag.idle",
+        "animation.aionbound.soot_stag.walk",
+        "animation.aionbound.soot_stag.trot",
+        "animation.aionbound.soot_stag.antler_shake",
+        "animation.aionbound.soot_stag.hurt",
+        "animation.aionbound.soot_stag.death"
+      ],
+      "geometry_path": "engineering/native-assets/ashen/creatures/evidence/soot_stag/native-exports/pass-2.geo.json",
+      "geometry_sha256": "4ced3df52bf8ae82492f68196e2614ef7001d6f255a6c75cd1a49dad52137a71",
+      "source_class": "creatures",
+      "texture_path": "engineering/native-assets/ashen/creatures/evidence/soot_stag/native-project/textures/soot_stag.png",
+      "texture_sha256": "0afdd50401edc8a51f8761678f2b15f3b3aa110d818c9d6049e99fe9d6403f45"
+    },
+    {
+      "animation_path": "engineering/native-assets/ashen/creatures/evidence/basalt_tortoise/native-exports/pass-2.animation.json",
+      "animation_sha256": "f79b93ee175f70db85a77456368f2a6e930c5758a420227bbabaff6ff5dea6f3",
+      "asset": "basalt_tortoise",
+      "clip_ids": [
+        "animation.aionbound.basalt_tortoise.idle",
+        "animation.aionbound.basalt_tortoise.slow_walk",
+        "animation.aionbound.basalt_tortoise.withdraw_pose",
+        "animation.aionbound.basalt_tortoise.hurt",
+        "animation.aionbound.basalt_tortoise.death"
+      ],
+      "geometry_path": "engineering/native-assets/ashen/creatures/evidence/basalt_tortoise/native-exports/pass-2.geo.json",
+      "geometry_sha256": "7f6867c8e0d250fad3ed2c01914285965a6f6849011fa3015b9edeeaa9229ea7",
+      "source_class": "creatures",
+      "texture_path": "engineering/native-assets/ashen/creatures/evidence/basalt_tortoise/native-project/textures/basalt_tortoise.png",
+      "texture_sha256": "e3512c30a6f3927287617d108f72390d87803a55d74b27635783af87f812f7eb"
+    },
+    {
+      "animation_path": "engineering/native-assets/ashen/representative/evidence/ash_drake/native-exports/pass-2.animation.json",
+      "animation_sha256": "cf8545484395d37b8c23e15e69ff9042f660baedcecfcce30023611def681255",
+      "asset": "ash_drake",
+      "clip_ids": [
+        "animation.aionbound.ash_drake.idle",
+        "animation.aionbound.ash_drake.walk",
+        "animation.aionbound.ash_drake.wing_flap_hop",
+        "animation.aionbound.ash_drake.bite",
+        "animation.aionbound.ash_drake.hurt",
+        "animation.aionbound.ash_drake.death"
+      ],
+      "geometry_path": "engineering/native-assets/ashen/representative/evidence/ash_drake/native-exports/pass-2.geo.json",
+      "geometry_sha256": "aa88ca5bb19b15e0dac843bd2acddaf4074842991fcc8166bb8eed3856571622",
+      "source_class": "representative",
+      "texture_path": "engineering/native-assets/ashen/representative/evidence/ash_drake/native-project/textures/ash_drake.png",
+      "texture_sha256": "66a1c7ac0e322306052261ea95552dce9a33c508a9aa1c232b169410fe323aea"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "behavior_pack/entities/aionbound/ashen/ash_drake.entity.json",
+      "sha256": "c77090edf12141b512e3ee9738b0f8909a8eea496d3f31672f2cd91c26d678f5"
+    },
+    {
+      "path": "behavior_pack/entities/aionbound/ashen/ash_mite.entity.json",
+      "sha256": "e5a2efb978270dc1cc162ba4d8c452bd0a5ee29ecbcd8e25f6c81cea8c01b00b"
+    },
+    {
+      "path": "behavior_pack/entities/aionbound/ashen/ash_ram.entity.json",
+      "sha256": "b1c7afa1c92c7b4b6d89bebfb6b73c26cdfc8c71abd09c554f2e6aeed1ae4b12"
+    },
+    {
+      "path": "behavior_pack/entities/aionbound/ashen/basalt_tortoise.entity.json",
+      "sha256": "6fff53bdb6e314af9711f8348aa94fd6487753d933139b5fab1b843a33bafe6c"
+    },
+    {
+      "path": "behavior_pack/entities/aionbound/ashen/char_wolf.entity.json",
+      "sha256": "73d09fcedc36994cfcca29704f41be2b991ea8eaf2249129a066dd6b83ed9fb0"
+    },
+    {
+      "path": "behavior_pack/entities/aionbound/ashen/cinder_lynx.entity.json",
+      "sha256": "67094804c46471f653b4ec7faadef6f7b081b9b4ad977cf559bea9246cb89c72"
+    },
+    {
+      "path": "behavior_pack/entities/aionbound/ashen/ember_crow.entity.json",
+      "sha256": "50cc26ee1187e96e0eec7ea6972c053b0903bbe5f8fdd96058d696038debdce0"
+    },
+    {
+      "path": "behavior_pack/entities/aionbound/ashen/furnace_beetle.entity.json",
+      "sha256": "e14adacff2ac6cb9b57d10138e1a522991b00613b95782127da0e287fb70d7de"
+    },
+    {
+      "path": "behavior_pack/entities/aionbound/ashen/magma_lizard.entity.json",
+      "sha256": "6a4efc2dd6d33ce49def3ceebd1af8035c6f948a05f38cbda9d3c93099669fdd"
+    },
+    {
+      "path": "behavior_pack/entities/aionbound/ashen/soot_stag.entity.json",
+      "sha256": "d0ef84f8e7ebcaefd37106863eb0c13d82e107b0c6bb213018ebb428f253ed7a"
+    },
+    {
+      "path": "behavior_pack/spawn_rules/aionbound/ashen/ash_mite.spawn_rules.json",
+      "sha256": "ab28f7d567d21f0f3edd82656bc05ef1c6b0e589118d1cd0df51ad7d042cb0aa"
+    },
+    {
+      "path": "behavior_pack/spawn_rules/aionbound/ashen/ash_ram.spawn_rules.json",
+      "sha256": "befeed53c2ff64ea9cbf6b560a22f9436dfe1600babb6a2b62ab200651d064f4"
+    },
+    {
+      "path": "behavior_pack/spawn_rules/aionbound/ashen/basalt_tortoise.spawn_rules.json",
+      "sha256": "488ba524c107292983dda55f14a5ca4282a847b583021c1450b70be5c9bbb692"
+    },
+    {
+      "path": "behavior_pack/spawn_rules/aionbound/ashen/char_wolf.spawn_rules.json",
+      "sha256": "f993fbad93df95ca62742fec73c1cf199a0f7604f71d3760d1f9b015f7b451d9"
+    },
+    {
+      "path": "behavior_pack/spawn_rules/aionbound/ashen/cinder_lynx.spawn_rules.json",
+      "sha256": "7bea08d71944f7c03b23d705ac487d72cb91ad9c1b6424b67e340d9e63e722a6"
+    },
+    {
+      "path": "behavior_pack/spawn_rules/aionbound/ashen/ember_crow.spawn_rules.json",
+      "sha256": "c7a142f84e0202214e442b2e516c8642dccd68e52d85bc5e990ea5afa12a73bd"
+    },
+    {
+      "path": "behavior_pack/spawn_rules/aionbound/ashen/furnace_beetle.spawn_rules.json",
+      "sha256": "7cd9bc30d2609b4f6c7ecf4422b0e4938232733f6ef3bfa3a6083970f393ab9d"
+    },
+    {
+      "path": "behavior_pack/spawn_rules/aionbound/ashen/magma_lizard.spawn_rules.json",
+      "sha256": "5795a585dccdcb967a4d343c86a00f91cae8911d5419f4899985acb73d803830"
+    },
+    {
+      "path": "behavior_pack/spawn_rules/aionbound/ashen/soot_stag.spawn_rules.json",
+      "sha256": "dc2046a023a59a0b4d554fa6ae941063af0fc9f11d02c1588e928677aad7d697"
+    },
+    {
+      "path": "resource_pack/animation_controllers/aionbound/ashen/ash_drake.animation_controller.json",
+      "sha256": "a6b7ffd562e298f3b47bcd04000f3ac3efdc3cdd3a565f941de122185e5e5d6d"
+    },
+    {
+      "path": "resource_pack/animation_controllers/aionbound/ashen/ash_mite.animation_controller.json",
+      "sha256": "d782e81aaee69055904f28a4f79324e00a22c802fe41fc94cf85361d0f941334"
+    },
+    {
+      "path": "resource_pack/animation_controllers/aionbound/ashen/ash_ram.animation_controller.json",
+      "sha256": "4a981cf45315f8bff1c9e893177e4c8b037ce92c5e4c826991ed49a90bedad7c"
+    },
+    {
+      "path": "resource_pack/animation_controllers/aionbound/ashen/basalt_tortoise.animation_controller.json",
+      "sha256": "74928a27289c8c69bb7406eb03d7289a84a30d370fc78c4831badf1f8743af93"
+    },
+    {
+      "path": "resource_pack/animation_controllers/aionbound/ashen/char_wolf.animation_controller.json",
+      "sha256": "10c431860731cd7463c70595e3351635f41b5206cc825fcd9c26294edcd82007"
+    },
+    {
+      "path": "resource_pack/animation_controllers/aionbound/ashen/cinder_lynx.animation_controller.json",
+      "sha256": "6f7676d349653553bfbaf40ab0a2e5ee0449bb85ca2215cebc1314d66def13f9"
+    },
+    {
+      "path": "resource_pack/animation_controllers/aionbound/ashen/ember_crow.animation_controller.json",
+      "sha256": "36d45069ae1d5bb2e5c7e89645fe2c13a76ace90e943e9fccafb7a062abb8abc"
+    },
+    {
+      "path": "resource_pack/animation_controllers/aionbound/ashen/furnace_beetle.animation_controller.json",
+      "sha256": "55d9de958f75024776b6d834476fff00058f9f8652fd2158cc8564c641c06f2b"
+    },
+    {
+      "path": "resource_pack/animation_controllers/aionbound/ashen/magma_lizard.animation_controller.json",
+      "sha256": "40b2fef4ffbff18328d55eea1731dffa336794d8b5f52926b43d68d9f57089cc"
+    },
+    {
+      "path": "resource_pack/animation_controllers/aionbound/ashen/soot_stag.animation_controller.json",
+      "sha256": "5fe00931fb6ed4a9e1ea290c92783d8a45b638976f02088e7512096a4beeb240"
+    },
+    {
+      "path": "resource_pack/animations/aionbound/ashen/entities/ash_drake.animation.json",
+      "sha256": "cf8545484395d37b8c23e15e69ff9042f660baedcecfcce30023611def681255"
+    },
+    {
+      "path": "resource_pack/animations/aionbound/ashen/entities/ash_mite.animation.json",
+      "sha256": "70a7b054a56c24b228c5e02095ab63ca4749d32848e2934a9ca1d743de1797e5"
+    },
+    {
+      "path": "resource_pack/animations/aionbound/ashen/entities/ash_ram.animation.json",
+      "sha256": "0c7c292a54a9e7b9897b83568b5d6c2b2b2e852db48a54fcdb50bf7c34d6efa5"
+    },
+    {
+      "path": "resource_pack/animations/aionbound/ashen/entities/basalt_tortoise.animation.json",
+      "sha256": "f79b93ee175f70db85a77456368f2a6e930c5758a420227bbabaff6ff5dea6f3"
+    },
+    {
+      "path": "resource_pack/animations/aionbound/ashen/entities/char_wolf.animation.json",
+      "sha256": "d48801b2cbde4a0d94beb13e7a4fb8b4dcc05aa8a5ef0310d138a165c7e32c1a"
+    },
+    {
+      "path": "resource_pack/animations/aionbound/ashen/entities/cinder_lynx.animation.json",
+      "sha256": "fc911fb6cb2ca70f3730b98a7cec8ab22151a8b10b937cf2fd8ad0e8163f990a"
+    },
+    {
+      "path": "resource_pack/animations/aionbound/ashen/entities/ember_crow.animation.json",
+      "sha256": "9c62f1dfebbf8c5dedcfb4d6f798f9cf08139574297b760e2a4af3cbeab88ea2"
+    },
+    {
+      "path": "resource_pack/animations/aionbound/ashen/entities/furnace_beetle.animation.json",
+      "sha256": "401808b6870d4314f9cc101ead87c371120bea13571ce110c747d80693b30818"
+    },
+    {
+      "path": "resource_pack/animations/aionbound/ashen/entities/magma_lizard.animation.json",
+      "sha256": "c45545565a76c7011e06c0aa49390ca1c4c46ea444b524d39f57c201f76ddd74"
+    },
+    {
+      "path": "resource_pack/animations/aionbound/ashen/entities/soot_stag.animation.json",
+      "sha256": "a4df107348f7c70198f535f8d0a67618a43a034abaef3d1015b6bf427d5c0b5e"
+    },
+    {
+      "path": "resource_pack/entity/aionbound/ashen/ash_drake.entity.json",
+      "sha256": "9fd625b2f756464f39dccc209fd5320127fada865d6b0f4904bf3d31c8429502"
+    },
+    {
+      "path": "resource_pack/entity/aionbound/ashen/ash_mite.entity.json",
+      "sha256": "844c1e23a6842a97c9b255c304c3819944bfbd308476c26c812e39aa2bc3e7eb"
+    },
+    {
+      "path": "resource_pack/entity/aionbound/ashen/ash_ram.entity.json",
+      "sha256": "08bc3a2ef1cb14b6998686217a800720382701e54275b828f55901272f0a2908"
+    },
+    {
+      "path": "resource_pack/entity/aionbound/ashen/basalt_tortoise.entity.json",
+      "sha256": "a2d1546df466413a8b347520e8dd5bdecbab3068cd8e88cf6ed3350627421138"
+    },
+    {
+      "path": "resource_pack/entity/aionbound/ashen/char_wolf.entity.json",
+      "sha256": "c7daf0da1d5991f783031d81a72583c746a17b052984644fecaab8dfb6e57784"
+    },
+    {
+      "path": "resource_pack/entity/aionbound/ashen/cinder_lynx.entity.json",
+      "sha256": "42e0d3b7ac40904e765d536cc5c73bd4260e8cb14dd976a4702b1ab8ccdda20d"
+    },
+    {
+      "path": "resource_pack/entity/aionbound/ashen/ember_crow.entity.json",
+      "sha256": "9c1f5725ff1915054a618598d924a73fea5ccbbb00e34538237ee5624f9d704a"
+    },
+    {
+      "path": "resource_pack/entity/aionbound/ashen/furnace_beetle.entity.json",
+      "sha256": "59962316fc7d18cd0bcc78f0ab5b91baef3e80353f979e2423c56edae94b3190"
+    },
+    {
+      "path": "resource_pack/entity/aionbound/ashen/magma_lizard.entity.json",
+      "sha256": "b8ae3f1892f69cf48a5b1396d6ee6a0ca44302f2e39d130da77db2c07ad72d0e"
+    },
+    {
+      "path": "resource_pack/entity/aionbound/ashen/soot_stag.entity.json",
+      "sha256": "dd25ec786a1fb85bfb3e812d24f5f594ec826f6bfbf2f80f6c20ad0e6f5bfa15"
+    },
+    {
+      "path": "resource_pack/models/aionbound/ashen/entities/ash_drake.geo.json",
+      "sha256": "aa88ca5bb19b15e0dac843bd2acddaf4074842991fcc8166bb8eed3856571622"
+    },
+    {
+      "path": "resource_pack/models/aionbound/ashen/entities/ash_mite.geo.json",
+      "sha256": "4079f580cfbf1b4f96fcd8222e58c0db4dd24963168be3329d18714984c4f221"
+    },
+    {
+      "path": "resource_pack/models/aionbound/ashen/entities/ash_ram.geo.json",
+      "sha256": "006368754d822b840b7ca2eaac6d710b5ee396e3bfc00354c28567f26588fe8b"
+    },
+    {
+      "path": "resource_pack/models/aionbound/ashen/entities/basalt_tortoise.geo.json",
+      "sha256": "7f6867c8e0d250fad3ed2c01914285965a6f6849011fa3015b9edeeaa9229ea7"
+    },
+    {
+      "path": "resource_pack/models/aionbound/ashen/entities/char_wolf.geo.json",
+      "sha256": "30073a3ab274f4e30d0ecf083015c47fe763b7e842dce2c5c53b565e124387bb"
+    },
+    {
+      "path": "resource_pack/models/aionbound/ashen/entities/cinder_lynx.geo.json",
+      "sha256": "f3d950131c7e32986ba707b93a4593c72dc45668a2d7e387480eb7e96df0e9cc"
+    },
+    {
+      "path": "resource_pack/models/aionbound/ashen/entities/ember_crow.geo.json",
+      "sha256": "081a2c2f11c451fa39e565acc34a7f8b0019f6111d83ba6d1a54d93ffdd23255"
+    },
+    {
+      "path": "resource_pack/models/aionbound/ashen/entities/furnace_beetle.geo.json",
+      "sha256": "a4c9a3d9eb96f94a309a5755db6df98a43078bfe0e5bacd870d83854cedd9820"
+    },
+    {
+      "path": "resource_pack/models/aionbound/ashen/entities/magma_lizard.geo.json",
+      "sha256": "3dda6e18d7e74e382ee0084645777315edef958b7898fbc915ff8a5dccb02c28"
+    },
+    {
+      "path": "resource_pack/models/aionbound/ashen/entities/soot_stag.geo.json",
+      "sha256": "4ced3df52bf8ae82492f68196e2614ef7001d6f255a6c75cd1a49dad52137a71"
+    },
+    {
+      "path": "resource_pack/render_controllers/aionbound/ashen/ash_drake.render_controller.json",
+      "sha256": "d8abcb16484109eaf0d4b2c9a8cba783fe658eb979d7364509852c3c2bf0de9c"
+    },
+    {
+      "path": "resource_pack/render_controllers/aionbound/ashen/ash_mite.render_controller.json",
+      "sha256": "7b6792f1a96afca04e6b3ed4c48a0d0855325e09f298b9a01d486a11c24997bc"
+    },
+    {
+      "path": "resource_pack/render_controllers/aionbound/ashen/ash_ram.render_controller.json",
+      "sha256": "1009d3b5db7ac2e0c0580b6f69179f86b2f99339121a610c5e2d7a8955a77f1f"
+    },
+    {
+      "path": "resource_pack/render_controllers/aionbound/ashen/basalt_tortoise.render_controller.json",
+      "sha256": "943c4296f50e2b52b40354ea703d076df3095de330ba080a2dde6c761e4b7fe9"
+    },
+    {
+      "path": "resource_pack/render_controllers/aionbound/ashen/char_wolf.render_controller.json",
+      "sha256": "d0b6946aede5b3ea5aa612ed1ff0e717f1f3ab43c554e829d6d27ac377e4453c"
+    },
+    {
+      "path": "resource_pack/render_controllers/aionbound/ashen/cinder_lynx.render_controller.json",
+      "sha256": "e41e73208d3fd75e1ea359d7db99598e27957cdfc055f7eb63315dbeea3b6cdb"
+    },
+    {
+      "path": "resource_pack/render_controllers/aionbound/ashen/ember_crow.render_controller.json",
+      "sha256": "84855fc716aec3eab2f6f6cd7ea4edaa1ac1a5101315bfac2aa86a0bf6f275b4"
+    },
+    {
+      "path": "resource_pack/render_controllers/aionbound/ashen/furnace_beetle.render_controller.json",
+      "sha256": "07bcb8fbb6af422cd2bfe094cc8194e185f235cf0a7900f0ee894b9133b1717f"
+    },
+    {
+      "path": "resource_pack/render_controllers/aionbound/ashen/magma_lizard.render_controller.json",
+      "sha256": "ea410ece1af459c677f71b9cffbc3abb844aa9a17deed6f5f77e3985f6c4c9cd"
+    },
+    {
+      "path": "resource_pack/render_controllers/aionbound/ashen/soot_stag.render_controller.json",
+      "sha256": "61a01dde3eec8a9d8df19d26e945ce3bb1ee6451a7ea9041354c5fc3b66d7b65"
+    },
+    {
+      "path": "resource_pack/textures/aionbound/ashen/entity/ash_drake.png",
+      "sha256": "66a1c7ac0e322306052261ea95552dce9a33c508a9aa1c232b169410fe323aea"
+    },
+    {
+      "path": "resource_pack/textures/aionbound/ashen/entity/ash_mite.png",
+      "sha256": "41b855b3ee5c4f85a00479f81e86c2518d3c8561ec43aa5021b8bbc142616ec1"
+    },
+    {
+      "path": "resource_pack/textures/aionbound/ashen/entity/ash_ram.png",
+      "sha256": "e9ff27a1b43688bae42e091137f9077fe171a917d7e67e95483832eb9763c684"
+    },
+    {
+      "path": "resource_pack/textures/aionbound/ashen/entity/basalt_tortoise.png",
+      "sha256": "e3512c30a6f3927287617d108f72390d87803a55d74b27635783af87f812f7eb"
+    },
+    {
+      "path": "resource_pack/textures/aionbound/ashen/entity/char_wolf.png",
+      "sha256": "a2c12337a510e761a1fb37124b5c3147a56f8e42e4d0588343df16180c9ece0e"
+    },
+    {
+      "path": "resource_pack/textures/aionbound/ashen/entity/cinder_lynx.png",
+      "sha256": "3e3bfddc2d37fd165e2b5343f9ff1e1d2cba59ec5a383540a1092446ce6450b8"
+    },
+    {
+      "path": "resource_pack/textures/aionbound/ashen/entity/ember_crow.png",
+      "sha256": "a30e1130df04ceb6162528b1d111843738c8313c242b12ab5a711eca3bffd89c"
+    },
+    {
+      "path": "resource_pack/textures/aionbound/ashen/entity/furnace_beetle.png",
+      "sha256": "adddba620c28044b7ca051de74c8c403054b432d62114c6c04e6837fb68eae16"
+    },
+    {
+      "path": "resource_pack/textures/aionbound/ashen/entity/magma_lizard.png",
+      "sha256": "e87a215b33454ac1c77d62737d660cca7eb535072201723dcb29bb5d79618b70"
+    },
+    {
+      "path": "resource_pack/textures/aionbound/ashen/entity/soot_stag.png",
+      "sha256": "0afdd50401edc8a51f8761678f2b15f3b3aa110d818c9d6049e99fe9d6403f45"
+    }
+  ],
+  "proof_boundary": {
+    "bds": "NOT_RUN",
+    "bedrock_client": "NOT_RUN",
+    "bp_rp_integration": "STATIC_FILES_ONLY",
+    "build": "NOT_RUN",
+    "console_ps4": "NOT_RUN",
+    "json_and_reference_validation": "RUN_BY_TEST_LANE",
+    "marketplace_release": "NOT_RUN",
+    "multiplayer": "NOT_RUN",
+    "native_source_evidence": "PREEXISTING_PASS"
+  },
+  "schema": "aionbound.wave1.ashen_entity_runtime_report.v1",
+  "scope": {
+    "arena_only_shell": "aionbound:ash_drake",
+    "boss_session_completion_rewards": "OUT_OF_SCOPE",
+    "entities": [
+      "ash_drake",
+      "ash_mite",
+      "ash_ram",
+      "basalt_tortoise",
+      "char_wolf",
+      "cinder_lynx",
+      "ember_crow",
+      "furnace_beetle",
+      "magma_lizard",
+      "soot_stag"
+    ],
+    "loot_binding": "OMITTED_FOR_SEPARATE_ECONOMY_LANE",
+    "natural_spawn_entities": [
+      "ash_mite",
+      "ash_ram",
+      "basalt_tortoise",
+      "char_wolf",
+      "cinder_lynx",
+      "ember_crow",
+      "furnace_beetle",
+      "magma_lizard",
+      "soot_stag"
+    ]
+  },
+  "status": "STATIC_RUNTIME_SHELLS_COMPLETE_UNQUALIFIED"
+}

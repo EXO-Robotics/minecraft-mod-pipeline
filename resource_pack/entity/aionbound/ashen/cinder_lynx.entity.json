@@ -1,0 +1,33 @@
+{
+  "format_version": "1.10.0",
+  "minecraft:client_entity": {
+    "description": {
+      "animations": {
+        "death": "animation.aionbound.cinder_lynx.death",
+        "hurt": "animation.aionbound.cinder_lynx.hurt",
+        "idle": "animation.aionbound.cinder_lynx.idle",
+        "pounce_pose": "animation.aionbound.cinder_lynx.pounce_pose",
+        "runtime": "controller.animation.aionbound.ashen.cinder_lynx.runtime",
+        "stalk": "animation.aionbound.cinder_lynx.stalk"
+      },
+      "geometry": {
+        "default": "geometry.aionbound.cinder_lynx"
+      },
+      "identifier": "aionbound:cinder_lynx",
+      "materials": {
+        "default": "entity_alphatest"
+      },
+      "render_controllers": [
+        "controller.render.aionbound.ashen.cinder_lynx"
+      ],
+      "scripts": {
+        "animate": [
+          "runtime"
+        ]
+      },
+      "textures": {
+        "default": "textures/aionbound/ashen/entity/cinder_lynx"
+      }
+    }
+  }
+}

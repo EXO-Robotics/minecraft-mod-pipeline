@@ -1,0 +1,33 @@
+{
+  "format_version": "1.10.0",
+  "minecraft:client_entity": {
+    "description": {
+      "animations": {
+        "death": "animation.aionbound.ash_ram.death",
+        "headbutt_pose": "animation.aionbound.ash_ram.headbutt_pose",
+        "hurt": "animation.aionbound.ash_ram.hurt",
+        "idle": "animation.aionbound.ash_ram.idle",
+        "runtime": "controller.animation.aionbound.ashen.ash_ram.runtime",
+        "walk": "animation.aionbound.ash_ram.walk"
+      },
+      "geometry": {
+        "default": "geometry.aionbound.ash_ram"
+      },
+      "identifier": "aionbound:ash_ram",
+      "materials": {
+        "default": "entity_alphatest"
+      },
+      "render_controllers": [
+        "controller.render.aionbound.ashen.ash_ram"
+      ],
+      "scripts": {
+        "animate": [
+          "runtime"
+        ]
+      },
+      "textures": {
+        "default": "textures/aionbound/ashen/entity/ash_ram"
+      }
+    }
+  }
+}

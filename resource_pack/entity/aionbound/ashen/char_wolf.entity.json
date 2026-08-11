@@ -1,0 +1,34 @@
+{
+  "format_version": "1.10.0",
+  "minecraft:client_entity": {
+    "description": {
+      "animations": {
+        "death": "animation.aionbound.char_wolf.death",
+        "hurt": "animation.aionbound.char_wolf.hurt",
+        "idle": "animation.aionbound.char_wolf.idle",
+        "run": "animation.aionbound.char_wolf.run",
+        "runtime": "controller.animation.aionbound.ashen.char_wolf.runtime",
+        "snarl_attack": "animation.aionbound.char_wolf.snarl_attack",
+        "walk": "animation.aionbound.char_wolf.walk"
+      },
+      "geometry": {
+        "default": "geometry.aionbound.char_wolf"
+      },
+      "identifier": "aionbound:char_wolf",
+      "materials": {
+        "default": "entity_alphatest"
+      },
+      "render_controllers": [
+        "controller.render.aionbound.ashen.char_wolf"
+      ],
+      "scripts": {
+        "animate": [
+          "runtime"
+        ]
+      },
+      "textures": {
+        "default": "textures/aionbound/ashen/entity/char_wolf"
+      }
+    }
+  }
+}

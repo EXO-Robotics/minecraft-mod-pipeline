@@ -1,0 +1,34 @@
+{
+  "format_version": "1.10.0",
+  "minecraft:client_entity": {
+    "description": {
+      "animations": {
+        "antler_shake": "animation.aionbound.soot_stag.antler_shake",
+        "death": "animation.aionbound.soot_stag.death",
+        "hurt": "animation.aionbound.soot_stag.hurt",
+        "idle": "animation.aionbound.soot_stag.idle",
+        "runtime": "controller.animation.aionbound.ashen.soot_stag.runtime",
+        "trot": "animation.aionbound.soot_stag.trot",
+        "walk": "animation.aionbound.soot_stag.walk"
+      },
+      "geometry": {
+        "default": "geometry.aionbound.soot_stag"
+      },
+      "identifier": "aionbound:soot_stag",
+      "materials": {
+        "default": "entity_alphatest"
+      },
+      "render_controllers": [
+        "controller.render.aionbound.ashen.soot_stag"
+      ],
+      "scripts": {
+        "animate": [
+          "runtime"
+        ]
+      },
+      "textures": {
+        "default": "textures/aionbound/ashen/entity/soot_stag"
+      }
+    }
+  }
+}

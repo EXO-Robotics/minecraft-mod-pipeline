@@ -1,0 +1,33 @@
+{
+  "format_version": "1.10.0",
+  "minecraft:client_entity": {
+    "description": {
+      "animations": {
+        "death": "animation.aionbound.magma_lizard.death",
+        "hurt": "animation.aionbound.magma_lizard.hurt",
+        "idle": "animation.aionbound.magma_lizard.idle",
+        "lunge_bite": "animation.aionbound.magma_lizard.lunge_bite",
+        "runtime": "controller.animation.aionbound.ashen.magma_lizard.runtime",
+        "walk": "animation.aionbound.magma_lizard.walk"
+      },
+      "geometry": {
+        "default": "geometry.aionbound.magma_lizard"
+      },
+      "identifier": "aionbound:magma_lizard",
+      "materials": {
+        "default": "entity_alphatest"
+      },
+      "render_controllers": [
+        "controller.render.aionbound.ashen.magma_lizard"
+      ],
+      "scripts": {
+        "animate": [
+          "runtime"
+        ]
+      },
+      "textures": {
+        "default": "textures/aionbound/ashen/entity/magma_lizard"
+      }
+    }
+  }
+}

@@ -1,0 +1,72 @@
+{
+  "format_version": "1.21.80",
+  "minecraft:entity": {
+    "components": {
+      "minecraft:attack": {
+        "damage": 6
+      },
+      "minecraft:behavior.float": {
+        "priority": 0
+      },
+      "minecraft:behavior.hurt_by_target": {
+        "priority": 1
+      },
+      "minecraft:behavior.look_at_player": {
+        "look_distance": 9,
+        "priority": 7,
+        "probability": 0.06
+      },
+      "minecraft:behavior.melee_attack": {
+        "priority": 2,
+        "speed_multiplier": 1.18,
+        "track_target": true
+      },
+      "minecraft:behavior.random_look_around": {
+        "priority": 8
+      },
+      "minecraft:behavior.random_stroll": {
+        "interval": 90,
+        "priority": 6,
+        "speed_multiplier": 0.75
+      },
+      "minecraft:collision_box": {
+        "height": 1.8,
+        "width": 1.0
+      },
+      "minecraft:despawn": {
+        "despawn_from_distance": {
+          "max_distance": 96,
+          "min_distance": 40
+        }
+      },
+      "minecraft:health": {
+        "max": 38,
+        "value": 38
+      },
+      "minecraft:movement": {
+        "value": 0.25
+      },
+      "minecraft:movement.basic": {},
+      "minecraft:navigation.walk": {
+        "avoid_damage_blocks": true,
+        "can_path_over_water": false,
+        "can_sink": true
+      },
+      "minecraft:physics": {},
+      "minecraft:type_family": {
+        "family": [
+          "aionbound",
+          "ashen",
+          "soot_stag",
+          "creature",
+          "neutral"
+        ]
+      }
+    },
+    "description": {
+      "identifier": "aionbound:soot_stag",
+      "is_spawnable": true,
+      "is_summonable": true
+    }
+  }
+}

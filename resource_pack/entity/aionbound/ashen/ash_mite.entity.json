@@ -1,0 +1,32 @@
+{
+  "format_version": "1.10.0",
+  "minecraft:client_entity": {
+    "description": {
+      "animations": {
+        "death": "animation.aionbound.ash_mite.death",
+        "hurt": "animation.aionbound.ash_mite.hurt",
+        "idle": "animation.aionbound.ash_mite.idle",
+        "runtime": "controller.animation.aionbound.ashen.ash_mite.runtime",
+        "skitter": "animation.aionbound.ash_mite.skitter"
+      },
+      "geometry": {
+        "default": "geometry.aionbound.ash_mite"
+      },
+      "identifier": "aionbound:ash_mite",
+      "materials": {
+        "default": "entity_alphatest"
+      },
+      "render_controllers": [
+        "controller.render.aionbound.ashen.ash_mite"
+      ],
+      "scripts": {
+        "animate": [
+          "runtime"
+        ]
+      },
+      "textures": {
+        "default": "textures/aionbound/ashen/entity/ash_mite"
+      }
+    }
+  }
+}

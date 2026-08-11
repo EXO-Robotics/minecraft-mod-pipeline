@@ -1,0 +1,34 @@
+{
+  "format_version": "1.10.0",
+  "minecraft:client_entity": {
+    "description": {
+      "animations": {
+        "charge": "animation.aionbound.furnace_beetle.charge",
+        "death": "animation.aionbound.furnace_beetle.death",
+        "hurt": "animation.aionbound.furnace_beetle.hurt",
+        "idle": "animation.aionbound.furnace_beetle.idle",
+        "mandible_clamp": "animation.aionbound.furnace_beetle.mandible_clamp",
+        "runtime": "controller.animation.aionbound.ashen.furnace_beetle.runtime",
+        "walk": "animation.aionbound.furnace_beetle.walk"
+      },
+      "geometry": {
+        "default": "geometry.aionbound.furnace_beetle"
+      },
+      "identifier": "aionbound:furnace_beetle",
+      "materials": {
+        "default": "entity_alphatest"
+      },
+      "render_controllers": [
+        "controller.render.aionbound.ashen.furnace_beetle"
+      ],
+      "scripts": {
+        "animate": [
+          "runtime"
+        ]
+      },
+      "textures": {
+        "default": "textures/aionbound/ashen/entity/furnace_beetle"
+      }
+    }
+  }
+}
