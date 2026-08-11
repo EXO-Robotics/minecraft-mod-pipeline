@@ -1,0 +1,2179 @@
+{
+  "adjacent_cross_region_links": [
+    {
+      "codex_page_allocation": "REFERENCE_ONLY_NO_CM_ADDRESS",
+      "gameplay_role": "Reveal, measure, and Codex-aid verb for Skyreach/pilgrim",
+      "gated_semantics": {
+        "blockers": [
+          "W1-001-CM",
+          "SKYREACH_AUTHORITY"
+        ],
+        "withheld": [
+          "final ingredient disposition and recipe quantities",
+          "numeric acquisition or loot probability",
+          "gameplay effect values and balance",
+          "boss/reward grant or recovery semantics where applicable"
+        ]
+      },
+      "group": "tools",
+      "id": "surveyor_staff",
+      "native_readiness": {
+        "absolute_texture_binding_present": false,
+        "brief_expected_clips": [
+          "hold"
+        ],
+        "brief_expected_locators": [
+          "effect"
+        ],
+        "brief_model_identifier": "geometry.aionforge_eq.surveyor_staff",
+        "brief_role": "Explorer measuring staff",
+        "brief_texture_resolution": "64\u00d764",
+        "exported_clip_names": [
+          "animation.aionforge_eq.surveyor_staff.action",
+          "animation.aionforge_eq.surveyor_staff.idle"
+        ],
+        "exported_locator_names": [
+          "effect"
+        ],
+        "native_locator_gap": [
+          "effect"
+        ],
+        "native_locator_names": [],
+        "native_roundtrip": "NOT_RUN_REPAIR_REQUIRED",
+        "role_clip_gap": [
+          "hold"
+        ],
+        "source_clip_names": [
+          "animation.aionforge_eq.surveyor_staff.action",
+          "animation.aionforge_eq.surveyor_staff.idle"
+        ],
+        "texture_dimensions": [
+          32,
+          32
+        ]
+      },
+      "recipe_acquisition_provenance": {
+        "acquisition_inputs": [
+          "bog_watcher",
+          "flood_crystal",
+          "ruined_observatory"
+        ],
+        "gated_by": [
+          "W1-001-CM",
+          "SKYREACH_AUTHORITY"
+        ],
+        "provenance": "Adjacent Crystal-to-Skyreach/pilgrim cross-craft; not a direct Packet 003 equipment page",
+        "source_formula": "Twin Mineral Lens + sky timber + aether chip -> surveyor_staff"
+      },
+      "relationship": "ADJACENT_CROSS_REGION_LINK",
+      "runtime_id": "aionbound:surveyor_staff",
+      "safe_now": [
+        "retain exact warehouse/runtime identity and Packet 006 visual provenance",
+        "prepare namespace-safe registry, localization, target paths, and Codex page scaffolding",
+        "repair native locator/clip/portable-binding gaps and bind approved presentation without inventing gameplay",
+        "preserve nonnumeric region, role, and source relationships"
+      ],
+      "source_files": {
+        "brief": {
+          "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-006-equipment-progression/assets/briefs/surveyor_staff.json",
+          "sha256": "b6c91c9cbf175233637e0ce0487f0cb219ef2f0b64a135b1a6a9342732f4d506"
+        },
+        "editable_bbmodel": {
+          "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-006-equipment-progression/assets/editable/surveyor_staff.bbmodel",
+          "sha256": "7a3d9d9602569ba5235a329be347710fcaf7ed9559f475d7cef3c3eef7a5c00e"
+        },
+        "editable_png": {
+          "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-006-equipment-progression/assets/editable/surveyor_staff.png",
+          "sha256": "0896ad8e964bf77c3df2f4ecc9c8031f2b1a11ce8bec0ad04e460f4124f06fc0"
+        },
+        "export_animation": {
+          "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-006-equipment-progression/assets/export/animations/surveyor_staff.animation.json",
+          "sha256": "64824ca55803fbe4143370e9e9514a59806199273051ee2128883413457e9ab2"
+        },
+        "export_geometry": {
+          "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-006-equipment-progression/assets/export/models/surveyor_staff.geo.json",
+          "sha256": "d2558ab56e7d057106e619b20c8355f704a5986e043eab19bb17b9847e221934"
+        },
+        "export_texture": {
+          "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-006-equipment-progression/assets/export/textures/surveyor_staff.png",
+          "sha256": "0896ad8e964bf77c3df2f4ecc9c8031f2b1a11ce8bec0ad04e460f4124f06fc0"
+        }
+      },
+      "target_status_at_base": {
+        "identity_specific_targets_missing": [
+          "behavior_pack/items/surveyor_staff.item.json",
+          "behavior_pack/recipes/surveyor_staff.recipe.json",
+          "resource_pack/attachables/surveyor_staff.attachable.json",
+          "resource_pack/models/aionbound/crystal_marsh/equipment/surveyor_staff.geo.json",
+          "resource_pack/animations/aionbound/crystal_marsh/equipment/surveyor_staff.animation.json",
+          "resource_pack/textures/aionbound/wave1/equipment/items/surveyor_staff.png"
+        ],
+        "identity_specific_targets_present": [],
+        "shared_targets_present": [
+          "resource_pack/textures/item_texture.json",
+          "resource_pack/texts/en_US.lang",
+          "behavior_pack/scripts/catalog.js",
+          "behavior_pack/scripts/codex.js"
+        ],
+        "targets": [
+          {
+            "path": "behavior_pack/items/surveyor_staff.item.json",
+            "present": false
+          },
+          {
+            "path": "behavior_pack/recipes/surveyor_staff.recipe.json",
+            "present": false
+          },
+          {
+            "path": "resource_pack/attachables/surveyor_staff.attachable.json",
+            "present": false
+          },
+          {
+            "path": "resource_pack/models/aionbound/crystal_marsh/equipment/surveyor_staff.geo.json",
+            "present": false
+          },
+          {
+            "path": "resource_pack/animations/aionbound/crystal_marsh/equipment/surveyor_staff.animation.json",
+            "present": false
+          },
+          {
+            "path": "resource_pack/textures/aionbound/wave1/equipment/items/surveyor_staff.png",
+            "present": false
+          },
+          {
+            "path": "resource_pack/textures/item_texture.json",
+            "present": true
+          },
+          {
+            "path": "resource_pack/texts/en_US.lang",
+            "present": true
+          },
+          {
+            "path": "behavior_pack/scripts/catalog.js",
+            "present": true
+          },
+          {
+            "path": "behavior_pack/scripts/codex.js",
+            "present": true
+          }
+        ]
+      },
+      "visual_role": "Explorer measuring staff"
+    },
+    {
+      "codex_page_allocation": "REFERENCE_ONLY_NO_CM_ADDRESS",
+      "gameplay_role": "Multi-region navigation and waystone verb",
+      "gated_semantics": {
+        "blockers": [
+          "W1-001-CM",
+          "SKYREACH_AUTHORITY"
+        ],
+        "withheld": [
+          "final ingredient disposition and recipe quantities",
+          "numeric acquisition or loot probability",
+          "gameplay effect values and balance",
+          "boss/reward grant or recovery semantics where applicable"
+        ]
+      },
+      "group": "tools",
+      "id": "trail_compass",
+      "native_readiness": {
+        "absolute_texture_binding_present": false,
+        "brief_expected_clips": [
+          "needle_idle"
+        ],
+        "brief_expected_locators": [
+          "effect"
+        ],
+        "brief_model_identifier": "geometry.aionforge_eq.trail_compass",
+        "brief_role": "Brass navigation compass",
+        "brief_texture_resolution": "64\u00d764",
+        "exported_clip_names": [
+          "animation.aionforge_eq.trail_compass.action",
+          "animation.aionforge_eq.trail_compass.idle"
+        ],
+        "exported_locator_names": [
+          "effect"
+        ],
+        "native_locator_gap": [
+          "effect"
+        ],
+        "native_locator_names": [],
+        "native_roundtrip": "NOT_RUN_REPAIR_REQUIRED",
+        "role_clip_gap": [
+          "needle_idle"
+        ],
+        "source_clip_names": [
+          "animation.aionforge_eq.trail_compass.action",
+          "animation.aionforge_eq.trail_compass.idle"
+        ],
+        "texture_dimensions": [
+          32,
+          32
+        ]
+      },
+      "recipe_acquisition_provenance": {
+        "acquisition_inputs": [
+          "ruined_observatory"
+        ],
+        "gated_by": [
+          "W1-001-CM",
+          "SKYREACH_AUTHORITY"
+        ],
+        "provenance": "Adjacent multi-region navigation link; not a direct Packet 003 equipment page",
+        "source_formula": "waystone needle + brass + wind oil -> trail_compass"
+      },
+      "relationship": "ADJACENT_CROSS_REGION_LINK",
+      "runtime_id": "aionbound:trail_compass",
+      "safe_now": [
+        "retain exact warehouse/runtime identity and Packet 006 visual provenance",
+        "prepare namespace-safe registry, localization, target paths, and Codex page scaffolding",
+        "repair native locator/clip/portable-binding gaps and bind approved presentation without inventing gameplay",
+        "preserve nonnumeric region, role, and source relationships"
+      ],
+      "source_files": {
+        "brief": {
+          "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-006-equipment-progression/assets/briefs/trail_compass.json",
+          "sha256": "2cb931d70024f0a7fad7ade046ab50e8b1eaa527952fae14d2d5aa83ed7564c7"
+        },
+        "editable_bbmodel": {
+          "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-006-equipment-progression/assets/editable/trail_compass.bbmodel",
+          "sha256": "deddc09fe448746e74258ca1690ddb5a3eb436ce4e68f3b873457efd30180922"
+        },
+        "editable_png": {
+          "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-006-equipment-progression/assets/editable/trail_compass.png",
+          "sha256": "f85f0e918e414c7a40bb45844b9f2f8454af16a7a4a2990554479b1f9f26dbf7"
+        },
+        "export_animation": {
+          "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-006-equipment-progression/assets/export/animations/trail_compass.animation.json",
+          "sha256": "e5a888e03e145a76d438758c1bfbe40b43481c1ad0d711fcaff3a8d2871209e3"
+        },
+        "export_geometry": {
+          "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-006-equipment-progression/assets/export/models/trail_compass.geo.json",
+          "sha256": "67908a18de95729f496183531a0eab6be53abc020b3bf24ad6bfb0e0c235b729"
+        },
+        "export_texture": {
+          "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-006-equipment-progression/assets/export/textures/trail_compass.png",
+          "sha256": "f85f0e918e414c7a40bb45844b9f2f8454af16a7a4a2990554479b1f9f26dbf7"
+        }
+      },
+      "target_status_at_base": {
+        "identity_specific_targets_missing": [
+          "behavior_pack/items/trail_compass.item.json",
+          "behavior_pack/recipes/trail_compass.recipe.json",
+          "resource_pack/attachables/trail_compass.attachable.json",
+          "resource_pack/models/aionbound/crystal_marsh/equipment/trail_compass.geo.json",
+          "resource_pack/animations/aionbound/crystal_marsh/equipment/trail_compass.animation.json",
+          "resource_pack/textures/aionbound/wave1/equipment/items/trail_compass.png"
+        ],
+        "identity_specific_targets_present": [],
+        "shared_targets_present": [
+          "resource_pack/textures/item_texture.json",
+          "resource_pack/texts/en_US.lang",
+          "behavior_pack/scripts/catalog.js",
+          "behavior_pack/scripts/codex.js"
+        ],
+        "targets": [
+          {
+            "path": "behavior_pack/items/trail_compass.item.json",
+            "present": false
+          },
+          {
+            "path": "behavior_pack/recipes/trail_compass.recipe.json",
+            "present": false
+          },
+          {
+            "path": "resource_pack/attachables/trail_compass.attachable.json",
+            "present": false
+          },
+          {
+            "path": "resource_pack/models/aionbound/crystal_marsh/equipment/trail_compass.geo.json",
+            "present": false
+          },
+          {
+            "path": "resource_pack/animations/aionbound/crystal_marsh/equipment/trail_compass.animation.json",
+            "present": false
+          },
+          {
+            "path": "resource_pack/textures/aionbound/wave1/equipment/items/trail_compass.png",
+            "present": false
+          },
+          {
+            "path": "resource_pack/textures/item_texture.json",
+            "present": true
+          },
+          {
+            "path": "resource_pack/texts/en_US.lang",
+            "present": true
+          },
+          {
+            "path": "behavior_pack/scripts/catalog.js",
+            "present": true
+          },
+          {
+            "path": "behavior_pack/scripts/codex.js",
+            "present": true
+          }
+        ]
+      },
+      "visual_role": "Brass navigation compass"
+    }
+  ],
+  "ashen_runtime_dependency": {
+    "crystal_dependency": false,
+    "relationship": "FINAL_INTEGRATION_DEPENDENCY_ONLY",
+    "status": "MANAGED_REVIEWER_ACTIVATION_BLOCKED"
+  },
+  "authority": [
+    {
+      "path": "engineering/crystal-marsh-intake/authority/CRYSTAL_MARSH_VERTICAL_INTAKE_MAP.json",
+      "role": "exact Packet 003 and Packet 006 structural authority",
+      "sha256": "922b40aaefff220d4bd9b60fa0596b09a76fb6cf7dd181dac42e1dda856417f3"
+    },
+    {
+      "path": "engineering/authority/WAVE_1_ENGINEERING_DECISION_LEDGER.json",
+      "role": "current ratified/deferred decision boundary",
+      "sha256": "b554db9fab3fe16e59e2e3b36dfc310ff462078b170f14e1f9fe8a46999bbd0c"
+    },
+    {
+      "path": "engineering/authority/support-proposals/crystal-marsh/W1-001-CM.json",
+      "role": "proposed Crystal authority with no effect until ratified",
+      "sha256": "18cd4af591fa32fedd6aab4b9ed29d5710fc21cea7c9b0103702ed2ddc2e3293"
+    },
+    {
+      "path": "engineering/authority/support-proposals/crystal-marsh/W1-003-PEARL-DEPTHS.json",
+      "role": "proposed Crystal authority with no effect until ratified",
+      "sha256": "b445cdc251eea6a79b03816b7ea0cf2bab0c6545a91946874e877f114a3e7098"
+    },
+    {
+      "path": "engineering/authority/support-proposals/crystal-marsh/W1-004-CM.json",
+      "role": "proposed Crystal authority with no effect until ratified",
+      "sha256": "b7562ab355bb2d30a8074149d0477ee28bd96ce02615d03b2b3fae5cb397e46c"
+    }
+  ],
+  "authority_partition": {
+    "SAFE_NOW": [
+      "11 direct identity pages and two adjacent references",
+      "registry/localization/target scaffolding",
+      "nonnumeric role, provenance, acquisition-source, and crafting-edge mapping",
+      "native repair and approved-art presentation preparation"
+    ],
+    "W1-001-CM": "Final Crystal term dispositions, alternatives, component promotion, and ingredient closure remain proposed, not ratified.",
+    "W1-003-PEARL-DEPTHS": "Executable Marsh Wight encounter and mask grant remain proposed, not ratified.",
+    "W1-004-CM": "Numeric loot, first-clear, seal, recovery, and mastery-reward semantics remain proposed, not ratified.",
+    "W1-CREATIVE-005": "DEFERRED_BY_USER; blocks only distinct Gale-strung prism_bow and other sidegrade representations, not the base prism_bow identity."
+  },
+  "base": {
+    "commit": "b4005112cf7ad347433ec3aa42bf7a761359b95d",
+    "g7_immutable": true,
+    "tree": "6a2008f2a4f68859ef330a5b984af5eb8d9692c8"
+  },
+  "counts": {
+    "adjacent_cross_region_links": 2,
+    "cm_codex_pages": 11,
+    "direct_packet003_links": 11
+  },
+  "direct_packet003_links": [
+    {
+      "codex_page_allocation": "CM_EQUIPMENT_PAGE",
+      "gameplay_role": "Long wet reach and precision for bridge/boat fights",
+      "gated_semantics": {
+        "blockers": [
+          "W1-001-CM"
+        ],
+        "withheld": [
+          "final ingredient disposition and recipe quantities",
+          "numeric acquisition or loot probability",
+          "gameplay effect values and balance",
+          "boss/reward grant or recovery semantics where applicable"
+        ]
+      },
+      "group": "weapons",
+      "id": "crystal_pike",
+      "native_readiness": {
+        "absolute_texture_binding_present": false,
+        "brief_expected_clips": [
+          "idle_hold",
+          "thrust_pose"
+        ],
+        "brief_expected_locators": [
+          "effect"
+        ],
+        "brief_model_identifier": "geometry.aionforge_eq.crystal_pike",
+        "brief_role": "Marsh mineral-grown long pike",
+        "brief_texture_resolution": "64\u00d764",
+        "exported_clip_names": [
+          "animation.aionforge_eq.crystal_pike.action",
+          "animation.aionforge_eq.crystal_pike.idle"
+        ],
+        "exported_locator_names": [
+          "effect"
+        ],
+        "native_locator_gap": [
+          "effect"
+        ],
+        "native_locator_names": [],
+        "native_roundtrip": "NOT_RUN_REPAIR_REQUIRED",
+        "role_clip_gap": [
+          "idle_hold",
+          "thrust_pose"
+        ],
+        "source_clip_names": [
+          "animation.aionforge_eq.crystal_pike.action",
+          "animation.aionforge_eq.crystal_pike.idle"
+        ],
+        "texture_dimensions": [
+          32,
+          32
+        ]
+      },
+      "recipe_acquisition_provenance": {
+        "acquisition_inputs": [
+          "crystal_reed_item",
+          "flood_crystal",
+          "glass_heron",
+          "reed_serpent"
+        ],
+        "gated_by": [
+          "W1-001-CM"
+        ],
+        "provenance": "Crystal Marsh reeds, flood crystal, and heron/serpent routes",
+        "source_formula": "Crystal Pole + Heron Beak / crystal tip -> crystal_pike"
+      },
+      "relationship": "DIRECT_PACKET_003_LINK",
+      "runtime_id": "aionbound:crystal_pike",
+      "safe_now": [
+        "retain exact warehouse/runtime identity and Packet 006 visual provenance",
+        "prepare namespace-safe registry, localization, target paths, and Codex page scaffolding",
+        "repair native locator/clip/portable-binding gaps and bind approved presentation without inventing gameplay",
+        "preserve nonnumeric region, role, and source relationships"
+      ],
+      "source_files": {
+        "brief": {
+          "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-006-equipment-progression/assets/briefs/crystal_pike.json",
+          "sha256": "25cc41ca4cd0dc32cd7e898471c25a02264731e27e570a43c19715fa70437e92"
+        },
+        "editable_bbmodel": {
+          "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-006-equipment-progression/assets/editable/crystal_pike.bbmodel",
+          "sha256": "535177ee22ad4db0aefbbcd9830d5b070a62da971b5fde6f68f5db410b1dcf69"
+        },
+        "editable_png": {
+          "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-006-equipment-progression/assets/editable/crystal_pike.png",
+          "sha256": "3aad28dceb69f6207da7a09657465a3e4cff8e60b2740f7104cc97d05afaae7f"
+        },
+        "export_animation": {
+          "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-006-equipment-progression/assets/export/animations/crystal_pike.animation.json",
+          "sha256": "e0b3d3138d2af9eefa7961101dc5319d1ceea5a4d6ae9d52c379dd9805ae53c5"
+        },
+        "export_geometry": {
+          "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-006-equipment-progression/assets/export/models/crystal_pike.geo.json",
+          "sha256": "556b3648cba077cda5feb917c8d3700f655ba17dad0dcb5d0ea29a83e4c0341f"
+        },
+        "export_texture": {
+          "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-006-equipment-progression/assets/export/textures/crystal_pike.png",
+          "sha256": "3aad28dceb69f6207da7a09657465a3e4cff8e60b2740f7104cc97d05afaae7f"
+        }
+      },
+      "target_status_at_base": {
+        "identity_specific_targets_missing": [
+          "behavior_pack/items/crystal_pike.item.json",
+          "behavior_pack/recipes/crystal_pike.recipe.json",
+          "resource_pack/attachables/crystal_pike.attachable.json",
+          "resource_pack/models/aionbound/crystal_marsh/equipment/crystal_pike.geo.json",
+          "resource_pack/animations/aionbound/crystal_marsh/equipment/crystal_pike.animation.json",
+          "resource_pack/textures/aionbound/wave1/equipment/items/crystal_pike.png"
+        ],
+        "identity_specific_targets_present": [],
+        "shared_targets_present": [
+          "resource_pack/textures/item_texture.json",
+          "resource_pack/texts/en_US.lang",
+          "behavior_pack/scripts/catalog.js",
+          "behavior_pack/scripts/codex.js"
+        ],
+        "targets": [
+          {
+            "path": "behavior_pack/items/crystal_pike.item.json",
+            "present": false
+          },
+          {
+            "path": "behavior_pack/recipes/crystal_pike.recipe.json",
+            "present": false
+          },
+          {
+            "path": "resource_pack/attachables/crystal_pike.attachable.json",
+            "present": false
+          },
+          {
+            "path": "resource_pack/models/aionbound/crystal_marsh/equipment/crystal_pike.geo.json",
+            "present": false
+          },
+          {
+            "path": "resource_pack/animations/aionbound/crystal_marsh/equipment/crystal_pike.animation.json",
+            "present": false
+          },
+          {
+            "path": "resource_pack/textures/aionbound/wave1/equipment/items/crystal_pike.png",
+            "present": false
+          },
+          {
+            "path": "resource_pack/textures/item_texture.json",
+            "present": true
+          },
+          {
+            "path": "resource_pack/texts/en_US.lang",
+            "present": true
+          },
+          {
+            "path": "behavior_pack/scripts/catalog.js",
+            "present": true
+          },
+          {
+            "path": "behavior_pack/scripts/codex.js",
+            "present": true
+          }
+        ]
+      },
+      "visual_role": "Marsh mineral-grown long pike"
+    },
+    {
+      "codex_page_allocation": "CM_EQUIPMENT_PAGE",
+      "gameplay_role": "Clean ranged prism utility for open water and heron cliffs",
+      "gated_semantics": {
+        "blockers": [
+          "W1-001-CM"
+        ],
+        "withheld": [
+          "final ingredient disposition and recipe quantities",
+          "numeric acquisition or loot probability",
+          "gameplay effect values and balance",
+          "boss/reward grant or recovery semantics where applicable"
+        ]
+      },
+      "group": "weapons",
+      "id": "prism_bow",
+      "native_readiness": {
+        "absolute_texture_binding_present": false,
+        "brief_expected_clips": [
+          "draw_pose",
+          "fire_pose",
+          "idle_hold"
+        ],
+        "brief_expected_locators": [
+          "effect"
+        ],
+        "brief_model_identifier": "geometry.aionforge_eq.prism_bow",
+        "brief_role": "Crystal Marsh recurve with prism tips",
+        "brief_texture_resolution": "64\u00d764",
+        "exported_clip_names": [
+          "animation.aionforge_eq.prism_bow.action",
+          "animation.aionforge_eq.prism_bow.idle"
+        ],
+        "exported_locator_names": [
+          "effect"
+        ],
+        "native_locator_gap": [
+          "effect"
+        ],
+        "native_locator_names": [],
+        "native_roundtrip": "NOT_RUN_REPAIR_REQUIRED",
+        "role_clip_gap": [
+          "draw_pose",
+          "fire_pose",
+          "idle_hold"
+        ],
+        "source_clip_names": [
+          "animation.aionforge_eq.prism_bow.action",
+          "animation.aionforge_eq.prism_bow.idle"
+        ],
+        "texture_dimensions": [
+          32,
+          32
+        ]
+      },
+      "recipe_acquisition_provenance": {
+        "acquisition_inputs": [
+          "crystal_dragonfly",
+          "flood_crystal",
+          "glass_algae",
+          "glass_heron"
+        ],
+        "gated_by": [
+          "W1-001-CM"
+        ],
+        "provenance": "Crystal Marsh prism-wing and mineral-polish route",
+        "sidegrade_boundary": "Gale-strung prism_bow remains W1-CREATIVE-005 deferred; base prism_bow is not blocked by that deferral.",
+        "source_formula": "bow limbs + prism wing + algae polish -> prism_bow"
+      },
+      "relationship": "DIRECT_PACKET_003_LINK",
+      "runtime_id": "aionbound:prism_bow",
+      "safe_now": [
+        "retain exact warehouse/runtime identity and Packet 006 visual provenance",
+        "prepare namespace-safe registry, localization, target paths, and Codex page scaffolding",
+        "repair native locator/clip/portable-binding gaps and bind approved presentation without inventing gameplay",
+        "preserve nonnumeric region, role, and source relationships"
+      ],
+      "source_files": {
+        "brief": {
+          "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-006-equipment-progression/assets/briefs/prism_bow.json",
+          "sha256": "d8694d480722077984b8a153180b0edc4dfaf1433556150b38583e2b3d781e4f"
+        },
+        "editable_bbmodel": {
+          "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-006-equipment-progression/assets/editable/prism_bow.bbmodel",
+          "sha256": "c59ead29ef6c08eec4909c080ea5464cfe076d086d875abebef4475d0079ba20"
+        },
+        "editable_png": {
+          "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-006-equipment-progression/assets/editable/prism_bow.png",
+          "sha256": "324dda778128d1ea5910e8c627d0cf738b46e9223e022e8d149138f45aa69a66"
+        },
+        "export_animation": {
+          "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-006-equipment-progression/assets/export/animations/prism_bow.animation.json",
+          "sha256": "8ed2d882a00fd5626b30e0a05076a0ba1de5058cc2f6cc129a7c436904402247"
+        },
+        "export_geometry": {
+          "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-006-equipment-progression/assets/export/models/prism_bow.geo.json",
+          "sha256": "347a3f1c622f0feb00e65957bf8da67d1827a80e94882f91a1af73165c3799f2"
+        },
+        "export_texture": {
+          "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-006-equipment-progression/assets/export/textures/prism_bow.png",
+          "sha256": "324dda778128d1ea5910e8c627d0cf738b46e9223e022e8d149138f45aa69a66"
+        }
+      },
+      "target_status_at_base": {
+        "identity_specific_targets_missing": [
+          "behavior_pack/items/prism_bow.item.json",
+          "behavior_pack/recipes/prism_bow.recipe.json",
+          "resource_pack/attachables/prism_bow.attachable.json",
+          "resource_pack/models/aionbound/crystal_marsh/equipment/prism_bow.geo.json",
+          "resource_pack/animations/aionbound/crystal_marsh/equipment/prism_bow.animation.json",
+          "resource_pack/textures/aionbound/wave1/equipment/items/prism_bow.png"
+        ],
+        "identity_specific_targets_present": [],
+        "shared_targets_present": [
+          "resource_pack/textures/item_texture.json",
+          "resource_pack/texts/en_US.lang",
+          "behavior_pack/scripts/catalog.js",
+          "behavior_pack/scripts/codex.js"
+        ],
+        "targets": [
+          {
+            "path": "behavior_pack/items/prism_bow.item.json",
+            "present": false
+          },
+          {
+            "path": "behavior_pack/recipes/prism_bow.recipe.json",
+            "present": false
+          },
+          {
+            "path": "resource_pack/attachables/prism_bow.attachable.json",
+            "present": false
+          },
+          {
+            "path": "resource_pack/models/aionbound/crystal_marsh/equipment/prism_bow.geo.json",
+            "present": false
+          },
+          {
+            "path": "resource_pack/animations/aionbound/crystal_marsh/equipment/prism_bow.animation.json",
+            "present": false
+          },
+          {
+            "path": "resource_pack/textures/aionbound/wave1/equipment/items/prism_bow.png",
+            "present": false
+          },
+          {
+            "path": "resource_pack/textures/item_texture.json",
+            "present": true
+          },
+          {
+            "path": "resource_pack/texts/en_US.lang",
+            "present": true
+          },
+          {
+            "path": "behavior_pack/scripts/catalog.js",
+            "present": true
+          },
+          {
+            "path": "behavior_pack/scripts/codex.js",
+            "present": true
+          }
+        ]
+      },
+      "visual_role": "Crystal Marsh recurve with prism tips"
+    },
+    {
+      "codex_page_allocation": "CM_EQUIPMENT_PAGE",
+      "gameplay_role": "Marsh crown with magic/perception identity; not a full set",
+      "gated_semantics": {
+        "blockers": [
+          "W1-001-CM",
+          "W1-004-CM"
+        ],
+        "withheld": [
+          "final ingredient disposition and recipe quantities",
+          "numeric acquisition or loot probability",
+          "gameplay effect values and balance",
+          "boss/reward grant or recovery semantics where applicable"
+        ]
+      },
+      "group": "armor",
+      "id": "crystal_circlet",
+      "native_readiness": {
+        "absolute_texture_binding_present": false,
+        "brief_expected_clips": [
+          "pulse"
+        ],
+        "brief_expected_locators": [
+          "effect"
+        ],
+        "brief_model_identifier": "geometry.aionforge_eq.crystal_circlet",
+        "brief_role": "Open crystal mint headpiece",
+        "brief_texture_resolution": "64\u00d764",
+        "exported_clip_names": [
+          "animation.aionforge_eq.crystal_circlet.action",
+          "animation.aionforge_eq.crystal_circlet.idle"
+        ],
+        "exported_locator_names": [
+          "effect"
+        ],
+        "native_locator_gap": [
+          "effect"
+        ],
+        "native_locator_names": [],
+        "native_roundtrip": "NOT_RUN_REPAIR_REQUIRED",
+        "role_clip_gap": [
+          "pulse"
+        ],
+        "source_clip_names": [
+          "animation.aionforge_eq.crystal_circlet.action",
+          "animation.aionforge_eq.crystal_circlet.idle"
+        ],
+        "texture_dimensions": [
+          32,
+          32
+        ]
+      },
+      "recipe_acquisition_provenance": {
+        "acquisition_inputs": [
+          "crystal_root_item",
+          "moon_pearl",
+          "prism_pearl",
+          "bog_watcher",
+          "crystal_newt",
+          "wet_chitin",
+          "marsh_wight"
+        ],
+        "gated_by": [
+          "W1-001-CM",
+          "W1-004-CM"
+        ],
+        "provenance": "Crystal Marsh living crystal, pearl, watcher, and wet-chitin route",
+        "source_formula": "Living Crystal Core + Watcher Lens + silk -> crystal_circlet"
+      },
+      "relationship": "DIRECT_PACKET_003_LINK",
+      "runtime_id": "aionbound:crystal_circlet",
+      "safe_now": [
+        "retain exact warehouse/runtime identity and Packet 006 visual provenance",
+        "prepare namespace-safe registry, localization, target paths, and Codex page scaffolding",
+        "repair native locator/clip/portable-binding gaps and bind approved presentation without inventing gameplay",
+        "preserve nonnumeric region, role, and source relationships"
+      ],
+      "source_files": {
+        "brief": {
+          "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-006-equipment-progression/assets/briefs/crystal_circlet.json",
+          "sha256": "bf415e9cc855860d1d18a6153b821aa28d395b2628044dfe43e340e16e9155e2"
+        },
+        "editable_bbmodel": {
+          "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-006-equipment-progression/assets/editable/crystal_circlet.bbmodel",
+          "sha256": "d0132662e486aed21ab4f58c4eff3c14fc0945c1e6fa79fccab5f5b79d467c23"
+        },
+        "editable_png": {
+          "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-006-equipment-progression/assets/editable/crystal_circlet.png",
+          "sha256": "3778f171472477c4ee733f986192d7bf4bba19958a5f1f093d1369fdf4239e63"
+        },
+        "export_animation": {
+          "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-006-equipment-progression/assets/export/animations/crystal_circlet.animation.json",
+          "sha256": "2802b4b240ba20661a68870abc4197b2ff4dad5acd4392ddae5a6dc3419aee4f"
+        },
+        "export_geometry": {
+          "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-006-equipment-progression/assets/export/models/crystal_circlet.geo.json",
+          "sha256": "f170477cef02cd6f2c38461118e6be65cc2070225d71a567b86f588bbb5b5774"
+        },
+        "export_texture": {
+          "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-006-equipment-progression/assets/export/textures/crystal_circlet.png",
+          "sha256": "3778f171472477c4ee733f986192d7bf4bba19958a5f1f093d1369fdf4239e63"
+        }
+      },
+      "target_status_at_base": {
+        "identity_specific_targets_missing": [
+          "behavior_pack/items/crystal_circlet.item.json",
+          "behavior_pack/recipes/crystal_circlet.recipe.json",
+          "resource_pack/attachables/crystal_circlet.attachable.json",
+          "resource_pack/models/aionbound/crystal_marsh/equipment/crystal_circlet.geo.json",
+          "resource_pack/animations/aionbound/crystal_marsh/equipment/crystal_circlet.animation.json",
+          "resource_pack/textures/aionbound/wave1/equipment/armor/crystal_circlet.png"
+        ],
+        "identity_specific_targets_present": [],
+        "shared_targets_present": [
+          "resource_pack/textures/item_texture.json",
+          "resource_pack/texts/en_US.lang",
+          "behavior_pack/scripts/catalog.js",
+          "behavior_pack/scripts/codex.js"
+        ],
+        "targets": [
+          {
+            "path": "behavior_pack/items/crystal_circlet.item.json",
+            "present": false
+          },
+          {
+            "path": "behavior_pack/recipes/crystal_circlet.recipe.json",
+            "present": false
+          },
+          {
+            "path": "resource_pack/attachables/crystal_circlet.attachable.json",
+            "present": false
+          },
+          {
+            "path": "resource_pack/models/aionbound/crystal_marsh/equipment/crystal_circlet.geo.json",
+            "present": false
+          },
+          {
+            "path": "resource_pack/animations/aionbound/crystal_marsh/equipment/crystal_circlet.animation.json",
+            "present": false
+          },
+          {
+            "path": "resource_pack/textures/aionbound/wave1/equipment/armor/crystal_circlet.png",
+            "present": false
+          },
+          {
+            "path": "resource_pack/textures/item_texture.json",
+            "present": true
+          },
+          {
+            "path": "resource_pack/texts/en_US.lang",
+            "present": true
+          },
+          {
+            "path": "behavior_pack/scripts/catalog.js",
+            "present": true
+          },
+          {
+            "path": "behavior_pack/scripts/codex.js",
+            "present": true
+          }
+        ]
+      },
+      "visual_role": "Open crystal mint headpiece"
+    },
+    {
+      "codex_page_allocation": "CM_EQUIPMENT_PAGE",
+      "gameplay_role": "Multi-biome travel and inventory fantasy",
+      "gated_semantics": {
+        "blockers": [
+          "W1-001-CM",
+          "W1-004-CM"
+        ],
+        "withheld": [
+          "final ingredient disposition and recipe quantities",
+          "numeric acquisition or loot probability",
+          "gameplay effect values and balance",
+          "boss/reward grant or recovery semantics where applicable"
+        ]
+      },
+      "group": "armor",
+      "id": "explorer_cloak",
+      "native_readiness": {
+        "absolute_texture_binding_present": false,
+        "brief_expected_clips": [
+          "idle_sway"
+        ],
+        "brief_expected_locators": [
+          "effect"
+        ],
+        "brief_model_identifier": "geometry.aionforge_eq.explorer_cloak",
+        "brief_role": "Cross-biome trail cloak",
+        "brief_texture_resolution": "64\u00d764",
+        "exported_clip_names": [
+          "animation.aionforge_eq.explorer_cloak.action",
+          "animation.aionforge_eq.explorer_cloak.idle"
+        ],
+        "exported_locator_names": [
+          "effect"
+        ],
+        "native_locator_gap": [
+          "effect"
+        ],
+        "native_locator_names": [],
+        "native_roundtrip": "NOT_RUN_REPAIR_REQUIRED",
+        "role_clip_gap": [
+          "idle_sway"
+        ],
+        "source_clip_names": [
+          "animation.aionforge_eq.explorer_cloak.action",
+          "animation.aionforge_eq.explorer_cloak.idle"
+        ],
+        "texture_dimensions": [
+          32,
+          32
+        ]
+      },
+      "recipe_acquisition_provenance": {
+        "acquisition_inputs": [
+          "silt_crocodile",
+          "marsh_wight",
+          "glass_algae"
+        ],
+        "gated_by": [
+          "W1-001-CM",
+          "W1-004-CM"
+        ],
+        "provenance": "Multi-biome Whisperwood-to-Crystal travel identity",
+        "source_formula": "Croc Hide + WW leather + CM polish -> explorer_cloak"
+      },
+      "relationship": "DIRECT_PACKET_003_LINK",
+      "runtime_id": "aionbound:explorer_cloak",
+      "safe_now": [
+        "retain exact warehouse/runtime identity and Packet 006 visual provenance",
+        "prepare namespace-safe registry, localization, target paths, and Codex page scaffolding",
+        "repair native locator/clip/portable-binding gaps and bind approved presentation without inventing gameplay",
+        "preserve nonnumeric region, role, and source relationships"
+      ],
+      "source_files": {
+        "brief": {
+          "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-006-equipment-progression/assets/briefs/explorer_cloak.json",
+          "sha256": "8346a70bee9bb89ae9ee994ac75822dd537a5b26c1bd892347b8968c43dbd24c"
+        },
+        "editable_bbmodel": {
+          "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-006-equipment-progression/assets/editable/explorer_cloak.bbmodel",
+          "sha256": "bc4235f6819b9b34e298614693b0ac63e4624cb48cd020214501d819435694a1"
+        },
+        "editable_png": {
+          "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-006-equipment-progression/assets/editable/explorer_cloak.png",
+          "sha256": "f177cfbbda88c9e4f167076c03a1d0b487a5216d215db066c917dda00a3ffa62"
+        },
+        "export_animation": {
+          "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-006-equipment-progression/assets/export/animations/explorer_cloak.animation.json",
+          "sha256": "c89d08c671b66d9f90c94900f5a125e13cdc56b952690cb65b9d441cd4558ab6"
+        },
+        "export_geometry": {
+          "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-006-equipment-progression/assets/export/models/explorer_cloak.geo.json",
+          "sha256": "65d963a3a79b32bbd1fac042f48d288dd51b8ce7a6c9f5e9c1035709c077dd58"
+        },
+        "export_texture": {
+          "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-006-equipment-progression/assets/export/textures/explorer_cloak.png",
+          "sha256": "f177cfbbda88c9e4f167076c03a1d0b487a5216d215db066c917dda00a3ffa62"
+        }
+      },
+      "target_status_at_base": {
+        "identity_specific_targets_missing": [
+          "behavior_pack/items/explorer_cloak.item.json",
+          "behavior_pack/recipes/explorer_cloak.recipe.json",
+          "resource_pack/attachables/explorer_cloak.attachable.json",
+          "resource_pack/models/aionbound/crystal_marsh/equipment/explorer_cloak.geo.json",
+          "resource_pack/animations/aionbound/crystal_marsh/equipment/explorer_cloak.animation.json",
+          "resource_pack/textures/aionbound/wave1/equipment/armor/explorer_cloak.png"
+        ],
+        "identity_specific_targets_present": [],
+        "shared_targets_present": [
+          "resource_pack/textures/item_texture.json",
+          "resource_pack/texts/en_US.lang",
+          "behavior_pack/scripts/catalog.js",
+          "behavior_pack/scripts/codex.js"
+        ],
+        "targets": [
+          {
+            "path": "behavior_pack/items/explorer_cloak.item.json",
+            "present": false
+          },
+          {
+            "path": "behavior_pack/recipes/explorer_cloak.recipe.json",
+            "present": false
+          },
+          {
+            "path": "resource_pack/attachables/explorer_cloak.attachable.json",
+            "present": false
+          },
+          {
+            "path": "resource_pack/models/aionbound/crystal_marsh/equipment/explorer_cloak.geo.json",
+            "present": false
+          },
+          {
+            "path": "resource_pack/animations/aionbound/crystal_marsh/equipment/explorer_cloak.animation.json",
+            "present": false
+          },
+          {
+            "path": "resource_pack/textures/aionbound/wave1/equipment/armor/explorer_cloak.png",
+            "present": false
+          },
+          {
+            "path": "resource_pack/textures/item_texture.json",
+            "present": true
+          },
+          {
+            "path": "resource_pack/texts/en_US.lang",
+            "present": true
+          },
+          {
+            "path": "behavior_pack/scripts/catalog.js",
+            "present": true
+          },
+          {
+            "path": "behavior_pack/scripts/codex.js",
+            "present": true
+          }
+        ]
+      },
+      "visual_role": "Cross-biome trail cloak"
+    },
+    {
+      "codex_page_allocation": "CM_EQUIPMENT_PAGE",
+      "gameplay_role": "Silt and wet-dig verb",
+      "gated_semantics": {
+        "blockers": [
+          "W1-001-CM"
+        ],
+        "withheld": [
+          "final ingredient disposition and recipe quantities",
+          "numeric acquisition or loot probability",
+          "gameplay effect values and balance",
+          "boss/reward grant or recovery semantics where applicable"
+        ]
+      },
+      "group": "tools",
+      "id": "crystal_shovel",
+      "native_readiness": {
+        "absolute_texture_binding_present": false,
+        "brief_expected_clips": [
+          "dig",
+          "hold"
+        ],
+        "brief_expected_locators": [
+          "effect"
+        ],
+        "brief_model_identifier": "geometry.aionforge_eq.crystal_shovel",
+        "brief_role": "Marsh dig shovel",
+        "brief_texture_resolution": "64\u00d764",
+        "exported_clip_names": [
+          "animation.aionforge_eq.crystal_shovel.action",
+          "animation.aionforge_eq.crystal_shovel.idle"
+        ],
+        "exported_locator_names": [
+          "effect"
+        ],
+        "native_locator_gap": [
+          "effect"
+        ],
+        "native_locator_names": [],
+        "native_roundtrip": "NOT_RUN_REPAIR_REQUIRED",
+        "role_clip_gap": [
+          "dig",
+          "hold"
+        ],
+        "source_clip_names": [
+          "animation.aionforge_eq.crystal_shovel.action",
+          "animation.aionforge_eq.crystal_shovel.idle"
+        ],
+        "texture_dimensions": [
+          32,
+          32
+        ]
+      },
+      "recipe_acquisition_provenance": {
+        "acquisition_inputs": [
+          "silt_core",
+          "mire_turtle",
+          "silt_crocodile",
+          "flood_reed"
+        ],
+        "gated_by": [
+          "W1-001-CM"
+        ],
+        "provenance": "Crystal Marsh silt and reed tool route",
+        "source_formula": "silt_core + reed haft -> crystal_shovel"
+      },
+      "relationship": "DIRECT_PACKET_003_LINK",
+      "runtime_id": "aionbound:crystal_shovel",
+      "safe_now": [
+        "retain exact warehouse/runtime identity and Packet 006 visual provenance",
+        "prepare namespace-safe registry, localization, target paths, and Codex page scaffolding",
+        "repair native locator/clip/portable-binding gaps and bind approved presentation without inventing gameplay",
+        "preserve nonnumeric region, role, and source relationships"
+      ],
+      "source_files": {
+        "brief": {
+          "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-006-equipment-progression/assets/briefs/crystal_shovel.json",
+          "sha256": "c6766d79f9583293300f9c77cc9ae7c0d326d1f920ce28bb63ccab0a7390a0db"
+        },
+        "editable_bbmodel": {
+          "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-006-equipment-progression/assets/editable/crystal_shovel.bbmodel",
+          "sha256": "1ae28ca11ecf7acdd76f943b684abe5c67487d8bb2d23121d2ac1e83341b23e8"
+        },
+        "editable_png": {
+          "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-006-equipment-progression/assets/editable/crystal_shovel.png",
+          "sha256": "fd9ebd4ee5047f9d89c9f0adab19ea0c302cb73aaee4da3ee16db12f0b8043ba"
+        },
+        "export_animation": {
+          "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-006-equipment-progression/assets/export/animations/crystal_shovel.animation.json",
+          "sha256": "95e23f437a9a73bf43f88fccae78674bfcd74539b2616844f466fc17f6066e77"
+        },
+        "export_geometry": {
+          "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-006-equipment-progression/assets/export/models/crystal_shovel.geo.json",
+          "sha256": "6a6ed7a48b8a8d475d04cf32aa9c545bccb67fe96d2d2dab226c2e98c6f83d81"
+        },
+        "export_texture": {
+          "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-006-equipment-progression/assets/export/textures/crystal_shovel.png",
+          "sha256": "fd9ebd4ee5047f9d89c9f0adab19ea0c302cb73aaee4da3ee16db12f0b8043ba"
+        }
+      },
+      "target_status_at_base": {
+        "identity_specific_targets_missing": [
+          "behavior_pack/items/crystal_shovel.item.json",
+          "behavior_pack/recipes/crystal_shovel.recipe.json",
+          "resource_pack/attachables/crystal_shovel.attachable.json",
+          "resource_pack/models/aionbound/crystal_marsh/equipment/crystal_shovel.geo.json",
+          "resource_pack/animations/aionbound/crystal_marsh/equipment/crystal_shovel.animation.json",
+          "resource_pack/textures/aionbound/wave1/equipment/items/crystal_shovel.png"
+        ],
+        "identity_specific_targets_present": [],
+        "shared_targets_present": [
+          "resource_pack/textures/item_texture.json",
+          "resource_pack/texts/en_US.lang",
+          "behavior_pack/scripts/catalog.js",
+          "behavior_pack/scripts/codex.js"
+        ],
+        "targets": [
+          {
+            "path": "behavior_pack/items/crystal_shovel.item.json",
+            "present": false
+          },
+          {
+            "path": "behavior_pack/recipes/crystal_shovel.recipe.json",
+            "present": false
+          },
+          {
+            "path": "resource_pack/attachables/crystal_shovel.attachable.json",
+            "present": false
+          },
+          {
+            "path": "resource_pack/models/aionbound/crystal_marsh/equipment/crystal_shovel.geo.json",
+            "present": false
+          },
+          {
+            "path": "resource_pack/animations/aionbound/crystal_marsh/equipment/crystal_shovel.animation.json",
+            "present": false
+          },
+          {
+            "path": "resource_pack/textures/aionbound/wave1/equipment/items/crystal_shovel.png",
+            "present": false
+          },
+          {
+            "path": "resource_pack/textures/item_texture.json",
+            "present": true
+          },
+          {
+            "path": "resource_pack/texts/en_US.lang",
+            "present": true
+          },
+          {
+            "path": "behavior_pack/scripts/catalog.js",
+            "present": true
+          },
+          {
+            "path": "behavior_pack/scripts/codex.js",
+            "present": true
+          }
+        ]
+      },
+      "visual_role": "Marsh dig shovel"
+    },
+    {
+      "codex_page_allocation": "CM_EQUIPMENT_PAGE",
+      "gameplay_role": "Bulk plant and reed harvest verb",
+      "gated_semantics": {
+        "blockers": [
+          "W1-001-CM"
+        ],
+        "withheld": [
+          "final ingredient disposition and recipe quantities",
+          "numeric acquisition or loot probability",
+          "gameplay effect values and balance",
+          "boss/reward grant or recovery semantics where applicable"
+        ]
+      },
+      "group": "tools",
+      "id": "marsh_sickle",
+      "native_readiness": {
+        "absolute_texture_binding_present": false,
+        "brief_expected_clips": [
+          "hold",
+          "reap"
+        ],
+        "brief_expected_locators": [
+          "effect"
+        ],
+        "brief_model_identifier": "geometry.aionforge_eq.marsh_sickle",
+        "brief_role": "Wet harvest sickle",
+        "brief_texture_resolution": "64\u00d764",
+        "exported_clip_names": [
+          "animation.aionforge_eq.marsh_sickle.action",
+          "animation.aionforge_eq.marsh_sickle.idle"
+        ],
+        "exported_locator_names": [
+          "effect"
+        ],
+        "native_locator_gap": [
+          "effect"
+        ],
+        "native_locator_names": [],
+        "native_roundtrip": "NOT_RUN_REPAIR_REQUIRED",
+        "role_clip_gap": [
+          "hold",
+          "reap"
+        ],
+        "source_clip_names": [
+          "animation.aionforge_eq.marsh_sickle.action",
+          "animation.aionforge_eq.marsh_sickle.idle"
+        ],
+        "texture_dimensions": [
+          32,
+          32
+        ]
+      },
+      "recipe_acquisition_provenance": {
+        "acquisition_inputs": [
+          "wet_chitin",
+          "marsh_resin",
+          "bloom_crab",
+          "flood_reed"
+        ],
+        "gated_by": [
+          "W1-001-CM"
+        ],
+        "provenance": "Crystal Marsh chitin, resin, and reed harvest route",
+        "source_formula": "wet_chitin + crystal edge -> marsh_sickle"
+      },
+      "relationship": "DIRECT_PACKET_003_LINK",
+      "runtime_id": "aionbound:marsh_sickle",
+      "safe_now": [
+        "retain exact warehouse/runtime identity and Packet 006 visual provenance",
+        "prepare namespace-safe registry, localization, target paths, and Codex page scaffolding",
+        "repair native locator/clip/portable-binding gaps and bind approved presentation without inventing gameplay",
+        "preserve nonnumeric region, role, and source relationships"
+      ],
+      "source_files": {
+        "brief": {
+          "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-006-equipment-progression/assets/briefs/marsh_sickle.json",
+          "sha256": "2d7ac6e034f30d3b4f666f21951dfd6d8fd67357e4c79dc2ac1c9761728a16c3"
+        },
+        "editable_bbmodel": {
+          "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-006-equipment-progression/assets/editable/marsh_sickle.bbmodel",
+          "sha256": "f5112adae7e6bdc694177407882295f5b7bbf269fa129ae78a6a455b606bb30d"
+        },
+        "editable_png": {
+          "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-006-equipment-progression/assets/editable/marsh_sickle.png",
+          "sha256": "31bcf156dee6e2b3f8fa351ade676ada92f46194a1f0ce42d0d2e27b0342fca8"
+        },
+        "export_animation": {
+          "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-006-equipment-progression/assets/export/animations/marsh_sickle.animation.json",
+          "sha256": "ed5874f831e7f3331dfa8b57161e1d03cdf4e6075870acd036ea5a2516c606d3"
+        },
+        "export_geometry": {
+          "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-006-equipment-progression/assets/export/models/marsh_sickle.geo.json",
+          "sha256": "89b3e3b9802e323b6242a0ba64becfc5feb457f9d4a1e283562df03b54c1f973"
+        },
+        "export_texture": {
+          "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-006-equipment-progression/assets/export/textures/marsh_sickle.png",
+          "sha256": "31bcf156dee6e2b3f8fa351ade676ada92f46194a1f0ce42d0d2e27b0342fca8"
+        }
+      },
+      "target_status_at_base": {
+        "identity_specific_targets_missing": [
+          "behavior_pack/items/marsh_sickle.item.json",
+          "behavior_pack/recipes/marsh_sickle.recipe.json",
+          "resource_pack/attachables/marsh_sickle.attachable.json",
+          "resource_pack/models/aionbound/crystal_marsh/equipment/marsh_sickle.geo.json",
+          "resource_pack/animations/aionbound/crystal_marsh/equipment/marsh_sickle.animation.json",
+          "resource_pack/textures/aionbound/wave1/equipment/items/marsh_sickle.png"
+        ],
+        "identity_specific_targets_present": [],
+        "shared_targets_present": [
+          "resource_pack/textures/item_texture.json",
+          "resource_pack/texts/en_US.lang",
+          "behavior_pack/scripts/catalog.js",
+          "behavior_pack/scripts/codex.js"
+        ],
+        "targets": [
+          {
+            "path": "behavior_pack/items/marsh_sickle.item.json",
+            "present": false
+          },
+          {
+            "path": "behavior_pack/recipes/marsh_sickle.recipe.json",
+            "present": false
+          },
+          {
+            "path": "resource_pack/attachables/marsh_sickle.attachable.json",
+            "present": false
+          },
+          {
+            "path": "resource_pack/models/aionbound/crystal_marsh/equipment/marsh_sickle.geo.json",
+            "present": false
+          },
+          {
+            "path": "resource_pack/animations/aionbound/crystal_marsh/equipment/marsh_sickle.animation.json",
+            "present": false
+          },
+          {
+            "path": "resource_pack/textures/aionbound/wave1/equipment/items/marsh_sickle.png",
+            "present": false
+          },
+          {
+            "path": "resource_pack/textures/item_texture.json",
+            "present": true
+          },
+          {
+            "path": "resource_pack/texts/en_US.lang",
+            "present": true
+          },
+          {
+            "path": "behavior_pack/scripts/catalog.js",
+            "present": true
+          },
+          {
+            "path": "behavior_pack/scripts/codex.js",
+            "present": true
+          }
+        ]
+      },
+      "visual_role": "Wet harvest sickle"
+    },
+    {
+      "codex_page_allocation": "CM_EQUIPMENT_PAGE",
+      "gameplay_role": "Wet vision and pearl-luck identity",
+      "gated_semantics": {
+        "blockers": [
+          "W1-001-CM",
+          "W1-004-CM"
+        ],
+        "withheld": [
+          "final ingredient disposition and recipe quantities",
+          "numeric acquisition or loot probability",
+          "gameplay effect values and balance",
+          "boss/reward grant or recovery semantics where applicable"
+        ]
+      },
+      "group": "accessories",
+      "id": "crystal_talisman",
+      "native_readiness": {
+        "absolute_texture_binding_present": false,
+        "brief_expected_clips": [
+          "pulse"
+        ],
+        "brief_expected_locators": [
+          "effect"
+        ],
+        "brief_model_identifier": "geometry.aionforge_eq.crystal_talisman",
+        "brief_role": "Faceted marsh talisman",
+        "brief_texture_resolution": "32\u201364",
+        "exported_clip_names": [
+          "animation.aionforge_eq.crystal_talisman.action",
+          "animation.aionforge_eq.crystal_talisman.idle"
+        ],
+        "exported_locator_names": [
+          "effect"
+        ],
+        "native_locator_gap": [
+          "effect"
+        ],
+        "native_locator_names": [],
+        "native_roundtrip": "NOT_RUN_REPAIR_REQUIRED",
+        "role_clip_gap": [
+          "pulse"
+        ],
+        "source_clip_names": [
+          "animation.aionforge_eq.crystal_talisman.action",
+          "animation.aionforge_eq.crystal_talisman.idle"
+        ],
+        "texture_dimensions": [
+          32,
+          32
+        ]
+      },
+      "recipe_acquisition_provenance": {
+        "acquisition_inputs": [
+          "prism_frog",
+          "bloom_crab",
+          "crystal_root_item",
+          "moon_pearl",
+          "crystal_obelisk"
+        ],
+        "gated_by": [
+          "W1-001-CM",
+          "W1-004-CM"
+        ],
+        "provenance": "Crystal Marsh pearl ecology and obelisk network",
+        "source_formula": "prism chips + pearl grain -> crystal_talisman"
+      },
+      "relationship": "DIRECT_PACKET_003_LINK",
+      "runtime_id": "aionbound:crystal_talisman",
+      "safe_now": [
+        "retain exact warehouse/runtime identity and Packet 006 visual provenance",
+        "prepare namespace-safe registry, localization, target paths, and Codex page scaffolding",
+        "repair native locator/clip/portable-binding gaps and bind approved presentation without inventing gameplay",
+        "preserve nonnumeric region, role, and source relationships"
+      ],
+      "source_files": {
+        "brief": {
+          "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-006-equipment-progression/assets/briefs/crystal_talisman.json",
+          "sha256": "52938f4a930fb4bd6723f7fbe313623d0560f7738cc8722624461b286649d2a0"
+        },
+        "editable_bbmodel": {
+          "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-006-equipment-progression/assets/editable/crystal_talisman.bbmodel",
+          "sha256": "b569f3d55a0a77d160e100c0d10dbe8fa012c7d034c919e1fdc1f3cdafe26110"
+        },
+        "editable_png": {
+          "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-006-equipment-progression/assets/editable/crystal_talisman.png",
+          "sha256": "2ec705b4b55fa74554ab59cf3c7b7854145eace14e4fa8e2d9a8861592ec03f3"
+        },
+        "export_animation": {
+          "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-006-equipment-progression/assets/export/animations/crystal_talisman.animation.json",
+          "sha256": "b662ca431789244fa1fab9f98cfec3b5f6f61e482974453b9a067f97dab8fef6"
+        },
+        "export_geometry": {
+          "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-006-equipment-progression/assets/export/models/crystal_talisman.geo.json",
+          "sha256": "c3d286168b203491cd255c39aa24a39b39aaa8506878e1699b2cc6d6e8cf1ad5"
+        },
+        "export_texture": {
+          "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-006-equipment-progression/assets/export/textures/crystal_talisman.png",
+          "sha256": "2ec705b4b55fa74554ab59cf3c7b7854145eace14e4fa8e2d9a8861592ec03f3"
+        }
+      },
+      "target_status_at_base": {
+        "identity_specific_targets_missing": [
+          "behavior_pack/items/crystal_talisman.item.json",
+          "behavior_pack/recipes/crystal_talisman.recipe.json",
+          "resource_pack/attachables/crystal_talisman.attachable.json",
+          "resource_pack/models/aionbound/crystal_marsh/equipment/crystal_talisman.geo.json",
+          "resource_pack/animations/aionbound/crystal_marsh/equipment/crystal_talisman.animation.json",
+          "resource_pack/textures/aionbound/wave1/equipment/accessories/crystal_talisman.png"
+        ],
+        "identity_specific_targets_present": [],
+        "shared_targets_present": [
+          "resource_pack/textures/item_texture.json",
+          "resource_pack/texts/en_US.lang",
+          "behavior_pack/scripts/catalog.js",
+          "behavior_pack/scripts/codex.js"
+        ],
+        "targets": [
+          {
+            "path": "behavior_pack/items/crystal_talisman.item.json",
+            "present": false
+          },
+          {
+            "path": "behavior_pack/recipes/crystal_talisman.recipe.json",
+            "present": false
+          },
+          {
+            "path": "resource_pack/attachables/crystal_talisman.attachable.json",
+            "present": false
+          },
+          {
+            "path": "resource_pack/models/aionbound/crystal_marsh/equipment/crystal_talisman.geo.json",
+            "present": false
+          },
+          {
+            "path": "resource_pack/animations/aionbound/crystal_marsh/equipment/crystal_talisman.animation.json",
+            "present": false
+          },
+          {
+            "path": "resource_pack/textures/aionbound/wave1/equipment/accessories/crystal_talisman.png",
+            "present": false
+          },
+          {
+            "path": "resource_pack/textures/item_texture.json",
+            "present": true
+          },
+          {
+            "path": "resource_pack/texts/en_US.lang",
+            "present": true
+          },
+          {
+            "path": "behavior_pack/scripts/catalog.js",
+            "present": true
+          },
+          {
+            "path": "behavior_pack/scripts/codex.js",
+            "present": true
+          }
+        ]
+      },
+      "visual_role": "Faceted marsh talisman"
+    },
+    {
+      "codex_page_allocation": "CM_EQUIPMENT_PAGE",
+      "gameplay_role": "Structure calm and wight-resist narrative",
+      "gated_semantics": {
+        "blockers": [
+          "W1-001-CM",
+          "W1-004-CM"
+        ],
+        "withheld": [
+          "final ingredient disposition and recipe quantities",
+          "numeric acquisition or loot probability",
+          "gameplay effect values and balance",
+          "boss/reward grant or recovery semantics where applicable"
+        ]
+      },
+      "group": "accessories",
+      "id": "marsh_idol",
+      "native_readiness": {
+        "absolute_texture_binding_present": false,
+        "brief_expected_clips": [
+          "idle"
+        ],
+        "brief_expected_locators": [
+          "effect"
+        ],
+        "brief_model_identifier": "geometry.aionforge_eq.marsh_idol",
+        "brief_role": "Silt figure charm with crystal eyes",
+        "brief_texture_resolution": "32\u201364",
+        "exported_clip_names": [
+          "animation.aionforge_eq.marsh_idol.action",
+          "animation.aionforge_eq.marsh_idol.idle"
+        ],
+        "exported_locator_names": [
+          "effect"
+        ],
+        "native_locator_gap": [
+          "effect"
+        ],
+        "native_locator_names": [],
+        "native_roundtrip": "NOT_RUN_REPAIR_REQUIRED",
+        "role_clip_gap": [
+          "idle"
+        ],
+        "source_clip_names": [
+          "animation.aionforge_eq.marsh_idol.action",
+          "animation.aionforge_eq.marsh_idol.idle"
+        ],
+        "texture_dimensions": [
+          32,
+          32
+        ]
+      },
+      "recipe_acquisition_provenance": {
+        "acquisition_inputs": [
+          "marsh_totem",
+          "mire_orchid",
+          "marsh_resin",
+          "sunken_shrine"
+        ],
+        "gated_by": [
+          "W1-001-CM",
+          "W1-004-CM"
+        ],
+        "provenance": "Crystal Marsh totem, orchid, resin, and shrine route",
+        "source_formula": "totem wood + mire_orchid + resin -> marsh_idol"
+      },
+      "relationship": "DIRECT_PACKET_003_LINK",
+      "runtime_id": "aionbound:marsh_idol",
+      "safe_now": [
+        "retain exact warehouse/runtime identity and Packet 006 visual provenance",
+        "prepare namespace-safe registry, localization, target paths, and Codex page scaffolding",
+        "repair native locator/clip/portable-binding gaps and bind approved presentation without inventing gameplay",
+        "preserve nonnumeric region, role, and source relationships"
+      ],
+      "source_files": {
+        "brief": {
+          "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-006-equipment-progression/assets/briefs/marsh_idol.json",
+          "sha256": "b7d14a946070775010ca9d02791b632a13a0bd7add910add96171f86b9daa3c8"
+        },
+        "editable_bbmodel": {
+          "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-006-equipment-progression/assets/editable/marsh_idol.bbmodel",
+          "sha256": "f5e062ed67fdb218756d688c18ee27d1f5a8bc6e29b421799445f5758c304b90"
+        },
+        "editable_png": {
+          "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-006-equipment-progression/assets/editable/marsh_idol.png",
+          "sha256": "a1046732a661684312c320282ba256436b09b8f60c66cdd880b3c1b05a58563d"
+        },
+        "export_animation": {
+          "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-006-equipment-progression/assets/export/animations/marsh_idol.animation.json",
+          "sha256": "e9c27a745b59ef4e344c3d60cf8c440d76bb345db448c6b359dce7a3f4bcc7df"
+        },
+        "export_geometry": {
+          "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-006-equipment-progression/assets/export/models/marsh_idol.geo.json",
+          "sha256": "121fa0202e0602294bcf925e4ce22c6d6b8cb5275b2ce7ecd54f7eaf0b34ea30"
+        },
+        "export_texture": {
+          "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-006-equipment-progression/assets/export/textures/marsh_idol.png",
+          "sha256": "a1046732a661684312c320282ba256436b09b8f60c66cdd880b3c1b05a58563d"
+        }
+      },
+      "target_status_at_base": {
+        "identity_specific_targets_missing": [
+          "behavior_pack/items/marsh_idol.item.json",
+          "behavior_pack/recipes/marsh_idol.recipe.json",
+          "resource_pack/attachables/marsh_idol.attachable.json",
+          "resource_pack/models/aionbound/crystal_marsh/equipment/marsh_idol.geo.json",
+          "resource_pack/animations/aionbound/crystal_marsh/equipment/marsh_idol.animation.json",
+          "resource_pack/textures/aionbound/wave1/equipment/accessories/marsh_idol.png"
+        ],
+        "identity_specific_targets_present": [],
+        "shared_targets_present": [
+          "resource_pack/textures/item_texture.json",
+          "resource_pack/texts/en_US.lang",
+          "behavior_pack/scripts/catalog.js",
+          "behavior_pack/scripts/codex.js"
+        ],
+        "targets": [
+          {
+            "path": "behavior_pack/items/marsh_idol.item.json",
+            "present": false
+          },
+          {
+            "path": "behavior_pack/recipes/marsh_idol.recipe.json",
+            "present": false
+          },
+          {
+            "path": "resource_pack/attachables/marsh_idol.attachable.json",
+            "present": false
+          },
+          {
+            "path": "resource_pack/models/aionbound/crystal_marsh/equipment/marsh_idol.geo.json",
+            "present": false
+          },
+          {
+            "path": "resource_pack/animations/aionbound/crystal_marsh/equipment/marsh_idol.animation.json",
+            "present": false
+          },
+          {
+            "path": "resource_pack/textures/aionbound/wave1/equipment/accessories/marsh_idol.png",
+            "present": false
+          },
+          {
+            "path": "resource_pack/textures/item_texture.json",
+            "present": true
+          },
+          {
+            "path": "resource_pack/texts/en_US.lang",
+            "present": true
+          },
+          {
+            "path": "behavior_pack/scripts/catalog.js",
+            "present": true
+          },
+          {
+            "path": "behavior_pack/scripts/codex.js",
+            "present": true
+          }
+        ]
+      },
+      "visual_role": "Silt figure charm with crystal eyes"
+    },
+    {
+      "codex_page_allocation": "CM_EQUIPMENT_PAGE",
+      "gameplay_role": "Chapter 3 seal and apex display",
+      "gated_semantics": {
+        "blockers": [
+          "W1-003-PEARL-DEPTHS",
+          "W1-004-CM"
+        ],
+        "withheld": [
+          "final ingredient disposition and recipe quantities",
+          "numeric acquisition or loot probability",
+          "gameplay effect values and balance",
+          "boss/reward grant or recovery semantics where applicable"
+        ]
+      },
+      "group": "trophies",
+      "id": "marsh_wight_mask",
+      "native_readiness": {
+        "absolute_texture_binding_present": false,
+        "brief_expected_clips": [
+          "eye_glow"
+        ],
+        "brief_expected_locators": [
+          "effect"
+        ],
+        "brief_model_identifier": "geometry.aionforge_eq.marsh_wight_mask",
+        "brief_role": "Reed spirit mask on stand",
+        "brief_texture_resolution": "64\u00d764",
+        "exported_clip_names": [
+          "animation.aionforge_eq.marsh_wight_mask.action",
+          "animation.aionforge_eq.marsh_wight_mask.idle"
+        ],
+        "exported_locator_names": [
+          "effect"
+        ],
+        "native_locator_gap": [
+          "effect"
+        ],
+        "native_locator_names": [],
+        "native_roundtrip": "NOT_RUN_REPAIR_REQUIRED",
+        "role_clip_gap": [
+          "eye_glow"
+        ],
+        "source_clip_names": [
+          "animation.aionforge_eq.marsh_wight_mask.action",
+          "animation.aionforge_eq.marsh_wight_mask.idle"
+        ],
+        "texture_dimensions": [
+          32,
+          32
+        ]
+      },
+      "recipe_acquisition_provenance": {
+        "acquisition_inputs": [
+          "marsh_wight"
+        ],
+        "gated_by": [
+          "W1-003-PEARL-DEPTHS",
+          "W1-004-CM"
+        ],
+        "provenance": "Pearl Depths arena apex only; ecology form is prohibited as a seal source",
+        "source_formula": "Pearl Depths first-clear chapter seal and display trophy"
+      },
+      "relationship": "DIRECT_PACKET_003_LINK",
+      "runtime_id": "aionbound:marsh_wight_mask",
+      "safe_now": [
+        "retain exact warehouse/runtime identity and Packet 006 visual provenance",
+        "prepare namespace-safe registry, localization, target paths, and Codex page scaffolding",
+        "repair native locator/clip/portable-binding gaps and bind approved presentation without inventing gameplay",
+        "preserve nonnumeric region, role, and source relationships"
+      ],
+      "source_files": {
+        "brief": {
+          "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-006-equipment-progression/assets/briefs/marsh_wight_mask.json",
+          "sha256": "0aadc993a0b76fc75e9e8e3cf4d5ca9299640f821424c288a8f137f43af7aa31"
+        },
+        "editable_bbmodel": {
+          "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-006-equipment-progression/assets/editable/marsh_wight_mask.bbmodel",
+          "sha256": "94202e4b36d5ddb1ccf34bf32059cb13fbaa6dfa7dee220b6822658220ca9730"
+        },
+        "editable_png": {
+          "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-006-equipment-progression/assets/editable/marsh_wight_mask.png",
+          "sha256": "de53d3923373686ccc3f0137bd469e8a85e3a6116ba70495c6388ed4655f4cb4"
+        },
+        "export_animation": {
+          "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-006-equipment-progression/assets/export/animations/marsh_wight_mask.animation.json",
+          "sha256": "7149707cee8ea97ab99472785577a28063a81d1b8454d7240cff167d1358b648"
+        },
+        "export_geometry": {
+          "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-006-equipment-progression/assets/export/models/marsh_wight_mask.geo.json",
+          "sha256": "f4ef0c7c30b378140966db4060a2d9995440964c6c949b252940224c3c0e8fb8"
+        },
+        "export_texture": {
+          "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-006-equipment-progression/assets/export/textures/marsh_wight_mask.png",
+          "sha256": "de53d3923373686ccc3f0137bd469e8a85e3a6116ba70495c6388ed4655f4cb4"
+        }
+      },
+      "target_status_at_base": {
+        "identity_specific_targets_missing": [
+          "behavior_pack/blocks/marsh_wight_mask.block.json",
+          "behavior_pack/loot_tables/blocks/marsh_wight_mask.json",
+          "resource_pack/models/aionbound/crystal_marsh/equipment/marsh_wight_mask.geo.json",
+          "resource_pack/animations/aionbound/crystal_marsh/equipment/marsh_wight_mask.animation.json",
+          "resource_pack/textures/aionbound/wave1/equipment/trophies/marsh_wight_mask.png"
+        ],
+        "identity_specific_targets_present": [],
+        "shared_targets_present": [
+          "resource_pack/blocks.json",
+          "resource_pack/textures/terrain_texture.json",
+          "resource_pack/texts/en_US.lang",
+          "behavior_pack/scripts/catalog.js",
+          "behavior_pack/scripts/codex.js"
+        ],
+        "targets": [
+          {
+            "path": "behavior_pack/blocks/marsh_wight_mask.block.json",
+            "present": false
+          },
+          {
+            "path": "behavior_pack/loot_tables/blocks/marsh_wight_mask.json",
+            "present": false
+          },
+          {
+            "path": "resource_pack/models/aionbound/crystal_marsh/equipment/marsh_wight_mask.geo.json",
+            "present": false
+          },
+          {
+            "path": "resource_pack/animations/aionbound/crystal_marsh/equipment/marsh_wight_mask.animation.json",
+            "present": false
+          },
+          {
+            "path": "resource_pack/textures/aionbound/wave1/equipment/trophies/marsh_wight_mask.png",
+            "present": false
+          },
+          {
+            "path": "resource_pack/blocks.json",
+            "present": true
+          },
+          {
+            "path": "resource_pack/textures/terrain_texture.json",
+            "present": true
+          },
+          {
+            "path": "resource_pack/texts/en_US.lang",
+            "present": true
+          },
+          {
+            "path": "behavior_pack/scripts/catalog.js",
+            "present": true
+          },
+          {
+            "path": "behavior_pack/scripts/codex.js",
+            "present": true
+          }
+        ]
+      },
+      "visual_role": "Reed spirit mask on stand"
+    },
+    {
+      "codex_page_allocation": "CM_EQUIPMENT_PAGE",
+      "gameplay_role": "Optional pearl mastery display",
+      "gated_semantics": {
+        "blockers": [
+          "W1-001-CM",
+          "W1-004-CM"
+        ],
+        "withheld": [
+          "final ingredient disposition and recipe quantities",
+          "numeric acquisition or loot probability",
+          "gameplay effect values and balance",
+          "boss/reward grant or recovery semantics where applicable"
+        ]
+      },
+      "group": "trophies",
+      "id": "moon_pearl_pedestal",
+      "native_readiness": {
+        "absolute_texture_binding_present": false,
+        "brief_expected_clips": [
+          "soft_pulse"
+        ],
+        "brief_expected_locators": [
+          "effect"
+        ],
+        "brief_model_identifier": "geometry.aionforge_eq.moon_pearl_pedestal",
+        "brief_role": "Pearl on prism pedestal",
+        "brief_texture_resolution": "64\u00d764",
+        "exported_clip_names": [
+          "animation.aionforge_eq.moon_pearl_pedestal.action",
+          "animation.aionforge_eq.moon_pearl_pedestal.idle"
+        ],
+        "exported_locator_names": [
+          "effect"
+        ],
+        "native_locator_gap": [
+          "effect"
+        ],
+        "native_locator_names": [],
+        "native_roundtrip": "NOT_RUN_REPAIR_REQUIRED",
+        "role_clip_gap": [
+          "soft_pulse"
+        ],
+        "source_clip_names": [
+          "animation.aionforge_eq.moon_pearl_pedestal.action",
+          "animation.aionforge_eq.moon_pearl_pedestal.idle"
+        ],
+        "texture_dimensions": [
+          32,
+          32
+        ]
+      },
+      "recipe_acquisition_provenance": {
+        "acquisition_inputs": [
+          "moon_pearl",
+          "prism_brick",
+          "sunken_shrine"
+        ],
+        "gated_by": [
+          "W1-001-CM",
+          "W1-004-CM"
+        ],
+        "provenance": "Crystal Marsh pearl craft and shrine mastery display",
+        "source_formula": "moon_pearl + prism_brick -> moon_pearl_pedestal"
+      },
+      "relationship": "DIRECT_PACKET_003_LINK",
+      "runtime_id": "aionbound:moon_pearl_pedestal",
+      "safe_now": [
+        "retain exact warehouse/runtime identity and Packet 006 visual provenance",
+        "prepare namespace-safe registry, localization, target paths, and Codex page scaffolding",
+        "repair native locator/clip/portable-binding gaps and bind approved presentation without inventing gameplay",
+        "preserve nonnumeric region, role, and source relationships"
+      ],
+      "source_files": {
+        "brief": {
+          "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-006-equipment-progression/assets/briefs/moon_pearl_pedestal.json",
+          "sha256": "3077c5ec0d59b038d058a299bbda774122e2ede9ef68bdd155573cd08c40679e"
+        },
+        "editable_bbmodel": {
+          "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-006-equipment-progression/assets/editable/moon_pearl_pedestal.bbmodel",
+          "sha256": "3becbecf53d0c88af544fe075f948f6d335d4290a09a0ba41e374af5e032de5a"
+        },
+        "editable_png": {
+          "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-006-equipment-progression/assets/editable/moon_pearl_pedestal.png",
+          "sha256": "3b8ac5ef1762ab8bf43a8ef6afa27b2427077a9d20100432b8bf1709302fd238"
+        },
+        "export_animation": {
+          "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-006-equipment-progression/assets/export/animations/moon_pearl_pedestal.animation.json",
+          "sha256": "ee7fc57263954a4f68dd4fd71f30b07ffea8083cd7522d1486d5985ddf7d0a0a"
+        },
+        "export_geometry": {
+          "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-006-equipment-progression/assets/export/models/moon_pearl_pedestal.geo.json",
+          "sha256": "bc80f683a9cfa7aa167d34e1239f1a4856a9c08c1c304a199e5f165781694ab4"
+        },
+        "export_texture": {
+          "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-006-equipment-progression/assets/export/textures/moon_pearl_pedestal.png",
+          "sha256": "3b8ac5ef1762ab8bf43a8ef6afa27b2427077a9d20100432b8bf1709302fd238"
+        }
+      },
+      "target_status_at_base": {
+        "identity_specific_targets_missing": [
+          "behavior_pack/blocks/moon_pearl_pedestal.block.json",
+          "behavior_pack/loot_tables/blocks/moon_pearl_pedestal.json",
+          "resource_pack/models/aionbound/crystal_marsh/equipment/moon_pearl_pedestal.geo.json",
+          "resource_pack/animations/aionbound/crystal_marsh/equipment/moon_pearl_pedestal.animation.json",
+          "resource_pack/textures/aionbound/wave1/equipment/trophies/moon_pearl_pedestal.png"
+        ],
+        "identity_specific_targets_present": [],
+        "shared_targets_present": [
+          "resource_pack/blocks.json",
+          "resource_pack/textures/terrain_texture.json",
+          "resource_pack/texts/en_US.lang",
+          "behavior_pack/scripts/catalog.js",
+          "behavior_pack/scripts/codex.js"
+        ],
+        "targets": [
+          {
+            "path": "behavior_pack/blocks/moon_pearl_pedestal.block.json",
+            "present": false
+          },
+          {
+            "path": "behavior_pack/loot_tables/blocks/moon_pearl_pedestal.json",
+            "present": false
+          },
+          {
+            "path": "resource_pack/models/aionbound/crystal_marsh/equipment/moon_pearl_pedestal.geo.json",
+            "present": false
+          },
+          {
+            "path": "resource_pack/animations/aionbound/crystal_marsh/equipment/moon_pearl_pedestal.animation.json",
+            "present": false
+          },
+          {
+            "path": "resource_pack/textures/aionbound/wave1/equipment/trophies/moon_pearl_pedestal.png",
+            "present": false
+          },
+          {
+            "path": "resource_pack/blocks.json",
+            "present": true
+          },
+          {
+            "path": "resource_pack/textures/terrain_texture.json",
+            "present": true
+          },
+          {
+            "path": "resource_pack/texts/en_US.lang",
+            "present": true
+          },
+          {
+            "path": "behavior_pack/scripts/catalog.js",
+            "present": true
+          },
+          {
+            "path": "behavior_pack/scripts/codex.js",
+            "present": true
+          }
+        ]
+      },
+      "visual_role": "Pearl on prism pedestal"
+    },
+    {
+      "codex_page_allocation": "CM_EQUIPMENT_PAGE",
+      "gameplay_role": "Optional obelisk mastery display",
+      "gated_semantics": {
+        "blockers": [
+          "W1-004-CM"
+        ],
+        "withheld": [
+          "final ingredient disposition and recipe quantities",
+          "numeric acquisition or loot probability",
+          "gameplay effect values and balance",
+          "boss/reward grant or recovery semantics where applicable"
+        ]
+      },
+      "group": "trophies",
+      "id": "crystal_obelisk_fragment",
+      "native_readiness": {
+        "absolute_texture_binding_present": false,
+        "brief_expected_clips": [
+          "pulse"
+        ],
+        "brief_expected_locators": [
+          "effect"
+        ],
+        "brief_model_identifier": "geometry.aionforge_eq.crystal_obelisk_fragment",
+        "brief_role": "Broken crystal spire on silt",
+        "brief_texture_resolution": "64\u00d764",
+        "exported_clip_names": [
+          "animation.aionforge_eq.crystal_obelisk_fragment.action",
+          "animation.aionforge_eq.crystal_obelisk_fragment.idle"
+        ],
+        "exported_locator_names": [
+          "effect"
+        ],
+        "native_locator_gap": [
+          "effect"
+        ],
+        "native_locator_names": [],
+        "native_roundtrip": "NOT_RUN_REPAIR_REQUIRED",
+        "role_clip_gap": [
+          "pulse"
+        ],
+        "source_clip_names": [
+          "animation.aionforge_eq.crystal_obelisk_fragment.action",
+          "animation.aionforge_eq.crystal_obelisk_fragment.idle"
+        ],
+        "texture_dimensions": [
+          32,
+          32
+        ]
+      },
+      "recipe_acquisition_provenance": {
+        "acquisition_inputs": [
+          "crystal_obelisk",
+          "ruined_observatory"
+        ],
+        "gated_by": [
+          "W1-004-CM"
+        ],
+        "provenance": "Crystal Marsh obelisk network and observatory mastery",
+        "source_formula": "crystal_obelisk_fragment -> display"
+      },
+      "relationship": "DIRECT_PACKET_003_LINK",
+      "runtime_id": "aionbound:crystal_obelisk_fragment",
+      "safe_now": [
+        "retain exact warehouse/runtime identity and Packet 006 visual provenance",
+        "prepare namespace-safe registry, localization, target paths, and Codex page scaffolding",
+        "repair native locator/clip/portable-binding gaps and bind approved presentation without inventing gameplay",
+        "preserve nonnumeric region, role, and source relationships"
+      ],
+      "source_files": {
+        "brief": {
+          "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-006-equipment-progression/assets/briefs/crystal_obelisk_fragment.json",
+          "sha256": "f785c595df996468e99f965b8570a87e32571142b229da560d97c812776e8750"
+        },
+        "editable_bbmodel": {
+          "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-006-equipment-progression/assets/editable/crystal_obelisk_fragment.bbmodel",
+          "sha256": "b59d84705b0c7efe75c0bc90deef9477f1eae4e3d7fac4013df50611be96aeb3"
+        },
+        "editable_png": {
+          "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-006-equipment-progression/assets/editable/crystal_obelisk_fragment.png",
+          "sha256": "9df2dd44285a90427260ecaa960341ffec906e27a4282a1cae71be26122515c4"
+        },
+        "export_animation": {
+          "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-006-equipment-progression/assets/export/animations/crystal_obelisk_fragment.animation.json",
+          "sha256": "60181bff6dbb0191b34b17c21519484b410c58ab51c35c2ef9bebc71bc21fe5c"
+        },
+        "export_geometry": {
+          "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-006-equipment-progression/assets/export/models/crystal_obelisk_fragment.geo.json",
+          "sha256": "b0b59322cc116fb97d75970fa57548aae24f5cc0363d9e24327444ef0dc6f35e"
+        },
+        "export_texture": {
+          "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-006-equipment-progression/assets/export/textures/crystal_obelisk_fragment.png",
+          "sha256": "9df2dd44285a90427260ecaa960341ffec906e27a4282a1cae71be26122515c4"
+        }
+      },
+      "target_status_at_base": {
+        "identity_specific_targets_missing": [
+          "behavior_pack/blocks/crystal_obelisk_fragment.block.json",
+          "behavior_pack/loot_tables/blocks/crystal_obelisk_fragment.json",
+          "resource_pack/models/aionbound/crystal_marsh/equipment/crystal_obelisk_fragment.geo.json",
+          "resource_pack/animations/aionbound/crystal_marsh/equipment/crystal_obelisk_fragment.animation.json",
+          "resource_pack/textures/aionbound/wave1/equipment/trophies/crystal_obelisk_fragment.png"
+        ],
+        "identity_specific_targets_present": [],
+        "shared_targets_present": [
+          "resource_pack/blocks.json",
+          "resource_pack/textures/terrain_texture.json",
+          "resource_pack/texts/en_US.lang",
+          "behavior_pack/scripts/catalog.js",
+          "behavior_pack/scripts/codex.js"
+        ],
+        "targets": [
+          {
+            "path": "behavior_pack/blocks/crystal_obelisk_fragment.block.json",
+            "present": false
+          },
+          {
+            "path": "behavior_pack/loot_tables/blocks/crystal_obelisk_fragment.json",
+            "present": false
+          },
+          {
+            "path": "resource_pack/models/aionbound/crystal_marsh/equipment/crystal_obelisk_fragment.geo.json",
+            "present": false
+          },
+          {
+            "path": "resource_pack/animations/aionbound/crystal_marsh/equipment/crystal_obelisk_fragment.animation.json",
+            "present": false
+          },
+          {
+            "path": "resource_pack/textures/aionbound/wave1/equipment/trophies/crystal_obelisk_fragment.png",
+            "present": false
+          },
+          {
+            "path": "resource_pack/blocks.json",
+            "present": true
+          },
+          {
+            "path": "resource_pack/textures/terrain_texture.json",
+            "present": true
+          },
+          {
+            "path": "resource_pack/texts/en_US.lang",
+            "present": true
+          },
+          {
+            "path": "behavior_pack/scripts/catalog.js",
+            "present": true
+          },
+          {
+            "path": "behavior_pack/scripts/codex.js",
+            "present": true
+          }
+        ]
+      },
+      "visual_role": "Broken crystal spire on silt"
+    }
+  ],
+  "presentation_and_runtime_summary": {
+    "all_identity_specific_targets_absent_at_base": true,
+    "blockbench_run": "NOT_RUN",
+    "native_blockbench_roundtrip_required_before_shipping": true,
+    "presentation_readability_proven": false,
+    "runtime_behavior_proven": false
+  },
+  "proof_boundary": {
+    "not_proven": [
+      "native Blockbench round-trip",
+      "shipping presentation",
+      "recipes",
+      "runtime behavior",
+      "loot or rewards",
+      "BP/RP integration",
+      "BDS",
+      "client",
+      "console",
+      "candidate readiness"
+    ],
+    "proven": [
+      "exact 11+2 link coverage",
+      "source hashes",
+      "base target presence/absence",
+      "static native gaps",
+      "recipe/acquisition/provenance mapping",
+      "deterministic regeneration"
+    ]
+  },
+  "schema": "aionbound.wave1.crystal-marsh-equipment-intake.v1.0.0",
+  "scope": "Read-only Packet 006 Crystal equipment intake; no BP/RP/runtime/ledger/BDS mutation.",
+  "status": "HASH_BOUND_PACKET006_INTAKE_SAFE_SCAFFOLDING_SEPARATED"
+}

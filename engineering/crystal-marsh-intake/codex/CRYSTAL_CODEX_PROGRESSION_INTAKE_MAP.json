@@ -1,0 +1,2868 @@
+{
+  "adjacent_equipment_references": [
+    {
+      "codex_treatment": "REFERENCE_ONLY_NO_CM_ADDRESS",
+      "future_owner": "SKYREACH_OR_PILGRIM",
+      "id": "surveyor_staff",
+      "runtime_id": "aionbound:surveyor_staff"
+    },
+    {
+      "codex_treatment": "REFERENCE_ONLY_NO_CM_ADDRESS",
+      "future_owner": "SKYREACH_OR_PILGRIM",
+      "id": "trail_compass",
+      "runtime_id": "aionbound:trail_compass"
+    }
+  ],
+  "ashen_runtime_dependency": {
+    "crystal_dependency": false,
+    "relationship": "FINAL_INTEGRATION_DEPENDENCY_ONLY",
+    "rule": "No CM page or event calls dormant Ashen equipment-role or Kiln Sky services. Final chapter-chain reconciliation remains required before candidate freeze.",
+    "status": "MANAGED_REVIEWER_ACTIVATION_BLOCKED"
+  },
+  "authority": [
+    {
+      "path": "engineering/crystal-marsh-intake/authority/CRYSTAL_MARSH_VERTICAL_INTAKE_MAP.json",
+      "role": "exact 50-ID Packet 003 authority and blocker partition",
+      "sha256": "922b40aaefff220d4bd9b60fa0596b09a76fb6cf7dd181dac42e1dda856417f3"
+    },
+    {
+      "path": "engineering/crystal-marsh-intake/equipment/CRYSTAL_EQUIPMENT_INTAKE.json",
+      "role": "exact 11 direct plus two adjacent Packet 006 intake",
+      "sha256": "74c271abe70b1cee45ba1e56f709491b7bf53230d2c98538675d579507a27476"
+    },
+    {
+      "path": "engineering/ashen-intake/codex/ASHEN_CODEX_PROGRESSION_INTAKE_MAP.json",
+      "role": "existing append-only WW/AH indexing authority",
+      "sha256": "0658083cf21b2a831c25ebcb1b7f24c89b96ac41f7694d313acda7cf1578eb5c"
+    },
+    {
+      "path": "behavior_pack/scripts/wave1_codex_data.js",
+      "role": "current registry v3 implementation and 140-entry prefix",
+      "sha256": "6208bc269b315b6e526b6ffef86a0fdc065763cf7f6c898e9d4a2f6da633c819"
+    },
+    {
+      "path": "behavior_pack/scripts/wave1_codex_ashen_data.js",
+      "role": "existing AH address payload",
+      "sha256": "d6fbda3a15cd332b24752c8ee647b9c52c210fc48b137991bc0c33c54d3fb004"
+    },
+    {
+      "path": "behavior_pack/scripts/state.js",
+      "role": "schema v4 compact regional discovery and category caps",
+      "sha256": "69eb00df9ce2f16dcca9794a61c4fcaf9403512f8057ecd4907b6a8f8375b7cd"
+    },
+    {
+      "path": "behavior_pack/scripts/budgets.js",
+      "role": "8192-byte player dynamic-property budget",
+      "sha256": "42d0432bfcda4c6a736c625644a37e1ab3ca08db6d9d97b6dd32c9fee7cfa926"
+    },
+    {
+      "path": "engineering/authority/WAVE_1_ENGINEERING_DECISION_LEDGER.json",
+      "role": "current ratified/deferred authority boundary",
+      "sha256": "b554db9fab3fe16e59e2e3b36dfc310ff462078b170f14e1f9fe8a46999bbd0c"
+    }
+  ],
+  "authority_partition": {
+    "SAFE_NOW": [
+      "append-only CM page addresses and identity scaffolding",
+      "ordinary non-apex observation/defeat/obtain/harvest/recognized-visit discovery identities",
+      "nonnumeric relationship and equipment-link text",
+      "Crystal chapter entry and Codex-only Skyreach rumor from recognized structures",
+      "Pearl Depths phase and attack names as identity text only"
+    ],
+    "W1-001-CM": "Proposed term dispositions and acquisition/recipe identity closure have no effect until ratified.",
+    "W1-003-PEARL-DEPTHS": "Proposed encounter thresholds, timing, reset, multiplayer, persistence, and terminal semantics have no effect until ratified.",
+    "W1-004-CM": "Proposed numeric loot, seal, entitlement, recovery, repeat-clear, and mastery-reward semantics have no effect until ratified.",
+    "W1-CREATIVE-005": "DEFERRED_BY_USER; no sidegrade/upgraded page, event, ID, or runtime representation is allocated."
+  },
+  "base": {
+    "commit": "b4005112cf7ad347433ec3aa42bf7a761359b95d",
+    "g7_immutable": true,
+    "tree": "6a2008f2a4f68859ef330a5b984af5eb8d9692c8"
+  },
+  "budget": {
+    "bytes_remaining_at_full_four_region_discovery_only": 7596,
+    "fully_populated_four_region_discovery_json_bytes": 596,
+    "fully_populated_three_region_discovery_json_bytes": 449,
+    "growth_from_registry_append": 0,
+    "player_dynamic_property_bytes": 8192,
+    "reason": "Compact storage capacity was already allocated per category for all four regions; CM registry rows consume existing region-local bit addresses without increasing caps."
+  },
+  "coverage": {
+    "adjacent_equipment_references_without_cm_address": 2,
+    "boss_pages": 1,
+    "direct_equipment_pages": 11,
+    "new_registry_entries": 64,
+    "packet003_by_category": {
+      "blocks": 10,
+      "creatures": 10,
+      "plants": 10,
+      "resources": 10,
+      "structures": 10
+    },
+    "packet003_pages": 50,
+    "progression_pages": 2,
+    "registry_entries_after": 204,
+    "registry_entries_before": 140
+  },
+  "packet003_entries": [
+    {
+      "category_index": 0,
+      "codex_category": "creature",
+      "discovery_routes": [
+        {
+          "action": "observe_nearby",
+          "authority": "SAFE_NOW",
+          "id": "codex:cm:creature:prism_frog:observe_nearby",
+          "stage": "partial"
+        }
+      ],
+      "global_append_ordinal": 140,
+      "id": "prism_frog",
+      "importance": "required_coverage",
+      "page_scaffolding_authority": "SAFE_NOW",
+      "region": "cm",
+      "relationships": {
+        "GATED": {
+          "blockers": [
+            "W1-001-CM",
+            "W1-004-CM"
+          ],
+          "rule": "Source relationship prose may be displayed, but no deferred term becomes an item, recipe predicate, numeric loot route, boss completion, or reward grant.",
+          "source_loot_terms_not_promoted_by_this_map": [
+            "Prism Mucus",
+            "Tiny Prism Chip",
+            "Frog Song Stone"
+          ]
+        },
+        "SAFE_NOW": {
+          "equipment_links": [
+            "crystal_talisman"
+          ],
+          "nonnumeric_crafting_roles": [],
+          "progression_links": [
+            "crystal_talisman"
+          ],
+          "where_or_acquisition_source": [
+            "shallows"
+          ]
+        }
+      },
+      "runtime_id": "aionbound:prism_frog",
+      "source_category": "creatures",
+      "warehouse_id": "prism_frog"
+    },
+    {
+      "category_index": 1,
+      "codex_category": "creature",
+      "discovery_routes": [
+        {
+          "action": "observe_nearby",
+          "authority": "SAFE_NOW",
+          "id": "codex:cm:creature:crystal_newt:observe_nearby",
+          "stage": "partial"
+        }
+      ],
+      "global_append_ordinal": 141,
+      "id": "crystal_newt",
+      "importance": "required_coverage",
+      "page_scaffolding_authority": "SAFE_NOW",
+      "region": "cm",
+      "relationships": {
+        "GATED": {
+          "blockers": [
+            "W1-001-CM",
+            "W1-004-CM"
+          ],
+          "rule": "Source relationship prose may be displayed, but no deferred term becomes an item, recipe predicate, numeric loot route, boss completion, or reward grant.",
+          "source_loot_terms_not_promoted_by_this_map": [
+            "wet_chitin",
+            "Glass Algae Film",
+            "Newt Tail Crystal"
+          ]
+        },
+        "SAFE_NOW": {
+          "equipment_links": [
+            "crystal_circlet"
+          ],
+          "nonnumeric_crafting_roles": [],
+          "progression_links": [
+            "crystal_circlet"
+          ],
+          "where_or_acquisition_source": [
+            "banks"
+          ]
+        }
+      },
+      "runtime_id": "aionbound:crystal_newt",
+      "source_category": "creatures",
+      "warehouse_id": "crystal_newt"
+    },
+    {
+      "category_index": 2,
+      "codex_category": "creature",
+      "discovery_routes": [
+        {
+          "action": "observe_airborne",
+          "authority": "SAFE_NOW",
+          "id": "codex:cm:creature:crystal_dragonfly:observe_airborne",
+          "stage": "partial"
+        }
+      ],
+      "global_append_ordinal": 142,
+      "id": "crystal_dragonfly",
+      "importance": "required_coverage",
+      "page_scaffolding_authority": "SAFE_NOW",
+      "region": "cm",
+      "relationships": {
+        "GATED": {
+          "blockers": [
+            "W1-001-CM",
+            "W1-004-CM"
+          ],
+          "rule": "Source relationship prose may be displayed, but no deferred term becomes an item, recipe predicate, numeric loot route, boss completion, or reward grant.",
+          "source_loot_terms_not_promoted_by_this_map": [
+            "Prism Wing",
+            "Iridescent Dust",
+            "Dragonfly Pin"
+          ]
+        },
+        "SAFE_NOW": {
+          "equipment_links": [
+            "prism_bow"
+          ],
+          "nonnumeric_crafting_roles": [],
+          "progression_links": [
+            "prism_bow"
+          ],
+          "where_or_acquisition_source": [
+            "open marsh"
+          ]
+        }
+      },
+      "runtime_id": "aionbound:crystal_dragonfly",
+      "source_category": "creatures",
+      "warehouse_id": "crystal_dragonfly"
+    },
+    {
+      "category_index": 3,
+      "codex_category": "creature",
+      "discovery_routes": [
+        {
+          "action": "observe_nearby",
+          "authority": "SAFE_NOW",
+          "id": "codex:cm:creature:bloom_crab:observe_nearby",
+          "stage": "partial"
+        },
+        {
+          "action": "defeat",
+          "authority": "SAFE_NOW",
+          "id": "codex:cm:creature:bloom_crab:defeated",
+          "stage": "complete"
+        }
+      ],
+      "global_append_ordinal": 143,
+      "id": "bloom_crab",
+      "importance": "required_coverage",
+      "page_scaffolding_authority": "SAFE_NOW",
+      "region": "cm",
+      "relationships": {
+        "GATED": {
+          "blockers": [
+            "W1-001-CM",
+            "W1-004-CM"
+          ],
+          "rule": "Source relationship prose may be displayed, but no deferred term becomes an item, recipe predicate, numeric loot route, boss completion, or reward grant.",
+          "source_loot_terms_not_promoted_by_this_map": [
+            "wet_chitin",
+            "Crab Pearl Grain",
+            "Marsh Resin Blob",
+            "Claw"
+          ]
+        },
+        "SAFE_NOW": {
+          "equipment_links": [
+            "crystal_talisman",
+            "marsh_sickle"
+          ],
+          "nonnumeric_crafting_roles": [],
+          "progression_links": [
+            "marsh_sickle",
+            "crystal_talisman"
+          ],
+          "where_or_acquisition_source": [
+            "shores"
+          ]
+        }
+      },
+      "runtime_id": "aionbound:bloom_crab",
+      "source_category": "creatures",
+      "warehouse_id": "bloom_crab"
+    },
+    {
+      "category_index": 4,
+      "codex_category": "creature",
+      "discovery_routes": [
+        {
+          "action": "observe_nearby",
+          "authority": "SAFE_NOW",
+          "id": "codex:cm:creature:mire_turtle:observe_nearby",
+          "stage": "partial"
+        },
+        {
+          "action": "defeat",
+          "authority": "SAFE_NOW",
+          "id": "codex:cm:creature:mire_turtle:defeated",
+          "stage": "complete"
+        }
+      ],
+      "global_append_ordinal": 144,
+      "id": "mire_turtle",
+      "importance": "required_coverage",
+      "page_scaffolding_authority": "SAFE_NOW",
+      "region": "cm",
+      "relationships": {
+        "GATED": {
+          "blockers": [
+            "W1-001-CM",
+            "W1-004-CM"
+          ],
+          "rule": "Source relationship prose may be displayed, but no deferred term becomes an item, recipe predicate, numeric loot route, boss completion, or reward grant.",
+          "source_loot_terms_not_promoted_by_this_map": [
+            "Mire Shell Plate",
+            "silt_core",
+            "Algae Scrap",
+            "Turtle Breath Stone"
+          ]
+        },
+        "SAFE_NOW": {
+          "equipment_links": [
+            "crystal_shovel"
+          ],
+          "nonnumeric_crafting_roles": [],
+          "progression_links": [
+            "crystal_shovel"
+          ],
+          "where_or_acquisition_source": [
+            "channels"
+          ]
+        }
+      },
+      "runtime_id": "aionbound:mire_turtle",
+      "source_category": "creatures",
+      "warehouse_id": "mire_turtle"
+    },
+    {
+      "category_index": 5,
+      "codex_category": "creature",
+      "discovery_routes": [
+        {
+          "action": "observe_rare",
+          "authority": "SAFE_NOW",
+          "id": "codex:cm:creature:glass_heron:observe_rare",
+          "stage": "partial"
+        },
+        {
+          "action": "defeat",
+          "authority": "SAFE_NOW",
+          "id": "codex:cm:creature:glass_heron:defeated",
+          "stage": "complete"
+        }
+      ],
+      "global_append_ordinal": 145,
+      "id": "glass_heron",
+      "importance": "required_coverage",
+      "page_scaffolding_authority": "SAFE_NOW",
+      "region": "cm",
+      "relationships": {
+        "GATED": {
+          "blockers": [
+            "W1-001-CM",
+            "W1-004-CM"
+          ],
+          "rule": "Source relationship prose may be displayed, but no deferred term becomes an item, recipe predicate, numeric loot route, boss completion, or reward grant.",
+          "source_loot_terms_not_promoted_by_this_map": [
+            "Glass Feather",
+            "Long Beak Shard",
+            "Heron Nest Token"
+          ]
+        },
+        "SAFE_NOW": {
+          "equipment_links": [
+            "crystal_pike",
+            "prism_bow"
+          ],
+          "nonnumeric_crafting_roles": [],
+          "progression_links": [
+            "crystal_pike",
+            "prism_bow"
+          ],
+          "where_or_acquisition_source": [
+            "islets"
+          ]
+        }
+      },
+      "runtime_id": "aionbound:glass_heron",
+      "source_category": "creatures",
+      "warehouse_id": "glass_heron"
+    },
+    {
+      "category_index": 6,
+      "codex_category": "creature",
+      "discovery_routes": [
+        {
+          "action": "hostile_contact",
+          "authority": "SAFE_NOW",
+          "id": "codex:cm:creature:reed_serpent:hostile_contact",
+          "stage": "partial"
+        },
+        {
+          "action": "defeat",
+          "authority": "SAFE_NOW",
+          "id": "codex:cm:creature:reed_serpent:defeated",
+          "stage": "complete"
+        }
+      ],
+      "global_append_ordinal": 146,
+      "id": "reed_serpent",
+      "importance": "required_coverage",
+      "page_scaffolding_authority": "SAFE_NOW",
+      "region": "cm",
+      "relationships": {
+        "GATED": {
+          "blockers": [
+            "W1-001-CM",
+            "W1-004-CM"
+          ],
+          "rule": "Source relationship prose may be displayed, but no deferred term becomes an item, recipe predicate, numeric loot route, boss completion, or reward grant.",
+          "source_loot_terms_not_promoted_by_this_map": [
+            "crystal_reed_item",
+            "Serpent Scale",
+            "Venom Crystal",
+            "Shed Skin Ribbon"
+          ]
+        },
+        "SAFE_NOW": {
+          "equipment_links": [
+            "crystal_pike"
+          ],
+          "nonnumeric_crafting_roles": [],
+          "progression_links": [
+            "crystal_pike"
+          ],
+          "where_or_acquisition_source": [
+            "reeds"
+          ]
+        }
+      },
+      "runtime_id": "aionbound:reed_serpent",
+      "source_category": "creatures",
+      "warehouse_id": "reed_serpent"
+    },
+    {
+      "category_index": 7,
+      "codex_category": "creature",
+      "discovery_routes": [
+        {
+          "action": "hostile_contact",
+          "authority": "SAFE_NOW",
+          "id": "codex:cm:creature:silt_crocodile:hostile_contact",
+          "stage": "partial"
+        },
+        {
+          "action": "defeat",
+          "authority": "SAFE_NOW",
+          "id": "codex:cm:creature:silt_crocodile:defeated",
+          "stage": "complete"
+        }
+      ],
+      "global_append_ordinal": 147,
+      "id": "silt_crocodile",
+      "importance": "required_coverage",
+      "page_scaffolding_authority": "SAFE_NOW",
+      "region": "cm",
+      "relationships": {
+        "GATED": {
+          "blockers": [
+            "W1-001-CM",
+            "W1-004-CM"
+          ],
+          "rule": "Source relationship prose may be displayed, but no deferred term becomes an item, recipe predicate, numeric loot route, boss completion, or reward grant.",
+          "source_loot_terms_not_promoted_by_this_map": [
+            "Croc Hide",
+            "Silt Fang",
+            "silt_core",
+            "Croc Eye Pearl"
+          ]
+        },
+        "SAFE_NOW": {
+          "equipment_links": [
+            "crystal_shovel",
+            "explorer_cloak"
+          ],
+          "nonnumeric_crafting_roles": [],
+          "progression_links": [
+            "explorer_cloak",
+            "crystal_shovel"
+          ],
+          "where_or_acquisition_source": [
+            "deep channels"
+          ]
+        }
+      },
+      "runtime_id": "aionbound:silt_crocodile",
+      "source_category": "creatures",
+      "warehouse_id": "silt_crocodile"
+    },
+    {
+      "category_index": 8,
+      "codex_category": "creature",
+      "discovery_routes": [
+        {
+          "action": "hostile_contact",
+          "authority": "SAFE_NOW",
+          "id": "codex:cm:creature:bog_watcher:hostile_contact",
+          "stage": "partial"
+        },
+        {
+          "action": "defeat",
+          "authority": "SAFE_NOW",
+          "id": "codex:cm:creature:bog_watcher:defeated",
+          "stage": "complete"
+        }
+      ],
+      "global_append_ordinal": 148,
+      "id": "bog_watcher",
+      "importance": "required_coverage",
+      "page_scaffolding_authority": "SAFE_NOW",
+      "region": "cm",
+      "relationships": {
+        "GATED": {
+          "blockers": [
+            "W1-001-CM",
+            "W1-004-CM"
+          ],
+          "rule": "Source relationship prose may be displayed, but no deferred term becomes an item, recipe predicate, numeric loot route, boss completion, or reward grant.",
+          "source_loot_terms_not_promoted_by_this_map": [
+            "Watcher Lens",
+            "Flood Crystal Shard",
+            "Bog Tendril",
+            "Watcher Journal Scrap"
+          ]
+        },
+        "SAFE_NOW": {
+          "equipment_links": [
+            "crystal_circlet",
+            "surveyor_staff"
+          ],
+          "nonnumeric_crafting_roles": [],
+          "progression_links": [
+            "crystal_circlet",
+            "surveyor_staff"
+          ],
+          "where_or_acquisition_source": [
+            "fog"
+          ]
+        }
+      },
+      "runtime_id": "aionbound:bog_watcher",
+      "source_category": "creatures",
+      "warehouse_id": "bog_watcher"
+    },
+    {
+      "category_index": 9,
+      "codex_category": "creature",
+      "discovery_routes": [
+        {
+          "action": "valid_pearl_depths_pull",
+          "authority": "WITHHELD",
+          "blockers": [
+            "W1-003-PEARL-DEPTHS"
+          ],
+          "id": "codex:cm:creature:marsh_wight:encountered",
+          "stage": "partial"
+        },
+        {
+          "action": "valid_pearl_depths_terminal",
+          "authority": "WITHHELD",
+          "blockers": [
+            "W1-003-PEARL-DEPTHS",
+            "W1-004-CM"
+          ],
+          "id": "codex:cm:creature:marsh_wight:defeated",
+          "stage": "complete"
+        }
+      ],
+      "global_append_ordinal": 149,
+      "id": "marsh_wight",
+      "importance": "critical_path",
+      "page_scaffolding_authority": "SAFE_NOW",
+      "region": "cm",
+      "relationships": {
+        "GATED": {
+          "blockers": [
+            "W1-001-CM",
+            "W1-003-PEARL-DEPTHS",
+            "W1-004-CM"
+          ],
+          "rule": "Source relationship prose may be displayed, but no deferred term becomes an item, recipe predicate, numeric loot route, boss completion, or reward grant.",
+          "source_loot_terms_not_promoted_by_this_map": [
+            "Wight Shroud Cloth",
+            "prism_pearl",
+            "moon_pearl",
+            "marsh_wight_mask",
+            "flood_crystal",
+            "crystal_root_item"
+          ]
+        },
+        "SAFE_NOW": {
+          "equipment_links": [
+            "crystal_circlet",
+            "explorer_cloak",
+            "marsh_wight_mask"
+          ],
+          "nonnumeric_crafting_roles": [],
+          "progression_links": [
+            "crystal_circlet",
+            "explorer_cloak",
+            "marsh_wight_mask"
+          ],
+          "where_or_acquisition_source": [
+            "deep pool or sunken shrine encounter only"
+          ]
+        }
+      },
+      "runtime_id": "aionbound:marsh_wight",
+      "source_category": "creatures",
+      "warehouse_id": "marsh_wight"
+    },
+    {
+      "category_index": 0,
+      "codex_category": "resource",
+      "discovery_routes": [
+        {
+          "action": "first_obtain",
+          "authority": "SAFE_NOW",
+          "id": "codex:cm:resource:glass_algae:obtained",
+          "stage": "complete"
+        }
+      ],
+      "global_append_ordinal": 150,
+      "id": "glass_algae",
+      "importance": "required_coverage",
+      "page_scaffolding_authority": "SAFE_NOW",
+      "region": "cm",
+      "relationships": {
+        "GATED": {
+          "blockers": [],
+          "rule": "Source relationship prose may be displayed, but no deferred term becomes an item, recipe predicate, numeric loot route, boss completion, or reward grant.",
+          "source_loot_terms_not_promoted_by_this_map": []
+        },
+        "SAFE_NOW": {
+          "equipment_links": [
+            "explorer_cloak",
+            "prism_bow"
+          ],
+          "nonnumeric_crafting_roles": [
+            "polish",
+            "food-risk",
+            "algae_block",
+            "prism_bow"
+          ],
+          "progression_links": [
+            "prism_bow"
+          ],
+          "where_or_acquisition_source": [
+            "water or harvest"
+          ]
+        }
+      },
+      "runtime_id": "aionbound:glass_algae",
+      "source_category": "resources",
+      "warehouse_id": "glass_algae"
+    },
+    {
+      "category_index": 1,
+      "codex_category": "resource",
+      "discovery_routes": [
+        {
+          "action": "first_obtain",
+          "authority": "SAFE_NOW",
+          "id": "codex:cm:resource:marsh_resin:obtained",
+          "stage": "complete"
+        }
+      ],
+      "global_append_ordinal": 151,
+      "id": "marsh_resin",
+      "importance": "required_coverage",
+      "page_scaffolding_authority": "SAFE_NOW",
+      "region": "cm",
+      "relationships": {
+        "GATED": {
+          "blockers": [],
+          "rule": "Source relationship prose may be displayed, but no deferred term becomes an item, recipe predicate, numeric loot route, boss completion, or reward grant.",
+          "source_loot_terms_not_promoted_by_this_map": []
+        },
+        "SAFE_NOW": {
+          "equipment_links": [
+            "marsh_idol",
+            "marsh_sickle"
+          ],
+          "nonnumeric_crafting_roles": [
+            "wet bind",
+            "Wet Plate",
+            "sickle blank",
+            "regional repair binder"
+          ],
+          "progression_links": [
+            "marsh_sickle",
+            "marsh_idol"
+          ],
+          "where_or_acquisition_source": [
+            "crabs or nodes"
+          ]
+        }
+      },
+      "runtime_id": "aionbound:marsh_resin",
+      "source_category": "resources",
+      "warehouse_id": "marsh_resin"
+    },
+    {
+      "category_index": 2,
+      "codex_category": "resource",
+      "discovery_routes": [
+        {
+          "action": "first_obtain",
+          "authority": "SAFE_NOW",
+          "id": "codex:cm:resource:crystal_reed_item:obtained",
+          "stage": "complete"
+        }
+      ],
+      "global_append_ordinal": 152,
+      "id": "crystal_reed_item",
+      "importance": "required_coverage",
+      "page_scaffolding_authority": "SAFE_NOW",
+      "region": "cm",
+      "relationships": {
+        "GATED": {
+          "blockers": [],
+          "rule": "Source relationship prose may be displayed, but no deferred term becomes an item, recipe predicate, numeric loot route, boss completion, or reward grant.",
+          "source_loot_terms_not_promoted_by_this_map": []
+        },
+        "SAFE_NOW": {
+          "equipment_links": [
+            "crystal_pike"
+          ],
+          "nonnumeric_crafting_roles": [
+            "Crystal Pole",
+            "poles",
+            "shafts"
+          ],
+          "progression_links": [
+            "crystal_pike"
+          ],
+          "where_or_acquisition_source": [
+            "serpents or reeds"
+          ]
+        }
+      },
+      "runtime_id": "aionbound:crystal_reed_item",
+      "source_category": "resources",
+      "warehouse_id": "crystal_reed_item"
+    },
+    {
+      "category_index": 3,
+      "codex_category": "resource",
+      "discovery_routes": [
+        {
+          "action": "first_obtain",
+          "authority": "SAFE_NOW",
+          "id": "codex:cm:resource:crystal_root_item:obtained",
+          "stage": "complete"
+        }
+      ],
+      "global_append_ordinal": 153,
+      "id": "crystal_root_item",
+      "importance": "required_coverage",
+      "page_scaffolding_authority": "SAFE_NOW",
+      "region": "cm",
+      "relationships": {
+        "GATED": {
+          "blockers": [],
+          "rule": "Source relationship prose may be displayed, but no deferred term becomes an item, recipe predicate, numeric loot route, boss completion, or reward grant.",
+          "source_loot_terms_not_promoted_by_this_map": []
+        },
+        "SAFE_NOW": {
+          "equipment_links": [
+            "crystal_circlet",
+            "crystal_talisman"
+          ],
+          "nonnumeric_crafting_roles": [
+            "Living Crystal Core",
+            "living weapon cores"
+          ],
+          "progression_links": [
+            "crystal_circlet",
+            "crystal_talisman"
+          ],
+          "where_or_acquisition_source": [
+            "nodes or marsh_wight"
+          ]
+        }
+      },
+      "runtime_id": "aionbound:crystal_root_item",
+      "source_category": "resources",
+      "warehouse_id": "crystal_root_item"
+    },
+    {
+      "category_index": 4,
+      "codex_category": "resource",
+      "discovery_routes": [
+        {
+          "action": "first_obtain",
+          "authority": "SAFE_NOW",
+          "id": "codex:cm:resource:wet_chitin:obtained",
+          "stage": "complete"
+        }
+      ],
+      "global_append_ordinal": 154,
+      "id": "wet_chitin",
+      "importance": "required_coverage",
+      "page_scaffolding_authority": "SAFE_NOW",
+      "region": "cm",
+      "relationships": {
+        "GATED": {
+          "blockers": [],
+          "rule": "Source relationship prose may be displayed, but no deferred term becomes an item, recipe predicate, numeric loot route, boss completion, or reward grant.",
+          "source_loot_terms_not_promoted_by_this_map": []
+        },
+        "SAFE_NOW": {
+          "equipment_links": [
+            "crystal_circlet",
+            "marsh_sickle"
+          ],
+          "nonnumeric_crafting_roles": [
+            "Wet Plate",
+            "sickle blank",
+            "light armor",
+            "circlet band"
+          ],
+          "progression_links": [
+            "marsh_sickle",
+            "crystal_circlet"
+          ],
+          "where_or_acquisition_source": [
+            "crystal_newt, bloom_crab, or fight"
+          ]
+        }
+      },
+      "runtime_id": "aionbound:wet_chitin",
+      "source_category": "resources",
+      "warehouse_id": "wet_chitin"
+    },
+    {
+      "category_index": 5,
+      "codex_category": "resource",
+      "discovery_routes": [
+        {
+          "action": "first_obtain",
+          "authority": "SAFE_NOW",
+          "id": "codex:cm:resource:silt_core:obtained",
+          "stage": "complete"
+        }
+      ],
+      "global_append_ordinal": 155,
+      "id": "silt_core",
+      "importance": "required_coverage",
+      "page_scaffolding_authority": "SAFE_NOW",
+      "region": "cm",
+      "relationships": {
+        "GATED": {
+          "blockers": [],
+          "rule": "Source relationship prose may be displayed, but no deferred term becomes an item, recipe predicate, numeric loot route, boss completion, or reward grant.",
+          "source_loot_terms_not_promoted_by_this_map": []
+        },
+        "SAFE_NOW": {
+          "equipment_links": [
+            "crystal_shovel"
+          ],
+          "nonnumeric_crafting_roles": [
+            "crystal_shovel head",
+            "weight tools"
+          ],
+          "progression_links": [
+            "crystal_shovel"
+          ],
+          "where_or_acquisition_source": [
+            "mire_turtle, silt_crocodile, or deep mud"
+          ]
+        }
+      },
+      "runtime_id": "aionbound:silt_core",
+      "source_category": "resources",
+      "warehouse_id": "silt_core"
+    },
+    {
+      "category_index": 6,
+      "codex_category": "resource",
+      "discovery_routes": [
+        {
+          "action": "first_obtain",
+          "authority": "SAFE_NOW",
+          "id": "codex:cm:resource:flood_crystal:obtained",
+          "stage": "complete"
+        }
+      ],
+      "global_append_ordinal": 156,
+      "id": "flood_crystal",
+      "importance": "required_coverage",
+      "page_scaffolding_authority": "SAFE_NOW",
+      "region": "cm",
+      "relationships": {
+        "GATED": {
+          "blockers": [],
+          "rule": "Source relationship prose may be displayed, but no deferred term becomes an item, recipe predicate, numeric loot route, boss completion, or reward grant.",
+          "source_loot_terms_not_promoted_by_this_map": []
+        },
+        "SAFE_NOW": {
+          "equipment_links": [
+            "crystal_pike",
+            "prism_bow",
+            "surveyor_staff"
+          ],
+          "nonnumeric_crafting_roles": [
+            "Crystal Pole",
+            "weapon cores",
+            "Twin Mineral Lens"
+          ],
+          "progression_links": [
+            "crystal_pike",
+            "prism_bow",
+            "surveyor_staff"
+          ],
+          "where_or_acquisition_source": [
+            "spikes or elites"
+          ]
+        }
+      },
+      "runtime_id": "aionbound:flood_crystal",
+      "source_category": "resources",
+      "warehouse_id": "flood_crystal"
+    },
+    {
+      "category_index": 7,
+      "codex_category": "resource",
+      "discovery_routes": [
+        {
+          "action": "first_obtain",
+          "authority": "SAFE_NOW",
+          "id": "codex:cm:resource:mire_bloom_item:obtained",
+          "stage": "complete"
+        }
+      ],
+      "global_append_ordinal": 157,
+      "id": "mire_bloom_item",
+      "importance": "required_coverage",
+      "page_scaffolding_authority": "SAFE_NOW",
+      "region": "cm",
+      "relationships": {
+        "GATED": {
+          "blockers": [],
+          "rule": "Source relationship prose may be displayed, but no deferred term becomes an item, recipe predicate, numeric loot route, boss completion, or reward grant.",
+          "source_loot_terms_not_promoted_by_this_map": []
+        },
+        "SAFE_NOW": {
+          "equipment_links": [],
+          "nonnumeric_crafting_roles": [
+            "dye",
+            "consumable"
+          ],
+          "progression_links": [],
+          "where_or_acquisition_source": [
+            "plants"
+          ]
+        }
+      },
+      "runtime_id": "aionbound:mire_bloom_item",
+      "source_category": "resources",
+      "warehouse_id": "mire_bloom_item"
+    },
+    {
+      "category_index": 8,
+      "codex_category": "resource",
+      "discovery_routes": [
+        {
+          "action": "first_obtain",
+          "authority": "SAFE_NOW",
+          "id": "codex:cm:resource:moon_pearl:obtained",
+          "stage": "complete"
+        }
+      ],
+      "global_append_ordinal": 158,
+      "id": "moon_pearl",
+      "importance": "required_coverage",
+      "page_scaffolding_authority": "SAFE_NOW",
+      "region": "cm",
+      "relationships": {
+        "GATED": {
+          "blockers": [],
+          "rule": "Source relationship prose may be displayed, but no deferred term becomes an item, recipe predicate, numeric loot route, boss completion, or reward grant.",
+          "source_loot_terms_not_promoted_by_this_map": []
+        },
+        "SAFE_NOW": {
+          "equipment_links": [
+            "crystal_circlet",
+            "crystal_talisman",
+            "moon_pearl_pedestal"
+          ],
+          "nonnumeric_crafting_roles": [
+            "Living Crystal Core",
+            "moon_pearl_pedestal",
+            "hybrid staff ornaments"
+          ],
+          "progression_links": [
+            "crystal_circlet",
+            "crystal_talisman",
+            "moon_pearl_pedestal"
+          ],
+          "where_or_acquisition_source": [
+            "pools, silt_crocodile, or marsh_wight"
+          ]
+        }
+      },
+      "runtime_id": "aionbound:moon_pearl",
+      "source_category": "resources",
+      "warehouse_id": "moon_pearl"
+    },
+    {
+      "category_index": 9,
+      "codex_category": "resource",
+      "discovery_routes": [
+        {
+          "action": "first_obtain",
+          "authority": "SAFE_NOW",
+          "id": "codex:cm:resource:prism_pearl:obtained",
+          "stage": "complete"
+        }
+      ],
+      "global_append_ordinal": 159,
+      "id": "prism_pearl",
+      "importance": "required_coverage",
+      "page_scaffolding_authority": "SAFE_NOW",
+      "region": "cm",
+      "relationships": {
+        "GATED": {
+          "blockers": [],
+          "rule": "Source relationship prose may be displayed, but no deferred term becomes an item, recipe predicate, numeric loot route, boss completion, or reward grant.",
+          "source_loot_terms_not_promoted_by_this_map": []
+        },
+        "SAFE_NOW": {
+          "equipment_links": [
+            "crystal_circlet"
+          ],
+          "nonnumeric_crafting_roles": [
+            "top polish",
+            "pilgrim catalyst"
+          ],
+          "progression_links": [
+            "crystal_circlet"
+          ],
+          "where_or_acquisition_source": [
+            "marsh_wight or sunken_shrine"
+          ]
+        }
+      },
+      "runtime_id": "aionbound:prism_pearl",
+      "source_category": "resources",
+      "warehouse_id": "prism_pearl"
+    },
+    {
+      "category_index": 10,
+      "codex_category": "resource",
+      "discovery_routes": [
+        {
+          "action": "first_obtain_or_recognized_harvest",
+          "authority": "SAFE_NOW",
+          "id": "codex:cm:resource:marsh_soil:obtained",
+          "stage": "complete"
+        }
+      ],
+      "global_append_ordinal": 160,
+      "id": "marsh_soil",
+      "importance": "required_coverage",
+      "page_scaffolding_authority": "SAFE_NOW",
+      "region": "cm",
+      "relationships": {
+        "GATED": {
+          "blockers": [],
+          "rule": "Source relationship prose may be displayed, but no deferred term becomes an item, recipe predicate, numeric loot route, boss completion, or reward grant.",
+          "source_loot_terms_not_promoted_by_this_map": []
+        },
+        "SAFE_NOW": {
+          "equipment_links": [],
+          "nonnumeric_crafting_roles": [],
+          "progression_links": [
+            "ground",
+            "wet basin"
+          ],
+          "where_or_acquisition_source": [
+            "not numerically specified"
+          ]
+        }
+      },
+      "runtime_id": "aionbound:marsh_soil",
+      "source_category": "blocks",
+      "warehouse_id": "marsh_soil"
+    },
+    {
+      "category_index": 11,
+      "codex_category": "resource",
+      "discovery_routes": [
+        {
+          "action": "first_obtain_or_recognized_harvest",
+          "authority": "SAFE_NOW",
+          "id": "codex:cm:resource:wet_clay_block:obtained",
+          "stage": "complete"
+        }
+      ],
+      "global_append_ordinal": 161,
+      "id": "wet_clay_block",
+      "importance": "required_coverage",
+      "page_scaffolding_authority": "SAFE_NOW",
+      "region": "cm",
+      "relationships": {
+        "GATED": {
+          "blockers": [],
+          "rule": "Source relationship prose may be displayed, but no deferred term becomes an item, recipe predicate, numeric loot route, boss completion, or reward grant.",
+          "source_loot_terms_not_promoted_by_this_map": []
+        },
+        "SAFE_NOW": {
+          "equipment_links": [],
+          "nonnumeric_crafting_roles": [],
+          "progression_links": [
+            "shores or craft",
+            "clay language"
+          ],
+          "where_or_acquisition_source": [
+            "not numerically specified"
+          ]
+        }
+      },
+      "runtime_id": "aionbound:wet_clay_block",
+      "source_category": "blocks",
+      "warehouse_id": "wet_clay_block"
+    },
+    {
+      "category_index": 12,
+      "codex_category": "resource",
+      "discovery_routes": [
+        {
+          "action": "first_obtain_or_recognized_harvest",
+          "authority": "SAFE_NOW",
+          "id": "codex:cm:resource:algae_block:obtained",
+          "stage": "complete"
+        }
+      ],
+      "global_append_ordinal": 162,
+      "id": "algae_block",
+      "importance": "required_coverage",
+      "page_scaffolding_authority": "SAFE_NOW",
+      "region": "cm",
+      "relationships": {
+        "GATED": {
+          "blockers": [],
+          "rule": "Source relationship prose may be displayed, but no deferred term becomes an item, recipe predicate, numeric loot route, boss completion, or reward grant.",
+          "source_loot_terms_not_promoted_by_this_map": []
+        },
+        "SAFE_NOW": {
+          "equipment_links": [],
+          "nonnumeric_crafting_roles": [],
+          "progression_links": [
+            "water mats",
+            "green wet"
+          ],
+          "where_or_acquisition_source": [
+            "not numerically specified"
+          ]
+        }
+      },
+      "runtime_id": "aionbound:algae_block",
+      "source_category": "blocks",
+      "warehouse_id": "algae_block"
+    },
+    {
+      "category_index": 13,
+      "codex_category": "resource",
+      "discovery_routes": [
+        {
+          "action": "first_obtain_or_recognized_harvest",
+          "authority": "SAFE_NOW",
+          "id": "codex:cm:resource:crystal_gravel:obtained",
+          "stage": "complete"
+        }
+      ],
+      "global_append_ordinal": 163,
+      "id": "crystal_gravel",
+      "importance": "required_coverage",
+      "page_scaffolding_authority": "SAFE_NOW",
+      "region": "cm",
+      "relationships": {
+        "GATED": {
+          "blockers": [],
+          "rule": "Source relationship prose may be displayed, but no deferred term becomes an item, recipe predicate, numeric loot route, boss completion, or reward grant.",
+          "source_loot_terms_not_promoted_by_this_map": []
+        },
+        "SAFE_NOW": {
+          "equipment_links": [],
+          "nonnumeric_crafting_roles": [],
+          "progression_links": [
+            "crystal shores",
+            "mineral wet"
+          ],
+          "where_or_acquisition_source": [
+            "not numerically specified"
+          ]
+        }
+      },
+      "runtime_id": "aionbound:crystal_gravel",
+      "source_category": "blocks",
+      "warehouse_id": "crystal_gravel"
+    },
+    {
+      "category_index": 14,
+      "codex_category": "resource",
+      "discovery_routes": [
+        {
+          "action": "first_obtain_or_recognized_harvest",
+          "authority": "SAFE_NOW",
+          "id": "codex:cm:resource:crystal_stone:obtained",
+          "stage": "complete"
+        }
+      ],
+      "global_append_ordinal": 164,
+      "id": "crystal_stone",
+      "importance": "required_coverage",
+      "page_scaffolding_authority": "SAFE_NOW",
+      "region": "cm",
+      "relationships": {
+        "GATED": {
+          "blockers": [],
+          "rule": "Source relationship prose may be displayed, but no deferred term becomes an item, recipe predicate, numeric loot route, boss completion, or reward grant.",
+          "source_loot_terms_not_promoted_by_this_map": []
+        },
+        "SAFE_NOW": {
+          "equipment_links": [],
+          "nonnumeric_crafting_roles": [],
+          "progression_links": [
+            "spikes or builds",
+            "hard crystal"
+          ],
+          "where_or_acquisition_source": [
+            "not numerically specified"
+          ]
+        }
+      },
+      "runtime_id": "aionbound:crystal_stone",
+      "source_category": "blocks",
+      "warehouse_id": "crystal_stone"
+    },
+    {
+      "category_index": 15,
+      "codex_category": "resource",
+      "discovery_routes": [
+        {
+          "action": "first_obtain_or_recognized_harvest",
+          "authority": "SAFE_NOW",
+          "id": "codex:cm:resource:crystal_log:obtained",
+          "stage": "complete"
+        }
+      ],
+      "global_append_ordinal": 165,
+      "id": "crystal_log",
+      "importance": "required_coverage",
+      "page_scaffolding_authority": "SAFE_NOW",
+      "region": "cm",
+      "relationships": {
+        "GATED": {
+          "blockers": [],
+          "rule": "Source relationship prose may be displayed, but no deferred term becomes an item, recipe predicate, numeric loot route, boss completion, or reward grant.",
+          "source_loot_terms_not_promoted_by_this_map": []
+        },
+        "SAFE_NOW": {
+          "equipment_links": [],
+          "nonnumeric_crafting_roles": [],
+          "progression_links": [
+            "wet wood family",
+            "flood trees"
+          ],
+          "where_or_acquisition_source": [
+            "not numerically specified"
+          ]
+        }
+      },
+      "runtime_id": "aionbound:crystal_log",
+      "source_category": "blocks",
+      "warehouse_id": "crystal_log"
+    },
+    {
+      "category_index": 16,
+      "codex_category": "resource",
+      "discovery_routes": [
+        {
+          "action": "first_obtain_or_recognized_harvest",
+          "authority": "SAFE_NOW",
+          "id": "codex:cm:resource:marsh_wood:obtained",
+          "stage": "complete"
+        }
+      ],
+      "global_append_ordinal": 166,
+      "id": "marsh_wood",
+      "importance": "required_coverage",
+      "page_scaffolding_authority": "SAFE_NOW",
+      "region": "cm",
+      "relationships": {
+        "GATED": {
+          "blockers": [],
+          "rule": "Source relationship prose may be displayed, but no deferred term becomes an item, recipe predicate, numeric loot route, boss completion, or reward grant.",
+          "source_loot_terms_not_promoted_by_this_map": []
+        },
+        "SAFE_NOW": {
+          "equipment_links": [],
+          "nonnumeric_crafting_roles": [],
+          "progression_links": [
+            "wet wood family",
+            "flood trees"
+          ],
+          "where_or_acquisition_source": [
+            "not numerically specified"
+          ]
+        }
+      },
+      "runtime_id": "aionbound:marsh_wood",
+      "source_category": "blocks",
+      "warehouse_id": "marsh_wood"
+    },
+    {
+      "category_index": 17,
+      "codex_category": "resource",
+      "discovery_routes": [
+        {
+          "action": "first_obtain_or_recognized_harvest",
+          "authority": "SAFE_NOW",
+          "id": "codex:cm:resource:flood_planks:obtained",
+          "stage": "complete"
+        }
+      ],
+      "global_append_ordinal": 167,
+      "id": "flood_planks",
+      "importance": "required_coverage",
+      "page_scaffolding_authority": "SAFE_NOW",
+      "region": "cm",
+      "relationships": {
+        "GATED": {
+          "blockers": [],
+          "rule": "Source relationship prose may be displayed, but no deferred term becomes an item, recipe predicate, numeric loot route, boss completion, or reward grant.",
+          "source_loot_terms_not_promoted_by_this_map": []
+        },
+        "SAFE_NOW": {
+          "equipment_links": [],
+          "nonnumeric_crafting_roles": [],
+          "progression_links": [
+            "builds or docks",
+            "worked wet wood"
+          ],
+          "where_or_acquisition_source": [
+            "not numerically specified"
+          ]
+        }
+      },
+      "runtime_id": "aionbound:flood_planks",
+      "source_category": "blocks",
+      "warehouse_id": "flood_planks"
+    },
+    {
+      "category_index": 18,
+      "codex_category": "resource",
+      "discovery_routes": [
+        {
+          "action": "first_obtain_or_recognized_harvest",
+          "authority": "SAFE_NOW",
+          "id": "codex:cm:resource:glass_root_block:obtained",
+          "stage": "complete"
+        }
+      ],
+      "global_append_ordinal": 168,
+      "id": "glass_root_block",
+      "importance": "required_coverage",
+      "page_scaffolding_authority": "SAFE_NOW",
+      "region": "cm",
+      "relationships": {
+        "GATED": {
+          "blockers": [],
+          "rule": "Source relationship prose may be displayed, but no deferred term becomes an item, recipe predicate, numeric loot route, boss completion, or reward grant.",
+          "source_loot_terms_not_promoted_by_this_map": []
+        },
+        "SAFE_NOW": {
+          "equipment_links": [],
+          "nonnumeric_crafting_roles": [],
+          "progression_links": [
+            "root crystal",
+            "living mineral"
+          ],
+          "where_or_acquisition_source": [
+            "not numerically specified"
+          ]
+        }
+      },
+      "runtime_id": "aionbound:glass_root_block",
+      "source_category": "blocks",
+      "warehouse_id": "glass_root_block"
+    },
+    {
+      "category_index": 19,
+      "codex_category": "resource",
+      "discovery_routes": [
+        {
+          "action": "first_obtain_or_recognized_harvest",
+          "authority": "SAFE_NOW",
+          "id": "codex:cm:resource:prism_brick:obtained",
+          "stage": "complete"
+        }
+      ],
+      "global_append_ordinal": 169,
+      "id": "prism_brick",
+      "importance": "required_coverage",
+      "page_scaffolding_authority": "SAFE_NOW",
+      "region": "cm",
+      "relationships": {
+        "GATED": {
+          "blockers": [],
+          "rule": "Source relationship prose may be displayed, but no deferred term becomes an item, recipe predicate, numeric loot route, boss completion, or reward grant.",
+          "source_loot_terms_not_promoted_by_this_map": []
+        },
+        "SAFE_NOW": {
+          "equipment_links": [
+            "moon_pearl_pedestal"
+          ],
+          "nonnumeric_crafting_roles": [],
+          "progression_links": [
+            "ruins or obelisk pads",
+            "civilization crystal"
+          ],
+          "where_or_acquisition_source": [
+            "not numerically specified"
+          ]
+        }
+      },
+      "runtime_id": "aionbound:prism_brick",
+      "source_category": "blocks",
+      "warehouse_id": "prism_brick"
+    },
+    {
+      "category_index": 0,
+      "codex_category": "plant",
+      "discovery_routes": [
+        {
+          "action": "first_harvest",
+          "authority": "SAFE_NOW",
+          "id": "codex:cm:plant:pearl_grass:harvested",
+          "stage": "complete"
+        }
+      ],
+      "global_append_ordinal": 170,
+      "id": "pearl_grass",
+      "importance": "required_coverage",
+      "page_scaffolding_authority": "SAFE_NOW",
+      "region": "cm",
+      "relationships": {
+        "GATED": {
+          "blockers": [],
+          "rule": "Source relationship prose may be displayed, but no deferred term becomes an item, recipe predicate, numeric loot route, boss completion, or reward grant.",
+          "source_loot_terms_not_promoted_by_this_map": [
+            "pearl_grass"
+          ]
+        },
+        "SAFE_NOW": {
+          "equipment_links": [],
+          "nonnumeric_crafting_roles": [
+            "fiber",
+            "pearl dust"
+          ],
+          "progression_links": [
+            "fiber",
+            "pearl dust"
+          ],
+          "where_or_acquisition_source": [
+            "islets"
+          ]
+        }
+      },
+      "runtime_id": "aionbound:pearl_grass",
+      "source_category": "plants",
+      "warehouse_id": "pearl_grass"
+    },
+    {
+      "category_index": 1,
+      "codex_category": "plant",
+      "discovery_routes": [
+        {
+          "action": "first_harvest",
+          "authority": "SAFE_NOW",
+          "id": "codex:cm:plant:marsh_fern:harvested",
+          "stage": "complete"
+        }
+      ],
+      "global_append_ordinal": 171,
+      "id": "marsh_fern",
+      "importance": "required_coverage",
+      "page_scaffolding_authority": "SAFE_NOW",
+      "region": "cm",
+      "relationships": {
+        "GATED": {
+          "blockers": [],
+          "rule": "Source relationship prose may be displayed, but no deferred term becomes an item, recipe predicate, numeric loot route, boss completion, or reward grant.",
+          "source_loot_terms_not_promoted_by_this_map": [
+            "marsh_fern"
+          ]
+        },
+        "SAFE_NOW": {
+          "equipment_links": [],
+          "nonnumeric_crafting_roles": [
+            "bandages wet"
+          ],
+          "progression_links": [
+            "bandages wet"
+          ],
+          "where_or_acquisition_source": [
+            "banks"
+          ]
+        }
+      },
+      "runtime_id": "aionbound:marsh_fern",
+      "source_category": "plants",
+      "warehouse_id": "marsh_fern"
+    },
+    {
+      "category_index": 2,
+      "codex_category": "plant",
+      "discovery_routes": [
+        {
+          "action": "first_harvest",
+          "authority": "SAFE_NOW",
+          "id": "codex:cm:plant:flood_reed:harvested",
+          "stage": "complete"
+        }
+      ],
+      "global_append_ordinal": 172,
+      "id": "flood_reed",
+      "importance": "required_coverage",
+      "page_scaffolding_authority": "SAFE_NOW",
+      "region": "cm",
+      "relationships": {
+        "GATED": {
+          "blockers": [],
+          "rule": "Source relationship prose may be displayed, but no deferred term becomes an item, recipe predicate, numeric loot route, boss completion, or reward grant.",
+          "source_loot_terms_not_promoted_by_this_map": [
+            "flood_reed"
+          ]
+        },
+        "SAFE_NOW": {
+          "equipment_links": [
+            "crystal_shovel",
+            "marsh_sickle"
+          ],
+          "nonnumeric_crafting_roles": [
+            "shafts",
+            "thatch"
+          ],
+          "progression_links": [
+            "shafts",
+            "thatch"
+          ],
+          "where_or_acquisition_source": [
+            "reed seas"
+          ]
+        }
+      },
+      "runtime_id": "aionbound:flood_reed",
+      "source_category": "plants",
+      "warehouse_id": "flood_reed"
+    },
+    {
+      "category_index": 3,
+      "codex_category": "plant",
+      "discovery_routes": [
+        {
+          "action": "first_harvest",
+          "authority": "SAFE_NOW",
+          "id": "codex:cm:plant:glass_moss:harvested",
+          "stage": "complete"
+        }
+      ],
+      "global_append_ordinal": 173,
+      "id": "glass_moss",
+      "importance": "required_coverage",
+      "page_scaffolding_authority": "SAFE_NOW",
+      "region": "cm",
+      "relationships": {
+        "GATED": {
+          "blockers": [],
+          "rule": "Source relationship prose may be displayed, but no deferred term becomes an item, recipe predicate, numeric loot route, boss completion, or reward grant.",
+          "source_loot_terms_not_promoted_by_this_map": [
+            "glass_moss"
+          ]
+        },
+        "SAFE_NOW": {
+          "equipment_links": [],
+          "nonnumeric_crafting_roles": [
+            "soft light"
+          ],
+          "progression_links": [
+            "soft light"
+          ],
+          "where_or_acquisition_source": [
+            "crystal shade"
+          ]
+        }
+      },
+      "runtime_id": "aionbound:glass_moss",
+      "source_category": "plants",
+      "warehouse_id": "glass_moss"
+    },
+    {
+      "category_index": 4,
+      "codex_category": "plant",
+      "discovery_routes": [
+        {
+          "action": "first_harvest",
+          "authority": "SAFE_NOW",
+          "id": "codex:cm:plant:glow_kelp:harvested",
+          "stage": "complete"
+        }
+      ],
+      "global_append_ordinal": 174,
+      "id": "glow_kelp",
+      "importance": "required_coverage",
+      "page_scaffolding_authority": "SAFE_NOW",
+      "region": "cm",
+      "relationships": {
+        "GATED": {
+          "blockers": [],
+          "rule": "Source relationship prose may be displayed, but no deferred term becomes an item, recipe predicate, numeric loot route, boss completion, or reward grant.",
+          "source_loot_terms_not_promoted_by_this_map": [
+            "glow_kelp"
+          ]
+        },
+        "SAFE_NOW": {
+          "equipment_links": [],
+          "nonnumeric_crafting_roles": [
+            "underwater light design"
+          ],
+          "progression_links": [
+            "underwater light design"
+          ],
+          "where_or_acquisition_source": [
+            "deep water"
+          ]
+        }
+      },
+      "runtime_id": "aionbound:glow_kelp",
+      "source_category": "plants",
+      "warehouse_id": "glow_kelp"
+    },
+    {
+      "category_index": 5,
+      "codex_category": "plant",
+      "discovery_routes": [
+        {
+          "action": "first_harvest",
+          "authority": "SAFE_NOW",
+          "id": "codex:cm:plant:bubble_pod:harvested",
+          "stage": "complete"
+        }
+      ],
+      "global_append_ordinal": 175,
+      "id": "bubble_pod",
+      "importance": "required_coverage",
+      "page_scaffolding_authority": "SAFE_NOW",
+      "region": "cm",
+      "relationships": {
+        "GATED": {
+          "blockers": [],
+          "rule": "Source relationship prose may be displayed, but no deferred term becomes an item, recipe predicate, numeric loot route, boss completion, or reward grant.",
+          "source_loot_terms_not_promoted_by_this_map": [
+            "bubble_pod"
+          ]
+        },
+        "SAFE_NOW": {
+          "equipment_links": [],
+          "nonnumeric_crafting_roles": [
+            "consumable",
+            "buoyancy narrative"
+          ],
+          "progression_links": [
+            "consumable",
+            "buoyancy narrative"
+          ],
+          "where_or_acquisition_source": [
+            "shallows"
+          ]
+        }
+      },
+      "runtime_id": "aionbound:bubble_pod",
+      "source_category": "plants",
+      "warehouse_id": "bubble_pod"
+    },
+    {
+      "category_index": 6,
+      "codex_category": "plant",
+      "discovery_routes": [
+        {
+          "action": "first_harvest",
+          "authority": "SAFE_NOW",
+          "id": "codex:cm:plant:crystal_lily:harvested",
+          "stage": "complete"
+        }
+      ],
+      "global_append_ordinal": 176,
+      "id": "crystal_lily",
+      "importance": "required_coverage",
+      "page_scaffolding_authority": "SAFE_NOW",
+      "region": "cm",
+      "relationships": {
+        "GATED": {
+          "blockers": [],
+          "rule": "Source relationship prose may be displayed, but no deferred term becomes an item, recipe predicate, numeric loot route, boss completion, or reward grant.",
+          "source_loot_terms_not_promoted_by_this_map": [
+            "crystal_lily"
+          ]
+        },
+        "SAFE_NOW": {
+          "equipment_links": [],
+          "nonnumeric_crafting_roles": [
+            "moon_pearl catalyst helper"
+          ],
+          "progression_links": [
+            "moon_pearl catalyst helper"
+          ],
+          "where_or_acquisition_source": [
+            "pools"
+          ]
+        }
+      },
+      "runtime_id": "aionbound:crystal_lily",
+      "source_category": "plants",
+      "warehouse_id": "crystal_lily"
+    },
+    {
+      "category_index": 7,
+      "codex_category": "plant",
+      "discovery_routes": [
+        {
+          "action": "first_harvest",
+          "authority": "SAFE_NOW",
+          "id": "codex:cm:plant:crystal_vine:harvested",
+          "stage": "complete"
+        }
+      ],
+      "global_append_ordinal": 177,
+      "id": "crystal_vine",
+      "importance": "required_coverage",
+      "page_scaffolding_authority": "SAFE_NOW",
+      "region": "cm",
+      "relationships": {
+        "GATED": {
+          "blockers": [],
+          "rule": "Source relationship prose may be displayed, but no deferred term becomes an item, recipe predicate, numeric loot route, boss completion, or reward grant.",
+          "source_loot_terms_not_promoted_by_this_map": [
+            "crystal_vine"
+          ]
+        },
+        "SAFE_NOW": {
+          "equipment_links": [],
+          "nonnumeric_crafting_roles": [
+            "wet rope"
+          ],
+          "progression_links": [
+            "wet rope"
+          ],
+          "where_or_acquisition_source": [
+            "channels"
+          ]
+        }
+      },
+      "runtime_id": "aionbound:crystal_vine",
+      "source_category": "plants",
+      "warehouse_id": "crystal_vine"
+    },
+    {
+      "category_index": 8,
+      "codex_category": "plant",
+      "discovery_routes": [
+        {
+          "action": "first_harvest",
+          "authority": "SAFE_NOW",
+          "id": "codex:cm:plant:mire_orchid:harvested",
+          "stage": "complete"
+        }
+      ],
+      "global_append_ordinal": 178,
+      "id": "mire_orchid",
+      "importance": "required_coverage",
+      "page_scaffolding_authority": "SAFE_NOW",
+      "region": "cm",
+      "relationships": {
+        "GATED": {
+          "blockers": [],
+          "rule": "Source relationship prose may be displayed, but no deferred term becomes an item, recipe predicate, numeric loot route, boss completion, or reward grant.",
+          "source_loot_terms_not_promoted_by_this_map": [
+            "mire_orchid"
+          ]
+        },
+        "SAFE_NOW": {
+          "equipment_links": [
+            "marsh_idol"
+          ],
+          "nonnumeric_crafting_roles": [
+            "curiosity perfume",
+            "marsh_idol"
+          ],
+          "progression_links": [
+            "curiosity perfume",
+            "marsh_idol"
+          ],
+          "where_or_acquisition_source": [
+            "rare"
+          ]
+        }
+      },
+      "runtime_id": "aionbound:mire_orchid",
+      "source_category": "plants",
+      "warehouse_id": "mire_orchid"
+    },
+    {
+      "category_index": 9,
+      "codex_category": "plant",
+      "discovery_routes": [
+        {
+          "action": "first_harvest",
+          "authority": "SAFE_NOW",
+          "id": "codex:cm:plant:prism_bloom:harvested",
+          "stage": "complete"
+        }
+      ],
+      "global_append_ordinal": 179,
+      "id": "prism_bloom",
+      "importance": "required_coverage",
+      "page_scaffolding_authority": "SAFE_NOW",
+      "region": "cm",
+      "relationships": {
+        "GATED": {
+          "blockers": [],
+          "rule": "Source relationship prose may be displayed, but no deferred term becomes an item, recipe predicate, numeric loot route, boss completion, or reward grant.",
+          "source_loot_terms_not_promoted_by_this_map": [
+            "prism_bloom"
+          ]
+        },
+        "SAFE_NOW": {
+          "equipment_links": [],
+          "nonnumeric_crafting_roles": [
+            "prism dust"
+          ],
+          "progression_links": [
+            "prism dust"
+          ],
+          "where_or_acquisition_source": [
+            "crystal clearings"
+          ]
+        }
+      },
+      "runtime_id": "aionbound:prism_bloom",
+      "source_category": "plants",
+      "warehouse_id": "prism_bloom"
+    },
+    {
+      "category_index": 0,
+      "codex_category": "structure",
+      "discovery_routes": [
+        {
+          "action": "recognized_structure_visit",
+          "authority": "SAFE_NOW",
+          "id": "codex:cm:structure:flooded_dock:visited",
+          "stage": "complete"
+        }
+      ],
+      "global_append_ordinal": 180,
+      "id": "flooded_dock",
+      "importance": "required_coverage",
+      "page_scaffolding_authority": "SAFE_NOW",
+      "region": "cm",
+      "relationships": {
+        "GATED": {
+          "blockers": [
+            "W1-001-CM",
+            "W1-004-CM"
+          ],
+          "rule": "Source relationship prose may be displayed, but no deferred term becomes an item, recipe predicate, numeric loot route, boss completion, or reward grant.",
+          "source_loot_terms_not_promoted_by_this_map": [
+            "dock table",
+            "tools",
+            "rope",
+            "reed",
+            "marsh_sickle head"
+          ]
+        },
+        "SAFE_NOW": {
+          "equipment_links": [],
+          "nonnumeric_crafting_roles": [],
+          "progression_links": [
+            "CM entry"
+          ],
+          "where_or_acquisition_source": [
+            "uncommon shores"
+          ]
+        }
+      },
+      "runtime_id": "aionbound:flooded_dock",
+      "source_category": "structures",
+      "warehouse_id": "flooded_dock"
+    },
+    {
+      "category_index": 1,
+      "codex_category": "structure",
+      "discovery_routes": [
+        {
+          "action": "recognized_structure_visit",
+          "authority": "SAFE_NOW",
+          "id": "codex:cm:structure:ancient_boat:visited",
+          "stage": "complete"
+        }
+      ],
+      "global_append_ordinal": 181,
+      "id": "ancient_boat",
+      "importance": "required_coverage",
+      "page_scaffolding_authority": "SAFE_NOW",
+      "region": "cm",
+      "relationships": {
+        "GATED": {
+          "blockers": [
+            "W1-004-CM"
+          ],
+          "rule": "Source relationship prose may be displayed, but no deferred term becomes an item, recipe predicate, numeric loot route, boss completion, or reward grant.",
+          "source_loot_terms_not_promoted_by_this_map": [
+            "boat locker",
+            "wet tools",
+            "Skyreach map rare"
+          ]
+        },
+        "SAFE_NOW": {
+          "equipment_links": [],
+          "nonnumeric_crafting_roles": [],
+          "progression_links": [
+            "Skyreach teaser"
+          ],
+          "where_or_acquisition_source": [
+            "rare stranded"
+          ]
+        }
+      },
+      "runtime_id": "aionbound:ancient_boat",
+      "source_category": "structures",
+      "warehouse_id": "ancient_boat"
+    },
+    {
+      "category_index": 2,
+      "codex_category": "structure",
+      "discovery_routes": [
+        {
+          "action": "recognized_structure_visit",
+          "authority": "SAFE_NOW",
+          "id": "codex:cm:structure:marsh_broken_bridge:visited",
+          "stage": "complete"
+        }
+      ],
+      "global_append_ordinal": 182,
+      "id": "marsh_broken_bridge",
+      "importance": "required_coverage",
+      "page_scaffolding_authority": "SAFE_NOW",
+      "region": "cm",
+      "relationships": {
+        "GATED": {
+          "blockers": [
+            "W1-004-CM"
+          ],
+          "rule": "Source relationship prose may be displayed, but no deferred term becomes an item, recipe predicate, numeric loot route, boss completion, or reward grant.",
+          "source_loot_terms_not_promoted_by_this_map": [
+            "underwater cache",
+            "wet_chitin",
+            "pearls low"
+          ]
+        },
+        "SAFE_NOW": {
+          "equipment_links": [],
+          "nonnumeric_crafting_roles": [],
+          "progression_links": [
+            "mobility check"
+          ],
+          "where_or_acquisition_source": [
+            "channel spans"
+          ]
+        }
+      },
+      "runtime_id": "aionbound:marsh_broken_bridge",
+      "source_category": "structures",
+      "warehouse_id": "marsh_broken_bridge"
+    },
+    {
+      "category_index": 3,
+      "codex_category": "structure",
+      "discovery_routes": [
+        {
+          "action": "recognized_structure_visit",
+          "authority": "SAFE_NOW",
+          "id": "codex:cm:structure:pearl_cairn:visited",
+          "stage": "complete"
+        }
+      ],
+      "global_append_ordinal": 183,
+      "id": "pearl_cairn",
+      "importance": "required_coverage",
+      "page_scaffolding_authority": "SAFE_NOW",
+      "region": "cm",
+      "relationships": {
+        "GATED": {
+          "blockers": [
+            "W1-004-CM"
+          ],
+          "rule": "Source relationship prose may be displayed, but no deferred term becomes an item, recipe predicate, numeric loot route, boss completion, or reward grant.",
+          "source_loot_terms_not_promoted_by_this_map": [
+            "moon_pearl chance",
+            "curiosities"
+          ]
+        },
+        "SAFE_NOW": {
+          "equipment_links": [],
+          "nonnumeric_crafting_roles": [],
+          "progression_links": [
+            "soft CM rest"
+          ],
+          "where_or_acquisition_source": [
+            "uncommon islets"
+          ]
+        }
+      },
+      "runtime_id": "aionbound:pearl_cairn",
+      "source_category": "structures",
+      "warehouse_id": "pearl_cairn"
+    },
+    {
+      "category_index": 4,
+      "codex_category": "structure",
+      "discovery_routes": [
+        {
+          "action": "recognized_structure_visit",
+          "authority": "SAFE_NOW",
+          "id": "codex:cm:structure:marsh_totem:visited",
+          "stage": "complete"
+        }
+      ],
+      "global_append_ordinal": 184,
+      "id": "marsh_totem",
+      "importance": "required_coverage",
+      "page_scaffolding_authority": "SAFE_NOW",
+      "region": "cm",
+      "relationships": {
+        "GATED": {
+          "blockers": [
+            "W1-004-CM"
+          ],
+          "rule": "Source relationship prose may be displayed, but no deferred term becomes an item, recipe predicate, numeric loot route, boss completion, or reward grant.",
+          "source_loot_terms_not_promoted_by_this_map": [
+            "marsh_idol path",
+            "marsh_resin",
+            "curiosities"
+          ]
+        },
+        "SAFE_NOW": {
+          "equipment_links": [
+            "marsh_idol"
+          ],
+          "nonnumeric_crafting_roles": [],
+          "progression_links": [
+            "marsh_idol craft home"
+          ],
+          "where_or_acquisition_source": [
+            "uncommon"
+          ]
+        }
+      },
+      "runtime_id": "aionbound:marsh_totem",
+      "source_category": "structures",
+      "warehouse_id": "marsh_totem"
+    },
+    {
+      "category_index": 5,
+      "codex_category": "structure",
+      "discovery_routes": [
+        {
+          "action": "recognized_structure_visit",
+          "authority": "SAFE_NOW",
+          "id": "codex:cm:structure:crystal_arch:visited",
+          "stage": "complete"
+        }
+      ],
+      "global_append_ordinal": 185,
+      "id": "crystal_arch",
+      "importance": "required_coverage",
+      "page_scaffolding_authority": "SAFE_NOW",
+      "region": "cm",
+      "relationships": {
+        "GATED": {
+          "blockers": [
+            "W1-004-CM"
+          ],
+          "rule": "Source relationship prose may be displayed, but no deferred term becomes an item, recipe predicate, numeric loot route, boss completion, or reward grant.",
+          "source_loot_terms_not_promoted_by_this_map": [
+            "flood_crystal cache"
+          ]
+        },
+        "SAFE_NOW": {
+          "equipment_links": [],
+          "nonnumeric_crafting_roles": [],
+          "progression_links": [
+            "biome postcard"
+          ],
+          "where_or_acquisition_source": [
+            "landmark"
+          ]
+        }
+      },
+      "runtime_id": "aionbound:crystal_arch",
+      "source_category": "structures",
+      "warehouse_id": "crystal_arch"
+    },
+    {
+      "category_index": 6,
+      "codex_category": "structure",
+      "discovery_routes": [
+        {
+          "action": "recognized_structure_visit",
+          "authority": "SAFE_NOW",
+          "id": "codex:cm:structure:crystal_obelisk:visited",
+          "stage": "complete"
+        }
+      ],
+      "global_append_ordinal": 186,
+      "id": "crystal_obelisk",
+      "importance": "required_coverage",
+      "page_scaffolding_authority": "SAFE_NOW",
+      "region": "cm",
+      "relationships": {
+        "GATED": {
+          "blockers": [
+            "W1-001-CM",
+            "W1-004-CM"
+          ],
+          "rule": "Source relationship prose may be displayed, but no deferred term becomes an item, recipe predicate, numeric loot route, boss completion, or reward grant.",
+          "source_loot_terms_not_promoted_by_this_map": [
+            "stamp",
+            "crystal_talisman fragment",
+            "small cache"
+          ]
+        },
+        "SAFE_NOW": {
+          "equipment_links": [
+            "crystal_obelisk_fragment",
+            "crystal_talisman"
+          ],
+          "nonnumeric_crafting_roles": [],
+          "progression_links": [
+            "waystone analogue and circlet path"
+          ],
+          "where_or_acquisition_source": [
+            "rare network"
+          ]
+        }
+      },
+      "runtime_id": "aionbound:crystal_obelisk",
+      "source_category": "structures",
+      "warehouse_id": "crystal_obelisk"
+    },
+    {
+      "category_index": 7,
+      "codex_category": "structure",
+      "discovery_routes": [
+        {
+          "action": "recognized_structure_visit",
+          "authority": "SAFE_NOW",
+          "id": "codex:cm:structure:sunken_shrine:visited",
+          "stage": "complete"
+        }
+      ],
+      "global_append_ordinal": 187,
+      "id": "sunken_shrine",
+      "importance": "required_coverage",
+      "page_scaffolding_authority": "SAFE_NOW",
+      "region": "cm",
+      "relationships": {
+        "GATED": {
+          "blockers": [
+            "W1-001-CM",
+            "W1-004-CM"
+          ],
+          "rule": "Source relationship prose may be displayed, but no deferred term becomes an item, recipe predicate, numeric loot route, boss completion, or reward grant.",
+          "source_loot_terms_not_promoted_by_this_map": [
+            "prism_pearl",
+            "marsh_idol component",
+            "Drowned Choir Codex"
+          ]
+        },
+        "SAFE_NOW": {
+          "equipment_links": [
+            "marsh_idol",
+            "moon_pearl_pedestal"
+          ],
+          "nonnumeric_crafting_roles": [],
+          "progression_links": [
+            "pre-wight spiritual beat"
+          ],
+          "where_or_acquisition_source": [
+            "rare flooded"
+          ]
+        }
+      },
+      "runtime_id": "aionbound:sunken_shrine",
+      "source_category": "structures",
+      "warehouse_id": "sunken_shrine"
+    },
+    {
+      "category_index": 8,
+      "codex_category": "structure",
+      "discovery_routes": [
+        {
+          "action": "recognized_structure_visit",
+          "authority": "SAFE_NOW",
+          "id": "codex:cm:structure:ruined_observatory:visited",
+          "stage": "complete"
+        }
+      ],
+      "global_append_ordinal": 188,
+      "id": "ruined_observatory",
+      "importance": "critical_path",
+      "page_scaffolding_authority": "SAFE_NOW",
+      "region": "cm",
+      "relationships": {
+        "GATED": {
+          "blockers": [
+            "W1-001-CM",
+            "W1-004-CM"
+          ],
+          "rule": "Source relationship prose may be displayed, but no deferred term becomes an item, recipe predicate, numeric loot route, boss completion, or reward grant.",
+          "source_loot_terms_not_promoted_by_this_map": [
+            "surveyor_staff lens",
+            "trail maps",
+            "star charts",
+            "floating ruin sketches"
+          ]
+        },
+        "SAFE_NOW": {
+          "equipment_links": [
+            "crystal_obelisk_fragment",
+            "surveyor_staff",
+            "trail_compass"
+          ],
+          "nonnumeric_crafting_roles": [],
+          "progression_links": [
+            "CM-to-Skyreach hard pointer"
+          ],
+          "where_or_acquisition_source": [
+            "very rare height"
+          ]
+        }
+      },
+      "runtime_id": "aionbound:ruined_observatory",
+      "source_category": "structures",
+      "warehouse_id": "ruined_observatory"
+    },
+    {
+      "category_index": 9,
+      "codex_category": "structure",
+      "discovery_routes": [
+        {
+          "action": "recognized_structure_visit",
+          "authority": "SAFE_NOW",
+          "id": "codex:cm:structure:deep_pool_entrance:visited",
+          "stage": "complete"
+        }
+      ],
+      "global_append_ordinal": 189,
+      "id": "deep_pool_entrance",
+      "importance": "critical_path",
+      "page_scaffolding_authority": "SAFE_NOW",
+      "region": "cm",
+      "relationships": {
+        "GATED": {
+          "blockers": [
+            "W1-004-CM"
+          ],
+          "rule": "Source relationship prose may be displayed, but no deferred term becomes an item, recipe predicate, numeric loot route, boss completion, or reward grant.",
+          "source_loot_terms_not_promoted_by_this_map": [
+            "pearls",
+            "silt_core",
+            "marsh_wight tease"
+          ]
+        },
+        "SAFE_NOW": {
+          "equipment_links": [],
+          "nonnumeric_crafting_roles": [],
+          "progression_links": [
+            "apex approach"
+          ],
+          "where_or_acquisition_source": [
+            "rare dark water"
+          ]
+        }
+      },
+      "runtime_id": "aionbound:deep_pool_entrance",
+      "source_category": "structures",
+      "warehouse_id": "deep_pool_entrance"
+    }
+  ],
+  "packet006_direct_equipment_pages": [
+    {
+      "category_index": 0,
+      "chapter_seal_identity": false,
+      "codex_category": "equipment",
+      "discovery_routes": [
+        {
+          "action": "first_owned",
+          "authority": "WITHHELD",
+          "blockers": [
+            "W1-001-CM"
+          ],
+          "id": "codex:cm:equipment:crystal_pike:obtained",
+          "note": "Page address and identity are safe now; live completion waits for the ratified acquisition/reward path.",
+          "stage": "complete"
+        }
+      ],
+      "equipment_group": "weapons",
+      "global_append_ordinal": 190,
+      "id": "crystal_pike",
+      "optional_mastery_reward": false,
+      "page_scaffolding_authority": "SAFE_NOW",
+      "provenance": "Crystal Marsh reeds, flood crystal, and heron/serpent routes",
+      "recipe_boundary": {
+        "blockers": [
+          "W1-001-CM"
+        ],
+        "source_formula": "Crystal Pole + Heron Beak / crystal tip -> crystal_pike"
+      },
+      "region": "cm",
+      "role": "Long wet reach and precision for bridge/boat fights",
+      "runtime_id": "aionbound:crystal_pike"
+    },
+    {
+      "category_index": 1,
+      "chapter_seal_identity": false,
+      "codex_category": "equipment",
+      "discovery_routes": [
+        {
+          "action": "first_owned",
+          "authority": "WITHHELD",
+          "blockers": [
+            "W1-001-CM"
+          ],
+          "id": "codex:cm:equipment:prism_bow:obtained",
+          "note": "Page address and identity are safe now; live completion waits for the ratified acquisition/reward path.",
+          "stage": "complete"
+        }
+      ],
+      "equipment_group": "weapons",
+      "global_append_ordinal": 191,
+      "id": "prism_bow",
+      "optional_mastery_reward": false,
+      "page_scaffolding_authority": "SAFE_NOW",
+      "provenance": "Crystal Marsh prism-wing and mineral-polish route",
+      "recipe_boundary": {
+        "blockers": [
+          "W1-001-CM"
+        ],
+        "source_formula": "bow limbs + prism wing + algae polish -> prism_bow"
+      },
+      "region": "cm",
+      "role": "Clean ranged prism utility for open water and heron cliffs",
+      "runtime_id": "aionbound:prism_bow"
+    },
+    {
+      "category_index": 2,
+      "chapter_seal_identity": false,
+      "codex_category": "equipment",
+      "discovery_routes": [
+        {
+          "action": "first_owned",
+          "authority": "WITHHELD",
+          "blockers": [
+            "W1-001-CM",
+            "W1-004-CM"
+          ],
+          "id": "codex:cm:equipment:crystal_circlet:obtained",
+          "note": "Page address and identity are safe now; live completion waits for the ratified acquisition/reward path.",
+          "stage": "complete"
+        }
+      ],
+      "equipment_group": "armor",
+      "global_append_ordinal": 192,
+      "id": "crystal_circlet",
+      "optional_mastery_reward": false,
+      "page_scaffolding_authority": "SAFE_NOW",
+      "provenance": "Crystal Marsh living crystal, pearl, watcher, and wet-chitin route",
+      "recipe_boundary": {
+        "blockers": [
+          "W1-001-CM",
+          "W1-004-CM"
+        ],
+        "source_formula": "Living Crystal Core + Watcher Lens + silk -> crystal_circlet"
+      },
+      "region": "cm",
+      "role": "Marsh crown with magic/perception identity; not a full set",
+      "runtime_id": "aionbound:crystal_circlet"
+    },
+    {
+      "category_index": 3,
+      "chapter_seal_identity": false,
+      "codex_category": "equipment",
+      "discovery_routes": [
+        {
+          "action": "first_owned",
+          "authority": "WITHHELD",
+          "blockers": [
+            "W1-001-CM",
+            "W1-004-CM"
+          ],
+          "id": "codex:cm:equipment:explorer_cloak:obtained",
+          "note": "Page address and identity are safe now; live completion waits for the ratified acquisition/reward path.",
+          "stage": "complete"
+        }
+      ],
+      "equipment_group": "armor",
+      "global_append_ordinal": 193,
+      "id": "explorer_cloak",
+      "optional_mastery_reward": false,
+      "page_scaffolding_authority": "SAFE_NOW",
+      "provenance": "Multi-biome Whisperwood-to-Crystal travel identity",
+      "recipe_boundary": {
+        "blockers": [
+          "W1-001-CM",
+          "W1-004-CM"
+        ],
+        "source_formula": "Croc Hide + WW leather + CM polish -> explorer_cloak"
+      },
+      "region": "cm",
+      "role": "Multi-biome travel and inventory fantasy",
+      "runtime_id": "aionbound:explorer_cloak"
+    },
+    {
+      "category_index": 4,
+      "chapter_seal_identity": false,
+      "codex_category": "equipment",
+      "discovery_routes": [
+        {
+          "action": "first_owned",
+          "authority": "WITHHELD",
+          "blockers": [
+            "W1-001-CM"
+          ],
+          "id": "codex:cm:equipment:crystal_shovel:obtained",
+          "note": "Page address and identity are safe now; live completion waits for the ratified acquisition/reward path.",
+          "stage": "complete"
+        }
+      ],
+      "equipment_group": "tools",
+      "global_append_ordinal": 194,
+      "id": "crystal_shovel",
+      "optional_mastery_reward": false,
+      "page_scaffolding_authority": "SAFE_NOW",
+      "provenance": "Crystal Marsh silt and reed tool route",
+      "recipe_boundary": {
+        "blockers": [
+          "W1-001-CM"
+        ],
+        "source_formula": "silt_core + reed haft -> crystal_shovel"
+      },
+      "region": "cm",
+      "role": "Silt and wet-dig verb",
+      "runtime_id": "aionbound:crystal_shovel"
+    },
+    {
+      "category_index": 5,
+      "chapter_seal_identity": false,
+      "codex_category": "equipment",
+      "discovery_routes": [
+        {
+          "action": "first_owned",
+          "authority": "WITHHELD",
+          "blockers": [
+            "W1-001-CM"
+          ],
+          "id": "codex:cm:equipment:marsh_sickle:obtained",
+          "note": "Page address and identity are safe now; live completion waits for the ratified acquisition/reward path.",
+          "stage": "complete"
+        }
+      ],
+      "equipment_group": "tools",
+      "global_append_ordinal": 195,
+      "id": "marsh_sickle",
+      "optional_mastery_reward": false,
+      "page_scaffolding_authority": "SAFE_NOW",
+      "provenance": "Crystal Marsh chitin, resin, and reed harvest route",
+      "recipe_boundary": {
+        "blockers": [
+          "W1-001-CM"
+        ],
+        "source_formula": "wet_chitin + crystal edge -> marsh_sickle"
+      },
+      "region": "cm",
+      "role": "Bulk plant and reed harvest verb",
+      "runtime_id": "aionbound:marsh_sickle"
+    },
+    {
+      "category_index": 6,
+      "chapter_seal_identity": false,
+      "codex_category": "equipment",
+      "discovery_routes": [
+        {
+          "action": "first_owned",
+          "authority": "WITHHELD",
+          "blockers": [
+            "W1-001-CM",
+            "W1-004-CM"
+          ],
+          "id": "codex:cm:equipment:crystal_talisman:obtained",
+          "note": "Page address and identity are safe now; live completion waits for the ratified acquisition/reward path.",
+          "stage": "complete"
+        }
+      ],
+      "equipment_group": "accessories",
+      "global_append_ordinal": 196,
+      "id": "crystal_talisman",
+      "optional_mastery_reward": false,
+      "page_scaffolding_authority": "SAFE_NOW",
+      "provenance": "Crystal Marsh pearl ecology and obelisk network",
+      "recipe_boundary": {
+        "blockers": [
+          "W1-001-CM",
+          "W1-004-CM"
+        ],
+        "source_formula": "prism chips + pearl grain -> crystal_talisman"
+      },
+      "region": "cm",
+      "role": "Wet vision and pearl-luck identity",
+      "runtime_id": "aionbound:crystal_talisman"
+    },
+    {
+      "category_index": 7,
+      "chapter_seal_identity": false,
+      "codex_category": "equipment",
+      "discovery_routes": [
+        {
+          "action": "first_owned",
+          "authority": "WITHHELD",
+          "blockers": [
+            "W1-001-CM",
+            "W1-004-CM"
+          ],
+          "id": "codex:cm:equipment:marsh_idol:obtained",
+          "note": "Page address and identity are safe now; live completion waits for the ratified acquisition/reward path.",
+          "stage": "complete"
+        }
+      ],
+      "equipment_group": "accessories",
+      "global_append_ordinal": 197,
+      "id": "marsh_idol",
+      "optional_mastery_reward": false,
+      "page_scaffolding_authority": "SAFE_NOW",
+      "provenance": "Crystal Marsh totem, orchid, resin, and shrine route",
+      "recipe_boundary": {
+        "blockers": [
+          "W1-001-CM",
+          "W1-004-CM"
+        ],
+        "source_formula": "totem wood + mire_orchid + resin -> marsh_idol"
+      },
+      "region": "cm",
+      "role": "Structure calm and wight-resist narrative",
+      "runtime_id": "aionbound:marsh_idol"
+    },
+    {
+      "category_index": 8,
+      "chapter_seal_identity": true,
+      "codex_category": "equipment",
+      "discovery_routes": [
+        {
+          "action": "first_owned",
+          "authority": "WITHHELD",
+          "blockers": [
+            "W1-003-PEARL-DEPTHS",
+            "W1-004-CM"
+          ],
+          "id": "codex:cm:equipment:marsh_wight_mask:obtained",
+          "note": "Page address and identity are safe now; live completion waits for the ratified acquisition/reward path.",
+          "stage": "complete"
+        }
+      ],
+      "equipment_group": "trophies",
+      "global_append_ordinal": 198,
+      "id": "marsh_wight_mask",
+      "optional_mastery_reward": false,
+      "page_scaffolding_authority": "SAFE_NOW",
+      "provenance": "Pearl Depths arena apex only; ecology form is prohibited as a seal source",
+      "recipe_boundary": {
+        "blockers": [
+          "W1-003-PEARL-DEPTHS",
+          "W1-004-CM"
+        ],
+        "source_formula": "Pearl Depths first-clear chapter seal and display trophy"
+      },
+      "region": "cm",
+      "role": "Chapter 3 seal and apex display",
+      "runtime_id": "aionbound:marsh_wight_mask"
+    },
+    {
+      "category_index": 9,
+      "chapter_seal_identity": false,
+      "codex_category": "equipment",
+      "discovery_routes": [
+        {
+          "action": "first_owned",
+          "authority": "WITHHELD",
+          "blockers": [
+            "W1-001-CM",
+            "W1-004-CM"
+          ],
+          "id": "codex:cm:equipment:moon_pearl_pedestal:obtained",
+          "note": "Page address and identity are safe now; live completion waits for the ratified acquisition/reward path.",
+          "stage": "complete"
+        }
+      ],
+      "equipment_group": "trophies",
+      "global_append_ordinal": 199,
+      "id": "moon_pearl_pedestal",
+      "optional_mastery_reward": true,
+      "page_scaffolding_authority": "SAFE_NOW",
+      "provenance": "Crystal Marsh pearl craft and shrine mastery display",
+      "recipe_boundary": {
+        "blockers": [
+          "W1-001-CM",
+          "W1-004-CM"
+        ],
+        "source_formula": "moon_pearl + prism_brick -> moon_pearl_pedestal"
+      },
+      "region": "cm",
+      "role": "Optional pearl mastery display",
+      "runtime_id": "aionbound:moon_pearl_pedestal"
+    },
+    {
+      "category_index": 10,
+      "chapter_seal_identity": false,
+      "codex_category": "equipment",
+      "discovery_routes": [
+        {
+          "action": "first_owned",
+          "authority": "WITHHELD",
+          "blockers": [
+            "W1-004-CM"
+          ],
+          "id": "codex:cm:equipment:crystal_obelisk_fragment:obtained",
+          "note": "Page address and identity are safe now; live completion waits for the ratified acquisition/reward path.",
+          "stage": "complete"
+        }
+      ],
+      "equipment_group": "trophies",
+      "global_append_ordinal": 200,
+      "id": "crystal_obelisk_fragment",
+      "optional_mastery_reward": true,
+      "page_scaffolding_authority": "SAFE_NOW",
+      "provenance": "Crystal Marsh obelisk network and observatory mastery",
+      "recipe_boundary": {
+        "blockers": [
+          "W1-004-CM"
+        ],
+        "source_formula": "crystal_obelisk_fragment -> display"
+      },
+      "region": "cm",
+      "role": "Optional obelisk mastery display",
+      "runtime_id": "aionbound:crystal_obelisk_fragment"
+    }
+  ],
+  "pearl_depths": {
+    "arena_identity": "sunken_shrine / deep_pool hybrid",
+    "attack_names": [
+      "Silt Grasp",
+      "Prism Lance",
+      "Wail",
+      "Reed Serpent Call",
+      "Pearl Orbit",
+      "Drown Hymn"
+    ],
+    "category_index": 0,
+    "codex_category": "boss",
+    "discovery_routes": [
+      {
+        "action": "valid_pearl_depths_pull",
+        "authority": "WITHHELD",
+        "blockers": [
+          "W1-003-PEARL-DEPTHS"
+        ],
+        "id": "codex:cm:boss:pearl_depths:encountered",
+        "stage": "partial"
+      },
+      {
+        "action": "valid_pearl_depths_terminal",
+        "authority": "WITHHELD",
+        "blockers": [
+          "W1-003-PEARL-DEPTHS",
+          "W1-004-CM"
+        ],
+        "id": "codex:cm:boss:pearl_depths:defeated",
+        "stage": "complete"
+      }
+    ],
+    "entity_runtime_id": "aionbound:marsh_wight",
+    "global_append_ordinal": 201,
+    "id": "pearl_depths",
+    "page_scaffolding_authority": "SAFE_NOW",
+    "phase_names": [
+      "Fog Rise",
+      "Choir Below",
+      "Mask Unsealed",
+      "Flood Claim"
+    ],
+    "region": "cm",
+    "runtime_id": "aionbound:pearl_depths",
+    "seal_rule": "marsh_wight_mask is the sole Chapter 3 seal identity; executable seal, entitlement, recovery, and repeat-clear semantics remain proposed, not ratified."
+  },
+  "progression_pages": [
+    {
+      "category_index": 0,
+      "codex_category": "progression",
+      "events": [
+        {
+          "action": "first_safe_cm_discovery",
+          "authority": "SAFE_NOW",
+          "id": "codex:cm:progression:crystal_marsh_chapter:entered",
+          "stage": "partial"
+        },
+        {
+          "action": "durable_marsh_wight_mask_seal_credit",
+          "authority": "WITHHELD",
+          "blockers": [
+            "W1-003-PEARL-DEPTHS",
+            "W1-004-CM"
+          ],
+          "id": "codex:cm:progression:crystal_marsh_chapter:seal_credit",
+          "stage": "complete"
+        }
+      ],
+      "global_append_ordinal": 202,
+      "id": "crystal_marsh_chapter",
+      "page_scaffolding_authority": "SAFE_NOW",
+      "region": "cm",
+      "runtime_id": "aionbound:codex_progression_crystal_marsh_chapter",
+      "seal_identity": "aionbound:marsh_wight_mask",
+      "soft_gate": true
+    },
+    {
+      "category_index": 1,
+      "codex_category": "progression",
+      "events": [
+        {
+          "action": "recognized_ancient_boat_visit",
+          "authority": "SAFE_NOW",
+          "id": "codex:cm:progression:skyreach_rumor:ancient_boat_visited",
+          "note": "Tease only; no physical map is granted.",
+          "stage": "partial"
+        },
+        {
+          "action": "recognized_ruined_observatory_visit",
+          "authority": "SAFE_NOW",
+          "id": "codex:cm:progression:skyreach_rumor:ruined_observatory_visited",
+          "note": "Hard pointer to Skyreach knowledge; no physical chart identity or loot route is created.",
+          "stage": "complete"
+        }
+      ],
+      "global_append_ordinal": 203,
+      "id": "skyreach_rumor",
+      "page_scaffolding_authority": "SAFE_NOW",
+      "physical_chart_or_loot_route": {
+        "authority": "WITHHELD",
+        "blockers": [
+          "W1-001-CM",
+          "W1-004-CM"
+        ]
+      },
+      "presentation": "Codex/recognized-structure state only",
+      "region": "cm",
+      "runtime_id": "aionbound:codex_progression_skyreach_rumor",
+      "source_hint": "Sky maps at ruined observatory"
+    }
+  ],
+  "proof_boundary": {
+    "not_proven": [
+      "runtime registry append",
+      "event wiring",
+      "Codex UI",
+      "live acquisition",
+      "boss gameplay",
+      "persistence migration implementation",
+      "BP/RP",
+      "BDS",
+      "client",
+      "multiplayer",
+      "console",
+      "candidate readiness"
+    ],
+    "proven": [
+      "exact page/link coverage",
+      "hash-bound 140-entry prefix",
+      "append-only regional addresses",
+      "unchanged caps/schema and computed budget",
+      "safe/gated route separation",
+      "deterministic regeneration"
+    ]
+  },
+  "registry_migration_proposal": {
+    "cap_change_required": false,
+    "category_caps_after": {
+      "boss": 1,
+      "creature": 10,
+      "equipment": 21,
+      "plant": 10,
+      "progression": 2,
+      "resource": 20,
+      "structure": 10
+    },
+    "category_caps_before": {
+      "boss": 1,
+      "creature": 10,
+      "equipment": 21,
+      "plant": 10,
+      "progression": 2,
+      "resource": 20,
+      "structure": 10
+    },
+    "existing_prefix_authority": "Current WW/AH registry module and address data are hash-bound above and remain untouched; CM rows append globally at ordinals 140-203 with region-local category indices.",
+    "existing_prefix_entries": 140,
+    "index_rule": "Never reorder, renumber, reinterpret, or overwrite any ww/ah address. CM indices are local to region cm and append only after the exact 140-entry prefix.",
+    "migration": "Idempotently normalize registry rv 1/2/3 to rv 4 while preserving every existing region/category byte; absent CM categories remain zero-state; state schema stays v4.",
+    "registry_version": {
+      "after": 4,
+      "before": 3
+    },
+    "state_schema_version": {
+      "after": 4,
+      "before": 4
+    }
+  },
+  "schema": "aionbound.wave1.crystal-marsh-codex-progression-intake.v1.0.0",
+  "scope": "Read-only Crystal Codex/progression intake; no BP/RP/runtime/ledger/BDS mutation.",
+  "status": "APPEND_ONLY_CM_CODEX_INTAKE_SAFE_ROUTES_SEPARATED"
+}
