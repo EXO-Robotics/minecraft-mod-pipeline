@@ -1,0 +1,69 @@
+{
+  "schema": "aionbound.wave1.whisperwood.thorn_court_runtime.v1",
+  "status": "STATIC_SEMANTIC_PASS_RUNTIME_UNQUALIFIED",
+  "base_commit": "00840aaae36a0cfb83955ca7b416c1d2886a6261",
+  "authority": [
+    {
+      "tranche": "W1-003-THORN-COURT",
+      "path": "engineering/authority/support-proposals/W1-CREATIVE-003/thorn_court_behavior_proposal.json",
+      "sha256": "04f7b9a75be6ac542d3488bd7563a601dcb94603905479b7c3e766c94b9d48c1"
+    },
+    {
+      "tranche": "W1-004-WW-CH1",
+      "path": "engineering/authority/support-proposals/W1-CREATIVE-004/loot_envelope_proposal.json",
+      "sha256": "4412b24ad680a30e5548c731f8acba94e8fd858e4bb94f701a16eb17141f5ab7"
+    }
+  ],
+  "implementation": {
+    "service": "behavior_pack/scripts/thorn_court.js",
+    "service_sha256": "05c5aeb457adee9c5de58e1dd95c49cdbb2159f781c01d7489a9af9b51d982d1",
+    "runtime_integration": "behavior_pack/scripts/runtime.js",
+    "state_migration": "behavior_pack/scripts/state.js",
+    "test": "tests/wave1_thorn_court.test.mjs",
+    "test_sha256": "721b043ba0bffdcbac726bc29471d42d9a27ad0db5e1205f8db761cd067540be"
+  },
+  "closed_semantics": [
+    "five_second_continuous_pull_residency",
+    "locked_snapshot_scaling_360_486_612_738_cap_four",
+    "arena_only_spawn_and_apex_tag_predicate",
+    "phase_thresholds_70_35_10_and_six_minute_forest_scream",
+    "ratified_telegraph_active_recovery_and_midpoint_cooldown_state_machine",
+    "forty_eight_block_leash_and_ratified_reset_graces",
+    "fifteen_second_late_join_before_crown_cutoff",
+    "sixty_second_disconnect_terminal_eligibility",
+    "phase_add_cap_two_and_global_add_cap_four",
+    "active_fight_not_persisted_and_orphan_cleanup_on_reload",
+    "world_and_per_player_completion_once",
+    "durable_virtual_seal_credit",
+    "entitlement_before_physical_delivery",
+    "at_most_once_physical_trophy_with_nonduplicating_uncertain_recovery",
+    "repeat_clear_material_and_separate_chest_hooks",
+    "ecology_and_command_death_reward_prohibition",
+    "mastery_trophies_absent_from_progression_predicates"
+  ],
+  "composition": {
+    "start_action": "boss:thorn_court",
+    "start_interface": "thornCourt.begin(player, block.location)",
+    "reward_interfaces": [
+      "rewardHooks.deliverTrophy(player, itemId)",
+      "rewardHooks.grantMaterialPackage(player, context)",
+      "rewardHooks.openArenaChest(context)"
+    ],
+    "default_trophy": "aionbound:thorn_stalker_skull",
+    "material_and_chest_identity_ownership": "Whisperwood economy integration"
+  },
+  "proof": {
+    "focused_tests": "13_PASS",
+    "composed_node_tests": "60_PASS",
+    "stable_bds": "NOT_RUN_HERE",
+    "bedrock_client": "NOT_RUN",
+    "physical_console": "NOT_RUN"
+  },
+  "limits": [
+    "The runtime state machine exposes exact named attack stages as entity tags and bounds approved Howl Call adds; bespoke projectile, snare hitbox, damage, and radius values were not invented because the ratified proposal does not authorize them.",
+    "The existing Thorn Stalker shell AI remains the live melee carrier; client-visible timing and health-boost behavior require Checkpoint 1 observation.",
+    "The start action is a narrow compositional interface; an approved arena-anchor route must bind it before the encounter is naturally discoverable.",
+    "Material package identities and the separate arena chest are delivered through hooks owned by the Whisperwood loot/economy lane.",
+    "No BDS, client, multiplayer, restart, performance, or console claim is made by this report."
+  ]
+}

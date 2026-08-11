@@ -69,13 +69,25 @@ const migrateCodex = (source, stamps = []) => {
 };
 
 export function migrateWorld(source = {}) {
+  const encounterSource = objectOrEmpty(source.encounters);
+  const encounterActive = { ...objectOrEmpty(encounterSource.active) };
+  const pendingThornCourt = objectOrEmpty(encounterSource.pendingThornCourt);
+  // Thorn Court active sessions are live-memory only. Drop only legacy or
+  // interrupted Thorn Court active rows while preserving all other encounters.
+  for (const [key, value] of Object.entries(encounterActive)) {
+    if (key.startsWith("thorn_court:") || value?.encounterId === "aionbound:thorn_court") delete encounterActive[key];
+  }
   return {
     ...objectOrEmpty(source),
     v: STATE_VERSION,
     journals: objectOrEmpty(source.journals), journalOrder: strings(source.journalOrder, COMBINED_BUDGETS.journalTerminal * 2), structures: objectOrEmpty(source.structures),
     quarantine: Array.isArray(source.quarantine) ? source.quarantine : [], cells: objectOrEmpty(source.cells), devices: objectOrEmpty(source.devices),
     sequence: Number.isSafeInteger(source.sequence) ? source.sequence : 0,
-    encounters: { active: objectOrEmpty(source.encounters?.active), terminal: objectOrEmpty(source.encounters?.terminal ?? source.terminal) },
+    encounters: {
+      active: encounterActive,
+      terminal: objectOrEmpty(encounterSource.terminal ?? source.terminal),
+      ...(Object.keys(pendingThornCourt).length ? { pendingThornCourt } : {}),
+    },
   };
 }
 

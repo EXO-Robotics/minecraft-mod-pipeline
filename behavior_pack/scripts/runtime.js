@@ -9,6 +9,7 @@ import { createDeviceService } from "./devices.js";
 import { createEncounterService } from "./encounters.js";
 import { createChaosService } from "./chaos.js";
 import { createStructureService } from "./structures.js";
+import { createThornCourtService } from "./thorn_court.js";
 
 export function createRuntime(platform = { world, system, ItemStack, EquipmentSlot, EntityComponentTypes, ActionFormData }) {
   const arbiter = new RuntimeArbiter();
@@ -33,6 +34,7 @@ export function createRuntime(platform = { world, system, ItemStack, EquipmentSl
 
   const codex = createCodexService({ state, ActionFormData: platform.ActionFormData });
   const structures = createStructureService({ ...platform, state, arbiter, consumeOne });
+  const thornCourt = createThornCourtService({ ...platform, state, boundedEntities, rewardHooks: platform.thornCourtRewardHooks });
   const combat = createCombatService({ ...platform, state, arbiter, boundedEntities, consumeOne });
   const encounters = createEncounterService({ ...platform, state, boundedEntities, consumeOne });
   const devices = createDeviceService({ ...platform, state, arbiter, consumeOne });
@@ -55,6 +57,7 @@ export function createRuntime(platform = { world, system, ItemStack, EquipmentSl
     "boss:basalt": bossAction("boss:basalt"),
     "boss:rift": bossAction("boss:rift"),
     "boss:twinbond": bossAction("boss:twinbond"),
+    "boss:thorn_court": ({ player, block }) => thornCourt.begin(player, block.location),
   };
   const itemActions = {
     familiar: ({ player }) => combat.useBarkling(player), stripvein: ({ player }) => structures.useStrip(player),
@@ -76,13 +79,13 @@ export function createRuntime(platform = { world, system, ItemStack, EquipmentSl
     run(); return true;
   }
   function reconcile() {
-    encounters.reconcile(); structures.reconcile(); chaos.reconcile();
+    encounters.reconcile(); thornCourt.reconcile(); structures.reconcile(); chaos.reconcile();
     for (const player of platform.world.getAllPlayers()) state.playerState(player);
   }
   function tick() { callback(() => {
     if (platform.system.currentTick % 100 === 0) combat.reconcileNaturalEntities();
     if (platform.system.currentTick % 20 === 0) combat.tickPlayers();
-    structures.tick(); devices.tick(); chaos.tick();
+    thornCourt.tick(); structures.tick(); devices.tick(); chaos.tick();
   }); }
 
   function start() {
@@ -99,12 +102,13 @@ export function createRuntime(platform = { world, system, ItemStack, EquipmentSl
     platform.world.afterEvents.entityHurt.subscribe(event => callback(() => { combat.routeMeleeHurt(event); combat.handlePlayerHurt(event); }));
     platform.world.afterEvents.entityDie.subscribe(event => callback(() => {
       router.dispatchEntityDeathEvent(event);
+      thornCourt.bossDeath(event);
       encounters.bossDeath(event);
       combat.glasswingDeath(event);
     }));
     platform.system.runInterval(tick, 1);
   }
-  return { start, reconcile, tick, state, arbiter, router, codex, combat, devices, encounters, chaos, structures, budgets: COMBINED_BUDGETS };
+  return { start, reconcile, tick, state, arbiter, router, codex, combat, devices, encounters, thornCourt, chaos, structures, budgets: COMBINED_BUDGETS };
 }
 
 export function startRuntime() { return createRuntime().start(); }
