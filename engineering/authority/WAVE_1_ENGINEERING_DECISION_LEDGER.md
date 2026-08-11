@@ -1,8 +1,21 @@
 # Wave 1 Engineering Decision Ledger
 
-Status: **RATIFIED_FOR_NONBLOCKED_ENGINEERING_WITH_EXPLICIT_SUPPORT_TICKETS**
+Status: **RATIFIED_WHISPERWOOD_IMPLEMENTATION_AUTHORITY_WITH_DEFERRED_LATER_TICKETS**
 
 This ledger resolves or support-tickets the implementation ambiguities found between the five immutable warehouse packets, Creative Layer v1, and the G7 engineering substrate. It does not redesign Aionbound and does not supersede packet art identities or Creative gameplay roles.
+
+## Whisperwood ratification event
+
+The primary human authority approved the following proposal tranches exactly as written:
+
+- `W1-001-WW` — Whisperwood term dispositions and four new inventory identities only;
+- `W1-003-THORN-COURT` — the complete Thorn Court behavior, reset, multiplayer, persistence, and terminal envelope;
+- `W1-004-WW-CH1` — Whisperwood/Thorn Court rarity intervals, chest bands, seal guards, recovery, repeat-clear, and mastery-only trophy semantics;
+- `W1-006-WW-SAPLING` — one bounded existing-palette standing-tree assembly and its growth envelope.
+
+`W1-CREATIVE-005`, `W1-001-LATER-REGIONS`, and `W1-004-LATER-REGIONS` are explicitly deferred. The proposal files remain byte-preserved and are bound by SHA-256 in the JSON ledger. Engineering may implement only the approved tranches and may not broaden, rewrite, or reinterpret them.
+
+This ratification authorizes completion of the Whisperwood vertical slice. Checkpoint 1 remains unauthorized until the slice satisfies its exit criteria, and Ashen may not begin until Checkpoint 1 establishes that the pattern is sound.
 
 ## Authority order
 
@@ -76,9 +89,11 @@ These names already exist in Creative crafting authority. Engineering may create
 
 Icons and final inventory visibility for the last two finale/narrative components remain bound to `W1-CREATIVE-001` and `W1-CREATIVE-002`.
 
-### New required item candidates — support-ticketed
+### New required item candidates — Whisperwood partially ratified
 
-The following named loot identities occur in approved loot prose but are absent from the 250-ID warehouse. They are not aliases and may not be silently collapsed. Their exact ID, inventory visibility, icon requirement, and craft home are blocked on `W1-CREATIVE-001`:
+`W1-001-WW` ratifies exactly four new Whisperwood inventory identities: `aionbound:mosskip_crown_fragment`, `aionbound:thorn_barb`, `aionbound:stalker_claw`, and `aionbound:hollow_venom_sac`. All other Whisperwood terms use the aliases, narrative-only dispositions, or removals in the preserved proposal. Later-region identities remain deferred.
+
+The following named loot identities occur in approved loot prose but are absent from the 250-ID warehouse. Outside the approved Whisperwood tranche they remain unratified and may not be silently collapsed:
 
 - Whisperwood: Boar Tusk Shard / Boar Tusk, Root Plate, Thick Hide, Briar Crown, Rot Fang, Tainted Pelt, Marrow Scrap, Thorn Barb, Stalker Claw, Hollow Venom Sac, Chitin Shard, Wraith Mask Fragment, Mosskip Crown Fragment, Hardened Moss Plate, Glow Soft Pellet, Lantern-adjacent hide scrap.
 - Ashen: Ash Dust, Ash Wool, Beetle Core Fragment, Char Feather, Char Hide, Char Pelt, Cinder Beak, Cinder Pelt, Drake Scale, Ember Fang, Ember Sinew, Heat Scale, Lynx Claw, Mite Mandible, Pack Cinder Mark, Ram Horn Curve, Shell Plate, Smolder Gland, Soot Antler, Stag Heart Cinder, Swarm Queen Scale, Warm Blood Vial.
@@ -104,7 +119,7 @@ Boss numeric, multiplayer, persistence, and reward-guard semantics remain separa
 
 ## Boss behavior envelope decision
 
-Creative phase names, attack fantasies, placement, and reward identities are implementable now. Numeric and ownership semantics are `DEFERRED_WITH_BLOCKING_SUPPORT_TICKET` under `W1-CREATIVE-003`.
+Thorn Court numeric and ownership semantics are ratified exactly by `W1-003-THORN-COURT`. Other apex encounters remain deferred under `W1-CREATIVE-003` and require separate ratification.
 
 The ticket must bind for each apex:
 
@@ -120,7 +135,7 @@ No boss may ship with Engineering-invented values outside that ticket.
 
 ## Loot and rarity envelope decision
 
-Creative loot identities and qualitative roles remain binding. Engineering may wire table structure and reward guards, but final probabilities and quantities are `DEFERRED_WITH_BLOCKING_SUPPORT_TICKET` under `W1-CREATIVE-004`.
+Creative loot identities and qualitative roles remain binding. The complete probability, quantity, chest-band, arena-guard, recovery, repeat-clear, and alternate-seal model is ratified for Whisperwood and Thorn Court only under `W1-004-WW-CH1`. Later regions remain deferred.
 
 The ticket must provide approved min/max chance and quantity ranges for C/U/R/E/T/Q roles, chest roll counts, guaranteed boss semantics, arena-form reward guards, and the disposition of `briar_elk_trophy` as an alternate/soft seal. Regular `thorn_stalker` ecology may not award the chapter seal; the seal is guarded to the chapter-apex encounter unless Creative explicitly says otherwise.
 
@@ -142,13 +157,14 @@ This gate is a shipping-use requirement, not a reason to run BDS per asset.
 
 | ID | Blocking scope | Owner | Work allowed while open |
 |---|---|---|---|
-| `W1-CREATIVE-001` | Complete non-warehouse glossary, canonical IDs, inventory visibility, icon/craft homes | Creative + Asset support | Existing aliases and approved derived components; no unresolved new item publication |
+| `W1-CREATIVE-001` | Whisperwood tranche ratified; later-region glossary deferred | Creative + Asset support | Implement the exact four Whisperwood IDs and preserved WW dispositions only |
 | `W1-CREATIVE-002` | Narrowed: finale container, secondary reward presentation, mastery-sigil disposition, and machine-exit dependency | Creative + Asset support | Exact dual-wyrm/arena asset repair, pilgrimage handoff, inert finale hooks, and nonnumeric encounter architecture |
-| `W1-CREATIVE-003` | Boss numeric, reset, multiplayer, persistence, terminal reward envelopes | Creative support | Phase kits and nonnumeric behavior architecture |
-| `W1-CREATIVE-004` | Loot numeric ranges, chest rolls, reward guards, alternate-seal semantics | Creative support | Structural loot wiring with no final values |
-| `W1-CREATIVE-005` | Equipment sidegrade identity: same base ID behavior versus approved sibling IDs | Creative support | Base packet IDs and behavior interface only |
+| `W1-CREATIVE-003` | Thorn Court ratified; other boss envelopes deferred | Creative support | Implement Thorn Court exactly as proposed |
+| `W1-CREATIVE-004` | Whisperwood/Chapter 1 ratified; later-region loot deferred | Creative support | Implement exact WW intervals, guards, recovery, and mastery-only trophy semantics |
+| `W1-CREATIVE-005` | Explicitly deferred equipment sidegrade identity | Creative support | Base packet IDs and behavior interface only |
+| `W1-CREATIVE-006` | Whisperwood sapling regrowth ratified | Creative support | Implement one exact-envelope existing-palette assembly and growth behavior |
 
-Broad engineering may proceed only in the explicitly allowed columns. Final Wave 1 freeze remains blocked until all five tickets are resolved and committed into a replacement ledger revision.
+Whisperwood vertical engineering may now proceed. Checkpoint 1 may run only after its full exit criteria close. Ashen remains gated on that checkpoint, and final Wave 1 freeze remains blocked on later-region and finale authority not covered by this ratification.
 
 ## Advisory review disposition
 
