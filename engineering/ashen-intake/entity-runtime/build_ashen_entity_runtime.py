@@ -13,6 +13,13 @@ ROOT = Path(__file__).resolve().parents[3]
 BASE_COMMIT = "d3f162db41b06ce502dd8fc6995288d2fe546fa0"
 BASE_TREE = "4843a3ad877cec4ecdd238d01867218ef9687741"
 
+AUDIO_INTERVALS = {
+    "ash_mite": (6, 8), "ember_crow": (12, 10), "magma_lizard": (10, 9),
+    "furnace_beetle": (14, 10), "char_wolf": (8, 12), "cinder_lynx": (11, 12),
+    "ash_ram": (12, 12), "soot_stag": (15, 14), "basalt_tortoise": (18, 10),
+    "ash_drake": (8, 16),
+}
+
 ASSETS = {
     "ash_mite": dict(source="creatures", role="swarm_hostile", health=8, attack=2, speed=.27, width=.45, height=.3, movement="skitter", action="skitter", secondary=None, hostile=True, neutral=False, flying=False, weight=6, herd=(1, 2), density=2, light=(0, 10), biomes=("mountain", "mesa")),
     "ember_crow": dict(source="representative", role="ambient_air", health=10, attack=0, speed=.25, width=.55, height=.5, movement="fly", action="peck", secondary="glide", hostile=False, neutral=False, flying=True, weight=4, herd=(1, 2), density=1, light=(7, 15), biomes=("mountain",)),
@@ -54,6 +61,9 @@ def behavior_entity(asset: str, cfg: dict) -> dict:
         "minecraft:type_family": {"family": family},
         "minecraft:health": {"value": cfg["health"], "max": cfg["health"]},
         "minecraft:loot": {"table": f"loot_tables/entities/ashen/{asset if asset != 'ash_drake' else 'ash_drake_ecology'}.json"},
+        "minecraft:ambient_sound_interval": {
+            "event_name": "ambient", "value": AUDIO_INTERVALS[asset][0], "range": AUDIO_INTERVALS[asset][1]
+        },
         "minecraft:collision_box": {"width": cfg["width"], "height": cfg["height"]},
         "minecraft:movement": {"value": cfg["speed"]},
         "minecraft:physics": {},

@@ -1,14 +1,65 @@
 {
   "entity_sounds": {
     "entities": {
+      "aionbound:ash_drake": {
+        "events": {
+          "ambient": "mob.ravager.ambient",
+          "death": "mob.ravager.death",
+          "hurt": "mob.ravager.hurt"
+        },
+        "pitch": [
+          0.65,
+          0.8
+        ],
+        "volume": 1.0
+      },
+      "aionbound:ash_mite": {
+        "events": {
+          "ambient": "mob.spider.say",
+          "death": "mob.spider.death",
+          "hurt": "mob.spider.say"
+        },
+        "pitch": [
+          1.15,
+          1.3
+        ],
+        "volume": 0.45
+      },
+      "aionbound:ash_ram": {
+        "events": {
+          "ambient": "mob.goat.ambient",
+          "death": "mob.goat.death",
+          "hurt": "mob.goat.hurt"
+        },
+        "pitch": [
+          0.7,
+          0.85
+        ],
+        "volume": 0.85
+      },
       "aionbound:bark_wraith": {
         "events": {
           "ambient": "mob.vex.ambient",
           "death": "mob.vex.death",
           "hurt": "mob.vex.hurt"
         },
-        "pitch": [0.7, 0.9],
+        "pitch": [
+          0.7,
+          0.9
+        ],
         "volume": 0.8
+      },
+      "aionbound:basalt_tortoise": {
+        "events": {
+          "ambient": "mob.ravager.ambient",
+          "death": "mob.ravager.death",
+          "hurt": "mob.ravager.hurt"
+        },
+        "pitch": [
+          0.5,
+          0.65
+        ],
+        "volume": 0.75
       },
       "aionbound:briar_elk": {
         "events": {
@@ -16,8 +67,59 @@
           "death": "mob.goat.death",
           "hurt": "mob.goat.hurt"
         },
-        "pitch": [0.75, 0.9],
+        "pitch": [
+          0.75,
+          0.9
+        ],
         "volume": 0.9
+      },
+      "aionbound:char_wolf": {
+        "events": {
+          "ambient": "mob.wolf.bark",
+          "death": "mob.wolf.death",
+          "hurt": "mob.wolf.hurt"
+        },
+        "pitch": [
+          0.7,
+          0.85
+        ],
+        "volume": 0.8
+      },
+      "aionbound:cinder_lynx": {
+        "events": {
+          "ambient": "mob.wolf.bark",
+          "death": "mob.wolf.death",
+          "hurt": "mob.wolf.hurt"
+        },
+        "pitch": [
+          1.05,
+          1.2
+        ],
+        "volume": 0.6
+      },
+      "aionbound:ember_crow": {
+        "events": {
+          "ambient": "mob.vex.ambient",
+          "death": "mob.vex.death",
+          "hurt": "mob.vex.hurt"
+        },
+        "pitch": [
+          1.1,
+          1.25
+        ],
+        "volume": 0.55
+      },
+      "aionbound:furnace_beetle": {
+        "events": {
+          "ambient": "mob.spider.say",
+          "death": "mob.spider.death",
+          "hurt": "mob.spider.say"
+        },
+        "pitch": [
+          0.6,
+          0.75
+        ],
+        "volume": 0.7
       },
       "aionbound:hollow_widow_spider": {
         "events": {
@@ -25,7 +127,10 @@
           "death": "mob.spider.death",
           "hurt": "mob.spider.say"
         },
-        "pitch": [0.8, 1.0],
+        "pitch": [
+          0.8,
+          1.0
+        ],
         "volume": 0.8
       },
       "aionbound:lantern_hare": {
@@ -34,8 +139,23 @@
           "death": "mob.rabbit.death",
           "hurt": "mob.rabbit.hurt"
         },
-        "pitch": [0.95, 1.15],
+        "pitch": [
+          0.95,
+          1.15
+        ],
         "volume": 0.7
+      },
+      "aionbound:magma_lizard": {
+        "events": {
+          "ambient": "mob.pig.say",
+          "death": "mob.pig.death",
+          "hurt": "mob.pig.say"
+        },
+        "pitch": [
+          0.95,
+          1.1
+        ],
+        "volume": 0.55
       },
       "aionbound:mosskip_buck": {
         "events": {
@@ -43,7 +163,10 @@
           "death": "mob.goat.death",
           "hurt": "mob.goat.hurt"
         },
-        "pitch": [0.85, 0.95],
+        "pitch": [
+          0.85,
+          0.95
+        ],
         "volume": 0.8
       },
       "aionbound:mosskip_doe": {
@@ -52,7 +175,10 @@
           "death": "mob.goat.death",
           "hurt": "mob.goat.hurt"
         },
-        "pitch": [0.95, 1.05],
+        "pitch": [
+          0.95,
+          1.05
+        ],
         "volume": 0.7
       },
       "aionbound:mosskip_fawn": {
@@ -61,7 +187,10 @@
           "death": "mob.goat.death",
           "hurt": "mob.goat.hurt"
         },
-        "pitch": [1.15, 1.3],
+        "pitch": [
+          1.15,
+          1.3
+        ],
         "volume": 0.6
       },
       "aionbound:rootback_boar": {
@@ -70,7 +199,10 @@
           "death": "mob.pig.death",
           "hurt": "mob.pig.say"
         },
-        "pitch": [0.8, 0.95],
+        "pitch": [
+          0.8,
+          0.95
+        ],
         "volume": 0.8
       },
       "aionbound:rot_wolf": {
@@ -79,8 +211,23 @@
           "death": "mob.wolf.death",
           "hurt": "mob.wolf.hurt"
         },
-        "pitch": [0.85, 1.0],
+        "pitch": [
+          0.85,
+          1.0
+        ],
         "volume": 0.8
+      },
+      "aionbound:soot_stag": {
+        "events": {
+          "ambient": "mob.goat.ambient",
+          "death": "mob.goat.death",
+          "hurt": "mob.goat.hurt"
+        },
+        "pitch": [
+          0.9,
+          1.0
+        ],
+        "volume": 0.65
       },
       "aionbound:thorn_stalker": {
         "events": {
@@ -88,7 +235,10 @@
           "death": "mob.ravager.death",
           "hurt": "mob.ravager.hurt"
         },
-        "pitch": [0.95, 1.1],
+        "pitch": [
+          0.95,
+          1.1
+        ],
         "volume": 0.75
       }
     }
