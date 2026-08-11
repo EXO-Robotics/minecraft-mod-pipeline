@@ -14,6 +14,7 @@ FEATURES = ROOT / "behavior_pack" / "features"
 FEATURE_RULES = ROOT / "behavior_pack" / "feature_rules"
 ITEMS = ROOT / "behavior_pack" / "items"
 RECIPES = ROOT / "behavior_pack" / "recipes"
+WORLD_CONTENT_GENERATOR = ROOT / "tools" / "generate_g7_world_content.mjs"
 
 GATE0_BLOCKS = {
     "aionite_ore",
@@ -87,6 +88,14 @@ def recipe_item_refs(payload: dict) -> set[str]:
 
 
 class Gate0SubstrateRegression(unittest.TestCase):
+    def test_source_generator_preserves_gate0_schema_repairs(self) -> None:
+        source = WORLD_CONTENT_GENERATOR.read_text(encoding="utf-8")
+        self.assertIn('"minecraft:geometry": "minecraft:geometry.full_block"', source)
+        self.assertIn('`aionbound:${id}.ore_feature_rule`', source)
+        self.assertIn('`aionbound:${id}.structure_feature_rule`', source)
+        self.assertNotIn('`aionbound:${id}_ore_rule`', source)
+        self.assertNotIn('`aionbound:${id}_structure_rule`', source)
+
     def test_all_json_in_affected_families_parses(self) -> None:
         paths = [
             *BLOCKS.glob("*.json"),

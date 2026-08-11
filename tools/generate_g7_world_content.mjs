@@ -74,6 +74,7 @@ for (const [id, base, accent] of blocks) {
       components: {
         "minecraft:display_name": title(id),
         "minecraft:destructible_by_mining": { seconds_to_destroy: id.includes("ore") || id.includes("nodule") || id.includes("cluster") ? 3.5 : 2 },
+        "minecraft:geometry": "minecraft:geometry.full_block",
         "minecraft:material_instances": { "*": { texture: id, render_method: id.includes("glass") || id.includes("grate") ? "alpha_test" : "opaque" } }
       }
     }
@@ -132,7 +133,7 @@ for (const [id, count, ymin, ymax, iterations] of oreSpecs) {
   writeJson(`behavior_pack/feature_rules/${id}.ore_feature_rule.json`, {
     format_version: "1.21.40",
     "minecraft:feature_rules": {
-      description: { identifier: `aionbound:${id}_ore_rule`, places_feature: `aionbound:${id}_ore_feature` },
+      description: { identifier: `aionbound:${id}.ore_feature_rule`, places_feature: `aionbound:${id}_ore_feature` },
       conditions: { placement_pass: "underground_pass", "minecraft:biome_filter": { test: "has_biome_tag", operator: "==", value: "overworld" } },
       distribution: { coordinate_eval_order: "xzy", iterations, scatter_chance: 1.0,
         x: { distribution: "uniform", extent: [0, 15] }, y: { distribution: "uniform", extent: [ymin, ymax] }, z: { distribution: "uniform", extent: [0, 15] } }
@@ -216,7 +217,7 @@ for (const [id, focus, shell, denominator] of sites) {
   writeJson(`behavior_pack/feature_rules/${id}.structure_feature_rule.json`, {
     format_version: "1.13.0",
     "minecraft:feature_rules": {
-      description: { identifier: `aionbound:${id}_structure_rule`, places_feature: `aionbound:${id}_structure_feature` },
+      description: { identifier: `aionbound:${id}.structure_feature_rule`, places_feature: `aionbound:${id}_structure_feature` },
       conditions: { placement_pass: "surface_pass", "minecraft:biome_filter": { all_of: [
         { test: "has_biome_tag", operator: "==", value: "overworld" }, { test: "has_biome_tag", operator: "!=", value: "ocean" }
       ] } },
