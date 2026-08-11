@@ -116,7 +116,8 @@ class CrystalBlockRuntime(unittest.TestCase):
                 components["minecraft:material_instances"]["*"],
                 {"texture": asset_id, "render_method": "opaque"},
             )
-            self.assertNotIn("minecraft:loot", components)
+            self.assertEqual(components["minecraft:loot"], f"loot_tables/blocks/{asset_id}.json")
+            self.assertTrue((ROOT / "behavior_pack" / components["minecraft:loot"]).is_file())
             self.assertEqual(
                 terrain[asset_id]["textures"],
                 f"textures/aionbound/crystal_marsh/blocks/{asset_id}",

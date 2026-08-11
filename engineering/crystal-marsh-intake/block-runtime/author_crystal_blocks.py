@@ -104,7 +104,7 @@ def source_record(asset_id: str) -> dict:
 
 
 def block_definition(asset_id: str, spec: dict) -> dict:
-    return {
+    result = {
         "format_version": "1.21.80",
         "minecraft:block": {
             "description": {
@@ -123,6 +123,10 @@ def block_definition(asset_id: str, spec: dict) -> dict:
             },
         },
     }
+    loot_table = ROOT / f"behavior_pack/loot_tables/blocks/{asset_id}.json"
+    if loot_table.is_file():
+        result["minecraft:block"]["components"]["minecraft:loot"] = f"loot_tables/blocks/{asset_id}.json"
+    return result
 
 
 def main() -> None:
