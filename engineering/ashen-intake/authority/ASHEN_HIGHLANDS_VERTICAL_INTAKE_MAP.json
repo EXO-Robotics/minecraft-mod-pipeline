@@ -1,0 +1,4422 @@
+{
+  "schema": "aionbound.wave1.ashen-authority-intake.v1.0.0",
+  "status": "PACKET_002_AUTHORITY_MAPPED_IMPLEMENTATION_GATED",
+  "base_commit": "9acf1b0f62ade90b59ba65e0a9e0618852ff3159",
+  "scope": "Packet 002 authority intake only; no BP/RP implementation or qualification claim",
+  "source_authorities": [
+    {
+      "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-002-ashen-highlands/MANIFEST_FULL.json",
+      "sha256": "6cb3bd25a1ef473e60e5ed0ebf78288bcc4d53db1ff4ec74db4d22ddb036c738",
+      "role": "exact Packet 002 visual roster and visual-only claim boundary"
+    },
+    {
+      "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-002-ashen-highlands/SPRINT_002_COMPLETE.md",
+      "sha256": "cd62a92f44313bc0b7cea5c2dac08f2a96e04ecf59f8264977eb584e146d264a",
+      "role": "50/50 category receipt and canonical source layout"
+    },
+    {
+      "path": "program/crazycraft-pack-production-v1/studio-prep/creative/WAVE_1_LIVING_WORLD_IMPLEMENTATION_CONTRACT.json",
+      "sha256": "aa1f54df10d27d5c5675aae843ffe0d2946123d12a6509f7f021408bcdde9fb5",
+      "role": "machine-readable Packet 002 inventory and completion contract"
+    },
+    {
+      "path": "program/crazycraft-pack-production-v1/studio-prep/creative/WAVE_1_LIVING_WORLD_IMPLEMENTATION_CONTRACT.md",
+      "sha256": "3116c217e06afe1fd0cd56ee742c537f948a4c91193ec831fd1b3ec362837bfc",
+      "role": "human implementation authority and per-asset relationships"
+    },
+    {
+      "path": "program/crazycraft-pack-production-v1/studio-prep/creative/01_progression/PLAYER_JOURNEY.md",
+      "sha256": "42ba75d9518977c71397826aa9f4daa3864df942019c809b04830fef654a1fa7",
+      "role": "chapter order and soft-gate progression"
+    },
+    {
+      "path": "program/crazycraft-pack-production-v1/studio-prep/creative/02_loot/LOOT_ASHEN.md",
+      "sha256": "f5b2ff909a6e7b7669da561cc2659439819227f99d15d221dbea0147750d3727",
+      "role": "loot identities and purposes, but not ratified final values"
+    },
+    {
+      "path": "program/crazycraft-pack-production-v1/studio-prep/creative/03_crafting/CRAFTING_TREE.md",
+      "sha256": "1f3482ba3dd9f916e08aa544153cc841871a729a2e82d9e75601715f4b5ee807",
+      "role": "material-to-component-to-equipment graph"
+    },
+    {
+      "path": "program/crazycraft-pack-production-v1/studio-prep/creative/04_equipment/EQUIPMENT_PROGRESSION.md",
+      "sha256": "7ecf57e6af099ae3cda8a7432228fb5ee996f20b02b76888a82c0c1a3e3c891d",
+      "role": "equipment roles and sidegrade philosophy"
+    },
+    {
+      "path": "program/crazycraft-pack-production-v1/studio-prep/creative/05_structures/STRUCTURES_DESIGN.md",
+      "sha256": "9e62ae9ba6c1da33b64ff0bfa4ac4799b083c6de995585424864d5cf2b0cb076",
+      "role": "structure purpose, visit, loot identity, story, and progression"
+    },
+    {
+      "path": "program/crazycraft-pack-production-v1/studio-prep/creative/06_world_gen/WORLD_GENERATION.md",
+      "sha256": "bc18a1e1f73d6045ab7e583afe910ca13d4776d439c8f3dfb45dae5784372f4b",
+      "role": "ecology, placement, and rarity intent"
+    },
+    {
+      "path": "program/crazycraft-pack-production-v1/studio-prep/creative/07_bosses/BOSS_PROGRESSION.md",
+      "sha256": "5ef85e1e0b29973a617f7dca4a8b119443c01644ba33f0e11166ef8d417d5a6f",
+      "role": "Kiln Sky identity, phase kit, attacks, and reward identities"
+    },
+    {
+      "path": "program/crazycraft-pack-production-v1/studio-prep/creative/08_codex/CODEX_ENTRIES_CREATURES.md",
+      "sha256": "fd07694eee0c8d478b44363e822e0116f4ca09c92775661350ed8468342b01bf",
+      "role": "ten creature discovery/crafting/hint entries"
+    },
+    {
+      "path": "engineering/authority/WAVE_1_ENGINEERING_DECISION_LEDGER.json",
+      "sha256": "3e2b64785da9310b098e06981ebc95777ddc7e5d2666f803b79ce374470a9561",
+      "role": "ratified and deferred engineering decision state"
+    }
+  ],
+  "packet": {
+    "id": "002",
+    "name": "Ashen Highlands",
+    "source_namespace": "aionforge_ah",
+    "shipping_namespace": "aionbound",
+    "count": 50,
+    "category_counts": {
+      "creatures": 10,
+      "resources": 10,
+      "blocks": 10,
+      "plants": 10,
+      "structures": 10
+    },
+    "visual_claim_boundary": "Visual production only.",
+    "definition_of_done": [
+      "full_002_ecology",
+      "forge_and_drake_path",
+      "ashen_set_craftable",
+      "cm_rumor_available"
+    ]
+  },
+  "ratified_terms": {
+    "warehouse_runtime_rule": "aionbound:<immutable_warehouse_id>",
+    "aliases": {
+      "mite_resin language": "aionbound:ember_resin"
+    },
+    "derived_components": {
+      "Heat Core": "aionbound:heat_core",
+      "Heavy Head": "aionbound:heavy_head",
+      "Chitin Plate": "aionbound:chitin_plate",
+      "Ember Heart": "aionbound:ember_heart"
+    },
+    "equipment_links": {
+      "weapons": [
+        "basalt_hammer",
+        "ember_great_axe",
+        "ash_repeater"
+      ],
+      "armor": [
+        "ashen_helmet",
+        "ashen_chest",
+        "ashen_legs",
+        "ashen_boots"
+      ],
+      "tools": [
+        "basalt_pick",
+        "ember_hammer",
+        "ore_chisel"
+      ],
+      "accessories": [
+        "ember_totem",
+        "briar_ring"
+      ],
+      "trophies": [
+        "ash_drake_horn",
+        "ember_forge_core"
+      ]
+    },
+    "loot_identity_and_purpose_only": "Creative LOOT_ASHEN identities and purposes are binding; values are not ratified.",
+    "kiln_sky_nonnumeric_kit": {
+      "boss": "aionbound:ash_drake",
+      "arena_link": "aionbound:ember_forge",
+      "phases": [
+        "Ash Landing",
+        "Vent Choir",
+        "Glass Wing",
+        "Kiln Heart"
+      ],
+      "attacks": [
+        "Cinder Breath",
+        "Tail Slag",
+        "Thermal Dive",
+        "Mite Shake",
+        "Basalt Quake",
+        "Glass Feather Storm"
+      ],
+      "reward_identities": [
+        "aionbound:ash_drake_horn",
+        "forge materials",
+        "aionbound:ember_forge_core chance"
+      ]
+    }
+  },
+  "unresolved_terms": {
+    "W1-CREATIVE-001_LATER_REGIONS": {
+      "status": "DEFERRED_UNTIL_SEPARATE_RATIFICATION",
+      "terms": [
+        "Ash Dust",
+        "Ash Wool",
+        "Beetle Core Fragment",
+        "Char Feather",
+        "Char Hide",
+        "Char Pelt",
+        "Cinder Beak",
+        "Cinder Pelt",
+        "Drake Scale",
+        "Ember Fang",
+        "Ember Sinew",
+        "Heat Scale",
+        "Lynx Claw",
+        "Mite Mandible",
+        "Pack Cinder Mark",
+        "Ram Horn Curve",
+        "Shell Plate",
+        "Smolder Gland",
+        "Soot Antler",
+        "Stag Heart Cinder",
+        "Swarm Queen Scale",
+        "Warm Blood Vial"
+      ]
+    },
+    "curiosities_default": {
+      "status": "NARRATIVE_CODEX_ONLY_UNLESS_PROMOTED",
+      "terms": [
+        "Scorched Message Tube",
+        "Lynx Eye Gem",
+        "Slow Stone",
+        "First Fire prayer strip",
+        "survey notes",
+        "ritual curios",
+        "CM teaser map",
+        "ashen_boots pattern scraps",
+        "unfinished basalt tool heads"
+      ]
+    },
+    "W1-CREATIVE-003_OTHER_BOSSES": {
+      "status": "DEFERRED",
+      "missing": [
+        "phase thresholds",
+        "transition predicates",
+        "telegraph/attack/recovery/cooldown ranges",
+        "leash/timeout/wipe/reset/re-entry",
+        "add caps",
+        "multiplayer ownership/scaling",
+        "late join/disconnect",
+        "persistence domain",
+        "reward authority",
+        "idempotent terminal grant",
+        "repeat-clear semantics"
+      ]
+    },
+    "W1-CREATIVE-004_LATER_REGIONS": {
+      "status": "DEFERRED",
+      "missing": [
+        "C/U/R/E/T/Q probability ranges",
+        "quantity ranges",
+        "chest rolls",
+        "guaranteed boss semantics",
+        "arena reward guards",
+        "alternate seal semantics"
+      ]
+    },
+    "W1-CREATIVE-005": {
+      "status": "DEFERRED_BY_USER",
+      "scope": "equipment sidegrade item identity",
+      "rule": "No sibling ID, NBT/lore identity, or sidegrade implementation may be selected here."
+    },
+    "additional_unbound_recipe_language": [
+      "fire_totem ash",
+      "glass tip",
+      "heat wrap",
+      "char handle",
+      "char stock",
+      "chitin tip",
+      "basalt studs",
+      "ember_resin vents",
+      "Firestitched Cord",
+      "heatstone dust"
+    ]
+  },
+  "safe_now_withheld": {
+    "safe_now": [
+      "Normalize all 50 source identities from aionforge_ah to aionbound without changing visual identity.",
+      "Copy hash-bound source/export bytes into the canonical shipping target families.",
+      "Author schema and reference-closure scaffolding for the 50 ratified warehouse IDs.",
+      "Bind Creative-approved acquisition sources, roles, Codex relationships, progression relationships, and equipment dependency edges without inventing values or identities.",
+      "Implement nonnumeric Kiln Sky phase and attack architecture tags while keeping terminal effects disabled.",
+      "Author structural loot and recipe graphs that remain non-shipping until their unresolved inputs and numeric envelopes are ratified.",
+      "Use Packet 006 equipment IDs as dependency targets without choosing sidegrade representation."
+    ],
+    "withheld": [
+      "Any shipping creature/chest/boss loot values or quantities for Ashen Highlands.",
+      "Any registry item for the 22 deferred Ashen non-warehouse terms.",
+      "Any gameplay item for curiosity prose unless separately promoted.",
+      "Kiln Sky thresholds, timings, leash, timeout, wipe/reset/re-entry, add caps, multiplayer ownership/scaling, late-join/disconnect, persistence, reward authority, idempotent terminal grants, or repeat-clear semantics.",
+      "Any claim that ash_drake naturally spawns; Creative binds it to an arena or nest-sky apex path.",
+      "Any sidegrade identity or representation covered by deferred W1-CREATIVE-005.",
+      "Checkpoint, candidate, BDS, client, console, or gameplay proof from this intake map."
+    ]
+  },
+  "assets": [
+    {
+      "warehouse_id": "ash_mite",
+      "runtime_id": "aionbound:ash_mite",
+      "category": "creatures",
+      "source_files": {
+        "brief": {
+          "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-002-ashen-highlands/assets/briefs/ash_mite.json",
+          "sha256": "974fa23654c5b532ee074cfb699c107c3af5cf816957f70779d95c0844c2f828"
+        },
+        "editable_bbmodel": {
+          "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-002-ashen-highlands/assets/editable/ash_mite.bbmodel",
+          "sha256": "0ff8b2b395d388714710579f3129cb04003f3096b8270a82c87cce09ea99e2ef"
+        },
+        "editable_png": {
+          "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-002-ashen-highlands/assets/editable/ash_mite.png",
+          "sha256": "41b855b3ee5c4f85a00479f81e86c2518d3c8561ec43aa5021b8bbc142616ec1"
+        },
+        "export_geometry": {
+          "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-002-ashen-highlands/assets/export/models/ash_mite.geo.json",
+          "sha256": "94d459e5f39fe45c269678b1bf63ae8660d68b315c4e3a3a6878594bb604b6f7"
+        },
+        "export_animation": {
+          "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-002-ashen-highlands/assets/export/animations/ash_mite.animation.json",
+          "sha256": "dd148668e2c663ca874f86267de6af8d70d8f3d08e65f96c36fcd55c061f3642"
+        },
+        "export_texture": {
+          "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-002-ashen-highlands/assets/export/textures/ash_mite.png",
+          "sha256": "41b855b3ee5c4f85a00479f81e86c2518d3c8561ec43aa5021b8bbc142616ec1"
+        }
+      },
+      "shipping_targets": {
+        "create": [
+          "behavior_pack/entities/ash_mite.entity.json",
+          "behavior_pack/loot_tables/entities/ash_mite.json",
+          "behavior_pack/spawn_rules/ash_mite.spawn_rules.json",
+          "resource_pack/animations/aionbound/ashen_highlands/ash_mite.animation.json",
+          "resource_pack/entity/ash_mite.entity.json",
+          "resource_pack/models/aionbound/ashen_highlands/ash_mite.geo.json",
+          "resource_pack/textures/aionbound/ashen_highlands/ash_mite.png"
+        ],
+        "update_shared": [
+          "behavior_pack/scripts/catalog.js",
+          "behavior_pack/scripts/codex.js",
+          "resource_pack/texts/en_US.lang"
+        ]
+      },
+      "dependencies": {
+        "role": "swarm_hostile",
+        "acquisition": [
+          "vents",
+          "caves"
+        ],
+        "loot": [
+          "Ash Dust",
+          "Mite Mandible",
+          "ember_resin",
+          "Swarm Queen Scale"
+        ],
+        "crafting": [
+          "forge flux",
+          "ore_chisel",
+          "heat binding",
+          "ashen_boots"
+        ],
+        "progression": [
+          "heatstone locator hint",
+          "hazard economy"
+        ],
+        "equipment": [
+          "ore_chisel",
+          "ashen_boots"
+        ],
+        "codex": {
+          "coverage": "REQUIRED",
+          "discovery": "swarm contact",
+          "relationship_links": [
+            "ashen_boots",
+            "forge flux",
+            "hazard economy",
+            "heat binding",
+            "heatstone locator hint",
+            "ore_chisel"
+          ]
+        }
+      },
+      "authority_state": {
+        "identity": "RATIFIED_WAREHOUSE_ID",
+        "visual": "HASH_BOUND_PACKET_002_VISUAL_SOURCE",
+        "gameplay_relationships": "BINDING_CREATIVE_IDENTITY_AND_ROLE",
+        "numeric_loot_values": "WITHHELD_W1_CREATIVE_004_LATER_REGIONS",
+        "new_nonwarehouse_item_dependencies": "WITHHELD_W1_CREATIVE_001_LATER_REGIONS",
+        "sidegrade_identity": "NOT_APPLICABLE_OR_NO_SIDEGRADE_DECISION_HERE"
+      }
+    },
+    {
+      "warehouse_id": "ember_crow",
+      "runtime_id": "aionbound:ember_crow",
+      "category": "creatures",
+      "source_files": {
+        "brief": {
+          "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-002-ashen-highlands/assets/briefs/ember_crow.json",
+          "sha256": "67fc4cbebe5b51c661c97912c64edad1f36e14ed7aed7c7877f92d88e60d7e4b"
+        },
+        "editable_bbmodel": {
+          "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-002-ashen-highlands/assets/editable/ember_crow.bbmodel",
+          "sha256": "b7834533b1c802843464bef4fec9ca6ce06a2d19732ec5cdc94a34114ec289ee"
+        },
+        "editable_png": {
+          "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-002-ashen-highlands/assets/editable/ember_crow.png",
+          "sha256": "a30e1130df04ceb6162528b1d111843738c8313c242b12ab5a711eca3bffd89c"
+        },
+        "export_geometry": {
+          "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-002-ashen-highlands/assets/export/models/ember_crow.geo.json",
+          "sha256": "bc8eeeb3a0bf7b8f6214a6a383dc6115a49c820fa8e33f0944e2f3a501d2e1ac"
+        },
+        "export_animation": {
+          "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-002-ashen-highlands/assets/export/animations/ember_crow.animation.json",
+          "sha256": "3a8b026592fe103a72e2eb1579aeb2f6feb230658b2007e670b604f459007406"
+        },
+        "export_texture": {
+          "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-002-ashen-highlands/assets/export/textures/ember_crow.png",
+          "sha256": "a30e1130df04ceb6162528b1d111843738c8313c242b12ab5a711eca3bffd89c"
+        }
+      },
+      "shipping_targets": {
+        "create": [
+          "behavior_pack/entities/ember_crow.entity.json",
+          "behavior_pack/loot_tables/entities/ember_crow.json",
+          "behavior_pack/spawn_rules/ember_crow.spawn_rules.json",
+          "resource_pack/animations/aionbound/ashen_highlands/ember_crow.animation.json",
+          "resource_pack/entity/ember_crow.entity.json",
+          "resource_pack/models/aionbound/ashen_highlands/ember_crow.geo.json",
+          "resource_pack/textures/aionbound/ashen_highlands/ember_crow.png"
+        ],
+        "update_shared": [
+          "behavior_pack/scripts/catalog.js",
+          "behavior_pack/scripts/codex.js",
+          "resource_pack/texts/en_US.lang"
+        ]
+      },
+      "dependencies": {
+        "role": "ambient_air",
+        "acquisition": [
+          "sky",
+          "towers"
+        ],
+        "loot": [
+          "Char Feather",
+          "Cinder Beak",
+          "Scorched Message Tube"
+        ],
+        "crafting": [
+          "ash_repeater fletching",
+          "small tool tips",
+          "Codex traveler notes"
+        ],
+        "progression": [
+          "ash_repeater path",
+          "cooled-kill discovery hint"
+        ],
+        "equipment": [
+          "ash_repeater"
+        ],
+        "codex": {
+          "coverage": "REQUIRED",
+          "discovery": "observe sky",
+          "relationship_links": [
+            "Codex traveler notes",
+            "ash_repeater",
+            "ash_repeater fletching",
+            "ash_repeater path",
+            "cooled-kill discovery hint",
+            "small tool tips"
+          ]
+        }
+      },
+      "authority_state": {
+        "identity": "RATIFIED_WAREHOUSE_ID",
+        "visual": "HASH_BOUND_PACKET_002_VISUAL_SOURCE",
+        "gameplay_relationships": "BINDING_CREATIVE_IDENTITY_AND_ROLE",
+        "numeric_loot_values": "WITHHELD_W1_CREATIVE_004_LATER_REGIONS",
+        "new_nonwarehouse_item_dependencies": "WITHHELD_W1_CREATIVE_001_LATER_REGIONS",
+        "sidegrade_identity": "NOT_APPLICABLE_OR_NO_SIDEGRADE_DECISION_HERE"
+      }
+    },
+    {
+      "warehouse_id": "magma_lizard",
+      "runtime_id": "aionbound:magma_lizard",
+      "category": "creatures",
+      "source_files": {
+        "brief": {
+          "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-002-ashen-highlands/assets/briefs/magma_lizard.json",
+          "sha256": "6cc5314ecf828f4ce1fc75bc11e886879b3b42ff055c7a689d02cf5c46b139d0"
+        },
+        "editable_bbmodel": {
+          "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-002-ashen-highlands/assets/editable/magma_lizard.bbmodel",
+          "sha256": "a80cf0664d2a48ddf66a6e5d911257935f6f4fe2126d6821b980d1b9ce77776d"
+        },
+        "editable_png": {
+          "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-002-ashen-highlands/assets/editable/magma_lizard.png",
+          "sha256": "e87a215b33454ac1c77d62737d660cca7eb535072201723dcb29bb5d79618b70"
+        },
+        "export_geometry": {
+          "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-002-ashen-highlands/assets/export/models/magma_lizard.geo.json",
+          "sha256": "7e180cbef04fc35ca9359c75fbf515f1b30e01c5342c66ef7b55be1aae795a2b"
+        },
+        "export_animation": {
+          "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-002-ashen-highlands/assets/export/animations/magma_lizard.animation.json",
+          "sha256": "a0ee70123b05fe1aa5d6c99becb76d8696aed2d0c5c1fb34945e1e3612dafb42"
+        },
+        "export_texture": {
+          "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-002-ashen-highlands/assets/export/textures/magma_lizard.png",
+          "sha256": "e87a215b33454ac1c77d62737d660cca7eb535072201723dcb29bb5d79618b70"
+        }
+      },
+      "shipping_targets": {
+        "create": [
+          "behavior_pack/entities/magma_lizard.entity.json",
+          "behavior_pack/loot_tables/entities/magma_lizard.json",
+          "behavior_pack/spawn_rules/magma_lizard.spawn_rules.json",
+          "resource_pack/animations/aionbound/ashen_highlands/magma_lizard.animation.json",
+          "resource_pack/entity/magma_lizard.entity.json",
+          "resource_pack/models/aionbound/ashen_highlands/magma_lizard.geo.json",
+          "resource_pack/textures/aionbound/ashen_highlands/magma_lizard.png"
+        ],
+        "update_shared": [
+          "behavior_pack/scripts/catalog.js",
+          "behavior_pack/scripts/codex.js",
+          "resource_pack/texts/en_US.lang"
+        ]
+      },
+      "dependencies": {
+        "role": "small_hostile",
+        "acquisition": [
+          "hot rock"
+        ],
+        "loot": [
+          "Heat Scale",
+          "volcanic_glass_shard",
+          "Warm Blood Vial"
+        ],
+        "crafting": [
+          "ashen_legs padding",
+          "edges and panes",
+          "heat-resist precursor"
+        ],
+        "progression": [
+          "safe-path environmental hint",
+          "ranged and tool path"
+        ],
+        "equipment": [
+          "ashen_legs",
+          "ash_repeater"
+        ],
+        "codex": {
+          "coverage": "REQUIRED",
+          "discovery": "defeat on basalt",
+          "relationship_links": [
+            "ash_repeater",
+            "ashen_legs",
+            "ashen_legs padding",
+            "edges and panes",
+            "heat-resist precursor",
+            "ranged and tool path",
+            "safe-path environmental hint"
+          ]
+        }
+      },
+      "authority_state": {
+        "identity": "RATIFIED_WAREHOUSE_ID",
+        "visual": "HASH_BOUND_PACKET_002_VISUAL_SOURCE",
+        "gameplay_relationships": "BINDING_CREATIVE_IDENTITY_AND_ROLE",
+        "numeric_loot_values": "WITHHELD_W1_CREATIVE_004_LATER_REGIONS",
+        "new_nonwarehouse_item_dependencies": "WITHHELD_W1_CREATIVE_001_LATER_REGIONS",
+        "sidegrade_identity": "NOT_APPLICABLE_OR_NO_SIDEGRADE_DECISION_HERE"
+      }
+    },
+    {
+      "warehouse_id": "furnace_beetle",
+      "runtime_id": "aionbound:furnace_beetle",
+      "category": "creatures",
+      "source_files": {
+        "brief": {
+          "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-002-ashen-highlands/assets/briefs/furnace_beetle.json",
+          "sha256": "1315fd7e162d89b44a1a0721af6d2bc81ed177ec3bca079990b8bfc3dae87b7b"
+        },
+        "editable_bbmodel": {
+          "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-002-ashen-highlands/assets/editable/furnace_beetle.bbmodel",
+          "sha256": "25f9ce2d30cb2a5f04ad985e2fd2abec802af12540093a8b5b62e7ce43ec98e3"
+        },
+        "editable_png": {
+          "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-002-ashen-highlands/assets/editable/furnace_beetle.png",
+          "sha256": "adddba620c28044b7ca051de74c8c403054b432d62114c6c04e6837fb68eae16"
+        },
+        "export_geometry": {
+          "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-002-ashen-highlands/assets/export/models/furnace_beetle.geo.json",
+          "sha256": "e8f672c49d6a400225b8bb8ecd9468c8a75b9d360863eec14d153bcfa8c3809c"
+        },
+        "export_animation": {
+          "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-002-ashen-highlands/assets/export/animations/furnace_beetle.animation.json",
+          "sha256": "1e2e2e43e706403bbc18bd32ce0f4bdf0fbc2b1f4fa4c2a3242d2ccadb18d3a6"
+        },
+        "export_texture": {
+          "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-002-ashen-highlands/assets/export/textures/furnace_beetle.png",
+          "sha256": "adddba620c28044b7ca051de74c8c403054b432d62114c6c04e6837fb68eae16"
+        }
+      },
+      "shipping_targets": {
+        "create": [
+          "behavior_pack/entities/furnace_beetle.entity.json",
+          "behavior_pack/loot_tables/entities/furnace_beetle.json",
+          "behavior_pack/spawn_rules/furnace_beetle.spawn_rules.json",
+          "resource_pack/animations/aionbound/ashen_highlands/furnace_beetle.animation.json",
+          "resource_pack/entity/furnace_beetle.entity.json",
+          "resource_pack/models/aionbound/ashen_highlands/furnace_beetle.geo.json",
+          "resource_pack/textures/aionbound/ashen_highlands/furnace_beetle.png"
+        ],
+        "update_shared": [
+          "behavior_pack/scripts/catalog.js",
+          "behavior_pack/scripts/codex.js",
+          "resource_pack/texts/en_US.lang"
+        ]
+      },
+      "dependencies": {
+        "role": "hostile",
+        "acquisition": [
+          "forge-language areas"
+        ],
+        "loot": [
+          "furnace_chitin",
+          "Smolder Gland",
+          "Beetle Core Fragment"
+        ],
+        "crafting": [
+          "ashen_chest plates",
+          "ember_totem fuel",
+          "basalt_hammer face inlay"
+        ],
+        "progression": [
+          "ashen armor set",
+          "ember accessory path"
+        ],
+        "equipment": [
+          "ashen_chest",
+          "ember_totem",
+          "basalt_hammer",
+          "ore_chisel"
+        ],
+        "codex": {
+          "coverage": "REQUIRED",
+          "discovery": "defeat",
+          "relationship_links": [
+            "ashen armor set",
+            "ashen_chest",
+            "ashen_chest plates",
+            "basalt_hammer",
+            "basalt_hammer face inlay",
+            "ember accessory path",
+            "ember_totem",
+            "ember_totem fuel",
+            "ore_chisel"
+          ]
+        }
+      },
+      "authority_state": {
+        "identity": "RATIFIED_WAREHOUSE_ID",
+        "visual": "HASH_BOUND_PACKET_002_VISUAL_SOURCE",
+        "gameplay_relationships": "BINDING_CREATIVE_IDENTITY_AND_ROLE",
+        "numeric_loot_values": "WITHHELD_W1_CREATIVE_004_LATER_REGIONS",
+        "new_nonwarehouse_item_dependencies": "WITHHELD_W1_CREATIVE_001_LATER_REGIONS",
+        "sidegrade_identity": "NOT_APPLICABLE_OR_NO_SIDEGRADE_DECISION_HERE"
+      }
+    },
+    {
+      "warehouse_id": "char_wolf",
+      "runtime_id": "aionbound:char_wolf",
+      "category": "creatures",
+      "source_files": {
+        "brief": {
+          "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-002-ashen-highlands/assets/briefs/char_wolf.json",
+          "sha256": "ba6757ea51a0d6755c0a2288aa5ff556d5ffae8e9d24a99ef32d03bc41d42966"
+        },
+        "editable_bbmodel": {
+          "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-002-ashen-highlands/assets/editable/char_wolf.bbmodel",
+          "sha256": "fe1d5a6315cdeb68af268aae4f7994bd6255c0d4cd835a946b985c4ac27447ed"
+        },
+        "editable_png": {
+          "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-002-ashen-highlands/assets/editable/char_wolf.png",
+          "sha256": "a2c12337a510e761a1fb37124b5c3147a56f8e42e4d0588343df16180c9ece0e"
+        },
+        "export_geometry": {
+          "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-002-ashen-highlands/assets/export/models/char_wolf.geo.json",
+          "sha256": "bb6ecbaa42868a76f30d844223205346bb678b054a600a3deb1bc72be6e259cd"
+        },
+        "export_animation": {
+          "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-002-ashen-highlands/assets/export/animations/char_wolf.animation.json",
+          "sha256": "cf36847750a23dd5ddafb15282a030deb89f58bf7bfc7a2687678054237520fc"
+        },
+        "export_texture": {
+          "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-002-ashen-highlands/assets/export/textures/char_wolf.png",
+          "sha256": "a2c12337a510e761a1fb37124b5c3147a56f8e42e4d0588343df16180c9ece0e"
+        }
+      },
+      "shipping_targets": {
+        "create": [
+          "behavior_pack/entities/char_wolf.entity.json",
+          "behavior_pack/loot_tables/entities/char_wolf.json",
+          "behavior_pack/spawn_rules/char_wolf.spawn_rules.json",
+          "resource_pack/animations/aionbound/ashen_highlands/char_wolf.animation.json",
+          "resource_pack/entity/char_wolf.entity.json",
+          "resource_pack/models/aionbound/ashen_highlands/char_wolf.geo.json",
+          "resource_pack/textures/aionbound/ashen_highlands/char_wolf.png"
+        ],
+        "update_shared": [
+          "behavior_pack/scripts/catalog.js",
+          "behavior_pack/scripts/codex.js",
+          "resource_pack/texts/en_US.lang"
+        ]
+      },
+      "dependencies": {
+        "role": "hostile_pack",
+        "acquisition": [
+          "night ash"
+        ],
+        "loot": [
+          "Char Pelt",
+          "Ember Fang",
+          "Pack Cinder Mark"
+        ],
+        "crafting": [
+          "ashen lining",
+          "dagger or axe teeth",
+          "Codex pack record"
+        ],
+        "progression": [
+          "AH hostile ecology",
+          "tower story link"
+        ],
+        "equipment": [
+          "ashen_helmet",
+          "ashen_chest",
+          "ashen_legs",
+          "ashen_boots"
+        ],
+        "codex": {
+          "coverage": "REQUIRED",
+          "discovery": "pack fight",
+          "relationship_links": [
+            "AH hostile ecology",
+            "Codex pack record",
+            "ashen lining",
+            "ashen_boots",
+            "ashen_chest",
+            "ashen_helmet",
+            "ashen_legs",
+            "dagger or axe teeth",
+            "tower story link"
+          ]
+        }
+      },
+      "authority_state": {
+        "identity": "RATIFIED_WAREHOUSE_ID",
+        "visual": "HASH_BOUND_PACKET_002_VISUAL_SOURCE",
+        "gameplay_relationships": "BINDING_CREATIVE_IDENTITY_AND_ROLE",
+        "numeric_loot_values": "WITHHELD_W1_CREATIVE_004_LATER_REGIONS",
+        "new_nonwarehouse_item_dependencies": "WITHHELD_W1_CREATIVE_001_LATER_REGIONS",
+        "sidegrade_identity": "NOT_APPLICABLE_OR_NO_SIDEGRADE_DECISION_HERE"
+      }
+    },
+    {
+      "warehouse_id": "cinder_lynx",
+      "runtime_id": "aionbound:cinder_lynx",
+      "category": "creatures",
+      "source_files": {
+        "brief": {
+          "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-002-ashen-highlands/assets/briefs/cinder_lynx.json",
+          "sha256": "c88f989896801b1dfdb5a287e12231960ccb950433e21c727233b478461d555f"
+        },
+        "editable_bbmodel": {
+          "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-002-ashen-highlands/assets/editable/cinder_lynx.bbmodel",
+          "sha256": "86c9e365665124fcdfa4966e3fecefa6788393e547281b3a1c584dccb05a46be"
+        },
+        "editable_png": {
+          "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-002-ashen-highlands/assets/editable/cinder_lynx.png",
+          "sha256": "3e3bfddc2d37fd165e2b5343f9ff1e1d2cba59ec5a383540a1092446ce6450b8"
+        },
+        "export_geometry": {
+          "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-002-ashen-highlands/assets/export/models/cinder_lynx.geo.json",
+          "sha256": "6be8a1249e848eea1242002177ced8cb6571107a0cc040ff3b5793ed56cf294d"
+        },
+        "export_animation": {
+          "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-002-ashen-highlands/assets/export/animations/cinder_lynx.animation.json",
+          "sha256": "2cec0b3f22ae291b5dda988871b37bb493b21586b0a2379e7976e7ff65be08a7"
+        },
+        "export_texture": {
+          "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-002-ashen-highlands/assets/export/textures/cinder_lynx.png",
+          "sha256": "3e3bfddc2d37fd165e2b5343f9ff1e1d2cba59ec5a383540a1092446ce6450b8"
+        }
+      },
+      "shipping_targets": {
+        "create": [
+          "behavior_pack/entities/cinder_lynx.entity.json",
+          "behavior_pack/loot_tables/entities/cinder_lynx.json",
+          "behavior_pack/spawn_rules/cinder_lynx.spawn_rules.json",
+          "resource_pack/animations/aionbound/ashen_highlands/cinder_lynx.animation.json",
+          "resource_pack/entity/cinder_lynx.entity.json",
+          "resource_pack/models/aionbound/ashen_highlands/cinder_lynx.geo.json",
+          "resource_pack/textures/aionbound/ashen_highlands/cinder_lynx.png"
+        ],
+        "update_shared": [
+          "behavior_pack/scripts/catalog.js",
+          "behavior_pack/scripts/codex.js",
+          "resource_pack/texts/en_US.lang"
+        ]
+      },
+      "dependencies": {
+        "role": "elite_hunter",
+        "acquisition": [
+          "ridges"
+        ],
+        "loot": [
+          "Cinder Pelt",
+          "Lynx Claw",
+          "heatstone",
+          "Lynx Eye Gem"
+        ],
+        "crafting": [
+          "silent boot pads",
+          "ash_repeater mechanism",
+          "heatstone path",
+          "talisman curiosity"
+        ],
+        "progression": [
+          "ash_repeater path",
+          "elite heatstone source"
+        ],
+        "equipment": [
+          "ashen_boots",
+          "ash_repeater"
+        ],
+        "codex": {
+          "coverage": "REQUIRED",
+          "discovery": "elite hunt",
+          "relationship_links": [
+            "ash_repeater",
+            "ash_repeater mechanism",
+            "ash_repeater path",
+            "ashen_boots",
+            "elite heatstone source",
+            "heatstone path",
+            "silent boot pads",
+            "talisman curiosity"
+          ]
+        }
+      },
+      "authority_state": {
+        "identity": "RATIFIED_WAREHOUSE_ID",
+        "visual": "HASH_BOUND_PACKET_002_VISUAL_SOURCE",
+        "gameplay_relationships": "BINDING_CREATIVE_IDENTITY_AND_ROLE",
+        "numeric_loot_values": "WITHHELD_W1_CREATIVE_004_LATER_REGIONS",
+        "new_nonwarehouse_item_dependencies": "WITHHELD_W1_CREATIVE_001_LATER_REGIONS",
+        "sidegrade_identity": "NOT_APPLICABLE_OR_NO_SIDEGRADE_DECISION_HERE"
+      }
+    },
+    {
+      "warehouse_id": "ash_ram",
+      "runtime_id": "aionbound:ash_ram",
+      "category": "creatures",
+      "source_files": {
+        "brief": {
+          "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-002-ashen-highlands/assets/briefs/ash_ram.json",
+          "sha256": "9daca2ce1f24f00ddeb1c8d85e75295a89b4e7acae15c59e02bf9b2494334783"
+        },
+        "editable_bbmodel": {
+          "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-002-ashen-highlands/assets/editable/ash_ram.bbmodel",
+          "sha256": "de4ab42587624fb897aa37f3addaf183229837c84fcf025079bc9e005c438cd6"
+        },
+        "editable_png": {
+          "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-002-ashen-highlands/assets/editable/ash_ram.png",
+          "sha256": "e9ff27a1b43688bae42e091137f9077fe171a917d7e67e95483832eb9763c684"
+        },
+        "export_geometry": {
+          "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-002-ashen-highlands/assets/export/models/ash_ram.geo.json",
+          "sha256": "a21947c843fbd1f791969a31647dc04aae6a4ff2e36b57490ce0f384a94df02c"
+        },
+        "export_animation": {
+          "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-002-ashen-highlands/assets/export/animations/ash_ram.animation.json",
+          "sha256": "9b2fd909895f9f02bcd61ba707d375aef42cc49a69a6624f01b2c5309dc41db7"
+        },
+        "export_texture": {
+          "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-002-ashen-highlands/assets/export/textures/ash_ram.png",
+          "sha256": "e9ff27a1b43688bae42e091137f9077fe171a917d7e67e95483832eb9763c684"
+        }
+      },
+      "shipping_targets": {
+        "create": [
+          "behavior_pack/entities/ash_ram.entity.json",
+          "behavior_pack/loot_tables/entities/ash_ram.json",
+          "behavior_pack/spawn_rules/ash_ram.spawn_rules.json",
+          "resource_pack/animations/aionbound/ashen_highlands/ash_ram.animation.json",
+          "resource_pack/entity/ash_ram.entity.json",
+          "resource_pack/models/aionbound/ashen_highlands/ash_ram.geo.json",
+          "resource_pack/textures/aionbound/ashen_highlands/ash_ram.png"
+        ],
+        "update_shared": [
+          "behavior_pack/scripts/catalog.js",
+          "behavior_pack/scripts/codex.js",
+          "resource_pack/texts/en_US.lang"
+        ]
+      },
+      "dependencies": {
+        "role": "neutral_territorial",
+        "acquisition": [
+          "plateaus"
+        ],
+        "loot": [
+          "basalt_core",
+          "Ash Wool",
+          "Ram Horn Curve"
+        ],
+        "crafting": [
+          "basalt_hammer haft ring",
+          "armor padding",
+          "trophy mount or helmet crest"
+        ],
+        "progression": [
+          "basalt force path"
+        ],
+        "equipment": [
+          "basalt_hammer"
+        ],
+        "codex": {
+          "coverage": "REQUIRED",
+          "discovery": "territorial clash",
+          "relationship_links": [
+            "armor padding",
+            "basalt force path",
+            "basalt_hammer",
+            "basalt_hammer haft ring",
+            "trophy mount or helmet crest"
+          ]
+        }
+      },
+      "authority_state": {
+        "identity": "RATIFIED_WAREHOUSE_ID",
+        "visual": "HASH_BOUND_PACKET_002_VISUAL_SOURCE",
+        "gameplay_relationships": "BINDING_CREATIVE_IDENTITY_AND_ROLE",
+        "numeric_loot_values": "WITHHELD_W1_CREATIVE_004_LATER_REGIONS",
+        "new_nonwarehouse_item_dependencies": "WITHHELD_W1_CREATIVE_001_LATER_REGIONS",
+        "sidegrade_identity": "NOT_APPLICABLE_OR_NO_SIDEGRADE_DECISION_HERE"
+      }
+    },
+    {
+      "warehouse_id": "soot_stag",
+      "runtime_id": "aionbound:soot_stag",
+      "category": "creatures",
+      "source_files": {
+        "brief": {
+          "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-002-ashen-highlands/assets/briefs/soot_stag.json",
+          "sha256": "2de5145524540307b6cf34708ce7cb317a3d45a839320c04a2f2a311824f70bb"
+        },
+        "editable_bbmodel": {
+          "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-002-ashen-highlands/assets/editable/soot_stag.bbmodel",
+          "sha256": "500515ca9370177a9d0f6f257008a31da636c3f907c475e82bc27d69358110fe"
+        },
+        "editable_png": {
+          "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-002-ashen-highlands/assets/editable/soot_stag.png",
+          "sha256": "0afdd50401edc8a51f8761678f2b15f3b3aa110d818c9d6049e99fe9d6403f45"
+        },
+        "export_geometry": {
+          "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-002-ashen-highlands/assets/export/models/soot_stag.geo.json",
+          "sha256": "5f537cf6d111a6da6cde66fd62b438819489f47d66f733a702ca8247fda17490"
+        },
+        "export_animation": {
+          "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-002-ashen-highlands/assets/export/animations/soot_stag.animation.json",
+          "sha256": "ed04094ade33bae2a78d1666a8a414e3b644965e61b9170382f68efad6015193"
+        },
+        "export_texture": {
+          "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-002-ashen-highlands/assets/export/textures/soot_stag.png",
+          "sha256": "0afdd50401edc8a51f8761678f2b15f3b3aa110d818c9d6049e99fe9d6403f45"
+        }
+      },
+      "shipping_targets": {
+        "create": [
+          "behavior_pack/entities/soot_stag.entity.json",
+          "behavior_pack/loot_tables/entities/soot_stag.json",
+          "behavior_pack/spawn_rules/soot_stag.spawn_rules.json",
+          "resource_pack/animations/aionbound/ashen_highlands/soot_stag.animation.json",
+          "resource_pack/entity/soot_stag.entity.json",
+          "resource_pack/models/aionbound/ashen_highlands/soot_stag.geo.json",
+          "resource_pack/textures/aionbound/ashen_highlands/soot_stag.png"
+        ],
+        "update_shared": [
+          "behavior_pack/scripts/catalog.js",
+          "behavior_pack/scripts/codex.js",
+          "resource_pack/texts/en_US.lang"
+        ]
+      },
+      "dependencies": {
+        "role": "neutral_rare",
+        "acquisition": [
+          "high plateaus"
+        ],
+        "loot": [
+          "Soot Antler",
+          "Char Hide",
+          "fire_bloom_seed",
+          "Stag Heart Cinder"
+        ],
+        "crafting": [
+          "staff or hammer ornament",
+          "armor",
+          "planting",
+          "ember_great_axe catalyst"
+        ],
+        "progression": [
+          "ember_great_axe path",
+          "fire_bloom path"
+        ],
+        "equipment": [
+          "ember_great_axe"
+        ],
+        "codex": {
+          "coverage": "REQUIRED",
+          "discovery": "rare plateau sighting",
+          "relationship_links": [
+            "armor",
+            "ember_great_axe",
+            "ember_great_axe catalyst",
+            "ember_great_axe path",
+            "fire_bloom path",
+            "planting",
+            "staff or hammer ornament"
+          ]
+        }
+      },
+      "authority_state": {
+        "identity": "RATIFIED_WAREHOUSE_ID",
+        "visual": "HASH_BOUND_PACKET_002_VISUAL_SOURCE",
+        "gameplay_relationships": "BINDING_CREATIVE_IDENTITY_AND_ROLE",
+        "numeric_loot_values": "WITHHELD_W1_CREATIVE_004_LATER_REGIONS",
+        "new_nonwarehouse_item_dependencies": "WITHHELD_W1_CREATIVE_001_LATER_REGIONS",
+        "sidegrade_identity": "NOT_APPLICABLE_OR_NO_SIDEGRADE_DECISION_HERE"
+      }
+    },
+    {
+      "warehouse_id": "basalt_tortoise",
+      "runtime_id": "aionbound:basalt_tortoise",
+      "category": "creatures",
+      "source_files": {
+        "brief": {
+          "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-002-ashen-highlands/assets/briefs/basalt_tortoise.json",
+          "sha256": "c5fab0c57f9dfc0a0d71b1003cf77ecc28d93d56f435835401ae167a901303c8"
+        },
+        "editable_bbmodel": {
+          "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-002-ashen-highlands/assets/editable/basalt_tortoise.bbmodel",
+          "sha256": "fbc6d46ed51683490a65434860f4e98cec0b1eb13cb5558de72a0cb0c2983917"
+        },
+        "editable_png": {
+          "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-002-ashen-highlands/assets/editable/basalt_tortoise.png",
+          "sha256": "e3512c30a6f3927287617d108f72390d87803a55d74b27635783af87f812f7eb"
+        },
+        "export_geometry": {
+          "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-002-ashen-highlands/assets/export/models/basalt_tortoise.geo.json",
+          "sha256": "6172e7fec389392fe4a529f07ae717e9286d11f9a2a65ef21e27c01d9edf40db"
+        },
+        "export_animation": {
+          "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-002-ashen-highlands/assets/export/animations/basalt_tortoise.animation.json",
+          "sha256": "1cd9688e21cf5c66f6424b4a61e141ee09c3074f328af7a680bdd0b2d6ba0bc7"
+        },
+        "export_texture": {
+          "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-002-ashen-highlands/assets/export/textures/basalt_tortoise.png",
+          "sha256": "e3512c30a6f3927287617d108f72390d87803a55d74b27635783af87f812f7eb"
+        }
+      },
+      "shipping_targets": {
+        "create": [
+          "behavior_pack/entities/basalt_tortoise.entity.json",
+          "behavior_pack/loot_tables/entities/basalt_tortoise.json",
+          "behavior_pack/spawn_rules/basalt_tortoise.spawn_rules.json",
+          "resource_pack/animations/aionbound/ashen_highlands/basalt_tortoise.animation.json",
+          "resource_pack/entity/basalt_tortoise.entity.json",
+          "resource_pack/models/aionbound/ashen_highlands/basalt_tortoise.geo.json",
+          "resource_pack/textures/aionbound/ashen_highlands/basalt_tortoise.png"
+        ],
+        "update_shared": [
+          "behavior_pack/scripts/catalog.js",
+          "behavior_pack/scripts/codex.js",
+          "resource_pack/texts/en_US.lang"
+        ]
+      },
+      "dependencies": {
+        "role": "tank_neutral",
+        "acquisition": [
+          "basalt fields"
+        ],
+        "loot": [
+          "basalt_core",
+          "Shell Plate",
+          "Slow Stone"
+        ],
+        "crafting": [
+          "heavy weapons and tools",
+          "ashen chest or shield-analogue plate",
+          "Codex geology"
+        ],
+        "progression": [
+          "force path",
+          "heavy weapon origin"
+        ],
+        "equipment": [
+          "basalt_hammer",
+          "basalt_pick",
+          "ashen_chest"
+        ],
+        "codex": {
+          "coverage": "REQUIRED",
+          "discovery": "patient engagement",
+          "relationship_links": [
+            "Codex geology",
+            "ashen chest or shield-analogue plate",
+            "ashen_chest",
+            "basalt_hammer",
+            "basalt_pick",
+            "force path",
+            "heavy weapon origin",
+            "heavy weapons and tools"
+          ]
+        }
+      },
+      "authority_state": {
+        "identity": "RATIFIED_WAREHOUSE_ID",
+        "visual": "HASH_BOUND_PACKET_002_VISUAL_SOURCE",
+        "gameplay_relationships": "BINDING_CREATIVE_IDENTITY_AND_ROLE",
+        "numeric_loot_values": "WITHHELD_W1_CREATIVE_004_LATER_REGIONS",
+        "new_nonwarehouse_item_dependencies": "WITHHELD_W1_CREATIVE_001_LATER_REGIONS",
+        "sidegrade_identity": "NOT_APPLICABLE_OR_NO_SIDEGRADE_DECISION_HERE"
+      }
+    },
+    {
+      "warehouse_id": "ash_drake",
+      "runtime_id": "aionbound:ash_drake",
+      "category": "creatures",
+      "source_files": {
+        "brief": {
+          "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-002-ashen-highlands/assets/briefs/ash_drake.json",
+          "sha256": "49f3b6f401aa0328bccbe506bf956896f562d0a69235f84a7192a39129b8bbb2"
+        },
+        "editable_bbmodel": {
+          "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-002-ashen-highlands/assets/editable/ash_drake.bbmodel",
+          "sha256": "e4ec5090d6362578cdc76513debb878e5208681ebd0069572185e6aa593c768c"
+        },
+        "editable_png": {
+          "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-002-ashen-highlands/assets/editable/ash_drake.png",
+          "sha256": "66a1c7ac0e322306052261ea95552dce9a33c508a9aa1c232b169410fe323aea"
+        },
+        "export_geometry": {
+          "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-002-ashen-highlands/assets/export/models/ash_drake.geo.json",
+          "sha256": "e4bcc95cec787dc4cce322bda47b930a367f9abae4907a7de0cc0fd8c89b352d"
+        },
+        "export_animation": {
+          "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-002-ashen-highlands/assets/export/animations/ash_drake.animation.json",
+          "sha256": "7f024f2c8a384c6bb8491bbae4817362e255e281ca933296b3d163d03e399456"
+        },
+        "export_texture": {
+          "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-002-ashen-highlands/assets/export/textures/ash_drake.png",
+          "sha256": "66a1c7ac0e322306052261ea95552dce9a33c508a9aa1c232b169410fe323aea"
+        }
+      },
+      "shipping_targets": {
+        "create": [
+          "behavior_pack/entities/ash_drake.entity.json",
+          "behavior_pack/loot_tables/entities/ash_drake.json",
+          "resource_pack/animations/aionbound/ashen_highlands/ash_drake.animation.json",
+          "resource_pack/entity/ash_drake.entity.json",
+          "resource_pack/models/aionbound/ashen_highlands/ash_drake.geo.json",
+          "resource_pack/textures/aionbound/ashen_highlands/ash_drake.png"
+        ],
+        "update_shared": [
+          "behavior_pack/scripts/catalog.js",
+          "behavior_pack/scripts/codex.js",
+          "resource_pack/texts/en_US.lang"
+        ]
+      },
+      "dependencies": {
+        "role": "chapter_apex",
+        "acquisition": [
+          "arena or nest sky",
+          "ember_forge encounter link"
+        ],
+        "loot": [
+          "Drake Scale",
+          "Ember Sinew",
+          "volcanic_glass_shard",
+          "ash_drake_horn",
+          "heatstone",
+          "ember_resin",
+          "ember_forge_core"
+        ],
+        "crafting": [
+          "ashen set finish",
+          "ember_great_axe binding",
+          "bulk glass",
+          "chapter seal",
+          "forge materials"
+        ],
+        "progression": [
+          "Chapter 2 seal",
+          "CM maps unlock harder",
+          "Pilgrim assembly"
+        ],
+        "equipment": [
+          "ashen_helmet",
+          "ashen_chest",
+          "ashen_legs",
+          "ashen_boots",
+          "ember_great_axe",
+          "ash_drake_horn"
+        ],
+        "codex": {
+          "coverage": "REQUIRED",
+          "discovery": "apex victory",
+          "relationship_links": [
+            "CM maps unlock harder",
+            "Chapter 2 seal",
+            "Pilgrim assembly",
+            "ash_drake_horn",
+            "ashen set finish",
+            "ashen_boots",
+            "ashen_chest",
+            "ashen_helmet",
+            "ashen_legs",
+            "bulk glass",
+            "chapter seal",
+            "ember_great_axe",
+            "ember_great_axe binding",
+            "forge materials"
+          ]
+        }
+      },
+      "authority_state": {
+        "identity": "RATIFIED_WAREHOUSE_ID",
+        "visual": "HASH_BOUND_PACKET_002_VISUAL_SOURCE",
+        "gameplay_relationships": "BINDING_CREATIVE_IDENTITY_AND_ROLE",
+        "numeric_loot_values": "WITHHELD_W1_CREATIVE_004_LATER_REGIONS",
+        "new_nonwarehouse_item_dependencies": "WITHHELD_W1_CREATIVE_001_LATER_REGIONS",
+        "sidegrade_identity": "NOT_APPLICABLE_OR_NO_SIDEGRADE_DECISION_HERE"
+      }
+    },
+    {
+      "warehouse_id": "smolder_bark",
+      "runtime_id": "aionbound:smolder_bark",
+      "category": "resources",
+      "source_files": {
+        "brief": {
+          "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-002-ashen-highlands/assets/briefs/smolder_bark.json",
+          "sha256": "0921d4038eb344a914201dfbd5ff27a5b24f8d78b4d685dcab0d8c4e4b2032bf"
+        },
+        "editable_bbmodel": {
+          "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-002-ashen-highlands/assets/editable/smolder_bark.bbmodel",
+          "sha256": "0e0205ab5927ca8a664a91171f9a0b0ecc320f5ab20f8a0a81d0a3fb6e0fc032"
+        },
+        "editable_png": {
+          "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-002-ashen-highlands/assets/editable/smolder_bark.png",
+          "sha256": "c201b49b922ce2c4ea6cd19ca7fe6bc49851fc6ef6ab3bb22d2fc4fa982c201b"
+        },
+        "export_geometry": {
+          "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-002-ashen-highlands/assets/export/models/smolder_bark.geo.json",
+          "sha256": "beefccecfaa028f35ef284405dceb093875349e39e41947063da5d6233bc417e"
+        },
+        "export_animation": {
+          "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-002-ashen-highlands/assets/export/animations/smolder_bark.animation.json",
+          "sha256": "0d68b999cf8ad51fc275e202e8b01d3938cb27e71a12f69527e477c2955f6111"
+        },
+        "export_texture": {
+          "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-002-ashen-highlands/assets/export/textures/smolder_bark.png",
+          "sha256": "c201b49b922ce2c4ea6cd19ca7fe6bc49851fc6ef6ab3bb22d2fc4fa982c201b"
+        }
+      },
+      "shipping_targets": {
+        "create": [
+          "behavior_pack/items/smolder_bark.item.json",
+          "resource_pack/textures/aionbound/ashen_highlands/items/smolder_bark.png"
+        ],
+        "update_shared": [
+          "behavior_pack/scripts/catalog.js",
+          "behavior_pack/scripts/codex.js",
+          "resource_pack/texts/en_US.lang",
+          "resource_pack/textures/item_texture.json"
+        ]
+      },
+      "dependencies": {
+        "acquisition": [
+          "ash logs or harvest"
+        ],
+        "rarity": "C",
+        "loot": [],
+        "crafting": [
+          "char_planks",
+          "heat-safe handles"
+        ],
+        "progression": [
+          "AH wood language"
+        ],
+        "equipment": [
+          "basalt_hammer",
+          "basalt_pick",
+          "ash_repeater"
+        ],
+        "codex": {
+          "coverage": "REQUIRED",
+          "discovery": "first obtain",
+          "relationship_links": [
+            "AH wood language",
+            "ash_repeater",
+            "basalt_hammer",
+            "basalt_pick",
+            "char_planks",
+            "heat-safe handles"
+          ]
+        }
+      },
+      "authority_state": {
+        "identity": "RATIFIED_WAREHOUSE_ID",
+        "visual": "HASH_BOUND_PACKET_002_VISUAL_SOURCE",
+        "gameplay_relationships": "BINDING_CREATIVE_IDENTITY_AND_ROLE",
+        "numeric_loot_values": "WITHHELD_W1_CREATIVE_004_LATER_REGIONS",
+        "new_nonwarehouse_item_dependencies": "WITHHELD_W1_CREATIVE_001_LATER_REGIONS",
+        "sidegrade_identity": "NOT_APPLICABLE_OR_NO_SIDEGRADE_DECISION_HERE"
+      }
+    },
+    {
+      "warehouse_id": "charbone",
+      "runtime_id": "aionbound:charbone",
+      "category": "resources",
+      "source_files": {
+        "brief": {
+          "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-002-ashen-highlands/assets/briefs/charbone.json",
+          "sha256": "3a1d7615df33557f51805aaf6b8baacb931cb1a1c48f8336e83efe55dae08c8a"
+        },
+        "editable_bbmodel": {
+          "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-002-ashen-highlands/assets/editable/charbone.bbmodel",
+          "sha256": "7c519dd8d60057f05048b0e4fd58a33130323c06a0a1ecb424b98295a2fa6f10"
+        },
+        "editable_png": {
+          "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-002-ashen-highlands/assets/editable/charbone.png",
+          "sha256": "fee47229b4da013492af8a886d1bb26487e21dfa3c80911f15642ec5d846731c"
+        },
+        "export_geometry": {
+          "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-002-ashen-highlands/assets/export/models/charbone.geo.json",
+          "sha256": "005616d63f747f4aebd398931a4f80f374003779db1cd7dd41e8850d52c88158"
+        },
+        "export_animation": {
+          "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-002-ashen-highlands/assets/export/animations/charbone.animation.json",
+          "sha256": "930103746da39347d151b74bd9f10c190e0e0080e41251d185b15c6f1dfff07b"
+        },
+        "export_texture": {
+          "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-002-ashen-highlands/assets/export/textures/charbone.png",
+          "sha256": "fee47229b4da013492af8a886d1bb26487e21dfa3c80911f15642ec5d846731c"
+        }
+      },
+      "shipping_targets": {
+        "create": [
+          "behavior_pack/items/charbone.item.json",
+          "resource_pack/textures/aionbound/ashen_highlands/items/charbone.png"
+        ],
+        "update_shared": [
+          "behavior_pack/scripts/catalog.js",
+          "behavior_pack/scripts/codex.js",
+          "resource_pack/texts/en_US.lang",
+          "resource_pack/textures/item_texture.json"
+        ]
+      },
+      "dependencies": {
+        "acquisition": [
+          "creatures or ash fields"
+        ],
+        "rarity": "C-U",
+        "loot": [],
+        "crafting": [
+          "tool spines",
+          "ore_chisel",
+          "grim inlays"
+        ],
+        "progression": [
+          "grim craft"
+        ],
+        "equipment": [
+          "ember_hammer",
+          "ore_chisel"
+        ],
+        "codex": {
+          "coverage": "REQUIRED",
+          "discovery": "first obtain",
+          "relationship_links": [
+            "ember_hammer",
+            "grim craft",
+            "grim inlays",
+            "ore_chisel",
+            "tool spines"
+          ]
+        }
+      },
+      "authority_state": {
+        "identity": "RATIFIED_WAREHOUSE_ID",
+        "visual": "HASH_BOUND_PACKET_002_VISUAL_SOURCE",
+        "gameplay_relationships": "BINDING_CREATIVE_IDENTITY_AND_ROLE",
+        "numeric_loot_values": "WITHHELD_W1_CREATIVE_004_LATER_REGIONS",
+        "new_nonwarehouse_item_dependencies": "WITHHELD_W1_CREATIVE_001_LATER_REGIONS",
+        "sidegrade_identity": "NOT_APPLICABLE_OR_NO_SIDEGRADE_DECISION_HERE"
+      }
+    },
+    {
+      "warehouse_id": "sulfur_cluster",
+      "runtime_id": "aionbound:sulfur_cluster",
+      "category": "resources",
+      "source_files": {
+        "brief": {
+          "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-002-ashen-highlands/assets/briefs/sulfur_cluster.json",
+          "sha256": "ca30d04d8f16c92bd3b71e60023090e7b735ef122effa199deda5c24fa95587a"
+        },
+        "editable_bbmodel": {
+          "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-002-ashen-highlands/assets/editable/sulfur_cluster.bbmodel",
+          "sha256": "79c9a6ee0af3c30b2a3c82d1d75ff0e52a070294d5905608cfb50d3d79271b1d"
+        },
+        "editable_png": {
+          "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-002-ashen-highlands/assets/editable/sulfur_cluster.png",
+          "sha256": "5f40734c8cccc64013404028d9429d1c4323fdc83669c0058ade8a094db4ae04"
+        },
+        "export_geometry": {
+          "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-002-ashen-highlands/assets/export/models/sulfur_cluster.geo.json",
+          "sha256": "4dac943d19858da26294731df1fc92ae93d8e12cd19c94f6b61ef0b74d628472"
+        },
+        "export_animation": {
+          "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-002-ashen-highlands/assets/export/animations/sulfur_cluster.animation.json",
+          "sha256": "7389f8704c668d9ba93a051db84168245f1badfb18bc8cd7f72923f8ee293f89"
+        },
+        "export_texture": {
+          "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-002-ashen-highlands/assets/export/textures/sulfur_cluster.png",
+          "sha256": "5f40734c8cccc64013404028d9429d1c4323fdc83669c0058ade8a094db4ae04"
+        }
+      },
+      "shipping_targets": {
+        "create": [
+          "behavior_pack/items/sulfur_cluster.item.json",
+          "resource_pack/textures/aionbound/ashen_highlands/items/sulfur_cluster.png"
+        ],
+        "update_shared": [
+          "behavior_pack/scripts/catalog.js",
+          "behavior_pack/scripts/codex.js",
+          "resource_pack/texts/en_US.lang",
+          "resource_pack/textures/item_texture.json"
+        ]
+      },
+      "dependencies": {
+        "acquisition": [
+          "crust nodes"
+        ],
+        "rarity": "U",
+        "loot": [],
+        "crafting": [
+          "flux",
+          "heat crafts"
+        ],
+        "progression": [
+          "hazard economy"
+        ],
+        "equipment": [],
+        "codex": {
+          "coverage": "REQUIRED",
+          "discovery": "first obtain",
+          "relationship_links": [
+            "flux",
+            "hazard economy",
+            "heat crafts"
+          ]
+        }
+      },
+      "authority_state": {
+        "identity": "RATIFIED_WAREHOUSE_ID",
+        "visual": "HASH_BOUND_PACKET_002_VISUAL_SOURCE",
+        "gameplay_relationships": "BINDING_CREATIVE_IDENTITY_AND_ROLE",
+        "numeric_loot_values": "WITHHELD_W1_CREATIVE_004_LATER_REGIONS",
+        "new_nonwarehouse_item_dependencies": "WITHHELD_W1_CREATIVE_001_LATER_REGIONS",
+        "sidegrade_identity": "NOT_APPLICABLE_OR_NO_SIDEGRADE_DECISION_HERE"
+      }
+    },
+    {
+      "warehouse_id": "volcanic_glass_shard",
+      "runtime_id": "aionbound:volcanic_glass_shard",
+      "category": "resources",
+      "source_files": {
+        "brief": {
+          "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-002-ashen-highlands/assets/briefs/volcanic_glass_shard.json",
+          "sha256": "7909fa51a1a9a56d5790009b474850f2d1a454c02c2396bd66a44ee68faa982e"
+        },
+        "editable_bbmodel": {
+          "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-002-ashen-highlands/assets/editable/volcanic_glass_shard.bbmodel",
+          "sha256": "309013e8d62ebd30e56677f659d12596b6742a333d0ffa740d366d5e6211dc52"
+        },
+        "editable_png": {
+          "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-002-ashen-highlands/assets/editable/volcanic_glass_shard.png",
+          "sha256": "87abfa93a38d64c93b5d9b48b18d31b8977badac6f586d2c335f4deeba5429f0"
+        },
+        "export_geometry": {
+          "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-002-ashen-highlands/assets/export/models/volcanic_glass_shard.geo.json",
+          "sha256": "09ac4a8a27b613ac09d235ebcfa972e0e8a446a1b181028210e72ea4541e3f1c"
+        },
+        "export_animation": {
+          "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-002-ashen-highlands/assets/export/animations/volcanic_glass_shard.animation.json",
+          "sha256": "f3a81efec76493f52b046bae0bc1cde1583dfe8558df8d6a300f4019e9797642"
+        },
+        "export_texture": {
+          "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-002-ashen-highlands/assets/export/textures/volcanic_glass_shard.png",
+          "sha256": "87abfa93a38d64c93b5d9b48b18d31b8977badac6f586d2c335f4deeba5429f0"
+        }
+      },
+      "shipping_targets": {
+        "create": [
+          "behavior_pack/items/volcanic_glass_shard.item.json",
+          "resource_pack/textures/aionbound/ashen_highlands/items/volcanic_glass_shard.png"
+        ],
+        "update_shared": [
+          "behavior_pack/scripts/catalog.js",
+          "behavior_pack/scripts/codex.js",
+          "resource_pack/texts/en_US.lang",
+          "resource_pack/textures/item_texture.json"
+        ]
+      },
+      "dependencies": {
+        "acquisition": [
+          "cooled flows or magma_lizard"
+        ],
+        "rarity": "U",
+        "loot": [],
+        "crafting": [
+          "edges",
+          "tips",
+          "ash_repeater"
+        ],
+        "progression": [
+          "ranged and tool path"
+        ],
+        "equipment": [
+          "basalt_hammer",
+          "basalt_pick",
+          "ash_repeater"
+        ],
+        "codex": {
+          "coverage": "REQUIRED",
+          "discovery": "first obtain",
+          "relationship_links": [
+            "ash_repeater",
+            "basalt_hammer",
+            "basalt_pick",
+            "edges",
+            "ranged and tool path",
+            "tips"
+          ]
+        }
+      },
+      "authority_state": {
+        "identity": "RATIFIED_WAREHOUSE_ID",
+        "visual": "HASH_BOUND_PACKET_002_VISUAL_SOURCE",
+        "gameplay_relationships": "BINDING_CREATIVE_IDENTITY_AND_ROLE",
+        "numeric_loot_values": "WITHHELD_W1_CREATIVE_004_LATER_REGIONS",
+        "new_nonwarehouse_item_dependencies": "WITHHELD_W1_CREATIVE_001_LATER_REGIONS",
+        "sidegrade_identity": "WITHHELD_W1_CREATIVE_005"
+      }
+    },
+    {
+      "warehouse_id": "ember_resin",
+      "runtime_id": "aionbound:ember_resin",
+      "category": "resources",
+      "source_files": {
+        "brief": {
+          "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-002-ashen-highlands/assets/briefs/ember_resin.json",
+          "sha256": "b225d494db9a3247275dd0a2a7f6d599ef2255c0dda8eb5d0bc1a7a575107f2f"
+        },
+        "editable_bbmodel": {
+          "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-002-ashen-highlands/assets/editable/ember_resin.bbmodel",
+          "sha256": "2c6179654a613479eaf1b5c7ad949f3d3f40606c9598829896efec721f7b4cf2"
+        },
+        "editable_png": {
+          "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-002-ashen-highlands/assets/editable/ember_resin.png",
+          "sha256": "3af00ed51d57c07f01124fbad9d1c7c728129163732afd8d0f926073fb60f491"
+        },
+        "export_geometry": {
+          "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-002-ashen-highlands/assets/export/models/ember_resin.geo.json",
+          "sha256": "d654dfefd39e3d2ab8f9ab3c432aface15c12835ab10e0df49d98f76980ecca0"
+        },
+        "export_animation": {
+          "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-002-ashen-highlands/assets/export/animations/ember_resin.animation.json",
+          "sha256": "47b877ff2165a5d37fb334e3eb0a00474592983f708abeed18881db9f8540412"
+        },
+        "export_texture": {
+          "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-002-ashen-highlands/assets/export/textures/ember_resin.png",
+          "sha256": "3af00ed51d57c07f01124fbad9d1c7c728129163732afd8d0f926073fb60f491"
+        }
+      },
+      "shipping_targets": {
+        "create": [
+          "behavior_pack/items/ember_resin.item.json",
+          "resource_pack/textures/aionbound/ashen_highlands/items/ember_resin.png"
+        ],
+        "update_shared": [
+          "behavior_pack/scripts/catalog.js",
+          "behavior_pack/scripts/codex.js",
+          "resource_pack/texts/en_US.lang",
+          "resource_pack/textures/item_texture.json"
+        ]
+      },
+      "dependencies": {
+        "acquisition": [
+          "beetles or nodes"
+        ],
+        "rarity": "U-R",
+        "loot": [],
+        "crafting": [
+          "Ember Heart",
+          "ember_great_axe",
+          "ember_totem",
+          "regional repair binder"
+        ],
+        "progression": [
+          "ember path"
+        ],
+        "equipment": [
+          "ember_great_axe",
+          "ember_hammer",
+          "ember_totem",
+          "ashen_helmet",
+          "ashen_chest",
+          "ashen_legs",
+          "ashen_boots"
+        ],
+        "codex": {
+          "coverage": "REQUIRED",
+          "discovery": "first obtain",
+          "relationship_links": [
+            "Ember Heart",
+            "ashen_boots",
+            "ashen_chest",
+            "ashen_helmet",
+            "ashen_legs",
+            "ember path",
+            "ember_great_axe",
+            "ember_hammer",
+            "ember_totem",
+            "regional repair binder"
+          ]
+        }
+      },
+      "authority_state": {
+        "identity": "RATIFIED_WAREHOUSE_ID",
+        "visual": "HASH_BOUND_PACKET_002_VISUAL_SOURCE",
+        "gameplay_relationships": "BINDING_CREATIVE_IDENTITY_AND_ROLE",
+        "numeric_loot_values": "WITHHELD_W1_CREATIVE_004_LATER_REGIONS",
+        "new_nonwarehouse_item_dependencies": "WITHHELD_W1_CREATIVE_001_LATER_REGIONS",
+        "sidegrade_identity": "WITHHELD_W1_CREATIVE_005"
+      }
+    },
+    {
+      "warehouse_id": "heatstone",
+      "runtime_id": "aionbound:heatstone",
+      "category": "resources",
+      "source_files": {
+        "brief": {
+          "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-002-ashen-highlands/assets/briefs/heatstone.json",
+          "sha256": "2c96b0909b9b2f7de0aa345884e8deb772474af0c319bedccf71bc4f9ae4270a"
+        },
+        "editable_bbmodel": {
+          "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-002-ashen-highlands/assets/editable/heatstone.bbmodel",
+          "sha256": "3f96589c0815692e629c15d732926f4766514bff9ba4c32ee547091a388d43c7"
+        },
+        "editable_png": {
+          "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-002-ashen-highlands/assets/editable/heatstone.png",
+          "sha256": "1d855403153315ab15f6b7aa2c49f060f7c9059632899f60cf6e8226ef04d777"
+        },
+        "export_geometry": {
+          "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-002-ashen-highlands/assets/export/models/heatstone.geo.json",
+          "sha256": "a2830e9a9d341ed60ed7201b2be241807a2562d05598a1b5332b46e9b68d878a"
+        },
+        "export_animation": {
+          "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-002-ashen-highlands/assets/export/animations/heatstone.animation.json",
+          "sha256": "2436947549a0df0ef305d90088a2ed81cd5f8993f9ff87817287037cd0a54b20"
+        },
+        "export_texture": {
+          "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-002-ashen-highlands/assets/export/textures/heatstone.png",
+          "sha256": "1d855403153315ab15f6b7aa2c49f060f7c9059632899f60cf6e8226ef04d777"
+        }
+      },
+      "shipping_targets": {
+        "create": [
+          "behavior_pack/items/heatstone.item.json",
+          "resource_pack/textures/aionbound/ashen_highlands/items/heatstone.png"
+        ],
+        "update_shared": [
+          "behavior_pack/scripts/catalog.js",
+          "behavior_pack/scripts/codex.js",
+          "resource_pack/texts/en_US.lang",
+          "resource_pack/textures/item_texture.json"
+        ]
+      },
+      "dependencies": {
+        "acquisition": [
+          "vents or elites"
+        ],
+        "rarity": "U-R",
+        "loot": [],
+        "crafting": [
+          "Heat Core",
+          "basalt_pick",
+          "ember_hammer"
+        ],
+        "progression": [
+          "tool path"
+        ],
+        "equipment": [
+          "basalt_pick",
+          "ember_hammer"
+        ],
+        "codex": {
+          "coverage": "REQUIRED",
+          "discovery": "first obtain",
+          "relationship_links": [
+            "Heat Core",
+            "basalt_pick",
+            "ember_hammer",
+            "tool path"
+          ]
+        }
+      },
+      "authority_state": {
+        "identity": "RATIFIED_WAREHOUSE_ID",
+        "visual": "HASH_BOUND_PACKET_002_VISUAL_SOURCE",
+        "gameplay_relationships": "BINDING_CREATIVE_IDENTITY_AND_ROLE",
+        "numeric_loot_values": "WITHHELD_W1_CREATIVE_004_LATER_REGIONS",
+        "new_nonwarehouse_item_dependencies": "WITHHELD_W1_CREATIVE_001_LATER_REGIONS",
+        "sidegrade_identity": "NOT_APPLICABLE_OR_NO_SIDEGRADE_DECISION_HERE"
+      }
+    },
+    {
+      "warehouse_id": "furnace_chitin",
+      "runtime_id": "aionbound:furnace_chitin",
+      "category": "resources",
+      "source_files": {
+        "brief": {
+          "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-002-ashen-highlands/assets/briefs/furnace_chitin.json",
+          "sha256": "df9b3f1b88bab5976f7b4e14ce082458e175b6acd8233ac5c61e3bba0b793529"
+        },
+        "editable_bbmodel": {
+          "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-002-ashen-highlands/assets/editable/furnace_chitin.bbmodel",
+          "sha256": "cb9aaaa224d6c86c0c6c6421b9432b82b647fabccac693aa4808316eb4e340e4"
+        },
+        "editable_png": {
+          "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-002-ashen-highlands/assets/editable/furnace_chitin.png",
+          "sha256": "55ae0ba1ed1b0d6afb361093cad8922b87113b88352cabf1e0150e86f61feb12"
+        },
+        "export_geometry": {
+          "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-002-ashen-highlands/assets/export/models/furnace_chitin.geo.json",
+          "sha256": "ee9a377f63cd79be30e7b700518e756e8ccb10db59a83a5406a8e8888fb6d3a3"
+        },
+        "export_animation": {
+          "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-002-ashen-highlands/assets/export/animations/furnace_chitin.animation.json",
+          "sha256": "f6913c57722fdfbe71c04e5f54688cde1b360da1c71fc35c469e33fda8c7625f"
+        },
+        "export_texture": {
+          "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-002-ashen-highlands/assets/export/textures/furnace_chitin.png",
+          "sha256": "55ae0ba1ed1b0d6afb361093cad8922b87113b88352cabf1e0150e86f61feb12"
+        }
+      },
+      "shipping_targets": {
+        "create": [
+          "behavior_pack/items/furnace_chitin.item.json",
+          "resource_pack/textures/aionbound/ashen_highlands/items/furnace_chitin.png"
+        ],
+        "update_shared": [
+          "behavior_pack/scripts/catalog.js",
+          "behavior_pack/scripts/codex.js",
+          "resource_pack/texts/en_US.lang",
+          "resource_pack/textures/item_texture.json"
+        ]
+      },
+      "dependencies": {
+        "acquisition": [
+          "furnace_beetle"
+        ],
+        "rarity": "U-R",
+        "loot": [],
+        "crafting": [
+          "Chitin Plate",
+          "ashen armor",
+          "ore_chisel tip"
+        ],
+        "progression": [
+          "set path"
+        ],
+        "equipment": [
+          "ashen_helmet",
+          "ashen_chest",
+          "ashen_legs",
+          "ashen_boots",
+          "ore_chisel"
+        ],
+        "codex": {
+          "coverage": "REQUIRED",
+          "discovery": "first obtain",
+          "relationship_links": [
+            "Chitin Plate",
+            "ashen armor",
+            "ashen_boots",
+            "ashen_chest",
+            "ashen_helmet",
+            "ashen_legs",
+            "ore_chisel",
+            "ore_chisel tip",
+            "set path"
+          ]
+        }
+      },
+      "authority_state": {
+        "identity": "RATIFIED_WAREHOUSE_ID",
+        "visual": "HASH_BOUND_PACKET_002_VISUAL_SOURCE",
+        "gameplay_relationships": "BINDING_CREATIVE_IDENTITY_AND_ROLE",
+        "numeric_loot_values": "WITHHELD_W1_CREATIVE_004_LATER_REGIONS",
+        "new_nonwarehouse_item_dependencies": "WITHHELD_W1_CREATIVE_001_LATER_REGIONS",
+        "sidegrade_identity": "NOT_APPLICABLE_OR_NO_SIDEGRADE_DECISION_HERE"
+      }
+    },
+    {
+      "warehouse_id": "basalt_core",
+      "runtime_id": "aionbound:basalt_core",
+      "category": "resources",
+      "source_files": {
+        "brief": {
+          "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-002-ashen-highlands/assets/briefs/basalt_core.json",
+          "sha256": "fdae32e4fe63fb7bb267621ef800a6c2c38451689716f38e4ef3d5d359e68f39"
+        },
+        "editable_bbmodel": {
+          "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-002-ashen-highlands/assets/editable/basalt_core.bbmodel",
+          "sha256": "f596f2b9a77c0b44569306378da7fdf79fc73ad9c8704ea8c14a850d2029a405"
+        },
+        "editable_png": {
+          "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-002-ashen-highlands/assets/editable/basalt_core.png",
+          "sha256": "c90a56ef0c034966e8bc41486d9393dcc7ef50b6f71f9aec43d1f4735705b491"
+        },
+        "export_geometry": {
+          "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-002-ashen-highlands/assets/export/models/basalt_core.geo.json",
+          "sha256": "38d496b46fa0dfc846b803e7d6c94a2dc407ddb8a96552b544a394f8683474fb"
+        },
+        "export_animation": {
+          "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-002-ashen-highlands/assets/export/animations/basalt_core.animation.json",
+          "sha256": "d822eed03b0a24a6e0bb177b46d625cbaff2f4f00a5c6226903df0b64559a67a"
+        },
+        "export_texture": {
+          "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-002-ashen-highlands/assets/export/textures/basalt_core.png",
+          "sha256": "c90a56ef0c034966e8bc41486d9393dcc7ef50b6f71f9aec43d1f4735705b491"
+        }
+      },
+      "shipping_targets": {
+        "create": [
+          "behavior_pack/items/basalt_core.item.json",
+          "resource_pack/textures/aionbound/ashen_highlands/items/basalt_core.png"
+        ],
+        "update_shared": [
+          "behavior_pack/scripts/catalog.js",
+          "behavior_pack/scripts/codex.js",
+          "resource_pack/texts/en_US.lang",
+          "resource_pack/textures/item_texture.json"
+        ]
+      },
+      "dependencies": {
+        "acquisition": [
+          "basalt_tortoise, deep stone, or basalt_arch cache"
+        ],
+        "rarity": "R",
+        "loot": [],
+        "crafting": [
+          "Heavy Head",
+          "basalt_hammer",
+          "basalt_pick",
+          "Trophy Edge catalyst bundle"
+        ],
+        "progression": [
+          "force path and Pilgrim assembly"
+        ],
+        "equipment": [
+          "basalt_hammer",
+          "basalt_pick",
+          "ashen_helmet",
+          "ashen_chest",
+          "ashen_legs",
+          "ashen_boots"
+        ],
+        "codex": {
+          "coverage": "REQUIRED",
+          "discovery": "first obtain",
+          "relationship_links": [
+            "Heavy Head",
+            "Trophy Edge catalyst bundle",
+            "ashen_boots",
+            "ashen_chest",
+            "ashen_helmet",
+            "ashen_legs",
+            "basalt_hammer",
+            "basalt_pick",
+            "force path and Pilgrim assembly"
+          ]
+        }
+      },
+      "authority_state": {
+        "identity": "RATIFIED_WAREHOUSE_ID",
+        "visual": "HASH_BOUND_PACKET_002_VISUAL_SOURCE",
+        "gameplay_relationships": "BINDING_CREATIVE_IDENTITY_AND_ROLE",
+        "numeric_loot_values": "WITHHELD_W1_CREATIVE_004_LATER_REGIONS",
+        "new_nonwarehouse_item_dependencies": "WITHHELD_W1_CREATIVE_001_LATER_REGIONS",
+        "sidegrade_identity": "WITHHELD_W1_CREATIVE_005"
+      }
+    },
+    {
+      "warehouse_id": "ash_crystal",
+      "runtime_id": "aionbound:ash_crystal",
+      "category": "resources",
+      "source_files": {
+        "brief": {
+          "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-002-ashen-highlands/assets/briefs/ash_crystal.json",
+          "sha256": "2546c4810183c24904af83c6a6a8fcde504e950b257a48a603102eea5c6fc858"
+        },
+        "editable_bbmodel": {
+          "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-002-ashen-highlands/assets/editable/ash_crystal.bbmodel",
+          "sha256": "4af7715efae7e52f4a32620f65014bc137cab86efb8f75b007ab0d8dc3eb52df"
+        },
+        "editable_png": {
+          "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-002-ashen-highlands/assets/editable/ash_crystal.png",
+          "sha256": "9dbc31f51f596791fc049c69404da9789e823440a3f653f8ce4fcf925999cb87"
+        },
+        "export_geometry": {
+          "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-002-ashen-highlands/assets/export/models/ash_crystal.geo.json",
+          "sha256": "1b5ddb2ad1e9a31e6fdff45fdb9b95ed9692a23c98bb64db2e133fe50662aecf"
+        },
+        "export_animation": {
+          "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-002-ashen-highlands/assets/export/animations/ash_crystal.animation.json",
+          "sha256": "f038fb1ed92d7b465d6c157050fa1c2d9c3fba2f97fbb405895fabd176bba00b"
+        },
+        "export_texture": {
+          "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-002-ashen-highlands/assets/export/textures/ash_crystal.png",
+          "sha256": "9dbc31f51f596791fc049c69404da9789e823440a3f653f8ce4fcf925999cb87"
+        }
+      },
+      "shipping_targets": {
+        "create": [
+          "behavior_pack/items/ash_crystal.item.json",
+          "resource_pack/textures/aionbound/ashen_highlands/items/ash_crystal.png"
+        ],
+        "update_shared": [
+          "behavior_pack/scripts/catalog.js",
+          "behavior_pack/scripts/codex.js",
+          "resource_pack/texts/en_US.lang",
+          "resource_pack/textures/item_texture.json"
+        ]
+      },
+      "dependencies": {
+        "acquisition": [
+          "rare nodes or ash_watchtower"
+        ],
+        "rarity": "R",
+        "loot": [],
+        "crafting": [
+          "Twin Mineral Lens with flood_crystal"
+        ],
+        "progression": [
+          "Crystal Marsh bridge hybrid"
+        ],
+        "equipment": [],
+        "codex": {
+          "coverage": "REQUIRED",
+          "discovery": "first obtain",
+          "relationship_links": [
+            "Crystal Marsh bridge hybrid",
+            "Twin Mineral Lens with flood_crystal"
+          ]
+        }
+      },
+      "authority_state": {
+        "identity": "RATIFIED_WAREHOUSE_ID",
+        "visual": "HASH_BOUND_PACKET_002_VISUAL_SOURCE",
+        "gameplay_relationships": "BINDING_CREATIVE_IDENTITY_AND_ROLE",
+        "numeric_loot_values": "WITHHELD_W1_CREATIVE_004_LATER_REGIONS",
+        "new_nonwarehouse_item_dependencies": "WITHHELD_W1_CREATIVE_001_LATER_REGIONS",
+        "sidegrade_identity": "WITHHELD_W1_CREATIVE_005"
+      }
+    },
+    {
+      "warehouse_id": "fire_bloom_seed",
+      "runtime_id": "aionbound:fire_bloom_seed",
+      "category": "resources",
+      "source_files": {
+        "brief": {
+          "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-002-ashen-highlands/assets/briefs/fire_bloom_seed.json",
+          "sha256": "84ff5ca86ab571658fe7ef58974080d70316c25ba8b4e4affcd0cf718c1a89d3"
+        },
+        "editable_bbmodel": {
+          "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-002-ashen-highlands/assets/editable/fire_bloom_seed.bbmodel",
+          "sha256": "053bfcd107598d3b8c7dfe7bdc250d63e661a38d76e274849fbd50ab7423bd6c"
+        },
+        "editable_png": {
+          "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-002-ashen-highlands/assets/editable/fire_bloom_seed.png",
+          "sha256": "5e7a8fa31d4f88a604bedd6ccabdbeadc7714c808ead086a60d772408e7523e5"
+        },
+        "export_geometry": {
+          "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-002-ashen-highlands/assets/export/models/fire_bloom_seed.geo.json",
+          "sha256": "5ccc49335d319bdde94bd804e35b83e08b9c6db30dec4e4be0749e9923a47f8c"
+        },
+        "export_animation": {
+          "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-002-ashen-highlands/assets/export/animations/fire_bloom_seed.animation.json",
+          "sha256": "9e75ae59e39e65cf670afff90a518c44ac5bd1d7297e9de7b9173e9f72f2c473"
+        },
+        "export_texture": {
+          "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-002-ashen-highlands/assets/export/textures/fire_bloom_seed.png",
+          "sha256": "5e7a8fa31d4f88a604bedd6ccabdbeadc7714c808ead086a60d772408e7523e5"
+        }
+      },
+      "shipping_targets": {
+        "create": [
+          "behavior_pack/items/fire_bloom_seed.item.json",
+          "resource_pack/textures/aionbound/ashen_highlands/items/fire_bloom_seed.png"
+        ],
+        "update_shared": [
+          "behavior_pack/scripts/catalog.js",
+          "behavior_pack/scripts/codex.js",
+          "resource_pack/texts/en_US.lang",
+          "resource_pack/textures/item_texture.json"
+        ]
+      },
+      "dependencies": {
+        "acquisition": [
+          "fire_bloom or soot_stag"
+        ],
+        "rarity": "U",
+        "loot": [],
+        "crafting": [
+          "planting",
+          "consumable",
+          "heat salve"
+        ],
+        "progression": [
+          "heat salve path"
+        ],
+        "equipment": [],
+        "codex": {
+          "coverage": "REQUIRED",
+          "discovery": "first obtain",
+          "relationship_links": [
+            "consumable",
+            "heat salve",
+            "heat salve path",
+            "planting"
+          ]
+        }
+      },
+      "authority_state": {
+        "identity": "RATIFIED_WAREHOUSE_ID",
+        "visual": "HASH_BOUND_PACKET_002_VISUAL_SOURCE",
+        "gameplay_relationships": "BINDING_CREATIVE_IDENTITY_AND_ROLE",
+        "numeric_loot_values": "WITHHELD_W1_CREATIVE_004_LATER_REGIONS",
+        "new_nonwarehouse_item_dependencies": "WITHHELD_W1_CREATIVE_001_LATER_REGIONS",
+        "sidegrade_identity": "NOT_APPLICABLE_OR_NO_SIDEGRADE_DECISION_HERE"
+      }
+    },
+    {
+      "warehouse_id": "ash_log",
+      "runtime_id": "aionbound:ash_log",
+      "category": "blocks",
+      "source_files": {
+        "brief": {
+          "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-002-ashen-highlands/assets/briefs/ash_log.json",
+          "sha256": "3574c42fb4f04c6de41cfcd55c2f1aa24471c012f21bc5cd55c2a07d8a0608a6"
+        },
+        "editable_bbmodel": {
+          "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-002-ashen-highlands/assets/editable/ash_log.bbmodel",
+          "sha256": "f5ce04a7243e0b9d774a00f97ef7d3d057c0235683c53671aad7375778d1fe9c"
+        },
+        "editable_png": {
+          "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-002-ashen-highlands/assets/editable/ash_log.png",
+          "sha256": "96bfb8dfd7768e29c00673b84709a1fa2bdcbcd4c53c095ff030112ab163f38b"
+        },
+        "export_geometry": {
+          "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-002-ashen-highlands/assets/export/models/ash_log.geo.json",
+          "sha256": "28b17b1775c5ab19601c2c8b7354f5e7609d00f235f29cd9bc11958c58fbee8b"
+        },
+        "export_animation": {
+          "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-002-ashen-highlands/assets/export/animations/ash_log.animation.json",
+          "sha256": "1eeaa2acd8665d4c08ad02cce4fa88ea247ee1ab198c63e161563bf96f26f9f2"
+        },
+        "export_texture": {
+          "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-002-ashen-highlands/assets/export/textures/ash_log.png",
+          "sha256": "96bfb8dfd7768e29c00673b84709a1fa2bdcbcd4c53c095ff030112ab163f38b"
+        }
+      },
+      "shipping_targets": {
+        "create": [
+          "behavior_pack/blocks/ash_log.block.json",
+          "behavior_pack/loot_tables/blocks/ash_log.json",
+          "resource_pack/textures/aionbound/ashen_highlands/blocks/ash_log.png"
+        ],
+        "update_shared": [
+          "behavior_pack/scripts/catalog.js",
+          "behavior_pack/scripts/codex.js",
+          "resource_pack/texts/en_US.lang",
+          "resource_pack/blocks.json",
+          "resource_pack/textures/terrain_texture.json"
+        ]
+      },
+      "dependencies": {
+        "acquisition": [
+          "craft or natural terrain as Creative specifies"
+        ],
+        "loot": [],
+        "crafting": [
+          "char_planks"
+        ],
+        "progression": [
+          "dead heat wood",
+          "char forest"
+        ],
+        "equipment": [],
+        "codex": {
+          "coverage": "REQUIRED",
+          "discovery": "first encounter or obtain",
+          "relationship_links": [
+            "char forest",
+            "char_planks",
+            "dead heat wood"
+          ]
+        }
+      },
+      "authority_state": {
+        "identity": "RATIFIED_WAREHOUSE_ID",
+        "visual": "HASH_BOUND_PACKET_002_VISUAL_SOURCE",
+        "gameplay_relationships": "BINDING_CREATIVE_IDENTITY_AND_ROLE",
+        "numeric_loot_values": "WITHHELD_W1_CREATIVE_004_LATER_REGIONS",
+        "new_nonwarehouse_item_dependencies": "WITHHELD_W1_CREATIVE_001_LATER_REGIONS",
+        "sidegrade_identity": "NOT_APPLICABLE_OR_NO_SIDEGRADE_DECISION_HERE"
+      }
+    },
+    {
+      "warehouse_id": "char_planks",
+      "runtime_id": "aionbound:char_planks",
+      "category": "blocks",
+      "source_files": {
+        "brief": {
+          "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-002-ashen-highlands/assets/briefs/char_planks.json",
+          "sha256": "c843ea5f1a212e27a14b7200a81c595f84725b42ae68dcc3eb63cc6dd1afaec7"
+        },
+        "editable_bbmodel": {
+          "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-002-ashen-highlands/assets/editable/char_planks.bbmodel",
+          "sha256": "4e30946237395dcf67d1f4d415052b2fa111201365f1a19f18c483d09312d24d"
+        },
+        "editable_png": {
+          "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-002-ashen-highlands/assets/editable/char_planks.png",
+          "sha256": "a71bf243141251390cb28593eec3d7f5eea12d7ed0cfab8cf1d7b9b9d4e0c872"
+        },
+        "export_geometry": {
+          "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-002-ashen-highlands/assets/export/models/char_planks.geo.json",
+          "sha256": "5ded9e3ac45ae35c728e4d94754f14043d829699bd4e8e5a18b65d99c4efe97b"
+        },
+        "export_animation": {
+          "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-002-ashen-highlands/assets/export/animations/char_planks.animation.json",
+          "sha256": "0ede013bcb0882761072aabc3cda1e84aecbdcb97004d1e3099de829d7baaeae"
+        },
+        "export_texture": {
+          "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-002-ashen-highlands/assets/export/textures/char_planks.png",
+          "sha256": "a71bf243141251390cb28593eec3d7f5eea12d7ed0cfab8cf1d7b9b9d4e0c872"
+        }
+      },
+      "shipping_targets": {
+        "create": [
+          "behavior_pack/blocks/char_planks.block.json",
+          "behavior_pack/loot_tables/blocks/char_planks.json",
+          "resource_pack/textures/aionbound/ashen_highlands/blocks/char_planks.png"
+        ],
+        "update_shared": [
+          "behavior_pack/scripts/catalog.js",
+          "behavior_pack/scripts/codex.js",
+          "resource_pack/texts/en_US.lang",
+          "resource_pack/blocks.json",
+          "resource_pack/textures/terrain_texture.json"
+        ]
+      },
+      "dependencies": {
+        "acquisition": [
+          "craft or natural terrain as Creative specifies"
+        ],
+        "loot": [],
+        "crafting": [
+          "builds",
+          "handles",
+          "furniture",
+          "ash_repeater stock"
+        ],
+        "progression": [
+          "worked ash wood",
+          "worked ash"
+        ],
+        "equipment": [
+          "basalt_hammer",
+          "basalt_pick",
+          "ash_repeater"
+        ],
+        "codex": {
+          "coverage": "REQUIRED",
+          "discovery": "first encounter or obtain",
+          "relationship_links": [
+            "ash_repeater",
+            "ash_repeater stock",
+            "basalt_hammer",
+            "basalt_pick",
+            "builds",
+            "furniture",
+            "handles",
+            "worked ash",
+            "worked ash wood"
+          ]
+        }
+      },
+      "authority_state": {
+        "identity": "RATIFIED_WAREHOUSE_ID",
+        "visual": "HASH_BOUND_PACKET_002_VISUAL_SOURCE",
+        "gameplay_relationships": "BINDING_CREATIVE_IDENTITY_AND_ROLE",
+        "numeric_loot_values": "WITHHELD_W1_CREATIVE_004_LATER_REGIONS",
+        "new_nonwarehouse_item_dependencies": "WITHHELD_W1_CREATIVE_001_LATER_REGIONS",
+        "sidegrade_identity": "NOT_APPLICABLE_OR_NO_SIDEGRADE_DECISION_HERE"
+      }
+    },
+    {
+      "warehouse_id": "ash_soil",
+      "runtime_id": "aionbound:ash_soil",
+      "category": "blocks",
+      "source_files": {
+        "brief": {
+          "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-002-ashen-highlands/assets/briefs/ash_soil.json",
+          "sha256": "ea41260e9dc91cd35459e8fc5d0395e137bf865e04ecc6e202120169beb7b576"
+        },
+        "editable_bbmodel": {
+          "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-002-ashen-highlands/assets/editable/ash_soil.bbmodel",
+          "sha256": "038f83a2833fd93e68f417153132706eb759d6e8349ee70704352246265d3d3d"
+        },
+        "editable_png": {
+          "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-002-ashen-highlands/assets/editable/ash_soil.png",
+          "sha256": "2b75f0f4931e3931e6615f526e19a0a3a6c36e8b923cf7e1ccd1cea410cfeaa6"
+        },
+        "export_geometry": {
+          "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-002-ashen-highlands/assets/export/models/ash_soil.geo.json",
+          "sha256": "f6c3808311e88dc7b1d704d93b680deeebe96569dd1c45dfaccbcf222d483cec"
+        },
+        "export_animation": {
+          "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-002-ashen-highlands/assets/export/animations/ash_soil.animation.json",
+          "sha256": "17b8ad3f27e4123e187468a824b68a5048f551108bcc8c08452ffb58fc6311ae"
+        },
+        "export_texture": {
+          "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-002-ashen-highlands/assets/export/textures/ash_soil.png",
+          "sha256": "2b75f0f4931e3931e6615f526e19a0a3a6c36e8b923cf7e1ccd1cea410cfeaa6"
+        }
+      },
+      "shipping_targets": {
+        "create": [
+          "behavior_pack/blocks/ash_soil.block.json",
+          "behavior_pack/loot_tables/blocks/ash_soil.json",
+          "resource_pack/textures/aionbound/ashen_highlands/blocks/ash_soil.png"
+        ],
+        "update_shared": [
+          "behavior_pack/scripts/catalog.js",
+          "behavior_pack/scripts/codex.js",
+          "resource_pack/texts/en_US.lang",
+          "resource_pack/blocks.json",
+          "resource_pack/textures/terrain_texture.json"
+        ]
+      },
+      "dependencies": {
+        "acquisition": [
+          "craft or natural terrain as Creative specifies"
+        ],
+        "loot": [],
+        "crafting": [
+          "terrain"
+        ],
+        "progression": [
+          "ground cover",
+          "ash fields"
+        ],
+        "equipment": [],
+        "codex": {
+          "coverage": "REQUIRED",
+          "discovery": "first encounter or obtain",
+          "relationship_links": [
+            "ash fields",
+            "ground cover",
+            "terrain"
+          ]
+        }
+      },
+      "authority_state": {
+        "identity": "RATIFIED_WAREHOUSE_ID",
+        "visual": "HASH_BOUND_PACKET_002_VISUAL_SOURCE",
+        "gameplay_relationships": "BINDING_CREATIVE_IDENTITY_AND_ROLE",
+        "numeric_loot_values": "WITHHELD_W1_CREATIVE_004_LATER_REGIONS",
+        "new_nonwarehouse_item_dependencies": "WITHHELD_W1_CREATIVE_001_LATER_REGIONS",
+        "sidegrade_identity": "NOT_APPLICABLE_OR_NO_SIDEGRADE_DECISION_HERE"
+      }
+    },
+    {
+      "warehouse_id": "cinder_gravel",
+      "runtime_id": "aionbound:cinder_gravel",
+      "category": "blocks",
+      "source_files": {
+        "brief": {
+          "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-002-ashen-highlands/assets/briefs/cinder_gravel.json",
+          "sha256": "cb00ce4bccbadd9a7b70fe6b7884212a6f8d0c66c8a5adc37dbb42af7255cad2"
+        },
+        "editable_bbmodel": {
+          "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-002-ashen-highlands/assets/editable/cinder_gravel.bbmodel",
+          "sha256": "a8e2009c1d3e33c9f32bc3ffb6f09b90d5c1353cf9e684154a57498bc6b53d45"
+        },
+        "editable_png": {
+          "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-002-ashen-highlands/assets/editable/cinder_gravel.png",
+          "sha256": "0d69f45d87e8733ad53112495c0a9dbae8dbe7d21d42a14604523b359b80da76"
+        },
+        "export_geometry": {
+          "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-002-ashen-highlands/assets/export/models/cinder_gravel.geo.json",
+          "sha256": "03224d18d975e5597fa58032d310b2a3caef98ec4195ade9f97927d02c2f3a8b"
+        },
+        "export_animation": {
+          "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-002-ashen-highlands/assets/export/animations/cinder_gravel.animation.json",
+          "sha256": "266e2c4d05df729a5a67a8dbadd512bcbd96447c059b8f4471667701855fa377"
+        },
+        "export_texture": {
+          "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-002-ashen-highlands/assets/export/textures/cinder_gravel.png",
+          "sha256": "0d69f45d87e8733ad53112495c0a9dbae8dbe7d21d42a14604523b359b80da76"
+        }
+      },
+      "shipping_targets": {
+        "create": [
+          "behavior_pack/blocks/cinder_gravel.block.json",
+          "behavior_pack/loot_tables/blocks/cinder_gravel.json",
+          "resource_pack/textures/aionbound/ashen_highlands/blocks/cinder_gravel.png"
+        ],
+        "update_shared": [
+          "behavior_pack/scripts/catalog.js",
+          "behavior_pack/scripts/codex.js",
+          "resource_pack/texts/en_US.lang",
+          "resource_pack/blocks.json",
+          "resource_pack/textures/terrain_texture.json"
+        ]
+      },
+      "dependencies": {
+        "acquisition": [
+          "craft or natural terrain as Creative specifies"
+        ],
+        "loot": [],
+        "crafting": [
+          "terrain"
+        ],
+        "progression": [
+          "paths and hazards",
+          "cinder waste"
+        ],
+        "equipment": [],
+        "codex": {
+          "coverage": "REQUIRED",
+          "discovery": "first encounter or obtain",
+          "relationship_links": [
+            "cinder waste",
+            "paths and hazards",
+            "terrain"
+          ]
+        }
+      },
+      "authority_state": {
+        "identity": "RATIFIED_WAREHOUSE_ID",
+        "visual": "HASH_BOUND_PACKET_002_VISUAL_SOURCE",
+        "gameplay_relationships": "BINDING_CREATIVE_IDENTITY_AND_ROLE",
+        "numeric_loot_values": "WITHHELD_W1_CREATIVE_004_LATER_REGIONS",
+        "new_nonwarehouse_item_dependencies": "WITHHELD_W1_CREATIVE_001_LATER_REGIONS",
+        "sidegrade_identity": "NOT_APPLICABLE_OR_NO_SIDEGRADE_DECISION_HERE"
+      }
+    },
+    {
+      "warehouse_id": "smolder_stone",
+      "runtime_id": "aionbound:smolder_stone",
+      "category": "blocks",
+      "source_files": {
+        "brief": {
+          "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-002-ashen-highlands/assets/briefs/smolder_stone.json",
+          "sha256": "743e4736b7005108446405ceda806116fbdfee7c92a0af1336d4dcff6586f81f"
+        },
+        "editable_bbmodel": {
+          "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-002-ashen-highlands/assets/editable/smolder_stone.bbmodel",
+          "sha256": "a0b9d536c9da25087aaccfcad790b60d1ac6fa493210dc3c45b5763ceec09906"
+        },
+        "editable_png": {
+          "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-002-ashen-highlands/assets/editable/smolder_stone.png",
+          "sha256": "37c429462674987080c0d065b4511e59d89b9100d83c521b59b2b86ef6ab3fa9"
+        },
+        "export_geometry": {
+          "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-002-ashen-highlands/assets/export/models/smolder_stone.geo.json",
+          "sha256": "ee90b5b9ea7d02bd621ef7e8a3e467013c447fb283c120a653d48880884c4aaf"
+        },
+        "export_animation": {
+          "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-002-ashen-highlands/assets/export/animations/smolder_stone.animation.json",
+          "sha256": "d5d3425d40b10e7c050c2abe04b2f3ea3ac43b90b2bb2f8a547990069cc26e6b"
+        },
+        "export_texture": {
+          "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-002-ashen-highlands/assets/export/textures/smolder_stone.png",
+          "sha256": "37c429462674987080c0d065b4511e59d89b9100d83c521b59b2b86ef6ab3fa9"
+        }
+      },
+      "shipping_targets": {
+        "create": [
+          "behavior_pack/blocks/smolder_stone.block.json",
+          "behavior_pack/loot_tables/blocks/smolder_stone.json",
+          "resource_pack/textures/aionbound/ashen_highlands/blocks/smolder_stone.png"
+        ],
+        "update_shared": [
+          "behavior_pack/scripts/catalog.js",
+          "behavior_pack/scripts/codex.js",
+          "resource_pack/texts/en_US.lang",
+          "resource_pack/blocks.json",
+          "resource_pack/textures/terrain_texture.json"
+        ]
+      },
+      "dependencies": {
+        "acquisition": [
+          "craft or natural terrain as Creative specifies"
+        ],
+        "loot": [],
+        "crafting": [
+          "builds"
+        ],
+        "progression": [
+          "stone body",
+          "hot stone"
+        ],
+        "equipment": [],
+        "codex": {
+          "coverage": "REQUIRED",
+          "discovery": "first encounter or obtain",
+          "relationship_links": [
+            "builds",
+            "hot stone",
+            "stone body"
+          ]
+        }
+      },
+      "authority_state": {
+        "identity": "RATIFIED_WAREHOUSE_ID",
+        "visual": "HASH_BOUND_PACKET_002_VISUAL_SOURCE",
+        "gameplay_relationships": "BINDING_CREATIVE_IDENTITY_AND_ROLE",
+        "numeric_loot_values": "WITHHELD_W1_CREATIVE_004_LATER_REGIONS",
+        "new_nonwarehouse_item_dependencies": "WITHHELD_W1_CREATIVE_001_LATER_REGIONS",
+        "sidegrade_identity": "NOT_APPLICABLE_OR_NO_SIDEGRADE_DECISION_HERE"
+      }
+    },
+    {
+      "warehouse_id": "basalt_brick",
+      "runtime_id": "aionbound:basalt_brick",
+      "category": "blocks",
+      "source_files": {
+        "brief": {
+          "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-002-ashen-highlands/assets/briefs/basalt_brick.json",
+          "sha256": "51c1f5c44b3917d67b5113ee116e34d2059eaa35dcb5aab8c1a07cf9d45c2e15"
+        },
+        "editable_bbmodel": {
+          "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-002-ashen-highlands/assets/editable/basalt_brick.bbmodel",
+          "sha256": "3e94ebd404b2488900de8ef5eaad76b02652f4f1c1234f1b3de4c0be6791697e"
+        },
+        "editable_png": {
+          "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-002-ashen-highlands/assets/editable/basalt_brick.png",
+          "sha256": "56894f12b0b4a8c324bac1038a5f695a1653befc88827404edbe442aa7ba116b"
+        },
+        "export_geometry": {
+          "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-002-ashen-highlands/assets/export/models/basalt_brick.geo.json",
+          "sha256": "84332277aad2285351118c972d0891eaf080e55dc94dbc4c4323661fb3140d71"
+        },
+        "export_animation": {
+          "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-002-ashen-highlands/assets/export/animations/basalt_brick.animation.json",
+          "sha256": "fdc64416d8cceefc8bdf333aeaefc7b3c6b28b7123f07e43204abc5bad0e7c37"
+        },
+        "export_texture": {
+          "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-002-ashen-highlands/assets/export/textures/basalt_brick.png",
+          "sha256": "56894f12b0b4a8c324bac1038a5f695a1653befc88827404edbe442aa7ba116b"
+        }
+      },
+      "shipping_targets": {
+        "create": [
+          "behavior_pack/blocks/basalt_brick.block.json",
+          "behavior_pack/loot_tables/blocks/basalt_brick.json",
+          "resource_pack/textures/aionbound/ashen_highlands/blocks/basalt_brick.png"
+        ],
+        "update_shared": [
+          "behavior_pack/scripts/catalog.js",
+          "behavior_pack/scripts/codex.js",
+          "resource_pack/texts/en_US.lang",
+          "resource_pack/blocks.json",
+          "resource_pack/textures/terrain_texture.json"
+        ]
+      },
+      "dependencies": {
+        "acquisition": [
+          "craft or natural terrain as Creative specifies"
+        ],
+        "loot": [],
+        "crafting": [
+          "kiln pads",
+          "forge pads",
+          "bridge repair"
+        ],
+        "progression": [
+          "structures",
+          "civilization"
+        ],
+        "equipment": [],
+        "codex": {
+          "coverage": "REQUIRED",
+          "discovery": "first encounter or obtain",
+          "relationship_links": [
+            "bridge repair",
+            "civilization",
+            "forge pads",
+            "kiln pads",
+            "structures"
+          ]
+        }
+      },
+      "authority_state": {
+        "identity": "RATIFIED_WAREHOUSE_ID",
+        "visual": "HASH_BOUND_PACKET_002_VISUAL_SOURCE",
+        "gameplay_relationships": "BINDING_CREATIVE_IDENTITY_AND_ROLE",
+        "numeric_loot_values": "WITHHELD_W1_CREATIVE_004_LATER_REGIONS",
+        "new_nonwarehouse_item_dependencies": "WITHHELD_W1_CREATIVE_001_LATER_REGIONS",
+        "sidegrade_identity": "NOT_APPLICABLE_OR_NO_SIDEGRADE_DECISION_HERE"
+      }
+    },
+    {
+      "warehouse_id": "basalt_pillar",
+      "runtime_id": "aionbound:basalt_pillar",
+      "category": "blocks",
+      "source_files": {
+        "brief": {
+          "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-002-ashen-highlands/assets/briefs/basalt_pillar.json",
+          "sha256": "9ffb381a90496434ebd92d8619f473333e517ad805d6ad9015c9d817098758a0"
+        },
+        "editable_bbmodel": {
+          "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-002-ashen-highlands/assets/editable/basalt_pillar.bbmodel",
+          "sha256": "8c3ad3c43b012f931dd0640f9748667a8a5c306cd96914a507af8b30375e881c"
+        },
+        "editable_png": {
+          "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-002-ashen-highlands/assets/editable/basalt_pillar.png",
+          "sha256": "7465392d2de62aa8ef1b1e2051f3a5c0ce94e78f6ec26f0d7be1c04755a3d0bc"
+        },
+        "export_geometry": {
+          "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-002-ashen-highlands/assets/export/models/basalt_pillar.geo.json",
+          "sha256": "15b94a2983a6b9653a4437e086e6193d6a7cae26ba1b060f98cd041132ccabab"
+        },
+        "export_animation": {
+          "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-002-ashen-highlands/assets/export/animations/basalt_pillar.animation.json",
+          "sha256": "2001309cdef35db328faff7de5bdba4152f8ad940d3232638614c41cea3c0799"
+        },
+        "export_texture": {
+          "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-002-ashen-highlands/assets/export/textures/basalt_pillar.png",
+          "sha256": "7465392d2de62aa8ef1b1e2051f3a5c0ce94e78f6ec26f0d7be1c04755a3d0bc"
+        }
+      },
+      "shipping_targets": {
+        "create": [
+          "behavior_pack/blocks/basalt_pillar.block.json",
+          "behavior_pack/loot_tables/blocks/basalt_pillar.json",
+          "resource_pack/textures/aionbound/ashen_highlands/blocks/basalt_pillar.png"
+        ],
+        "update_shared": [
+          "behavior_pack/scripts/catalog.js",
+          "behavior_pack/scripts/codex.js",
+          "resource_pack/texts/en_US.lang",
+          "resource_pack/blocks.json",
+          "resource_pack/textures/terrain_texture.json"
+        ]
+      },
+      "dependencies": {
+        "acquisition": [
+          "craft or natural terrain as Creative specifies"
+        ],
+        "loot": [],
+        "crafting": [
+          "massing"
+        ],
+        "progression": [
+          "landmarks",
+          "vertical basalt"
+        ],
+        "equipment": [],
+        "codex": {
+          "coverage": "REQUIRED",
+          "discovery": "first encounter or obtain",
+          "relationship_links": [
+            "landmarks",
+            "massing",
+            "vertical basalt"
+          ]
+        }
+      },
+      "authority_state": {
+        "identity": "RATIFIED_WAREHOUSE_ID",
+        "visual": "HASH_BOUND_PACKET_002_VISUAL_SOURCE",
+        "gameplay_relationships": "BINDING_CREATIVE_IDENTITY_AND_ROLE",
+        "numeric_loot_values": "WITHHELD_W1_CREATIVE_004_LATER_REGIONS",
+        "new_nonwarehouse_item_dependencies": "WITHHELD_W1_CREATIVE_001_LATER_REGIONS",
+        "sidegrade_identity": "NOT_APPLICABLE_OR_NO_SIDEGRADE_DECISION_HERE"
+      }
+    },
+    {
+      "warehouse_id": "heat_bark",
+      "runtime_id": "aionbound:heat_bark",
+      "category": "blocks",
+      "source_files": {
+        "brief": {
+          "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-002-ashen-highlands/assets/briefs/heat_bark.json",
+          "sha256": "c73e1e3b258066c4d1b44a0eba558c8ef584bbcac3db49bcf0684beaebaf1765"
+        },
+        "editable_bbmodel": {
+          "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-002-ashen-highlands/assets/editable/heat_bark.bbmodel",
+          "sha256": "c4d5bd047b0cc9582569e74ce74287de8e0fb191c4a2f4f9b3ff637244da6450"
+        },
+        "editable_png": {
+          "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-002-ashen-highlands/assets/editable/heat_bark.png",
+          "sha256": "5dab84d652c5651dc3d7a4e9d9df4c99b94ce720b6522c6e982aa2a3b4880b9f"
+        },
+        "export_geometry": {
+          "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-002-ashen-highlands/assets/export/models/heat_bark.geo.json",
+          "sha256": "008f609c69bfc44da0d785ac18ad6ca4b7400af7cdb3dab5fa6dfbed1e4168b0"
+        },
+        "export_animation": {
+          "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-002-ashen-highlands/assets/export/animations/heat_bark.animation.json",
+          "sha256": "1ce6473799e1f59e3efd5387113f3928c157e1587348ef922a2b3b11d45c79ea"
+        },
+        "export_texture": {
+          "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-002-ashen-highlands/assets/export/textures/heat_bark.png",
+          "sha256": "5dab84d652c5651dc3d7a4e9d9df4c99b94ce720b6522c6e982aa2a3b4880b9f"
+        }
+      },
+      "shipping_targets": {
+        "create": [
+          "behavior_pack/blocks/heat_bark.block.json",
+          "behavior_pack/loot_tables/blocks/heat_bark.json",
+          "resource_pack/textures/aionbound/ashen_highlands/blocks/heat_bark.png"
+        ],
+        "update_shared": [
+          "behavior_pack/scripts/catalog.js",
+          "behavior_pack/scripts/codex.js",
+          "resource_pack/texts/en_US.lang",
+          "resource_pack/blocks.json",
+          "resource_pack/textures/terrain_texture.json"
+        ]
+      },
+      "dependencies": {
+        "acquisition": [
+          "craft or natural terrain as Creative specifies"
+        ],
+        "loot": [],
+        "crafting": [
+          "detail"
+        ],
+        "progression": [
+          "accent",
+          "heat bark"
+        ],
+        "equipment": [],
+        "codex": {
+          "coverage": "REQUIRED",
+          "discovery": "first encounter or obtain",
+          "relationship_links": [
+            "accent",
+            "detail",
+            "heat bark"
+          ]
+        }
+      },
+      "authority_state": {
+        "identity": "RATIFIED_WAREHOUSE_ID",
+        "visual": "HASH_BOUND_PACKET_002_VISUAL_SOURCE",
+        "gameplay_relationships": "BINDING_CREATIVE_IDENTITY_AND_ROLE",
+        "numeric_loot_values": "WITHHELD_W1_CREATIVE_004_LATER_REGIONS",
+        "new_nonwarehouse_item_dependencies": "WITHHELD_W1_CREATIVE_001_LATER_REGIONS",
+        "sidegrade_identity": "NOT_APPLICABLE_OR_NO_SIDEGRADE_DECISION_HERE"
+      }
+    },
+    {
+      "warehouse_id": "ember_moss",
+      "runtime_id": "aionbound:ember_moss",
+      "category": "blocks",
+      "source_files": {
+        "brief": {
+          "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-002-ashen-highlands/assets/briefs/ember_moss.json",
+          "sha256": "b2989b03ba9c9b0aafd5ed4e3beac1a568e462989b58d6bd9af56c9de5439d85"
+        },
+        "editable_bbmodel": {
+          "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-002-ashen-highlands/assets/editable/ember_moss.bbmodel",
+          "sha256": "7814eafbf2ef5349bcb98b50ad3dce45dd818048b2fe29b3f2fcaf6861dc4f0d"
+        },
+        "editable_png": {
+          "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-002-ashen-highlands/assets/editable/ember_moss.png",
+          "sha256": "7ed43646e1e72a24e895a6cf78bb2cabc700e5d09a9a9ecbffbdd1b17d383c72"
+        },
+        "export_geometry": {
+          "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-002-ashen-highlands/assets/export/models/ember_moss.geo.json",
+          "sha256": "e5d7f3f2e9b6aff7532406eae17435f432caaf0c458f1a03335c5de64f09ed04"
+        },
+        "export_animation": {
+          "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-002-ashen-highlands/assets/export/animations/ember_moss.animation.json",
+          "sha256": "ac06fccbcfbe77e1987d712b0ca7930748c1cc9969973f511beafbb40365b0bf"
+        },
+        "export_texture": {
+          "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-002-ashen-highlands/assets/export/textures/ember_moss.png",
+          "sha256": "7ed43646e1e72a24e895a6cf78bb2cabc700e5d09a9a9ecbffbdd1b17d383c72"
+        }
+      },
+      "shipping_targets": {
+        "create": [
+          "behavior_pack/blocks/ember_moss.block.json",
+          "behavior_pack/loot_tables/blocks/ember_moss.json",
+          "resource_pack/textures/aionbound/ashen_highlands/blocks/ember_moss.png"
+        ],
+        "update_shared": [
+          "behavior_pack/scripts/catalog.js",
+          "behavior_pack/scripts/codex.js",
+          "resource_pack/texts/en_US.lang",
+          "resource_pack/blocks.json",
+          "resource_pack/textures/terrain_texture.json"
+        ]
+      },
+      "dependencies": {
+        "acquisition": [
+          "craft or natural terrain as Creative specifies"
+        ],
+        "loot": [],
+        "crafting": [
+          "detail"
+        ],
+        "progression": [
+          "hazard or accent flora block",
+          "living heat"
+        ],
+        "equipment": [],
+        "codex": {
+          "coverage": "REQUIRED",
+          "discovery": "first encounter or obtain",
+          "relationship_links": [
+            "detail",
+            "hazard or accent flora block",
+            "living heat"
+          ]
+        }
+      },
+      "authority_state": {
+        "identity": "RATIFIED_WAREHOUSE_ID",
+        "visual": "HASH_BOUND_PACKET_002_VISUAL_SOURCE",
+        "gameplay_relationships": "BINDING_CREATIVE_IDENTITY_AND_ROLE",
+        "numeric_loot_values": "WITHHELD_W1_CREATIVE_004_LATER_REGIONS",
+        "new_nonwarehouse_item_dependencies": "WITHHELD_W1_CREATIVE_001_LATER_REGIONS",
+        "sidegrade_identity": "NOT_APPLICABLE_OR_NO_SIDEGRADE_DECISION_HERE"
+      }
+    },
+    {
+      "warehouse_id": "volcanic_glass_block",
+      "runtime_id": "aionbound:volcanic_glass_block",
+      "category": "blocks",
+      "source_files": {
+        "brief": {
+          "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-002-ashen-highlands/assets/briefs/volcanic_glass_block.json",
+          "sha256": "5e8038749e81b50cf786b3fc243e26eaefdeb1fb55ce5f484e5261411b2b2c4a"
+        },
+        "editable_bbmodel": {
+          "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-002-ashen-highlands/assets/editable/volcanic_glass_block.bbmodel",
+          "sha256": "65d5cfd3657110f46588ba83210a8877727290763de5b0c01f043ad467f5b996"
+        },
+        "editable_png": {
+          "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-002-ashen-highlands/assets/editable/volcanic_glass_block.png",
+          "sha256": "4effd5ffdf37effa06cdc06f4d40ef1dcacf231f96043f596d66b7ec2e1c4688"
+        },
+        "export_geometry": {
+          "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-002-ashen-highlands/assets/export/models/volcanic_glass_block.geo.json",
+          "sha256": "e7ad68c576a6def074ce73d0e8955baaf80d62bd327cb2ebf33ae97d8f448903"
+        },
+        "export_animation": {
+          "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-002-ashen-highlands/assets/export/animations/volcanic_glass_block.animation.json",
+          "sha256": "28f6ffaba60f7c80c0799a3a7f7499dd4c3a8d0ffd3e2768e04ac707fa636729"
+        },
+        "export_texture": {
+          "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-002-ashen-highlands/assets/export/textures/volcanic_glass_block.png",
+          "sha256": "4effd5ffdf37effa06cdc06f4d40ef1dcacf231f96043f596d66b7ec2e1c4688"
+        }
+      },
+      "shipping_targets": {
+        "create": [
+          "behavior_pack/blocks/volcanic_glass_block.block.json",
+          "behavior_pack/loot_tables/blocks/volcanic_glass_block.json",
+          "resource_pack/textures/aionbound/ashen_highlands/blocks/volcanic_glass_block.png"
+        ],
+        "update_shared": [
+          "behavior_pack/scripts/catalog.js",
+          "behavior_pack/scripts/codex.js",
+          "resource_pack/texts/en_US.lang",
+          "resource_pack/blocks.json",
+          "resource_pack/textures/terrain_texture.json"
+        ]
+      },
+      "dependencies": {
+        "acquisition": [
+          "craft or natural terrain as Creative specifies"
+        ],
+        "loot": [],
+        "crafting": [
+          "glass builds"
+        ],
+        "progression": [
+          "luxury and windows",
+          "cooled fire"
+        ],
+        "equipment": [],
+        "codex": {
+          "coverage": "REQUIRED",
+          "discovery": "first encounter or obtain",
+          "relationship_links": [
+            "cooled fire",
+            "glass builds",
+            "luxury and windows"
+          ]
+        }
+      },
+      "authority_state": {
+        "identity": "RATIFIED_WAREHOUSE_ID",
+        "visual": "HASH_BOUND_PACKET_002_VISUAL_SOURCE",
+        "gameplay_relationships": "BINDING_CREATIVE_IDENTITY_AND_ROLE",
+        "numeric_loot_values": "WITHHELD_W1_CREATIVE_004_LATER_REGIONS",
+        "new_nonwarehouse_item_dependencies": "WITHHELD_W1_CREATIVE_001_LATER_REGIONS",
+        "sidegrade_identity": "NOT_APPLICABLE_OR_NO_SIDEGRADE_DECISION_HERE"
+      }
+    },
+    {
+      "warehouse_id": "cinder_grass",
+      "runtime_id": "aionbound:cinder_grass",
+      "category": "plants",
+      "source_files": {
+        "brief": {
+          "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-002-ashen-highlands/assets/briefs/cinder_grass.json",
+          "sha256": "12ae30836654abfe6a3c61e2f6eaaf078191590dfe43091e46dc5d561038a0a9"
+        },
+        "editable_bbmodel": {
+          "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-002-ashen-highlands/assets/editable/cinder_grass.bbmodel",
+          "sha256": "a15df2bfa75498b1fd71e837aca9433797eba8bf9c7bebb0a21d31aa72697671"
+        },
+        "editable_png": {
+          "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-002-ashen-highlands/assets/editable/cinder_grass.png",
+          "sha256": "141c4604cbda14033a5c90d3c3ce3289e88673839b99bc10d16b5897c29992ee"
+        },
+        "export_geometry": {
+          "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-002-ashen-highlands/assets/export/models/cinder_grass.geo.json",
+          "sha256": "35fb592932d6540ca038071803a541324893aed436123d80055780e923e0304f"
+        },
+        "export_animation": {
+          "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-002-ashen-highlands/assets/export/animations/cinder_grass.animation.json",
+          "sha256": "188066bce084ba2b9a751ba5df533e7ceb9aaacc7e8484afda1bdaf4690f4482"
+        },
+        "export_texture": {
+          "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-002-ashen-highlands/assets/export/textures/cinder_grass.png",
+          "sha256": "141c4604cbda14033a5c90d3c3ce3289e88673839b99bc10d16b5897c29992ee"
+        }
+      },
+      "shipping_targets": {
+        "create": [
+          "behavior_pack/blocks/cinder_grass.block.json",
+          "behavior_pack/loot_tables/blocks/cinder_grass.json",
+          "resource_pack/textures/aionbound/ashen_highlands/plants/cinder_grass.png"
+        ],
+        "update_shared": [
+          "behavior_pack/scripts/catalog.js",
+          "behavior_pack/scripts/codex.js",
+          "resource_pack/texts/en_US.lang",
+          "resource_pack/blocks.json",
+          "resource_pack/textures/terrain_texture.json"
+        ]
+      },
+      "dependencies": {
+        "acquisition": [
+          "fields"
+        ],
+        "loot": [
+          "cinder_grass"
+        ],
+        "crafting": [
+          "early AH craft"
+        ],
+        "progression": [
+          "fiber and tinder"
+        ],
+        "equipment": [],
+        "codex": {
+          "coverage": "REQUIRED",
+          "discovery": "first harvest",
+          "relationship_links": [
+            "early AH craft",
+            "fiber and tinder"
+          ]
+        }
+      },
+      "authority_state": {
+        "identity": "RATIFIED_WAREHOUSE_ID",
+        "visual": "HASH_BOUND_PACKET_002_VISUAL_SOURCE",
+        "gameplay_relationships": "BINDING_CREATIVE_IDENTITY_AND_ROLE",
+        "numeric_loot_values": "WITHHELD_W1_CREATIVE_004_LATER_REGIONS",
+        "new_nonwarehouse_item_dependencies": "WITHHELD_W1_CREATIVE_001_LATER_REGIONS",
+        "sidegrade_identity": "NOT_APPLICABLE_OR_NO_SIDEGRADE_DECISION_HERE"
+      }
+    },
+    {
+      "warehouse_id": "ash_fern",
+      "runtime_id": "aionbound:ash_fern",
+      "category": "plants",
+      "source_files": {
+        "brief": {
+          "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-002-ashen-highlands/assets/briefs/ash_fern.json",
+          "sha256": "e5c3987e07c68908d485c378e9da14632ed00a5c6c9502c6edf8507607fe89ad"
+        },
+        "editable_bbmodel": {
+          "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-002-ashen-highlands/assets/editable/ash_fern.bbmodel",
+          "sha256": "fbe0f6640eeee4916b266c86f71cdf1cff03acbfc3723e458c69904bf9ab2de6"
+        },
+        "editable_png": {
+          "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-002-ashen-highlands/assets/editable/ash_fern.png",
+          "sha256": "6f1d71b0078a9b80d9198e51aba89c7dff2626b969d13a49d95f6ffaa738fe78"
+        },
+        "export_geometry": {
+          "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-002-ashen-highlands/assets/export/models/ash_fern.geo.json",
+          "sha256": "23a7b3e7f3b253a97c05211dab328c908bf26ba0ce299f3ab6a71c7c48b6ae13"
+        },
+        "export_animation": {
+          "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-002-ashen-highlands/assets/export/animations/ash_fern.animation.json",
+          "sha256": "038768b17b22948f2ffa18276b95e2bfda6fd2d0db16b0ccb7c77dd88ba74c80"
+        },
+        "export_texture": {
+          "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-002-ashen-highlands/assets/export/textures/ash_fern.png",
+          "sha256": "6f1d71b0078a9b80d9198e51aba89c7dff2626b969d13a49d95f6ffaa738fe78"
+        }
+      },
+      "shipping_targets": {
+        "create": [
+          "behavior_pack/blocks/ash_fern.block.json",
+          "behavior_pack/loot_tables/blocks/ash_fern.json",
+          "resource_pack/textures/aionbound/ashen_highlands/plants/ash_fern.png"
+        ],
+        "update_shared": [
+          "behavior_pack/scripts/catalog.js",
+          "behavior_pack/scripts/codex.js",
+          "resource_pack/texts/en_US.lang",
+          "resource_pack/blocks.json",
+          "resource_pack/textures/terrain_texture.json"
+        ]
+      },
+      "dependencies": {
+        "acquisition": [
+          "ash understory"
+        ],
+        "loot": [
+          "ash_fern"
+        ],
+        "crafting": [
+          "soft materials"
+        ],
+        "progression": [
+          "bandage under ash"
+        ],
+        "equipment": [],
+        "codex": {
+          "coverage": "REQUIRED",
+          "discovery": "first harvest",
+          "relationship_links": [
+            "bandage under ash",
+            "soft materials"
+          ]
+        }
+      },
+      "authority_state": {
+        "identity": "RATIFIED_WAREHOUSE_ID",
+        "visual": "HASH_BOUND_PACKET_002_VISUAL_SOURCE",
+        "gameplay_relationships": "BINDING_CREATIVE_IDENTITY_AND_ROLE",
+        "numeric_loot_values": "WITHHELD_W1_CREATIVE_004_LATER_REGIONS",
+        "new_nonwarehouse_item_dependencies": "WITHHELD_W1_CREATIVE_001_LATER_REGIONS",
+        "sidegrade_identity": "NOT_APPLICABLE_OR_NO_SIDEGRADE_DECISION_HERE"
+      }
+    },
+    {
+      "warehouse_id": "smoke_reed",
+      "runtime_id": "aionbound:smoke_reed",
+      "category": "plants",
+      "source_files": {
+        "brief": {
+          "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-002-ashen-highlands/assets/briefs/smoke_reed.json",
+          "sha256": "84c7cfeaa8e93ace85bf0b13db2b2a624da58c273195e285024ee705e5972de3"
+        },
+        "editable_bbmodel": {
+          "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-002-ashen-highlands/assets/editable/smoke_reed.bbmodel",
+          "sha256": "1f9661d4761ccb4d102eb97d2f44832e6ff2c3d90878ab17067e3a6cfc637b6b"
+        },
+        "editable_png": {
+          "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-002-ashen-highlands/assets/editable/smoke_reed.png",
+          "sha256": "e7d12aee6ce373bacb2094ad52de72c24ec43a4a0bb10c27c58af2bac94f2b11"
+        },
+        "export_geometry": {
+          "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-002-ashen-highlands/assets/export/models/smoke_reed.geo.json",
+          "sha256": "b039ab89405a97b2b876899989904cfdfcec75d31fd56ff8c769d2b13688b63a"
+        },
+        "export_animation": {
+          "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-002-ashen-highlands/assets/export/animations/smoke_reed.animation.json",
+          "sha256": "61d59f4266d0800e4819f97151336b399c43925c839031d6bd03569358b06650"
+        },
+        "export_texture": {
+          "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-002-ashen-highlands/assets/export/textures/smoke_reed.png",
+          "sha256": "e7d12aee6ce373bacb2094ad52de72c24ec43a4a0bb10c27c58af2bac94f2b11"
+        }
+      },
+      "shipping_targets": {
+        "create": [
+          "behavior_pack/blocks/smoke_reed.block.json",
+          "behavior_pack/loot_tables/blocks/smoke_reed.json",
+          "resource_pack/textures/aionbound/ashen_highlands/plants/smoke_reed.png"
+        ],
+        "update_shared": [
+          "behavior_pack/scripts/catalog.js",
+          "behavior_pack/scripts/codex.js",
+          "resource_pack/texts/en_US.lang",
+          "resource_pack/blocks.json",
+          "resource_pack/textures/terrain_texture.json"
+        ]
+      },
+      "dependencies": {
+        "acquisition": [
+          "near vents"
+        ],
+        "loot": [
+          "smoke_reed"
+        ],
+        "crafting": [
+          "ash_repeater"
+        ],
+        "progression": [
+          "arrow or repeater shafts"
+        ],
+        "equipment": [
+          "ash_repeater"
+        ],
+        "codex": {
+          "coverage": "REQUIRED",
+          "discovery": "first harvest",
+          "relationship_links": [
+            "arrow or repeater shafts",
+            "ash_repeater"
+          ]
+        }
+      },
+      "authority_state": {
+        "identity": "RATIFIED_WAREHOUSE_ID",
+        "visual": "HASH_BOUND_PACKET_002_VISUAL_SOURCE",
+        "gameplay_relationships": "BINDING_CREATIVE_IDENTITY_AND_ROLE",
+        "numeric_loot_values": "WITHHELD_W1_CREATIVE_004_LATER_REGIONS",
+        "new_nonwarehouse_item_dependencies": "WITHHELD_W1_CREATIVE_001_LATER_REGIONS",
+        "sidegrade_identity": "NOT_APPLICABLE_OR_NO_SIDEGRADE_DECISION_HERE"
+      }
+    },
+    {
+      "warehouse_id": "char_shrub",
+      "runtime_id": "aionbound:char_shrub",
+      "category": "plants",
+      "source_files": {
+        "brief": {
+          "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-002-ashen-highlands/assets/briefs/char_shrub.json",
+          "sha256": "a75b0ab211725ea761fc46c83f826d18d57ec3a67c2b39545787e91e7776e488"
+        },
+        "editable_bbmodel": {
+          "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-002-ashen-highlands/assets/editable/char_shrub.bbmodel",
+          "sha256": "960e0a656aa3e78ac8007cb661fd8dd878af33b17a803b0f572a9713d27cd64a"
+        },
+        "editable_png": {
+          "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-002-ashen-highlands/assets/editable/char_shrub.png",
+          "sha256": "66bb1880ab68a170a42f6f063eb504459c92749ad7a75d9d7582e6cc8f602df7"
+        },
+        "export_geometry": {
+          "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-002-ashen-highlands/assets/export/models/char_shrub.geo.json",
+          "sha256": "12e2154efba6f19c253c4ce344621e92fdc7fafcf42a053178351d866caa2930"
+        },
+        "export_animation": {
+          "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-002-ashen-highlands/assets/export/animations/char_shrub.animation.json",
+          "sha256": "04e24d6690923b6161ed7074b55a6dd9be09d694e1894bb939ff52ad9dd4f10f"
+        },
+        "export_texture": {
+          "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-002-ashen-highlands/assets/export/textures/char_shrub.png",
+          "sha256": "66bb1880ab68a170a42f6f063eb504459c92749ad7a75d9d7582e6cc8f602df7"
+        }
+      },
+      "shipping_targets": {
+        "create": [
+          "behavior_pack/blocks/char_shrub.block.json",
+          "behavior_pack/loot_tables/blocks/char_shrub.json",
+          "resource_pack/textures/aionbound/ashen_highlands/plants/char_shrub.png"
+        ],
+        "update_shared": [
+          "behavior_pack/scripts/catalog.js",
+          "behavior_pack/scripts/codex.js",
+          "resource_pack/texts/en_US.lang",
+          "resource_pack/blocks.json",
+          "resource_pack/textures/terrain_texture.json"
+        ]
+      },
+      "dependencies": {
+        "acquisition": [
+          "scrub"
+        ],
+        "loot": [
+          "char_shrub"
+        ],
+        "crafting": [
+          "camp craft"
+        ],
+        "progression": [
+          "fuel"
+        ],
+        "equipment": [],
+        "codex": {
+          "coverage": "REQUIRED",
+          "discovery": "first harvest",
+          "relationship_links": [
+            "camp craft",
+            "fuel"
+          ]
+        }
+      },
+      "authority_state": {
+        "identity": "RATIFIED_WAREHOUSE_ID",
+        "visual": "HASH_BOUND_PACKET_002_VISUAL_SOURCE",
+        "gameplay_relationships": "BINDING_CREATIVE_IDENTITY_AND_ROLE",
+        "numeric_loot_values": "WITHHELD_W1_CREATIVE_004_LATER_REGIONS",
+        "new_nonwarehouse_item_dependencies": "WITHHELD_W1_CREATIVE_001_LATER_REGIONS",
+        "sidegrade_identity": "NOT_APPLICABLE_OR_NO_SIDEGRADE_DECISION_HERE"
+      }
+    },
+    {
+      "warehouse_id": "soot_mushroom",
+      "runtime_id": "aionbound:soot_mushroom",
+      "category": "plants",
+      "source_files": {
+        "brief": {
+          "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-002-ashen-highlands/assets/briefs/soot_mushroom.json",
+          "sha256": "b7dc27b7c5d33a367e2fb9fee89efa18fc813cc066c88c36f03a6265eba19f31"
+        },
+        "editable_bbmodel": {
+          "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-002-ashen-highlands/assets/editable/soot_mushroom.bbmodel",
+          "sha256": "18e38b3daf6281d33fa8049d63f2e0bbb3f0b5bc34744c9bcc91c04bb1926454"
+        },
+        "editable_png": {
+          "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-002-ashen-highlands/assets/editable/soot_mushroom.png",
+          "sha256": "bd54bfb7c386747977aa4c19a2925b54b6a46ebb70a1c29bbecc3a0e67ba5de4"
+        },
+        "export_geometry": {
+          "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-002-ashen-highlands/assets/export/models/soot_mushroom.geo.json",
+          "sha256": "3892752c8289c4f5d0a0d9cfb3bf56e964711269935034833b4d8dde35340dd0"
+        },
+        "export_animation": {
+          "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-002-ashen-highlands/assets/export/animations/soot_mushroom.animation.json",
+          "sha256": "97ad192c8b86e3ee82074c8ae956a0c5e1647f0d4293cd8d90f0991f4f6bde37"
+        },
+        "export_texture": {
+          "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-002-ashen-highlands/assets/export/textures/soot_mushroom.png",
+          "sha256": "bd54bfb7c386747977aa4c19a2925b54b6a46ebb70a1c29bbecc3a0e67ba5de4"
+        }
+      },
+      "shipping_targets": {
+        "create": [
+          "behavior_pack/blocks/soot_mushroom.block.json",
+          "behavior_pack/loot_tables/blocks/soot_mushroom.json",
+          "resource_pack/textures/aionbound/ashen_highlands/plants/soot_mushroom.png"
+        ],
+        "update_shared": [
+          "behavior_pack/scripts/catalog.js",
+          "behavior_pack/scripts/codex.js",
+          "resource_pack/texts/en_US.lang",
+          "resource_pack/blocks.json",
+          "resource_pack/textures/terrain_texture.json"
+        ]
+      },
+      "dependencies": {
+        "acquisition": [
+          "shade ash"
+        ],
+        "loot": [
+          "soot_mushroom"
+        ],
+        "crafting": [
+          "consumable"
+        ],
+        "progression": [
+          "risky food"
+        ],
+        "equipment": [],
+        "codex": {
+          "coverage": "REQUIRED",
+          "discovery": "first harvest",
+          "relationship_links": [
+            "consumable",
+            "risky food"
+          ]
+        }
+      },
+      "authority_state": {
+        "identity": "RATIFIED_WAREHOUSE_ID",
+        "visual": "HASH_BOUND_PACKET_002_VISUAL_SOURCE",
+        "gameplay_relationships": "BINDING_CREATIVE_IDENTITY_AND_ROLE",
+        "numeric_loot_values": "WITHHELD_W1_CREATIVE_004_LATER_REGIONS",
+        "new_nonwarehouse_item_dependencies": "WITHHELD_W1_CREATIVE_001_LATER_REGIONS",
+        "sidegrade_identity": "NOT_APPLICABLE_OR_NO_SIDEGRADE_DECISION_HERE"
+      }
+    },
+    {
+      "warehouse_id": "magma_moss",
+      "runtime_id": "aionbound:magma_moss",
+      "category": "plants",
+      "source_files": {
+        "brief": {
+          "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-002-ashen-highlands/assets/briefs/magma_moss.json",
+          "sha256": "22337f08c3787a3305bf7209d4a304acd37abf78d8022bda55e27a56cb25a47f"
+        },
+        "editable_bbmodel": {
+          "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-002-ashen-highlands/assets/editable/magma_moss.bbmodel",
+          "sha256": "a38a581cbed04d0d6825dc98f2fa463581ff7724e5ea8b37ddb1abd242a6349a"
+        },
+        "editable_png": {
+          "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-002-ashen-highlands/assets/editable/magma_moss.png",
+          "sha256": "fc4f6513617646b42cf1b5c44d0dbb0b43c8ffd9b109fad3e17e542fa51deb25"
+        },
+        "export_geometry": {
+          "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-002-ashen-highlands/assets/export/models/magma_moss.geo.json",
+          "sha256": "5869e991b40d6b8e5c90a4473c01a2fcaa132bd957c7333ee360ab755e0c14eb"
+        },
+        "export_animation": {
+          "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-002-ashen-highlands/assets/export/animations/magma_moss.animation.json",
+          "sha256": "16e0a4b4afb4aed792ef893077a78a5adf51a5bf17d15ef7d44d3accc31c8eda"
+        },
+        "export_texture": {
+          "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-002-ashen-highlands/assets/export/textures/magma_moss.png",
+          "sha256": "fc4f6513617646b42cf1b5c44d0dbb0b43c8ffd9b109fad3e17e542fa51deb25"
+        }
+      },
+      "shipping_targets": {
+        "create": [
+          "behavior_pack/blocks/magma_moss.block.json",
+          "behavior_pack/loot_tables/blocks/magma_moss.json",
+          "resource_pack/textures/aionbound/ashen_highlands/plants/magma_moss.png"
+        ],
+        "update_shared": [
+          "behavior_pack/scripts/catalog.js",
+          "behavior_pack/scripts/codex.js",
+          "resource_pack/texts/en_US.lang",
+          "resource_pack/blocks.json",
+          "resource_pack/textures/terrain_texture.json"
+        ]
+      },
+      "dependencies": {
+        "acquisition": [
+          "hot rock"
+        ],
+        "loot": [
+          "magma_moss"
+        ],
+        "crafting": [
+          "heat resist path"
+        ],
+        "progression": [
+          "heat dye or resist salve"
+        ],
+        "equipment": [],
+        "codex": {
+          "coverage": "REQUIRED",
+          "discovery": "first harvest",
+          "relationship_links": [
+            "heat dye or resist salve",
+            "heat resist path"
+          ]
+        }
+      },
+      "authority_state": {
+        "identity": "RATIFIED_WAREHOUSE_ID",
+        "visual": "HASH_BOUND_PACKET_002_VISUAL_SOURCE",
+        "gameplay_relationships": "BINDING_CREATIVE_IDENTITY_AND_ROLE",
+        "numeric_loot_values": "WITHHELD_W1_CREATIVE_004_LATER_REGIONS",
+        "new_nonwarehouse_item_dependencies": "WITHHELD_W1_CREATIVE_001_LATER_REGIONS",
+        "sidegrade_identity": "NOT_APPLICABLE_OR_NO_SIDEGRADE_DECISION_HERE"
+      }
+    },
+    {
+      "warehouse_id": "glow_root",
+      "runtime_id": "aionbound:glow_root",
+      "category": "plants",
+      "source_files": {
+        "brief": {
+          "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-002-ashen-highlands/assets/briefs/glow_root.json",
+          "sha256": "44606121d06b0aeebfab066e4da9eb623857f5e3f135ab30dd140cb0bfd124ac"
+        },
+        "editable_bbmodel": {
+          "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-002-ashen-highlands/assets/editable/glow_root.bbmodel",
+          "sha256": "40122a530e402d318b51f11293d7ef602cd59754289b6d0437656e84d271a84b"
+        },
+        "editable_png": {
+          "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-002-ashen-highlands/assets/editable/glow_root.png",
+          "sha256": "959c6f3be1582a6c3d2332d757ae3bf3b4dc3af180df377b1d2188cfc450d4e6"
+        },
+        "export_geometry": {
+          "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-002-ashen-highlands/assets/export/models/glow_root.geo.json",
+          "sha256": "6d8974ef7d4f5052e5d09aba3c089616af4b22b01c9930b89ff0d587ad2c4d5a"
+        },
+        "export_animation": {
+          "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-002-ashen-highlands/assets/export/animations/glow_root.animation.json",
+          "sha256": "75249457c7f456b0755d898f6d502276aaf156bc6f1686c47f94122425a1d752"
+        },
+        "export_texture": {
+          "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-002-ashen-highlands/assets/export/textures/glow_root.png",
+          "sha256": "959c6f3be1582a6c3d2332d757ae3bf3b4dc3af180df377b1d2188cfc450d4e6"
+        }
+      },
+      "shipping_targets": {
+        "create": [
+          "behavior_pack/blocks/glow_root.block.json",
+          "behavior_pack/loot_tables/blocks/glow_root.json",
+          "resource_pack/textures/aionbound/ashen_highlands/plants/glow_root.png"
+        ],
+        "update_shared": [
+          "behavior_pack/scripts/catalog.js",
+          "behavior_pack/scripts/codex.js",
+          "resource_pack/texts/en_US.lang",
+          "resource_pack/blocks.json",
+          "resource_pack/textures/terrain_texture.json"
+        ]
+      },
+      "dependencies": {
+        "acquisition": [
+          "caves"
+        ],
+        "loot": [
+          "glow_root"
+        ],
+        "crafting": [
+          "cave navigation"
+        ],
+        "progression": [
+          "cave light"
+        ],
+        "equipment": [],
+        "codex": {
+          "coverage": "REQUIRED",
+          "discovery": "first harvest",
+          "relationship_links": [
+            "cave light",
+            "cave navigation"
+          ]
+        }
+      },
+      "authority_state": {
+        "identity": "RATIFIED_WAREHOUSE_ID",
+        "visual": "HASH_BOUND_PACKET_002_VISUAL_SOURCE",
+        "gameplay_relationships": "BINDING_CREATIVE_IDENTITY_AND_ROLE",
+        "numeric_loot_values": "WITHHELD_W1_CREATIVE_004_LATER_REGIONS",
+        "new_nonwarehouse_item_dependencies": "WITHHELD_W1_CREATIVE_001_LATER_REGIONS",
+        "sidegrade_identity": "NOT_APPLICABLE_OR_NO_SIDEGRADE_DECISION_HERE"
+      }
+    },
+    {
+      "warehouse_id": "basalt_flower",
+      "runtime_id": "aionbound:basalt_flower",
+      "category": "plants",
+      "source_files": {
+        "brief": {
+          "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-002-ashen-highlands/assets/briefs/basalt_flower.json",
+          "sha256": "9eed5e49410fedfe3c49a23024d2abb0e6e456ab6ad0c1059c1653b88ccbf070"
+        },
+        "editable_bbmodel": {
+          "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-002-ashen-highlands/assets/editable/basalt_flower.bbmodel",
+          "sha256": "a71985011c21a4f5ae680a52d77782f8437ed8ae2b39397230c584bb4aea8d81"
+        },
+        "editable_png": {
+          "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-002-ashen-highlands/assets/editable/basalt_flower.png",
+          "sha256": "44777a8c64671169e159b125bea9045d6e13db309202416bccd2dfb94dc88ccc"
+        },
+        "export_geometry": {
+          "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-002-ashen-highlands/assets/export/models/basalt_flower.geo.json",
+          "sha256": "41f500b7b09059b253d016c0f3eaa4a1a846e5ffac11a61d1392f5bb7c55807f"
+        },
+        "export_animation": {
+          "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-002-ashen-highlands/assets/export/animations/basalt_flower.animation.json",
+          "sha256": "82ea1e658cb86a817b5669f6b83841f175688d375f2ba65d2fd4338186fe60d5"
+        },
+        "export_texture": {
+          "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-002-ashen-highlands/assets/export/textures/basalt_flower.png",
+          "sha256": "44777a8c64671169e159b125bea9045d6e13db309202416bccd2dfb94dc88ccc"
+        }
+      },
+      "shipping_targets": {
+        "create": [
+          "behavior_pack/blocks/basalt_flower.block.json",
+          "behavior_pack/loot_tables/blocks/basalt_flower.json",
+          "resource_pack/textures/aionbound/ashen_highlands/plants/basalt_flower.png"
+        ],
+        "update_shared": [
+          "behavior_pack/scripts/catalog.js",
+          "behavior_pack/scripts/codex.js",
+          "resource_pack/texts/en_US.lang",
+          "resource_pack/blocks.json",
+          "resource_pack/textures/terrain_texture.json"
+        ]
+      },
+      "dependencies": {
+        "acquisition": [
+          "rare stone"
+        ],
+        "loot": [
+          "basalt_flower"
+        ],
+        "crafting": [
+          "rare craft"
+        ],
+        "progression": [
+          "rare catalyst"
+        ],
+        "equipment": [],
+        "codex": {
+          "coverage": "REQUIRED",
+          "discovery": "first harvest",
+          "relationship_links": [
+            "rare catalyst",
+            "rare craft"
+          ]
+        }
+      },
+      "authority_state": {
+        "identity": "RATIFIED_WAREHOUSE_ID",
+        "visual": "HASH_BOUND_PACKET_002_VISUAL_SOURCE",
+        "gameplay_relationships": "BINDING_CREATIVE_IDENTITY_AND_ROLE",
+        "numeric_loot_values": "WITHHELD_W1_CREATIVE_004_LATER_REGIONS",
+        "new_nonwarehouse_item_dependencies": "WITHHELD_W1_CREATIVE_001_LATER_REGIONS",
+        "sidegrade_identity": "NOT_APPLICABLE_OR_NO_SIDEGRADE_DECISION_HERE"
+      }
+    },
+    {
+      "warehouse_id": "ember_vine",
+      "runtime_id": "aionbound:ember_vine",
+      "category": "plants",
+      "source_files": {
+        "brief": {
+          "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-002-ashen-highlands/assets/briefs/ember_vine.json",
+          "sha256": "b34da99471d8cd28de34cf1f5769aa4b2d1ea2dd339c909e008ebe160223c401"
+        },
+        "editable_bbmodel": {
+          "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-002-ashen-highlands/assets/editable/ember_vine.bbmodel",
+          "sha256": "0eae66887e08422160aeac5158ec08bec06043ff9aa4599b3391e9c4a1709e54"
+        },
+        "editable_png": {
+          "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-002-ashen-highlands/assets/editable/ember_vine.png",
+          "sha256": "cacaf0631bd1dae29b3127d4c87fe10b543846105768d13dc38d78f911b68d21"
+        },
+        "export_geometry": {
+          "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-002-ashen-highlands/assets/export/models/ember_vine.geo.json",
+          "sha256": "5c0f0510314d8de9bd95e8335f71be0b7e13998873d4ed731fd48d1f12a14109"
+        },
+        "export_animation": {
+          "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-002-ashen-highlands/assets/export/animations/ember_vine.animation.json",
+          "sha256": "5e5e163b7ccbb6f0c7901f9a10bb2edd57887e3eb548ce81c7ff884a602ff2c1"
+        },
+        "export_texture": {
+          "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-002-ashen-highlands/assets/export/textures/ember_vine.png",
+          "sha256": "cacaf0631bd1dae29b3127d4c87fe10b543846105768d13dc38d78f911b68d21"
+        }
+      },
+      "shipping_targets": {
+        "create": [
+          "behavior_pack/blocks/ember_vine.block.json",
+          "behavior_pack/loot_tables/blocks/ember_vine.json",
+          "resource_pack/textures/aionbound/ashen_highlands/plants/ember_vine.png"
+        ],
+        "update_shared": [
+          "behavior_pack/scripts/catalog.js",
+          "behavior_pack/scripts/codex.js",
+          "resource_pack/texts/en_US.lang",
+          "resource_pack/blocks.json",
+          "resource_pack/textures/terrain_texture.json"
+        ]
+      },
+      "dependencies": {
+        "acquisition": [
+          "cliffs and heat"
+        ],
+        "loot": [
+          "ember_vine"
+        ],
+        "crafting": [
+          "binding"
+        ],
+        "progression": [
+          "heat rope"
+        ],
+        "equipment": [],
+        "codex": {
+          "coverage": "REQUIRED",
+          "discovery": "first harvest",
+          "relationship_links": [
+            "binding",
+            "heat rope"
+          ]
+        }
+      },
+      "authority_state": {
+        "identity": "RATIFIED_WAREHOUSE_ID",
+        "visual": "HASH_BOUND_PACKET_002_VISUAL_SOURCE",
+        "gameplay_relationships": "BINDING_CREATIVE_IDENTITY_AND_ROLE",
+        "numeric_loot_values": "WITHHELD_W1_CREATIVE_004_LATER_REGIONS",
+        "new_nonwarehouse_item_dependencies": "WITHHELD_W1_CREATIVE_001_LATER_REGIONS",
+        "sidegrade_identity": "NOT_APPLICABLE_OR_NO_SIDEGRADE_DECISION_HERE"
+      }
+    },
+    {
+      "warehouse_id": "fire_bloom",
+      "runtime_id": "aionbound:fire_bloom",
+      "category": "plants",
+      "source_files": {
+        "brief": {
+          "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-002-ashen-highlands/assets/briefs/fire_bloom.json",
+          "sha256": "e2da9822c660fcb72d0c844060835b3e89ddbbf03a39fd65f0af0ef3c3edee58"
+        },
+        "editable_bbmodel": {
+          "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-002-ashen-highlands/assets/editable/fire_bloom.bbmodel",
+          "sha256": "efe2ce83c82f99f6ef228c8bdd0c9bc35ccf77b12a59e214538dfc0f9db7488a"
+        },
+        "editable_png": {
+          "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-002-ashen-highlands/assets/editable/fire_bloom.png",
+          "sha256": "39ad3a610a96375730ae6d284a45cea12d3180abfa91dd16844eaaf674513b96"
+        },
+        "export_geometry": {
+          "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-002-ashen-highlands/assets/export/models/fire_bloom.geo.json",
+          "sha256": "5907a9900ef3afeac02bd71b140f583c6cc9b94ab18a477ff17cc1ca1a3fc3c1"
+        },
+        "export_animation": {
+          "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-002-ashen-highlands/assets/export/animations/fire_bloom.animation.json",
+          "sha256": "c4bc0f6eea91e7f377e8f8130756d64b7a122b6fc442270ab13f1435dbdcd343"
+        },
+        "export_texture": {
+          "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-002-ashen-highlands/assets/export/textures/fire_bloom.png",
+          "sha256": "39ad3a610a96375730ae6d284a45cea12d3180abfa91dd16844eaaf674513b96"
+        }
+      },
+      "shipping_targets": {
+        "create": [
+          "behavior_pack/blocks/fire_bloom.block.json",
+          "behavior_pack/loot_tables/blocks/fire_bloom.json",
+          "resource_pack/textures/aionbound/ashen_highlands/plants/fire_bloom.png"
+        ],
+        "update_shared": [
+          "behavior_pack/scripts/catalog.js",
+          "behavior_pack/scripts/codex.js",
+          "resource_pack/texts/en_US.lang",
+          "resource_pack/blocks.json",
+          "resource_pack/textures/terrain_texture.json"
+        ]
+      },
+      "dependencies": {
+        "acquisition": [
+          "flower patches"
+        ],
+        "loot": [
+          "fire_bloom"
+        ],
+        "crafting": [
+          "fire_bloom_seed"
+        ],
+        "progression": [
+          "consumable and seed"
+        ],
+        "equipment": [],
+        "codex": {
+          "coverage": "REQUIRED",
+          "discovery": "first harvest",
+          "relationship_links": [
+            "consumable and seed",
+            "fire_bloom_seed"
+          ]
+        }
+      },
+      "authority_state": {
+        "identity": "RATIFIED_WAREHOUSE_ID",
+        "visual": "HASH_BOUND_PACKET_002_VISUAL_SOURCE",
+        "gameplay_relationships": "BINDING_CREATIVE_IDENTITY_AND_ROLE",
+        "numeric_loot_values": "WITHHELD_W1_CREATIVE_004_LATER_REGIONS",
+        "new_nonwarehouse_item_dependencies": "WITHHELD_W1_CREATIVE_001_LATER_REGIONS",
+        "sidegrade_identity": "NOT_APPLICABLE_OR_NO_SIDEGRADE_DECISION_HERE"
+      }
+    },
+    {
+      "warehouse_id": "fire_totem",
+      "runtime_id": "aionbound:fire_totem",
+      "category": "structures",
+      "source_files": {
+        "brief": {
+          "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-002-ashen-highlands/assets/briefs/fire_totem.json",
+          "sha256": "e8c69f3264906a992c81fdc3c17442c5a56e82f719702e3d33e4841e2a1d7999"
+        },
+        "editable_bbmodel": {
+          "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-002-ashen-highlands/assets/editable/fire_totem.bbmodel",
+          "sha256": "4c68ffbf69186cc64aea2e2c746b46c496e8f560dac9b1445ab9e71fe56fc8a0"
+        },
+        "editable_png": {
+          "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-002-ashen-highlands/assets/editable/fire_totem.png",
+          "sha256": "dc0ffd2b0c14468c1ce4353fc651df18eb87533c35d5eb4b4cb08f7ee9b67d01"
+        },
+        "export_geometry": {
+          "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-002-ashen-highlands/assets/export/models/fire_totem.geo.json",
+          "sha256": "8c3e0db0384ce5854f3f5a15ccd0ff597c143c11e188881fefb95157b7eebedd"
+        },
+        "export_animation": {
+          "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-002-ashen-highlands/assets/export/animations/fire_totem.animation.json",
+          "sha256": "3b045fbe3d09d5af128bfccd08e88905d836bd216abd0f7d9d92c9a2f25ebd2c"
+        },
+        "export_texture": {
+          "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-002-ashen-highlands/assets/export/textures/fire_totem.png",
+          "sha256": "dc0ffd2b0c14468c1ce4353fc651df18eb87533c35d5eb4b4cb08f7ee9b67d01"
+        }
+      },
+      "shipping_targets": {
+        "create": [
+          "behavior_pack/blocks/fire_totem.block.json",
+          "behavior_pack/structures/aionbound/fire_totem.mcstructure",
+          "behavior_pack/features/fire_totem.feature.json",
+          "behavior_pack/feature_rules/fire_totem.feature_rule.json",
+          "resource_pack/models/aionbound/ashen_highlands/fire_totem.geo.json",
+          "resource_pack/textures/aionbound/ashen_highlands/structures/fire_totem.png"
+        ],
+        "update_shared": [
+          "behavior_pack/scripts/catalog.js",
+          "behavior_pack/scripts/codex.js",
+          "resource_pack/texts/en_US.lang",
+          "behavior_pack/scripts/structures.js",
+          "resource_pack/blocks.json",
+          "resource_pack/textures/terrain_texture.json"
+        ]
+      },
+      "dependencies": {
+        "acquisition": [
+          "uncommon clusters"
+        ],
+        "loot": [
+          "ember_resin",
+          "sulfur_cluster",
+          "First Fire prayer strip"
+        ],
+        "crafting": [],
+        "progression": [
+          "ember_totem path",
+          "ambient AH"
+        ],
+        "equipment": [
+          "ember_totem"
+        ],
+        "codex": {
+          "coverage": "REQUIRED",
+          "discovery": "structure visit or activation",
+          "relationship_links": [
+            "ambient AH",
+            "ember_totem",
+            "ember_totem path"
+          ]
+        }
+      },
+      "authority_state": {
+        "identity": "RATIFIED_WAREHOUSE_ID",
+        "visual": "HASH_BOUND_PACKET_002_VISUAL_SOURCE",
+        "gameplay_relationships": "BINDING_CREATIVE_IDENTITY_AND_ROLE",
+        "numeric_loot_values": "WITHHELD_W1_CREATIVE_004_LATER_REGIONS",
+        "new_nonwarehouse_item_dependencies": "WITHHELD_W1_CREATIVE_001_LATER_REGIONS",
+        "sidegrade_identity": "NOT_APPLICABLE_OR_NO_SIDEGRADE_DECISION_HERE"
+      }
+    },
+    {
+      "warehouse_id": "burned_camp",
+      "runtime_id": "aionbound:burned_camp",
+      "category": "structures",
+      "source_files": {
+        "brief": {
+          "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-002-ashen-highlands/assets/briefs/burned_camp.json",
+          "sha256": "dc2bd919469a7337026f5b2780cb5ebba3442fe7ec1857552d2f0fd9e89d5282"
+        },
+        "editable_bbmodel": {
+          "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-002-ashen-highlands/assets/editable/burned_camp.bbmodel",
+          "sha256": "a79b0a2d7f9b41f6b5870b1d1050fcbeee240d1eca418b00bbd9c9102236f0a9"
+        },
+        "editable_png": {
+          "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-002-ashen-highlands/assets/editable/burned_camp.png",
+          "sha256": "48f891f426f9de0fee063f62a404d026bc0e0516315a2c111c6c1a16db0a298a"
+        },
+        "export_geometry": {
+          "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-002-ashen-highlands/assets/export/models/burned_camp.geo.json",
+          "sha256": "c36d1e0061bd98b2bdae4ae91b5539fb68adc311656819f25e98f959b0eaa942"
+        },
+        "export_animation": {
+          "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-002-ashen-highlands/assets/export/animations/burned_camp.animation.json",
+          "sha256": "0cbc545ec7524e5294a15fcfab642f1b1007daf8f161f68bf5b14479d958c100"
+        },
+        "export_texture": {
+          "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-002-ashen-highlands/assets/export/textures/burned_camp.png",
+          "sha256": "48f891f426f9de0fee063f62a404d026bc0e0516315a2c111c6c1a16db0a298a"
+        }
+      },
+      "shipping_targets": {
+        "create": [
+          "behavior_pack/blocks/burned_camp.block.json",
+          "behavior_pack/structures/aionbound/burned_camp.mcstructure",
+          "behavior_pack/features/burned_camp.feature.json",
+          "behavior_pack/feature_rules/burned_camp.feature_rule.json",
+          "resource_pack/models/aionbound/ashen_highlands/burned_camp.geo.json",
+          "resource_pack/textures/aionbound/ashen_highlands/structures/burned_camp.png"
+        ],
+        "update_shared": [
+          "behavior_pack/scripts/catalog.js",
+          "behavior_pack/scripts/codex.js",
+          "resource_pack/texts/en_US.lang",
+          "behavior_pack/scripts/structures.js",
+          "resource_pack/blocks.json",
+          "resource_pack/textures/terrain_texture.json"
+        ]
+      },
+      "dependencies": {
+        "acquisition": [
+          "uncommon edges"
+        ],
+        "loot": [
+          "charred tools",
+          "Char Pelt",
+          "CM teaser map",
+          "ashen_boots pattern scraps"
+        ],
+        "crafting": [],
+        "progression": [
+          "AH onboarding",
+          "CM rumor"
+        ],
+        "equipment": [
+          "ashen_boots"
+        ],
+        "codex": {
+          "coverage": "REQUIRED",
+          "discovery": "structure visit or activation",
+          "relationship_links": [
+            "AH onboarding",
+            "CM rumor",
+            "ashen_boots"
+          ]
+        }
+      },
+      "authority_state": {
+        "identity": "RATIFIED_WAREHOUSE_ID",
+        "visual": "HASH_BOUND_PACKET_002_VISUAL_SOURCE",
+        "gameplay_relationships": "BINDING_CREATIVE_IDENTITY_AND_ROLE",
+        "numeric_loot_values": "WITHHELD_W1_CREATIVE_004_LATER_REGIONS",
+        "new_nonwarehouse_item_dependencies": "WITHHELD_W1_CREATIVE_001_LATER_REGIONS",
+        "sidegrade_identity": "NOT_APPLICABLE_OR_NO_SIDEGRADE_DECISION_HERE"
+      }
+    },
+    {
+      "warehouse_id": "char_wagon",
+      "runtime_id": "aionbound:char_wagon",
+      "category": "structures",
+      "source_files": {
+        "brief": {
+          "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-002-ashen-highlands/assets/briefs/char_wagon.json",
+          "sha256": "ff888192d14b15a940f6bc3d3092a350eed6c40dc96a4fc8b7050a82d8a01990"
+        },
+        "editable_bbmodel": {
+          "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-002-ashen-highlands/assets/editable/char_wagon.bbmodel",
+          "sha256": "215cd4f78cd742d46cb994f16f9e0e6db60dd6d82cddb55471d3efc4d02d620e"
+        },
+        "editable_png": {
+          "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-002-ashen-highlands/assets/editable/char_wagon.png",
+          "sha256": "39206a3eecdf02d3f5c74a2bab368501c8febf2ecfa46bfe7e513e9579c62484"
+        },
+        "export_geometry": {
+          "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-002-ashen-highlands/assets/export/models/char_wagon.geo.json",
+          "sha256": "38d51c455138fdeb7dc2772d33e2beedb760de3e4c0894ed0c6b1e306b15499b"
+        },
+        "export_animation": {
+          "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-002-ashen-highlands/assets/export/animations/char_wagon.animation.json",
+          "sha256": "93bb573ac5153a14523e7c2f850f4ac527bb9834af83cf3ce8fae01dc865b3d4"
+        },
+        "export_texture": {
+          "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-002-ashen-highlands/assets/export/textures/char_wagon.png",
+          "sha256": "39206a3eecdf02d3f5c74a2bab368501c8febf2ecfa46bfe7e513e9579c62484"
+        }
+      },
+      "shipping_targets": {
+        "create": [
+          "behavior_pack/blocks/char_wagon.block.json",
+          "behavior_pack/structures/aionbound/char_wagon.mcstructure",
+          "behavior_pack/features/char_wagon.feature.json",
+          "behavior_pack/feature_rules/char_wagon.feature_rule.json",
+          "resource_pack/models/aionbound/ashen_highlands/char_wagon.geo.json",
+          "resource_pack/textures/aionbound/ashen_highlands/structures/char_wagon.png"
+        ],
+        "update_shared": [
+          "behavior_pack/scripts/catalog.js",
+          "behavior_pack/scripts/codex.js",
+          "resource_pack/texts/en_US.lang",
+          "behavior_pack/scripts/structures.js",
+          "resource_pack/blocks.json",
+          "resource_pack/textures/terrain_texture.json"
+        ]
+      },
+      "dependencies": {
+        "acquisition": [
+          "uncommon routes"
+        ],
+        "loot": [
+          "trade slag",
+          "sulfur_cluster",
+          "volcanic_glass_shard",
+          "ash_repeater stock wood"
+        ],
+        "crafting": [],
+        "progression": [
+          "mid-AH economy",
+          "CM map reward identity"
+        ],
+        "equipment": [
+          "ash_repeater"
+        ],
+        "codex": {
+          "coverage": "REQUIRED",
+          "discovery": "structure visit or activation",
+          "relationship_links": [
+            "CM map reward identity",
+            "ash_repeater",
+            "mid-AH economy"
+          ]
+        }
+      },
+      "authority_state": {
+        "identity": "RATIFIED_WAREHOUSE_ID",
+        "visual": "HASH_BOUND_PACKET_002_VISUAL_SOURCE",
+        "gameplay_relationships": "BINDING_CREATIVE_IDENTITY_AND_ROLE",
+        "numeric_loot_values": "WITHHELD_W1_CREATIVE_004_LATER_REGIONS",
+        "new_nonwarehouse_item_dependencies": "WITHHELD_W1_CREATIVE_001_LATER_REGIONS",
+        "sidegrade_identity": "NOT_APPLICABLE_OR_NO_SIDEGRADE_DECISION_HERE"
+      }
+    },
+    {
+      "warehouse_id": "broken_bridge",
+      "runtime_id": "aionbound:broken_bridge",
+      "category": "structures",
+      "source_files": {
+        "brief": {
+          "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-002-ashen-highlands/assets/briefs/broken_bridge.json",
+          "sha256": "2822bc957971c4a86bc6b0515e2ac3bc8182e46023cee49113a824165001a09b"
+        },
+        "editable_bbmodel": {
+          "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-002-ashen-highlands/assets/editable/broken_bridge.bbmodel",
+          "sha256": "ca779bbbfa441fc555b0e092ef4ed2767d444bf93150695026a2865fee2d552f"
+        },
+        "editable_png": {
+          "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-002-ashen-highlands/assets/editable/broken_bridge.png",
+          "sha256": "1bc6806b48beb51df909f9c94afd091ead7ddd44a335d4b8947d1c9844565bd8"
+        },
+        "export_geometry": {
+          "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-002-ashen-highlands/assets/export/models/broken_bridge.geo.json",
+          "sha256": "81998f08b54874a2a5cac1844a05ba479a70d23cf5a8e267011743fc2c2b88ce"
+        },
+        "export_animation": {
+          "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-002-ashen-highlands/assets/export/animations/broken_bridge.animation.json",
+          "sha256": "bd6e5dd494f7e7805b6688a400d3e29f8913024796e5519430e2a4ddc7f0049e"
+        },
+        "export_texture": {
+          "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-002-ashen-highlands/assets/export/textures/broken_bridge.png",
+          "sha256": "1bc6806b48beb51df909f9c94afd091ead7ddd44a335d4b8947d1c9844565bd8"
+        }
+      },
+      "shipping_targets": {
+        "create": [
+          "behavior_pack/blocks/broken_bridge.block.json",
+          "behavior_pack/structures/aionbound/broken_bridge.mcstructure",
+          "behavior_pack/features/broken_bridge.feature.json",
+          "behavior_pack/feature_rules/broken_bridge.feature_rule.json",
+          "resource_pack/models/aionbound/ashen_highlands/broken_bridge.geo.json",
+          "resource_pack/textures/aionbound/ashen_highlands/structures/broken_bridge.png"
+        ],
+        "update_shared": [
+          "behavior_pack/scripts/catalog.js",
+          "behavior_pack/scripts/codex.js",
+          "resource_pack/texts/en_US.lang",
+          "behavior_pack/scripts/structures.js",
+          "resource_pack/blocks.json",
+          "resource_pack/textures/terrain_texture.json"
+        ]
+      },
+      "dependencies": {
+        "acquisition": [
+          "ravine-gated"
+        ],
+        "loot": [
+          "basalt_brick",
+          "char_planks",
+          "volcanic_glass_shard",
+          "furnace_chitin"
+        ],
+        "crafting": [],
+        "progression": [
+          "traversal or gear check"
+        ],
+        "equipment": [],
+        "codex": {
+          "coverage": "REQUIRED",
+          "discovery": "structure visit or activation",
+          "relationship_links": [
+            "traversal or gear check"
+          ]
+        }
+      },
+      "authority_state": {
+        "identity": "RATIFIED_WAREHOUSE_ID",
+        "visual": "HASH_BOUND_PACKET_002_VISUAL_SOURCE",
+        "gameplay_relationships": "BINDING_CREATIVE_IDENTITY_AND_ROLE",
+        "numeric_loot_values": "WITHHELD_W1_CREATIVE_004_LATER_REGIONS",
+        "new_nonwarehouse_item_dependencies": "WITHHELD_W1_CREATIVE_001_LATER_REGIONS",
+        "sidegrade_identity": "NOT_APPLICABLE_OR_NO_SIDEGRADE_DECISION_HERE"
+      }
+    },
+    {
+      "warehouse_id": "basalt_arch",
+      "runtime_id": "aionbound:basalt_arch",
+      "category": "structures",
+      "source_files": {
+        "brief": {
+          "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-002-ashen-highlands/assets/briefs/basalt_arch.json",
+          "sha256": "253c81caf81ea1b7b1dea921d1cffcc8d563cae84092e87d4921cc6edfaf75be"
+        },
+        "editable_bbmodel": {
+          "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-002-ashen-highlands/assets/editable/basalt_arch.bbmodel",
+          "sha256": "402ecd529ec88a5173853025a183ea245972e681c34bdca5e59c6001f8392c6b"
+        },
+        "editable_png": {
+          "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-002-ashen-highlands/assets/editable/basalt_arch.png",
+          "sha256": "958c625b99bcb301a1dbc3e73338c2cb51a8d98ca647d43a3425d5dd22e16ef6"
+        },
+        "export_geometry": {
+          "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-002-ashen-highlands/assets/export/models/basalt_arch.geo.json",
+          "sha256": "0489eb5ea2cd6fbc9ac97522ff67753a4ff5e8835e4addeac53149c782b2e927"
+        },
+        "export_animation": {
+          "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-002-ashen-highlands/assets/export/animations/basalt_arch.animation.json",
+          "sha256": "9cd9ee686746d0728124b9d81764f6ca55790700579f997728be098c43a8b16b"
+        },
+        "export_texture": {
+          "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-002-ashen-highlands/assets/export/textures/basalt_arch.png",
+          "sha256": "958c625b99bcb301a1dbc3e73338c2cb51a8d98ca647d43a3425d5dd22e16ef6"
+        }
+      },
+      "shipping_targets": {
+        "create": [
+          "behavior_pack/blocks/basalt_arch.block.json",
+          "behavior_pack/structures/aionbound/basalt_arch.mcstructure",
+          "behavior_pack/features/basalt_arch.feature.json",
+          "behavior_pack/feature_rules/basalt_arch.feature_rule.json",
+          "resource_pack/models/aionbound/ashen_highlands/basalt_arch.geo.json",
+          "resource_pack/textures/aionbound/ashen_highlands/structures/basalt_arch.png"
+        ],
+        "update_shared": [
+          "behavior_pack/scripts/catalog.js",
+          "behavior_pack/scripts/codex.js",
+          "resource_pack/texts/en_US.lang",
+          "behavior_pack/scripts/structures.js",
+          "resource_pack/blocks.json",
+          "resource_pack/textures/terrain_texture.json"
+        ]
+      },
+      "dependencies": {
+        "acquisition": [
+          "rare landmark"
+        ],
+        "loot": [
+          "basalt_core chance"
+        ],
+        "crafting": [],
+        "progression": [
+          "route spoiler toward nest or forge"
+        ],
+        "equipment": [],
+        "codex": {
+          "coverage": "REQUIRED",
+          "discovery": "structure visit or activation",
+          "relationship_links": [
+            "route spoiler toward nest or forge"
+          ]
+        }
+      },
+      "authority_state": {
+        "identity": "RATIFIED_WAREHOUSE_ID",
+        "visual": "HASH_BOUND_PACKET_002_VISUAL_SOURCE",
+        "gameplay_relationships": "BINDING_CREATIVE_IDENTITY_AND_ROLE",
+        "numeric_loot_values": "WITHHELD_W1_CREATIVE_004_LATER_REGIONS",
+        "new_nonwarehouse_item_dependencies": "WITHHELD_W1_CREATIVE_001_LATER_REGIONS",
+        "sidegrade_identity": "NOT_APPLICABLE_OR_NO_SIDEGRADE_DECISION_HERE"
+      }
+    },
+    {
+      "warehouse_id": "ash_watchtower",
+      "runtime_id": "aionbound:ash_watchtower",
+      "category": "structures",
+      "source_files": {
+        "brief": {
+          "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-002-ashen-highlands/assets/briefs/ash_watchtower.json",
+          "sha256": "aa73209508de7631bdea9a37409903eed94610de74011e3817dbd9a783a14cdc"
+        },
+        "editable_bbmodel": {
+          "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-002-ashen-highlands/assets/editable/ash_watchtower.bbmodel",
+          "sha256": "f0b0dae7a2c7154c0bf26365fa606a1a87aaacde2c9f1d8399456ce9fd129bec"
+        },
+        "editable_png": {
+          "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-002-ashen-highlands/assets/editable/ash_watchtower.png",
+          "sha256": "9f6ed967d333b2e9b26bc91f341e6e1713907cf3d2245446b3bb584846e1b34f"
+        },
+        "export_geometry": {
+          "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-002-ashen-highlands/assets/export/models/ash_watchtower.geo.json",
+          "sha256": "c3528a29f55c93012f361ec0754e8e55c8fbd3671548b26ea4c1db01500b0cfb"
+        },
+        "export_animation": {
+          "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-002-ashen-highlands/assets/export/animations/ash_watchtower.animation.json",
+          "sha256": "667fd4cf236e44b0d7ce8a0717d520d51f7a66a4a201f92ef4bab03930aa59dc"
+        },
+        "export_texture": {
+          "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-002-ashen-highlands/assets/export/textures/ash_watchtower.png",
+          "sha256": "9f6ed967d333b2e9b26bc91f341e6e1713907cf3d2245446b3bb584846e1b34f"
+        }
+      },
+      "shipping_targets": {
+        "create": [
+          "behavior_pack/blocks/ash_watchtower.block.json",
+          "behavior_pack/structures/aionbound/ash_watchtower.mcstructure",
+          "behavior_pack/features/ash_watchtower.feature.json",
+          "behavior_pack/feature_rules/ash_watchtower.feature_rule.json",
+          "resource_pack/models/aionbound/ashen_highlands/ash_watchtower.geo.json",
+          "resource_pack/textures/aionbound/ashen_highlands/structures/ash_watchtower.png"
+        ],
+        "update_shared": [
+          "behavior_pack/scripts/catalog.js",
+          "behavior_pack/scripts/codex.js",
+          "resource_pack/texts/en_US.lang",
+          "behavior_pack/scripts/structures.js",
+          "resource_pack/blocks.json",
+          "resource_pack/textures/terrain_texture.json"
+        ]
+      },
+      "dependencies": {
+        "acquisition": [
+          "rare ridges"
+        ],
+        "loot": [
+          "survey notes",
+          "trail_compass calibration",
+          "ash_crystal"
+        ],
+        "crafting": [],
+        "progression": [
+          "long-sight Codex stamp",
+          "drake watch"
+        ],
+        "equipment": [
+          "trail_compass"
+        ],
+        "codex": {
+          "coverage": "REQUIRED",
+          "discovery": "structure visit or activation",
+          "relationship_links": [
+            "drake watch",
+            "long-sight Codex stamp",
+            "trail_compass"
+          ]
+        }
+      },
+      "authority_state": {
+        "identity": "RATIFIED_WAREHOUSE_ID",
+        "visual": "HASH_BOUND_PACKET_002_VISUAL_SOURCE",
+        "gameplay_relationships": "BINDING_CREATIVE_IDENTITY_AND_ROLE",
+        "numeric_loot_values": "WITHHELD_W1_CREATIVE_004_LATER_REGIONS",
+        "new_nonwarehouse_item_dependencies": "WITHHELD_W1_CREATIVE_001_LATER_REGIONS",
+        "sidegrade_identity": "NOT_APPLICABLE_OR_NO_SIDEGRADE_DECISION_HERE"
+      }
+    },
+    {
+      "warehouse_id": "ancient_kiln",
+      "runtime_id": "aionbound:ancient_kiln",
+      "category": "structures",
+      "source_files": {
+        "brief": {
+          "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-002-ashen-highlands/assets/briefs/ancient_kiln.json",
+          "sha256": "30467393f8b5db447695eb0383a66a63edf6366f280001d13bda6bce8045ca40"
+        },
+        "editable_bbmodel": {
+          "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-002-ashen-highlands/assets/editable/ancient_kiln.bbmodel",
+          "sha256": "7f4b92ae39d8450c33c890ae98bd97d0dfd53f011f02d39f588117518d303817"
+        },
+        "editable_png": {
+          "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-002-ashen-highlands/assets/editable/ancient_kiln.png",
+          "sha256": "810296cc87c0bf84e804b4394dcd55253196cac123ef45c1fa1d2a78fb0a2ee9"
+        },
+        "export_geometry": {
+          "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-002-ashen-highlands/assets/export/models/ancient_kiln.geo.json",
+          "sha256": "113801b11179efc53fb7b73de6a23b302da7ce834cea48bea5fd43f94d1d4c5f"
+        },
+        "export_animation": {
+          "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-002-ashen-highlands/assets/export/animations/ancient_kiln.animation.json",
+          "sha256": "bcd001867856dd248c720f9590fc4e2d5f03e1f784481ffc5ad3065296b48808"
+        },
+        "export_texture": {
+          "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-002-ashen-highlands/assets/export/textures/ancient_kiln.png",
+          "sha256": "810296cc87c0bf84e804b4394dcd55253196cac123ef45c1fa1d2a78fb0a2ee9"
+        }
+      },
+      "shipping_targets": {
+        "create": [
+          "behavior_pack/blocks/ancient_kiln.block.json",
+          "behavior_pack/structures/aionbound/ancient_kiln.mcstructure",
+          "behavior_pack/features/ancient_kiln.feature.json",
+          "behavior_pack/feature_rules/ancient_kiln.feature_rule.json",
+          "resource_pack/models/aionbound/ashen_highlands/ancient_kiln.geo.json",
+          "resource_pack/textures/aionbound/ashen_highlands/structures/ancient_kiln.png"
+        ],
+        "update_shared": [
+          "behavior_pack/scripts/catalog.js",
+          "behavior_pack/scripts/codex.js",
+          "resource_pack/texts/en_US.lang",
+          "behavior_pack/scripts/structures.js",
+          "resource_pack/blocks.json",
+          "resource_pack/textures/terrain_texture.json"
+        ]
+      },
+      "dependencies": {
+        "acquisition": [
+          "rare"
+        ],
+        "loot": [
+          "slag",
+          "heatstone",
+          "ember_forge_core rare",
+          "unfinished basalt tool heads"
+        ],
+        "crafting": [],
+        "progression": [
+          "pre-boss forge language"
+        ],
+        "equipment": [
+          "ember_forge_core",
+          "basalt_hammer",
+          "basalt_pick"
+        ],
+        "codex": {
+          "coverage": "REQUIRED",
+          "discovery": "structure visit or activation",
+          "relationship_links": [
+            "basalt_hammer",
+            "basalt_pick",
+            "ember_forge_core",
+            "pre-boss forge language"
+          ]
+        }
+      },
+      "authority_state": {
+        "identity": "RATIFIED_WAREHOUSE_ID",
+        "visual": "HASH_BOUND_PACKET_002_VISUAL_SOURCE",
+        "gameplay_relationships": "BINDING_CREATIVE_IDENTITY_AND_ROLE",
+        "numeric_loot_values": "WITHHELD_W1_CREATIVE_004_LATER_REGIONS",
+        "new_nonwarehouse_item_dependencies": "WITHHELD_W1_CREATIVE_001_LATER_REGIONS",
+        "sidegrade_identity": "NOT_APPLICABLE_OR_NO_SIDEGRADE_DECISION_HERE"
+      }
+    },
+    {
+      "warehouse_id": "ember_forge",
+      "runtime_id": "aionbound:ember_forge",
+      "category": "structures",
+      "source_files": {
+        "brief": {
+          "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-002-ashen-highlands/assets/briefs/ember_forge.json",
+          "sha256": "28f07f60e06406c8b09bfd2b9ef03cc830425444469b2b04735d98ea539b6c85"
+        },
+        "editable_bbmodel": {
+          "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-002-ashen-highlands/assets/editable/ember_forge.bbmodel",
+          "sha256": "48fd3876e3c4141689b429476ee0f235a168427154918821d1dbfe1fc9ed9a35"
+        },
+        "editable_png": {
+          "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-002-ashen-highlands/assets/editable/ember_forge.png",
+          "sha256": "012845bf393e68a8b1b449a1eb379a46cc35568123e18527bd4d2623d78ca6c3"
+        },
+        "export_geometry": {
+          "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-002-ashen-highlands/assets/export/models/ember_forge.geo.json",
+          "sha256": "36cb183f8ab408776fde9e3b0033f3538eeb1ec67338a1a8816223e5d556fc32"
+        },
+        "export_animation": {
+          "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-002-ashen-highlands/assets/export/animations/ember_forge.animation.json",
+          "sha256": "0f54a6798601992b9baa144516cc8bafd193d62d7fd7889d486a3200611b2eba"
+        },
+        "export_texture": {
+          "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-002-ashen-highlands/assets/export/textures/ember_forge.png",
+          "sha256": "012845bf393e68a8b1b449a1eb379a46cc35568123e18527bd4d2623d78ca6c3"
+        }
+      },
+      "shipping_targets": {
+        "create": [
+          "behavior_pack/blocks/ember_forge.block.json",
+          "behavior_pack/structures/aionbound/ember_forge.mcstructure",
+          "behavior_pack/features/ember_forge.feature.json",
+          "behavior_pack/feature_rules/ember_forge.feature_rule.json",
+          "resource_pack/models/aionbound/ashen_highlands/ember_forge.geo.json",
+          "resource_pack/textures/aionbound/ashen_highlands/structures/ember_forge.png"
+        ],
+        "update_shared": [
+          "behavior_pack/scripts/catalog.js",
+          "behavior_pack/scripts/codex.js",
+          "resource_pack/texts/en_US.lang",
+          "behavior_pack/scripts/structures.js",
+          "resource_pack/blocks.json",
+          "resource_pack/textures/terrain_texture.json"
+        ]
+      },
+      "dependencies": {
+        "acquisition": [
+          "very rare goal; design says one per highlands realm"
+        ],
+        "loot": [
+          "slag",
+          "heatstone",
+          "ember_forge_core",
+          "unfinished basalt tool heads"
+        ],
+        "crafting": [],
+        "progression": [
+          "primary AH structure goal",
+          "Ash Drake co-requisite"
+        ],
+        "equipment": [
+          "ember_forge_core",
+          "basalt_hammer",
+          "basalt_pick",
+          "ember_hammer",
+          "ore_chisel"
+        ],
+        "codex": {
+          "coverage": "REQUIRED",
+          "discovery": "structure visit or activation",
+          "relationship_links": [
+            "Ash Drake co-requisite",
+            "basalt_hammer",
+            "basalt_pick",
+            "ember_forge_core",
+            "ember_hammer",
+            "ore_chisel",
+            "primary AH structure goal"
+          ]
+        }
+      },
+      "authority_state": {
+        "identity": "RATIFIED_WAREHOUSE_ID",
+        "visual": "HASH_BOUND_PACKET_002_VISUAL_SOURCE",
+        "gameplay_relationships": "BINDING_CREATIVE_IDENTITY_AND_ROLE",
+        "numeric_loot_values": "WITHHELD_W1_CREATIVE_004_LATER_REGIONS",
+        "new_nonwarehouse_item_dependencies": "WITHHELD_W1_CREATIVE_001_LATER_REGIONS",
+        "sidegrade_identity": "NOT_APPLICABLE_OR_NO_SIDEGRADE_DECISION_HERE"
+      }
+    },
+    {
+      "warehouse_id": "lava_shrine",
+      "runtime_id": "aionbound:lava_shrine",
+      "category": "structures",
+      "source_files": {
+        "brief": {
+          "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-002-ashen-highlands/assets/briefs/lava_shrine.json",
+          "sha256": "1a33942de5ffb9f7c680f884a7bafe7a3e3eba06e6c9aa4680d280ddc297283b"
+        },
+        "editable_bbmodel": {
+          "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-002-ashen-highlands/assets/editable/lava_shrine.bbmodel",
+          "sha256": "8f98ef4de576cff9019839990a47b7e49dd5be2986f5fb59788fed61ec159ab4"
+        },
+        "editable_png": {
+          "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-002-ashen-highlands/assets/editable/lava_shrine.png",
+          "sha256": "61b4e4411f2110f560a3fc0f2321a31572c28617432070ed3abcfce96b4f2e51"
+        },
+        "export_geometry": {
+          "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-002-ashen-highlands/assets/export/models/lava_shrine.geo.json",
+          "sha256": "0bd662aaf740f84516b2a8bd884b81c006542f5ab8ae4c174529e55bd57ffad7"
+        },
+        "export_animation": {
+          "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-002-ashen-highlands/assets/export/animations/lava_shrine.animation.json",
+          "sha256": "4c09b12cbd12f60e90d155dcaae35151b8cfa74e5277c0105f32d3f5de5a049b"
+        },
+        "export_texture": {
+          "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-002-ashen-highlands/assets/export/textures/lava_shrine.png",
+          "sha256": "61b4e4411f2110f560a3fc0f2321a31572c28617432070ed3abcfce96b4f2e51"
+        }
+      },
+      "shipping_targets": {
+        "create": [
+          "behavior_pack/blocks/lava_shrine.block.json",
+          "behavior_pack/structures/aionbound/lava_shrine.mcstructure",
+          "behavior_pack/features/lava_shrine.feature.json",
+          "behavior_pack/feature_rules/lava_shrine.feature_rule.json",
+          "resource_pack/models/aionbound/ashen_highlands/lava_shrine.geo.json",
+          "resource_pack/textures/aionbound/ashen_highlands/structures/lava_shrine.png"
+        ],
+        "update_shared": [
+          "behavior_pack/scripts/catalog.js",
+          "behavior_pack/scripts/codex.js",
+          "resource_pack/texts/en_US.lang",
+          "behavior_pack/scripts/structures.js",
+          "resource_pack/blocks.json",
+          "resource_pack/textures/terrain_texture.json"
+        ]
+      },
+      "dependencies": {
+        "acquisition": [
+          "rare vents"
+        ],
+        "loot": [
+          "ritual curios",
+          "ember_totem component"
+        ],
+        "crafting": [],
+        "progression": [
+          "accessory and heat-ward story"
+        ],
+        "equipment": [
+          "ember_totem"
+        ],
+        "codex": {
+          "coverage": "REQUIRED",
+          "discovery": "structure visit or activation",
+          "relationship_links": [
+            "accessory and heat-ward story",
+            "ember_totem"
+          ]
+        }
+      },
+      "authority_state": {
+        "identity": "RATIFIED_WAREHOUSE_ID",
+        "visual": "HASH_BOUND_PACKET_002_VISUAL_SOURCE",
+        "gameplay_relationships": "BINDING_CREATIVE_IDENTITY_AND_ROLE",
+        "numeric_loot_values": "WITHHELD_W1_CREATIVE_004_LATER_REGIONS",
+        "new_nonwarehouse_item_dependencies": "WITHHELD_W1_CREATIVE_001_LATER_REGIONS",
+        "sidegrade_identity": "NOT_APPLICABLE_OR_NO_SIDEGRADE_DECISION_HERE"
+      }
+    },
+    {
+      "warehouse_id": "ash_cave",
+      "runtime_id": "aionbound:ash_cave",
+      "category": "structures",
+      "source_files": {
+        "brief": {
+          "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-002-ashen-highlands/assets/briefs/ash_cave.json",
+          "sha256": "6248aaa63e10b4b73da6edd87c805b1f18b3fb60a0c1e00e0568fec72b67a25d"
+        },
+        "editable_bbmodel": {
+          "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-002-ashen-highlands/assets/editable/ash_cave.bbmodel",
+          "sha256": "03a11d671ef08449df7da3e41e86e4cc9a840ad0f08da1cfc06510b5ce464faf"
+        },
+        "editable_png": {
+          "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-002-ashen-highlands/assets/editable/ash_cave.png",
+          "sha256": "023f6ebfe7956b4202999925c939425056c3b25aa2d0e8cf57f8bf03ffaa9a1d"
+        },
+        "export_geometry": {
+          "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-002-ashen-highlands/assets/export/models/ash_cave.geo.json",
+          "sha256": "9a2d910985116541f517eb64de0c3b12e8f3b0261cee1372b7631bb2fae3c91f"
+        },
+        "export_animation": {
+          "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-002-ashen-highlands/assets/export/animations/ash_cave.animation.json",
+          "sha256": "d704e25f49bdc1542b41b32f5f262afbaa98b437370bf620727412eeeca6742f"
+        },
+        "export_texture": {
+          "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-002-ashen-highlands/assets/export/textures/ash_cave.png",
+          "sha256": "023f6ebfe7956b4202999925c939425056c3b25aa2d0e8cf57f8bf03ffaa9a1d"
+        }
+      },
+      "shipping_targets": {
+        "create": [
+          "behavior_pack/blocks/ash_cave.block.json",
+          "behavior_pack/structures/aionbound/ash_cave.mcstructure",
+          "behavior_pack/features/ash_cave.feature.json",
+          "behavior_pack/feature_rules/ash_cave.feature_rule.json",
+          "resource_pack/models/aionbound/ashen_highlands/ash_cave.geo.json",
+          "resource_pack/textures/aionbound/ashen_highlands/structures/ash_cave.png"
+        ],
+        "update_shared": [
+          "behavior_pack/scripts/catalog.js",
+          "behavior_pack/scripts/codex.js",
+          "resource_pack/texts/en_US.lang",
+          "behavior_pack/scripts/structures.js",
+          "resource_pack/blocks.json",
+          "resource_pack/textures/terrain_texture.json"
+        ]
+      },
+      "dependencies": {
+        "acquisition": [
+          "uncommon faces"
+        ],
+        "loot": [
+          "heatstone veins",
+          "ash_mite nests",
+          "basalt_core rare"
+        ],
+        "crafting": [],
+        "progression": [
+          "mid-late AH",
+          "Drake juvenile tease"
+        ],
+        "equipment": [],
+        "codex": {
+          "coverage": "REQUIRED",
+          "discovery": "structure visit or activation",
+          "relationship_links": [
+            "Drake juvenile tease",
+            "mid-late AH"
+          ]
+        }
+      },
+      "authority_state": {
+        "identity": "RATIFIED_WAREHOUSE_ID",
+        "visual": "HASH_BOUND_PACKET_002_VISUAL_SOURCE",
+        "gameplay_relationships": "BINDING_CREATIVE_IDENTITY_AND_ROLE",
+        "numeric_loot_values": "WITHHELD_W1_CREATIVE_004_LATER_REGIONS",
+        "new_nonwarehouse_item_dependencies": "WITHHELD_W1_CREATIVE_001_LATER_REGIONS",
+        "sidegrade_identity": "NOT_APPLICABLE_OR_NO_SIDEGRADE_DECISION_HERE"
+      }
+    }
+  ],
+  "counts": {
+    "assets": 50,
+    "by_category": {
+      "creatures": 10,
+      "resources": 10,
+      "blocks": 10,
+      "plants": 10,
+      "structures": 10
+    }
+  },
+  "authority_digest_sha256": "4819b1f5282bc6e9430c4a724cedf465549937bbeacc408698208252072aee7a"
+}
