@@ -1,0 +1,165 @@
+{
+  "format_version": "1.8.0",
+  "animations": {
+    "animation.aionbound.ash_mite.idle": {
+      "loop": true,
+      "animation_length": 2.8,
+      "bones": {
+        "body": {
+          "rotation": {
+            "0.0": [
+              0,
+              0,
+              0
+            ],
+            "0.7": [
+              -1.5,
+              0,
+              0
+            ],
+            "1.4": [
+              0,
+              0,
+              0
+            ],
+            "2.1": [
+              1,
+              0,
+              0
+            ],
+            "2.8": [
+              0,
+              0,
+              0
+            ]
+          }
+        }
+      }
+    },
+    "animation.aionbound.ash_mite.skitter": {
+      "loop": true,
+      "animation_length": 0.6,
+      "bones": {
+        "leg_a": {
+          "rotation": {
+            "0.0": [
+              -24,
+              0,
+              0
+            ],
+            "0.3": [
+              24,
+              0,
+              0
+            ],
+            "0.6": [
+              -24,
+              0,
+              0
+            ]
+          }
+        },
+        "leg_b": {
+          "rotation": {
+            "0.0": [
+              24,
+              0,
+              0
+            ],
+            "0.3": [
+              -24,
+              0,
+              0
+            ],
+            "0.6": [
+              24,
+              0,
+              0
+            ]
+          }
+        },
+        "leg_c": {
+          "rotation": {
+            "0.0": [
+              -24,
+              0,
+              0
+            ],
+            "0.3": [
+              24,
+              0,
+              0
+            ],
+            "0.6": [
+              -24,
+              0,
+              0
+            ]
+          }
+        },
+        "leg_d": {
+          "rotation": {
+            "0.0": [
+              24,
+              0,
+              0
+            ],
+            "0.3": [
+              -24,
+              0,
+              0
+            ],
+            "0.6": [
+              24,
+              0,
+              0
+            ]
+          }
+        }
+      }
+    },
+    "animation.aionbound.ash_mite.hurt": {
+      "animation_length": 0.35,
+      "bones": {
+        "body": {
+          "rotation": {
+            "0.0": [
+              0,
+              0,
+              0
+            ],
+            "0.15": [
+              0,
+              0,
+              13
+            ],
+            "0.35": [
+              0,
+              0,
+              0
+            ]
+          }
+        }
+      }
+    },
+    "animation.aionbound.ash_mite.death": {
+      "animation_length": 0.7,
+      "bones": {
+        "body": {
+          "rotation": {
+            "0.0": [
+              0,
+              0,
+              0
+            ],
+            "0.7": [
+              0,
+              0,
+              88
+            ]
+          }
+        }
+      }
+    }
+  }
+}

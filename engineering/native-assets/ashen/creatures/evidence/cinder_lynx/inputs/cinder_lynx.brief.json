@@ -1,0 +1,49 @@
+{
+  "name": "cinder_lynx",
+  "display_name": "Cinder Lynx",
+  "sprint": "asset_sprint_002_ashen_highlands",
+  "phase": "P1",
+  "tier": "CREATURE",
+  "role": "Neutral wildcat; smolder tail tip",
+  "profile": "quad",
+  "model_identifier": "geometry.aionforge_ah.cinder_lynx",
+  "cube_count": 24,
+  "bone_count": 9,
+  "density_floor": 22,
+  "locators": [
+    "effect",
+    "gaze"
+  ],
+  "palette": {
+    "metal": [
+      26,
+      22,
+      20
+    ],
+    "accent": [
+      74,
+      69,
+      64
+    ],
+    "energy": [
+      255,
+      106,
+      26
+    ]
+  },
+  "animations": [
+    "idle",
+    "stalk",
+    "pounce_pose",
+    "hurt",
+    "death"
+  ],
+  "minecraft_scale": "0.7 tall",
+  "texture_resolution": "64\u00d764",
+  "production_priority": "P1",
+  "related_assets": "char_wolf contrast",
+  "originality": "Clean-room Ashen Highlands manufacture",
+  "editable": "assets/editable/cinder_lynx.bbmodel",
+  "claims_boundary": "Visual production only. No BP/JSON/AI/gameplay.",
+  "forbidden": "No Whisperwood moss green; no Gloamveil teal; not Ventmarch rename"
+}

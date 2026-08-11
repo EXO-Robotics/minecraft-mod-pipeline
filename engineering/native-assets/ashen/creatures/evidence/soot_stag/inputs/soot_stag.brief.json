@@ -1,0 +1,50 @@
+{
+  "name": "soot_stag",
+  "display_name": "Soot Stag",
+  "sprint": "asset_sprint_002_ashen_highlands",
+  "phase": "P1",
+  "tier": "CREATURE",
+  "role": "Tall char-antler stag; not Briar Elk",
+  "profile": "quad",
+  "model_identifier": "geometry.aionforge_ah.soot_stag",
+  "cube_count": 30,
+  "bone_count": 9,
+  "density_floor": 26,
+  "locators": [
+    "effect",
+    "gaze"
+  ],
+  "palette": {
+    "metal": [
+      26,
+      22,
+      20
+    ],
+    "accent": [
+      74,
+      69,
+      64
+    ],
+    "energy": [
+      255,
+      106,
+      26
+    ]
+  },
+  "animations": [
+    "idle",
+    "walk",
+    "trot",
+    "antler_shake",
+    "hurt",
+    "death"
+  ],
+  "minecraft_scale": "1.7\u20131.9 shoulder",
+  "texture_resolution": "128\u00d764",
+  "production_priority": "P1",
+  "related_assets": "charbone",
+  "originality": "Clean-room Ashen Highlands manufacture",
+  "editable": "assets/editable/soot_stag.bbmodel",
+  "claims_boundary": "Visual production only. No BP/JSON/AI/gameplay.",
+  "forbidden": "No Whisperwood moss green; no Gloamveil teal; not Ventmarch rename"
+}

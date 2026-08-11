@@ -1,0 +1,47 @@
+{
+  "name": "ash_mite",
+  "display_name": "Ash Mite",
+  "sprint": "asset_sprint_002_ashen_highlands",
+  "phase": "P1",
+  "tier": "CREATURE",
+  "role": "Tiny ash vermin; sulfur dust",
+  "profile": "quad",
+  "model_identifier": "geometry.aionforge_ah.ash_mite",
+  "cube_count": 16,
+  "bone_count": 8,
+  "density_floor": 16,
+  "locators": [
+    "effect"
+  ],
+  "palette": {
+    "metal": [
+      42,
+      46,
+      52
+    ],
+    "accent": [
+      201,
+      178,
+      58
+    ],
+    "energy": [
+      255,
+      106,
+      26
+    ]
+  },
+  "animations": [
+    "idle",
+    "skitter",
+    "hurt",
+    "death"
+  ],
+  "minecraft_scale": "0.35",
+  "texture_resolution": "64\u00d764",
+  "production_priority": "P1",
+  "related_assets": "sulfur_cluster",
+  "originality": "Clean-room Ashen Highlands manufacture",
+  "editable": "assets/editable/ash_mite.bbmodel",
+  "claims_boundary": "Visual production only. No BP/JSON/AI/gameplay.",
+  "forbidden": "No Whisperwood moss green; no Gloamveil teal; not Ventmarch rename"
+}

@@ -1,0 +1,50 @@
+{
+  "name": "furnace_beetle",
+  "display_name": "Furnace Beetle",
+  "sprint": "asset_sprint_002_ashen_highlands",
+  "phase": "P1",
+  "tier": "CREATURE",
+  "role": "Hostile kiln-shell beetle",
+  "profile": "quad",
+  "model_identifier": "geometry.aionforge_ah.furnace_beetle",
+  "cube_count": 24,
+  "bone_count": 10,
+  "density_floor": 24,
+  "locators": [
+    "effect",
+    "gaze"
+  ],
+  "palette": {
+    "metal": [
+      42,
+      46,
+      52
+    ],
+    "accent": [
+      74,
+      69,
+      64
+    ],
+    "energy": [
+      232,
+      90,
+      32
+    ]
+  },
+  "animations": [
+    "idle",
+    "walk",
+    "charge",
+    "mandible_clamp",
+    "hurt",
+    "death"
+  ],
+  "minecraft_scale": "0.8 tall",
+  "texture_resolution": "64\u2013128",
+  "production_priority": "P1",
+  "related_assets": "furnace_chitin, kiln",
+  "originality": "Clean-room Ashen Highlands manufacture",
+  "editable": "assets/editable/furnace_beetle.bbmodel",
+  "claims_boundary": "Visual production only. No BP/JSON/AI/gameplay.",
+  "forbidden": "No Whisperwood moss green; no Gloamveil teal; not Ventmarch rename"
+}

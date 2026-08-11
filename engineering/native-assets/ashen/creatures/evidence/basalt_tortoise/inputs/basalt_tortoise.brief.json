@@ -1,0 +1,49 @@
+{
+  "name": "basalt_tortoise",
+  "display_name": "Basalt Tortoise",
+  "sprint": "asset_sprint_002_ashen_highlands",
+  "phase": "P0",
+  "tier": "CREATURE",
+  "role": "Slow geological tortoise; basalt shell",
+  "profile": "quad",
+  "model_identifier": "geometry.aionforge_ah.basalt_tortoise",
+  "cube_count": 23,
+  "bone_count": 8,
+  "density_floor": 22,
+  "locators": [
+    "effect",
+    "gaze"
+  ],
+  "palette": {
+    "metal": [
+      42,
+      46,
+      52
+    ],
+    "accent": [
+      74,
+      69,
+      64
+    ],
+    "energy": [
+      232,
+      90,
+      32
+    ]
+  },
+  "animations": [
+    "idle",
+    "slow_walk",
+    "withdraw_pose",
+    "hurt",
+    "death"
+  ],
+  "minecraft_scale": "0.9 tall",
+  "texture_resolution": "64\u2013128",
+  "production_priority": "P0",
+  "related_assets": "basalt_brick",
+  "originality": "Clean-room Ashen Highlands manufacture",
+  "editable": "assets/editable/basalt_tortoise.bbmodel",
+  "claims_boundary": "Visual production only. No BP/JSON/AI/gameplay.",
+  "forbidden": "No Whisperwood moss green; no Gloamveil teal; not Ventmarch rename"
+}

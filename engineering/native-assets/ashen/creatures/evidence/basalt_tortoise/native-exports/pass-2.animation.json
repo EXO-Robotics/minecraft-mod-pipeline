@@ -1,0 +1,227 @@
+{
+  "format_version": "1.8.0",
+  "animations": {
+    "animation.aionbound.basalt_tortoise.idle": {
+      "loop": true,
+      "animation_length": 3.8,
+      "bones": {
+        "head": {
+          "position": {
+            "0.0": [
+              0,
+              0,
+              0
+            ],
+            "0.95": [
+              0,
+              0,
+              -0.15
+            ],
+            "1.9": [
+              0,
+              0,
+              0
+            ],
+            "2.85": [
+              0,
+              0,
+              0.12
+            ],
+            "3.8": [
+              0,
+              0,
+              0
+            ]
+          }
+        }
+      }
+    },
+    "animation.aionbound.basalt_tortoise.slow_walk": {
+      "loop": true,
+      "animation_length": 1.5,
+      "bones": {
+        "leg_fl": {
+          "rotation": {
+            "0.0": [
+              -12,
+              0,
+              0
+            ],
+            "0.75": [
+              12,
+              0,
+              0
+            ],
+            "1.5": [
+              -12,
+              0,
+              0
+            ]
+          }
+        },
+        "leg_fr": {
+          "rotation": {
+            "0.0": [
+              12,
+              0,
+              0
+            ],
+            "0.75": [
+              -12,
+              0,
+              0
+            ],
+            "1.5": [
+              12,
+              0,
+              0
+            ]
+          }
+        },
+        "leg_bl": {
+          "rotation": {
+            "0.0": [
+              -12,
+              0,
+              0
+            ],
+            "0.75": [
+              12,
+              0,
+              0
+            ],
+            "1.5": [
+              -12,
+              0,
+              0
+            ]
+          }
+        },
+        "leg_br": {
+          "rotation": {
+            "0.0": [
+              12,
+              0,
+              0
+            ],
+            "0.75": [
+              -12,
+              0,
+              0
+            ],
+            "1.5": [
+              12,
+              0,
+              0
+            ]
+          }
+        }
+      }
+    },
+    "animation.aionbound.basalt_tortoise.withdraw_pose": {
+      "animation_length": 0.9,
+      "bones": {
+        "head": {
+          "position": {
+            "0.0": [
+              0,
+              0,
+              0
+            ],
+            "0.5": [
+              0,
+              0,
+              1.1
+            ],
+            "0.9": [
+              0,
+              0,
+              0
+            ]
+          }
+        },
+        "leg_fl": {
+          "rotation": {
+            "0.0": [
+              0,
+              0,
+              0
+            ],
+            "0.5": [
+              18,
+              0,
+              0
+            ],
+            "0.9": [
+              0,
+              0,
+              0
+            ]
+          }
+        },
+        "leg_fr": {
+          "rotation": {
+            "0.0": [
+              0,
+              0,
+              0
+            ],
+            "0.5": [
+              18,
+              0,
+              0
+            ],
+            "0.9": [
+              0,
+              0,
+              0
+            ]
+          }
+        }
+      }
+    },
+    "animation.aionbound.basalt_tortoise.hurt": {
+      "animation_length": 0.48,
+      "bones": {
+        "body": {
+          "rotation": {
+            "0.0": [
+              0,
+              0,
+              0
+            ],
+            "0.2": [
+              0,
+              0,
+              6
+            ],
+            "0.5": [
+              0,
+              0,
+              0
+            ]
+          }
+        }
+      }
+    },
+    "animation.aionbound.basalt_tortoise.death": {
+      "animation_length": 1.2,
+      "bones": {
+        "body": {
+          "rotation": {
+            "0.0": [
+              0,
+              0,
+              0
+            ],
+            "1.2": [
+              0,
+              0,
+              82
+            ]
+          }
+        }
+      }
+    }
+  }
+}

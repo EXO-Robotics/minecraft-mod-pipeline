@@ -1,0 +1,49 @@
+{
+  "name": "magma_lizard",
+  "display_name": "Magma Lizard",
+  "sprint": "asset_sprint_002_ashen_highlands",
+  "phase": "P1",
+  "tier": "CREATURE",
+  "role": "Low heat-belly lizard",
+  "profile": "quad",
+  "model_identifier": "geometry.aionforge_ah.magma_lizard",
+  "cube_count": 22,
+  "bone_count": 9,
+  "density_floor": 22,
+  "locators": [
+    "effect",
+    "gaze"
+  ],
+  "palette": {
+    "metal": [
+      42,
+      46,
+      52
+    ],
+    "accent": [
+      74,
+      69,
+      64
+    ],
+    "energy": [
+      232,
+      90,
+      32
+    ]
+  },
+  "animations": [
+    "idle",
+    "walk",
+    "lunge_bite",
+    "hurt",
+    "death"
+  ],
+  "minecraft_scale": "0.5 tall \u00b7 1.6 long",
+  "texture_resolution": "64\u00d764",
+  "production_priority": "P1",
+  "related_assets": "heatstone",
+  "originality": "Clean-room Ashen Highlands manufacture",
+  "editable": "assets/editable/magma_lizard.bbmodel",
+  "claims_boundary": "Visual production only. No BP/JSON/AI/gameplay.",
+  "forbidden": "No Whisperwood moss green; no Gloamveil teal; not Ventmarch rename"
+}
