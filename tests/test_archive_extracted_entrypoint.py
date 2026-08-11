@@ -104,6 +104,15 @@ export const EquipmentSlot={Offhand:"Offhand",Head:"Head",Chest:"Chest",Legs:"Le
 export const EntityComponentTypes={Equippable:"minecraft:equippable"};
 '''
 
+MOCK_SERVER_UI = r'''
+export class ActionFormData {
+  title(){return this;}
+  body(){return this;}
+  button(){return this;}
+  show(){return Promise.resolve({canceled:true});}
+}
+'''
+
 HARNESS = r'''
 import { world, system } from "@minecraft/server";
 await import(process.env.AIONBOUND_EXTRACTED_ENTRYPOINT_URL);
@@ -133,6 +142,12 @@ class ArchiveExtractedShippedEntrypointProof(unittest.TestCase):
             pack_root = Path(temp) / "behavior_pack"
             archived = extract_pack(payload, pack_root)
             manifest = json.loads(archived["manifest.json"])
+            expected_version = os.environ.get("AIONBOUND_EXPECTED_PACK_VERSION")
+            if expected_version:
+                self.assertEqual(
+                    manifest["header"]["version"],
+                    [int(part) for part in expected_version.split(".")],
+                )
             script_modules = [module for module in manifest["modules"] if module.get("type") == "script"]
             self.assertEqual(len(script_modules), 1)
             entry = safe_member(script_modules[0]["entry"])
@@ -155,6 +170,12 @@ class ArchiveExtractedShippedEntrypointProof(unittest.TestCase):
             mock_root.mkdir(parents=True)
             (mock_root / "package.json").write_text('{"name":"@minecraft/server","type":"module","exports":"./index.js"}\n')
             (mock_root / "index.js").write_text(MOCK_SERVER)
+            mock_ui_root = pack_root / "node_modules/@minecraft/server-ui"
+            mock_ui_root.mkdir(parents=True)
+            (mock_ui_root / "package.json").write_text(
+                '{"name":"@minecraft/server-ui","type":"module","exports":"./index.js"}\n'
+            )
+            (mock_ui_root / "index.js").write_text(MOCK_SERVER_UI)
             harness = pack_root / "archive-entrypoint-harness.mjs"
             harness.write_text(HARNESS)
 
@@ -169,6 +190,9 @@ class ArchiveExtractedShippedEntrypointProof(unittest.TestCase):
                 check=False,
             )
             self.assertEqual(completed.returncode, 0, completed.stderr)
+            expected_marker = os.environ.get("AIONBOUND_EXPECTED_STARTUP_MARKER")
+            if expected_marker:
+                self.assertEqual(completed.stderr.count(expected_marker), 1, completed.stderr)
             output = json.loads(completed.stdout.strip().splitlines()[-1])
             self.assertEqual(output, {
                 "itemUse": 1,
