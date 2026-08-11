@@ -534,6 +534,7 @@ def validate(root: Path) -> dict[str, Any]:
     id_sets = {
         "blocks": set(blocks), "entities": set(entities), "items": set(items),
         "recipes": set(recipes), "structures": structure_ids,
+        "features": set(features), "feature_rules": set(feature_rules),
     }
     for category, required in authority["required_successor_ids"].items():
         missing = sorted(set(required) - id_sets.get(category, set()))

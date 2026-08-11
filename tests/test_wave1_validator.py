@@ -42,6 +42,7 @@ def fixture(root: Path) -> None:
         },
         "required_successor_ids": {
             "blocks": ["aionbound:new_block"], "items": ["aionbound:new_item"], "recipes": [], "structures": [],
+            "features": [], "feature_rules": [],
         },
         "minimum_engine_version": [1, 21, 80],
         "allowed_script_modules": ["@minecraft/server"],
@@ -154,6 +155,16 @@ class Wave1ValidatorTests(unittest.TestCase):
             "missing_required_successor_id:structures:aionbound:hunter_camp",
             self.findings(),
         )
+
+    def test_required_successor_feature_and_rule_are_named(self):
+        authority_path = self.root / VALIDATOR.AUTHORITY_REL
+        authority = json.loads(authority_path.read_text())
+        authority["required_successor_ids"]["features"] = ["aionbound:forest_node"]
+        authority["required_successor_ids"]["feature_rules"] = ["aionbound:forest_node.feature_rule"]
+        write_json(authority_path, authority)
+        findings = self.findings()
+        self.assertIn("missing_required_successor_id:features:aionbound:forest_node", findings)
+        self.assertIn("missing_required_successor_id:feature_rules:aionbound:forest_node.feature_rule", findings)
 
     def test_unresolved_recipe_reference_fails(self):
         write_json(self.root / "behavior_pack/recipes/bad.json", {
