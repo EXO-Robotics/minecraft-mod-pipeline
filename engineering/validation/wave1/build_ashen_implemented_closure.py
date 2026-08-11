@@ -114,6 +114,18 @@ def build() -> dict:
         "tests/wave1_ashen_rewards.test.mjs",
     ]
 
+    functional_equipment = [
+        "engineering/ashen-intake/equipment-functional/ASHEN_EQUIPMENT_FUNCTIONAL_EVIDENCE.json",
+        "engineering/ashen-intake/equipment-functional/ACTIVATION_WITHHELD.md",
+        "engineering/ashen-intake/equipment-functional/README.md",
+        "engineering/ashen-intake/equipment-functional/build_ashen_equipment_evidence.py",
+        "engineering/ashen-intake/equipment-functional/test_ashen_equipment_evidence.py",
+        "engineering/ashen-intake/equipment-runtime-ashen/test_runtime.py",
+        "behavior_pack/scripts/ashen_equipment.js",
+        "behavior_pack/scripts/ashen_equipment_roles.js",
+        "tests/wave1_ashen_equipment_functional.test.mjs",
+    ]
+
     native_aggregates = [
         "engineering/native-assets/ashen/representative/ASHEN_REPRESENTATIVE_NATIVE_REPORT.json",
         "engineering/native-assets/ashen/plants/ASHEN_PLANT_NATIVE_REPORT.json",
@@ -129,6 +141,7 @@ def build() -> dict:
         "decision_ledger_v3_and_codex_runtime": rows(codex_runtime),
         "equipment_13_plus_derived_4_and_crafting": rows(equipment_runtime_crafting),
         "kiln_sky_dedicated_service_activation_withheld": rows(kiln_sky),
+        "functional_equipment_dedicated_activation_withheld": rows(functional_equipment),
         "native_aggregate_receipts": rows(native_aggregates),
     }
     all_paths = [row["path"] for values in groups.values() for row in values]
@@ -137,10 +150,11 @@ def build() -> dict:
     return {
         "schema": "aionbound.wave1.ashen.implemented_source_closure.v1",
         "status": "EXACT_IMPLEMENTED_ASHEN_SOURCE_CLOSURE",
-        "base": {"commit": "c115574", "authority": "G8 successor integration line"},
+        "base": {"commit": "61a77d7", "authority": "G8 successor integration line"},
         "groups": groups,
         "pending_follow_up": {
             "kiln_sky_shared_runtime_activation": "WITHHELD_BY_DEDICATED_EVIDENCE",
+            "functional_equipment_shared_runtime_activation": "WITHHELD_BY_DEDICATED_EVIDENCE",
             "creative": "W1-CREATIVE-005_DEFERRED",
         },
         "proof_boundary": "SOURCE PATH, BYTE HASH, IDENTIFIER, AND STATIC EVIDENCE CLOSURE ONLY; NO BUILD, PACKAGE, BDS, CLIENT, MULTIPLAYER, CONSOLE, OR RELEASE PROOF",

@@ -2,7 +2,7 @@
   "schema": "aionbound.wave1.ashen.implemented_source_closure.v1",
   "status": "EXACT_IMPLEMENTED_ASHEN_SOURCE_CLOSURE",
   "base": {
-    "commit": "c115574",
+    "commit": "61a77d7",
     "authority": "G8 successor integration line"
   },
   "groups": {
@@ -819,7 +819,7 @@
       },
       {
         "path": "behavior_pack/items/basalt_hammer.item.json",
-        "sha256": "8d5a39855cb836037de16aeb982efea7e3b1adfe3a4a3471e0c504658c1a9c5d"
+        "sha256": "9f057a16973d59936329cb452da4b12cd883dbec1c0f8cd7aca4e88764876c4a"
       },
       {
         "path": "resource_pack/attachables/ember_great_axe.attachable.json",
@@ -843,7 +843,7 @@
       },
       {
         "path": "behavior_pack/items/ember_great_axe.item.json",
-        "sha256": "1f91b573f9802ce205231b23db5f9ee3922010269548b89051bec51d45f55b11"
+        "sha256": "e114979dc1cf21423f44b74c1d5d9f5bed5bea176315515f5f895798dde3099d"
       },
       {
         "path": "resource_pack/attachables/ash_repeater.attachable.json",
@@ -867,7 +867,7 @@
       },
       {
         "path": "behavior_pack/items/ash_repeater.item.json",
-        "sha256": "646586d680dc5e7af76129df2d95a006a020dc302fa3f17d855fe0aed9a49b3b"
+        "sha256": "b635d0d5bd2763de974bae96fd28cda305bbbb88943e38fa43cfc857ad95a9bc"
       },
       {
         "path": "resource_pack/attachables/ashen_helmet.attachable.json",
@@ -891,7 +891,7 @@
       },
       {
         "path": "behavior_pack/items/ashen_helmet.item.json",
-        "sha256": "dc64ee5c0ab9850efda05826af0e8e49d8f7e10aee32c04444e2a7699ca8b3d1"
+        "sha256": "19c3c50ab3d4ad5c7f8764e3559bbfff49d65efd3cc974c82a8a4ed248d81cc5"
       },
       {
         "path": "resource_pack/attachables/ashen_chest.attachable.json",
@@ -915,7 +915,7 @@
       },
       {
         "path": "behavior_pack/items/ashen_chest.item.json",
-        "sha256": "7dc7c342528f2577fce7aaaeca70bfeaf91cb34f9736872e4a7de68cc44e9c1c"
+        "sha256": "a7b074600a2c3f2fade8adef623bc1c2a175cfe17d41acccfc31d9cf010b1f54"
       },
       {
         "path": "resource_pack/attachables/ashen_legs.attachable.json",
@@ -939,7 +939,7 @@
       },
       {
         "path": "behavior_pack/items/ashen_legs.item.json",
-        "sha256": "b9aca977c7ca721cf8548ee75ade1c501357c7729edbc7a6b266aac553f8f2ba"
+        "sha256": "7dd30db77b922093ccd6d76aeed9ff349bb5c3631a9309b6f5f9fcb57bf94efa"
       },
       {
         "path": "resource_pack/attachables/ashen_boots.attachable.json",
@@ -963,7 +963,7 @@
       },
       {
         "path": "behavior_pack/items/ashen_boots.item.json",
-        "sha256": "24e9b6218f33aa039952f73b36bca8da62dcee75a4e140ba2b76ed4c77c04b73"
+        "sha256": "6b38791ec9b87aa54818349faf0ec6bd9e12ddbb5cc96478415e99b0fb58382e"
       },
       {
         "path": "resource_pack/attachables/basalt_pick.attachable.json",
@@ -987,7 +987,7 @@
       },
       {
         "path": "behavior_pack/items/basalt_pick.item.json",
-        "sha256": "dad51bd05bfbb69003970a009b0d17946f967c2897abdcfbbe01cd5075a8b48c"
+        "sha256": "156dfd28efbaf46dbeae3c3bc9d229de15bcf13e8bb47982e09b8038ab743cb2"
       },
       {
         "path": "resource_pack/attachables/ember_hammer.attachable.json",
@@ -1011,7 +1011,7 @@
       },
       {
         "path": "behavior_pack/items/ember_hammer.item.json",
-        "sha256": "45ee8294ff95269b57834ca730d02e7afc785cfe0cc07daf0dc38f3ea1cda1e8"
+        "sha256": "7412e246357e146b71365d457881d58dbde9970f46e104ccbaca6da50424f216"
       },
       {
         "path": "resource_pack/attachables/ore_chisel.attachable.json",
@@ -1035,7 +1035,7 @@
       },
       {
         "path": "behavior_pack/items/ore_chisel.item.json",
-        "sha256": "16b18fbd13481695bc58dc68bf86cd09e7bafed862aa67ec41283ad74ee15810"
+        "sha256": "7e1deb3814b65367bf4a6ee9ad81f3f3e476dc4b210bcbe2826462a720a02dcb"
       },
       {
         "path": "resource_pack/attachables/ember_totem.attachable.json",
@@ -1228,6 +1228,44 @@
         "sha256": "5a09b2707db8f0bc9c47c7372281b9f2fff068d720008220d3a4d1bec4edfa45"
       }
     ],
+    "functional_equipment_dedicated_activation_withheld": [
+      {
+        "path": "engineering/ashen-intake/equipment-functional/ASHEN_EQUIPMENT_FUNCTIONAL_EVIDENCE.json",
+        "sha256": "aa191f645cd234dd4cf5fdf0a5876b85d335c219577b1debe2942212c6b257ef"
+      },
+      {
+        "path": "engineering/ashen-intake/equipment-functional/ACTIVATION_WITHHELD.md",
+        "sha256": "54d7e5aa451c8dc23820e9600f64b0a521700fa8974f0a721eaa2ba8d6c744c8"
+      },
+      {
+        "path": "engineering/ashen-intake/equipment-functional/README.md",
+        "sha256": "ce08c4359987433d56c613b321009f596dba3158b154a1987cdef681cf18c96d"
+      },
+      {
+        "path": "engineering/ashen-intake/equipment-functional/build_ashen_equipment_evidence.py",
+        "sha256": "8fe2b12bc805ce061c5c67ba0a31d03d56808ce0581d8323e30b65265aa69246"
+      },
+      {
+        "path": "engineering/ashen-intake/equipment-functional/test_ashen_equipment_evidence.py",
+        "sha256": "66b47f3d7b7d41a51b01346ef11529d70ecf0df9bedd273c6db076fcd3dad056"
+      },
+      {
+        "path": "engineering/ashen-intake/equipment-runtime-ashen/test_runtime.py",
+        "sha256": "e2d141fbaf05903cfbb0a720dd617d95b4d73bf0e98a80f1cc2785b11fbba048"
+      },
+      {
+        "path": "behavior_pack/scripts/ashen_equipment.js",
+        "sha256": "85ac9b2e9919c32fc4e72a1b4332b6614d59a573229f727a45be043990e0f953"
+      },
+      {
+        "path": "behavior_pack/scripts/ashen_equipment_roles.js",
+        "sha256": "b5106d7630469a0b11346a372288815ddaeaa24329ca5035270469d0970e0412"
+      },
+      {
+        "path": "tests/wave1_ashen_equipment_functional.test.mjs",
+        "sha256": "1319ae70d0f427ebc0710ae2b07d83190fca074ef83ea8171faa58e95482e173"
+      }
+    ],
     "native_aggregate_receipts": [
       {
         "path": "engineering/native-assets/ashen/representative/ASHEN_REPRESENTATIVE_NATIVE_REPORT.json",
@@ -1253,6 +1291,7 @@
   },
   "pending_follow_up": {
     "kiln_sky_shared_runtime_activation": "WITHHELD_BY_DEDICATED_EVIDENCE",
+    "functional_equipment_shared_runtime_activation": "WITHHELD_BY_DEDICATED_EVIDENCE",
     "creative": "W1-CREATIVE-005_DEFERRED"
   },
   "proof_boundary": "SOURCE PATH, BYTE HASH, IDENTIFIER, AND STATIC EVIDENCE CLOSURE ONLY; NO BUILD, PACKAGE, BDS, CLIENT, MULTIPLAYER, CONSOLE, OR RELEASE PROOF"

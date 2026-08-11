@@ -1,6 +1,6 @@
 {
   "authority": "engineering/validation/wave1/WAVE_1_VALIDATION_AUTHORITY.json",
-  "authority_sha256": "683c7e1a7b7ebdf4eb691e08d6c3baca655be9295060663651d67a7af685003e",
+  "authority_sha256": "ac1c7dc4c32a0aba454599b6b5f26ebb3c889da37830f792245d3190c7d318d1",
   "checks": [
     "json_and_png_structure",
     "manifest_and_dependency_closure",
@@ -30,7 +30,7 @@
     "png_files": 307,
     "recipes": 101,
     "render_controllers": 21,
-    "script_files": 24,
+    "script_files": 26,
     "spawn_rules": 29,
     "structures": 34
   },
@@ -50,6 +50,7 @@
       "ecology_structures_features_rules": 53,
       "entity_client_spawn_runtime": 30,
       "equipment_13_plus_derived_4_and_crafting": 104,
+      "functional_equipment_dedicated_activation_withheld": 9,
       "kiln_sky_dedicated_service_activation_withheld": 6,
       "loot_and_acquisition_economy": 44,
       "native_aggregate_receipts": 5,
@@ -58,9 +59,10 @@
     "path": "engineering/validation/wave1/WAVE_1_ASHEN_IMPLEMENTED_CLOSURE.json",
     "pending_follow_up": {
       "creative": "W1-CREATIVE-005_DEFERRED",
+      "functional_equipment_shared_runtime_activation": "WITHHELD_BY_DEDICATED_EVIDENCE",
       "kiln_sky_shared_runtime_activation": "WITHHELD_BY_DEDICATED_EVIDENCE"
     },
-    "sha256": "0e2416c87bfff93f5a429a25b0c6bcfe551fe2afd33c44d33b521b25abb3ac68"
+    "sha256": "ac7b5c1c932d20359e4a3ad0b7a152daacfe2e5a380f995bbcfa5868d050dac9"
   },
   "required_content_closure_receipts": [
     {
@@ -419,6 +421,11 @@
       "classification": "dedicated_service_source_semantic_evidence_activation_withheld_not_shared_runtime_or_bds_proof",
       "path": "engineering/ashen-intake/kiln-sky-runtime/KILN_SKY_RUNTIME_EVIDENCE.json",
       "sha256": "2484be4a73d096216ec4e71a596d8de6e36e81dfebf2674b0c2002354e14ad2a"
+    },
+    {
+      "classification": "dedicated_functional_equipment_source_semantic_evidence_activation_withheld_not_shared_runtime_or_bds_proof",
+      "path": "engineering/ashen-intake/equipment-functional/ASHEN_EQUIPMENT_FUNCTIONAL_EVIDENCE.json",
+      "sha256": "aa191f645cd234dd4cf5fdf0a5876b85d335c219577b1debe2942212c6b257ef"
     }
   ],
   "required_successor_ids_verified": {
@@ -689,8 +696,8 @@
   },
   "schema_version": 1,
   "source_evidence": {
-    "pack_source_file_count": 1414,
-    "pack_source_sha256": "08f7ea27bcdf0c72e6b688c365f8fad0c003a440809ca8f6d5eb71709abd49ed"
+    "pack_source_file_count": 1416,
+    "pack_source_sha256": "2cd8bb84b53f294a54f2838256d20e24e6dc7d0a972bd814257195cafb023885"
   },
   "status": "PASS",
   "validator": "tools/validate_wave1.py"

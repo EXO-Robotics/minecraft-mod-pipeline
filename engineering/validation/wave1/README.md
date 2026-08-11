@@ -5,16 +5,17 @@ reuse G7's frozen exact-count assertions. Instead it inventories the checked-out
 packs, requires the proven G7 inventory as a minimum floor, and requires named
 Wave 1 additions from `WAVE_1_VALIDATION_AUTHORITY.json`, including the ten
 Whisperwood blocks, ten Whisperwood resource items, four foundation recipes,
-and the exact implemented Ashen vertical through integration `c115574`.
+and the exact implemented Ashen vertical through integration `61a77d7`.
 The G7 inventory numbers remain minimum floors: later growth is accepted, but
 none of the named successor additions may disappear.
 
-`WAVE_1_ASHEN_IMPLEMENTED_CLOSURE.json` binds 307 exact paths and byte hashes
+`WAVE_1_ASHEN_IMPLEMENTED_CLOSURE.json` binds 316 exact paths and byte hashes
 across resources, blocks, plants, entity/client/spawn runtime, ecology,
 structures/features/rules, loot/acquisition economy, decision-ledger v3 and
 Codex runtime, thirteen native equipment identities plus four ratified derived
-components and their crafting graph, the dedicated Kiln Sky service, and all
-five Ashen native aggregate reports. Regenerate it deterministically with
+components and their crafting graph, the dedicated Kiln Sky service, the
+dedicated functional-equipment modules and evidence, and all five Ashen native
+aggregate reports. Regenerate it deterministically with
 `build_ashen_implemented_closure.py` after an explicitly integrated follow-up.
 
 Run it with:
@@ -36,6 +37,9 @@ All five hash-bound Blockbench aggregate reports are required as native editable
 asset evidence only. Their presence and declared shape do not count as BP/RP,
 client, gameplay, BDS, or release proof. Kiln Sky is bound only as a dedicated
 service with shared-runtime activation explicitly withheld by its own evidence.
+Functional equipment is likewise bound to declarative item components and
+dedicated source-semantic service evidence; its shared-runtime activation is
+explicitly withheld and does not prove build, package, BDS, or client behavior.
 
 Attachables may close against either a behavior item or a placeable inventory
 block. This supports the ratified Ash Drake Horn and Ember Forge Core without

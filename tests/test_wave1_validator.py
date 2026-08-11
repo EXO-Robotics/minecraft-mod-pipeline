@@ -323,12 +323,14 @@ class Wave1ValidatorTests(unittest.TestCase):
             "decision_ledger_v3_and_codex_runtime": 12,
             "equipment_13_plus_derived_4_and_crafting": 104,
             "kiln_sky_dedicated_service_activation_withheld": 6,
+            "functional_equipment_dedicated_activation_withheld": 9,
             "native_aggregate_receipts": 5,
         })
         paths = [row["path"] for rows in manifest["groups"].values() for row in rows]
-        self.assertEqual(307, len(paths))
+        self.assertEqual(316, len(paths))
         self.assertEqual(len(paths), len(set(paths)))
         self.assertEqual("WITHHELD_BY_DEDICATED_EVIDENCE", manifest["pending_follow_up"]["kiln_sky_shared_runtime_activation"])
+        self.assertEqual("WITHHELD_BY_DEDICATED_EVIDENCE", manifest["pending_follow_up"]["functional_equipment_shared_runtime_activation"])
         self.assertEqual("W1-CREATIVE-005_DEFERRED", manifest["pending_follow_up"]["creative"])
         self.assertIn("NO BUILD, PACKAGE, BDS, CLIENT", manifest["proof_boundary"])
 
@@ -354,8 +356,23 @@ class Wave1ValidatorTests(unittest.TestCase):
             "loot_tables": 110, "recipes": 101, "spawn_rules": 29, "structures": 34,
             "features": 76, "feature_rules": 75, "attachables": 60, "geometries": 144,
             "animations": 266, "animation_controllers": 21, "render_controllers": 21,
-            "png_files": 307, "script_files": 24,
+            "png_files": 307, "script_files": 26,
         })
+
+    def test_repository_functional_equipment_evidence_is_exact_and_activation_withheld(self):
+        authority = json.loads((REPO / VALIDATOR.AUTHORITY_REL).read_text())
+        evidence = next(
+            row for row in authority["required_evidence_artifacts"]
+            if row["path"].endswith("ASHEN_EQUIPMENT_FUNCTIONAL_EVIDENCE.json")
+        )
+        path = REPO / evidence["path"]
+        document = json.loads(path.read_text())
+        self.assertEqual("aa191f645cd234dd4cf5fdf0a5876b85d335c219577b1debe2942212c6b257ef", VALIDATOR.sha256(path))
+        self.assertEqual("DEDICATED_SERVICE_AND_DECLARATIVE_COMPONENTS_PASS_ACTIVATION_WITHHELD", document["status"])
+        self.assertTrue(document["proof"]["declarative_components"])
+        self.assertTrue(document["proof"]["dedicated_service_semantics"])
+        self.assertFalse(document["proof"]["shared_runtime_activation"])
+        self.assertEqual("DEFERRED", document["preserved_boundaries"]["W1-CREATIVE-005"])
 
     def test_malformed_json_fails_closed(self):
         (self.root / "behavior_pack/items/new_item.item.json").write_text("{", encoding="utf-8")

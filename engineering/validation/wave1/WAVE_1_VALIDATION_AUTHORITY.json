@@ -23,7 +23,7 @@
     "animation_controllers": 21,
     "render_controllers": 21,
     "png_files": 307,
-    "script_files": 24
+    "script_files": 26
   },
   "required_successor_ids": {
     "blocks": [
@@ -302,7 +302,7 @@
   },
   "required_artifact_manifest": {
     "path": "engineering/validation/wave1/WAVE_1_ASHEN_IMPLEMENTED_CLOSURE.json",
-    "sha256": "0e2416c87bfff93f5a429a25b0c6bcfe551fe2afd33c44d33b521b25abb3ac68",
+    "sha256": "ac7b5c1c932d20359e4a3ad0b7a152daacfe2e5a380f995bbcfa5868d050dac9",
     "schema": "aionbound.wave1.ashen.implemented_source_closure.v1",
     "classification": "exact_source_path_and_byte_hash_closure_only_not_runtime_qualification"
   },
@@ -372,6 +372,22 @@
         "proof.shared_runtime_activation": false,
         "proof.bds": false,
         "proof.client": false
+      }
+    },
+    {
+      "path": "engineering/ashen-intake/equipment-functional/ASHEN_EQUIPMENT_FUNCTIONAL_EVIDENCE.json",
+      "sha256": "aa191f645cd234dd4cf5fdf0a5876b85d335c219577b1debe2942212c6b257ef",
+      "classification": "dedicated_functional_equipment_source_semantic_evidence_activation_withheld_not_shared_runtime_or_bds_proof",
+      "required_json_values": {
+        "schema": "aionbound.ashen_equipment_functional_evidence.v1",
+        "status": "DEDICATED_SERVICE_AND_DECLARATIVE_COMPONENTS_PASS_ACTIVATION_WITHHELD",
+        "proof.declarative_components": true,
+        "proof.dedicated_service_semantics": true,
+        "proof.shared_runtime_activation": false,
+        "proof.bds": false,
+        "proof.build": false,
+        "proof.client": false,
+        "preserved_boundaries.W1-CREATIVE-005": "DEFERRED"
       }
     }
   ],
