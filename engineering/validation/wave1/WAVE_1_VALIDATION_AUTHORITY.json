@@ -18,11 +18,19 @@
   "required_successor_ids": {
     "blocks": [
       "aionbound:ancient_acorn_display",
+      "aionbound:ash_log",
+      "aionbound:ash_soil",
+      "aionbound:basalt_brick",
+      "aionbound:basalt_pillar",
       "aionbound:briar_elk_trophy",
       "aionbound:briar_vine",
+      "aionbound:char_planks",
+      "aionbound:cinder_gravel",
+      "aionbound:ember_moss",
       "aionbound:ember_thistle",
       "aionbound:forest_brick",
       "aionbound:glow_moss",
+      "aionbound:heat_bark",
       "aionbound:hollow_wood",
       "aionbound:hollow_lily",
       "aionbound:lantern_bloom",
@@ -34,6 +42,7 @@
       "aionbound:pale_reed",
       "aionbound:root_flower",
       "aionbound:star_grass",
+      "aionbound:smolder_stone",
       "aionbound:stripped_whisperwood_log",
       "aionbound:thorn_stalker_skull",
       "aionbound:whisper_fern",
@@ -42,7 +51,8 @@
       "aionbound:whisperwood_planks",
       "aionbound:whisperwood_roots",
       "aionbound:whisperwood_sapling",
-      "aionbound:whisperwood_wood"
+      "aionbound:whisperwood_wood",
+      "aionbound:volcanic_glass_block"
     ],
     "entities": [
       "aionbound:bark_wraith",
@@ -91,10 +101,17 @@
     ],
     "items": [
       "aionbound:ancient_acorn",
+      "aionbound:ash_crystal",
+      "aionbound:basalt_core",
       "aionbound:briar_ring",
       "aionbound:briar_antler",
+      "aionbound:charbone",
+      "aionbound:ember_resin",
+      "aionbound:fire_bloom_seed",
+      "aionbound:furnace_chitin",
       "aionbound:glow_spore",
       "aionbound:hollow_amber",
+      "aionbound:heatstone",
       "aionbound:lantern_fur",
       "aionbound:lantern_badge",
       "aionbound:moon_sap_pendant",
@@ -106,6 +123,8 @@
       "aionbound:mossfang_spear",
       "aionbound:root_heart",
       "aionbound:root_knife",
+      "aionbound:smolder_bark",
+      "aionbound:sulfur_cluster",
       "aionbound:thorn_whip",
       "aionbound:whisper_bark",
       "aionbound:whisperwood_boots",
@@ -115,6 +134,7 @@
       "aionbound:whisperwood_hatchet",
       "aionbound:widow_fang_dagger",
       "aionbound:widow_silk",
+      "aionbound:volcanic_glass_shard",
       "aionbound:briar_cleaver",
       "aionbound:lantern_hook"
     ],
@@ -136,6 +156,48 @@
       "aionbound:ww_sapling_growth_tree"
     ]
   },
+  "required_content_closure": {
+    "items": [
+      {"identifier": "aionbound:ash_crystal", "definition": "behavior_pack/items/ash_crystal.item.json", "atlas_key": "ash_crystal", "texture": "textures/aionbound/ashen/items/ash_crystal", "png_sha256": "0a71da4ca802feab3a731360e7b0f7283bc0330b171aed131ac099fe97ea293b", "lang_key": "item.aionbound:ash_crystal"},
+      {"identifier": "aionbound:basalt_core", "definition": "behavior_pack/items/basalt_core.item.json", "atlas_key": "basalt_core", "texture": "textures/aionbound/ashen/items/basalt_core", "png_sha256": "4881c974f701fe5935d87e5102ce5de5256d17462e6594cfeba6cdf3709e2079", "lang_key": "item.aionbound:basalt_core"},
+      {"identifier": "aionbound:charbone", "definition": "behavior_pack/items/charbone.item.json", "atlas_key": "charbone", "texture": "textures/aionbound/ashen/items/charbone", "png_sha256": "d6efa03201302b15c1a37257be5dc43098587e423263e91cfd77f177c70cb4cb", "lang_key": "item.aionbound:charbone"},
+      {"identifier": "aionbound:ember_resin", "definition": "behavior_pack/items/ember_resin.item.json", "atlas_key": "ember_resin", "texture": "textures/aionbound/ashen/items/ember_resin", "png_sha256": "4bb151c2859dfaf5b09cf67ab4e74c626c687df77f6d554342a38b1246ac2b87", "lang_key": "item.aionbound:ember_resin"},
+      {"identifier": "aionbound:fire_bloom_seed", "definition": "behavior_pack/items/fire_bloom_seed.item.json", "atlas_key": "fire_bloom_seed", "texture": "textures/aionbound/ashen/items/fire_bloom_seed", "png_sha256": "321eb3af23d33e869e8a5d95ef66226332168f1e5ba92844d191cf248f4c7966", "lang_key": "item.aionbound:fire_bloom_seed"},
+      {"identifier": "aionbound:furnace_chitin", "definition": "behavior_pack/items/furnace_chitin.item.json", "atlas_key": "furnace_chitin", "texture": "textures/aionbound/ashen/items/furnace_chitin", "png_sha256": "618534b516b7f97c6facfffb415261f98f6c5ed122e63dbb560af35ffd375286", "lang_key": "item.aionbound:furnace_chitin"},
+      {"identifier": "aionbound:heatstone", "definition": "behavior_pack/items/heatstone.item.json", "atlas_key": "heatstone", "texture": "textures/aionbound/ashen/items/heatstone", "png_sha256": "3555a17ebc08d617a6141d5465eea30e2dae852360a20f0fbd06f7e1e5a05a61", "lang_key": "item.aionbound:heatstone"},
+      {"identifier": "aionbound:smolder_bark", "definition": "behavior_pack/items/smolder_bark.item.json", "atlas_key": "smolder_bark", "texture": "textures/aionbound/ashen/items/smolder_bark", "png_sha256": "8338d77b99e27beed0c3b644752f1deb41c2ee18b24e0efa53ab69613fed5b9e", "lang_key": "item.aionbound:smolder_bark"},
+      {"identifier": "aionbound:sulfur_cluster", "definition": "behavior_pack/items/sulfur_cluster.item.json", "atlas_key": "sulfur_cluster", "texture": "textures/aionbound/ashen/items/sulfur_cluster", "png_sha256": "5f50afa38aff69ea6e88f6368b7f41fcab1b8c3a53e9368c9518902e1cd69cb1", "lang_key": "item.aionbound:sulfur_cluster"},
+      {"identifier": "aionbound:volcanic_glass_shard", "definition": "behavior_pack/items/volcanic_glass_shard.item.json", "atlas_key": "volcanic_glass_shard", "texture": "textures/aionbound/ashen/items/volcanic_glass_shard", "png_sha256": "179728a7314056e7946476e22ba6015f381471e8e40d21cb77df8271bec97708", "lang_key": "item.aionbound:volcanic_glass_shard"}
+    ],
+    "blocks": [
+      {"identifier": "aionbound:ash_log", "definition": "behavior_pack/blocks/ash_log.block.json", "atlas_key": "ash_log", "texture": "textures/aionbound/ashen/blocks/ash_log", "png_sha256": "96bfb8dfd7768e29c00673b84709a1fa2bdcbcd4c53c095ff030112ab163f38b", "lang_key": "tile.aionbound:ash_log.name"},
+      {"identifier": "aionbound:ash_soil", "definition": "behavior_pack/blocks/ash_soil.block.json", "atlas_key": "ash_soil", "texture": "textures/aionbound/ashen/blocks/ash_soil", "png_sha256": "2b75f0f4931e3931e6615f526e19a0a3a6c36e8b923cf7e1ccd1cea410cfeaa6", "lang_key": "tile.aionbound:ash_soil.name"},
+      {"identifier": "aionbound:basalt_brick", "definition": "behavior_pack/blocks/basalt_brick.block.json", "atlas_key": "basalt_brick", "texture": "textures/aionbound/ashen/blocks/basalt_brick", "png_sha256": "56894f12b0b4a8c324bac1038a5f695a1653befc88827404edbe442aa7ba116b", "lang_key": "tile.aionbound:basalt_brick.name"},
+      {"identifier": "aionbound:basalt_pillar", "definition": "behavior_pack/blocks/basalt_pillar.block.json", "atlas_key": "basalt_pillar", "texture": "textures/aionbound/ashen/blocks/basalt_pillar", "png_sha256": "7465392d2de62aa8ef1b1e2051f3a5c0ce94e78f6ec26f0d7be1c04755a3d0bc", "lang_key": "tile.aionbound:basalt_pillar.name"},
+      {"identifier": "aionbound:char_planks", "definition": "behavior_pack/blocks/char_planks.block.json", "atlas_key": "char_planks", "texture": "textures/aionbound/ashen/blocks/char_planks", "png_sha256": "a71bf243141251390cb28593eec3d7f5eea12d7ed0cfab8cf1d7b9b9d4e0c872", "lang_key": "tile.aionbound:char_planks.name"},
+      {"identifier": "aionbound:cinder_gravel", "definition": "behavior_pack/blocks/cinder_gravel.block.json", "atlas_key": "cinder_gravel", "texture": "textures/aionbound/ashen/blocks/cinder_gravel", "png_sha256": "0d69f45d87e8733ad53112495c0a9dbae8dbe7d21d42a14604523b359b80da76", "lang_key": "tile.aionbound:cinder_gravel.name"},
+      {"identifier": "aionbound:ember_moss", "definition": "behavior_pack/blocks/ember_moss.block.json", "atlas_key": "ember_moss", "texture": "textures/aionbound/ashen/blocks/ember_moss", "png_sha256": "7ed43646e1e72a24e895a6cf78bb2cabc700e5d09a9a9ecbffbdd1b17d383c72", "lang_key": "tile.aionbound:ember_moss.name"},
+      {"identifier": "aionbound:heat_bark", "definition": "behavior_pack/blocks/heat_bark.block.json", "atlas_key": "heat_bark", "texture": "textures/aionbound/ashen/blocks/heat_bark", "png_sha256": "5dab84d652c5651dc3d7a4e9d9df4c99b94ce720b6522c6e982aa2a3b4880b9f", "lang_key": "tile.aionbound:heat_bark.name"},
+      {"identifier": "aionbound:smolder_stone", "definition": "behavior_pack/blocks/smolder_stone.block.json", "atlas_key": "smolder_stone", "texture": "textures/aionbound/ashen/blocks/smolder_stone", "png_sha256": "37c429462674987080c0d065b4511e59d89b9100d83c521b59b2b86ef6ab3fa9", "lang_key": "tile.aionbound:smolder_stone.name"},
+      {"identifier": "aionbound:volcanic_glass_block", "definition": "behavior_pack/blocks/volcanic_glass_block.block.json", "atlas_key": "volcanic_glass_block", "texture": "textures/aionbound/ashen/blocks/volcanic_glass_block", "png_sha256": "4effd5ffdf37effa06cdc06f4d40ef1dcacf231f96043f596d66b7ec2e1c4688", "lang_key": "tile.aionbound:volcanic_glass_block.name"}
+    ]
+  },
+  "required_evidence_artifacts": [
+    {
+      "path": "engineering/native-assets/ashen/representative/ASHEN_REPRESENTATIVE_NATIVE_REPORT.json",
+      "sha256": "ea4bc1c78f1dd532076b73c5620103c9043da170a519fbf3d531585d12481131",
+      "classification": "native_editable_asset_evidence_only_not_bp_rp_or_client_proof",
+      "required_json_values": {
+        "schema": "aionforge.wave1.ashen.representative_native.aggregate.v1",
+        "status": "PASS_NATIVE_REPAIR_GATE",
+        "totals.assets": 7,
+        "totals.errors": 0,
+        "totals.warnings": 0,
+        "proof_boundaries.does_not_prove": ["BP_RP_INTEGRATION", "GAMEPLAY", "BDS", "BEDROCK_CLIENT", "MULTIPLAYER", "PHYSICAL_PS4", "MARKETPLACE", "RELEASE"]
+      },
+      "required_scope": ["ash_drake", "ember_crow", "ash_ram", "fire_bloom", "smoke_reed", "ember_forge", "ancient_kiln"]
+    }
+  ],
   "minimum_engine_version": [1, 21, 80],
   "allowed_script_modules": ["@minecraft/server", "@minecraft/server-ui"],
   "allowed_script_module_versions": {

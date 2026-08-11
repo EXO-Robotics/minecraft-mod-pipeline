@@ -93,6 +93,12 @@ def fixture(root: Path) -> None:
     (rp / "textures" / "blocks").mkdir(parents=True)
     (rp / "textures" / "items" / "new_item.png").write_bytes(PNG)
     (rp / "textures" / "blocks" / "new_block.png").write_bytes(PNG)
+    (rp / "texts").mkdir(parents=True)
+    (rp / "texts" / "en_US.lang").write_text(
+        "item.aionbound:new_item=New Item\n"
+        "tile.aionbound:new_block.name=New Block\n",
+        encoding="utf-8",
+    )
     (bp / "scripts").mkdir(parents=True)
     (bp / "scripts" / "main.js").write_text('import { world } from "@minecraft/server";\nvoid world;\n', encoding="utf-8")
 
@@ -111,6 +117,39 @@ class Wave1ValidatorTests(unittest.TestCase):
             VALIDATOR.validate(self.root)
         return caught.exception.findings
 
+    def require_fixture_content_closure(self):
+        item_path = self.root / "behavior_pack/items/new_item.item.json"
+        item = json.loads(item_path.read_text())
+        item["minecraft:item"]["components"]["minecraft:icon"] = {
+            "textures": {"default": "new_item"}
+        }
+        write_json(item_path, item)
+        authority_path = self.root / VALIDATOR.AUTHORITY_REL
+        authority = json.loads(authority_path.read_text())
+        authority["required_content_closure"] = {
+            "items": [{
+                "identifier": "aionbound:new_item",
+                "definition": "behavior_pack/items/new_item.item.json",
+                "atlas_key": "new_item",
+                "texture": "textures/items/new_item",
+                "png_sha256": VALIDATOR.sha256(
+                    self.root / "resource_pack/textures/items/new_item.png"
+                ),
+                "lang_key": "item.aionbound:new_item",
+            }],
+            "blocks": [{
+                "identifier": "aionbound:new_block",
+                "definition": "behavior_pack/blocks/new_block.block.json",
+                "atlas_key": "new_block",
+                "texture": "textures/blocks/new_block",
+                "png_sha256": VALIDATOR.sha256(
+                    self.root / "resource_pack/textures/blocks/new_block.png"
+                ),
+                "lang_key": "tile.aionbound:new_block.name",
+            }],
+        }
+        write_json(authority_path, authority)
+
     def test_valid_successor_tree_passes_with_proof_boundaries(self):
         report = VALIDATOR.validate(self.root)
         self.assertEqual(report["status"], "PASS")
@@ -126,6 +165,103 @@ class Wave1ValidatorTests(unittest.TestCase):
         atlas["texture_data"]["second_item"] = {"textures": "textures/items/new_item"}
         write_json(atlas_path, atlas)
         self.assertEqual(VALIDATOR.validate(self.root)["inventory"]["items"], 2)
+
+    def test_required_content_closure_emits_definition_atlas_lang_and_png_hash_receipts(self):
+        self.require_fixture_content_closure()
+        receipts = VALIDATOR.validate(self.root)["required_content_closure_receipts"]
+        self.assertEqual([row["identifier"] for row in receipts], [
+            "aionbound:new_item", "aionbound:new_block",
+        ])
+        self.assertTrue(all(len(row["definition_sha256"]) == 64 for row in receipts))
+        self.assertTrue(all(len(row["atlas_sha256"]) == 64 for row in receipts))
+        self.assertTrue(all(len(row["lang_sha256"]) == 64 for row in receipts))
+        self.assertTrue(all(len(row["png_sha256"]) == 64 for row in receipts))
+        self.assertEqual(receipts[0]["lang_value"], "New Item")
+
+    def test_required_content_closure_fails_on_lang_atlas_or_png_hash_drift(self):
+        self.require_fixture_content_closure()
+        lang_path = self.root / "resource_pack/texts/en_US.lang"
+        lang_path.write_text("tile.aionbound:new_block.name=New Block\n", encoding="utf-8")
+        atlas_path = self.root / "resource_pack/textures/item_texture.json"
+        atlas = json.loads(atlas_path.read_text())
+        atlas["texture_data"]["new_item"]["textures"] = "textures/items/wrong"
+        write_json(atlas_path, atlas)
+        authority_path = self.root / VALIDATOR.AUTHORITY_REL
+        authority = json.loads(authority_path.read_text())
+        authority["required_content_closure"]["blocks"][0]["png_sha256"] = "0" * 64
+        write_json(authority_path, authority)
+        findings = self.findings()
+        self.assertIn(
+            "content_closure_missing_lang:aionbound:new_item:item.aionbound:new_item",
+            findings,
+        )
+        self.assertTrue(any(value.startswith(
+            "content_closure_atlas_path:items:aionbound:new_item:"
+        ) for value in findings))
+        self.assertTrue(any(value.startswith(
+            "content_closure_png_sha256:aionbound:new_block:"
+        ) for value in findings))
+
+    def test_required_native_evidence_is_hash_bound_and_narrowly_classified(self):
+        evidence_path = self.root / "engineering/native/report.json"
+        write_json(evidence_path, {
+            "status": "PASS_NATIVE_REPAIR_GATE",
+            "scope": ["one"],
+            "totals": {"assets": 1},
+        })
+        authority_path = self.root / VALIDATOR.AUTHORITY_REL
+        authority = json.loads(authority_path.read_text())
+        authority["required_evidence_artifacts"] = [{
+            "path": "engineering/native/report.json",
+            "sha256": VALIDATOR.sha256(evidence_path),
+            "classification": "native_editable_asset_evidence_only_not_bp_rp_or_client_proof",
+            "required_json_values": {
+                "status": "PASS_NATIVE_REPAIR_GATE",
+                "totals.assets": 1,
+            },
+            "required_scope": ["one"],
+        }]
+        write_json(authority_path, authority)
+        report = VALIDATOR.validate(self.root)
+        self.assertEqual(
+            report["required_evidence_artifacts_verified"][0]["classification"],
+            "native_editable_asset_evidence_only_not_bp_rp_or_client_proof",
+        )
+        self.assertIn(
+            "native_evidence_artifact_presence_and_hash_only_not_bp_rp_or_client_proof",
+            report["proof_boundaries"],
+        )
+        write_json(evidence_path, {"status": "FAIL", "scope": ["one"], "totals": {"assets": 1}})
+        self.assertTrue(any(value.startswith(
+            "required_evidence_artifact_sha256:engineering/native/report.json:"
+        ) for value in self.findings()))
+
+    def test_repository_authority_names_exact_ashen_resource_and_full_cube_block_sets(self):
+        authority = json.loads((REPO / VALIDATOR.AUTHORITY_REL).read_text())
+        expected_items = {
+            "aionbound:ash_crystal", "aionbound:basalt_core", "aionbound:charbone",
+            "aionbound:ember_resin", "aionbound:fire_bloom_seed", "aionbound:furnace_chitin",
+            "aionbound:heatstone", "aionbound:smolder_bark", "aionbound:sulfur_cluster",
+            "aionbound:volcanic_glass_shard",
+        }
+        expected_blocks = {
+            "aionbound:ash_log", "aionbound:ash_soil", "aionbound:basalt_brick",
+            "aionbound:basalt_pillar", "aionbound:char_planks", "aionbound:cinder_gravel",
+            "aionbound:ember_moss", "aionbound:heat_bark", "aionbound:smolder_stone",
+            "aionbound:volcanic_glass_block",
+        }
+        self.assertTrue(expected_items.issubset(authority["required_successor_ids"]["items"]))
+        self.assertTrue(expected_blocks.issubset(authority["required_successor_ids"]["blocks"]))
+        self.assertEqual(
+            {row["identifier"] for row in authority["required_content_closure"]["items"]},
+            expected_items,
+        )
+        self.assertEqual(
+            {row["identifier"] for row in authority["required_content_closure"]["blocks"]},
+            expected_blocks,
+        )
+        self.assertEqual(authority["minimum_inventory"]["items"], 56)
+        self.assertEqual(authority["minimum_inventory"]["blocks"], 49)
 
     def test_malformed_json_fails_closed(self):
         (self.root / "behavior_pack/items/new_item.item.json").write_text("{", encoding="utf-8")

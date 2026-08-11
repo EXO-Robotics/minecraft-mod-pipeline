@@ -20,6 +20,7 @@ CUSTOM_ID = re.compile(r"^[a-z0-9_.-]+:[a-z0-9_./-]+$")
 IMPORT = re.compile(r"(?:from\s+|import\s*\(\s*)[\"']([^\"']+)[\"']")
 PROOF_BOUNDARIES = [
     "source_tree_mechanical_only",
+    "native_evidence_artifact_presence_and_hash_only_not_bp_rp_or_client_proof",
     "not_immutable_package_proof",
     "not_archive_extracted_entrypoint_proof",
     "not_bedrock_schema_or_stable_bds_proof",
@@ -54,6 +55,34 @@ def sha256(path: Path) -> str:
         for chunk in iter(lambda: handle.read(1024 * 1024), b""):
             digest.update(chunk)
     return digest.hexdigest()
+
+
+def lang_entries(path: Path) -> dict[str, str]:
+    """Parse Bedrock's simple key=value language format without normalizing bytes."""
+    entries: dict[str, str] = {}
+    for number, raw in enumerate(path.read_text(encoding="utf-8").splitlines(), 1):
+        line = raw.strip()
+        if not line or line.startswith("#"):
+            continue
+        if "=" not in raw:
+            raise ValidationFailure([f"malformed_lang_entry:{path}:{number}"])
+        key, value = raw.split("=", 1)
+        key = key.strip()
+        if not key:
+            raise ValidationFailure([f"empty_lang_key:{path}:{number}"])
+        if key in entries:
+            raise ValidationFailure([f"duplicate_lang_key:{path}:{number}:{key}"])
+        entries[key] = value
+    return entries
+
+
+def dotted_value(document: Any, dotted: str) -> Any:
+    value = document
+    for part in dotted.split("."):
+        if not isinstance(value, dict) or part not in value:
+            return None
+        value = value[part]
+    return value
 
 
 def pack_tree_sha256(bp: Path, rp: Path) -> tuple[str, int]:
@@ -447,6 +476,131 @@ def validate(root: Path) -> dict[str, Any]:
             if path is None or not path.is_file():
                 errors.append(f"atlas_missing_texture:{atlas_name}:{key}:{value}")
 
+    lang_path = rp / "texts" / "en_US.lang"
+    lang: dict[str, str] = {}
+    if not lang_path.is_file():
+        errors.append(f"missing_required_lang_file:{lang_path}")
+    else:
+        try:
+            lang = lang_entries(lang_path)
+        except ValidationFailure as exc:
+            errors.extend(exc.findings)
+
+    content_closure_receipts: list[dict[str, Any]] = []
+    closure_maps = {
+        "items": (items, item_atlas, "items"),
+        "blocks": (blocks, terrain, "terrain"),
+    }
+    for category, requirements in authority.get("required_content_closure", {}).items():
+        if category not in closure_maps:
+            errors.append(f"unsupported_required_content_closure_category:{category}")
+            continue
+        definitions, atlas, atlas_name = closure_maps[category]
+        for requirement in requirements:
+            identifier = requirement.get("identifier")
+            expected_definition = requirement.get("definition")
+            atlas_key = requirement.get("atlas_key")
+            expected_texture = requirement.get("texture")
+            expected_png_sha = requirement.get("png_sha256")
+            lang_key = requirement.get("lang_key")
+            actual_definition = definitions.get(identifier)
+            if actual_definition is None:
+                errors.append(f"content_closure_missing_definition:{category}:{identifier}")
+                continue
+            actual_definition_rel = actual_definition.relative_to(root).as_posix()
+            if actual_definition_rel != expected_definition:
+                errors.append(
+                    f"content_closure_definition_path:{category}:{identifier}:"
+                    f"{actual_definition_rel}!={expected_definition}"
+                )
+
+            if category == "items":
+                item = parsed[actual_definition]["minecraft:item"]
+                icon = item.get("components", {}).get("minecraft:icon", {})
+                declared_key = icon.get("textures", {}).get("default") if isinstance(icon, dict) else icon
+                if declared_key != atlas_key:
+                    errors.append(
+                        f"content_closure_item_icon_key:{identifier}:{declared_key}!={atlas_key}"
+                    )
+            else:
+                materials = parsed[actual_definition]["minecraft:block"].get("components", {}).get(
+                    "minecraft:material_instances", {}
+                )
+                declared_keys = sorted({
+                    material.get("texture")
+                    for material in materials.values()
+                    if isinstance(material, dict) and isinstance(material.get("texture"), str)
+                }) if isinstance(materials, dict) else []
+                if declared_keys != [atlas_key]:
+                    errors.append(
+                        f"content_closure_block_material_key:{identifier}:{declared_keys}!={[atlas_key]}"
+                    )
+
+            atlas_entry = atlas.get(atlas_key) if isinstance(atlas, dict) else None
+            actual_texture = atlas_entry.get("textures") if isinstance(atlas_entry, dict) else atlas_entry
+            if actual_texture != expected_texture:
+                errors.append(
+                    f"content_closure_atlas_path:{atlas_name}:{identifier}:"
+                    f"{actual_texture}!={expected_texture}"
+                )
+            png_path = texture_path(rp, actual_texture)
+            actual_png_sha = sha256(png_path) if png_path is not None and png_path.is_file() else None
+            if actual_png_sha != expected_png_sha:
+                errors.append(
+                    f"content_closure_png_sha256:{identifier}:{actual_png_sha}!={expected_png_sha}"
+                )
+            if lang_key not in lang or not lang.get(lang_key, "").strip():
+                errors.append(f"content_closure_missing_lang:{identifier}:{lang_key}")
+
+            atlas_file = rp / "textures" / (
+                "item_texture.json" if atlas_name == "items" else "terrain_texture.json"
+            )
+            content_closure_receipts.append({
+                "category": category,
+                "identifier": identifier,
+                "definition": actual_definition_rel,
+                "definition_sha256": sha256(actual_definition),
+                "atlas": atlas_file.relative_to(root).as_posix(),
+                "atlas_sha256": sha256(atlas_file),
+                "atlas_key": atlas_key,
+                "texture": actual_texture,
+                "png": png_path.relative_to(root).as_posix() if png_path is not None and png_path.is_file() else None,
+                "png_sha256": actual_png_sha,
+                "lang": "resource_pack/texts/en_US.lang",
+                "lang_sha256": sha256(lang_path) if lang_path.is_file() else None,
+                "lang_key": lang_key,
+                "lang_value": lang.get(lang_key),
+            })
+
+    required_evidence_receipts: list[dict[str, Any]] = []
+    for requirement in authority.get("required_evidence_artifacts", []):
+        relative = requirement.get("path")
+        artifact = root / relative if isinstance(relative, str) else None
+        if artifact is None or not artifact.is_file():
+            errors.append(f"missing_required_evidence_artifact:{relative}")
+            continue
+        actual_sha = sha256(artifact)
+        expected_sha = requirement.get("sha256")
+        if actual_sha != expected_sha:
+            errors.append(f"required_evidence_artifact_sha256:{relative}:{actual_sha}!={expected_sha}")
+        document = read_json(artifact)
+        for dotted, expected in requirement.get("required_json_values", {}).items():
+            actual = dotted_value(document, dotted)
+            if actual != expected:
+                errors.append(
+                    f"required_evidence_artifact_value:{relative}:{dotted}:{actual!r}!={expected!r}"
+                )
+        required_scope = requirement.get("required_scope")
+        if required_scope is not None and document.get("scope") != required_scope:
+            errors.append(
+                f"required_evidence_artifact_scope:{relative}:{document.get('scope')!r}!={required_scope!r}"
+            )
+        required_evidence_receipts.append({
+            "path": relative,
+            "sha256": actual_sha,
+            "classification": requirement.get("classification"),
+        })
+
     geometries: set[str] = set()
     for path in sorted((rp / "models").rglob("*.json")):
         document = parsed.get(path, {})
@@ -583,6 +737,8 @@ def validate(root: Path) -> dict[str, Any]:
             "authority_sha256": sha256(authority_path),
             "inventory": inventory,
             "source_evidence": source_evidence,
+            "required_content_closure_receipts": content_closure_receipts,
+            "required_evidence_artifacts_verified": required_evidence_receipts,
         })
     return {
         "schema_version": 1,
@@ -593,10 +749,13 @@ def validate(root: Path) -> dict[str, Any]:
         "source_evidence": source_evidence,
         "inventory": inventory,
         "required_successor_ids_verified": authority["required_successor_ids"],
+        "required_content_closure_receipts": content_closure_receipts,
+        "required_evidence_artifacts_verified": required_evidence_receipts,
         "checks": [
             "json_and_png_structure", "manifest_and_dependency_closure", "identifier_closure",
             "texture_and_model_closure", "recipe_and_loot_closure", "script_import_and_runtime_policy",
             "minimum_substrate_inventory", "explicit_successor_additions",
+            "required_atlas_lang_png_closure", "required_evidence_artifact_hash_and_shape",
         ],
         "proof_boundaries": PROOF_BOUNDARIES,
     }
