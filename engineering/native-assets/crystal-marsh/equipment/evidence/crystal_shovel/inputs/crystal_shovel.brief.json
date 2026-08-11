@@ -1,0 +1,44 @@
+{
+  "name": "crystal_shovel",
+  "display_name": "Crystal Shovel",
+  "sprint": "asset_sprint_006_equipment_progression",
+  "tier": "TOOL",
+  "role": "Marsh dig shovel",
+  "profile": "item",
+  "model_identifier": "geometry.aionforge_eq.crystal_shovel",
+  "cube_count": 12,
+  "bone_count": 4,
+  "density_floor": 12,
+  "locators": [
+    "effect"
+  ],
+  "palette": {
+    "metal": [
+      26,
+      46,
+      42
+    ],
+    "accent": [
+      126,
+      207,
+      191
+    ],
+    "energy": [
+      184,
+      240,
+      232
+    ]
+  },
+  "animations": [
+    "hold",
+    "dig"
+  ],
+  "minecraft_scale": "1.0",
+  "texture_resolution": "64\u00d764",
+  "production_priority": "P0",
+  "related_assets": "marsh_sickle",
+  "originality": "Clean-room Equipment & Progression manufacture; biome-linked visual language",
+  "forbidden": "No diamond clones; no simple recolors; no WW/AH/CM creature paste; no Gloamveil neon teal",
+  "editable": "assets/editable/crystal_shovel.bbmodel",
+  "claims_boundary": "Visual production only. No BP/JSON/AI/gameplay/recipes/balance."
+}

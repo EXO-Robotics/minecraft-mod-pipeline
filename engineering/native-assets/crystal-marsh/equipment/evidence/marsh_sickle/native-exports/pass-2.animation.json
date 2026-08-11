@@ -1,0 +1,64 @@
+{
+  "format_version": "1.8.0",
+  "animations": {
+    "animation.aionbound.marsh_sickle.hold": {
+      "loop": true,
+      "animation_length": 3,
+      "bones": {
+        "grip": {
+          "rotation": {
+            "0.0": [
+              0,
+              0,
+              0
+            ],
+            "0.75": [
+              0,
+              0,
+              1.2
+            ],
+            "1.5": [
+              0,
+              0,
+              0
+            ],
+            "2.25": [
+              0,
+              0,
+              -1.2
+            ],
+            "3.0": [
+              0,
+              0,
+              0
+            ]
+          }
+        }
+      }
+    },
+    "animation.aionbound.marsh_sickle.reap": {
+      "animation_length": 0.62,
+      "bones": {
+        "chassis": {
+          "rotation": {
+            "0.0": [
+              0,
+              0,
+              0
+            ],
+            "0.3": [
+              0,
+              0,
+              -32
+            ],
+            "0.6": [
+              0,
+              0,
+              0
+            ]
+          }
+        }
+      }
+    }
+  }
+}

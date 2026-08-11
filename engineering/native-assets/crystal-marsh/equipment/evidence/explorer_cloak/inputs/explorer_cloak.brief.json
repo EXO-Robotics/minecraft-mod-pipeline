@@ -1,0 +1,43 @@
+{
+  "name": "explorer_cloak",
+  "display_name": "Explorer Cloak",
+  "sprint": "asset_sprint_006_equipment_progression",
+  "tier": "ARMOR",
+  "role": "Cross-biome trail cloak",
+  "profile": "item",
+  "model_identifier": "geometry.aionforge_eq.explorer_cloak",
+  "cube_count": 15,
+  "bone_count": 4,
+  "density_floor": 14,
+  "locators": [
+    "effect"
+  ],
+  "palette": {
+    "metal": [
+      139,
+      106,
+      66
+    ],
+    "accent": [
+      92,
+      106,
+      88
+    ],
+    "energy": [
+      184,
+      148,
+      62
+    ]
+  },
+  "animations": [
+    "idle_sway"
+  ],
+  "minecraft_scale": "back display ~1.4",
+  "texture_resolution": "64\u00d764",
+  "production_priority": "P0",
+  "related_assets": "surveyor_staff, surveyor_medallion",
+  "originality": "Clean-room Equipment & Progression manufacture; biome-linked visual language",
+  "forbidden": "No diamond clones; no simple recolors; no WW/AH/CM creature paste; no Gloamveil neon teal",
+  "editable": "assets/editable/explorer_cloak.bbmodel",
+  "claims_boundary": "Visual production only. No BP/JSON/AI/gameplay/recipes/balance."
+}

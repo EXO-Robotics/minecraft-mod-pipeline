@@ -1,0 +1,88 @@
+{
+  "format_version": "1.8.0",
+  "animations": {
+    "animation.aionbound.prism_bow.idle_hold": {
+      "loop": true,
+      "animation_length": 3,
+      "bones": {
+        "grip": {
+          "rotation": {
+            "0.0": [
+              0,
+              0,
+              0
+            ],
+            "0.75": [
+              0,
+              0,
+              1.4
+            ],
+            "1.5": [
+              0,
+              0,
+              0
+            ],
+            "2.25": [
+              0,
+              0,
+              -1.4
+            ],
+            "3.0": [
+              0,
+              0,
+              0
+            ]
+          }
+        }
+      }
+    },
+    "animation.aionbound.prism_bow.draw_pose": {
+      "animation_length": 0.82,
+      "bones": {
+        "head": {
+          "rotation": {
+            "0.0": [
+              0,
+              0,
+              0
+            ],
+            "0.45": [
+              0,
+              0,
+              -18
+            ],
+            "0.8": [
+              0,
+              0,
+              0
+            ]
+          }
+        }
+      }
+    },
+    "animation.aionbound.prism_bow.fire_pose": {
+      "animation_length": 0.48,
+      "bones": {
+        "chassis": {
+          "position": {
+            "0.0": [
+              0,
+              0,
+              0
+            ],
+            "0.2": [
+              0,
+              0,
+              0.45
+            ],
+            "0.5": [
+              0,
+              0,
+              0
+            ]
+          }
+        }
+      }
+    }
+  }
+}

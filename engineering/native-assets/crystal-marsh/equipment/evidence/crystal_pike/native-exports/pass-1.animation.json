@@ -1,0 +1,64 @@
+{
+  "format_version": "1.8.0",
+  "animations": {
+    "animation.aionbound.crystal_pike.idle_hold": {
+      "loop": true,
+      "animation_length": 3.2,
+      "bones": {
+        "grip": {
+          "rotation": {
+            "0.0": [
+              0,
+              0,
+              0
+            ],
+            "0.8": [
+              0,
+              0,
+              1.6
+            ],
+            "1.6": [
+              0,
+              0,
+              0
+            ],
+            "2.4": [
+              0,
+              0,
+              -1.6
+            ],
+            "3.2": [
+              0,
+              0,
+              0
+            ]
+          }
+        }
+      }
+    },
+    "animation.aionbound.crystal_pike.thrust_pose": {
+      "animation_length": 0.72,
+      "bones": {
+        "chassis": {
+          "rotation": {
+            "0.0": [
+              0,
+              0,
+              0
+            ],
+            "0.35": [
+              16,
+              0,
+              0
+            ],
+            "0.7": [
+              0,
+              0,
+              0
+            ]
+          }
+        }
+      }
+    }
+  }
+}
