@@ -193,7 +193,7 @@ test("shipping scripts use approved stable APIs only and one central arbiter", a
   assert.equal((runtime.match(/from "@minecraft\/server-ui"/g) ?? []).length, 1);
   assert.equal(manifest.dependencies.some(dependency => dependency.module_name === "@minecraft/server-ui" && dependency.version === "2.0.0"), true);
   assert.equal((runtime.match(/new RuntimeArbiter\(/g) ?? []).length, 1);
-  assert.equal((main.match(/runtime-ready-g7/g) ?? []).length, 1); assert.ok(main.indexOf("runtime-ready-g7") < main.indexOf("startRuntime()"));
+  assert.equal((main.match(/runtime-ready-g8/g) ?? []).length, 1); assert.ok(main.indexOf("runtime-ready-g8") < main.indexOf("startRuntime()"));
   assert.equal(runtime.includes("useProgressBlock"), false); assert.equal(runtime.includes("platform.world.beforeEvents.playerInteractWithBlock.subscribe"), true);
 });
 
