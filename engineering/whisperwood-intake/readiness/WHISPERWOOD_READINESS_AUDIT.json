@@ -1,0 +1,158 @@
+{
+  "schema_version": 1,
+  "audit_id": "WAVE1_WHISPERWOOD_READINESS_A9D64B2",
+  "audited_head": "a9d64b2a999462a2c8e2f1f1779e06c8cf6ca702",
+  "overall_classification": "PRE_LOOT_INTEGRATION_PREFIX_NOT_VERTICAL_COMPLETE",
+  "checkpoint_1_authorized": false,
+  "authorities": {
+    "creative_contract_md_sha256": "3116c217e06afe1fd0cd56ee742c537f948a4c91193ec831fd1b3ec362837bfc",
+    "creative_contract_json_sha256": "aa1f54df10d27d5c5675aae843ffe0d2946123d12a6509f7f021408bcdde9fb5",
+    "engineering_decision_ledger_json_sha256": "ed71046df20a66440ac2cc73cc3c25f629c63f6ee8ade01449c43ea537de8c31"
+  },
+  "classification_vocabulary": [
+    "PASS_SOURCE",
+    "WITHHELD_TICKET",
+    "UNPROVEN_CLIENT_OR_BDS",
+    "MISSING_IMPLEMENTATION"
+  ],
+  "criteria": [
+    {
+      "group": "objective",
+      "id": "first_living_biome_fully_playable_offline",
+      "classification": "MISSING_IMPLEMENTATION",
+      "finding": "The source prefix contains all Packet 001 identities, but the obtainable loot/crafting/progression path and WW-facing Packet 006 subset are absent; offline playability is also unproven."
+    },
+    {
+      "group": "definition_of_done",
+      "id": "all_001_ids_in_world",
+      "classification": "MISSING_IMPLEMENTATION",
+      "finding": "All 50 Packet 001 identities have source registrations, but resource acquisitions are absent, star_grass/pale_reed/ember_thistle lack natural placement, and no client/BDS load proves them in-world."
+    },
+    {
+      "group": "definition_of_done",
+      "id": "ww_craft_loop",
+      "classification": "MISSING_IMPLEMENTATION",
+      "finding": "Only four timber construction recipes exist. No resource-to-component-to-WW-equipment loop exists."
+    },
+    {
+      "group": "definition_of_done",
+      "id": "hunter_camp_waystone_cave",
+      "classification": "MISSING_IMPLEMENTATION",
+      "finding": "The three structure templates and generation rules exist statically, but their anchors are inert and empty; waystone activation, visit rewards, and exact terrain behavior are absent or unproven."
+    },
+    {
+      "group": "definition_of_done",
+      "id": "thorn_apex_runnable",
+      "classification": "WITHHELD_TICKET",
+      "finding": "thorn_stalker is explicitly a base hostile shell only. Apex phases, reset/ownership/persistence, and terminal reward semantics are blocked by W1-CREATIVE-003 and W1-CREATIVE-004."
+    },
+    {
+      "group": "definition_of_done",
+      "id": "drops_feed_ww_crafts",
+      "classification": "WITHHELD_TICKET",
+      "finding": "All ten Whisperwood entity runtimes intentionally omit loot. Canonical non-warehouse drop identities and numeric loot envelopes remain blocked by W1-CREATIVE-001 and W1-CREATIVE-004."
+    },
+    {
+      "group": "definition_of_done",
+      "id": "non_statue_ambient",
+      "classification": "PASS_SOURCE",
+      "finding": "Static entity tests prove role-specific roam, flee/react, pursuit, flight, climbing, and pack components across all ten Whisperwood entities; live motion remains a Checkpoint 1 observation."
+    },
+    {
+      "group": "acceptance",
+      "id": "spawn_to_ww_explore_without_commands",
+      "classification": "UNPROVEN_CLIENT_OR_BDS",
+      "finding": "Natural spawn and generation source exists, but no authorized client/BDS run has demonstrated command-free entry and exploration. Missing acquisitions also prevent the complete intended loop."
+    },
+    {
+      "group": "acceptance",
+      "id": "craft_spear_or_armor_piece",
+      "classification": "MISSING_IMPLEMENTATION",
+      "finding": "mossfang_spear and all four whisperwood armor pieces are absent, as are the rest of the 21 WW-facing Packet 006 IDs."
+    },
+    {
+      "group": "acceptance",
+      "id": "find_structure",
+      "classification": "UNPROVEN_CLIENT_OR_BDS",
+      "finding": "Eight templates and ten total prop/structure generation paths close statically, but actual discovery and terrain fit are unproven."
+    },
+    {
+      "group": "acceptance",
+      "id": "defeat_stalker_or_shrine_path",
+      "classification": "WITHHELD_TICKET",
+      "finding": "The apex is not implemented and the owl_shrine anchor has no rite/reward path. Boss and loot authority tickets block completion semantics."
+    },
+    {
+      "group": "acceptance",
+      "id": "activate_waystone",
+      "classification": "MISSING_IMPLEMENTATION",
+      "finding": "forest_waystone has a static structure template and inert lodestone anchor only; there is no activation handler or persisted activation stamp."
+    },
+    {
+      "group": "acceptance",
+      "id": "obtain_ah_rumor",
+      "classification": "MISSING_IMPLEMENTATION",
+      "finding": "broken_wagon exists, but the approved AH map-scrap/rumor reward and transition hook are absent."
+    },
+    {
+      "group": "checkpoint_1",
+      "id": "normalized_assets_load",
+      "classification": "UNPROVEN_CLIENT_OR_BDS",
+      "finding": "Source closure and native evidence pass, but Bedrock loading is not proven by source tests."
+    },
+    {
+      "group": "checkpoint_1",
+      "id": "natural_entities_initialize",
+      "classification": "UNPROVEN_CLIENT_OR_BDS",
+      "finding": "Ten entity definitions and bounded forest spawn rules close statically; natural initialization is unrun."
+    },
+    {
+      "group": "checkpoint_1",
+      "id": "structures_resources_register",
+      "classification": "UNPROVEN_CLIENT_OR_BDS",
+      "finding": "Source validator confirms named structure, feature, rule, block, and item registrations; Stable BDS registration is unrun."
+    },
+    {
+      "group": "checkpoint_1",
+      "id": "runtime_starts_cleanly",
+      "classification": "UNPROVEN_CLIENT_OR_BDS",
+      "finding": "The source harness starts and prints runtime-ready-g8, but exact-package Stable BDS startup is unrun."
+    },
+    {
+      "group": "checkpoint_1",
+      "id": "same_world_reopens",
+      "classification": "UNPROVEN_CLIENT_OR_BDS",
+      "finding": "Codex v4 migration/reopen semantics pass in Node; a Bedrock same-world restart is unrun."
+    },
+    {
+      "group": "checkpoint_1",
+      "id": "no_candidate_scoped_content_runtime_errors",
+      "classification": "UNPROVEN_CLIENT_OR_BDS",
+      "finding": "Source validation is clean, but only the bounded Checkpoint 1 BDS scan can prove this criterion."
+    }
+  ],
+  "source_evidence": {
+    "wave1_source_validator": "PASS",
+    "wave1_source_sha256": "1126b0e38ac1dd7e04af005918f721e0362c9a45f91313b100f46a5375dcc19f",
+    "codex_and_runtime_node_tests": "35_PASS_0_FAIL",
+    "wave1_validator_unit_tests": "14_PASS_0_FAIL",
+    "whisperwood_lane_tests": "46_PASS_THEN_6_ERROR_PATH_AUTHORITY_RESOLUTION",
+    "path_resolution_defect": "entity-runtime/build_entity_runtime_map.py resolves the Creative root as bedrock-server/crazycraft-pack-production-v1 instead of bedrock-server/program/crazycraft-pack-production-v1"
+  },
+  "safe_targeted_checks_before_ticket_ratification": [
+    "repair the Creative-root resolver used by legacy Whisperwood mapping tests and rerun those source-only tests",
+    "add fail-closed source tests asserting all 21 WW-facing Packet 006 IDs remain missing until intentionally implemented",
+    "add source closure tests for resource acquisition routes, waystone activation, AH rumor routing, sapling growth, sound bindings, and the three unplaced plants",
+    "rerun tools/validate_wave1.py and the bounded Node semantic suite after each safe non-ticketed implementation slice"
+  ],
+  "minimal_closure_path": [
+    "ratify W1-CREATIVE-001, W1-CREATIVE-003, W1-CREATIVE-004, and the same-base-ID behavior decision needed from W1-CREATIVE-005 for the WW subset",
+    "implement ten resource acquisition paths and entity/structure loot with approved identities and ranges",
+    "implement the 21 WW-facing Packet 006 items, presentation, derived components, recipes, repair paths, accessory behavior, and placeable trophies",
+    "implement Thorn Court phases, reset/ownership/persistence, guarded skull reward, and the alternate shrine path",
+    "implement forest waystone activation/persistence and broken-wagon AH rumor/map-scrap progression",
+    "complete sound bindings, required restart semantics, sapling regrowth, and natural placement for star_grass, pale_reed, and ember_thistle",
+    "run targeted source closure; only after vertical completion authorize the single bounded Checkpoint 1 exact-package BDS smoke"
+  ],
+  "proof_boundary": "No BDS, build, package, freeze, client, console, multiplayer, or release evidence was produced by this audit."
+}

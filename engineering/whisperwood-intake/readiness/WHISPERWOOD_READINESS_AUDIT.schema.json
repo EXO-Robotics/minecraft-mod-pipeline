@@ -1,0 +1,37 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "aionforge://engineering/whisperwood-readiness-audit.schema.json",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "audit_id",
+    "audited_head",
+    "overall_classification",
+    "checkpoint_1_authorized",
+    "criteria",
+    "minimal_closure_path",
+    "proof_boundary"
+  ],
+  "properties": {
+    "schema_version": { "const": 1 },
+    "audit_id": { "type": "string", "minLength": 1 },
+    "audited_head": { "type": "string", "pattern": "^[0-9a-f]{40}$" },
+    "overall_classification": { "const": "PRE_LOOT_INTEGRATION_PREFIX_NOT_VERTICAL_COMPLETE" },
+    "checkpoint_1_authorized": { "const": false },
+    "criteria": {
+      "type": "array",
+      "minItems": 19,
+      "items": {
+        "type": "object",
+        "required": ["group", "id", "classification", "finding"],
+        "additionalProperties": false,
+        "properties": {
+          "group": { "enum": ["objective", "definition_of_done", "acceptance", "checkpoint_1"] },
+          "id": { "type": "string", "minLength": 1 },
+          "classification": { "enum": ["PASS_SOURCE", "WITHHELD_TICKET", "UNPROVEN_CLIENT_OR_BDS", "MISSING_IMPLEMENTATION"] },
+          "finding": { "type": "string", "minLength": 1 }
+        }
+      }
+    }
+  }
+}
