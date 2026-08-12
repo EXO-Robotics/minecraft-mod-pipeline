@@ -136,8 +136,7 @@ export function createTwinbondService({ world, system, ItemStack, state, bounded
     return subtract(floorLocation(block.location), anchor);
   }
   function defaultPlaceSite(block, arena) {
-    const result = block.dimension.runCommand?.(`structure load aionbound:twinbond_slice_v1 ${arena.origin.x} ${arena.origin.y} ${arena.origin.z}`);
-    if (result && Number.isFinite(result.successCount) && result.successCount < 1) return false;
+    world.structureManager.place("aionbound:twinbond_slice_v1", block.dimension, arena.origin);
     const placements = [
       [arena.arrival, "aionbound:twinbond_approach_marker"],
       [arena.gate, "aionbound:twinbond_obelisk_site"],

@@ -169,3 +169,10 @@ test("shared runtime composition adds no subscription or interval class and lega
   for (const required of ["twinbond.reconcile()", "twinbond.tick()", "twinbond.handleHurt(event)", "twinbond.bossDeath(event)"]) assert.equal(runtime.includes(required), true);
   for (const forbidden of ["aionbound:finale_ignition_key", "aionbound:trophy_concord_scale", "concord_sigil", "concord_dueling_ring", "ash_crownblade", "empress_tide_lance"]) assert.equal(source.includes(forbidden), false);
 });
+
+test("default site placement is command-free and uses the stable structure manager", async () => {
+  const source = await readFile(resolve(ROOT, "behavior_pack/scripts/twinbond.js"), "utf8");
+  assert.equal(source.includes("structureManager.place(\"aionbound:twinbond_slice_v1\""), true);
+  assert.equal(source.includes("runCommand"), false);
+  assert.equal(source.includes("runCommandAsync"), false);
+});
