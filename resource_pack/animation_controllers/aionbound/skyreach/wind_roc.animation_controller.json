@@ -1,0 +1,88 @@
+{
+  "animation_controllers": {
+    "controller.animation.aionbound.skyreach.wind_roc.runtime": {
+      "initial_state": "idle",
+      "states": {
+        "action": {
+          "animations": [
+            "dive"
+          ],
+          "transitions": [
+            {
+              "death": "!query.is_alive"
+            },
+            {
+              "hurt": "query.hurt_time > 0.0"
+            },
+            {
+              "move": "!query.has_target && query.is_moving"
+            },
+            {
+              "idle": "!query.has_target && !query.is_moving"
+            }
+          ]
+        },
+        "death": {
+          "animations": [
+            "death"
+          ]
+        },
+        "hurt": {
+          "animations": [
+            "hurt"
+          ],
+          "transitions": [
+            {
+              "death": "!query.is_alive"
+            },
+            {
+              "move": "query.hurt_time <= 0.0 && query.is_moving"
+            },
+            {
+              "idle": "query.hurt_time <= 0.0 && !query.is_moving"
+            }
+          ]
+        },
+        "idle": {
+          "animations": [
+            "idle_perch"
+          ],
+          "transitions": [
+            {
+              "death": "!query.is_alive"
+            },
+            {
+              "hurt": "query.hurt_time > 0.0"
+            },
+            {
+              "action": "query.has_target"
+            },
+            {
+              "move": "query.is_moving"
+            }
+          ]
+        },
+        "move": {
+          "animations": [
+            "soar"
+          ],
+          "transitions": [
+            {
+              "death": "!query.is_alive"
+            },
+            {
+              "hurt": "query.hurt_time > 0.0"
+            },
+            {
+              "action": "query.has_target"
+            },
+            {
+              "idle": "!query.is_moving"
+            }
+          ]
+        }
+      }
+    }
+  },
+  "format_version": "1.10.0"
+}

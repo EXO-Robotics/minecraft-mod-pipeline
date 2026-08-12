@@ -1,0 +1,33 @@
+{
+  "format_version": "1.10.0",
+  "minecraft:client_entity": {
+    "description": {
+      "animations": {
+        "death": "animation.aionbound.wind_roc.death",
+        "dive": "animation.aionbound.wind_roc.dive",
+        "hurt": "animation.aionbound.wind_roc.hurt",
+        "idle_perch": "animation.aionbound.wind_roc.idle_perch",
+        "runtime": "controller.animation.aionbound.skyreach.wind_roc.runtime",
+        "soar": "animation.aionbound.wind_roc.soar"
+      },
+      "geometry": {
+        "default": "geometry.aionbound.wind_roc"
+      },
+      "identifier": "aionbound:wind_roc",
+      "materials": {
+        "default": "entity_alphatest"
+      },
+      "render_controllers": [
+        "controller.render.aionbound.skyreach.wind_roc"
+      ],
+      "scripts": {
+        "animate": [
+          "runtime"
+        ]
+      },
+      "textures": {
+        "default": "textures/aionbound/skyreach/entity/wind_roc"
+      }
+    }
+  }
+}

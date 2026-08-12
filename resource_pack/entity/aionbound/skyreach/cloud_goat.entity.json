@@ -1,0 +1,33 @@
+{
+  "format_version": "1.10.0",
+  "minecraft:client_entity": {
+    "description": {
+      "animations": {
+        "death": "animation.aionbound.cloud_goat.death",
+        "hop_ledge": "animation.aionbound.cloud_goat.hop_ledge",
+        "hurt": "animation.aionbound.cloud_goat.hurt",
+        "idle": "animation.aionbound.cloud_goat.idle",
+        "runtime": "controller.animation.aionbound.skyreach.cloud_goat.runtime",
+        "walk": "animation.aionbound.cloud_goat.walk"
+      },
+      "geometry": {
+        "default": "geometry.aionbound.cloud_goat"
+      },
+      "identifier": "aionbound:cloud_goat",
+      "materials": {
+        "default": "entity_alphatest"
+      },
+      "render_controllers": [
+        "controller.render.aionbound.skyreach.cloud_goat"
+      ],
+      "scripts": {
+        "animate": [
+          "runtime"
+        ]
+      },
+      "textures": {
+        "default": "textures/aionbound/skyreach/entity/cloud_goat"
+      }
+    }
+  }
+}

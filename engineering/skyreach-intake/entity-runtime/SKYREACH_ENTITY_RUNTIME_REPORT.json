@@ -1,0 +1,239 @@
+{
+  "arena_only_shell": "wind_roc",
+  "base": {
+    "commit": "10e60dfb4ae95996286d455473612b58c234ec9b",
+    "tree": "57088d0df2e3ccdf4a8e463ee09d3d6fbe7bd4bf"
+  },
+  "completed": [
+    "cloud_goat",
+    "gale_hawk",
+    "wind_roc"
+  ],
+  "ecology": {
+    "biome_tags": [
+      "overworld",
+      "mountain"
+    ],
+    "distance_max": 96,
+    "distance_min": 40,
+    "max_group_size": 2,
+    "max_surface_density_per_type": 2,
+    "max_weight": 2,
+    "rule_count": 2,
+    "wind_roc_natural_spawn": false
+  },
+  "localization_binding": "DEFERRED_TO_SHARED_CLOSURE_REFRESH",
+  "loot_binding": "OMITTED_NO_SKYREACH_CREATURE_LOOT_TABLES_ON_EXACT_BASE",
+  "native_bindings": [
+    {
+      "animation_sha256": "589ccfa3eaa2a3d08e46aeb09fcaa936dc39f4860c408a9b76d0c4c5850c7243",
+      "animation_source_path": "engineering/native-assets/skyreach/representative/evidence/cloud_goat/native-exports/pass-2.animation.json",
+      "asset": "cloud_goat",
+      "clip_ids": [
+        "animation.aionbound.cloud_goat.idle",
+        "animation.aionbound.cloud_goat.walk",
+        "animation.aionbound.cloud_goat.hop_ledge",
+        "animation.aionbound.cloud_goat.hurt",
+        "animation.aionbound.cloud_goat.death"
+      ],
+      "geometry_sha256": "1ab722228fc7e855b663a7fcf4edac72aa69570e81d83084079e03a161174be5",
+      "geometry_source_path": "engineering/native-assets/skyreach/representative/evidence/cloud_goat/native-exports/pass-2.geo.json",
+      "native_receipt_sha256": "728f76e5fa6f74ca1c85bfb631b084a272ebf86950645e9897ed39795cccb356",
+      "native_status": "PASS_NATIVE_REPAIR_GATE",
+      "role": "neutral_ledge_grazer",
+      "texture_sha256": "de015765715975247e3f9baa130b24beee15f926d95d07dd2745541c20d0aa39",
+      "texture_source_path": "engineering/native-assets/skyreach/representative/evidence/cloud_goat/native-project/textures/cloud_goat.png"
+    },
+    {
+      "animation_sha256": "2f0650f7a8f16e016c482268d9d6aa77b73b9a82fec42d4208dd28e92a853b06",
+      "animation_source_path": "engineering/native-assets/skyreach/representative/evidence/gale_hawk/native-exports/pass-2.animation.json",
+      "asset": "gale_hawk",
+      "clip_ids": [
+        "animation.aionbound.gale_hawk.idle",
+        "animation.aionbound.gale_hawk.fly",
+        "animation.aionbound.gale_hawk.stoop",
+        "animation.aionbound.gale_hawk.hurt",
+        "animation.aionbound.gale_hawk.death"
+      ],
+      "geometry_sha256": "943bd2c08f1e74966ffa11fa770c3e8c4a0f5af6a86fa8154f56d6b838105b8c",
+      "geometry_source_path": "engineering/native-assets/skyreach/representative/evidence/gale_hawk/native-exports/pass-2.geo.json",
+      "native_receipt_sha256": "54e153c91f378741b531909ed719bfbe42caaac0f37bf623c6934feb546b1e6b",
+      "native_status": "PASS_NATIVE_REPAIR_GATE",
+      "role": "hostile_aerial_patrol",
+      "texture_sha256": "4f311d1bb898a6a57a2899ee5b964e15515c116e03356f3264b3d7f0b0cb5ab9",
+      "texture_source_path": "engineering/native-assets/skyreach/representative/evidence/gale_hawk/native-project/textures/gale_hawk.png"
+    },
+    {
+      "animation_sha256": "cbef2bdb3a5790542e96bd5423f976306722300f8c53a5284913a909bc350915",
+      "animation_source_path": "engineering/native-assets/skyreach/representative/evidence/wind_roc/native-exports/pass-2.animation.json",
+      "asset": "wind_roc",
+      "clip_ids": [
+        "animation.aionbound.wind_roc.idle_perch",
+        "animation.aionbound.wind_roc.soar",
+        "animation.aionbound.wind_roc.dive",
+        "animation.aionbound.wind_roc.hurt",
+        "animation.aionbound.wind_roc.death"
+      ],
+      "geometry_sha256": "f45fc548c199589894aefe91b0a3682c5a917abc107526d05ce661be70af3f88",
+      "geometry_source_path": "engineering/native-assets/skyreach/representative/evidence/wind_roc/native-exports/pass-2.geo.json",
+      "native_receipt_sha256": "1beefd9142c77ff5eca3e5ae378583e3762efc450c16257415614420e4182cda",
+      "native_status": "PASS_NATIVE_REPAIR_GATE",
+      "role": "arena_only_apex_soaring_shell",
+      "texture_sha256": "ba015313436aa07fb4b517ff429572212f47eea8729e7135fe008ec2048ea8a7",
+      "texture_source_path": "engineering/native-assets/skyreach/representative/evidence/wind_roc/native-project/textures/wind_roc.png"
+    }
+  ],
+  "natural_spawn_entities": [
+    "cloud_goat",
+    "gale_hawk"
+  ],
+  "outputs": [
+    {
+      "path": "behavior_pack/entities/aionbound/skyreach/cloud_goat.entity.json",
+      "sha256": "f9cb32bd10c14bfd915a02ca34b4c58ea46f1a701bd6f7acc61041752f6dc7a4"
+    },
+    {
+      "path": "behavior_pack/entities/aionbound/skyreach/gale_hawk.entity.json",
+      "sha256": "a65083bc462d6697183610cf1dbe9037a7f5de5d8beea740f0700d1f152bced2"
+    },
+    {
+      "path": "behavior_pack/entities/aionbound/skyreach/wind_roc.entity.json",
+      "sha256": "56b9f98c974826f7b3996e7b1650f8192e33b69f53faacb435a2c2b4f17bf7b8"
+    },
+    {
+      "path": "behavior_pack/spawn_rules/aionbound/skyreach/cloud_goat.spawn_rules.json",
+      "sha256": "72f145299be8b725478fbc16a3c1e7d0d8e0a0f61e69b2e6853e0a669c7a037e"
+    },
+    {
+      "path": "behavior_pack/spawn_rules/aionbound/skyreach/gale_hawk.spawn_rules.json",
+      "sha256": "f9a19ead52397d8acd0e80683218fbfad827645276b1fdf436610a2745a831c6"
+    },
+    {
+      "path": "resource_pack/animation_controllers/aionbound/skyreach/cloud_goat.animation_controller.json",
+      "sha256": "36e11316369dae57c3cc39386892126d7b72b270df8af63aa567dec00557758c"
+    },
+    {
+      "path": "resource_pack/animation_controllers/aionbound/skyreach/gale_hawk.animation_controller.json",
+      "sha256": "231bfc806a7b3961d8b420aeeb01139d1ee969339c318535ea8b4d9e13538a16"
+    },
+    {
+      "path": "resource_pack/animation_controllers/aionbound/skyreach/wind_roc.animation_controller.json",
+      "sha256": "a2def59b27111f0ceafc1f21dc0d66b9861e4039d41609c92c5400df0289de2e"
+    },
+    {
+      "path": "resource_pack/animations/aionbound/skyreach/cloud_goat.animation.json",
+      "sha256": "589ccfa3eaa2a3d08e46aeb09fcaa936dc39f4860c408a9b76d0c4c5850c7243"
+    },
+    {
+      "path": "resource_pack/animations/aionbound/skyreach/gale_hawk.animation.json",
+      "sha256": "2f0650f7a8f16e016c482268d9d6aa77b73b9a82fec42d4208dd28e92a853b06"
+    },
+    {
+      "path": "resource_pack/animations/aionbound/skyreach/wind_roc.animation.json",
+      "sha256": "cbef2bdb3a5790542e96bd5423f976306722300f8c53a5284913a909bc350915"
+    },
+    {
+      "path": "resource_pack/entity/aionbound/skyreach/cloud_goat.entity.json",
+      "sha256": "c731c7a15458fc6e2abce03756d344d8fac68a263535462e00cd68c0512cf1a9"
+    },
+    {
+      "path": "resource_pack/entity/aionbound/skyreach/gale_hawk.entity.json",
+      "sha256": "d6eba0d83d39eceece5dce532618f6e9e88ab8b968d8dd164b9a8c284e65a0c9"
+    },
+    {
+      "path": "resource_pack/entity/aionbound/skyreach/wind_roc.entity.json",
+      "sha256": "edc00236f2811c545431fa5505727f566fa8b8351ed5b8bac2c2557ecb0d0fc8"
+    },
+    {
+      "path": "resource_pack/models/aionbound/skyreach/cloud_goat.geo.json",
+      "sha256": "1ab722228fc7e855b663a7fcf4edac72aa69570e81d83084079e03a161174be5"
+    },
+    {
+      "path": "resource_pack/models/aionbound/skyreach/gale_hawk.geo.json",
+      "sha256": "943bd2c08f1e74966ffa11fa770c3e8c4a0f5af6a86fa8154f56d6b838105b8c"
+    },
+    {
+      "path": "resource_pack/models/aionbound/skyreach/wind_roc.geo.json",
+      "sha256": "f45fc548c199589894aefe91b0a3682c5a917abc107526d05ce661be70af3f88"
+    },
+    {
+      "path": "resource_pack/render_controllers/aionbound/skyreach/cloud_goat.render_controller.json",
+      "sha256": "f31c91ec795aa3346e99a0451f01e4c7e73aa850e2b3ae3bd46ab35b922bdd62"
+    },
+    {
+      "path": "resource_pack/render_controllers/aionbound/skyreach/gale_hawk.render_controller.json",
+      "sha256": "75942a2dbba4ce6e598c7886096b433dcddfe28df9b338bc173e4187e8c535d2"
+    },
+    {
+      "path": "resource_pack/render_controllers/aionbound/skyreach/wind_roc.render_controller.json",
+      "sha256": "684380e24538c045c3d108dbf0d79580b632349f35f1fa1fe417dbb5f266fb00"
+    },
+    {
+      "path": "resource_pack/sounds.json",
+      "sha256": "69c1b2eb6030d23cb5ae0566b9aef9fe1cd39843ba3fed309d570da26bf51c31"
+    },
+    {
+      "path": "resource_pack/textures/aionbound/skyreach/entity/cloud_goat.png",
+      "sha256": "de015765715975247e3f9baa130b24beee15f926d95d07dd2745541c20d0aa39"
+    },
+    {
+      "path": "resource_pack/textures/aionbound/skyreach/entity/gale_hawk.png",
+      "sha256": "4f311d1bb898a6a57a2899ee5b964e15515c116e03356f3264b3d7f0b0cb5ab9"
+    },
+    {
+      "path": "resource_pack/textures/aionbound/skyreach/entity/wind_roc.png",
+      "sha256": "ba015313436aa07fb4b517ff429572212f47eea8729e7135fe008ec2048ea8a7"
+    }
+  ],
+  "proof_boundary": {
+    "bds": "NOT_RUN",
+    "bp_rp_integration": "STATIC_SOURCE_FILES_ONLY",
+    "build": "NOT_RUN",
+    "client": "NOT_RUN",
+    "console_ps4": "NOT_RUN",
+    "loot_economy": "DEFERRED_TO_ECONOMY_LANE",
+    "multiplayer": "NOT_RUN",
+    "native_sources": "PREEXISTING_PASS_NATIVE_REPAIR_GATE",
+    "release": "NOT_RUN",
+    "storm_nest_terminal_reward_seal": "NOT_IMPLEMENTED_DEFERRED_AUTHORITY"
+  },
+  "schema": "aionbound.wave1.skyreach_entity_runtime.v1",
+  "status": "SKYREACH_THREE_NATIVE_CREATURES_STATIC_RUNTIME_COMPLETE",
+  "withheld": [
+    {
+      "asset": "cliff_ram",
+      "reason": "NATIVE_REPAIR_NOT_PROVEN_ON_EXACT_BASE",
+      "runtime_created": false
+    },
+    {
+      "asset": "glide_drake",
+      "reason": "NATIVE_REPAIR_NOT_PROVEN_ON_EXACT_BASE",
+      "runtime_created": false
+    },
+    {
+      "asset": "ropewing",
+      "reason": "NATIVE_REPAIR_NOT_PROVEN_ON_EXACT_BASE",
+      "runtime_created": false
+    },
+    {
+      "asset": "ruin_harpy",
+      "reason": "NATIVE_REPAIR_NOT_PROVEN_ON_EXACT_BASE",
+      "runtime_created": false
+    },
+    {
+      "asset": "sky_fox",
+      "reason": "NATIVE_REPAIR_NOT_PROVEN_ON_EXACT_BASE",
+      "runtime_created": false
+    },
+    {
+      "asset": "stone_vulture",
+      "reason": "NATIVE_REPAIR_NOT_PROVEN_ON_EXACT_BASE",
+      "runtime_created": false
+    },
+    {
+      "asset": "storm_gull",
+      "reason": "NATIVE_REPAIR_NOT_PROVEN_ON_EXACT_BASE",
+      "runtime_created": false
+    }
+  ]
+}

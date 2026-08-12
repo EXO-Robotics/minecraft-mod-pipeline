@@ -121,6 +121,18 @@
         ],
         "volume": 0.6
       },
+      "aionbound:cloud_goat": {
+        "events": {
+          "ambient": "mob.goat.ambient",
+          "death": "mob.goat.death",
+          "hurt": "mob.goat.hurt"
+        },
+        "pitch": [
+          0.9,
+          1.05
+        ],
+        "volume": 0.72
+      },
       "aionbound:crystal_dragonfly": {
         "events": {
           "ambient": "mob.spider.say",
@@ -168,6 +180,18 @@
           0.75
         ],
         "volume": 0.7
+      },
+      "aionbound:gale_hawk": {
+        "events": {
+          "ambient": "mob.parrot.idle",
+          "death": "mob.parrot.death",
+          "hurt": "mob.parrot.hurt"
+        },
+        "pitch": [
+          0.85,
+          1.0
+        ],
+        "volume": 0.55
       },
       "aionbound:glass_heron": {
         "events": {
@@ -360,6 +384,18 @@
           1.1
         ],
         "volume": 0.75
+      },
+      "aionbound:wind_roc": {
+        "events": {
+          "ambient": "mob.phantom.idle",
+          "death": "mob.phantom.death",
+          "hurt": "mob.phantom.hurt"
+        },
+        "pitch": [
+          0.65,
+          0.78
+        ],
+        "volume": 1.0
       }
     }
   }

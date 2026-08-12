@@ -1,0 +1,33 @@
+{
+  "format_version": "1.10.0",
+  "minecraft:client_entity": {
+    "description": {
+      "animations": {
+        "death": "animation.aionbound.gale_hawk.death",
+        "fly": "animation.aionbound.gale_hawk.fly",
+        "hurt": "animation.aionbound.gale_hawk.hurt",
+        "idle": "animation.aionbound.gale_hawk.idle",
+        "runtime": "controller.animation.aionbound.skyreach.gale_hawk.runtime",
+        "stoop": "animation.aionbound.gale_hawk.stoop"
+      },
+      "geometry": {
+        "default": "geometry.aionbound.gale_hawk"
+      },
+      "identifier": "aionbound:gale_hawk",
+      "materials": {
+        "default": "entity_alphatest"
+      },
+      "render_controllers": [
+        "controller.render.aionbound.skyreach.gale_hawk"
+      ],
+      "scripts": {
+        "animate": [
+          "runtime"
+        ]
+      },
+      "textures": {
+        "default": "textures/aionbound/skyreach/entity/gale_hawk"
+      }
+    }
+  }
+}
