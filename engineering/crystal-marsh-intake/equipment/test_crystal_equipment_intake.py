@@ -52,6 +52,15 @@ class CrystalEquipmentIntakeTest(unittest.TestCase):
         self.assertIn("W1-CREATIVE-005", rows["prism_bow"]["recipe_acquisition_provenance"]["sidegrade_boundary"])
         self.assertEqual(["W1-003-PEARL-DEPTHS", "W1-004-CM"], rows["marsh_wight_mask"]["gated_semantics"]["blockers"])
         self.assertEqual("DEFERRED_BY_USER; blocks only distinct Gale-strung prism_bow and other sidegrade representations, not the base prism_bow identity.", self.data["authority_partition"]["W1-CREATIVE-005"])
+        for ticket in ("W1-001-CM", "W1-003-PEARL-DEPTHS", "W1-004-CM"):
+            self.assertEqual("RATIFIED_EXACT_PROPOSAL_BYTES_PRESERVED", self.data["authority_partition"][ticket])
+
+    def test_current_authority_hash_is_receipt_only(self):
+        authority = self.data["authority"][0]
+        path = REPO / authority["path"]
+        self.assertEqual("521a1032470b28eeac34b23e7f268ba7b29c023a35d4bd454b157f4b8843e34f", authority["sha256"])
+        self.assertEqual(authority["sha256"], hashlib.sha256(path.read_bytes()).hexdigest())
+        self.assertIn("without authority mutation", authority["role"])
 
     def test_ashen_is_not_crystal_dependency(self):
         dependency = self.data["ashen_runtime_dependency"]

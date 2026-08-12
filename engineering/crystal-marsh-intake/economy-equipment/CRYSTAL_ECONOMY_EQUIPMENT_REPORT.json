@@ -13,11 +13,16 @@
   "counts": {
     "equipment": 11,
     "components_and_new_drops": 6,
-    "recipes": 12,
+    "recipes": 13,
     "entity_tables": 10,
     "plant_tables": 10,
     "resource_block_tables": 10,
     "structure_tables": 8
+  },
+  "soft_craft": {
+    "source": "aionbound:mire_bloom_item",
+    "result": "minecraft:cyan_dye",
+    "consumable_effect": "WITHHELD_NO_EXACT_EFFECT_AUTHORITY"
   },
   "ecology_guard": {
     "natural_marsh_wight_table": "loot_tables/entities/crystal/marsh_wight.json",
@@ -224,6 +229,10 @@
     {
       "path": "behavior_pack/recipes/marsh_sickle.recipe.json",
       "sha256": "eb9fd52c2127c6f0106f1851e568c5250cf8c67c79975f43671da353abe2814b"
+    },
+    {
+      "path": "behavior_pack/recipes/mire_bloom_cyan_dye.recipe.json",
+      "sha256": "43dcf8027c43128a05218fd10195433e271cb3b15b973bd768a2443f2f59a4c3"
     },
     {
       "path": "behavior_pack/recipes/moon_pearl_pedestal.recipe.json",

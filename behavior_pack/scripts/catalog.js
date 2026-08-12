@@ -244,6 +244,7 @@ export const ITEM_ROUTES = Object.freeze({
 });
 
 export const COMPLETED_ITEM_ROUTES = Object.freeze({
+  "aionbound:prism_bow": "crystal_ranged",
   "aionbound:gale_repeater": "ranged",
   "aionbound:aether_gauntlet": "ranged",
   "aionbound:behemoth_tusk_bow": "ranged",
@@ -333,6 +334,8 @@ export const TECH_LOOPS = Object.freeze({
 export const NATURAL_ENTITY_IDS = Object.freeze([
   "aionbound:breezetail", "aionbound:galestrider", "aionbound:lanternback", "aionbound:pebblehorn",
   "aionbound:basalt_magma_spitter", "aionbound:cinder_brood_hatchling", "aionbound:tide_spawn_skitter", "aionbound:veil_mask_acolyte",
+  "aionbound:bloom_crab", "aionbound:bog_watcher", "aionbound:crystal_dragonfly", "aionbound:crystal_newt",
+  "aionbound:glass_heron", "aionbound:mire_turtle", "aionbound:prism_frog", "aionbound:reed_serpent", "aionbound:silt_crocodile",
 ]);
 
 // Six bounded classes, three deterministic variants each. Outcomes use only

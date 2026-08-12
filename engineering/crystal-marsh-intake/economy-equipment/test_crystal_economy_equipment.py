@@ -93,12 +93,13 @@ class CrystalEconomyEquipmentTests(unittest.TestCase):
             self.assertNotIn("minecraft:damage", components)
 
     def test_recipe_graph_closes_without_trophy_or_sidegrade_bypass(self):
-        self.assertEqual(12, len(author.RECIPES))
+        self.assertEqual(13, len(author.RECIPES))
         self.assertNotIn("marsh_wight_mask", author.RECIPES)
         self.assertNotIn("crystal_obelisk_fragment", author.RECIPES)
         results = {result for _ingredients, result in author.RECIPES.values()}
         for expected in ("aionbound:crystal_pike", "aionbound:prism_bow", "aionbound:crystal_circlet", "aionbound:explorer_cloak", "aionbound:crystal_shovel", "aionbound:marsh_sickle", "aionbound:crystal_talisman", "aionbound:marsh_idol", "aionbound:moon_pearl_pedestal"):
             self.assertIn(expected, results)
+        self.assertEqual((['aionbound:mire_bloom_item'], 'minecraft:cyan_dye'), author.RECIPES['mire_bloom_cyan_dye'])
         for name in author.RECIPES:
             body = load(ROOT / f"behavior_pack/recipes/{name}.recipe.json")["minecraft:recipe_shapeless"]
             self.assertEqual(f"aionbound:{name}_recipe", body["description"]["identifier"])

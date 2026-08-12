@@ -109,6 +109,7 @@ CHESTS = {
 }
 
 RECIPES = {
+    "mire_bloom_cyan_dye": (["aionbound:mire_bloom_item"], "minecraft:cyan_dye"),
     "crystal_pole": (["aionbound:flood_crystal", "aionbound:crystal_reed_item", "aionbound:crystal_reed_item"], "aionbound:crystal_pole"),
     "living_crystal_core": (["aionbound:crystal_root_item", "aionbound:moon_pearl"], "aionbound:living_crystal_core"),
     "wet_plate": (["aionbound:wet_chitin", "aionbound:wet_chitin", "aionbound:marsh_resin"], "aionbound:wet_plate"),
@@ -337,6 +338,7 @@ def author() -> dict:
         "authority": ["W1-001-CM", "W1-004-CM"],
         "w1_creative_005": "DEFERRED_UNCHANGED_NO_SIDEGRADES",
         "counts": {"equipment": len(EQUIPMENT), "components_and_new_drops": len(COMPONENTS), "recipes": len(RECIPES), "entity_tables": len(ENTITY_LOOT), "plant_tables": len(PLANT_LOOT), "resource_block_tables": len(RESOURCE_BLOCKS), "structure_tables": len(CHESTS)},
+        "soft_craft": {"source": "aionbound:mire_bloom_item", "result": "minecraft:cyan_dye", "consumable_effect": "WITHHELD_NO_EXACT_EFFECT_AUTHORITY"},
         "ecology_guard": {"natural_marsh_wight_table": "loot_tables/entities/crystal/marsh_wight.json", "forbidden": ["aionbound:marsh_wight_mask", "Pearl Depths completion", "seal credit", "reward entitlement"]},
         "protected_pearl_depths": {"material_table": "loot_tables/encounters/crystal/pearl_depths_materials.json", "apex_chest": "loot_tables/chests/crystal/pearl_depths.json", "contains_mask": False, "static_structure_binding": False, "terminal_owner": "PEARL_DEPTHS_SERVICE_ONLY"},
         "mastery": {"optional_only": ["aionbound:moon_pearl_pedestal", "aionbound:crystal_obelisk_fragment", "aionbound:marsh_idol"], "pilgrim_seal_substitute": False},

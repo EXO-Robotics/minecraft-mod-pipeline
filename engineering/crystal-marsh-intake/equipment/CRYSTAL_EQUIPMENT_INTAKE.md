@@ -18,7 +18,7 @@ All identity-specific shipping targets were absent at the bound base. Shared cat
 
 ## Authority partition
 
-SAFE_NOW covers identity/namespace scaffolding, target preparation, approved-art normalization, native repair, and nonnumeric role/provenance/relationship edges. Final ingredient dispositions and recipes remain gated by `W1-001-CM`; Pearl Depths and the chapter seal by `W1-003-PEARL-DEPTHS`; numeric loot/reward/recovery by `W1-004-CM`.
+`W1-001-CM`, `W1-003-PEARL-DEPTHS`, and `W1-004-CM` are ratified with their exact proposal bytes preserved. This receipt refreshes only the intake's authority hashes and ratification descriptions; it does not mutate the authority files.
 
 `W1-CREATIVE-005` remains deferred. It blocks the distinct Gale-strung `prism_bow` representation, not the base `prism_bow` page. `surveyor_staff` and `trail_compass` stay adjacent Skyreach/pilgrim references and receive no CM registry address.
 

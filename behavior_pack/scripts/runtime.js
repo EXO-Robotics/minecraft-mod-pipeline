@@ -15,6 +15,7 @@ import { createWhisperwoodRewardHooks } from "./whisperwood_rewards.js";
 import { createAshenStructureRewardHooks } from "./ashen_structure_rewards.js";
 import { createCrystalRewardHooks } from "./crystal_rewards.js";
 import { createPearlDepthsService } from "./pearl_depths.js";
+import { createCrystalEquipmentService } from "./crystal_equipment.js";
 
 export function createRuntime(platform = { world, system, ItemStack, EquipmentSlot, EntityComponentTypes, ActionFormData }) {
   const arbiter = new RuntimeArbiter();
@@ -75,6 +76,7 @@ export function createRuntime(platform = { world, system, ItemStack, EquipmentSl
     },
   });
   const combat = createCombatService({ ...platform, state, arbiter, boundedEntities, consumeOne });
+  const crystalEquipment = createCrystalEquipmentService({ ...platform, state, arbiter });
   const encounters = createEncounterService({ ...platform, state, boundedEntities, consumeOne });
   const devices = createDeviceService({ ...platform, state, arbiter, consumeOne });
   const chaos = createChaosService({ ...platform, state, arbiter });
@@ -113,6 +115,7 @@ export function createRuntime(platform = { world, system, ItemStack, EquipmentSl
     consumable: ({ player, itemStack }) => combat.useConsumable(player, itemStack.typeId),
     whisperwood_utility: ({ player, itemStack }) => combat.useWhisperwoodUtility(player, itemStack.typeId),
     accessory_pulse: ({ player, itemStack }) => combat.accessoryPulse(player, itemStack.typeId),
+    crystal_ranged: ({ player, itemStack }) => crystalEquipment.useRanged(player, itemStack.typeId),
   };
   const entityActions = {
     waykeeper_notice: ({ player }) => state.warn(player, "Use ordinary interact to mount; movement input directly controls your courser."),
@@ -133,7 +136,10 @@ export function createRuntime(platform = { world, system, ItemStack, EquipmentSl
       combat.reconcileNaturalEntities();
       for (const player of platform.world.getAllPlayers()) codex.reconcileOwnedItems(player);
     }
-    if (platform.system.currentTick % 20 === 0) combat.tickPlayers();
+    if (platform.system.currentTick % 20 === 0) {
+      combat.tickPlayers();
+      for (const player of platform.world.getAllPlayers()) crystalEquipment.tickPlayer(player);
+    }
     thornCourt.tick(); pearlDepths.tick(); structures.tick(); devices.tick(); chaos.tick();
   }); }
 
@@ -186,7 +192,7 @@ export function createRuntime(platform = { world, system, ItemStack, EquipmentSl
     }));
     platform.system.runInterval(tick, 1);
   }
-  return { start, reconcile, tick, state, arbiter, router, codex, combat, devices, encounters, thornCourt, pearlDepths, crystalRewardHooks, ashenStructureRewardHooks, chaos, structures, budgets: COMBINED_BUDGETS };
+  return { start, reconcile, tick, state, arbiter, router, codex, combat, crystalEquipment, devices, encounters, thornCourt, pearlDepths, crystalRewardHooks, ashenStructureRewardHooks, chaos, structures, budgets: COMBINED_BUDGETS };
 }
 
 export function startRuntime() { return createRuntime().start(); }

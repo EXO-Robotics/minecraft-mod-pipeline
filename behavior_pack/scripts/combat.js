@@ -1,6 +1,7 @@
 import { COMBINED_BUDGETS } from "./budgets.js";
 import { ACCESSORY_ROLES, ARMOR_SETS, CONSUMABLE_EFFECTS, MELEE_WEAPON_ROLES, NATURAL_ENTITY_IDS, RANGED_WEAPON_ROLES } from "./catalog.js";
 import { WHISPERWOOD_MELEE_ROLES, WHISPERWOOD_UTILITY_ROLES } from "./wave1_equipment_roles.js";
+import { CRYSTAL_MELEE_ROLES } from "./crystal_equipment_roles.js";
 
 export function createCombatService({ world, system, ItemStack, EquipmentSlot = {}, EntityComponentTypes = {}, state, arbiter, boundedEntities, consumeOne }) {
   const slot = {
@@ -60,7 +61,7 @@ export function createCombatService({ world, system, ItemStack, EquipmentSlot = 
   function routeMeleeHurt(event) {
     const target = event.hurtEntity, player = event.damageSource?.damagingEntity;
     if (player?.typeId !== "minecraft:player") return false;
-    const itemType = selectedType(player), spec = MELEE_WEAPON_ROLES[itemType] ?? WHISPERWOOD_MELEE_ROLES[itemType];
+    const itemType = selectedType(player), spec = MELEE_WEAPON_ROLES[itemType] ?? WHISPERWOOD_MELEE_ROLES[itemType] ?? CRYSTAL_MELEE_ROLES[itemType];
     if (!spec || !ready(player, `weapon:${itemType}`, spec.cooldown)) return false;
     if (spec.role === "ignite") target.setOnFire?.(3, true);
     if (spec.role === "reposition") { const vector = player.getViewDirection(); target.applyImpulse?.({ x: vector.x * 0.65, y: 0.12, z: vector.z * 0.65 }); }

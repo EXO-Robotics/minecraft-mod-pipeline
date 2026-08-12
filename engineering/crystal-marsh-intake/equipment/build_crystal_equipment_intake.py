@@ -276,10 +276,10 @@ def build(repo: Path, bedrock_root: Path) -> dict:
     rows_direct = [row(source, "DIRECT_PACKET_003_LINK") for source in direct]
     rows_adjacent = [row(source, "ADJACENT_CROSS_REGION_LINK") for source in adjacent]
     references = [
-        authority_ref(repo, AUTHORITY_REL, "exact Packet 003 and Packet 006 structural authority"),
+        authority_ref(repo, AUTHORITY_REL, "current exact Packet 003 and Packet 006 structural authority; receipt refreshed after ratification without authority mutation"),
         authority_ref(repo, LEDGER_REL, "current ratified/deferred decision boundary"),
     ]
-    references.extend(authority_ref(repo, rel, "proposed Crystal authority with no effect until ratified") for rel in PROPOSAL_RELS)
+    references.extend(authority_ref(repo, rel, "ratified Crystal implementation authority; proposal bytes preserved") for rel in PROPOSAL_RELS)
     data = {
         "schema": "aionbound.wave1.crystal-marsh-equipment-intake.v1.0.0",
         "status": "HASH_BOUND_PACKET006_INTAKE_SAFE_SCAFFOLDING_SEPARATED",
@@ -303,9 +303,9 @@ def build(repo: Path, bedrock_root: Path) -> dict:
                 "nonnumeric role, provenance, acquisition-source, and crafting-edge mapping",
                 "native repair and approved-art presentation preparation",
             ],
-            "W1-001-CM": "Final Crystal term dispositions, alternatives, component promotion, and ingredient closure remain proposed, not ratified.",
-            "W1-003-PEARL-DEPTHS": "Executable Marsh Wight encounter and mask grant remain proposed, not ratified.",
-            "W1-004-CM": "Numeric loot, first-clear, seal, recovery, and mastery-reward semantics remain proposed, not ratified.",
+            "W1-001-CM": "RATIFIED_EXACT_PROPOSAL_BYTES_PRESERVED",
+            "W1-003-PEARL-DEPTHS": "RATIFIED_EXACT_PROPOSAL_BYTES_PRESERVED",
+            "W1-004-CM": "RATIFIED_EXACT_PROPOSAL_BYTES_PRESERVED",
             "W1-CREATIVE-005": "DEFERRED_BY_USER; blocks only distinct Gale-strung prism_bow and other sidegrade representations, not the base prism_bow identity.",
         },
         "ashen_runtime_dependency": {
@@ -344,7 +344,7 @@ def markdown(data: dict) -> str:
         "",
         "## Authority partition",
         "",
-        "SAFE_NOW covers identity/namespace scaffolding, target preparation, approved-art normalization, native repair, and nonnumeric role/provenance/relationship edges. Final ingredient dispositions and recipes remain gated by `W1-001-CM`; Pearl Depths and the chapter seal by `W1-003-PEARL-DEPTHS`; numeric loot/reward/recovery by `W1-004-CM`.",
+        "`W1-001-CM`, `W1-003-PEARL-DEPTHS`, and `W1-004-CM` are ratified with their exact proposal bytes preserved. This receipt refreshes only the intake's authority hashes and ratification descriptions; it does not mutate the authority files.",
         "",
         "`W1-CREATIVE-005` remains deferred. It blocks the distinct Gale-strung `prism_bow` representation, not the base `prism_bow` page. `surveyor_staff` and `trail_compass` stay adjacent Skyreach/pilgrim references and receive no CM registry address.",
         "",
