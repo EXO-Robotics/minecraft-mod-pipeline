@@ -1,0 +1,244 @@
+{
+  "schema": "aionbound.wave1.final_authority_closure_map.v1",
+  "status": "FINAL_AUTHORITY_CLOSURE_MAP_ACTION_REQUIRED",
+  "audited_source": {
+    "commit": "edbdf01143e994cae8e77414951d07ae3c95ed63",
+    "tree": "9685cd17539999419d3f8e32272261e585cde0c6",
+    "worktree_clean_for_audited_paths": true
+  },
+  "scope": "Authority and deferred-ticket closure only; no product, authority, build, BDS, G7, reviewer, or release mutation.",
+  "classification_rules": {
+    "FINAL_BLOCKING": "Must be reconciled before an immutable full Wave 1 candidate or engineering-complete claim.",
+    "SAFE_TO_SHIP_DEFERRED": "May remain absent from the package only when the base contract remains complete, the omission is explicit, and no dormant or partial gameplay is silently shipped.",
+    "OPTIONAL": "Useful later evidence or enhancement that is not required for a bounded engineering .mcaddon and must not support a broader proof claim."
+  },
+  "evidence": [
+    {
+      "path": "engineering/skyreach-intake/deferred-source-exit/SKYREACH_DEFERRED_SOURCE_EXIT.json",
+      "sha256": "48f77a067eb15be94401dc9eda305be1ef81a2c3ecbe50d605617765ced98571",
+      "role": "current Skyreach product and authority boundary"
+    },
+    {
+      "path": "engineering/skyreach-intake/authority/SKYREACH_VERTICAL_INTAKE_MAP.json",
+      "sha256": "42d0d94ea55d8dd1306345caf014cac08c770cf88adb241f70e9c5bcee4807b5",
+      "role": "structured Skyreach W1-001-SR, W1-003-STORM-NEST, and W1-004-SR rows"
+    },
+    {
+      "path": "engineering/authority/WAVE_1_ENGINEERING_DECISION_LEDGER.json",
+      "sha256": "b791c4b63d6ef09c2ac437fdc67065735a2363becad92b359cecb0a4e25c5172",
+      "role": "ratified and deferred engineering authority"
+    },
+    {
+      "path": "engineering/authority/twinbond/TWINBOND_EXISTING_AUTHORITY_AUDIT.json",
+      "sha256": "5af5125dea93bf488dcdcd1ce5939117329cfa803854fc8f3396638782416ebf",
+      "role": "Twinbond existing inputs and missing finale decisions"
+    },
+    {
+      "path": "engineering/authority/support-proposals/W1-CREATIVE-005/sidegrade_identity_proposal.json",
+      "sha256": "03dd32528d85c7e82edec0f998a1c271e782886f4cf357f1283e25fece11933a",
+      "role": "unratified sidegrade proposal and base-item nonblocking rule"
+    },
+    {
+      "path": "engineering/authority/support-tickets/W1-ASSET-AUDIO-001.json",
+      "sha256": "cc8c3179964c61c495fb25d4c0f891bdb237433edb847b1e73e54018387a667f",
+      "role": "final sound-identity exit blocker"
+    },
+    {
+      "path": "engineering/ashen-intake/deferred-runtime-activation/ASHEN_RUNTIME_ACTIVATION_DEFERRED.json",
+      "sha256": "e35d8b25e798a6bf1844ed8aaa718c13e021b83c056b9ff15b9f3d4eb35ae998",
+      "role": "exact dormant Ashen compositions and acceptance criteria"
+    },
+    {
+      "path": "tests/test_archive_extracted_entrypoint.py",
+      "sha256": "e44b1140f60020e2f350f87c65606eb8e7c78aa1cec46d66b188e6eba68f210c",
+      "role": "archive-extracted shipped-entrypoint harness"
+    },
+    {
+      "path": "tests/legacy/README.md",
+      "sha256": "9c8d1b236b4d4ef2f443a796d255693dbe8cfb10e901bafef9abca2e4a9eacba",
+      "role": "stale G6 and pre-G6 test quarantine"
+    },
+    {
+      "path": "engineering/test-evidence/README.md",
+      "sha256": "67135589da5e03c5522dd8a29b9979b06b53a50725320d8b62f306cc7fe3d4cc",
+      "role": "evidence-derived receipt contract"
+    }
+  ],
+  "resolved_or_superseded": [
+    {
+      "id": "SKYREACH_NATIVE_AND_PRODUCT_BINDING_GAPS",
+      "classification": "RESOLVED",
+      "evidence": [
+        "engineering/native-assets/skyreach/representative/SKYREACH_REPRESENTATIVE_NATIVE_REPORT.json",
+        "engineering/native-assets/skyreach/creatures/SKYREACH_CREATURE_NATIVE_REPORT.json",
+        "engineering/native-assets/skyreach/plants/SKYREACH_PLANT_NATIVE_REPORT.json",
+        "engineering/native-assets/skyreach/landmarks/SKYREACH_LANDMARK_NATIVE_REPORT.json",
+        "engineering/skyreach-intake/entity-runtime/SKYREACH_ENTITY_RUNTIME_REPORT.json",
+        "engineering/skyreach-intake/plant-runtime/SKYREACH_PLANT_PRODUCT_REPORT.json"
+      ],
+      "finding": "Exact HEAD contains all 10 creatures, all 10 plants, and native PASS evidence for all 30 custom Skyreach creature, plant, and landmark assets.",
+      "history_boundary": "Earlier 3-creature/7-withheld and 2-plant/8-withheld snapshots, including a plant promotion timeout, are superseded and are not current blockers."
+    },
+    {
+      "id": "STALE_G6_TEST_SUITE",
+      "classification": "RESOLVED",
+      "finding": "G6 and pre-G6 fixtures are .disabled and documented as quarantined historical evidence; they are excluded from normal discovery."
+    },
+    {
+      "id": "ARCHIVE_EXTRACTED_ENTRYPOINT_IMPLEMENTATION",
+      "classification": "IMPLEMENTED_FINAL_EXECUTION_PENDING",
+      "finding": "The harness extracts the manifest-declared entrypoint from an exact hash-bound .mcaddon and executes unchanged shipped script bytes under a Node Bedrock mock.",
+      "acceptance": "Run it against the final frozen Wave 1 .mcaddon and bind the package SHA-256, pack version, startup marker, and captured output in the final evidence-derived receipt."
+    }
+  ],
+  "approval_readiness": [
+    {
+      "id": "W1-001-SR",
+      "state": "APPROVAL_READY_AS_STRUCTURED_INTAKE_ROW",
+      "present_at": "engineering/skyreach-intake/authority/SKYREACH_VERTICAL_INTAKE_MAP.json::minimum_authority_tranches.W1-001-SR",
+      "exact_scope": "18 aliases, three narrative/Codex-only terms, and one new required item aionbound:wing_bone_stay with craft home glider_panel; no additional identity authority."
+    },
+    {
+      "id": "W1-003-STORM-NEST",
+      "state": "EXISTS_NOT_APPROVAL_READY_FOR_EXECUTION",
+      "present_at": "engineering/skyreach-intake/authority/SKYREACH_VERTICAL_INTAKE_MAP.json::minimum_authority_tranches.W1-003-STORM-NEST",
+      "already_bound": "boss aionbound:wind_roc, encounter aionbound:storm_nest, arena aionbound:nest_platform, four named phases, and six named attacks",
+      "missing": [
+        "health and phase thresholds",
+        "telegraph active recovery and cooldown timing",
+        "leash wipe timeout reset and re-entry",
+        "add caps and multiplayer ownership/scaling",
+        "late join disconnect and restart semantics",
+        "persistent completion and reward entitlement semantics"
+      ]
+    },
+    {
+      "id": "W1-004-SR",
+      "state": "EXISTS_NOT_APPROVAL_READY_FOR_EXECUTION",
+      "present_at": "engineering/skyreach-intake/authority/SKYREACH_VERTICAL_INTAKE_MAP.json::minimum_authority_tranches.W1-004-SR",
+      "already_bound": "loot identities and critical seal aionbound:storm_pinion",
+      "missing": [
+        "C/U/R/E/T/Q probability and quantity envelopes",
+        "structure chest rolls and rarity bands",
+        "apex guaranteed package quantities",
+        "once-per-player seal credit and full-inventory recovery",
+        "repeat-clear and optional mastery reward semantics"
+      ]
+    },
+    {
+      "id": "W1-CREATIVE-005",
+      "state": "STANDALONE_PROPOSAL_APPROVAL_READY_BUT_NOT_REQUIRED_FOR_BASE_PACKET_006",
+      "present_at": "engineering/authority/support-proposals/W1-CREATIVE-005/sidegrade_identity_proposal.json",
+      "authority_effect": "NONE_UNTIL_RATIFIED"
+    },
+    {
+      "id": "W1-CREATIVE-002-TWINBOND",
+      "state": "PARTIAL_AUTHORITY_ONLY_NOT_APPROVAL_READY_FOR_FINALE_EXECUTION",
+      "already_bound": "dual wyrm IDs/art, arena/approach inputs, twinbond_relic primary reward, and Trophy Edge ignition",
+      "missing": [
+        "isolated container versus same-world finale placement",
+        "Concord Spark disposition",
+        "Memory of Four Lands shipping presentation",
+        "unbound mastery-sigil disposition",
+        "whether Twinbond completion is mandatory for Wave 1 machine exit"
+      ]
+    }
+  ],
+  "final_blocking": [
+    {
+      "id": "ASHEN_SHARED_RUNTIME_ACTIVATION",
+      "classification": "FINAL_BLOCKING",
+      "source_functions": [
+        "behavior_pack/scripts/ashen_equipment.js::createAshenEquipmentService",
+        "behavior_pack/scripts/kiln_sky.js::createKilnSkyService",
+        "behavior_pack/scripts/ashen_rewards.js::createAshenRewardHooks"
+      ],
+      "target_functions": [
+        "behavior_pack/scripts/catalog.js::COMPLETED_ITEM_ROUTES",
+        "behavior_pack/scripts/runtime.js::itemActions",
+        "behavior_pack/scripts/runtime.js::reconcile",
+        "behavior_pack/scripts/runtime.js::tick",
+        "behavior_pack/scripts/runtime.js::start event subscribers",
+        "behavior_pack/scripts/runtime.js::returned test surface"
+      ],
+      "human_decision_required": false,
+      "minimum_acceptance": "Activate exactly the two authorized compositions in existing handlers, preserve schema/guards/balance, prove no duplicate dispatch, prove full-inventory horn recovery cannot begin a new encounter, pass targeted semantics, and then include them in final integrated qualification."
+    },
+    {
+      "id": "SKYREACH_EXECUTABLE_VERTICAL",
+      "classification": "FINAL_BLOCKING",
+      "blocked_by": ["W1-001-SR", "W1-003-STORM-NEST", "W1-004-SR"],
+      "dormant": [
+        "live 50-row Codex import and discovery routing",
+        "creature plant block and structure loot",
+        "crafting and equipment acquisition",
+        "Storm Nest encounter service",
+        "storm_pinion seal reward recovery and terminal progression"
+      ],
+      "minimum_acceptance": "Ratify W1-001-SR; create and ratify refined W1-003-STORM-NEST and W1-004-SR values without new identities; activate only those ratified surfaces; pass targeted semantics and global source closure."
+    },
+    {
+      "id": "TWINBOND_FINALE",
+      "classification": "FINAL_BLOCKING",
+      "current_product_risk": "Inherited G7 Twinbond code still consumes finale_ignition_key and grants trophy_concord_scale; those semantics are not the current Wave 1 twinbond_relic/Trophy Edge contract.",
+      "minimum_acceptance": "Resolve W1-CREATIVE-002 container/secondary presentation/exit dependency; ratify finale W1-CREATIVE-003 behavior, reset, ownership, persistence, and terminal semantics; ratify finale W1-CREATIVE-004 loot/recovery/repeat-clear semantics; native-repair both wyrms and twinbond_relic; supersede the conflicting inherited reward path; pass targeted persistence/replay/multiplayer-model semantics."
+    },
+    {
+      "id": "W1-ASSET-AUDIO-001",
+      "classification": "FINAL_BLOCKING",
+      "minimum_acceptance": "Either bind original provenance-backed regional, creature, boss, and landmark shipping audio bytes and filenames, or explicitly reduce the final Wave 1 sound-identity contract. Placeholder vanilla mappings cannot prove the sound identity pass."
+    },
+    {
+      "id": "FINAL_PACKAGE_AND_QUALIFICATION_EVIDENCE",
+      "classification": "FINAL_BLOCKING",
+      "minimum_acceptance": "After product closure: build twice with deterministic equality; freeze a new immutable generation; record commit/tree/BP/RP/.mcaddon hashes and full source-byte ledger; run mechanical admission, exact archive-extracted entrypoint, exact-package Stable BDS startup/clean shutdown/same-world restart/error scan/cleanup; derive receipts from captured evidence."
+    }
+  ],
+  "safe_to_ship_deferred": [
+    {
+      "id": "W1-CREATIVE-005",
+      "classification": "SAFE_TO_SHIP_DEFERRED",
+      "conditions": [
+        "approved base Packet 006 items remain implemented",
+        "the named sibling sidegrades and unique finishes remain absent",
+        "no hidden variant state or substitute identity is invented",
+        "the omission is declared as a known limitation"
+      ],
+      "note": "This does not authorize dropping any base equipment requirement and does not make Skyreach W1-001/W1-003/W1-004 optional."
+    }
+  ],
+  "optional": [
+    {
+      "id": "PHYSICAL_CLIENT_AND_PLATFORM_PROOF",
+      "classification": "OPTIONAL_FOR_ENGINEERING_MCADDON_NOT_FOR_RELEASE_CLAIMS",
+      "note": "Physical console, controller, multiplayer, split-screen, Realms, Marketplace, and release proof remain outside machine admission and must not be claimed."
+    }
+  ],
+  "smallest_user_decision_set": {
+    "required_now_for_full_candidate": [
+      {
+        "id": "DECISION-SR-IDENTITY",
+        "decision": "Approve W1-001-SR exactly as the structured intake row, or reject it and explicitly revise the Skyreach acquisition contract."
+      },
+      {
+        "id": "DECISION-SR-STORM-NEST",
+        "decision": "Approve a refined W1-003-STORM-NEST proposal containing every currently missing timing, threshold, reset, ownership, restart, persistence, and terminal field."
+      },
+      {
+        "id": "DECISION-SR-LOOT",
+        "decision": "Approve a refined W1-004-SR proposal containing every currently missing rarity, quantity, chest, guaranteed package, recovery, repeat-clear, and mastery field."
+      },
+      {
+        "id": "DECISION-TWINBOND",
+        "decision": "Bind the finale container, secondary presentations, machine-exit dependency, full encounter envelope, and terminal loot/recovery semantics under W1-CREATIVE-002/003/004."
+      },
+      {
+        "id": "DECISION-AUDIO",
+        "decision": "Provide original provenance-backed shipping audio or explicitly reduce the final sound-identity requirement."
+      }
+    ],
+    "not_required_if_deferred_conditions_hold": ["W1-CREATIVE-005"],
+    "no_further_human_design_decision_required": ["ASHEN_SHARED_RUNTIME_ACTIVATION", "FINAL_PACKAGE_AND_QUALIFICATION_EVIDENCE"]
+  },
+  "conclusion": "FULL_WAVE_1_CANDIDATE_NOT_YET_AUTHORITY_CLOSED"
+}
