@@ -1,9 +1,12 @@
 {
-  "format_version": "1.10.0",
+  "format_version": "1.21.80",
   "minecraft:client_entity": {
     "description": {
       "animations": {
-        "move": "animation.aionbound.ash_sovereign_wyrm.idle"
+        "split_approach": "animation.aionbound.ash_sovereign_wyrm.split_approach",
+        "concord_pressure": "animation.aionbound.ash_sovereign_wyrm.concord_pressure",
+        "relic_trial": "animation.aionbound.ash_sovereign_wyrm.relic_trial",
+        "finale_ignition": "animation.aionbound.ash_sovereign_wyrm.finale_ignition"
       },
       "geometry": {
         "default": "geometry.aionbound.ash_sovereign_wyrm"
@@ -17,7 +20,18 @@
       ],
       "scripts": {
         "animate": [
-          "move"
+          {
+            "split_approach": "query.property('aionbound:twinbond_phase') == 'split_approach'"
+          },
+          {
+            "concord_pressure": "query.property('aionbound:twinbond_phase') == 'concord_pressure'"
+          },
+          {
+            "relic_trial": "query.property('aionbound:twinbond_phase') == 'relic_trial'"
+          },
+          {
+            "finale_ignition": "query.property('aionbound:twinbond_phase') == 'finale_ignition'"
+          }
         ]
       },
       "textures": {

@@ -1,6 +1,6 @@
 {
-  "schema": "aionbound.wave1.twinbond.implemented_source_closure.v1",
-  "status": "TWINBOND_SOURCE_SEMANTICS_COMPLETE_PHASE_PRESENTATION_QUALIFICATION_DEFERRED",
+  "schema": "aionbound.wave1.twinbond.implemented_source_closure.v2",
+  "status": "TWINBOND_SOURCE_AND_NATIVE_PHASE_PRESENTATION_COMPLETE",
   "groups": {
     "ratified_authority": [
       {
@@ -27,7 +27,7 @@
     "finale_existing_handler_persistence_and_recovery": [
       {
         "path": "behavior_pack/scripts/twinbond.js",
-        "sha256": "810bcf7f1569e764d002383273a2368050d1e6a4f1cf9a1305b5d5e78b1bbcd8"
+        "sha256": "cacee19eb2ebe6898580d9c0788c028c5183ea2dbee6578e2720622fec944060"
       },
       {
         "path": "behavior_pack/scripts/runtime.js",
@@ -40,6 +40,14 @@
       {
         "path": "behavior_pack/scripts/catalog.js",
         "sha256": "9a4dcefc641cd894fcde35c577d668547b0d533e1442901eb9e35b94f91276bf"
+      },
+      {
+        "path": "behavior_pack/entities/ash_sovereign_wyrm.entity.json",
+        "sha256": "bebda29c07c99bd7f67ba8a5365b47d56cb08e0ff590a206ddcfa6f213215e45"
+      },
+      {
+        "path": "behavior_pack/entities/tide_empress_wyrm.entity.json",
+        "sha256": "054c1c0c1b5c6d4e0998f066af4a50ed90a0c99bd39ab21d3cb79ade4988ca2b"
       },
       {
         "path": "behavior_pack/items/memory_of_four_lands.item.json",
@@ -130,12 +138,36 @@
       {
         "path": "resource_pack/animations/aionbound/twinbond_obsidian_ring.animation.json",
         "sha256": "6bdafe4fa64a54539640fd6f22ed49e5e3809b3dba1500660ba2c23c0aacb137"
+      },
+      {
+        "path": "resource_pack/entity/ash_sovereign_wyrm.entity.json",
+        "sha256": "d8396dd9c2a6ebb6437989d824ecb56c0750aeff4e6cf3e3ca257055b0b6916b"
+      },
+      {
+        "path": "resource_pack/entity/tide_empress_wyrm.entity.json",
+        "sha256": "7403df4af10bf3e1f8493467bb2c7e5e1a193e028c3aef3bc57d66d6ce175719"
+      },
+      {
+        "path": "resource_pack/animations/aionbound/ash_sovereign_wyrm.animation.json",
+        "sha256": "3b44cb3f333ac9c3d708e28c1ba2141c18545796dbbbf60571ba20089f5fc138"
+      },
+      {
+        "path": "resource_pack/animations/aionbound/tide_empress_wyrm.animation.json",
+        "sha256": "045cd0bf2d0aa6eebf7ca2f28d9f5460024e5de9e0e6f0abba54b147d5919fa0"
+      },
+      {
+        "path": "assets/beta/ash_sovereign_wyrm/animations/ash_sovereign_wyrm.animation.json",
+        "sha256": "3b44cb3f333ac9c3d708e28c1ba2141c18545796dbbbf60571ba20089f5fc138"
+      },
+      {
+        "path": "assets/beta/tide_empress_wyrm/animations/tide_empress_wyrm.animation.json",
+        "sha256": "045cd0bf2d0aa6eebf7ca2f28d9f5460024e5de9e0e6f0abba54b147d5919fa0"
       }
     ],
     "native_editable_asset_aggregate": [
       {
         "path": "engineering/native-assets/twinbond/TWINBOND_NATIVE_REPORT.json",
-        "sha256": "fd4cbf54799a3d78d5bfa170f57e1b555ce50b890a591e0371207e4f84a484ef"
+        "sha256": "ebad1fb155148735025554fb5b8c3caf2bd651ca5940024b8951ad9b3d1e67e2"
       }
     ]
   },
@@ -147,10 +179,12 @@
     "full_pilgrimage_gate": true,
     "forbidden_finale_ignition_key_path": false,
     "forbidden_concord_scale_path": false,
-    "once_per_player_recovery": true
+    "once_per_player_recovery": true,
+    "wyrm_phase_presentation_native_ready": true,
+    "phase_presentation_new_attack_identity": false,
+    "phase_presentation_damage_effect_radius_change": false
   },
   "pending_follow_up": {
-    "wyrm_phase_presentation": "NATIVE_REPORT_PHASE_READY_FALSE_REQUIRES_SEPARATE_QUALIFIED_REPAIR_OR_EXPLICIT_SUFFICIENCY_DECISION",
     "runtime_qualification": "DEFERRED_TO_FINAL_INTEGRATED_GATE",
     "W1-CREATIVE-005": "DEFERRED_BY_USER_NO_SIDEGRADE_IDENTITIES"
   },

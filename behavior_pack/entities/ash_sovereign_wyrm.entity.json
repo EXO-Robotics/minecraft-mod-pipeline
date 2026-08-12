@@ -58,7 +58,20 @@
     "description": {
       "identifier": "aionbound:ash_sovereign_wyrm",
       "is_spawnable": false,
-      "is_summonable": false
+      "is_summonable": false,
+      "properties": {
+        "aionbound:twinbond_phase": {
+          "type": "enum",
+          "values": [
+            "split_approach",
+            "concord_pressure",
+            "relic_trial",
+            "finale_ignition"
+          ],
+          "default": "split_approach",
+          "client_sync": true
+        }
+      }
     }
   }
 }

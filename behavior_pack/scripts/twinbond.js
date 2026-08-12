@@ -77,7 +77,13 @@ const sameBlock = (left, right) => {
 const hasTag = (entity, tag) => entity.hasTag?.(tag) === true;
 function addTag(entity, tag) { if (!hasTag(entity, tag)) entity.addTag?.(tag); }
 function clearTags(entity, prefix) { for (const tag of entity.getTags?.() ?? []) if (tag.startsWith(prefix)) entity.removeTag?.(tag); }
-function phaseTag(entity, phase) { clearTags(entity, "aionbound.twinbond.phase."); addTag(entity, `aionbound.twinbond.phase.${phase}`); }
+function phaseTag(entity, phase) {
+  clearTags(entity, "aionbound.twinbond.phase.");
+  addTag(entity, `aionbound.twinbond.phase.${phase}`);
+  // Client-synchronized presentation only. This property does not participate
+  // in encounter decisions, damage, timing, persistence, or recovery.
+  try { entity.setProperty?.("aionbound:twinbond_phase", phase); } catch { /* fail closed to server-authoritative tags */ }
+}
 function actionTag(entity, stage) { clearTags(entity, "aionbound.twinbond.action."); if (stage) addTag(entity, `aionbound.twinbond.action.${stage}`); }
 
 export function twinbondArena(origin, dimension) {

@@ -45,8 +45,8 @@ def build() -> dict:
         })
     passed = all(row["status"] == "PASS_NATIVE_REPAIR_GATE" and row["warnings"] == 0 and row["errors"] == 0 and row["texture_bytes_preserved"] and row["two_cycle_geometry_equivalent"] and row["two_cycle_animation_equivalent"] for row in rows)
     return {
-        "schema": "aionforge.wave1.twinbond.native.aggregate.v1",
-        "status": "PASS_NATIVE_REPAIR_GATE" if passed else "FAIL",
+        "schema": "aionforge.wave1.twinbond.native.aggregate.v2",
+        "status": "PASS_PHASE_READY_NATIVE_REPAIR" if passed else "FAIL",
         "integration_authority": {"commit": author.INTEGRATION_COMMIT, "tree": author.INTEGRATION_TREE},
         "scope": list(ASSETS),
         "assets": rows,
@@ -58,9 +58,18 @@ def build() -> dict:
             "warnings": sum(row["warnings"] for row in rows),
             "errors": sum(row["errors"] for row in rows),
         },
+        "phase_assessment": {
+            "existing_generic_clips_sufficient": False,
+            "reason": "The prior idle and action pair exposed no independently selectable presentation for four ratified phases, and the RP bound only idle.",
+            "repair": "Four original presentation-only clips per wyrm, selected by the client-synchronized aionbound:twinbond_phase enum set alongside existing phase tags.",
+            "required_phases": ["split_approach", "concord_pressure", "relic_trial", "finale_ignition"],
+            "new_attack_identity": False,
+            "damage_effect_radius_or_knockback_change": False,
+            "gameplay_authority": "UNCHANGED_SERVER_AUTHORITATIVE_TWINBOND_SERVICE",
+        },
         "proof_boundary": {
-            "proves": ["BLOCKBENCH_5_1_6_NATIVE_EDITABLE_ROUNDTRIP", "TRUE_NATIVE_LOCATORS", "TWO_NATIVE_EXPORT_CYCLES_CANONICALLY_EQUIVALENT", "TEXTURE_BYTES_PRESERVED", "EXACT_RELIC_BRIEF_CLIP_AUTHORING"],
-            "does_not_prove": ["WYRM_PHASE_READY_ANIMATION", "BP_RP_INTEGRATION", "PRODUCT_SEMANTICS", "GAMEPLAY", "BDS", "BEDROCK_CLIENT", "MULTIPLAYER", "PHYSICAL_PS4", "MARKETPLACE", "RELEASE"],
+            "proves": ["BLOCKBENCH_5_1_6_NATIVE_EDITABLE_ROUNDTRIP", "TRUE_NATIVE_LOCATORS", "TWO_NATIVE_EXPORT_CYCLES_CANONICALLY_EQUIVALENT", "TEXTURE_BYTES_PRESERVED", "FOUR_DISTINCT_WYRM_PHASE_PRESENTATION_CLIPS", "STATIC_BP_RP_PHASE_BINDING", "EXACT_RELIC_BRIEF_CLIP_AUTHORING"],
+            "does_not_prove": ["BEDROCK_CLIENT_PLAYBACK", "GAMEPLAY", "BDS", "MULTIPLAYER", "PHYSICAL_PS4", "MARKETPLACE", "RELEASE"],
         },
     }
 

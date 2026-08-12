@@ -33,6 +33,7 @@ def build() -> dict:
     ]
     product = [
         "behavior_pack/scripts/twinbond.js", "behavior_pack/scripts/runtime.js", "behavior_pack/scripts/state.js", "behavior_pack/scripts/catalog.js",
+        "behavior_pack/entities/ash_sovereign_wyrm.entity.json", "behavior_pack/entities/tide_empress_wyrm.entity.json",
         "behavior_pack/items/memory_of_four_lands.item.json", "behavior_pack/items/trophy_edge_blank.item.json",
         "behavior_pack/blocks/ceremony_anvil_site.block.json", "behavior_pack/blocks/twin_thrones.block.json",
         "behavior_pack/blocks/twinbond_approach_marker.block.json", "behavior_pack/blocks/twinbond_obsidian_ring.block.json",
@@ -46,6 +47,9 @@ def build() -> dict:
     ]
     presentation += [f"resource_pack/models/aionbound/{value}.geo.json" for value in ["ceremony_anvil_site", "twin_thrones", "twinbond_approach_marker", "twinbond_obsidian_ring"]]
     presentation += [f"resource_pack/animations/aionbound/{value}.animation.json" for value in ["ceremony_anvil_site", "twin_thrones", "twinbond_approach_marker", "twinbond_obsidian_ring"]]
+    presentation += [f"resource_pack/entity/{value}.entity.json" for value in ["ash_sovereign_wyrm", "tide_empress_wyrm"]]
+    presentation += [f"resource_pack/animations/aionbound/{value}.animation.json" for value in ["ash_sovereign_wyrm", "tide_empress_wyrm"]]
+    presentation += [f"assets/beta/{value}/animations/{value}.animation.json" for value in ["ash_sovereign_wyrm", "tide_empress_wyrm"]]
     native = ["engineering/native-assets/twinbond/TWINBOND_NATIVE_REPORT.json"]
     groups = {
         "ratified_authority": rows(authority),
@@ -57,8 +61,8 @@ def build() -> dict:
     if len(all_paths) != len(set(all_paths)):
         raise ValueError("duplicate path across groups")
     return {
-        "schema": "aionbound.wave1.twinbond.implemented_source_closure.v1",
-        "status": "TWINBOND_SOURCE_SEMANTICS_COMPLETE_PHASE_PRESENTATION_QUALIFICATION_DEFERRED",
+        "schema": "aionbound.wave1.twinbond.implemented_source_closure.v2",
+        "status": "TWINBOND_SOURCE_AND_NATIVE_PHASE_PRESENTATION_COMPLETE",
         "groups": groups,
         "invariants": {
             "persistence_schema": 4,
@@ -69,9 +73,11 @@ def build() -> dict:
             "forbidden_finale_ignition_key_path": False,
             "forbidden_concord_scale_path": False,
             "once_per_player_recovery": True,
+            "wyrm_phase_presentation_native_ready": True,
+            "phase_presentation_new_attack_identity": False,
+            "phase_presentation_damage_effect_radius_change": False,
         },
         "pending_follow_up": {
-            "wyrm_phase_presentation": "NATIVE_REPORT_PHASE_READY_FALSE_REQUIRES_SEPARATE_QUALIFIED_REPAIR_OR_EXPLICIT_SUFFICIENCY_DECISION",
             "runtime_qualification": "DEFERRED_TO_FINAL_INTEGRATED_GATE",
             "W1-CREATIVE-005": "DEFERRED_BY_USER_NO_SIDEGRADE_IDENTITIES",
         },
