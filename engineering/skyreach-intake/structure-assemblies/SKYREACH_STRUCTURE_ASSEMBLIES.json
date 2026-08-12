@@ -1,0 +1,307 @@
+{
+  "schema": "aionbound.wave1.skyreach.structure_assemblies.v1",
+  "status": "PASS_STATIC_INERT_STRUCTURE_AUTHORING",
+  "integration_authority": {
+    "commit": "252bb1441932fa5b55598494823b178bba0faab5",
+    "tree": "95fe1a93ec9951f51a2c19115c23f898d9b09931"
+  },
+  "authority": "engineering/skyreach-intake/authority/SKYREACH_VERTICAL_INTAKE_MAP.json",
+  "proof_boundary": "STATIC_SOURCE_AND_AUTHORED_BYTES_ONLY; NO_MCSTRUCTURE_CLIENT_LOAD, BDS, TERRAIN_AFFINITY, LOOT, ENCOUNTER, OR CANDIDATE CLAIM",
+  "visual_asset_boundary": "Packet landmark exports bind identity only and are not serialized into or proof of these independently authored block assemblies",
+  "inert_policy": "No container blocks, entities, block-entity NBT, loot paths, rewards, seals, encounter activation, or script bindings",
+  "placement_policy": "One scatter trial per selected chunk with overworld non-ocean mountain-or-hills proxies; denominators are Skyreach-specific and bounded for console-first density",
+  "aggregate_expected_attempts_per_256_chunks_before_filters": 0.838219,
+  "deferred": [
+    "W1-001-SR",
+    "W1-003-STORM-NEST",
+    "W1-004-SR",
+    "W1-CREATIVE-005"
+  ],
+  "assemblies": [
+    {
+      "id": "rope_bridge",
+      "size": [
+        25,
+        10,
+        7
+      ],
+      "volume": 1750,
+      "occupied_blocks": 255,
+      "palette": [
+        "aionbound:cliff_stone",
+        "aionbound:rope_timber",
+        "aionbound:skyreach_log",
+        "aionbound:skyreach_planks"
+      ],
+      "scatter": {
+        "numerator": 1,
+        "denominator": 1184
+      },
+      "expected_attempts_per_256_chunks_before_filters": 0.216216,
+      "terrain_role": "high shelf crossing proxy",
+      "silhouette": "long suspended timber walk with paired rope rails and two wind gaps",
+      "structure_path": "behavior_pack/structures/aionbound/skyreach/rope_bridge.mcstructure",
+      "feature_path": "behavior_pack/features/rope_bridge.feature.json",
+      "feature_rule_path": "behavior_pack/feature_rules/rope_bridge.feature_rule.json",
+      "structure_sha256": "9a64b900a9ec0bd286b02acd9a2a682d8ae2e558025762fced2ef018a902cdfb",
+      "block_position_data": "EMPTY_NO_BLOCK_ENTITY_NBT"
+    },
+    {
+      "id": "broken_sky_path",
+      "size": [
+        21,
+        8,
+        11
+      ],
+      "volume": 1848,
+      "occupied_blocks": 123,
+      "palette": [
+        "aionbound:pale_shelf_stone",
+        "aionbound:sky_moss_block",
+        "aionbound:wind_slate"
+      ],
+      "scatter": {
+        "numerator": 1,
+        "denominator": 1696
+      },
+      "expected_attempts_per_256_chunks_before_filters": 0.150943,
+      "terrain_role": "fractured ridge route proxy",
+      "silhouette": "three offset stone path islands with a broken wind-slate centerline",
+      "structure_path": "behavior_pack/structures/aionbound/skyreach/broken_sky_path.mcstructure",
+      "feature_path": "behavior_pack/features/broken_sky_path.feature.json",
+      "feature_rule_path": "behavior_pack/feature_rules/broken_sky_path.feature_rule.json",
+      "structure_sha256": "24216034a3adb9e936595ab55c4588259ea99745c75868c4c6bf3d6c42a9b0b8",
+      "block_position_data": "EMPTY_NO_BLOCK_ENTITY_NBT"
+    },
+    {
+      "id": "cliff_outpost",
+      "size": [
+        15,
+        13,
+        13
+      ],
+      "volume": 2535,
+      "occupied_blocks": 627,
+      "palette": [
+        "aionbound:cliff_stone",
+        "aionbound:cloud_wool_block",
+        "aionbound:rope_timber",
+        "aionbound:skyreach_planks",
+        "aionbound:skyreach_wood"
+      ],
+      "scatter": {
+        "numerator": 1,
+        "denominator": 2272
+      },
+      "expected_attempts_per_256_chunks_before_filters": 0.112676,
+      "terrain_role": "sheltered ledge proxy",
+      "silhouette": "stone shelf carrying a four-post timber lookout and cloud-wool windbreak",
+      "structure_path": "behavior_pack/structures/aionbound/skyreach/cliff_outpost.mcstructure",
+      "feature_path": "behavior_pack/features/cliff_outpost.feature.json",
+      "feature_rule_path": "behavior_pack/feature_rules/cliff_outpost.feature_rule.json",
+      "structure_sha256": "d554e05bf15e80334eda9123f60494bccb426d2b8559d4f52ac3dc3a06e02c03",
+      "block_position_data": "EMPTY_NO_BLOCK_ENTITY_NBT"
+    },
+    {
+      "id": "cliff_beacon",
+      "size": [
+        9,
+        18,
+        9
+      ],
+      "volume": 1458,
+      "occupied_blocks": 228,
+      "palette": [
+        "aionbound:cloud_wool_block",
+        "aionbound:pale_shelf_stone",
+        "aionbound:rope_timber",
+        "aionbound:sky_moss_block",
+        "aionbound:wind_slate"
+      ],
+      "scatter": {
+        "numerator": 1,
+        "denominator": 2944
+      },
+      "expected_attempts_per_256_chunks_before_filters": 0.086957,
+      "terrain_role": "exposed ridge sightline proxy",
+      "silhouette": "needle beacon with cross-braced wind vanes and a moss-lit crown",
+      "structure_path": "behavior_pack/structures/aionbound/skyreach/cliff_beacon.mcstructure",
+      "feature_path": "behavior_pack/features/cliff_beacon.feature.json",
+      "feature_rule_path": "behavior_pack/feature_rules/cliff_beacon.feature_rule.json",
+      "structure_sha256": "4018f46ddd4f0b386fb8589de2c955e25bfc8a661a69ce2c8000d025e65f99d1",
+      "block_position_data": "EMPTY_NO_BLOCK_ENTITY_NBT"
+    },
+    {
+      "id": "observation_tower",
+      "size": [
+        15,
+        24,
+        15
+      ],
+      "volume": 5400,
+      "occupied_blocks": 640,
+      "palette": [
+        "aionbound:cliff_stone",
+        "aionbound:rope_timber",
+        "aionbound:skyreach_log",
+        "aionbound:skyreach_planks",
+        "aionbound:wind_slate"
+      ],
+      "scatter": {
+        "numerator": 1,
+        "denominator": 3520
+      },
+      "expected_attempts_per_256_chunks_before_filters": 0.072727,
+      "terrain_role": "highest local shelf proxy",
+      "silhouette": "slender open timber tower with three brace rings and a crossed survey crown",
+      "structure_path": "behavior_pack/structures/aionbound/skyreach/observation_tower.mcstructure",
+      "feature_path": "behavior_pack/features/observation_tower.feature.json",
+      "feature_rule_path": "behavior_pack/feature_rules/observation_tower.feature_rule.json",
+      "structure_sha256": "0f95f52adef4c9dbda12f27d06e9bcf79b604b8ea48442c9cd5f6b3250ae2e8a",
+      "block_position_data": "EMPTY_NO_BLOCK_ENTITY_NBT"
+    },
+    {
+      "id": "nest_platform",
+      "size": [
+        25,
+        9,
+        25
+      ],
+      "volume": 5625,
+      "occupied_blocks": 848,
+      "palette": [
+        "aionbound:cliff_stone",
+        "aionbound:cloud_wool_block",
+        "aionbound:rope_timber",
+        "aionbound:sky_moss_block"
+      ],
+      "scatter": {
+        "numerator": 1,
+        "denominator": 9472
+      },
+      "expected_attempts_per_256_chunks_before_filters": 0.027027,
+      "terrain_role": "isolated summit shelf proxy",
+      "silhouette": "broad concentric cliff nest with four tall perimeter spars",
+      "structure_path": "behavior_pack/structures/aionbound/skyreach/nest_platform.mcstructure",
+      "feature_path": "behavior_pack/features/nest_platform.feature.json",
+      "feature_rule_path": "behavior_pack/feature_rules/nest_platform.feature_rule.json",
+      "structure_sha256": "311a562011798e80483bb4289c182a74df9b2c3b8c69cec11d70e4a9bdcd1885",
+      "block_position_data": "EMPTY_NO_BLOCK_ENTITY_NBT"
+    },
+    {
+      "id": "floating_ruin_floor",
+      "size": [
+        19,
+        9,
+        17
+      ],
+      "volume": 2907,
+      "occupied_blocks": 383,
+      "palette": [
+        "aionbound:cliff_gravel",
+        "aionbound:cliff_stone",
+        "aionbound:pale_shelf_stone",
+        "aionbound:rope_timber",
+        "aionbound:wind_slate"
+      ],
+      "scatter": {
+        "numerator": 1,
+        "denominator": 4576
+      },
+      "expected_attempts_per_256_chunks_before_filters": 0.055944,
+      "terrain_role": "detached high shelf proxy",
+      "silhouette": "fractured slate room-floor slab tapering to a narrow stone keel",
+      "structure_path": "behavior_pack/structures/aionbound/skyreach/floating_ruin_floor.mcstructure",
+      "feature_path": "behavior_pack/features/floating_ruin_floor.feature.json",
+      "feature_rule_path": "behavior_pack/feature_rules/floating_ruin_floor.feature_rule.json",
+      "structure_sha256": "b3d334dec8edc0e6a7b16919d92269bdf03b50bce8e699eceaa311b2cb6eef26",
+      "block_position_data": "EMPTY_NO_BLOCK_ENTITY_NBT"
+    },
+    {
+      "id": "ancient_sky_arch",
+      "size": [
+        17,
+        20,
+        9
+      ],
+      "volume": 3060,
+      "occupied_blocks": 305,
+      "palette": [
+        "aionbound:cliff_stone",
+        "aionbound:pale_shelf_stone",
+        "aionbound:skyreach_log",
+        "aionbound:wind_slate"
+      ],
+      "scatter": {
+        "numerator": 1,
+        "denominator": 5408
+      },
+      "expected_attempts_per_256_chunks_before_filters": 0.047337,
+      "terrain_role": "ridge threshold proxy",
+      "silhouette": "twin heavy cliff piers carrying a stepped wind-slate arch",
+      "structure_path": "behavior_pack/structures/aionbound/skyreach/ancient_sky_arch.mcstructure",
+      "feature_path": "behavior_pack/features/ancient_sky_arch.feature.json",
+      "feature_rule_path": "behavior_pack/feature_rules/ancient_sky_arch.feature_rule.json",
+      "structure_sha256": "768230c71d64a4089886c40a440c838903eadb97faa6ab848cccfdbe47a454f7",
+      "block_position_data": "EMPTY_NO_BLOCK_ENTITY_NBT"
+    },
+    {
+      "id": "hanging_lift_frame",
+      "size": [
+        13,
+        20,
+        11
+      ],
+      "volume": 2860,
+      "occupied_blocks": 333,
+      "palette": [
+        "aionbound:cliff_stone",
+        "aionbound:rope_timber",
+        "aionbound:skyreach_log",
+        "aionbound:skyreach_planks"
+      ],
+      "scatter": {
+        "numerator": 1,
+        "denominator": 6848
+      },
+      "expected_attempts_per_256_chunks_before_filters": 0.037383,
+      "terrain_role": "vertical cliff route proxy",
+      "silhouette": "tall four-post hoist frame with a visibly suspended inert platform",
+      "structure_path": "behavior_pack/structures/aionbound/skyreach/hanging_lift_frame.mcstructure",
+      "feature_path": "behavior_pack/features/hanging_lift_frame.feature.json",
+      "feature_rule_path": "behavior_pack/feature_rules/hanging_lift_frame.feature_rule.json",
+      "structure_sha256": "dc2d94ed3ea6725f025d8230bcb13b480af6712577f1251d303eabb1da668f80",
+      "block_position_data": "EMPTY_NO_BLOCK_ENTITY_NBT"
+    },
+    {
+      "id": "wind_shrine",
+      "size": [
+        17,
+        13,
+        17
+      ],
+      "volume": 3757,
+      "occupied_blocks": 629,
+      "palette": [
+        "aionbound:cliff_stone",
+        "aionbound:cloud_wool_block",
+        "aionbound:pale_shelf_stone",
+        "aionbound:rope_timber",
+        "aionbound:skyreach_log",
+        "aionbound:wind_slate"
+      ],
+      "scatter": {
+        "numerator": 1,
+        "denominator": 8256
+      },
+      "expected_attempts_per_256_chunks_before_filters": 0.031008,
+      "terrain_role": "open summit ritual proxy",
+      "silhouette": "radial slate altar beneath four windspars and crossed skywood arms",
+      "structure_path": "behavior_pack/structures/aionbound/skyreach/wind_shrine.mcstructure",
+      "feature_path": "behavior_pack/features/wind_shrine.feature.json",
+      "feature_rule_path": "behavior_pack/feature_rules/wind_shrine.feature_rule.json",
+      "structure_sha256": "a9fe4634b22a868f4160afacb27776968c0608c32ca173bc72fcbddd08ffc897",
+      "block_position_data": "EMPTY_NO_BLOCK_ENTITY_NBT"
+    }
+  ]
+}
