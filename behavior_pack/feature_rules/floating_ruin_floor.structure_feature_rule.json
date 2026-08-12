@@ -2,8 +2,8 @@
   "format_version": "1.13.0",
   "minecraft:feature_rules": {
     "description": {
-      "identifier": "aionbound:skyreach_hanging_lift_frame_rule",
-      "places_feature": "aionbound:skyreach_hanging_lift_frame_feature"
+      "identifier": "aionbound:floating_ruin_floor.structure_feature_rule",
+      "places_feature": "aionbound:floating_ruin_floor_structure_feature"
     },
     "conditions": {
       "placement_pass": "surface_pass",
@@ -40,7 +40,7 @@
       "iterations": 1,
       "scatter_chance": {
         "numerator": 1,
-        "denominator": 6848
+        "denominator": 4576
       },
       "x": {
         "distribution": "uniform",

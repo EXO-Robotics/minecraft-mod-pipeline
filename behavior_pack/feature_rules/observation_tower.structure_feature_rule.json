@@ -2,8 +2,8 @@
   "format_version": "1.13.0",
   "minecraft:feature_rules": {
     "description": {
-      "identifier": "aionbound:skyreach_nest_platform_rule",
-      "places_feature": "aionbound:skyreach_nest_platform_feature"
+      "identifier": "aionbound:observation_tower.structure_feature_rule",
+      "places_feature": "aionbound:observation_tower_structure_feature"
     },
     "conditions": {
       "placement_pass": "surface_pass",
@@ -40,7 +40,7 @@
       "iterations": 1,
       "scatter_chance": {
         "numerator": 1,
-        "denominator": 9472
+        "denominator": 3520
       },
       "x": {
         "distribution": "uniform",

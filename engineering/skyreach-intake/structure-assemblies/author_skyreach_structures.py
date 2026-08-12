@@ -272,8 +272,8 @@ def feature_document(assembly: Assembly) -> dict:
     return {
         "format_version": "1.13.0",
         "minecraft:structure_template_feature": {
-            "description": {"identifier": f"aionbound:skyreach_{assembly.identifier}_feature"},
-            "structure_name": f"aionbound:skyreach/{assembly.identifier}",
+            "description": {"identifier": f"aionbound:{assembly.identifier}_structure_feature"},
+            "structure_name": f"aionbound:{assembly.identifier}",
             "adjustment_radius": 5 if max(assembly.size) >= 20 else 4,
             "facing_direction": "random",
             "constraints": {
@@ -295,8 +295,8 @@ def rule_document(assembly: Assembly) -> dict:
         "format_version": "1.13.0",
         "minecraft:feature_rules": {
             "description": {
-                "identifier": f"aionbound:skyreach_{assembly.identifier}_rule",
-                "places_feature": f"aionbound:skyreach_{assembly.identifier}_feature",
+                "identifier": f"aionbound:{assembly.identifier}.structure_feature_rule",
+                "places_feature": f"aionbound:{assembly.identifier}_structure_feature",
             },
             "conditions": {
                 "placement_pass": "surface_pass",
@@ -329,9 +329,9 @@ def expected_outputs() -> tuple[dict[Path, bytes], dict]:
     records = []
     for assembly in ASSEMBLIES:
         structure_bytes, palette, indices = encode_structure(assembly)
-        structure_path = BP / "structures" / "aionbound" / "skyreach" / f"{assembly.identifier}.mcstructure"
-        feature_path = BP / "features" / f"{assembly.identifier}.feature.json"
-        rule_path = BP / "feature_rules" / f"{assembly.identifier}.feature_rule.json"
+        structure_path = BP / "structures" / "aionbound" / f"{assembly.identifier}.mcstructure"
+        feature_path = BP / "features" / f"{assembly.identifier}.structure_feature.json"
+        rule_path = BP / "feature_rules" / f"{assembly.identifier}.structure_feature_rule.json"
         outputs[structure_path] = structure_bytes
         outputs[feature_path] = json_bytes(feature_document(assembly))
         outputs[rule_path] = json_bytes(rule_document(assembly))

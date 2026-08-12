@@ -2,8 +2,8 @@
   "format_version": "1.13.0",
   "minecraft:feature_rules": {
     "description": {
-      "identifier": "aionbound:skyreach_ancient_sky_arch_rule",
-      "places_feature": "aionbound:skyreach_ancient_sky_arch_feature"
+      "identifier": "aionbound:hanging_lift_frame.structure_feature_rule",
+      "places_feature": "aionbound:hanging_lift_frame_structure_feature"
     },
     "conditions": {
       "placement_pass": "surface_pass",
@@ -40,7 +40,7 @@
       "iterations": 1,
       "scatter_chance": {
         "numerator": 1,
-        "denominator": 5408
+        "denominator": 6848
       },
       "x": {
         "distribution": "uniform",

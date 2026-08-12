@@ -2,8 +2,8 @@
   "format_version": "1.13.0",
   "minecraft:feature_rules": {
     "description": {
-      "identifier": "aionbound:skyreach_cliff_outpost_rule",
-      "places_feature": "aionbound:skyreach_cliff_outpost_feature"
+      "identifier": "aionbound:nest_platform.structure_feature_rule",
+      "places_feature": "aionbound:nest_platform_structure_feature"
     },
     "conditions": {
       "placement_pass": "surface_pass",
@@ -40,7 +40,7 @@
       "iterations": 1,
       "scatter_chance": {
         "numerator": 1,
-        "denominator": 2272
+        "denominator": 9472
       },
       "x": {
         "distribution": "uniform",

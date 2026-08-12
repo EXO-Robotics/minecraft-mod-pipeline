@@ -2,8 +2,8 @@
   "format_version": "1.13.0",
   "minecraft:feature_rules": {
     "description": {
-      "identifier": "aionbound:skyreach_broken_sky_path_rule",
-      "places_feature": "aionbound:skyreach_broken_sky_path_feature"
+      "identifier": "aionbound:wind_shrine.structure_feature_rule",
+      "places_feature": "aionbound:wind_shrine_structure_feature"
     },
     "conditions": {
       "placement_pass": "surface_pass",
@@ -40,7 +40,7 @@
       "iterations": 1,
       "scatter_chance": {
         "numerator": 1,
-        "denominator": 1696
+        "denominator": 8256
       },
       "x": {
         "distribution": "uniform",

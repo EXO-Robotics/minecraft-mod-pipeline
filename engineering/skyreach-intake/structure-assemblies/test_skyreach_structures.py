@@ -49,7 +49,15 @@ class SkyreachStructureTests(unittest.TestCase):
         for row in self.manifest["assemblies"]:
             feature = json.loads((ROOT / row["feature_path"]).read_text())["minecraft:structure_template_feature"]
             rule = json.loads((ROOT / row["feature_rule_path"]).read_text())["minecraft:feature_rules"]
-            self.assertEqual(feature["structure_name"], f"aionbound:skyreach/{row['id']}")
+            self.assertEqual(feature["structure_name"], f"aionbound:{row['id']}")
+            self.assertEqual(
+                feature["description"]["identifier"],
+                f"aionbound:{row['id']}_structure_feature",
+            )
+            self.assertEqual(
+                rule["description"]["identifier"],
+                f"aionbound:{row['id']}.structure_feature_rule",
+            )
             self.assertEqual(rule["description"]["places_feature"], feature["description"]["identifier"])
             filters = json.dumps(rule["conditions"])
             self.assertIn("mountain", filters)

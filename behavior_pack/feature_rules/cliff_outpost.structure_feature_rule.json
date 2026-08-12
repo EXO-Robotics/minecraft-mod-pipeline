@@ -2,8 +2,8 @@
   "format_version": "1.13.0",
   "minecraft:feature_rules": {
     "description": {
-      "identifier": "aionbound:skyreach_wind_shrine_rule",
-      "places_feature": "aionbound:skyreach_wind_shrine_feature"
+      "identifier": "aionbound:cliff_outpost.structure_feature_rule",
+      "places_feature": "aionbound:cliff_outpost_structure_feature"
     },
     "conditions": {
       "placement_pass": "surface_pass",
@@ -40,7 +40,7 @@
       "iterations": 1,
       "scatter_chance": {
         "numerator": 1,
-        "denominator": 8256
+        "denominator": 2272
       },
       "x": {
         "distribution": "uniform",

@@ -2,8 +2,8 @@
   "format_version": "1.13.0",
   "minecraft:feature_rules": {
     "description": {
-      "identifier": "aionbound:skyreach_floating_ruin_floor_rule",
-      "places_feature": "aionbound:skyreach_floating_ruin_floor_feature"
+      "identifier": "aionbound:rope_bridge.structure_feature_rule",
+      "places_feature": "aionbound:rope_bridge_structure_feature"
     },
     "conditions": {
       "placement_pass": "surface_pass",
@@ -40,7 +40,7 @@
       "iterations": 1,
       "scatter_chance": {
         "numerator": 1,
-        "denominator": 4576
+        "denominator": 1184
       },
       "x": {
         "distribution": "uniform",

@@ -2,8 +2,8 @@
   "format_version": "1.13.0",
   "minecraft:feature_rules": {
     "description": {
-      "identifier": "aionbound:skyreach_rope_bridge_rule",
-      "places_feature": "aionbound:skyreach_rope_bridge_feature"
+      "identifier": "aionbound:broken_sky_path.structure_feature_rule",
+      "places_feature": "aionbound:broken_sky_path_structure_feature"
     },
     "conditions": {
       "placement_pass": "surface_pass",
@@ -40,7 +40,7 @@
       "iterations": 1,
       "scatter_chance": {
         "numerator": 1,
-        "denominator": 1184
+        "denominator": 1696
       },
       "x": {
         "distribution": "uniform",
