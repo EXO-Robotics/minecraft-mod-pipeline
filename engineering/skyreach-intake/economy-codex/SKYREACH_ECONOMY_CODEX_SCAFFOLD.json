@@ -1,0 +1,983 @@
+{
+  "authority": [
+    {
+      "path": "engineering/skyreach-intake/authority/SKYREACH_VERTICAL_INTAKE_MAP.json",
+      "role": "exact 50-ID and blocker authority",
+      "sha256": "42d0d94ea55d8dd1306345caf014cac08c770cf88adb241f70e9c5bcee4807b5"
+    },
+    {
+      "path": "engineering/skyreach-intake/static-foundations/SKYREACH_STATIC_FOUNDATIONS_AUTHORITY.json",
+      "role": "safe-now static resource/block bindings",
+      "sha256": "0c7ad51175981ee651b4cea62c6c51c208cf82391df381398545bc7fa5aeaf8f"
+    },
+    {
+      "path": "engineering/authority/WAVE_1_ENGINEERING_DECISION_LEDGER.json",
+      "role": "ratified/deferred decision boundary",
+      "sha256": "b791c4b63d6ef09c2ac437fdc67065735a2363becad92b359cecb0a4e25c5172"
+    },
+    {
+      "path": "behavior_pack/scripts/wave1_codex_crystal_data.js",
+      "role": "exact existing 204-entry append-only prefix",
+      "sha256": "de6224aa46d441d86a9bb11a500b16b959d16529231d4c7720112648d5f632c3"
+    },
+    {
+      "path": "behavior_pack/scripts/state.js",
+      "role": "schema-v4 SR region and category capacities",
+      "sha256": "9d208c01a6168b851f3724c909e5f9f2cd31f2539dbe5f218c870610843605ff"
+    }
+  ],
+  "base": {
+    "commit": "10e60dfb4ae95996286d455473612b58c234ec9b",
+    "g7_immutable": true,
+    "tree": "57088d0df2e3ccdf4a8e463ee09d3d6fbe7bd4bf"
+  },
+  "deferred_matrix": [
+    {
+      "disposition": "DEFERRED_FOR_LATER_INTERPRETATION",
+      "id": "W1-001-SR",
+      "surface": "nonwarehouse identities and executable acquisition/recipe closure"
+    },
+    {
+      "disposition": "DEFERRED_FOR_LATER_INTERPRETATION",
+      "id": "W1-003-STORM-NEST",
+      "surface": "Storm Nest thresholds, timing, reset, multiplayer, persistence, terminal semantics"
+    },
+    {
+      "disposition": "DEFERRED_FOR_LATER_INTERPRETATION",
+      "id": "W1-004-SR",
+      "surface": "numeric loot, quantities, chest rolls, seal/recovery/repeat-clear semantics"
+    },
+    {
+      "disposition": "DEFERRED_BY_USER",
+      "id": "W1-CREATIVE-005",
+      "surface": "five sidegrade identities and representations"
+    }
+  ],
+  "guards": {
+    "bds": false,
+    "build": false,
+    "new_intervals": false,
+    "new_item_identities": false,
+    "new_numeric_values": false,
+    "new_schema": false,
+    "new_subscriptions": false,
+    "pack_edits": false,
+    "runtime_edits": false
+  },
+  "packet006_relationships": {
+    "deferred_no_identity_or_page_allocation": {
+      "blocker": "W1-CREATIVE-005",
+      "items": [
+        "summit_hammer",
+        "skywidow_whip",
+        "gale_prism_bow",
+        "nest_talon_dagger",
+        "stormcloak"
+      ]
+    },
+    "rule": "References do not create recipes, acquisition routes, item identities, runtime effects, or completion events.",
+    "safe_now_reference_only": {
+      "accessories": [
+        "surveyor_medallion",
+        "warden_sigil"
+      ],
+      "tools_utility": [
+        "surveyor_staff",
+        "trail_compass",
+        "lantern_hook_grapnel_upgrade"
+      ],
+      "trophies_seals": [
+        "storm_pinion"
+      ]
+    }
+  },
+  "progression_handoffs": {
+    "cm_to_skyreach": {
+      "existing_event": "codex:cm:progression:skyreach_rumor:ruined_observatory_visited",
+      "skyreach_entry_target": "codex:sr:structure:ancient_sky_arch:recognized_structure_visit",
+      "status": "STRUCTURAL_ONLY_NO_NEW_RUNTIME_COMPOSITION"
+    },
+    "skyreach_to_pilgrimage": {
+      "blockers": [
+        "W1-003-STORM-NEST",
+        "W1-004-SR"
+      ],
+      "source_relationships": [
+        "aionbound:storm_pinion",
+        "aionbound:aether_stone",
+        "aionbound:observation_tower"
+      ],
+      "status": "STRUCTURAL_ONLY_TERMINAL_AND_REWARD_GUARDS_DEFERRED",
+      "target": "pilgrimage"
+    }
+  },
+  "registry": {
+    "append_rule": "Keep exact WW/AH/CM prefix ordinals 0-203; append SR ordinals 204-253 with region-local indices.",
+    "entries": [
+      {
+        "category_index": 0,
+        "codex_category": "creature",
+        "discovery_event": {
+          "action": "observe_nearby",
+          "id": "codex:sr:creature:cloud_goat:observe_nearby",
+          "state": 1
+        },
+        "global_append_ordinal": 204,
+        "id": "cloud_goat",
+        "implementation": "SAFE_NOW_IDENTITY_AND_DISCOVERY_TARGET_ONLY",
+        "region": "sr",
+        "runtime_id": "aionbound:cloud_goat",
+        "source_category": "creatures"
+      },
+      {
+        "category_index": 1,
+        "codex_category": "creature",
+        "discovery_event": {
+          "action": "observe_nearby",
+          "id": "codex:sr:creature:sky_fox:observe_nearby",
+          "state": 1
+        },
+        "global_append_ordinal": 205,
+        "id": "sky_fox",
+        "implementation": "SAFE_NOW_IDENTITY_AND_DISCOVERY_TARGET_ONLY",
+        "region": "sr",
+        "runtime_id": "aionbound:sky_fox",
+        "source_category": "creatures"
+      },
+      {
+        "category_index": 2,
+        "codex_category": "creature",
+        "discovery_event": {
+          "action": "observe_nearby",
+          "id": "codex:sr:creature:cliff_ram:observe_nearby",
+          "state": 1
+        },
+        "global_append_ordinal": 206,
+        "id": "cliff_ram",
+        "implementation": "SAFE_NOW_IDENTITY_AND_DISCOVERY_TARGET_ONLY",
+        "region": "sr",
+        "runtime_id": "aionbound:cliff_ram",
+        "source_category": "creatures"
+      },
+      {
+        "category_index": 3,
+        "codex_category": "creature",
+        "discovery_event": {
+          "action": "observe_nearby",
+          "id": "codex:sr:creature:storm_gull:observe_nearby",
+          "state": 1
+        },
+        "global_append_ordinal": 207,
+        "id": "storm_gull",
+        "implementation": "SAFE_NOW_IDENTITY_AND_DISCOVERY_TARGET_ONLY",
+        "region": "sr",
+        "runtime_id": "aionbound:storm_gull",
+        "source_category": "creatures"
+      },
+      {
+        "category_index": 4,
+        "codex_category": "creature",
+        "discovery_event": {
+          "action": "observe_nearby",
+          "id": "codex:sr:creature:gale_hawk:observe_nearby",
+          "state": 1
+        },
+        "global_append_ordinal": 208,
+        "id": "gale_hawk",
+        "implementation": "SAFE_NOW_IDENTITY_AND_DISCOVERY_TARGET_ONLY",
+        "region": "sr",
+        "runtime_id": "aionbound:gale_hawk",
+        "source_category": "creatures"
+      },
+      {
+        "category_index": 5,
+        "codex_category": "creature",
+        "discovery_event": {
+          "action": "observe_nearby",
+          "id": "codex:sr:creature:ropewing:observe_nearby",
+          "state": 1
+        },
+        "global_append_ordinal": 209,
+        "id": "ropewing",
+        "implementation": "SAFE_NOW_IDENTITY_AND_DISCOVERY_TARGET_ONLY",
+        "region": "sr",
+        "runtime_id": "aionbound:ropewing",
+        "source_category": "creatures"
+      },
+      {
+        "category_index": 6,
+        "codex_category": "creature",
+        "discovery_event": {
+          "action": "observe_nearby",
+          "id": "codex:sr:creature:stone_vulture:observe_nearby",
+          "state": 1
+        },
+        "global_append_ordinal": 210,
+        "id": "stone_vulture",
+        "implementation": "SAFE_NOW_IDENTITY_AND_DISCOVERY_TARGET_ONLY",
+        "region": "sr",
+        "runtime_id": "aionbound:stone_vulture",
+        "source_category": "creatures"
+      },
+      {
+        "category_index": 7,
+        "codex_category": "creature",
+        "discovery_event": {
+          "action": "observe_nearby",
+          "id": "codex:sr:creature:glide_drake:observe_nearby",
+          "state": 1
+        },
+        "global_append_ordinal": 211,
+        "id": "glide_drake",
+        "implementation": "SAFE_NOW_IDENTITY_AND_DISCOVERY_TARGET_ONLY",
+        "region": "sr",
+        "runtime_id": "aionbound:glide_drake",
+        "source_category": "creatures"
+      },
+      {
+        "category_index": 8,
+        "codex_category": "creature",
+        "discovery_event": {
+          "action": "observe_nearby",
+          "id": "codex:sr:creature:ruin_harpy:observe_nearby",
+          "state": 1
+        },
+        "global_append_ordinal": 212,
+        "id": "ruin_harpy",
+        "implementation": "SAFE_NOW_IDENTITY_AND_DISCOVERY_TARGET_ONLY",
+        "region": "sr",
+        "runtime_id": "aionbound:ruin_harpy",
+        "source_category": "creatures"
+      },
+      {
+        "category_index": 9,
+        "codex_category": "creature",
+        "discovery_event": {
+          "action": "observe_nearby",
+          "id": "codex:sr:creature:wind_roc:observe_nearby",
+          "state": 1
+        },
+        "global_append_ordinal": 213,
+        "id": "wind_roc",
+        "implementation": "SAFE_NOW_IDENTITY_AND_DISCOVERY_TARGET_ONLY",
+        "region": "sr",
+        "runtime_id": "aionbound:wind_roc",
+        "source_category": "creatures"
+      },
+      {
+        "category_index": 0,
+        "codex_category": "resource",
+        "discovery_event": {
+          "action": "first_obtain",
+          "id": "codex:sr:resource:sky_feather:first_obtain",
+          "state": 2
+        },
+        "economy_relationships": [
+          {
+            "blockers": [
+              "W1-001-SR"
+            ],
+            "purpose": "glider_panel",
+            "status": "DEFERRED_RELATIONSHIP"
+          }
+        ],
+        "global_append_ordinal": 214,
+        "id": "sky_feather",
+        "implementation": "SAFE_NOW_IDENTITY_AND_DISCOVERY_TARGET_ONLY",
+        "region": "sr",
+        "runtime_id": "aionbound:sky_feather",
+        "source_category": "resources"
+      },
+      {
+        "category_index": 1,
+        "codex_category": "resource",
+        "discovery_event": {
+          "action": "first_obtain",
+          "id": "codex:sr:resource:cloud_wool:first_obtain",
+          "state": 2
+        },
+        "economy_relationships": [
+          {
+            "blockers": [],
+            "purpose": "soft_landing_pad",
+            "status": "SAFE_NOW_NONNUMERIC_RELATIONSHIP"
+          }
+        ],
+        "global_append_ordinal": 215,
+        "id": "cloud_wool",
+        "implementation": "SAFE_NOW_IDENTITY_AND_DISCOVERY_TARGET_ONLY",
+        "region": "sr",
+        "runtime_id": "aionbound:cloud_wool",
+        "source_category": "resources"
+      },
+      {
+        "category_index": 2,
+        "codex_category": "resource",
+        "discovery_event": {
+          "action": "first_obtain",
+          "id": "codex:sr:resource:updraft_reed_item:first_obtain",
+          "state": 2
+        },
+        "economy_relationships": [
+          {
+            "blockers": [],
+            "purpose": "lift_tonic",
+            "status": "SAFE_NOW_NONNUMERIC_RELATIONSHIP"
+          }
+        ],
+        "global_append_ordinal": 216,
+        "id": "updraft_reed_item",
+        "implementation": "SAFE_NOW_IDENTITY_AND_DISCOVERY_TARGET_ONLY",
+        "region": "sr",
+        "runtime_id": "aionbound:updraft_reed_item",
+        "source_category": "resources"
+      },
+      {
+        "category_index": 3,
+        "codex_category": "resource",
+        "discovery_event": {
+          "action": "first_obtain",
+          "id": "codex:sr:resource:sky_vine_item:first_obtain",
+          "state": 2
+        },
+        "economy_relationships": [
+          {
+            "blockers": [],
+            "purpose": "climbing_rope",
+            "status": "SAFE_NOW_NONNUMERIC_RELATIONSHIP"
+          }
+        ],
+        "global_append_ordinal": 217,
+        "id": "sky_vine_item",
+        "implementation": "SAFE_NOW_IDENTITY_AND_DISCOVERY_TARGET_ONLY",
+        "region": "sr",
+        "runtime_id": "aionbound:sky_vine_item",
+        "source_category": "resources"
+      },
+      {
+        "category_index": 4,
+        "codex_category": "resource",
+        "discovery_event": {
+          "action": "first_obtain",
+          "id": "codex:sr:resource:wind_silk:first_obtain",
+          "state": 2
+        },
+        "economy_relationships": [
+          {
+            "blockers": [],
+            "purpose": "climbing_rope",
+            "status": "SAFE_NOW_NONNUMERIC_RELATIONSHIP"
+          },
+          {
+            "blockers": [
+              "W1-001-SR"
+            ],
+            "purpose": "glider_panel",
+            "status": "DEFERRED_RELATIONSHIP"
+          }
+        ],
+        "global_append_ordinal": 218,
+        "id": "wind_silk",
+        "implementation": "SAFE_NOW_IDENTITY_AND_DISCOVERY_TARGET_ONLY",
+        "region": "sr",
+        "runtime_id": "aionbound:wind_silk",
+        "source_category": "resources"
+      },
+      {
+        "category_index": 5,
+        "codex_category": "resource",
+        "discovery_event": {
+          "action": "first_obtain",
+          "id": "codex:sr:resource:cliff_crystal:first_obtain",
+          "state": 2
+        },
+        "economy_relationships": [
+          {
+            "blockers": [
+              "W1-001-SR"
+            ],
+            "purpose": "climbing_hook_head",
+            "status": "DEFERRED_RELATIONSHIP"
+          }
+        ],
+        "global_append_ordinal": 219,
+        "id": "cliff_crystal",
+        "implementation": "SAFE_NOW_IDENTITY_AND_DISCOVERY_TARGET_ONLY",
+        "region": "sr",
+        "runtime_id": "aionbound:cliff_crystal",
+        "source_category": "resources"
+      },
+      {
+        "category_index": 6,
+        "codex_category": "resource",
+        "discovery_event": {
+          "action": "first_obtain",
+          "id": "codex:sr:resource:float_resin:first_obtain",
+          "state": 2
+        },
+        "economy_relationships": [
+          {
+            "blockers": [],
+            "purpose": "soft_landing_pad",
+            "status": "SAFE_NOW_NONNUMERIC_RELATIONSHIP"
+          },
+          {
+            "blockers": [],
+            "purpose": "lift_tonic",
+            "status": "SAFE_NOW_NONNUMERIC_RELATIONSHIP"
+          }
+        ],
+        "global_append_ordinal": 220,
+        "id": "float_resin",
+        "implementation": "SAFE_NOW_IDENTITY_AND_DISCOVERY_TARGET_ONLY",
+        "region": "sr",
+        "runtime_id": "aionbound:float_resin",
+        "source_category": "resources"
+      },
+      {
+        "category_index": 7,
+        "codex_category": "resource",
+        "discovery_event": {
+          "action": "first_obtain",
+          "id": "codex:sr:resource:lift_bloom_item:first_obtain",
+          "state": 2
+        },
+        "economy_relationships": [
+          {
+            "blockers": [],
+            "purpose": "lift_tonic",
+            "status": "SAFE_NOW_NONNUMERIC_RELATIONSHIP"
+          }
+        ],
+        "global_append_ordinal": 221,
+        "id": "lift_bloom_item",
+        "implementation": "SAFE_NOW_IDENTITY_AND_DISCOVERY_TARGET_ONLY",
+        "region": "sr",
+        "runtime_id": "aionbound:lift_bloom_item",
+        "source_category": "resources"
+      },
+      {
+        "category_index": 8,
+        "codex_category": "resource",
+        "discovery_event": {
+          "action": "first_obtain",
+          "id": "codex:sr:resource:storm_pinion:first_obtain",
+          "state": 2
+        },
+        "economy_relationships": [
+          {
+            "blockers": [
+              "W1-003-STORM-NEST",
+              "W1-004-SR"
+            ],
+            "purpose": "trophy_edge_blank",
+            "status": "DEFERRED_RELATIONSHIP"
+          },
+          {
+            "blockers": [
+              "W1-004-SR"
+            ],
+            "purpose": "display",
+            "status": "DEFERRED_RELATIONSHIP"
+          }
+        ],
+        "global_append_ordinal": 222,
+        "id": "storm_pinion",
+        "implementation": "SAFE_NOW_IDENTITY_AND_DISCOVERY_TARGET_ONLY",
+        "region": "sr",
+        "runtime_id": "aionbound:storm_pinion",
+        "source_category": "resources"
+      },
+      {
+        "category_index": 9,
+        "codex_category": "resource",
+        "discovery_event": {
+          "action": "first_obtain",
+          "id": "codex:sr:resource:aether_stone:first_obtain",
+          "state": 2
+        },
+        "economy_relationships": [
+          {
+            "blockers": [],
+            "purpose": "aether_bind",
+            "status": "SAFE_NOW_NONNUMERIC_RELATIONSHIP"
+          },
+          {
+            "blockers": [],
+            "purpose": "surveyor_staff",
+            "status": "SAFE_NOW_NONNUMERIC_RELATIONSHIP"
+          },
+          {
+            "blockers": [],
+            "purpose": "pilgrimage",
+            "status": "SAFE_NOW_NONNUMERIC_RELATIONSHIP"
+          }
+        ],
+        "global_append_ordinal": 223,
+        "id": "aether_stone",
+        "implementation": "SAFE_NOW_IDENTITY_AND_DISCOVERY_TARGET_ONLY",
+        "region": "sr",
+        "runtime_id": "aionbound:aether_stone",
+        "source_category": "resources"
+      },
+      {
+        "category_index": 10,
+        "codex_category": "resource",
+        "discovery_event": {
+          "action": "first_obtain_or_recognized_harvest",
+          "id": "codex:sr:resource:cliff_stone:first_obtain_or_recognized_harvest",
+          "state": 2
+        },
+        "global_append_ordinal": 224,
+        "id": "cliff_stone",
+        "implementation": "SAFE_NOW_IDENTITY_AND_DISCOVERY_TARGET_ONLY",
+        "region": "sr",
+        "runtime_id": "aionbound:cliff_stone",
+        "source_category": "blocks"
+      },
+      {
+        "category_index": 11,
+        "codex_category": "resource",
+        "discovery_event": {
+          "action": "first_obtain_or_recognized_harvest",
+          "id": "codex:sr:resource:pale_shelf_stone:first_obtain_or_recognized_harvest",
+          "state": 2
+        },
+        "global_append_ordinal": 225,
+        "id": "pale_shelf_stone",
+        "implementation": "SAFE_NOW_IDENTITY_AND_DISCOVERY_TARGET_ONLY",
+        "region": "sr",
+        "runtime_id": "aionbound:pale_shelf_stone",
+        "source_category": "blocks"
+      },
+      {
+        "category_index": 12,
+        "codex_category": "resource",
+        "discovery_event": {
+          "action": "first_obtain_or_recognized_harvest",
+          "id": "codex:sr:resource:cliff_gravel:first_obtain_or_recognized_harvest",
+          "state": 2
+        },
+        "global_append_ordinal": 226,
+        "id": "cliff_gravel",
+        "implementation": "SAFE_NOW_IDENTITY_AND_DISCOVERY_TARGET_ONLY",
+        "region": "sr",
+        "runtime_id": "aionbound:cliff_gravel",
+        "source_category": "blocks"
+      },
+      {
+        "category_index": 13,
+        "codex_category": "resource",
+        "discovery_event": {
+          "action": "first_obtain_or_recognized_harvest",
+          "id": "codex:sr:resource:wind_slate:first_obtain_or_recognized_harvest",
+          "state": 2
+        },
+        "global_append_ordinal": 227,
+        "id": "wind_slate",
+        "implementation": "SAFE_NOW_IDENTITY_AND_DISCOVERY_TARGET_ONLY",
+        "region": "sr",
+        "runtime_id": "aionbound:wind_slate",
+        "source_category": "blocks"
+      },
+      {
+        "category_index": 14,
+        "codex_category": "resource",
+        "discovery_event": {
+          "action": "first_obtain_or_recognized_harvest",
+          "id": "codex:sr:resource:skyreach_log:first_obtain_or_recognized_harvest",
+          "state": 2
+        },
+        "global_append_ordinal": 228,
+        "id": "skyreach_log",
+        "implementation": "SAFE_NOW_IDENTITY_AND_DISCOVERY_TARGET_ONLY",
+        "region": "sr",
+        "runtime_id": "aionbound:skyreach_log",
+        "source_category": "blocks"
+      },
+      {
+        "category_index": 15,
+        "codex_category": "resource",
+        "discovery_event": {
+          "action": "first_obtain_or_recognized_harvest",
+          "id": "codex:sr:resource:skyreach_wood:first_obtain_or_recognized_harvest",
+          "state": 2
+        },
+        "global_append_ordinal": 229,
+        "id": "skyreach_wood",
+        "implementation": "SAFE_NOW_IDENTITY_AND_DISCOVERY_TARGET_ONLY",
+        "region": "sr",
+        "runtime_id": "aionbound:skyreach_wood",
+        "source_category": "blocks"
+      },
+      {
+        "category_index": 16,
+        "codex_category": "resource",
+        "discovery_event": {
+          "action": "first_obtain_or_recognized_harvest",
+          "id": "codex:sr:resource:skyreach_planks:first_obtain_or_recognized_harvest",
+          "state": 2
+        },
+        "global_append_ordinal": 230,
+        "id": "skyreach_planks",
+        "implementation": "SAFE_NOW_IDENTITY_AND_DISCOVERY_TARGET_ONLY",
+        "region": "sr",
+        "runtime_id": "aionbound:skyreach_planks",
+        "source_category": "blocks"
+      },
+      {
+        "category_index": 17,
+        "codex_category": "resource",
+        "discovery_event": {
+          "action": "first_obtain_or_recognized_harvest",
+          "id": "codex:sr:resource:rope_timber:first_obtain_or_recognized_harvest",
+          "state": 2
+        },
+        "global_append_ordinal": 231,
+        "id": "rope_timber",
+        "implementation": "SAFE_NOW_IDENTITY_AND_DISCOVERY_TARGET_ONLY",
+        "region": "sr",
+        "runtime_id": "aionbound:rope_timber",
+        "source_category": "blocks"
+      },
+      {
+        "category_index": 18,
+        "codex_category": "resource",
+        "discovery_event": {
+          "action": "first_obtain_or_recognized_harvest",
+          "id": "codex:sr:resource:cloud_wool_block:first_obtain_or_recognized_harvest",
+          "state": 2
+        },
+        "global_append_ordinal": 232,
+        "id": "cloud_wool_block",
+        "implementation": "SAFE_NOW_IDENTITY_AND_DISCOVERY_TARGET_ONLY",
+        "region": "sr",
+        "runtime_id": "aionbound:cloud_wool_block",
+        "source_category": "blocks"
+      },
+      {
+        "category_index": 19,
+        "codex_category": "resource",
+        "discovery_event": {
+          "action": "first_obtain_or_recognized_harvest",
+          "id": "codex:sr:resource:sky_moss_block:first_obtain_or_recognized_harvest",
+          "state": 2
+        },
+        "global_append_ordinal": 233,
+        "id": "sky_moss_block",
+        "implementation": "SAFE_NOW_IDENTITY_AND_DISCOVERY_TARGET_ONLY",
+        "region": "sr",
+        "runtime_id": "aionbound:sky_moss_block",
+        "source_category": "blocks"
+      },
+      {
+        "category_index": 0,
+        "codex_category": "plant",
+        "discovery_event": {
+          "action": "first_harvest",
+          "id": "codex:sr:plant:wind_reed_plant:first_harvest",
+          "state": 2
+        },
+        "global_append_ordinal": 234,
+        "id": "wind_reed_plant",
+        "implementation": "SAFE_NOW_IDENTITY_AND_DISCOVERY_TARGET_ONLY",
+        "region": "sr",
+        "runtime_id": "aionbound:wind_reed_plant",
+        "source_category": "plants"
+      },
+      {
+        "category_index": 1,
+        "codex_category": "plant",
+        "discovery_event": {
+          "action": "first_harvest",
+          "id": "codex:sr:plant:hanging_sky_vine:first_harvest",
+          "state": 2
+        },
+        "global_append_ordinal": 235,
+        "id": "hanging_sky_vine",
+        "implementation": "SAFE_NOW_IDENTITY_AND_DISCOVERY_TARGET_ONLY",
+        "region": "sr",
+        "runtime_id": "aionbound:hanging_sky_vine",
+        "source_category": "plants"
+      },
+      {
+        "category_index": 2,
+        "codex_category": "plant",
+        "discovery_event": {
+          "action": "first_harvest",
+          "id": "codex:sr:plant:rope_root:first_harvest",
+          "state": 2
+        },
+        "global_append_ordinal": 236,
+        "id": "rope_root",
+        "implementation": "SAFE_NOW_IDENTITY_AND_DISCOVERY_TARGET_ONLY",
+        "region": "sr",
+        "runtime_id": "aionbound:rope_root",
+        "source_category": "plants"
+      },
+      {
+        "category_index": 3,
+        "codex_category": "plant",
+        "discovery_event": {
+          "action": "first_harvest",
+          "id": "codex:sr:plant:cloud_moss:first_harvest",
+          "state": 2
+        },
+        "global_append_ordinal": 237,
+        "id": "cloud_moss",
+        "implementation": "SAFE_NOW_IDENTITY_AND_DISCOVERY_TARGET_ONLY",
+        "region": "sr",
+        "runtime_id": "aionbound:cloud_moss",
+        "source_category": "plants"
+      },
+      {
+        "category_index": 4,
+        "codex_category": "plant",
+        "discovery_event": {
+          "action": "first_harvest",
+          "id": "codex:sr:plant:cloudpuff_plant:first_harvest",
+          "state": 2
+        },
+        "global_append_ordinal": 238,
+        "id": "cloudpuff_plant",
+        "implementation": "SAFE_NOW_IDENTITY_AND_DISCOVERY_TARGET_ONLY",
+        "region": "sr",
+        "runtime_id": "aionbound:cloudpuff_plant",
+        "source_category": "plants"
+      },
+      {
+        "category_index": 5,
+        "codex_category": "plant",
+        "discovery_event": {
+          "action": "first_harvest",
+          "id": "codex:sr:plant:shelf_shrub:first_harvest",
+          "state": 2
+        },
+        "global_append_ordinal": 239,
+        "id": "shelf_shrub",
+        "implementation": "SAFE_NOW_IDENTITY_AND_DISCOVERY_TARGET_ONLY",
+        "region": "sr",
+        "runtime_id": "aionbound:shelf_shrub",
+        "source_category": "plants"
+      },
+      {
+        "category_index": 6,
+        "codex_category": "plant",
+        "discovery_event": {
+          "action": "first_harvest",
+          "id": "codex:sr:plant:cliff_flower:first_harvest",
+          "state": 2
+        },
+        "global_append_ordinal": 240,
+        "id": "cliff_flower",
+        "implementation": "SAFE_NOW_IDENTITY_AND_DISCOVERY_TARGET_ONLY",
+        "region": "sr",
+        "runtime_id": "aionbound:cliff_flower",
+        "source_category": "plants"
+      },
+      {
+        "category_index": 7,
+        "codex_category": "plant",
+        "discovery_event": {
+          "action": "first_harvest",
+          "id": "codex:sr:plant:skybloom:first_harvest",
+          "state": 2
+        },
+        "global_append_ordinal": 241,
+        "id": "skybloom",
+        "implementation": "SAFE_NOW_IDENTITY_AND_DISCOVERY_TARGET_ONLY",
+        "region": "sr",
+        "runtime_id": "aionbound:skybloom",
+        "source_category": "plants"
+      },
+      {
+        "category_index": 8,
+        "codex_category": "plant",
+        "discovery_event": {
+          "action": "first_harvest",
+          "id": "codex:sr:plant:floating_blossom:first_harvest",
+          "state": 2
+        },
+        "global_append_ordinal": 242,
+        "id": "floating_blossom",
+        "implementation": "SAFE_NOW_IDENTITY_AND_DISCOVERY_TARGET_ONLY",
+        "region": "sr",
+        "runtime_id": "aionbound:floating_blossom",
+        "source_category": "plants"
+      },
+      {
+        "category_index": 9,
+        "codex_category": "plant",
+        "discovery_event": {
+          "action": "first_harvest",
+          "id": "codex:sr:plant:nest_thatch_tuft:first_harvest",
+          "state": 2
+        },
+        "global_append_ordinal": 243,
+        "id": "nest_thatch_tuft",
+        "implementation": "SAFE_NOW_IDENTITY_AND_DISCOVERY_TARGET_ONLY",
+        "region": "sr",
+        "runtime_id": "aionbound:nest_thatch_tuft",
+        "source_category": "plants"
+      },
+      {
+        "category_index": 0,
+        "codex_category": "structure",
+        "discovery_event": {
+          "action": "recognized_structure_visit",
+          "id": "codex:sr:structure:rope_bridge:recognized_structure_visit",
+          "state": 2
+        },
+        "global_append_ordinal": 244,
+        "id": "rope_bridge",
+        "implementation": "SAFE_NOW_IDENTITY_AND_DISCOVERY_TARGET_ONLY",
+        "region": "sr",
+        "runtime_id": "aionbound:rope_bridge",
+        "source_category": "structures"
+      },
+      {
+        "category_index": 1,
+        "codex_category": "structure",
+        "discovery_event": {
+          "action": "recognized_structure_visit",
+          "id": "codex:sr:structure:broken_sky_path:recognized_structure_visit",
+          "state": 2
+        },
+        "global_append_ordinal": 245,
+        "id": "broken_sky_path",
+        "implementation": "SAFE_NOW_IDENTITY_AND_DISCOVERY_TARGET_ONLY",
+        "region": "sr",
+        "runtime_id": "aionbound:broken_sky_path",
+        "source_category": "structures"
+      },
+      {
+        "category_index": 2,
+        "codex_category": "structure",
+        "discovery_event": {
+          "action": "recognized_structure_visit",
+          "id": "codex:sr:structure:cliff_outpost:recognized_structure_visit",
+          "state": 2
+        },
+        "global_append_ordinal": 246,
+        "id": "cliff_outpost",
+        "implementation": "SAFE_NOW_IDENTITY_AND_DISCOVERY_TARGET_ONLY",
+        "region": "sr",
+        "runtime_id": "aionbound:cliff_outpost",
+        "source_category": "structures"
+      },
+      {
+        "category_index": 3,
+        "codex_category": "structure",
+        "discovery_event": {
+          "action": "recognized_structure_visit",
+          "id": "codex:sr:structure:cliff_beacon:recognized_structure_visit",
+          "state": 2
+        },
+        "global_append_ordinal": 247,
+        "id": "cliff_beacon",
+        "implementation": "SAFE_NOW_IDENTITY_AND_DISCOVERY_TARGET_ONLY",
+        "region": "sr",
+        "runtime_id": "aionbound:cliff_beacon",
+        "source_category": "structures"
+      },
+      {
+        "category_index": 4,
+        "codex_category": "structure",
+        "discovery_event": {
+          "action": "recognized_structure_visit",
+          "id": "codex:sr:structure:observation_tower:recognized_structure_visit",
+          "state": 2
+        },
+        "global_append_ordinal": 248,
+        "id": "observation_tower",
+        "implementation": "SAFE_NOW_IDENTITY_AND_DISCOVERY_TARGET_ONLY",
+        "region": "sr",
+        "runtime_id": "aionbound:observation_tower",
+        "source_category": "structures"
+      },
+      {
+        "category_index": 5,
+        "codex_category": "structure",
+        "discovery_event": {
+          "action": "recognized_structure_visit",
+          "id": "codex:sr:structure:nest_platform:recognized_structure_visit",
+          "state": 2
+        },
+        "global_append_ordinal": 249,
+        "id": "nest_platform",
+        "implementation": "SAFE_NOW_IDENTITY_AND_DISCOVERY_TARGET_ONLY",
+        "region": "sr",
+        "runtime_id": "aionbound:nest_platform",
+        "source_category": "structures"
+      },
+      {
+        "category_index": 6,
+        "codex_category": "structure",
+        "discovery_event": {
+          "action": "recognized_structure_visit",
+          "id": "codex:sr:structure:floating_ruin_floor:recognized_structure_visit",
+          "state": 2
+        },
+        "global_append_ordinal": 250,
+        "id": "floating_ruin_floor",
+        "implementation": "SAFE_NOW_IDENTITY_AND_DISCOVERY_TARGET_ONLY",
+        "region": "sr",
+        "runtime_id": "aionbound:floating_ruin_floor",
+        "source_category": "structures"
+      },
+      {
+        "category_index": 7,
+        "codex_category": "structure",
+        "discovery_event": {
+          "action": "recognized_structure_visit",
+          "id": "codex:sr:structure:ancient_sky_arch:recognized_structure_visit",
+          "state": 2
+        },
+        "global_append_ordinal": 251,
+        "id": "ancient_sky_arch",
+        "implementation": "SAFE_NOW_IDENTITY_AND_DISCOVERY_TARGET_ONLY",
+        "region": "sr",
+        "runtime_id": "aionbound:ancient_sky_arch",
+        "source_category": "structures"
+      },
+      {
+        "category_index": 8,
+        "codex_category": "structure",
+        "discovery_event": {
+          "action": "recognized_structure_visit",
+          "id": "codex:sr:structure:hanging_lift_frame:recognized_structure_visit",
+          "state": 2
+        },
+        "global_append_ordinal": 252,
+        "id": "hanging_lift_frame",
+        "implementation": "SAFE_NOW_IDENTITY_AND_DISCOVERY_TARGET_ONLY",
+        "region": "sr",
+        "runtime_id": "aionbound:hanging_lift_frame",
+        "source_category": "structures"
+      },
+      {
+        "category_index": 9,
+        "codex_category": "structure",
+        "discovery_event": {
+          "action": "recognized_structure_visit",
+          "id": "codex:sr:structure:wind_shrine:recognized_structure_visit",
+          "state": 2
+        },
+        "global_append_ordinal": 253,
+        "id": "wind_shrine",
+        "implementation": "SAFE_NOW_IDENTITY_AND_DISCOVERY_TARGET_ONLY",
+        "region": "sr",
+        "runtime_id": "aionbound:wind_shrine",
+        "source_category": "structures"
+      }
+    ],
+    "entries_after": 254,
+    "prefix_entries": 204,
+    "skyreach_entries": 50,
+    "state_schema_after": 4,
+    "state_schema_before": 4
+  },
+  "schema": "aionbound.wave1.skyreach-economy-codex-scaffold.v1.0.0",
+  "scope": "Engineering authority scaffold only; no BP/RP/runtime/ledger/BDS/build mutation.",
+  "status": "SKYREACH_SAFE_NOW_ECONOMY_CODEX_SCAFFOLD_COMPLETE"
+}
