@@ -18,6 +18,7 @@ import { createPearlDepthsService } from "./pearl_depths.js";
 import { createCrystalEquipmentService } from "./crystal_equipment.js";
 import { createSkyreachRewardHooks } from "./skyreach_rewards.js";
 import { createStormNestService } from "./storm_nest.js";
+import { createTwinbondService } from "./twinbond.js";
 
 export function createRuntime(platform = { world, system, ItemStack, EquipmentSlot, EntityComponentTypes, ActionFormData }) {
   const arbiter = new RuntimeArbiter();
@@ -95,6 +96,16 @@ export function createRuntime(platform = { world, system, ItemStack, EquipmentSl
   const combat = createCombatService({ ...platform, state, arbiter, boundedEntities, consumeOne });
   const crystalEquipment = createCrystalEquipmentService({ ...platform, state, arbiter });
   const encounters = createEncounterService({ ...platform, state, boundedEntities, consumeOne });
+  const twinbond = createTwinbondService({
+    ...platform,
+    state,
+    boundedEntities,
+    codexHooks: {
+      onPull: player => state.stamp(player, "codex:finale:twinbond:encountered"),
+      onTerminalCredit: player => state.stamp(player, "codex:finale:twinbond:completed"),
+      onMastery: player => state.stamp(player, "codex:finale:twinbond:mastery"),
+    },
+  });
   const devices = createDeviceService({ ...platform, state, arbiter, consumeOne });
   const chaos = createChaosService({ ...platform, state, arbiter });
 
@@ -121,7 +132,7 @@ export function createRuntime(platform = { world, system, ItemStack, EquipmentSl
     "boss:royal_moth": bossAction("boss:royal_moth"),
     "boss:basalt": bossAction("boss:basalt"),
     "boss:rift": bossAction("boss:rift"),
-    "boss:twinbond": bossAction("boss:twinbond"),
+    "boss:twinbond": ({ player, block }) => twinbond.blockInteraction(player, block),
     "boss:thorn_court": ({ player, block }) => thornCourt.begin(player, block.location),
   };
   const itemActions = {
@@ -145,7 +156,7 @@ export function createRuntime(platform = { world, system, ItemStack, EquipmentSl
     run(); return true;
   }
   function reconcile() {
-    encounters.reconcile(); thornCourt.reconcile(); pearlDepths.reconcile(); stormNest.reconcile(); structures.reconcile(); chaos.reconcile();
+    encounters.reconcile(); thornCourt.reconcile(); pearlDepths.reconcile(); stormNest.reconcile(); twinbond.reconcile(); structures.reconcile(); chaos.reconcile();
     for (const player of platform.world.getAllPlayers()) state.playerState(player);
   }
   function tick() { callback(() => {
@@ -157,7 +168,7 @@ export function createRuntime(platform = { world, system, ItemStack, EquipmentSl
       combat.tickPlayers();
       for (const player of platform.world.getAllPlayers()) crystalEquipment.tickPlayer(player);
     }
-    thornCourt.tick(); pearlDepths.tick(); stormNest.tick(); structures.tick(); devices.tick(); chaos.tick();
+    thornCourt.tick(); pearlDepths.tick(); stormNest.tick(); twinbond.tick(); structures.tick(); devices.tick(); chaos.tick();
   }); }
 
   function start() {
@@ -202,18 +213,19 @@ export function createRuntime(platform = { world, system, ItemStack, EquipmentSl
     });
     platform.world.afterEvents.playerInteractWithEntity.subscribe(event => callback(() => router.dispatchEntityInteraction({ player: event.player, target: event.target, itemStack: event.itemStack })));
     platform.world.afterEvents.entityHitEntity.subscribe(event => callback(() => combat.mountStep(event)));
-    platform.world.afterEvents.entityHurt.subscribe(event => callback(() => { combat.routeMeleeHurt(event); combat.handlePlayerHurt(event); }));
+    platform.world.afterEvents.entityHurt.subscribe(event => callback(() => { twinbond.handleHurt(event); combat.routeMeleeHurt(event); combat.handlePlayerHurt(event); }));
     platform.world.afterEvents.entityDie.subscribe(event => callback(() => {
       router.dispatchEntityDeathEvent(event);
       thornCourt.bossDeath(event);
       pearlDepths.bossDeath(event);
       stormNest.bossDeath(event);
+      twinbond.bossDeath(event);
       encounters.bossDeath(event);
       combat.glasswingDeath(event);
     }));
     platform.system.runInterval(tick, 1);
   }
-  return { start, reconcile, tick, state, arbiter, router, codex, combat, crystalEquipment, devices, encounters, thornCourt, pearlDepths, stormNest, crystalRewardHooks, skyreachRewardHooks, ashenStructureRewardHooks, chaos, structures, budgets: COMBINED_BUDGETS };
+  return { start, reconcile, tick, state, arbiter, router, codex, combat, crystalEquipment, devices, encounters, thornCourt, pearlDepths, stormNest, twinbond, crystalRewardHooks, skyreachRewardHooks, ashenStructureRewardHooks, chaos, structures, budgets: COMBINED_BUDGETS };
 }
 
 export function startRuntime() { return createRuntime().start(); }

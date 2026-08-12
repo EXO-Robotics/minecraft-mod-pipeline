@@ -1,0 +1,21 @@
+{
+  "format_version": "1.21.80",
+  "minecraft:block": {
+    "description": {
+      "identifier": "aionbound:twin_thrones"
+    },
+    "components": {
+      "minecraft:display_name": "Twin Thrones",
+      "minecraft:destructible_by_mining": {
+        "seconds_to_destroy": 2
+      },
+      "minecraft:geometry": "geometry.aionbound.twin_thrones",
+      "minecraft:material_instances": {
+        "*": {
+          "texture": "twin_thrones",
+          "render_method": "alpha_test"
+        }
+      }
+    }
+  }
+}

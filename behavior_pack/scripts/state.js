@@ -85,13 +85,15 @@ export function migrateWorld(source = {}) {
   const pendingKilnSky = objectOrEmpty(encounterSource.pendingKilnSky);
   const pendingPearlDepths = objectOrEmpty(encounterSource.pendingPearlDepths);
   const pendingStormNest = objectOrEmpty(encounterSource.pendingStormNest);
+  const pendingTwinbond = objectOrEmpty(encounterSource.pendingTwinbond);
   // Ratified arena sessions are live-memory only. Drop only legacy or
   // interrupted rows for those encounters while preserving all other encounters.
   for (const [key, value] of Object.entries(encounterActive)) {
     if (key.startsWith("thorn_court:") || value?.encounterId === "aionbound:thorn_court"
       || key.startsWith("kiln_sky:") || value?.encounterId === "aionbound:kiln_sky"
       || key.startsWith("pearl_depths:") || value?.encounterId === "aionbound:pearl_depths"
-      || key.startsWith("storm_nest:") || value?.encounterId === "aionbound:storm_nest") delete encounterActive[key];
+      || key.startsWith("storm_nest:") || value?.encounterId === "aionbound:storm_nest"
+      || key.startsWith("twinbond:") || value?.encounterId === "aionbound:twinbond") delete encounterActive[key];
   }
   return {
     ...objectOrEmpty(source),
@@ -106,6 +108,7 @@ export function migrateWorld(source = {}) {
       ...(Object.keys(pendingKilnSky).length ? { pendingKilnSky } : {}),
       ...(Object.keys(pendingPearlDepths).length ? { pendingPearlDepths } : {}),
       ...(Object.keys(pendingStormNest).length ? { pendingStormNest } : {}),
+      ...(Object.keys(pendingTwinbond).length ? { pendingTwinbond } : {}),
     },
   };
 }

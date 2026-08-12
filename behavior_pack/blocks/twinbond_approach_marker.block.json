@@ -1,0 +1,21 @@
+{
+  "format_version": "1.21.80",
+  "minecraft:block": {
+    "description": {
+      "identifier": "aionbound:twinbond_approach_marker"
+    },
+    "components": {
+      "minecraft:display_name": "Twinbond Approach Marker",
+      "minecraft:destructible_by_mining": {
+        "seconds_to_destroy": 2
+      },
+      "minecraft:geometry": "geometry.aionbound.twinbond_approach_marker",
+      "minecraft:material_instances": {
+        "*": {
+          "texture": "twinbond_approach_marker",
+          "render_method": "alpha_test"
+        }
+      }
+    }
+  }
+}

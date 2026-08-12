@@ -1,0 +1,21 @@
+{
+  "format_version": "1.21.80",
+  "minecraft:block": {
+    "description": {
+      "identifier": "aionbound:twinbond_obsidian_ring"
+    },
+    "components": {
+      "minecraft:display_name": "Twinbond Obsidian Ring",
+      "minecraft:destructible_by_mining": {
+        "seconds_to_destroy": 2
+      },
+      "minecraft:geometry": "geometry.aionbound.twinbond_obsidian_ring",
+      "minecraft:material_instances": {
+        "*": {
+          "texture": "twinbond_obsidian_ring",
+          "render_method": "alpha_test"
+        }
+      }
+    }
+  }
+}

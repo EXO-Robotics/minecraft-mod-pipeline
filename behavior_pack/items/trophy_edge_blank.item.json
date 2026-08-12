@@ -1,22 +1,19 @@
 {
   "format_version": "1.21.80",
   "minecraft:item": {
+    "description": {
+      "identifier": "aionbound:trophy_edge_blank"
+    },
     "components": {
       "minecraft:display_name": {
-        "value": "Trophy Concord Scale"
+        "value": "item.aionbound:trophy_edge_blank.name"
       },
       "minecraft:icon": {
         "textures": {
-          "default": "trophy_concord_scale"
+          "default": "trophy_edge_blank"
         }
       },
       "minecraft:max_stack_size": 1
-    },
-    "description": {
-      "identifier": "aionbound:trophy_concord_scale",
-      "menu_category": {
-        "category": "items"
-      }
     }
   }
 }

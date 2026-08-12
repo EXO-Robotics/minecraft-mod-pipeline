@@ -1,0 +1,21 @@
+{
+  "format_version": "1.21.80",
+  "minecraft:block": {
+    "description": {
+      "identifier": "aionbound:ceremony_anvil_site"
+    },
+    "components": {
+      "minecraft:display_name": "Ceremony Anvil Site",
+      "minecraft:destructible_by_mining": {
+        "seconds_to_destroy": 2
+      },
+      "minecraft:geometry": "geometry.aionbound.ceremony_anvil_site",
+      "minecraft:material_instances": {
+        "*": {
+          "texture": "ceremony_anvil_site",
+          "render_method": "alpha_test"
+        }
+      }
+    }
+  }
+}

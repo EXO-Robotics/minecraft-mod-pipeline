@@ -75,6 +75,8 @@ export const BLOCK_ROUTES = Object.freeze({
   "aionbound:boneplain_soil": { discoveries: ["pilgrimage:boneplain"], actions: ["guidance"] },
   "aionbound:rift_crust": { discoveries: ["pilgrimage:riftscar"], actions: ["boss:rift"] },
   "aionbound:twinbond_obelisk_site": { discoveries: ["pilgrimage:twinbond"], actions: ["boss:twinbond"] },
+  "aionbound:twinbond_approach_marker": { discoveries: ["pilgrimage:twinbond"], actions: ["boss:twinbond"] },
+  "aionbound:ceremony_anvil_site": { discoveries: ["pilgrimage:twinbond"], actions: ["boss:twinbond"] },
   "aionbound:orevein_hollow_gate": { discoveries: ["destination:burrowgate"], actions: ["pocket"] },
   "aionbound:roving_foundry_wreck": { discoveries: ["landmark:foundry"], actions: ["boss:foundry"] },
   "aionbound:creature_nest": { discoveries: ["landmark:creature_nest"], actions: ["boss:royal_moth"] },
