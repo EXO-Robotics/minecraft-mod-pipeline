@@ -47,6 +47,17 @@ class SkyreachSupportProposalTests(unittest.TestCase):
             if not candidate.is_file():
                 candidate = BEDROCK / relative
             self.assertTrue(candidate.is_file(), relative)
+            if relative == "engineering/authority/WAVE_1_ENGINEERING_DECISION_LEDGER.json":
+                # Proposal bytes intentionally bind the pre-ratification ledger
+                # snapshot. The replacement ledger now ratifies these exact
+                # proposal hashes and must not rewrite their provenance.
+                approved = {
+                    row["tranche"]: row
+                    for row in load(candidate)["ratifications"]["approved"]
+                }
+                for ticket in self.tickets:
+                    self.assertEqual(approved[ticket]["proposal_sha256"], hashlib.sha256((HERE / f"{ticket}.json").read_bytes()).hexdigest())
+                continue
             self.assertEqual(hashlib.sha256(candidate.read_bytes()).hexdigest(), expected, relative)
 
     def test_identity_proposal_is_exact_subset_and_creates_no_extra_identity(self) -> None:
