@@ -1,0 +1,48 @@
+{
+  "schema": "aionbound.wave1.skyreach.deferred_source_exit.v1",
+  "status": "SKYREACH_PARTIAL_SOURCE_INTEGRATION_DEFERRED",
+  "blocker_class": "AUTHORITY_AND_NATIVE_PRODUCT_CLOSURE_DEFERRED",
+  "source": {
+    "commit": "9e337b5befc402db56ca51dfb6de0c16dad82132",
+    "tree": "fc119675dce371b25e6d7636adec1c010154706d"
+  },
+  "implemented": {
+    "static_foundations": "10 resource items and 10 ordinary full-cube blocks",
+    "structures": "10 inert registered block assemblies",
+    "creatures": ["cloud_goat", "gale_hawk", "wind_roc"],
+    "creature_boundary": "cloud_goat and gale_hawk have bounded natural source runtime; wind_roc is a non-spawning arena shell",
+    "native_representatives": ["cloud_goat", "gale_hawk", "wind_roc", "wind_reed_plant", "hanging_sky_vine", "wind_shrine", "observation_tower"],
+    "codex_scaffold": "50 append-only authority rows at ordinals 204-253; not imported by the live registry"
+  },
+  "technical_deferred": {
+    "managed_reviewer_timeout_not_product_defect": ["wind_reed_plant product binding", "hanging_sky_vine product binding"],
+    "creature_native_and_product_binding": ["cliff_ram", "glide_drake", "ropewing", "ruin_harpy", "sky_fox", "stone_vulture", "storm_gull"],
+    "plant_native_and_product_binding": ["cliff_flower", "cloud_moss", "cloudpuff_plant", "floating_blossom", "nest_thatch_tuft", "rope_root", "shelf_shrub", "skybloom"],
+    "landmark_native_evidence": ["ancient_sky_arch", "broken_sky_path", "cliff_beacon", "cliff_outpost", "floating_ruin_floor", "hanging_lift_frame", "nest_platform", "rope_bridge"]
+  },
+  "authority_deferred": {
+    "W1-001-SR": "nonwarehouse identities plus executable acquisition and recipes",
+    "W1-003-STORM-NEST": "encounter numbers, reset, multiplayer, restart, completion and terminal semantics",
+    "W1-004-SR": "numeric loot, critical seal, recovery, repeat-clear and mastery semantics",
+    "W1-CREATIVE-005": "five sidegrade representations"
+  },
+  "dormant": [
+    "Skyreach Codex runtime import and discovery routing",
+    "Skyreach creature, plant, block and structure loot",
+    "Skyreach crafting and equipment acquisition",
+    "Storm Nest encounter service",
+    "storm_pinion seal, reward recovery and terminal progression"
+  ],
+  "acceptance_criteria": [
+    "all 30 custom Packet 004 assets have native PASS evidence",
+    "all 10 plants and 10 creatures have bounded product bindings",
+    "50 Skyreach Codex rows are live without changing schema v4 or prior addresses",
+    "W1-001-SR is ratified before executable acquisition or recipes",
+    "W1-003-STORM-NEST is ratified before encounter activation",
+    "W1-004-SR is ratified before loot, seal, recovery or repeat-clear activation",
+    "W1-CREATIVE-005 remains absent unless separately ratified",
+    "targeted semantics and global source validation pass",
+    "all deferred tickets are reconciled before candidate freeze"
+  ],
+  "proof_boundary": "SOURCE_AND_STATIC_EVIDENCE_ONLY; NO BDS, CLIENT, MULTIPLAYER, CONSOLE, MARKETPLACE, CANDIDATE OR RELEASE CLAIM"
+}
