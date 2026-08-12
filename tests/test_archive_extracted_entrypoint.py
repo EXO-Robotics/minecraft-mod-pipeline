@@ -93,7 +93,7 @@ def extract_pack(payload: bytes, destination: Path) -> dict[str, bytes]:
 MOCK_SERVER = r'''
 const signal=()=>({callbacks:[],subscribe(callback){this.callbacks.push(callback);return callback;}});
 export const world={
-  afterEvents:{itemUse:signal(),itemCompleteUse:signal(),playerInteractWithEntity:signal(),entityHitEntity:signal(),entityHurt:signal(),entityDie:signal()},
+  afterEvents:{itemUse:signal(),itemCompleteUse:signal(),playerBreakBlock:signal(),playerInteractWithEntity:signal(),entityHitEntity:signal(),entityHurt:signal(),entityDie:signal()},
   beforeEvents:{playerInteractWithBlock:signal()},
   getDynamicProperty(){return undefined;},setDynamicProperty(){},getAllPlayers(){return[];},
   getDimension(){return{getEntities(){return[];}};}
@@ -119,6 +119,7 @@ await import(process.env.AIONBOUND_EXTRACTED_ENTRYPOINT_URL);
 const subscriptions = {
   itemUse: world.afterEvents.itemUse.callbacks.length,
   itemCompleteUse: world.afterEvents.itemCompleteUse.callbacks.length,
+  playerBreakBlock: world.afterEvents.playerBreakBlock.callbacks.length,
   playerInteractWithBlock: world.beforeEvents.playerInteractWithBlock.callbacks.length,
   playerInteractWithEntity: world.afterEvents.playerInteractWithEntity.callbacks.length,
   entityHitEntity: world.afterEvents.entityHitEntity.callbacks.length,
@@ -196,9 +197,15 @@ class ArchiveExtractedShippedEntrypointProof(unittest.TestCase):
                 self.assertEqual(completed.stderr.count(expected_marker), 1, completed.stderr)
             output = json.loads(completed.stdout.strip().splitlines()[-1])
             expected_startup = 1 if b"registerWhisperwoodRegrowth" in archived[entry_name] else 0
+            expected_break = int(any(
+                b"playerBreakBlock.subscribe" in data
+                for name, data in archived.items()
+                if name.startswith("scripts/") and name.endswith(".js")
+            ))
             self.assertEqual(output, {
                 "itemUse": 1,
                 "itemCompleteUse": 1,
+                "playerBreakBlock": expected_break,
                 "playerInteractWithBlock": 1,
                 "playerInteractWithEntity": 1,
                 "entityHitEntity": 1,
