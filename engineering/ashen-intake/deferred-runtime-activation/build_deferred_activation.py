@@ -66,6 +66,10 @@ def receipt() -> dict[str, object]:
     subprocess.run(["git", "merge-base", "--is-ancestor", SOURCE_COMMIT, "HEAD"], cwd=ROOT, check=True)
     assert git("rev-parse", f"{SOURCE_COMMIT}^{{tree}}") == SOURCE_TREE
     changed_since_authority = git("diff", "--name-only", f"{SOURCE_COMMIT}..HEAD").splitlines()
+    product_changes_since_authority = [
+        path for path in changed_since_authority
+        if path.startswith(("behavior_pack/", "resource_pack/", "assets/"))
+    ]
     assert source_validation["status"] == "PASS"
     assert equipment["proof"]["shared_runtime_activation"] is False
     assert kiln["proof"]["shared_runtime_activation"] is False
@@ -85,7 +89,8 @@ def receipt() -> dict[str, object]:
             "tree": SOURCE_TREE,
             "subject": git("show", "-s", "--format=%s", SOURCE_COMMIT),
             "immutable_prior_generation_modified": False,
-            "successor_changes_since_authority_count": len(changed_since_authority),
+            "successor_changes_since_authority_count": len(product_changes_since_authority),
+            "successor_change_count_scope": "behavior_pack resource_pack and assets paths only; evidence/test reconciliation is excluded to avoid a self-referential receipt",
             "successor_change_scope_rule": "Later G8 product work may advance independently; this receipt revalidates the exact dormant handler boundary and evidence hashes instead of asserting that only ticket files changed after the historical source authority.",
         },
         "vertical_disposition": {
