@@ -1,0 +1,898 @@
+{
+  "schema": "aionbound.wave1.skyreach.implemented_source_closure.v1",
+  "status": "SKYREACH_IMPLEMENTED_FOUNDATION_COMPLETE_AUTHORITY_GATED_EXECUTION_DEFERRED",
+  "groups": {
+    "resources_and_full_cube_blocks": [
+      {
+        "path": "engineering/skyreach-intake/static-foundations/SKYREACH_STATIC_FOUNDATIONS_AUTHORITY.json",
+        "sha256": "0c7ad51175981ee651b4cea62c6c51c208cf82391df381398545bc7fa5aeaf8f"
+      },
+      {
+        "path": "engineering/skyreach-intake/static-foundations/SKYREACH_STATIC_FOUNDATIONS_REPORT.json",
+        "sha256": "38fac40796f6689d8e65c6ddc965a7e7edd89fae1a5823e7986c362b38d763f8"
+      },
+      {
+        "path": "behavior_pack/items/sky_feather.item.json",
+        "sha256": "c2995540fcfd18b4330ea641f7b2696db5d5c719af95dc2624f9389445405829"
+      },
+      {
+        "path": "behavior_pack/items/cloud_wool.item.json",
+        "sha256": "5caf1edba99411bca5c771247644ca5e112fec4ebaaa7dd112264b2c601bc3c1"
+      },
+      {
+        "path": "behavior_pack/items/updraft_reed_item.item.json",
+        "sha256": "4f18298c6073d96be34211e0413634b170e4bb7df21ecc0d79e345abc415af13"
+      },
+      {
+        "path": "behavior_pack/items/sky_vine_item.item.json",
+        "sha256": "101d37481563f0713b9429bbdb68c9d52844431e63fab592916cd7fa467ef5e9"
+      },
+      {
+        "path": "behavior_pack/items/wind_silk.item.json",
+        "sha256": "1218fedb43ffae3f66380a3fe1800093e06c757ce50a6455202fa6366e4f7b9e"
+      },
+      {
+        "path": "behavior_pack/items/cliff_crystal.item.json",
+        "sha256": "9536d6b3ca9ed11d77f4a2ce4b7a39f82aba3f9203d6744dcb8dc438f971988a"
+      },
+      {
+        "path": "behavior_pack/items/float_resin.item.json",
+        "sha256": "547967fb3e652551a7c79a07c71168753074f153726cadb497327a6688a112a4"
+      },
+      {
+        "path": "behavior_pack/items/lift_bloom_item.item.json",
+        "sha256": "81553cd7ef8932876c369cc4ed77861f54158f6b427e3475e4bf669cba83a58e"
+      },
+      {
+        "path": "behavior_pack/items/storm_pinion.item.json",
+        "sha256": "2763720f637bacf8f9380ab756fb1024f3919454d1f85d43d902cce91c8b4ff2"
+      },
+      {
+        "path": "behavior_pack/items/aether_stone.item.json",
+        "sha256": "dff83398c84bfde80f7433cdb1455fa606799d1eb593de34555c4700396def75"
+      },
+      {
+        "path": "behavior_pack/blocks/cliff_stone.block.json",
+        "sha256": "0cb764ed8dd8e145e1555d4c84985c7eefd806871fe55c01693b59e68bbfd48b"
+      },
+      {
+        "path": "behavior_pack/blocks/pale_shelf_stone.block.json",
+        "sha256": "a3ce61ecf3074cb57900079c69a1fc7db4c1698bfa6166ce5dd2e3b773f82237"
+      },
+      {
+        "path": "behavior_pack/blocks/cliff_gravel.block.json",
+        "sha256": "e5367d9cded3eed50112f03cbe598c8b42a86f74e5ea23fa683359f069141ac4"
+      },
+      {
+        "path": "behavior_pack/blocks/wind_slate.block.json",
+        "sha256": "0a7463e8f496eda0fb42ccbd3900281f5aa214dfc53f2c59de2ffe11eecc5498"
+      },
+      {
+        "path": "behavior_pack/blocks/skyreach_log.block.json",
+        "sha256": "8edb66c473e0a81657790a8e84d0c499c348bddac6c8c386cbf24fe60afb8d7e"
+      },
+      {
+        "path": "behavior_pack/blocks/skyreach_wood.block.json",
+        "sha256": "c8f32cc1000ee4516f05b0d7deb196a3316b3d91fdb13238361120cfb23cfe98"
+      },
+      {
+        "path": "behavior_pack/blocks/skyreach_planks.block.json",
+        "sha256": "20a808850df667bc272eb53246ee7443725ce866894ba2579220efcbeba05dde"
+      },
+      {
+        "path": "behavior_pack/blocks/rope_timber.block.json",
+        "sha256": "c8ab25d0b3cb48ae1f605ca685b3e0a9bee20f83cfa31d05f8de6d1679d04b1f"
+      },
+      {
+        "path": "behavior_pack/blocks/cloud_wool_block.block.json",
+        "sha256": "587f92fc0c9226e53451e26c53baf435dcd4aff5c0dc1719e1284c8e9dddd568"
+      },
+      {
+        "path": "behavior_pack/blocks/sky_moss_block.block.json",
+        "sha256": "a35c6f4ad3a4b30ec97533e176ed7a7fbe82c2e611860b4d18aae78d47f18fc0"
+      },
+      {
+        "path": "resource_pack/textures/aionbound/skyreach/items/sky_feather.png",
+        "sha256": "2db2931a4d9c39c79b2d3e466d22e57ebdf70243be44f7aaa99ef46b6d7fbd78"
+      },
+      {
+        "path": "resource_pack/textures/aionbound/skyreach/items/cloud_wool.png",
+        "sha256": "59d2d7ad1b7b8571c4229308497d4ec58713ea2e030372dab30ad77e3bba3adf"
+      },
+      {
+        "path": "resource_pack/textures/aionbound/skyreach/items/updraft_reed_item.png",
+        "sha256": "9202fa653dee86f1cdd522990d1181d54da98dfb0a1cb7a37af2d61ac4a2b922"
+      },
+      {
+        "path": "resource_pack/textures/aionbound/skyreach/items/sky_vine_item.png",
+        "sha256": "73f79dce596be81e1ee76def2a079ee02cba8c9b1ef658aafc4d36589f3430ea"
+      },
+      {
+        "path": "resource_pack/textures/aionbound/skyreach/items/wind_silk.png",
+        "sha256": "76d0022f4c664d88b10cc075e0e7c52597e91e46689e063e4a18e7811c5458c4"
+      },
+      {
+        "path": "resource_pack/textures/aionbound/skyreach/items/cliff_crystal.png",
+        "sha256": "a759d19e4496af333580a0c7ecd9de8f1e91e0611d32c829f69c503a1b3409fa"
+      },
+      {
+        "path": "resource_pack/textures/aionbound/skyreach/items/float_resin.png",
+        "sha256": "1ef63de11c792462f6d63e5e37d3e95f8a4e9e485116d9cc56095cca58c361f6"
+      },
+      {
+        "path": "resource_pack/textures/aionbound/skyreach/items/lift_bloom_item.png",
+        "sha256": "b4a744f242adc23f0fa77a56c3666ee3e527b702b1c897a29c035dccca2f1741"
+      },
+      {
+        "path": "resource_pack/textures/aionbound/skyreach/items/storm_pinion.png",
+        "sha256": "de71e6e64bd51f4e9b4d8ea595cec80ce9762eee0157a0255fdd7f9937014853"
+      },
+      {
+        "path": "resource_pack/textures/aionbound/skyreach/items/aether_stone.png",
+        "sha256": "db840190e45705affe218527fe315b82d5dedf093d599a3cfaf6ac7f6173aa87"
+      },
+      {
+        "path": "resource_pack/textures/aionbound/skyreach/blocks/cliff_stone.png",
+        "sha256": "641483a8c5338da214025c7ce5a23249cad5c9202a110d5b26c5c198f70362db"
+      },
+      {
+        "path": "resource_pack/textures/aionbound/skyreach/blocks/pale_shelf_stone.png",
+        "sha256": "89b41abaea0812ef810f1ecc1a4946f34a19d8fe4a467d4ed27ab2359079004e"
+      },
+      {
+        "path": "resource_pack/textures/aionbound/skyreach/blocks/cliff_gravel.png",
+        "sha256": "10c741ccca106f5b689854ee8dd6afb3f8884e34882d9f641a35b2c3cb3740c8"
+      },
+      {
+        "path": "resource_pack/textures/aionbound/skyreach/blocks/wind_slate.png",
+        "sha256": "cd7c530b71eeba63339b38ca1b1bcbb0f76012d8ff9eee31f6ae6d33da3116e2"
+      },
+      {
+        "path": "resource_pack/textures/aionbound/skyreach/blocks/skyreach_log.png",
+        "sha256": "a7f6785026c928aca6047258a7739fe9ebaeff66fdb16ca6e022487ea0d04abf"
+      },
+      {
+        "path": "resource_pack/textures/aionbound/skyreach/blocks/skyreach_wood.png",
+        "sha256": "7da2a7113e90b03ba459e9eef6e53beaa64fea1b4a959ca8a2f91c366694ab8d"
+      },
+      {
+        "path": "resource_pack/textures/aionbound/skyreach/blocks/skyreach_planks.png",
+        "sha256": "e4902c3a11fd5a1eb23596d333dd4c558da04fe9802647e39474add4b0312cc1"
+      },
+      {
+        "path": "resource_pack/textures/aionbound/skyreach/blocks/rope_timber.png",
+        "sha256": "8023682d8273b0aa011ade53cf3d57677300bb4ee3ea055e6ef281bdafedac56"
+      },
+      {
+        "path": "resource_pack/textures/aionbound/skyreach/blocks/cloud_wool_block.png",
+        "sha256": "3a5cd0e11f0c13523bde94d5d45dc4a62bd73def5462a468c8e1cf1ea4c7762c"
+      },
+      {
+        "path": "resource_pack/textures/aionbound/skyreach/blocks/sky_moss_block.png",
+        "sha256": "67685a892704dbe1d139da41a1141d092491a9dafc841b6d1a147d9e764d4c3d"
+      }
+    ],
+    "plants_and_bounded_ecology": [
+      {
+        "path": "engineering/skyreach-intake/plant-runtime/SKYREACH_PLANT_PRODUCT_REPORT.json",
+        "sha256": "81783ba801a9cc8c22cc15bc1439fb8037e9397459ccf1e0f0c547831ec098e0"
+      },
+      {
+        "path": "behavior_pack/blocks/wind_reed_plant.block.json",
+        "sha256": "074e95609054dbb5103a5af783bc4ab84ceeb56db62e224e0d45ff5c34deb89d"
+      },
+      {
+        "path": "behavior_pack/blocks/hanging_sky_vine.block.json",
+        "sha256": "1a1a64081d099ea98b8af679cb4524487b9bf8e8afd9a169fc209aac25dc0388"
+      },
+      {
+        "path": "behavior_pack/blocks/rope_root.block.json",
+        "sha256": "abccad61a50a31e17ebb778ef67c80b53155a654e839719a919674e274542eea"
+      },
+      {
+        "path": "behavior_pack/blocks/cloud_moss.block.json",
+        "sha256": "662160bf4ae4edda8cf1201d028c3aebe85caadcb80c331f5168d8812b2e2e07"
+      },
+      {
+        "path": "behavior_pack/blocks/cloudpuff_plant.block.json",
+        "sha256": "bea21edd60358981d3b3cf850e9d5f17ddfe65cb56f7d770d166695b2b4aa62a"
+      },
+      {
+        "path": "behavior_pack/blocks/shelf_shrub.block.json",
+        "sha256": "724b84d8399daf2ce0fc8af892ec18835bbe9504a29ead752a3a2423d5b718e3"
+      },
+      {
+        "path": "behavior_pack/blocks/cliff_flower.block.json",
+        "sha256": "81ef13a82d49aad115f4696e2d028fc1d06326ce1a599813be90ed5ab8b50f33"
+      },
+      {
+        "path": "behavior_pack/blocks/skybloom.block.json",
+        "sha256": "77f4b88d8fff6ffb3eeb535f4fd20fca6fce3c767a237e7d215207844941b2dd"
+      },
+      {
+        "path": "behavior_pack/blocks/floating_blossom.block.json",
+        "sha256": "983edc897066f7147859743c844e84b9a16e2b146d75f7d2e89ee26d6ee8e5a6"
+      },
+      {
+        "path": "behavior_pack/blocks/nest_thatch_tuft.block.json",
+        "sha256": "c4cbf09374134721e63ad2ecd7d4bef194437c4add1d0e5a7c3b8d15c387f555"
+      },
+      {
+        "path": "resource_pack/models/aionbound/skyreach/wind_reed_plant.geo.json",
+        "sha256": "01569b7054e6c0b23633a9ddf5cc392f51327dcc6fe209c20845468652c07319"
+      },
+      {
+        "path": "resource_pack/models/aionbound/skyreach/hanging_sky_vine.geo.json",
+        "sha256": "ca69110118b5b8254f04c4febe5880362aac37f2d528c0b21802e236ad3eda05"
+      },
+      {
+        "path": "resource_pack/models/aionbound/skyreach/rope_root.geo.json",
+        "sha256": "0151a54a3e2592be1a4a61094ca96e1fc65ad926b83710e53106f5bfa13bbf7c"
+      },
+      {
+        "path": "resource_pack/models/aionbound/skyreach/cloud_moss.geo.json",
+        "sha256": "df77cb378f12a83adf0e8fafd99edfa07fe76f7b659c71165ea2cddffa1c646a"
+      },
+      {
+        "path": "resource_pack/models/aionbound/skyreach/cloudpuff_plant.geo.json",
+        "sha256": "8a4705c588ee8ee39be71c3265b59c20135e8101cb8865d2119d355e96d11b42"
+      },
+      {
+        "path": "resource_pack/models/aionbound/skyreach/shelf_shrub.geo.json",
+        "sha256": "e798695affece8149314a6981e55f872125f1fc5e5f5d9d4a3ade7a3bc8d627f"
+      },
+      {
+        "path": "resource_pack/models/aionbound/skyreach/cliff_flower.geo.json",
+        "sha256": "984db37368a848c9ab6434abe845ed3c340b5a98565d837f8cbb86a9493f321d"
+      },
+      {
+        "path": "resource_pack/models/aionbound/skyreach/skybloom.geo.json",
+        "sha256": "a6c0502cf0189c3932ae8c5da756c961ec935b81735d6c3542cf55611045378a"
+      },
+      {
+        "path": "resource_pack/models/aionbound/skyreach/floating_blossom.geo.json",
+        "sha256": "a0de19609a2db70ca567b371148a7dbe431e73e24677d7bcf1d27ae5c8f81be5"
+      },
+      {
+        "path": "resource_pack/models/aionbound/skyreach/nest_thatch_tuft.geo.json",
+        "sha256": "c20252060058e7c18b18cec4cea8f1a34ec548b726fdcb8a66d14298891243fa"
+      },
+      {
+        "path": "resource_pack/textures/aionbound/skyreach/plants/wind_reed_plant.png",
+        "sha256": "c2a6c6c546cbba11caabad075b9b22d24dbeef9cb64d65a3d67311277edbc612"
+      },
+      {
+        "path": "resource_pack/textures/aionbound/skyreach/plants/hanging_sky_vine.png",
+        "sha256": "18b6f23f98ec1fbbaf054910160ff4a02779eb3fe665e6685438c745379ef556"
+      },
+      {
+        "path": "resource_pack/textures/aionbound/skyreach/plants/rope_root.png",
+        "sha256": "fe2213a531fa5d54219c0da53656243d11af93ebc117af2d04606efc3124a38f"
+      },
+      {
+        "path": "resource_pack/textures/aionbound/skyreach/plants/cloud_moss.png",
+        "sha256": "33e0cc0732b9d32445d6e14aaf34c3674b3112970b008643f19baaafa8866eae"
+      },
+      {
+        "path": "resource_pack/textures/aionbound/skyreach/plants/cloudpuff_plant.png",
+        "sha256": "66a2c5067367b7527d587399109b3ce23b68775afacc5885afe31222d6973917"
+      },
+      {
+        "path": "resource_pack/textures/aionbound/skyreach/plants/shelf_shrub.png",
+        "sha256": "27b6e1c5548cb8e5eebbfc13409eaea5642430a355870a9e29360796112e8070"
+      },
+      {
+        "path": "resource_pack/textures/aionbound/skyreach/plants/cliff_flower.png",
+        "sha256": "d7d2c6d1f5ff16918987f0dcea61b22aaa3e5bbfaa07a3faeb1c6ae6e34f1876"
+      },
+      {
+        "path": "resource_pack/textures/aionbound/skyreach/plants/skybloom.png",
+        "sha256": "5c69adad879221e7c65cd81315aa207e8bb5e8f104f13e621bfe8c56856f840a"
+      },
+      {
+        "path": "resource_pack/textures/aionbound/skyreach/plants/floating_blossom.png",
+        "sha256": "51814d78e351b1bad236c0a953f35e42ddbeb5c75c83224ddf5237a1d83f0d19"
+      },
+      {
+        "path": "resource_pack/textures/aionbound/skyreach/plants/nest_thatch_tuft.png",
+        "sha256": "e4ec8738876ac5a9e5aaebfaaec9f838a295a3bf585b75583387d6de235eb45e"
+      },
+      {
+        "path": "behavior_pack/features/sr_ecology_wind_reed_plant.feature.json",
+        "sha256": "ad65011faa077bd2f3481dff75ab221a3b0ed5950924e7a7971ead0a15183891"
+      },
+      {
+        "path": "behavior_pack/features/sr_ecology_hanging_sky_vine.feature.json",
+        "sha256": "ca0f1a5f0bc275e89d660b9c259219cbed6ac5bed90c0b50b3ac0878713416ad"
+      },
+      {
+        "path": "behavior_pack/features/sr_ecology_rope_root.feature.json",
+        "sha256": "36ea0165d857011cbade2ef88f3561240bf21dd71859084ecdd28b18bd03caa2"
+      },
+      {
+        "path": "behavior_pack/features/sr_ecology_cloud_moss.feature.json",
+        "sha256": "5cb8bd97996cd774b738cc631c514137aba26e914aeea37b3542b668f9fcb92f"
+      },
+      {
+        "path": "behavior_pack/features/sr_ecology_cloudpuff_plant.feature.json",
+        "sha256": "3870c57dcedf5fca4c081008511091f6062e2bbd57dedb86aed69d56ab83e64d"
+      },
+      {
+        "path": "behavior_pack/features/sr_ecology_shelf_shrub.feature.json",
+        "sha256": "2b6ebb414c0f1df1b3a78448828689fcf090f787a96ed7687d26523748f1497b"
+      },
+      {
+        "path": "behavior_pack/features/sr_ecology_cliff_flower.feature.json",
+        "sha256": "4f683659c8fd528e1201a7c72c81ecf21a817de218ea7ad4c7651cf576a983c9"
+      },
+      {
+        "path": "behavior_pack/features/sr_ecology_skybloom.feature.json",
+        "sha256": "9f1634b09f7f9d90f82fa028aafd30d0caf907689d6e13ce2f2d121b8a985159"
+      },
+      {
+        "path": "behavior_pack/features/sr_ecology_floating_blossom.feature.json",
+        "sha256": "3742822073a32804f0450c1672d9aae943a6083c5376c95a76ff46fb1e477553"
+      },
+      {
+        "path": "behavior_pack/features/sr_ecology_nest_thatch_tuft.feature.json",
+        "sha256": "55edd258574749a1d27fa07671246a87a24843b34712041d151f253cc52213bd"
+      },
+      {
+        "path": "behavior_pack/feature_rules/sr_ecology_wind_reed_plant.feature_rule.json",
+        "sha256": "e9f233748d958028d2916133b4681d6e19a1718542ccc9f654ec8f3872582157"
+      },
+      {
+        "path": "behavior_pack/feature_rules/sr_ecology_hanging_sky_vine.feature_rule.json",
+        "sha256": "bd089ba9eae9198c33db6dd0cbda1476de39d3e58e8a2595d6d90e8c036a5c34"
+      },
+      {
+        "path": "behavior_pack/feature_rules/sr_ecology_rope_root.feature_rule.json",
+        "sha256": "ec67c1660f2977eb537db1d995bc3021919284a1db37724f875e865f1b1212a7"
+      },
+      {
+        "path": "behavior_pack/feature_rules/sr_ecology_cloud_moss.feature_rule.json",
+        "sha256": "c9dd050eea8d4c47cfeb9853fb1bd5d916ea26f3317f9f0acd8b64cd27b60884"
+      },
+      {
+        "path": "behavior_pack/feature_rules/sr_ecology_cloudpuff_plant.feature_rule.json",
+        "sha256": "fc21abd558a586548e23761460b4b57907c8519f7d0bcb262b37b50da5c67a52"
+      },
+      {
+        "path": "behavior_pack/feature_rules/sr_ecology_shelf_shrub.feature_rule.json",
+        "sha256": "813f943297bda1af110ddbb5ec306694c865097e95350725c4e3a32846224fcb"
+      },
+      {
+        "path": "behavior_pack/feature_rules/sr_ecology_cliff_flower.feature_rule.json",
+        "sha256": "d8ba8458ae534c5e346377ce88dac3b8b62225de6fe1665305678496df44f740"
+      },
+      {
+        "path": "behavior_pack/feature_rules/sr_ecology_skybloom.feature_rule.json",
+        "sha256": "026e91dd5ec572b7c65208805b3353ebf987a7756b200f8bc8e6db277c6a6978"
+      },
+      {
+        "path": "behavior_pack/feature_rules/sr_ecology_floating_blossom.feature_rule.json",
+        "sha256": "557452f87e61883f5591434e47ef56af37e3d78e12306182e794626a32679b13"
+      },
+      {
+        "path": "behavior_pack/feature_rules/sr_ecology_nest_thatch_tuft.feature_rule.json",
+        "sha256": "92f3554e4cf1c29a2a719418e24f0008ccbd8311cea5c460f46f336b8e84e563"
+      }
+    ],
+    "creature_ai_client_motion_and_spawn": [
+      {
+        "path": "engineering/skyreach-intake/entity-runtime/SKYREACH_ENTITY_RUNTIME_REPORT.json",
+        "sha256": "a4548a511ef0de197833c1e7b08cbfdc9c3d8f1d26d7b3422dd04bd4b2f1b9a0"
+      },
+      {
+        "path": "behavior_pack/entities/aionbound/skyreach/cloud_goat.entity.json",
+        "sha256": "f9cb32bd10c14bfd915a02ca34b4c58ea46f1a701bd6f7acc61041752f6dc7a4"
+      },
+      {
+        "path": "behavior_pack/entities/aionbound/skyreach/sky_fox.entity.json",
+        "sha256": "a3029b062532a2dc796e6f059b8f0562799c6707e735a7039d4ebcd1f4de9d6f"
+      },
+      {
+        "path": "behavior_pack/entities/aionbound/skyreach/cliff_ram.entity.json",
+        "sha256": "f5e12eadc3c1767fcc338aa2a12951cad408e015c6545fe765dfc8943a4967ca"
+      },
+      {
+        "path": "behavior_pack/entities/aionbound/skyreach/storm_gull.entity.json",
+        "sha256": "322a562786618578e420abdda95c81889019552ce7e039b1de30924e7c12e7c6"
+      },
+      {
+        "path": "behavior_pack/entities/aionbound/skyreach/gale_hawk.entity.json",
+        "sha256": "a65083bc462d6697183610cf1dbe9037a7f5de5d8beea740f0700d1f152bced2"
+      },
+      {
+        "path": "behavior_pack/entities/aionbound/skyreach/ropewing.entity.json",
+        "sha256": "2cfcc55160a68770a9e9dc8b4e99b7531f9894f9ee062c086d2c21271d2ef236"
+      },
+      {
+        "path": "behavior_pack/entities/aionbound/skyreach/stone_vulture.entity.json",
+        "sha256": "e074affdc1b8f7e5d6ba210d25d54403f7bc94c9ade896d75d6ff1f513587c98"
+      },
+      {
+        "path": "behavior_pack/entities/aionbound/skyreach/glide_drake.entity.json",
+        "sha256": "0e82bdef8d6e7c4b886ff98be83e320e77217c0303e2238ad5efc263165c58c4"
+      },
+      {
+        "path": "behavior_pack/entities/aionbound/skyreach/ruin_harpy.entity.json",
+        "sha256": "4c4699497d0daa1bc663d59d9642f5073eafba2e95090058e3dafa606c7c4c27"
+      },
+      {
+        "path": "behavior_pack/entities/aionbound/skyreach/wind_roc.entity.json",
+        "sha256": "56b9f98c974826f7b3996e7b1650f8192e33b69f53faacb435a2c2b4f17bf7b8"
+      },
+      {
+        "path": "resource_pack/entity/aionbound/skyreach/cloud_goat.entity.json",
+        "sha256": "c731c7a15458fc6e2abce03756d344d8fac68a263535462e00cd68c0512cf1a9"
+      },
+      {
+        "path": "resource_pack/entity/aionbound/skyreach/sky_fox.entity.json",
+        "sha256": "26a47da00b48356af725c1ae4df8bd9d03725656d7123e648ca1ad2f0a97a074"
+      },
+      {
+        "path": "resource_pack/entity/aionbound/skyreach/cliff_ram.entity.json",
+        "sha256": "5883bd617b5c4631f3655a5f6925e2d940aa8d62b1dfc4f36d7a6535b5fd728e"
+      },
+      {
+        "path": "resource_pack/entity/aionbound/skyreach/storm_gull.entity.json",
+        "sha256": "5c4d8e37e1faee756742ca6d5780795e43cd707d1e238faef8701a25252d22f6"
+      },
+      {
+        "path": "resource_pack/entity/aionbound/skyreach/gale_hawk.entity.json",
+        "sha256": "d6eba0d83d39eceece5dce532618f6e9e88ab8b968d8dd164b9a8c284e65a0c9"
+      },
+      {
+        "path": "resource_pack/entity/aionbound/skyreach/ropewing.entity.json",
+        "sha256": "cfa89f56e55c332c7808b30367084f2766fef5a00867a9e6a50f02af0e855ba5"
+      },
+      {
+        "path": "resource_pack/entity/aionbound/skyreach/stone_vulture.entity.json",
+        "sha256": "162c4c0d6e182e91020e712ba818e6619ca1132742c02584aff7b9aceb5f0d93"
+      },
+      {
+        "path": "resource_pack/entity/aionbound/skyreach/glide_drake.entity.json",
+        "sha256": "1a22c85a9173a54487c3dcce0103fd7daae3d8c39c9089f464d4a2930ca577a9"
+      },
+      {
+        "path": "resource_pack/entity/aionbound/skyreach/ruin_harpy.entity.json",
+        "sha256": "4361147387b642ffa87c74ce7f63fe9158a5cc44b339ad533c03d4630df80197"
+      },
+      {
+        "path": "resource_pack/entity/aionbound/skyreach/wind_roc.entity.json",
+        "sha256": "edc00236f2811c545431fa5505727f566fa8b8351ed5b8bac2c2557ecb0d0fc8"
+      },
+      {
+        "path": "resource_pack/models/aionbound/skyreach/cloud_goat.geo.json",
+        "sha256": "1ab722228fc7e855b663a7fcf4edac72aa69570e81d83084079e03a161174be5"
+      },
+      {
+        "path": "resource_pack/models/aionbound/skyreach/sky_fox.geo.json",
+        "sha256": "4d0320e84a58082f099d950254f202d523300d032f1bbe75235b1ba2e5c98418"
+      },
+      {
+        "path": "resource_pack/models/aionbound/skyreach/cliff_ram.geo.json",
+        "sha256": "d8c91cc5e085def6577622b9e334abf135dba144f46ad293c1efc55c5bfa9881"
+      },
+      {
+        "path": "resource_pack/models/aionbound/skyreach/storm_gull.geo.json",
+        "sha256": "8e62764c34eea206cd505f7ed118526ecec6941fc82fe74ee5f56f1323fadb95"
+      },
+      {
+        "path": "resource_pack/models/aionbound/skyreach/gale_hawk.geo.json",
+        "sha256": "943bd2c08f1e74966ffa11fa770c3e8c4a0f5af6a86fa8154f56d6b838105b8c"
+      },
+      {
+        "path": "resource_pack/models/aionbound/skyreach/ropewing.geo.json",
+        "sha256": "36491e0cd500190418f2a4ca86baf7726cfa939379cc7e911aa82607c6b2c224"
+      },
+      {
+        "path": "resource_pack/models/aionbound/skyreach/stone_vulture.geo.json",
+        "sha256": "e0179b08c49b57f22a59ca23bfdd8675777b8e0bc4b6bbf56d879775d3a80284"
+      },
+      {
+        "path": "resource_pack/models/aionbound/skyreach/glide_drake.geo.json",
+        "sha256": "3cae3d118926309414c90d1bb43fdf104218b6240fa76b100844b52d424ef43c"
+      },
+      {
+        "path": "resource_pack/models/aionbound/skyreach/ruin_harpy.geo.json",
+        "sha256": "e3e26715cbe63a9d316c625658cbe9cbeac273b468054cb19a58bc2af5e528e1"
+      },
+      {
+        "path": "resource_pack/models/aionbound/skyreach/wind_roc.geo.json",
+        "sha256": "f45fc548c199589894aefe91b0a3682c5a917abc107526d05ce661be70af3f88"
+      },
+      {
+        "path": "resource_pack/animations/aionbound/skyreach/cloud_goat.animation.json",
+        "sha256": "589ccfa3eaa2a3d08e46aeb09fcaa936dc39f4860c408a9b76d0c4c5850c7243"
+      },
+      {
+        "path": "resource_pack/animations/aionbound/skyreach/sky_fox.animation.json",
+        "sha256": "84ea157fb6cabbee79c04913ce3215ab49f5769aa9aa6f0364892a7ceeb81d82"
+      },
+      {
+        "path": "resource_pack/animations/aionbound/skyreach/cliff_ram.animation.json",
+        "sha256": "6ab1d2ce8598279c8aaec413d0572b0e827c30184da9ea40575765b66bd4a4b9"
+      },
+      {
+        "path": "resource_pack/animations/aionbound/skyreach/storm_gull.animation.json",
+        "sha256": "97e6ff274ec8af77fdc97985c86e226d342f2044bf260f84bdd9f7f9e17da45e"
+      },
+      {
+        "path": "resource_pack/animations/aionbound/skyreach/gale_hawk.animation.json",
+        "sha256": "2f0650f7a8f16e016c482268d9d6aa77b73b9a82fec42d4208dd28e92a853b06"
+      },
+      {
+        "path": "resource_pack/animations/aionbound/skyreach/ropewing.animation.json",
+        "sha256": "b4156636d9f08deb708733dc7acce6c70f0ad552961d994a23ab9a7c7d0ce868"
+      },
+      {
+        "path": "resource_pack/animations/aionbound/skyreach/stone_vulture.animation.json",
+        "sha256": "e799f25d4fc95f8c4404ec28c4e7c4c555c64ffd286afdb19febc29237629bac"
+      },
+      {
+        "path": "resource_pack/animations/aionbound/skyreach/glide_drake.animation.json",
+        "sha256": "e457e00bd0f03774b3dd356abf4d5d247c0a11fd3ba5f9920dd77fff45272be2"
+      },
+      {
+        "path": "resource_pack/animations/aionbound/skyreach/ruin_harpy.animation.json",
+        "sha256": "fd2dc033124c7621e93815e1b90c55d4d5e3317cea7240d7ea173e889a27fee0"
+      },
+      {
+        "path": "resource_pack/animations/aionbound/skyreach/wind_roc.animation.json",
+        "sha256": "cbef2bdb3a5790542e96bd5423f976306722300f8c53a5284913a909bc350915"
+      },
+      {
+        "path": "resource_pack/animation_controllers/aionbound/skyreach/cloud_goat.animation_controller.json",
+        "sha256": "36e11316369dae57c3cc39386892126d7b72b270df8af63aa567dec00557758c"
+      },
+      {
+        "path": "resource_pack/animation_controllers/aionbound/skyreach/sky_fox.animation_controller.json",
+        "sha256": "202a6ac80426193d9be398920130f61eb86f296c34ce1f1e584c856413a9a35c"
+      },
+      {
+        "path": "resource_pack/animation_controllers/aionbound/skyreach/cliff_ram.animation_controller.json",
+        "sha256": "3ba1cc041206a3e3e41d87f5064590620fab241017c0a08cf9c2f4cc49dc0e4c"
+      },
+      {
+        "path": "resource_pack/animation_controllers/aionbound/skyreach/storm_gull.animation_controller.json",
+        "sha256": "ab3f8dafea0481503e8e4154501cf4a0fbcca9130c5e65f1a1fbe25c533ca1a0"
+      },
+      {
+        "path": "resource_pack/animation_controllers/aionbound/skyreach/gale_hawk.animation_controller.json",
+        "sha256": "231bfc806a7b3961d8b420aeeb01139d1ee969339c318535ea8b4d9e13538a16"
+      },
+      {
+        "path": "resource_pack/animation_controllers/aionbound/skyreach/ropewing.animation_controller.json",
+        "sha256": "fd57f216d44aac872a66ea7b048d3bd4da6d2f3fa83df38e687d38f250b911e0"
+      },
+      {
+        "path": "resource_pack/animation_controllers/aionbound/skyreach/stone_vulture.animation_controller.json",
+        "sha256": "a1e3486d449fd113e685e8902006915a48dd91391323f65033a424b003439663"
+      },
+      {
+        "path": "resource_pack/animation_controllers/aionbound/skyreach/glide_drake.animation_controller.json",
+        "sha256": "69957200b01646222a90dd68ce04f5a1a1228a05d0e11383135405d298898fa3"
+      },
+      {
+        "path": "resource_pack/animation_controllers/aionbound/skyreach/ruin_harpy.animation_controller.json",
+        "sha256": "3eb6a79501867966946dbe828df68d1b49f0e57237f8a322c1ade168d736ec16"
+      },
+      {
+        "path": "resource_pack/animation_controllers/aionbound/skyreach/wind_roc.animation_controller.json",
+        "sha256": "a2def59b27111f0ceafc1f21dc0d66b9861e4039d41609c92c5400df0289de2e"
+      },
+      {
+        "path": "resource_pack/render_controllers/aionbound/skyreach/cloud_goat.render_controller.json",
+        "sha256": "f31c91ec795aa3346e99a0451f01e4c7e73aa850e2b3ae3bd46ab35b922bdd62"
+      },
+      {
+        "path": "resource_pack/render_controllers/aionbound/skyreach/sky_fox.render_controller.json",
+        "sha256": "1db268edf8156762a5d2971183b1bdf2fcf14c46c13e1e8adb6b124ea3e65b21"
+      },
+      {
+        "path": "resource_pack/render_controllers/aionbound/skyreach/cliff_ram.render_controller.json",
+        "sha256": "be8f1885eb50b559dc61e3449e4caf1d7ba5e7ac1fa7d04e1193110ba2b96ce2"
+      },
+      {
+        "path": "resource_pack/render_controllers/aionbound/skyreach/storm_gull.render_controller.json",
+        "sha256": "31442a7b9659b7a58b880a6c92bc06132469f5bb86a547e3e62ba62c0a9bbe70"
+      },
+      {
+        "path": "resource_pack/render_controllers/aionbound/skyreach/gale_hawk.render_controller.json",
+        "sha256": "75942a2dbba4ce6e598c7886096b433dcddfe28df9b338bc173e4187e8c535d2"
+      },
+      {
+        "path": "resource_pack/render_controllers/aionbound/skyreach/ropewing.render_controller.json",
+        "sha256": "55bd79a6f49637f818d0af5de8b40614228bb4e64df65874141d6f825537f95f"
+      },
+      {
+        "path": "resource_pack/render_controllers/aionbound/skyreach/stone_vulture.render_controller.json",
+        "sha256": "b81a44807c49bfe304fb2b4159d77cd5c46d38c7779be04e685af9fdf5fcb6d8"
+      },
+      {
+        "path": "resource_pack/render_controllers/aionbound/skyreach/glide_drake.render_controller.json",
+        "sha256": "a2cc9d04bd08d3f49aa0aac39dc8ffe6dcff8ac3fd0f940a94118adafed30bb2"
+      },
+      {
+        "path": "resource_pack/render_controllers/aionbound/skyreach/ruin_harpy.render_controller.json",
+        "sha256": "71f972a6414110964db38b10c494338f4191534372e8227a76012e4e15600434"
+      },
+      {
+        "path": "resource_pack/render_controllers/aionbound/skyreach/wind_roc.render_controller.json",
+        "sha256": "684380e24538c045c3d108dbf0d79580b632349f35f1fa1fe417dbb5f266fb00"
+      },
+      {
+        "path": "resource_pack/textures/aionbound/skyreach/entity/cloud_goat.png",
+        "sha256": "de015765715975247e3f9baa130b24beee15f926d95d07dd2745541c20d0aa39"
+      },
+      {
+        "path": "resource_pack/textures/aionbound/skyreach/entity/sky_fox.png",
+        "sha256": "f67f561d070db04f8b250df5b0f6ac283855d1a9268e45ba75c7745c1fc9622a"
+      },
+      {
+        "path": "resource_pack/textures/aionbound/skyreach/entity/cliff_ram.png",
+        "sha256": "3c27c15ff439cdaa5eb226524881f699eeef5521e550d19841a7aef895baddfd"
+      },
+      {
+        "path": "resource_pack/textures/aionbound/skyreach/entity/storm_gull.png",
+        "sha256": "fcdf08eb7b8d0b38473b49bee81a7df71d296136f3dc25b20e754019aaf13bb7"
+      },
+      {
+        "path": "resource_pack/textures/aionbound/skyreach/entity/gale_hawk.png",
+        "sha256": "4f311d1bb898a6a57a2899ee5b964e15515c116e03356f3264b3d7f0b0cb5ab9"
+      },
+      {
+        "path": "resource_pack/textures/aionbound/skyreach/entity/ropewing.png",
+        "sha256": "f2dffbcd03ec1e82f33823f0309f6fc35cbb44ca8e5f2d67883950371b3399ea"
+      },
+      {
+        "path": "resource_pack/textures/aionbound/skyreach/entity/stone_vulture.png",
+        "sha256": "dbd01fee09fc254bae7375ecec372b385f11cc48a173f0e96dbbd0dc24d2dfe5"
+      },
+      {
+        "path": "resource_pack/textures/aionbound/skyreach/entity/glide_drake.png",
+        "sha256": "903e1a5e67844c8636ad155403c8a224c46993e7e73082ec734ce23233194243"
+      },
+      {
+        "path": "resource_pack/textures/aionbound/skyreach/entity/ruin_harpy.png",
+        "sha256": "2a6346f0795e17517b56c52b9bd236667548938661e3d03a450ffce72772dd33"
+      },
+      {
+        "path": "resource_pack/textures/aionbound/skyreach/entity/wind_roc.png",
+        "sha256": "ba015313436aa07fb4b517ff429572212f47eea8729e7135fe008ec2048ea8a7"
+      },
+      {
+        "path": "behavior_pack/spawn_rules/aionbound/skyreach/cloud_goat.spawn_rules.json",
+        "sha256": "16ac20d67c6adc1aa4114f3674cbba49aa9b3bd84058fa644d683e7d6770fa74"
+      },
+      {
+        "path": "behavior_pack/spawn_rules/aionbound/skyreach/sky_fox.spawn_rules.json",
+        "sha256": "141e02d6c8d80fed7f98e8d93e89d72e3ecea1e5e1fc59b81ed4f17eb7417edf"
+      },
+      {
+        "path": "behavior_pack/spawn_rules/aionbound/skyreach/cliff_ram.spawn_rules.json",
+        "sha256": "448bbbf7697b0517e14f2b6220016e701b63d975b1a8cf5ae08b92b4d724f323"
+      },
+      {
+        "path": "behavior_pack/spawn_rules/aionbound/skyreach/storm_gull.spawn_rules.json",
+        "sha256": "04f444c86b3e11b1a5e5d8541eabf5b249a03d82ac9513b31f6aa100b2fbf55e"
+      },
+      {
+        "path": "behavior_pack/spawn_rules/aionbound/skyreach/gale_hawk.spawn_rules.json",
+        "sha256": "985e70dde782fc72aa57e413f19814252225e1f5c81dba0242a32b3b4433296a"
+      },
+      {
+        "path": "behavior_pack/spawn_rules/aionbound/skyreach/ropewing.spawn_rules.json",
+        "sha256": "42751eee4fa091fe59aef74280f0c340d7b48362792724baffec0b71fdcaedc1"
+      },
+      {
+        "path": "behavior_pack/spawn_rules/aionbound/skyreach/stone_vulture.spawn_rules.json",
+        "sha256": "ef4e4bf7a4a883d4b604740e6806e285c00cd45e0ba5ae99fa8a2cd9740d54cd"
+      },
+      {
+        "path": "behavior_pack/spawn_rules/aionbound/skyreach/glide_drake.spawn_rules.json",
+        "sha256": "1b0b3d8b8a90f92ba5282ce5eb0e1466a92d4b30e2b2d1a8cce238a8d4f5380d"
+      },
+      {
+        "path": "behavior_pack/spawn_rules/aionbound/skyreach/ruin_harpy.spawn_rules.json",
+        "sha256": "30cbeb5a74cc02523cc9f6589076078ec59ca99ba15222e3fa771e67d0494b29"
+      }
+    ],
+    "inert_structures_and_worldgen": [
+      {
+        "path": "engineering/skyreach-intake/structure-assemblies/SKYREACH_STRUCTURE_ASSEMBLIES.json",
+        "sha256": "716af2c4b0a4a5ccdd783c48f3390ab373d2e76768a01f5fa0bb24bb1bf7a8af"
+      },
+      {
+        "path": "behavior_pack/structures/aionbound/rope_bridge.mcstructure",
+        "sha256": "9a64b900a9ec0bd286b02acd9a2a682d8ae2e558025762fced2ef018a902cdfb"
+      },
+      {
+        "path": "behavior_pack/structures/aionbound/broken_sky_path.mcstructure",
+        "sha256": "24216034a3adb9e936595ab55c4588259ea99745c75868c4c6bf3d6c42a9b0b8"
+      },
+      {
+        "path": "behavior_pack/structures/aionbound/cliff_outpost.mcstructure",
+        "sha256": "d554e05bf15e80334eda9123f60494bccb426d2b8559d4f52ac3dc3a06e02c03"
+      },
+      {
+        "path": "behavior_pack/structures/aionbound/cliff_beacon.mcstructure",
+        "sha256": "4018f46ddd4f0b386fb8589de2c955e25bfc8a661a69ce2c8000d025e65f99d1"
+      },
+      {
+        "path": "behavior_pack/structures/aionbound/observation_tower.mcstructure",
+        "sha256": "0f95f52adef4c9dbda12f27d06e9bcf79b604b8ea48442c9cd5f6b3250ae2e8a"
+      },
+      {
+        "path": "behavior_pack/structures/aionbound/nest_platform.mcstructure",
+        "sha256": "311a562011798e80483bb4289c182a74df9b2c3b8c69cec11d70e4a9bdcd1885"
+      },
+      {
+        "path": "behavior_pack/structures/aionbound/floating_ruin_floor.mcstructure",
+        "sha256": "b3d334dec8edc0e6a7b16919d92269bdf03b50bce8e699eceaa311b2cb6eef26"
+      },
+      {
+        "path": "behavior_pack/structures/aionbound/ancient_sky_arch.mcstructure",
+        "sha256": "768230c71d64a4089886c40a440c838903eadb97faa6ab848cccfdbe47a454f7"
+      },
+      {
+        "path": "behavior_pack/structures/aionbound/hanging_lift_frame.mcstructure",
+        "sha256": "dc2d94ed3ea6725f025d8230bcb13b480af6712577f1251d303eabb1da668f80"
+      },
+      {
+        "path": "behavior_pack/structures/aionbound/wind_shrine.mcstructure",
+        "sha256": "a9fe4634b22a868f4160afacb27776968c0608c32ca173bc72fcbddd08ffc897"
+      },
+      {
+        "path": "behavior_pack/features/rope_bridge.structure_feature.json",
+        "sha256": "a3b3eb458299f3ba5477263d04a33abbf315eca079a7464a3697e71d7968b91d"
+      },
+      {
+        "path": "behavior_pack/features/broken_sky_path.structure_feature.json",
+        "sha256": "dff291f4a435993265e72cb959f5af571397913029b859cc1117cc5544e94550"
+      },
+      {
+        "path": "behavior_pack/features/cliff_outpost.structure_feature.json",
+        "sha256": "a4c0619716cabc4a74c1801fb996dbaab7c1476fc6494e447ac24ff4fdea461d"
+      },
+      {
+        "path": "behavior_pack/features/cliff_beacon.structure_feature.json",
+        "sha256": "5a8bc21ee6803f7e93ccc44e2a6bae6fecadc4482b6f7b374dab3c55f0418ad8"
+      },
+      {
+        "path": "behavior_pack/features/observation_tower.structure_feature.json",
+        "sha256": "0a1f35689b87d39ee9e15979f0f4b4899876bee6372a885b88fe4b22f2c7cf6c"
+      },
+      {
+        "path": "behavior_pack/features/nest_platform.structure_feature.json",
+        "sha256": "ba6aa2cbfb56a178044cdc0dbef1e3644a89cff21ecdd7ac8b3adcd11272f4af"
+      },
+      {
+        "path": "behavior_pack/features/floating_ruin_floor.structure_feature.json",
+        "sha256": "e794d2df802ee4d92111746ef726938049ba396f9e29cf5eec1619833bc1f184"
+      },
+      {
+        "path": "behavior_pack/features/ancient_sky_arch.structure_feature.json",
+        "sha256": "1fb0c4bdbadd16fd33ccd3411b829c895bf6b0469afd86266842ba118fedc550"
+      },
+      {
+        "path": "behavior_pack/features/hanging_lift_frame.structure_feature.json",
+        "sha256": "bc8c231760337454733234dce752cd728bb9bf7e8b199fe894d8637795800e33"
+      },
+      {
+        "path": "behavior_pack/features/wind_shrine.structure_feature.json",
+        "sha256": "b88f97266e30b1725faf44fbc7242ef4fba8e94bd5d8fb5e9f36e867eab41aac"
+      },
+      {
+        "path": "behavior_pack/feature_rules/rope_bridge.structure_feature_rule.json",
+        "sha256": "5b352bd0fbaf0a4a2737f22e27cef59c83fc14c2b75df960bd5bfa5499dca03c"
+      },
+      {
+        "path": "behavior_pack/feature_rules/broken_sky_path.structure_feature_rule.json",
+        "sha256": "19dae5fbf99b3e55865f18601b31928ab6e0a2d24c685d0dcf3c2ef597c63e57"
+      },
+      {
+        "path": "behavior_pack/feature_rules/cliff_outpost.structure_feature_rule.json",
+        "sha256": "49642d76e3bf5bbb87e4ff09df9e8f3de61f2272d7a49f35f4d97f2825797930"
+      },
+      {
+        "path": "behavior_pack/feature_rules/cliff_beacon.structure_feature_rule.json",
+        "sha256": "013e495257cb47d0665e158548aa3f297dd4d348ff4853e130c0127dd5c93925"
+      },
+      {
+        "path": "behavior_pack/feature_rules/observation_tower.structure_feature_rule.json",
+        "sha256": "fca9b7fc173c6c6d7c5df4a9af0e81834e7a1f90322a8e26d034a1ea915e11f3"
+      },
+      {
+        "path": "behavior_pack/feature_rules/nest_platform.structure_feature_rule.json",
+        "sha256": "bd72811edcf488ee6be29285d42c7de1e821da3cead4a86c02d4497ebd745092"
+      },
+      {
+        "path": "behavior_pack/feature_rules/floating_ruin_floor.structure_feature_rule.json",
+        "sha256": "fda9b66bc3fcd40b9c87984698a911573797a1430538f50457619c123013d54a"
+      },
+      {
+        "path": "behavior_pack/feature_rules/ancient_sky_arch.structure_feature_rule.json",
+        "sha256": "a861240ee15e6c9984d6b1d9c336706ddf4e367eec1eac166756545747082a83"
+      },
+      {
+        "path": "behavior_pack/feature_rules/hanging_lift_frame.structure_feature_rule.json",
+        "sha256": "73198aa69ce3c365d16c29f976acc6d6b2acf4eb9f8620ba1dd80169a278bd7e"
+      },
+      {
+        "path": "behavior_pack/feature_rules/wind_shrine.structure_feature_rule.json",
+        "sha256": "55871737a257fdc9618ee4d738176bc693f8e8963f328f1cc6aed8d24f261416"
+      }
+    ],
+    "identity_codex_registry_v5": [
+      {
+        "path": "engineering/skyreach-intake/economy-codex/SKYREACH_ECONOMY_CODEX_SCAFFOLD.json",
+        "sha256": "6acb5e1792d9452563e0573c7e063744942ea1607560307d2b4a95aff28c4d4a"
+      },
+      {
+        "path": "behavior_pack/scripts/wave1_codex_skyreach_data.js",
+        "sha256": "0c8377896ec4c3ccbf48c0b20b49573aa0aee218f35b4a81ab2dd907a0d24448"
+      },
+      {
+        "path": "behavior_pack/scripts/wave1_codex_data.js",
+        "sha256": "66832f70ded4c3178af240a4ae3b9d08ecec6054e8fdada8b3d34ee3e2ea9963"
+      },
+      {
+        "path": "behavior_pack/scripts/catalog.js",
+        "sha256": "5b9c78e7db653a4f3eead7ad53ba8299c6d6aa4a45703044193460dee456f02d"
+      },
+      {
+        "path": "behavior_pack/scripts/codex.js",
+        "sha256": "e27f43d4d643f59db268f214c4c958bb9560d1d4128ea74bed3fa34f1c3b3306"
+      },
+      {
+        "path": "behavior_pack/scripts/state.js",
+        "sha256": "ddac6421e9a2eea0e6da2746077f0a6ecb12e4607ab6240c3c2ba797a0d00461"
+      },
+      {
+        "path": "tests/wave1_codex_v4.test.mjs",
+        "sha256": "b4b2f7a08c6d7168b3845bbf605220be4a2ae8f6fcebf7960c765d694d4cc2b7"
+      }
+    ],
+    "native_editable_asset_aggregates": [
+      {
+        "path": "engineering/native-assets/skyreach/representative/SKYREACH_REPRESENTATIVE_NATIVE_REPORT.json",
+        "sha256": "d082e7a3ba9eb44cd53eb8cfbf5330d6579e28b89ee4ab73effe9232e612185b"
+      },
+      {
+        "path": "engineering/native-assets/skyreach/creatures/SKYREACH_CREATURE_NATIVE_REPORT.json",
+        "sha256": "835e4827c31b323983b1c2463d65a71518da49e3080323c8895cea6608b56f15"
+      },
+      {
+        "path": "engineering/native-assets/skyreach/plants/SKYREACH_PLANT_NATIVE_REPORT.json",
+        "sha256": "956140950db1d24493fbc6525671731dedaa089ce040d13cb337e3f4e5e329d4"
+      },
+      {
+        "path": "engineering/native-assets/skyreach/landmarks/SKYREACH_LANDMARK_NATIVE_REPORT.json",
+        "sha256": "107fc26bd51df4aff20ef629d2ccac5ad41c471f008ab4fd09091b72d25cda68"
+      }
+    ]
+  },
+  "invariants": {
+    "base_packet_ids": 50,
+    "creatures": 10,
+    "natural_creatures": 9,
+    "arena_only_wind_roc": true,
+    "plants": 10,
+    "structures": 10,
+    "native_custom_assets": 30,
+    "codex_registry_entries": 50,
+    "state_schema": 4,
+    "new_subscription_classes": 0,
+    "new_interval_classes": 0
+  },
+  "pending_follow_up": {
+    "W1-001-SR": "EXECUTABLE_ACQUISITION_RECIPES_AND_NONWAREHOUSE_IDENTITIES_DEFERRED",
+    "W1-003-STORM-NEST": "ENCOUNTER_EXECUTION_DEFERRED",
+    "W1-004-SR": "LOOT_SEAL_RECOVERY_AND_REPEAT_CLEAR_DEFERRED",
+    "W1-CREATIVE-005": "DEFERRED_BY_USER_NO_SIDEGRADE_IDENTITIES"
+  },
+  "proof_boundary": "EXACT SOURCE PATH AND HASH CLOSURE ONLY; NO PACKAGE, BDS, CLIENT, MULTIPLAYER, CONSOLE, MARKETPLACE, OR RELEASE CLAIM"
+}
