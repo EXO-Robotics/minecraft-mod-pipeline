@@ -1,4 +1,4 @@
-import { BOSS_LADDER, BOSS_REWARDS, PILGRIMAGE } from "./catalog.js";
+import { BOSS_LADDER, BOSS_REWARDS } from "./catalog.js";
 import { COMBINED_BUDGETS } from "./budgets.js";
 
 export function createEncounterService({ world, ItemStack, state, boundedEntities, consumeOne }) {
@@ -18,31 +18,12 @@ export function createEncounterService({ world, ItemStack, state, boundedEntitie
     }
   }
 
-  function spawnTwinbond(player, location, itemType) {
-    const p = state.playerState(player), w = state.worldState();
-    const missingPilgrimage = Object.values(PILGRIMAGE).some(key => !p.stamps.includes(key));
-    if (itemType !== "aionbound:finale_ignition_key" || !p.stamps.includes("edge:assembled") || missingPilgrimage || p.endpoint || Object.keys(w.encounters.active).length > COMBINED_BUDGETS.bossesWorld - COMBINED_BUDGETS.twinbondMax) return state.warn(player, "Twinbond prerequisites or boss budget refused the key.");
-    const specs = [
-      { key: `twinbond:${player.id}:ash`, type: "aionbound:ash_sovereign_wyrm", location },
-      { key: `twinbond:${player.id}:tide`, type: "aionbound:tide_empress_wyrm", location: { x: location.x + 4, y: location.y, z: location.z } },
-    ];
-    if (specs.some(spec => w.encounters.active[spec.key] || w.encounters.terminal[spec.key])) return state.warn(player, "Twinbond is already active or complete.");
-    for (const spec of specs) w.encounters.active[spec.key] = { v: 3, key: spec.key, type: spec.type, owner: player.id, state: "admitted" };
-    if (!state.saveWorld(w)) { for (const spec of specs) delete w.encounters.active[spec.key]; return; }
-    if (!consumeOne(player, itemType)) { for (const spec of specs) delete w.encounters.active[spec.key]; state.saveWorld(w); return; }
-    const spawned = [];
-    try {
-      for (const spec of specs) {
-        const entity = player.dimension.spawnEntity(spec.type, spec.location); spawned.push(entity);
-        entity.setDynamicProperty("aionbound:owner", player.id); entity.setDynamicProperty("aionbound:encounter", spec.key); w.encounters.active[spec.key].state = "active";
-      }
-      state.saveWorld(w);
-    } catch {
-      for (const entity of spawned) entity.remove();
-      for (const spec of specs) delete w.encounters.active[spec.key]; state.saveWorld(w);
-      player.dimension.spawnItem(new ItemStack(itemType, 1), player.location);
-      state.warn(player, "Twinbond spawn failed; the key was returned.");
-    }
+  function spawnTwinbond(player, _location, _itemType) {
+    // Preserve the approved obelisk/action seam as inert preparation. The G7
+    // finale key, Concord Scale, and endpoint path are superseded by the Wave 1
+    // ledger and cannot admit new gameplay in G8.
+    state.warn(player, "Twinbond is withheld pending the ratified Wave 1 finale contract.");
+    return false;
   }
 
   function routeBoss(action, context) {
@@ -61,18 +42,15 @@ export function createEncounterService({ world, ItemStack, state, boundedEntitie
   function bossDeath(event) {
     const entity = event.deadEntity, owner = entity.getDynamicProperty("aionbound:owner"), key = entity.getDynamicProperty("aionbound:encounter");
     if (!key) return false;
+    // Do not translate a legacy Twinbond shell into superseded endpoint or
+    // Concord Scale state. Existing entities and journals are left untouched;
+    // this bounded reconciliation performs no destructive cleanup.
+    if (entity.typeId === "aionbound:ash_sovereign_wyrm" || entity.typeId === "aionbound:tide_empress_wyrm" || key.startsWith("twinbond:")) return true;
     const w = state.worldState(); if (w.encounters.terminal[key]) return true;
     delete w.encounters.active[key]; w.encounters.terminal[key] = { v: 3, state: "terminal", rewarded: true }; state.saveWorld(w);
     const player = world.getAllPlayers().find(candidate => candidate.id === owner); if (!player) return true;
     const reward = BOSS_REWARDS[entity.typeId];
     if (reward && state.stamp(player, reward[0])) player.dimension.spawnItem(new ItemStack(reward[1], 1), player.location);
-    if (entity.typeId === "aionbound:ash_sovereign_wyrm") state.stamp(player, "twinbond:ash");
-    if (entity.typeId === "aionbound:tide_empress_wyrm") state.stamp(player, "twinbond:tide");
-    const p = state.playerState(player);
-    if (p.stamps.includes("twinbond:ash") && p.stamps.includes("twinbond:tide") && !p.endpoint) {
-      p.endpoint = true; if (!p.stamps.includes("endpoint:concord")) p.stamps.push("endpoint:concord");
-      if (state.savePlayer(player, p)) player.dimension.spawnItem(new ItemStack("aionbound:trophy_concord_scale", 1), player.location);
-    }
     return true;
   }
 

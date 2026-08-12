@@ -58,7 +58,15 @@ export function codexEntryBody(entry, stateValue) {
 
 export function createCodexService({ state, ActionFormData = null }) {
   const ownedItemEvents = new Map(CODEX_ENTRY_REGISTRY.flatMap(entry => {
-    const events = entry.events.filter(event => event.event === "first_obtain" || event.event === "first_owned").map(event => event.id);
+    // Bedrock exposes no stable craft-output event in the approved subscription
+    // set. Whisperwood's recipe-only equipment therefore reconciles its
+    // already-ratified successful_craft_output transitions from bounded
+    // inventory ownership, just as later-region first_owned entries do.
+    const events = entry.events.filter(event =>
+      event.event === "first_obtain" ||
+      event.event === "first_owned" ||
+      event.action === "successful_craft_output"
+    ).map(event => event.id);
     return events.length ? [[entry.runtimeId, events]] : [];
   }));
   const deriveGoals = stamps => ({

@@ -154,6 +154,34 @@ test("bounded inventory reconciliation completes exact Ashen first-owned entries
   assert.equal(codex.reconcileOwnedItems(player), 0);
 });
 
+test("existing owned-item reconciliation completes all twenty Whisperwood craft-output pages without a new subscription", () => {
+  let playerRecord = stateModule.migratePlayer({ v: 4, stamps: [], codex: { topic: 0 }, goals: {} });
+  const state = {
+    playerState: () => structuredClone(playerRecord),
+    transitionCodex: (_player, region, category, index, value) => {
+      const result = stateModule.transitionCodexDiscovery(playerRecord.codex.discovery, region, category, index, value);
+      if (result.changed) playerRecord.codex.discovery = result.discovery;
+      return result.changed;
+    },
+    stamp: () => true, savePlayer: () => true,
+  };
+  const craftOnly = extensionMap.entries.equipment.filter(entry => entry.discovery_events[0].action === "successful_craft_output");
+  assert.equal(craftOnly.length, 20);
+  const items = craftOnly.map(entry => ({ typeId: entry.runtime_id }));
+  const player = { getComponent: () => ({ container: { size: items.length, getItem: slot => items[slot] } }) };
+  const codex = createCodexService({ state });
+
+  assert.deepEqual([
+    codex.reconcileOwnedItems(player),
+    codex.reconcileOwnedItems(player),
+    codex.reconcileOwnedItems(player),
+    codex.reconcileOwnedItems(player),
+  ], [8, 8, 4, 0]);
+  for (const entry of craftOnly) {
+    assert.equal(stateModule.codexDiscoveryState(playerRecord.codex.discovery, "ww", "equipment", entry.category_index), 2, entry.id);
+  }
+});
+
 test("state service reads v3 once, writes v4, and reopens the v4 value", () => {
   const properties = new Map([[catalog.IDS.oldPlayerV3, JSON.stringify({ v: 3, stamps: ["legacy"], codex: { topic: 4 }, goals: { arsenal: true } })]]);
   const writes = [];

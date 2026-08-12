@@ -1,0 +1,80 @@
+{
+  "schema": "aionbound.wave1.packet006_routine_reconciliation.v1",
+  "status": "PASS_SOURCE_SEMANTICS_AND_GLOBAL_VALIDATION",
+  "base": {
+    "commit": "edbdf01143e994cae8e77414951d07ae3c95ed63",
+    "generation": "G8",
+    "g7_modified": false
+  },
+  "scope": {
+    "whisperwood_codex": "Reconcile the twenty existing successful_craft_output equipment events through the existing bounded owned-item scan.",
+    "twinbond": "Withhold the superseded G7 finale-key launcher and Concord Scale/endpoint death translation while preserving the inert obelisk/action seam.",
+    "new_subscription_or_interval": false,
+    "new_persistence_schema_or_domain": false,
+    "replacement_gameplay": false,
+    "destructive_legacy_cleanup": false
+  },
+  "whisperwood_owned_item_ids": [
+    "aionbound:mossfang_spear",
+    "aionbound:widow_fang_dagger",
+    "aionbound:thorn_whip",
+    "aionbound:briar_cleaver",
+    "aionbound:moon_sap_staff",
+    "aionbound:whisperwood_helmet",
+    "aionbound:whisperwood_chest",
+    "aionbound:whisperwood_legs",
+    "aionbound:whisperwood_boots",
+    "aionbound:root_knife",
+    "aionbound:whisperwood_hatchet",
+    "aionbound:lantern_hook",
+    "aionbound:moss_charm",
+    "aionbound:root_bracelet",
+    "aionbound:lantern_badge",
+    "aionbound:moon_sap_pendant",
+    "aionbound:briar_ring",
+    "aionbound:briar_elk_trophy",
+    "aionbound:mosskip_trophy",
+    "aionbound:ancient_acorn_display"
+  ],
+  "twinbond_withheld": {
+    "launcher_item": "aionbound:finale_ignition_key",
+    "legacy_entities": [
+      "aionbound:ash_sovereign_wyrm",
+      "aionbound:tide_empress_wyrm"
+    ],
+    "suppressed_reward": "aionbound:trophy_concord_scale",
+    "suppressed_endpoint": "endpoint:concord",
+    "interaction_result": "Twinbond is withheld pending the ratified Wave 1 finale contract.",
+    "existing_entities_or_journals_deleted": false
+  },
+  "artifacts": [
+    {
+      "path": "behavior_pack/scripts/codex.js",
+      "sha256": "48234fc7d0770b432e774483c3ea0f7cf20178a9c87bec4acd3f39220edc86b7"
+    },
+    {
+      "path": "behavior_pack/scripts/encounters.js",
+      "sha256": "57ad2a8a572f2b0ac2d4b7f361aa0517b4d36e817ae1d513b1161b044d5d429b"
+    },
+    {
+      "path": "tests/wave1_codex_v4.test.mjs",
+      "sha256": "a695d883c5238bd08f1a915f3f5364eda4d0b54634f904f4bfcec800bedf93a3"
+    },
+    {
+      "path": "tests/wave1_packet006_reconciliation.test.mjs",
+      "sha256": "c0e30529cfe85b5345d15a70625ea666518d60ed49ec7f060611f38bb91043ca"
+    }
+  ],
+  "validation": {
+    "targeted_command": "node --test tests/wave1_codex_v4.test.mjs tests/wave1_packet006_reconciliation.test.mjs",
+    "targeted_passed": 12,
+    "targeted_failed": 0,
+    "global_command": "python3 tools/validate_wave1.py",
+    "global_result": "PASS"
+  },
+  "proof_boundary": [
+    "source_tree_and_transformed_semantic_harness_only",
+    "not_BDS_package_client_multiplayer_console_candidate_or_release_proof",
+    "not_replacement_Twinbond_authority_or_gameplay"
+  ]
+}
