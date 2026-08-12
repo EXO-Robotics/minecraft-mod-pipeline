@@ -1,0 +1,211 @@
+{
+  "schema": "aionforge.wave1.packet006.presentation_shells.v1",
+  "status": "PRESENTATION_SHELLS_SOURCE_COMPLETE_AUTHORITY_GATED",
+  "base": {
+    "commit": "c60848db75954822e187e6675e6a198148c5089e",
+    "tree": "f05961009bbda650ea646d2462c952257946f251"
+  },
+  "identities": [
+    "surveyor_medallion",
+    "surveyor_staff",
+    "trail_compass",
+    "warden_sigil",
+    "twinbond_relic"
+  ],
+  "counts": {
+    "items": 5,
+    "attachables": 5,
+    "native_geometries": 5,
+    "native_animation_documents": 5,
+    "native_model_textures": 5,
+    "handcrafted_inventory_icons": 5
+  },
+  "native_binding": {
+    "surveyor_medallion": {
+      "geometry": "engineering/native-assets/packet006-missing/evidence/surveyor_medallion/native-exports/pass-2.geo.json",
+      "animation": "engineering/native-assets/packet006-missing/evidence/surveyor_medallion/native-exports/pass-2.animation.json",
+      "model_texture": "engineering/native-assets/packet006-missing/evidence/surveyor_medallion/native-project/textures/surveyor_medallion.png",
+      "presentation_clip": null
+    },
+    "surveyor_staff": {
+      "geometry": "engineering/native-assets/packet006-missing/evidence/surveyor_staff/native-exports/pass-2.geo.json",
+      "animation": "engineering/native-assets/packet006-missing/evidence/surveyor_staff/native-exports/pass-2.animation.json",
+      "model_texture": "engineering/native-assets/packet006-missing/evidence/surveyor_staff/native-project/textures/surveyor_staff.png",
+      "presentation_clip": "hold"
+    },
+    "trail_compass": {
+      "geometry": "engineering/native-assets/packet006-missing/evidence/trail_compass/native-exports/pass-2.geo.json",
+      "animation": "engineering/native-assets/packet006-missing/evidence/trail_compass/native-exports/pass-2.animation.json",
+      "model_texture": "engineering/native-assets/packet006-missing/evidence/trail_compass/native-project/textures/trail_compass.png",
+      "presentation_clip": "needle_idle"
+    },
+    "warden_sigil": {
+      "geometry": "engineering/native-assets/packet006-missing/evidence/warden_sigil/native-exports/pass-2.geo.json",
+      "animation": "engineering/native-assets/packet006-missing/evidence/warden_sigil/native-exports/pass-2.animation.json",
+      "model_texture": "engineering/native-assets/packet006-missing/evidence/warden_sigil/native-project/textures/warden_sigil.png",
+      "presentation_clip": "pulse"
+    },
+    "twinbond_relic": {
+      "geometry": "engineering/native-assets/twinbond/evidence/twinbond_relic/native-exports/pass-2.geo.json",
+      "animation": "engineering/native-assets/twinbond/evidence/twinbond_relic/native-exports/pass-2.animation.json",
+      "model_texture": "engineering/native-assets/twinbond/evidence/twinbond_relic/native-project/textures/twinbond_relic.png",
+      "presentation_clip": "dual_pulse"
+    }
+  },
+  "authority_gate": {
+    "state": "DORMANT_PRESENTATION_IDENTITY_ONLY",
+    "requires_future_authority": [
+      "acquisition",
+      "recipes",
+      "loot",
+      "runtime_effects",
+      "equipment_roles",
+      "progression",
+      "encounter_rewards",
+      "finale",
+      "sidegrades"
+    ],
+    "creative_005": "DEFERRED_UNCHANGED_NO_SIDEGRADES"
+  },
+  "invariants": {
+    "new_recipes": 0,
+    "new_loot_tables": 0,
+    "new_runtime_handlers": 0,
+    "new_persistence_domains": 0,
+    "new_progression_edges": 0,
+    "new_finale_behavior": 0,
+    "new_sidegrades": 0,
+    "menu_category_exposure": false
+  },
+  "artifacts": [
+    {
+      "path": "behavior_pack/items/surveyor_medallion.item.json",
+      "sha256": "831399ec649f096163849a748f5d76345fa743f9cf029ab801ee2ab9a8d57385"
+    },
+    {
+      "path": "behavior_pack/items/surveyor_staff.item.json",
+      "sha256": "f0804729a38f4f4011b18386f4576b892a58eec8e3d5ba62edf3894b91809dca"
+    },
+    {
+      "path": "behavior_pack/items/trail_compass.item.json",
+      "sha256": "e03242346d67ed70f0879f90cba99b80c49dae143ad7241a43bd8eab3b21b693"
+    },
+    {
+      "path": "behavior_pack/items/twinbond_relic.item.json",
+      "sha256": "8128b83c7fd3bcac5e7bb47e50a27e9c3745bc9eb34e7e03b519089a74257e67"
+    },
+    {
+      "path": "behavior_pack/items/warden_sigil.item.json",
+      "sha256": "8e68de43e43e262470a7ea18f3cc11eff1f8a7746d6cf71b7dbc7bdd5018a9db"
+    },
+    {
+      "path": "resource_pack/animations/aionbound/wave1/packet006/surveyor_medallion.animation.json",
+      "sha256": "7882082857fdb11e02f158ebc3a6d3f970e2ac60d54813f0e903ee97b2293749"
+    },
+    {
+      "path": "resource_pack/animations/aionbound/wave1/packet006/surveyor_staff.animation.json",
+      "sha256": "1842c3e90ce3366beadae6b46c8122a997ca999dc7a36726d26e7ae680d6eed5"
+    },
+    {
+      "path": "resource_pack/animations/aionbound/wave1/packet006/trail_compass.animation.json",
+      "sha256": "05cb2477e5d810404b2e1a72d0f529400d1d64ecd78584d2a81647b93f5e7c55"
+    },
+    {
+      "path": "resource_pack/animations/aionbound/wave1/packet006/twinbond_relic.animation.json",
+      "sha256": "4501a859c599b6e9fbebe23906b0347036d9782d8a3b20163c3194f78a007263"
+    },
+    {
+      "path": "resource_pack/animations/aionbound/wave1/packet006/warden_sigil.animation.json",
+      "sha256": "2c4d5941c41ad74cf33ca689918766011af3b3540ba437b386e55d195a03dabf"
+    },
+    {
+      "path": "resource_pack/attachables/surveyor_medallion.attachable.json",
+      "sha256": "57aec1b66897a5687045dc277a0ea3ebcd1aac8b654667e05a52718e04e9f16e"
+    },
+    {
+      "path": "resource_pack/attachables/surveyor_staff.attachable.json",
+      "sha256": "4ab03be255b39a3f4fcb873efbe04531038ad64b0c4a8aa4547d453d71381957"
+    },
+    {
+      "path": "resource_pack/attachables/trail_compass.attachable.json",
+      "sha256": "edc2e52eb2a5279516e6eda07aaa761b85271189602cd7ea31320373279d7154"
+    },
+    {
+      "path": "resource_pack/attachables/twinbond_relic.attachable.json",
+      "sha256": "12fa84df10cb3803024a226011911ee82256bb1fb971f2f4579284a5950fcd40"
+    },
+    {
+      "path": "resource_pack/attachables/warden_sigil.attachable.json",
+      "sha256": "d3a77260737fcd6b033a5f02fcce4addf541bd4ade3b0d25b3c766c91f24ab8e"
+    },
+    {
+      "path": "resource_pack/models/aionbound/wave1/packet006/surveyor_medallion.geo.json",
+      "sha256": "244fab3135f290ec5a423d6748f3680dd0fbf70315cdec0ce3f752190cef7f31"
+    },
+    {
+      "path": "resource_pack/models/aionbound/wave1/packet006/surveyor_staff.geo.json",
+      "sha256": "987a152d189229f06e2c58ce293bf136b46ef588b4d65ab0a9bf515e794fdb14"
+    },
+    {
+      "path": "resource_pack/models/aionbound/wave1/packet006/trail_compass.geo.json",
+      "sha256": "d189dab26d85e4e4bf9a2dd854e6d505265f56384fc8181b3cfbff1e558e38a8"
+    },
+    {
+      "path": "resource_pack/models/aionbound/wave1/packet006/twinbond_relic.geo.json",
+      "sha256": "7d6c4b2c3a12cfc7c5788a71a7731491359555ce70b93f97ebf2dfd6a404946f"
+    },
+    {
+      "path": "resource_pack/models/aionbound/wave1/packet006/warden_sigil.geo.json",
+      "sha256": "df4f8d88c69c667bbaa9358a181266cc59b126923c02d6253363fc6b5135731f"
+    },
+    {
+      "path": "resource_pack/texts/en_US.lang",
+      "sha256": "0393af3080dfa8208fd32532be37b1849a118fb03ca759b5cb64d4bb2fe0b394"
+    },
+    {
+      "path": "resource_pack/textures/aionbound/wave1/packet006/icons/surveyor_medallion.png",
+      "sha256": "96f32f069a3045f63bba84f8508f55c7496184d5855fba790243398a4d097883"
+    },
+    {
+      "path": "resource_pack/textures/aionbound/wave1/packet006/icons/surveyor_staff.png",
+      "sha256": "e77ebcb7e84a2924d81fa8352d55077f052323f7a30132e5da44af8f9eeecf2e"
+    },
+    {
+      "path": "resource_pack/textures/aionbound/wave1/packet006/icons/trail_compass.png",
+      "sha256": "3aea52bfc9a9eb606c6ac5f1740d567083dbd128e0f440620a692a8673173f62"
+    },
+    {
+      "path": "resource_pack/textures/aionbound/wave1/packet006/icons/twinbond_relic.png",
+      "sha256": "675aa2c23f1b1a510958f5ebcd76de8bcd4216528bfe01368b9cdd61870559a4"
+    },
+    {
+      "path": "resource_pack/textures/aionbound/wave1/packet006/icons/warden_sigil.png",
+      "sha256": "a65514d587087243db5c22f355839e7691e806eb5bf9df6101eae236797b2f7a"
+    },
+    {
+      "path": "resource_pack/textures/aionbound/wave1/packet006/models/surveyor_medallion.png",
+      "sha256": "045b0bdee8d74d2866b6cc663a0867f9f20b9015c588a87b45f06881ea240570"
+    },
+    {
+      "path": "resource_pack/textures/aionbound/wave1/packet006/models/surveyor_staff.png",
+      "sha256": "0896ad8e964bf77c3df2f4ecc9c8031f2b1a11ce8bec0ad04e460f4124f06fc0"
+    },
+    {
+      "path": "resource_pack/textures/aionbound/wave1/packet006/models/trail_compass.png",
+      "sha256": "f85f0e918e414c7a40bb45844b9f2f8454af16a7a4a2990554479b1f9f26dbf7"
+    },
+    {
+      "path": "resource_pack/textures/aionbound/wave1/packet006/models/twinbond_relic.png",
+      "sha256": "d30406aabbb3d851966368fb0817a471e659e8e2f8ea4c54695bbacf85e9e228"
+    },
+    {
+      "path": "resource_pack/textures/aionbound/wave1/packet006/models/warden_sigil.png",
+      "sha256": "03b08e725f36b0e14b35b84b26cfd7250cd87f44e1f05e6037aaaba9b9efe1c0"
+    },
+    {
+      "path": "resource_pack/textures/item_texture.json",
+      "sha256": "b3ba12a8612322119d1825e1e831ce83fb7b56e83b4b8be06a9df47a819e05e3"
+    }
+  ],
+  "proof_boundary": "SOURCE IDENTITY, EXACT NATIVE PASS-2 BYTE BINDING, ATTACHABLE REFERENCES, PNG DECODE, ATLAS, LANGUAGE, AND TARGETED SEMANTIC TESTS ONLY; NO ACQUISITION, GAMEPLAY, PACKAGE, BDS, CLIENT, MULTIPLAYER, CONSOLE, CANDIDATE, MARKETPLACE, OR RELEASE PROOF"
+}

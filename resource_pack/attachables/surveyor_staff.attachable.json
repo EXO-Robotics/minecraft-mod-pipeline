@@ -1,0 +1,28 @@
+{
+  "format_version": "1.10.0",
+  "minecraft:attachable": {
+    "description": {
+      "identifier": "aionbound:surveyor_staff",
+      "materials": {
+        "default": "entity_alphatest"
+      },
+      "textures": {
+        "default": "textures/aionbound/wave1/packet006/models/surveyor_staff"
+      },
+      "geometry": {
+        "default": "geometry.aionbound.surveyor_staff"
+      },
+      "render_controllers": [
+        "controller.render.aionbound.default"
+      ],
+      "animations": {
+        "hold": "animation.aionbound.surveyor_staff.hold"
+      },
+      "scripts": {
+        "animate": [
+          "hold"
+        ]
+      }
+    }
+  }
+}

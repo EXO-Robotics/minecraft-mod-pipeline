@@ -1,0 +1,28 @@
+{
+  "format_version": "1.10.0",
+  "minecraft:attachable": {
+    "description": {
+      "identifier": "aionbound:twinbond_relic",
+      "materials": {
+        "default": "entity_alphatest"
+      },
+      "textures": {
+        "default": "textures/aionbound/wave1/packet006/models/twinbond_relic"
+      },
+      "geometry": {
+        "default": "geometry.aionbound.twinbond_relic"
+      },
+      "render_controllers": [
+        "controller.render.aionbound.default"
+      ],
+      "animations": {
+        "dual_pulse": "animation.aionbound.twinbond_relic.dual_pulse"
+      },
+      "scripts": {
+        "animate": [
+          "dual_pulse"
+        ]
+      }
+    }
+  }
+}
