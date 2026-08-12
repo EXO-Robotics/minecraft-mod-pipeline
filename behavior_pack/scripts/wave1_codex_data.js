@@ -2,6 +2,7 @@ import { WHISPERWOOD_CODEX_EXTENSION_ENTRIES } from "./wave1_codex_extension_dat
 import { ASHEN_CODEX_ENTRIES } from "./wave1_codex_ashen_data.js";
 import { CRYSTAL_CODEX_ENTRIES } from "./wave1_codex_crystal_data.js";
 import { SKYREACH_CODEX_ENTRIES } from "./wave1_codex_skyreach_data.js";
+import { SKYREACH_CODEX_RUNTIME_ENTRIES } from "./wave1_codex_skyreach_runtime_data.js";
 
 // Machine-bound from the Whisperwood Codex implementation maps. This module
 // contains only SAFE_NOW identity and discovery-transition data. Acquisition
@@ -74,6 +75,7 @@ export const WAVE1_CODEX_ENTRIES = Object.freeze([
   ...ASHEN_CODEX_ENTRIES,
   ...CRYSTAL_CODEX_ENTRIES,
   ...SKYREACH_CODEX_ENTRIES,
+  ...SKYREACH_CODEX_RUNTIME_ENTRIES,
 ]);
 
 const eventIndex = {};

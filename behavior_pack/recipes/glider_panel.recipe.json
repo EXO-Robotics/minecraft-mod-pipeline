@@ -1,0 +1,36 @@
+{
+  "format_version": "1.20.10",
+  "minecraft:recipe_shaped": {
+    "description": {
+      "identifier": "aionbound:glider_panel_recipe"
+    },
+    "tags": [
+      "crafting_table"
+    ],
+    "pattern": [
+      "FSF",
+      "SBS",
+      "FSF"
+    ],
+    "key": {
+      "F": {
+        "item": "aionbound:sky_feather"
+      },
+      "S": {
+        "item": "aionbound:wind_silk"
+      },
+      "B": {
+        "item": "aionbound:wing_bone_stay"
+      }
+    },
+    "result": {
+      "item": "aionbound:glider_panel",
+      "count": 1
+    },
+    "unlock": [
+      {
+        "item": "aionbound:sky_feather"
+      }
+    ]
+  }
+}

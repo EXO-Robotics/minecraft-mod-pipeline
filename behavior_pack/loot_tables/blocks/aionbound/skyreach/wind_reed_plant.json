@@ -1,0 +1,21 @@
+{
+  "pools": [
+    {
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "item",
+          "name": "aionbound:updraft_reed_item",
+          "weight": 1,
+          "functions": []
+        }
+      ],
+      "conditions": [
+        {
+          "condition": "random_chance",
+          "chance": 1.0
+        }
+      ]
+    }
+  ]
+}

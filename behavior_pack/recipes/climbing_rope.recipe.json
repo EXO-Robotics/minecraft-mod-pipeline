@@ -1,0 +1,32 @@
+{
+  "format_version": "1.20.10",
+  "minecraft:recipe_shaped": {
+    "description": {
+      "identifier": "aionbound:climbing_rope_recipe"
+    },
+    "tags": [
+      "crafting_table"
+    ],
+    "pattern": [
+      "VVV",
+      "SSS"
+    ],
+    "key": {
+      "V": {
+        "item": "aionbound:sky_vine_item"
+      },
+      "S": {
+        "item": "aionbound:wind_silk"
+      }
+    },
+    "result": {
+      "item": "aionbound:climbing_rope",
+      "count": 1
+    },
+    "unlock": [
+      {
+        "item": "aionbound:sky_vine_item"
+      }
+    ]
+  }
+}

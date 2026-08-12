@@ -1,0 +1,33 @@
+{
+  "format_version": "1.20.10",
+  "minecraft:recipe_shaped": {
+    "description": {
+      "identifier": "aionbound:soft_landing_pad_recipe"
+    },
+    "tags": [
+      "crafting_table"
+    ],
+    "pattern": [
+      "WWW",
+      "RWR",
+      "WWW"
+    ],
+    "key": {
+      "W": {
+        "item": "aionbound:cloud_wool"
+      },
+      "R": {
+        "item": "aionbound:float_resin"
+      }
+    },
+    "result": {
+      "item": "aionbound:soft_landing_pad",
+      "count": 1
+    },
+    "unlock": [
+      {
+        "item": "aionbound:cloud_wool"
+      }
+    ]
+  }
+}

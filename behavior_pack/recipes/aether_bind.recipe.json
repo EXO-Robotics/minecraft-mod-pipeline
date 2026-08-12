@@ -1,0 +1,33 @@
+{
+  "format_version": "1.20.10",
+  "minecraft:recipe_shaped": {
+    "description": {
+      "identifier": "aionbound:aether_bind_recipe"
+    },
+    "tags": [
+      "crafting_table"
+    ],
+    "pattern": [
+      " R ",
+      "RAR",
+      " R "
+    ],
+    "key": {
+      "R": {
+        "item": "aionbound:float_resin"
+      },
+      "A": {
+        "item": "aionbound:aether_stone"
+      }
+    },
+    "result": {
+      "item": "aionbound:aether_bind",
+      "count": 1
+    },
+    "unlock": [
+      {
+        "item": "aionbound:float_resin"
+      }
+    ]
+  }
+}

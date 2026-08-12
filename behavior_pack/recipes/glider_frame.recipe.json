@@ -1,0 +1,36 @@
+{
+  "format_version": "1.20.10",
+  "minecraft:recipe_shaped": {
+    "description": {
+      "identifier": "aionbound:glider_frame_recipe"
+    },
+    "tags": [
+      "crafting_table"
+    ],
+    "pattern": [
+      "PPP",
+      "L L",
+      "SSS"
+    ],
+    "key": {
+      "P": {
+        "item": "aionbound:glider_panel"
+      },
+      "L": {
+        "item": "aionbound:skyreach_planks"
+      },
+      "S": {
+        "item": "aionbound:wind_silk"
+      }
+    },
+    "result": {
+      "item": "aionbound:glider_frame",
+      "count": 1
+    },
+    "unlock": [
+      {
+        "item": "aionbound:glider_panel"
+      }
+    ]
+  }
+}

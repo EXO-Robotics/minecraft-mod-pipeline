@@ -1,0 +1,39 @@
+{
+  "format_version": "1.20.10",
+  "minecraft:recipe_shaped": {
+    "description": {
+      "identifier": "aionbound:lift_tonic_recipe"
+    },
+    "tags": [
+      "crafting_table"
+    ],
+    "pattern": [
+      " R ",
+      "BLB",
+      " G "
+    ],
+    "key": {
+      "R": {
+        "item": "aionbound:updraft_reed_item"
+      },
+      "B": {
+        "item": "aionbound:lift_bloom_item"
+      },
+      "L": {
+        "item": "aionbound:float_resin"
+      },
+      "G": {
+        "item": "minecraft:glass_bottle"
+      }
+    },
+    "result": {
+      "item": "aionbound:lift_tonic",
+      "count": 1
+    },
+    "unlock": [
+      {
+        "item": "aionbound:updraft_reed_item"
+      }
+    ]
+  }
+}

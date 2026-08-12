@@ -1,0 +1,36 @@
+{
+  "format_version": "1.20.10",
+  "minecraft:recipe_shaped": {
+    "description": {
+      "identifier": "aionbound:trail_compass_recipe"
+    },
+    "tags": [
+      "crafting_table"
+    ],
+    "pattern": [
+      " C ",
+      "RMR",
+      " C "
+    ],
+    "key": {
+      "C": {
+        "item": "aionbound:cliff_crystal"
+      },
+      "R": {
+        "item": "aionbound:float_resin"
+      },
+      "M": {
+        "item": "minecraft:compass"
+      }
+    },
+    "result": {
+      "item": "aionbound:trail_compass",
+      "count": 1
+    },
+    "unlock": [
+      {
+        "item": "aionbound:cliff_crystal"
+      }
+    ]
+  }
+}

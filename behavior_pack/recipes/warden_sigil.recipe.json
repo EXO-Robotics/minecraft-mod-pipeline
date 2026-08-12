@@ -1,0 +1,39 @@
+{
+  "format_version": "1.20.10",
+  "minecraft:recipe_shaped": {
+    "description": {
+      "identifier": "aionbound:warden_sigil_recipe"
+    },
+    "tags": [
+      "crafting_table"
+    ],
+    "pattern": [
+      " C ",
+      "TLT",
+      " R "
+    ],
+    "key": {
+      "C": {
+        "item": "aionbound:cliff_crystal"
+      },
+      "T": {
+        "item": "aionbound:ember_totem"
+      },
+      "L": {
+        "item": "aionbound:living_root_focus"
+      },
+      "R": {
+        "item": "aionbound:root_heart"
+      }
+    },
+    "result": {
+      "item": "aionbound:warden_sigil",
+      "count": 1
+    },
+    "unlock": [
+      {
+        "item": "aionbound:cliff_crystal"
+      }
+    ]
+  }
+}

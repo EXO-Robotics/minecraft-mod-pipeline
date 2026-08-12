@@ -1,0 +1,30 @@
+{
+  "format_version": "1.20.10",
+  "minecraft:recipe_shaped": {
+    "description": {
+      "identifier": "aionbound:climbing_hook_head_recipe"
+    },
+    "tags": [
+      "crafting_table"
+    ],
+    "pattern": [
+      " C ",
+      "CCC",
+      " C "
+    ],
+    "key": {
+      "C": {
+        "item": "aionbound:cliff_crystal"
+      }
+    },
+    "result": {
+      "item": "aionbound:climbing_hook_head",
+      "count": 1
+    },
+    "unlock": [
+      {
+        "item": "aionbound:cliff_crystal"
+      }
+    ]
+  }
+}

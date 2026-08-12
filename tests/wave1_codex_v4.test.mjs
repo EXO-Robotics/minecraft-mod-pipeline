@@ -8,7 +8,7 @@ import { fileURLToPath, pathToFileURL } from "node:url";
 const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), "..");
 const SOURCE = resolve(ROOT, "behavior_pack/scripts");
 const MODULE_DIR = await mkdtemp(resolve(tmpdir(), "aionbound-codex-v4-"));
-for (const name of ["wave1_codex_extension_data", "wave1_codex_ashen_data", "wave1_codex_crystal_data", "wave1_codex_skyreach_data", "wave1_codex_data", "wave1_codex_ui_data", "catalog", "budgets", "state", "codex"]) {
+for (const name of ["wave1_codex_extension_data", "wave1_codex_ashen_data", "wave1_codex_crystal_data", "wave1_codex_skyreach_data", "wave1_codex_skyreach_runtime_data", "wave1_codex_data", "wave1_codex_ui_data", "catalog", "budgets", "state", "codex"]) {
   const source = (await readFile(resolve(SOURCE, `${name}.js`), "utf8"))
     .replaceAll(/from "\.\/([a-z0-9_]+)\.js"/g, 'from "./$1.mjs"');
   await writeFile(resolve(MODULE_DIR, `${name}.mjs`), source);
@@ -35,11 +35,11 @@ test("runtime registry preserves the exact WW/AH/CM prefix and appends Skyreach"
   assert.deepEqual(data.WHISPERWOOD_CODEX_ENTRIES.slice(0, 40).map(entry => entry.id), map.entries.map(entry => entry.id));
   assert.deepEqual(data.WHISPERWOOD_CODEX_ENTRIES.slice(0, 40).map(entry => entry.warehouseId), map.entries.map(entry => entry.warehouse_id));
   assert.deepEqual(data.WHISPERWOOD_CODEX_ENTRIES.slice(40).map(entry => entry.id), extensionEntries.map(entry => entry.id));
-  assert.equal(data.WAVE1_CODEX_ENTRIES.length, 254);
+  assert.equal(data.WAVE1_CODEX_ENTRIES.length, 270);
   assert.deepEqual(data.WAVE1_CODEX_ENTRIES.slice(0, 74), data.WHISPERWOOD_CODEX_ENTRIES);
   assert.equal(data.WAVE1_CODEX_ENTRIES.slice(140, 204).length, 64);
   assert.equal(data.WAVE1_CODEX_ENTRIES[140].region, "cm");
-  assert.equal(data.WAVE1_CODEX_ENTRIES.slice(204).length, 50);
+  assert.equal(data.WAVE1_CODEX_ENTRIES.slice(204).length, 66);
   assert.ok(data.WAVE1_CODEX_ENTRIES.slice(204).every(entry => entry.region === "sr"));
   assert.ok(Object.keys(data.WAVE1_CODEX_EVENT_INDEX).length > mappedEvents.length + extensionEntries.reduce((count, entry) => count + entry.discovery_events.length, 0));
   for (const expected of mappedEvents) {

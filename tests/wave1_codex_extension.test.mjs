@@ -24,7 +24,7 @@ test("generated Whisperwood extension remains exact after region append", () => 
   assert.equal(WAVE1_CODEX_REGISTRY_VERSION, 5);
   assert.equal(STATE_VERSION, 4);
   assert.equal(WHISPERWOOD_CODEX_EXTENSION_ENTRIES.length, 34);
-  assert.equal(CODEX_ENTRY_REGISTRY.length, 254);
+  assert.equal(CODEX_ENTRY_REGISTRY.length, 270);
   assert.deepEqual(CODEX_CATEGORY_CAPS, MAP.compact_v4_extension.category_caps_after);
   assert.deepEqual(WHISPERWOOD_CODEX_EXTENSION_ENTRIES.map(entry => entry.id), mappedEntries.map(entry => entry.id));
   for (let index = 0; index < mappedEntries.length; index++) {

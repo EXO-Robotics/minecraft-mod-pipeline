@@ -159,7 +159,8 @@ export function createCodexService({ state, ActionFormData = null }) {
     let chapterChanged = false;
     const chapterEventId = event.region === "ww" ? "codex:ww:progression:whisperwood_chapter:entered"
       : event.region === "ah" ? "codex:ah:progression:ashen_chapter:entered"
-      : event.region === "cm" ? "codex:cm:progression:crystal_marsh_chapter:entered" : null;
+      : event.region === "cm" ? "codex:cm:progression:crystal_marsh_chapter:entered"
+      : event.region === "sr" ? "codex:sr:progression:skyreach_chapter:entered" : null;
     if (chapterEventId && eventId !== chapterEventId) {
       const chapter = CODEX_EVENT_INDEX[chapterEventId];
       chapterChanged = state.transitionCodex(player, chapter.region, chapter.category, chapter.index, chapter.state);

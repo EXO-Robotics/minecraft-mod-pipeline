@@ -1,0 +1,39 @@
+{
+  "format_version": "1.20.10",
+  "minecraft:recipe_shaped": {
+    "description": {
+      "identifier": "aionbound:surveyor_medallion_recipe"
+    },
+    "tags": [
+      "crafting_table"
+    ],
+    "pattern": [
+      " C ",
+      "MAP",
+      " C "
+    ],
+    "key": {
+      "C": {
+        "item": "minecraft:copper_ingot"
+      },
+      "M": {
+        "item": "minecraft:map"
+      },
+      "A": {
+        "item": "aionbound:aether_stone"
+      },
+      "P": {
+        "item": "minecraft:paper"
+      }
+    },
+    "result": {
+      "item": "aionbound:surveyor_medallion",
+      "count": 1
+    },
+    "unlock": [
+      {
+        "item": "minecraft:copper_ingot"
+      }
+    ]
+  }
+}

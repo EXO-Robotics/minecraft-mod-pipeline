@@ -1,0 +1,71 @@
+{
+  "schema": "aionbound.wave1.skyreach.approved_vertical.v1",
+  "status": "SKYREACH_APPROVED_ECONOMY_PACKET006_SOURCE_IMPLEMENTED",
+  "proposal_sha256": {
+    "W1-001-SR": "926a401add04b6611d7cee7dd1fa3bcf6a3fe44cf656ef9aa34d9b1bad5f30cd",
+    "W1-003-STORM-NEST": "59b4493857bf3d90d402d438553f4b7fc03c6b45689e5897f8a8cb501bfc15d0",
+    "W1-004-SR": "823894296bb4b4ed1becd1a1a5ccc814f734cecc50c8433be855bdf1e080e4bf"
+  },
+  "items": [
+    "aether_bind",
+    "climbing_hook_head",
+    "climbing_rope",
+    "glider_frame",
+    "glider_panel",
+    "lift_tonic",
+    "soft_landing_pad",
+    "twin_mineral_lens",
+    "wing_bone_stay"
+  ],
+  "recipes": [
+    "aether_bind",
+    "climbing_hook_head",
+    "climbing_rope",
+    "glider_frame",
+    "glider_panel",
+    "lift_tonic",
+    "soft_landing_pad",
+    "surveyor_medallion",
+    "surveyor_staff",
+    "trail_compass",
+    "twin_mineral_lens",
+    "warden_sigil"
+  ],
+  "entity_loot_tables": [
+    "cliff_ram",
+    "cloud_goat",
+    "gale_hawk",
+    "glide_drake",
+    "ropewing",
+    "ruin_harpy",
+    "sky_fox",
+    "stone_vulture",
+    "storm_gull",
+    "wind_roc"
+  ],
+  "plant_acquisition_tables": [
+    "cliff_flower",
+    "cloud_moss",
+    "cloudpuff_plant",
+    "floating_blossom",
+    "hanging_sky_vine",
+    "nest_thatch_tuft",
+    "rope_root",
+    "shelf_shrub",
+    "skybloom",
+    "wind_reed_plant"
+  ],
+  "packet006_recipe_links": [
+    "surveyor_staff",
+    "trail_compass",
+    "surveyor_medallion",
+    "warden_sigil"
+  ],
+  "guards": {
+    "w1_creative_005": "DEFERRED_ABSENT",
+    "natural_wind_roc_storm_pinion": "FORBIDDEN",
+    "new_subscriptions": false,
+    "new_schema": false
+  },
+  "proof_boundary": "SOURCE_AND_TARGETED_LOCAL_TESTS_ONLY_NO_BDS_CLIENT_OR_CANDIDATE_CLAIM"
+}

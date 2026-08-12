@@ -1,0 +1,36 @@
+{
+  "format_version": "1.20.10",
+  "minecraft:recipe_shaped": {
+    "description": {
+      "identifier": "aionbound:twin_mineral_lens_recipe"
+    },
+    "tags": [
+      "crafting_table"
+    ],
+    "pattern": [
+      " F ",
+      "CAC",
+      " F "
+    ],
+    "key": {
+      "F": {
+        "item": "aionbound:flood_crystal"
+      },
+      "C": {
+        "item": "minecraft:copper_ingot"
+      },
+      "A": {
+        "item": "aionbound:ash_crystal"
+      }
+    },
+    "result": {
+      "item": "aionbound:twin_mineral_lens",
+      "count": 1
+    },
+    "unlock": [
+      {
+        "item": "aionbound:flood_crystal"
+      }
+    ]
+  }
+}
