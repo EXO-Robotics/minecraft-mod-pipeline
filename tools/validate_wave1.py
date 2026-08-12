@@ -673,6 +673,63 @@ def validate(root: Path) -> dict[str, Any]:
                 "classification": artifact_manifest_authority.get("classification"),
             }
 
+    additional_artifact_manifest_receipts: list[dict[str, Any]] = []
+    for manifest_authority in authority.get("additional_required_artifact_manifests", []):
+        relative = manifest_authority.get("path") if isinstance(manifest_authority, dict) else None
+        manifest_path = safe_relative_artifact(root, relative)
+        if manifest_path is None:
+            errors.append(f"unsafe_required_artifact_manifest_path:{relative}")
+            continue
+        if not manifest_path.is_file():
+            errors.append(f"missing_required_artifact_manifest:{relative}")
+            continue
+        actual_manifest_sha = sha256(manifest_path)
+        expected_manifest_sha = manifest_authority.get("sha256")
+        if actual_manifest_sha != expected_manifest_sha:
+            errors.append(f"required_artifact_manifest_sha256:{relative}:{actual_manifest_sha}!={expected_manifest_sha}")
+        manifest = read_json(manifest_path)
+        expected_schema = manifest_authority.get("schema")
+        if manifest.get("schema") != expected_schema:
+            errors.append(f"required_artifact_manifest_schema:{relative}:{manifest.get('schema')!r}!={expected_schema!r}")
+        groups = manifest.get("groups")
+        verified_groups: dict[str, int] = {}
+        seen_paths: set[str] = set()
+        if not isinstance(groups, dict) or not groups:
+            errors.append(f"required_artifact_manifest_groups:{relative}")
+        else:
+            for group, artifacts in groups.items():
+                if not isinstance(group, str) or not isinstance(artifacts, list) or not artifacts:
+                    errors.append(f"required_artifact_manifest_group_shape:{relative}:{group!r}")
+                    continue
+                verified = 0
+                for row in artifacts:
+                    artifact_relative = row.get("path") if isinstance(row, dict) else None
+                    expected_sha = row.get("sha256") if isinstance(row, dict) else None
+                    artifact = safe_relative_artifact(root, artifact_relative)
+                    if artifact_relative in seen_paths:
+                        errors.append(f"required_artifact_manifest_duplicate_path:{artifact_relative}")
+                        continue
+                    if isinstance(artifact_relative, str):
+                        seen_paths.add(artifact_relative)
+                    if artifact is None:
+                        errors.append(f"unsafe_required_source_artifact_path:{group}:{artifact_relative}")
+                    elif not artifact.is_file():
+                        errors.append(f"missing_required_source_artifact:{group}:{artifact_relative}")
+                    else:
+                        actual_sha = sha256(artifact)
+                        if actual_sha != expected_sha:
+                            errors.append(f"required_source_artifact_sha256:{group}:{artifact_relative}:{actual_sha}!={expected_sha}")
+                        else:
+                            verified += 1
+                verified_groups[group] = verified
+        additional_artifact_manifest_receipts.append({
+            "path": relative,
+            "sha256": actual_manifest_sha,
+            "groups": verified_groups,
+            "pending_follow_up": manifest.get("pending_follow_up", {}),
+            "classification": manifest_authority.get("classification"),
+        })
+
     geometries: set[str] = set()
     for path in sorted((rp / "models").rglob("*.json")):
         document = parsed.get(path, {})
@@ -816,6 +873,7 @@ def validate(root: Path) -> dict[str, Any]:
             "required_content_closure_receipts": content_closure_receipts,
             "required_evidence_artifacts_verified": required_evidence_receipts,
             "required_artifact_manifest_verified": required_artifact_manifest_receipt,
+            "additional_required_artifact_manifests_verified": additional_artifact_manifest_receipts,
         })
     return {
         "schema_version": 1,
@@ -829,6 +887,7 @@ def validate(root: Path) -> dict[str, Any]:
         "required_content_closure_receipts": content_closure_receipts,
         "required_evidence_artifacts_verified": required_evidence_receipts,
         "required_artifact_manifest_verified": required_artifact_manifest_receipt,
+        "additional_required_artifact_manifests_verified": additional_artifact_manifest_receipts,
         "checks": [
             "json_and_png_structure", "manifest_and_dependency_closure", "identifier_closure",
             "texture_and_model_closure", "recipe_and_loot_closure", "script_import_and_runtime_policy",

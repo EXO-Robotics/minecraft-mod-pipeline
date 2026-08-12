@@ -302,10 +302,18 @@
   },
   "required_artifact_manifest": {
     "path": "engineering/validation/wave1/WAVE_1_ASHEN_IMPLEMENTED_CLOSURE.json",
-    "sha256": "296e637a8714b9df57eacd7c00423f20bf1f296bf992b7921244f08153587673",
+    "sha256": "7b4d9179c8183d41a270123f0f23fc06e5c1867dfba910e1738130fb463b102a",
     "schema": "aionbound.wave1.ashen.implemented_source_closure.v1",
     "classification": "exact_source_path_and_byte_hash_closure_only_not_runtime_qualification"
   },
+  "additional_required_artifact_manifests": [
+    {
+      "path": "engineering/validation/wave1/WAVE_1_CRYSTAL_IMPLEMENTED_CLOSURE.json",
+      "sha256": "cb140e2aa439541956cc44a0f31ea01f8fb5edd66619447979ac479534dc164b",
+      "schema": "aionbound.wave1.crystal_marsh.implemented_source_closure.v1",
+      "classification": "exact_crystal_source_path_and_byte_hash_closure_only_not_runtime_qualification"
+    }
+  ],
   "required_evidence_artifacts": [
     {
       "path": "engineering/native-assets/ashen/representative/ASHEN_REPRESENTATIVE_NATIVE_REPORT.json",

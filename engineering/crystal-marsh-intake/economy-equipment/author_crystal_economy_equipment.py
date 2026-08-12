@@ -260,6 +260,20 @@ def write_json(path: Path, value: object) -> None:
     path.write_bytes(json_bytes(value))
 
 
+def replace_owned_language_entries(lines: list[str], entries: list[str], prefixes: list[str]) -> list[str]:
+    """Replace Crystal-owned keys in place without reordering later verticals."""
+    owned_indexes = [
+        index for index, line in enumerate(lines)
+        if any(line.startswith(prefix) for prefix in prefixes)
+    ]
+    insertion = owned_indexes[0] if owned_indexes else len(lines)
+    preserved = [
+        line for line in lines
+        if not any(line.startswith(prefix) for prefix in prefixes)
+    ]
+    return preserved[:insertion] + entries + preserved[insertion:]
+
+
 def author() -> dict:
     item_atlas_path = RP / "textures/item_texture.json"
     terrain_atlas_path = RP / "textures/terrain_texture.json"
@@ -268,7 +282,7 @@ def author() -> dict:
     lang_path = RP / "texts/en_US.lang"
     lines = lang_path.read_text().splitlines()
     owned = [*(f"item.aionbound:{x}.name=" for x in COMPONENTS), *(f"item.aionbound:{x}.name=" for x, v in EQUIPMENT.items() if v["role"] != "trophy"), *(f"tile.aionbound:{x}.name=" for x, v in EQUIPMENT.items() if v["role"] == "trophy")]
-    lines = [line for line in lines if not any(line.startswith(prefix) for prefix in owned)]
+    language_entries: list[str] = []
 
     for asset, spec in EQUIPMENT.items():
         evidence = NATIVE / asset
@@ -294,21 +308,21 @@ def author() -> dict:
             presentation = RP / "textures/aionbound/crystal_marsh/equipment/presentation/trophies" / f"{asset}.png"
             icon(asset, presentation)
             item_atlas["texture_data"][asset] = {"textures": f"textures/aionbound/crystal_marsh/equipment/presentation/trophies/{asset}"}
-            lines.append(f"tile.aionbound:{asset}.name={spec['name']}")
+            language_entries.append(f"tile.aionbound:{asset}.name={spec['name']}")
         else:
             write_json(BP / "items" / f"{asset}.item.json", item_doc(asset, spec["name"], role))
             group = "armor" if role == "armor" else "accessories" if role == "accessory" else "items"
             presentation = RP / f"textures/aionbound/wave1/equipment/{group}/{asset}.png"
             icon(asset, presentation)
             item_atlas["texture_data"][asset] = {"textures": f"textures/aionbound/wave1/equipment/{group}/{asset}"}
-            lines.append(f"item.aionbound:{asset}.name={spec['name']}")
+            language_entries.append(f"item.aionbound:{asset}.name={spec['name']}")
 
     for asset, name in COMPONENTS.items():
         write_json(BP / "items" / f"{asset}.item.json", component_doc(asset, name))
         presentation = RP / "textures/aionbound/crystal_marsh/components" / f"{asset}.png"
         icon(asset, presentation)
         item_atlas["texture_data"][asset] = {"textures": f"textures/aionbound/crystal_marsh/components/{asset}"}
-        lines.append(f"item.aionbound:{asset}.name={name}")
+        language_entries.append(f"item.aionbound:{asset}.name={name}")
 
     for recipe_id, (ingredients, result) in RECIPES.items():
         write_json(BP / "recipes" / f"{recipe_id}.recipe.json", recipe_doc(recipe_id, ingredients, result))
@@ -328,6 +342,7 @@ def author() -> dict:
         {"rolls": {"min": 1, "max": 2}, "entries": [weighted("aionbound:prism_pearl", 55, 1, 2), weighted("aionbound:moon_pearl", 45, 1, 2)]},
     ]})
     write_json(item_atlas_path, item_atlas); write_json(terrain_atlas_path, terrain_atlas)
+    lines = replace_owned_language_entries(lines, language_entries, owned)
     lang_path.write_text("\n".join(lines) + "\n")
 
     files = sorted({*([BP / "items" / f"{x}.item.json" for x in COMPONENTS]), *([BP / "items" / f"{x}.item.json" for x, v in EQUIPMENT.items() if v["role"] != "trophy"]), *([BP / "blocks" / f"{x}.block.json" for x, v in EQUIPMENT.items() if v["role"] == "trophy"]), *list((BP / "loot_tables/entities/crystal").glob("*.json")), *list((BP / "loot_tables/chests/crystal").glob("*.json")), *([BP / "recipes" / f"{x}.recipe.json" for x in RECIPES])})

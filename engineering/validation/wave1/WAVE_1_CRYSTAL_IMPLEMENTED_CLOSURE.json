@@ -1,0 +1,1499 @@
+{
+  "schema": "aionbound.wave1.crystal_marsh.implemented_source_closure.v1",
+  "status": "CRYSTAL_MARSH_VERTICAL_SOURCE_COMPLETE_TARGETED_LOCAL_PASS",
+  "base": {
+    "commit": "fb86d22ccaadbcdc890a7cc9038be42667159927",
+    "tree": "2a1b83fa9e7cc8ed3f584d21027cea74e05d0582",
+    "authority": "G8 successor integration line"
+  },
+  "groups": {
+    "resources_and_full_cube_blocks": [
+      {
+        "path": "engineering/crystal-marsh-intake/resource-runtime/CRYSTAL_RESOURCE_RUNTIME_AUTHORITY.json",
+        "sha256": "1f56951d07ff9c55aeeb96507c7b64c8a859c27522437c91e4df1532edcea7f0"
+      },
+      {
+        "path": "engineering/crystal-marsh-intake/resource-runtime/CRYSTAL_RESOURCE_RUNTIME_REPORT.json",
+        "sha256": "f2215acb8abdbda8372da9e4764e6e33402c07af584da60ef94ddc24a72c4897"
+      },
+      {
+        "path": "engineering/crystal-marsh-intake/block-runtime/CRYSTAL_BLOCK_RUNTIME_AUTHORITY.json",
+        "sha256": "4712897c58ac7d4a3cf70d04ef3705ca91f61e8f7a6fc73932fcdc9cf1fcc4ff"
+      },
+      {
+        "path": "engineering/crystal-marsh-intake/block-runtime/CRYSTAL_BLOCK_RUNTIME_REPORT.json",
+        "sha256": "80c571d4137a7ed4e5c2e9efdb81cd6c5afb488b1ca976307368789a7323ffe0"
+      },
+      {
+        "path": "behavior_pack/items/prism_pearl.item.json",
+        "sha256": "6ba81e86630ec12a75fd8e9c8a8a317a4ab66a2cdf5ff1b964d2ace981b9f416"
+      },
+      {
+        "path": "behavior_pack/items/crystal_reed_item.item.json",
+        "sha256": "565b6b22f07fce7fd2102254ba88f66f4ceef46c37265cd966b89a45330a805a"
+      },
+      {
+        "path": "behavior_pack/items/marsh_resin.item.json",
+        "sha256": "0d2c3e88e513ffe12900f365d4123bc4abc5b939a93dbb0e892ec43d90cda8f4"
+      },
+      {
+        "path": "behavior_pack/items/glass_algae.item.json",
+        "sha256": "356e6f9e629247938ff0fe8828d0bd30f558ca37f92b41fe2133756fd91a3846"
+      },
+      {
+        "path": "behavior_pack/items/silt_core.item.json",
+        "sha256": "6d2e6370478890f25e2a0e327c46db9ca845f2143210cb10f303cdbf3ffab9b1"
+      },
+      {
+        "path": "behavior_pack/items/flood_crystal.item.json",
+        "sha256": "92534f8e7470ff56ca1ad545414725376f617b86c24ad0871d6c013674b6ae15"
+      },
+      {
+        "path": "behavior_pack/items/moon_pearl.item.json",
+        "sha256": "71ef6e12a5ff56b07a020f8938d9c8b43ed98f37c336780d504d52849d573859"
+      },
+      {
+        "path": "behavior_pack/items/wet_chitin.item.json",
+        "sha256": "a732760ae2d95b56e94a4e28a46d1fbfa4be2b7f6d92b23978f42a061350962e"
+      },
+      {
+        "path": "behavior_pack/items/mire_bloom_item.item.json",
+        "sha256": "a92addc8ae4c7c34204bb09ac2e9fda298010e7f580a36d0cd4386dfc8869f06"
+      },
+      {
+        "path": "behavior_pack/items/crystal_root_item.item.json",
+        "sha256": "c3fe8731135758bdb4b3c5c2776bd7e764980d427fd0c4e1660a1caa26ed0bab"
+      },
+      {
+        "path": "behavior_pack/blocks/crystal_log.block.json",
+        "sha256": "ae15a8e1e7abe7b8ef412a3abc45b9d20f0bcc650fa526f9d49d5552f7f11ffc"
+      },
+      {
+        "path": "behavior_pack/blocks/marsh_wood.block.json",
+        "sha256": "94215d03f8c68bd80dafaec4faaf3c4a0ba9fda6164c69a217fe5f8e7389d51a"
+      },
+      {
+        "path": "behavior_pack/blocks/flood_planks.block.json",
+        "sha256": "e6df2674ebffae710780a3eb0891057b35ba1976f557fd9caae7838463f88519"
+      },
+      {
+        "path": "behavior_pack/blocks/crystal_stone.block.json",
+        "sha256": "0a8c4f2081a2915aedde7f02536d61ba4cf6c85aeed015196fefd78d6360ad5e"
+      },
+      {
+        "path": "behavior_pack/blocks/prism_brick.block.json",
+        "sha256": "92fa196f0ed8487de6ae5c36a09662516bef80e67d6b4cb768f6b62a801cc74a"
+      },
+      {
+        "path": "behavior_pack/blocks/wet_clay_block.block.json",
+        "sha256": "f7d9417f1fb1f052c9862531f65003e178c50f30c37284867d5485e873c9ffb2"
+      },
+      {
+        "path": "behavior_pack/blocks/glass_root_block.block.json",
+        "sha256": "74ec0f7c2b7c058cf09a1d55c87756ab25e724930035a3027a18e623afaffb13"
+      },
+      {
+        "path": "behavior_pack/blocks/algae_block.block.json",
+        "sha256": "5302e2fea2387b10910529067ccf62f67b9addda64e47138827d5c8c04f3f09f"
+      },
+      {
+        "path": "behavior_pack/blocks/marsh_soil.block.json",
+        "sha256": "0e9d067512bf38fd3248aa3c44e58799ed6f350946dfe997705bdb8154a8fa05"
+      },
+      {
+        "path": "behavior_pack/blocks/crystal_gravel.block.json",
+        "sha256": "0d8d3fa4fb7f45f5d461a021e39401b77729bd99baf5d49db5363d98c9e5a53a"
+      },
+      {
+        "path": "resource_pack/textures/aionbound/crystal_marsh/items/prism_pearl.png",
+        "sha256": "e3611c68de4d763e382fd930a22f61ccb189d706bc97c09f96dfc9566d73a5f0"
+      },
+      {
+        "path": "resource_pack/textures/aionbound/crystal_marsh/items/crystal_reed_item.png",
+        "sha256": "3f522dbd158226e2aa2f94e138e849e4392e6aa6b160c46dfacf3286ec6ddadf"
+      },
+      {
+        "path": "resource_pack/textures/aionbound/crystal_marsh/items/marsh_resin.png",
+        "sha256": "74cbfcec382b0930088cda117b1d2dd66d5a8b005d8a25cbbf6a08b2983d8d36"
+      },
+      {
+        "path": "resource_pack/textures/aionbound/crystal_marsh/items/glass_algae.png",
+        "sha256": "9f2ad102faedad8f5f563078fb048ee8a5e00515db3f77a0c3069096e54560bd"
+      },
+      {
+        "path": "resource_pack/textures/aionbound/crystal_marsh/items/silt_core.png",
+        "sha256": "7ed935326e3f620b4afcb26d6b63a677d6fd0d8dfbd2d4e23a9966da12eaf227"
+      },
+      {
+        "path": "resource_pack/textures/aionbound/crystal_marsh/items/flood_crystal.png",
+        "sha256": "4417598dc5c29bb982bbc1c338612b954202b978c89dde591c4882f032896969"
+      },
+      {
+        "path": "resource_pack/textures/aionbound/crystal_marsh/items/moon_pearl.png",
+        "sha256": "586155f76e9003b5fa85508a1335d002ffec5a871d68905212a38cfaf6d662b0"
+      },
+      {
+        "path": "resource_pack/textures/aionbound/crystal_marsh/items/wet_chitin.png",
+        "sha256": "6d9c8eb9e20c4e3abba6ddcceea19fd48c207a3aa3257fcdebb89d945a69e8f6"
+      },
+      {
+        "path": "resource_pack/textures/aionbound/crystal_marsh/items/mire_bloom_item.png",
+        "sha256": "7a8e28ae896267cdcf8ca9c90d6651bdc7d2518ce07dc57fa2ec6b7aed732c50"
+      },
+      {
+        "path": "resource_pack/textures/aionbound/crystal_marsh/items/crystal_root_item.png",
+        "sha256": "a8131e875e11bca157bea8228099e25448d207ddee5b9dd1799ef9b268e484a5"
+      },
+      {
+        "path": "resource_pack/textures/aionbound/crystal_marsh/blocks/crystal_log.png",
+        "sha256": "c2b08d36c5662d80ed94dd42437d5b2319e79205599b4d7724cf1e3b1e52870d"
+      },
+      {
+        "path": "resource_pack/textures/aionbound/crystal_marsh/blocks/marsh_wood.png",
+        "sha256": "1bb4b8db686f159233ca70931ebaf0f1f7799107c3577ad65928d2d7c624e609"
+      },
+      {
+        "path": "resource_pack/textures/aionbound/crystal_marsh/blocks/flood_planks.png",
+        "sha256": "8b38d77c55b31edf1d203fac7b357d4aa1ba4a8e9b2ef14b5fa070fe4f8e841d"
+      },
+      {
+        "path": "resource_pack/textures/aionbound/crystal_marsh/blocks/crystal_stone.png",
+        "sha256": "3051e84d5e53009450b1da2482fa2336550a6e975140d5c5c0c080ce94920624"
+      },
+      {
+        "path": "resource_pack/textures/aionbound/crystal_marsh/blocks/prism_brick.png",
+        "sha256": "4dd0d53d57394994d055d681b1b954c20db88069ce9f4b9897631b313ce6a5b4"
+      },
+      {
+        "path": "resource_pack/textures/aionbound/crystal_marsh/blocks/wet_clay_block.png",
+        "sha256": "4c40ce9f957d68c7b4facd4814dbf2dea23fc10b1a09c16e610cbfad3a68024b"
+      },
+      {
+        "path": "resource_pack/textures/aionbound/crystal_marsh/blocks/glass_root_block.png",
+        "sha256": "a11bf4c082eef974cd581e08efd1dffb9db80ff4354f03bca8042c9a77aba7e3"
+      },
+      {
+        "path": "resource_pack/textures/aionbound/crystal_marsh/blocks/algae_block.png",
+        "sha256": "a588c145ee02486590c05299b8d4fe2451430249edd35f5ad0c1e5942644ca0d"
+      },
+      {
+        "path": "resource_pack/textures/aionbound/crystal_marsh/blocks/marsh_soil.png",
+        "sha256": "b8e4d5b3b3c1a66e1ca63020a495b3eedcd4ba833fd092fdbaf65eac23c2a1ca"
+      },
+      {
+        "path": "resource_pack/textures/aionbound/crystal_marsh/blocks/crystal_gravel.png",
+        "sha256": "f2c90b9b05f6c6bd06a04fb707c4e6b481ab70a2f5b5d227a7d9eab502a9d618"
+      }
+    ],
+    "plants_and_bounded_ecology": [
+      {
+        "path": "engineering/crystal-marsh-intake/plant-runtime/CRYSTAL_PLANT_RUNTIME_REPORT.json",
+        "sha256": "4cca46a2351922d25f107d73c2b8018968a597c5758ca2bfe47ced76ccd77193"
+      },
+      {
+        "path": "engineering/crystal-marsh-intake/ecology-worldgen/CRYSTAL_ECOLOGY_WORLDGEN.json",
+        "sha256": "d8bb521e9e7513163c0c0080340e6ff221e485a99695e82c3fb0b015f30cd076"
+      },
+      {
+        "path": "behavior_pack/blocks/crystal_lily.block.json",
+        "sha256": "ab3cc35d8e2826a1c06f75fd56e2aa78e4ef6be610a811b7aaae8e489c59e7fa"
+      },
+      {
+        "path": "behavior_pack/blocks/flood_reed.block.json",
+        "sha256": "32525bdeaf7dfe2cd203cc36c6a406d729691215ecb010b21fb38a79f398770f"
+      },
+      {
+        "path": "behavior_pack/blocks/prism_bloom.block.json",
+        "sha256": "b1e97717da5de810e02e837eb1aef6d2c1029a79b0442a8292bf0d3a0b142811"
+      },
+      {
+        "path": "behavior_pack/blocks/glass_moss.block.json",
+        "sha256": "47bdf131df4c856cf38cc18c3d21cd1225244d02098da26d116c65dabe16bda2"
+      },
+      {
+        "path": "behavior_pack/blocks/marsh_fern.block.json",
+        "sha256": "c30053b7d2aa0f8cf3894d943c908d025214dbf256d9d5ace24d17ddb6d85e58"
+      },
+      {
+        "path": "behavior_pack/blocks/glow_kelp.block.json",
+        "sha256": "b9a81f78cc1708c9bd91f1d8a0cdcb64c74a900589cda40a06efce6ec8985630"
+      },
+      {
+        "path": "behavior_pack/blocks/mire_orchid.block.json",
+        "sha256": "de28995b6d36f8f79b17b286ae3bcc55140bc64121681bed7975d5931b25e44b"
+      },
+      {
+        "path": "behavior_pack/blocks/bubble_pod.block.json",
+        "sha256": "7582c6349718624589521290e929c782925a91f42ca4b259bcc0f3e8b04642eb"
+      },
+      {
+        "path": "behavior_pack/blocks/pearl_grass.block.json",
+        "sha256": "55c11c83e4fe10b420e99f1d06a57c46e2de7bb268213690de4983b8b23ac9d8"
+      },
+      {
+        "path": "behavior_pack/blocks/crystal_vine.block.json",
+        "sha256": "a91161841708c9989632db2ea5e068136607ac498e0397e64af281e61479bf73"
+      },
+      {
+        "path": "resource_pack/models/aionbound/crystal_marsh/crystal_lily.geo.json",
+        "sha256": "2b3d62333bd7c481eff83758c9e01140e53f5338e2cb26a508a97bb93c42f024"
+      },
+      {
+        "path": "resource_pack/models/aionbound/crystal_marsh/flood_reed.geo.json",
+        "sha256": "f564ef01deabf823ffe22bd22a5bb782af1cef635b5520227bfd40caae177aaa"
+      },
+      {
+        "path": "resource_pack/models/aionbound/crystal_marsh/prism_bloom.geo.json",
+        "sha256": "f7f5ab5c6f9be6b7952680abecbd64d1077f4e54ebe08c4eed979c511ae234b0"
+      },
+      {
+        "path": "resource_pack/models/aionbound/crystal_marsh/glass_moss.geo.json",
+        "sha256": "fb6087eea28bfa6dcc23a966a45439b3dab1c30f5e3dbad9bd716574d570c4c9"
+      },
+      {
+        "path": "resource_pack/models/aionbound/crystal_marsh/marsh_fern.geo.json",
+        "sha256": "2dc91994d1f9e47ba9d8fd05d46082d515a16a39612e6709807ed26a87d08dd4"
+      },
+      {
+        "path": "resource_pack/models/aionbound/crystal_marsh/glow_kelp.geo.json",
+        "sha256": "8b5dc9efab2a941bbc4aacf848612f7ae3f1c05461085602000ce306d760fbe1"
+      },
+      {
+        "path": "resource_pack/models/aionbound/crystal_marsh/mire_orchid.geo.json",
+        "sha256": "49f42787d96ce2724e2688aac0a84b45b04775f6bd9db6f0962e58c08b7e83f4"
+      },
+      {
+        "path": "resource_pack/models/aionbound/crystal_marsh/bubble_pod.geo.json",
+        "sha256": "8d14fbf37dafb4b3dca36f05a2ffdc46f6382ba36cd182159022ded1fc790fb8"
+      },
+      {
+        "path": "resource_pack/models/aionbound/crystal_marsh/pearl_grass.geo.json",
+        "sha256": "d405433ba8384e5e326c1eede21ef416621fe2f9670e69b1ff2dfab4774b9d62"
+      },
+      {
+        "path": "resource_pack/models/aionbound/crystal_marsh/crystal_vine.geo.json",
+        "sha256": "deb8329e1d090bcf83584f45d9ea54a54dc2804a52a0512653e954bbfc7e4d4f"
+      },
+      {
+        "path": "resource_pack/textures/aionbound/crystal_marsh/plants/crystal_lily.png",
+        "sha256": "701a25d933f46f0637d46294de3ba4312435677d73a6e8e9da7486a845b23906"
+      },
+      {
+        "path": "resource_pack/textures/aionbound/crystal_marsh/plants/flood_reed.png",
+        "sha256": "cfd7ce90b242e3aa115bb2f9d4e6fc2fc6e9de49c27f64327b710da6c92573e1"
+      },
+      {
+        "path": "resource_pack/textures/aionbound/crystal_marsh/plants/prism_bloom.png",
+        "sha256": "094e9cdee2bc8f0862ff5686e7043d8938b1d92fb2a936431a9b3814b4b4035b"
+      },
+      {
+        "path": "resource_pack/textures/aionbound/crystal_marsh/plants/glass_moss.png",
+        "sha256": "b31cd4bfbed71ab61ecc6bd25edaf98e77e72af5405d489879248ff24541fa74"
+      },
+      {
+        "path": "resource_pack/textures/aionbound/crystal_marsh/plants/marsh_fern.png",
+        "sha256": "e76d45fc298c8951ed037c868ce3d653f6e74d5a6fd79f7a37c15c5d064a4ef8"
+      },
+      {
+        "path": "resource_pack/textures/aionbound/crystal_marsh/plants/glow_kelp.png",
+        "sha256": "4b6a4cb4ed9e8195171fdb9029b65132f4f4e9c09bcba2c2ce59fbed2fb768d0"
+      },
+      {
+        "path": "resource_pack/textures/aionbound/crystal_marsh/plants/mire_orchid.png",
+        "sha256": "a793c69250715c9cdb6b7267596114f00bd6fd5ac73b1a0a07a13023f56c0eed"
+      },
+      {
+        "path": "resource_pack/textures/aionbound/crystal_marsh/plants/bubble_pod.png",
+        "sha256": "dfe10383a5cfe91b10075d4d0c9024aa789f9e1e9b0157619b63a1f4fe6787d2"
+      },
+      {
+        "path": "resource_pack/textures/aionbound/crystal_marsh/plants/pearl_grass.png",
+        "sha256": "b5f32f5edec8f1b2ccfb04f56fe993b9438927a3154d424a285f0cdeb9dde3da"
+      },
+      {
+        "path": "resource_pack/textures/aionbound/crystal_marsh/plants/crystal_vine.png",
+        "sha256": "a4b6e7c99690758dfb0b71a833f80b8280889289c24642aee9058084621905c3"
+      },
+      {
+        "path": "behavior_pack/features/cm_ecology_crystal_lily.feature.json",
+        "sha256": "48e44c9533f68bc011db43a035ed54b221413f7b6800644282419e23e47c158c"
+      },
+      {
+        "path": "behavior_pack/features/cm_ecology_flood_reed.feature.json",
+        "sha256": "1f43d6d4ffaaf69ac302ecb55f2920292a8a7c9bab1c60fc1dbdc6fb50c5a24c"
+      },
+      {
+        "path": "behavior_pack/features/cm_ecology_prism_bloom.feature.json",
+        "sha256": "8a7153d0d8e65ee3c9720901bd9f8fd0689dab3d9dbc5dca07834497ef963c36"
+      },
+      {
+        "path": "behavior_pack/features/cm_ecology_glass_moss.feature.json",
+        "sha256": "a35d532bf16c88e9d6ee1dceb09aeb42f1620c90e57795e9f2d0329f0b5143ce"
+      },
+      {
+        "path": "behavior_pack/features/cm_ecology_marsh_fern.feature.json",
+        "sha256": "5577501f621741d8c0c45941eef4a5a95d9c0242c593fd076237f65cb81619e4"
+      },
+      {
+        "path": "behavior_pack/features/cm_ecology_glow_kelp.feature.json",
+        "sha256": "769c24930aa1efc045271529fcb8206c27f4a9387b9f2ceaf32aa4633e79dc1c"
+      },
+      {
+        "path": "behavior_pack/features/cm_ecology_mire_orchid.feature.json",
+        "sha256": "65d833eb32ef1f08408d53f09520fc19009fd31318636ccfe0ac13e4cfd06e4a"
+      },
+      {
+        "path": "behavior_pack/features/cm_ecology_bubble_pod.feature.json",
+        "sha256": "3e21e04950ca3c00de957e8b742e4e9a641a16fbe816b6b9fb2238b1123137a6"
+      },
+      {
+        "path": "behavior_pack/features/cm_ecology_pearl_grass.feature.json",
+        "sha256": "10dc0e3aeef7fe25e8ce8b7a0137e3229aa6ad7e767c785fadf79d9603dcfbde"
+      },
+      {
+        "path": "behavior_pack/features/cm_ecology_crystal_vine.feature.json",
+        "sha256": "8396af49728c0a0976be6de7ca14f70811ab8c86425d9aace208877e646540a1"
+      },
+      {
+        "path": "behavior_pack/feature_rules/cm_ecology_crystal_lily.feature_rule.json",
+        "sha256": "59e73a5470cd0648fbd0711860a345be12df4778b95147a92aab2be09ca525d7"
+      },
+      {
+        "path": "behavior_pack/feature_rules/cm_ecology_flood_reed.feature_rule.json",
+        "sha256": "ee92a488f4dc4130e571ef71771f085e2eee065250b1f33a23c587f80b030a2e"
+      },
+      {
+        "path": "behavior_pack/feature_rules/cm_ecology_prism_bloom.feature_rule.json",
+        "sha256": "35ec02be3745b9f4ab819d9378166b286f2f19cb3645e71bbfb25c17f4ef690d"
+      },
+      {
+        "path": "behavior_pack/feature_rules/cm_ecology_glass_moss.feature_rule.json",
+        "sha256": "f431450945fa662536997456b8e1f6c2180e331e0a033cdf511aec9acf3d1d51"
+      },
+      {
+        "path": "behavior_pack/feature_rules/cm_ecology_marsh_fern.feature_rule.json",
+        "sha256": "cfba9c9d3118b66cbbf68c859f36b9ef7236f7109b92d27e43df122ff48fd63c"
+      },
+      {
+        "path": "behavior_pack/feature_rules/cm_ecology_glow_kelp.feature_rule.json",
+        "sha256": "1f7a05b65a0edeaca9c36a9fd0a6e4b53acad8dfad4f9072fc16f4bdd86dd216"
+      },
+      {
+        "path": "behavior_pack/feature_rules/cm_ecology_mire_orchid.feature_rule.json",
+        "sha256": "eabd6441d860e855ffba9f01d7eaa7215ea4673f3c978b13c05dee7216c420cd"
+      },
+      {
+        "path": "behavior_pack/feature_rules/cm_ecology_bubble_pod.feature_rule.json",
+        "sha256": "b73dcf10c3d4df639f4b78bd8aae2dcd3ff866533ef340e6e915cc0fdad1d3cf"
+      },
+      {
+        "path": "behavior_pack/feature_rules/cm_ecology_pearl_grass.feature_rule.json",
+        "sha256": "376373f0c5cf5e4acdaf17f29daec55bee9650d423c3ea8b66a89dfbba8b1775"
+      },
+      {
+        "path": "behavior_pack/feature_rules/cm_ecology_crystal_vine.feature_rule.json",
+        "sha256": "bff0c00a229879f4164a6c6358198ec5456e2477b468a62dbe6e5892a05ced4e"
+      }
+    ],
+    "creature_ai_client_motion_spawn_and_loot_binding": [
+      {
+        "path": "engineering/crystal-marsh-intake/entity-runtime/CRYSTAL_MARSH_ENTITY_RUNTIME_REPORT.json",
+        "sha256": "d2ca9e75bdc66dbde515b79b997d9fb1466d607343e08b5f692146250878b821"
+      },
+      {
+        "path": "behavior_pack/entities/aionbound/crystal_marsh/bloom_crab.entity.json",
+        "sha256": "74d05ce7772b401f1d9b98ba21b1ae1f924917fbc6dce7b5875f7f36ad908468"
+      },
+      {
+        "path": "behavior_pack/entities/aionbound/crystal_marsh/bog_watcher.entity.json",
+        "sha256": "c0165181a0ad3de480719d48ca2017347a2e4c3de1f0e6c42d4b8a6906e502a4"
+      },
+      {
+        "path": "behavior_pack/entities/aionbound/crystal_marsh/crystal_dragonfly.entity.json",
+        "sha256": "4f11992051ca491c206864023fdd1a2bee11942d220dd0c025c04b5d3c839252"
+      },
+      {
+        "path": "behavior_pack/entities/aionbound/crystal_marsh/crystal_newt.entity.json",
+        "sha256": "38f70c7d26669997aa7366237b0e5823b9650941571d35c246456d21c81fcbf7"
+      },
+      {
+        "path": "behavior_pack/entities/aionbound/crystal_marsh/glass_heron.entity.json",
+        "sha256": "3ab64e108138ce69edcfcd76984cdf9707975d26eaf16c8399be9e34652222ec"
+      },
+      {
+        "path": "behavior_pack/entities/aionbound/crystal_marsh/marsh_wight.entity.json",
+        "sha256": "82d4b6eff962d45b45ae8bebf4eb679dd8c15e4fdd47d512a1529c93496cf1e2"
+      },
+      {
+        "path": "behavior_pack/entities/aionbound/crystal_marsh/mire_turtle.entity.json",
+        "sha256": "409d39b7d132f9b5a1431560c9dbf468dae55d178019718cbe99584876b7cd2a"
+      },
+      {
+        "path": "behavior_pack/entities/aionbound/crystal_marsh/prism_frog.entity.json",
+        "sha256": "6269512c96d787d735e3077d240fa8b8cf9ee01103d1f9eef0453a9732d560d1"
+      },
+      {
+        "path": "behavior_pack/entities/aionbound/crystal_marsh/reed_serpent.entity.json",
+        "sha256": "26518a71bc106ab3365a43dedb4e35457d8e57915d5b2ae2e08b91d111b74f55"
+      },
+      {
+        "path": "behavior_pack/entities/aionbound/crystal_marsh/silt_crocodile.entity.json",
+        "sha256": "d9d1d35cbd413d40f5b97093a39574880f5f72032e7ef99400001c1bd17c174b"
+      },
+      {
+        "path": "resource_pack/entity/aionbound/crystal_marsh/bloom_crab.entity.json",
+        "sha256": "4902d73d79388fed434aa54d0211a825f75c3f791cae8988fcd38f1c9e84942e"
+      },
+      {
+        "path": "resource_pack/entity/aionbound/crystal_marsh/bog_watcher.entity.json",
+        "sha256": "3efce23ac8d4629eaca9c42442259503f3100b678d2a5d1f30a6a010e23d546b"
+      },
+      {
+        "path": "resource_pack/entity/aionbound/crystal_marsh/crystal_dragonfly.entity.json",
+        "sha256": "5b4515ebd8d3eadd8440f6cd8db4e8390ce58c78ebddd3a47e2b1996ef28f875"
+      },
+      {
+        "path": "resource_pack/entity/aionbound/crystal_marsh/crystal_newt.entity.json",
+        "sha256": "56d1f78b1aa6002536350e57d619444afd043454216d48479a4cca6701c6b005"
+      },
+      {
+        "path": "resource_pack/entity/aionbound/crystal_marsh/glass_heron.entity.json",
+        "sha256": "2214a837b9f41a3c89c488bd842580c59c2c90c7a7fdc4c5da45b6341eb048d3"
+      },
+      {
+        "path": "resource_pack/entity/aionbound/crystal_marsh/marsh_wight.entity.json",
+        "sha256": "f65951594a504c43644f00f29fad6a569d06b66b2908ae0ed4a219b8a16c8a79"
+      },
+      {
+        "path": "resource_pack/entity/aionbound/crystal_marsh/mire_turtle.entity.json",
+        "sha256": "862596bd1e6fe4b80b6a947f1b7d00100e63d62e4ffbd7c19f2e885f6cfbeefa"
+      },
+      {
+        "path": "resource_pack/entity/aionbound/crystal_marsh/prism_frog.entity.json",
+        "sha256": "40d5f64997c945cf08e07ed68988cadc409fa72694845c6752e168ca30ed3ad9"
+      },
+      {
+        "path": "resource_pack/entity/aionbound/crystal_marsh/reed_serpent.entity.json",
+        "sha256": "4e405f4ad1882ff6042e367ec23f6505809f20bbe1b39d5eda5afc0b207be95d"
+      },
+      {
+        "path": "resource_pack/entity/aionbound/crystal_marsh/silt_crocodile.entity.json",
+        "sha256": "5787539d939b9bd646f6c344f10fe752bdca079e7630f83bda4688d668767eac"
+      },
+      {
+        "path": "resource_pack/models/aionbound/crystal_marsh/entities/bloom_crab.geo.json",
+        "sha256": "e08d5863d7653b6141f4da500c78aa95d55e4ae1947267dd6278a920c860207e"
+      },
+      {
+        "path": "resource_pack/models/aionbound/crystal_marsh/entities/bog_watcher.geo.json",
+        "sha256": "a6b5dab6556e37d09997b5472318cdf068d82ff7068919765670138e919c44b7"
+      },
+      {
+        "path": "resource_pack/models/aionbound/crystal_marsh/entities/crystal_dragonfly.geo.json",
+        "sha256": "62c1f655c82ce95e07c4600449831e44eebaf371c56fdfde6df44f5ced0f7108"
+      },
+      {
+        "path": "resource_pack/models/aionbound/crystal_marsh/entities/crystal_newt.geo.json",
+        "sha256": "e01fa470282bb31a7ef7d5d984b51409aa39f1bbeee666abd95a37612ea18473"
+      },
+      {
+        "path": "resource_pack/models/aionbound/crystal_marsh/entities/glass_heron.geo.json",
+        "sha256": "6ad9837a43c0770171f1e171be0ae40741e27b000069f0e1850ea80507442d2f"
+      },
+      {
+        "path": "resource_pack/models/aionbound/crystal_marsh/entities/marsh_wight.geo.json",
+        "sha256": "1390dce2cab1c9c8713939bbcdd6dc722885433404f64fd1eab409710e58b072"
+      },
+      {
+        "path": "resource_pack/models/aionbound/crystal_marsh/entities/mire_turtle.geo.json",
+        "sha256": "e01ac6fc073af3b59365faab8839ccb38b79c2f988baf1885ace585579450807"
+      },
+      {
+        "path": "resource_pack/models/aionbound/crystal_marsh/entities/prism_frog.geo.json",
+        "sha256": "212d7faa9b95947dcc715706d974814b3725c774f9adea4f06c6eea2a4046ffe"
+      },
+      {
+        "path": "resource_pack/models/aionbound/crystal_marsh/entities/reed_serpent.geo.json",
+        "sha256": "181afea9639b44188f33f4e84b059ba68e18a55890a447e9a8bee3ea0e0fdbee"
+      },
+      {
+        "path": "resource_pack/models/aionbound/crystal_marsh/entities/silt_crocodile.geo.json",
+        "sha256": "9ec92843d96078116f5eb84f8b9131f879f491db721e8d3e83a57adc9c76c1af"
+      },
+      {
+        "path": "resource_pack/animations/aionbound/crystal_marsh/entities/bloom_crab.animation.json",
+        "sha256": "785c8dc23476b444fe8a0bd76b3b70946a88bbe24599cb14d9fe15c67f114a92"
+      },
+      {
+        "path": "resource_pack/animations/aionbound/crystal_marsh/entities/bog_watcher.animation.json",
+        "sha256": "7753f6f04b9d3a172a7f1d296d91f5dde6994c282fb8e81c50f6cc9fab891dbf"
+      },
+      {
+        "path": "resource_pack/animations/aionbound/crystal_marsh/entities/crystal_dragonfly.animation.json",
+        "sha256": "ed2dfac5db5572c3e2461b9728ef9c3db94d1547e9d66415aca15eb283ee9cba"
+      },
+      {
+        "path": "resource_pack/animations/aionbound/crystal_marsh/entities/crystal_newt.animation.json",
+        "sha256": "c87f3117ece8deab446ccc91e7cbabf6175fcf00f0d5385c0b6a55afa88b6b2c"
+      },
+      {
+        "path": "resource_pack/animations/aionbound/crystal_marsh/entities/glass_heron.animation.json",
+        "sha256": "c9ac23721199c72a3a0d0d1471877c5afe699a2f4bc99674cddac20d25271aa9"
+      },
+      {
+        "path": "resource_pack/animations/aionbound/crystal_marsh/entities/marsh_wight.animation.json",
+        "sha256": "e49fec4bd20587dac0d5a1afa6609c2fe752693588b0e8123fe138f11ae387b4"
+      },
+      {
+        "path": "resource_pack/animations/aionbound/crystal_marsh/entities/mire_turtle.animation.json",
+        "sha256": "79088ad957896fa9d07979971aa2852ec5b181a66acb81766dea60a3249165c7"
+      },
+      {
+        "path": "resource_pack/animations/aionbound/crystal_marsh/entities/prism_frog.animation.json",
+        "sha256": "5436c1ddf8ce031bc4b4a618032f9b55bb5a7c0a0ac1bf0bc5849e7e5c828727"
+      },
+      {
+        "path": "resource_pack/animations/aionbound/crystal_marsh/entities/reed_serpent.animation.json",
+        "sha256": "f4302cdac58b1fa8c4d3546aae278c48caca620a16f54137dc3ce588b82499ce"
+      },
+      {
+        "path": "resource_pack/animations/aionbound/crystal_marsh/entities/silt_crocodile.animation.json",
+        "sha256": "64844990811f04bc3a26e92a70a2db4395690891e83f627217d1f94efbc7d5bf"
+      },
+      {
+        "path": "resource_pack/animation_controllers/aionbound/crystal_marsh/bloom_crab.animation_controller.json",
+        "sha256": "d90d2b23440ed224a9251b0d353116061598743d562529de9336a496547a52ea"
+      },
+      {
+        "path": "resource_pack/animation_controllers/aionbound/crystal_marsh/bog_watcher.animation_controller.json",
+        "sha256": "0539f27263b6cecb0e32f9adb4fe25ded8d5e41c8f660710cf8164b9dbd6ffcd"
+      },
+      {
+        "path": "resource_pack/animation_controllers/aionbound/crystal_marsh/crystal_dragonfly.animation_controller.json",
+        "sha256": "fa303a5904d4152efa98557e927ceb0f7e31599d0e120802915ba16f91f7626e"
+      },
+      {
+        "path": "resource_pack/animation_controllers/aionbound/crystal_marsh/crystal_newt.animation_controller.json",
+        "sha256": "ea4a5015c5d4967ccca7d7a096166d34c8d2895d78c1b57280a3640575842cef"
+      },
+      {
+        "path": "resource_pack/animation_controllers/aionbound/crystal_marsh/glass_heron.animation_controller.json",
+        "sha256": "d700b678f2d44d1e09682aa1edb48563655800a6c892819fc1c6a60bb09362b9"
+      },
+      {
+        "path": "resource_pack/animation_controllers/aionbound/crystal_marsh/marsh_wight.animation_controller.json",
+        "sha256": "168744be6cb2f7d4d3f746b8a2638bc36891ca9252168068afe8b8d376f31cb1"
+      },
+      {
+        "path": "resource_pack/animation_controllers/aionbound/crystal_marsh/mire_turtle.animation_controller.json",
+        "sha256": "cd2271314ae2bdcf8ab025f45d896dc44746144457480ad3863d1ad1a2c069cb"
+      },
+      {
+        "path": "resource_pack/animation_controllers/aionbound/crystal_marsh/prism_frog.animation_controller.json",
+        "sha256": "95f1cd19ab85d50c4d32fc21dbb57c28b941774c98b92a94967076df0e6dd87d"
+      },
+      {
+        "path": "resource_pack/animation_controllers/aionbound/crystal_marsh/reed_serpent.animation_controller.json",
+        "sha256": "1a68273ccd914b03942b82bbd176d9e5a927b00537dc62d54b6d9dd1e78bebf9"
+      },
+      {
+        "path": "resource_pack/animation_controllers/aionbound/crystal_marsh/silt_crocodile.animation_controller.json",
+        "sha256": "5da434f550a14dd1e0e4388001506f0d2e667f673546a794174ecab6a1dd56e1"
+      },
+      {
+        "path": "resource_pack/render_controllers/aionbound/crystal_marsh/bloom_crab.render_controller.json",
+        "sha256": "cd547d3b9b293ac5b8d5f233c0c92d7ecb270e65373452b6d841cb538132729d"
+      },
+      {
+        "path": "resource_pack/render_controllers/aionbound/crystal_marsh/bog_watcher.render_controller.json",
+        "sha256": "a33e6520e890b4ff61cff39323808e2e89ffbebd03c7247af518a1e70b0103b6"
+      },
+      {
+        "path": "resource_pack/render_controllers/aionbound/crystal_marsh/crystal_dragonfly.render_controller.json",
+        "sha256": "7c36d806b7b305249d4aa9d6b5e28d617f8d789f67a3be08464d2722059461bb"
+      },
+      {
+        "path": "resource_pack/render_controllers/aionbound/crystal_marsh/crystal_newt.render_controller.json",
+        "sha256": "5e93c8fcaebb7be9460b68c07986fff8d49850c2930de81697b945e4188951a0"
+      },
+      {
+        "path": "resource_pack/render_controllers/aionbound/crystal_marsh/glass_heron.render_controller.json",
+        "sha256": "b6d32e0113d5de985875a04017fca150b9c7ff0f513797e3612fb08405edff7c"
+      },
+      {
+        "path": "resource_pack/render_controllers/aionbound/crystal_marsh/marsh_wight.render_controller.json",
+        "sha256": "724e366cfd5d1288191020beb19e7b5d5d2c25f973fe1e8edbb299477231dba6"
+      },
+      {
+        "path": "resource_pack/render_controllers/aionbound/crystal_marsh/mire_turtle.render_controller.json",
+        "sha256": "c3d5ae8bceb4506ee047d8eafe0b3cfb46f677b7fbfcdd5ef1f5570632b95006"
+      },
+      {
+        "path": "resource_pack/render_controllers/aionbound/crystal_marsh/prism_frog.render_controller.json",
+        "sha256": "2a0f0a6a0f71a2ab4945fd50cd0207d873efde41d33826b97e81c68ea852b111"
+      },
+      {
+        "path": "resource_pack/render_controllers/aionbound/crystal_marsh/reed_serpent.render_controller.json",
+        "sha256": "5656d43d1e006cfe9e9cb0616a8f622d2c2d00d051d79940e3111480ce409281"
+      },
+      {
+        "path": "resource_pack/render_controllers/aionbound/crystal_marsh/silt_crocodile.render_controller.json",
+        "sha256": "12e09e1249bd81b0e9681412fbb1c7e6fefad4592f24a84c526492fcaebd3c84"
+      },
+      {
+        "path": "resource_pack/textures/aionbound/crystal_marsh/entity/bloom_crab.png",
+        "sha256": "c3514d5a34aa16d8d6e88aab1bcc0c727a66f361142c67915bf952d0291437e9"
+      },
+      {
+        "path": "resource_pack/textures/aionbound/crystal_marsh/entity/bog_watcher.png",
+        "sha256": "878c054aafe86a31f83134ac49f959dc5da7623c98f6ac952b66fed592444e39"
+      },
+      {
+        "path": "resource_pack/textures/aionbound/crystal_marsh/entity/crystal_dragonfly.png",
+        "sha256": "afdb93786268e7bdc896e5de62c63431a710da0a3456cebc0eca0d0b12e1e668"
+      },
+      {
+        "path": "resource_pack/textures/aionbound/crystal_marsh/entity/crystal_newt.png",
+        "sha256": "db6b8db90ce04964940dc236b5f4fb806f449b0dbd15d071ed538143f7d19bcd"
+      },
+      {
+        "path": "resource_pack/textures/aionbound/crystal_marsh/entity/glass_heron.png",
+        "sha256": "3c2d4438dc200a0f8f02b38e2d0b09dca82467bd9364cb3e8ef2dfa7abf37481"
+      },
+      {
+        "path": "resource_pack/textures/aionbound/crystal_marsh/entity/marsh_wight.png",
+        "sha256": "8347f479148657b4a743c89af0d1b352d715cc3d28ed3fad76e43e4acfa49c23"
+      },
+      {
+        "path": "resource_pack/textures/aionbound/crystal_marsh/entity/mire_turtle.png",
+        "sha256": "ec7151d5b104e835808f3e2c44b17aeab1ce26371559fb785922830cc279f38b"
+      },
+      {
+        "path": "resource_pack/textures/aionbound/crystal_marsh/entity/prism_frog.png",
+        "sha256": "89b0dd62d06aa1af6a23fc1f9f513dbcda10d91950b60687f57a0720d40a4a2c"
+      },
+      {
+        "path": "resource_pack/textures/aionbound/crystal_marsh/entity/reed_serpent.png",
+        "sha256": "d0c458dd5956988bb865880b85d30c6bd9c29eecff4cae04ac24b3e36139b0c5"
+      },
+      {
+        "path": "resource_pack/textures/aionbound/crystal_marsh/entity/silt_crocodile.png",
+        "sha256": "c163c141fd31d30891e4be7e969ebeec5de95b418971ad76a47921380ec51900"
+      },
+      {
+        "path": "behavior_pack/spawn_rules/aionbound/crystal_marsh/bloom_crab.spawn_rules.json",
+        "sha256": "67f1c8a59964d7845d86a88274dde4ca03a1df80b31a90ce8bb41ec3c16f622c"
+      },
+      {
+        "path": "behavior_pack/spawn_rules/aionbound/crystal_marsh/bog_watcher.spawn_rules.json",
+        "sha256": "5f039321876f2b9aeecb1f4c51a92df1b44cf4983715bf466a2212fc8b20d185"
+      },
+      {
+        "path": "behavior_pack/spawn_rules/aionbound/crystal_marsh/crystal_dragonfly.spawn_rules.json",
+        "sha256": "6e76df6a6b3ea4a04ffadffab83bbfa9f42379fbd77bde64ce16d85ae2352c27"
+      },
+      {
+        "path": "behavior_pack/spawn_rules/aionbound/crystal_marsh/crystal_newt.spawn_rules.json",
+        "sha256": "1233d8a4a996715b09fccc491807e017faf2fab002b3a406710a7b1515ada0be"
+      },
+      {
+        "path": "behavior_pack/spawn_rules/aionbound/crystal_marsh/glass_heron.spawn_rules.json",
+        "sha256": "dc88c3e8ea9c62f77507cd5b753180e85e55669d6e4b8fbf6392fbef9ebd5326"
+      },
+      {
+        "path": "behavior_pack/spawn_rules/aionbound/crystal_marsh/mire_turtle.spawn_rules.json",
+        "sha256": "bb9581d3160dfaca1cf74ec5fc45999bf7fd6a736dc8b406a70dbbeec70e9be6"
+      },
+      {
+        "path": "behavior_pack/spawn_rules/aionbound/crystal_marsh/prism_frog.spawn_rules.json",
+        "sha256": "bb23230a1d886ca75ea7e18139b1311f7b0b6282797f73a5b8bcd7e65ea07e00"
+      },
+      {
+        "path": "behavior_pack/spawn_rules/aionbound/crystal_marsh/reed_serpent.spawn_rules.json",
+        "sha256": "426b0f4865da7f66dca287a8501a8bde73bfc7137cf6fb72652112c5409ddab8"
+      },
+      {
+        "path": "behavior_pack/spawn_rules/aionbound/crystal_marsh/silt_crocodile.spawn_rules.json",
+        "sha256": "80daebafcb91aea53be50b5682dfce933b1623068690e7e4fb1b3558362f89fd"
+      }
+    ],
+    "structures_world_discovery_and_protected_cache_binding": [
+      {
+        "path": "engineering/crystal-marsh-intake/structure-assemblies/CRYSTAL_MARSH_STRUCTURE_ASSEMBLIES.json",
+        "sha256": "3d75ff3ca6b01c5068b5ce83682b8b289b58713650e1bacfb15d2f84738a03cf"
+      },
+      {
+        "path": "engineering/crystal-marsh-intake/structure-assemblies/CRYSTAL_MARSH_STRUCTURE_VALIDATION_REPORT.json",
+        "sha256": "8aecfedaf1947ff711305db426001efe7d143d64d617b82e1c030ee8fe6d0d54"
+      },
+      {
+        "path": "engineering/crystal-marsh-intake/structure-economy/CRYSTAL_STRUCTURE_ECONOMY_BINDING.json",
+        "sha256": "469dc787aadec9caf560483d3f07f7c666dde0b2f68107ceaf3178b20e81f612"
+      },
+      {
+        "path": "engineering/crystal-marsh-intake/structure-economy/CRYSTAL_STRUCTURE_ECONOMY_VALIDATION_REPORT.json",
+        "sha256": "c8946615681bf0c8d93dea1774593c598a56b0950224f6581cf549be3fd07483"
+      },
+      {
+        "path": "behavior_pack/structures/aionbound/flooded_dock.mcstructure",
+        "sha256": "6ec28f1a6c6594af1c4c3b2b8db69558fc58e6ef1e0a6bde1063227c542fb2b9"
+      },
+      {
+        "path": "behavior_pack/structures/aionbound/ancient_boat.mcstructure",
+        "sha256": "c76134a2d6a0efef99261a72b0cf254371ed82cf3339f4fb90fe09a300961b32"
+      },
+      {
+        "path": "behavior_pack/structures/aionbound/marsh_broken_bridge.mcstructure",
+        "sha256": "bd9b6d0fe114ccdd2a21baaafa87d238e765778e6f44ee7ac089d88ebc18aac3"
+      },
+      {
+        "path": "behavior_pack/structures/aionbound/pearl_cairn.mcstructure",
+        "sha256": "9479204efe3a12e0adfc8acf4a947a451c39703d798a72d46cd359a939d0bf23"
+      },
+      {
+        "path": "behavior_pack/structures/aionbound/marsh_totem.mcstructure",
+        "sha256": "59af7eb3dfe1bfff6e425be4ba0095909da781e1a2fbf42748ce17aa81101407"
+      },
+      {
+        "path": "behavior_pack/structures/aionbound/crystal_arch.mcstructure",
+        "sha256": "0de548adac44887ca0a18b55295b9f464ac78201f9ef151361f5663bad882779"
+      },
+      {
+        "path": "behavior_pack/structures/aionbound/crystal_obelisk.mcstructure",
+        "sha256": "207d6ddac516d15f2c7256b8cad560abe9c76ffd4034d58533560c318706751a"
+      },
+      {
+        "path": "behavior_pack/structures/aionbound/sunken_shrine.mcstructure",
+        "sha256": "4b91a18bc3a7694638b67ec34bb49957b7d7d0543fb670f4d7417bc60d6c5fd4"
+      },
+      {
+        "path": "behavior_pack/structures/aionbound/ruined_observatory.mcstructure",
+        "sha256": "c3157c0e3cedc056009250ad43fb6237e41b31add60b2678eb2cc172056d9984"
+      },
+      {
+        "path": "behavior_pack/structures/aionbound/deep_pool_entrance.mcstructure",
+        "sha256": "11881d5f9e75dd216925d9cf05b3e56d9f8092fd1c09c51e7d0e72681a5b7dfb"
+      },
+      {
+        "path": "behavior_pack/features/flooded_dock.structure_feature.json",
+        "sha256": "2177de1d3d638b5cb84072b2fc811845c1e59d40f1b9e15e91c21d2ab1da6583"
+      },
+      {
+        "path": "behavior_pack/features/ancient_boat.structure_feature.json",
+        "sha256": "0817d308bd84cbd9d0eab03652ddf2d87e54ebe3854ef49fb62acc7e3cdafe2a"
+      },
+      {
+        "path": "behavior_pack/features/marsh_broken_bridge.structure_feature.json",
+        "sha256": "a10d09148458433db07a79b8719785d3900c4d8fe1683b51090e5dd816b990ff"
+      },
+      {
+        "path": "behavior_pack/features/pearl_cairn.structure_feature.json",
+        "sha256": "0ff88d673dbbd1a34653a7673bdae41dd05c63989642260d48a91646b8679efc"
+      },
+      {
+        "path": "behavior_pack/features/marsh_totem.structure_feature.json",
+        "sha256": "947ccb996220ae9db1f38de3054f30b49f9a988979a9ebf24c0bedad0de5b677"
+      },
+      {
+        "path": "behavior_pack/features/crystal_arch.structure_feature.json",
+        "sha256": "f7977d6bcf96f8c22f1e3ef0e1e0d59f4f79677bdd4c15f6931cb97eceadea8d"
+      },
+      {
+        "path": "behavior_pack/features/crystal_obelisk.structure_feature.json",
+        "sha256": "8d4eb5590db07eb4d37d1e5f0f25560daef1f108250d1531d7b5658e573d4a77"
+      },
+      {
+        "path": "behavior_pack/features/sunken_shrine.structure_feature.json",
+        "sha256": "a4e17119b50e07df4743da8adc9f6b5c1b95ee8921ff3f5f0d85942eb3215e13"
+      },
+      {
+        "path": "behavior_pack/features/ruined_observatory.structure_feature.json",
+        "sha256": "305e7a4ee30e7ae0a3e1d57a4b444f6f3c4c3b65431d9100009aa63ba8ab6502"
+      },
+      {
+        "path": "behavior_pack/features/deep_pool_entrance.structure_feature.json",
+        "sha256": "281d4d2bd018534b0356f5378dbdeaa1ec15b3993eacfcee07d39ac11b967c5d"
+      },
+      {
+        "path": "behavior_pack/feature_rules/flooded_dock.structure_feature_rule.json",
+        "sha256": "cd8f8b3d419cf3b5574239f8a1daa5d1c129b7521fdce057cba8a8ced2bd7bcd"
+      },
+      {
+        "path": "behavior_pack/feature_rules/ancient_boat.structure_feature_rule.json",
+        "sha256": "cdd4c90d26af3032e6f89801e1b79e4c1a311481ba6c7f18543bf12df71fb992"
+      },
+      {
+        "path": "behavior_pack/feature_rules/marsh_broken_bridge.structure_feature_rule.json",
+        "sha256": "514590a1597387e889d3366a93f83cc79724d60d2499250a7de9a14103316162"
+      },
+      {
+        "path": "behavior_pack/feature_rules/pearl_cairn.structure_feature_rule.json",
+        "sha256": "d41eecec3ed3b3ac242bcb827e6bb7e14b391c85190b76cece7e6ce703e30052"
+      },
+      {
+        "path": "behavior_pack/feature_rules/marsh_totem.structure_feature_rule.json",
+        "sha256": "5204f76f2fe64161954922be91c3f3a8148405b697230c69afb0c6c483d4b248"
+      },
+      {
+        "path": "behavior_pack/feature_rules/crystal_arch.structure_feature_rule.json",
+        "sha256": "002511c32fc4e2fb19fe94c9eab9e17f6bbaaccbb40ef6a45d2b2a196d2c9ca4"
+      },
+      {
+        "path": "behavior_pack/feature_rules/crystal_obelisk.structure_feature_rule.json",
+        "sha256": "e8bc54783b8985be5e17087229e44b234b1aeabbc89003827535149828c06017"
+      },
+      {
+        "path": "behavior_pack/feature_rules/sunken_shrine.structure_feature_rule.json",
+        "sha256": "a44ae01cf863babc59f719b714fd57b407b606c516ddbf7123dca6c78db5afc2"
+      },
+      {
+        "path": "behavior_pack/feature_rules/ruined_observatory.structure_feature_rule.json",
+        "sha256": "3991c2375b68ef3d6309c2d532afec9d612deeb88e5781d082a742de39d5cea5"
+      },
+      {
+        "path": "behavior_pack/feature_rules/deep_pool_entrance.structure_feature_rule.json",
+        "sha256": "912564667d20b6fd63566e678d6b4665a91c524c090801c3320efe7e33255ce3"
+      }
+    ],
+    "loot_crafting_and_acquisition_economy": [
+      {
+        "path": "engineering/crystal-marsh-intake/economy-equipment/CRYSTAL_ECONOMY_EQUIPMENT_REPORT.json",
+        "sha256": "add33ba4941986065fc9a3285d5ad2aa3b697bb6de49341a0ecd19b19eb82802"
+      },
+      {
+        "path": "behavior_pack/loot_tables/entities/crystal/bloom_crab.json",
+        "sha256": "0cc531ebfb356648de789cf8b0349487cf6425d1c5b69b61374d1250bf84d259"
+      },
+      {
+        "path": "behavior_pack/loot_tables/entities/crystal/bog_watcher.json",
+        "sha256": "8ae4fdd0d58c1f96892fb6f56a5898a9b13eb4653b90f34bf106c58b03b3958c"
+      },
+      {
+        "path": "behavior_pack/loot_tables/entities/crystal/crystal_dragonfly.json",
+        "sha256": "28b539b8371030ac14f4614841b40a89d9366cc5ab3ec4667e2d36849478fedb"
+      },
+      {
+        "path": "behavior_pack/loot_tables/entities/crystal/crystal_newt.json",
+        "sha256": "3e07a4ce7e084b93afff2b16b355c9181ca4d954f987ab84d18573f1f074f268"
+      },
+      {
+        "path": "behavior_pack/loot_tables/entities/crystal/glass_heron.json",
+        "sha256": "d61f93c89c23012884dffa3db2f3004c6d43bbd9caca0f7311a9a13dabc0dd63"
+      },
+      {
+        "path": "behavior_pack/loot_tables/entities/crystal/marsh_wight.json",
+        "sha256": "d1d7125ca5db987f5d54a22bc32fe3d75b75967c8c033d1199cd3a6d7bd9ac1e"
+      },
+      {
+        "path": "behavior_pack/loot_tables/entities/crystal/mire_turtle.json",
+        "sha256": "0fe3d55c1084e1485cdbac4bdef2adc8725494d04a47651d7a588ffa72ad4d21"
+      },
+      {
+        "path": "behavior_pack/loot_tables/entities/crystal/prism_frog.json",
+        "sha256": "658f80182a05f2d1f1f75465917a2d47f108430acc398f70a96d1e9fb554aace"
+      },
+      {
+        "path": "behavior_pack/loot_tables/entities/crystal/reed_serpent.json",
+        "sha256": "e7f4f81e9553af2eac3cc7cb98f06cd5cd47256f3fc0ff6b40ad4fe3da041b4d"
+      },
+      {
+        "path": "behavior_pack/loot_tables/entities/crystal/silt_crocodile.json",
+        "sha256": "bfe55cb63b1865b287b8cbe3889cb532210c92429c5a197e0fbd54e5271ab8ae"
+      },
+      {
+        "path": "behavior_pack/loot_tables/blocks/crystal_log.json",
+        "sha256": "37d5c064d22be88360ebdd3612d2037a29b1daf8f581ec2ec1bd3eeac3498183"
+      },
+      {
+        "path": "behavior_pack/loot_tables/blocks/marsh_wood.json",
+        "sha256": "b0652858e3ca522ee60ac58efa35ccc741cc3e596f1bbffd0ef00ddec2f2e034"
+      },
+      {
+        "path": "behavior_pack/loot_tables/blocks/flood_planks.json",
+        "sha256": "744232e5dd004eb129e8b1be94154b48f61a9bf256c6d279f37b53753a014f0d"
+      },
+      {
+        "path": "behavior_pack/loot_tables/blocks/crystal_stone.json",
+        "sha256": "e5bb8032d2aa1d4e3cabd4cb1edd0617b1810f1775917cec68225c6cec6ac87c"
+      },
+      {
+        "path": "behavior_pack/loot_tables/blocks/prism_brick.json",
+        "sha256": "55ad2b716339a98cc5c3a6cd588743fef1c4e64b97901eb41d6635bdae5c32e2"
+      },
+      {
+        "path": "behavior_pack/loot_tables/blocks/wet_clay_block.json",
+        "sha256": "7a9639b106728a25a8be22ca3270ede574d36eb1a84b0ee9e2cc42584512ea31"
+      },
+      {
+        "path": "behavior_pack/loot_tables/blocks/glass_root_block.json",
+        "sha256": "8e0cc955fd8e35d3e670443f5ae7d08b4ee32b1a003f09b07316eb5104bfa096"
+      },
+      {
+        "path": "behavior_pack/loot_tables/blocks/algae_block.json",
+        "sha256": "da938a4eca479021cce8527d7b393b3d08272aa4b570a473e5ac91f3b5c38901"
+      },
+      {
+        "path": "behavior_pack/loot_tables/blocks/marsh_soil.json",
+        "sha256": "3b64defc8f7c41ff257d72a1ea4d7b1cb633368fc5142dbe9b49477be0a28fd1"
+      },
+      {
+        "path": "behavior_pack/loot_tables/blocks/crystal_gravel.json",
+        "sha256": "f41d0453f2a16bc456262a1769b5cd29a602f8b6896b04b951225957ef93cab6"
+      },
+      {
+        "path": "behavior_pack/loot_tables/blocks/crystal_lily.json",
+        "sha256": "2883615a6b00c81e64c1ae1f816522bbbcf911d51ba152ae74142351b528fa84"
+      },
+      {
+        "path": "behavior_pack/loot_tables/blocks/flood_reed.json",
+        "sha256": "a7dd0ff4a57413f7174b88c78fed3934f2fa076b0a54be37374b7791ee85af66"
+      },
+      {
+        "path": "behavior_pack/loot_tables/blocks/prism_bloom.json",
+        "sha256": "16521c5e236e2655daa3602727c019c19d972547b5070dfd089bc3ae5aff858c"
+      },
+      {
+        "path": "behavior_pack/loot_tables/blocks/glass_moss.json",
+        "sha256": "c67305f6d59dad4794a432518971a335f9e998c3d5d8f5c07ed82379d63a74cc"
+      },
+      {
+        "path": "behavior_pack/loot_tables/blocks/marsh_fern.json",
+        "sha256": "b8bee99ca76862a5a8d78e35be8c9a1519d264871dd934987023e1b0eebc07c9"
+      },
+      {
+        "path": "behavior_pack/loot_tables/blocks/glow_kelp.json",
+        "sha256": "e5fcce2ed6acbf2564aeaacbe92924fa48a38af0ff919b3f732a5de6adc4e6a3"
+      },
+      {
+        "path": "behavior_pack/loot_tables/blocks/mire_orchid.json",
+        "sha256": "f6145ec5bce71cbcb189067d2ce4378ee9baef90f4224df6c49ac6f2ade1f955"
+      },
+      {
+        "path": "behavior_pack/loot_tables/blocks/bubble_pod.json",
+        "sha256": "5988c113c6385031b6f353234af4e01bb829480c13ff2fbcfc8b0f59d414af9c"
+      },
+      {
+        "path": "behavior_pack/loot_tables/blocks/pearl_grass.json",
+        "sha256": "7167e9101e40a7299dcc0483c67bf74f361c76074494e010ee6fc1b8374e17de"
+      },
+      {
+        "path": "behavior_pack/loot_tables/blocks/crystal_vine.json",
+        "sha256": "6f73a5974d55a72a05b1dbabde128d8562f76b1d0de42b1e9bb85c363e5d8f63"
+      },
+      {
+        "path": "behavior_pack/loot_tables/chests/crystal/flooded_dock.json",
+        "sha256": "bc92b8028131c14f0b45c5a5a934da3f4bf2d13418cc4c55993385cce30683c2"
+      },
+      {
+        "path": "behavior_pack/loot_tables/chests/crystal/ancient_boat.json",
+        "sha256": "c256d590588bbbd5ccb920f5aea038304d7160fe86331b475d12fdb10b7d6523"
+      },
+      {
+        "path": "behavior_pack/loot_tables/chests/crystal/marsh_broken_bridge.json",
+        "sha256": "76ba12192f22c22eb951097bf0b42aff4c86df28ed8fffb6381a2c3c285a175b"
+      },
+      {
+        "path": "behavior_pack/loot_tables/chests/crystal/pearl_cairn.json",
+        "sha256": "085517c2fa2b0cde73977e27fb725849814efd87e104e4ffabed9392a1e669c0"
+      },
+      {
+        "path": "behavior_pack/loot_tables/chests/crystal/crystal_arch.json",
+        "sha256": "a001e4a92f4c203c4e4e60ffe0314adfc9d851ffcef9255c3eb301c7cbd9e826"
+      },
+      {
+        "path": "behavior_pack/loot_tables/chests/crystal/crystal_obelisk.json",
+        "sha256": "2a8c5514e56530da6508e1f53c7168c8bfb21d9eab283c6b71c3a0392fa1f82f"
+      },
+      {
+        "path": "behavior_pack/loot_tables/chests/crystal/ruined_observatory.json",
+        "sha256": "389855ee1c84135302c2afc30c536a2464b0c2103e892a8843c40d59547f58b6"
+      },
+      {
+        "path": "behavior_pack/loot_tables/chests/crystal/pearl_depths.json",
+        "sha256": "bf2f71e1f59604e9e000d121f025b3e79584aa09d597f994c55e19416d4e9d4d"
+      },
+      {
+        "path": "behavior_pack/loot_tables/encounters/crystal/pearl_depths_materials.json",
+        "sha256": "33ead6bebc1ee6d91a1e14e0e949058ae4ab608f54f1310aa3289fc296d1b000"
+      },
+      {
+        "path": "behavior_pack/recipes/mire_bloom_cyan_dye.recipe.json",
+        "sha256": "43dcf8027c43128a05218fd10195433e271cb3b15b973bd768a2443f2f59a4c3"
+      },
+      {
+        "path": "behavior_pack/recipes/crystal_pole.recipe.json",
+        "sha256": "ef2354ef5edd739722ffba4338a51c631ab5a89a841437151c632406c8731313"
+      },
+      {
+        "path": "behavior_pack/recipes/living_crystal_core.recipe.json",
+        "sha256": "f1e86728c4458252abe2b20ef282b79660e7c4554b36ae2ad5ff0b8f31e06f06"
+      },
+      {
+        "path": "behavior_pack/recipes/wet_plate.recipe.json",
+        "sha256": "22d763a297c5a6c53eaeda5f512b12319be8665882237667a56d2c5bbda145f4"
+      },
+      {
+        "path": "behavior_pack/recipes/crystal_pike.recipe.json",
+        "sha256": "d93f35cdb3ec39a068893bc3f65a3279eb2d52901ab40fd1b8d77623d2377680"
+      },
+      {
+        "path": "behavior_pack/recipes/prism_bow.recipe.json",
+        "sha256": "2250bb19bb44ed3634c641f337ebb2248e424d94f701a6aaeac8431d27bc0bf1"
+      },
+      {
+        "path": "behavior_pack/recipes/crystal_circlet.recipe.json",
+        "sha256": "2cc04a623ce78d982c0fdbc65cb4150537f70f2876d192b8c1d91372269f9108"
+      },
+      {
+        "path": "behavior_pack/recipes/explorer_cloak.recipe.json",
+        "sha256": "81937e72d943d910b811369a4bae8924209debac7b4c3b55b65a5705b2b47de8"
+      },
+      {
+        "path": "behavior_pack/recipes/crystal_shovel.recipe.json",
+        "sha256": "43cb43b1724f98827bbd5df69cfcb745463c0d45d1bb457630b9d6211a614c78"
+      },
+      {
+        "path": "behavior_pack/recipes/marsh_sickle.recipe.json",
+        "sha256": "eb9fd52c2127c6f0106f1851e568c5250cf8c67c79975f43671da353abe2814b"
+      },
+      {
+        "path": "behavior_pack/recipes/crystal_talisman.recipe.json",
+        "sha256": "80517beeca0a0c9efea59e343288da6a2f0a000e11e2354478515264efe0839f"
+      },
+      {
+        "path": "behavior_pack/recipes/marsh_idol.recipe.json",
+        "sha256": "2c79ae390153a2bbc440dc74fcf5ad7df7969d065d76c21d3f22726444dad5bc"
+      },
+      {
+        "path": "behavior_pack/recipes/moon_pearl_pedestal.recipe.json",
+        "sha256": "bf7c5826f2251026605b80bad22623effe1d004a273aab9a8b6cd66a036151dd"
+      }
+    ],
+    "equipment_presentation_and_existing_handler_roles": [
+      {
+        "path": "engineering/crystal-marsh-intake/equipment/CRYSTAL_EQUIPMENT_INTAKE.json",
+        "sha256": "4349e9f83c3501f3f3a7ead9b8a1d57df7b197f3d8fc4f0f18d07d7c865e3a03"
+      },
+      {
+        "path": "engineering/crystal-marsh-intake/equipment/CRYSTAL_EQUIPMENT_INTAKE.md",
+        "sha256": "0898c50f7c111affcc4192bb8b0d5b64dccd39d3e634f4102d97a03077e0f995"
+      },
+      {
+        "path": "behavior_pack/items/crystal_pike.item.json",
+        "sha256": "40db09090145b1f95457685596e9348572a6ea3c83040fb771bf50e69597db06"
+      },
+      {
+        "path": "resource_pack/attachables/crystal_pike.attachable.json",
+        "sha256": "1bb1fac08ca3f4f2aede251f9bef4aeb0d7a1144bcde4bdf673549756c461225"
+      },
+      {
+        "path": "resource_pack/models/aionbound/crystal_marsh/equipment/crystal_pike.geo.json",
+        "sha256": "41cb1bd01467016d3e67425242176f29a99f094f78c6c8876af1f0ce6fe4cefe"
+      },
+      {
+        "path": "resource_pack/animations/aionbound/crystal_marsh/equipment/crystal_pike.animation.json",
+        "sha256": "d2851be9976d2f2b9f2c3c17ce8fb176751b313053617a75c858f33582887414"
+      },
+      {
+        "path": "resource_pack/textures/aionbound/crystal_marsh/equipment/models/crystal_pike.png",
+        "sha256": "3aad28dceb69f6207da7a09657465a3e4cff8e60b2740f7104cc97d05afaae7f"
+      },
+      {
+        "path": "behavior_pack/items/prism_bow.item.json",
+        "sha256": "804e86f78521c8cdad63ff1a7c22f9eb243ef3866a4685c670a38098a8120919"
+      },
+      {
+        "path": "resource_pack/attachables/prism_bow.attachable.json",
+        "sha256": "35f62107d06c2b43f6fabdfd97e2b0d27be8cbf273413fc389d5299c376ab3f4"
+      },
+      {
+        "path": "resource_pack/models/aionbound/crystal_marsh/equipment/prism_bow.geo.json",
+        "sha256": "ec6c5f7edfdfab41d27d367c9f3e2af847f791e4a2069dc81e0af6aaf9f59b9d"
+      },
+      {
+        "path": "resource_pack/animations/aionbound/crystal_marsh/equipment/prism_bow.animation.json",
+        "sha256": "d5438ba3b393360f6070432499153455f21085a2a4ba224875243ceab41b98f3"
+      },
+      {
+        "path": "resource_pack/textures/aionbound/crystal_marsh/equipment/models/prism_bow.png",
+        "sha256": "324dda778128d1ea5910e8c627d0cf738b46e9223e022e8d149138f45aa69a66"
+      },
+      {
+        "path": "behavior_pack/items/crystal_circlet.item.json",
+        "sha256": "637c333d158c629c323da93b9217388080ae87a571ff5a162113280030a5d344"
+      },
+      {
+        "path": "resource_pack/attachables/crystal_circlet.attachable.json",
+        "sha256": "83f0a67a8dab040ed89b0b29ed92cc32dda12cea0c28fa8b072552a0e71a8855"
+      },
+      {
+        "path": "resource_pack/models/aionbound/crystal_marsh/equipment/crystal_circlet.geo.json",
+        "sha256": "e5d2b1c75e92e09623b83f07633b5c2f4a549ca5875f2101ee4a2e95b95bd70a"
+      },
+      {
+        "path": "resource_pack/animations/aionbound/crystal_marsh/equipment/crystal_circlet.animation.json",
+        "sha256": "d942104ca438930012203d2f66ccc3646c979cefb2f228c290e3b93d9c7b2125"
+      },
+      {
+        "path": "resource_pack/textures/aionbound/crystal_marsh/equipment/models/crystal_circlet.png",
+        "sha256": "3778f171472477c4ee733f986192d7bf4bba19958a5f1f093d1369fdf4239e63"
+      },
+      {
+        "path": "behavior_pack/items/explorer_cloak.item.json",
+        "sha256": "febdf87e106f1da0dbcc305f07540e0042768d6983645b95232a04a1cc94aa03"
+      },
+      {
+        "path": "resource_pack/attachables/explorer_cloak.attachable.json",
+        "sha256": "914fdb7beaf84ef8ea0ea5053b66bbc48ff5b1f1d64c048af8ba81df24378800"
+      },
+      {
+        "path": "resource_pack/models/aionbound/crystal_marsh/equipment/explorer_cloak.geo.json",
+        "sha256": "0285fd8426804555420b856a45909779ac0a288bc81d6163074b1d9053de3ead"
+      },
+      {
+        "path": "resource_pack/animations/aionbound/crystal_marsh/equipment/explorer_cloak.animation.json",
+        "sha256": "c952d20b7f860e98ad84a3dd135b5c9ce68fef282e501d7544c41ab2f26e1226"
+      },
+      {
+        "path": "resource_pack/textures/aionbound/crystal_marsh/equipment/models/explorer_cloak.png",
+        "sha256": "f177cfbbda88c9e4f167076c03a1d0b487a5216d215db066c917dda00a3ffa62"
+      },
+      {
+        "path": "behavior_pack/items/crystal_shovel.item.json",
+        "sha256": "b3c1c6991c0c14c15ec0d18d6a3d0d8c62b9dc928ba55c1ce6011e1241bc2304"
+      },
+      {
+        "path": "resource_pack/attachables/crystal_shovel.attachable.json",
+        "sha256": "315b9147b282f3b1ab7c40d7f8663dbad7a20f830b966c2370d2f7f67f2789c6"
+      },
+      {
+        "path": "resource_pack/models/aionbound/crystal_marsh/equipment/crystal_shovel.geo.json",
+        "sha256": "ceed7b90a5e136e7ace498926f6f8b86dd13c8c2a44eda0c654f7ead212028ed"
+      },
+      {
+        "path": "resource_pack/animations/aionbound/crystal_marsh/equipment/crystal_shovel.animation.json",
+        "sha256": "9a65d1076f43d154a339d398e2d5b7f1acf5dc5f49f6302a10d0a26682f6491a"
+      },
+      {
+        "path": "resource_pack/textures/aionbound/crystal_marsh/equipment/models/crystal_shovel.png",
+        "sha256": "fd9ebd4ee5047f9d89c9f0adab19ea0c302cb73aaee4da3ee16db12f0b8043ba"
+      },
+      {
+        "path": "behavior_pack/items/marsh_sickle.item.json",
+        "sha256": "2acc51f6d9d86db9f87d5aef6439ca6cd357275f7adf7bd4333b361207b195b8"
+      },
+      {
+        "path": "resource_pack/attachables/marsh_sickle.attachable.json",
+        "sha256": "adcd65f368be8038043ffe4b225bd467d346ffbd54b2cbce7a23cb45721064c3"
+      },
+      {
+        "path": "resource_pack/models/aionbound/crystal_marsh/equipment/marsh_sickle.geo.json",
+        "sha256": "71192412f2ff3d6f366123aa9ddc79ca62a704ba7cc9d06e68f333d273c99ef8"
+      },
+      {
+        "path": "resource_pack/animations/aionbound/crystal_marsh/equipment/marsh_sickle.animation.json",
+        "sha256": "d7a55517d3677c2a4dcb721b64356de275ae2fedda31da512e57b6391b5a13c8"
+      },
+      {
+        "path": "resource_pack/textures/aionbound/crystal_marsh/equipment/models/marsh_sickle.png",
+        "sha256": "31bcf156dee6e2b3f8fa351ade676ada92f46194a1f0ce42d0d2e27b0342fca8"
+      },
+      {
+        "path": "behavior_pack/items/crystal_talisman.item.json",
+        "sha256": "a892f726eb6ef4de8c35ec86d473a6b4b0e62c143489fe8fcf4a6df29edf7383"
+      },
+      {
+        "path": "resource_pack/attachables/crystal_talisman.attachable.json",
+        "sha256": "8ad412cba876cac481616179e67e40146a6ec8a74e32ba7cee7511e618270cf6"
+      },
+      {
+        "path": "resource_pack/models/aionbound/crystal_marsh/equipment/crystal_talisman.geo.json",
+        "sha256": "95d61beede5230766c44c001f32ddb1ce7620f16f6f50b20b9ee90d126a2eb8b"
+      },
+      {
+        "path": "resource_pack/animations/aionbound/crystal_marsh/equipment/crystal_talisman.animation.json",
+        "sha256": "1da9d7aedd369ac1252eaef39a7226b387e0d97b16e4c0ea6026eeaa3e52bfe0"
+      },
+      {
+        "path": "resource_pack/textures/aionbound/crystal_marsh/equipment/models/crystal_talisman.png",
+        "sha256": "2ec705b4b55fa74554ab59cf3c7b7854145eace14e4fa8e2d9a8861592ec03f3"
+      },
+      {
+        "path": "behavior_pack/items/marsh_idol.item.json",
+        "sha256": "f0ca37aa8f3109c87c5b1e8e7ce4fae5b312ab6200da847bb139f92171271895"
+      },
+      {
+        "path": "resource_pack/attachables/marsh_idol.attachable.json",
+        "sha256": "a75c06d99938239d2adb45a70820cc19fedf2d9f036756c39383576d6deeb1bc"
+      },
+      {
+        "path": "resource_pack/models/aionbound/crystal_marsh/equipment/marsh_idol.geo.json",
+        "sha256": "927a513f83ec3fec151c7db1536a1a928884cfce0bb34c5eb9f1083262adeb6b"
+      },
+      {
+        "path": "resource_pack/animations/aionbound/crystal_marsh/equipment/marsh_idol.animation.json",
+        "sha256": "b1177f0b5059c8af1014eb64e9e419a70ecb7cee6d49267704ca53ce8c647e8a"
+      },
+      {
+        "path": "resource_pack/textures/aionbound/crystal_marsh/equipment/models/marsh_idol.png",
+        "sha256": "a1046732a661684312c320282ba256436b09b8f60c66cdd880b3c1b05a58563d"
+      },
+      {
+        "path": "behavior_pack/blocks/marsh_wight_mask.block.json",
+        "sha256": "05476ee511cbb6f5d039ff4b9fbd25de68a7ab53ad9834cadd2ae3a14684cf7c"
+      },
+      {
+        "path": "resource_pack/attachables/marsh_wight_mask.attachable.json",
+        "sha256": "b7a714b85d1376ce41e9b6a05f7067436b51375e3aa42b2ad8d1ba96f2f33349"
+      },
+      {
+        "path": "resource_pack/models/aionbound/crystal_marsh/equipment/marsh_wight_mask.geo.json",
+        "sha256": "e40c380ba2d5787b04ea738a82ad39a6b9b44aa943603146d95062c45a8ba65a"
+      },
+      {
+        "path": "resource_pack/animations/aionbound/crystal_marsh/equipment/marsh_wight_mask.animation.json",
+        "sha256": "e5bc0dce9071008070c085351426ca7d460910ba3fc18e22cbc71d588e53380b"
+      },
+      {
+        "path": "resource_pack/textures/aionbound/crystal_marsh/equipment/models/marsh_wight_mask.png",
+        "sha256": "de53d3923373686ccc3f0137bd469e8a85e3a6116ba70495c6388ed4655f4cb4"
+      },
+      {
+        "path": "behavior_pack/blocks/moon_pearl_pedestal.block.json",
+        "sha256": "ff07aee54f049168670f73e5f0b335e9a5ed83e7636c2dc353f12211db8965ad"
+      },
+      {
+        "path": "resource_pack/attachables/moon_pearl_pedestal.attachable.json",
+        "sha256": "7ff5c34cc70141b8eca138419bc06e5491885c23d3cc093a12288e40d890e859"
+      },
+      {
+        "path": "resource_pack/models/aionbound/crystal_marsh/equipment/moon_pearl_pedestal.geo.json",
+        "sha256": "f0de222ac4431355a2664650552a6246f12667411f4fa136424800dfbdc95b61"
+      },
+      {
+        "path": "resource_pack/animations/aionbound/crystal_marsh/equipment/moon_pearl_pedestal.animation.json",
+        "sha256": "64887f240b0dfd7e630db2f139ce45909e71da552804d26d341fb5814c70559d"
+      },
+      {
+        "path": "resource_pack/textures/aionbound/crystal_marsh/equipment/models/moon_pearl_pedestal.png",
+        "sha256": "3b8ac5ef1762ab8bf43a8ef6afa27b2427077a9d20100432b8bf1709302fd238"
+      },
+      {
+        "path": "behavior_pack/blocks/crystal_obelisk_fragment.block.json",
+        "sha256": "4d060d159487bfe559d87490fc8601a41e02e96cac574ca8795034afe6c3adfc"
+      },
+      {
+        "path": "resource_pack/attachables/crystal_obelisk_fragment.attachable.json",
+        "sha256": "0dabae447a2f46394f63f6cab8b328b88ec587b1620ffb58ef4be0a3893f9669"
+      },
+      {
+        "path": "resource_pack/models/aionbound/crystal_marsh/equipment/crystal_obelisk_fragment.geo.json",
+        "sha256": "50adcae9fb25d3482d0ed14b6baeba419816dc839768e99c0efd3e6733c2e5cd"
+      },
+      {
+        "path": "resource_pack/animations/aionbound/crystal_marsh/equipment/crystal_obelisk_fragment.animation.json",
+        "sha256": "b5a7fa4bee71439bbe5b3085e5b30c4eff573e31eaa7de9bce30f98fbb7b7371"
+      },
+      {
+        "path": "resource_pack/textures/aionbound/crystal_marsh/equipment/models/crystal_obelisk_fragment.png",
+        "sha256": "9df2dd44285a90427260ecaa960341ffec906e27a4282a1cae71be26122515c4"
+      },
+      {
+        "path": "behavior_pack/items/prism_wing.item.json",
+        "sha256": "655252f96b3727c3ad7ffcfc1eb4d4a0ecab21738dbed69b09cfb55403d21c35"
+      },
+      {
+        "path": "behavior_pack/items/watcher_lens.item.json",
+        "sha256": "5808e82d96cdd9b7ddf7a5fa565711bf2410f0a9bf0537732db37cbcde2a620e"
+      },
+      {
+        "path": "behavior_pack/items/wight_shroud.item.json",
+        "sha256": "72668ad1fb2324852a083e28bb9834cdd4e66e28d8504bd6b4124beba52b2e78"
+      },
+      {
+        "path": "behavior_pack/items/crystal_pole.item.json",
+        "sha256": "a817f19a65ed0e9a3e49e3b998570b8a0234b18df483ccc6597631967816a6c0"
+      },
+      {
+        "path": "behavior_pack/items/living_crystal_core.item.json",
+        "sha256": "72771562d4e4426397f67ca08cfdc9578d1ee2ce400cb0b4a9881c490d8c592e"
+      },
+      {
+        "path": "behavior_pack/items/wet_plate.item.json",
+        "sha256": "d31a70faf762e97028659b318a097ebdaf7f351635be73c5731ee95465f14fd2"
+      },
+      {
+        "path": "resource_pack/textures/aionbound/crystal_marsh/components/prism_wing.png",
+        "sha256": "8317ebc12c30c5e439f6f2fa7457b92d6bb012673bc808317f7e3c10986561b8"
+      },
+      {
+        "path": "resource_pack/textures/aionbound/crystal_marsh/components/watcher_lens.png",
+        "sha256": "e25a614ea952c91c12b0aefdb057f471ac23b89af10cef4fac1a89c86f4e5bc4"
+      },
+      {
+        "path": "resource_pack/textures/aionbound/crystal_marsh/components/wight_shroud.png",
+        "sha256": "e972dc2cc2b62708303d978c17745796344554b07e68a2022cc62ff6b2b07b66"
+      },
+      {
+        "path": "resource_pack/textures/aionbound/crystal_marsh/components/crystal_pole.png",
+        "sha256": "b2dfdcd60614d85e86f25002ee0a87dbc02019fa61577b7e0fdabbce460cfbad"
+      },
+      {
+        "path": "resource_pack/textures/aionbound/crystal_marsh/components/living_crystal_core.png",
+        "sha256": "50f50b025d4e82bb60c982e1cc8e3d62ec394d7efb08a234037562e622b4d724"
+      },
+      {
+        "path": "resource_pack/textures/aionbound/crystal_marsh/components/wet_plate.png",
+        "sha256": "07fe6c8f867ad7ff543cb08c9366f93cf1dd04601115c5c6780ab2ed96682f30"
+      },
+      {
+        "path": "behavior_pack/scripts/crystal_equipment.js",
+        "sha256": "6496d4cf384f9694d861111effc87daa784cbc1f09e4c9b5ccfb402142039094"
+      },
+      {
+        "path": "behavior_pack/scripts/crystal_equipment_roles.js",
+        "sha256": "86b543922dcfda12655b406e6614a4b4b1bd36367eee9f5543883f0d00b3f6c1"
+      },
+      {
+        "path": "tests/wave1_crystal_equipment_roles.test.mjs",
+        "sha256": "4bc21b9570ab53ddd2740afd888b491bbcbf769c96cb340896c7e3fe94495446"
+      }
+    ],
+    "codex_progression_pearl_depths_persistence_and_shared_composition": [
+      {
+        "path": "engineering/authority/WAVE_1_ENGINEERING_DECISION_LEDGER.json",
+        "sha256": "b791c4b63d6ef09c2ac437fdc67065735a2363becad92b359cecb0a4e25c5172"
+      },
+      {
+        "path": "engineering/crystal-marsh-intake/authority/CRYSTAL_MARSH_VERTICAL_INTAKE_MAP.json",
+        "sha256": "521a1032470b28eeac34b23e7f268ba7b29c023a35d4bd454b157f4b8843e34f"
+      },
+      {
+        "path": "engineering/crystal-marsh-intake/codex/CRYSTAL_CODEX_PROGRESSION_INTAKE_MAP.json",
+        "sha256": "70c267baee593545cb35b88c3fa744ee21c02ec0c876b70ffdd9de50157baa91"
+      },
+      {
+        "path": "behavior_pack/scripts/wave1_codex_crystal_data.js",
+        "sha256": "de6224aa46d441d86a9bb11a500b16b959d16529231d4c7720112648d5f632c3"
+      },
+      {
+        "path": "behavior_pack/scripts/wave1_codex_data.js",
+        "sha256": "77a8cf65b15c77feff57af41d682e11ca534ec0a02767c97df7540687b439ecf"
+      },
+      {
+        "path": "behavior_pack/scripts/codex.js",
+        "sha256": "e9645b3bcb7e38c6ad858d6ba0d5a1f02939694d215791b73ecdc303dc1721a5"
+      },
+      {
+        "path": "behavior_pack/scripts/catalog.js",
+        "sha256": "5b9c78e7db653a4f3eead7ad53ba8299c6d6aa4a45703044193460dee456f02d"
+      },
+      {
+        "path": "behavior_pack/scripts/combat.js",
+        "sha256": "f4396165d16682edb3537fb18f59aa1f501c831acb1145d379cebc8488cce7bc"
+      },
+      {
+        "path": "behavior_pack/scripts/budgets.js",
+        "sha256": "42d0432bfcda4c6a736c625644a37e1ab3ca08db6d9d97b6dd32c9fee7cfa926"
+      },
+      {
+        "path": "behavior_pack/scripts/state.js",
+        "sha256": "9d208c01a6168b851f3724c909e5f9f2cd31f2539dbe5f218c870610843605ff"
+      },
+      {
+        "path": "behavior_pack/scripts/router.js",
+        "sha256": "6597e3c31299cd8987cd9c01addbab1660a2ecf2cc3789bfc79d69a8f7d31fef"
+      },
+      {
+        "path": "behavior_pack/scripts/runtime.js",
+        "sha256": "bf969ecde2c9a92e1b91c50d911781104770608a9e1f60dd94c3604accd7cefb"
+      },
+      {
+        "path": "behavior_pack/scripts/crystal_reward_data.js",
+        "sha256": "d0ff75a14baeb4085a9d2067d86dd8dcc471fec4f836f49482f0d8f7c1c33e9f"
+      },
+      {
+        "path": "behavior_pack/scripts/crystal_rewards.js",
+        "sha256": "d7aaee17dfdfe7e21477da811b413c925b3a96583c2117fe92a987e7e617e320"
+      },
+      {
+        "path": "behavior_pack/scripts/pearl_depths.js",
+        "sha256": "703a0d0053664a47e3e5dcd268f2c430cb9faa6607f148c03eb9a70c7183cfab"
+      },
+      {
+        "path": "tests/wave1_crystal_codex_rewards.test.mjs",
+        "sha256": "ef6d5ada84b1d0f13271f9116e17de488ecb02685a8ed5b404adf13a9e471557"
+      },
+      {
+        "path": "tests/wave1_pearl_depths.test.mjs",
+        "sha256": "03a5c93f55fdcb2de72be60292de898a493571924593f0d3daaa59caae71dac5"
+      }
+    ],
+    "shared_atlas_localization_and_block_registry": [
+      {
+        "path": "resource_pack/textures/item_texture.json",
+        "sha256": "5a429b5557e4710d8e75b0c1da1b7d3eff4b897f8faad307eefb2ffe367e3914"
+      },
+      {
+        "path": "resource_pack/textures/terrain_texture.json",
+        "sha256": "9ae1f2d5634e8e3a118e5d86442aad6b01ec65304ee6be75c4742610cf747dd3"
+      },
+      {
+        "path": "resource_pack/blocks.json",
+        "sha256": "e1e07fba9e181fce82cf9570763bf5192df9ecb23b781867c5427f6311296c5a"
+      },
+      {
+        "path": "resource_pack/texts/en_US.lang",
+        "sha256": "6386738fb423e2db4eca37b182a97793752e0ad5f7f7aa19f47207469ac24ea4"
+      }
+    ],
+    "native_editable_asset_aggregate_receipts": [
+      {
+        "path": "engineering/native-assets/crystal-marsh/representative/CRYSTAL_MARSH_REPRESENTATIVE_NATIVE_REPORT.json",
+        "sha256": "d84b8c5eca4f2ee065e20b3a4044d8b6d70e6f34eb5698dbec54b46bc4b9ce86"
+      },
+      {
+        "path": "engineering/native-assets/crystal-marsh/creatures/CRYSTAL_MARSH_CREATURE_NATIVE_REPORT.json",
+        "sha256": "04d32b5cb17f381f8fda8971cdb9865919fb3a4d804970afd6adfb0de6b732f4"
+      },
+      {
+        "path": "engineering/native-assets/crystal-marsh/plants/CRYSTAL_MARSH_PLANT_NATIVE_REPORT.json",
+        "sha256": "ac7b3472057bde906f239c835e84ebd20647d90e86db00574a4c70ca1690e5c9"
+      },
+      {
+        "path": "engineering/native-assets/crystal-marsh/equipment/CRYSTAL_EQUIPMENT_NATIVE_REPORT.json",
+        "sha256": "7d8a0ca6a4abcf65bc0501a58bd0aa76dcaf80c27eae36ff3ee4989126b507ff"
+      }
+    ]
+  },
+  "invariants": {
+    "persistence_schema": 4,
+    "natural_entity_target": 40,
+    "natural_crystal_ids": [
+      "aionbound:bloom_crab",
+      "aionbound:bog_watcher",
+      "aionbound:crystal_dragonfly",
+      "aionbound:crystal_newt",
+      "aionbound:glass_heron",
+      "aionbound:mire_turtle",
+      "aionbound:prism_frog",
+      "aionbound:reed_serpent",
+      "aionbound:silt_crocodile"
+    ],
+    "natural_spawn_exclusions": [
+      "aionbound:marsh_wight"
+    ],
+    "new_global_subscription_classes": 0,
+    "new_recurring_interval_classes": 0,
+    "protected_mask_owner": "PEARL_DEPTHS_TERMINAL_RECOVERY_ONLY",
+    "natural_marsh_wight_mask_drop": false,
+    "ashen_dormant_service_activation": false,
+    "w1_creative_005": "DEFERRED"
+  },
+  "pending_follow_up": {
+    "ashen_runtime_activation_ticket": "MANAGED_REVIEWER_ACTIVATION_BLOCKED_DEFERRED",
+    "creative": "W1-CREATIVE-005_DEFERRED",
+    "crystal_runtime_qualification": "DEFERRED_TO_FINAL_INTEGRATED_GATE"
+  },
+  "proof_boundary": "EXACT SOURCE PATH AND BYTE HASH CLOSURE WITH TARGETED LOCAL SEMANTIC AND MECHANICAL VALIDATION ONLY; NO BUILD, PACKAGE, BDS, CLIENT, MULTIPLAYER, CONSOLE, MARKETPLACE, RELEASE, OR PHYSICAL RUNTIME PROOF"
+}

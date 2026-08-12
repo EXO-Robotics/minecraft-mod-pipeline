@@ -334,6 +334,38 @@ class Wave1ValidatorTests(unittest.TestCase):
         self.assertEqual("W1-CREATIVE-005_DEFERRED", manifest["pending_follow_up"]["creative"])
         self.assertIn("NO BUILD, PACKAGE, BDS, CLIENT", manifest["proof_boundary"])
 
+    def test_repository_crystal_closure_manifest_is_deterministic_complete_and_narrow(self):
+        authority = json.loads((REPO / VALIDATOR.AUTHORITY_REL).read_text())
+        requirement = authority["additional_required_artifact_manifests"][0]
+        manifest_path = REPO / requirement["path"]
+        before = manifest_path.read_bytes()
+        subprocess.run(
+            ["python3", "engineering/validation/wave1/build_crystal_implemented_closure.py"],
+            cwd=REPO, check=True,
+        )
+        self.assertEqual(manifest_path.read_bytes(), before)
+        self.assertEqual(VALIDATOR.sha256(manifest_path), requirement["sha256"])
+        manifest = json.loads(before)
+        self.assertEqual({name: len(rows) for name, rows in manifest["groups"].items()}, {
+            "resources_and_full_cube_blocks": 44,
+            "plants_and_bounded_ecology": 52,
+            "creature_ai_client_motion_spawn_and_loot_binding": 80,
+            "structures_world_discovery_and_protected_cache_binding": 34,
+            "loot_crafting_and_acquisition_economy": 53,
+            "equipment_presentation_and_existing_handler_roles": 72,
+            "codex_progression_pearl_depths_persistence_and_shared_composition": 17,
+            "shared_atlas_localization_and_block_registry": 4,
+            "native_editable_asset_aggregate_receipts": 4,
+        })
+        paths = [row["path"] for rows in manifest["groups"].values() for row in rows]
+        self.assertEqual(360, len(paths))
+        self.assertEqual(len(paths), len(set(paths)))
+        self.assertEqual(4, manifest["invariants"]["persistence_schema"])
+        self.assertEqual(40, manifest["invariants"]["natural_entity_target"])
+        self.assertEqual(["aionbound:marsh_wight"], manifest["invariants"]["natural_spawn_exclusions"])
+        self.assertFalse(manifest["invariants"]["ashen_dormant_service_activation"])
+        self.assertIn("NO BUILD, PACKAGE, BDS, CLIENT", manifest["proof_boundary"])
+
     def test_repository_ashen_ids_and_growth_floors_cover_current_implementation(self):
         authority = json.loads((REPO / VALIDATOR.AUTHORITY_REL).read_text())
         required = {key: set(value) for key, value in authority["required_successor_ids"].items()}

@@ -142,6 +142,21 @@ class CrystalEconomyEquipmentTests(unittest.TestCase):
         author.author()
         self.assertEqual(before, {path: sha(path) for path in before})
 
+    def test_language_refresh_preserves_unrelated_later_vertical_order(self):
+        lines = [
+            "before=Before",
+            "item.aionbound:crystal_pike.name=Old Pike",
+            "item.aionbound:prism_wing.name=Old Wing",
+            "# BEGIN WAVE1 SKYREACH RESOURCE ITEMS",
+            "item.aionbound:sky_feather=Sky Feather",
+            "# END WAVE1 SKYREACH RESOURCE ITEMS",
+        ]
+        entries = ["item.aionbound:crystal_pike.name=Crystal Pike", "item.aionbound:prism_wing.name=Prism Wing"]
+        prefixes = ["item.aionbound:crystal_pike.name=", "item.aionbound:prism_wing.name="]
+        refreshed = author.replace_owned_language_entries(lines, entries, prefixes)
+        self.assertEqual(refreshed[:3], ["before=Before", *entries])
+        self.assertEqual(refreshed[3:], lines[3:])
+
 
 if __name__ == "__main__":
     unittest.main()
