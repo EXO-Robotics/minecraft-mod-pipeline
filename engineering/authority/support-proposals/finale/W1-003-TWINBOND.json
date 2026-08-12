@@ -1,0 +1,208 @@
+{
+  "approval_required": [
+    {
+      "decision_id": "W1-003-TWINBOND",
+      "question": "Ratify these four Creative phases with preserved entity balance, bounded timing, reset, multiplayer ownership, existing-schema persistence, and ignition-terminal semantics exactly as proposed?"
+    }
+  ],
+  "authority_effect": "NONE_UNTIL_RATIFIED_IN_REPLACEMENT_DECISION_LEDGER",
+  "proposal": {
+    "action_composition": {
+      "clock_start": "global and selected window cooldowns start after recovery",
+      "new_attack_names_or_effects": "FORBIDDEN",
+      "phase_specific_animation_requirement": "implementation may ship only after native assessment proves existing clips sufficient or a separately qualified repair supplies the bound phase presentation",
+      "serialization": "one telegraph-active-recovery sequence globally at a time; no overlapping double-dispatch"
+    },
+    "all_numeric_values_status": "PROPOSED_NOT_RATIFIED",
+    "arena": "authored_twinbond_slice_v1_structure_volume_and_exact_prepared_anchors",
+    "aspect_entities": [
+      "aionbound:ash_sovereign_wyrm",
+      "aionbound:tide_empress_wyrm"
+    ],
+    "balance_preservation": {
+      "damage_effect_radius_or_knockback_changes": "NOT_AUTHORIZED",
+      "entity_component_attack_damage_each": 8,
+      "entity_component_health_each": 160,
+      "multiplayer_health_scaling": false,
+      "reason": "preserve the current G8 entity-component balance values; propose only orchestration thresholds and timing"
+    },
+    "encounter_id": "aionbound:twinbond",
+    "explicit_nondecisions": {
+      "native_asset_pass": "NOT_CLAIMED",
+      "new_attack_identity_damage_radius_or_effect": "NOT_CREATED",
+      "new_global_subscription_or_scheduler": "FORBIDDEN",
+      "new_persistence_domain_or_schema": "FORBIDDEN"
+    },
+    "forbidden_inheritance": [
+      "aionbound:trophy_concord_scale",
+      "aionbound:finale_ignition_key",
+      "concord_sigil",
+      "concord_dueling_ring",
+      "ash_crownblade",
+      "empress_tide_lance"
+    ],
+    "multiplayer": {
+      "disconnect_grace_seconds": 60,
+      "health_scaling_snapshot": "none_health_values_preserved",
+      "late_join": "after 15 continuous seconds only during split_approach or concord_pressure while reward set has an open slot",
+      "late_join_after_relic_trial_begins": false,
+      "ownership": "per-player terminal entitlement for the immutable pull set plus admitted early-phase late joiners",
+      "participant_cap": 4,
+      "pull_eligibility": "unique players inside authored encounter volume continuously for 5 seconds at admission",
+      "targeting": "must not require one specific owner's damage or presence after admission",
+      "world_completion": "one durable world encounter completion shared by the valid terminal event"
+    },
+    "persistence": {
+      "active_fight": "not_persisted",
+      "durable_player_keys": [
+        "aionbound.player.twinbond.completed.v1",
+        "aionbound.player.twinbond.reward_entitled.v1",
+        "aionbound.player.twinbond.relic_claimed.v1",
+        "aionbound.player.twinbond.edge_ignited.v1",
+        "aionbound.player.twinbond.memory_claimed.v1",
+        "aionbound.player.twinbond.mastery_stamp.v1"
+      ],
+      "durable_world_key": "aionbound.encounter.twinbond.completed.v1",
+      "schema": "existing_G8_schema_only_no_new_domain",
+      "writes": "idempotent booleans or existing-schema cache fields only"
+    },
+    "phase_thresholds": {
+      "concord_pressure_exit": "both aspects at or below 0.40 health fraction",
+      "individual_aspect_death_before_terminal": "FORBIDDEN",
+      "relic_trial": "at the paired 0.40 threshold both aspects become non-terminal and damage-immune until the trial resolves or resets",
+      "split_approach_exit": "both aspects at or below 0.70 health fraction",
+      "threshold_hold": "an aspect reaching the current phase floor cannot lose further health until the other aspect reaches the same floor"
+    },
+    "phases": [
+      {
+        "execution": "serialize one existing authored aspect action window at a time; alternate eligible aspect when both can act",
+        "health_gate": "start_until_both_aspects_le_0.70",
+        "id": "split_approach",
+        "new_attack_identity": false
+      },
+      {
+        "execution": "one telegraphed paired action window followed by full recovery; uses only each aspect's existing approved action repertoire",
+        "health_gate": "both_le_0.70_until_both_le_0.40",
+        "id": "concord_pressure",
+        "new_attack_identity": false
+      },
+      {
+        "damage_resets_channel": false,
+        "execution": "at least one eligible participant remains in the authored center relic-focus volume for 12 continuous seconds while the two aspects continue serialized pressure",
+        "health_gate": "both_held_at_0.40",
+        "id": "relic_trial"
+      },
+      {
+        "combat_damage": false,
+        "execution": "freeze combat, run one 5-second terminal ignition window, then commit the ordered terminal transition",
+        "health_gate": "relic_trial_complete",
+        "id": "finale_ignition"
+      }
+    ],
+    "reset": {
+      "action": "remove session aspects and transient relic-trial state; restore authored arena state; retain no reward or completion write",
+      "all_eligible_dead_or_outside_grace_seconds": 15,
+      "leash_boundary": "authored structure volume only; no invented radius",
+      "no_eligible_participant_grace_seconds": 30,
+      "one_aspect_outside_grace_seconds": 10,
+      "persistent_world_block_mutation": false,
+      "relic_channel_no_presence_reset_seconds": 2,
+      "restart_or_reconcile": "an active non-terminal fight reopens as unpulled after cleanup; durable completed/reward recovery state remains authoritative"
+    },
+    "terminal_semantics": {
+      "individual_aspect_death_or_command_kill_completes": false,
+      "ordered_transition": [
+        "write synchronous terminal lock for encounter session",
+        "write durable world Twinbond completion once",
+        "write per-player completion and reward entitlement once for each eligible terminal participant",
+        "write Concord Spark abstract transition and Trophy Edge ignition state once",
+        "run W1-004-TWINBOND bounded fulfillment or retain recovery entitlement",
+        "remove encounter entities and transient state without death-loot dispatch"
+      ],
+      "repeat_or_recovery_entry": "a completed encounter never falls through to a new pull while any eligible player has unfulfilled terminal entitlement",
+      "sole_valid_terminal": "active admitted session reaches relic_trial completion and then completes the 5-second finale_ignition window"
+    },
+    "timing_seconds": {
+      "concord_paired_window": {
+        "active": [
+          0.8,
+          1.6
+        ],
+        "cooldown": [
+          9.0,
+          13.0
+        ],
+        "recovery": [
+          1.2,
+          1.8
+        ],
+        "telegraph": [
+          1.6,
+          2.2
+        ]
+      },
+      "finale_ignition": 5.0,
+      "global_action_cooldown": [
+        3.0,
+        4.5
+      ],
+      "relic_trial_absence_reset": 2.0,
+      "relic_trial_channel_required": 12.0,
+      "split_single_aspect_window": {
+        "active": [
+          0.6,
+          1.2
+        ],
+        "cooldown": [
+          6.0,
+          9.0
+        ],
+        "recovery": [
+          1.0,
+          1.5
+        ],
+        "telegraph": [
+          1.2,
+          1.8
+        ]
+      }
+    }
+  },
+  "schema_version": 1,
+  "scope_guard": {
+    "candidate_or_runtime_proof_claimed": false,
+    "creative_source_mutation": false,
+    "decision_ledger_mutation": false,
+    "native_asset_work_authorized": false,
+    "pack_or_runtime_mutation_authorized": false,
+    "region": "Wave 1 finale/Twinbond only",
+    "scope_broadening": false,
+    "w1_creative_005_status": "DEFERRED_UNCHANGED"
+  },
+  "source_bindings": [
+    {
+      "path": "engineering/authority/WAVE_1_ENGINEERING_DECISION_LEDGER.json",
+      "sha256": "b791c4b63d6ef09c2ac437fdc67065735a2363becad92b359cecb0a4e25c5172"
+    },
+    {
+      "path": "engineering/authority/twinbond/TWINBOND_EXISTING_AUTHORITY_AUDIT.json",
+      "sha256": "5af5125dea93bf488dcdcd1ce5939117329cfa803854fc8f3396638782416ebf"
+    },
+    {
+      "path": "program/crazycraft-pack-production-v1/studio-prep/creative/WAVE_1_LIVING_WORLD_IMPLEMENTATION_CONTRACT.md",
+      "sha256": "3116c217e06afe1fd0cd56ee742c537f948a4c91193ec831fd1b3ec362837bfc"
+    },
+    {
+      "path": "program/crazycraft-pack-production-v1/studio-prep/creative/07_bosses/BOSS_PROGRESSION.md",
+      "sha256": "5ef85e1e0b29973a617f7dca4a8b119443c01644ba33f0e11166ef8d417d5a6f"
+    },
+    {
+      "path": "program/crazycraft-pack-production-v1/studio-prep/creative/01_progression/PLAYER_JOURNEY.md",
+      "sha256": "42ba75d9518977c71397826aa9f4daa3864df942019c809b04830fef654a1fa7"
+    }
+  ],
+  "source_commit": "1b8d35fe47906f376196ad5f049d1595e3366f27",
+  "source_tree": "83d67bd95cb5c0f067be7876967c32ca881dcdd0",
+  "status": "PROPOSED_NOT_RATIFIED",
+  "ticket_id": "W1-003-TWINBOND"
+}

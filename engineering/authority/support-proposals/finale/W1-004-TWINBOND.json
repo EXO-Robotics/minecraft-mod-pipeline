@@ -1,0 +1,144 @@
+{
+  "approval_required": [
+    {
+      "decision_id": "W1-004-TWINBOND",
+      "question": "Ratify the guaranteed once-per-player Twinbond Relic/Edge/Memory package, optional non-item mastery stamp, full-inventory recovery, and no-repeat-final-reward semantics exactly as proposed?"
+    }
+  ],
+  "authority_effect": "NONE_UNTIL_RATIFIED_IN_REPLACEMENT_DECISION_LEDGER",
+  "proposal": {
+    "durable_guards": {
+      "per_player_edge_ignited": "aionbound.player.twinbond.edge_ignited.v1",
+      "per_player_entitled": "aionbound.player.twinbond.reward_entitled.v1",
+      "per_player_mastery_stamp": "aionbound.player.twinbond.mastery_stamp.v1",
+      "per_player_memory_claimed": "aionbound.player.twinbond.memory_claimed.v1",
+      "per_player_relic_claimed": "aionbound.player.twinbond.relic_claimed.v1",
+      "schema": "existing_G8_schema_only_no_new_domain",
+      "world_completed": "aionbound.encounter.twinbond.completed.v1"
+    },
+    "explicit_nondecisions": {
+      "new_UI_subscription_or_scheduler": "FORBIDDEN",
+      "new_loot_probability_for_existing_materials": "NOT_CREATED",
+      "new_persistence_domain_or_schema": "FORBIDDEN",
+      "new_reward_identity": "NOT_CREATED",
+      "runtime_or_BDS_proof": "NOT_CLAIMED"
+    },
+    "first_eligible_clear_package": {
+      "concord_spark": {
+        "inventory_quantity": 0,
+        "result": "durable_abstract_transition_state_once_per_eligible_player"
+      },
+      "mastery_stamp": {
+        "chance": 1.0,
+        "inventory_quantity": 0,
+        "progression_required": false,
+        "result": "optional_durable_Codex_mastery_stamp"
+      },
+      "memory_completion": {
+        "chance_per_missing_chapter_curiosity_credit": 1.0,
+        "combined_item": "aionbound:memory_of_four_lands_once_when_all_four_credits_are_present",
+        "maximum_missing_credits": 4,
+        "quantity_per_missing_chapter": 1
+      },
+      "random_material_or_catalyst_package": "NONE_CREATED_BY_THIS_PROPOSAL",
+      "trophy_edge_ignition": {
+        "chance": 1.0,
+        "result": "durable_per_player_ignition_credit_and_full_Trophy_Edge_fulfillment_or_recovery"
+      },
+      "twinbond_relic": {
+        "chance": 1.0,
+        "id": "aionbound:twinbond_relic",
+        "ownership": "once_per_eligible_player",
+        "quantity": 1
+      }
+    },
+    "forbidden_inheritance": [
+      "aionbound:trophy_concord_scale",
+      "aionbound:finale_ignition_key",
+      "concord_sigil",
+      "concord_dueling_ring",
+      "ash_crownblade",
+      "empress_tide_lance"
+    ],
+    "global_envelope_relationship": {
+      "critical_finale_rewards": "guaranteed narrative package above; no probability tuning permitted",
+      "finale_is_not_a_repeat_grind": true,
+      "future_optional_existing_identity_material_chest": "may use only the already-ratified W1-CREATIVE-004 C/U/R/E/Q bands and remains noncritical",
+      "new_loot_identity": false
+    },
+    "ordered_idempotent_fulfillment": [
+      "require W1-003 terminal lock and durable world completion",
+      "write each eligible player's completion and reward entitlement once",
+      "write Concord Spark transition and Trophy Edge ignition credit once",
+      "write missing chapter-curiosity credits without duplicating existing credits",
+      "write optional non-inventory mastery stamp once",
+      "preflight inventory capacity independently for Twinbond Relic, full Trophy Edge, and combined Memory item",
+      "for each physical item with capacity, write its claimed flag before one delivery attempt",
+      "for each physical item without capacity, retain entitlement and unclaimed state for recovery"
+    ],
+    "recovery": {
+      "available_when": "durable completion and per-player entitlement are true and at least one physical fulfillment remains unclaimed",
+      "crash_boundary": "claimed-before-delivery retains at-most-once physical delivery while durable progression and entitlement remain exactly-once/idempotent",
+      "full_inventory": "remain in recovery; do not write claimed; do not consume entitlement; do not fall through to new encounter admission",
+      "hook": "existing_twinbond_obelisk_or_completion_anchor_block_interaction_path_only",
+      "new_UI_or_subscription": false,
+      "preclear_lock": "synchronous terminal/admission lock remains authoritative until all terminal writes complete",
+      "restart": "durable completion and entitlement reopen recovery; never replay terminal combat or duplicate a claimed item"
+    },
+    "repeat_clear": {
+      "duplicate_mastery_stamp": false,
+      "duplicate_memory_credit_or_combined_item": false,
+      "duplicate_trophy_edge_ignition": false,
+      "duplicate_twinbond_relic": false,
+      "new_encounter_after_durable_completion": false,
+      "post_clear_mastery_loops": "outside this encounter and optional; they never gate campaign completion"
+    },
+    "selection_rule": "Bind only already-approved finale identities to guaranteed first-clear entitlements and idempotent recovery; create no new loot identity or grind loop.",
+    "valid_source": "W1-003-TWINBOND_valid_finale_ignition_terminal_only"
+  },
+  "schema_version": 1,
+  "scope_guard": {
+    "candidate_or_runtime_proof_claimed": false,
+    "creative_source_mutation": false,
+    "decision_ledger_mutation": false,
+    "native_asset_work_authorized": false,
+    "pack_or_runtime_mutation_authorized": false,
+    "region": "Wave 1 finale/Twinbond only",
+    "scope_broadening": false,
+    "w1_creative_005_status": "DEFERRED_UNCHANGED"
+  },
+  "source_bindings": [
+    {
+      "path": "engineering/authority/WAVE_1_ENGINEERING_DECISION_LEDGER.json",
+      "sha256": "b791c4b63d6ef09c2ac437fdc67065735a2363becad92b359cecb0a4e25c5172"
+    },
+    {
+      "path": "engineering/authority/twinbond/TWINBOND_EXISTING_AUTHORITY_AUDIT.json",
+      "sha256": "5af5125dea93bf488dcdcd1ce5939117329cfa803854fc8f3396638782416ebf"
+    },
+    {
+      "path": "engineering/authority/support-proposals/W1-CREATIVE-004/loot_envelope_proposal.json",
+      "sha256": "4412b24ad680a30e5548c731f8acba94e8fd858e4bb94f701a16eb17141f5ab7"
+    },
+    {
+      "path": "program/crazycraft-pack-production-v1/studio-prep/creative/02_loot/LOOT_BOSSES.md",
+      "sha256": "4d80925a113bb0cca67e2405047cd228a2df2ccd2c680e1e51ccd04b6f2d63d8"
+    },
+    {
+      "path": "program/crazycraft-pack-production-v1/studio-prep/creative/02_loot/LOOT_SYSTEM.md",
+      "sha256": "6655eae0a65ed103a212f4b61d0f5c9352ddde871165b7bab9dbe014cfaaa8db"
+    },
+    {
+      "path": "program/crazycraft-pack-production-v1/studio-prep/creative/03_crafting/CRAFTING_TREE.md",
+      "sha256": "1f3482ba3dd9f916e08aa544153cc841871a729a2e82d9e75601715f4b5ee807"
+    },
+    {
+      "path": "program/crazycraft-pack-production-v1/studio-prep/creative/01_progression/PLAYER_JOURNEY.md",
+      "sha256": "42ba75d9518977c71397826aa9f4daa3864df942019c809b04830fef654a1fa7"
+    }
+  ],
+  "source_commit": "1b8d35fe47906f376196ad5f049d1595e3366f27",
+  "source_tree": "83d67bd95cb5c0f067be7876967c32ca881dcdd0",
+  "status": "PROPOSED_NOT_RATIFIED",
+  "ticket_id": "W1-004-TWINBOND"
+}
