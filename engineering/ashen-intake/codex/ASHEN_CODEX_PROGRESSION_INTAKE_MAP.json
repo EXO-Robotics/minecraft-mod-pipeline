@@ -3,12 +3,12 @@
     {
       "path": "engineering/ashen-intake/authority/ASHEN_HIGHLANDS_VERTICAL_INTAKE_MAP.json",
       "role": "exact 50-ID authority and blocker partition",
-      "sha256": "2fafe932da68e27f5ad3a67d081ff991f6b7675d57148b83fe9f6c4489db8bab"
+      "sha256": "b258418c47f7a97970d8f36b18381f31859dc83836bd39968deff3681b48a5d6"
     },
     {
       "path": "engineering/ashen-intake/runtime-map/ASHEN_RUNTIME_IMPLEMENTATION_MAP.json",
       "role": "G7/Whisperwood reuse and ownership map",
-      "sha256": "a54dbe5c440d128c75b2d30cd0db5927c850f9355f0baeba7dc5dbebb120ec52"
+      "sha256": "702af744ffa2b7c3cd34f4fdeb049e9598f43f387cd7c7eebb5b540ec095f248"
     },
     {
       "path": "engineering/whisperwood-intake/codex-extension/WHISPERWOOD_CODEX_EXTENSION_MAP.json",
@@ -18,12 +18,12 @@
     {
       "path": "behavior_pack/scripts/wave1_codex_data.js",
       "role": "current registry v2 implementation",
-      "sha256": "4507b12f204fc0c7eb8c04951fb1b02ae478beb3a92711ab90799feb76016a21"
+      "sha256": "66832f70ded4c3178af240a4ae3b9d08ecec6054e8fdada8b3d34ee3e2ea9963"
     },
     {
       "path": "behavior_pack/scripts/state.js",
       "role": "current schema v4 compact discovery implementation",
-      "sha256": "d40710101a34dc30f858ebde9f65c120cf698e1eb88c2b98511b35946a4cfa12"
+      "sha256": "ddac6421e9a2eea0e6da2746077f0a6ecb12e4607ab6240c3c2ba797a0d00461"
     },
     {
       "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-002-ashen-highlands/MANIFEST_FULL.json",
@@ -52,7 +52,7 @@
     },
     {
       "path": "program/crazycraft-pack-production-v1/studio-prep/creative/02_loot/LOOT_ASHEN.md",
-      "role": "loot identities and purposes, but not ratified final values",
+      "role": "loot identities and purposes, with values bounded by ratified W1-004-AH",
       "sha256": "f5b2ff909a6e7b7669da561cc2659439819227f99d15d221dbea0147750d3727"
     },
     {
@@ -86,9 +86,24 @@
       "sha256": "fd07694eee0c8d478b44363e822e0116f4ca09c92775661350ed8468342b01bf"
     },
     {
+      "path": "engineering/authority/support-proposals/ashen/W1-001-AH.json",
+      "role": "ratified refined Ashen identity dispositions",
+      "sha256": "dd26a683f7f3e5301b66d7f2861454b5bf6b79818d12e0e8e1b22b6f07217774"
+    },
+    {
+      "path": "engineering/authority/support-proposals/ashen/W1-003-KILN-SKY.json",
+      "role": "ratified refined Kiln Sky encounter envelope",
+      "sha256": "1b2d5f77185a1461040d7559d0d8ecdaf803d7727e419ceac32636865be85d7c"
+    },
+    {
+      "path": "engineering/authority/support-proposals/ashen/W1-004-AH.json",
+      "role": "ratified refined Ashen loot and reward envelope",
+      "sha256": "93736ff800b1c90c8a6547d84336a6650f8ae32750f262de8e460385a7a26889"
+    },
+    {
       "path": "engineering/authority/WAVE_1_ENGINEERING_DECISION_LEDGER.json",
       "role": "ratified and deferred engineering decision state",
-      "sha256": "3e2b64785da9310b098e06981ebc95777ddc7e5d2666f803b79ce374470a9561"
+      "sha256": "b791c4b63d6ef09c2ac437fdc67065735a2363becad92b359cecb0a4e25c5172"
     }
   ],
   "base": {

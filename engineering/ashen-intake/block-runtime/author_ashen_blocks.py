@@ -179,10 +179,17 @@ def main() -> None:
         shipping_texture.parent.mkdir(parents=True, exist_ok=True)
         shutil.copyfile(source_texture, shipping_texture)
 
-        write_json(
-            ROOT / f"behavior_pack/blocks/{asset_id}.block.json",
-            block_definition(asset_id, spec),
-        )
+        block_path = ROOT / f"behavior_pack/blocks/{asset_id}.block.json"
+        authored_block = block_definition(asset_id, spec)
+        if block_path.is_file():
+            existing_block = json.loads(block_path.read_text(encoding="utf-8"))
+            existing_components = existing_block.get("minecraft:block", {}).get(
+                "components", {}
+            )
+            authored_components = authored_block["minecraft:block"]["components"]
+            for component, value in existing_components.items():
+                authored_components.setdefault(component, value)
+        write_json(block_path, authored_block)
         terrain["texture_data"][asset_id] = {
             "textures": f"textures/aionbound/ashen/blocks/{asset_id}"
         }
@@ -195,16 +202,18 @@ def main() -> None:
 
     write_json(terrain_path, terrain)
     write_json(blocks_registry_path, blocks_registry)
-    retained = [
-        line
-        for line in language_lines
-        if not (
-            "=" in line and line.split("=", 1)[0] in {
-                f"tile.aionbound:{asset_id}.name" for asset_id in ASSETS
-            }
-        )
-    ]
-    retained.extend(language[f"tile.aionbound:{asset_id}.name"] for asset_id in ASSETS)
+    target_keys = {f"tile.aionbound:{asset_id}.name" for asset_id in ASSETS}
+    retained = []
+    emitted = set()
+    for line in language_lines:
+        key = line.split("=", 1)[0] if "=" in line else None
+        if key in target_keys:
+            if key not in emitted:
+                retained.append(language[key])
+                emitted.add(key)
+        else:
+            retained.append(line)
+    retained.extend(language[key] for key in sorted(target_keys - emitted))
     lang_path.write_text("\n".join(retained) + "\n", encoding="utf-8")
 
     authority = {

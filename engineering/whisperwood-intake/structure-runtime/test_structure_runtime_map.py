@@ -49,7 +49,7 @@ class StructureRuntimeMapTests(unittest.TestCase):
             self.assertIn("W1-CREATIVE-004_FINAL_LOOT_VALUES", asset["historical_planning_disposition"]["blockers"])
             current = asset["current_integration"]
             self.assertEqual(current["status"], "INTEGRATED_SOURCE_BYTES_PRESENT_STATIC_ONLY")
-            self.assertEqual(current["ratified_dependencies"]["W1-CREATIVE-004"], "WHISPERWOOD_CHAPTER_1_RATIFIED_LATER_REGIONS_DEFERRED")
+            self.assertEqual(current["ratified_dependencies"]["W1-CREATIVE-004"], "WHISPERWOOD_ASHEN_AND_CRYSTAL_RATIFIED_SKY_AND_FINALE_DEFERRED")
             self.assertNotIn("WITHHELD", current["status"])
             self.assertNotIn("UNRESOLVED", json.dumps(current))
 

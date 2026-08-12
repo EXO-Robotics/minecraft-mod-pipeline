@@ -68,6 +68,18 @@ def load(path: Path):
     return json.loads(path.read_text(encoding="utf-8"))
 
 
+def boss_identity_names(runtime: dict) -> tuple[list[str], list[str]]:
+    phases = runtime["boss_boundary"].get("phases", [])
+    phase_names = [row["id"].replace("_", " ").title() for row in phases]
+    attack_names = []
+    for phase in phases:
+        for attack in phase.get("available_attacks", []):
+            display = attack.replace("_", " ").title()
+            if display not in attack_names:
+                attack_names.append(display)
+    return phase_names, attack_names
+
+
 def event(event_id: str, action: str, stage: str = "complete", authority: str = "SAFE_NOW", blockers=None, note=None):
     row = {"id": event_id, "action": action, "stage": stage, "authority": authority}
     if blockers:
@@ -178,6 +190,7 @@ def equipment_entry(item_id: str, category_index: int | None, existing_ww_index:
 def build() -> dict:
     authority = load(AUTHORITY_PATH)
     runtime = load(RUNTIME_PATH)
+    phase_names, attack_names = boss_identity_names(runtime)
     ww = load(WW_EXTENSION_PATH)
     assets = {asset["warehouse_id"]: asset for asset in authority["assets"]}
 
@@ -291,8 +304,8 @@ def build() -> dict:
             "structure_runtime_id": "aionbound:ember_forge",
             "seal_runtime_id": "aionbound:ash_drake_horn",
             "secondary_trophy_runtime_id": "aionbound:ember_forge_core",
-            "phase_names": runtime["boss_boundary"]["phase_names"],
-            "attack_names": runtime["boss_boundary"]["attack_names"],
+            "phase_names": phase_names,
+            "attack_names": attack_names,
             "identity_data_authority": "SAFE_NOW",
             "events": [
                 event("codex:ah:boss:kiln_sky:encountered", "valid_kiln_sky_pull", "partial", "WITHHELD", ["W1-CREATIVE-003-KILN-SKY"]),

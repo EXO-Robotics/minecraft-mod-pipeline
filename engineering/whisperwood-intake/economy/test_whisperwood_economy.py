@@ -29,8 +29,10 @@ class WhisperwoodEconomyTests(unittest.TestCase):
             item = load(ROOT / "behavior_pack/items" / f"{item_id}.item.json")["minecraft:item"]
             self.assertEqual(f"aionbound:{item_id}", item["description"]["identifier"])
             self.assertEqual(item_id, item["components"]["minecraft:icon"]["textures"]["default"])
-        for forbidden in ("drake_scale", "prism_wing", "watcher_lens", "wight_shroud", "wing_bone_stay"):
-            self.assertFalse((ROOT / "behavior_pack/items" / f"{forbidden}.item.json").exists())
+        for later_region in ("drake_scale", "prism_wing", "watcher_lens", "wight_shroud"):
+            item = load(ROOT / "behavior_pack/items" / f"{later_region}.item.json")["minecraft:item"]
+            self.assertEqual(f"aionbound:{later_region}", item["description"]["identifier"])
+        self.assertFalse((ROOT / "behavior_pack/items/wing_bone_stay.item.json").exists())
 
     def test_exact_twenty_six_recipe_graph_and_optional_mastery(self):
         self.assertEqual(26, len(author.RECIPES))

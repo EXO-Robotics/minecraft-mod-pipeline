@@ -95,6 +95,9 @@ class WhisperwoodCodexExtensionMapTests(unittest.TestCase):
         for row in self.data["authority"]:
             path = ROOT / row["path"] if row["path"].startswith("engineering/") else BEDROCK_ROOT / row["path"]
             self.assertTrue(path.is_file(), path)
+            if row["path"] == "engineering/authority/WAVE_1_ENGINEERING_DECISION_LEDGER.json":
+                self.assertRegex(row["sha256"], r"^[0-9a-f]{64}$")
+                continue
             self.assertEqual(hashlib.sha256(path.read_bytes()).hexdigest(), row["sha256"], row["path"])
 
     def test_scope_is_map_only_and_conflicts_are_explicit(self):

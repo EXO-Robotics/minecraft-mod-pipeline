@@ -27,7 +27,7 @@ EXPECTED_AUTHORITY_HASHES = {
     "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-002-ashen-highlands/MANIFEST_FULL.json": "6cb3bd25a1ef473e60e5ed0ebf78288bcc4d53db1ff4ec74db4d22ddb036c738",
     "program/crazycraft-pack-production-v1/studio-prep/creative/WAVE_1_LIVING_WORLD_IMPLEMENTATION_CONTRACT.json": "aa1f54df10d27d5c5675aae843ffe0d2946123d12a6509f7f021408bcdde9fb5",
     "program/crazycraft-pack-production-v1/studio-prep/creative/WAVE_1_LIVING_WORLD_IMPLEMENTATION_CONTRACT.md": "3116c217e06afe1fd0cd56ee742c537f948a4c91193ec831fd1b3ec362837bfc",
-    "engineering/authority/WAVE_1_ENGINEERING_DECISION_LEDGER.json": "b554db9fab3fe16e59e2e3b36dfc310ff462078b170f14e1f9fe8a46999bbd0c",
+    "engineering/authority/WAVE_1_ENGINEERING_DECISION_LEDGER.json": "b791c4b63d6ef09c2ac437fdc67065735a2363becad92b359cecb0a4e25c5172",
     "engineering/authority/support-proposals/ashen/W1-001-AH.json": "dd26a683f7f3e5301b66d7f2861454b5bf6b79818d12e0e8e1b22b6f07217774",
     "engineering/authority/support-proposals/ashen/W1-003-KILN-SKY.json": "1b2d5f77185a1461040d7559d0d8ecdaf803d7727e419ceac32636865be85d7c",
     "engineering/authority/support-proposals/ashen/W1-004-AH.json": "93736ff800b1c90c8a6547d84336a6650f8ae32750f262de8e460385a7a26889",

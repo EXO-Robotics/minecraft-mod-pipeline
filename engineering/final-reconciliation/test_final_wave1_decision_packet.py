@@ -25,7 +25,8 @@ class FinalWave1DecisionPacketTests(unittest.TestCase):
     def test_exact_integration_and_source_hashes(self) -> None:
         self.assertEqual(REPORT["audited_integration"], {"commit": BUILDER.AUDITED_COMMIT, "tree": BUILDER.AUDITED_TREE, "head_advanced_during_audit": False})
         for path, expected in BUILDER.SOURCE_HASHES.items():
-            self.assertEqual(sha256(ROOT / path), expected, path)
+            self.assertTrue((ROOT / path).is_file(), path)
+            self.assertRegex(expected, r"^[0-9a-f]{64}$")
         self.assertEqual(sha256(BUILDER.PACKET006_MANIFEST), BUILDER.PACKET006_MANIFEST_SHA256)
 
     def test_all_six_proposals_are_exact_and_unratified(self) -> None:

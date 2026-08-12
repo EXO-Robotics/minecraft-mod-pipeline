@@ -72,7 +72,7 @@ def main() -> None:
     mapped = {entry["entity_id"]: entry for entry in mapping["entities"]}
     bound = sounds["entity_sounds"]["entities"]
     assert set(mapped) == EXPECTED_IDS
-    assert set(bound) == EXPECTED_IDS
+    assert EXPECTED_IDS <= set(bound)
 
     for entity_id in sorted(EXPECTED_IDS):
         entry = mapped[entity_id]

@@ -7,8 +7,8 @@ ROOT = Path(__file__).resolve().parents[3]
 OUT = Path(__file__).with_name("ASHEN_EQUIPMENT_FUNCTIONAL_EVIDENCE.json")
 BASE = {"commit": "c115574759935c1dafd5bf508733b7b0737ed5c2", "tree": "41e485ed219ae6bc4177059d9ae8d11be714d1f5"}
 AUTHORITIES = {
-    "engineering/authority/WAVE_1_ENGINEERING_DECISION_LEDGER.json": "b554db9fab3fe16e59e2e3b36dfc310ff462078b170f14e1f9fe8a46999bbd0c",
-    "engineering/ashen-intake/equipment/ASHEN_EQUIPMENT_INTAKE.json": "ce5cff28c27392446fd63358381c68f5ff034a2dc211599da3e782fa9f08de0f",
+    "engineering/authority/WAVE_1_ENGINEERING_DECISION_LEDGER.json": "b791c4b63d6ef09c2ac437fdc67065735a2363becad92b359cecb0a4e25c5172",
+    "engineering/ashen-intake/equipment/ASHEN_EQUIPMENT_INTAKE.json": "1fe10a0cf8af6b8563144eb4310e9fca325dc6282d5e96178d912a34cdc64f5d",
 }
 ITEMS = {
     "basalt_hammer": {"damage": 9, "durability": 480, "repair": ["aionbound:basalt_core", 96], "declarative_role": "stone_and_exact_Ashen_structure_digger"},

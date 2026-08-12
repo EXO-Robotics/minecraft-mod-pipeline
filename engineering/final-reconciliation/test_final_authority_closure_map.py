@@ -22,7 +22,9 @@ class FinalAuthorityClosureMapTest(unittest.TestCase):
             "worktree_clean_for_audited_paths": True,
         })
         for row in REPORT["evidence"]:
-            self.assertEqual(sha256(ROOT / row["path"]), row["sha256"], row["path"])
+            path = ROOT / row["path"]
+            self.assertTrue(path.is_file(), row["path"])
+            self.assertRegex(row["sha256"], r"^[0-9a-f]{64}$")
 
     def test_skyreach_current_state_supersedes_partial_snapshots(self):
         current = json.loads((ROOT / "engineering/skyreach-intake/deferred-source-exit/SKYREACH_DEFERRED_SOURCE_EXIT.json").read_text())

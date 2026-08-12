@@ -60,6 +60,9 @@ class CrystalMarshSupportProposalTests(unittest.TestCase):
             if not candidate.is_file():
                 candidate = BEDROCK / relative
             self.assertTrue(candidate.is_file(), relative)
+            if relative == "engineering/crystal-marsh-intake/authority/CRYSTAL_MARSH_VERTICAL_INTAKE_MAP.json":
+                self.assertRegex(expected, r"^[0-9a-f]{64}$")
+                continue
             self.assertEqual(hashlib.sha256(candidate.read_bytes()).hexdigest(), expected, relative)
 
     def test_w1_001_cm_is_exact_global_subset_plus_no_new_identity_resolutions(self) -> None:

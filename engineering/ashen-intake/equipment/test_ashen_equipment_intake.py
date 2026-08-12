@@ -128,13 +128,14 @@ class AshenEquipmentIntakeTest(unittest.TestCase):
             texture_path = bbmodel["textures"][0]["path"]
             self.assertTrue(Path(texture_path).is_absolute(), asset_id)
 
-    def test_exact_runtime_collision_is_only_existing_briar_ring(self) -> None:
-        absent = set(self.data["collision_and_reuse"]["exact_runtime_id_scan"]["new_identities_absent"])
-        self.assertEqual(absent, set(self.by_id) - {"briar_ring"})
-        for asset_id in absent:
-            self.assertFalse((REPO / f"behavior_pack/items/{asset_id}.item.json").exists(), asset_id)
-            self.assertFalse((REPO / f"behavior_pack/blocks/{asset_id}.block.json").exists(), asset_id)
-            self.assertFalse((REPO / f"resource_pack/attachables/{asset_id}.attachable.json").exists(), asset_id)
+    def test_historical_runtime_scan_is_preserved_and_successor_ids_are_now_bound(self) -> None:
+        historically_absent = set(self.data["collision_and_reuse"]["exact_runtime_id_scan"]["new_identities_absent"])
+        self.assertEqual(historically_absent, set(self.by_id) - {"briar_ring"})
+        for asset_id in historically_absent:
+            item = REPO / f"behavior_pack/items/{asset_id}.item.json"
+            block = REPO / f"behavior_pack/blocks/{asset_id}.block.json"
+            self.assertNotEqual(item.exists(), block.exists(), asset_id)
+            self.assertTrue((REPO / f"resource_pack/attachables/{asset_id}.attachable.json").exists(), asset_id)
         briar = self.data["collision_and_reuse"]["whisperwood_briar_ring"]
         self.assertEqual(briar["classification"], "KEEP_EXISTING_BASE_REUSE_ONLY")
         for row in briar["existing_files"]:
