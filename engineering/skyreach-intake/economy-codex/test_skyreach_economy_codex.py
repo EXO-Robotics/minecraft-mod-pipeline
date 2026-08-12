@@ -52,6 +52,13 @@ class SkyreachEconomyCodexTest(unittest.TestCase):
     def test_generated_files_current(self):
         subprocess.run(["python3", str(HERE / "build_skyreach_economy_codex.py"), "--check"], check=True)
 
+    def test_runtime_data_is_identity_only(self):
+        source = (HERE.parents[2] / "behavior_pack/scripts/wave1_codex_skyreach_data.js").read_text()
+        self.assertEqual(50, source.count('"region": "sr"'))
+        payload = source.split("export const", 1)[1].lower()
+        for forbidden in ("storm_nest:completed", "seal_credit", '"reward"', '"sidegrade"'):
+            self.assertNotIn(forbidden, payload)
+
 
 if __name__ == "__main__":
     unittest.main()

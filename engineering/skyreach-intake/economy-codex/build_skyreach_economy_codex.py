@@ -18,6 +18,7 @@ CRYSTAL_CODEX = ROOT / "behavior_pack/scripts/wave1_codex_crystal_data.js"
 STATE = ROOT / "behavior_pack/scripts/state.js"
 OUTPUT_JSON = HERE / "SKYREACH_ECONOMY_CODEX_SCAFFOLD.json"
 OUTPUT_MD = HERE / "SKYREACH_ECONOMY_CODEX_SCAFFOLD.md"
+OUTPUT_JS = ROOT / "behavior_pack/scripts/wave1_codex_skyreach_data.js"
 
 BASE_COMMIT = "10e60dfb4ae95996286d455473612b58c234ec9b"
 BASE_TREE = "57088d0df2e3ccdf4a8e463ee09d3d6fbe7bd4bf"
@@ -156,6 +157,32 @@ def markdown(data: dict) -> str:
     return "\n".join(lines)
 
 
+def runtime_javascript(data: dict) -> str:
+    entries = []
+    for row in data["registry"]["entries"]:
+        transition = row["discovery_event"]
+        entries.append({
+            "id": row["id"],
+            "warehouseId": row["id"],
+            "runtimeId": row["runtime_id"],
+            "region": "sr",
+            "kind": row["codex_category"],
+            "category": row["codex_category"],
+            "categoryIndex": row["category_index"],
+            "events": [{
+                "id": transition["id"],
+                "state": transition["state"],
+                "event": transition["action"],
+            }],
+        })
+    payload = json.dumps(entries, indent=2, ensure_ascii=False)
+    return (
+        "// Generated from SKYREACH_ECONOMY_CODEX_SCAFFOLD.json.\n"
+        "// Identity/discovery data only: no Storm Nest, loot, seal, recipe, or sidegrade authority.\n"
+        f"export const SKYREACH_CODEX_ENTRIES = Object.freeze({payload}.map(Object.freeze));\n"
+    )
+
+
 def main() -> int:
     parser = argparse.ArgumentParser()
     parser.add_argument("--check", action="store_true")
@@ -163,12 +190,14 @@ def main() -> int:
     data = build()
     json_text = json.dumps(data, indent=2, sort_keys=True) + "\n"
     md_text = markdown(data)
+    js_text = runtime_javascript(data)
     if args.check:
-        if OUTPUT_JSON.read_text() != json_text or OUTPUT_MD.read_text() != md_text:
+        if OUTPUT_JSON.read_text() != json_text or OUTPUT_MD.read_text() != md_text or OUTPUT_JS.read_text() != js_text:
             raise SystemExit("stale Skyreach economy/Codex scaffold")
     else:
         OUTPUT_JSON.write_text(json_text)
         OUTPUT_MD.write_text(md_text)
+        OUTPUT_JS.write_text(js_text)
     return 0
 
 

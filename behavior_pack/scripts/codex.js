@@ -16,6 +16,7 @@ export const CODEX_UI_REGIONS = Object.freeze([
   Object.freeze({ id: "ww", title: "Whisperwood" }),
   Object.freeze({ id: "ah", title: "Ashen Highlands" }),
   Object.freeze({ id: "cm", title: "Crystal Marsh" }),
+  Object.freeze({ id: "sr", title: "Skyreach" }),
 ]);
 
 const unavailable = "Unavailable until its approved runtime dependency is complete.";
