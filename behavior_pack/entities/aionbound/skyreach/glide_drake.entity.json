@@ -1,0 +1,93 @@
+{
+  "format_version": "1.21.80",
+  "minecraft:entity": {
+    "components": {
+      "minecraft:ambient_sound_interval": {
+        "event_name": "ambient",
+        "range": 10,
+        "value": 12
+      },
+      "minecraft:attack": {
+        "damage": 6
+      },
+      "minecraft:behavior.hurt_by_target": {
+        "priority": 1
+      },
+      "minecraft:behavior.look_at_player": {
+        "look_distance": 10,
+        "priority": 7,
+        "probability": 0.04
+      },
+      "minecraft:behavior.melee_attack": {
+        "priority": 2,
+        "speed_multiplier": 1.22,
+        "track_target": true
+      },
+      "minecraft:behavior.nearest_attackable_target": {
+        "entity_types": [
+          {
+            "filters": {
+              "subject": "other",
+              "test": "is_family",
+              "value": "player"
+            },
+            "max_dist": 18
+          }
+        ],
+        "must_see": true,
+        "priority": 3,
+        "reselect_targets": true,
+        "within_radius": 18
+      },
+      "minecraft:behavior.random_fly": {
+        "priority": 6,
+        "xz_dist": 10,
+        "y_dist": 5,
+        "y_offset": 1
+      },
+      "minecraft:behavior.random_look_around": {
+        "priority": 8
+      },
+      "minecraft:can_fly": {},
+      "minecraft:collision_box": {
+        "height": 0.65,
+        "width": 1.15
+      },
+      "minecraft:despawn": {
+        "despawn_from_distance": {
+          "max_distance": 96,
+          "min_distance": 48
+        }
+      },
+      "minecraft:health": {
+        "max": 26,
+        "value": 26
+      },
+      "minecraft:movement": {
+        "value": 0.26
+      },
+      "minecraft:movement.fly": {},
+      "minecraft:navigation.fly": {
+        "avoid_water": true,
+        "can_path_from_air": true
+      },
+      "minecraft:physics": {
+        "has_gravity": false
+      },
+      "minecraft:type_family": {
+        "family": [
+          "aionbound",
+          "skyreach",
+          "glide_drake",
+          "creature",
+          "hostile"
+        ]
+      }
+    },
+    "description": {
+      "identifier": "aionbound:glide_drake",
+      "is_spawnable": true,
+      "is_summonable": true
+    }
+  }
+}

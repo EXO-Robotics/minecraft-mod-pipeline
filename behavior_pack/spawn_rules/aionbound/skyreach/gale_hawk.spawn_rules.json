@@ -11,9 +11,18 @@
               "value": "overworld"
             },
             {
-              "operator": "==",
-              "test": "has_biome_tag",
-              "value": "mountain"
+              "any_of": [
+                {
+                  "operator": "==",
+                  "test": "has_biome_tag",
+                  "value": "mountain"
+                },
+                {
+                  "operator": "==",
+                  "test": "has_biome_tag",
+                  "value": "hills"
+                }
+              ]
             }
           ]
         },

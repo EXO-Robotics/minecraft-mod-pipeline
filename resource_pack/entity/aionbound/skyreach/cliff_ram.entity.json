@@ -1,0 +1,33 @@
+{
+  "format_version": "1.10.0",
+  "minecraft:client_entity": {
+    "description": {
+      "animations": {
+        "charge_pose": "animation.aionbound.cliff_ram.charge_pose",
+        "death": "animation.aionbound.cliff_ram.death",
+        "hurt": "animation.aionbound.cliff_ram.hurt",
+        "idle": "animation.aionbound.cliff_ram.idle",
+        "runtime": "controller.animation.aionbound.skyreach.cliff_ram.runtime",
+        "walk": "animation.aionbound.cliff_ram.walk"
+      },
+      "geometry": {
+        "default": "geometry.aionbound.cliff_ram"
+      },
+      "identifier": "aionbound:cliff_ram",
+      "materials": {
+        "default": "entity_alphatest"
+      },
+      "render_controllers": [
+        "controller.render.aionbound.skyreach.cliff_ram"
+      ],
+      "scripts": {
+        "animate": [
+          "runtime"
+        ]
+      },
+      "textures": {
+        "default": "textures/aionbound/skyreach/entity/cliff_ram"
+      }
+    }
+  }
+}

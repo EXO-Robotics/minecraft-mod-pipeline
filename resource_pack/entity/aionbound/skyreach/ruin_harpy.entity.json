@@ -1,0 +1,33 @@
+{
+  "format_version": "1.10.0",
+  "minecraft:client_entity": {
+    "description": {
+      "animations": {
+        "death": "animation.aionbound.ruin_harpy.death",
+        "dive_slash": "animation.aionbound.ruin_harpy.dive_slash",
+        "fly": "animation.aionbound.ruin_harpy.fly",
+        "hurt": "animation.aionbound.ruin_harpy.hurt",
+        "idle_perch": "animation.aionbound.ruin_harpy.idle_perch",
+        "runtime": "controller.animation.aionbound.skyreach.ruin_harpy.runtime"
+      },
+      "geometry": {
+        "default": "geometry.aionbound.ruin_harpy"
+      },
+      "identifier": "aionbound:ruin_harpy",
+      "materials": {
+        "default": "entity_alphatest"
+      },
+      "render_controllers": [
+        "controller.render.aionbound.skyreach.ruin_harpy"
+      ],
+      "scripts": {
+        "animate": [
+          "runtime"
+        ]
+      },
+      "textures": {
+        "default": "textures/aionbound/skyreach/entity/ruin_harpy"
+      }
+    }
+  }
+}

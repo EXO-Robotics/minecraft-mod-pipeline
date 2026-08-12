@@ -1,0 +1,80 @@
+{
+  "format_version": "1.21.80",
+  "minecraft:entity": {
+    "components": {
+      "minecraft:ambient_sound_interval": {
+        "event_name": "ambient",
+        "range": 10,
+        "value": 16
+      },
+      "minecraft:attack": {
+        "damage": 4
+      },
+      "minecraft:behavior.float": {
+        "priority": 0
+      },
+      "minecraft:behavior.hurt_by_target": {
+        "priority": 1
+      },
+      "minecraft:behavior.look_at_player": {
+        "look_distance": 10,
+        "priority": 7,
+        "probability": 0.04
+      },
+      "minecraft:behavior.melee_attack": {
+        "priority": 2,
+        "speed_multiplier": 1.12,
+        "track_target": true
+      },
+      "minecraft:behavior.random_look_around": {
+        "priority": 8
+      },
+      "minecraft:behavior.random_stroll": {
+        "interval": 100,
+        "priority": 6,
+        "speed_multiplier": 0.72
+      },
+      "minecraft:collision_box": {
+        "height": 0.75,
+        "width": 0.7
+      },
+      "minecraft:despawn": {
+        "despawn_from_distance": {
+          "max_distance": 96,
+          "min_distance": 48
+        }
+      },
+      "minecraft:health": {
+        "max": 20,
+        "value": 20
+      },
+      "minecraft:movement": {
+        "value": 0.28
+      },
+      "minecraft:movement.basic": {},
+      "minecraft:navigation.walk": {
+        "avoid_damage_blocks": true,
+        "avoid_water": true,
+        "can_path_over_water": false,
+        "can_sink": true
+      },
+      "minecraft:physics": {
+        "has_gravity": true
+      },
+      "minecraft:type_family": {
+        "family": [
+          "aionbound",
+          "skyreach",
+          "sky_fox",
+          "creature",
+          "neutral"
+        ]
+      }
+    },
+    "description": {
+      "identifier": "aionbound:sky_fox",
+      "is_spawnable": true,
+      "is_summonable": true
+    }
+  }
+}

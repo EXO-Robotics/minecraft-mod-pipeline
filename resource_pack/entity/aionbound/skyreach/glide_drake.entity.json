@@ -1,0 +1,33 @@
+{
+  "format_version": "1.10.0",
+  "minecraft:client_entity": {
+    "description": {
+      "animations": {
+        "death": "animation.aionbound.glide_drake.death",
+        "dive_attack": "animation.aionbound.glide_drake.dive_attack",
+        "glide": "animation.aionbound.glide_drake.glide",
+        "hurt": "animation.aionbound.glide_drake.hurt",
+        "idle": "animation.aionbound.glide_drake.idle",
+        "runtime": "controller.animation.aionbound.skyreach.glide_drake.runtime"
+      },
+      "geometry": {
+        "default": "geometry.aionbound.glide_drake"
+      },
+      "identifier": "aionbound:glide_drake",
+      "materials": {
+        "default": "entity_alphatest"
+      },
+      "render_controllers": [
+        "controller.render.aionbound.skyreach.glide_drake"
+      ],
+      "scripts": {
+        "animate": [
+          "runtime"
+        ]
+      },
+      "textures": {
+        "default": "textures/aionbound/skyreach/entity/glide_drake"
+      }
+    }
+  }
+}

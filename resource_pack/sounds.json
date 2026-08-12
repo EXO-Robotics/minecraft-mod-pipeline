@@ -121,6 +121,18 @@
         ],
         "volume": 0.6
       },
+      "aionbound:cliff_ram": {
+        "events": {
+          "ambient": "mob.goat.ambient",
+          "death": "mob.goat.death",
+          "hurt": "mob.goat.hurt"
+        },
+        "pitch": [
+          0.78,
+          0.92
+        ],
+        "volume": 0.82
+      },
       "aionbound:cloud_goat": {
         "events": {
           "ambient": "mob.goat.ambient",
@@ -204,6 +216,18 @@
           0.9
         ],
         "volume": 0.5
+      },
+      "aionbound:glide_drake": {
+        "events": {
+          "ambient": "mob.phantom.idle",
+          "death": "mob.phantom.death",
+          "hurt": "mob.phantom.hurt"
+        },
+        "pitch": [
+          0.88,
+          1.0
+        ],
+        "volume": 0.62
       },
       "aionbound:hollow_widow_spider": {
         "events": {
@@ -337,6 +361,18 @@
         ],
         "volume": 0.8
       },
+      "aionbound:ropewing": {
+        "events": {
+          "ambient": "mob.bat.idle",
+          "death": "mob.bat.death",
+          "hurt": "mob.bat.hurt"
+        },
+        "pitch": [
+          0.82,
+          0.98
+        ],
+        "volume": 0.48
+      },
       "aionbound:rot_wolf": {
         "events": {
           "ambient": "mob.wolf.bark",
@@ -348,6 +384,18 @@
           1.0
         ],
         "volume": 0.8
+      },
+      "aionbound:ruin_harpy": {
+        "events": {
+          "ambient": "mob.phantom.idle",
+          "death": "mob.phantom.death",
+          "hurt": "mob.phantom.hurt"
+        },
+        "pitch": [
+          1.02,
+          1.16
+        ],
+        "volume": 0.68
       },
       "aionbound:silt_crocodile": {
         "events": {
@@ -361,6 +409,18 @@
         ],
         "volume": 0.8
       },
+      "aionbound:sky_fox": {
+        "events": {
+          "ambient": "mob.fox.ambient",
+          "death": "mob.fox.death",
+          "hurt": "mob.fox.hurt"
+        },
+        "pitch": [
+          0.92,
+          1.08
+        ],
+        "volume": 0.62
+      },
       "aionbound:soot_stag": {
         "events": {
           "ambient": "mob.goat.ambient",
@@ -372,6 +432,30 @@
           1.0
         ],
         "volume": 0.65
+      },
+      "aionbound:stone_vulture": {
+        "events": {
+          "ambient": "mob.parrot.idle",
+          "death": "mob.parrot.death",
+          "hurt": "mob.parrot.hurt"
+        },
+        "pitch": [
+          0.65,
+          0.78
+        ],
+        "volume": 0.55
+      },
+      "aionbound:storm_gull": {
+        "events": {
+          "ambient": "mob.parrot.idle",
+          "death": "mob.parrot.death",
+          "hurt": "mob.parrot.hurt"
+        },
+        "pitch": [
+          1.08,
+          1.22
+        ],
+        "volume": 0.45
       },
       "aionbound:thorn_stalker": {
         "events": {

@@ -55,11 +55,12 @@ class SkyreachEntityRuntimeTests(unittest.TestCase):
         cls.builder = load_builder()
         cls.report = read_json(REPORT)
 
-    def test_exact_base_completed_and_withheld_rosters(self):
-        self.assertEqual(self.report["base"], {"commit": "10e60dfb4ae95996286d455473612b58c234ec9b", "tree": "57088d0df2e3ccdf4a8e463ee09d3d6fbe7bd4bf"})
-        self.assertEqual(self.report["completed"], ["cloud_goat", "gale_hawk", "wind_roc"])
-        self.assertEqual([row["asset"] for row in self.report["withheld"]], self.builder.WITHHELD)
-        self.assertTrue(all(not row["runtime_created"] for row in self.report["withheld"]))
+    def test_exact_base_and_complete_native_roster(self):
+        self.assertEqual(self.report["base"], {"commit": "654d20ff9fd45d8bc7f2400ea35248e84d82b07b", "tree": "69ac4899f44d598da0bb939b710c4453c947ce37"})
+        self.assertEqual(self.report["schema"], "aionbound.wave1.skyreach_entity_runtime.v2")
+        self.assertEqual(self.report["status"], "SKYREACH_TEN_NATIVE_CREATURES_STATIC_RUNTIME_COMPLETE")
+        self.assertEqual(self.report["completed"], sorted(self.builder.ASSETS))
+        self.assertEqual(self.report["withheld"], [])
 
     def test_native_qualified_bytes_are_exact(self):
         for row in self.report["native_bindings"]:
@@ -93,21 +94,29 @@ class SkyreachEntityRuntimeTests(unittest.TestCase):
             self.assertIn(client["render_controllers"][0], render)
 
     def test_role_correct_non_statue_ai(self):
-        cloud = read_json(ROOT / "behavior_pack/entities/aionbound/skyreach/cloud_goat.entity.json")["minecraft:entity"]
-        self.assertIn("minecraft:navigation.walk", cloud["components"])
-        self.assertIn("minecraft:behavior.random_stroll", cloud["components"])
-        self.assertIn("minecraft:behavior.hurt_by_target", cloud["components"])
-        self.assertNotIn("minecraft:behavior.nearest_attackable_target", cloud["components"])
-        for asset in ("gale_hawk", "wind_roc"):
+        for asset in ("cloud_goat", "cliff_ram", "sky_fox"):
+            components = read_json(ROOT / f"behavior_pack/entities/aionbound/skyreach/{asset}.entity.json")["minecraft:entity"]["components"]
+            self.assertIn("minecraft:navigation.walk", components)
+            self.assertIn("minecraft:behavior.random_stroll", components)
+            self.assertIn("minecraft:behavior.hurt_by_target", components)
+            self.assertNotIn("minecraft:behavior.nearest_attackable_target", components)
+        for asset in ("gale_hawk", "wind_roc", "glide_drake", "ropewing", "ruin_harpy", "stone_vulture", "storm_gull"):
             components = read_json(ROOT / f"behavior_pack/entities/aionbound/skyreach/{asset}.entity.json")["minecraft:entity"]["components"]
             self.assertIn("minecraft:navigation.fly", components)
             self.assertIn("minecraft:behavior.random_fly", components)
-            self.assertIn("minecraft:behavior.nearest_attackable_target", components)
             self.assertIn("minecraft:behavior.melee_attack", components)
+        for asset in ("gale_hawk", "wind_roc", "glide_drake", "ruin_harpy"):
+            components = read_json(ROOT / f"behavior_pack/entities/aionbound/skyreach/{asset}.entity.json")["minecraft:entity"]["components"]
+            self.assertIn("minecraft:behavior.nearest_attackable_target", components)
+        for asset in ("ropewing", "stone_vulture", "storm_gull"):
+            components = read_json(ROOT / f"behavior_pack/entities/aionbound/skyreach/{asset}.entity.json")["minecraft:entity"]["components"]
+            self.assertNotIn("minecraft:behavior.nearest_attackable_target", components)
 
-    def test_only_two_console_bounded_natural_spawn_rules(self):
+    def test_nine_console_bounded_mountain_hills_spawn_rules(self):
         files = sorted((ROOT / "behavior_pack/spawn_rules/aionbound/skyreach").glob("*.spawn_rules.json"))
-        self.assertEqual([p.name for p in files], ["cloud_goat.spawn_rules.json", "gale_hawk.spawn_rules.json"])
+        expected = sorted(f"{asset}.spawn_rules.json" for asset, cfg in self.builder.ASSETS.items() if cfg["natural"])
+        self.assertEqual([p.name for p in files], expected)
+        self.assertEqual(len(files), 9)
         for path in files:
             condition = read_json(path)["minecraft:spawn_rules"]["conditions"][0]
             self.assertLessEqual(condition["minecraft:herd"]["max_size"], 2)
@@ -116,8 +125,10 @@ class SkyreachEntityRuntimeTests(unittest.TestCase):
             self.assertGreaterEqual(condition["minecraft:distance_filter"]["min"], 40)
             text = json.dumps(condition["minecraft:biome_filter"])
             self.assertIn("mountain", text)
+            self.assertIn("hills", text)
             self.assertNotIn("forest", text)
             self.assertNotIn("swamp", text)
+        self.assertEqual(self.report["ecology"]["aggregate_surface_density_ceiling"], 12)
 
     def test_wind_roc_is_arena_only_without_deferred_semantics(self):
         path = ROOT / "behavior_pack/entities/aionbound/skyreach/wind_roc.entity.json"
@@ -135,6 +146,26 @@ class SkyreachEntityRuntimeTests(unittest.TestCase):
             self.assertNotIn("minecraft:loot", components)
         self.assertEqual(self.report["loot_binding"], "OMITTED_NO_SKYREACH_CREATURE_LOOT_TABLES_ON_EXACT_BASE")
 
+    def test_noncombat_scavenger_clips_are_not_misbound_to_targets(self):
+        for asset, forbidden_clip in (("stone_vulture", "feed_pose"), ("storm_gull", "land")):
+            controller = read_json(ROOT / f"resource_pack/animation_controllers/aionbound/skyreach/{asset}.animation_controller.json")
+            self.assertNotIn(forbidden_clip, json.dumps(controller))
+            client = read_json(ROOT / f"resource_pack/entity/aionbound/skyreach/{asset}.entity.json")["minecraft:client_entity"]["description"]
+            self.assertIn(forbidden_clip, client["animations"])
+
+    def test_authority_gated_surfaces_are_absent(self):
+        forbidden = ("storm_nest", "seal", "reward_cache", "codex_terminal", "entitlement", "completion")
+        for asset in self.builder.ASSETS:
+            paths = [
+                ROOT / f"behavior_pack/entities/aionbound/skyreach/{asset}.entity.json",
+                ROOT / f"resource_pack/entity/aionbound/skyreach/{asset}.entity.json",
+                ROOT / f"resource_pack/animation_controllers/aionbound/skyreach/{asset}.animation_controller.json",
+            ]
+            for path in paths:
+                raw = path.read_text(encoding="utf-8")
+                for token in forbidden:
+                    self.assertNotIn(token, raw)
+
     def test_audio_pointers_and_localization_deferral(self):
         sounds = read_json(ROOT / "resource_pack/sounds.json")["entity_sounds"]["entities"]
         for asset, cfg in self.builder.ASSETS.items():
@@ -143,7 +174,7 @@ class SkyreachEntityRuntimeTests(unittest.TestCase):
 
     def test_report_hashes_json_and_determinism(self):
         listed = {row["path"]: row["sha256"] for row in self.report["outputs"]}
-        self.assertEqual(len(listed), 24)
+        self.assertEqual(len(listed), 80)
         for path, digest in listed.items():
             target = ROOT / path
             self.assertEqual(hashlib.sha256(target.read_bytes()).hexdigest(), digest)
@@ -155,6 +186,21 @@ class SkyreachEntityRuntimeTests(unittest.TestCase):
                 subprocess.run(["python3", str(BUILDER), "--report", str(report)], cwd=ROOT, check=True, capture_output=True)
             self.assertEqual(one.read_bytes(), two.read_bytes())
             self.assertEqual(one.read_bytes(), REPORT.read_bytes())
+
+    def test_bundled_cross_file_validator_passes_all_ten(self):
+        validator = Path("/Users/blakegrove/.codex/skills/blockbench-build-bedrock-assets/scripts/validate_animated_entity.py")
+        for asset in self.builder.ASSETS:
+            with self.subTest(asset=asset):
+                result = subprocess.run([
+                    "python3", str(validator),
+                    "--geometry", str(ROOT / f"resource_pack/models/aionbound/skyreach/{asset}.geo.json"),
+                    "--animations", str(ROOT / f"resource_pack/animations/aionbound/skyreach/{asset}.animation.json"),
+                    "--controller", str(ROOT / f"resource_pack/animation_controllers/aionbound/skyreach/{asset}.animation_controller.json"),
+                    "--client-entity", str(ROOT / f"resource_pack/entity/aionbound/skyreach/{asset}.entity.json"),
+                    "--behavior-entity", str(ROOT / f"behavior_pack/entities/aionbound/skyreach/{asset}.entity.json"),
+                ], text=True, capture_output=True)
+                self.assertEqual(result.returncode, 0, result.stdout + result.stderr)
+                self.assertIn("OK:", result.stdout)
 
     def test_proof_boundaries(self):
         boundary = self.report["proof_boundary"]

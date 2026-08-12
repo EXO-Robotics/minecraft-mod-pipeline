@@ -1,0 +1,33 @@
+{
+  "format_version": "1.10.0",
+  "minecraft:client_entity": {
+    "description": {
+      "animations": {
+        "bank": "animation.aionbound.ropewing.bank",
+        "death": "animation.aionbound.ropewing.death",
+        "glide": "animation.aionbound.ropewing.glide",
+        "hurt": "animation.aionbound.ropewing.hurt",
+        "idle_perch": "animation.aionbound.ropewing.idle_perch",
+        "runtime": "controller.animation.aionbound.skyreach.ropewing.runtime"
+      },
+      "geometry": {
+        "default": "geometry.aionbound.ropewing"
+      },
+      "identifier": "aionbound:ropewing",
+      "materials": {
+        "default": "entity_alphatest"
+      },
+      "render_controllers": [
+        "controller.render.aionbound.skyreach.ropewing"
+      ],
+      "scripts": {
+        "animate": [
+          "runtime"
+        ]
+      },
+      "textures": {
+        "default": "textures/aionbound/skyreach/entity/ropewing"
+      }
+    }
+  }
+}

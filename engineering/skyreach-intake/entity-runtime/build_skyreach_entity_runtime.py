@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Build the three native-qualified Skyreach creature runtime surfaces."""
+"""Build the ten native-qualified Skyreach creature runtime surfaces."""
 
 from __future__ import annotations
 
@@ -10,14 +10,10 @@ import shutil
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[3]
-BASE_COMMIT = "10e60dfb4ae95996286d455473612b58c234ec9b"
-BASE_TREE = "57088d0df2e3ccdf4a8e463ee09d3d6fbe7bd4bf"
-NATIVE_REPORT = ROOT / "engineering/native-assets/skyreach/representative/SKYREACH_REPRESENTATIVE_NATIVE_REPORT.json"
-
-WITHHELD = [
-    "cliff_ram", "glide_drake", "ropewing", "ruin_harpy", "sky_fox",
-    "stone_vulture", "storm_gull",
-]
+BASE_COMMIT = "654d20ff9fd45d8bc7f2400ea35248e84d82b07b"
+BASE_TREE = "69ac4899f44d598da0bb939b710c4453c947ce37"
+REPRESENTATIVE_REPORT = ROOT / "engineering/native-assets/skyreach/representative/SKYREACH_REPRESENTATIVE_NATIVE_REPORT.json"
+CREATURE_REPORT = ROOT / "engineering/native-assets/skyreach/creatures/SKYREACH_CREATURE_NATIVE_REPORT.json"
 
 ASSETS = {
     "cloud_goat": {
@@ -26,6 +22,7 @@ ASSETS = {
         "flying": False, "hostile": False, "natural": True,
         "weight": 2, "herd": (1, 2), "density": 2, "light": (7, 15),
         "audio": ("mob.goat.ambient", "mob.goat.hurt", "mob.goat.death", [0.9, 1.05], 0.72),
+        "clips": ("idle", "walk", "hop_ledge"), "native_lane": "representative",
     },
     "gale_hawk": {
         "display": "Gale Hawk", "role": "hostile_aerial_patrol", "health": 18,
@@ -33,6 +30,7 @@ ASSETS = {
         "flying": True, "hostile": True, "natural": True,
         "weight": 1, "herd": (1, 1), "density": 1, "light": (7, 15),
         "audio": ("mob.parrot.idle", "mob.parrot.hurt", "mob.parrot.death", [0.85, 1.0], 0.55),
+        "clips": ("idle", "fly", "stoop"), "native_lane": "representative",
     },
     "wind_roc": {
         "display": "Wind Roc", "role": "arena_only_apex_soaring_shell", "health": 96,
@@ -40,6 +38,63 @@ ASSETS = {
         "flying": True, "hostile": True, "natural": False,
         "weight": None, "herd": None, "density": None, "light": None,
         "audio": ("mob.phantom.idle", "mob.phantom.hurt", "mob.phantom.death", [0.65, 0.78], 1.0),
+        "clips": ("idle_perch", "soar", "dive"), "native_lane": "representative",
+    },
+    "cliff_ram": {
+        "display": "Cliff Ram", "role": "neutral_heavy_ledge_charger", "health": 30,
+        "attack": 6, "speed": 0.21, "width": 1.0, "height": 1.2,
+        "flying": False, "hostile": False, "natural": True,
+        "weight": 2, "herd": (1, 2), "density": 2, "light": (7, 15),
+        "audio": ("mob.goat.ambient", "mob.goat.hurt", "mob.goat.death", [0.78, 0.92], 0.82),
+        "clips": ("idle", "walk", "charge_pose"), "native_lane": "creatures",
+    },
+    "glide_drake": {
+        "display": "Glide Drake", "role": "hostile_ridge_glider", "health": 26,
+        "attack": 6, "speed": 0.26, "width": 1.15, "height": 0.65,
+        "flying": True, "hostile": True, "natural": True,
+        "weight": 1, "herd": (1, 1), "density": 1, "light": (7, 15),
+        "audio": ("mob.phantom.idle", "mob.phantom.hurt", "mob.phantom.death", [0.88, 1.0], 0.62),
+        "clips": ("idle", "glide", "dive_attack"), "native_lane": "creatures",
+    },
+    "ropewing": {
+        "display": "Ropewing", "role": "neutral_membrane_shelf_glider", "health": 16,
+        "attack": 3, "speed": 0.24, "width": 0.85, "height": 0.45,
+        "flying": True, "hostile": False, "natural": True,
+        "weight": 1, "herd": (1, 1), "density": 1, "light": (7, 15),
+        "audio": ("mob.bat.idle", "mob.bat.hurt", "mob.bat.death", [0.82, 0.98], 0.48),
+        "clips": ("idle_perch", "glide", "bank"), "native_lane": "creatures",
+    },
+    "ruin_harpy": {
+        "display": "Ruin Harpy", "role": "hostile_biped_ruin_flyer", "health": 28,
+        "attack": 7, "speed": 0.25, "width": 0.85, "height": 1.35,
+        "flying": True, "hostile": True, "natural": True,
+        "weight": 1, "herd": (1, 1), "density": 1, "light": (0, 12),
+        "audio": ("mob.phantom.idle", "mob.phantom.hurt", "mob.phantom.death", [1.02, 1.16], 0.68),
+        "clips": ("idle_perch", "fly", "dive_slash"), "native_lane": "creatures",
+    },
+    "sky_fox": {
+        "display": "Sky Fox", "role": "neutral_agile_cliff_runner", "health": 20,
+        "attack": 4, "speed": 0.28, "width": 0.7, "height": 0.75,
+        "flying": False, "hostile": False, "natural": True,
+        "weight": 2, "herd": (1, 2), "density": 2, "light": (7, 15),
+        "audio": ("mob.fox.ambient", "mob.fox.hurt", "mob.fox.death", [0.92, 1.08], 0.62),
+        "clips": ("idle", "trot", "leap"), "native_lane": "creatures",
+    },
+    "stone_vulture": {
+        "display": "Stone Vulture", "role": "neutral_ruin_scavenger_flyer", "health": 22,
+        "attack": 4, "speed": 0.22, "width": 0.9, "height": 0.7,
+        "flying": True, "hostile": False, "natural": True,
+        "weight": 1, "herd": (1, 1), "density": 1, "light": (7, 15),
+        "audio": ("mob.parrot.idle", "mob.parrot.hurt", "mob.parrot.death", [0.65, 0.78], 0.55),
+        "clips": ("idle_perch", "fly", None), "native_lane": "creatures",
+    },
+    "storm_gull": {
+        "display": "Storm Gull", "role": "ambient_shelf_scavenger_flyer", "health": 14,
+        "attack": 2, "speed": 0.25, "width": 0.65, "height": 0.45,
+        "flying": True, "hostile": False, "natural": True,
+        "weight": 1, "herd": (1, 2), "density": 1, "light": (7, 15),
+        "audio": ("mob.parrot.idle", "mob.parrot.hurt", "mob.parrot.death", [1.08, 1.22], 0.45),
+        "clips": ("idle_perch", "fly", None), "native_lane": "creatures",
     },
 }
 
@@ -53,8 +108,8 @@ def sha256(path: Path) -> str:
     return hashlib.sha256(path.read_bytes()).hexdigest()
 
 
-def evidence(asset: str) -> Path:
-    return ROOT / "engineering/native-assets/skyreach/representative/evidence" / asset
+def evidence(asset: str, cfg: dict) -> Path:
+    return ROOT / f"engineering/native-assets/skyreach/{cfg['native_lane']}/evidence" / asset
 
 
 def behavior_entity(asset: str, cfg: dict) -> dict:
@@ -80,8 +135,8 @@ def behavior_entity(asset: str, cfg: dict) -> dict:
             "minecraft:movement.fly": {},
             "minecraft:navigation.fly": {"avoid_water": True, "can_path_from_air": True},
             "minecraft:behavior.random_fly": {
-                "priority": 6, "xz_dist": 10 if asset == "gale_hawk" else 14,
-                "y_dist": 5 if asset == "gale_hawk" else 7, "y_offset": 1,
+                "priority": 6, "xz_dist": 10 if cfg["natural"] else 14,
+                "y_dist": 5 if cfg["natural"] else 7, "y_offset": 1,
             },
         })
     else:
@@ -95,7 +150,7 @@ def behavior_entity(asset: str, cfg: dict) -> dict:
             "minecraft:behavior.random_stroll": {"priority": 6, "speed_multiplier": 0.72, "interval": 100},
         })
     if cfg["hostile"]:
-        radius = 18 if asset == "gale_hawk" else 28
+        radius = 18 if cfg["natural"] else 28
         components.update({
             "minecraft:attack": {"damage": cfg["attack"]},
             "minecraft:behavior.hurt_by_target": {"priority": 1},
@@ -131,7 +186,10 @@ def spawn_rule(asset: str, cfg: dict) -> dict:
     condition = {
         "minecraft:biome_filter": {"all_of": [
             {"test": "has_biome_tag", "operator": "==", "value": "overworld"},
-            {"test": "has_biome_tag", "operator": "==", "value": "mountain"},
+            {"any_of": [
+                {"test": "has_biome_tag", "operator": "==", "value": "mountain"},
+                {"test": "has_biome_tag", "operator": "==", "value": "hills"},
+            ]},
         ]},
         "minecraft:brightness_filter": {"min": cfg["light"][0], "max": cfg["light"][1], "adjust_for_weather": True},
         "minecraft:density_limit": {"surface": cfg["density"], "underground": 0},
@@ -170,26 +228,15 @@ def client_entity(asset: str, clip_ids: list[str]) -> dict:
 
 
 def animation_controller(asset: str) -> dict:
-    if asset == "cloud_goat":
-        idle, move, action = "idle", "walk", "hop_ledge"
-    elif asset == "gale_hawk":
-        idle, move, action = "idle", "fly", "stoop"
-    else:
-        idle, move, action = "idle_perch", "soar", "dive"
+    idle, move, action = ASSETS[asset]["clips"]
+    active_transitions = [
+        {"death": "!query.is_alive"}, {"hurt": "query.hurt_time > 0.0"},
+    ]
+    if action:
+        active_transitions.append({"action": "query.has_target"})
     states = {
-        "idle": {"animations": [idle], "transitions": [
-            {"death": "!query.is_alive"}, {"hurt": "query.hurt_time > 0.0"},
-            {"action": "query.has_target"}, {"move": "query.is_moving"},
-        ]},
-        "move": {"animations": [move], "transitions": [
-            {"death": "!query.is_alive"}, {"hurt": "query.hurt_time > 0.0"},
-            {"action": "query.has_target"}, {"idle": "!query.is_moving"},
-        ]},
-        "action": {"animations": [action], "transitions": [
-            {"death": "!query.is_alive"}, {"hurt": "query.hurt_time > 0.0"},
-            {"move": "!query.has_target && query.is_moving"},
-            {"idle": "!query.has_target && !query.is_moving"},
-        ]},
+        "idle": {"animations": [idle], "transitions": active_transitions + [{"move": "query.is_moving"}]},
+        "move": {"animations": [move], "transitions": active_transitions + [{"idle": "!query.is_moving"}]},
         "hurt": {"animations": ["hurt"], "transitions": [
             {"death": "!query.is_alive"},
             {"move": "query.hurt_time <= 0.0 && query.is_moving"},
@@ -197,6 +244,12 @@ def animation_controller(asset: str) -> dict:
         ]},
         "death": {"animations": ["death"]},
     }
+    if action:
+        states["action"] = {"animations": [action], "transitions": [
+            {"death": "!query.is_alive"}, {"hurt": "query.hurt_time > 0.0"},
+            {"move": "!query.has_target && query.is_moving"},
+            {"idle": "!query.has_target && !query.is_moving"},
+        ]}
     return {
         "format_version": "1.10.0",
         "animation_controllers": {
@@ -234,14 +287,15 @@ def update_sounds() -> None:
 
 
 def build() -> dict:
-    native = json.loads(NATIVE_REPORT.read_text(encoding="utf-8"))
-    qualified = {row["asset"]: row for row in native["assets"] if row["asset"] in ASSETS}
+    representative = json.loads(REPRESENTATIVE_REPORT.read_text(encoding="utf-8"))
+    creatures = json.loads(CREATURE_REPORT.read_text(encoding="utf-8"))
+    qualified = {row["asset"]: row for report in (representative, creatures) for row in report["assets"] if row["asset"] in ASSETS}
     if set(qualified) != set(ASSETS) or any(row["status"] != "PASS_NATIVE_REPAIR_GATE" for row in qualified.values()):
-        raise RuntimeError("exact three representative native PASS rows are required")
+        raise RuntimeError("exact ten Skyreach native PASS rows are required")
     outputs: list[dict] = []
     bindings: list[dict] = []
     for asset, cfg in ASSETS.items():
-        src = evidence(asset)
+        src = evidence(asset, cfg)
         sources = {
             "geometry": src / "native-exports/pass-2.geo.json",
             "animation": src / "native-exports/pass-2.animation.json",
@@ -279,24 +333,21 @@ def build() -> dict:
     for path in (ROOT / "resource_pack/sounds.json",):
         outputs.append({"path": str(path.relative_to(ROOT)), "sha256": sha256(path)})
     return {
-        "schema": "aionbound.wave1.skyreach_entity_runtime.v1",
-        "status": "SKYREACH_THREE_NATIVE_CREATURES_STATIC_RUNTIME_COMPLETE",
+        "schema": "aionbound.wave1.skyreach_entity_runtime.v2",
+        "status": "SKYREACH_TEN_NATIVE_CREATURES_STATIC_RUNTIME_COMPLETE",
         "base": {"commit": BASE_COMMIT, "tree": BASE_TREE},
         "completed": sorted(ASSETS),
-        "natural_spawn_entities": ["cloud_goat", "gale_hawk"],
+        "natural_spawn_entities": [asset for asset, cfg in ASSETS.items() if cfg["natural"]],
         "arena_only_shell": "wind_roc",
-        "withheld": [{
-            "asset": asset,
-            "reason": "NATIVE_REPAIR_NOT_PROVEN_ON_EXACT_BASE",
-            "runtime_created": False,
-        } for asset in WITHHELD],
+        "withheld": [],
         "native_bindings": bindings,
         "loot_binding": "OMITTED_NO_SKYREACH_CREATURE_LOOT_TABLES_ON_EXACT_BASE",
         "localization_binding": "DEFERRED_TO_SHARED_CLOSURE_REFRESH",
         "ecology": {
-            "rule_count": 2, "biome_tags": ["overworld", "mountain"],
+            "rule_count": 9, "biome_tags": ["overworld", "mountain", "hills"],
             "max_group_size": 2, "max_surface_density_per_type": 2,
             "max_weight": 2, "distance_min": 40, "distance_max": 96,
+            "aggregate_surface_density_ceiling": sum(cfg["density"] for cfg in ASSETS.values() if cfg["natural"]),
             "wind_roc_natural_spawn": False,
         },
         "outputs": sorted(outputs, key=lambda row: row["path"]),

@@ -1,0 +1,33 @@
+{
+  "format_version": "1.10.0",
+  "minecraft:client_entity": {
+    "description": {
+      "animations": {
+        "death": "animation.aionbound.stone_vulture.death",
+        "feed_pose": "animation.aionbound.stone_vulture.feed_pose",
+        "fly": "animation.aionbound.stone_vulture.fly",
+        "hurt": "animation.aionbound.stone_vulture.hurt",
+        "idle_perch": "animation.aionbound.stone_vulture.idle_perch",
+        "runtime": "controller.animation.aionbound.skyreach.stone_vulture.runtime"
+      },
+      "geometry": {
+        "default": "geometry.aionbound.stone_vulture"
+      },
+      "identifier": "aionbound:stone_vulture",
+      "materials": {
+        "default": "entity_alphatest"
+      },
+      "render_controllers": [
+        "controller.render.aionbound.skyreach.stone_vulture"
+      ],
+      "scripts": {
+        "animate": [
+          "runtime"
+        ]
+      },
+      "textures": {
+        "default": "textures/aionbound/skyreach/entity/stone_vulture"
+      }
+    }
+  }
+}

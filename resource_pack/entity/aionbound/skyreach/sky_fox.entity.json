@@ -1,0 +1,33 @@
+{
+  "format_version": "1.10.0",
+  "minecraft:client_entity": {
+    "description": {
+      "animations": {
+        "death": "animation.aionbound.sky_fox.death",
+        "hurt": "animation.aionbound.sky_fox.hurt",
+        "idle": "animation.aionbound.sky_fox.idle",
+        "leap": "animation.aionbound.sky_fox.leap",
+        "runtime": "controller.animation.aionbound.skyreach.sky_fox.runtime",
+        "trot": "animation.aionbound.sky_fox.trot"
+      },
+      "geometry": {
+        "default": "geometry.aionbound.sky_fox"
+      },
+      "identifier": "aionbound:sky_fox",
+      "materials": {
+        "default": "entity_alphatest"
+      },
+      "render_controllers": [
+        "controller.render.aionbound.skyreach.sky_fox"
+      ],
+      "scripts": {
+        "animate": [
+          "runtime"
+        ]
+      },
+      "textures": {
+        "default": "textures/aionbound/skyreach/entity/sky_fox"
+      }
+    }
+  }
+}
