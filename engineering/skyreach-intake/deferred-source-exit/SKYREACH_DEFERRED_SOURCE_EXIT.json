@@ -1,7 +1,7 @@
 {
   "schema": "aionbound.wave1.skyreach.deferred_source_exit.v1",
-  "status": "SKYREACH_PARTIAL_SOURCE_INTEGRATION_DEFERRED",
-  "blocker_class": "AUTHORITY_AND_NATIVE_PRODUCT_CLOSURE_DEFERRED",
+  "status": "SKYREACH_PRODUCT_FOUNDATION_COMPLETE_AUTHORITY_GATED_SURFACES_DEFERRED",
+  "blocker_class": "AUTHORITY_GATED_SURFACES_DEFERRED",
   "source": {
     "commit": "9e337b5befc402db56ca51dfb6de0c16dad82132",
     "tree": "fc119675dce371b25e6d7636adec1c010154706d"
@@ -9,17 +9,12 @@
   "implemented": {
     "static_foundations": "10 resource items and 10 ordinary full-cube blocks",
     "structures": "10 inert registered block assemblies",
-    "creatures": ["cloud_goat", "gale_hawk", "wind_roc"],
-    "creature_boundary": "cloud_goat and gale_hawk have bounded natural source runtime; wind_roc is a non-spawning arena shell",
-    "native_representatives": ["cloud_goat", "gale_hawk", "wind_roc", "wind_reed_plant", "hanging_sky_vine", "wind_shrine", "observation_tower"],
+    "creatures": "all 10 Packet 004 creatures; nine natural bounded mountain-or-hills roles and one non-spawning Wind Roc arena shell",
+    "plants": "all 10 Packet 004 native-backed custom blocks with bounded mountain-or-hills ecology",
+    "native_assets": "all 30 custom Packet 004 creatures, plants and landmarks have native PASS evidence",
     "codex_scaffold": "50 append-only authority rows at ordinals 204-253; not imported by the live registry"
   },
-  "technical_deferred": {
-    "managed_reviewer_timeout_not_product_defect": ["wind_reed_plant product binding", "hanging_sky_vine product binding"],
-    "creature_native_and_product_binding": ["cliff_ram", "glide_drake", "ropewing", "ruin_harpy", "sky_fox", "stone_vulture", "storm_gull"],
-    "plant_native_and_product_binding": ["cliff_flower", "cloud_moss", "cloudpuff_plant", "floating_blossom", "nest_thatch_tuft", "rope_root", "shelf_shrub", "skybloom"],
-    "landmark_native_evidence": ["ancient_sky_arch", "broken_sky_path", "cliff_beacon", "cliff_outpost", "floating_ruin_floor", "hanging_lift_frame", "nest_platform", "rope_bridge"]
-  },
+  "technical_deferred": {},
   "authority_deferred": {
     "W1-001-SR": "nonwarehouse identities plus executable acquisition and recipes",
     "W1-003-STORM-NEST": "encounter numbers, reset, multiplayer, restart, completion and terminal semantics",

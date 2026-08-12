@@ -10,15 +10,14 @@ DATA = json.loads((HERE / "SKYREACH_DEFERRED_SOURCE_EXIT.json").read_text())
 
 class SkyreachDeferredSourceExitTest(unittest.TestCase):
     def test_status_and_exact_authority_boundary(self):
-        self.assertEqual(DATA["status"], "SKYREACH_PARTIAL_SOURCE_INTEGRATION_DEFERRED")
+        self.assertEqual(DATA["status"], "SKYREACH_PRODUCT_FOUNDATION_COMPLETE_AUTHORITY_GATED_SURFACES_DEFERRED")
         self.assertEqual(set(DATA["authority_deferred"]), {"W1-001-SR", "W1-003-STORM-NEST", "W1-004-SR", "W1-CREATIVE-005"})
 
     def test_partial_implementation_is_exact(self):
-        self.assertEqual(DATA["implemented"]["creatures"], ["cloud_goat", "gale_hawk", "wind_roc"])
-        self.assertEqual(len(DATA["implemented"]["native_representatives"]), 7)
-        self.assertEqual(len(DATA["technical_deferred"]["creature_native_and_product_binding"]), 7)
-        self.assertEqual(len(DATA["technical_deferred"]["plant_native_and_product_binding"]), 8)
-        self.assertEqual(len(DATA["technical_deferred"]["landmark_native_evidence"]), 8)
+        self.assertIn("all 10", DATA["implemented"]["creatures"])
+        self.assertIn("all 10", DATA["implemented"]["plants"])
+        self.assertIn("all 30", DATA["implemented"]["native_assets"])
+        self.assertEqual(DATA["technical_deferred"], {})
 
     def test_dormant_surfaces_are_not_silently_live(self):
         codex = (ROOT / "behavior_pack/scripts/wave1_codex_data.js").read_text()
