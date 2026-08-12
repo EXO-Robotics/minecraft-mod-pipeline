@@ -8,7 +8,7 @@ import { fileURLToPath, pathToFileURL } from "node:url";
 const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), "..");
 const SOURCE = resolve(ROOT, "behavior_pack/scripts");
 const MODULE_DIR = await mkdtemp(resolve(tmpdir(), "aionbound-codex-ui-"));
-for (const name of ["wave1_codex_extension_data", "wave1_codex_ashen_data", "wave1_codex_data", "wave1_codex_ui_data", "catalog", "budgets", "state", "codex"]) {
+for (const name of ["wave1_codex_extension_data", "wave1_codex_ashen_data", "wave1_codex_crystal_data", "wave1_codex_data", "wave1_codex_ui_data", "catalog", "budgets", "state", "codex"]) {
   const source = (await readFile(resolve(SOURCE, `${name}.js`), "utf8"))
     .replaceAll(/from "\.\/([a-z0-9_]+)\.js"/g, 'from "./$1.mjs"');
   await writeFile(resolve(MODULE_DIR, `${name}.mjs`), source);
@@ -88,7 +88,7 @@ test("existing Codex routes open category and entry ActionForms without chat", a
   assert.equal(await codex.use(player, "aionbound:trophy_codex"), false);
   assert.equal(forms.length, 4);
   assert.equal(forms[0].title, "Aionbound Codex — Living World");
-  assert.deepEqual(forms[0].buttons, ["Whisperwood", "Ashen Highlands"]);
+  assert.deepEqual(forms[0].buttons, ["Whisperwood", "Ashen Highlands", "Crystal Marsh"]);
   assert.equal(forms[1].title, "Aionbound Codex — Whisperwood");
   assert.deepEqual(forms[1].buttons, [
     "Resources & Blocks — 0/20",

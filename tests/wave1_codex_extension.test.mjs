@@ -21,10 +21,10 @@ const MAP = JSON.parse(await readFile(resolve(ROOT, "engineering/whisperwood-int
 const mappedEntries = ["structures", "equipment", "bosses", "progression"].flatMap(category => MAP.entries[category]);
 
 test("generated Whisperwood extension remains exact after region append", () => {
-  assert.equal(WAVE1_CODEX_REGISTRY_VERSION, 3);
+  assert.equal(WAVE1_CODEX_REGISTRY_VERSION, 4);
   assert.equal(STATE_VERSION, 4);
   assert.equal(WHISPERWOOD_CODEX_EXTENSION_ENTRIES.length, 34);
-  assert.equal(CODEX_ENTRY_REGISTRY.length, 140);
+  assert.equal(CODEX_ENTRY_REGISTRY.length, 204);
   assert.deepEqual(CODEX_CATEGORY_CAPS, MAP.compact_v4_extension.category_caps_after);
   assert.deepEqual(WHISPERWOOD_CODEX_EXTENSION_ENTRIES.map(entry => entry.id), mappedEntries.map(entry => entry.id));
   for (let index = 0; index < mappedEntries.length; index++) {
@@ -40,7 +40,7 @@ test("generated Whisperwood extension remains exact after region append", () => 
 
 test("all structure activations are mapped while proximity remains unclaimed", () => {
   const structures = MAP.entries.structures;
-  assert.equal(Object.keys(CODEX_STRUCTURE_ACTIVATION_EVENTS).length, 20);
+  assert.equal(Object.keys(CODEX_STRUCTURE_ACTIVATION_EVENTS).length, 30);
   for (const entry of structures) {
     const activation = entry.discovery_events.find(event => event.action === "first_successful_activation");
     assert.deepEqual(codexEventsForStructureActivation(entry.id), [activation.id]);

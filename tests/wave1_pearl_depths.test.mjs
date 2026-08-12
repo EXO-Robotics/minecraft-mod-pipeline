@@ -100,6 +100,14 @@ test("70/40/15/enrage phases, serialized attack cooldowns, and bounded add trimm
   assert.equal(session.globalReadyAt, 278); assert.equal(session.attackReadyAt.get("silt_grasp"), 370);
 });
 
+test("Drown Hymn is transition-only before Flood Claim and joins rotation only there", () => {
+  const h = harness(), session = h.pull();
+  session.phase = 2; session.attack = null; session.globalReadyAt = 0; session.attackReadyAt.clear(); session.attackCursor = 3; h.tick(101);
+  assert.notEqual(session.attack.id, "drown_hymn");
+  session.phase = 3; session.attack = null; session.globalReadyAt = 0; session.attackReadyAt.clear(); session.attackCursor = 3; h.tick(102);
+  assert.equal(session.attack.id, "drown_hymn");
+});
+
 test("leash and wipe restore transient arena state without clearing durable completion", () => {
   const leash = harness(), session = leash.pull(); session.boss.location.x = 30; leash.tick(101); leash.tick(300); assert.equal(leash.service.sessions.size, 1); leash.tick(301); assert.equal(leash.service.sessions.size, 0); assert.equal(leash.restored.length, 1);
   const wipe = harness(), wiped = wipe.pull(); wipe.players[0].health.currentValue = 0; wipe.tick(101); wipe.tick(400); assert.equal(wipe.service.sessions.size, 1); wipe.tick(401); assert.equal(wipe.service.sessions.size, 0); assert.ok(wiped.boss.removed);

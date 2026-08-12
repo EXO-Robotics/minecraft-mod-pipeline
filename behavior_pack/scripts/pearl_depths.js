@@ -333,6 +333,9 @@ export function createPearlDepthsService({ world, system, state, boundedEntities
     const available = PEARL_DEPTHS.phases[session.phase].attacks;
     for (let offset = 0; offset < available.length; offset++) {
       const index = (session.attackCursor + offset) % available.length, id = available[index];
+      // Drown Hymn is a phase-transition action until Flood Claim, where the
+      // ratified envelope additionally admits it to the ordinary rotation.
+      if (id === "drown_hymn" && session.phase < 3) continue;
       if (system.currentTick < (session.attackReadyAt.get(id) ?? 0)) continue;
       session.attackCursor = index + 1; startAttack(session, id); return;
     }

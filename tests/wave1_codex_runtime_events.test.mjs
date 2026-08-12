@@ -8,7 +8,7 @@ import { fileURLToPath, pathToFileURL } from "node:url";
 const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), "..");
 const SOURCE = resolve(ROOT, "behavior_pack/scripts");
 const MODULE_DIR = await mkdtemp(resolve(tmpdir(), "aionbound-codex-events-"));
-for (const name of ["wave1_codex_extension_data", "wave1_codex_ashen_data", "wave1_codex_data", "wave1_codex_ui_data", "catalog", "budgets", "state", "codex", "router"]) {
+for (const name of ["wave1_codex_extension_data", "wave1_codex_ashen_data", "wave1_codex_crystal_data", "wave1_codex_data", "wave1_codex_ui_data", "catalog", "budgets", "state", "codex", "router"]) {
   const source = (await readFile(resolve(SOURCE, `${name}.js`), "utf8"))
     .replaceAll(/from "\.\/([a-z0-9_]+)\.js"/g, 'from "./$1.mjs"');
   await writeFile(resolve(MODULE_DIR, `${name}.mjs`), source);
@@ -26,17 +26,17 @@ const expectedRoutes = (kinds, eventName) => Object.fromEntries(map.entries
     .filter(event => event.event === eventName)
     .map(event => [entry.runtime_id, event.id])));
 
-test("catalog preserves exact Whisperwood routes and appends Ashen harvest routes", () => {
+test("catalog preserves exact Whisperwood routes and appends later-region harvest routes", () => {
   const expected = {
     ...expectedRoutes(["block"], "harvested"),
     ...expectedRoutes(["block"], "crafted"),
     ...expectedRoutes(["plant"], "harvested"),
   };
-  assert.equal(Object.keys(catalog.CODEX_BLOCK_INTERACTION_ROUTES).length, 40);
+  assert.equal(Object.keys(catalog.CODEX_BLOCK_INTERACTION_ROUTES).length, 60);
   assert.deepEqual(Object.fromEntries(Object.entries(catalog.CODEX_BLOCK_INTERACTION_ROUTES).filter(([id]) => id in expected).map(([id, events]) => [id, events[0]])), expected);
 });
 
-test("all 40 interaction routes resolve to integrated behavior-pack blocks", async () => {
+test("all interaction routes resolve to integrated behavior-pack blocks", async () => {
   for (const runtimeId of Object.keys(catalog.CODEX_BLOCK_INTERACTION_ROUTES)) {
     const id = runtimeId.slice("aionbound:".length);
     const document = JSON.parse(await readFile(resolve(ROOT, `behavior_pack/blocks/${id}.block.json`), "utf8"));
