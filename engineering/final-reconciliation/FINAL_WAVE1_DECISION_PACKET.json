@@ -1,0 +1,286 @@
+{
+  "after_approvals": [
+    "ratify exact approved proposal hashes in a replacement decision ledger",
+    "implement and locally validate approved Skyreach and Twinbond surfaces",
+    "reconcile Ashen activation without bypassing tooling governance",
+    "apply the selected audio contract",
+    "then build twice, freeze an immutable generation, and run the separately gated final exact-package qualification ladder"
+  ],
+  "audited_integration": {
+    "commit": "0061c979049b60b752a54bef611b6f16fd2a5fae",
+    "head_advanced_during_audit": false,
+    "tree": "2254abb2d5c30808a38fc47b39872fc7c0afa5c5"
+  },
+  "authority_effect": "NONE_UNTIL_USER_APPROVAL_IS_RATIFIED_IN_A_REPLACEMENT_DECISION_LEDGER",
+  "decision_set": [
+    {
+      "approval_text_verbatim": "Approve W1-001-SR, W1-003-STORM-NEST, and W1-004-SR exactly as proposed. Preserve W1-CREATIVE-005 as deferred.",
+      "approve_consequence": "Engineering may ratify and execute exact Skyreach identities/acquisition/recipes, Storm Nest envelope, storm_pinion seal, loot/recovery/repeat-clear semantics; proposal exclusions remain exclusions.",
+      "id": "DECISION_SKYREACH_TRANCHE",
+      "kind": "APPROVE_OR_REJECT_ATOMIC_TRANCHE",
+      "proposals": [
+        {
+          "authority_effect": "NONE_UNTIL_RATIFIED_IN_REPLACEMENT_DECISION_LEDGER",
+          "path": "engineering/authority/support-proposals/skyreach/W1-001-SR.json",
+          "proposal_source_commit": "9cfb798b22216cc73d477ee315861ccb2089d232",
+          "proposal_source_tree": "d090311ad9a4578c53b613989a9a48a39e51b883",
+          "question": "Ratify only these already-written Skyreach dispositions and the existing wing_bone_stay requirement?",
+          "sha256": "926a401add04b6611d7cee7dd1fa3bcf6a3fe44cf656ef9aa34d9b1bad5f30cd",
+          "status": "PROPOSED_NOT_RATIFIED",
+          "ticket_id": "W1-001-SR"
+        },
+        {
+          "authority_effect": "NONE_UNTIL_RATIFIED_IN_REPLACEMENT_DECISION_LEDGER",
+          "path": "engineering/authority/support-proposals/skyreach/W1-003-STORM-NEST.json",
+          "proposal_source_commit": "9cfb798b22216cc73d477ee315861ccb2089d232",
+          "proposal_source_tree": "d090311ad9a4578c53b613989a9a48a39e51b883",
+          "question": "Ratify this Skyreach-specific Storm Nest phase, timing, reset, multiplayer, persistence, and terminal envelope without approving damage or radius values?",
+          "sha256": "59b4493857bf3d90d402d438553f4b7fc03c6b45689e5897f8a8cb501bfc15d0",
+          "status": "PROPOSED_NOT_RATIFIED",
+          "ticket_id": "W1-003-STORM-NEST"
+        },
+        {
+          "authority_effect": "NONE_UNTIL_RATIFIED_IN_REPLACEMENT_DECISION_LEDGER",
+          "path": "engineering/authority/support-proposals/skyreach/W1-004-SR.json",
+          "proposal_source_commit": "9cfb798b22216cc73d477ee315861ccb2089d232",
+          "proposal_source_tree": "d090311ad9a4578c53b613989a9a48a39e51b883",
+          "question": "Ratify the inherited global loot bands and guards for Skyreach with storm_pinion as the sole critical seal and all other rewards optional only?",
+          "sha256": "823894296bb4b4ed1becd1a1a5ccc814f734cecc50c8433be855bdf1e080e4bf",
+          "status": "PROPOSED_NOT_RATIFIED",
+          "ticket_id": "W1-004-SR"
+        }
+      ],
+      "reject_or_no_decision_consequence": "Skyreach remains foundation-complete but executable acquisition, loot, Storm Nest, seal recovery, and terminal progression stay dormant; no full Wave 1 candidate."
+    },
+    {
+      "approval_text_verbatim": "Approve W1-002-TWINBOND, W1-003-TWINBOND, and W1-004-TWINBOND exactly as proposed. Preserve the retired finale-key and Concord Scale path as forbidden, and preserve W1-CREATIVE-005 as deferred.",
+      "approve_consequence": "Engineering may ratify and implement the same-world authored Twinbond site, bounded four-phase encounter, Trophy Edge/Memory/relic fulfillment and recovery, while keeping retired G7 finale rewards forbidden.",
+      "id": "DECISION_FINALE_TRANCHE",
+      "kind": "APPROVE_OR_REJECT_ATOMIC_TRANCHE",
+      "proposals": [
+        {
+          "authority_effect": "NONE_UNTIL_RATIFIED_IN_REPLACEMENT_DECISION_LEDGER",
+          "path": "engineering/authority/support-proposals/finale/W1-002-TWINBOND.json",
+          "proposal_source_commit": "1b8d35fe47906f376196ad5f049d1595e3366f27",
+          "proposal_source_tree": "83d67bd95cb5c0f067be7876967c32ca881dcdd0",
+          "question": "Ratify the same-world single authored Twinbond site, abstract Concord Spark, combined Memory presentation, non-inventory optional mastery stamp, and mandatory Twinbond/Trophy Edge machine-exit dependency exactly as proposed?",
+          "sha256": "0f99a748e55d15bd468d9ded25a0c170972bf94c1682e56c8abb78cde25eda7e",
+          "status": "PROPOSED_NOT_RATIFIED",
+          "ticket_id": "W1-002-TWINBOND"
+        },
+        {
+          "authority_effect": "NONE_UNTIL_RATIFIED_IN_REPLACEMENT_DECISION_LEDGER",
+          "path": "engineering/authority/support-proposals/finale/W1-003-TWINBOND.json",
+          "proposal_source_commit": "1b8d35fe47906f376196ad5f049d1595e3366f27",
+          "proposal_source_tree": "83d67bd95cb5c0f067be7876967c32ca881dcdd0",
+          "question": "Ratify these four Creative phases with preserved entity balance, bounded timing, reset, multiplayer ownership, existing-schema persistence, and ignition-terminal semantics exactly as proposed?",
+          "sha256": "c22a350499fd2674d3dabedcee8ec5221c4e3e8da4f89666f91cb5a69a43cf1c",
+          "status": "PROPOSED_NOT_RATIFIED",
+          "ticket_id": "W1-003-TWINBOND"
+        },
+        {
+          "authority_effect": "NONE_UNTIL_RATIFIED_IN_REPLACEMENT_DECISION_LEDGER",
+          "path": "engineering/authority/support-proposals/finale/W1-004-TWINBOND.json",
+          "proposal_source_commit": "1b8d35fe47906f376196ad5f049d1595e3366f27",
+          "proposal_source_tree": "83d67bd95cb5c0f067be7876967c32ca881dcdd0",
+          "question": "Ratify the guaranteed once-per-player Twinbond Relic/Edge/Memory package, optional non-item mastery stamp, full-inventory recovery, and no-repeat-final-reward semantics exactly as proposed?",
+          "sha256": "b5ac9295df1718112793d2b15ba035570e1e6032d0da814b9af68a17c27d9a4c",
+          "status": "PROPOSED_NOT_RATIFIED",
+          "ticket_id": "W1-004-TWINBOND"
+        }
+      ],
+      "reject_or_no_decision_consequence": "Twinbond stays deliberately withheld; the inherited finale-key/Concord Scale path remains forbidden; no full Wave 1 candidate."
+    },
+    {
+      "choices": [
+        {
+          "approval_text_verbatim": "Preserve W1-ASSET-AUDIO-001 as a final blocker. Do not freeze the Wave 1 candidate until original provenance-backed regional, creature, boss, and landmark audio is supplied and qualified.",
+          "consequence": "W1-ASSET-AUDIO-001 remains final-blocking until original bytes, filenames, provenance, event binding, and qualification exist.",
+          "id": "AUDIO_ORIGINAL_REQUIRED"
+        },
+        {
+          "approval_text_verbatim": "Explicitly reduce the Wave 1 final sound-identity requirement: ship the existing role-appropriate vanilla placeholder mappings as the Wave 1 audio scope, record custom regional, boss, and landmark audio plus client mix as known limitations, and make no custom-audio or client-mix claims.",
+          "consequence": "Existing vanilla placeholder mappings become the explicit Wave 1 audio scope; custom identity audio and client mix remain known limitations and cannot be claimed.",
+          "id": "AUDIO_PLACEHOLDER_SCOPE_REDUCTION"
+        }
+      ],
+      "id": "DECISION_AUDIO_CONTRACT",
+      "kind": "CHOOSE_EXACTLY_ONE",
+      "no_decision_consequence": "The current contract keeps W1-ASSET-AUDIO-001 final-blocking."
+    }
+  ],
+  "evidence": [
+    {
+      "path": "engineering/authority/support-proposals/skyreach/W1-001-SR.json",
+      "sha256": "926a401add04b6611d7cee7dd1fa3bcf6a3fe44cf656ef9aa34d9b1bad5f30cd"
+    },
+    {
+      "path": "engineering/authority/support-proposals/skyreach/W1-003-STORM-NEST.json",
+      "sha256": "59b4493857bf3d90d402d438553f4b7fc03c6b45689e5897f8a8cb501bfc15d0"
+    },
+    {
+      "path": "engineering/authority/support-proposals/skyreach/W1-004-SR.json",
+      "sha256": "823894296bb4b4ed1becd1a1a5ccc814f734cecc50c8433be855bdf1e080e4bf"
+    },
+    {
+      "path": "engineering/authority/support-proposals/finale/W1-002-TWINBOND.json",
+      "sha256": "0f99a748e55d15bd468d9ded25a0c170972bf94c1682e56c8abb78cde25eda7e"
+    },
+    {
+      "path": "engineering/authority/support-proposals/finale/W1-003-TWINBOND.json",
+      "sha256": "c22a350499fd2674d3dabedcee8ec5221c4e3e8da4f89666f91cb5a69a43cf1c"
+    },
+    {
+      "path": "engineering/authority/support-proposals/finale/W1-004-TWINBOND.json",
+      "sha256": "b5ac9295df1718112793d2b15ba035570e1e6032d0da814b9af68a17c27d9a4c"
+    },
+    {
+      "path": "engineering/validation/wave1/WAVE_1_SKYREACH_IMPLEMENTED_CLOSURE.json",
+      "sha256": "5f1e044c6f4c1176f0025ab35be0afd1a0a96d66b73b3e10cd3113e727292fee"
+    },
+    {
+      "path": "engineering/skyreach-intake/deferred-source-exit/SKYREACH_DEFERRED_SOURCE_EXIT.json",
+      "sha256": "4410df90c93e7d2adbb6899fe88397c419b26e76c8ae571559ece0ef432cfb39"
+    },
+    {
+      "path": "engineering/packet006-presentation/PACKET006_PRESENTATION_SHELLS_REPORT.json",
+      "sha256": "7136319581d3102525965e4e2ec99440fbbe74294ae83a1ecacc7ac35c64fc42"
+    },
+    {
+      "path": "engineering/native-assets/packet006-missing/PACKET006_MISSING_NATIVE_REPORT.json",
+      "sha256": "76622b1d3b33bae40e08182d987ef33e972f0be5f9fb7b64d53e5c7728cd4f1f"
+    },
+    {
+      "path": "engineering/native-assets/twinbond/TWINBOND_NATIVE_REPORT.json",
+      "sha256": "fd4cbf54799a3d78d5bfa170f57e1b555ce50b890a591e0371207e4f84a484ef"
+    },
+    {
+      "path": "engineering/packet006-reconciliation/PACKET006_ROUTINE_RECONCILIATION.json",
+      "sha256": "d1b71c2375a14a26a1475003a17a63b5c31cd9567764cc5af931ef617b0683d2"
+    },
+    {
+      "path": "engineering/authority/support-tickets/W1-ASSET-AUDIO-001.json",
+      "sha256": "cc8c3179964c61c495fb25d4c0f891bdb237433edb847b1e73e54018387a667f"
+    },
+    {
+      "path": "engineering/ashen-intake/deferred-runtime-activation/ASHEN_RUNTIME_ACTIVATION_DEFERRED.json",
+      "sha256": "e35d8b25e798a6bf1844ed8aaa718c13e021b83c056b9ff15b9f3d4eb35ae998"
+    },
+    {
+      "path": "engineering/authority/support-proposals/W1-CREATIVE-005/sidegrade_identity_proposal.json",
+      "sha256": "03dd32528d85c7e82edec0f998a1c271e782886f4cf357f1283e25fece11933a"
+    },
+    {
+      "path": "resource_pack/textures/item_texture.json",
+      "sha256": "b3ba12a8612322119d1825e1e831ce83fb7b56e83b4b8be06a9df47a819e05e3"
+    },
+    {
+      "path": "resource_pack/textures/terrain_texture.json",
+      "sha256": "8edbcdc323214b7f930521161defb36563aeb91b2a1d5d14a362dc8ad7ff9b95"
+    },
+    {
+      "path": "resource_pack/texts/en_US.lang",
+      "sha256": "0393af3080dfa8208fd32532be37b1849a118fb03ca759b5cb64d4bb2fe0b394"
+    },
+    {
+      "path": "resource_pack/sounds.json",
+      "sha256": "6629c48aca2f561d7e6362da9b3072b676b79b524eabccd73b711a749412310a"
+    },
+    {
+      "path": "engineering/authority/WAVE_1_SUCCESSOR_WORKSPACE_AUTHORITY.json",
+      "sha256": "df8eae7a83a820770c882edbe44c9293b53997febe1305446c61554addf2d0a4"
+    },
+    {
+      "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-006-equipment-progression/MANIFEST_FULL.json",
+      "repository": "bedrock-server workspace external Creative Packet 006 source",
+      "sha256": "71ab8dec6949ab4a1321fe4215d843cdb9c4279e8ca6a37adfb95c20149951ea"
+    }
+  ],
+  "included_later_local_commits": [
+    {
+      "commit": "390dce2757d2b1b7a7e3a967d214593b99c31480",
+      "contained_in_audited_integration": true,
+      "subject": "Skyreach approval-ready support tranche"
+    },
+    {
+      "commit": "49bd8500259b9bed954862704ebc95ffbb4392bd",
+      "contained_in_audited_integration": true,
+      "subject": "Packet 006 dormant presentation shells"
+    },
+    {
+      "commit": "0061c979049b60b752a54bef611b6f16fd2a5fae",
+      "contained_in_audited_integration": true,
+      "subject": "Twinbond finale approval-ready support tranche"
+    }
+  ],
+  "no_decision_required": {
+    "W1-CREATIVE-005": {
+      "conditions": [
+        "only approved base Packet 006 identities ship",
+        "all eight proposed sibling sidegrade/unique-finish IDs remain absent",
+        "no substitute identity or same-ID finish is invented",
+        "known limitation is disclosed"
+      ],
+      "consequence": "Deferral does not block the base 50 Packet 006 presentation set.",
+      "status": "SAFE_TO_SHIP_DEFERRED_UNDER_EXISTING_CONDITIONS"
+    },
+    "packet006_base_presentation": {
+      "attachables": 46,
+      "authority_consequence": "No new decision is needed for the approved base 50 identities. Acquisition/gameplay/finale authority remains separate.",
+      "block_representations": 9,
+      "geometry_bindings": 50,
+      "intentional_non_attachable_placeable_trophies": [
+        "aionbound:mosskip_trophy",
+        "aionbound:briar_elk_trophy",
+        "aionbound:thorn_stalker_skull",
+        "aionbound:ancient_acorn_display"
+      ],
+      "item_atlas_entries": 46,
+      "item_representations": 41,
+      "localized": 50,
+      "manifest_count": 50,
+      "manifest_path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-006-equipment-progression/MANIFEST_FULL.json",
+      "manifest_sha256": "71ab8dec6949ab4a1321fe4215d843cdb9c4279e8ca6a37adfb95c20149951ea",
+      "proof_boundary": "source representation, geometry, texture registry/PNG, localization, and attachable-or-placeable presentation only; not client readability, package, BDS, console, or release proof",
+      "source_presentation_complete": 50,
+      "status": "ALL_50_BASE_PACKET006_PRESENTATION_IDENTITIES_SOURCE_CLOSED",
+      "terrain_atlas_entries": 4
+    }
+  },
+  "nonclaims": [
+    "no product or ledger mutation",
+    "no build or package",
+    "no BDS",
+    "no candidate freeze",
+    "no client, multiplayer, console, Marketplace, publication, or release proof"
+  ],
+  "schema": "aionbound.wave1.final_decision_packet.v1",
+  "separately_blocked_not_approved_by_this_packet": {
+    "ashen_activation": {
+      "blocker": "MANAGED_REVIEWER_ACTIVATION_BLOCKED",
+      "candidate_consequence": "Still must be normally activated when tooling permits or explicitly removed by a product-contract revision before candidate freeze; dormant gameplay must not ship silently.",
+      "disposition": "NO_RETRY_NO_WORKAROUND_IN_THIS_WORKLOAD",
+      "dormant_only": [
+        "Ashen equipment composition into existing completed-item, hurt, and 20-tick handlers",
+        "Kiln Sky composition into existing reconcile, tick, block-interaction, and death handlers"
+      ],
+      "product_defect_demonstrated": false,
+      "status": "ASHEN_VERTICAL_SOURCE_COMPLETE_RUNTIME_ACTIVATION_DEFERRED"
+    },
+    "github_publication": {
+      "attempted_command": "git push -u origin codex/aionbound-wave1-g8-integration",
+      "branch": "codex/aionbound-wave1-g8-integration",
+      "classification": "EXTERNALLY_OBSERVED_NOT_PRODUCT_EVIDENCE_PUBLICATION_BLOCKER_ONLY",
+      "committed_evidence_path": null,
+      "decision_source": "NOT_OBSERVABLE",
+      "observations": [
+        "gh auth status reported the EXO-Robotics token invalid",
+        "managed review rejected publishing 86 commits to an unverified destination while auth and exact publication scope were not trusted"
+      ],
+      "product_or_candidate_consequence": "None; publication is external and separately gated. It does not invalidate source work or prove a product defect.",
+      "remote": "https://github.com/EXO-Robotics/minecraft-mod-pipeline.git",
+      "retry_disposition": "DO_NOT_RETRY_OR_WORK_AROUND_WITHOUT_FRESH_DIRECT_EXACT_REPOSITORY_AND_BRANCH_APPROVAL_AFTER_AUTH_AND_RISK_DISCLOSURE"
+    }
+  },
+  "status": "FINAL_WAVE1_DECISIONS_REQUIRED_NO_AUTHORITY_EFFECT"
+}
