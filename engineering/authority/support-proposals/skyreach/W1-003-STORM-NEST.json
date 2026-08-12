@@ -1,0 +1,495 @@
+{
+  "approval_required": [
+    {
+      "decision_id": "W1-003-STORM-NEST",
+      "question": "Ratify this Skyreach-specific Storm Nest phase, timing, reset, multiplayer, persistence, and terminal envelope without approving damage or radius values?"
+    }
+  ],
+  "authority_effect": "NONE_UNTIL_RATIFIED_IN_REPLACEMENT_DECISION_LEDGER",
+  "proposal": {
+    "add_semantics": {
+      "allowed_authored_adds": [
+        "aionbound:ruin_harpy",
+        "aionbound:gale_hawk"
+      ],
+      "ecology_entities_never_join_session": true,
+      "effective_cap": "min(current_phase.add_cap,multiplayer.global_session_add_cap)",
+      "overflow_queue": "FORBIDDEN",
+      "phase_down": "despawn_oldest_excess_session_adds_without_loot_kill_credit_or_reward_event"
+    },
+    "all_numeric_values_status": "PROPOSED_NOT_RATIFIED",
+    "arena_form_predicate": "encounter_session_active_and_entity_tag_aionbound.storm_nest_apex",
+    "arena_link": "aionbound:nest_platform_authored_encounter_volume",
+    "arena_state": {
+      "no_new_radius": true,
+      "persistent_world_block_mutation": false,
+      "reset_restores_authored_arena_state": true,
+      "updraft_pillars_and_recovery_ledges": "session_transient_authored_arena_state_only"
+    },
+    "boss_entity_id": "aionbound:wind_roc",
+    "cooldown_composition": {
+      "attack_serialization": "one_attack_telegraph_active_recovery_sequence_at_a_time",
+      "clock_start": "global_and_selected_attack_cooldowns_start_when_selected_attack_recovery_finishes",
+      "next_attack_gate": "selected_attack_starts_only_when_global_and_attack_specific_cooldowns_have_expired"
+    },
+    "ecology_or_natural_form_can_complete_chapter": false,
+    "ecology_separation": {
+      "arena_apex_tag": "aionbound.storm_nest_apex",
+      "natural_or_command_wind_roc_must_not": [
+        "receive_arena_apex_tag",
+        "join_or_create_session",
+        "complete_chapter",
+        "write_completion_or_reward_keys",
+        "drop_or_deliver_storm_pinion"
+      ],
+      "tag_writer": "active_storm_nest_session_spawn_path_only"
+    },
+    "encounter_id": "aionbound:storm_nest",
+    "enrage": {
+      "hard_time_action": "enter_storm_crown_not_instant_kill",
+      "hard_time_seconds": 420,
+      "health_fraction": 0.15
+    },
+    "explicit_nondecisions": {
+      "arena_radius_blocks": "NOT_CREATED_USE_AUTHORED_STRUCTURE_VOLUME",
+      "attack_effect_radii": "NOT_CREATED",
+      "damage_values": "NOT_CREATED",
+      "new_attacks": "FORBIDDEN_ONLY_SIX_CREATIVE_ATTACK_IDENTITIES",
+      "new_persistence_domain_or_schema": "FORBIDDEN",
+      "new_phases": "FORBIDDEN_ONLY_FOUR_CREATIVE_PHASE_IDENTITIES"
+    },
+    "health": {
+      "departure_or_disconnect_changes_max_health": false,
+      "late_join_changes_max_health": false,
+      "max_health_formula": "560 * (1 + 0.30 * (N_pull - 1))",
+      "participant_cap": 4,
+      "per_additional_locked_participant_multiplier": 0.3,
+      "scaling_participant_snapshot": "immutable_unique_eligible_pull_participants_selected_at_pull",
+      "solo": 560
+    },
+    "multiplayer": {
+      "disconnect_grace_seconds": 60,
+      "eligible_at_pull": "inside_authored_encounter_volume_continuously_for_5_seconds",
+      "global_session_add_cap": 4,
+      "hard_unique_player_cap_for_each_set": 4,
+      "health_scaling_snapshot": "immutable_at_pull",
+      "late_join": "automatic_after_15_continuous_seconds_only_in_nest_guard_or_wind_roads_if_reward_set_has_open_slot; never rescales health",
+      "ownership": "per_player_terminal_entitlement_for_terminally_eligible_reward_participant_set",
+      "reward_participant_set": "separate_set_initialized_from_pull_snapshot_then_automatic_early_phase_late_join_may_fill_open_slots",
+      "targeting": "never_requires_damage_to_one_specific_player"
+    },
+    "new_numbers_proposed_not_ratified": {
+      "additional_participant_multiplier": 0.3,
+      "attack_timing_seconds": {
+        "call_of_the_nest": {
+          "active": [
+            0.5,
+            0.8
+          ],
+          "cooldown": [
+            20.0,
+            27.0
+          ],
+          "recovery": [
+            1.3,
+            1.8
+          ],
+          "spawn_count": [
+            1,
+            2
+          ],
+          "telegraph": [
+            1.8,
+            2.4
+          ]
+        },
+        "feather_knives": {
+          "active": [
+            1.0,
+            1.5
+          ],
+          "cooldown": [
+            9.0,
+            13.0
+          ],
+          "recovery": [
+            1.0,
+            1.4
+          ],
+          "telegraph": [
+            1.3,
+            1.8
+          ]
+        },
+        "gale_dive": {
+          "active": [
+            0.8,
+            1.3
+          ],
+          "cooldown": [
+            13.0,
+            18.0
+          ],
+          "recovery": [
+            1.4,
+            1.9
+          ],
+          "telegraph": [
+            1.8,
+            2.4
+          ]
+        },
+        "global_attack_cooldown": [
+          3.0,
+          4.5
+        ],
+        "storm_screech": {
+          "active": [
+            0.8,
+            1.2
+          ],
+          "cooldown": [
+            14.0,
+            19.0
+          ],
+          "recovery": [
+            1.3,
+            1.8
+          ],
+          "telegraph": [
+            1.7,
+            2.2
+          ]
+        },
+        "talon_pin": {
+          "active": [
+            0.7,
+            1.1
+          ],
+          "cooldown": [
+            11.0,
+            15.0
+          ],
+          "recovery": [
+            1.2,
+            1.6
+          ],
+          "telegraph": [
+            1.4,
+            1.9
+          ]
+        },
+        "wing_buffet": {
+          "active": [
+            0.5,
+            0.9
+          ],
+          "cooldown": [
+            7.0,
+            10.0
+          ],
+          "recovery": [
+            0.9,
+            1.3
+          ],
+          "telegraph": [
+            1.1,
+            1.5
+          ]
+        }
+      },
+      "dead_or_outside_grace_seconds": 15,
+      "disconnect_grace_seconds": 60,
+      "global_attack_cooldown_seconds": [
+        3.0,
+        4.5
+      ],
+      "global_session_add_cap": 4,
+      "hard_enrage_seconds": 420,
+      "late_join_residency_seconds": 15,
+      "no_eligible_player_grace_seconds": 30,
+      "outside_leash_grace_seconds": 10,
+      "participant_cap": 4,
+      "phase_exit_health_fractions": [
+        0.7,
+        0.4,
+        0.15,
+        0.0
+      ],
+      "pull_residency_seconds": 5,
+      "solo_health": 560
+    },
+    "persistence": {
+      "active_fight": "not_persisted",
+      "migration": "idempotent_false_default",
+      "physical_pinion_claimed_key": "aionbound.player.storm_nest.pinion_claimed.v1",
+      "player_seal_credit_key": "aionbound.player.storm_nest.seal_credit.v1",
+      "reward_entitlement_key": "aionbound.player.storm_nest.reward_entitled.v1",
+      "schema": "existing_G8_schema_only_no_new_domain",
+      "world_completion_key": "aionbound.encounter.storm_nest.completed.v1"
+    },
+    "phase_boundary_rule": "At exact 0.70, 0.40, or 0.15 enter the lower-health phase; h=0 is terminal death, not a live phase.",
+    "phases": [
+      {
+        "add_cap": 0,
+        "attacks": [
+          "wing_buffet",
+          "talon_pin"
+        ],
+        "enter_at_health_fraction": 1.0,
+        "exit_at_health_fraction": 0.7,
+        "health_interval": "0.70 < h <= 1.00",
+        "id": "nest_guard"
+      },
+      {
+        "add_cap": 0,
+        "attacks": [
+          "wing_buffet",
+          "talon_pin",
+          "gale_dive",
+          "feather_knives"
+        ],
+        "enter_at_health_fraction": 0.7,
+        "exit_at_health_fraction": 0.4,
+        "health_interval": "0.40 < h <= 0.70",
+        "id": "wind_roads"
+      },
+      {
+        "add_cap": 4,
+        "attacks": [
+          "gale_dive",
+          "feather_knives",
+          "call_of_the_nest",
+          "storm_screech"
+        ],
+        "enter_at_health_fraction": 0.4,
+        "exit_at_health_fraction": 0.15,
+        "health_interval": "0.15 < h <= 0.40",
+        "id": "harpy_dirge"
+      },
+      {
+        "add_cap": 2,
+        "attacks": [
+          "wing_buffet",
+          "gale_dive",
+          "feather_knives",
+          "storm_screech"
+        ],
+        "enter_at_health_fraction": 0.15,
+        "exit_at_health_fraction": 0.0,
+        "health_interval": "0.00 < h <= 0.15",
+        "id": "storm_crown"
+      }
+    ],
+    "reset": {
+      "all_players_dead_or_outside_grace_seconds": 15,
+      "completion_is_not_cleared": true,
+      "leash_boundary": "authored_storm_nest_encounter_volume_no_new_radius_number",
+      "no_eligible_player_grace_seconds": 30,
+      "on_reset": [
+        "despawn_session_adds",
+        "clear_session_hazards_and_updrafts",
+        "restore_authored_arena_state",
+        "restore_boss_health",
+        "clear_active_session"
+      ],
+      "outside_leash_grace_seconds": 10,
+      "precedence": [
+        "valid_arena_form_death_wins_and_cancels_reset",
+        "world_unload_or_reload_resets_without_completion_or_reward",
+        "outside_authored_volume_continuously_10_seconds_resets",
+        "connected_participants_all_dead_or_outside_continuously_15_seconds_resets",
+        "no_connected_alive_participant_inside_continuously_30_seconds_resets"
+      ],
+      "world_reload_behavior": "reset_to_unpulled_full_health_restore_authored_arena_and_clear_session_transients"
+    },
+    "terminal_semantics": {
+      "complete_on": "arena_form_valid_death_event_with_active_session",
+      "eligible_set_source": "reward_participant_set_only",
+      "ordered_idempotent_transition": [
+        "validate_session_and_apex_tag_and_death_event",
+        "write_world_completion_once",
+        "write_player_seal_credit_once",
+        "write_player_reward_entitlement_once",
+        "fulfill_physical_pinion_at_most_once_or_leave_recovery_entitlement"
+      ],
+      "progression_credit": "per_player_durable_once",
+      "repeat_clear": "materials_and_arena_chest_may_repeat_but_chapter_seal_credit_and_entitlement_do_not",
+      "reward_identity_source": "W1-004-SR_only",
+      "world_stamp": "durable_once"
+    },
+    "timing_seconds": {
+      "call_of_the_nest": {
+        "active": [
+          0.5,
+          0.8
+        ],
+        "cooldown": [
+          20.0,
+          27.0
+        ],
+        "recovery": [
+          1.3,
+          1.8
+        ],
+        "spawn_count": [
+          1,
+          2
+        ],
+        "telegraph": [
+          1.8,
+          2.4
+        ]
+      },
+      "feather_knives": {
+        "active": [
+          1.0,
+          1.5
+        ],
+        "cooldown": [
+          9.0,
+          13.0
+        ],
+        "recovery": [
+          1.0,
+          1.4
+        ],
+        "telegraph": [
+          1.3,
+          1.8
+        ]
+      },
+      "gale_dive": {
+        "active": [
+          0.8,
+          1.3
+        ],
+        "cooldown": [
+          13.0,
+          18.0
+        ],
+        "recovery": [
+          1.4,
+          1.9
+        ],
+        "telegraph": [
+          1.8,
+          2.4
+        ]
+      },
+      "global_attack_cooldown": [
+        3.0,
+        4.5
+      ],
+      "storm_screech": {
+        "active": [
+          0.8,
+          1.2
+        ],
+        "cooldown": [
+          14.0,
+          19.0
+        ],
+        "recovery": [
+          1.3,
+          1.8
+        ],
+        "telegraph": [
+          1.7,
+          2.2
+        ]
+      },
+      "talon_pin": {
+        "active": [
+          0.7,
+          1.1
+        ],
+        "cooldown": [
+          11.0,
+          15.0
+        ],
+        "recovery": [
+          1.2,
+          1.6
+        ],
+        "telegraph": [
+          1.4,
+          1.9
+        ]
+      },
+      "wing_buffet": {
+        "active": [
+          0.5,
+          0.9
+        ],
+        "cooldown": [
+          7.0,
+          10.0
+        ],
+        "recovery": [
+          0.9,
+          1.3
+        ],
+        "telegraph": [
+          1.1,
+          1.5
+        ]
+      }
+    }
+  },
+  "schema_version": 1,
+  "scope_guard": {
+    "creative_source_mutation": false,
+    "decision_ledger_mutation": false,
+    "existing_proposal_mutation": false,
+    "pack_implementation_authorized": false,
+    "region": "Skyreach only",
+    "scope_broadening": false,
+    "w1_creative_005_sidegrades_absent": [
+      "gale_prism_bow",
+      "nest_talon_dagger",
+      "skywidow_whip",
+      "stormcloak",
+      "summit_hammer"
+    ],
+    "w1_creative_005_status": "DEFERRED_UNCHANGED"
+  },
+  "source_bindings": [
+    {
+      "path": "engineering/authority/support-proposals/W1-CREATIVE-003/thorn_court_behavior_proposal.json",
+      "sha256": "04f7b9a75be6ac542d3488bd7563a601dcb94603905479b7c3e766c94b9d48c1"
+    },
+    {
+      "path": "engineering/authority/support-proposals/crystal-marsh/W1-003-PEARL-DEPTHS.json",
+      "sha256": "b445cdc251eea6a79b03816b7ea0cf2bab0c6545a91946874e877f114a3e7098"
+    },
+    {
+      "path": "engineering/authority/WAVE_1_ENGINEERING_DECISION_LEDGER.json",
+      "sha256": "b791c4b63d6ef09c2ac437fdc67065735a2363becad92b359cecb0a4e25c5172"
+    },
+    {
+      "path": "engineering/skyreach-intake/authority/SKYREACH_VERTICAL_INTAKE_MAP.json",
+      "sha256": "42d0d94ea55d8dd1306345caf014cac08c770cf88adb241f70e9c5bcee4807b5"
+    },
+    {
+      "path": "program/crazycraft-pack-production-v1/studio-prep/creative/07_bosses/BOSS_PROGRESSION.md",
+      "sha256": "5ef85e1e0b29973a617f7dca4a8b119443c01644ba33f0e11166ef8d417d5a6f"
+    },
+    {
+      "path": "program/crazycraft-pack-production-v1/studio-prep/creative/02_loot/LOOT_BOSSES.md",
+      "sha256": "4d80925a113bb0cca67e2405047cd228a2df2ccd2c680e1e51ccd04b6f2d63d8"
+    },
+    {
+      "path": "program/crazycraft-pack-production-v1/studio-prep/creative/WAVE_1_LIVING_WORLD_IMPLEMENTATION_CONTRACT.json",
+      "sha256": "aa1f54df10d27d5c5675aae843ffe0d2946123d12a6509f7f021408bcdde9fb5"
+    },
+    {
+      "path": "program/crazycraft-pack-production-v1/studio-prep/creative/WAVE_1_LIVING_WORLD_IMPLEMENTATION_CONTRACT.md",
+      "sha256": "3116c217e06afe1fd0cd56ee742c537f948a4c91193ec831fd1b3ec362837bfc"
+    }
+  ],
+  "source_commit": "9cfb798b22216cc73d477ee315861ccb2089d232",
+  "source_tree": "d090311ad9a4578c53b613989a9a48a39e51b883",
+  "status": "PROPOSED_NOT_RATIFIED",
+  "ticket_id": "W1-003-STORM-NEST"
+}
