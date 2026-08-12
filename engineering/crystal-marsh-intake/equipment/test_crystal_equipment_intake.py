@@ -58,7 +58,7 @@ class CrystalEquipmentIntakeTest(unittest.TestCase):
     def test_current_authority_hash_is_receipt_only(self):
         authority = self.data["authority"][0]
         path = REPO / authority["path"]
-        self.assertEqual("521a1032470b28eeac34b23e7f268ba7b29c023a35d4bd454b157f4b8843e34f", authority["sha256"])
+        self.assertEqual("e90e9683e730235beae6dd08688426558140fdee962d4c3bdbf7aa54e6095660", authority["sha256"])
         self.assertEqual(authority["sha256"], hashlib.sha256(path.read_bytes()).hexdigest())
         self.assertIn("without authority mutation", authority["role"])
 

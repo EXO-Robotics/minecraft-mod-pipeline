@@ -2,7 +2,7 @@
 
 Bound to G8 `fb86d22ccaadbcdc890a7cc9038be42667159927` / tree `2a1b83fa9e7cc8ed3f584d21027cea74e05d0582`. Exact Packet 004 closure: **50 assets** (10 per category).
 
-Visual normalization and qualitative ecosystem work are safe now. The three minimum Creative tranches are preserved as `PROPOSED_NOT_RATIFIED`; no unapproved number or identity is implementation authority.
+The three minimum Creative tranches remain preserved below as a historical `PROPOSED_NOT_RATIFIED` intake snapshot. The machine twin separately hash-binds their current exact ratifications; no unapproved number or identity is implementation authority.
 
 | Ticket | Class | Disposition | Exact blocked surface |
 |---|---|---|---|

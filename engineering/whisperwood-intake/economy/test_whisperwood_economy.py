@@ -20,7 +20,7 @@ def load(path: Path) -> dict:
 
 
 class WhisperwoodEconomyTests(unittest.TestCase):
-    def test_exact_ratified_items_and_no_later_region_ids(self):
+    def test_exact_whisperwood_items_and_successor_region_identity_coexistence(self):
         self.assertEqual({
             "mosskip_crown_fragment", "thorn_barb", "stalker_claw", "hollow_venom_sac",
             "moss_bind_glue", "amber_core", "thorn_cord", "cleaver_blank", "living_root_focus",
@@ -32,7 +32,8 @@ class WhisperwoodEconomyTests(unittest.TestCase):
         for later_region in ("drake_scale", "prism_wing", "watcher_lens", "wight_shroud"):
             item = load(ROOT / "behavior_pack/items" / f"{later_region}.item.json")["minecraft:item"]
             self.assertEqual(f"aionbound:{later_region}", item["description"]["identifier"])
-        self.assertFalse((ROOT / "behavior_pack/items/wing_bone_stay.item.json").exists())
+        wing_bone = load(ROOT / "behavior_pack/items/wing_bone_stay.item.json")["minecraft:item"]
+        self.assertEqual("aionbound:wing_bone_stay", wing_bone["description"]["identifier"])
 
     def test_exact_twenty_six_recipe_graph_and_optional_mastery(self):
         self.assertEqual(26, len(author.RECIPES))

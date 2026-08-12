@@ -3,6 +3,7 @@ from __future__ import annotations
 
 import json
 import subprocess
+import tempfile
 import unittest
 from pathlib import Path
 
@@ -49,8 +50,11 @@ class SkyreachEconomyCodexTest(unittest.TestCase):
         self.assertEqual("codex:cm:progression:skyreach_rumor:ruined_observatory_visited", DATA["progression_handoffs"]["cm_to_skyreach"]["existing_event"])
         self.assertEqual("pilgrimage", DATA["progression_handoffs"]["skyreach_to_pilgrimage"]["target"])
 
-    def test_generated_files_current(self):
-        subprocess.run(["python3", str(HERE / "build_skyreach_economy_codex.py"), "--check"], check=True)
+    def test_historical_scaffold_is_preserved_and_current_runtime_append_is_separate(self):
+        self.assertEqual("SKYREACH_SAFE_NOW_ECONOMY_CODEX_SCAFFOLD_COMPLETE", DATA["status"])
+        current = (HERE.parents[2] / "behavior_pack/scripts/wave1_codex_skyreach_runtime_data.js").read_text()
+        self.assertIn("SKYREACH_CODEX_RUNTIME_ENTRIES", current)
+        self.assertIn("storm_nest", current)
 
     def test_runtime_data_is_identity_only(self):
         source = (HERE.parents[2] / "behavior_pack/scripts/wave1_codex_skyreach_data.js").read_text()

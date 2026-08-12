@@ -7,21 +7,17 @@ import hashlib
 import json
 from pathlib import Path
 import shutil
+import sys
 
 
 ROOT = Path(__file__).resolve().parents[3]
+sys.path.insert(0, str(ROOT / "engineering"))
+from repo_paths import find_bedrock_root
 BASE_COMMIT = "e9eeb3dd9bfbd8b50fdd29babd09247552bfbe7b"
 BASE_TREE = "20fa2c37e1ed3e6efcd5a74edbbbb54aafcc86c4"
 
 
-def find_bedrock_root() -> Path:
-    for candidate in (ROOT, *ROOT.parents):
-        if (candidate / "program/crazycraft-pack-production-v1").is_dir():
-            return candidate
-    raise SystemExit("bedrock-server root containing the binding packet was not found")
-
-
-BEDROCK_ROOT = find_bedrock_root()
+BEDROCK_ROOT = find_bedrock_root(ROOT)
 PACKET = BEDROCK_ROOT / (
     "program/crazycraft-pack-production-v1/studio-prep/sprints/"
     "asset-sprint-002-ashen-highlands"

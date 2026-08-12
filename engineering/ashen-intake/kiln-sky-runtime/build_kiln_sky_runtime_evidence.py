@@ -18,7 +18,7 @@ INPUTS = [
     "engineering/ashen-intake/kiln-sky-runtime/ACTIVATION_WITHHELD.md",
 ]
 AUTHORITIES = {
-    "engineering/authority/WAVE_1_ENGINEERING_DECISION_LEDGER.json": "b791c4b63d6ef09c2ac437fdc67065735a2363becad92b359cecb0a4e25c5172",
+    "engineering/authority/WAVE_1_ENGINEERING_DECISION_LEDGER.json": "cf7e1cd8b81b4a8088d136e1f9f2cb4ee3e245cfa71259f2a957d6e4f55ccff9",
     "engineering/authority/support-proposals/ashen/W1-003-KILN-SKY.json": "1b2d5f77185a1461040d7559d0d8ecdaf803d7727e419ceac32636865be85d7c",
     "engineering/authority/support-proposals/ashen/W1-004-AH.json": "93736ff800b1c90c8a6547d84336a6650f8ae32750f262de8e460385a7a26889",
 }

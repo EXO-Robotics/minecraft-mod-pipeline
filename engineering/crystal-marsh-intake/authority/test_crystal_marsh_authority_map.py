@@ -33,7 +33,7 @@ EXPECTED_AUTHORITY_HASHES = {
     "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-006-equipment-progression/MANIFEST_FULL.json": "71ab8dec6949ab4a1321fe4215d843cdb9c4279e8ca6a37adfb95c20149951ea",
     "program/crazycraft-pack-production-v1/studio-prep/creative/WAVE_1_LIVING_WORLD_IMPLEMENTATION_CONTRACT.json": "aa1f54df10d27d5c5675aae843ffe0d2946123d12a6509f7f021408bcdde9fb5",
     "program/crazycraft-pack-production-v1/studio-prep/creative/WAVE_1_LIVING_WORLD_IMPLEMENTATION_CONTRACT.md": "3116c217e06afe1fd0cd56ee742c537f948a4c91193ec831fd1b3ec362837bfc",
-    "engineering/authority/WAVE_1_ENGINEERING_DECISION_LEDGER.json": "b791c4b63d6ef09c2ac437fdc67065735a2363becad92b359cecb0a4e25c5172",
+    "engineering/authority/WAVE_1_ENGINEERING_DECISION_LEDGER.json": "cf7e1cd8b81b4a8088d136e1f9f2cb4ee3e245cfa71259f2a957d6e4f55ccff9",
 }
 
 

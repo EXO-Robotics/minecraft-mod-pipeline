@@ -8,11 +8,15 @@ import json
 import tempfile
 import unittest
 from pathlib import Path
+import sys
 
 
 HERE = Path(__file__).resolve().parent
 REPO = HERE.parents[3]
-BEDROCK = next(parent for parent in REPO.parents if (parent / "program/crazycraft-pack-production-v1").is_dir())
+sys.path.insert(0, str(REPO / "engineering"))
+from repo_paths import find_bedrock_root
+
+BEDROCK = find_bedrock_root(REPO)
 
 SPEC = importlib.util.spec_from_file_location("crystal_support_builder", HERE / "build_crystal_marsh_support_proposals.py")
 BUILDER = importlib.util.module_from_spec(SPEC)

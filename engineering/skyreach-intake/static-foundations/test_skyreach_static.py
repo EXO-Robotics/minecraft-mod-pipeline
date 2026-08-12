@@ -8,10 +8,15 @@ import json
 from pathlib import Path
 import struct
 import subprocess
+import sys
 import unittest
 import zlib
 
 ROOT = Path(__file__).resolve().parents[3]
+sys.path.insert(0, str(ROOT / "engineering"))
+from repo_paths import find_bedrock_root
+
+BEDROCK = find_bedrock_root(ROOT)
 OUT = Path(__file__).resolve().parent
 RESOURCE_IDS = {"sky_feather", "wind_silk", "cloud_wool", "cliff_crystal", "storm_pinion", "aether_stone", "updraft_reed_item", "sky_vine_item", "float_resin", "lift_bloom_item"}
 BLOCK_IDS = {"skyreach_log", "skyreach_wood", "skyreach_planks", "wind_slate", "cliff_stone", "rope_timber", "cloud_wool_block", "pale_shelf_stone", "cliff_gravel", "sky_moss_block"}
@@ -60,9 +65,9 @@ class SkyreachStaticFoundations(unittest.TestCase):
         self.assertEqual(authority["presentation_policy"]["blocks"]["blockbench_status"], "NOT_APPLICABLE")
         self.assertIn("loot", authority["scope_exclusions"])
         for asset_id, inputs in authority["source_inputs"].items():
-            geometry = load(ROOT.parents[3] / inputs["exported_geometry"]["path"])
+            geometry = load(BEDROCK / inputs["exported_geometry"]["path"])
             geometry_id = geometry["minecraft:geometry"][0]["description"]["identifier"]
-            animation = load(ROOT.parents[3] / inputs["exported_animation"]["path"])
+            animation = load(BEDROCK / inputs["exported_animation"]["path"])
             self.assertEqual(geometry_id, f"geometry.aionforge_sr.{asset_id}")
             self.assertTrue(all(key.startswith(f"animation.aionforge_sr.{asset_id}.") for key in animation["animations"]))
 

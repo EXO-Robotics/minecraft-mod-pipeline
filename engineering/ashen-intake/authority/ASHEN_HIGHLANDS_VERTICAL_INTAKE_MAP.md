@@ -2,7 +2,7 @@
 
 **Status:** `PACKET_002_AUTHORITY_RATIFIED_IMPLEMENTATION_AUTHORIZED`
 **Base:** `9acf1b0f62ade90b59ba65e0a9e0618852ff3159`
-**Authority digest:** `4be7693776578b677f856ea6371e258b303a879961c6510137d7bbd78dc4f49c`
+**Authority digest:** `a648049441766365213d8b0fe9015027f97d78f92daf55d055e6d80f968e2e8f`
 **Scope:** Authority intake only. This does not implement BP/RP content or prove runtime behavior.
 
 ## Locked boundaries
@@ -114,4 +114,4 @@
 | `engineering/authority/support-proposals/ashen/W1-001-AH.json` | `dd26a683f7f3e5301b66d7f2861454b5bf6b79818d12e0e8e1b22b6f07217774` | ratified refined Ashen identity dispositions |
 | `engineering/authority/support-proposals/ashen/W1-003-KILN-SKY.json` | `1b2d5f77185a1461040d7559d0d8ecdaf803d7727e419ceac32636865be85d7c` | ratified refined Kiln Sky encounter envelope |
 | `engineering/authority/support-proposals/ashen/W1-004-AH.json` | `93736ff800b1c90c8a6547d84336a6650f8ae32750f262de8e460385a7a26889` | ratified refined Ashen loot and reward envelope |
-| `engineering/authority/WAVE_1_ENGINEERING_DECISION_LEDGER.json` | `b791c4b63d6ef09c2ac437fdc67065735a2363becad92b359cecb0a4e25c5172` | ratified and deferred engineering decision state |
+| `engineering/authority/WAVE_1_ENGINEERING_DECISION_LEDGER.json` | `cf7e1cd8b81b4a8088d136e1f9f2cb4ee3e245cfa71259f2a957d6e4f55ccff9` | ratified and deferred engineering decision state |

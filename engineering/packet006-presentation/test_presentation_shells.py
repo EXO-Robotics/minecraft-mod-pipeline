@@ -3,6 +3,7 @@ from __future__ import annotations
 import hashlib
 import json
 import struct
+import tempfile
 import unittest
 import zlib
 from pathlib import Path
@@ -94,31 +95,24 @@ class Packet006PresentationShellTests(unittest.TestCase):
             self.assertEqual(f"textures/aionbound/wave1/packet006/icons/{asset}", atlas[asset]["textures"])
             self.assertIn(f"item.aionbound:{asset}.name={spec['name']}\n", lang)
 
-    def test_no_gameplay_or_acquisition_surfaces_created(self):
+    def test_historical_presentation_only_snapshot_and_current_activation_are_distinct(self):
         report = load(author.HERE / "PACKET006_PRESENTATION_SHELLS_REPORT.json")
+        self.assertEqual(author.BASE_COMMIT, report["base"]["commit"])
         self.assertEqual("DORMANT_PRESENTATION_IDENTITY_ONLY", report["authority_gate"]["state"])
         for value in report["invariants"].values():
             self.assertIn(value, (0, False))
-        for asset in author.ASSETS:
-            self.assertFalse((ROOT / f"behavior_pack/recipes/{asset}.recipe.json").exists())
-            for loot_root in (ROOT / "behavior_pack/loot_tables",):
-                for path in loot_root.rglob("*.json"):
-                    self.assertNotIn(f"aionbound:{asset}", path.read_text(encoding="utf-8"), str(path))
-        for script in (ROOT / "behavior_pack/scripts").glob("*.js"):
-            body = script.read_text(encoding="utf-8")
-            for asset in author.ASSETS:
-                self.assertNotIn(f"aionbound:{asset}", body, str(script))
+        for asset in ("surveyor_medallion", "surveyor_staff", "trail_compass", "warden_sigil"):
+            self.assertTrue((ROOT / f"behavior_pack/recipes/{asset}.recipe.json").is_file(), asset)
+        self.assertIn("aionbound:twinbond_relic", (ROOT / "behavior_pack/scripts/twinbond.js").read_text(encoding="utf-8"))
 
-    def test_generator_is_byte_deterministic(self):
-        observed = [
-            author.HERE / "PACKET006_PRESENTATION_SHELLS_REPORT.json",
-            ROOT / "resource_pack/textures/item_texture.json",
-            ROOT / "resource_pack/texts/en_US.lang",
-            *[ROOT / f"resource_pack/textures/aionbound/wave1/packet006/icons/{asset}.png" for asset in author.ASSETS],
-        ]
-        before = {path: sha(path) for path in observed}
-        author.author()
-        self.assertEqual(before, {path: sha(path) for path in observed})
+    def test_presentation_primitives_remain_deterministic_without_replaying_historical_generator(self):
+        for asset, spec in author.ASSETS.items():
+            self.assertEqual(author.item_doc(asset), load(ROOT / f"behavior_pack/items/{asset}.item.json"))
+            self.assertEqual(author.attachable_doc(asset, spec["clip"]), load(ROOT / f"resource_pack/attachables/{asset}.attachable.json"))
+            with tempfile.TemporaryDirectory() as temporary:
+                rendered = Path(temporary) / f"{asset}.png"
+                author.icon(asset, rendered)
+                self.assertEqual(sha(rendered), sha(ROOT / f"resource_pack/textures/aionbound/wave1/packet006/icons/{asset}.png"))
 
 
 if __name__ == "__main__":

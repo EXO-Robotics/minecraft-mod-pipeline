@@ -19,6 +19,10 @@ def test_deterministic_and_closed():
     assert all(len(row["source_files"]) == 6 for row in data["assets"])
     assert set(data["minimum_authority_tranches"]) == {"W1-001-SR", "W1-003-STORM-NEST", "W1-004-SR"}
     assert all(row["status"] == "PROPOSED_NOT_RATIFIED" for row in data["minimum_authority_tranches"].values())
+    current = data["current_ratification_reconciliation"]
+    assert set(current["approved"]) == {"W1-001-SR", "W1-003-STORM-NEST", "W1-004-SR"}
+    assert all(row["status"] == "APPROVED_AS_PROPOSED" for row in current["approved"].values())
+    assert current["W1-CREATIVE-005"] == "DEFERRED_BY_USER"
     assert any(row["id"] == "W1-CREATIVE-005" and row["disposition"] == "DEFERRED_BY_USER" for row in data["blocker_matrix"])
     assert data["guards"]["new_numbers_or_identities_invented"] is False
 

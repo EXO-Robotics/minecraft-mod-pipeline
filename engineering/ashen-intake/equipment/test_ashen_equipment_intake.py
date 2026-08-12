@@ -89,7 +89,17 @@ class AshenEquipmentIntakeTest(unittest.TestCase):
         for row in self.data["authority"]:
             path = resolve(row["path"])
             self.assertTrue(path.is_file(), path)
-            self.assertEqual(sha256(path), row["sha256"], path)
+            if row["path"] == "engineering/authority/WAVE_1_ENGINEERING_DECISION_LEDGER.json":
+                # Historical intake binds the pre-Ashen-ratification ledger.
+                # The replacement ledger must instead bind the exact preserved
+                # Ashen proposal bytes; do not rewrite the intake snapshot.
+                ledger = json.loads(path.read_text())
+                approved = {entry["tranche"]: entry for entry in ledger["ratifications"]["approved"]}
+                for tranche in ("W1-001-AH", "W1-003-KILN-SKY", "W1-004-AH"):
+                    proposal = REPO / approved[tranche]["proposal"]
+                    self.assertEqual(sha256(proposal), approved[tranche]["proposal_sha256"])
+            else:
+                self.assertEqual(sha256(path), row["sha256"], path)
 
     def test_all_six_canonical_artifacts_are_hash_bound(self) -> None:
         templates = self.data["canonical_source_contract"]["artifact_keys"]

@@ -7,7 +7,7 @@ ROOT = Path(__file__).resolve().parents[3]
 OUT = Path(__file__).with_name("ASHEN_EQUIPMENT_FUNCTIONAL_EVIDENCE.json")
 BASE = {"commit": "c115574759935c1dafd5bf508733b7b0737ed5c2", "tree": "41e485ed219ae6bc4177059d9ae8d11be714d1f5"}
 AUTHORITIES = {
-    "engineering/authority/WAVE_1_ENGINEERING_DECISION_LEDGER.json": "b791c4b63d6ef09c2ac437fdc67065735a2363becad92b359cecb0a4e25c5172",
+    "engineering/authority/WAVE_1_ENGINEERING_DECISION_LEDGER.json": "cf7e1cd8b81b4a8088d136e1f9f2cb4ee3e245cfa71259f2a957d6e4f55ccff9",
     "engineering/ashen-intake/equipment/ASHEN_EQUIPMENT_INTAKE.json": "1fe10a0cf8af6b8563144eb4310e9fca325dc6282d5e96178d912a34cdc64f5d",
 }
 ITEMS = {

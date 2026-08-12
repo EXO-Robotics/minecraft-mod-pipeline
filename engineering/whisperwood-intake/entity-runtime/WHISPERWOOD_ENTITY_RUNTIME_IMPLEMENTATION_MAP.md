@@ -281,7 +281,7 @@ Target creates:
 - `ambient_ground`: `behavior_pack/entities/mosskip.entity.json` (`2692e88b6b9e73c67da50b1bcdc6d96620dea98e10b96b8f670ea6efee0c50a2`), `behavior_pack/entities/lanternback.entity.json` (`d3410654b8d3b1549e8f9c5432750ddd83877bd05b9fbaa07141489b5adfd119`)
 - `neutral_retaliatory_ground`: `behavior_pack/entities/pebblehorn.entity.json` (`8c4302756ad2be49ab7d3a5668d99559469d1d01c141b3dd6eb62dd6b3caaa84`), `behavior_pack/entities/galestrider.entity.json` (`7f3709ef902186138c3470977d2a749bfd8cad561fa59b2e24e405ac898dbfff`)
 - `hostile_melee_ground`: `behavior_pack/entities/cinder_brood_hatchling.entity.json` (`3c82a047a489a47d383313a17935bcb73075578487f4ee476640d274f33b2759`), `behavior_pack/entities/basalt_behemoth.entity.json` (`7418ca5bbcb03fcb027fbeea863392a18f5b3cdc4bb77de9b1b9be28db06b437`)
-- `hostile_melee_ground_plus_encounter_shell`: `behavior_pack/entities/ash_sovereign_wyrm.entity.json` (`fd55521297173234fc4fde18a78e49b9f03216f721ec31a693ca9f2787cfdd4e`), `behavior_pack/scripts/encounters.js` (`57ad2a8a572f2b0ac2d4b7f361aa0517b4d36e817ae1d513b1161b044d5d429b`), `behavior_pack/scripts/state.js` (`ddac6421e9a2eea0e6da2746077f0a6ecb12e4607ab6240c3c2ba797a0d00461`)
+- `hostile_melee_ground_plus_encounter_shell`: `behavior_pack/entities/ash_sovereign_wyrm.entity.json` (`fd55521297173234fc4fde18a78e49b9f03216f721ec31a693ca9f2787cfdd4e`), `behavior_pack/scripts/encounters.js` (`57ad2a8a572f2b0ac2d4b7f361aa0517b4d36e817ae1d513b1161b044d5d429b`), `behavior_pack/scripts/state.js` (`a711111266701b4c7709f691dcbb82599c6b4848b948ba894590f59a9f41b975`)
 - `no_complete_g7_pattern`: no complete pattern
 
 ## Global blockers

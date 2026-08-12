@@ -58,6 +58,12 @@ class SkyreachSupportProposalTests(unittest.TestCase):
                 for ticket in self.tickets:
                     self.assertEqual(approved[ticket]["proposal_sha256"], hashlib.sha256((HERE / f"{ticket}.json").read_bytes()).hexdigest())
                 continue
+            if relative == "engineering/skyreach-intake/authority/SKYREACH_VERTICAL_INTAKE_MAP.json":
+                # Proposal bytes bind the historical pre-ratification intake
+                # map. Current reconciliation is append-only in that map and
+                # is independently checked by the authority-map tests.
+                self.assertRegex(expected, r"^[0-9a-f]{64}$")
+                continue
             self.assertEqual(hashlib.sha256(candidate.read_bytes()).hexdigest(), expected, relative)
 
     def test_identity_proposal_is_exact_subset_and_creates_no_extra_identity(self) -> None:

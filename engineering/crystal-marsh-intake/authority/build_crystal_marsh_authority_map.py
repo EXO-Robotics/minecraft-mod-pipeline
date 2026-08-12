@@ -306,6 +306,14 @@ def build(root: Path, repo_root: Path) -> dict:
     equipment_manifest = json.loads((equipment_root / "MANIFEST_FULL.json").read_text())
     contract = json.loads((root / CREATIVE_REL / "WAVE_1_LIVING_WORLD_IMPLEMENTATION_CONTRACT.json").read_text())
     ledger = json.loads(ledger_path.read_text())
+    approved = {row["tranche"]: row for row in ledger["ratifications"]["approved"]}
+    required_crystal = {"W1-001-CM", "W1-003-PEARL-DEPTHS", "W1-004-CM"}
+    if not required_crystal <= approved.keys():
+        raise AssertionError("Crystal ratification missing from replacement ledger")
+    for tranche in required_crystal:
+        proposal_path = repo_root / approved[tranche]["proposal"]
+        if sha256(proposal_path) != approved[tranche]["proposal_sha256"]:
+            raise AssertionError(f"ratified proposal drift: {tranche}")
 
     expected = {
         "creatures": list(CREATURES), "resources": list(RESOURCES), "blocks": list(BLOCKS),
@@ -336,9 +344,9 @@ def build(root: Path, repo_root: Path) -> dict:
 
     support_by_id = {ticket["id"]: ticket for ticket in ledger["support_tickets"]}
     expected_deferred = {
-        "W1-CREATIVE-001": "WW_AH_AND_CM_RATIFIED_SKY_AND_FINALE_DEFERRED",
-        "W1-CREATIVE-003": "THORN_COURT_KILN_SKY_AND_PEARL_DEPTHS_RATIFIED_SKY_AND_FINALE_DEFERRED",
-        "W1-CREATIVE-004": "WHISPERWOOD_ASHEN_AND_CRYSTAL_RATIFIED_SKY_AND_FINALE_DEFERRED",
+        "W1-CREATIVE-001": "ALL_REGIONAL_TRANCHES_RATIFIED",
+        "W1-CREATIVE-003": "ALL_REGIONAL_APEXES_AND_TWINBOND_RATIFIED",
+        "W1-CREATIVE-004": "ALL_REGIONAL_ECOSYSTEMS_AND_TWINBOND_RATIFIED",
         "W1-CREATIVE-005": "DEFERRED_BY_USER",
     }
     for ticket_id, state in expected_deferred.items():

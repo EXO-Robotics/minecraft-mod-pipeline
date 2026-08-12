@@ -2,7 +2,7 @@
 
 **Status:** `PACKET_003_RATIFIED_VERTICAL_IMPLEMENTATION_AUTHORITY`
 **Base:** `bcd65076900a3688dd797d54719263d88afd501c`
-**Authority digest:** `effcd7579d2da8008b8397297e8d5da4d7b665080e2c8d8c6497ec98e80acd6c`
+**Authority digest:** `e2f1bea4f1bd8c829ab98760a5f0ca997fd421e89439cc3f397cc55800e0b75c`
 **Scope:** Authority intake only. No product-pack mutation or runtime proof is claimed.
 
 ## Ratification boundary
@@ -175,4 +175,4 @@ Every Packet 003 asset and direct Packet 006 link records six canonical source/e
 | `program/crazycraft-pack-production-v1/studio-prep/creative/07_bosses/BOSS_PROGRESSION.md` | `5ef85e1e0b29973a617f7dca4a8b119443c01644ba33f0e11166ef8d417d5a6f` | Pearl Depths identity, phase names, attacks, and reward identities only |
 | `program/crazycraft-pack-production-v1/studio-prep/creative/08_codex/CODEX_ENTRIES_CREATURES.md` | `fd07694eee0c8d478b44363e822e0116f4ca09c92775661350ed8468342b01bf` | ten Crystal creature discovery, crafting, and hint entries |
 | `program/crazycraft-pack-production-v1/studio-prep/creative/08_codex/CODEX_DESIGN.md` | `cc89b22d1dc548f2563c4b20d33faf8020eab9dafdbfab262321c35739a9b546` | Codex schema, unlock rules, full-category coverage, and system links |
-| `engineering/authority/WAVE_1_ENGINEERING_DECISION_LEDGER.json` | `b791c4b63d6ef09c2ac437fdc67065735a2363becad92b359cecb0a4e25c5172` | current ratified/deferred engineering decision state |
+| `engineering/authority/WAVE_1_ENGINEERING_DECISION_LEDGER.json` | `cf7e1cd8b81b4a8088d136e1f9f2cb4ee3e245cfa71259f2a957d6e4f55ccff9` | current ratified/deferred engineering decision state |

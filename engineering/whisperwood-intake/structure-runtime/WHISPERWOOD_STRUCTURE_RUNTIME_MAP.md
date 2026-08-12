@@ -17,7 +17,7 @@ Base: `c4d77b6` · Scope: Packet 001 ten structure and prop IDs · Status: histo
 - 5 landmark encounters: `owl_shrine`, `forest_waystone`, `hollow_cave_entrance`, `ancient_totem`, `fallen_giant_tree`.
 - At the historical base, 8 `.mcstructure` targets were absent; the two direct props intentionally did not require encounter assemblies.
 - Current source reconciliation: 10 of 10 IDs have hash-bound source footprints, including 8 of 8 structure assemblies.
-- Whisperwood identity authority is `WW_AH_AND_CM_RATIFIED_SKY_AND_FINALE_DEFERRED`; chapter-one loot authority is `WHISPERWOOD_ASHEN_AND_CRYSTAL_RATIFIED_SKY_AND_FINALE_DEFERRED`.
+- Whisperwood identity authority is `ALL_REGIONAL_TRANCHES_RATIFIED`; chapter-one loot authority is `ALL_REGIONAL_ECOSYSTEMS_AND_TWINBOND_RATIFIED`.
 - These current facts supersede withholding language as an implementation status, but do not establish BDS or client proof.
 
 ## Per-ID map
@@ -62,4 +62,4 @@ Base: `c4d77b6` · Scope: Packet 001 ten structure and prop IDs · Status: histo
 - `9e62ae9ba6c1da33b64ff0bfa4ac4799b083c6de995585424864d5cf2b0cb076`  `program/crazycraft-pack-production-v1/studio-prep/creative/05_structures/STRUCTURES_DESIGN.md`
 - `bc18a1e1f73d6045ab7e583afe910ca13d4776d439c8f3dfb45dae5784372f4b`  `program/crazycraft-pack-production-v1/studio-prep/creative/06_world_gen/WORLD_GENERATION.md`
 - `c6846ecfcf51c1bdbe62b3ef81f37e7e86e6466a62b46f72cb3685516a216f24`  `program/crazycraft-pack-production-v1/studio-prep/creative/02_loot/LOOT_WHISPERWOOD.md`
-- `b791c4b63d6ef09c2ac437fdc67065735a2363becad92b359cecb0a4e25c5172`  `engineering/authority/WAVE_1_ENGINEERING_DECISION_LEDGER.json`
+- `cf7e1cd8b81b4a8088d136e1f9f2cb4ee3e245cfa71259f2a957d6e4f55ccff9`  `engineering/authority/WAVE_1_ENGINEERING_DECISION_LEDGER.json`

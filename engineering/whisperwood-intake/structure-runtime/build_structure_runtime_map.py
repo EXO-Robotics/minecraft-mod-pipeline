@@ -11,11 +11,15 @@ from __future__ import annotations
 import hashlib
 import json
 from pathlib import Path
+import sys
 
 
 HERE = Path(__file__).resolve().parent
 REPO = HERE.parents[2]
-BEDROCK_ROOT = next(parent for parent in HERE.parents if parent.name == "bedrock-server")
+sys.path.insert(0, str(REPO / "engineering"))
+from repo_paths import find_bedrock_root
+
+BEDROCK_ROOT = find_bedrock_root(REPO)
 CREATIVE = BEDROCK_ROOT / "program/crazycraft-pack-production-v1/studio-prep/creative"
 PACKET = BEDROCK_ROOT / "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-001-whisperwood"
 

@@ -6,17 +6,22 @@ from __future__ import annotations
 import hashlib
 import json
 from pathlib import Path
+import sys
 
 
 HERE = Path(__file__).resolve().parent
 REPO = HERE.parents[2]
+sys.path.insert(0, str(REPO / "engineering"))
+from repo_paths import find_bedrock_root
 BASE_COMMIT = "fb86d22ccaadbcdc890a7cc9038be42667159927"
 BASE_TREE = "2a1b83fa9e7cc8ed3f584d21027cea74e05d0582"
-BEDROCK = next(p for p in HERE.parents if p.name == "bedrock-server")
+BEDROCK = find_bedrock_root(REPO)
 CREATIVE_REPO = BEDROCK / "program/crazycraft-pack-production-v1"
 PACKET = CREATIVE_REPO / "studio-prep/sprints/asset-sprint-004-skyreach-cliffs"
 EQUIPMENT = CREATIVE_REPO / "studio-prep/sprints/asset-sprint-006-equipment-progression"
 CREATIVE = CREATIVE_REPO / "studio-prep/creative"
+LEDGER = REPO / "engineering/authority/WAVE_1_ENGINEERING_DECISION_LEDGER.json"
+PROPOSAL_ROOT = REPO / "engineering/authority/support-proposals/skyreach"
 
 SOURCE_AUTHORITIES = [
     (PACKET / "MANIFEST_FULL.json", "exact Packet 004 roster and visual identity"),
@@ -119,14 +124,30 @@ def build() -> dict:
     }
     ids = [ident for category in categories.values() for ident in category]
     assert len(ids) == len(set(ids)) == 50 and set(ids) == manifest_ids
+    ledger = json.loads(LEDGER.read_text(encoding="utf-8"))
+    approved = {row["tranche"]: row for row in ledger["ratifications"]["approved"]}
+    required = {"W1-001-SR", "W1-003-STORM-NEST", "W1-004-SR"}
+    assert required <= approved.keys()
+    ratified = {}
+    for ticket in sorted(required):
+        proposal = REPO / approved[ticket]["proposal"]
+        assert proposal.parent == PROPOSAL_ROOT
+        assert sha(proposal) == approved[ticket]["proposal_sha256"]
+        ratified[ticket] = {
+            "status": "APPROVED_AS_PROPOSED",
+            "proposal": proposal.relative_to(REPO).as_posix(),
+            "proposal_sha256": approved[ticket]["proposal_sha256"],
+        }
     rows = []
     for category, entries in categories.items():
         for ident in entries:
             rows.append({"id": ident, "category": category, "source_files": asset_sources(ident), "targets": target_map(category, ident), "authority": "SAFE_NOW_VISUAL_AND_QUALITATIVE_CONTRACT_ONLY"})
     source_bindings = [{"path": rel(path), "sha256": sha(path), "role": role} for path, role in SOURCE_AUTHORITIES]
+    source_bindings.append({"path": LEDGER.relative_to(REPO).as_posix(), "sha256": sha(LEDGER), "role": "current ratification and deferral state"})
+    source_bindings.extend({"path": row["proposal"], "sha256": row["proposal_sha256"], "role": f"exact ratified {ticket} proposal bytes"} for ticket, row in ratified.items())
     return {
         "schema": "aionforge.wave1.skyreach.authority_intake.v1",
-        "status": "SKYREACH_INTAKE_MAPPED_IMPLEMENTATION_BLOCKERS_DEFERRED",
+        "status": "SKYREACH_HISTORICAL_INTAKE_CURRENT_RATIFICATION_RECONCILED",
         "integration_authority": {"commit": BASE_COMMIT, "tree": BASE_TREE},
         "packet": {"id": "004_skyreach_cliffs", "asset_count": 50, "category_counts": {k: len(v) for k, v in categories.items()}},
         "source_bindings": source_bindings,
@@ -137,6 +158,13 @@ def build() -> dict:
             "W1-001-SR": {"status": "PROPOSED_NOT_RATIFIED", "aliases": [{"term": k, "canonical_id": v} for k, v in sorted(ALIASES.items())], "narrative_codex_only": NARRATIVE_ONLY, "new_required_items": NEW_ITEMS, "additional_identity_authority": "NONE"},
             "W1-003-STORM-NEST": {"status": "PROPOSED_NOT_RATIFIED", "bound_identity": {"encounter": "aionbound:storm_nest", "boss": "aionbound:wind_roc", "arena": "aionbound:nest_platform", "phases": ["Nest Guard", "Wind Roads", "Harpy Dirge", "Storm Crown"], "attacks": ["Wing Buffet", "Talon Pin", "Gale Dive", "Feather Knives", "Call of the Nest", "Storm Screech"]}, "deferred_decisions": ["health and phase thresholds", "telegraph active recovery and cooldown timing", "leash wipe timeout reset and re-entry", "add caps and multiplayer ownership/scaling", "late join disconnect and restart semantics", "persistent completion and reward entitlement semantics"]},
             "W1-004-SR": {"status": "PROPOSED_NOT_RATIFIED", "loot_identities_bound": True, "critical_seal": "aionbound:storm_pinion", "deferred_decisions": ["C/U/R/E/T/Q probability and quantity envelopes", "structure chest rolls and rarity bands", "apex guaranteed package quantities", "once-per-player seal credit and full-inventory recovery", "repeat-clear and optional mastery reward semantics"]},
+        },
+        "historical_snapshot_boundary": "minimum_authority_tranches and blocker_matrix preserve the pre-ratification intake disposition at the bound base commit; they are not current authority state",
+        "current_ratification_reconciliation": {
+            "ledger_sha256": sha(LEDGER),
+            "approved": ratified,
+            "W1-CREATIVE-005": "DEFERRED_BY_USER",
+            "effect": "Skyreach implementation is authorized only by the exact ratified proposal bytes; the historical intake blockers remain evidence of the earlier state.",
         },
         "blocker_matrix": [
             {"id": "W1-001-SR", "class": "CREATIVE_IDENTITY_RATIFICATION", "disposition": "DEFERRED_FOR_LATER_INTERPRETATION", "blocks": "final loot recipe and acquisition identity closure"},
@@ -156,7 +184,7 @@ def main() -> None:
     (HERE / "SKYREACH_VERTICAL_INTAKE_MAP.md").write_text(
         "# Skyreach Vertical Engineering Intake\n\n"
         f"Bound to G8 `{BASE_COMMIT}` / tree `{BASE_TREE}`. Exact Packet 004 closure: **50 assets** (10 per category).\n\n"
-        "Visual normalization and qualitative ecosystem work are safe now. The three minimum Creative tranches are preserved as `PROPOSED_NOT_RATIFIED`; no unapproved number or identity is implementation authority.\n\n"
+        "The three minimum Creative tranches remain preserved below as a historical `PROPOSED_NOT_RATIFIED` intake snapshot. The machine twin separately hash-binds their current exact ratifications; no unapproved number or identity is implementation authority.\n\n"
         "| Ticket | Class | Disposition | Exact blocked surface |\n|---|---|---|---|\n" + blockers + "\n\n"
         "`W1-CREATIVE-005` remains deferred. No BP, RP, script, build, BDS, client, console, or release proof is claimed.\n"
     )

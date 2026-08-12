@@ -2266,6 +2266,28 @@
       "id": "W1-CREATIVE-005"
     }
   ],
+  "current_ratification_reconciliation": {
+    "W1-CREATIVE-005": "DEFERRED_BY_USER",
+    "approved": {
+      "W1-001-SR": {
+        "proposal": "engineering/authority/support-proposals/skyreach/W1-001-SR.json",
+        "proposal_sha256": "926a401add04b6611d7cee7dd1fa3bcf6a3fe44cf656ef9aa34d9b1bad5f30cd",
+        "status": "APPROVED_AS_PROPOSED"
+      },
+      "W1-003-STORM-NEST": {
+        "proposal": "engineering/authority/support-proposals/skyreach/W1-003-STORM-NEST.json",
+        "proposal_sha256": "59b4493857bf3d90d402d438553f4b7fc03c6b45689e5897f8a8cb501bfc15d0",
+        "status": "APPROVED_AS_PROPOSED"
+      },
+      "W1-004-SR": {
+        "proposal": "engineering/authority/support-proposals/skyreach/W1-004-SR.json",
+        "proposal_sha256": "823894296bb4b4ed1becd1a1a5ccc814f734cecc50c8433be855bdf1e080e4bf",
+        "status": "APPROVED_AS_PROPOSED"
+      }
+    },
+    "effect": "Skyreach implementation is authorized only by the exact ratified proposal bytes; the historical intake blockers remain evidence of the earlier state.",
+    "ledger_sha256": "cf7e1cd8b81b4a8088d136e1f9f2cb4ee3e245cfa71259f2a957d6e4f55ccff9"
+  },
   "guards": {
     "bds": false,
     "build": false,
@@ -2274,6 +2296,7 @@
     "pack_edits": false,
     "script_edits": false
   },
+  "historical_snapshot_boundary": "minimum_authority_tranches and blocker_matrix preserve the pre-ratification intake disposition at the bound base commit; they are not current authority state",
   "integration_authority": {
     "commit": "fb86d22ccaadbcdc890a7cc9038be42667159927",
     "tree": "2a1b83fa9e7cc8ed3f584d21027cea74e05d0582"
@@ -2548,7 +2571,27 @@
       "path": "program/crazycraft-pack-production-v1/studio-prep/creative/08_codex/CODEX_DESIGN.md",
       "role": "Codex UX contract",
       "sha256": "cc89b22d1dc548f2563c4b20d33faf8020eab9dafdbfab262321c35739a9b546"
+    },
+    {
+      "path": "engineering/authority/WAVE_1_ENGINEERING_DECISION_LEDGER.json",
+      "role": "current ratification and deferral state",
+      "sha256": "cf7e1cd8b81b4a8088d136e1f9f2cb4ee3e245cfa71259f2a957d6e4f55ccff9"
+    },
+    {
+      "path": "engineering/authority/support-proposals/skyreach/W1-001-SR.json",
+      "role": "exact ratified W1-001-SR proposal bytes",
+      "sha256": "926a401add04b6611d7cee7dd1fa3bcf6a3fe44cf656ef9aa34d9b1bad5f30cd"
+    },
+    {
+      "path": "engineering/authority/support-proposals/skyreach/W1-003-STORM-NEST.json",
+      "role": "exact ratified W1-003-STORM-NEST proposal bytes",
+      "sha256": "59b4493857bf3d90d402d438553f4b7fc03c6b45689e5897f8a8cb501bfc15d0"
+    },
+    {
+      "path": "engineering/authority/support-proposals/skyreach/W1-004-SR.json",
+      "role": "exact ratified W1-004-SR proposal bytes",
+      "sha256": "823894296bb4b4ed1becd1a1a5ccc814f734cecc50c8433be855bdf1e080e4bf"
     }
   ],
-  "status": "SKYREACH_INTAKE_MAPPED_IMPLEMENTATION_BLOCKERS_DEFERRED"
+  "status": "SKYREACH_HISTORICAL_INTAKE_CURRENT_RATIFICATION_RECONCILED"
 }

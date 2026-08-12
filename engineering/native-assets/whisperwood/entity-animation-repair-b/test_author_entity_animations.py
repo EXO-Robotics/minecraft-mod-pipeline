@@ -9,13 +9,15 @@ from pathlib import Path
 
 HERE = Path(__file__).resolve().parent
 ROOT = HERE.parents[3]
+sys.path.insert(0, str(ROOT / "engineering"))
+from repo_paths import find_bedrock_root
 MODULE_SPEC = importlib.util.spec_from_file_location("whisperwood_entity_animation_lane_b", HERE / "author_entity_animations.py")
 assert MODULE_SPEC and MODULE_SPEC.loader
 module = importlib.util.module_from_spec(MODULE_SPEC)
 sys.modules[MODULE_SPEC.name] = module
 MODULE_SPEC.loader.exec_module(module)
 
-PACKET = ROOT.parents[2] / "crazycraft-pack-production-v1" / "studio-prep" / "sprints" / "asset-sprint-001-whisperwood" / "assets"
+PACKET = find_bedrock_root(ROOT) / "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-001-whisperwood/assets"
 RUNTIME_MAP = ROOT / "engineering" / "whisperwood-intake" / "entity-runtime" / "WHISPERWOOD_ENTITY_RUNTIME_IMPLEMENTATION_MAP.json"
 
 
