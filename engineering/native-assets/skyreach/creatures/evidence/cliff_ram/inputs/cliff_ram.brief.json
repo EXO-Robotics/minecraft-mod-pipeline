@@ -1,0 +1,49 @@
+{
+  "name": "cliff_ram",
+  "display_name": "Cliff Ram",
+  "sprint": "asset_sprint_004_skyreach_cliffs",
+  "tier": "CREATURE",
+  "role": "Heavy ledge charger / climb specialist",
+  "profile": "quad",
+  "identity": "TRAVERSAL ECOSYSTEM \u2014 not a bird biome",
+  "model_identifier": "geometry.aionforge_sr.cliff_ram",
+  "cube_count": 23,
+  "bone_count": 8,
+  "density_floor": 22,
+  "locators": [
+    "effect",
+    "gaze"
+  ],
+  "palette": {
+    "metal": [
+      106,
+      101,
+      92
+    ],
+    "accent": [
+      200,
+      194,
+      180
+    ],
+    "energy": [
+      142,
+      180,
+      212
+    ]
+  },
+  "animations": [
+    "idle",
+    "walk",
+    "charge_pose",
+    "hurt",
+    "death"
+  ],
+  "minecraft_scale": "1.2 shoulder",
+  "texture_resolution": "64\u00d764",
+  "production_priority": "P0",
+  "related_assets": "cloud_goat, cliff_stone",
+  "originality": "Clean-room Skyreach Traversal manufacture",
+  "forbidden": "No Whisperwood moss; no Ashen heat; no Crystal Marsh mint; no Gloamveil neon; no Brinecanopy; no Minttrail",
+  "editable": "assets/editable/cliff_ram.bbmodel",
+  "claims_boundary": "Visual production only. No BP/JSON/AI/gameplay/mechanics."
+}

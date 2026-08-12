@@ -1,0 +1,49 @@
+{
+  "name": "ruin_harpy",
+  "display_name": "Ruin Harpy",
+  "sprint": "asset_sprint_004_skyreach_cliffs",
+  "tier": "CREATURE",
+  "role": "Hostile biped ruin-shelf flyer",
+  "profile": "flyer",
+  "identity": "TRAVERSAL ECOSYSTEM \u2014 not a bird biome",
+  "model_identifier": "geometry.aionforge_sr.ruin_harpy",
+  "cube_count": 24,
+  "bone_count": 8,
+  "density_floor": 24,
+  "locators": [
+    "effect",
+    "gaze"
+  ],
+  "palette": {
+    "metal": [
+      74,
+      85,
+      104
+    ],
+    "accent": [
+      122,
+      138,
+      154
+    ],
+    "energy": [
+      224,
+      192,
+      96
+    ]
+  },
+  "animations": [
+    "idle_perch",
+    "fly",
+    "dive_slash",
+    "hurt",
+    "death"
+  ],
+  "minecraft_scale": "1.6 tall \u00b7 span 2.0",
+  "texture_resolution": "128\u00d764",
+  "production_priority": "P0",
+  "related_assets": "floating_ruin_floor, ancient_sky_arch",
+  "originality": "Clean-room Skyreach Traversal manufacture",
+  "forbidden": "No Whisperwood moss; no Ashen heat; no Crystal Marsh mint; no Gloamveil neon; no Brinecanopy; no Minttrail",
+  "editable": "assets/editable/ruin_harpy.bbmodel",
+  "claims_boundary": "Visual production only. No BP/JSON/AI/gameplay/mechanics."
+}

@@ -1,0 +1,49 @@
+{
+  "name": "sky_fox",
+  "display_name": "Sky Fox",
+  "sprint": "asset_sprint_004_skyreach_cliffs",
+  "tier": "CREATURE",
+  "role": "Agile cliff-path runner",
+  "profile": "quad",
+  "identity": "TRAVERSAL ECOSYSTEM \u2014 not a bird biome",
+  "model_identifier": "geometry.aionforge_sr.sky_fox",
+  "cube_count": 23,
+  "bone_count": 9,
+  "density_floor": 20,
+  "locators": [
+    "effect",
+    "gaze"
+  ],
+  "palette": {
+    "metal": [
+      122,
+      138,
+      154
+    ],
+    "accent": [
+      142,
+      180,
+      212
+    ],
+    "energy": [
+      242,
+      244,
+      247
+    ]
+  },
+  "animations": [
+    "idle",
+    "trot",
+    "leap",
+    "hurt",
+    "death"
+  ],
+  "minecraft_scale": "0.6 tall",
+  "texture_resolution": "64\u00d764",
+  "production_priority": "P1",
+  "related_assets": "broken_sky_path",
+  "originality": "Clean-room Skyreach Traversal manufacture",
+  "forbidden": "No Whisperwood moss; no Ashen heat; no Crystal Marsh mint; no Gloamveil neon; no Brinecanopy; no Minttrail",
+  "editable": "assets/editable/sky_fox.bbmodel",
+  "claims_boundary": "Visual production only. No BP/JSON/AI/gameplay/mechanics."
+}

@@ -1,0 +1,199 @@
+{
+  "format_version": "1.8.0",
+  "animations": {
+    "animation.aionbound.ropewing.idle_perch": {
+      "loop": true,
+      "animation_length": 3,
+      "bones": {
+        "head": {
+          "rotation": {
+            "0.0": [
+              0,
+              0,
+              0
+            ],
+            "0.75": [
+              -2,
+              7,
+              0
+            ],
+            "1.5": [
+              0,
+              0,
+              0
+            ],
+            "2.25": [
+              -1,
+              -6,
+              0
+            ],
+            "3.0": [
+              0,
+              0,
+              0
+            ]
+          }
+        },
+        "body": {
+          "position": {
+            "0.0": [
+              0,
+              0,
+              0
+            ],
+            "0.75": [
+              0,
+              0.1,
+              0
+            ],
+            "1.5": [
+              0,
+              0,
+              0
+            ],
+            "2.25": [
+              0,
+              -0.06,
+              0
+            ],
+            "3.0": [
+              0,
+              0,
+              0
+            ]
+          }
+        }
+      }
+    },
+    "animation.aionbound.ropewing.glide": {
+      "loop": true,
+      "animation_length": 1.4,
+      "bones": {
+        "wing_l": {
+          "rotation": {
+            "0.0": [
+              0,
+              0,
+              -9
+            ],
+            "0.7": [
+              0,
+              0,
+              -16
+            ],
+            "1.4": [
+              0,
+              0,
+              -9
+            ]
+          }
+        },
+        "wing_r": {
+          "rotation": {
+            "0.0": [
+              0,
+              0,
+              9
+            ],
+            "0.7": [
+              0,
+              0,
+              16
+            ],
+            "1.4": [
+              0,
+              0,
+              9
+            ]
+          }
+        }
+      }
+    },
+    "animation.aionbound.ropewing.bank": {
+      "animation_length": 0.75,
+      "bones": {
+        "body": {
+          "rotation": {
+            "0.0": [
+              0,
+              0,
+              0
+            ],
+            "0.35": [
+              0,
+              0,
+              24
+            ],
+            "0.75": [
+              0,
+              0,
+              0
+            ]
+          }
+        },
+        "wing_l": {
+          "rotation": {
+            "0.0": [
+              0,
+              0,
+              0
+            ],
+            "0.35": [
+              0,
+              0,
+              -15
+            ],
+            "0.75": [
+              0,
+              0,
+              0
+            ]
+          }
+        }
+      }
+    },
+    "animation.aionbound.ropewing.hurt": {
+      "animation_length": 0.4,
+      "bones": {
+        "body": {
+          "rotation": {
+            "0.0": [
+              0,
+              0,
+              0
+            ],
+            "0.15": [
+              0,
+              0,
+              -10
+            ],
+            "0.4": [
+              0,
+              0,
+              0
+            ]
+          }
+        }
+      }
+    },
+    "animation.aionbound.ropewing.death": {
+      "animation_length": 0.95,
+      "bones": {
+        "body": {
+          "rotation": {
+            "0.0": [
+              0,
+              0,
+              0
+            ],
+            "0.95": [
+              0,
+              0,
+              88
+            ]
+          }
+        }
+      }
+    }
+  }
+}

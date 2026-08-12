@@ -1,0 +1,49 @@
+{
+  "name": "stone_vulture",
+  "display_name": "Stone Vulture",
+  "sprint": "asset_sprint_004_skyreach_cliffs",
+  "tier": "CREATURE",
+  "role": "Ruin scavenger \u2014 perch-heavy",
+  "profile": "flyer",
+  "identity": "TRAVERSAL ECOSYSTEM \u2014 not a bird biome",
+  "model_identifier": "geometry.aionforge_sr.stone_vulture",
+  "cube_count": 21,
+  "bone_count": 8,
+  "density_floor": 20,
+  "locators": [
+    "effect",
+    "gaze"
+  ],
+  "palette": {
+    "metal": [
+      74,
+      85,
+      104
+    ],
+    "accent": [
+      122,
+      138,
+      154
+    ],
+    "energy": [
+      224,
+      192,
+      96
+    ]
+  },
+  "animations": [
+    "idle_perch",
+    "fly",
+    "feed_pose",
+    "hurt",
+    "death"
+  ],
+  "minecraft_scale": "0.7 \u00b7 span 1.6",
+  "texture_resolution": "64\u00d764",
+  "production_priority": "P1",
+  "related_assets": "floating_ruin_floor",
+  "originality": "Clean-room Skyreach Traversal manufacture",
+  "forbidden": "No Whisperwood moss; no Ashen heat; no Crystal Marsh mint; no Gloamveil neon; no Brinecanopy; no Minttrail",
+  "editable": "assets/editable/stone_vulture.bbmodel",
+  "claims_boundary": "Visual production only. No BP/JSON/AI/gameplay/mechanics."
+}

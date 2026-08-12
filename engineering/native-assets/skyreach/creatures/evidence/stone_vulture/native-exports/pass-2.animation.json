@@ -1,0 +1,224 @@
+{
+  "format_version": "1.8.0",
+  "animations": {
+    "animation.aionbound.stone_vulture.idle_perch": {
+      "loop": true,
+      "animation_length": 3.5,
+      "bones": {
+        "head": {
+          "rotation": {
+            "0.0": [
+              0,
+              0,
+              0
+            ],
+            "0.9": [
+              -4,
+              8,
+              0
+            ],
+            "1.75": [
+              0,
+              0,
+              0
+            ],
+            "2.65": [
+              -2,
+              -7,
+              0
+            ],
+            "3.5": [
+              0,
+              0,
+              0
+            ]
+          }
+        },
+        "body": {
+          "position": {
+            "0.0": [
+              0,
+              0,
+              0
+            ],
+            "0.9": [
+              0,
+              0.1,
+              0
+            ],
+            "1.75": [
+              0,
+              0,
+              0
+            ],
+            "2.65": [
+              0,
+              -0.06,
+              0
+            ],
+            "3.5": [
+              0,
+              0,
+              0
+            ]
+          }
+        }
+      }
+    },
+    "animation.aionbound.stone_vulture.fly": {
+      "loop": true,
+      "animation_length": 0.9,
+      "bones": {
+        "wing_l": {
+          "rotation": {
+            "0.0": [
+              0,
+              0,
+              -22
+            ],
+            "0.25": [
+              0,
+              0,
+              22
+            ],
+            "0.45": [
+              0,
+              0,
+              22
+            ],
+            "0.7": [
+              0,
+              0,
+              -22
+            ],
+            "0.9": [
+              0,
+              0,
+              -22
+            ]
+          }
+        },
+        "wing_r": {
+          "rotation": {
+            "0.0": [
+              0,
+              0,
+              22
+            ],
+            "0.25": [
+              0,
+              0,
+              -22
+            ],
+            "0.45": [
+              0,
+              0,
+              -22
+            ],
+            "0.7": [
+              0,
+              0,
+              22
+            ],
+            "0.9": [
+              0,
+              0,
+              22
+            ]
+          }
+        }
+      }
+    },
+    "animation.aionbound.stone_vulture.feed_pose": {
+      "animation_length": 0.8,
+      "bones": {
+        "head": {
+          "rotation": {
+            "0.0": [
+              0,
+              0,
+              0
+            ],
+            "0.2": [
+              -18,
+              0,
+              0
+            ],
+            "0.4": [
+              -34,
+              0,
+              0
+            ],
+            "0.8": [
+              0,
+              0,
+              0
+            ]
+          }
+        },
+        "body": {
+          "position": {
+            "0.0": [
+              0,
+              0,
+              0
+            ],
+            "0.4": [
+              0,
+              -0.18,
+              -0.25
+            ],
+            "0.8": [
+              0,
+              0,
+              0
+            ]
+          }
+        }
+      }
+    },
+    "animation.aionbound.stone_vulture.hurt": {
+      "animation_length": 0.42,
+      "bones": {
+        "body": {
+          "rotation": {
+            "0.0": [
+              0,
+              0,
+              0
+            ],
+            "0.15": [
+              0,
+              0,
+              9
+            ],
+            "0.4": [
+              0,
+              0,
+              0
+            ]
+          }
+        }
+      }
+    },
+    "animation.aionbound.stone_vulture.death": {
+      "animation_length": 1,
+      "bones": {
+        "body": {
+          "rotation": {
+            "0.0": [
+              0,
+              0,
+              0
+            ],
+            "1.0": [
+              0,
+              0,
+              87
+            ]
+          }
+        }
+      }
+    }
+  }
+}
