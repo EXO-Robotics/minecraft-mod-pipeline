@@ -1,0 +1,350 @@
+{
+  "schema": "aionbound.wave1.skyreach-static-foundations.v1",
+  "status": "SKYREACH_STATIC_FOUNDATIONS_STATIC_PASS",
+  "base": {
+    "commit": "dde6dbe1a331ee2d1673624daaad0c56fc1f9950",
+    "tree": "5111a8f664cd072bafe5654cfc31753235e8d567"
+  },
+  "scope": "ten Packet 004 flat resource items and ten ordinary full-cube blocks only",
+  "resources": [
+    {
+      "id": "sky_feather",
+      "runtime_id": "aionbound:sky_feather",
+      "definition": {
+        "path": "behavior_pack/items/sky_feather.item.json",
+        "sha256": "c2995540fcfd18b4330ea641f7b2696db5d5c719af95dc2624f9389445405829"
+      },
+      "texture": {
+        "path": "resource_pack/textures/aionbound/skyreach/items/sky_feather.png",
+        "sha256": "2db2931a4d9c39c79b2d3e466d22e57ebdf70243be44f7aaa99ef46b6d7fbd78"
+      },
+      "source_texture_sha256": "2db2931a4d9c39c79b2d3e466d22e57ebdf70243be44f7aaa99ef46b6d7fbd78",
+      "texture_byte_equality": true,
+      "blockbench": "NOT_APPLICABLE_FLAT_INVENTORY_ICON"
+    },
+    {
+      "id": "wind_silk",
+      "runtime_id": "aionbound:wind_silk",
+      "definition": {
+        "path": "behavior_pack/items/wind_silk.item.json",
+        "sha256": "1218fedb43ffae3f66380a3fe1800093e06c757ce50a6455202fa6366e4f7b9e"
+      },
+      "texture": {
+        "path": "resource_pack/textures/aionbound/skyreach/items/wind_silk.png",
+        "sha256": "76d0022f4c664d88b10cc075e0e7c52597e91e46689e063e4a18e7811c5458c4"
+      },
+      "source_texture_sha256": "76d0022f4c664d88b10cc075e0e7c52597e91e46689e063e4a18e7811c5458c4",
+      "texture_byte_equality": true,
+      "blockbench": "NOT_APPLICABLE_FLAT_INVENTORY_ICON"
+    },
+    {
+      "id": "cloud_wool",
+      "runtime_id": "aionbound:cloud_wool",
+      "definition": {
+        "path": "behavior_pack/items/cloud_wool.item.json",
+        "sha256": "5caf1edba99411bca5c771247644ca5e112fec4ebaaa7dd112264b2c601bc3c1"
+      },
+      "texture": {
+        "path": "resource_pack/textures/aionbound/skyreach/items/cloud_wool.png",
+        "sha256": "59d2d7ad1b7b8571c4229308497d4ec58713ea2e030372dab30ad77e3bba3adf"
+      },
+      "source_texture_sha256": "59d2d7ad1b7b8571c4229308497d4ec58713ea2e030372dab30ad77e3bba3adf",
+      "texture_byte_equality": true,
+      "blockbench": "NOT_APPLICABLE_FLAT_INVENTORY_ICON"
+    },
+    {
+      "id": "cliff_crystal",
+      "runtime_id": "aionbound:cliff_crystal",
+      "definition": {
+        "path": "behavior_pack/items/cliff_crystal.item.json",
+        "sha256": "9536d6b3ca9ed11d77f4a2ce4b7a39f82aba3f9203d6744dcb8dc438f971988a"
+      },
+      "texture": {
+        "path": "resource_pack/textures/aionbound/skyreach/items/cliff_crystal.png",
+        "sha256": "a759d19e4496af333580a0c7ecd9de8f1e91e0611d32c829f69c503a1b3409fa"
+      },
+      "source_texture_sha256": "a759d19e4496af333580a0c7ecd9de8f1e91e0611d32c829f69c503a1b3409fa",
+      "texture_byte_equality": true,
+      "blockbench": "NOT_APPLICABLE_FLAT_INVENTORY_ICON"
+    },
+    {
+      "id": "storm_pinion",
+      "runtime_id": "aionbound:storm_pinion",
+      "definition": {
+        "path": "behavior_pack/items/storm_pinion.item.json",
+        "sha256": "2763720f637bacf8f9380ab756fb1024f3919454d1f85d43d902cce91c8b4ff2"
+      },
+      "texture": {
+        "path": "resource_pack/textures/aionbound/skyreach/items/storm_pinion.png",
+        "sha256": "de71e6e64bd51f4e9b4d8ea595cec80ce9762eee0157a0255fdd7f9937014853"
+      },
+      "source_texture_sha256": "de71e6e64bd51f4e9b4d8ea595cec80ce9762eee0157a0255fdd7f9937014853",
+      "texture_byte_equality": true,
+      "blockbench": "NOT_APPLICABLE_FLAT_INVENTORY_ICON"
+    },
+    {
+      "id": "aether_stone",
+      "runtime_id": "aionbound:aether_stone",
+      "definition": {
+        "path": "behavior_pack/items/aether_stone.item.json",
+        "sha256": "dff83398c84bfde80f7433cdb1455fa606799d1eb593de34555c4700396def75"
+      },
+      "texture": {
+        "path": "resource_pack/textures/aionbound/skyreach/items/aether_stone.png",
+        "sha256": "db840190e45705affe218527fe315b82d5dedf093d599a3cfaf6ac7f6173aa87"
+      },
+      "source_texture_sha256": "db840190e45705affe218527fe315b82d5dedf093d599a3cfaf6ac7f6173aa87",
+      "texture_byte_equality": true,
+      "blockbench": "NOT_APPLICABLE_FLAT_INVENTORY_ICON"
+    },
+    {
+      "id": "updraft_reed_item",
+      "runtime_id": "aionbound:updraft_reed_item",
+      "definition": {
+        "path": "behavior_pack/items/updraft_reed_item.item.json",
+        "sha256": "4f18298c6073d96be34211e0413634b170e4bb7df21ecc0d79e345abc415af13"
+      },
+      "texture": {
+        "path": "resource_pack/textures/aionbound/skyreach/items/updraft_reed_item.png",
+        "sha256": "9202fa653dee86f1cdd522990d1181d54da98dfb0a1cb7a37af2d61ac4a2b922"
+      },
+      "source_texture_sha256": "9202fa653dee86f1cdd522990d1181d54da98dfb0a1cb7a37af2d61ac4a2b922",
+      "texture_byte_equality": true,
+      "blockbench": "NOT_APPLICABLE_FLAT_INVENTORY_ICON"
+    },
+    {
+      "id": "sky_vine_item",
+      "runtime_id": "aionbound:sky_vine_item",
+      "definition": {
+        "path": "behavior_pack/items/sky_vine_item.item.json",
+        "sha256": "101d37481563f0713b9429bbdb68c9d52844431e63fab592916cd7fa467ef5e9"
+      },
+      "texture": {
+        "path": "resource_pack/textures/aionbound/skyreach/items/sky_vine_item.png",
+        "sha256": "73f79dce596be81e1ee76def2a079ee02cba8c9b1ef658aafc4d36589f3430ea"
+      },
+      "source_texture_sha256": "73f79dce596be81e1ee76def2a079ee02cba8c9b1ef658aafc4d36589f3430ea",
+      "texture_byte_equality": true,
+      "blockbench": "NOT_APPLICABLE_FLAT_INVENTORY_ICON"
+    },
+    {
+      "id": "float_resin",
+      "runtime_id": "aionbound:float_resin",
+      "definition": {
+        "path": "behavior_pack/items/float_resin.item.json",
+        "sha256": "547967fb3e652551a7c79a07c71168753074f153726cadb497327a6688a112a4"
+      },
+      "texture": {
+        "path": "resource_pack/textures/aionbound/skyreach/items/float_resin.png",
+        "sha256": "1ef63de11c792462f6d63e5e37d3e95f8a4e9e485116d9cc56095cca58c361f6"
+      },
+      "source_texture_sha256": "1ef63de11c792462f6d63e5e37d3e95f8a4e9e485116d9cc56095cca58c361f6",
+      "texture_byte_equality": true,
+      "blockbench": "NOT_APPLICABLE_FLAT_INVENTORY_ICON"
+    },
+    {
+      "id": "lift_bloom_item",
+      "runtime_id": "aionbound:lift_bloom_item",
+      "definition": {
+        "path": "behavior_pack/items/lift_bloom_item.item.json",
+        "sha256": "81553cd7ef8932876c369cc4ed77861f54158f6b427e3475e4bf669cba83a58e"
+      },
+      "texture": {
+        "path": "resource_pack/textures/aionbound/skyreach/items/lift_bloom_item.png",
+        "sha256": "b4a744f242adc23f0fa77a56c3666ee3e527b702b1c897a29c035dccca2f1741"
+      },
+      "source_texture_sha256": "b4a744f242adc23f0fa77a56c3666ee3e527b702b1c897a29c035dccca2f1741",
+      "texture_byte_equality": true,
+      "blockbench": "NOT_APPLICABLE_FLAT_INVENTORY_ICON"
+    }
+  ],
+  "blocks": [
+    {
+      "id": "skyreach_log",
+      "runtime_id": "aionbound:skyreach_log",
+      "definition": {
+        "path": "behavior_pack/blocks/skyreach_log.block.json",
+        "sha256": "8edb66c473e0a81657790a8e84d0c499c348bddac6c8c386cbf24fe60afb8d7e"
+      },
+      "texture": {
+        "path": "resource_pack/textures/aionbound/skyreach/blocks/skyreach_log.png",
+        "sha256": "a7f6785026c928aca6047258a7739fe9ebaeff66fdb16ca6e022487ea0d04abf"
+      },
+      "source_texture_sha256": "a7f6785026c928aca6047258a7739fe9ebaeff66fdb16ca6e022487ea0d04abf",
+      "texture_byte_equality": true,
+      "geometry": "minecraft:geometry.full_block",
+      "blockbench": "NOT_APPLICABLE_ORDINARY_FULL_CUBE"
+    },
+    {
+      "id": "skyreach_wood",
+      "runtime_id": "aionbound:skyreach_wood",
+      "definition": {
+        "path": "behavior_pack/blocks/skyreach_wood.block.json",
+        "sha256": "c8f32cc1000ee4516f05b0d7deb196a3316b3d91fdb13238361120cfb23cfe98"
+      },
+      "texture": {
+        "path": "resource_pack/textures/aionbound/skyreach/blocks/skyreach_wood.png",
+        "sha256": "7da2a7113e90b03ba459e9eef6e53beaa64fea1b4a959ca8a2f91c366694ab8d"
+      },
+      "source_texture_sha256": "7da2a7113e90b03ba459e9eef6e53beaa64fea1b4a959ca8a2f91c366694ab8d",
+      "texture_byte_equality": true,
+      "geometry": "minecraft:geometry.full_block",
+      "blockbench": "NOT_APPLICABLE_ORDINARY_FULL_CUBE"
+    },
+    {
+      "id": "skyreach_planks",
+      "runtime_id": "aionbound:skyreach_planks",
+      "definition": {
+        "path": "behavior_pack/blocks/skyreach_planks.block.json",
+        "sha256": "20a808850df667bc272eb53246ee7443725ce866894ba2579220efcbeba05dde"
+      },
+      "texture": {
+        "path": "resource_pack/textures/aionbound/skyreach/blocks/skyreach_planks.png",
+        "sha256": "e4902c3a11fd5a1eb23596d333dd4c558da04fe9802647e39474add4b0312cc1"
+      },
+      "source_texture_sha256": "e4902c3a11fd5a1eb23596d333dd4c558da04fe9802647e39474add4b0312cc1",
+      "texture_byte_equality": true,
+      "geometry": "minecraft:geometry.full_block",
+      "blockbench": "NOT_APPLICABLE_ORDINARY_FULL_CUBE"
+    },
+    {
+      "id": "wind_slate",
+      "runtime_id": "aionbound:wind_slate",
+      "definition": {
+        "path": "behavior_pack/blocks/wind_slate.block.json",
+        "sha256": "0a7463e8f496eda0fb42ccbd3900281f5aa214dfc53f2c59de2ffe11eecc5498"
+      },
+      "texture": {
+        "path": "resource_pack/textures/aionbound/skyreach/blocks/wind_slate.png",
+        "sha256": "cd7c530b71eeba63339b38ca1b1bcbb0f76012d8ff9eee31f6ae6d33da3116e2"
+      },
+      "source_texture_sha256": "cd7c530b71eeba63339b38ca1b1bcbb0f76012d8ff9eee31f6ae6d33da3116e2",
+      "texture_byte_equality": true,
+      "geometry": "minecraft:geometry.full_block",
+      "blockbench": "NOT_APPLICABLE_ORDINARY_FULL_CUBE"
+    },
+    {
+      "id": "cliff_stone",
+      "runtime_id": "aionbound:cliff_stone",
+      "definition": {
+        "path": "behavior_pack/blocks/cliff_stone.block.json",
+        "sha256": "0cb764ed8dd8e145e1555d4c84985c7eefd806871fe55c01693b59e68bbfd48b"
+      },
+      "texture": {
+        "path": "resource_pack/textures/aionbound/skyreach/blocks/cliff_stone.png",
+        "sha256": "641483a8c5338da214025c7ce5a23249cad5c9202a110d5b26c5c198f70362db"
+      },
+      "source_texture_sha256": "641483a8c5338da214025c7ce5a23249cad5c9202a110d5b26c5c198f70362db",
+      "texture_byte_equality": true,
+      "geometry": "minecraft:geometry.full_block",
+      "blockbench": "NOT_APPLICABLE_ORDINARY_FULL_CUBE"
+    },
+    {
+      "id": "rope_timber",
+      "runtime_id": "aionbound:rope_timber",
+      "definition": {
+        "path": "behavior_pack/blocks/rope_timber.block.json",
+        "sha256": "c8ab25d0b3cb48ae1f605ca685b3e0a9bee20f83cfa31d05f8de6d1679d04b1f"
+      },
+      "texture": {
+        "path": "resource_pack/textures/aionbound/skyreach/blocks/rope_timber.png",
+        "sha256": "8023682d8273b0aa011ade53cf3d57677300bb4ee3ea055e6ef281bdafedac56"
+      },
+      "source_texture_sha256": "8023682d8273b0aa011ade53cf3d57677300bb4ee3ea055e6ef281bdafedac56",
+      "texture_byte_equality": true,
+      "geometry": "minecraft:geometry.full_block",
+      "blockbench": "NOT_APPLICABLE_ORDINARY_FULL_CUBE"
+    },
+    {
+      "id": "cloud_wool_block",
+      "runtime_id": "aionbound:cloud_wool_block",
+      "definition": {
+        "path": "behavior_pack/blocks/cloud_wool_block.block.json",
+        "sha256": "587f92fc0c9226e53451e26c53baf435dcd4aff5c0dc1719e1284c8e9dddd568"
+      },
+      "texture": {
+        "path": "resource_pack/textures/aionbound/skyreach/blocks/cloud_wool_block.png",
+        "sha256": "3a5cd0e11f0c13523bde94d5d45dc4a62bd73def5462a468c8e1cf1ea4c7762c"
+      },
+      "source_texture_sha256": "3a5cd0e11f0c13523bde94d5d45dc4a62bd73def5462a468c8e1cf1ea4c7762c",
+      "texture_byte_equality": true,
+      "geometry": "minecraft:geometry.full_block",
+      "blockbench": "NOT_APPLICABLE_ORDINARY_FULL_CUBE"
+    },
+    {
+      "id": "pale_shelf_stone",
+      "runtime_id": "aionbound:pale_shelf_stone",
+      "definition": {
+        "path": "behavior_pack/blocks/pale_shelf_stone.block.json",
+        "sha256": "a3ce61ecf3074cb57900079c69a1fc7db4c1698bfa6166ce5dd2e3b773f82237"
+      },
+      "texture": {
+        "path": "resource_pack/textures/aionbound/skyreach/blocks/pale_shelf_stone.png",
+        "sha256": "89b41abaea0812ef810f1ecc1a4946f34a19d8fe4a467d4ed27ab2359079004e"
+      },
+      "source_texture_sha256": "89b41abaea0812ef810f1ecc1a4946f34a19d8fe4a467d4ed27ab2359079004e",
+      "texture_byte_equality": true,
+      "geometry": "minecraft:geometry.full_block",
+      "blockbench": "NOT_APPLICABLE_ORDINARY_FULL_CUBE"
+    },
+    {
+      "id": "cliff_gravel",
+      "runtime_id": "aionbound:cliff_gravel",
+      "definition": {
+        "path": "behavior_pack/blocks/cliff_gravel.block.json",
+        "sha256": "e5367d9cded3eed50112f03cbe598c8b42a86f74e5ea23fa683359f069141ac4"
+      },
+      "texture": {
+        "path": "resource_pack/textures/aionbound/skyreach/blocks/cliff_gravel.png",
+        "sha256": "10c741ccca106f5b689854ee8dd6afb3f8884e34882d9f641a35b2c3cb3740c8"
+      },
+      "source_texture_sha256": "10c741ccca106f5b689854ee8dd6afb3f8884e34882d9f641a35b2c3cb3740c8",
+      "texture_byte_equality": true,
+      "geometry": "minecraft:geometry.full_block",
+      "blockbench": "NOT_APPLICABLE_ORDINARY_FULL_CUBE"
+    },
+    {
+      "id": "sky_moss_block",
+      "runtime_id": "aionbound:sky_moss_block",
+      "definition": {
+        "path": "behavior_pack/blocks/sky_moss_block.block.json",
+        "sha256": "a35c6f4ad3a4b30ec97533e176ed7a7fbe82c2e611860b4d18aae78d47f18fc0"
+      },
+      "texture": {
+        "path": "resource_pack/textures/aionbound/skyreach/blocks/sky_moss_block.png",
+        "sha256": "67685a892704dbe1d139da41a1141d092491a9dafc841b6d1a147d9e764d4c3d"
+      },
+      "source_texture_sha256": "67685a892704dbe1d139da41a1141d092491a9dafc841b6d1a147d9e764d4c3d",
+      "texture_byte_equality": true,
+      "geometry": "minecraft:geometry.full_block",
+      "blockbench": "NOT_APPLICABLE_ORDINARY_FULL_CUBE"
+    }
+  ],
+  "shared_merge_hotspots": [
+    "resource_pack/textures/item_texture.json",
+    "resource_pack/textures/terrain_texture.json",
+    "resource_pack/blocks.json",
+    "resource_pack/texts/en_US.lang"
+  ],
+  "checks": {
+    "packet_inventory_exact": "PASS_20_OF_20",
+    "namespace_normalization": "PASS_AIONFORGE_SR_TO_AIONBOUND",
+    "definition_registry_language_closure": "PASS_20_OF_20",
+    "texture_byte_equality": "PASS_20_OF_20",
+    "png_decode": "PASS_20_OF_20",
+    "blockbench": "NOT_APPLICABLE_FLAT_ICONS_AND_ORDINARY_FULL_CUBES"
+  },
+  "proof_scope": "STATIC_BP_RP_SOURCE_AND_EXACT_PACKET_TEXTURE_CLOSURE_ONLY",
+  "not_proven": [
+    "ACQUISITION",
+    "LOOT",
+    "RECIPES",
+    "WORLD_GENERATION",
+    "SCRIPT_OR_PERSISTENCE",
+    "BEDROCK_CLIENT_RENDERING",
+    "STABLE_BDS",
+    "PACKAGE",
+    "PHYSICAL_PS4",
+    "MARKETPLACE"
+  ]
+}

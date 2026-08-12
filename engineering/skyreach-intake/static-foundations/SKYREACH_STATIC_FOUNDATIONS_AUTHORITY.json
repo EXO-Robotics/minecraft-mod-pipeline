@@ -1,0 +1,589 @@
+{
+  "schema_version": 1,
+  "authority": "PACKET_004_SKYREACH_STATIC_RESOURCE_AND_FULL_CUBE_BINDING",
+  "base": {
+    "commit": "dde6dbe1a331ee2d1673624daaad0c56fc1f9950",
+    "tree": "5111a8f664cd072bafe5654cfc31753235e8d567"
+  },
+  "packet_manifest": {
+    "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-004-skyreach-cliffs/MANIFEST_FULL.json",
+    "sha256": "88d22f955048450cbf1a30d11ceb56a36784ac7cb3f48d0605dacdcc99922976"
+  },
+  "normalization": {
+    "warehouse_namespace": "aionforge_sr",
+    "runtime_namespace": "aionbound",
+    "identifier_policy": "PRESERVE_PACKET_ASSET_ID_NORMALIZE_NAMESPACE_ONLY"
+  },
+  "resource_ids": [
+    "sky_feather",
+    "wind_silk",
+    "cloud_wool",
+    "cliff_crystal",
+    "storm_pinion",
+    "aether_stone",
+    "updraft_reed_item",
+    "sky_vine_item",
+    "float_resin",
+    "lift_bloom_item"
+  ],
+  "block_ids": [
+    "skyreach_log",
+    "skyreach_wood",
+    "skyreach_planks",
+    "wind_slate",
+    "cliff_stone",
+    "rope_timber",
+    "cloud_wool_block",
+    "pale_shelf_stone",
+    "cliff_gravel",
+    "sky_moss_block"
+  ],
+  "source_inputs": {
+    "sky_feather": {
+      "brief": {
+        "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-004-skyreach-cliffs/assets/briefs/sky_feather.json",
+        "sha256": "14911dcc9a331ec6e81196d50656d8a534de450071b8d9a8e21446fa4e57e6fb"
+      },
+      "editable_model": {
+        "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-004-skyreach-cliffs/assets/editable/sky_feather.bbmodel",
+        "sha256": "02098455d545abf140fa06fce3a52e0669ad93942f85f750666ed1348a2adaaa"
+      },
+      "editable_texture": {
+        "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-004-skyreach-cliffs/assets/editable/sky_feather.png",
+        "sha256": "2db2931a4d9c39c79b2d3e466d22e57ebdf70243be44f7aaa99ef46b6d7fbd78"
+      },
+      "exported_geometry": {
+        "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-004-skyreach-cliffs/assets/export/models/sky_feather.geo.json",
+        "sha256": "d2f8e557e34b4fd45ba5fa75d59f064a2a39c04ad32631372d2f3ae19fb13226"
+      },
+      "exported_animation": {
+        "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-004-skyreach-cliffs/assets/export/animations/sky_feather.animation.json",
+        "sha256": "65c0506eea83f79c66f46ac81d206c0845a49201aea28e827526dcbce9182963"
+      },
+      "exported_texture": {
+        "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-004-skyreach-cliffs/assets/export/textures/sky_feather.png",
+        "sha256": "2db2931a4d9c39c79b2d3e466d22e57ebdf70243be44f7aaa99ef46b6d7fbd78"
+      }
+    },
+    "wind_silk": {
+      "brief": {
+        "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-004-skyreach-cliffs/assets/briefs/wind_silk.json",
+        "sha256": "584acbb1fa265aad2dd713820b0c4a2a9b5987ea12c2744ffb2b4427264342d1"
+      },
+      "editable_model": {
+        "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-004-skyreach-cliffs/assets/editable/wind_silk.bbmodel",
+        "sha256": "46913c5cac4266cea6fd91aff718c8fb0e339aada0d6a7ac7dd6dc53e906c96a"
+      },
+      "editable_texture": {
+        "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-004-skyreach-cliffs/assets/editable/wind_silk.png",
+        "sha256": "76d0022f4c664d88b10cc075e0e7c52597e91e46689e063e4a18e7811c5458c4"
+      },
+      "exported_geometry": {
+        "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-004-skyreach-cliffs/assets/export/models/wind_silk.geo.json",
+        "sha256": "058cbd3cd9ccb090650195151a2ee81c7dd4c3cc21ad15bdec334c1483961869"
+      },
+      "exported_animation": {
+        "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-004-skyreach-cliffs/assets/export/animations/wind_silk.animation.json",
+        "sha256": "a76944492b761d821fda28e9ca3681a51f49972ff7e4086e49fd9075c48c1309"
+      },
+      "exported_texture": {
+        "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-004-skyreach-cliffs/assets/export/textures/wind_silk.png",
+        "sha256": "76d0022f4c664d88b10cc075e0e7c52597e91e46689e063e4a18e7811c5458c4"
+      }
+    },
+    "cloud_wool": {
+      "brief": {
+        "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-004-skyreach-cliffs/assets/briefs/cloud_wool.json",
+        "sha256": "2924842aec53369494ffd5bd8e354861fe806c2957955c98b9881e5559ccdde1"
+      },
+      "editable_model": {
+        "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-004-skyreach-cliffs/assets/editable/cloud_wool.bbmodel",
+        "sha256": "bae7387cf5f44a3d02792c3064fd6a82301d2f698db5d9ddbd73c7d03e75e29b"
+      },
+      "editable_texture": {
+        "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-004-skyreach-cliffs/assets/editable/cloud_wool.png",
+        "sha256": "59d2d7ad1b7b8571c4229308497d4ec58713ea2e030372dab30ad77e3bba3adf"
+      },
+      "exported_geometry": {
+        "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-004-skyreach-cliffs/assets/export/models/cloud_wool.geo.json",
+        "sha256": "ba6b13f59cf2b877d487bc9410038512148d51792d9d7608d138a23c9924b129"
+      },
+      "exported_animation": {
+        "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-004-skyreach-cliffs/assets/export/animations/cloud_wool.animation.json",
+        "sha256": "749e33472d015351338f5dc7996994befe3eca49556e8bd0449d4c6ec5c37f62"
+      },
+      "exported_texture": {
+        "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-004-skyreach-cliffs/assets/export/textures/cloud_wool.png",
+        "sha256": "59d2d7ad1b7b8571c4229308497d4ec58713ea2e030372dab30ad77e3bba3adf"
+      }
+    },
+    "cliff_crystal": {
+      "brief": {
+        "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-004-skyreach-cliffs/assets/briefs/cliff_crystal.json",
+        "sha256": "2e3db1a3ac5e0c280652cd0667517fc432e45d555dbff67abbea9fecc03a0043"
+      },
+      "editable_model": {
+        "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-004-skyreach-cliffs/assets/editable/cliff_crystal.bbmodel",
+        "sha256": "67da18a2fa1480bae490059c327f6a1206dc740ffdba51d88c76878f3ad8874b"
+      },
+      "editable_texture": {
+        "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-004-skyreach-cliffs/assets/editable/cliff_crystal.png",
+        "sha256": "a759d19e4496af333580a0c7ecd9de8f1e91e0611d32c829f69c503a1b3409fa"
+      },
+      "exported_geometry": {
+        "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-004-skyreach-cliffs/assets/export/models/cliff_crystal.geo.json",
+        "sha256": "d4344e0036e8571adc0ac6394b40aaa6af6e6a416d130f8c4d77d2bdccb85cd2"
+      },
+      "exported_animation": {
+        "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-004-skyreach-cliffs/assets/export/animations/cliff_crystal.animation.json",
+        "sha256": "4839a9ef670a96cb340da245d79dd03870475d25b2d2f7d01f6c45c99e097541"
+      },
+      "exported_texture": {
+        "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-004-skyreach-cliffs/assets/export/textures/cliff_crystal.png",
+        "sha256": "a759d19e4496af333580a0c7ecd9de8f1e91e0611d32c829f69c503a1b3409fa"
+      }
+    },
+    "storm_pinion": {
+      "brief": {
+        "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-004-skyreach-cliffs/assets/briefs/storm_pinion.json",
+        "sha256": "268ac3c03e985afefd62921133098dba38ee8bed0f0940e357523c9c0631af8c"
+      },
+      "editable_model": {
+        "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-004-skyreach-cliffs/assets/editable/storm_pinion.bbmodel",
+        "sha256": "3c2d159690671f8f9baf199e65f7b52d7aea00b59a0081cee1b8a6668d68ee18"
+      },
+      "editable_texture": {
+        "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-004-skyreach-cliffs/assets/editable/storm_pinion.png",
+        "sha256": "de71e6e64bd51f4e9b4d8ea595cec80ce9762eee0157a0255fdd7f9937014853"
+      },
+      "exported_geometry": {
+        "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-004-skyreach-cliffs/assets/export/models/storm_pinion.geo.json",
+        "sha256": "e7c0caa87da9672231d0d1334fd1d27885f298d23b705d56cdd6efe8c177f395"
+      },
+      "exported_animation": {
+        "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-004-skyreach-cliffs/assets/export/animations/storm_pinion.animation.json",
+        "sha256": "a71379618d032d84c90dbabc9d26ed1fa1060a0a40f3bfc9df99806ad98fcafd"
+      },
+      "exported_texture": {
+        "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-004-skyreach-cliffs/assets/export/textures/storm_pinion.png",
+        "sha256": "de71e6e64bd51f4e9b4d8ea595cec80ce9762eee0157a0255fdd7f9937014853"
+      }
+    },
+    "aether_stone": {
+      "brief": {
+        "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-004-skyreach-cliffs/assets/briefs/aether_stone.json",
+        "sha256": "af859ea281768f86ba310818933e1699675d80ba09cb58c9181a960eee15362e"
+      },
+      "editable_model": {
+        "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-004-skyreach-cliffs/assets/editable/aether_stone.bbmodel",
+        "sha256": "ec109351eee92370914bc6f41179181293d0d4196e3b5a4469caf0593bde6814"
+      },
+      "editable_texture": {
+        "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-004-skyreach-cliffs/assets/editable/aether_stone.png",
+        "sha256": "db840190e45705affe218527fe315b82d5dedf093d599a3cfaf6ac7f6173aa87"
+      },
+      "exported_geometry": {
+        "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-004-skyreach-cliffs/assets/export/models/aether_stone.geo.json",
+        "sha256": "ab00931522a98db31e1c46861258d851d85a9a3c4f7d15eba70bae1106e7ed00"
+      },
+      "exported_animation": {
+        "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-004-skyreach-cliffs/assets/export/animations/aether_stone.animation.json",
+        "sha256": "c7f4ae2fd4edfbf4fd8542c5c4b724b8630d64d89f32e6871d453b0980d0131a"
+      },
+      "exported_texture": {
+        "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-004-skyreach-cliffs/assets/export/textures/aether_stone.png",
+        "sha256": "db840190e45705affe218527fe315b82d5dedf093d599a3cfaf6ac7f6173aa87"
+      }
+    },
+    "updraft_reed_item": {
+      "brief": {
+        "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-004-skyreach-cliffs/assets/briefs/updraft_reed_item.json",
+        "sha256": "0501c211ee315f07d7470f3d105db0c7e7da68983c5ce664aced11e89bf769ef"
+      },
+      "editable_model": {
+        "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-004-skyreach-cliffs/assets/editable/updraft_reed_item.bbmodel",
+        "sha256": "22906dd3b5191d732ec1a2a0d8a3c60102b407926299f0dfeeae40edb2e76a7d"
+      },
+      "editable_texture": {
+        "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-004-skyreach-cliffs/assets/editable/updraft_reed_item.png",
+        "sha256": "9202fa653dee86f1cdd522990d1181d54da98dfb0a1cb7a37af2d61ac4a2b922"
+      },
+      "exported_geometry": {
+        "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-004-skyreach-cliffs/assets/export/models/updraft_reed_item.geo.json",
+        "sha256": "c2c4de755d7c81e83dc931c867d64cf5bf351558af81867245b1015124b026cd"
+      },
+      "exported_animation": {
+        "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-004-skyreach-cliffs/assets/export/animations/updraft_reed_item.animation.json",
+        "sha256": "c443bb08551338d594d74f324c0a6bcdbc38b20ecf7f98ad1f8018d66a3810de"
+      },
+      "exported_texture": {
+        "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-004-skyreach-cliffs/assets/export/textures/updraft_reed_item.png",
+        "sha256": "9202fa653dee86f1cdd522990d1181d54da98dfb0a1cb7a37af2d61ac4a2b922"
+      }
+    },
+    "sky_vine_item": {
+      "brief": {
+        "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-004-skyreach-cliffs/assets/briefs/sky_vine_item.json",
+        "sha256": "b16d4bbb8bb2bd404b2d99a46a723518d4b73865117d438173e5ac8e42fba1a3"
+      },
+      "editable_model": {
+        "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-004-skyreach-cliffs/assets/editable/sky_vine_item.bbmodel",
+        "sha256": "90b8f0e16d76cc78c6f422eae372111771364356ddfc49bf226b5cbe8af346f5"
+      },
+      "editable_texture": {
+        "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-004-skyreach-cliffs/assets/editable/sky_vine_item.png",
+        "sha256": "73f79dce596be81e1ee76def2a079ee02cba8c9b1ef658aafc4d36589f3430ea"
+      },
+      "exported_geometry": {
+        "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-004-skyreach-cliffs/assets/export/models/sky_vine_item.geo.json",
+        "sha256": "249c298798dc267861adde0db177a083524b7b2cb059d5ee5888f64ecf99073b"
+      },
+      "exported_animation": {
+        "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-004-skyreach-cliffs/assets/export/animations/sky_vine_item.animation.json",
+        "sha256": "fc2d00f738fc44d3e2dfa06d8c179e25638e6350ac173d8dbbf8ffeea6133d07"
+      },
+      "exported_texture": {
+        "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-004-skyreach-cliffs/assets/export/textures/sky_vine_item.png",
+        "sha256": "73f79dce596be81e1ee76def2a079ee02cba8c9b1ef658aafc4d36589f3430ea"
+      }
+    },
+    "float_resin": {
+      "brief": {
+        "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-004-skyreach-cliffs/assets/briefs/float_resin.json",
+        "sha256": "08eb111b76cbbdf5903611a5c70dc3d2e429ec0baf5d4d8ebf5daf36a90f61aa"
+      },
+      "editable_model": {
+        "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-004-skyreach-cliffs/assets/editable/float_resin.bbmodel",
+        "sha256": "5a01d6cc884380659b388050f7cead9ab3c69a77d75f17ef4f5b7908c2d6bef2"
+      },
+      "editable_texture": {
+        "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-004-skyreach-cliffs/assets/editable/float_resin.png",
+        "sha256": "1ef63de11c792462f6d63e5e37d3e95f8a4e9e485116d9cc56095cca58c361f6"
+      },
+      "exported_geometry": {
+        "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-004-skyreach-cliffs/assets/export/models/float_resin.geo.json",
+        "sha256": "91cb434eb816fabb3c43c003cac781b6e9bd6f985c5ba55c323c588ef54a5a76"
+      },
+      "exported_animation": {
+        "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-004-skyreach-cliffs/assets/export/animations/float_resin.animation.json",
+        "sha256": "4c06f0e97d00961cb6824e698482e0dc5e288e603316b1a7f66e13e0dbf820a0"
+      },
+      "exported_texture": {
+        "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-004-skyreach-cliffs/assets/export/textures/float_resin.png",
+        "sha256": "1ef63de11c792462f6d63e5e37d3e95f8a4e9e485116d9cc56095cca58c361f6"
+      }
+    },
+    "lift_bloom_item": {
+      "brief": {
+        "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-004-skyreach-cliffs/assets/briefs/lift_bloom_item.json",
+        "sha256": "af3416c4b86a1aee4f3fd4c7cb26d59b392152f559cbd02792fbae51af417bed"
+      },
+      "editable_model": {
+        "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-004-skyreach-cliffs/assets/editable/lift_bloom_item.bbmodel",
+        "sha256": "b81b155871a9ffd8faccdc648f31a5396013c3989267bbd2065e6bc2cb106a89"
+      },
+      "editable_texture": {
+        "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-004-skyreach-cliffs/assets/editable/lift_bloom_item.png",
+        "sha256": "b4a744f242adc23f0fa77a56c3666ee3e527b702b1c897a29c035dccca2f1741"
+      },
+      "exported_geometry": {
+        "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-004-skyreach-cliffs/assets/export/models/lift_bloom_item.geo.json",
+        "sha256": "d10e27fc9d934337d0596990d80830ce1962bf64fad2cb964e065cc0430c6ed1"
+      },
+      "exported_animation": {
+        "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-004-skyreach-cliffs/assets/export/animations/lift_bloom_item.animation.json",
+        "sha256": "8d26a8ab67a8dd3c60182625bdcf4181181475de1641841d4c9f95aab948fa61"
+      },
+      "exported_texture": {
+        "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-004-skyreach-cliffs/assets/export/textures/lift_bloom_item.png",
+        "sha256": "b4a744f242adc23f0fa77a56c3666ee3e527b702b1c897a29c035dccca2f1741"
+      }
+    },
+    "skyreach_log": {
+      "brief": {
+        "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-004-skyreach-cliffs/assets/briefs/skyreach_log.json",
+        "sha256": "8ff1f8701d4d5f638f92520c26459011210657c9c378c20ffe301e6536c00ef6"
+      },
+      "editable_model": {
+        "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-004-skyreach-cliffs/assets/editable/skyreach_log.bbmodel",
+        "sha256": "df20382e948b95129c4f191a19757717b60c4ab771a6119d32d416d857052441"
+      },
+      "editable_texture": {
+        "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-004-skyreach-cliffs/assets/editable/skyreach_log.png",
+        "sha256": "a7f6785026c928aca6047258a7739fe9ebaeff66fdb16ca6e022487ea0d04abf"
+      },
+      "exported_geometry": {
+        "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-004-skyreach-cliffs/assets/export/models/skyreach_log.geo.json",
+        "sha256": "d15a1b84e741d2f491a2ff76fe38ffaa04fc88766ea5812e1e9cffda7c8f99bd"
+      },
+      "exported_animation": {
+        "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-004-skyreach-cliffs/assets/export/animations/skyreach_log.animation.json",
+        "sha256": "325ff5c4f83b3394313ddc82778a9288066c2013e5ef49de65285b4374563fc8"
+      },
+      "exported_texture": {
+        "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-004-skyreach-cliffs/assets/export/textures/skyreach_log.png",
+        "sha256": "a7f6785026c928aca6047258a7739fe9ebaeff66fdb16ca6e022487ea0d04abf"
+      }
+    },
+    "skyreach_wood": {
+      "brief": {
+        "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-004-skyreach-cliffs/assets/briefs/skyreach_wood.json",
+        "sha256": "dfd480ad371d8b385fd27b41e198b854e70817e255fa089ea02f6410d3682c7e"
+      },
+      "editable_model": {
+        "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-004-skyreach-cliffs/assets/editable/skyreach_wood.bbmodel",
+        "sha256": "ee87966b32f6a9b229711e3bf2f0b704373839f79755c2d74f098dc227abce53"
+      },
+      "editable_texture": {
+        "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-004-skyreach-cliffs/assets/editable/skyreach_wood.png",
+        "sha256": "7da2a7113e90b03ba459e9eef6e53beaa64fea1b4a959ca8a2f91c366694ab8d"
+      },
+      "exported_geometry": {
+        "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-004-skyreach-cliffs/assets/export/models/skyreach_wood.geo.json",
+        "sha256": "2b1bde279b5df532bbc0a15dd6e3562373c8d2708eaaa09834e1d129888784d5"
+      },
+      "exported_animation": {
+        "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-004-skyreach-cliffs/assets/export/animations/skyreach_wood.animation.json",
+        "sha256": "5d3e75093516901deab0a889328827cf25d346ad902f062d405c1fa8092416ad"
+      },
+      "exported_texture": {
+        "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-004-skyreach-cliffs/assets/export/textures/skyreach_wood.png",
+        "sha256": "7da2a7113e90b03ba459e9eef6e53beaa64fea1b4a959ca8a2f91c366694ab8d"
+      }
+    },
+    "skyreach_planks": {
+      "brief": {
+        "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-004-skyreach-cliffs/assets/briefs/skyreach_planks.json",
+        "sha256": "208e36ebf1f6ba0c7b69fee30ec7602571566c9dc702bca517d0a0d122e3fb28"
+      },
+      "editable_model": {
+        "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-004-skyreach-cliffs/assets/editable/skyreach_planks.bbmodel",
+        "sha256": "400c395735ae9abd556befe1699403ab8177ce46486bcf1cbbae1149c710448b"
+      },
+      "editable_texture": {
+        "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-004-skyreach-cliffs/assets/editable/skyreach_planks.png",
+        "sha256": "e4902c3a11fd5a1eb23596d333dd4c558da04fe9802647e39474add4b0312cc1"
+      },
+      "exported_geometry": {
+        "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-004-skyreach-cliffs/assets/export/models/skyreach_planks.geo.json",
+        "sha256": "10c196a92f2dd823bb4d66ce0c3dbc56c2e6e3f6bc21094b45ea27875472d7c9"
+      },
+      "exported_animation": {
+        "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-004-skyreach-cliffs/assets/export/animations/skyreach_planks.animation.json",
+        "sha256": "54e3afd6e759b25c075b4ca73270510d2e14fdac1f19bf490620f6374a342428"
+      },
+      "exported_texture": {
+        "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-004-skyreach-cliffs/assets/export/textures/skyreach_planks.png",
+        "sha256": "e4902c3a11fd5a1eb23596d333dd4c558da04fe9802647e39474add4b0312cc1"
+      }
+    },
+    "wind_slate": {
+      "brief": {
+        "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-004-skyreach-cliffs/assets/briefs/wind_slate.json",
+        "sha256": "0fe36311426f9a8d4b13baccdcf9175456f1d7433bbb3f83b55eda041e596d10"
+      },
+      "editable_model": {
+        "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-004-skyreach-cliffs/assets/editable/wind_slate.bbmodel",
+        "sha256": "0f49352593e4451c98c3d9d792319e8b64b55ee4b1e51cc8faba192203b9cf66"
+      },
+      "editable_texture": {
+        "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-004-skyreach-cliffs/assets/editable/wind_slate.png",
+        "sha256": "cd7c530b71eeba63339b38ca1b1bcbb0f76012d8ff9eee31f6ae6d33da3116e2"
+      },
+      "exported_geometry": {
+        "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-004-skyreach-cliffs/assets/export/models/wind_slate.geo.json",
+        "sha256": "6183bb1cc2ff8bce2f26613383098fe7ea630e58ef79104325a0076612cf2c69"
+      },
+      "exported_animation": {
+        "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-004-skyreach-cliffs/assets/export/animations/wind_slate.animation.json",
+        "sha256": "650cd52ceea86f9661478fe4e6b4fcd100a1dddb09ad65d4ecf379a1009a47fc"
+      },
+      "exported_texture": {
+        "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-004-skyreach-cliffs/assets/export/textures/wind_slate.png",
+        "sha256": "cd7c530b71eeba63339b38ca1b1bcbb0f76012d8ff9eee31f6ae6d33da3116e2"
+      }
+    },
+    "cliff_stone": {
+      "brief": {
+        "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-004-skyreach-cliffs/assets/briefs/cliff_stone.json",
+        "sha256": "057a834d8ef270a6e99da2060e30a6d17e9f689db0a3307298054fc8b5fc266f"
+      },
+      "editable_model": {
+        "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-004-skyreach-cliffs/assets/editable/cliff_stone.bbmodel",
+        "sha256": "86e202cad3e29cd4441478b46cdc1438c09d2282112ce312ad1ce65b496ff823"
+      },
+      "editable_texture": {
+        "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-004-skyreach-cliffs/assets/editable/cliff_stone.png",
+        "sha256": "641483a8c5338da214025c7ce5a23249cad5c9202a110d5b26c5c198f70362db"
+      },
+      "exported_geometry": {
+        "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-004-skyreach-cliffs/assets/export/models/cliff_stone.geo.json",
+        "sha256": "074ca544b895be4907d818b63af46cf04a665b85c324314d582b19b35f0a1653"
+      },
+      "exported_animation": {
+        "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-004-skyreach-cliffs/assets/export/animations/cliff_stone.animation.json",
+        "sha256": "07f45dbc047a462a5649f461cccb694dc8ebe7c3bbb31d98daae7e717b7003ea"
+      },
+      "exported_texture": {
+        "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-004-skyreach-cliffs/assets/export/textures/cliff_stone.png",
+        "sha256": "641483a8c5338da214025c7ce5a23249cad5c9202a110d5b26c5c198f70362db"
+      }
+    },
+    "rope_timber": {
+      "brief": {
+        "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-004-skyreach-cliffs/assets/briefs/rope_timber.json",
+        "sha256": "fa74fbd05139b6f683c30d2a1d4fce776d3a969864116d7fb31a2e2ad6d3805c"
+      },
+      "editable_model": {
+        "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-004-skyreach-cliffs/assets/editable/rope_timber.bbmodel",
+        "sha256": "6461d4a7e07dcf4f20026b504382d2c01cc38189cfb39fd7828a54fac0081cc4"
+      },
+      "editable_texture": {
+        "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-004-skyreach-cliffs/assets/editable/rope_timber.png",
+        "sha256": "8023682d8273b0aa011ade53cf3d57677300bb4ee3ea055e6ef281bdafedac56"
+      },
+      "exported_geometry": {
+        "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-004-skyreach-cliffs/assets/export/models/rope_timber.geo.json",
+        "sha256": "020c286337d0f6ce5616a949bac1a78cd504a1092aa2e3837612a6c5ae88fea6"
+      },
+      "exported_animation": {
+        "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-004-skyreach-cliffs/assets/export/animations/rope_timber.animation.json",
+        "sha256": "b8106ad14306704401321999f9b1374d90438442f86fc6c1adddd4aeb14f0a68"
+      },
+      "exported_texture": {
+        "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-004-skyreach-cliffs/assets/export/textures/rope_timber.png",
+        "sha256": "8023682d8273b0aa011ade53cf3d57677300bb4ee3ea055e6ef281bdafedac56"
+      }
+    },
+    "cloud_wool_block": {
+      "brief": {
+        "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-004-skyreach-cliffs/assets/briefs/cloud_wool_block.json",
+        "sha256": "53d325e2cd07df64ffee2fa987178f04f3cb08b48a2f30828d4757e5364f7139"
+      },
+      "editable_model": {
+        "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-004-skyreach-cliffs/assets/editable/cloud_wool_block.bbmodel",
+        "sha256": "2838a86cb1024be32cfa7c73cc02e7089fd5848fce230369b53a6e42305a8535"
+      },
+      "editable_texture": {
+        "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-004-skyreach-cliffs/assets/editable/cloud_wool_block.png",
+        "sha256": "3a5cd0e11f0c13523bde94d5d45dc4a62bd73def5462a468c8e1cf1ea4c7762c"
+      },
+      "exported_geometry": {
+        "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-004-skyreach-cliffs/assets/export/models/cloud_wool_block.geo.json",
+        "sha256": "10d1d46d8ee10d156dd4b292445b9465e37c5ed638ddc1896547118c7855d6ad"
+      },
+      "exported_animation": {
+        "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-004-skyreach-cliffs/assets/export/animations/cloud_wool_block.animation.json",
+        "sha256": "5962b55cd322080e078da22c8af530ac30985a50b999980477f7372a749e4e12"
+      },
+      "exported_texture": {
+        "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-004-skyreach-cliffs/assets/export/textures/cloud_wool_block.png",
+        "sha256": "3a5cd0e11f0c13523bde94d5d45dc4a62bd73def5462a468c8e1cf1ea4c7762c"
+      }
+    },
+    "pale_shelf_stone": {
+      "brief": {
+        "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-004-skyreach-cliffs/assets/briefs/pale_shelf_stone.json",
+        "sha256": "049d97816da9ffbc1b10b691c28195fc487bd9e74d4d33856e2f9e692e654d4e"
+      },
+      "editable_model": {
+        "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-004-skyreach-cliffs/assets/editable/pale_shelf_stone.bbmodel",
+        "sha256": "f2727d97926584f6c72352b38258f32e44536ec5a97301c8a5947533b140c9ac"
+      },
+      "editable_texture": {
+        "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-004-skyreach-cliffs/assets/editable/pale_shelf_stone.png",
+        "sha256": "89b41abaea0812ef810f1ecc1a4946f34a19d8fe4a467d4ed27ab2359079004e"
+      },
+      "exported_geometry": {
+        "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-004-skyreach-cliffs/assets/export/models/pale_shelf_stone.geo.json",
+        "sha256": "38d4386867fc2239c280b7abb66c00dc01564f541fcedf86183860a015431541"
+      },
+      "exported_animation": {
+        "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-004-skyreach-cliffs/assets/export/animations/pale_shelf_stone.animation.json",
+        "sha256": "3eb215ecda2152da00face9b88c0bec963a4f5b62f346d6f4b9e0f5e622d2aa8"
+      },
+      "exported_texture": {
+        "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-004-skyreach-cliffs/assets/export/textures/pale_shelf_stone.png",
+        "sha256": "89b41abaea0812ef810f1ecc1a4946f34a19d8fe4a467d4ed27ab2359079004e"
+      }
+    },
+    "cliff_gravel": {
+      "brief": {
+        "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-004-skyreach-cliffs/assets/briefs/cliff_gravel.json",
+        "sha256": "ff79778a58a9d13e635e286553a781886c2c721b504c1959f0fce38ea1108194"
+      },
+      "editable_model": {
+        "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-004-skyreach-cliffs/assets/editable/cliff_gravel.bbmodel",
+        "sha256": "0fdf2ac0c8c9e5ee8ce32b9475b26c79f074e4f9c89516a8326953d524425055"
+      },
+      "editable_texture": {
+        "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-004-skyreach-cliffs/assets/editable/cliff_gravel.png",
+        "sha256": "10c741ccca106f5b689854ee8dd6afb3f8884e34882d9f641a35b2c3cb3740c8"
+      },
+      "exported_geometry": {
+        "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-004-skyreach-cliffs/assets/export/models/cliff_gravel.geo.json",
+        "sha256": "98c1dbb6485d4817723caac2757c007e8cebebcce667b1c6251a03c298e403d4"
+      },
+      "exported_animation": {
+        "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-004-skyreach-cliffs/assets/export/animations/cliff_gravel.animation.json",
+        "sha256": "c198345fcfac64aa54091a216674d5d5b99e9d71a8131355ff5df8b1d180e7d7"
+      },
+      "exported_texture": {
+        "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-004-skyreach-cliffs/assets/export/textures/cliff_gravel.png",
+        "sha256": "10c741ccca106f5b689854ee8dd6afb3f8884e34882d9f641a35b2c3cb3740c8"
+      }
+    },
+    "sky_moss_block": {
+      "brief": {
+        "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-004-skyreach-cliffs/assets/briefs/sky_moss_block.json",
+        "sha256": "984d8d08fe8afc15f8d04029f949a5afb6b418753d108e7bae1685400f1b7b27"
+      },
+      "editable_model": {
+        "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-004-skyreach-cliffs/assets/editable/sky_moss_block.bbmodel",
+        "sha256": "366eb6076b2e04e06e436666606663a1a6343f9e9c3e535150a1d7ceafc7a63c"
+      },
+      "editable_texture": {
+        "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-004-skyreach-cliffs/assets/editable/sky_moss_block.png",
+        "sha256": "67685a892704dbe1d139da41a1141d092491a9dafc841b6d1a147d9e764d4c3d"
+      },
+      "exported_geometry": {
+        "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-004-skyreach-cliffs/assets/export/models/sky_moss_block.geo.json",
+        "sha256": "967e24825790effe0787cc9daa6e501608882abf1748b26925636858b2a8cff5"
+      },
+      "exported_animation": {
+        "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-004-skyreach-cliffs/assets/export/animations/sky_moss_block.animation.json",
+        "sha256": "2850a0144fcaa0f622f4950ece46922d837ac47404295cc0b315aad674550c5e"
+      },
+      "exported_texture": {
+        "path": "program/crazycraft-pack-production-v1/studio-prep/sprints/asset-sprint-004-skyreach-cliffs/assets/export/textures/sky_moss_block.png",
+        "sha256": "67685a892704dbe1d139da41a1141d092491a9dafc841b6d1a147d9e764d4c3d"
+      }
+    }
+  },
+  "presentation_policy": {
+    "resources": {
+      "shipping_form": "flat_inventory_icon",
+      "texture_policy": "BYTE_IDENTICAL_PACKET_TEXTURE_COPY",
+      "blockbench_status": "NOT_APPLICABLE",
+      "reason": "Flat inventory icons require no custom geometry, locator, rig, UV editing, or animation."
+    },
+    "blocks": {
+      "shipping_geometry": "minecraft:geometry.full_block",
+      "texture_policy": "BYTE_IDENTICAL_PACKET_TEXTURE_COPY",
+      "blockbench_status": "NOT_APPLICABLE",
+      "reason": "Ordinary full-cube blocks require no custom geometry, locator, rig, UV editing, or animation."
+    },
+    "packet_custom_geometry_status": "NOT_PROMOTED_FOR_THESE_RUNTIME_FORMS"
+  },
+  "scope_exclusions": [
+    "acquisition",
+    "loot",
+    "recipes",
+    "world_generation",
+    "scripts",
+    "persistence",
+    "BDS",
+    "client claims",
+    "candidate build"
+  ]
+}
