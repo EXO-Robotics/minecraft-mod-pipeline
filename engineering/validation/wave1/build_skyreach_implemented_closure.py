@@ -16,6 +16,8 @@ PLANTS = ["wind_reed_plant", "hanging_sky_vine", "rope_root", "cloud_moss", "clo
 CREATURES = ["cloud_goat", "sky_fox", "cliff_ram", "storm_gull", "gale_hawk", "ropewing", "stone_vulture", "glide_drake", "ruin_harpy", "wind_roc"]
 NATURAL = [value for value in CREATURES if value != "wind_roc"]
 STRUCTURES = ["rope_bridge", "broken_sky_path", "cliff_outpost", "cliff_beacon", "observation_tower", "nest_platform", "floating_ruin_floor", "ancient_sky_arch", "hanging_lift_frame", "wind_shrine"]
+DERIVED = ["wing_bone_stay", "climbing_hook_head", "climbing_rope", "glider_frame", "glider_panel", "lift_tonic", "soft_landing_pad", "twin_mineral_lens", "aether_bind"]
+RECIPES = [value for value in DERIVED if value != "wing_bone_stay"] + ["surveyor_medallion", "surveyor_staff", "trail_compass", "warden_sigil"]
 
 
 def rows(paths: list[str]) -> list[dict[str, str]]:
@@ -64,14 +66,28 @@ def build() -> dict:
     structures += [f"behavior_pack/features/{value}.structure_feature.json" for value in STRUCTURES]
     structures += [f"behavior_pack/feature_rules/{value}.structure_feature_rule.json" for value in STRUCTURES]
 
+    economy = ["engineering/skyreach-intake/approved-vertical/SKYREACH_APPROVED_VERTICAL_REPORT.json"]
+    economy += [f"behavior_pack/items/{value}.item.json" for value in DERIVED]
+    economy += [f"behavior_pack/recipes/{value}.recipe.json" for value in RECIPES]
+    economy += [f"behavior_pack/loot_tables/entities/aionbound/skyreach/{value}.json" for value in CREATURES]
+    economy += [f"behavior_pack/loot_tables/blocks/aionbound/skyreach/{value}.json" for value in PLANTS]
+
     codex = [
         "engineering/skyreach-intake/economy-codex/SKYREACH_ECONOMY_CODEX_SCAFFOLD.json",
         "behavior_pack/scripts/wave1_codex_skyreach_data.js",
+        "behavior_pack/scripts/wave1_codex_skyreach_runtime_data.js",
         "behavior_pack/scripts/wave1_codex_data.js",
         "behavior_pack/scripts/catalog.js",
         "behavior_pack/scripts/codex.js",
         "behavior_pack/scripts/state.js",
         "tests/wave1_codex_v4.test.mjs",
+    ]
+    encounter = [
+        "behavior_pack/scripts/skyreach_rewards.js",
+        "behavior_pack/scripts/storm_nest.js",
+        "behavior_pack/scripts/runtime.js",
+        "tests/wave1_skyreach_economy.test.mjs",
+        "tests/wave1_storm_nest.test.mjs",
     ]
     native = [
         "engineering/native-assets/skyreach/representative/SKYREACH_REPRESENTATIVE_NATIVE_REPORT.json",
@@ -85,6 +101,8 @@ def build() -> dict:
         "creature_ai_client_motion_and_spawn": rows(creatures),
         "inert_structures_and_worldgen": rows(structures),
         "identity_codex_registry_v5": rows(codex),
+        "loot_crafting_acquisition_and_packet006_links": rows(economy),
+        "storm_nest_existing_handler_persistence_and_recovery": rows(encounter),
         "native_editable_asset_aggregates": rows(native),
     }
     all_paths = [row["path"] for group in groups.values() for row in group]
@@ -92,7 +110,7 @@ def build() -> dict:
         raise ValueError("duplicate path across groups")
     return {
         "schema": "aionbound.wave1.skyreach.implemented_source_closure.v1",
-        "status": "SKYREACH_IMPLEMENTED_FOUNDATION_COMPLETE_AUTHORITY_GATED_EXECUTION_DEFERRED",
+        "status": "SKYREACH_VERTICAL_SOURCE_COMPLETE_TARGETED_LOCAL_PASS",
         "groups": groups,
         "invariants": {
             "base_packet_ids": 50,
@@ -106,12 +124,13 @@ def build() -> dict:
             "state_schema": 4,
             "new_subscription_classes": 0,
             "new_interval_classes": 0,
+            "ratified_loot_crafting_and_acquisition": True,
+            "storm_nest_existing_schema_service_composed": True,
+            "storm_pinion_once_recovery_semantics": True,
         },
         "pending_follow_up": {
-            "W1-001-SR": "EXECUTABLE_ACQUISITION_RECIPES_AND_NONWAREHOUSE_IDENTITIES_DEFERRED",
-            "W1-003-STORM-NEST": "ENCOUNTER_EXECUTION_DEFERRED",
-            "W1-004-SR": "LOOT_SEAL_RECOVERY_AND_REPEAT_CLEAR_DEFERRED",
             "W1-CREATIVE-005": "DEFERRED_BY_USER_NO_SIDEGRADE_IDENTITIES",
+            "runtime_qualification": "DEFERRED_TO_FINAL_INTEGRATED_GATE",
         },
         "proof_boundary": "EXACT SOURCE PATH AND HASH CLOSURE ONLY; NO PACKAGE, BDS, CLIENT, MULTIPLAYER, CONSOLE, MARKETPLACE, OR RELEASE CLAIM",
     }

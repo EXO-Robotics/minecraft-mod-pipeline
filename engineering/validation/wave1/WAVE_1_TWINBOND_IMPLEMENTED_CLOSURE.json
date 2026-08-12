@@ -1,0 +1,158 @@
+{
+  "schema": "aionbound.wave1.twinbond.implemented_source_closure.v1",
+  "status": "TWINBOND_SOURCE_SEMANTICS_COMPLETE_PHASE_PRESENTATION_QUALIFICATION_DEFERRED",
+  "groups": {
+    "ratified_authority": [
+      {
+        "path": "engineering/authority/WAVE_1_ENGINEERING_DECISION_LEDGER.json",
+        "sha256": "cf7e1cd8b81b4a8088d136e1f9f2cb4ee3e245cfa71259f2a957d6e4f55ccff9"
+      },
+      {
+        "path": "engineering/authority/support-proposals/finale/W1-002-TWINBOND.json",
+        "sha256": "0f99a748e55d15bd468d9ded25a0c170972bf94c1682e56c8abb78cde25eda7e"
+      },
+      {
+        "path": "engineering/authority/support-proposals/finale/W1-003-TWINBOND.json",
+        "sha256": "c22a350499fd2674d3dabedcee8ec5221c4e3e8da4f89666f91cb5a69a43cf1c"
+      },
+      {
+        "path": "engineering/authority/support-proposals/finale/W1-004-TWINBOND.json",
+        "sha256": "b5ac9295df1718112793d2b15ba035570e1e6032d0da814b9af68a17c27d9a4c"
+      },
+      {
+        "path": "engineering/final-reconciliation/FINAL_WAVE1_RATIFICATION_RECEIPT.json",
+        "sha256": "3a3541ab1226f9f8d6b6e7e324886347f2e0cebf77745fe0ca81e61adfbf54c7"
+      }
+    ],
+    "finale_existing_handler_persistence_and_recovery": [
+      {
+        "path": "behavior_pack/scripts/twinbond.js",
+        "sha256": "66b6edd3a4d82803ab70a408d5f7cdcd68871c90d4673f33fbb255348973909d"
+      },
+      {
+        "path": "behavior_pack/scripts/runtime.js",
+        "sha256": "cc676cf6eaa54fb52b80a77aa04ec176cb59ae000854077ff629e7a1a02dd47a"
+      },
+      {
+        "path": "behavior_pack/scripts/state.js",
+        "sha256": "a711111266701b4c7709f691dcbb82599c6b4848b948ba894590f59a9f41b975"
+      },
+      {
+        "path": "behavior_pack/scripts/catalog.js",
+        "sha256": "9a4dcefc641cd894fcde35c577d668547b0d533e1442901eb9e35b94f91276bf"
+      },
+      {
+        "path": "behavior_pack/items/memory_of_four_lands.item.json",
+        "sha256": "89dee8ff5fcd486d9d7356c7bb5577ba4c519b3b43cbbdde12cad6fdc0a9cdd5"
+      },
+      {
+        "path": "behavior_pack/items/trophy_edge_blank.item.json",
+        "sha256": "55690aa45f42647f7d36a70e34a428d3b9291be8d30094eb644a18510e08f6ec"
+      },
+      {
+        "path": "behavior_pack/blocks/ceremony_anvil_site.block.json",
+        "sha256": "8a50ac37aec5a45f02e09a5401a28cd374545b787da82fd44f1cecf6c9a8bd31"
+      },
+      {
+        "path": "behavior_pack/blocks/twin_thrones.block.json",
+        "sha256": "9f78f1cd3e04e13eaa36f2c3a16d68d1c12608aee022d790a34f92d5484e4b26"
+      },
+      {
+        "path": "behavior_pack/blocks/twinbond_approach_marker.block.json",
+        "sha256": "8806e46625cc1e67411b757353513f0eccddd5739b87ed42ac6efc27b76af828"
+      },
+      {
+        "path": "behavior_pack/blocks/twinbond_obsidian_ring.block.json",
+        "sha256": "432cca2ae464e633be862d7e4fffeeaf305cb1e724551ef8495e2ae4e8addf95"
+      },
+      {
+        "path": "behavior_pack/features/twinbond_approach_marker.feature.json",
+        "sha256": "2f191f0767db0684c21b77e4a5744682278be2dc5bccf0d2e3f1fc5239681849"
+      },
+      {
+        "path": "behavior_pack/feature_rules/twinbond_approach_marker.feature_rule.json",
+        "sha256": "cd8615c42c5b6f57fa785402ae458d0d02710bf6300b3b9a9dc807fa6cbbc4bf"
+      },
+      {
+        "path": "behavior_pack/structures/aionbound/twinbond_slice_v1.mcstructure",
+        "sha256": "dc980b99897129e3747409b169e648db4d7b82f9933effbdceeb022a01b6ef6e"
+      },
+      {
+        "path": "tests/wave1_twinbond.test.mjs",
+        "sha256": "8de394e13f411c6894764e4d75817941e7b95a5dc35f5fe2c3f02cd0d765cc8b"
+      }
+    ],
+    "site_and_inventory_presentation": [
+      {
+        "path": "resource_pack/blocks.json",
+        "sha256": "a311829e9d4e9785106fe36dc1c617355e63b61cd260c687d86779066b70f05c"
+      },
+      {
+        "path": "resource_pack/texts/en_US.lang",
+        "sha256": "478d122daffe378402daa00ab9b5341188047dc03b79a4c1dfb4f65d472ef705"
+      },
+      {
+        "path": "resource_pack/textures/item_texture.json",
+        "sha256": "7a9b5423be8397fd56eb1c18a1253f4ae72c764e918effa4e2822f69ceac897d"
+      },
+      {
+        "path": "resource_pack/textures/terrain_texture.json",
+        "sha256": "a6eea4c535837addd0dfc2aafaa77411715ecdb87e106b102512a5f68731ed3d"
+      },
+      {
+        "path": "resource_pack/models/aionbound/ceremony_anvil_site.geo.json",
+        "sha256": "4d95ee065c39d9e61855a64f77f70fe913cfae63395e6161b21dcd03fd01047f"
+      },
+      {
+        "path": "resource_pack/models/aionbound/twin_thrones.geo.json",
+        "sha256": "6d3ba051db7a513fe4e8bcc874939adb7225c76a03a9e060fb615a4537044ddb"
+      },
+      {
+        "path": "resource_pack/models/aionbound/twinbond_approach_marker.geo.json",
+        "sha256": "f699a1a0302c34f5ec0c917f77558db056fb9039ef85fa0ea9cf72dee9cbaddd"
+      },
+      {
+        "path": "resource_pack/models/aionbound/twinbond_obsidian_ring.geo.json",
+        "sha256": "281b72250c67a3d00723eaa2b56e72811ef330cc58e9f68ecc217a2bc278accd"
+      },
+      {
+        "path": "resource_pack/animations/aionbound/ceremony_anvil_site.animation.json",
+        "sha256": "31dd8e053799a39e258bc62d745cf61d4fc5a0b412d900673768979a99791957"
+      },
+      {
+        "path": "resource_pack/animations/aionbound/twin_thrones.animation.json",
+        "sha256": "e5de4636dc4a078a71805f6627768dad89e5147504ca392d3b70d6c36af2718b"
+      },
+      {
+        "path": "resource_pack/animations/aionbound/twinbond_approach_marker.animation.json",
+        "sha256": "9d942d12f42839a72897577a3af8a840c4aac4aaa69d23fffb774a1b45a8bd5a"
+      },
+      {
+        "path": "resource_pack/animations/aionbound/twinbond_obsidian_ring.animation.json",
+        "sha256": "6bdafe4fa64a54539640fd6f22ed49e5e3809b3dba1500660ba2c23c0aacb137"
+      }
+    ],
+    "native_editable_asset_aggregate": [
+      {
+        "path": "engineering/native-assets/twinbond/TWINBOND_NATIVE_REPORT.json",
+        "sha256": "fd4cbf54799a3d78d5bfa170f57e1b555ce50b890a591e0371207e4f84a484ef"
+      }
+    ]
+  },
+  "invariants": {
+    "persistence_schema": 4,
+    "new_global_subscription_classes": 0,
+    "new_recurring_interval_classes": 0,
+    "four_seal_gate": true,
+    "full_pilgrimage_gate": true,
+    "forbidden_finale_ignition_key_path": false,
+    "forbidden_concord_scale_path": false,
+    "once_per_player_recovery": true
+  },
+  "pending_follow_up": {
+    "wyrm_phase_presentation": "NATIVE_REPORT_PHASE_READY_FALSE_REQUIRES_SEPARATE_QUALIFIED_REPAIR_OR_EXPLICIT_SUFFICIENCY_DECISION",
+    "runtime_qualification": "DEFERRED_TO_FINAL_INTEGRATED_GATE",
+    "W1-CREATIVE-005": "DEFERRED_BY_USER_NO_SIDEGRADE_IDENTITIES"
+  },
+  "proof_boundary": "EXACT SOURCE PATH AND HASH CLOSURE WITH TARGETED LOCAL SEMANTIC TESTS ONLY; NO PACKAGE, BDS, CLIENT, MULTIPLAYER, CONSOLE, MARKETPLACE, OR RELEASE CLAIM"
+}

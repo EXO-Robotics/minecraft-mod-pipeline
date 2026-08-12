@@ -7,7 +7,7 @@ import { tmpdir } from "node:os";
 
 const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), "..");
 const SOURCE_DIR = resolve(ROOT, "behavior_pack/scripts");
-const MODULE_NAMES = ["wave1_codex_extension_data", "wave1_codex_ashen_data", "wave1_codex_crystal_data", "wave1_codex_skyreach_data", "wave1_codex_skyreach_runtime_data", "wave1_codex_data", "wave1_codex_ui_data", "wave1_equipment_roles", "crystal_equipment_roles", "crystal_equipment", "crystal_reward_data", "crystal_rewards", "pearl_depths", "skyreach_rewards", "storm_nest", "whisperwood_regrowth", "whisperwood_rewards", "ashen_structure_reward_data", "ashen_structure_rewards", "catalog", "budgets", "state", "router", "codex", "combat", "devices", "encounters", "thorn_court", "chaos", "structures", "runtime", "main"];
+const MODULE_NAMES = ["wave1_codex_extension_data", "wave1_codex_ashen_data", "wave1_codex_crystal_data", "wave1_codex_skyreach_data", "wave1_codex_skyreach_runtime_data", "wave1_codex_data", "wave1_codex_ui_data", "wave1_equipment_roles", "crystal_equipment_roles", "crystal_equipment", "crystal_reward_data", "crystal_rewards", "pearl_depths", "skyreach_rewards", "storm_nest", "twinbond", "whisperwood_regrowth", "whisperwood_rewards", "ashen_structure_reward_data", "ashen_structure_rewards", "catalog", "budgets", "state", "router", "codex", "combat", "devices", "encounters", "thorn_court", "chaos", "structures", "runtime", "main"];
 const MODULE_DIR = await mkdtemp(resolve(tmpdir(), "aionbound-g7-modules-"));
 for (const name of MODULE_NAMES) {
   const source = (await readFile(resolve(SOURCE_DIR, `${name}.js`), "utf8"))
@@ -222,7 +222,7 @@ test("Pilgrim Clasp proactively refreshes bounded fall mitigation", () => {
 });
 
 test("shipping scripts use approved stable APIs only and one central arbiter", async () => {
-  const scripts = ["main.js", "runtime.js", "catalog.js", "wave1_codex_extension_data.js", "wave1_codex_ashen_data.js", "wave1_codex_skyreach_runtime_data.js", "wave1_codex_data.js", "wave1_codex_ui_data.js", "wave1_equipment_roles.js", "whisperwood_regrowth.js", "whisperwood_rewards.js", "ashen_structure_reward_data.js", "ashen_structure_rewards.js", "skyreach_rewards.js", "storm_nest.js", "budgets.js", "state.js", "router.js", "codex.js", "combat.js", "devices.js", "encounters.js", "thorn_court.js", "chaos.js", "structures.js"];
+  const scripts = ["main.js", "runtime.js", "catalog.js", "wave1_codex_extension_data.js", "wave1_codex_ashen_data.js", "wave1_codex_skyreach_runtime_data.js", "wave1_codex_data.js", "wave1_codex_ui_data.js", "wave1_equipment_roles.js", "whisperwood_regrowth.js", "whisperwood_rewards.js", "ashen_structure_reward_data.js", "ashen_structure_rewards.js", "skyreach_rewards.js", "storm_nest.js", "twinbond.js", "budgets.js", "state.js", "router.js", "codex.js", "combat.js", "devices.js", "encounters.js", "thorn_court.js", "chaos.js", "structures.js"];
   const source = (await Promise.all(scripts.map(name => readFile(resolve(ROOT, "behavior_pack/scripts", name), "utf8")))).join("\n");
   for (const forbidden of ["@minecraft/server-net", "@minecraft/server-admin", "@minecraft/server-gametest", "process.", "require(", "fetch(", "node:"]) assert.equal(source.includes(forbidden), false, forbidden);
   const runtime = await readFile(resolve(ROOT, "behavior_pack/scripts/runtime.js"), "utf8"), main = await readFile(resolve(ROOT, "behavior_pack/scripts/main.js"), "utf8");

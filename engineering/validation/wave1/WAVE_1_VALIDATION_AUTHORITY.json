@@ -459,22 +459,28 @@
   },
   "required_artifact_manifest": {
     "path": "engineering/validation/wave1/WAVE_1_ASHEN_IMPLEMENTED_CLOSURE.json",
-    "sha256": "74d86214b0fdcd304489b3a518e03a1241f69e1a0470736fb9741d744ddd3bac",
+    "sha256": "39182b81c03938a2c3595384787259d31361f39695fcb6ffdba9f28e8406b2ee",
     "schema": "aionbound.wave1.ashen.implemented_source_closure.v1",
     "classification": "exact_source_path_and_byte_hash_closure_only_not_runtime_qualification"
   },
   "additional_required_artifact_manifests": [
     {
       "path": "engineering/validation/wave1/WAVE_1_CRYSTAL_IMPLEMENTED_CLOSURE.json",
-      "sha256": "d6ff89bd983f1be1750d7baa6bd2d934f3176b709dce773e214fd490c4846ff8",
+      "sha256": "f016274d510892a933b4c82a5cdf6192bab3e1f43a333910558527a044d867b0",
       "schema": "aionbound.wave1.crystal_marsh.implemented_source_closure.v1",
       "classification": "exact_crystal_source_path_and_byte_hash_closure_only_not_runtime_qualification"
     },
     {
       "path": "engineering/validation/wave1/WAVE_1_SKYREACH_IMPLEMENTED_CLOSURE.json",
-      "sha256": "5f1e044c6f4c1176f0025ab35be0afd1a0a96d66b73b3e10cd3113e727292fee",
+      "sha256": "2b2e8036d6f3780f5ad1074899f00cf8cc1e8a6593e759941d15e9f53cc65c53",
       "schema": "aionbound.wave1.skyreach.implemented_source_closure.v1",
-      "classification": "exact_skyreach_implemented_source_path_and_hash_closure_only_not_authority_gated_execution_or_runtime_qualification"
+      "classification": "exact_skyreach_vertical_source_path_and_hash_closure_only_not_runtime_qualification"
+    },
+    {
+      "path": "engineering/validation/wave1/WAVE_1_TWINBOND_IMPLEMENTED_CLOSURE.json",
+      "sha256": "f4bf0bae546eba25f2dcde89914c7740f8bfdd59dece165e55137d7056d5b6f8",
+      "schema": "aionbound.wave1.twinbond.implemented_source_closure.v1",
+      "classification": "exact_twinbond_source_semantics_path_and_hash_closure_phase_presentation_not_qualified"
     }
   ],
   "required_evidence_artifacts": [
