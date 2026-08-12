@@ -77,7 +77,7 @@ test("v4 reopen is canonical and malformed or unknown discovery data is bounded 
   const source = stateModule.migratePlayer({ v: 4, stamps: ["x", "x"], codex: { topic: 2, discovery: { rv: 99, ww: { resource: "A".repeat(10), plant: "bad!", unknown: "ff" }, zz: { resource: "ff" } } }, goals: {} });
   assert.deepEqual(stateModule.migratePlayer(source), source);
   assert.deepEqual(source.stamps, ["x"]);
-  assert.deepEqual(source.codex.discovery, { rv: 4, ww: { resource: "aaaaaaaaaa" } });
+  assert.deepEqual(source.codex.discovery, { rv: 5, ww: { resource: "aaaaaaaaaa" } });
 });
 
 test("two-bit transitions are monotonic, duplicate-safe, and reject unknown coordinates", () => {

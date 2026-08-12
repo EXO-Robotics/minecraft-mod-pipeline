@@ -88,7 +88,7 @@ test("existing Codex routes open category and entry ActionForms without chat", a
   assert.equal(await codex.use(player, "aionbound:trophy_codex"), false);
   assert.equal(forms.length, 4);
   assert.equal(forms[0].title, "Aionbound Codex — Living World");
-  assert.deepEqual(forms[0].buttons, ["Whisperwood", "Ashen Highlands", "Crystal Marsh"]);
+  assert.deepEqual(forms[0].buttons, ["Whisperwood", "Ashen Highlands", "Crystal Marsh", "Skyreach"]);
   assert.equal(forms[1].title, "Aionbound Codex — Whisperwood");
   assert.deepEqual(forms[1].buttons, [
     "Resources & Blocks — 0/20",

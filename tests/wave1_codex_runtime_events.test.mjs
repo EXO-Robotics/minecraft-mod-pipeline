@@ -32,7 +32,7 @@ test("catalog preserves exact Whisperwood routes and appends later-region harves
     ...expectedRoutes(["block"], "crafted"),
     ...expectedRoutes(["plant"], "harvested"),
   };
-  assert.equal(Object.keys(catalog.CODEX_BLOCK_INTERACTION_ROUTES).length, 60);
+  assert.equal(Object.keys(catalog.CODEX_BLOCK_INTERACTION_ROUTES).length, 70);
   assert.deepEqual(Object.fromEntries(Object.entries(catalog.CODEX_BLOCK_INTERACTION_ROUTES).filter(([id]) => id in expected).map(([id, events]) => [id, events[0]])), expected);
 });
 

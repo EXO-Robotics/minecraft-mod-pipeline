@@ -4,8 +4,8 @@ import { CODEX_EVENT_INDEX, CODEX_REGISTRY_VERSION, IDS } from "./catalog.js";
 export const STATE_VERSION = 4;
 export const CODEX_DISCOVERY_REGIONS = Object.freeze(["ww", "ah", "cm", "sr"]);
 export const CODEX_DISCOVERY_VERSION = CODEX_REGISTRY_VERSION;
-// Schema remains v4. Registry v4 appends Crystal Marsh using region-local
-// category addresses without reallocating any Whisperwood/Ashen address.
+// Schema remains v4. Registry v5 appends Skyreach using region-local category
+// addresses without reallocating any Whisperwood/Ashen/Crystal Marsh address.
 export const CODEX_CATEGORY_CAPS = Object.freeze({
   resource: 20,
   plant: 10,
