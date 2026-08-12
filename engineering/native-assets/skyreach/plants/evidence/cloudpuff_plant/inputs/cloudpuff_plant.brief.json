@@ -1,0 +1,44 @@
+{
+  "name": "cloudpuff_plant",
+  "display_name": "Cloudpuff",
+  "sprint": "asset_sprint_004_skyreach_cliffs",
+  "tier": "PLANT",
+  "role": "Soft spherical cloud plant",
+  "profile": "plant",
+  "identity": "TRAVERSAL ECOSYSTEM \u2014 not a bird biome",
+  "model_identifier": "geometry.aionforge_sr.cloudpuff_plant",
+  "cube_count": 12,
+  "bone_count": 4,
+  "density_floor": 12,
+  "locators": [
+    "effect"
+  ],
+  "palette": {
+    "metal": [
+      122,
+      138,
+      154
+    ],
+    "accent": [
+      242,
+      244,
+      247
+    ],
+    "energy": [
+      224,
+      192,
+      96
+    ]
+  },
+  "animations": [
+    "bob"
+  ],
+  "minecraft_scale": "0.6\u20131.0",
+  "texture_resolution": "16\u201332",
+  "production_priority": "P0",
+  "related_assets": "cloud_wool",
+  "originality": "Clean-room Skyreach Traversal manufacture",
+  "forbidden": "No Whisperwood moss; no Ashen heat; no Crystal Marsh mint; no Gloamveil neon; no Brinecanopy; no Minttrail",
+  "editable": "assets/editable/cloudpuff_plant.bbmodel",
+  "claims_boundary": "Visual production only. No BP/JSON/AI/gameplay/mechanics."
+}
