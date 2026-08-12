@@ -1,6 +1,6 @@
 # Wave 1 Engineering Decision Ledger
 
-Status: **RATIFIED_WHISPERWOOD_ASHEN_AND_CRYSTAL_IMPLEMENTATION_AUTHORITY_WITH_DEFERRED_SKY_AND_FINALE_TICKETS**
+Status: **RATIFIED_WAVE_1_CREATIVE_IMPLEMENTATION_AUTHORITY_WITH_DEFERRED_SIDEGRADES**
 
 This ledger resolves or support-tickets the implementation ambiguities found between the five immutable warehouse packets, Creative Layer v1, and the G7 engineering substrate. It does not redesign Aionbound and does not supersede packet art identities or Creative gameplay roles.
 
@@ -36,6 +36,23 @@ After Ashen was preserved as `ASHEN_VERTICAL_SOURCE_COMPLETE_RUNTIME_ACTIVATION_
 - `W1-004-CM` — Crystal rarity intervals, chest bands, the sole critical `aionbound:marsh_wight_mask` seal, ecology-form prohibition, recovery, repeat-clear, and optional mastery reward semantics.
 
 The proposal bytes are preserved unchanged and SHA-256-bound in the JSON ledger. `W1-CREATIVE-005` remains deferred and grants no Crystal sidegrade authority. This ratification authorizes the Crystal Marsh vertical under G8, does not activate the deferred Ashen services, does not authorize Skyreach or finale creative decisions, and does not authorize a new BDS checkpoint, deep T10, or candidate freeze.
+
+## Skyreach and Twinbond finale ratification event
+
+The primary human authority approved the final six proposals exactly as proposed:
+
+- `W1-001-SR` — the exact Skyreach aliases, narrative dispositions, and selected `aionbound:wing_bone_stay` identity, with no additional inventory identity or sidegrade authority;
+- `W1-003-STORM-NEST` — the complete Storm Nest behavior, scaling, reset, multiplayer, persistence, ecology separation, recovery, and terminal envelope;
+- `W1-004-SR` — Skyreach rarity intervals, chest bands, the sole critical `aionbound:storm_pinion` seal, ecology-form prohibition, recovery, repeat-clear, and optional mastery-only semantics;
+- `W1-002-TWINBOND` — the same-world authored finale site, secondary reward presentations, forbidden legacy inheritance, and mandatory machine-exit dependency;
+- `W1-003-TWINBOND` — the exact four-phase encounter, existing-balance orchestration, multiplayer, reset, persistence, recovery-entry, and terminal envelope;
+- `W1-004-TWINBOND` — the guaranteed first-clear Relic/Edge/Memory package, optional non-item mastery stamp, durable guards, full-inventory recovery, and no-repeat-final-reward semantics.
+
+Their exact proposal bytes are preserved unchanged and SHA-256-bound in the JSON ledger. The retired finale-key, Concord Scale, and other `forbidden_inheritance` paths remain forbidden. `W1-CREATIVE-005` remains deferred and grants no sidegrade or upgrade behavior. This event authorizes only implementation within the six proposals' existing mutation surfaces; it does not modify packs or runtime, waive native asset gates, qualify BDS/client behavior, freeze a candidate, or resolve the separately deferred Ashen handler activation.
+
+## Wave 1 audio scope reduction
+
+The primary human authority explicitly reduced the Wave 1 final sound-identity requirement. The current role-appropriate vanilla placeholder mappings are the Wave 1 audio scope. Original regional, boss, and landmark audio and client mix are recorded as known limitations rather than Wave 1 exit blockers. Engineering may not claim custom audio, a custom sound-identity pass, client-mix verification, or controller/console audio verification from this decision.
 
 ## Authority order
 
@@ -109,11 +126,11 @@ These names already exist in Creative crafting authority. Engineering may create
 
 Icons and final inventory visibility for the last two finale/narrative components remain bound to `W1-CREATIVE-001` and `W1-CREATIVE-002`.
 
-### New required item candidates — Whisperwood, Ashen, and Crystal Marsh partially ratified
+### New required item candidates — all Wave 1 regional tranches ratified
 
-`W1-001-WW` ratifies exactly four new Whisperwood inventory identities: `aionbound:mosskip_crown_fragment`, `aionbound:thorn_barb`, `aionbound:stalker_claw`, and `aionbound:hollow_venom_sac`. `W1-001-AH` ratifies the refined Ashen dispositions and `aionbound:drake_scale`. `W1-001-CM` ratifies exactly `aionbound:prism_wing`, `aionbound:watcher_lens`, and `aionbound:wight_shroud`; all other Crystal terms follow its exact alias, narrative-only, or removal dispositions. None grants `W1-CREATIVE-005` sidegrade authority. Skyreach and finale identities remain deferred.
+`W1-001-WW` ratifies exactly four new Whisperwood inventory identities: `aionbound:mosskip_crown_fragment`, `aionbound:thorn_barb`, `aionbound:stalker_claw`, and `aionbound:hollow_venom_sac`. `W1-001-AH` ratifies the refined Ashen dispositions and `aionbound:drake_scale`. `W1-001-CM` ratifies exactly `aionbound:prism_wing`, `aionbound:watcher_lens`, and `aionbound:wight_shroud`; all other Crystal terms follow its exact alias, narrative-only, or removal dispositions. `W1-001-SR` ratifies the exact Skyreach dispositions and selects only `aionbound:wing_bone_stay` as an existing new-required inventory identity. `W1-002-TWINBOND` binds the finale identity dispositions exactly as proposed. None grants `W1-CREATIVE-005` sidegrade authority.
 
-The following named loot identities occur in approved loot prose but are absent from the 250-ID warehouse. Outside the approved Whisperwood tranche they remain unratified and may not be silently collapsed:
+The following named loot identities occur in approved loot prose but are absent from the 250-ID warehouse. Their executable dispositions are governed only by the exact ratified regional/finale proposals and may not be silently broadened or collapsed:
 
 - Whisperwood: Boar Tusk Shard / Boar Tusk, Root Plate, Thick Hide, Briar Crown, Rot Fang, Tainted Pelt, Marrow Scrap, Thorn Barb, Stalker Claw, Hollow Venom Sac, Chitin Shard, Wraith Mask Fragment, Mosskip Crown Fragment, Hardened Moss Plate, Glow Soft Pellet, Lantern-adjacent hide scrap.
 - Ashen: Ash Dust, Ash Wool, Beetle Core Fragment, Char Feather, Char Hide, Char Pelt, Cinder Beak, Cinder Pelt, Drake Scale, Ember Fang, Ember Sinew, Heat Scale, Lynx Claw, Mite Mandible, Pack Cinder Mark, Ram Horn Curve, Shell Plate, Smolder Gland, Soot Antler, Stag Heart Cinder, Swarm Queen Scale, Warm Blood Vial.
@@ -125,21 +142,15 @@ Curiosity terms are narrative/Codex discoveries by default and do not become inv
 
 ## Twinbond dependency decision
 
-Twinbond is `PARTIALLY_RATIFIED_WITH_NARROWED_BLOCKING_SUPPORT_TICKET` under `W1-CREATIVE-002`. The evidence binding is recorded in `engineering/authority/twinbond/TWINBOND_EXISTING_AUTHORITY_AUDIT.{md,json}`.
+Twinbond is ratified exactly by `W1-002-TWINBOND`, `W1-003-TWINBOND`, and `W1-004-TWINBOND`. The earlier evidence binding remains recorded in `engineering/authority/twinbond/TWINBOND_EXISTING_AUTHORITY_AUDIT.{md,json}`.
 
 The exact aspects are `aionbound:ash_sovereign_wyrm` and `aionbound:tide_empress_wyrm`. Engineering may reuse the prepared 128×48×128 `twinbond_slice_v1` massing and the existing `twin_thrones`, `twinbond_obelisk_site`, `ceremony_anvil_site`, `twinbond_obsidian_ring`, and `twinbond_approach_marker` inputs. The current primary reward identity is `twinbond_relic` followed by Trophy Edge ignition. The old `trophy_concord_scale`, finale-key, and concord-equipment reward path is superseded for Wave 1.
 
-Engineering may normalize and repair those exact assets, preserve the pilgrimage handoff, implement inert Trophy Edge/finale-entry state, and build nonnumeric encounter architecture. It may not choose the finale container or declare terminal completion until the narrowed ticket binds:
-
-- isolated logical container versus same-world placement;
-- Concord Spark, Memory of Four Lands presentation, and any unbound mastery-sigil disposition;
-- whether Twinbond completion is mandatory for Wave 1 machine exit (current ledger assumes yes).
-
-Boss numeric, multiplayer, persistence, and reward-guard semantics remain separately blocked by `W1-CREATIVE-003` and `W1-CREATIVE-004`. Existing wyrm/relic animations still require native repair and do not constitute phase-ready shipping art.
+Engineering may implement only the exact same-world site, secondary presentation, machine-exit dependency, encounter, persistence, recovery, and reward surfaces bound by those proposals. Twinbond durable completion and Trophy Edge ignition are mandatory for Wave 1 machine exit; Memory of Four Lands and the mastery stamp remain optional. Existing wyrm/relic animations still require native repair and do not constitute phase-ready shipping art.
 
 ## Boss behavior envelope decision
 
-Thorn Court, Kiln Sky, and Pearl Depths numeric and ownership semantics are ratified exactly by `W1-003-THORN-COURT`, `W1-003-KILN-SKY`, and `W1-003-PEARL-DEPTHS`. Skyreach and finale apex encounters remain deferred under `W1-CREATIVE-003`.
+Thorn Court, Kiln Sky, Pearl Depths, Storm Nest, and Twinbond numeric and ownership semantics are ratified exactly by their respective `W1-003-*` proposals.
 
 The ticket must bind for each apex:
 
@@ -155,7 +166,7 @@ No boss may ship with Engineering-invented values outside that ticket.
 
 ## Loot and rarity envelope decision
 
-Creative loot identities and qualitative roles remain binding. The complete probability, quantity, chest-band, arena-guard, recovery, repeat-clear, and mastery-reward model is ratified for Whisperwood/Thorn Court under `W1-004-WW-CH1`, Ashen/Kiln Sky under `W1-004-AH`, and Crystal/Pearl Depths under `W1-004-CM`. Skyreach and finale remain deferred.
+Creative loot identities and qualitative roles remain binding. The complete probability, quantity, chest-band, arena-guard, recovery, repeat-clear, and mastery-reward model is ratified for Whisperwood/Thorn Court under `W1-004-WW-CH1`, Ashen/Kiln Sky under `W1-004-AH`, Crystal/Pearl Depths under `W1-004-CM`, Skyreach/Storm Nest under `W1-004-SR`, and Twinbond under `W1-004-TWINBOND`.
 
 The ticket must provide approved min/max chance and quantity ranges for C/U/R/E/T/Q roles, chest roll counts, guaranteed boss semantics, arena-form reward guards, and the disposition of `briar_elk_trophy` as an alternate/soft seal. Regular `thorn_stalker` ecology may not award the chapter seal; the seal is guarded to the chapter-apex encounter unless Creative explicitly says otherwise.
 
@@ -177,14 +188,14 @@ This gate is a shipping-use requirement, not a reason to run BDS per asset.
 
 | ID | Blocking scope | Owner | Work allowed while open |
 |---|---|---|---|
-| `W1-CREATIVE-001` | Whisperwood, Ashen, and Crystal tranches ratified; Skyreach/finale glossary deferred | Creative + Asset support | Implement exact approved WW, AH, and CM dispositions only |
-| `W1-CREATIVE-002` | Narrowed: finale container, secondary reward presentation, mastery-sigil disposition, and machine-exit dependency | Creative + Asset support | Exact dual-wyrm/arena asset repair, pilgrimage handoff, inert finale hooks, and nonnumeric encounter architecture |
-| `W1-CREATIVE-003` | Thorn Court, Kiln Sky, and Pearl Depths ratified; Skyreach/finale boss envelopes deferred | Creative support | Implement the three approved encounter envelopes exactly as proposed |
-| `W1-CREATIVE-004` | Whisperwood, Ashen, and Crystal ratified; Skyreach/finale loot deferred | Creative support | Implement exact approved WW/AH/CM intervals, guards, recovery, and optional mastery semantics |
+| `W1-CREATIVE-001` | All four regional tranches ratified exactly | Creative + Asset support | Implement only the four approved regional dispositions |
+| `W1-CREATIVE-002` | Twinbond finale tranche ratified exactly | Creative + Asset support | Implement only the approved same-world site, presentation, and machine-exit surfaces |
+| `W1-CREATIVE-003` | Four regional apexes and Twinbond ratified exactly | Creative support | Implement the five approved encounter envelopes exactly as proposed |
+| `W1-CREATIVE-004` | Four regional ecosystems and Twinbond ratified exactly | Creative support | Implement exact approved intervals, guards, recovery, and mastery semantics |
 | `W1-CREATIVE-005` | Explicitly deferred equipment sidegrade identity | Creative support | Base packet IDs and behavior interface only |
 | `W1-CREATIVE-006` | Whisperwood sapling regrowth ratified | Creative support | Implement one exact-envelope existing-palette assembly and growth behavior |
 
-Whisperwood Checkpoint 1 passed its bounded replacement smoke and its lineage remains immutable. Ashen is source-complete with exactly two runtime compositions deferred by `MANAGED_REVIEWER_ACTIVATION_BLOCKED`; that tooling/governance ticket remains mandatory at final reconciliation but does not gate Crystal or Skyreach production. Crystal Marsh vertical engineering is authorized. No new checkpoint is authorized here, and final Wave 1 freeze remains blocked on deferred integration tickets plus Skyreach/finale authority not covered by this ratification.
+Whisperwood Checkpoint 1 passed its bounded replacement smoke and its lineage remains immutable. Ashen is source-complete with exactly two runtime compositions deferred by `MANAGED_REVIEWER_ACTIVATION_BLOCKED`; that tooling/governance ticket remains mandatory at final reconciliation but does not gate Crystal or Skyreach production. Crystal Marsh, Skyreach, and Twinbond finale engineering are authorized within the ratified proposal surfaces. No new checkpoint, candidate freeze, BDS result, or client proof is authorized or claimed here.
 
 ## Advisory review disposition
 

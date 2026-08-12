@@ -13,7 +13,7 @@ class Wave1RatifiedLedgerTests(unittest.TestCase):
     def setUpClass(cls):
         cls.ledger = json.loads(LEDGER.read_text(encoding="utf-8"))
 
-    def test_exact_whisperwood_ashen_and_crystal_tranches_are_ratified_and_preserved(self):
+    def test_exact_wave1_tranches_are_ratified_and_preserved(self):
         rows = self.ledger["ratifications"]["approved"]
         self.assertEqual(
             [row["tranche"] for row in rows],
@@ -28,6 +28,12 @@ class Wave1RatifiedLedgerTests(unittest.TestCase):
                 "W1-001-CM",
                 "W1-003-PEARL-DEPTHS",
                 "W1-004-CM",
+                "W1-001-SR",
+                "W1-003-STORM-NEST",
+                "W1-004-SR",
+                "W1-002-TWINBOND",
+                "W1-003-TWINBOND",
+                "W1-004-TWINBOND",
             ],
         )
         self.assertTrue(self.ledger["ratifications"]["preserve_proposals_as_written"])
@@ -39,17 +45,14 @@ class Wave1RatifiedLedgerTests(unittest.TestCase):
     def test_deferred_scope_is_not_silently_promoted(self):
         self.assertEqual(
             self.ledger["ratifications"]["deferred"],
-            [
-                "W1-CREATIVE-005",
-                "W1-001-SKYREACH_AND_FINALE",
-                "W1-003-SKYREACH_AND_FINALE",
-                "W1-004-SKYREACH_AND_FINALE",
-            ],
+            ["W1-CREATIVE-005"],
         )
         policy = self.ledger["construction_policy"]
         self.assertTrue(policy["whisperwood_vertical_implementation_authorized"])
         self.assertTrue(policy["ashen_vertical_implementation_authorized"])
         self.assertTrue(policy["crystal_marsh_vertical_implementation_authorized"])
+        self.assertTrue(policy["skyreach_vertical_implementation_authorized"])
+        self.assertTrue(policy["twinbond_finale_implementation_authorized"])
         self.assertEqual(policy["ashen_vertical_status"], "ASHEN_VERTICAL_SOURCE_COMPLETE_RUNTIME_ACTIVATION_DEFERRED")
         self.assertFalse(policy["new_bds_checkpoint_authorized"])
 

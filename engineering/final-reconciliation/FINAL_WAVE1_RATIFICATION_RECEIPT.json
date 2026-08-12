@@ -1,0 +1,38 @@
+{
+  "schema_version": "aionbound.wave1.final-ratification-receipt.v1.0.0",
+  "status": "FINAL_CREATIVE_TRANCHES_RATIFIED_AUDIO_SCOPE_REDUCED",
+  "source_integration_commit": "c036686d4bdd8cac2f4259e0cec737968cf5e991",
+  "source_integration_tree": "89d5008d8c795b51988e0a5d051db3b606e2e47f",
+  "authority_event": "USER_APPROVAL_IN_PRIMARY_CODEX_THREAD",
+  "proposal_bytes_preserved": true,
+  "approved_proposals": [
+    {"ticket_id": "W1-001-SR", "path": "engineering/authority/support-proposals/skyreach/W1-001-SR.json", "sha256": "926a401add04b6611d7cee7dd1fa3bcf6a3fe44cf656ef9aa34d9b1bad5f30cd"},
+    {"ticket_id": "W1-003-STORM-NEST", "path": "engineering/authority/support-proposals/skyreach/W1-003-STORM-NEST.json", "sha256": "59b4493857bf3d90d402d438553f4b7fc03c6b45689e5897f8a8cb501bfc15d0"},
+    {"ticket_id": "W1-004-SR", "path": "engineering/authority/support-proposals/skyreach/W1-004-SR.json", "sha256": "823894296bb4b4ed1becd1a1a5ccc814f734cecc50c8433be855bdf1e080e4bf"},
+    {"ticket_id": "W1-002-TWINBOND", "path": "engineering/authority/support-proposals/finale/W1-002-TWINBOND.json", "sha256": "0f99a748e55d15bd468d9ded25a0c170972bf94c1682e56c8abb78cde25eda7e"},
+    {"ticket_id": "W1-003-TWINBOND", "path": "engineering/authority/support-proposals/finale/W1-003-TWINBOND.json", "sha256": "c22a350499fd2674d3dabedcee8ec5221c4e3e8da4f89666f91cb5a69a43cf1c"},
+    {"ticket_id": "W1-004-TWINBOND", "path": "engineering/authority/support-proposals/finale/W1-004-TWINBOND.json", "sha256": "b5ac9295df1718112793d2b15ba035570e1e6032d0da814b9af68a17c27d9a4c"}
+  ],
+  "preserved_invariants": {
+    "w1_creative_005": "DEFERRED_BY_USER",
+    "retired_finale_key_and_concord_scale_path": "FORBIDDEN",
+    "scope_broadening": false
+  },
+  "audio_scope": {
+    "decision": "AUDIO_PLACEHOLDER_SCOPE_REDUCTION",
+    "wave_1_scope": "EXISTING_ROLE_APPROPRIATE_VANILLA_PLACEHOLDER_MAPPINGS",
+    "known_limitations": ["custom regional audio", "custom boss audio", "custom landmark audio", "client mix"],
+    "claims_forbidden": ["custom_audio_complete", "sound_identity_pass", "client_mix_verified", "controller_console_audio_verified"]
+  },
+  "ledger": {
+    "json_path": "engineering/authority/WAVE_1_ENGINEERING_DECISION_LEDGER.json",
+    "json_sha256": "cf7e1cd8b81b4a8088d136e1f9f2cb4ee3e245cfa71259f2a957d6e4f55ccff9",
+    "markdown_path": "engineering/authority/WAVE_1_ENGINEERING_DECISION_LEDGER.md",
+    "markdown_sha256": "adc108cd6c73aa70e5f79405a9003260a559af63311ba8c2300afbb778818a17"
+  },
+  "mutation_boundary": {
+    "product_pack_or_runtime_mutation": false,
+    "build_or_bds_run": false,
+    "candidate_or_client_proof_claimed": false
+  }
+}

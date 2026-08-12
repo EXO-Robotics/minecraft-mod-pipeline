@@ -1,11 +1,11 @@
 {
-  "schema_version": "aionbound.wave1.engineering-decision-ledger.v4.0.0",
-  "status": "RATIFIED_WHISPERWOOD_ASHEN_AND_CRYSTAL_IMPLEMENTATION_AUTHORITY_WITH_DEFERRED_SKY_AND_FINALE_TICKETS",
-  "authority_scope": "PHASE_0_CLASSIFICATION_AND_APPROVED_WHISPERWOOD_ASHEN_AND_CRYSTAL_IMPLEMENTATION",
+  "schema_version": "aionbound.wave1.engineering-decision-ledger.v5.0.0",
+  "status": "RATIFIED_WAVE_1_CREATIVE_IMPLEMENTATION_AUTHORITY_WITH_DEFERRED_SIDEGRADES",
+  "authority_scope": "PHASE_0_CLASSIFICATION_AND_APPROVED_WAVE_1_IMPLEMENTATION",
   "creative_authority_preserved": true,
   "ratifications": {
     "authority_event": "USER_APPROVAL_IN_PRIMARY_CODEX_THREAD",
-    "approval_text": "Approved: W1-001-WW, W1-003-THORN-COURT, W1-004-WW-CH1, W1-006-WW-SAPLING, W1-001-AH, W1-003-KILN-SKY, W1-004-AH, W1-001-CM, W1-003-PEARL-DEPTHS, and W1-004-CM exactly as proposed or refined. Preserve W1-CREATIVE-005 as deferred.",
+    "approval_text": "Approved: W1-001-WW, W1-003-THORN-COURT, W1-004-WW-CH1, W1-006-WW-SAPLING, W1-001-AH, W1-003-KILN-SKY, W1-004-AH, W1-001-CM, W1-003-PEARL-DEPTHS, W1-004-CM, W1-001-SR, W1-003-STORM-NEST, W1-004-SR, W1-002-TWINBOND, W1-003-TWINBOND, and W1-004-TWINBOND exactly as proposed or refined. Preserve the retired finale-key and Concord Scale path as forbidden, and preserve W1-CREATIVE-005 as deferred. Explicitly reduce the Wave 1 final sound-identity requirement to the existing role-appropriate vanilla placeholder mappings and make no custom-audio or client-mix claims.",
     "preserve_proposals_as_written": true,
     "approved": [
       {
@@ -67,15 +67,56 @@
         "proposal": "engineering/authority/support-proposals/crystal-marsh/W1-004-CM.json",
         "proposal_sha256": "b7562ab355bb2d30a8074149d0477ee28bd96ce02615d03b2b3fae5cb397e46c",
         "scope": "Crystal Marsh loot, chest, seal, ecology, recovery, repeat-clear, and optional mastery semantics exactly as proposed"
+      },
+      {
+        "tranche": "W1-001-SR",
+        "proposal": "engineering/authority/support-proposals/skyreach/W1-001-SR.json",
+        "proposal_sha256": "926a401add04b6611d7cee7dd1fa3bcf6a3fe44cf656ef9aa34d9b1bad5f30cd",
+        "scope": "Skyreach identity dispositions and exactly one selected existing new-required identity; no W1-CREATIVE-005 authority"
+      },
+      {
+        "tranche": "W1-003-STORM-NEST",
+        "proposal": "engineering/authority/support-proposals/skyreach/W1-003-STORM-NEST.json",
+        "proposal_sha256": "59b4493857bf3d90d402d438553f4b7fc03c6b45689e5897f8a8cb501bfc15d0",
+        "scope": "Storm Nest encounter envelope exactly as proposed"
+      },
+      {
+        "tranche": "W1-004-SR",
+        "proposal": "engineering/authority/support-proposals/skyreach/W1-004-SR.json",
+        "proposal_sha256": "823894296bb4b4ed1becd1a1a5ccc814f734cecc50c8433be855bdf1e080e4bf",
+        "scope": "Skyreach loot, chest, seal, ecology, recovery, repeat-clear, and optional mastery semantics exactly as proposed"
+      },
+      {
+        "tranche": "W1-002-TWINBOND",
+        "proposal": "engineering/authority/support-proposals/finale/W1-002-TWINBOND.json",
+        "proposal_sha256": "0f99a748e55d15bd468d9ded25a0c170972bf94c1682e56c8abb78cde25eda7e",
+        "scope": "Twinbond same-world finale site, secondary reward presentation, and mandatory machine-exit dependency exactly as proposed"
+      },
+      {
+        "tranche": "W1-003-TWINBOND",
+        "proposal": "engineering/authority/support-proposals/finale/W1-003-TWINBOND.json",
+        "proposal_sha256": "c22a350499fd2674d3dabedcee8ec5221c4e3e8da4f89666f91cb5a69a43cf1c",
+        "scope": "Twinbond four-phase encounter, persistence, recovery-entry, and terminal envelope exactly as proposed"
+      },
+      {
+        "tranche": "W1-004-TWINBOND",
+        "proposal": "engineering/authority/support-proposals/finale/W1-004-TWINBOND.json",
+        "proposal_sha256": "b5ac9295df1718112793d2b15ba035570e1e6032d0da814b9af68a17c27d9a4c",
+        "scope": "Twinbond guaranteed first-clear package, durable guards, full-inventory recovery, and no-repeat-final-reward semantics exactly as proposed"
       }
     ],
     "deferred": [
-      "W1-CREATIVE-005",
-      "W1-001-SKYREACH_AND_FINALE",
-      "W1-003-SKYREACH_AND_FINALE",
-      "W1-004-SKYREACH_AND_FINALE"
+      "W1-CREATIVE-005"
     ],
     "implementation_rule": "Approved proposal bytes are binding and may not be broadened, rewritten, or reinterpreted."
+  },
+  "audio_contract": {
+    "decision": "AUDIO_PLACEHOLDER_SCOPE_REDUCTION",
+    "wave_1_scope": "EXISTING_ROLE_APPROPRIATE_VANILLA_PLACEHOLDER_MAPPINGS",
+    "custom_regional_boss_and_landmark_audio": "KNOWN_LIMITATION_NOT_REQUIRED_FOR_WAVE_1_EXIT",
+    "client_mix": "KNOWN_LIMITATION_NOT_VERIFIED",
+    "claims_forbidden": ["custom_audio_complete", "sound_identity_pass", "client_mix_verified", "controller_console_audio_verified"],
+    "scope_rule": "No custom-audio or client-mix claim is authorized by this reduction."
   },
   "runtime_identity": {
     "namespace": "aionbound",
@@ -123,11 +164,13 @@
       {"term": "Pathfinder Pair", "id": "aionbound:pathfinder_pair", "narrative_utility": true}
     ],
     "new_required_item_candidates": {
-      "status": "PARTIALLY_RATIFIED_W1_001_WW_AH_AND_CM_ONLY",
+      "status": "RATIFIED_W1_001_WW_AH_CM_AND_SR",
       "whisperwood_authority": "W1-001-WW_APPROVED_AS_WRITTEN",
       "ashen_authority": "W1-001-AH_APPROVED_AS_REFINED",
       "crystal_marsh_authority": "W1-001-CM_APPROVED_AS_PROPOSED",
-      "later_region_authority": "SKYREACH_AND_FINALE_DEFERRED_UNTIL_SEPARATE_RATIFICATION",
+      "skyreach_authority": "W1-001-SR_APPROVED_AS_PROPOSED",
+      "finale_identity_authority": "W1-002-TWINBOND_APPROVED_AS_PROPOSED",
+      "later_region_authority": "ALL_WAVE_1_REGIONAL_IDENTITY_TRANCHES_RATIFIED",
       "whisperwood": ["Boar Tusk Shard", "Boar Tusk", "Root Plate", "Thick Hide", "Briar Crown", "Rot Fang", "Tainted Pelt", "Marrow Scrap", "Thorn Barb", "Stalker Claw", "Hollow Venom Sac", "Chitin Shard", "Wraith Mask Fragment", "Mosskip Crown Fragment", "Hardened Moss Plate", "Glow Soft Pellet", "Lantern-adjacent hide scrap"],
       "ashen": ["Ash Dust", "Ash Wool", "Beetle Core Fragment", "Char Feather", "Char Hide", "Char Pelt", "Cinder Beak", "Cinder Pelt", "Drake Scale", "Ember Fang", "Ember Sinew", "Heat Scale", "Lynx Claw", "Mite Mandible", "Pack Cinder Mark", "Ram Horn Curve", "Shell Plate", "Smolder Gland", "Soot Antler", "Stag Heart Cinder", "Swarm Queen Scale", "Warm Blood Vial"],
       "crystal_marsh": ["Algae Scrap", "Bog Tendril", "Crab Pearl Grain", "Croc Eye Pearl", "Croc Hide", "Glass Feather", "Heron Nest Token", "Iridescent Dust", "Long Beak Shard", "Marsh Resin Blob", "Mire Shell Plate", "Newt Tail Crystal", "Prism Mucus", "Prism Wing", "Serpent Scale", "Shed Skin Ribbon", "Silt Fang", "Tiny Prism Chip", "Venom Crystal", "Watcher Lens", "Wight Shroud Cloth"],
@@ -138,7 +181,7 @@
     "unknown_term_rule": "BLOCKED_UNTIL_LEDGER_REVISION"
   },
   "twinbond": {
-    "status": "PARTIALLY_RATIFIED_WITH_NARROWED_BLOCKING_SUPPORT_TICKET",
+    "status": "RATIFIED_EXACTLY_BY_W1-002-TWINBOND",
     "ticket": "W1-CREATIVE-002",
     "evidence": "engineering/authority/twinbond/TWINBOND_EXISTING_AUTHORITY_AUDIT.json",
     "aspect_entity_ids": ["aionbound:ash_sovereign_wyrm", "aionbound:tide_empress_wyrm"],
@@ -146,27 +189,31 @@
     "primary_reward_identity": "aionbound:twinbond_relic",
     "ignition_target": "aionbound:trophy_edge",
     "superseded_wave1_inputs": ["aionbound:trophy_concord_scale", "old finale ignition key", "old concord equipment rewards"],
-    "allowed_now": ["pilgrimage handoff", "inert Trophy Edge", "finale entry state", "twinbond_relic persistence hooks", "exact dual-wyrm and arena asset normalization/repair", "nonnumeric encounter architecture"],
-    "blocked": ["isolated container versus same-world placement", "Concord Spark presentation", "Memory of Four Lands presentation", "unbound mastery sigil disposition", "terminal completion semantics"],
-    "numeric_multiplayer_persistence_semantics": "BLOCKED_BY_W1-CREATIVE-003_AND_W1-CREATIVE-004",
+    "allowed_now": ["same-world single authored finale site", "pilgrimage handoff", "Trophy Edge ignition", "finale entry and machine-exit state", "twinbond_relic persistence hooks", "exact dual-wyrm and arena asset normalization/repair", "ratified encounter architecture and terminal completion semantics"],
+    "blocked": [],
+    "numeric_multiplayer_persistence_semantics": "RATIFIED_EXACTLY_BY_W1-003-TWINBOND_AND_W1-004-TWINBOND",
     "native_asset_repair_required": true,
     "assumed_required_for_wave1_exit": true
   },
   "boss_behavior": {
     "creative_phase_kits_implementable": true,
-    "numeric_and_ownership_status": "THORN_COURT_KILN_SKY_AND_PEARL_DEPTHS_RATIFIED_SKY_AND_FINALE_DEFERRED",
+    "numeric_and_ownership_status": "ALL_FOUR_REGIONAL_APEXES_AND_TWINBOND_RATIFIED",
     "thorn_court_authority": "W1-003-THORN-COURT_APPROVED_AS_WRITTEN",
     "kiln_sky_authority": "W1-003-KILN-SKY_APPROVED_AS_REFINED",
     "pearl_depths_authority": "W1-003-PEARL-DEPTHS_APPROVED_AS_PROPOSED",
+    "storm_nest_authority": "W1-003-STORM-NEST_APPROVED_AS_PROPOSED",
+    "twinbond_authority": "W1-003-TWINBOND_APPROVED_AS_PROPOSED",
     "required_ticket_fields": ["phase thresholds", "transition predicates", "telegraph/attack/recovery/cooldown ranges", "leash/timeout/wipe/reset/re-entry", "add caps", "multiplayer ownership/scaling", "late join/disconnect", "persistence domain", "reward authority", "idempotent terminal grant", "repeat-clear semantics"]
   },
   "loot": {
     "identity_and_role_authority": "CREATIVE_MARKDOWN",
     "structural_wiring_allowed": true,
-    "final_values_status": "WHISPERWOOD_ASHEN_AND_CRYSTAL_RATIFIED_SKY_AND_FINALE_DEFERRED",
+    "final_values_status": "ALL_FOUR_REGIONAL_ECOSYSTEMS_AND_TWINBOND_RATIFIED",
     "whisperwood_chapter_1_authority": "W1-004-WW-CH1_APPROVED_AS_WRITTEN",
     "ashen_authority": "W1-004-AH_APPROVED_AS_REFINED",
     "crystal_marsh_authority": "W1-004-CM_APPROVED_AS_PROPOSED",
+    "skyreach_authority": "W1-004-SR_APPROVED_AS_PROPOSED",
+    "twinbond_authority": "W1-004-TWINBOND_APPROVED_AS_PROPOSED",
     "required_ticket_fields": ["C/U/R/E/T/Q probability ranges", "quantity ranges", "chest rolls", "guaranteed boss semantics", "arena reward guards", "alternate seal semantics"],
     "thorn_stalker_regular_ecology_seal": "FORBIDDEN_UNLESS_CREATIVE_OVERRIDES",
     "chapter_seal_source": "CHAPTER_APEX_ENCOUNTER"
@@ -181,10 +228,10 @@
     "proof_boundary": "Native editor/export proof is separate from static validation, client rendering, and physical PS4 rendering"
   },
   "support_tickets": [
-    {"id": "W1-CREATIVE-001", "status": "WW_AH_AND_CM_RATIFIED_SKY_AND_FINALE_DEFERRED", "scope": "W1-001-WW, W1-001-AH, and W1-001-CM approved exactly; Skyreach and finale terms deferred", "owner": "CREATIVE_ASSET_SUPPORT"},
-    {"id": "W1-CREATIVE-002", "status": "OPEN_NARROWED_BLOCKING_FINALE", "scope": "Twinbond container, secondary reward presentation, mastery-sigil disposition, exit dependency", "owner": "CREATIVE_ASSET_SUPPORT"},
-    {"id": "W1-CREATIVE-003", "status": "THORN_COURT_KILN_SKY_AND_PEARL_DEPTHS_RATIFIED_SKY_AND_FINALE_DEFERRED", "scope": "Thorn Court, Kiln Sky, and Pearl Depths approved exactly; Skyreach and finale boss envelopes remain deferred", "owner": "CREATIVE_SUPPORT"},
-    {"id": "W1-CREATIVE-004", "status": "WHISPERWOOD_ASHEN_AND_CRYSTAL_RATIFIED_SKY_AND_FINALE_DEFERRED", "scope": "Whisperwood/Thorn Court, Ashen/Kiln Sky, and Crystal/Pearl Depths loot and reward guards approved exactly", "owner": "CREATIVE_SUPPORT"},
+    {"id": "W1-CREATIVE-001", "status": "ALL_REGIONAL_TRANCHES_RATIFIED", "scope": "W1-001-WW, W1-001-AH, W1-001-CM, and W1-001-SR approved exactly; no scope beyond those proposal bytes", "owner": "CREATIVE_ASSET_SUPPORT"},
+    {"id": "W1-CREATIVE-002", "status": "TWINBOND_RATIFIED", "scope": "Twinbond container, secondary reward presentation, mastery-sigil disposition, and machine-exit dependency approved exactly by W1-002-TWINBOND", "owner": "CREATIVE_ASSET_SUPPORT"},
+    {"id": "W1-CREATIVE-003", "status": "ALL_REGIONAL_APEXES_AND_TWINBOND_RATIFIED", "scope": "Thorn Court, Kiln Sky, Pearl Depths, Storm Nest, and Twinbond encounter envelopes approved exactly", "owner": "CREATIVE_SUPPORT"},
+    {"id": "W1-CREATIVE-004", "status": "ALL_REGIONAL_ECOSYSTEMS_AND_TWINBOND_RATIFIED", "scope": "Whisperwood, Ashen, Crystal Marsh, Skyreach, and Twinbond loot and reward guards approved exactly", "owner": "CREATIVE_SUPPORT"},
     {"id": "W1-CREATIVE-005", "status": "DEFERRED_BY_USER", "scope": "equipment sidegrade item identity", "owner": "CREATIVE_SUPPORT"},
     {"id": "W1-CREATIVE-006", "status": "WHISPERWOOD_SAPLING_RATIFIED", "scope": "bounded existing-palette sapling regrowth assembly and timing", "owner": "CREATIVE_SUPPORT"}
   ],
@@ -197,8 +244,10 @@
     "ashen_vertical_status": "ASHEN_VERTICAL_SOURCE_COMPLETE_RUNTIME_ACTIVATION_DEFERRED",
     "ashen_deferred_blocker": "MANAGED_REVIEWER_ACTIVATION_BLOCKED",
     "crystal_marsh_vertical_implementation_authorized": true,
+    "skyreach_vertical_implementation_authorized": true,
+    "twinbond_finale_implementation_authorized": true,
     "new_bds_checkpoint_authorized": false,
-    "final_freeze_blocked_until_remaining_later_region_and_finale_tickets_resolved": true,
+    "final_freeze_blocked_until_remaining_later_region_and_finale_tickets_resolved": false,
     "engineering_may_not_invent_unresolved_content": true
   },
   "advisory": {
