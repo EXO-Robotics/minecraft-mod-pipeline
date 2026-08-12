@@ -7,7 +7,7 @@ import { tmpdir } from "node:os";
 
 const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), "..");
 const SOURCE_DIR = resolve(ROOT, "behavior_pack/scripts");
-const MODULE_NAMES = ["wave1_codex_extension_data", "wave1_codex_ashen_data", "wave1_codex_data", "wave1_codex_ui_data", "wave1_equipment_roles", "whisperwood_regrowth", "whisperwood_rewards", "ashen_structure_reward_data", "ashen_structure_rewards", "catalog", "budgets", "state", "router", "codex", "combat", "devices", "encounters", "thorn_court", "chaos", "structures", "runtime", "main"];
+const MODULE_NAMES = ["wave1_codex_extension_data", "wave1_codex_ashen_data", "wave1_codex_crystal_data", "wave1_codex_data", "wave1_codex_ui_data", "wave1_equipment_roles", "crystal_equipment_roles", "crystal_equipment", "crystal_reward_data", "crystal_rewards", "pearl_depths", "whisperwood_regrowth", "whisperwood_rewards", "ashen_structure_reward_data", "ashen_structure_rewards", "catalog", "budgets", "state", "router", "codex", "combat", "devices", "encounters", "thorn_court", "chaos", "structures", "runtime", "main"];
 const MODULE_DIR = await mkdtemp(resolve(tmpdir(), "aionbound-g7-modules-"));
 for (const name of MODULE_NAMES) {
   const source = (await readFile(resolve(SOURCE_DIR, `${name}.js`), "utf8"))

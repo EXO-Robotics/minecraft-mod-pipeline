@@ -51,7 +51,7 @@ test("service is byte-bound to ratified Ashen proposals and uses midpoint timing
   const ledgerBytes = await readFile(resolve(ROOT, "engineering/authority/WAVE_1_ENGINEERING_DECISION_LEDGER.json"));
   const p3 = await readFile(resolve(ROOT, "engineering/authority/support-proposals/ashen/W1-003-KILN-SKY.json"));
   const p4 = await readFile(resolve(ROOT, "engineering/authority/support-proposals/ashen/W1-004-AH.json"));
-  assert.equal(createHash("sha256").update(ledgerBytes).digest("hex"), "b554db9fab3fe16e59e2e3b36dfc310ff462078b170f14e1f9fe8a46999bbd0c");
+  assert.equal(createHash("sha256").update(ledgerBytes).digest("hex"), "b791c4b63d6ef09c2ac437fdc67065735a2363becad92b359cecb0a4e25c5172");
   assert.equal(createHash("sha256").update(p3).digest("hex"), "1b2d5f77185a1461040d7559d0d8ecdaf803d7727e419ceac32636865be85d7c");
   assert.equal(createHash("sha256").update(p4).digest("hex"), "93736ff800b1c90c8a6547d84336a6650f8ae32750f262de8e460385a7a26889");
   const approved = new Map(JSON.parse(ledgerBytes).ratifications.approved.map(row => [row.tranche, row.proposal_sha256]));
