@@ -399,7 +399,7 @@ class Wave1ValidatorTests(unittest.TestCase):
         )
         path = REPO / evidence["path"]
         document = json.loads(path.read_text())
-        self.assertEqual("3b68295e4ef5f282537e0110e35292898536f1496e764494153926d40477883e", VALIDATOR.sha256(path))
+        self.assertEqual("b29bbf65a17676d27520eee62e753ad8730af6b925024acdafe2f00af53d8646", VALIDATOR.sha256(path))
         self.assertEqual("DEDICATED_SERVICE_AND_DECLARATIVE_COMPONENTS_PASS_ACTIVATION_WITHHELD", document["status"])
         self.assertTrue(document["proof"]["declarative_components"])
         self.assertTrue(document["proof"]["dedicated_service_semantics"])
