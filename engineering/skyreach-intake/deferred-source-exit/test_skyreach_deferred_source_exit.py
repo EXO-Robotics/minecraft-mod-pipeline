@@ -19,10 +19,10 @@ class SkyreachDeferredSourceExitTest(unittest.TestCase):
         self.assertIn("all 30", DATA["implemented"]["native_assets"])
         self.assertEqual(DATA["technical_deferred"], {})
 
-    def test_dormant_surfaces_are_not_silently_live(self):
+    def test_identity_codex_is_live_but_execution_surfaces_are_dormant(self):
         codex = (ROOT / "behavior_pack/scripts/wave1_codex_data.js").read_text()
         runtime = (ROOT / "behavior_pack/scripts/runtime.js").read_text()
-        self.assertNotIn("wave1_codex_skyreach_data", codex)
+        self.assertIn("wave1_codex_skyreach_data", codex)
         self.assertNotIn("storm_nest", runtime)
         self.assertNotIn("storm_pinion", runtime)
 
