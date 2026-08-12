@@ -1,0 +1,52 @@
+{
+  "format_version": "1.21.80",
+  "minecraft:block": {
+    "description": {
+      "identifier": "aionbound:cloudpuff_plant"
+    },
+    "components": {
+      "minecraft:display_name": "Cloudpuff",
+      "minecraft:collision_box": false,
+      "minecraft:selection_box": {
+        "origin": [
+          -7,
+          0,
+          -7
+        ],
+        "size": [
+          14,
+          16,
+          14
+        ]
+      },
+      "minecraft:destructible_by_mining": {
+        "seconds_to_destroy": 0.1
+      },
+      "minecraft:geometry": "geometry.aionbound.cloudpuff_plant",
+      "minecraft:material_instances": {
+        "*": {
+          "texture": "cloudpuff_plant",
+          "render_method": "alpha_test",
+          "ambient_occlusion": false,
+          "face_dimming": false
+        }
+      },
+      "minecraft:placement_filter": {
+        "conditions": [
+          {
+            "allowed_faces": [
+              "up"
+            ],
+            "block_filter": [
+              "aionbound:cliff_stone",
+              "aionbound:cliff_gravel",
+              "aionbound:pale_shelf_stone",
+              "aionbound:sky_moss_block",
+              "minecraft:stone"
+            ]
+          }
+        ]
+      }
+    }
+  }
+}

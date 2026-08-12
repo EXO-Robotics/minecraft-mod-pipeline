@@ -1,0 +1,53 @@
+{
+  "format_version": "1.21.80",
+  "minecraft:block": {
+    "description": {
+      "identifier": "aionbound:hanging_sky_vine"
+    },
+    "components": {
+      "minecraft:display_name": "Hanging Sky Vine",
+      "minecraft:collision_box": false,
+      "minecraft:selection_box": {
+        "origin": [
+          -7,
+          0,
+          -7
+        ],
+        "size": [
+          14,
+          16,
+          14
+        ]
+      },
+      "minecraft:destructible_by_mining": {
+        "seconds_to_destroy": 0.1
+      },
+      "minecraft:geometry": "geometry.aionbound.hanging_sky_vine",
+      "minecraft:material_instances": {
+        "*": {
+          "texture": "hanging_sky_vine",
+          "render_method": "alpha_test",
+          "ambient_occlusion": false,
+          "face_dimming": false
+        }
+      },
+      "minecraft:placement_filter": {
+        "conditions": [
+          {
+            "allowed_faces": [
+              "down",
+              "side"
+            ],
+            "block_filter": [
+              "aionbound:cliff_stone",
+              "aionbound:pale_shelf_stone",
+              "aionbound:rope_timber",
+              "aionbound:skyreach_log",
+              "aionbound:skyreach_wood"
+            ]
+          }
+        ]
+      }
+    }
+  }
+}

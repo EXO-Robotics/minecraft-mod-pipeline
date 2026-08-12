@@ -1,0 +1,25 @@
+{
+  "format_version": "1.21.40",
+  "minecraft:single_block_feature": {
+    "description": {
+      "identifier": "aionbound:sr_ecology_wind_reed_plant"
+    },
+    "places_block": "aionbound:wind_reed_plant",
+    "enforce_placement_rules": true,
+    "enforce_survivability_rules": true,
+    "may_replace": [
+      "minecraft:air"
+    ],
+    "may_attach_to": {
+      "min_sides_must_attach": 1,
+      "auto_rotate": false,
+      "bottom": [
+        "aionbound:cliff_stone",
+        "aionbound:cliff_gravel",
+        "aionbound:pale_shelf_stone",
+        "aionbound:sky_moss_block",
+        "minecraft:stone"
+      ]
+    }
+  }
+}

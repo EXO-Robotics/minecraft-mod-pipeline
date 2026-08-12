@@ -1,0 +1,125 @@
+{
+  "schema": "aionbound.wave1.skyreach.plant-product.v1",
+  "status": "PASS_STATIC_SOURCE_BINDING",
+  "base_commit": "13c3ddd67aa11bc0fecd3f592601ad0264dc1b2b",
+  "scope": [
+    "cliff_flower",
+    "cloud_moss",
+    "cloudpuff_plant",
+    "floating_blossom",
+    "nest_thatch_tuft",
+    "rope_root",
+    "shelf_shrub",
+    "skybloom",
+    "wind_reed_plant",
+    "hanging_sky_vine"
+  ],
+  "assets": [
+    {
+      "asset": "cliff_flower",
+      "native_lane": "plants",
+      "geometry_sha256": "984db37368a848c9ab6434abe845ed3c340b5a98565d837f8cbb86a9493f321d",
+      "texture_sha256": "d7d2c6d1f5ff16918987f0dcea61b22aaa3e5bbfaa07a3faeb1c6ae6e34f1876",
+      "iterations": 1,
+      "denominator": 96,
+      "attempts_per_chunk_before_filters": 0.010416666666666666
+    },
+    {
+      "asset": "cloud_moss",
+      "native_lane": "plants",
+      "geometry_sha256": "df77cb378f12a83adf0e8fafd99edfa07fe76f7b659c71165ea2cddffa1c646a",
+      "texture_sha256": "33e0cc0732b9d32445d6e14aaf34c3674b3112970b008643f19baaafa8866eae",
+      "iterations": 2,
+      "denominator": 64,
+      "attempts_per_chunk_before_filters": 0.03125
+    },
+    {
+      "asset": "cloudpuff_plant",
+      "native_lane": "plants",
+      "geometry_sha256": "8a4705c588ee8ee39be71c3265b59c20135e8101cb8865d2119d355e96d11b42",
+      "texture_sha256": "66a2c5067367b7527d587399109b3ce23b68775afacc5885afe31222d6973917",
+      "iterations": 2,
+      "denominator": 64,
+      "attempts_per_chunk_before_filters": 0.03125
+    },
+    {
+      "asset": "floating_blossom",
+      "native_lane": "plants",
+      "geometry_sha256": "a0de19609a2db70ca567b371148a7dbe431e73e24677d7bcf1d27ae5c8f81be5",
+      "texture_sha256": "51814d78e351b1bad236c0a953f35e42ddbeb5c75c83224ddf5237a1d83f0d19",
+      "iterations": 1,
+      "denominator": 96,
+      "attempts_per_chunk_before_filters": 0.010416666666666666
+    },
+    {
+      "asset": "nest_thatch_tuft",
+      "native_lane": "plants",
+      "geometry_sha256": "c20252060058e7c18b18cec4cea8f1a34ec548b726fdcb8a66d14298891243fa",
+      "texture_sha256": "e4ec8738876ac5a9e5aaebfaaec9f838a295a3bf585b75583387d6de235eb45e",
+      "iterations": 2,
+      "denominator": 64,
+      "attempts_per_chunk_before_filters": 0.03125
+    },
+    {
+      "asset": "rope_root",
+      "native_lane": "plants",
+      "geometry_sha256": "0151a54a3e2592be1a4a61094ca96e1fc65ad926b83710e53106f5bfa13bbf7c",
+      "texture_sha256": "fe2213a531fa5d54219c0da53656243d11af93ebc117af2d04606efc3124a38f",
+      "iterations": 1,
+      "denominator": 96,
+      "attempts_per_chunk_before_filters": 0.010416666666666666
+    },
+    {
+      "asset": "shelf_shrub",
+      "native_lane": "plants",
+      "geometry_sha256": "e798695affece8149314a6981e55f872125f1fc5e5f5d9d4a3ade7a3bc8d627f",
+      "texture_sha256": "27b6e1c5548cb8e5eebbfc13409eaea5642430a355870a9e29360796112e8070",
+      "iterations": 2,
+      "denominator": 64,
+      "attempts_per_chunk_before_filters": 0.03125
+    },
+    {
+      "asset": "skybloom",
+      "native_lane": "plants",
+      "geometry_sha256": "a6c0502cf0189c3932ae8c5da756c961ec935b81735d6c3542cf55611045378a",
+      "texture_sha256": "5c69adad879221e7c65cd81315aa207e8bb5e8f104f13e621bfe8c56856f840a",
+      "iterations": 1,
+      "denominator": 96,
+      "attempts_per_chunk_before_filters": 0.010416666666666666
+    },
+    {
+      "asset": "wind_reed_plant",
+      "native_lane": "representative",
+      "geometry_sha256": "01569b7054e6c0b23633a9ddf5cc392f51327dcc6fe209c20845468652c07319",
+      "texture_sha256": "c2a6c6c546cbba11caabad075b9b22d24dbeef9cb64d65a3d67311277edbc612",
+      "iterations": 2,
+      "denominator": 64,
+      "attempts_per_chunk_before_filters": 0.03125
+    },
+    {
+      "asset": "hanging_sky_vine",
+      "native_lane": "representative",
+      "geometry_sha256": "ca69110118b5b8254f04c4febe5880362aac37f2d528c0b21802e236ad3eda05",
+      "texture_sha256": "18b6f23f98ec1fbbaf054910160ff4a02779eb3fe665e6685438c745379ef556",
+      "iterations": 1,
+      "denominator": 96,
+      "attempts_per_chunk_before_filters": 0.010416666666666666
+    }
+  ],
+  "density": {
+    "aggregate_attempts_per_chunk_before_filters": 0.20833333333333334,
+    "regional_proxy": "overworld non-ocean mountain-or-hills"
+  },
+  "constraints": {
+    "exact_pass_2_geometry_bytes": true,
+    "exact_native_texture_bytes": true,
+    "loot_or_acquisition_added": false,
+    "recipes_added": false,
+    "script_animation_added": false,
+    "authority_gated_surfaces_added": false
+  },
+  "proof_boundary": [
+    "static source only",
+    "not live worldgen survivability rendering BDS client console Marketplace or release proof"
+  ]
+}
