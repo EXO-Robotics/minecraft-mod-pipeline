@@ -1,0 +1,44 @@
+{
+  "name": "wind_shrine",
+  "display_name": "Wind Shrine",
+  "sprint": "asset_sprint_004_skyreach_cliffs",
+  "tier": "LANDMARK",
+  "role": "Wind-worship landmark",
+  "profile": "structure",
+  "identity": "TRAVERSAL ECOSYSTEM \u2014 not a bird biome",
+  "model_identifier": "geometry.aionforge_sr.wind_shrine",
+  "cube_count": 15,
+  "bone_count": 5,
+  "density_floor": 14,
+  "locators": [
+    "effect"
+  ],
+  "palette": {
+    "metal": [
+      122,
+      138,
+      154
+    ],
+    "accent": [
+      242,
+      244,
+      247
+    ],
+    "energy": [
+      224,
+      192,
+      96
+    ]
+  },
+  "animations": [
+    "chime_idle"
+  ],
+  "minecraft_scale": "2.5 tall",
+  "texture_resolution": "64",
+  "production_priority": "P0",
+  "related_assets": "aether_stone, crest gold",
+  "originality": "Clean-room Skyreach Traversal manufacture",
+  "forbidden": "No Whisperwood moss; no Ashen heat; no Crystal Marsh mint; no Gloamveil neon; no Brinecanopy; no Minttrail",
+  "editable": "assets/editable/wind_shrine.bbmodel",
+  "claims_boundary": "Visual production only. No BP/JSON/AI/gameplay/mechanics."
+}

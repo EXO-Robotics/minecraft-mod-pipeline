@@ -1,0 +1,49 @@
+{
+  "name": "wind_roc",
+  "display_name": "Wind Roc",
+  "sprint": "asset_sprint_004_skyreach_cliffs",
+  "tier": "CREATURE",
+  "role": "Apex soaring shelf predator \u2014 vertical landmark",
+  "profile": "flyer",
+  "identity": "TRAVERSAL ECOSYSTEM \u2014 not a bird biome",
+  "model_identifier": "geometry.aionforge_sr.wind_roc",
+  "cube_count": 24,
+  "bone_count": 9,
+  "density_floor": 24,
+  "locators": [
+    "effect",
+    "gaze"
+  ],
+  "palette": {
+    "metal": [
+      74,
+      85,
+      104
+    ],
+    "accent": [
+      122,
+      138,
+      154
+    ],
+    "energy": [
+      224,
+      192,
+      96
+    ]
+  },
+  "animations": [
+    "idle_perch",
+    "soar",
+    "dive",
+    "hurt",
+    "death"
+  ],
+  "minecraft_scale": "1.4 body \u00b7 span 3+",
+  "texture_resolution": "128\u00d764",
+  "production_priority": "P0",
+  "related_assets": "nest_platform, storm_pinion",
+  "originality": "Clean-room Skyreach Traversal manufacture",
+  "forbidden": "No Whisperwood moss; no Ashen heat; no Crystal Marsh mint; no Gloamveil neon; no Brinecanopy; no Minttrail",
+  "editable": "assets/editable/wind_roc.bbmodel",
+  "claims_boundary": "Visual production only. No BP/JSON/AI/gameplay/mechanics."
+}

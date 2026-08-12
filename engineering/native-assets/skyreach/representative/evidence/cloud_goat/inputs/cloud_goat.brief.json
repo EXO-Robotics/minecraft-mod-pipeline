@@ -1,0 +1,49 @@
+{
+  "name": "cloud_goat",
+  "display_name": "Cloud Goat",
+  "sprint": "asset_sprint_004_skyreach_cliffs",
+  "tier": "CREATURE",
+  "role": "Ledge grazer \u2014 proves shelves are walkable",
+  "profile": "quad",
+  "identity": "TRAVERSAL ECOSYSTEM \u2014 not a bird biome",
+  "model_identifier": "geometry.aionforge_sr.cloud_goat",
+  "cube_count": 23,
+  "bone_count": 8,
+  "density_floor": 22,
+  "locators": [
+    "effect",
+    "gaze"
+  ],
+  "palette": {
+    "metal": [
+      122,
+      138,
+      154
+    ],
+    "accent": [
+      242,
+      244,
+      247
+    ],
+    "energy": [
+      224,
+      192,
+      96
+    ]
+  },
+  "animations": [
+    "idle",
+    "walk",
+    "hop_ledge",
+    "hurt",
+    "death"
+  ],
+  "minecraft_scale": "1.0 shoulder",
+  "texture_resolution": "64\u00d764",
+  "production_priority": "P0",
+  "related_assets": "cliff_ram, cloud_wool",
+  "originality": "Clean-room Skyreach Traversal manufacture",
+  "forbidden": "No Whisperwood moss; no Ashen heat; no Crystal Marsh mint; no Gloamveil neon; no Brinecanopy; no Minttrail",
+  "editable": "assets/editable/cloud_goat.bbmodel",
+  "claims_boundary": "Visual production only. No BP/JSON/AI/gameplay/mechanics."
+}
